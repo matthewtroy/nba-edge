@@ -1,4 +1,5 @@
 import type { AppSettings } from "@lib/types";
+import { AU_BOOKMAKERS } from "@lib/types";
 
 interface Props {
   open: boolean;
@@ -16,6 +17,22 @@ export function SettingsSheet({ open, settings, onChange, onClose }: Props) {
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-lg font-semibold mb-4">Settings</h2>
+        <label className="block text-sm mb-2">My bookie</label>
+        <select
+          value={settings.myBookie}
+          onChange={(e) => onChange({ ...settings, myBookie: e.target.value })}
+          className="w-full mb-4 bg-surface border border-white/10 rounded-lg px-3 py-2"
+        >
+          {AU_BOOKMAKERS.map((b) => (
+            <option key={b} value={b}>
+              {b}
+            </option>
+          ))}
+        </select>
+        <p className="text-xs text-white/50 mb-4">
+          bet365 has no API — type prices on each leg. Other bookies fill from odds when
+          available.
+        </p>
         <label className="block text-sm mb-2">Target profit ($)</label>
         <input
           type="number"

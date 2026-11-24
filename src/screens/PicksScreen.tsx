@@ -5,27 +5,30 @@ import { LegRow } from "../components/LegRow";
 
 interface Props {
   data: DataBundle;
+  myBookie?: string;
   onLegTap: (leg: PickLeg) => void;
 }
 
-export function PicksScreen({ data, onLegTap }: Props) {
+export function PicksScreen({ data, myBookie, onLegTap }: Props) {
   const [showAll, setShowAll] = useState(false);
-  const [filter, setFilter] = useState<"all" | "value" | "high" | string>("high");
+  const [filter, setFilter] = useState<"all" | "value" | "high" | string>("value");
 
   const hasValueOdds = data.picks.some((l) => l.tags.includes("Value"));
 
   const legs = useMemo(() => {
     let list = [...data.picks];
-    if (!showAll) {
-      list = list
-        .filter((l) => l.tags.includes("High probability"))
-        .sort((a, b) => b.probability - a.probability)
-        .slice(0, 15);
-    }
-    if (filter === "value") list = list.filter((l) => l.tags.includes("Value"));
-    if (filter === "high") {
+    if (filter === "value") {
+      list = list.filter((l) => l.tags.includes("Value"));
+    } else if (filter === "high") {
       list = list.filter((l) => l.tags.includes("High probability"));
       if (!showAll) list = list.slice(0, 15);
+    } else if (!showAll) {
+      list = list
+        .filter(
+          (l) => l.tags.includes("High probability") || l.tags.includes("Value")
+        )
+        .sort((a, b) => b.probability - a.probability)
+        .slice(0, 15);
     }
     if (filter.startsWith("game:")) {
       const gid = filter.slice(5);
@@ -82,7 +85,7 @@ export function PicksScreen({ data, onLegTap }: Props) {
       </button>
       <div className="bg-card rounded-xl px-2">
         {legs.map((leg) => (
-          <LegRow key={leg.id} leg={leg} onTap={onLegTap} />
+          <LegRow key={leg.id} leg={leg} myBookie={myBookie} onTap={onLegTap} />
         ))}
       </div>
     </div>

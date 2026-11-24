@@ -20,16 +20,22 @@ function combinedPrice(legs: PickLeg[]): {
   return { p, fair, takeAt };
 }
 
+function legMeetsTakeAt(leg: PickLeg): boolean {
+  return leg.bestPrice != null && leg.bestPrice >= leg.takeAt;
+}
+
 export function combinedBetPrice(legs: PickLeg[]): number {
-  if (legs.length > 0 && legs.every((l) => l.bestPrice != null)) {
+  if (legs.length > 0 && legs.every((l) => legMeetsTakeAt(l))) {
     return Math.round(legs.reduce((acc, l) => acc * (l.bestPrice ?? 1), 1) * 100) / 100;
   }
   return Math.round(legs.reduce((acc, l) => acc * l.takeAt, 1) * 100) / 100;
 }
 
 function bestCombinedBookie(legs: PickLeg[]): { price?: number; bookie?: string } {
-  if (legs.every((l) => l.bestPrice != null)) {
-    return { price: combinedBetPrice(legs), bookie: legs[0].bestBookie };
+  if (legs.every((l) => legMeetsTakeAt(l))) {
+    const bookies = new Set(legs.map((l) => l.bestBookie).filter(Boolean));
+    const bookie = bookies.size === 1 ? legs[0].bestBookie : "Best mix";
+    return { price: combinedBetPrice(legs), bookie };
   }
   return {};
 }
@@ -55,11 +61,15 @@ function threesCount(legs: PickLeg[]): number {
   return legs.filter((l) => l.market === "3pm").length;
 }
 
-function sortLegs(a: PickLeg, b: PickLeg): number {
+export function sortLegsForSelection(a: PickLeg, b: PickLeg): number {
+  const inj = injuryBoostScore(b) - injuryBoostScore(a);
+  if (inj !== 0) return inj;
   if (b.probability !== a.probability) return b.probability - a.probability;
-  const e = legEdge(b) - legEdge(a);
-  if (e !== 0) return e;
-  return injuryBoostScore(b) - injuryBoostScore(a);
+  return legEdge(b) - legEdge(a);
+}
+
+function sortLegs(a: PickLeg, b: PickLeg): number {
+  return sortLegsForSelection(a, b);
 }
 
 function nextRung(leg: PickLeg, picks: PickLeg[]): PickLeg | undefined {

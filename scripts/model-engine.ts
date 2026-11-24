@@ -32,6 +32,7 @@ export interface ModelRunInput {
   players: ModelPlayer[];
   rosterIds: Set<string>;
   oddsMap?: Map<string, { price: number; bookie: string }>;
+  allOddsMap?: Map<string, Record<string, number>>;
   oddsPulledAt?: string;
   minEdge?: number;
   whatChanged?: string[];
@@ -174,6 +175,7 @@ export function runModel(input: ModelRunInput): {
             ageB2B: ctxAdj.ageB2B,
           },
           bestOdds: input.oddsMap,
+          allOdds: input.allOddsMap,
           oddsPulledAt: input.oddsPulledAt,
           minEdge,
         })

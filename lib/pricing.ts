@@ -9,6 +9,14 @@ import {
 import { q1Share } from "./baseline.js";
 import type { ProjectedStats } from "./baseline.js";
 import type { PlayerGameLog } from "./types.js";
+import {
+  blendProbability,
+  borrowMarketImplied,
+  CHECK_NEWS_PP,
+  impliedFromDecimalPrice,
+  type PricedRung,
+} from "./market-blend.js";
+import { lastFiveVsLine } from "./leg-history.js";
 
 export const RUNGS: Record<string, number[]> = {
   pts: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
@@ -27,6 +35,10 @@ export function fairAndTakeAt(p: number, minEdge = 1.08): { fair: number; takeAt
   return { fair, takeAt, oneInX };
 }
 
+function legOddsKey(playerName: string, market: string, line: number): string {
+  return `${normalizePlayerName(playerName)}|${market}|${line}`;
+}
+
 export function buildLegsForPlayer(
   ctx: {
     gameId: string;
@@ -41,6 +53,7 @@ export function buildLegsForPlayer(
     tags: string[];
     flags: Partial<PickLeg>;
     bestOdds?: Map<string, { price: number; bookie: string }>;
+    allOdds?: Map<string, Record<string, number>>;
     oddsPulledAt?: string;
     minEdge: number;
   }
@@ -48,23 +61,55 @@ export function buildLegsForPlayer(
   const legs: PickLeg[] = [];
   const means = ctx.stats;
 
-  const addLeg = (market: Market, line: number, p: number) => {
-    if (p < 0.05 || p > 0.95) return;
-    const { fair, takeAt } = fairAndTakeAt(p, ctx.minEdge);
-    const id = `${ctx.playerId}-${market}-${line}`;
-    const oddKey = `${ctx.playerName}|${market}|${line}`;
+  const pricedByMarket = new Map<string, PricedRung[]>();
+  if (ctx.bestOdds) {
+    for (const [key, val] of ctx.bestOdds) {
+      const parts = key.split("|");
+      if (parts.length < 3) continue;
+      const [name, mkt, lineStr] = parts;
+      if (normalizePlayerName(name) !== normalizePlayerName(ctx.playerName)) continue;
+      const line = Number(lineStr);
+      if (!Number.isFinite(line)) continue;
+      const arr = pricedByMarket.get(mkt) ?? [];
+      arr.push({ line, price: val.price });
+      pricedByMarket.set(mkt, arr);
+    }
+  }
+
+  const addLeg = (market: Market, line: number, modelP: number) => {
+    if (modelP < 0.05 || modelP > 0.95) return;
+    const oddKey = legOddsKey(ctx.playerName, market, line);
+    const displayKey = `${ctx.playerName}|${market}|${line}`;
     const book =
       ctx.bestOdds?.get(oddKey) ??
-      ctx.bestOdds?.get(`${normalizePlayerName(ctx.playerName)}|${market}|${line}`);
+      ctx.bestOdds?.get(displayKey);
+
+    let marketP: number | undefined;
+    if (book) {
+      marketP = impliedFromDecimalPrice(book.price);
+    } else {
+      marketP = borrowMarketImplied(line, pricedByMarket.get(market) ?? []);
+    }
+
+    const finalP =
+      marketP != null ? blendProbability(modelP, marketP) : modelP;
+    if (finalP < 0.05 || finalP > 0.95) return;
+
+    const { fair, takeAt } = fairAndTakeAt(finalP, ctx.minEdge);
+    const id = `${ctx.playerId}-${market}-${line}`;
     const tags: string[] = [];
-    if (p >= 0.72) tags.push("High probability");
+    if (finalP >= 0.72) tags.push("High probability");
+    if (ctx.flags.boardsShared && market === "reb") tags.push("boards shared");
     if (book) {
       if (book.price >= takeAt) {
-        const implied = 1 / book.price;
-        if (p - implied > 0.35) tags.push("Check news");
+        const implied = impliedFromDecimalPrice(book.price);
+        if (finalP - implied > CHECK_NEWS_PP) tags.push("Check news");
         else tags.push("Value");
       }
     }
+
+    const bookiePrices =
+      ctx.allOdds?.get(oddKey) ?? ctx.allOdds?.get(displayKey);
 
     const reasons = ctx.reasons.slice(0, 3);
     legs.push({
@@ -77,14 +122,19 @@ export function buildLegsForPlayer(
       headshotUrl: ctx.headshotUrl,
       market,
       line,
-      probability: Math.round(p * 1000) / 1000,
+      probability: Math.round(finalP * 1000) / 1000,
+      modelProbability: Math.round(modelP * 1000) / 1000,
+      marketProbability:
+        marketP != null ? Math.round(marketP * 1000) / 1000 : undefined,
       fairPrice: fair,
       takeAt,
       bestPrice: book?.price,
       bestBookie: book?.bookie,
+      bookiePrices,
       oddsPulledAt: ctx.oddsPulledAt,
       tags,
       reasons,
+      recentVsLine: lastFiveVsLine(ctx.logs, market, line),
       ...ctx.flags,
     });
   };

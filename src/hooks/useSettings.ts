@@ -8,13 +8,15 @@ const defaults: AppSettings = {
   minEdge: 0.08,
   showQ1Bets: true,
   showLongshots: true,
+  myBookie: "bet365",
 };
 
 export function useSettings() {
   const [settings, setSettings] = useState<AppSettings>(() => {
     try {
       const raw = localStorage.getItem(KEY);
-      return raw ? { ...defaults, ...JSON.parse(raw) } : defaults;
+      const parsed = raw ? JSON.parse(raw) : {};
+      return { ...defaults, ...parsed, myBookie: parsed.myBookie ?? defaults.myBookie };
     } catch {
       return defaults;
     }

@@ -5,11 +5,12 @@ import { LegRow } from "./LegRow";
 interface Props {
   multi: MultiBet;
   picksById: Map<string, PickLeg>;
+  myBookie?: string;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (text: string) => void;
 }
 
-export function MultiCard({ multi, picksById, onLegTap, onCopy }: Props) {
+export function MultiCard({ multi, picksById, myBookie, onLegTap, onCopy }: Props) {
   const legs = multi.legs.map((id) => picksById.get(id)).filter(Boolean) as PickLeg[];
   const title =
     multi.variant != null ? `${multi.label} (${multi.variant})` : multi.label;
@@ -28,7 +29,7 @@ export function MultiCard({ multi, picksById, onLegTap, onCopy }: Props) {
         <p className="text-sm text-white/70">
           Take at {multi.combinedTakeAt.toFixed(2)}+ · ~1 in {multi.oneInX}
           {multi.combinedBestPrice != null &&
-            ` · ${multi.combinedBestBookie} ${multi.combinedBestPrice.toFixed(2)}`}
+            ` · Best: ${multi.combinedBestBookie} ${multi.combinedBestPrice.toFixed(2)}`}
         </p>
         {multi.stakeSuggestion != null && (
           <p className="text-xs text-white/50 mt-1">Stake ~${multi.stakeSuggestion}</p>
@@ -37,7 +38,7 @@ export function MultiCard({ multi, picksById, onLegTap, onCopy }: Props) {
       </header>
       <div className="divide-y divide-white/5">
         {legs.map((leg) => (
-          <LegRow key={leg.id} leg={leg} onTap={onLegTap} />
+          <LegRow key={leg.id} leg={leg} myBookie={myBookie} onTap={onLegTap} />
         ))}
       </div>
       <div className="flex gap-2 mt-3">

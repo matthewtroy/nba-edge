@@ -53,13 +53,16 @@ export default function App() {
           onOpenSettings={() => setSettingsOpen(true)}
           showQ1={settings.showQ1Bets}
           showLongshots={settings.showLongshots}
+          myBookie={settings.myBookie}
         />
       )}
-      {tab === "picks" && <PicksScreen data={data} onLegTap={setLeg} />}
+      {tab === "picks" && (
+        <PicksScreen data={data} myBookie={settings.myBookie} onLegTap={setLeg} />
+      )}
       {tab === "injuries" && <InjuriesScreen data={data} />}
       {tab === "results" && <ResultsScreen data={data} />}
       <TabBar active={tab} onChange={setTab} />
-      <LegSheet leg={leg} onClose={() => setLeg(null)} />
+      <LegSheet leg={leg} myBookie={settings.myBookie} onClose={() => setLeg(null)} />
       <SettingsSheet
         open={settingsOpen}
         settings={settings}

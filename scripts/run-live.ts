@@ -12,7 +12,7 @@ import {
   listOddsEvents,
   matchOddsEventId,
   fetchOddsForEvent,
-  extractBestOddsFlexible,
+  extractOddsBundles,
 } from "./fetch/odds-events.js";
 import { shouldPauseOdds } from "../lib/odds.js";
 import {
@@ -133,7 +133,8 @@ export async function runLivePipeline(
     } else {
       sources.nbaOfficial = "stale";
     }
-  } catch {
+  } catch (e) {
+    console.warn("nbaOfficial PDF error:", e instanceof Error ? e.message : e);
     sources.nbaOfficial = "stale";
   }
 
@@ -233,6 +234,7 @@ export async function runLivePipeline(
   resetOddsDayIfNeeded(cache, now);
 
   let oddsMap = oddsMapFromRecord(cache.oddsMap ?? {});
+  let allOddsMap = new Map<string, Record<string, number>>();
   let oddsPulledAt = cache.lastPulled;
   const apiKey = loadOddsApiKey(rootDir);
 
@@ -255,7 +257,9 @@ export async function runLivePipeline(
           if (rem != null) cache.creditsRemaining = rem;
           if (data) payloads.push(data);
         }
-        oddsMap = extractBestOddsFlexible(payloads);
+        const bundles = extractOddsBundles(payloads);
+        oddsMap = bundles.best;
+        allOddsMap = bundles.all;
         const norm = new Map<string, { price: number; bookie: string }>();
         for (const [k, v] of oddsMap) norm.set(k, v);
         oddsMap = norm;
@@ -273,6 +277,7 @@ export async function runLivePipeline(
   }
 
   const pricingOdds = new Map<string, { price: number; bookie: string }>();
+  const pricingAllOdds = new Map<string, Record<string, number>>();
   for (const [k, v] of oddsMap) {
     pricingOdds.set(k, v);
     const [name, market, line] = k.split("|");
@@ -280,6 +285,17 @@ export async function runLivePipeline(
       for (const p of players) {
         if (normalizePlayerName(p.name) === name) {
           pricingOdds.set(`${p.name}|${market}|${line}`, v);
+        }
+      }
+    }
+  }
+  for (const [k, v] of allOddsMap) {
+    pricingAllOdds.set(k, v);
+    const [name, market, line] = k.split("|");
+    if (name) {
+      for (const p of players) {
+        if (normalizePlayerName(p.name) === name) {
+          pricingAllOdds.set(`${p.name}|${market}|${line}`, v);
         }
       }
     }
@@ -295,6 +311,7 @@ export async function runLivePipeline(
     players,
     rosterIds,
     oddsMap: pricingOdds,
+    allOddsMap: pricingAllOdds,
     oddsPulledAt,
     metaSources: sources,
   });

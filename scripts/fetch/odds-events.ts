@@ -53,7 +53,15 @@ export async function fetchOddsForEvent(
 }
 
 export function extractBestOddsFlexible(events: unknown[]): Map<string, { price: number; bookie: string }> {
+  return extractOddsBundles(events).best;
+}
+
+export function extractOddsBundles(events: unknown[]): {
+  best: Map<string, { price: number; bookie: string }>;
+  all: Map<string, Record<string, number>>;
+} {
   const map = new Map<string, { price: number; bookie: string }>();
+  const all = new Map<string, Record<string, number>>();
   for (const ev of events) {
     if (!ev) continue;
     const e = ev as {
@@ -83,11 +91,15 @@ export function extractBestOddsFlexible(events: unknown[]): Map<string, { price:
           if (!prev || out.price > prev.price) {
             map.set(key, { price: out.price, bookie: bm.title });
           }
+          const books = all.get(key) ?? {};
+          const cur = books[bm.title];
+          if (cur == null || out.price > cur) books[bm.title] = out.price;
+          all.set(key, books);
         }
       }
     }
   }
-  return map;
+  return { best: map, all };
 }
 
 /** Map model lookup keys to normalized map */

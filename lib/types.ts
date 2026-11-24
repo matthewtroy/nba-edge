@@ -49,13 +49,19 @@ export interface PickLeg {
   market: Market;
   line: number;
   probability: number;
+  /** Raw model probability before market blend */
+  modelProbability?: number;
+  /** Implied or borrowed market probability used in blend */
+  marketProbability?: number;
   fairPrice: number;
   takeAt: number;
   bestPrice?: number;
   bestBookie?: string;
+  bookiePrices?: Record<string, number>;
   oddsPulledAt?: string;
   tags: string[];
   reasons: string[];
+  recentVsLine?: ("hit" | "miss" | "na")[];
   questionable?: boolean;
   boardsShared?: boolean;
   b2b?: boolean;
@@ -173,4 +179,16 @@ export interface AppSettings {
   minEdge: number;
   showQ1Bets: boolean;
   showLongshots: boolean;
+  /** Primary bookie for manual / API line (bet365 has no feed) */
+  myBookie: string;
 }
+
+export const AU_BOOKMAKERS = [
+  "bet365",
+  "Sportsbet",
+  "TAB",
+  "Ladbrokes",
+  "PointsBet",
+  "Unibet",
+  "Betfair",
+] as const;
