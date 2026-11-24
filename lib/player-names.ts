@@ -36,3 +36,8 @@ export function normalizePlayerName(name: string): string {
 export function namesMatch(a: string, b: string): boolean {
   return normalizePlayerName(a) === normalizePlayerName(b);
 }
+
+/** Preserve Jr/Sr/II/III/IV for UI copy */
+export function displayPlayerName(name: string): string {
+  return name.replace(/\s+/g, " ").trim();
+}

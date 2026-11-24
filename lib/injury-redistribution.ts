@@ -116,6 +116,10 @@ function applyWithWithoutSplits(
     const r = rates.get(tm.id);
     if (!cur || !r) continue;
 
+    const beforePts = cur.pts;
+    const beforeReb = cur.reb;
+    const beforeAst = cur.ast;
+
     for (const key of statKeys) {
       const rateWith =
         withGames.length > 0
@@ -137,9 +141,17 @@ function applyWithWithoutSplits(
       }
     }
 
-    const ptsBoost = cur.pts - (adjusted.get(tm.id)?.pts ?? cur.pts);
-    if (ptsBoost > 0.5) {
+    const ptsBoost = cur.pts - beforePts;
+    const rebBoost = cur.reb - beforeReb;
+    const astBoost = cur.ast - beforeAst;
+    if (ptsBoost >= 1.5) {
       addReason(reasons, tm.id, `${injName} out: +${ptsBoost.toFixed(1)} pts`);
+    }
+    if (rebBoost >= 1) {
+      addReason(reasons, tm.id, `${injName} out: +${rebBoost.toFixed(1)} reb`);
+    }
+    if (astBoost >= 1) {
+      addReason(reasons, tm.id, `${injName} out: +${astBoost.toFixed(1)} ast`);
     }
     adjusted.set(tm.id, cur);
   }

@@ -1,4 +1,5 @@
 import { normalizePlayerName } from "../../lib/player-names.js";
+import { isOverOutcome, overLineToModelRung } from "../../lib/odds.js";
 import type { SlateGame } from "../../lib/types.js";
 
 export async function listOddsEvents(
@@ -69,13 +70,15 @@ export function extractBestOddsFlexible(events: unknown[]): Map<string, { price:
           .replace("_alternate", "")
           .replace("threes", "3pm");
         for (const out of market.outcomes ?? []) {
-          if (!out.name?.toLowerCase().includes("over")) continue;
+          if (!isOverOutcome(out.name ?? "")) continue;
           const player = out.description ?? "";
           if (!player) continue;
-          const line = out.point ?? Number(out.name.match(/(\d+(?:\.\d+)?)/)?.[1]);
-          if (!line) continue;
-          const lineInt = Math.floor(line);
-          const key = `${normalizePlayerName(player)}|${mKey}|${lineInt}`;
+          const raw = out.point ?? Number(out.name.match(/over\s+(\d+(?:\.\d+)?)/i)?.[1]);
+          if (raw == null || !Number.isFinite(raw)) continue;
+          const plus = out.name.match(/(\d+)\s*\+/);
+          const modelLine = plus ? Number(plus[1]) : overLineToModelRung(raw);
+          if (modelLine < 1) continue;
+          const key = `${normalizePlayerName(player)}|${mKey}|${modelLine}`;
           const prev = map.get(key);
           if (!prev || out.price > prev.price) {
             map.set(key, { price: out.price, bookie: bm.title });

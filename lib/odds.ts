@@ -47,3 +47,19 @@ export function mapOddsMarket(market: string): string {
   };
   return m[market] ?? market;
 }
+
+/** Bookie "Over" point → model X+ rung (Over 0.5 → 1+, Over 1.5 → 2+, Over 24.5 → 25+). */
+export function overLineToModelRung(bookieLine: number): number {
+  if (!Number.isFinite(bookieLine) || bookieLine < 0) return 0;
+  const frac = Math.abs((bookieLine % 1) - 0.5);
+  if (frac < 1e-6 || frac > 1 - 1e-6) {
+    return Math.floor(bookieLine) + 1;
+  }
+  return Math.ceil(bookieLine);
+}
+
+export function isOverOutcome(name: string): boolean {
+  const n = name.toLowerCase();
+  if (n.includes("under")) return false;
+  return n.includes("over") || /\d+\s*\+/.test(name);
+}

@@ -4,14 +4,14 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
-        "2596112-3pm-1",
+        "4066320-reb-3",
         "4712849-pts-15",
-        "3936299-3pm-2",
-        "4896372-ast-3",
-        "4277905-ast-7"
+        "3936299-ast-5",
+        "3112335-reb-10",
+        "4251-ast-3"
       ],
-      "combinedProbability": 0.14743536333926396,
-      "combinedFairPrice": 6.78,
+      "combinedProbability": 0.14678265215275196,
+      "combinedFairPrice": 6.81,
       "combinedTakeAt": 10,
       "oneInX": 7,
       "stakeSuggestion": 33.33,
@@ -22,36 +22,18 @@
       "type": "booster",
       "label": "Booster",
       "legs": [
-        "2596112-3pm-2",
-        "4712849-pts-20",
-        "3936299-3pm-3",
-        "4896372-ast-5",
-        "4277905-ast-10"
+        "4066320-reb-5",
+        "4712849-pts-15",
+        "3936299-ast-7",
+        "3112335-reb-13",
+        "4251-ast-3"
       ],
-      "combinedProbability": 0.00411400873125,
-      "combinedFairPrice": 243.07,
-      "combinedTakeAt": 355.86,
-      "oneInX": 243,
+      "combinedProbability": 0.023400465031943995,
+      "combinedFairPrice": 42.73,
+      "combinedTakeAt": 62.85,
+      "oneInX": 43,
       "stakeSuggestion": 5,
       "summary": "Main Play +1 rung — $5 straight",
-      "smallSlateNote": true
-    },
-    {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "legs": [
-        "4702382-reb-3",
-        "4566434-ast-7",
-        "4431767-3pm-1",
-        "3112335-3pm-1",
-        "5160992-pts-10",
-        "4397424-pts-10"
-      ],
-      "combinedProbability": 0.15802853569537942,
-      "combinedFairPrice": 6.33,
-      "combinedTakeAt": 10.16,
-      "oneInX": 6,
-      "summary": "2+ legs/game, fair 1.35–2.50 each",
       "smallSlateNote": true
     }
   ],

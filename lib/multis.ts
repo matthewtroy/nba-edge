@@ -43,6 +43,18 @@ function injuryBoostScore(leg: PickLeg): number {
   return leg.reasons.some((r) => / out/i.test(r)) ? 1 : 0;
 }
 
+function hasCheckNews(leg: PickLeg): boolean {
+  return leg.tags.includes("Check news");
+}
+
+function isCoreMarket(market: string): boolean {
+  return market === "pts" || market === "reb" || market === "ast";
+}
+
+function threesCount(legs: PickLeg[]): number {
+  return legs.filter((l) => l.market === "3pm").length;
+}
+
 function sortLegs(a: PickLeg, b: PickLeg): number {
   if (b.probability !== a.probability) return b.probability - a.probability;
   const e = legEdge(b) - legEdge(a);
@@ -141,7 +153,8 @@ export function qualifiesMainPlayLeg(leg: PickLeg): boolean {
     leg.probability >= 0.6 &&
     leg.fairPrice >= 1.4 &&
     leg.fairPrice <= 2.5 &&
-    !leg.ageB2B
+    !leg.ageB2B &&
+    !hasCheckNews(leg)
   );
 }
 
@@ -167,7 +180,18 @@ function buildMainPlay(
   targetProfit: number,
   slateSize: number
 ): { bet: MultiBet | null; reason: string } {
-  const pool = picks.filter(qualifiesMainPlayLeg).sort(sortLegs);
+  const eligible = picks.filter(qualifiesMainPlayLeg);
+  const corePool = eligible.filter((l) => isCoreMarket(l.market)).sort(sortLegs);
+  const threesPool = eligible.filter((l) => l.market === "3pm").sort(sortLegs);
+  let pool = corePool;
+  if (pool.length < 4) {
+    pool = [...corePool, ...threesPool].sort((a, b) => {
+      const ac = isCoreMarket(a.market) ? 1 : 0;
+      const bc = isCoreMarket(b.market) ? 1 : 0;
+      if (bc !== ac) return bc - ac;
+      return sortLegs(a, b);
+    });
+  }
   if (pool.length < 4) {
     return {
       bet: null,
@@ -223,7 +247,13 @@ function findMainPlaySubset(pool: PickLeg[], slateSize: number): PickLeg[] | nul
   function dfs(depth: number, chosen: PickLeg[]) {
     if (depth >= 4 && depth <= 5) {
       const combo = combinedBetPrice(chosen);
-      if (combo >= 7 && combo <= 10 && !multiHasClash(chosen) && !hasQuestionableAnchor(chosen)) {
+      if (
+        combo >= 7 &&
+        combo <= 10 &&
+        threesCount(chosen) <= 1 &&
+        !multiHasClash(chosen) &&
+        !hasQuestionableAnchor(chosen)
+      ) {
         candidates.push([...chosen]);
       }
     }
@@ -232,6 +262,7 @@ function findMainPlaySubset(pool: PickLeg[], slateSize: number): PickLeg[] | nul
       for (const leg of (byGame.get(gid) ?? []).slice(0, 8)) {
         if (!canAddToGame(chosen, leg, slateSize)) continue;
         const next = [...chosen, leg];
+        if (threesCount(next) > 1) continue;
         if (multiHasClash(next)) continue;
         dfs(depth + 1, next);
       }
@@ -248,25 +279,75 @@ function treblePrice(three: PickLeg[]): number {
   return combinedBetPrice(three);
 }
 
+function boostMainLegs(
+  main: MultiBet,
+  picks: PickLeg[],
+  legIdsToBoost: Set<string>
+): PickLeg[] | null {
+  const picksById = new Map(picks.map((p) => [p.id, p]));
+  const boosted: PickLeg[] = [];
+  for (const id of main.legs) {
+    const leg = picksById.get(id);
+    if (!leg || !meetsFloor(leg) || hasCheckNews(leg)) return null;
+    if (!legIdsToBoost.has(id)) {
+      boosted.push(leg);
+      continue;
+    }
+    const up = nextRung(leg, picks);
+    if (up && meetsFloor(up) && !hasCheckNews(up)) {
+      const test = main.legs.map((mid) =>
+        mid === id ? up : picksById.get(mid)!
+      ) as PickLeg[];
+      boosted.push(multiHasClash(test) ? leg : up);
+    } else {
+      boosted.push(leg);
+    }
+  }
+  return boosted;
+}
+
 function buildBooster(
   main: MultiBet,
   picks: PickLeg[]
 ): { bet: MultiBet | null; reason: string } {
   const picksById = new Map(picks.map((p) => [p.id, p]));
-  const boosted: PickLeg[] = [];
-  for (const id of main.legs) {
-    const leg = picksById.get(id);
-    if (!leg || !meetsFloor(leg)) return { bet: null, reason: "Booster leg missing" };
-    const up = nextRung(leg, picks);
-    if (up && meetsFloor(up) && !multiHasClash(boosted.concat(up))) {
-      const test = main.legs.map((mid) =>
-        mid === id ? up : picksById.get(mid)!
-      ) as PickLeg[];
-      boosted.push(multiHasClash(test) ? leg : up);
-    } else boosted.push(leg);
+  const mainLegs = main.legs
+    .map((id) => picksById.get(id))
+    .filter(Boolean) as PickLeg[];
+  if (mainLegs.length !== main.legs.length) {
+    return { bet: null, reason: "Booster leg missing" };
   }
 
-  const { p, fair, takeAt } = combinedPrice(boosted);
+  const allBoost = new Set(main.legs);
+  let boosted =
+    boostMainLegs(main, picks, allBoost) ??
+    ([] as PickLeg[]);
+  if (!boosted.length) {
+    return { bet: null, reason: "Booster leg missing" };
+  }
+
+  let { fair } = combinedPrice(boosted);
+  if (fair > 120) {
+    const safest = [...mainLegs]
+      .sort((a, b) => b.probability - a.probability)
+      .slice(0, 3)
+      .map((l) => l.id);
+    const selective = new Set(safest);
+    const retry = boostMainLegs(main, picks, selective);
+    if (retry?.length) {
+      boosted = retry;
+      fair = combinedPrice(boosted).fair;
+    }
+  }
+
+  if (fair < 30 || fair > 120) {
+    return {
+      bet: null,
+      reason: `Booster combined fair ${fair.toFixed(1)} outside 30–120`,
+    };
+  }
+
+  const { p, takeAt } = combinedPrice(boosted);
   const book = bestCombinedBookie(boosted);
   const triCandidates: PickLeg[][] = [];
   for (let i = 0; i < boosted.length - 2; i++) {

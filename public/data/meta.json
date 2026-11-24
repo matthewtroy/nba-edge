@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-24T22:47:39.033Z",
+  "lastUpdated": "2026-11-24T23:03:46.321Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "stale",
@@ -7,9 +7,5 @@
   },
   "slateSize": 3,
   "smallSlate": true,
-  "whatChanged": [
-    "Robinson out → usage shift",
-    "Lawal out → usage shift",
-    "II out → usage shift"
-  ]
+  "whatChanged": []
 }
