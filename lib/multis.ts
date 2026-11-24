@@ -117,7 +117,7 @@ export function buildMultis(
   }
 
   const q1 = buildQ1Multi(byP);
-  if (q1.bet) multis.push(q1.bet);
+  if (q1.bets.length) multis.push(...q1.bets);
   else notBuilt.push({ type: "q1Multi", label: LABELS.q1Multi, reason: q1.reason });
 
   const cross = buildCrossGameSgm(byP);
@@ -137,23 +137,23 @@ export function buildMultis(
     const legs = m.legs.map((id) => picksById.get(id)).filter(Boolean) as PickLeg[];
     return legs.length === m.legs.length && !multiHasClash(legs);
   });
+  const preExposure = [...filtered];
   filtered = enforceExposureCap(filtered, picksById);
 
+  const keptTypes = new Set(filtered.map((m) => m.type));
+  for (const m of preExposure) {
+    if (keptTypes.has(m.type)) continue;
+    if (notBuilt.some((n) => n.type === m.type && !n.variant)) continue;
+    notBuilt.push({
+      type: m.type,
+      label: LABELS[m.type],
+      variant: m.variant,
+      reason: "Removed after clash check or exposure cap",
+    });
+  }
+
   if (slateSize <= 4) {
-    const types = new Set<MultiType>();
-    const kept: MultiBet[] = [];
-    for (const m of filtered) {
-      if (m.type === "mainPlay") {
-        kept.push({ ...m, smallSlateNote: true });
-        types.add(m.type);
-        continue;
-      }
-      if (types.size < 3 && !types.has(m.type)) {
-        kept.push({ ...m, smallSlateNote: true });
-        types.add(m.type);
-      }
-    }
-    filtered = kept;
+    filtered = filtered.map((m) => ({ ...m, smallSlateNote: true }));
   }
 
   return { bets: filtered, notBuilt };
@@ -392,18 +392,72 @@ function buildBooster(
   };
 }
 
-function pickQ1OnePerTeam(byTeam: Map<string, PickLeg[]>, pickIndex: Map<string, number>): PickLeg[] {
-  const legs: PickLeg[] = [];
-  for (const [key, arr] of byTeam) {
-    arr.sort(sortLegs);
-    const idx = pickIndex.get(key) ?? 0;
-    if (arr[idx]) legs.push(arr[idx]);
+function findQ1Subset(
+  teamKeys: string[],
+  byTeam: Map<string, PickLeg[]>,
+  minFair: number,
+  maxFair: number
+): PickLeg[] | null {
+  const candidates: PickLeg[][] = [];
+
+  function dfs(ti: number, chosen: PickLeg[]) {
+    if (chosen.length >= 3 && chosen.length <= 6) {
+      const combo = combinedBetPrice(chosen);
+      if (!multiHasClash(chosen)) {
+        candidates.push([...chosen]);
+      }
+      if (chosen.length === 6) return;
+    }
+    if (chosen.length >= 6 || ti >= teamKeys.length) return;
+    const key = teamKeys[ti];
+    const legs = (byTeam.get(key) ?? []).filter(
+      (l) => l.fairPrice >= minFair && l.fairPrice <= maxFair
+    );
+    dfs(ti + 1, chosen);
+    for (const leg of legs.slice(0, 12)) {
+      const next = [...chosen, leg];
+      if (multiHasClash(next)) continue;
+      dfs(ti + 1, next);
+    }
   }
-  return legs;
+  dfs(0, []);
+
+  if (!candidates.length) return null;
+  candidates.sort((a, b) => {
+    const ca = combinedBetPrice(a);
+    const cb = combinedBetPrice(b);
+    if (cb !== ca) return cb - ca;
+    return b.length - a.length;
+  });
+  return candidates[0];
 }
 
-function buildQ1Multi(picks: PickLeg[]): { bet: MultiBet | null; reason: string } {
-  const q1 = picks.filter((l) => l.market.startsWith("q1") && l.fairPrice >= 1.8 && l.fairPrice <= 4);
+function q1MultiFromLegs(
+  legs: PickLeg[],
+  variant: string | undefined,
+  summary: string
+): MultiBet {
+  const { p, fair, takeAt } = combinedPrice(legs);
+  const book = bestCombinedBookie(legs);
+  return {
+    type: "q1Multi",
+    label: "Q1 Multi",
+    variant,
+    legs: legs.map((l) => l.id),
+    combinedProbability: p,
+    combinedFairPrice: fair,
+    combinedTakeAt: takeAt,
+    combinedBestPrice: book.price,
+    combinedBestBookie: book.bookie,
+    oneInX: Math.round(1 / p),
+    summary,
+  };
+}
+
+function buildQ1Multi(picks: PickLeg[]): { bets: MultiBet[]; reason: string } {
+  const q1 = picks.filter(
+    (l) => l.market.startsWith("q1") && l.fairPrice >= 1.8 && l.fairPrice <= 4
+  );
   const byTeam = new Map<string, PickLeg[]>();
   for (const l of q1) {
     const key = `${l.gameId}|${l.team}`;
@@ -411,49 +465,43 @@ function buildQ1Multi(picks: PickLeg[]): { bet: MultiBet | null; reason: string 
     arr.push(l);
     byTeam.set(key, arr);
   }
-  if (byTeam.size < 3) {
+  for (const arr of byTeam.values()) arr.sort(sortLegs);
+  const teamKeys = [...byTeam.keys()].sort();
+  if (teamKeys.length < 3) {
     return {
-      bet: null,
-      reason: `Only ${byTeam.size} teams with Q1 fair 1.80–4.00 (need 3–6)`,
+      bets: [],
+      reason: `Only ${teamKeys.length} teams with Q1 fair 1.80–4.00 (need 3–6)`,
     };
   }
 
-  const pickIndex = new Map<string, number>();
-  let legs = pickQ1OnePerTeam(byTeam, pickIndex).slice(0, 6);
-  let clashDetail = "";
-  if (multiHasClash(legs)) {
-    clashDetail = multiClashSummary(legs);
-    let retried = false;
-    for (const key of byTeam.keys()) {
-      pickIndex.set(key, (pickIndex.get(key) ?? 0) + 1);
-    }
-    const retry = pickQ1OnePerTeam(byTeam, pickIndex).slice(0, 6);
-    if (retry.length >= 3 && !multiHasClash(retry)) {
-      legs = retry;
-      retried = true;
-    }
-    if (!retried) {
-      return { bet: null, reason: `Q1 legs clash: ${clashDetail}` };
+  const bets: MultiBet[] = [];
+  const safe = findQ1Subset(teamKeys, byTeam, 1.8, 2.4);
+  if (safe) {
+    bets.push(
+      q1MultiFromLegs(safe, "Safe", "Safe Q1: fair 1.80–2.40, one leg/team")
+    );
+  }
+  const value = findQ1Subset(teamKeys, byTeam, 2.2, 4);
+  if (value && (!safe || value.map((l) => l.id).join() !== safe.map((l) => l.id).join())) {
+    bets.push(
+      q1MultiFromLegs(value, "Value", "Value Q1: fair 2.20–4.00, one leg/team")
+    );
+  }
+  if (!bets.length) {
+    const any = findQ1Subset(teamKeys, byTeam, 1.8, 4);
+    if (any) {
+      bets.push(
+        q1MultiFromLegs(any, undefined, "One Q1 leg per team, fair 1.80–4.00")
+      );
     }
   }
-  const use = legs.slice(0, 6);
-  const { p, fair, takeAt } = combinedPrice(use);
-  const book = bestCombinedBookie(use);
-  return {
-    bet: {
-      type: "q1Multi",
-      label: "Q1 Multi",
-      legs: use.map((l) => l.id),
-      combinedProbability: p,
-      combinedFairPrice: fair,
-      combinedTakeAt: takeAt,
-      combinedBestPrice: book.price,
-      combinedBestBookie: book.bookie,
-      oneInX: Math.round(1 / p),
-      summary: "One Q1 leg per team, fair 1.80–4.00",
-    },
-    reason: "",
-  };
+  if (!bets.length) {
+    return {
+      bets: [],
+      reason: "No clash-free Q1 combo (3–6 teams, one leg each)",
+    };
+  }
+  return { bets, reason: "" };
 }
 
 function buildCrossGameSgm(picks: PickLeg[]): { bet: MultiBet | null; reason: string } {
@@ -542,37 +590,51 @@ function buildBoostSgm(picks: PickLeg[]): { bet: MultiBet | null; reason: string
     arr.push(l);
     byGame.set(l.gameId, arr);
   }
-  for (const [, legs] of byGame) {
+  let bestTrio: PickLeg[] | null = null;
+  let bestCombo = 0;
+
+  for (const legs of byGame.values()) {
     legs.sort(sortLegs);
-    const trio: PickLeg[] = [];
-    for (const leg of legs) {
-      const cand = [...trio, leg];
-      if (multiHasClash(cand)) continue;
-      trio.push(leg);
-      if (trio.length === 3) break;
+    const pool = legs.slice(0, 14);
+    function dfs(idx: number, chosen: PickLeg[]) {
+      if (chosen.length === 3) {
+        const combo = combinedBetPrice(chosen);
+        if (combo >= 7 && combo <= 15 && !multiHasClash(chosen) && combo > bestCombo) {
+          bestCombo = combo;
+          bestTrio = [...chosen];
+        }
+        return;
+      }
+      for (let i = idx; i < pool.length; i++) {
+        const next = [...chosen, pool[i]];
+        if (multiHasClash(next)) continue;
+        dfs(i + 1, next);
+      }
     }
-    if (trio.length < 3) continue;
-    const combo = combinedBetPrice(trio);
-    if (combo < 7 || combo > 15) continue;
-    const { p, fair, takeAt } = combinedPrice(trio);
-    const book = bestCombinedBookie(trio);
-    return {
-      bet: {
-        type: "boostSgm",
-        label: "Boost SGM",
-        legs: trio.map((l) => l.id),
-        combinedProbability: p,
-        combinedFairPrice: fair,
-        combinedTakeAt: takeAt,
-        combinedBestPrice: book.price,
-        combinedBestBookie: book.bookie,
-        oneInX: Math.round(1 / p),
-        summary: "bet365 25% boost (needs 3 legs)",
-      },
-      reason: "",
-    };
+    dfs(0, []);
   }
-  return { bet: null, reason: "No same-game trio fair 1.50–3.00, combined 7–15" };
+
+  if (!bestTrio) {
+    return { bet: null, reason: "No same-game trio fair 1.50–3.00, combined 7–15" };
+  }
+  const trio = bestTrio;
+  const { p, fair, takeAt } = combinedPrice(trio);
+  const book = bestCombinedBookie(trio);
+  return {
+    bet: {
+      type: "boostSgm",
+      label: "Boost SGM",
+      legs: trio.map((l) => l.id),
+      combinedProbability: p,
+      combinedFairPrice: fair,
+      combinedTakeAt: takeAt,
+      combinedBestPrice: book.price,
+      combinedBestBookie: book.bookie,
+      oneInX: Math.round(1 / p),
+      summary: "bet365 25% boost (needs 3 legs)",
+    },
+    reason: "",
+  };
 }
 
 function buildLongshot(picks: PickLeg[]): { bet: MultiBet | null; reason: string } {
@@ -589,22 +651,38 @@ function buildLongshot(picks: PickLeg[]): { bet: MultiBet | null; reason: string
     arr.push(l);
     byGame.set(l.gameId, arr);
   }
-  const chosen: PickLeg[] = [];
-  for (const [, legs] of byGame) {
-    legs.sort((a, b) => injuryBoostScore(b) - injuryBoostScore(a) || b.fairPrice - a.fairPrice);
-    const leg = legs[0];
-    if (!leg) continue;
-    const cand = [...chosen, leg];
-    if (multiHasClash(cand)) continue;
-    chosen.push(leg);
+  const gameIds = [...byGame.keys()];
+  let best: PickLeg[] | null = null;
+  let bestCombo = 0;
+
+  function dfs(gi: number, chosen: PickLeg[]) {
+    if (chosen.length >= 2) {
+      const combo = combinedBetPrice(chosen);
+      if (combo >= 30 && combo <= 100 && !multiHasClash(chosen) && combo > bestCombo) {
+        bestCombo = combo;
+        best = [...chosen];
+      }
+    }
+    if (chosen.length >= gameIds.length) return;
+    for (let i = gi; i < gameIds.length; i++) {
+      const gid = gameIds[i];
+      const legs = (byGame.get(gid) ?? []).sort(
+        (a, b) => injuryBoostScore(b) - injuryBoostScore(a) || b.fairPrice - a.fairPrice
+      );
+      for (const leg of legs.slice(0, 8)) {
+        const next = [...chosen, leg];
+        if (multiHasClash(next)) continue;
+        dfs(i + 1, next);
+      }
+    }
   }
-  if (chosen.length < 2) {
+  dfs(0, []);
+
+  if (!best || best.length < 2) {
     return { bet: null, reason: "Need 2+ games with long legs (fair 2.50–20)" };
   }
+  const chosen = best;
   const combo = combinedBetPrice(chosen);
-  if (combo < 30 || combo > 100) {
-    return { bet: null, reason: `Combined ${combo.toFixed(1)} outside 30–100` };
-  }
   const { p, fair, takeAt } = combinedPrice(chosen);
   const book = bestCombinedBookie(chosen);
   return {

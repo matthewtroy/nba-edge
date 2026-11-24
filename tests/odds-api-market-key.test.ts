@@ -7,5 +7,7 @@ describe("oddsApiMarketToLeg", () => {
     expect(oddsApiMarketToLeg("player_rebounds_alternate")).toBe("reb");
     expect(oddsApiMarketToLeg("player_assists")).toBe("ast");
     expect(oddsApiMarketToLeg("player_threes")).toBe("3pm");
+    expect(oddsApiMarketToLeg("player_double_double")).toBe("dd");
+    expect(oddsApiMarketToLeg("player_triple_double")).toBe("td");
   });
 });

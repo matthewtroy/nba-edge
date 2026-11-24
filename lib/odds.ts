@@ -56,6 +56,8 @@ export function oddsApiMarketToLeg(apiMarket: string): string {
     rebounds: "reb",
     assists: "ast",
     threes: "3pm",
+    double_double: "dd",
+    triple_double: "td",
   };
   return map[base] ?? base;
 }

@@ -1,6 +1,10 @@
 import { normalizePlayerName } from "../../lib/player-names.js";
 import { isOverOutcome, oddsApiMarketToLeg, overLineToModelRung } from "../../lib/odds.js";
-import { ODDS_CORE_MARKETS, ODDS_THREES_MARKETS } from "../../lib/odds-coverage.js";
+import {
+  ODDS_COMBO_MARKETS,
+  ODDS_CORE_MARKETS,
+  ODDS_THREES_MARKETS,
+} from "../../lib/odds-coverage.js";
 import type { SlateGame } from "../../lib/types.js";
 
 export { ODDS_CORE_MARKETS, ODDS_THREES_MARKETS };
@@ -36,7 +40,11 @@ export async function fetchOddsForEvent(
   apiKey: string,
   eventId: string
 ): Promise<{ data: unknown; remaining?: number }> {
-  const markets = [...ODDS_CORE_MARKETS, ...ODDS_THREES_MARKETS].join(",");
+  const markets = [
+    ...ODDS_CORE_MARKETS,
+    ...ODDS_THREES_MARKETS,
+    ...ODDS_COMBO_MARKETS,
+  ].join(",");
   const url = `https://api.the-odds-api.com/v4/sports/basketball_nba/events/${eventId}/odds?apiKey=${apiKey}&regions=au&oddsFormat=decimal&markets=${markets}`;
   const res = await fetch(url);
   const remaining = res.headers.get("x-requests-remaining");
@@ -69,7 +77,10 @@ export function extractOddsBundles(events: unknown[]): {
       for (const market of bm.markets ?? []) {
         const mKey = oddsApiMarketToLeg(market.key);
         for (const out of market.outcomes ?? []) {
-          if (!isOverOutcome(out.name ?? "")) continue;
+          const combo = mKey === "dd" || mKey === "td";
+          if (combo) {
+            if (!/yes/i.test(out.name ?? "") && !isOverOutcome(out.name ?? "")) continue;
+          } else if (!isOverOutcome(out.name ?? "")) continue;
           let player = out.description?.trim() ?? "";
           if (!player && out.name) {
             const m = out.name.match(/^(.+?)\s+Over/i);
@@ -79,7 +90,8 @@ export function extractOddsBundles(events: unknown[]): {
           const raw = out.point ?? Number(out.name.match(/over\s+(\d+(?:\.\d+)?)/i)?.[1]);
           if (raw == null || !Number.isFinite(raw)) continue;
           const plus = out.name.match(/(\d+)\s*\+/);
-          const modelLine = plus ? Number(plus[1]) : overLineToModelRung(raw);
+          let modelLine = plus ? Number(plus[1]) : overLineToModelRung(raw);
+          if (mKey === "dd" || mKey === "td") modelLine = 1;
           if (modelLine < 1) continue;
           const key = `${normalizePlayerName(player)}|${mKey}|${modelLine}`;
           const prev = map.get(key);

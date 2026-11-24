@@ -1,0 +1,19 @@
+{
+  "name": "NBA Edge",
+  "short_name": "NBA Edge",
+  "description": "NBA props, multis, and take-at prices",
+  "start_url": "/nba-edge/",
+  "scope": "/nba-edge/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f1419",
+  "theme_color": "#0f1419",
+  "icons": [
+    {
+      "src": "/nba-edge/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

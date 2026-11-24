@@ -12,6 +12,11 @@ export const ODDS_THREES_MARKETS = [
   "player_threes_alternate",
 ] as const;
 
+export const ODDS_COMBO_MARKETS = [
+  "player_double_double",
+  "player_triple_double",
+] as const;
+
 export interface OddsCoverageJson {
   pulledAt: string;
   eventsProbed: number;
@@ -27,6 +32,8 @@ export interface OddsCoverageJson {
 function normMarket(key: string): string {
   let m = key.replace("player_", "").replace("_alternate", "");
   if (m === "threes") return "3pm";
+  if (m === "double_double") return "dd";
+  if (m === "triple_double") return "td";
   if (m === "points") return "pts";
   if (m === "rebounds") return "reb";
   if (m === "assists") return "ast";
@@ -94,7 +101,11 @@ export function buildOddsCoverage(
   return {
     pulledAt,
     eventsProbed: events.filter(Boolean).length,
-    marketsRequested: [...ODDS_CORE_MARKETS, ...ODDS_THREES_MARKETS],
+    marketsRequested: [
+      ...ODDS_CORE_MARKETS,
+      ...ODDS_THREES_MARKETS,
+      ...ODDS_COMBO_MARKETS,
+    ],
     marketsPresent,
     uniquePlayersByCoreMarket,
     corePlayerLines: coreLines,
