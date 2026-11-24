@@ -1,0 +1,270 @@
+{
+  "date": "2025-11-24",
+  "games": [
+    {
+      "id": "401584701",
+      "startTime": "2025-11-25T00:00:00Z",
+      "homeTeam": "Orlando Magic",
+      "awayTeam": "Boston Celtics",
+      "homeTeamId": "19",
+      "awayTeamId": "2",
+      "spread": -4.5,
+      "total": 218.5,
+      "homeB2B": false,
+      "awayB2B": true,
+      "status": "scheduled"
+    },
+    {
+      "id": "401584702",
+      "startTime": "2025-11-25T02:30:00Z",
+      "homeTeam": "Detroit Pistons",
+      "awayTeam": "Indiana Pacers",
+      "homeTeamId": "8",
+      "awayTeamId": "11",
+      "spread": -6,
+      "total": 232,
+      "homeB2B": false,
+      "awayB2B": false,
+      "status": "scheduled"
+    },
+    {
+      "id": "401584703",
+      "startTime": "2025-11-25T05:00:00Z",
+      "homeTeam": "Dallas Mavericks",
+      "awayTeam": "Los Angeles Lakers",
+      "homeTeamId": "6",
+      "awayTeamId": "13",
+      "spread": 3.5,
+      "total": 228,
+      "homeB2B": true,
+      "awayB2B": false,
+      "status": "scheduled"
+    },
+    {
+      "id": "401584704",
+      "startTime": "2025-11-25T07:30:00Z",
+      "homeTeam": "Miami Heat",
+      "awayTeam": "New York Knicks",
+      "homeTeamId": "14",
+      "awayTeamId": "18",
+      "spread": -2,
+      "total": 221,
+      "homeB2B": false,
+      "awayB2B": false,
+      "status": "scheduled"
+    }
+  ],
+  "injuries": [
+    {
+      "playerId": "4432573",
+      "playerName": "Paolo Banchero",
+      "teamId": "19",
+      "teamName": "Orlando Magic",
+      "gameId": "401584701",
+      "status": "Out",
+      "source": "ESPN",
+      "updatedAt": "2025-11-24T18:00:00Z"
+    },
+    {
+      "playerId": "4066261",
+      "playerName": "Jalen Duren",
+      "teamId": "8",
+      "teamName": "Detroit Pistons",
+      "gameId": "401584702",
+      "status": "Doubtful",
+      "source": "ESPN",
+      "updatedAt": "2025-11-24T17:30:00Z"
+    },
+    {
+      "playerId": "3945274",
+      "playerName": "Anthony Davis",
+      "teamId": "13",
+      "teamName": "Los Angeles Lakers",
+      "gameId": "401584703",
+      "status": "Questionable",
+      "source": "ESPN",
+      "updatedAt": "2025-11-24T19:00:00Z"
+    }
+  ],
+  "players": [
+    {
+      "id": "4428502",
+      "name": "Franz Wagner",
+      "teamId": "19",
+      "teamName": "Orlando Magic",
+      "position": "SF",
+      "age": 23,
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4428502.png",
+      "gameId": "401584701",
+      "opponent": "Boston Celtics",
+      "gameLogs": [
+        { "gameId": "g1", "minutes": 34, "pts": 24, "reb": 6, "ast": 4, "threes": 2, "q1Pts": 7, "q1Reb": 2, "q1Ast": 1, "date": "2025-11-20" },
+        { "gameId": "g2", "minutes": 36, "pts": 28, "reb": 5, "ast": 3, "threes": 3, "q1Pts": 9, "q1Reb": 1, "q1Ast": 0, "date": "2025-11-18" },
+        { "gameId": "g3", "minutes": 32, "pts": 18, "reb": 7, "ast": 5, "threes": 1, "q1Pts": 5, "q1Reb": 3, "q1Ast": 2, "date": "2025-11-16" },
+        { "gameId": "g4", "minutes": 35, "pts": 22, "reb": 4, "ast": 6, "threes": 2, "q1Pts": 6, "q1Reb": 1, "q1Ast": 2, "date": "2025-11-14" },
+        { "gameId": "g5", "minutes": 33, "pts": 26, "reb": 8, "ast": 2, "threes": 4, "q1Pts": 8, "q1Reb": 2, "q1Ast": 0, "date": "2025-11-12" },
+        { "gameId": "g6", "minutes": 31, "pts": 20, "reb": 5, "ast": 4, "threes": 1, "date": "2025-11-10" }
+      ]
+    },
+    {
+      "id": "4066354",
+      "name": "Cade Cunningham",
+      "teamId": "8",
+      "teamName": "Detroit Pistons",
+      "position": "PG",
+      "age": 23,
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4066354.png",
+      "gameId": "401584702",
+      "opponent": "Indiana Pacers",
+      "gameLogs": [
+        { "gameId": "d1", "minutes": 36, "pts": 26, "reb": 5, "ast": 9, "threes": 2, "q1Pts": 8, "q1Reb": 1, "q1Ast": 3, "date": "2025-11-21" },
+        { "gameId": "d2", "minutes": 38, "pts": 30, "reb": 4, "ast": 11, "threes": 3, "q1Pts": 10, "q1Reb": 0, "q1Ast": 4, "date": "2025-11-19" },
+        { "gameId": "d3", "minutes": 35, "pts": 22, "reb": 6, "ast": 8, "threes": 1, "q1Pts": 6, "q1Reb": 2, "q1Ast": 2, "date": "2025-11-17" },
+        { "gameId": "d4", "minutes": 37, "pts": 28, "reb": 3, "ast": 10, "threes": 2, "q1Pts": 7, "q1Reb": 1, "q1Ast": 3, "date": "2025-11-15" },
+        { "gameId": "d5", "minutes": 34, "pts": 24, "reb": 5, "ast": 7, "threes": 2, "date": "2025-11-13" },
+        { "gameId": "d6", "minutes": 36, "pts": 27, "reb": 4, "ast": 9, "threes": 3, "date": "2025-11-11" }
+      ]
+    },
+    {
+      "id": "4431688",
+      "name": "Ausar Thompson",
+      "teamId": "8",
+      "teamName": "Detroit Pistons",
+      "position": "SF",
+      "age": 22,
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4431688.png",
+      "gameId": "401584702",
+      "opponent": "Indiana Pacers",
+      "gameLogs": [
+        { "gameId": "d1", "minutes": 28, "pts": 12, "reb": 9, "ast": 3, "threes": 0, "q1Pts": 3, "q1Reb": 4, "q1Ast": 1, "date": "2025-11-21" },
+        { "gameId": "d2", "minutes": 30, "pts": 14, "reb": 8, "ast": 2, "threes": 1, "q1Pts": 4, "q1Reb": 3, "q1Ast": 0, "date": "2025-11-19" },
+        { "gameId": "d3", "minutes": 27, "pts": 10, "reb": 10, "ast": 4, "threes": 0, "date": "2025-11-17" },
+        { "gameId": "d4", "minutes": 29, "pts": 16, "reb": 7, "ast": 2, "threes": 1, "date": "2025-11-15" },
+        { "gameId": "d5", "minutes": 26, "pts": 11, "reb": 9, "ast": 1, "threes": 0, "date": "2025-11-13" }
+      ]
+    },
+    {
+      "id": "3945274",
+      "name": "Anthony Davis",
+      "teamId": "13",
+      "teamName": "Los Angeles Lakers",
+      "position": "C",
+      "age": 31,
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3945274.png",
+      "gameId": "401584703",
+      "opponent": "Dallas Mavericks",
+      "gameLogs": [
+        { "gameId": "l1", "minutes": 35, "pts": 27, "reb": 12, "ast": 3, "threes": 0, "date": "2025-11-22" },
+        { "gameId": "l2", "minutes": 36, "pts": 24, "reb": 11, "ast": 4, "threes": 1, "date": "2025-11-20" },
+        { "gameId": "l3", "minutes": 34, "pts": 30, "reb": 13, "ast": 2, "threes": 0, "date": "2025-11-18" },
+        { "gameId": "l4", "minutes": 33, "pts": 22, "reb": 10, "ast": 5, "threes": 0, "date": "2025-11-16" },
+        { "gameId": "l5", "minutes": 35, "pts": 26, "reb": 14, "ast": 3, "threes": 0, "date": "2025-11-14" }
+      ]
+    },
+    {
+      "id": "6583",
+      "name": "Luka Doncic",
+      "teamId": "6",
+      "teamName": "Dallas Mavericks",
+      "position": "PG",
+      "age": 26,
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6583.png",
+      "gameId": "401584703",
+      "opponent": "Los Angeles Lakers",
+      "gameLogs": [
+        { "gameId": "m1", "minutes": 37, "pts": 33, "reb": 8, "ast": 10, "threes": 4, "q1Pts": 11, "q1Reb": 2, "q1Ast": 3, "date": "2025-11-22" },
+        { "gameId": "m2", "minutes": 38, "pts": 35, "reb": 7, "ast": 9, "threes": 5, "q1Pts": 12, "q1Reb": 1, "q1Ast": 4, "date": "2025-11-20" },
+        { "gameId": "m3", "minutes": 36, "pts": 28, "reb": 9, "ast": 11, "threes": 3, "q1Pts": 9, "q1Reb": 3, "q1Ast": 3, "date": "2025-11-18" },
+        { "gameId": "m4", "minutes": 35, "pts": 31, "reb": 6, "ast": 8, "threes": 4, "date": "2025-11-16" },
+        { "gameId": "m5", "minutes": 37, "pts": 29, "reb": 8, "ast": 12, "threes": 2, "date": "2025-11-14" }
+      ]
+    },
+    {
+      "id": "4066261",
+      "name": "Jalen Duren",
+      "teamId": "8",
+      "teamName": "Detroit Pistons",
+      "position": "C",
+      "age": 22,
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4066261.png",
+      "gameId": "401584702",
+      "opponent": "Indiana Pacers",
+      "gameLogs": [
+        { "gameId": "d1", "minutes": 30, "pts": 14, "reb": 11, "ast": 2, "threes": 0, "date": "2025-11-21" },
+        { "gameId": "d2", "minutes": 28, "pts": 12, "reb": 10, "ast": 1, "threes": 0, "date": "2025-11-19" },
+        { "gameId": "d3", "minutes": 32, "pts": 16, "reb": 13, "ast": 2, "threes": 0, "date": "2025-11-17" }
+      ]
+    },
+    {
+      "id": "4395628",
+      "name": "Tyrese Haliburton",
+      "teamId": "11",
+      "teamName": "Indiana Pacers",
+      "position": "PG",
+      "age": 25,
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4395628.png",
+      "gameId": "401584702",
+      "opponent": "Detroit Pistons",
+      "gameLogs": [
+        { "gameId": "i1", "minutes": 35, "pts": 22, "reb": 4, "ast": 11, "threes": 3, "date": "2025-11-21" },
+        { "gameId": "i2", "minutes": 36, "pts": 19, "reb": 3, "ast": 9, "threes": 2, "date": "2025-11-19" },
+        { "gameId": "i3", "minutes": 34, "pts": 24, "reb": 5, "ast": 10, "threes": 4, "date": "2025-11-17" },
+        { "gameId": "i4", "minutes": 35, "pts": 21, "reb": 4, "ast": 12, "threes": 2, "date": "2025-11-15" },
+        { "gameId": "i5", "minutes": 33, "pts": 18, "reb": 3, "ast": 8, "threes": 1, "date": "2025-11-13" }
+      ]
+    },
+    {
+      "id": "6430",
+      "name": "Jimmy Butler",
+      "teamId": "14",
+      "teamName": "Miami Heat",
+      "position": "SF",
+      "age": 35,
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6430.png",
+      "gameId": "401584704",
+      "opponent": "New York Knicks",
+      "gameLogs": [
+        { "gameId": "h1", "minutes": 33, "pts": 21, "reb": 5, "ast": 4, "threes": 1, "date": "2025-11-22" },
+        { "gameId": "h2", "minutes": 34, "pts": 24, "reb": 6, "ast": 5, "threes": 0, "date": "2025-11-20" },
+        { "gameId": "h3", "minutes": 32, "pts": 19, "reb": 4, "ast": 6, "threes": 1, "date": "2025-11-18" },
+        { "gameId": "h4", "minutes": 35, "pts": 22, "reb": 5, "ast": 3, "threes": 2, "date": "2025-11-16" },
+        { "gameId": "h5", "minutes": 31, "pts": 20, "reb": 4, "ast": 4, "threes": 1, "date": "2025-11-14" }
+      ]
+    },
+    {
+      "id": "4432573",
+      "name": "Paolo Banchero",
+      "teamId": "19",
+      "teamName": "Orlando Magic",
+      "position": "PF",
+      "age": 22,
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432573.png",
+      "gameId": "401584701",
+      "opponent": "Boston Celtics",
+      "gameLogs": [
+        { "gameId": "o1", "minutes": 36, "pts": 28, "reb": 8, "ast": 5, "threes": 2, "date": "2025-11-20" },
+        { "gameId": "o2", "minutes": 35, "pts": 25, "reb": 7, "ast": 4, "threes": 1, "date": "2025-11-18" }
+      ]
+    }
+  ],
+  "fakeOdds": [
+    { "playerName": "Franz Wagner", "market": "pts", "line": 20, "price": 1.45, "bookie": "Sportsbet" },
+    { "playerName": "Franz Wagner", "market": "pts", "line": 25, "price": 2.05, "bookie": "TAB" },
+    { "playerName": "Franz Wagner", "market": "reb", "line": 5, "price": 1.62, "bookie": "Sportsbet" },
+    { "playerName": "Cade Cunningham", "market": "ast", "line": 7, "price": 1.55, "bookie": "Sportsbet" },
+    { "playerName": "Cade Cunningham", "market": "pts", "line": 25, "price": 1.85, "bookie": "PointsBet" },
+    { "playerName": "Luka Doncic", "market": "pts", "line": 30, "price": 1.88, "bookie": "PointsBet" },
+    { "playerName": "Luka Doncic", "market": "reb", "line": 7, "price": 1.85, "bookie": "TAB" },
+    { "playerName": "Luka Doncic", "market": "3pm", "line": 2, "price": 1.68, "bookie": "PointsBet" },
+    { "playerName": "Anthony Davis", "market": "pts", "line": 25, "price": 1.82, "bookie": "Sportsbet" },
+    { "playerName": "Ausar Thompson", "market": "reb", "line": 7, "price": 1.9, "bookie": "TAB" },
+    { "playerName": "Tyrese Haliburton", "market": "pts", "line": 20, "price": 1.72, "bookie": "Sportsbet" },
+    { "playerName": "Tyrese Haliburton", "market": "ast", "line": 10, "price": 1.88, "bookie": "TAB" },
+    { "playerName": "Jimmy Butler", "market": "pts", "line": 20, "price": 1.78, "bookie": "PointsBet" }
+  ],
+  "whatChanged": [
+    "Banchero out → Wagner usage up",
+    "Duren doubtful → boards shared with Ausar",
+    "AD questionable → monitor pre-game"
+  ]
+}

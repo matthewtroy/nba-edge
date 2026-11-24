@@ -1,0 +1,9 @@
+# NBA Edge — standing rules
+
+- Build for every slate, team and player. Never hardcode today's games, players, injuries or prices. Fixture data lives only in fixtures/ and is only used with --fixture.
+- No database, no Supabase, no accounts, no automatic Discord posting.
+- The app never places bets and never claims to have bet365 prices.
+- API keys only come from .env.local or GitHub secrets. Never hardcode or log them.
+- Keep the UI simple. A number appears on a main screen only if it helps a betting decision.
+- If you find something wrong that contradicts the build prompt, fix it and cite the section of that prompt in the summary. Report improvements and refactors instead of doing them.
+- Do not commit or push unless explicitly authorized.

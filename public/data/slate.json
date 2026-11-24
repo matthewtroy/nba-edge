@@ -1,0 +1,44 @@
+[
+  {
+    "id": "401909314",
+    "startTime": "2026-11-25T00:00Z",
+    "startTimeSydney": "11:00 am",
+    "homeTeam": "Orlando Magic",
+    "awayTeam": "Detroit Pistons",
+    "homeTeamId": "19",
+    "awayTeamId": "8",
+    "spread": 2.5,
+    "total": 212.5,
+    "homeB2B": false,
+    "awayB2B": false,
+    "status": "STATUS_SCHEDULED"
+  },
+  {
+    "id": "401909315",
+    "startTime": "2026-11-25T01:00Z",
+    "startTimeSydney": "12:00 pm",
+    "homeTeam": "Washington Wizards",
+    "awayTeam": "Boston Celtics",
+    "homeTeamId": "27",
+    "awayTeamId": "2",
+    "spread": 11.5,
+    "total": 218.5,
+    "homeB2B": false,
+    "awayB2B": false,
+    "status": "STATUS_SCHEDULED"
+  },
+  {
+    "id": "401909316",
+    "startTime": "2026-11-25T03:00Z",
+    "startTimeSydney": "2:00 pm",
+    "homeTeam": "Denver Nuggets",
+    "awayTeam": "Dallas Mavericks",
+    "homeTeamId": "7",
+    "awayTeamId": "6",
+    "spread": -8.5,
+    "total": 234.5,
+    "homeB2B": false,
+    "awayB2B": false,
+    "status": "STATUS_SCHEDULED"
+  }
+]
