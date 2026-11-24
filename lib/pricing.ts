@@ -1,5 +1,6 @@
 import type { PickLeg, Market } from "./types.js";
 import { normalizePlayerName } from "./player-names.js";
+import { legOddsLookupKey } from "./odds.js";
 import {
   probMarketOver,
   probDoubleDouble,
@@ -33,10 +34,6 @@ export function fairAndTakeAt(p: number, minEdge = 1.08): { fair: number; takeAt
   const takeAt = Math.round(fair * minEdge * 100) / 100;
   const oneInX = Math.round(1 / p);
   return { fair, takeAt, oneInX };
-}
-
-function legOddsKey(playerName: string, market: string, line: number): string {
-  return `${normalizePlayerName(playerName)}|${market}|${line}`;
 }
 
 export function buildLegsForPlayer(
@@ -81,7 +78,7 @@ export function buildLegsForPlayer(
 
   const addLeg = (market: Market, line: number, modelP: number) => {
     if (modelP < 0.05 || modelP > 0.95) return;
-    const oddKey = legOddsKey(ctx.playerName, market, line);
+    const oddKey = legOddsLookupKey(ctx.playerName, market, line);
     const displayKey = `${ctx.playerName}|${market}|${line}`;
     const book =
       ctx.bestOdds?.get(oddKey) ??

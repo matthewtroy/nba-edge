@@ -119,6 +119,8 @@ export interface MetaJson {
   nbaOfficialUrl?: string;
   nbaOfficialLastTriedUrl?: string;
   oddsCoverageNote?: string;
+  pricedLegCounts?: Record<string, { total: number; priced: number }>;
+  oddsAttachWarnings?: string[];
 }
 
 export interface HistoryLeg {

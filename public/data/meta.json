@@ -1,12 +1,16 @@
 {
-  "lastUpdated": "2026-11-24T23:24:21.119Z",
+  "lastUpdated": "2026-11-24T23:30:57.647Z",
+  "oddsLastPulled": "2026-11-24T23:30:57.427Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
-    "odds": "stale"
+    "odds": "ok"
   },
-  "slateSize": 3,
+  "slateSize": 4,
   "smallSlate": true,
-  "whatChanged": [],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_06_15PM.pdf"
+  "whatChanged": [
+    "Banchero out → Wagner usage up",
+    "Duren doubtful → boards shared with Ausar",
+    "AD questionable → monitor pre-game"
+  ]
 }

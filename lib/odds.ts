@@ -48,6 +48,26 @@ export function mapOddsMarket(market: string): string {
   return m[market] ?? market;
 }
 
+/** The Odds API market key → model leg market */
+export function oddsApiMarketToLeg(apiMarket: string): string {
+  const base = apiMarket.replace("player_", "").replace("_alternate", "");
+  const map: Record<string, string> = {
+    points: "pts",
+    rebounds: "reb",
+    assists: "ast",
+    threes: "3pm",
+  };
+  return map[base] ?? base;
+}
+
+export function legOddsLookupKey(
+  playerName: string,
+  market: string,
+  line: number
+): string {
+  return `${normalizePlayerName(playerName)}|${market}|${line}`;
+}
+
 /** Bookie "Over" point → model X+ rung (Over 0.5 → 1+, Over 1.5 → 2+, Over 24.5 → 25+). */
 export function overLineToModelRung(bookieLine: number): number {
   if (!Number.isFinite(bookieLine) || bookieLine < 0) return 0;

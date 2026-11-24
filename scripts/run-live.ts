@@ -41,6 +41,12 @@ import { normalizePlayerName } from "../lib/player-names.js";
 import { loadAliasMap } from "../lib/player-names.js";
 import { filterSlateToTodaySydney, slateTeamIds } from "../lib/slate-today.js";
 import { buildOddsCoverage } from "../lib/odds-coverage.js";
+import {
+  countPricedLegsByMarket,
+  coverageAttachWarnings,
+  expandOddsMapForPlayers,
+  tracePlayerOddsStages,
+} from "../lib/odds-attach.js";
 import { buildRosterIndex, mergeInjuryEntry } from "../lib/injury-match.js";
 
 const ET = "America/New_York";
@@ -286,27 +292,19 @@ export async function runLivePipeline(
     sources.odds = "ok";
   }
 
-  const pricingOdds = new Map<string, { price: number; bookie: string }>();
-  const pricingAllOdds = new Map<string, Record<string, number>>();
-  for (const [k, v] of oddsMap) {
-    pricingOdds.set(k, v);
-    const [name, market, line] = k.split("|");
-    if (name) {
-      for (const p of players) {
-        if (normalizePlayerName(p.name) === name) {
-          pricingOdds.set(`${p.name}|${market}|${line}`, v);
-        }
-      }
-    }
-  }
+  const playerNames = players.map((p) => p.name);
+  const pricingOdds = expandOddsMapForPlayers(oddsMap, playerNames);
+  const pricingAllBooks = new Map<string, Record<string, number>>();
   for (const [k, v] of allOddsMap) {
-    pricingAllOdds.set(k, v);
+    pricingAllBooks.set(k, v);
     const [name, market, line] = k.split("|");
-    if (name) {
-      for (const p of players) {
-        if (normalizePlayerName(p.name) === name) {
-          pricingAllOdds.set(`${p.name}|${market}|${line}`, v);
-        }
+    for (const p of players) {
+      if (normalizePlayerName(p.name) === name) {
+        pricingAllBooks.set(`${p.name}|${market}|${line}`, v);
+        pricingAllBooks.set(
+          `${normalizePlayerName(p.name)}|${market}|${line}`,
+          v
+        );
       }
     }
   }
@@ -315,6 +313,7 @@ export async function runLivePipeline(
   injuries = injuries.filter((i) => slateTeams.has(i.teamId));
 
   const oddsCoverage = buildOddsCoverage(oddsPayloads, oddsPulledAt ?? now.toISOString());
+  const extractedKeyList = [...oddsMap.keys()];
 
   const { picks, multis, multisPayload, meta, whatChanged } = runModel({
     rootDir,
@@ -323,7 +322,7 @@ export async function runLivePipeline(
     players,
     rosterIds,
     oddsMap: pricingOdds,
-    allOddsMap: pricingAllOdds,
+    allOddsMap: pricingAllBooks,
     oddsPulledAt,
     metaSources: sources,
   });
@@ -335,6 +334,19 @@ export async function runLivePipeline(
   const boxesByGame = await loadFinalBoxesForGrading(now, summaryCache);
   history = gradeOpenLegs(history, picksById, boxesByGame);
   history = appendRecommendations(history, picks, multis, slateDate);
+
+  const pricedLegCounts = countPricedLegsByMarket(picks);
+  const oddsAttachWarnings = coverageAttachWarnings(oddsCoverage, pricedLegCounts);
+  for (const w of oddsAttachWarnings) console.warn(w);
+
+  const tatumLegs = picks.filter((p) => p.playerName === "Jayson Tatum");
+  if (tatumLegs.length || extractedKeyList.some((k) => k.includes("tatum"))) {
+    tracePlayerOddsStages("Jayson Tatum", {
+      extractedKeys: extractedKeyList,
+      pricingMapSize: pricingOdds.size,
+      pricedLegs: tatumLegs,
+    });
+  }
 
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, "slate.json"), JSON.stringify(slate, null, 2));
@@ -357,6 +369,8 @@ export async function runLivePipeline(
         ...(nbaOfficialUrl ? { nbaOfficialUrl } : {}),
         ...(nbaOfficialLastTriedUrl ? { nbaOfficialLastTriedUrl } : {}),
         ...(oddsCoverage.note ? { oddsCoverageNote: oddsCoverage.note } : {}),
+        pricedLegCounts,
+        ...(oddsAttachWarnings.length ? { oddsAttachWarnings } : {}),
       },
       null,
       2

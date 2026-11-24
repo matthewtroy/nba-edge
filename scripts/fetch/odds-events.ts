@@ -1,5 +1,5 @@
 import { normalizePlayerName } from "../../lib/player-names.js";
-import { isOverOutcome, overLineToModelRung } from "../../lib/odds.js";
+import { isOverOutcome, oddsApiMarketToLeg, overLineToModelRung } from "../../lib/odds.js";
 import { ODDS_CORE_MARKETS, ODDS_THREES_MARKETS } from "../../lib/odds-coverage.js";
 import type { SlateGame } from "../../lib/types.js";
 
@@ -67,10 +67,7 @@ export function extractOddsBundles(events: unknown[]): {
     for (const bm of e.bookmakers ?? []) {
       if (bm.title.toLowerCase().includes("bet365")) continue;
       for (const market of bm.markets ?? []) {
-        const mKey = market.key
-          .replace("player_", "")
-          .replace("_alternate", "")
-          .replace("threes", "3pm");
+        const mKey = oddsApiMarketToLeg(market.key);
         for (const out of market.outcomes ?? []) {
           if (!isOverOutcome(out.name ?? "")) continue;
           let player = out.description?.trim() ?? "";
