@@ -1,0 +1,52 @@
+import { describe, it, expect } from "vitest";
+import { buildMultis, qualifiesMainPlayLeg, combinedBetPrice } from "../lib/multis";
+import type { PickLeg } from "../lib/types";
+
+function synthLeg(
+  i: number,
+  gameId: string,
+  playerId: string,
+  p: number,
+  fair = 1.65,
+  takeAt = 1.78
+): PickLeg {
+  return {
+    id: `leg-${i}`,
+    gameId,
+    team: `Team${i}`,
+    opponent: "Opp",
+    playerId,
+    playerName: `Player ${i}`,
+    headshotUrl: "",
+    market: "pts",
+    line: 20,
+    probability: p,
+    fairPrice: fair,
+    takeAt,
+    tags: [],
+    reasons: [],
+  };
+}
+
+describe("main play builder", () => {
+  it("qualifies at fair 1.40 without tags", () => {
+    const leg = synthLeg(1, "g1", "p1", 0.71, 1.41, 1.52);
+    expect(qualifiesMainPlayLeg(leg)).toBe(true);
+  });
+
+  it("combined take-at between 7 and 10 when buildable", () => {
+    const picks: PickLeg[] = [
+      synthLeg(1, "g1", "p1", 0.62, 1.65, 1.65),
+      synthLeg(2, "g2", "p2", 0.61, 1.66, 1.66),
+      synthLeg(3, "g3", "p3", 0.6, 1.67, 1.67),
+      synthLeg(4, "g4", "p4", 0.6, 1.68, 1.68),
+    ];
+    const { bets } = buildMultis(picks, 8);
+    const main = bets.find((m) => m.type === "mainPlay");
+    expect(main).toBeDefined();
+    const legs = main!.legs.map((id) => picks.find((p) => p.id === id)!).filter(Boolean);
+    const combo = combinedBetPrice(legs);
+    expect(combo).toBeGreaterThanOrEqual(7);
+    expect(combo).toBeLessThanOrEqual(10);
+  });
+});

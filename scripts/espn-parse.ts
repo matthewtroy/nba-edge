@@ -1,0 +1,301 @@
+import type { InjuryEntry, InjuryStatus, PlayerGameLog, SlateGame } from "../lib/types.js";
+import { toSydney } from "../lib/sydney.js";
+
+const STATUS_MAP: Record<string, InjuryStatus> = {
+  out: "Out",
+  doubtful: "Doubtful",
+  questionable: "Questionable",
+  probable: "Probable",
+  day: "Questionable",
+};
+
+export function formatYyyymmddInZone(d: Date, timeZone: string): string {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(d);
+  const y = parts.find((p) => p.type === "year")?.value;
+  const m = parts.find((p) => p.type === "month")?.value;
+  const day = parts.find((p) => p.type === "day")?.value;
+  return `${y}${m}${day}`;
+}
+
+export function parseScoreboard(
+  raw: unknown,
+  teamIdsPlayedYesterday: Set<string>
+): SlateGame[] {
+  const data = raw as {
+    events?: {
+      id: string;
+      date: string;
+      status?: { type?: { state?: string; name?: string } };
+      competitions?: {
+        id: string;
+        date: string;
+        competitors?: {
+          id: string;
+          homeAway: string;
+          team?: { id: string; displayName?: string; abbreviation?: string };
+        }[];
+        odds?: { spread?: number; overUnder?: number; details?: string }[];
+      }[];
+    }[];
+  };
+
+  const games: SlateGame[] = [];
+  for (const event of data.events ?? []) {
+    const comp = event.competitions?.[0];
+    if (!comp) continue;
+    const state = event.status?.type?.state ?? "";
+    if (state === "post" && (event.status?.type?.name ?? "").toLowerCase().includes("final")) {
+      continue;
+    }
+    const home = comp.competitors?.find((c) => c.homeAway === "home");
+    const away = comp.competitors?.find((c) => c.homeAway === "away");
+    if (!home?.team || !away?.team) continue;
+
+    let spread: number | undefined;
+    let total: number | undefined;
+    const odds = comp.odds?.[0];
+    if (odds?.spread != null) spread = Number(odds.spread);
+    if (odds?.overUnder != null) total = Number(odds.overUnder);
+
+    const homeId = home.team.id ?? home.id;
+    const awayId = away.team.id ?? away.id;
+
+    games.push({
+      id: event.id,
+      startTime: comp.date ?? event.date,
+      startTimeSydney: toSydney(comp.date ?? event.date),
+      homeTeam: home.team.displayName ?? "Home",
+      awayTeam: away.team.displayName ?? "Away",
+      homeTeamId: homeId,
+      awayTeamId: awayId,
+      spread,
+      total,
+      homeB2B: teamIdsPlayedYesterday.has(homeId),
+      awayB2B: teamIdsPlayedYesterday.has(awayId),
+      status: event.status?.type?.name ?? state,
+    });
+  }
+  return games;
+}
+
+/** Team ids that played on a completed scoreboard day */
+export function teamIdsFromFinalGames(raw: unknown): Set<string> {
+  const data = raw as { events?: { competitions?: { competitors?: { id: string; team?: { id: string } }[] }[] }[] };
+  const ids = new Set<string>();
+  for (const event of data.events ?? []) {
+    const comp = event.competitions?.[0];
+    for (const c of comp?.competitors ?? []) {
+      ids.add(c.team?.id ?? c.id);
+    }
+  }
+  return ids;
+}
+
+export function parseEspnLeagueInjuries(
+  raw: unknown,
+  slateByTeam: Map<string, string>
+): InjuryEntry[] {
+  const data = raw as {
+    injuries?: {
+      id: string;
+      displayName: string;
+      injuries?: {
+        status: string;
+        date: string;
+        athlete: { id: string; displayName: string };
+      }[];
+    }[];
+  };
+  const out: InjuryEntry[] = [];
+  for (const team of data.injuries ?? []) {
+    const teamId = team.id;
+    const teamName = team.displayName;
+    const gameId = slateByTeam.get(teamId) ?? "";
+    for (const inj of team.injuries ?? []) {
+      const status = mapStatus(inj.status);
+      if (status === "Available") continue;
+      out.push({
+        playerId: inj.athlete.id,
+        playerName: inj.athlete.displayName,
+        teamId,
+        teamName,
+        gameId,
+        status,
+        source: "ESPN",
+        updatedAt: inj.date ?? new Date().toISOString(),
+      });
+    }
+  }
+  return out;
+}
+
+function mapStatus(s: string): InjuryStatus {
+  const key = s.toLowerCase().split("-")[0].trim();
+  if (key.includes("out")) return "Out";
+  return STATUS_MAP[key] ?? "Questionable";
+}
+
+export function mergeOfficialInjuries(
+  espn: InjuryEntry[],
+  official: { name: string; status: string; updatedAt: string }[],
+  slateByTeam: Map<string, string>,
+  playerTeamLookup: Map<string, { teamId: string; teamName: string; playerId?: string }>
+): InjuryEntry[] {
+  const byPlayer = new Map<string, InjuryEntry>();
+  for (const e of espn) byPlayer.set(normalizeName(e.playerName), e);
+
+  for (const o of official) {
+    const key = normalizeName(o.name);
+    const team = [...playerTeamLookup.entries()].find(([k]) => k === key || o.name.includes(k))?.[1];
+    const existing = byPlayer.get(key);
+    const status = mapStatus(o.status);
+    const entry: InjuryEntry = {
+      playerId: existing?.playerId ?? team?.playerId ?? key,
+      playerName: o.name,
+      teamId: existing?.teamId ?? team?.teamId ?? "",
+      teamName: existing?.teamName ?? team?.teamName ?? "",
+      gameId: existing?.gameId ?? slateByTeam.get(existing?.teamId ?? team?.teamId ?? "") ?? "",
+      status,
+      source: "NBA Official",
+      updatedAt: o.updatedAt,
+    };
+    if (!existing || new Date(entry.updatedAt) >= new Date(existing.updatedAt)) {
+      byPlayer.set(key, entry);
+    }
+  }
+  return [...byPlayer.values()];
+}
+
+function normalizeName(n: string): string {
+  return n.toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+export function parseGameLogsFromEspn(raw: unknown, headshotUrl: string): PlayerGameLog[] {
+  const data = raw as {
+    labels?: string[];
+    seasonTypes?: {
+      categories?: { events?: { eventId: string; stats: string[] }[] }[];
+    }[];
+    events?: Record<string, { gameDate?: string }>;
+  };
+  const logs: PlayerGameLog[] = [];
+  const regular = data.seasonTypes?.find((s) =>
+    s.categories?.some((c) => c.events?.length)
+  );
+  const events = regular?.categories?.[0]?.events ?? [];
+  for (const ev of events) {
+    const stats = ev.stats ?? [];
+    const mins = parseMinutes(stats[0]);
+    const threes = parseMade(stats[3]);
+    const reb = num(stats[7]);
+    const ast = num(stats[8]);
+    const pts = num(stats[13]);
+    const meta = data.events?.[ev.eventId];
+    logs.push({
+      gameId: ev.eventId,
+      minutes: mins,
+      pts,
+      reb,
+      ast,
+      threes,
+      date: meta?.gameDate ?? "",
+    });
+  }
+  logs.sort((a, b) => (b.date > a.date ? 1 : -1));
+  return logs;
+}
+
+function parseMinutes(s: string | undefined): number {
+  if (!s) return 0;
+  if (s.includes(":")) {
+    const [m, sec] = s.split(":").map(Number);
+    return m + (sec || 0) / 60;
+  }
+  return Number(s) || 0;
+}
+
+function parseMade(s: string | undefined): number {
+  if (!s || !s.includes("-")) return 0;
+  return Number(s.split("-")[0]) || 0;
+}
+
+function num(s: string | undefined): number {
+  return Number(s) || 0;
+}
+
+export function parseQ1FromPlays(
+  plays: { period?: { number?: number }; participants?: { athlete?: { id: string } }[]; text?: string; scoreValue?: number; type?: { text?: string } }[],
+  athleteId: string
+): { pts: number; reb: number; ast: number } {
+  let pts = 0,
+    reb = 0,
+    ast = 0;
+  for (const play of plays) {
+    if (play.period?.number !== 1) continue;
+    const involved = play.participants?.some((p) => p.athlete?.id === athleteId);
+    if (!involved) continue;
+    const t = (play.type?.text ?? play.text ?? "").toLowerCase();
+    if (t.includes("made") && t.includes("three")) pts += 3;
+    else if (t.includes("made") && (t.includes("layup") || t.includes("dunk") || t.includes("shot"))) {
+      pts += play.scoreValue && play.scoreValue <= 3 ? play.scoreValue : 2;
+    }
+    if (t.includes("rebound") && !t.includes("offensive")) reb += 1;
+    if (t.includes("assist")) ast += 1;
+  }
+  return { pts, reb, ast };
+}
+
+export interface BoxLine {
+  playerId: string;
+  minutes: number;
+  pts: number;
+  reb: number;
+  ast: number;
+  threes: number;
+  q1?: { pts: number; reb: number; ast: number };
+}
+
+export function parseBoxscore(summary: unknown, plays?: unknown): Map<string, BoxLine> {
+  const sum = summary as {
+    boxscore?: {
+      players?: {
+        team?: { id: string };
+        statistics?: { athletes?: { athlete?: { id: string }; stats?: string[] }[] }[];
+      }[];
+    };
+  };
+  const map = new Map<string, BoxLine>();
+  const pbp = (plays ?? (summary as { plays?: unknown }).plays) as
+    | { period?: { number?: number }; participants?: { athlete?: { id: string } }[]; text?: string; scoreValue?: number; type?: { text?: string } }[]
+    | undefined;
+
+  for (const side of sum.boxscore?.players ?? []) {
+    const athletes = side.statistics?.[0]?.athletes ?? [];
+    for (const row of athletes) {
+      const id = row.athlete?.id;
+      if (!id) continue;
+      const stats = row.stats ?? [];
+      const line: BoxLine = {
+        playerId: id,
+        minutes: parseMinutes(stats[0]),
+        pts: num(stats[13]),
+        reb: num(stats[7]),
+        ast: num(stats[8]),
+        threes: parseMade(stats[3]),
+      };
+      if (pbp) line.q1 = parseQ1FromPlays(pbp, id);
+      map.set(id, line);
+    }
+  }
+  return map;
+}
+
+export function extractTeamIdsFromScoreboard(raw: unknown): string[] {
+  const games = parseScoreboard(raw, new Set());
+  return [...new Set(games.flatMap((g) => [g.homeTeamId, g.awayTeamId]))];
+}
