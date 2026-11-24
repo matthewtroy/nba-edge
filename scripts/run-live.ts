@@ -371,6 +371,9 @@ export async function runLivePipeline(
         ...(oddsCoverage.note ? { oddsCoverageNote: oddsCoverage.note } : {}),
         pricedLegCounts,
         ...(oddsAttachWarnings.length ? { oddsAttachWarnings } : {}),
+        ...(multisPayload.gateViolations?.length
+          ? { gateViolations: multisPayload.gateViolations }
+          : {}),
       },
       null,
       2

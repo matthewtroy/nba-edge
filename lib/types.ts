@@ -121,6 +121,7 @@ export interface MetaJson {
   oddsCoverageNote?: string;
   pricedLegCounts?: Record<string, { total: number; priced: number }>;
   oddsAttachWarnings?: string[];
+  gateViolations?: string[];
 }
 
 export interface HistoryLeg {

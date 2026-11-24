@@ -2,10 +2,13 @@ import type { PickLeg, MultiBet, MultiType, MultiNotBuilt } from "./types.js";
 import { legsClash, multiClashSummary, multiHasClash } from "./clash.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
 import { enforceExposureCap } from "./exposure.js";
+import { bestSingleBookieQuote } from "./single-bookie.js";
+import { gateAllMultis } from "./multi-gate.js";
 
 export interface MultiBuildResult {
   bets: MultiBet[];
   notBuilt: MultiNotBuilt[];
+  gateViolations: string[];
 }
 
 export const MIN_LEG_FAIR = 1.3;
@@ -32,13 +35,13 @@ export function combinedBetPrice(legs: PickLeg[]): number {
   return Math.round(legs.reduce((acc, l) => acc * l.takeAt, 1) * 100) / 100;
 }
 
-function bestCombinedBookie(legs: PickLeg[]): { price?: number; bookie?: string } {
-  if (legs.every((l) => legMeetsTakeAt(l))) {
-    const bookies = new Set(legs.map((l) => l.bestBookie).filter(Boolean));
-    const bookie = bookies.size === 1 ? legs[0].bestBookie : "Best mix";
-    return { price: combinedBetPrice(legs), bookie };
-  }
-  return {};
+function singleBookieOverlay(
+  legs: PickLeg[],
+  combinedTakeAt: number
+): { price?: number; bookie?: string } {
+  const quote = bestSingleBookieQuote(legs, combinedTakeAt);
+  if (!quote) return {};
+  return { price: quote.price, bookie: quote.bookie };
 }
 
 function legEdge(leg: PickLeg): number {
@@ -156,7 +159,8 @@ export function buildMultis(
     filtered = filtered.map((m) => ({ ...m, smallSlateNote: true }));
   }
 
-  return { bets: filtered, notBuilt };
+  const gated = gateAllMultis(filtered, picksById);
+  return { bets: gated.multis, notBuilt, gateViolations: gated.violations };
 }
 
 export function qualifiesMainPlayLeg(leg: PickLeg): boolean {
@@ -227,7 +231,7 @@ function buildMainPlay(
   }
 
   const { p, fair, takeAt } = combinedPrice(best);
-  const book = bestCombinedBookie(best);
+  const book = singleBookieOverlay(best, takeAt);
   const stake = Math.round((targetProfit / (combo - 1)) * 100) / 100;
 
   return {
@@ -362,7 +366,7 @@ function buildBooster(
   }
 
   const { p, takeAt } = combinedPrice(boosted);
-  const book = bestCombinedBookie(boosted);
+  const book = singleBookieOverlay(boosted, takeAt);
   const triCandidates: PickLeg[][] = [];
   for (let i = 0; i < boosted.length - 2; i++) {
     for (let j = i + 1; j < boosted.length - 1; j++) {
@@ -438,7 +442,7 @@ function q1MultiFromLegs(
   summary: string
 ): MultiBet {
   const { p, fair, takeAt } = combinedPrice(legs);
-  const book = bestCombinedBookie(legs);
+  const book = singleBookieOverlay(legs, takeAt);
   return {
     type: "q1Multi",
     label: "Q1 Multi",
@@ -564,7 +568,7 @@ function buildCrossGameSgm(picks: PickLeg[]): { bet: MultiBet | null; reason: st
   const chosen = best;
   const combo = combinedBetPrice(chosen);
   const { p, fair, takeAt } = combinedPrice(chosen);
-  const book = bestCombinedBookie(chosen);
+  const book = singleBookieOverlay(chosen, takeAt);
   return {
     bet: {
       type: "crossGameSgm",
@@ -619,7 +623,7 @@ function buildBoostSgm(picks: PickLeg[]): { bet: MultiBet | null; reason: string
   }
   const trio = bestTrio;
   const { p, fair, takeAt } = combinedPrice(trio);
-  const book = bestCombinedBookie(trio);
+  const book = singleBookieOverlay(trio, takeAt);
   return {
     bet: {
       type: "boostSgm",
@@ -684,7 +688,7 @@ function buildLongshot(picks: PickLeg[]): { bet: MultiBet | null; reason: string
   const chosen = best;
   const combo = combinedBetPrice(chosen);
   const { p, fair, takeAt } = combinedPrice(chosen);
-  const book = bestCombinedBookie(chosen);
+  const book = singleBookieOverlay(chosen, takeAt);
   return {
     bet: {
       type: "longshot",
