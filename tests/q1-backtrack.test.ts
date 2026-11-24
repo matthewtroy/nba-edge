@@ -22,7 +22,7 @@ function q1Leg(
     takeAt: fair * 0.95,
     reasons: [],
     tags: [],
-    starterEligible: false,
+    starterEligible: true,
     questionable: false,
     ageB2B: false,
   };

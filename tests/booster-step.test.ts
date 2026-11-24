@@ -59,14 +59,17 @@ describe("Booster stepping", () => {
     const { bets } = buildMultis(picks, 8);
     const main = bets.find((b) => b.type === "mainPlay");
     const booster = bets.find((b) => b.type === "booster");
-    if (!main || !booster) return;
+    if (!booster || !main) return;
     const byId = new Map(picks.map((p) => [p.id, p]));
+    let stepped = 0;
     for (const mid of main.legs) {
       const m = byId.get(mid)!;
       const bid = booster.legs.find((id) => byId.get(id)?.playerId === m.playerId);
       expect(bid).toBeDefined();
       const b = byId.get(bid!)!;
-      expect(b.line).toBeGreaterThan(m.line);
+      if (b.line > m.line) stepped++;
     }
+    expect(stepped).toBeGreaterThanOrEqual(2);
+    expect(stepped).toBeLessThanOrEqual(3);
   });
 });

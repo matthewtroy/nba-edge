@@ -4,7 +4,7 @@ import { qualifiesMainPlayLeg } from "../lib/multis";
 import type { PickLeg } from "../lib/types";
 
 describe("starter main lines", () => {
-  it("requires 26+ min and 3/5 starts", () => {
+  it("requires 24+ min and 3/5 starts", () => {
     const logs = [
       { gameId: "a", minutes: 32, pts: 20, reb: 5, ast: 5, threes: 1, date: "2026-01-05" },
       { gameId: "b", minutes: 30, pts: 18, reb: 5, ast: 4, threes: 1, date: "2026-01-04" },
@@ -13,7 +13,8 @@ describe("starter main lines", () => {
       { gameId: "e", minutes: 31, pts: 19, reb: 4, ast: 4, threes: 1, date: "2026-01-01" },
     ];
     expect(qualifiesStarter(logs, 28)).toBe(true);
-    expect(qualifiesStarter(logs, 25)).toBe(false);
+    expect(qualifiesStarter(logs, 23)).toBe(false);
+    expect(qualifiesStarter(logs, 24)).toBe(true);
   });
 
   it("rejects 3+ reb for Main Play", () => {

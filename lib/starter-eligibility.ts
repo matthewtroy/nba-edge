@@ -2,7 +2,7 @@ import type { PlayerGameLog } from "./types.js";
 import type { Market } from "./types.js";
 
 const START_MINUTES = 20;
-const MAIN_PLAY_MINUTES = 26;
+const MAIN_PLAY_MINUTES = 24;
 
 export function startsInLastFive(logs: PlayerGameLog[]): number {
   const recent = [...logs].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 5);

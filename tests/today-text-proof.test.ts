@@ -34,6 +34,9 @@ describe("Today proof text", () => {
     expect(text).toMatch(/Take at \$[\d.]+\+ \(Fair \$[\d.]+\)/);
     expect(text).toContain("What changed");
     expect(text).not.toMatch(/~1 in/);
+    expect(text).not.toMatch(/\b[123]\+ 3PM\b/i);
+    expect(text).not.toMatch(/2\+ 3PM/i);
+    expect(text).not.toMatch(/3\+ 3PM/i);
     const smallCount = (text.match(/Small slate/g) ?? []).length;
     expect(smallCount).toBeLessThanOrEqual(1);
 
