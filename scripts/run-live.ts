@@ -122,9 +122,14 @@ export async function runLivePipeline(
     sources.espn = sources.espn === "failed" ? "failed" : "stale";
   }
 
+  let nbaOfficialUrl: string | undefined;
+  let nbaOfficialLastTriedUrl: string | undefined;
   try {
-    const pdf = await fetchLatestInjuryPdf(now);
-    if (pdf) {
+    const pdfOutcome = await fetchLatestInjuryPdf(now);
+    if (pdfOutcome.ok) {
+      const pdf = pdfOutcome.result;
+      nbaOfficialUrl = pdf.url;
+      sources.nbaOfficial = "ok";
       const parsed = parsePdfInjuries(pdf.text).map((p) => ({
         ...p,
         updatedAt: now.toISOString(),
@@ -132,6 +137,8 @@ export async function runLivePipeline(
       injuries = mergeOfficialInjuries(injuries, parsed, slateByTeam, playerTeamLookup);
     } else {
       sources.nbaOfficial = "stale";
+      const last = pdfOutcome.tryLog[pdfOutcome.tryLog.length - 1];
+      nbaOfficialLastTriedUrl = last?.url;
     }
   } catch (e) {
     console.warn("nbaOfficial PDF error:", e instanceof Error ? e.message : e);
@@ -334,7 +341,16 @@ export async function runLivePipeline(
   );
   fs.writeFileSync(
     path.join(outDir, "meta.json"),
-    JSON.stringify({ ...meta, whatChanged }, null, 2)
+    JSON.stringify(
+      {
+        ...meta,
+        whatChanged,
+        ...(nbaOfficialUrl ? { nbaOfficialUrl } : {}),
+        ...(nbaOfficialLastTriedUrl ? { nbaOfficialLastTriedUrl } : {}),
+      },
+      null,
+      2
+    )
   );
   fs.writeFileSync(path.join(outDir, "history.json"), JSON.stringify(history, null, 2));
   fs.writeFileSync(oddsCachePath, JSON.stringify(cache, null, 2));

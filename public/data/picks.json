@@ -705,6 +705,225 @@
     "ageB2B": false
   },
   {
+    "id": "3133635-pts-5",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "3133635",
+    "playerName": "Jevon Carter",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
+    "market": "pts",
+    "line": 5,
+    "probability": 0.516,
+    "modelProbability": 0.516,
+    "fairPrice": 1.94,
+    "takeAt": 2.1,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3133635-reb-3",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "3133635",
+    "playerName": "Jevon Carter",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.179,
+    "modelProbability": 0.179,
+    "fairPrice": 5.59,
+    "takeAt": 6.04,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3133635-ast-3",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "3133635",
+    "playerName": "Jevon Carter",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
+    "market": "ast",
+    "line": 3,
+    "probability": 0.234,
+    "modelProbability": 0.234,
+    "fairPrice": 4.27,
+    "takeAt": 4.61,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3133635-3pm-1",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "3133635",
+    "playerName": "Jevon Carter",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.686,
+    "modelProbability": 0.686,
+    "fairPrice": 1.46,
+    "takeAt": 1.58,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3133635-3pm-2",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "3133635",
+    "playerName": "Jevon Carter",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.366,
+    "modelProbability": 0.366,
+    "fairPrice": 2.73,
+    "takeAt": 2.95,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3133635-3pm-3",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "3133635",
+    "playerName": "Jevon Carter",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
+    "market": "3pm",
+    "line": 3,
+    "probability": 0.166,
+    "modelProbability": 0.166,
+    "fairPrice": 6.02,
+    "takeAt": 6.5,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3133635-3pm-4",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "3133635",
+    "playerName": "Jevon Carter",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
+    "market": "3pm",
+    "line": 4,
+    "probability": 0.067,
+    "modelProbability": 0.067,
+    "fairPrice": 14.82,
+    "takeAt": 16.01,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
     "id": "4712849-pts-10",
     "gameId": "401909314",
     "team": "Orlando Magic",
@@ -1278,225 +1497,6 @@
     "ageB2B": false
   },
   {
-    "id": "3133635-pts-5",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "3133635",
-    "playerName": "Jevon Carter",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
-    "market": "pts",
-    "line": 5,
-    "probability": 0.516,
-    "modelProbability": 0.516,
-    "fairPrice": 1.94,
-    "takeAt": 2.1,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3133635-reb-3",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "3133635",
-    "playerName": "Jevon Carter",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.179,
-    "modelProbability": 0.179,
-    "fairPrice": 5.59,
-    "takeAt": 6.04,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3133635-ast-3",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "3133635",
-    "playerName": "Jevon Carter",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.234,
-    "modelProbability": 0.234,
-    "fairPrice": 4.27,
-    "takeAt": 4.61,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3133635-3pm-1",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "3133635",
-    "playerName": "Jevon Carter",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.686,
-    "modelProbability": 0.686,
-    "fairPrice": 1.46,
-    "takeAt": 1.58,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3133635-3pm-2",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "3133635",
-    "playerName": "Jevon Carter",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.366,
-    "modelProbability": 0.366,
-    "fairPrice": 2.73,
-    "takeAt": 2.95,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3133635-3pm-3",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "3133635",
-    "playerName": "Jevon Carter",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.166,
-    "modelProbability": 0.166,
-    "fairPrice": 6.02,
-    "takeAt": 6.5,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3133635-3pm-4",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "3133635",
-    "playerName": "Jevon Carter",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png",
-    "market": "3pm",
-    "line": 4,
-    "probability": 0.067,
-    "modelProbability": 0.067,
-    "fairPrice": 14.82,
-    "takeAt": 16.01,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
     "id": "4277847-pts-10",
     "gameId": "401909314",
     "team": "Orlando Magic",
@@ -1870,6 +1870,258 @@
       "miss",
       "miss",
       "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4278572-pts-5",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "4278572",
+    "playerName": "Jamal Cain",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
+    "market": "pts",
+    "line": 5,
+    "probability": 0.073,
+    "modelProbability": 0.073,
+    "fairPrice": 13.63,
+    "takeAt": 14.72,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4278572-reb-3",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "4278572",
+    "playerName": "Jamal Cain",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.49,
+    "modelProbability": 0.49,
+    "fairPrice": 2.04,
+    "takeAt": 2.2,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4278572-reb-5",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "4278572",
+    "playerName": "Jamal Cain",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.159,
+    "modelProbability": 0.159,
+    "fairPrice": 6.31,
+    "takeAt": 6.81,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4278572-3pm-1",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "4278572",
+    "playerName": "Jamal Cain",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.335,
+    "modelProbability": 0.335,
+    "fairPrice": 2.99,
+    "takeAt": 3.23,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4278572-3pm-2",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "4278572",
+    "playerName": "Jamal Cain",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.096,
+    "modelProbability": 0.096,
+    "fairPrice": 10.39,
+    "takeAt": 11.22,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4278572-q1pts-3",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "4278572",
+    "playerName": "Jamal Cain",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
+    "market": "q1pts",
+    "line": 3,
+    "probability": 0.102,
+    "modelProbability": 0.102,
+    "fairPrice": 9.76,
+    "takeAt": 10.54,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4278572-q1reb-2",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "4278572",
+    "playerName": "Jamal Cain",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
+    "market": "q1reb",
+    "line": 2,
+    "probability": 0.167,
+    "modelProbability": 0.167,
+    "fairPrice": 5.98,
+    "takeAt": 6.46,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4278572-q1reb-3",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "4278572",
+    "playerName": "Jamal Cain",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
+    "market": "q1reb",
+    "line": 3,
+    "probability": 0.054,
+    "modelProbability": 0.054,
+    "fairPrice": 18.43,
+    "takeAt": 19.9,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
       "na",
       "na"
     ],
@@ -2286,258 +2538,6 @@
       "miss",
       "miss",
       "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4278572-pts-5",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4278572",
-    "playerName": "Jamal Cain",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
-    "market": "pts",
-    "line": 5,
-    "probability": 0.073,
-    "modelProbability": 0.073,
-    "fairPrice": 13.63,
-    "takeAt": 14.72,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4278572-reb-3",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4278572",
-    "playerName": "Jamal Cain",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.49,
-    "modelProbability": 0.49,
-    "fairPrice": 2.04,
-    "takeAt": 2.2,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4278572-reb-5",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4278572",
-    "playerName": "Jamal Cain",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.159,
-    "modelProbability": 0.159,
-    "fairPrice": 6.31,
-    "takeAt": 6.81,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4278572-3pm-1",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4278572",
-    "playerName": "Jamal Cain",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.335,
-    "modelProbability": 0.335,
-    "fairPrice": 2.99,
-    "takeAt": 3.23,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4278572-3pm-2",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4278572",
-    "playerName": "Jamal Cain",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.096,
-    "modelProbability": 0.096,
-    "fairPrice": 10.39,
-    "takeAt": 11.22,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4278572-q1pts-3",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4278572",
-    "playerName": "Jamal Cain",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
-    "market": "q1pts",
-    "line": 3,
-    "probability": 0.102,
-    "modelProbability": 0.102,
-    "fairPrice": 9.76,
-    "takeAt": 10.54,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4278572-q1reb-2",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4278572",
-    "playerName": "Jamal Cain",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.167,
-    "modelProbability": 0.167,
-    "fairPrice": 5.98,
-    "takeAt": 6.46,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4278572-q1reb-3",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4278572",
-    "playerName": "Jamal Cain",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278572.png",
-    "market": "q1reb",
-    "line": 3,
-    "probability": 0.054,
-    "modelProbability": 0.054,
-    "fairPrice": 18.43,
-    "takeAt": 19.9,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
       "na",
       "na"
     ],
@@ -3790,227 +3790,6 @@
     "ageB2B": false
   },
   {
-    "id": "5239561-pts-5",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "5239561",
-    "playerName": "Jase Richardson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
-    "market": "pts",
-    "line": 5,
-    "probability": 0.735,
-    "modelProbability": 0.735,
-    "fairPrice": 1.36,
-    "takeAt": 1.47,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "5239561-reb-3",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "5239561",
-    "playerName": "Jase Richardson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.223,
-    "modelProbability": 0.223,
-    "fairPrice": 4.49,
-    "takeAt": 4.85,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "5239561-ast-3",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "5239561",
-    "playerName": "Jase Richardson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.454,
-    "modelProbability": 0.454,
-    "fairPrice": 2.2,
-    "takeAt": 2.38,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "5239561-ast-5",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "5239561",
-    "playerName": "Jase Richardson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
-    "market": "ast",
-    "line": 5,
-    "probability": 0.132,
-    "modelProbability": 0.132,
-    "fairPrice": 7.59,
-    "takeAt": 8.2,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "5239561-3pm-1",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "5239561",
-    "playerName": "Jase Richardson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.331,
-    "modelProbability": 0.331,
-    "fairPrice": 3.02,
-    "takeAt": 3.26,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "5239561-3pm-2",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "5239561",
-    "playerName": "Jase Richardson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.095,
-    "modelProbability": 0.095,
-    "fairPrice": 10.58,
-    "takeAt": 11.43,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "5239561-q1reb-2",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "5239561",
-    "playerName": "Jase Richardson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.114,
-    "modelProbability": 0.114,
-    "fairPrice": 8.78,
-    "takeAt": 9.48,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
     "id": "4593034-reb-3",
     "gameId": "401909314",
     "team": "Orlando Magic",
@@ -4245,6 +4024,1085 @@
     "modelProbability": 0.057,
     "fairPrice": 17.58,
     "takeAt": 18.99,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "5239561-pts-5",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "5239561",
+    "playerName": "Jase Richardson",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
+    "market": "pts",
+    "line": 5,
+    "probability": 0.735,
+    "modelProbability": 0.735,
+    "fairPrice": 1.36,
+    "takeAt": 1.47,
+    "tags": [
+      "High probability"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "5239561-reb-3",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "5239561",
+    "playerName": "Jase Richardson",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.223,
+    "modelProbability": 0.223,
+    "fairPrice": 4.49,
+    "takeAt": 4.85,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "5239561-ast-3",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "5239561",
+    "playerName": "Jase Richardson",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
+    "market": "ast",
+    "line": 3,
+    "probability": 0.454,
+    "modelProbability": 0.454,
+    "fairPrice": 2.2,
+    "takeAt": 2.38,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "5239561-ast-5",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "5239561",
+    "playerName": "Jase Richardson",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
+    "market": "ast",
+    "line": 5,
+    "probability": 0.132,
+    "modelProbability": 0.132,
+    "fairPrice": 7.59,
+    "takeAt": 8.2,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "5239561-3pm-1",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "5239561",
+    "playerName": "Jase Richardson",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.331,
+    "modelProbability": 0.331,
+    "fairPrice": 3.02,
+    "takeAt": 3.26,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "5239561-3pm-2",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "5239561",
+    "playerName": "Jase Richardson",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.095,
+    "modelProbability": 0.095,
+    "fairPrice": 10.58,
+    "takeAt": 11.43,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "5239561-q1reb-2",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "5239561",
+    "playerName": "Jase Richardson",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
+    "market": "q1reb",
+    "line": 2,
+    "probability": 0.114,
+    "modelProbability": 0.114,
+    "fairPrice": 8.78,
+    "takeAt": 9.48,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-pts-20",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "pts",
+    "line": 20,
+    "probability": 0.83,
+    "modelProbability": 0.83,
+    "fairPrice": 1.2,
+    "takeAt": 1.3,
+    "tags": [
+      "High probability"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-pts-25",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "pts",
+    "line": 25,
+    "probability": 0.599,
+    "modelProbability": 0.599,
+    "fairPrice": 1.67,
+    "takeAt": 1.8,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-pts-30",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "pts",
+    "line": 30,
+    "probability": 0.325,
+    "modelProbability": 0.325,
+    "fairPrice": 3.08,
+    "takeAt": 3.33,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-pts-35",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "pts",
+    "line": 35,
+    "probability": 0.123,
+    "modelProbability": 0.123,
+    "fairPrice": 8.12,
+    "takeAt": 8.77,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-reb-3",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.825,
+    "modelProbability": 0.825,
+    "fairPrice": 1.21,
+    "takeAt": 1.31,
+    "tags": [
+      "High probability",
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-reb-5",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.505,
+    "modelProbability": 0.505,
+    "fairPrice": 1.98,
+    "takeAt": 2.14,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-reb-7",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "reb",
+    "line": 7,
+    "probability": 0.224,
+    "modelProbability": 0.224,
+    "fairPrice": 4.46,
+    "takeAt": 4.82,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-ast-5",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "ast",
+    "line": 5,
+    "probability": 0.937,
+    "modelProbability": 0.937,
+    "fairPrice": 1.07,
+    "takeAt": 1.16,
+    "tags": [
+      "High probability"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-ast-7",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "ast",
+    "line": 7,
+    "probability": 0.789,
+    "modelProbability": 0.789,
+    "fairPrice": 1.27,
+    "takeAt": 1.37,
+    "tags": [
+      "High probability"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "miss",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-ast-10",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "ast",
+    "line": 10,
+    "probability": 0.441,
+    "modelProbability": 0.441,
+    "fairPrice": 2.27,
+    "takeAt": 2.45,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "miss",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-ast-13",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "ast",
+    "line": 13,
+    "probability": 0.162,
+    "modelProbability": 0.162,
+    "fairPrice": 6.19,
+    "takeAt": 6.69,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-3pm-1",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.8,
+    "modelProbability": 0.8,
+    "fairPrice": 1.25,
+    "takeAt": 1.35,
+    "tags": [
+      "High probability"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-3pm-2",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.516,
+    "modelProbability": 0.516,
+    "fairPrice": 1.94,
+    "takeAt": 2.1,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-3pm-3",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "3pm",
+    "line": 3,
+    "probability": 0.283,
+    "modelProbability": 0.283,
+    "fairPrice": 3.53,
+    "takeAt": 3.81,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-3pm-4",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "3pm",
+    "line": 4,
+    "probability": 0.138,
+    "modelProbability": 0.138,
+    "fairPrice": 7.27,
+    "takeAt": 7.85,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-3pm-5",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "3pm",
+    "line": 5,
+    "probability": 0.061,
+    "modelProbability": 0.061,
+    "fairPrice": 16.42,
+    "takeAt": 17.73,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-q1reb-2",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "q1reb",
+    "line": 2,
+    "probability": 0.161,
+    "modelProbability": 0.161,
+    "fairPrice": 6.23,
+    "takeAt": 6.73,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4432166-q1reb-3",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "4432166",
+    "playerName": "Cade Cunningham",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+    "market": "q1reb",
+    "line": 3,
+    "probability": 0.051,
+    "modelProbability": 0.051,
+    "fairPrice": 19.49,
+    "takeAt": 21.05,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "2596112-pts-10",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "pts",
+    "line": 10,
+    "probability": 0.358,
+    "modelProbability": 0.358,
+    "fairPrice": 2.8,
+    "takeAt": 3.02,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "2596112-reb-3",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.597,
+    "modelProbability": 0.597,
+    "fairPrice": 1.67,
+    "takeAt": 1.8,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "2596112-reb-5",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.238,
+    "modelProbability": 0.238,
+    "fairPrice": 4.2,
+    "takeAt": 4.54,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "2596112-reb-7",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "reb",
+    "line": 7,
+    "probability": 0.066,
+    "modelProbability": 0.066,
+    "fairPrice": 15.17,
+    "takeAt": 16.38,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "2596112-3pm-1",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.694,
+    "modelProbability": 0.694,
+    "fairPrice": 1.44,
+    "takeAt": 1.56,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "2596112-3pm-2",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.375,
+    "modelProbability": 0.375,
+    "fairPrice": 2.66,
+    "takeAt": 2.87,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "2596112-3pm-3",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "3pm",
+    "line": 3,
+    "probability": 0.173,
+    "modelProbability": 0.173,
+    "fairPrice": 5.8,
+    "takeAt": 6.26,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "2596112-3pm-4",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "3pm",
+    "line": 4,
+    "probability": 0.071,
+    "modelProbability": 0.071,
+    "fairPrice": 14.1,
+    "takeAt": 15.23,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "2596112-q1reb-2",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "q1reb",
+    "line": 2,
+    "probability": 0.131,
+    "modelProbability": 0.131,
+    "fairPrice": 7.63,
+    "takeAt": 8.24,
     "tags": [],
     "reasons": [
       "boards shared"
@@ -4635,291 +5493,6 @@
     "recentVsLine": [
       "miss",
       "hit",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "2596112-pts-10",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "pts",
-    "line": 10,
-    "probability": 0.358,
-    "modelProbability": 0.358,
-    "fairPrice": 2.8,
-    "takeAt": 3.02,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "2596112-reb-3",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.597,
-    "modelProbability": 0.597,
-    "fairPrice": 1.67,
-    "takeAt": 1.8,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "2596112-reb-5",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.238,
-    "modelProbability": 0.238,
-    "fairPrice": 4.2,
-    "takeAt": 4.54,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "2596112-reb-7",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.066,
-    "modelProbability": 0.066,
-    "fairPrice": 15.17,
-    "takeAt": 16.38,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "2596112-3pm-1",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.694,
-    "modelProbability": 0.694,
-    "fairPrice": 1.44,
-    "takeAt": 1.56,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "2596112-3pm-2",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.375,
-    "modelProbability": 0.375,
-    "fairPrice": 2.66,
-    "takeAt": 2.87,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "2596112-3pm-3",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.173,
-    "modelProbability": 0.173,
-    "fairPrice": 5.8,
-    "takeAt": 6.26,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "2596112-3pm-4",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "3pm",
-    "line": 4,
-    "probability": 0.071,
-    "modelProbability": 0.071,
-    "fairPrice": 14.1,
-    "takeAt": 15.23,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "2596112-q1reb-2",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.131,
-    "modelProbability": 0.131,
-    "fairPrice": 7.63,
-    "takeAt": 8.24,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
       "miss",
       "na",
       "na"
@@ -6592,579 +7165,6 @@
     "ageB2B": false
   },
   {
-    "id": "4432166-pts-20",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "pts",
-    "line": 20,
-    "probability": 0.83,
-    "modelProbability": 0.83,
-    "fairPrice": 1.2,
-    "takeAt": 1.3,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-pts-25",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "pts",
-    "line": 25,
-    "probability": 0.599,
-    "modelProbability": 0.599,
-    "fairPrice": 1.67,
-    "takeAt": 1.8,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-pts-30",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "pts",
-    "line": 30,
-    "probability": 0.325,
-    "modelProbability": 0.325,
-    "fairPrice": 3.08,
-    "takeAt": 3.33,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-pts-35",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "pts",
-    "line": 35,
-    "probability": 0.123,
-    "modelProbability": 0.123,
-    "fairPrice": 8.12,
-    "takeAt": 8.77,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-reb-3",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.825,
-    "modelProbability": 0.825,
-    "fairPrice": 1.21,
-    "takeAt": 1.31,
-    "tags": [
-      "High probability",
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-reb-5",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.505,
-    "modelProbability": 0.505,
-    "fairPrice": 1.98,
-    "takeAt": 2.14,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-reb-7",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.224,
-    "modelProbability": 0.224,
-    "fairPrice": 4.46,
-    "takeAt": 4.82,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-ast-5",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "ast",
-    "line": 5,
-    "probability": 0.937,
-    "modelProbability": 0.937,
-    "fairPrice": 1.07,
-    "takeAt": 1.16,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-ast-7",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "ast",
-    "line": 7,
-    "probability": 0.789,
-    "modelProbability": 0.789,
-    "fairPrice": 1.27,
-    "takeAt": 1.37,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "miss",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-ast-10",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "ast",
-    "line": 10,
-    "probability": 0.441,
-    "modelProbability": 0.441,
-    "fairPrice": 2.27,
-    "takeAt": 2.45,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-ast-13",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "ast",
-    "line": 13,
-    "probability": 0.162,
-    "modelProbability": 0.162,
-    "fairPrice": 6.19,
-    "takeAt": 6.69,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-3pm-1",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.8,
-    "modelProbability": 0.8,
-    "fairPrice": 1.25,
-    "takeAt": 1.35,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-3pm-2",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.516,
-    "modelProbability": 0.516,
-    "fairPrice": 1.94,
-    "takeAt": 2.1,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-3pm-3",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.283,
-    "modelProbability": 0.283,
-    "fairPrice": 3.53,
-    "takeAt": 3.81,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-3pm-4",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "3pm",
-    "line": 4,
-    "probability": 0.138,
-    "modelProbability": 0.138,
-    "fairPrice": 7.27,
-    "takeAt": 7.85,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-3pm-5",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "3pm",
-    "line": 5,
-    "probability": 0.061,
-    "modelProbability": 0.061,
-    "fairPrice": 16.42,
-    "takeAt": 17.73,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-q1reb-2",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.161,
-    "modelProbability": 0.161,
-    "fairPrice": 6.23,
-    "takeAt": 6.73,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4432166-q1reb-3",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "4432166",
-    "playerName": "Cade Cunningham",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
-    "market": "q1reb",
-    "line": 3,
-    "probability": 0.051,
-    "modelProbability": 0.051,
-    "fairPrice": 19.49,
-    "takeAt": 21.05,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
     "id": "4684742-pts-10",
     "gameId": "401909314",
     "team": "Detroit Pistons",
@@ -7833,360 +7833,6 @@
     ],
     "questionable": false,
     "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3157465-pts-15",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "3157465",
-    "playerName": "Duncan Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png",
-    "market": "pts",
-    "line": 15,
-    "probability": 0.818,
-    "modelProbability": 0.818,
-    "fairPrice": 1.22,
-    "takeAt": 1.32,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3157465-pts-20",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "3157465",
-    "playerName": "Duncan Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png",
-    "market": "pts",
-    "line": 20,
-    "probability": 0.478,
-    "modelProbability": 0.478,
-    "fairPrice": 2.09,
-    "takeAt": 2.26,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3157465-pts-25",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "3157465",
-    "playerName": "Duncan Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png",
-    "market": "pts",
-    "line": 25,
-    "probability": 0.154,
-    "modelProbability": 0.154,
-    "fairPrice": 6.5,
-    "takeAt": 7.02,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3157465-reb-3",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "3157465",
-    "playerName": "Duncan Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.267,
-    "modelProbability": 0.267,
-    "fairPrice": 3.75,
-    "takeAt": 4.05,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3157465-reb-5",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "3157465",
-    "playerName": "Duncan Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.052,
-    "modelProbability": 0.052,
-    "fairPrice": 19.2,
-    "takeAt": 20.74,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3157465-ast-3",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "3157465",
-    "playerName": "Duncan Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.347,
-    "modelProbability": 0.347,
-    "fairPrice": 2.88,
-    "takeAt": 3.11,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3157465-ast-5",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "3157465",
-    "playerName": "Duncan Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png",
-    "market": "ast",
-    "line": 5,
-    "probability": 0.079,
-    "modelProbability": 0.079,
-    "fairPrice": 12.67,
-    "takeAt": 13.68,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3157465-3pm-2",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "3157465",
-    "playerName": "Duncan Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.908,
-    "modelProbability": 0.908,
-    "fairPrice": 1.1,
-    "takeAt": 1.19,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3157465-3pm-3",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "3157465",
-    "playerName": "Duncan Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.779,
-    "modelProbability": 0.779,
-    "fairPrice": 1.28,
-    "takeAt": 1.38,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3157465-3pm-4",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "3157465",
-    "playerName": "Duncan Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png",
-    "market": "3pm",
-    "line": 4,
-    "probability": 0.613,
-    "modelProbability": 0.613,
-    "fairPrice": 1.63,
-    "takeAt": 1.76,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3157465-3pm-5",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "3157465",
-    "playerName": "Duncan Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png",
-    "market": "3pm",
-    "line": 5,
-    "probability": 0.443,
-    "modelProbability": 0.443,
-    "fairPrice": 2.26,
-    "takeAt": 2.44,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3157465-q1reb-2",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "3157465",
-    "playerName": "Duncan Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.108,
-    "modelProbability": 0.108,
-    "fairPrice": 9.3,
-    "takeAt": 10.04,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": false,
     "ageB2B": false
@@ -9523,346 +9169,6 @@
     ],
     "questionable": false,
     "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4432907-pts-5",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4432907",
-    "playerName": "Justin Champagnie",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432907.png",
-    "market": "pts",
-    "line": 5,
-    "probability": 0.944,
-    "modelProbability": 0.944,
-    "fairPrice": 1.06,
-    "takeAt": 1.14,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4432907-pts-10",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4432907",
-    "playerName": "Justin Champagnie",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432907.png",
-    "market": "pts",
-    "line": 10,
-    "probability": 0.222,
-    "modelProbability": 0.222,
-    "fairPrice": 4.51,
-    "takeAt": 4.87,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4432907-reb-5",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4432907",
-    "playerName": "Justin Champagnie",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432907.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.877,
-    "modelProbability": 0.877,
-    "fairPrice": 1.14,
-    "takeAt": 1.23,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4432907-reb-7",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4432907",
-    "playerName": "Justin Champagnie",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432907.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.667,
-    "modelProbability": 0.667,
-    "fairPrice": 1.5,
-    "takeAt": 1.62,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4432907-reb-10",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4432907",
-    "playerName": "Justin Champagnie",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432907.png",
-    "market": "reb",
-    "line": 10,
-    "probability": 0.303,
-    "modelProbability": 0.303,
-    "fairPrice": 3.3,
-    "takeAt": 3.56,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4432907-reb-13",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4432907",
-    "playerName": "Justin Champagnie",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432907.png",
-    "market": "reb",
-    "line": 13,
-    "probability": 0.089,
-    "modelProbability": 0.089,
-    "fairPrice": 11.22,
-    "takeAt": 12.12,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4432907-ast-3",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4432907",
-    "playerName": "Justin Champagnie",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432907.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.166,
-    "modelProbability": 0.166,
-    "fairPrice": 6.03,
-    "takeAt": 6.51,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4432907-3pm-1",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4432907",
-    "playerName": "Justin Champagnie",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432907.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.378,
-    "modelProbability": 0.378,
-    "fairPrice": 2.65,
-    "takeAt": 2.86,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4432907-3pm-2",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4432907",
-    "playerName": "Justin Champagnie",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432907.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.118,
-    "modelProbability": 0.118,
-    "fairPrice": 8.46,
-    "takeAt": 9.14,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4432907-q1reb-2",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4432907",
-    "playerName": "Justin Champagnie",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432907.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.685,
-    "modelProbability": 0.685,
-    "fairPrice": 1.46,
-    "takeAt": 1.58,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4432907-q1reb-3",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4432907",
-    "playerName": "Justin Champagnie",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432907.png",
-    "market": "q1reb",
-    "line": 3,
-    "probability": 0.454,
-    "modelProbability": 0.454,
-    "fairPrice": 2.2,
-    "takeAt": 2.38,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4432907-q1reb-5",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4432907",
-    "playerName": "Justin Champagnie",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432907.png",
-    "market": "q1reb",
-    "line": 5,
-    "probability": 0.142,
-    "modelProbability": 0.142,
-    "fairPrice": 7.05,
-    "takeAt": 7.61,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -11963,484 +11269,6 @@
     "ageB2B": false
   },
   {
-    "id": "4606840-pts-10",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "pts",
-    "line": 10,
-    "probability": 0.871,
-    "modelProbability": 0.871,
-    "fairPrice": 1.15,
-    "takeAt": 1.24,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-pts-15",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "pts",
-    "line": 15,
-    "probability": 0.413,
-    "modelProbability": 0.413,
-    "fairPrice": 2.42,
-    "takeAt": 2.61,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-pts-20",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "pts",
-    "line": 20,
-    "probability": 0.058,
-    "modelProbability": 0.058,
-    "fairPrice": 17.3,
-    "takeAt": 18.68,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-reb-3",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.885,
-    "modelProbability": 0.885,
-    "fairPrice": 1.13,
-    "takeAt": 1.22,
-    "tags": [
-      "High probability",
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-reb-5",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.616,
-    "modelProbability": 0.616,
-    "fairPrice": 1.62,
-    "takeAt": 1.75,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-reb-7",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.321,
-    "modelProbability": 0.321,
-    "fairPrice": 3.12,
-    "takeAt": 3.37,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-reb-10",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "reb",
-    "line": 10,
-    "probability": 0.074,
-    "modelProbability": 0.074,
-    "fairPrice": 13.45,
-    "takeAt": 14.53,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-ast-3",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.291,
-    "modelProbability": 0.291,
-    "fairPrice": 3.44,
-    "takeAt": 3.72,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-ast-5",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "ast",
-    "line": 5,
-    "probability": 0.057,
-    "modelProbability": 0.057,
-    "fairPrice": 17.51,
-    "takeAt": 18.91,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-3pm-1",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.808,
-    "modelProbability": 0.808,
-    "fairPrice": 1.24,
-    "takeAt": 1.34,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-3pm-2",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.53,
-    "modelProbability": 0.53,
-    "fairPrice": 1.89,
-    "takeAt": 2.04,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-3pm-3",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.295,
-    "modelProbability": 0.295,
-    "fairPrice": 3.38,
-    "takeAt": 3.65,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-3pm-4",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "3pm",
-    "line": 4,
-    "probability": 0.146,
-    "modelProbability": 0.146,
-    "fairPrice": 6.86,
-    "takeAt": 7.41,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-3pm-5",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "3pm",
-    "line": 5,
-    "probability": 0.065,
-    "modelProbability": 0.065,
-    "fairPrice": 15.27,
-    "takeAt": 16.49,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4606840-q1reb-2",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "4606840",
-    "playerName": "Jamir Watkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4606840.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.07,
-    "modelProbability": 0.07,
-    "fairPrice": 14.37,
-    "takeAt": 15.52,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
     "id": "4251-pts-15",
     "gameId": "401909315",
     "team": "Boston Celtics",
@@ -13237,322 +12065,6 @@
     "ageB2B": false
   },
   {
-    "id": "4065804-pts-10",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4065804",
-    "playerName": "Sam Hauser",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
-    "market": "pts",
-    "line": 10,
-    "probability": 0.332,
-    "modelProbability": 0.332,
-    "fairPrice": 3.01,
-    "takeAt": 3.25,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4065804-reb-3",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4065804",
-    "playerName": "Sam Hauser",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.51,
-    "modelProbability": 0.51,
-    "fairPrice": 1.96,
-    "takeAt": 2.12,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4065804-reb-5",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4065804",
-    "playerName": "Sam Hauser",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.172,
-    "modelProbability": 0.172,
-    "fairPrice": 5.82,
-    "takeAt": 6.29,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4065804-ast-3",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4065804",
-    "playerName": "Sam Hauser",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.16,
-    "modelProbability": 0.16,
-    "fairPrice": 6.24,
-    "takeAt": 6.74,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4065804-3pm-1",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4065804",
-    "playerName": "Sam Hauser",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.885,
-    "modelProbability": 0.885,
-    "fairPrice": 1.13,
-    "takeAt": 1.22,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4065804-3pm-2",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4065804",
-    "playerName": "Sam Hauser",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.667,
-    "modelProbability": 0.667,
-    "fairPrice": 1.5,
-    "takeAt": 1.62,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4065804-3pm-3",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4065804",
-    "playerName": "Sam Hauser",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.433,
-    "modelProbability": 0.433,
-    "fairPrice": 2.31,
-    "takeAt": 2.49,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4065804-3pm-4",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4065804",
-    "playerName": "Sam Hauser",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
-    "market": "3pm",
-    "line": 4,
-    "probability": 0.249,
-    "modelProbability": 0.249,
-    "fairPrice": 4.01,
-    "takeAt": 4.33,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4065804-3pm-5",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4065804",
-    "playerName": "Sam Hauser",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
-    "market": "3pm",
-    "line": 5,
-    "probability": 0.13,
-    "modelProbability": 0.13,
-    "fairPrice": 7.69,
-    "takeAt": 8.31,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4065804-q1reb-2",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4065804",
-    "playerName": "Sam Hauser",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.056,
-    "modelProbability": 0.056,
-    "fairPrice": 17.88,
-    "takeAt": 19.31,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
     "id": "4277951-pts-5",
     "gameId": "401909315",
     "team": "Boston Celtics",
@@ -13977,6 +12489,322 @@
     "modelProbability": 0.122,
     "fairPrice": 8.21,
     "takeAt": 8.87,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false
+  },
+  {
+    "id": "4065804-pts-10",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4065804",
+    "playerName": "Sam Hauser",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
+    "market": "pts",
+    "line": 10,
+    "probability": 0.332,
+    "modelProbability": 0.332,
+    "fairPrice": 3.01,
+    "takeAt": 3.25,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false
+  },
+  {
+    "id": "4065804-reb-3",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4065804",
+    "playerName": "Sam Hauser",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.51,
+    "modelProbability": 0.51,
+    "fairPrice": 1.96,
+    "takeAt": 2.12,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false
+  },
+  {
+    "id": "4065804-reb-5",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4065804",
+    "playerName": "Sam Hauser",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.172,
+    "modelProbability": 0.172,
+    "fairPrice": 5.82,
+    "takeAt": 6.29,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false
+  },
+  {
+    "id": "4065804-ast-3",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4065804",
+    "playerName": "Sam Hauser",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
+    "market": "ast",
+    "line": 3,
+    "probability": 0.16,
+    "modelProbability": 0.16,
+    "fairPrice": 6.24,
+    "takeAt": 6.74,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false
+  },
+  {
+    "id": "4065804-3pm-1",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4065804",
+    "playerName": "Sam Hauser",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.885,
+    "modelProbability": 0.885,
+    "fairPrice": 1.13,
+    "takeAt": 1.22,
+    "tags": [
+      "High probability"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false
+  },
+  {
+    "id": "4065804-3pm-2",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4065804",
+    "playerName": "Sam Hauser",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.667,
+    "modelProbability": 0.667,
+    "fairPrice": 1.5,
+    "takeAt": 1.62,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false
+  },
+  {
+    "id": "4065804-3pm-3",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4065804",
+    "playerName": "Sam Hauser",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
+    "market": "3pm",
+    "line": 3,
+    "probability": 0.433,
+    "modelProbability": 0.433,
+    "fairPrice": 2.31,
+    "takeAt": 2.49,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false
+  },
+  {
+    "id": "4065804-3pm-4",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4065804",
+    "playerName": "Sam Hauser",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
+    "market": "3pm",
+    "line": 4,
+    "probability": 0.249,
+    "modelProbability": 0.249,
+    "fairPrice": 4.01,
+    "takeAt": 4.33,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false
+  },
+  {
+    "id": "4065804-3pm-5",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4065804",
+    "playerName": "Sam Hauser",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
+    "market": "3pm",
+    "line": 5,
+    "probability": 0.13,
+    "modelProbability": 0.13,
+    "fairPrice": 7.69,
+    "takeAt": 8.31,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false
+  },
+  {
+    "id": "4065804-q1reb-2",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4065804",
+    "playerName": "Sam Hauser",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png",
+    "market": "q1reb",
+    "line": 2,
+    "probability": 0.056,
+    "modelProbability": 0.056,
+    "fairPrice": 17.88,
+    "takeAt": 19.31,
     "tags": [],
     "reasons": [
       "boards shared"
@@ -14457,9 +13285,7 @@
     "tags": [
       "High probability"
     ],
-    "reasons": [
-      "boards shared"
-    ],
+    "reasons": [],
     "recentVsLine": [
       "miss",
       "hit",
@@ -14468,7 +13294,7 @@
       "hit"
     ],
     "questionable": false,
-    "boardsShared": true,
+    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -14488,9 +13314,7 @@
     "fairPrice": 6.87,
     "takeAt": 7.42,
     "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
+    "reasons": [],
     "recentVsLine": [
       "miss",
       "hit",
@@ -14499,7 +13323,7 @@
       "miss"
     ],
     "questionable": false,
-    "boardsShared": true,
+    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -14519,12 +13343,9 @@
     "fairPrice": 1.09,
     "takeAt": 1.18,
     "tags": [
-      "High probability",
-      "boards shared"
+      "High probability"
     ],
-    "reasons": [
-      "boards shared"
-    ],
+    "reasons": [],
     "recentVsLine": [
       "hit",
       "hit",
@@ -14533,7 +13354,7 @@
       "hit"
     ],
     "questionable": false,
-    "boardsShared": true,
+    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -14553,12 +13374,9 @@
     "fairPrice": 1.32,
     "takeAt": 1.43,
     "tags": [
-      "High probability",
-      "boards shared"
+      "High probability"
     ],
-    "reasons": [
-      "boards shared"
-    ],
+    "reasons": [],
     "recentVsLine": [
       "hit",
       "hit",
@@ -14567,7 +13385,7 @@
       "hit"
     ],
     "questionable": false,
-    "boardsShared": true,
+    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -14586,12 +13404,8 @@
     "modelProbability": 0.403,
     "fairPrice": 2.48,
     "takeAt": 2.68,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
+    "tags": [],
+    "reasons": [],
     "recentVsLine": [
       "hit",
       "miss",
@@ -14600,7 +13414,7 @@
       "hit"
     ],
     "questionable": false,
-    "boardsShared": true,
+    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -14619,12 +13433,8 @@
     "modelProbability": 0.142,
     "fairPrice": 7.03,
     "takeAt": 7.59,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
+    "tags": [],
+    "reasons": [],
     "recentVsLine": [
       "miss",
       "miss",
@@ -14633,7 +13443,7 @@
       "hit"
     ],
     "questionable": false,
-    "boardsShared": true,
+    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -14652,12 +13462,8 @@
     "modelProbability": 0.058,
     "fairPrice": 17.32,
     "takeAt": 18.71,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
+    "tags": [],
+    "reasons": [],
     "recentVsLine": [
       "miss",
       "miss",
@@ -14666,7 +13472,7 @@
       "miss"
     ],
     "questionable": false,
-    "boardsShared": true,
+    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -14686,9 +13492,7 @@
     "fairPrice": 2.1,
     "takeAt": 2.27,
     "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
+    "reasons": [],
     "recentVsLine": [
       "hit",
       "miss",
@@ -14697,7 +13501,7 @@
       "hit"
     ],
     "questionable": false,
-    "boardsShared": true,
+    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -14717,9 +13521,7 @@
     "fairPrice": 6.94,
     "takeAt": 7.5,
     "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
+    "reasons": [],
     "recentVsLine": [
       "miss",
       "miss",
@@ -14728,7 +13530,7 @@
       "miss"
     ],
     "questionable": false,
-    "boardsShared": true,
+    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -14748,9 +13550,7 @@
     "fairPrice": 3.05,
     "takeAt": 3.29,
     "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
+    "reasons": [],
     "recentVsLine": [
       "miss",
       "hit",
@@ -14759,7 +13559,7 @@
       "hit"
     ],
     "questionable": false,
-    "boardsShared": true,
+    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -14779,9 +13579,7 @@
     "fairPrice": 10.73,
     "takeAt": 11.59,
     "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
+    "reasons": [],
     "recentVsLine": [
       "miss",
       "miss",
@@ -14790,7 +13588,7 @@
       "miss"
     ],
     "questionable": false,
-    "boardsShared": true,
+    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -14810,9 +13608,7 @@
     "fairPrice": 2.74,
     "takeAt": 2.96,
     "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
+    "reasons": [],
     "recentVsLine": [
       "miss",
       "miss",
@@ -14821,7 +13617,7 @@
       "na"
     ],
     "questionable": false,
-    "boardsShared": true,
+    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -14841,9 +13637,7 @@
     "fairPrice": 6.04,
     "takeAt": 6.52,
     "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
+    "reasons": [],
     "recentVsLine": [
       "miss",
       "miss",
@@ -14852,7 +13646,7 @@
       "na"
     ],
     "questionable": false,
-    "boardsShared": true,
+    "boardsShared": false,
     "b2b": false,
     "blowoutRisk": true,
     "ageB2B": false
@@ -16474,1136 +15268,6 @@
     "ageB2B": false
   },
   {
-    "id": "4351852-pts-5",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4351852",
-    "playerName": "Mitchell Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4351852.png",
-    "market": "pts",
-    "line": 5,
-    "probability": 0.272,
-    "modelProbability": 0.272,
-    "fairPrice": 3.68,
-    "takeAt": 3.97,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4351852-reb-3",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4351852",
-    "playerName": "Mitchell Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4351852.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.872,
-    "modelProbability": 0.872,
-    "fairPrice": 1.15,
-    "takeAt": 1.24,
-    "tags": [
-      "High probability",
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4351852-reb-5",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4351852",
-    "playerName": "Mitchell Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4351852.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.589,
-    "modelProbability": 0.589,
-    "fairPrice": 1.7,
-    "takeAt": 1.84,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4351852-reb-7",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4351852",
-    "playerName": "Mitchell Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4351852.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.296,
-    "modelProbability": 0.296,
-    "fairPrice": 3.38,
-    "takeAt": 3.65,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4351852-reb-10",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4351852",
-    "playerName": "Mitchell Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4351852.png",
-    "market": "reb",
-    "line": 10,
-    "probability": 0.064,
-    "modelProbability": 0.064,
-    "fairPrice": 15.51,
-    "takeAt": 16.75,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4351852-ast-3",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4351852",
-    "playerName": "Mitchell Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4351852.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.095,
-    "modelProbability": 0.095,
-    "fairPrice": 10.58,
-    "takeAt": 11.43,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4351852-q1pts-3",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4351852",
-    "playerName": "Mitchell Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4351852.png",
-    "market": "q1pts",
-    "line": 3,
-    "probability": 0.129,
-    "modelProbability": 0.129,
-    "fairPrice": 7.75,
-    "takeAt": 8.37,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4351852-q1reb-2",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4351852",
-    "playerName": "Mitchell Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4351852.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.384,
-    "modelProbability": 0.384,
-    "fairPrice": 2.6,
-    "takeAt": 2.81,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "4351852-q1reb-3",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4351852",
-    "playerName": "Mitchell Robinson",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4351852.png",
-    "market": "q1reb",
-    "line": 3,
-    "probability": 0.179,
-    "modelProbability": 0.179,
-    "fairPrice": 5.6,
-    "takeAt": 6.05,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false
-  },
-  {
-    "id": "3978-pts-10",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3978",
-    "playerName": "DeMar DeRozan",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
-    "market": "pts",
-    "line": 10,
-    "probability": 0.57,
-    "modelProbability": 0.57,
-    "fairPrice": 1.76,
-    "takeAt": 1.9,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3978-reb-3",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3978",
-    "playerName": "DeMar DeRozan",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.241,
-    "modelProbability": 0.241,
-    "fairPrice": 4.15,
-    "takeAt": 4.48,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3978-ast-3",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3978",
-    "playerName": "DeMar DeRozan",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.379,
-    "modelProbability": 0.379,
-    "fairPrice": 2.64,
-    "takeAt": 2.85,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3978-ast-5",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3978",
-    "playerName": "DeMar DeRozan",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
-    "market": "ast",
-    "line": 5,
-    "probability": 0.093,
-    "modelProbability": 0.093,
-    "fairPrice": 10.75,
-    "takeAt": 11.61,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3978-3pm-1",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3978",
-    "playerName": "DeMar DeRozan",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.114,
-    "modelProbability": 0.114,
-    "fairPrice": 8.79,
-    "takeAt": 9.49,
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4698719-pts-5",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "4698719",
-    "playerName": "Trevon Brazile",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
-    "market": "pts",
-    "line": 5,
-    "probability": 0.698,
-    "modelProbability": 0.698,
-    "fairPrice": 1.43,
-    "takeAt": 1.54,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4698719-reb-3",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "4698719",
-    "playerName": "Trevon Brazile",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.699,
-    "modelProbability": 0.699,
-    "fairPrice": 1.43,
-    "takeAt": 1.54,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4698719-reb-5",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "4698719",
-    "playerName": "Trevon Brazile",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.336,
-    "modelProbability": 0.336,
-    "fairPrice": 2.97,
-    "takeAt": 3.21,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4698719-reb-7",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "4698719",
-    "playerName": "Trevon Brazile",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.114,
-    "modelProbability": 0.114,
-    "fairPrice": 8.79,
-    "takeAt": 9.49,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4698719-3pm-1",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "4698719",
-    "playerName": "Trevon Brazile",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.363,
-    "modelProbability": 0.363,
-    "fairPrice": 2.75,
-    "takeAt": 2.97,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4698719-3pm-2",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "4698719",
-    "playerName": "Trevon Brazile",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.11,
-    "modelProbability": 0.11,
-    "fairPrice": 9.05,
-    "takeAt": 9.77,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4698719-q1pts-3",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "4698719",
-    "playerName": "Trevon Brazile",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
-    "market": "q1pts",
-    "line": 3,
-    "probability": 0.191,
-    "modelProbability": 0.191,
-    "fairPrice": 5.24,
-    "takeAt": 5.66,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4698719-q1pts-5",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "4698719",
-    "playerName": "Trevon Brazile",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
-    "market": "q1pts",
-    "line": 5,
-    "probability": 0.06,
-    "modelProbability": 0.06,
-    "fairPrice": 16.76,
-    "takeAt": 18.1,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4698719-q1reb-2",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "4698719",
-    "playerName": "Trevon Brazile",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.259,
-    "modelProbability": 0.259,
-    "fairPrice": 3.86,
-    "takeAt": 4.17,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4698719-q1reb-3",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "4698719",
-    "playerName": "Trevon Brazile",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
-    "market": "q1reb",
-    "line": 3,
-    "probability": 0.1,
-    "modelProbability": 0.1,
-    "fairPrice": 10.01,
-    "takeAt": 10.81,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3064290-pts-10",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3064290",
-    "playerName": "Aaron Gordon",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
-    "market": "pts",
-    "line": 10,
-    "probability": 0.835,
-    "modelProbability": 0.835,
-    "fairPrice": 1.2,
-    "takeAt": 1.3,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3064290-pts-15",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3064290",
-    "playerName": "Aaron Gordon",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
-    "market": "pts",
-    "line": 15,
-    "probability": 0.321,
-    "modelProbability": 0.321,
-    "fairPrice": 3.11,
-    "takeAt": 3.36,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3064290-reb-3",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3064290",
-    "playerName": "Aaron Gordon",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.828,
-    "modelProbability": 0.828,
-    "fairPrice": 1.21,
-    "takeAt": 1.31,
-    "tags": [
-      "High probability",
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3064290-reb-5",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3064290",
-    "playerName": "Aaron Gordon",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.51,
-    "modelProbability": 0.51,
-    "fairPrice": 1.96,
-    "takeAt": 2.12,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3064290-reb-7",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3064290",
-    "playerName": "Aaron Gordon",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.228,
-    "modelProbability": 0.228,
-    "fairPrice": 4.38,
-    "takeAt": 4.73,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3064290-ast-3",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3064290",
-    "playerName": "Aaron Gordon",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.293,
-    "modelProbability": 0.293,
-    "fairPrice": 3.41,
-    "takeAt": 3.68,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3064290-ast-5",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3064290",
-    "playerName": "Aaron Gordon",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
-    "market": "ast",
-    "line": 5,
-    "probability": 0.058,
-    "modelProbability": 0.058,
-    "fairPrice": 17.23,
-    "takeAt": 18.61,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3064290-3pm-1",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3064290",
-    "playerName": "Aaron Gordon",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.54,
-    "modelProbability": 0.54,
-    "fairPrice": 1.85,
-    "takeAt": 2,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "miss",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3064290-3pm-2",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3064290",
-    "playerName": "Aaron Gordon",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.225,
-    "modelProbability": 0.225,
-    "fairPrice": 4.44,
-    "takeAt": 4.8,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3064290-3pm-3",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3064290",
-    "playerName": "Aaron Gordon",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.082,
-    "modelProbability": 0.082,
-    "fairPrice": 12.18,
-    "takeAt": 13.15,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3064290-q1reb-2",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3064290",
-    "playerName": "Aaron Gordon",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.185,
-    "modelProbability": 0.185,
-    "fairPrice": 5.41,
-    "takeAt": 5.84,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "3064290-q1reb-3",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3064290",
-    "playerName": "Aaron Gordon",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
-    "market": "q1reb",
-    "line": 3,
-    "probability": 0.062,
-    "modelProbability": 0.062,
-    "fairPrice": 16.08,
-    "takeAt": 17.37,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
     "id": "4431767-pts-10",
     "gameId": "401909316",
     "team": "Denver Nuggets",
@@ -18041,6 +15705,848 @@
       "miss",
       "miss",
       "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3978-pts-10",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3978",
+    "playerName": "DeMar DeRozan",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
+    "market": "pts",
+    "line": 10,
+    "probability": 0.57,
+    "modelProbability": 0.57,
+    "fairPrice": 1.76,
+    "takeAt": 1.9,
+    "tags": [],
+    "reasons": [],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3978-reb-3",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3978",
+    "playerName": "DeMar DeRozan",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.241,
+    "modelProbability": 0.241,
+    "fairPrice": 4.15,
+    "takeAt": 4.48,
+    "tags": [],
+    "reasons": [],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3978-ast-3",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3978",
+    "playerName": "DeMar DeRozan",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
+    "market": "ast",
+    "line": 3,
+    "probability": 0.379,
+    "modelProbability": 0.379,
+    "fairPrice": 2.64,
+    "takeAt": 2.85,
+    "tags": [],
+    "reasons": [],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3978-ast-5",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3978",
+    "playerName": "DeMar DeRozan",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
+    "market": "ast",
+    "line": 5,
+    "probability": 0.093,
+    "modelProbability": 0.093,
+    "fairPrice": 10.75,
+    "takeAt": 11.61,
+    "tags": [],
+    "reasons": [],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3978-3pm-1",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3978",
+    "playerName": "DeMar DeRozan",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.114,
+    "modelProbability": 0.114,
+    "fairPrice": 8.79,
+    "takeAt": 9.49,
+    "tags": [],
+    "reasons": [],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3064290-pts-10",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3064290",
+    "playerName": "Aaron Gordon",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
+    "market": "pts",
+    "line": 10,
+    "probability": 0.835,
+    "modelProbability": 0.835,
+    "fairPrice": 1.2,
+    "takeAt": 1.3,
+    "tags": [
+      "High probability"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3064290-pts-15",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3064290",
+    "playerName": "Aaron Gordon",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
+    "market": "pts",
+    "line": 15,
+    "probability": 0.321,
+    "modelProbability": 0.321,
+    "fairPrice": 3.11,
+    "takeAt": 3.36,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3064290-reb-3",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3064290",
+    "playerName": "Aaron Gordon",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.828,
+    "modelProbability": 0.828,
+    "fairPrice": 1.21,
+    "takeAt": 1.31,
+    "tags": [
+      "High probability",
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3064290-reb-5",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3064290",
+    "playerName": "Aaron Gordon",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.51,
+    "modelProbability": 0.51,
+    "fairPrice": 1.96,
+    "takeAt": 2.12,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3064290-reb-7",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3064290",
+    "playerName": "Aaron Gordon",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
+    "market": "reb",
+    "line": 7,
+    "probability": 0.228,
+    "modelProbability": 0.228,
+    "fairPrice": 4.38,
+    "takeAt": 4.73,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3064290-ast-3",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3064290",
+    "playerName": "Aaron Gordon",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
+    "market": "ast",
+    "line": 3,
+    "probability": 0.293,
+    "modelProbability": 0.293,
+    "fairPrice": 3.41,
+    "takeAt": 3.68,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3064290-ast-5",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3064290",
+    "playerName": "Aaron Gordon",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
+    "market": "ast",
+    "line": 5,
+    "probability": 0.058,
+    "modelProbability": 0.058,
+    "fairPrice": 17.23,
+    "takeAt": 18.61,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3064290-3pm-1",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3064290",
+    "playerName": "Aaron Gordon",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.54,
+    "modelProbability": 0.54,
+    "fairPrice": 1.85,
+    "takeAt": 2,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "miss",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3064290-3pm-2",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3064290",
+    "playerName": "Aaron Gordon",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.225,
+    "modelProbability": 0.225,
+    "fairPrice": 4.44,
+    "takeAt": 4.8,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3064290-3pm-3",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3064290",
+    "playerName": "Aaron Gordon",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
+    "market": "3pm",
+    "line": 3,
+    "probability": 0.082,
+    "modelProbability": 0.082,
+    "fairPrice": 12.18,
+    "takeAt": 13.15,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3064290-q1reb-2",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3064290",
+    "playerName": "Aaron Gordon",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
+    "market": "q1reb",
+    "line": 2,
+    "probability": 0.185,
+    "modelProbability": 0.185,
+    "fairPrice": 5.41,
+    "takeAt": 5.84,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "3064290-q1reb-3",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3064290",
+    "playerName": "Aaron Gordon",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png",
+    "market": "q1reb",
+    "line": 3,
+    "probability": 0.062,
+    "modelProbability": 0.062,
+    "fairPrice": 16.08,
+    "takeAt": 17.37,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4698719-pts-5",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "4698719",
+    "playerName": "Trevon Brazile",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
+    "market": "pts",
+    "line": 5,
+    "probability": 0.698,
+    "modelProbability": 0.698,
+    "fairPrice": 1.43,
+    "takeAt": 1.54,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "miss",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4698719-reb-3",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "4698719",
+    "playerName": "Trevon Brazile",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.699,
+    "modelProbability": 0.699,
+    "fairPrice": 1.43,
+    "takeAt": 1.54,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4698719-reb-5",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "4698719",
+    "playerName": "Trevon Brazile",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.336,
+    "modelProbability": 0.336,
+    "fairPrice": 2.97,
+    "takeAt": 3.21,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4698719-reb-7",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "4698719",
+    "playerName": "Trevon Brazile",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
+    "market": "reb",
+    "line": 7,
+    "probability": 0.114,
+    "modelProbability": 0.114,
+    "fairPrice": 8.79,
+    "takeAt": 9.49,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4698719-3pm-1",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "4698719",
+    "playerName": "Trevon Brazile",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.363,
+    "modelProbability": 0.363,
+    "fairPrice": 2.75,
+    "takeAt": 2.97,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4698719-3pm-2",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "4698719",
+    "playerName": "Trevon Brazile",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.11,
+    "modelProbability": 0.11,
+    "fairPrice": 9.05,
+    "takeAt": 9.77,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4698719-q1pts-3",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "4698719",
+    "playerName": "Trevon Brazile",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
+    "market": "q1pts",
+    "line": 3,
+    "probability": 0.191,
+    "modelProbability": 0.191,
+    "fairPrice": 5.24,
+    "takeAt": 5.66,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4698719-q1pts-5",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "4698719",
+    "playerName": "Trevon Brazile",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
+    "market": "q1pts",
+    "line": 5,
+    "probability": 0.06,
+    "modelProbability": 0.06,
+    "fairPrice": 16.76,
+    "takeAt": 18.1,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4698719-q1reb-2",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "4698719",
+    "playerName": "Trevon Brazile",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
+    "market": "q1reb",
+    "line": 2,
+    "probability": 0.259,
+    "modelProbability": 0.259,
+    "fairPrice": 3.86,
+    "takeAt": 4.17,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4698719-q1reb-3",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "4698719",
+    "playerName": "Trevon Brazile",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4698719.png",
+    "market": "q1reb",
+    "line": 3,
+    "probability": 0.1,
+    "modelProbability": 0.1,
+    "fairPrice": 10.01,
+    "takeAt": 10.81,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
       "na",
       "na"
     ],
@@ -20271,6 +18777,417 @@
     "ageB2B": false
   },
   {
+    "id": "4896372-pts-10",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4896372",
+    "playerName": "Walter Clayton Jr.",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
+    "market": "pts",
+    "line": 10,
+    "probability": 0.535,
+    "modelProbability": 0.535,
+    "fairPrice": 1.87,
+    "takeAt": 2.02,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4896372-reb-3",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4896372",
+    "playerName": "Walter Clayton Jr.",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.61,
+    "modelProbability": 0.61,
+    "fairPrice": 1.64,
+    "takeAt": 1.77,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4896372-reb-5",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4896372",
+    "playerName": "Walter Clayton Jr.",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.249,
+    "modelProbability": 0.249,
+    "fairPrice": 4.02,
+    "takeAt": 4.34,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4896372-reb-7",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4896372",
+    "playerName": "Walter Clayton Jr.",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
+    "market": "reb",
+    "line": 7,
+    "probability": 0.071,
+    "modelProbability": 0.071,
+    "fairPrice": 14.14,
+    "takeAt": 15.27,
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4896372-ast-3",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4896372",
+    "playerName": "Walter Clayton Jr.",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
+    "market": "ast",
+    "line": 3,
+    "probability": 0.689,
+    "modelProbability": 0.689,
+    "fairPrice": 1.45,
+    "takeAt": 1.57,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4896372-ast-5",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4896372",
+    "playerName": "Walter Clayton Jr.",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
+    "market": "ast",
+    "line": 5,
+    "probability": 0.318,
+    "modelProbability": 0.318,
+    "fairPrice": 3.14,
+    "takeAt": 3.39,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4896372-ast-7",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4896372",
+    "playerName": "Walter Clayton Jr.",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
+    "market": "ast",
+    "line": 7,
+    "probability": 0.1,
+    "modelProbability": 0.1,
+    "fairPrice": 9.96,
+    "takeAt": 10.76,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4896372-3pm-1",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4896372",
+    "playerName": "Walter Clayton Jr.",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.773,
+    "modelProbability": 0.773,
+    "fairPrice": 1.29,
+    "takeAt": 1.39,
+    "tags": [
+      "High probability"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4896372-3pm-2",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4896372",
+    "playerName": "Walter Clayton Jr.",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.477,
+    "modelProbability": 0.477,
+    "fairPrice": 2.1,
+    "takeAt": 2.27,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4896372-3pm-3",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4896372",
+    "playerName": "Walter Clayton Jr.",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
+    "market": "3pm",
+    "line": 3,
+    "probability": 0.25,
+    "modelProbability": 0.25,
+    "fairPrice": 4,
+    "takeAt": 4.32,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4896372-3pm-4",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4896372",
+    "playerName": "Walter Clayton Jr.",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
+    "market": "3pm",
+    "line": 4,
+    "probability": 0.116,
+    "modelProbability": 0.116,
+    "fairPrice": 8.61,
+    "takeAt": 9.3,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4896372-q1reb-2",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4896372",
+    "playerName": "Walter Clayton Jr.",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
+    "market": "q1reb",
+    "line": 2,
+    "probability": 0.243,
+    "modelProbability": 0.243,
+    "fairPrice": 4.12,
+    "takeAt": 4.45,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
+    "id": "4896372-q1reb-3",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4896372",
+    "playerName": "Walter Clayton Jr.",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
+    "market": "q1reb",
+    "line": 3,
+    "probability": 0.091,
+    "modelProbability": 0.091,
+    "fairPrice": 10.96,
+    "takeAt": 11.84,
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false
+  },
+  {
     "id": "5041939-pts-15",
     "gameId": "401909316",
     "team": "Dallas Mavericks",
@@ -20862,417 +19779,6 @@
     "modelProbability": 0.093,
     "fairPrice": 10.73,
     "takeAt": 11.59,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4896372-pts-10",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4896372",
-    "playerName": "Walter Clayton Jr.",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
-    "market": "pts",
-    "line": 10,
-    "probability": 0.535,
-    "modelProbability": 0.535,
-    "fairPrice": 1.87,
-    "takeAt": 2.02,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4896372-reb-3",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4896372",
-    "playerName": "Walter Clayton Jr.",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.61,
-    "modelProbability": 0.61,
-    "fairPrice": 1.64,
-    "takeAt": 1.77,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4896372-reb-5",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4896372",
-    "playerName": "Walter Clayton Jr.",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.249,
-    "modelProbability": 0.249,
-    "fairPrice": 4.02,
-    "takeAt": 4.34,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4896372-reb-7",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4896372",
-    "playerName": "Walter Clayton Jr.",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.071,
-    "modelProbability": 0.071,
-    "fairPrice": 14.14,
-    "takeAt": 15.27,
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4896372-ast-3",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4896372",
-    "playerName": "Walter Clayton Jr.",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.689,
-    "modelProbability": 0.689,
-    "fairPrice": 1.45,
-    "takeAt": 1.57,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4896372-ast-5",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4896372",
-    "playerName": "Walter Clayton Jr.",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
-    "market": "ast",
-    "line": 5,
-    "probability": 0.318,
-    "modelProbability": 0.318,
-    "fairPrice": 3.14,
-    "takeAt": 3.39,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4896372-ast-7",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4896372",
-    "playerName": "Walter Clayton Jr.",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
-    "market": "ast",
-    "line": 7,
-    "probability": 0.1,
-    "modelProbability": 0.1,
-    "fairPrice": 9.96,
-    "takeAt": 10.76,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4896372-3pm-1",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4896372",
-    "playerName": "Walter Clayton Jr.",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.773,
-    "modelProbability": 0.773,
-    "fairPrice": 1.29,
-    "takeAt": 1.39,
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4896372-3pm-2",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4896372",
-    "playerName": "Walter Clayton Jr.",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.477,
-    "modelProbability": 0.477,
-    "fairPrice": 2.1,
-    "takeAt": 2.27,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4896372-3pm-3",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4896372",
-    "playerName": "Walter Clayton Jr.",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.25,
-    "modelProbability": 0.25,
-    "fairPrice": 4,
-    "takeAt": 4.32,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4896372-3pm-4",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4896372",
-    "playerName": "Walter Clayton Jr.",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
-    "market": "3pm",
-    "line": 4,
-    "probability": 0.116,
-    "modelProbability": 0.116,
-    "fairPrice": 8.61,
-    "takeAt": 9.3,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4896372-q1reb-2",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4896372",
-    "playerName": "Walter Clayton Jr.",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.243,
-    "modelProbability": 0.243,
-    "fairPrice": 4.12,
-    "takeAt": 4.45,
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false
-  },
-  {
-    "id": "4896372-q1reb-3",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4896372",
-    "playerName": "Walter Clayton Jr.",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4896372.png",
-    "market": "q1reb",
-    "line": 3,
-    "probability": 0.091,
-    "modelProbability": 0.091,
-    "fairPrice": 10.96,
-    "takeAt": 11.84,
     "tags": [],
     "reasons": [
       "boards shared"
@@ -22770,7 +21276,8 @@
       "High probability"
     ],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "hit",
@@ -22779,7 +21286,7 @@
       "hit",
       "hit"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -22801,7 +21308,8 @@
     "takeAt": 6.72,
     "tags": [],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "hit",
@@ -22810,7 +21318,7 @@
       "hit",
       "hit"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -22835,7 +21343,8 @@
       "boards shared"
     ],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "hit",
@@ -22844,7 +21353,7 @@
       "hit",
       "hit"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -22868,7 +21377,8 @@
       "boards shared"
     ],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "hit",
@@ -22877,7 +21387,7 @@
       "hit",
       "hit"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -22901,7 +21411,8 @@
       "boards shared"
     ],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "miss",
@@ -22910,7 +21421,7 @@
       "miss",
       "hit"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -22932,7 +21443,8 @@
     "takeAt": 1.59,
     "tags": [],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "hit",
@@ -22941,7 +21453,7 @@
       "hit",
       "hit"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -22963,7 +21475,8 @@
     "takeAt": 3.5,
     "tags": [],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "miss",
@@ -22972,7 +21485,7 @@
       "hit",
       "miss"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -22994,7 +21507,8 @@
     "takeAt": 11.29,
     "tags": [],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "miss",
@@ -23003,7 +21517,7 @@
       "miss",
       "miss"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -23027,7 +21541,8 @@
       "High probability"
     ],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "hit",
@@ -23036,7 +21551,7 @@
       "hit",
       "hit"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -23058,7 +21573,8 @@
     "takeAt": 2.61,
     "tags": [],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "hit",
@@ -23067,7 +21583,7 @@
       "hit",
       "miss"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -23089,7 +21605,8 @@
     "takeAt": 5.4,
     "tags": [],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "hit",
@@ -23098,7 +21615,7 @@
       "hit",
       "miss"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -23120,7 +21637,8 @@
     "takeAt": 12.55,
     "tags": [],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "miss",
@@ -23129,7 +21647,7 @@
       "hit",
       "miss"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -23151,7 +21669,8 @@
     "takeAt": 3.61,
     "tags": [],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "miss",
@@ -23160,7 +21679,7 @@
       "na",
       "na"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -23182,7 +21701,8 @@
     "takeAt": 9.78,
     "tags": [],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "miss",
@@ -23191,7 +21711,7 @@
       "na",
       "na"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -23213,7 +21733,8 @@
     "takeAt": 3.06,
     "tags": [],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "hit",
@@ -23222,7 +21743,7 @@
       "na",
       "na"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -23244,7 +21765,8 @@
     "takeAt": 6.87,
     "tags": [],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "hit",
@@ -23253,7 +21775,7 @@
       "na",
       "na"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -23275,7 +21797,8 @@
     "takeAt": 4.4,
     "tags": [],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "miss",
@@ -23284,7 +21807,7 @@
       "na",
       "na"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,
@@ -23306,7 +21829,8 @@
     "takeAt": 11.64,
     "tags": [],
     "reasons": [
-      "boards shared"
+      "boards shared",
+      "voids if out"
     ],
     "recentVsLine": [
       "miss",
@@ -23315,7 +21839,7 @@
       "na",
       "na"
     ],
-    "questionable": false,
+    "questionable": true,
     "boardsShared": true,
     "b2b": false,
     "blowoutRisk": false,

@@ -1,11 +1,12 @@
 {
-  "lastUpdated": "2026-11-24T23:16:06.610Z",
+  "lastUpdated": "2026-11-24T23:17:51.702Z",
   "sources": {
     "espn": "ok",
-    "nbaOfficial": "stale",
+    "nbaOfficial": "ok",
     "odds": "stale"
   },
   "slateSize": 3,
   "smallSlate": true,
-  "whatChanged": []
+  "whatChanged": [],
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_06_15PM.pdf"
 }

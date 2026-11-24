@@ -4,14 +4,14 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
-        "4066320-reb-3",
-        "4712849-pts-15",
+        "3138160-ast-3",
         "3936299-ast-5",
-        "3112335-reb-10",
-        "4251-ast-3"
+        "5107199-pts-15",
+        "4066372-ast-3",
+        "4277951-reb-3"
       ],
-      "combinedProbability": 0.14678265215275196,
-      "combinedFairPrice": 6.81,
+      "combinedProbability": 0.14659882478244,
+      "combinedFairPrice": 6.82,
       "combinedTakeAt": 10,
       "oneInX": 7,
       "stakeSuggestion": 33.33,
@@ -22,16 +22,16 @@
       "type": "booster",
       "label": "Booster",
       "legs": [
-        "4066320-reb-5",
-        "4712849-pts-15",
+        "3138160-ast-5",
         "3936299-ast-7",
-        "3112335-reb-13",
-        "4251-ast-3"
+        "5107199-pts-20",
+        "4066372-ast-3",
+        "4277951-reb-3"
       ],
-      "combinedProbability": 0.023400465031943995,
-      "combinedFairPrice": 42.73,
-      "combinedTakeAt": 62.85,
-      "oneInX": 43,
+      "combinedProbability": 0.016303499135315997,
+      "combinedFairPrice": 61.34,
+      "combinedTakeAt": 90.02,
+      "oneInX": 61,
       "stakeSuggestion": 5,
       "summary": "Main Play +1 rung — $5 straight",
       "smallSlateNote": true
@@ -51,7 +51,7 @@
     {
       "type": "longshot",
       "label": "Longshot",
-      "reason": "Combined 9332.8 outside 30–100"
+      "reason": "Combined 5457.9 outside 30–100"
     }
   ]
 }

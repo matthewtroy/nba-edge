@@ -113,6 +113,9 @@ export interface MetaJson {
   sources: Record<string, SourceHealth | string>;
   slateSize: number;
   smallSlate?: boolean;
+  whatChanged?: string[];
+  nbaOfficialUrl?: string;
+  nbaOfficialLastTriedUrl?: string;
 }
 
 export interface HistoryLeg {
