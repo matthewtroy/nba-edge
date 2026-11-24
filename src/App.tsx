@@ -53,7 +53,6 @@ export default function App() {
           onOpenSettings={() => setSettingsOpen(true)}
           showQ1={settings.showQ1Bets}
           showLongshots={settings.showLongshots}
-          myBookie={settings.myBookie}
         />
       )}
       {tab === "picks" && (

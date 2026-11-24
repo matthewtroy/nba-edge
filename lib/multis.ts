@@ -1,6 +1,7 @@
 import type { PickLeg, MultiBet, MultiType, MultiNotBuilt } from "./types.js";
 import { legsClash, multiClashSummary, multiHasClash } from "./clash.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
+import { qualifiesMainPlayLeg } from "./main-play-eligibility.js";
 import { enforceExposureCap } from "./exposure.js";
 import { bestSingleBookieQuote } from "./single-bookie.js";
 import { gateAllMultis } from "./multi-gate.js";
@@ -155,26 +156,24 @@ export function buildMultis(
     });
   }
 
-  if (slateSize <= 4) {
-    filtered = filtered.map((m) => ({ ...m, smallSlateNote: true }));
-  }
-
   const gated = gateAllMultis(filtered, picksById);
-  return { bets: gated.multis, notBuilt, gateViolations: gated.violations };
+  for (const m of gated.dropped) {
+    const base = LABELS[m.type];
+    notBuilt.push({
+      type: m.type,
+      label: base,
+      variant: m.variant,
+      reason: "Failed rule gate (see gateViolations)",
+    });
+  }
+  return {
+    bets: gated.multis,
+    notBuilt,
+    gateViolations: gated.violations,
+  };
 }
 
-export function qualifiesMainPlayLeg(leg: PickLeg): boolean {
-  return (
-    leg.starterEligible === true &&
-    isMainPlayStatLine(leg.market, leg.line) &&
-    isCoreMarket(leg.market) &&
-    leg.probability >= 0.6 &&
-    leg.fairPrice >= 1.4 &&
-    leg.fairPrice <= 2.5 &&
-    !leg.ageB2B &&
-    !hasCheckNews(leg)
-  );
-}
+export { qualifiesMainPlayLeg } from "./main-play-eligibility.js";
 
 function countPerGame(chosen: PickLeg[], gameId: string): number {
   return chosen.filter((l) => l.gameId === gameId).length;
@@ -246,7 +245,7 @@ function buildMainPlay(
       combinedBestBookie: book.bookie,
       oneInX: Math.round(1 / p),
       stakeSuggestion: stake,
-      summary: `${best.length} legs @ ${combo.toFixed(2)}+ combined`,
+      summary: `${best.length} starter main lines`,
     },
     reason: "",
   };
@@ -297,30 +296,18 @@ function treblePrice(three: PickLeg[]): number {
   return combinedBetPrice(three);
 }
 
-function boostMainLegs(
-  main: MultiBet,
-  picks: PickLeg[],
-  legIdsToBoost: Set<string>
-): PickLeg[] | null {
+function boostMainLegs(main: MultiBet, picks: PickLeg[]): PickLeg[] | null {
   const picksById = new Map(picks.map((p) => [p.id, p]));
   const boosted: PickLeg[] = [];
+
   for (const id of main.legs) {
     const leg = picksById.get(id);
     if (!leg || !meetsFloor(leg) || hasCheckNews(leg)) return null;
-    if (!legIdsToBoost.has(id)) {
-      boosted.push(leg);
-      continue;
-    }
     const up = nextRung(leg, picks);
-    if (up && meetsFloor(up) && !hasCheckNews(up)) {
-      const test = main.legs.map((mid) =>
-        mid === id ? up : picksById.get(mid)!
-      ) as PickLeg[];
-      boosted.push(multiHasClash(test) ? leg : up);
-    } else {
-      boosted.push(leg);
-    }
+    if (!up || !meetsFloor(up) || hasCheckNews(up)) return null;
+    boosted.push(up);
   }
+  if (multiHasClash(boosted)) return null;
   return boosted;
 }
 
@@ -336,28 +323,12 @@ function buildBooster(
     return { bet: null, reason: "Booster leg missing" };
   }
 
-  const allBoost = new Set(main.legs);
-  let boosted =
-    boostMainLegs(main, picks, allBoost) ??
-    ([] as PickLeg[]);
-  if (!boosted.length) {
-    return { bet: null, reason: "Booster leg missing" };
+  const boosted = boostMainLegs(main, picks);
+  if (!boosted?.length) {
+    return { bet: null, reason: "Booster: could not step every Main Play leg (+1 rung, no clash)" };
   }
 
-  let { fair } = combinedPrice(boosted);
-  if (fair > 120) {
-    const safest = [...mainLegs]
-      .sort((a, b) => b.probability - a.probability)
-      .slice(0, 3)
-      .map((l) => l.id);
-    const selective = new Set(safest);
-    const retry = boostMainLegs(main, picks, selective);
-    if (retry?.length) {
-      boosted = retry;
-      fair = combinedPrice(boosted).fair;
-    }
-  }
-
+  const { fair } = combinedPrice(boosted);
   if (fair < 30 || fair > 120) {
     return {
       bet: null,
@@ -389,8 +360,7 @@ function buildBooster(
       combinedBestPrice: book.price,
       combinedBestBookie: book.bookie,
       oneInX: Math.round(1 / p),
-      stakeSuggestion: 5,
-      summary: `Main Play +1 rung — $5 straight${trixieNote}`,
+      summary: `Main Play +1 rung on every leg${trixieNote}`,
     },
     reason: "",
   };
@@ -590,6 +560,8 @@ function buildBoostSgm(picks: PickLeg[]): { bet: MultiBet | null; reason: string
   const byGame = new Map<string, PickLeg[]>();
   for (const l of picks) {
     if (l.fairPrice < 1.5 || l.fairPrice > 3.0) continue;
+    if (!l.starterEligible || !isMainPlayStatLine(l.market, l.line)) continue;
+    if (l.market.startsWith("q1")) continue;
     const arr = byGame.get(l.gameId) ?? [];
     arr.push(l);
     byGame.set(l.gameId, arr);

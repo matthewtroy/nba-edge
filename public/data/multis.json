@@ -15,54 +15,60 @@
       "combinedTakeAt": 9.99,
       "oneInX": 7,
       "stakeSuggestion": 33.37,
-      "summary": "5 legs @ 9.99+ combined",
-      "smallSlateNote": true
+      "summary": "5 starter main lines"
     },
     {
-      "type": "booster",
-      "label": "Booster",
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Value",
       "legs": [
-        "5107199-pts-20",
-        "4712849-pts-20",
-        "3112335-pts-25",
-        "4065648-ast-7",
-        "4277905-ast-7"
+        "5107199-q1reb-2",
+        "6583-q1reb-3",
+        "4698719-q1reb-2"
       ],
-      "combinedProbability": 0.014200699194000004,
-      "combinedFairPrice": 70.42,
-      "combinedTakeAt": 103.93,
-      "oneInX": 70,
-      "stakeSuggestion": 5,
-      "summary": "Main Play +1 rung — $5 straight",
-      "smallSlateNote": true
+      "combinedProbability": 0.018246032000000002,
+      "combinedFairPrice": 54.81,
+      "combinedTakeAt": 69.03,
+      "oneInX": 55,
+      "summary": "Value Q1: fair 2.20–4.00, one leg/team"
+    },
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "legs": [
+        "3138160-reb-5",
+        "4278078-3pm-2",
+        "4712849-pts-15",
+        "4684742-ast-5",
+        "4065648-reb-7",
+        "4277905-3pm-2"
+      ],
+      "combinedProbability": 0.052873197983297995,
+      "combinedFairPrice": 18.91,
+      "combinedTakeAt": 30,
+      "oneInX": 19,
+      "summary": "2+ legs/game, fair 1.35–2.50 each"
     },
     {
       "type": "boostSgm",
       "label": "Boost SGM",
       "legs": [
-        "3138160-q1reb-2",
-        "4278594-ast-3",
-        "6442-3pm-3"
+        "3138160-3pm-2",
+        "5041939-pts-25",
+        "3936299-3pm-3"
       ],
-      "combinedProbability": 0.133281504,
-      "combinedFairPrice": 7.5,
-      "combinedTakeAt": 9.48,
-      "oneInX": 8,
-      "summary": "bet365 25% boost (needs 3 legs)",
-      "smallSlateNote": true
+      "combinedProbability": 0.09495448199999999,
+      "combinedFairPrice": 10.53,
+      "combinedTakeAt": 13.33,
+      "oneInX": 11,
+      "summary": "bet365 25% boost (needs 3 legs)"
     }
   ],
   "notBuilt": [
     {
-      "type": "q1Multi",
-      "label": "Q1 Multi",
-      "variant": "Value",
-      "reason": "Removed after clash check or exposure cap"
-    },
-    {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "reason": "Removed after clash check or exposure cap"
+      "type": "booster",
+      "label": "Booster",
+      "reason": "Booster combined fair 273.4 outside 30–120"
     },
     {
       "type": "longshot",

@@ -20,7 +20,6 @@ interface Props {
   onOpenSettings: () => void;
   showQ1: boolean;
   showLongshots: boolean;
-  myBookie: string;
 }
 
 export function TodayScreen({
@@ -30,7 +29,6 @@ export function TodayScreen({
   onOpenSettings,
   showQ1,
   showLongshots,
-  myBookie,
 }: Props) {
   const picksById = new Map(data.picks.map((p) => [p.id, p]));
   const stale = Object.values(data.meta.sources).some(
@@ -82,16 +80,22 @@ export function TodayScreen({
         <p className="text-white/70">No NBA today: check back for the next slate.</p>
       )}
 
-      {(data.meta.whatChanged ?? []).length > 0 && (
-        <section className="mb-4">
-          <h2 className="text-sm font-semibold text-white/80 mb-2">What changed</h2>
+      {data.meta.smallSlate && (
+        <p className="text-sm text-accent-warn mb-3">Small slate</p>
+      )}
+
+      <section className="mb-4">
+        <h2 className="text-sm font-semibold text-white/80 mb-2">What changed</h2>
+        {(data.meta.whatChanged ?? []).length > 0 ? (
           <ul className="text-sm text-white/70 space-y-1">
             {(data.meta.whatChanged ?? []).slice(0, 3).map((line) => (
               <li key={line}>• {line}</li>
             ))}
           </ul>
-        </section>
-      )}
+        ) : (
+          <p className="text-sm text-white/50">(none)</p>
+        )}
+      </section>
 
       <NotBuiltSection items={notBuilt} />
 
@@ -100,7 +104,6 @@ export function TodayScreen({
           key={`${m.type}-${m.variant ?? ""}-${m.legs.join()}`}
           multi={m}
           picksById={picksById}
-          myBookie={myBookie}
           onLegTap={onLegTap}
           onCopy={onCopy}
         />

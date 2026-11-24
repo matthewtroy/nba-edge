@@ -1,5 +1,9 @@
 import type { MetaJson, MultiBet, MultiNotBuilt, PickLeg, SlateGame } from "./types.js";
-import { marketLabel } from "./market-label.js";
+import {
+  assertNoForbiddenStrings,
+  formatLegLine,
+  formatMultiHeadline,
+} from "./multi-card-text.js";
 
 function formatSydneyTime(iso: string): string {
   return new Date(iso).toLocaleString("en-AU", {
@@ -31,12 +35,21 @@ export function renderTodayText(input: {
         : ""
     }${stale ? " · (stale)" : ""}`
   );
+
+  if (input.meta.smallSlate) {
+    lines.push("Small slate");
+  }
   lines.push("");
 
-  for (const line of (input.meta.whatChanged ?? []).slice(0, 3)) {
-    lines.push(`What changed: ${line}`);
+  const changed = input.meta.whatChanged ?? [];
+  if (changed.length) {
+    lines.push("What changed");
+    for (const line of changed.slice(0, 3)) lines.push(`  ${line}`);
+  } else {
+    lines.push("What changed");
+    lines.push("  (none)");
   }
-  if ((input.meta.whatChanged ?? []).length) lines.push("");
+  lines.push("");
 
   if (input.notBuilt.length) {
     lines.push(`Not built today (${input.notBuilt.length})`);
@@ -49,38 +62,30 @@ export function renderTodayText(input: {
   }
 
   for (const multi of input.multis) {
-    if (multi.smallSlateNote) lines.push("Small slate");
     const title = multi.variant ? `${multi.label} (${multi.variant})` : multi.label;
     lines.push(title);
-    lines.push(
-      `  Take ${multi.combinedTakeAt.toFixed(2)}+ · Fair ${multi.combinedFairPrice.toFixed(2)} · ~1 in ${multi.oneInX}`
-    );
+    lines.push(`  ${formatMultiHeadline(multi)}`);
     if (multi.combinedBestPrice != null && multi.combinedBestBookie) {
       lines.push(
-        `  At ${multi.combinedBestBookie}: ${multi.combinedBestPrice.toFixed(2)}+ (single bookie)`
+        `  ${multi.combinedBestBookie} $${multi.combinedBestPrice.toFixed(2)}+ (all legs)`
       );
     }
     const legs = multi.legs
       .map((id) => input.picksById.get(id))
       .filter(Boolean) as PickLeg[];
-    for (const leg of legs) {
-      const extra =
-        leg.bestPrice != null
-          ? ` · Best: ${leg.bestBookie} ${leg.bestPrice.toFixed(2)}`
-          : "";
-      lines.push(
-        `  ${leg.playerName} ${marketLabel(leg.market, leg.line)} · Take ${leg.takeAt.toFixed(2)}+${extra}`
-      );
-    }
+    for (const leg of legs) lines.push(`  ${formatLegLine(leg)}`);
     lines.push("");
   }
 
-  if (input.gateViolations?.length) {
+  const violations = input.gateViolations?.filter(Boolean) ?? [];
+  if (violations.length) {
     lines.push("Gate violations");
-    for (const v of input.gateViolations) lines.push(`  • ${v}`);
+    for (const v of violations) lines.push(`  • ${v}`);
   } else {
     lines.push("Gate violations: none");
   }
 
-  return lines.join("\n").trim();
+  const text = lines.join("\n").trim();
+  assertNoForbiddenStrings(text);
+  return text;
 }
