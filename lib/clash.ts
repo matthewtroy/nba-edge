@@ -61,3 +61,37 @@ export function multiHasClash(legs: PickLeg[]): boolean {
   }
   return false;
 }
+
+export function describeClash(a: PickLeg, b: PickLeg): string {
+  if (a.playerId === b.playerId && a.gameId === b.gameId) {
+    return `${a.playerName}: same player twice`;
+  }
+  if (a.gameId !== b.gameId) return `${a.playerName} vs ${b.playerName}`;
+  if (isReb(a.market) && isReb(b.market)) {
+    return `${a.playerName} reb + ${b.playerName} reb (same game)`;
+  }
+  if (isReb(a.market) && (isPts(b.market) || isAst(b.market)) && a.team !== b.team) {
+    return `reb (${a.playerName}) vs opp ${b.market} (${b.playerName})`;
+  }
+  if (isReb(b.market) && (isPts(a.market) || isAst(a.market)) && a.team !== b.team) {
+    return `reb (${b.playerName}) vs opp ${a.market} (${a.playerName})`;
+  }
+  if (isPts(a.market) && isPts(b.market) && a.team === b.team) {
+    return `two pts same team: ${a.playerName}, ${b.playerName}`;
+  }
+  if (a.playerId === b.playerId && a.market === "q1pts" && b.market === "q1ast") {
+    return `${a.playerName} Q1 pts + Q1 ast`;
+  }
+  return `${a.playerName} ${a.market}${a.line}+ vs ${b.playerName} ${b.market}${b.line}+`;
+}
+
+export function multiClashSummary(legs: PickLeg[]): string {
+  for (let i = 0; i < legs.length; i++) {
+    for (let j = i + 1; j < legs.length; j++) {
+      if (legsClash(legs[i], legs[j])) {
+        return describeClash(legs[i], legs[j]);
+      }
+    }
+  }
+  return "unknown clash";
+}

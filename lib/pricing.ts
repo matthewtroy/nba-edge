@@ -51,7 +51,10 @@ export function buildLegsForPlayer(
     logs: PlayerGameLog[];
     reasons: string[];
     tags: string[];
-    flags: Partial<PickLeg>;
+    flags: Partial<PickLeg> & {
+      projectedMinutes?: number;
+      starterEligible?: boolean;
+    };
     bestOdds?: Map<string, { price: number; bookie: string }>;
     allOdds?: Map<string, Record<string, number>>;
     oddsPulledAt?: string;

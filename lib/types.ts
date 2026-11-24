@@ -67,6 +67,8 @@ export interface PickLeg {
   b2b?: boolean;
   blowoutRisk?: boolean;
   ageB2B?: boolean;
+  projectedMinutes?: number;
+  starterEligible?: boolean;
 }
 
 export type MultiType =
@@ -116,6 +118,7 @@ export interface MetaJson {
   whatChanged?: string[];
   nbaOfficialUrl?: string;
   nbaOfficialLastTriedUrl?: string;
+  oddsCoverageNote?: string;
 }
 
 export interface HistoryLeg {

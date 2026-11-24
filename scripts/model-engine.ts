@@ -19,6 +19,7 @@ import {
   detectReturningFromNotes,
 } from "../lib/player-eligibility.js";
 import { buildWhatChanged } from "../lib/what-changed.js";
+import { qualifiesStarter } from "../lib/starter-eligibility.js";
 
 export interface ModelPlayer extends PlayerProfile {
   gameId: string;
@@ -173,6 +174,8 @@ export function runModel(input: ModelRunInput): {
             b2b,
             blowoutRisk: ctxAdj.blowoutRisk,
             ageB2B: ctxAdj.ageB2B,
+            projectedMinutes: ctxAdj.minutes,
+            starterEligible: qualifiesStarter(p.gameLogs, ctxAdj.minutes),
           },
           bestOdds: input.oddsMap,
           allOdds: input.allOddsMap,

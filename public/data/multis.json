@@ -4,34 +4,34 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
-        "3138160-ast-3",
-        "3936299-ast-5",
         "5107199-pts-15",
-        "4066372-ast-3",
-        "4277951-reb-3"
+        "4712849-pts-15",
+        "3112335-pts-25",
+        "4065648-ast-5",
+        "4277905-ast-7"
       ],
-      "combinedProbability": 0.14659882478244,
-      "combinedFairPrice": 6.82,
-      "combinedTakeAt": 10,
+      "combinedProbability": 0.147783722004072,
+      "combinedFairPrice": 6.77,
+      "combinedTakeAt": 9.99,
       "oneInX": 7,
-      "stakeSuggestion": 33.33,
-      "summary": "5 legs @ 10.00+ combined",
+      "stakeSuggestion": 33.37,
+      "summary": "5 legs @ 9.99+ combined",
       "smallSlateNote": true
     },
     {
       "type": "booster",
       "label": "Booster",
       "legs": [
-        "3138160-ast-5",
-        "3936299-ast-7",
         "5107199-pts-20",
-        "4066372-ast-3",
-        "4277951-reb-3"
+        "4712849-pts-20",
+        "3112335-pts-25",
+        "4065648-ast-7",
+        "4277905-ast-7"
       ],
-      "combinedProbability": 0.016303499135315997,
-      "combinedFairPrice": 61.34,
-      "combinedTakeAt": 90.02,
-      "oneInX": 61,
+      "combinedProbability": 0.014200699194000004,
+      "combinedFairPrice": 70.42,
+      "combinedTakeAt": 103.93,
+      "oneInX": 70,
       "stakeSuggestion": 5,
       "summary": "Main Play +1 rung — $5 straight",
       "smallSlateNote": true
@@ -41,7 +41,7 @@
     {
       "type": "q1Multi",
       "label": "Q1 Multi",
-      "reason": "Q1 legs clash"
+      "reason": "Q1 legs clash: Caleb Martin reb + Jamal Murray reb (same game)"
     },
     {
       "type": "boostSgm",

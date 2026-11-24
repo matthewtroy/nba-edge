@@ -25,6 +25,7 @@ function leg(
     takeAt,
     tags: [],
     reasons: [],
+    starterEligible: true,
   };
 }
 

@@ -25,6 +25,7 @@ function synthLeg(
     takeAt,
     tags: [],
     reasons: [],
+    starterEligible: true,
   };
 }
 

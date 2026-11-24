@@ -39,6 +39,14 @@ jobs:
 
       - run: npm run build
 
+      - name: Upload odds coverage
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: odds-coverage
+          path: public/data/odds-coverage.json
+          if-no-files-found: ignore
+
       - name: Persist history to data branch
         run: |
           git config user.name "github-actions[bot]"

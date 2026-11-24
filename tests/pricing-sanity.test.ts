@@ -19,6 +19,7 @@ describe("check news exclusion", () => {
       takeAt: 1.62,
       tags: ["Check news"],
       reasons: [],
+      starterEligible: true,
     };
     expect(qualifiesMainPlayLeg(leg)).toBe(false);
   });

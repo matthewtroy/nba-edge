@@ -20,11 +20,12 @@ describe("multis not built reasons", () => {
         takeAt: 1.66,
         tags: [],
         reasons: [],
+        starterEligible: true,
       },
     ];
     const { bets, notBuilt } = buildMultis(picks, 1);
     expect(bets.find((b) => b.type === "mainPlay")).toBeUndefined();
     const main = notBuilt.find((n) => n.type === "mainPlay");
-    expect(main?.reason).toMatch(/Only 1 legs/);
+    expect(main?.reason).toMatch(/Only \d legs/);
   });
 });

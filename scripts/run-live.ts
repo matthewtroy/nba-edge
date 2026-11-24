@@ -40,6 +40,7 @@ import type { InjuryEntry, SlateGame } from "../lib/types.js";
 import { normalizePlayerName } from "../lib/player-names.js";
 import { loadAliasMap } from "../lib/player-names.js";
 import { filterSlateToTodaySydney, slateTeamIds } from "../lib/slate-today.js";
+import { buildOddsCoverage } from "../lib/odds-coverage.js";
 import { buildRosterIndex, mergeInjuryEntry } from "../lib/injury-match.js";
 
 const ET = "America/New_York";
@@ -242,6 +243,7 @@ export async function runLivePipeline(
 
   let oddsMap = oddsMapFromRecord(cache.oddsMap ?? {});
   let allOddsMap = new Map<string, Record<string, number>>();
+  let oddsPayloads: unknown[] = [];
   let oddsPulledAt = cache.lastPulled;
   const apiKey = loadOddsApiKey(rootDir);
 
@@ -274,6 +276,7 @@ export async function runLivePipeline(
         oddsPulledAt = now.toISOString();
         cache.lastPulled = oddsPulledAt;
         cache.oddsMap = oddsMapToRecord(oddsMap);
+        oddsPayloads = payloads;
         sources.odds = "ok";
       }
     } catch {
@@ -311,6 +314,8 @@ export async function runLivePipeline(
   const slateTeams = slateTeamIds(slate);
   injuries = injuries.filter((i) => slateTeams.has(i.teamId));
 
+  const oddsCoverage = buildOddsCoverage(oddsPayloads, oddsPulledAt ?? now.toISOString());
+
   const { picks, multis, multisPayload, meta, whatChanged } = runModel({
     rootDir,
     slate,
@@ -336,6 +341,10 @@ export async function runLivePipeline(
   fs.writeFileSync(path.join(outDir, "injuries.json"), JSON.stringify(injuries, null, 2));
   fs.writeFileSync(path.join(outDir, "picks.json"), JSON.stringify(picks, null, 2));
   fs.writeFileSync(
+    path.join(outDir, "odds-coverage.json"),
+    JSON.stringify(oddsCoverage, null, 2)
+  );
+  fs.writeFileSync(
     path.join(outDir, "multis.json"),
     JSON.stringify({ bets: multis, notBuilt: multisPayload.notBuilt }, null, 2)
   );
@@ -347,6 +356,7 @@ export async function runLivePipeline(
         whatChanged,
         ...(nbaOfficialUrl ? { nbaOfficialUrl } : {}),
         ...(nbaOfficialLastTriedUrl ? { nbaOfficialLastTriedUrl } : {}),
+        ...(oddsCoverage.note ? { oddsCoverageNote: oddsCoverage.note } : {}),
       },
       null,
       2

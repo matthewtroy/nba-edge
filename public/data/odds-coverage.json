@@ -1,0 +1,23 @@
+{
+  "pulledAt": "2026-11-24T23:24:15.917Z",
+  "eventsProbed": 0,
+  "marketsRequested": [
+    "player_points",
+    "player_rebounds",
+    "player_assists",
+    "player_points_alternate",
+    "player_rebounds_alternate",
+    "player_assists_alternate",
+    "player_threes",
+    "player_threes_alternate"
+  ],
+  "marketsPresent": {},
+  "uniquePlayersByCoreMarket": {
+    "pts": 0,
+    "reb": 0,
+    "ast": 0
+  },
+  "corePlayerLines": 0,
+  "threesPlayerLines": 0,
+  "onlyThreesOffered": false
+}

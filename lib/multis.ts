@@ -1,5 +1,6 @@
 import type { PickLeg, MultiBet, MultiType, MultiNotBuilt } from "./types.js";
-import { legsClash, multiHasClash } from "./clash.js";
+import { legsClash, multiClashSummary, multiHasClash } from "./clash.js";
+import { isMainPlayStatLine } from "./starter-eligibility.js";
 import { enforceExposureCap } from "./exposure.js";
 
 export interface MultiBuildResult {
@@ -160,6 +161,9 @@ export function buildMultis(
 
 export function qualifiesMainPlayLeg(leg: PickLeg): boolean {
   return (
+    leg.starterEligible === true &&
+    isMainPlayStatLine(leg.market, leg.line) &&
+    isCoreMarket(leg.market) &&
     leg.probability >= 0.6 &&
     leg.fairPrice >= 1.4 &&
     leg.fairPrice <= 2.5 &&
@@ -388,6 +392,16 @@ function buildBooster(
   };
 }
 
+function pickQ1OnePerTeam(byTeam: Map<string, PickLeg[]>, pickIndex: Map<string, number>): PickLeg[] {
+  const legs: PickLeg[] = [];
+  for (const [key, arr] of byTeam) {
+    arr.sort(sortLegs);
+    const idx = pickIndex.get(key) ?? 0;
+    if (arr[idx]) legs.push(arr[idx]);
+  }
+  return legs;
+}
+
 function buildQ1Multi(picks: PickLeg[]): { bet: MultiBet | null; reason: string } {
   const q1 = picks.filter((l) => l.market.startsWith("q1") && l.fairPrice >= 1.8 && l.fairPrice <= 4);
   const byTeam = new Map<string, PickLeg[]>();
@@ -397,18 +411,32 @@ function buildQ1Multi(picks: PickLeg[]): { bet: MultiBet | null; reason: string 
     arr.push(l);
     byTeam.set(key, arr);
   }
-  const legs: PickLeg[] = [];
-  for (const [, arr] of byTeam) {
-    arr.sort(sortLegs);
-    if (arr[0]) legs.push(arr[0]);
+  if (byTeam.size < 3) {
+    return {
+      bet: null,
+      reason: `Only ${byTeam.size} teams with Q1 fair 1.80–4.00 (need 3–6)`,
+    };
   }
-  if (legs.length < 3) {
-    return { bet: null, reason: `Only ${legs.length} teams with Q1 fair 1.80–4.00 (need 3–6)` };
+
+  const pickIndex = new Map<string, number>();
+  let legs = pickQ1OnePerTeam(byTeam, pickIndex).slice(0, 6);
+  let clashDetail = "";
+  if (multiHasClash(legs)) {
+    clashDetail = multiClashSummary(legs);
+    let retried = false;
+    for (const key of byTeam.keys()) {
+      pickIndex.set(key, (pickIndex.get(key) ?? 0) + 1);
+    }
+    const retry = pickQ1OnePerTeam(byTeam, pickIndex).slice(0, 6);
+    if (retry.length >= 3 && !multiHasClash(retry)) {
+      legs = retry;
+      retried = true;
+    }
+    if (!retried) {
+      return { bet: null, reason: `Q1 legs clash: ${clashDetail}` };
+    }
   }
   const use = legs.slice(0, 6);
-  if (multiHasClash(use)) {
-    return { bet: null, reason: "Q1 legs clash" };
-  }
   const { p, fair, takeAt } = combinedPrice(use);
   const book = bestCombinedBookie(use);
   return {
@@ -429,35 +457,64 @@ function buildQ1Multi(picks: PickLeg[]): { bet: MultiBet | null; reason: string 
 }
 
 function buildCrossGameSgm(picks: PickLeg[]): { bet: MultiBet | null; reason: string } {
+  const pool = picks.filter(
+    (l) =>
+      l.starterEligible &&
+      isMainPlayStatLine(l.market, l.line) &&
+      l.fairPrice >= 1.35 &&
+      l.fairPrice <= 2.5
+  );
   const byGame = new Map<string, PickLeg[]>();
-  for (const l of picks) {
-    if (l.fairPrice < 1.35 || l.fairPrice > 2.5) continue;
+  for (const l of pool) {
     const arr = byGame.get(l.gameId) ?? [];
     arr.push(l);
     byGame.set(l.gameId, arr);
   }
   if (byGame.size < 2) {
-    return { bet: null, reason: "Need 2+ games with legs fair 1.35–2.50" };
+    return {
+      bet: null,
+      reason: "Need 2+ games with starter main lines fair 1.35–2.50",
+    };
   }
-  const chosen: PickLeg[] = [];
-  for (const [, legs] of byGame) {
-    legs.sort(sortLegs);
-    let added = 0;
-    for (const leg of legs) {
-      if (added >= 2) break;
-      const cand = [...chosen, leg];
-      if (multiHasClash(cand)) continue;
-      chosen.push(leg);
-      added++;
+  const gameIds = [...byGame.keys()];
+  let best: PickLeg[] | null = null;
+  let bestCombo = 0;
+
+  function dfs(gi: number, chosen: PickLeg[], perGame: Map<string, number>) {
+    if (chosen.length >= 4) {
+      const combo = combinedBetPrice(chosen);
+      if (combo >= 10 && combo <= 30 && !multiHasClash(chosen)) {
+        if (combo > bestCombo) {
+          bestCombo = combo;
+          best = [...chosen];
+        }
+      }
+    }
+    if (chosen.length >= 6) return;
+    for (let i = gi; i < gameIds.length; i++) {
+      const gid = gameIds[i];
+      const count = perGame.get(gid) ?? 0;
+      if (count >= 2) continue;
+      const legs = (byGame.get(gid) ?? []).sort(sortLegs);
+      for (const leg of legs.slice(0, 10)) {
+        const next = [...chosen, leg];
+        if (multiHasClash(next)) continue;
+        perGame.set(gid, count + 1);
+        dfs(i, next, perGame);
+        perGame.set(gid, count);
+      }
     }
   }
-  if (chosen.length < 4) {
-    return { bet: null, reason: `Only ${chosen.length} legs (need 4+, 2/game)` };
+  dfs(0, [], new Map());
+
+  if (!best || best.length < 4) {
+    return {
+      bet: null,
+      reason: `No cross-game combo: 4+ legs, 2/game, combined 10–30 (${pool.length} starter lines)`,
+    };
   }
+  const chosen = best;
   const combo = combinedBetPrice(chosen);
-  if (combo < 10 || combo > 30) {
-    return { bet: null, reason: `Combined ${combo.toFixed(1)} outside 10–30` };
-  }
   const { p, fair, takeAt } = combinedPrice(chosen);
   const book = bestCombinedBookie(chosen);
   return {

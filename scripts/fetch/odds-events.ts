@@ -1,6 +1,9 @@
 import { normalizePlayerName } from "../../lib/player-names.js";
 import { isOverOutcome, overLineToModelRung } from "../../lib/odds.js";
+import { ODDS_CORE_MARKETS, ODDS_THREES_MARKETS } from "../../lib/odds-coverage.js";
 import type { SlateGame } from "../../lib/types.js";
+
+export { ODDS_CORE_MARKETS, ODDS_THREES_MARKETS };
 
 export async function listOddsEvents(
   apiKey: string
@@ -33,16 +36,7 @@ export async function fetchOddsForEvent(
   apiKey: string,
   eventId: string
 ): Promise<{ data: unknown; remaining?: number }> {
-  const markets = [
-    "player_points",
-    "player_rebounds",
-    "player_assists",
-    "player_threes",
-    "player_points_alternate",
-    "player_rebounds_alternate",
-    "player_assists_alternate",
-    "player_threes_alternate",
-  ].join(",");
+  const markets = [...ODDS_CORE_MARKETS, ...ODDS_THREES_MARKETS].join(",");
   const url = `https://api.the-odds-api.com/v4/sports/basketball_nba/events/${eventId}/odds?apiKey=${apiKey}&regions=au&oddsFormat=decimal&markets=${markets}`;
   const res = await fetch(url);
   const remaining = res.headers.get("x-requests-remaining");
@@ -79,7 +73,11 @@ export function extractOddsBundles(events: unknown[]): {
           .replace("threes", "3pm");
         for (const out of market.outcomes ?? []) {
           if (!isOverOutcome(out.name ?? "")) continue;
-          const player = out.description ?? "";
+          let player = out.description?.trim() ?? "";
+          if (!player && out.name) {
+            const m = out.name.match(/^(.+?)\s+Over/i);
+            player = (m?.[1] ?? out.name.split(" ").slice(0, 2).join(" ")).trim();
+          }
           if (!player) continue;
           const raw = out.point ?? Number(out.name.match(/over\s+(\d+(?:\.\d+)?)/i)?.[1]);
           if (raw == null || !Number.isFinite(raw)) continue;
