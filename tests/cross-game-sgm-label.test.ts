@@ -26,5 +26,6 @@ describe("Cross-Game SGM label restored", () => {
     expect(sys).toMatch(/type: crossGameSgm/);
     expect(sys).not.toMatch(/Best Double Up \(`type: crossGameSgm`\)/);
     expect(sys).not.toMatch(/Label \*\*Best Double Up\*\* \(`type: crossGameSgm`\)/);
+    expect(sys).toMatch(/`doubleUp`/);
   });
 });

@@ -5,6 +5,7 @@ import { getMultiBuildTraces } from "./multi-build-trace.js";
 
 const TYPE_LABEL: Record<MultiType, string> = {
   mainPlay: "Main Play",
+  doubleUp: "Best Double Up",
   booster: "Booster",
   q1Multi: "Q1 Multi",
   crossGameSgm: "Cross-Game SGM Multi",

@@ -4,6 +4,12 @@
 export const MAIN_PLAY_COMBINED_MIN = 5;
 export const MAIN_PLAY_COMBINED_MAX = 20;
 
+/** Best Double Up combined bookie total band (~double your stake). */
+export const DOUBLE_UP_MIN = 1.8;
+export const DOUBLE_UP_MAX = 2.2;
+/** Score penalty per leg beyond 2 when ranking Double Up candidates. */
+export const DOUBLE_UP_EXTRA_LEG_PP = 0.03;
+
 /** Per-leg fair band for Main Play (@ chosen bookie decimal when priced). */
 export const MAIN_PLAY_LEG_FAIR_MIN = 1.4;
 export const MAIN_PLAY_LEG_FAIR_MAX = 2.5;

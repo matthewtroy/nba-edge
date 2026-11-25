@@ -6,6 +6,7 @@ export const MAX_PLAYER_BETS_EXCLUDING_BOOSTER = 999;
 /** Higher-priority types are kept when exposure forces a drop (lower index = keep). */
 export const EXPOSURE_KEEP_PRIORITY: MultiType[] = [
   "mainPlay",
+  "doubleUp",
   "booster",
   "crossGameSgm",
   "boostSgm",

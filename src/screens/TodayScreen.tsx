@@ -16,6 +16,7 @@ import { formatHomeSettleSummary } from "@lib/home-settle-summary";
 
 const ORDER = [
   "mainPlay",
+  "doubleUp",
   "booster",
   "q1Multi",
   "crossGameSgm",

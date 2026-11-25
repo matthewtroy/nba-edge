@@ -11,6 +11,7 @@ import { pickLegFromSnapshot } from "./official-leg-snapshot.js";
 
 export const BET_LABELS: Record<MultiType, string> = {
   mainPlay: "Main Play",
+  doubleUp: "Best Double Up",
   booster: "Booster",
   q1Multi: "Q1 Multi",
   crossGameSgm: "Cross-Game SGM Multi",

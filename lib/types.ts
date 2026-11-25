@@ -112,6 +112,7 @@ export interface PickLeg {
 
 export type MultiType =
   | "mainPlay"
+  | "doubleUp"
   | "booster"
   | "q1Multi"
   | "crossGameSgm"

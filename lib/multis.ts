@@ -53,6 +53,9 @@ import {
 import {
   MAIN_PLAY_COMBINED_MIN,
   MAIN_PLAY_COMBINED_MAX,
+  DOUBLE_UP_MIN,
+  DOUBLE_UP_MAX,
+  DOUBLE_UP_EXTRA_LEG_PP,
 } from "./pricing-config.js";
 
 export interface MultiBuildResult {
@@ -225,6 +228,7 @@ function meetsFloor(leg: PickLeg): boolean {
 
 const LABELS: Record<MultiType, string> = {
   mainPlay: "Main Play",
+  doubleUp: "Best Double Up",
   booster: "Booster",
   q1Multi: "Q1 Multi",
   crossGameSgm: "Cross-Game SGM Multi",
@@ -255,6 +259,10 @@ export function buildMultis(
     multis.push(main.bet);
     mainPlayConfluenceRelaxed = main.confluenceRelaxed === true;
   } else notBuilt.push({ type: "mainPlay", label: LABELS.mainPlay, reason: main.reason });
+
+  const doubleUp = buildDoubleUp(byP, minEdgeFraction, catalog);
+  if (doubleUp.bet) multis.push(doubleUp.bet);
+  else notBuilt.push({ type: "doubleUp", label: LABELS.doubleUp, reason: doubleUp.reason });
 
   if (main.bet) {
     const booster = buildBooster(main.bet, pool, catalog);
@@ -392,6 +400,144 @@ function mainPlayPoolAtBookie(
     .map((l) => asBookieLeg(l, bookie, catalog))
     .filter((l): l is PickLeg => l != null);
   return priced.sort(sortLegs);
+}
+
+function doubleUpScore(legs: PickLeg[]): number {
+  const p = combinedProb(legs);
+  const extra = Math.max(0, legs.length - 2);
+  return p - extra * DOUBLE_UP_EXTRA_LEG_PP;
+}
+
+function qualifiesDoubleUpStructural(leg: PickLeg): boolean {
+  return (
+    leg.starterEligible === true &&
+    isMainPlayStatLine(leg.market, leg.line) &&
+    !leg.market.startsWith("q1") &&
+    passesFormGuard(leg) &&
+    !leg.tags.includes("Check news")
+  );
+}
+
+function buildDoubleUp(
+  picks: PickLeg[],
+  minEdgeFraction: number,
+  catalog: PickLeg[]
+): { bet: MultiBet | null; reason: string } {
+  const structural = picks.filter(qualifiesDoubleUpStructural);
+  if (structural.length < 2) {
+    const reason = `Only ${structural.length} starter main lines for Double Up (need 2+)`;
+    pushMultiBuildTrace({
+      type: "doubleUp",
+      eligible: structural.length,
+      bestEdgePool: 0,
+      clashCandidates: 0,
+      rangeCandidates: 0,
+      built: false,
+      detail: reason,
+    });
+    return { bet: null, reason };
+  }
+
+  type DoubleCand = {
+    legs: PickLeg[];
+    bookie: string;
+    p: number;
+    total: number;
+    score: number;
+  };
+  const holder: { best: DoubleCand | null } = { best: null };
+  let maxEdgePool = 0;
+  let maxEdgeBookie = "";
+  let maxRange = 0;
+  let clashSkipped = 0;
+
+  for (const bookie of bookiesByCoverage(structural)) {
+    const pool = structural
+      .filter((l) => legMeetsBookieEdge(l, bookie, minEdgeFraction))
+      .map((l) => asBookieLeg(l, bookie, catalog))
+      .filter((l): l is PickLeg => l != null)
+      .sort(sortLegs)
+      .slice(0, 24);
+    if (pool.length > maxEdgePool) {
+      maxEdgePool = pool.length;
+      maxEdgeBookie = bookie;
+    }
+    if (pool.length < 2) continue;
+
+    const tryCand = (chosen: PickLeg[]) => {
+      if (multiHasClash(chosen)) {
+        clashSkipped += 1;
+        return;
+      }
+      const total = comboProduct(chosen, bookie);
+      if (total < DOUBLE_UP_MIN || total > DOUBLE_UP_MAX) return;
+      maxRange += 1;
+      const p = combinedProb(chosen);
+      const score = doubleUpScore(chosen);
+      const cur = holder.best;
+      const better =
+        !cur ||
+        score > cur.score + 1e-12 ||
+        (Math.abs(score - cur.score) < 1e-12 &&
+          (p > cur.p + 1e-12 ||
+            (Math.abs(p - cur.p) < 1e-12 && total > cur.total)));
+      if (better) holder.best = { legs: chosen, bookie, p, total, score };
+    };
+
+    for (let i = 0; i < pool.length; i++) {
+      for (let j = i + 1; j < pool.length; j++) {
+        tryCand([pool[i], pool[j]]);
+        for (let k = j + 1; k < pool.length; k++) {
+          tryCand([pool[i], pool[j], pool[k]]);
+        }
+      }
+    }
+  }
+
+  const best = holder.best;
+  if (!best) {
+    const reason =
+      maxEdgePool < 2
+        ? `No bookie with 2+ Double Up legs at edge (best ${maxEdgeBookie}=${maxEdgePool})`
+        : `No 2–3 leg Double Up @ $${DOUBLE_UP_MIN}–$${DOUBLE_UP_MAX} (edge best ${maxEdgeBookie}=${maxEdgePool}, range-cands ${maxRange})`;
+    pushMultiBuildTrace({
+      type: "doubleUp",
+      eligible: structural.length,
+      bestEdgePool: maxEdgePool,
+      bestBookie: maxEdgeBookie,
+      clashCandidates: clashSkipped,
+      rangeCandidates: maxRange,
+      built: false,
+      detail: reason,
+    });
+    return { bet: null, reason };
+  }
+
+  const { p, fair, takeAt } = combinedPrice(best.legs);
+  pushMultiBuildTrace({
+    type: "doubleUp",
+    eligible: structural.length,
+    bestEdgePool: maxEdgePool,
+    bestBookie: best.bookie,
+    clashCandidates: clashSkipped,
+    rangeCandidates: maxRange,
+    built: true,
+    detail: `${best.legs.length} legs @ ${best.bookie} $${best.total.toFixed(2)}`,
+  });
+
+  return {
+    bet: {
+      type: "doubleUp",
+      label: "Best Double Up",
+      legs: best.legs.map((l) => l.id),
+      combinedProbability: p,
+      combinedFairPrice: fair,
+      combinedTakeAt: takeAt,
+      ...overlayForBookie(best.legs, best.bookie, catalog),
+      summary: `${best.legs.length} legs · aim ~$2 @ one bookie`,
+    },
+    reason: "",
+  };
 }
 
 function buildMainPlay(

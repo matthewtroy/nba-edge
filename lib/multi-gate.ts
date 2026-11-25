@@ -11,7 +11,10 @@ import { CROSS_SGM_BAND_MIN, CROSS_SGM_BAND_MAX } from "./same-game-sgm-search.j
 import {
   MAIN_PLAY_COMBINED_MIN,
   MAIN_PLAY_COMBINED_MAX,
+  DOUBLE_UP_MIN,
+  DOUBLE_UP_MAX,
 } from "./pricing-config.js";
+import { isMainPlayStatLine } from "./starter-eligibility.js";
 import { combinedFairAndTakeAt, DEFAULT_MIN_EDGE } from "./multi-combined.js";
 
 const MIN_LEG_FAIR = 1.3;
@@ -115,6 +118,32 @@ function checkTypeRules(
     }
     if (!legs.every((l) => qualifiesMainPlayLeg(l, multi.bestBookie))) {
       issues.push("Main Play: leg fails starter/main-line/eligibility");
+    }
+  }
+  if (type === "doubleUp") {
+    if (legs.length < 2 || legs.length > 3) {
+      issues.push(`Best Double Up: ${legs.length} legs (need 2–3)`);
+    }
+    const bookTotal =
+      multi.bestBookieTotal ?? bestFeedMultiQuote(legs)?.total ?? null;
+    if (
+      bookTotal == null ||
+      bookTotal < DOUBLE_UP_MIN ||
+      bookTotal > DOUBLE_UP_MAX
+    ) {
+      issues.push(
+        `Best Double Up: bookie total ${bookTotal != null ? bookTotal.toFixed(2) : "?"} not $${DOUBLE_UP_MIN}–$${DOUBLE_UP_MAX}`
+      );
+    }
+    if (
+      !legs.every(
+        (l) =>
+          l.starterEligible === true &&
+          isMainPlayStatLine(l.market, l.line) &&
+          !l.market.startsWith("q1")
+      )
+    ) {
+      issues.push("Best Double Up: leg fails starter/main-line eligibility");
     }
   }
   if (type === "booster" && fair < 1) {

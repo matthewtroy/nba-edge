@@ -6,7 +6,7 @@ Phone-first static app + GitHub Actions pipeline. Canonical betting rules below;
 
 ## 1. Purpose & architecture
 
-- **Purpose:** Injury-aware NBA player-prop projections → fair / take-at prices → standard multis (Main Play, Booster, Q1 Multi, Cross-Game SGM, Best SGM, one Longshot). Copy-friendly cards; no auto betting.
+- **Purpose:** Injury-aware NBA player-prop projections → fair / take-at prices → standard multis (Main Play, Best Double Up, Booster, Q1 Multi, Cross-Game SGM, Best SGM, one Longshot). Copy-friendly cards; no auto betting.
 - **Runtime today:** `npm run pipeline` writes JSON under `public/data/{slateDate}/`; Vite/React UI reads that JSON. GitHub Actions runs pipeline + Pages deploy.
 - **Planned:** Supabase project **NBA Edge** (`dzikozvlfrvsstkhzkzj`) for pipeline storage, Auth, Stripe **entitlements**, subscriber APIs, and optional Discord—see `docs/SCHEMA.md` and `supabase/migrations/`. Migrations only in git; no agent `db push`.
 
@@ -91,9 +91,13 @@ Same **Main Play bookie** and players; **+1 rung** when that Main leg’s bookie
 
 No AU Q1 feed — card shows **Take fair×1.08** prominently.
 
+### Best Double Up
+
+New type **`doubleUp`** (not a rename of Cross-Game SGM). Label **Best Double Up**. Home order: **Main Play → Best Double Up → …**. Combined bookie total **$1.80–$2.20** (`DOUBLE_UP_MIN`/`MAX`); 2–3 legs with `DOUBLE_UP_EXTRA_LEG_PP` score penalty for a 3rd leg (`lib/pricing-config.ts`).
+
 ### Cross-Game SGM
 
-Label **Cross-Game SGM Multi** (`type: crossGameSgm`). Home card order: **Main Play → Booster → Q1 Multi → Cross-Game SGM → …** Up to **5 games**, 1–2 legs each, combined **$15–$50** at one AU bookie.
+Label **Cross-Game SGM Multi** (`type: crossGameSgm`). Up to **5 games**, 1–2 legs each, combined **$15–$50** at one AU bookie.
 
 ### Best SGM
 
