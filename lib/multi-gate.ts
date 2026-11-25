@@ -8,6 +8,10 @@ import {
   qualifiesCrossBoostLeg,
 } from "./main-play-eligibility.js";
 import { CROSS_SGM_BAND_MIN, CROSS_SGM_BAND_MAX } from "./same-game-sgm-search.js";
+import {
+  MAIN_PLAY_COMBINED_MIN,
+  MAIN_PLAY_COMBINED_MAX,
+} from "./pricing-config.js";
 import { combinedFairAndTakeAt, DEFAULT_MIN_EDGE } from "./multi-combined.js";
 
 const MIN_LEG_FAIR = 1.3;
@@ -98,9 +102,13 @@ function checkTypeRules(
     if (legs.length < 3 || legs.length > 5) issues.push(`Main Play: ${legs.length} legs (need 3–5)`);
     const bookTotal =
       multi.bestBookieTotal ?? bestFeedMultiQuote(legs)?.total ?? null;
-    if (bookTotal == null || bookTotal < 7 || bookTotal > 20) {
+    if (
+      bookTotal == null ||
+      bookTotal < MAIN_PLAY_COMBINED_MIN ||
+      bookTotal > MAIN_PLAY_COMBINED_MAX
+    ) {
       issues.push(
-        `Main Play: bookie total ${bookTotal != null ? bookTotal.toFixed(2) : "?"} not $7–$20`
+        `Main Play: bookie total ${bookTotal != null ? bookTotal.toFixed(2) : "?"} not $${MAIN_PLAY_COMBINED_MIN}–$${MAIN_PLAY_COMBINED_MAX}`
       );
     }
     if (!legs.every((l) => qualifiesMainPlayLeg(l, multi.bestBookie))) {

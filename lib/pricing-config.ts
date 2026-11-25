@@ -1,5 +1,19 @@
 /** Single source for blend weights and feature gates (NBA Edge pricing). */
 
+/** Main Play bookie combined total (decimal product at chosen AU bookie). */
+export const MAIN_PLAY_COMBINED_MIN = 5;
+export const MAIN_PLAY_COMBINED_MAX = 20;
+
+/** Per-leg fair band for Main Play (@ chosen bookie decimal when priced). */
+export const MAIN_PLAY_LEG_FAIR_MIN = 1.4;
+export const MAIN_PLAY_LEG_FAIR_MAX = 2.5;
+
+/** Main Play: last-10 hit rate within this gap of model p (68.5% → 6/10). */
+export const MAIN_PLAY_L10_GAP_PP = 0.1;
+
+/** Same p threshold as `High probability` tag in `lib/pricing.ts`. */
+export const MAIN_PLAY_HIGH_PROB_P = 0.72;
+
 /** P_final = MODEL_WEIGHT × P_model + (1 − MODEL_WEIGHT) × P_market */
 export const MODEL_WEIGHT = 0.6;
 export const MARKET_WEIGHT = 1 - MODEL_WEIGHT;

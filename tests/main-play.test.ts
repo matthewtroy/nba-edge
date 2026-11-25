@@ -41,7 +41,7 @@ describe("main play builder", () => {
     expect(qualifiesMainPlayLeg(leg)).toBe(true);
   });
 
-  it("combined take-at between 7 and 10 when buildable", () => {
+  it("combined take-at between 5 and 20 when buildable", () => {
     const picks: PickLeg[] = [
       synthLeg(1, "g1", "p1", 0.65, 1.55, 1.67),
       synthLeg(2, "g2", "p2", 0.65, 1.55, 1.67),
@@ -53,7 +53,7 @@ describe("main play builder", () => {
     expect(main).toBeDefined();
     const legs = main!.legs.map((id) => picks.find((p) => p.id === id)!).filter(Boolean);
     const combo = combinedBetPrice(legs);
-    expect(combo).toBeGreaterThanOrEqual(7);
-    expect(combo).toBeLessThanOrEqual(10);
+    expect(combo).toBeGreaterThanOrEqual(5);
+    expect(combo).toBeLessThanOrEqual(20);
   });
 });

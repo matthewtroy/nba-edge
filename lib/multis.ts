@@ -50,6 +50,10 @@ import {
   combinedFairAndTakeAt,
   DEFAULT_MIN_EDGE,
 } from "./multi-combined.js";
+import {
+  MAIN_PLAY_COMBINED_MIN,
+  MAIN_PLAY_COMBINED_MAX,
+} from "./pricing-config.js";
 
 export interface MultiBuildResult {
   bets: MultiBet[];
@@ -442,7 +446,7 @@ function buildMainPlay(
     const reason =
       maxEdgePool < 3
         ? `No bookie with 3+ main legs at edge (best ${maxEdgeBookie}=${maxEdgePool})`
-        : `No 3–5 leg main @ edge+clash+bookie total $7–$20 (edge best ${maxEdgeBookie}=${maxEdgePool}, range-cands ${maxRange})`;
+        : `No 3–5 leg main @ edge+clash+bookie total $${MAIN_PLAY_COMBINED_MIN}–$${MAIN_PLAY_COMBINED_MAX} (edge best ${maxEdgeBookie}=${maxEdgePool}, range-cands ${maxRange})`;
     pushMultiBuildTrace({
       type: "mainPlay",
       eligible: eligible.length,
@@ -507,16 +511,16 @@ function findMainPlaySubset(
     if (depth >= 3 && depth <= 5) {
       const combo = comboProduct(chosen, bookie);
       if (
-        combo >= 7 &&
-        combo <= 20 &&
+        combo >= MAIN_PLAY_COMBINED_MIN &&
+        combo <= MAIN_PLAY_COMBINED_MAX &&
         threesCount(chosen) <= 1 &&
         !multiHasClash(chosen) &&
         !hasQuestionableAnchor(chosen)
       ) {
         candidates.push([...chosen]);
       } else if (
-        combo >= 7 &&
-        combo <= 20 &&
+        combo >= MAIN_PLAY_COMBINED_MIN &&
+        combo <= MAIN_PLAY_COMBINED_MAX &&
         threesCount(chosen) <= 1 &&
         multiHasClash(chosen)
       ) {

@@ -4,6 +4,12 @@ import { passesFormGuard } from "./form-guard.js";
 import { legBookiePriceInBand } from "./leg-bookie-band.js";
 import { mainPlayReasonBeyondRankAvg } from "./leg-display.js";
 import { hasValueAtBookie } from "./value-at-bookie.js";
+import {
+  MAIN_PLAY_HIGH_PROB_P,
+  MAIN_PLAY_L10_GAP_PP,
+  MAIN_PLAY_LEG_FAIR_MIN,
+  MAIN_PLAY_LEG_FAIR_MAX,
+} from "./pricing-config.js";
 
 export function isMainPlayCoreMarket(market: string): boolean {
   return market === "pts" || market === "reb" || market === "ast" || market === "3pm";
@@ -68,11 +74,12 @@ export function mainPlayStructuralOk(leg: PickLeg): boolean {
   );
 }
 
-/** Same p threshold as `High probability` tag in `lib/pricing.ts`. */
-export const MAIN_PLAY_HIGH_PROB_P = 0.72;
-
-/** Main Play: last-10 hit rate within 10pp of model p (68.5% → 6/10). */
-export const MAIN_PLAY_L10_GAP_PP = 0.1;
+export {
+  MAIN_PLAY_HIGH_PROB_P,
+  MAIN_PLAY_L10_GAP_PP,
+  MAIN_PLAY_LEG_FAIR_MIN,
+  MAIN_PLAY_LEG_FAIR_MAX,
+} from "./pricing-config.js";
 
 function lastTenHits(leg: PickLeg): number | null {
   const ticks = leg.recentTenVsLine;
@@ -110,7 +117,7 @@ export function mainPlayQualifiersOk(leg: PickLeg, bookie?: string): boolean {
 export function qualifiesMainPlayLeg(leg: PickLeg, bookie?: string): boolean {
   return (
     mainPlayQualifiersOk(leg, bookie) &&
-    legBookiePriceInBand(leg, bookie, 1.4, 2.5)
+    legBookiePriceInBand(leg, bookie, MAIN_PLAY_LEG_FAIR_MIN, MAIN_PLAY_LEG_FAIR_MAX)
   );
 }
 
