@@ -3,6 +3,7 @@ import {
   createSupabaseClient,
   finalizePipelineSupabaseSync,
   syncRunToSupabase,
+  upsertOddsBudgetForMonth,
   type SupabaseUpsertClient,
 } from "../scripts/supabase-sync";
 import type { SlateGame } from "../lib/types";
@@ -65,5 +66,16 @@ describe("supabase sync idempotent upsert", () => {
     const conn = await createSupabaseClient("/nonexistent-nba-edge-root");
     expect(conn.client).toBeNull();
     await finalizePipelineSupabaseSync("/nonexistent-nba-edge-root", []);
+  });
+
+  it("upsertOddsBudgetForMonth creates month row", async () => {
+    const client = mockClient();
+    await upsertOddsBudgetForMonth(client, "2026-11", {
+      creditsRemaining: 400,
+    });
+    expect(client.tables.odds_budget?.length).toBe(1);
+    expect(
+      (client.tables.odds_budget?.[0] as { month_key: string }).month_key
+    ).toBe("2026-11");
   });
 });

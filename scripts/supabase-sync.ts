@@ -195,6 +195,28 @@ function pricesFromOddsMap(
   return rows;
 }
 
+export type OddsPriceRow = {
+  pull_id?: string;
+  player_id: string;
+  game_id: string;
+  market: string;
+  line: number;
+  bookie: string;
+  price: number;
+};
+
+/** Keep best (highest decimal) price per idempotent upsert key. */
+export function dedupeOddsPriceRows(rows: OddsPriceRow[]): OddsPriceRow[] {
+  const best = new Map<string, OddsPriceRow>();
+  for (const r of rows) {
+    const pullId = r.pull_id ?? "";
+    const key = `${pullId}|${r.player_id}|${r.market}|${r.line}|${r.bookie}`;
+    const prev = best.get(key);
+    if (!prev || r.price >= prev.price) best.set(key, r);
+  }
+  return [...best.values()];
+}
+
 export async function syncRunToSupabase(
   client: SupabaseUpsertClient,
   bundle: SlateSyncBundle
@@ -426,8 +448,17 @@ export async function syncRunToSupabase(
         );
       }
       if (pullRow?.id && priceRows.length) {
-        const withPull = priceRows.map((r) => ({ ...r, pull_id: pullRow.id }));
-        await client.upsert("odds_prices", withPull, "pull_id,player_id,market,line,bookie");
+        const withPull = dedupeOddsPriceRows(
+          priceRows.map((r) => ({
+            ...(r as OddsPriceRow),
+            pull_id: pullRow.id,
+          }))
+        );
+        await client.upsert(
+          "odds_prices",
+          withPull as Record<string, unknown>[],
+          "pull_id,player_id,market,line,bookie"
+        );
         counts.oddsPrices = withPull.length;
       }
     });
@@ -492,6 +523,39 @@ export async function loadOddsBudgetFromSupabase(
   }
 }
 
+export async function upsertOddsBudgetForMonth(
+  client: SupabaseUpsertClient,
+  monthKey: string,
+  opts: {
+    monthlyLimit?: number;
+    resetDay?: number;
+    pretipPull?: boolean;
+    creditsRemaining?: number | null;
+    creditsPerGame?: number;
+  }
+): Promise<void> {
+  const existing = await loadOddsBudgetFromSupabase(client, monthKey);
+  const base = existing ?? {
+    monthlyLimit: 500,
+    resetDay: 1,
+    pretipPull: false,
+    creditsPerGame: 10,
+  };
+  const row = {
+    month_key: monthKey,
+    credits_monthly: opts.monthlyLimit ?? base.monthlyLimit,
+    credits_remaining:
+      opts.creditsRemaining !== undefined
+        ? opts.creditsRemaining
+        : base.creditsRemaining ?? null,
+    reset_day: opts.resetDay ?? base.resetDay,
+    pretip_pull: opts.pretipPull ?? base.pretipPull,
+    last_credits_per_game: opts.creditsPerGame ?? base.creditsPerGame,
+  };
+  await client.upsert("odds_budget", [row], "month_key");
+}
+
+/** @deprecated use upsertOddsBudgetForMonth */
 export async function saveOddsBudgetAfterPull(
   client: SupabaseUpsertClient,
   monthKey: string,
@@ -504,20 +568,7 @@ export async function saveOddsBudgetAfterPull(
   }
 ): Promise<void> {
   try {
-    await client.upsert(
-      "odds_budget",
-      [
-        {
-          month_key: monthKey,
-          credits_monthly: opts.monthlyLimit,
-          credits_remaining: opts.creditsRemaining ?? null,
-          reset_day: opts.resetDay,
-          pretip_pull: opts.pretipPull,
-          last_credits_per_game: opts.creditsPerGame,
-        },
-      ],
-      "month_key"
-    );
+    await upsertOddsBudgetForMonth(client, monthKey, opts);
   } catch (e) {
     console.warn(
       "supabase odds_budget update failed:",
@@ -577,5 +628,24 @@ export async function finalizePipelineSupabaseSync(
     totals.oddsPulls += c.oddsPulls;
     totals.oddsPrices += c.oddsPrices;
   }
+
+  const monthKey =
+    [...bundles].map((b) => b.slateDate).sort().at(-1)?.slice(0, 7) ??
+    new Date().toISOString().slice(0, 7);
+  let creditsRemaining: number | null | undefined;
+  for (const b of bundles) {
+    if (b.creditsRemaining != null) creditsRemaining = b.creditsRemaining;
+    else if (b.cache?.creditsRemaining != null) creditsRemaining = b.cache.creditsRemaining;
+  }
+  try {
+    await upsertOddsBudgetForMonth(conn.client, monthKey, {
+      creditsRemaining: creditsRemaining ?? null,
+    });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    console.warn(`supabase sync: odds_budget failed: ${msg}`);
+    allFailed.add("odds_budget");
+  }
+
   logSyncCounts(totals, [...allFailed]);
 }

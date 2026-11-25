@@ -100,24 +100,8 @@ jobs:
           if-no-files-found: ignore
 
       - name: Persist history to data branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          mkdir -p /tmp/pipeline-data
-          cp -a public/data/. /tmp/pipeline-data/
-          git fetch origin data
-          if git show-ref --verify --quiet refs/remotes/origin/data; then
-            git checkout -B data origin/data
-          else
-            git checkout --orphan data
-            git rm -rf . 2>/dev/null || true
-          fi
-          mkdir -p public/data
-          cp -a /tmp/pipeline-data/. public/data/
-          git add public/data
-          git diff --staged --quiet || git commit -m "chore: update pipeline data"
-          git push origin data
-          git checkout -f "${GITHUB_REF_NAME}"
+        continue-on-error: true
+        run: bash scripts/persist-data-branch.sh
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

@@ -4,3 +4,10 @@ dist
 .DS_Store
 *.log
 .vite
+
+# Generated pipeline JSON lives on the `data` branch only (see scripts/persist-data-branch.sh).
+public/data/20*/
+public/data/odds-cache.json
+public/data/game-log-cache.json
+public/data/history.json
+public/data/index.json
