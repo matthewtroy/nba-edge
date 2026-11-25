@@ -124,6 +124,7 @@ create table public.odds_budget (
   pause_below_fraction numeric not null default 0.2,
   reset_day smallint not null default 1,
   pretip_pull boolean not null default false,
+  last_credits_per_game numeric not null default 10,
   updated_at timestamptz not null default now(),
   constraint odds_budget_month_key unique (month_key),
   constraint odds_budget_reset_day_check check (reset_day between 1 and 28)

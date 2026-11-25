@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import fs from "fs";
 import {
   buildInjuryReportUrl,
+  listCandidateSlots,
   parsePdfInjuries,
 } from "../scripts/fetch/nba-pdf";
 
@@ -19,6 +20,14 @@ describe("buildInjuryReportUrl", () => {
     expect(buildInjuryReportUrl("2026-11-24", 18, 0)).toBe(
       "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_06_00PM.pdf"
     );
+  });
+});
+
+describe("listCandidateSlots", () => {
+  it("returns at most 8 slots", () => {
+    const slots = listCandidateSlots(new Date("2026-11-24T22:00:00Z"), 8);
+    expect(slots.length).toBeLessThanOrEqual(8);
+    expect(slots.length).toBeGreaterThan(0);
   });
 });
 

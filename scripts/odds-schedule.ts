@@ -21,16 +21,18 @@ export interface OddsCacheFile {
   creditsRemaining?: number;
   pullSlotsToday?: string[];
   oddsMap?: Record<string, { price: number; bookie: string }>;
+  /** Next-slate date last covered by scheduled_9pm (Sydney YYYY-MM-DD). */
+  lastScheduled9pmSlate?: string;
 }
 
-const PULL_WINDOW_MIN = 35;
-
 export interface ShouldPullOddsOpts {
-  officialPublishedToday?: boolean;
   pretipPull?: boolean;
   forceOdds?: boolean;
-  /** When set, only evaluate pretip (injury refresh runs). */
   skipScheduled9pm?: boolean;
+  /** Sydney tip date (YYYY-MM-DD) for the next slate odds target. */
+  nextSlateTipDate?: string;
+  /** Today's slate official card already locked. */
+  officialPublishedToday?: boolean;
 }
 
 export function detectOddsPullTrigger(
@@ -42,8 +44,7 @@ export function detectOddsPullTrigger(
   if (opts.forceOdds) return "force";
 
   const pulled = new Set(cache.pullSlotsToday ?? []);
-  const { h, m } = sydneyParts(now);
-  const nowMin = h * 60 + m;
+  const { h } = sydneyParts(now);
 
   if (opts.pretipPull && slate.length && !pulled.has("pretip")) {
     const first = Math.min(...slate.map((g) => new Date(g.startTime).getTime()));
@@ -53,11 +54,18 @@ export function detectOddsPullTrigger(
     }
   }
 
-  if (!opts.skipScheduled9pm && !pulled.has("scheduled_9pm")) {
-    const start = 21 * 60;
-    if (nowMin >= start && nowMin <= start + PULL_WINDOW_MIN) {
-      return "scheduled_9pm";
+  if (!opts.skipScheduled9pm && h === 21) {
+    if (pulled.has("scheduled_9pm")) return null;
+    if (
+      opts.nextSlateTipDate &&
+      cache.lastScheduled9pmSlate === opts.nextSlateTipDate
+    ) {
+      return null;
     }
+    if (opts.officialPublishedToday && pulled.has("scheduled_9pm")) {
+      return null;
+    }
+    return "scheduled_9pm";
   }
 
   return null;
@@ -75,11 +83,15 @@ export function shouldPullOddsNow(
 export function recordOddsPull(
   cache: OddsCacheFile,
   now: Date,
-  trigger: OddsPullTrigger
+  trigger: OddsPullTrigger,
+  nextSlateTipDate?: string
 ): string {
   const pulled = new Set(cache.pullSlotsToday ?? []);
   pulled.add(trigger === "force" ? "force" : trigger);
   cache.pullSlotsToday = [...pulled];
+  if (trigger === "scheduled_9pm" && nextSlateTipDate) {
+    cache.lastScheduled9pmSlate = nextSlateTipDate;
+  }
   return trigger;
 }
 

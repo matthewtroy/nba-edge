@@ -6,6 +6,8 @@ export interface OddsBudgetConfig {
   pretipPull: boolean;
   creditsRemaining?: number;
   creditsUsedThisMonth?: number;
+  /** Rolling average credits per game event pull (default 10). */
+  creditsPerGame?: number;
 }
 
 export interface AllowanceResult {
@@ -13,6 +15,8 @@ export interface AllowanceResult {
   pullsLeft: number;
   reserve: number;
   spendable: number;
+  approxGames: number;
+  creditsPerGame: number;
 }
 
 export function sydneyYmd(d: Date): string {
@@ -75,18 +79,33 @@ export function computeAllowance(
   const pullsLeft = pullsLeftBeforeReset(now, config);
   const allowance =
     pullsLeft > 0 ? Math.floor(spendable / pullsLeft) : spendable;
-  return { allowance, pullsLeft, reserve, spendable };
+  const creditsPerGame = config.creditsPerGame ?? 10;
+  const approxGames = Math.max(
+    0,
+    Math.floor(Math.max(0, allowance - 1) / creditsPerGame)
+  );
+  return { allowance, pullsLeft, reserve, spendable, approxGames, creditsPerGame };
+}
+
+export function formatBudgetLog(allowance: AllowanceResult, remaining: number): string {
+  return (
+    `budget: remaining ${remaining}, reserve ${allowance.reserve}, ` +
+    `pulls left ${allowance.pullsLeft}, allowance ${allowance.allowance} credits ` +
+    `≈ ${allowance.approxGames} games at ${allowance.creditsPerGame}/game`
+  );
 }
 
 /** Select top-ranked games until per-pull game budget (excludes list-events credit). */
 export function selectGamesForAllowance<T extends { gameId: string }>(
   ranked: T[],
   allowanceCredits: number,
-  listEventCost = 1
+  listEventCost = 1,
+  creditsPerGame = 1
 ): T[] {
   const budget = Math.max(0, allowanceCredits - listEventCost);
   if (budget <= 0) return [];
-  return ranked.slice(0, budget);
+  const maxGames = Math.floor(budget / Math.max(1, creditsPerGame));
+  return ranked.slice(0, maxGames);
 }
 
 export function shouldPauseForReserve(

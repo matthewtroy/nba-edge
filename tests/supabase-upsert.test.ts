@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { syncRunToSupabase, type SupabaseUpsertClient } from "../scripts/supabase-sync";
+import {
+  createSupabaseClient,
+  finalizePipelineSupabaseSync,
+  syncRunToSupabase,
+  type SupabaseUpsertClient,
+} from "../scripts/supabase-sync";
 import type { SlateGame } from "../lib/types";
 
 function mockClient(): SupabaseUpsertClient & { tables: Record<string, unknown[]> } {
@@ -53,5 +58,11 @@ describe("supabase sync idempotent upsert", () => {
     });
     expect(client.tables.slates?.length).toBe(2);
     expect(client.tables.teams?.length).toBeGreaterThan(0);
+  });
+
+  it("finalize logs skip without config", async () => {
+    const conn = await createSupabaseClient("/nonexistent-nba-edge-root");
+    expect(conn.client).toBeNull();
+    await finalizePipelineSupabaseSync("/nonexistent-nba-edge-root", []);
   });
 });

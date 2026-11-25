@@ -34,6 +34,13 @@ describe("shouldPullOddsNow", () => {
     expect(shouldPullOddsNow(now, slate, emptyCache)).toBe(false);
   });
 
+  it("scheduled_9pm only during Sydney hour 21", () => {
+    const at10pm = new Date("2026-01-15T11:30:00Z");
+    expect(detectOddsPullTrigger(at10pm, slate, emptyCache)).toBe(null);
+    const already = { ...emptyCache, pullSlotsToday: ["scheduled_9pm"] };
+    expect(detectOddsPullTrigger(new Date("2026-01-15T10:15:00Z"), slate, already)).toBe(null);
+  });
+
   it("pretip when enabled ~2h before tip", () => {
     const tipSoon = [{ ...slate[0], startTime: "2026-01-15T09:00:00Z" }];
     const now = new Date("2026-01-15T07:30:00Z");

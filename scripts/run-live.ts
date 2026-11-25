@@ -37,8 +37,10 @@ import {
 import { pullBudgetedOddsForSlate } from "./budgeted-odds-pull.js";
 import {
   createSupabaseClient,
+  finalizePipelineSupabaseSync,
   loadOddsBudgetFromSupabase,
-  syncRunToSupabase,
+  saveOddsBudgetAfterPull,
+  type SlateSyncBundle,
 } from "./supabase-sync.js";
 import { filterPlayersForSlate, writeSlateBundle } from "./slate-bundle.js";
 import {
@@ -212,6 +214,9 @@ export async function runLivePipeline(
       }));
       injuries = mergeOfficialInjuries(injuries, parsed, slateByTeam, playerTeamLookup);
     } else {
+      if (pdfOutcome.blocked403) {
+        console.log("nba pdf blocked (403), using ESPN injuries");
+      }
       sources.nbaOfficial = "stale";
       const last = pdfOutcome.tryLog[pdfOutcome.tryLog.length - 1];
       nbaOfficialLastTriedUrl = last?.url;
@@ -344,12 +349,22 @@ export async function runLivePipeline(
   const rankingBySlateDate = new Map<string, import("../lib/game-injury-ranking.js").GameInjuryRank[]>();
   let lastPullTrigger: OddsPullTrigger | undefined;
   let lastCreditsUsed = 0;
+  let lastCreditsPerGame = 10;
 
-  const supabaseClient = await createSupabaseClient(rootDir);
+  const supabaseConn = await createSupabaseClient(rootDir);
+  const supabaseClient = supabaseConn.client;
   const monthKey = sydneyYmd(now).slice(0, 7);
   const budgetFromDb = supabaseClient
     ? await loadOddsBudgetFromSupabase(supabaseClient, monthKey)
-    : { monthlyLimit: 500, resetDay: 1, pretipPull: false, creditsUsedThisMonth: 0 };
+    : {
+        monthlyLimit: 500,
+        resetDay: 1,
+        pretipPull: false,
+        creditsPerGame: 10,
+      };
+
+  const nextSlateGames = filterSlateToNextSydney(unionSlate);
+  const nextSlateTip = slateTipDateFromGames(nextSlateGames) ?? undefined;
 
   const skipOddsEnv = injuryRefreshSkipsOdds() && !forceOdds;
   let pullTrigger = detectOddsPullTrigger(now, unionSlate, cache, {
@@ -357,6 +372,7 @@ export async function runLivePipeline(
     pretipPull: budgetFromDb?.pretipPull ?? false,
     forceOdds,
     skipScheduled9pm: skipOddsEnv,
+    nextSlateTipDate: nextSlateTip,
   });
   if (skipOddsEnv && pullTrigger === "scheduled_9pm") {
     pullTrigger = detectOddsPullTrigger(now, unionSlate, cache, {
@@ -428,8 +444,9 @@ export async function runLivePipeline(
           monthlyLimit: budgetFromDb?.monthlyLimit ?? 500,
           resetDay: budgetFromDb?.resetDay ?? 1,
           pretipPull: budgetFromDb?.pretipPull ?? false,
-          creditsRemaining: cache.creditsRemaining,
-          creditsUsedThisMonth: budgetFromDb?.creditsUsedThisMonth,
+          creditsRemaining:
+            budgetFromDb?.creditsRemaining ?? cache.creditsRemaining,
+          creditsPerGame: budgetFromDb?.creditsPerGame ?? 10,
         },
         trigger: pullTrigger,
       });
@@ -439,11 +456,26 @@ export async function runLivePipeline(
         oddsPayloads = pull.payloads;
         oddsPulledAt = now.toISOString();
         cache.lastPulled = oddsPulledAt;
-        recordOddsPull(cache, now, pullTrigger);
+        recordOddsPull(
+          cache,
+          now,
+          pullTrigger,
+          pullTrigger === "scheduled_9pm" ? nextSlateTip : undefined
+        );
         sources.odds = "ok";
         usedLiveOddsPull = true;
         lastPullTrigger = pullTrigger;
         lastCreditsUsed = pull.creditsUsed;
+        lastCreditsPerGame = pull.creditsPerGame;
+        if (supabaseClient && pull.creditsUsed > 0) {
+          await saveOddsBudgetAfterPull(supabaseClient, monthKey, {
+            monthlyLimit: budgetFromDb?.monthlyLimit ?? 500,
+            resetDay: budgetFromDb?.resetDay ?? 1,
+            pretipPull: budgetFromDb?.pretipPull ?? false,
+            creditsRemaining: pull.creditsRemaining,
+            creditsPerGame: pull.creditsPerGame,
+          });
+        }
         const tip = slateTipDateFromGames(targetSlate);
         if (tip && pull.unpulledGameIds.size) {
           unpulledBySlateDate.set(tip, pull.unpulledGameIds);
@@ -555,30 +587,37 @@ export async function runLivePipeline(
     if (fs.existsSync(legacyPath)) fs.unlinkSync(legacyPath);
   }
 
-  if (supabaseClient) {
-    for (const oneSlate of slatesToPublish) {
-      const tip = slateTipDateFromGames(oneSlate);
-      if (!tip) continue;
-      await syncRunToSupabase(supabaseClient, {
-        slateDate: tip,
-        slate: oneSlate,
-        injuries,
-        players,
-        ranking: rankingBySlateDate.get(tip) ?? [],
-        pullTrigger: lastPullTrigger,
-        creditsUsed: lastCreditsUsed,
-        creditsRemaining: cache.creditsRemaining,
-        gamesPulled: [
-          ...new Set(
-            oneSlate
-              .filter((g) => !unpulledBySlateDate.get(tip)?.has(g.id))
-              .map((g) => g.id)
-          ),
-        ],
-        pulledAt: oddsPulledAt,
-      });
-    }
+  const syncBundles: SlateSyncBundle[] = [];
+  for (const oneSlate of slatesToPublish) {
+    const tip = slateTipDateFromGames(oneSlate);
+    if (!tip) continue;
+    const slateInjuries = injuries.filter((i) =>
+      oneSlate.some(
+        (g) => g.homeTeamId === i.teamId || g.awayTeamId === i.teamId
+      )
+    );
+    const tipPayloads =
+      tip === slateTipDateFromGames(nextSlateGames) ? oddsPayloads : [];
+    syncBundles.push({
+      slateDate: tip,
+      slate: oneSlate,
+      injuries: slateInjuries,
+      players,
+      ranking: rankingBySlateDate.get(tip) ?? [],
+      pullTrigger: tip === nextSlateTip ? lastPullTrigger : undefined,
+      creditsUsed: tip === nextSlateTip ? lastCreditsUsed : undefined,
+      creditsRemaining: cache.creditsRemaining,
+      gamesPulled: [
+        ...oneSlate
+          .filter((g) => !unpulledBySlateDate.get(tip)?.has(g.id))
+          .map((g) => g.id),
+      ],
+      oddsPayloads: tipPayloads.length ? tipPayloads : undefined,
+      pulledAt: oddsPulledAt,
+      cache,
+    });
   }
+  await finalizePipelineSupabaseSync(rootDir, syncBundles);
 
   console.log(
     `Pipeline OK: ${slatesToPublish.length} slate(s) · ${indexEntries.map((e) => `${e.date} ${e.multiCount}m`).join(", ")} (${fromLive ? "from-live" : "live"})`

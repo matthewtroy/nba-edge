@@ -3,6 +3,7 @@ import type { PickLeg } from "../lib/types.js";
 import type { GameInjuryRank } from "../lib/game-injury-ranking.js";
 import {
   computeAllowance,
+  formatBudgetLog,
   selectGamesForAllowance,
   shouldPauseForReserve,
   type OddsBudgetConfig,
@@ -28,6 +29,7 @@ export interface BudgetedOddsResult {
   ranking: GameInjuryRank[];
   creditsUsed: number;
   creditsRemaining?: number;
+  creditsPerGame: number;
   gameNames: string[];
 }
 
@@ -49,8 +51,11 @@ export async function pullBudgetedOddsForSlate(opts: {
   );
   logGameInjuryRanks(ranking);
 
+  const creditsPerGame = opts.budget.creditsPerGame ?? 10;
   const priorBest = oddsMapFromRecord(opts.cache.oddsMap ?? {});
   let creditsRemaining = opts.budget.creditsRemaining ?? opts.cache.creditsRemaining;
+  const remainingBefore = creditsRemaining;
+
   if (shouldPauseForReserve(creditsRemaining, opts.budget.monthlyLimit)) {
     console.log("odds pull: paused — below 20% monthly reserve");
     return null;
@@ -59,8 +64,16 @@ export async function pullBudgetedOddsForSlate(opts: {
   const allowance = computeAllowance(opts.now, {
     ...opts.budget,
     creditsRemaining,
+    creditsPerGame,
   });
-  const selected = selectGamesForAllowance(ranking, allowance.allowance);
+  console.log(formatBudgetLog(allowance, creditsRemaining ?? 0));
+
+  const selected = selectGamesForAllowance(
+    ranking,
+    allowance.allowance,
+    1,
+    creditsPerGame
+  );
   if (!selected.length) {
     console.log("odds pull: no allowance for games this run");
     return {
@@ -72,13 +85,12 @@ export async function pullBudgetedOddsForSlate(opts: {
       ranking,
       creditsUsed: 0,
       creditsRemaining,
+      creditsPerGame,
       gameNames: [],
     };
   }
 
-  let creditsUsed = 0;
   const { events, remaining: remAfterList } = await listOddsEvents(opts.apiKey);
-  creditsUsed += 1;
   if (remAfterList != null) creditsRemaining = remAfterList;
 
   const payloads: unknown[] = [];
@@ -91,7 +103,6 @@ export async function pullBudgetedOddsForSlate(opts: {
     const oddsId = matchOddsEventId(g, events);
     if (!oddsId) continue;
     const { data, remaining: rem } = await fetchOddsForEvent(opts.apiKey, oddsId);
-    creditsUsed += 1;
     if (rem != null) creditsRemaining = rem;
     if (data) {
       payloads.push(data);
@@ -105,6 +116,14 @@ export async function pullBudgetedOddsForSlate(opts: {
       break;
     }
   }
+
+  const creditsUsed =
+    remainingBefore != null && creditsRemaining != null
+      ? Math.max(0, remainingBefore - creditsRemaining)
+      : pulledIds.size + (payloads.length ? 1 : 0);
+
+  const measuredPerGame =
+    pulledIds.size > 0 ? creditsUsed / pulledIds.size : creditsPerGame;
 
   const bundles = extractOddsBundles(payloads);
   const postTip = isPostTipOff(opts.now, opts.unionSlate);
@@ -138,6 +157,7 @@ export async function pullBudgetedOddsForSlate(opts: {
     ranking,
     creditsUsed,
     creditsRemaining,
+    creditsPerGame: measuredPerGame,
     gameNames,
   };
 }

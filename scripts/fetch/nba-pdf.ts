@@ -1,9 +1,14 @@
 import pdf from "pdf-parse";
 
-const NBA_PDF_UA =
-  "Mozilla/5.0 (compatible; NBAEdge/1.0; +https://github.com/matthewtroy/nba-edge)";
 const NBA_PDF_BASE =
   "https://ak-static.cms.nba.com/referee/injury/Injury-Report";
+
+const NBA_PDF_HEADERS = {
+  "User-Agent":
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+  Accept: "application/pdf,application/octet-stream,*/*;q=0.8",
+  Referer: "https://www.nba.com/",
+};
 
 /** League switched to 15-minute stems at 2025-12-22 09:00 US Eastern */
 const NEW_FORMAT_ET = "2025-12-22T09:00:00";
@@ -35,7 +40,7 @@ function easternParts(d: Date): {
     month: "2-digit",
     day: "2-digit",
     hour: "numeric",
-    minute: "2-digit",
+    minute: "numeric",
     hour12: false,
   }).formatToParts(d);
   const y = Number(parts.find((p) => p.type === "year")?.value ?? 2026);
@@ -68,18 +73,19 @@ export function buildInjuryReportUrl(
   return `${NBA_PDF_BASE}_${ymd}_${hh}${ampm}.pdf`;
 }
 
-function listCandidateSlots(now: Date, maxDays = 2): { ymd: string; hour: number; minute: number }[] {
+/** Newest first; at most 8 fifteen-minute slots. */
+export function listCandidateSlots(now: Date, maxSlots = 8): { ymd: string; hour: number; minute: number }[] {
   const cur = easternParts(now);
   const curMins = cur.hour * 60 + cur.minute;
   const step = cur.ymd >= "2025-12-22" ? 15 : 30;
   const rounded = Math.floor(curMins / step) * step;
 
   const slots: { ymd: string; hour: number; minute: number }[] = [];
-  for (let dayOff = 0; dayOff < maxDays; dayOff++) {
+  for (let dayOff = 0; dayOff < 2 && slots.length < maxSlots; dayOff++) {
     const base = new Date(now.getTime() - dayOff * 86_400_000);
     const { ymd } = easternParts(base);
     const stopMins = dayOff === 0 ? rounded : 24 * 60 - step;
-    for (let m = stopMins; m >= 0; m -= step) {
+    for (let m = stopMins; m >= 0 && slots.length < maxSlots; m -= step) {
       const hour = Math.floor(m / 60);
       const minute = m % 60;
       if (!slotUsesNewFormat(ymd, hour, minute) && minute === 30) {
@@ -100,44 +106,55 @@ function listCandidateSlots(now: Date, maxDays = 2): { ymd: string; hour: number
 async function downloadInjuryPdf(
   url: string,
   tryLog: PdfTryLog[]
-): Promise<Buffer | null> {
+): Promise<{ buf: Buffer | null; status: number }> {
   const opts = {
-    headers: { "User-Agent": NBA_PDF_UA, Accept: "application/pdf,*/*" },
+    headers: NBA_PDF_HEADERS,
     redirect: "follow" as const,
   };
+  let status = 0;
   try {
     const head = await fetch(url, { method: "HEAD", ...opts });
+    status = head.status;
     tryLog.push({ url, status: head.status, method: "HEAD" });
   } catch {
     tryLog.push({ url, status: 0, method: "HEAD" });
   }
   try {
     const get = await fetch(url, { ...opts });
+    status = get.status;
     tryLog.push({ url, status: get.status, method: "GET" });
-    if (!get.ok) return null;
+    if (!get.ok) return { buf: null, status };
     const buf = Buffer.from(await get.arrayBuffer());
-    if (buf.length < 200) return null;
-    return buf;
+    if (buf.length < 200) return { buf: null, status };
+    return { buf, status };
   } catch {
     tryLog.push({ url, status: 0, method: "GET" });
-    return null;
+    return { buf: null, status: 0 };
   }
 }
 
 /** Fetch newest available official injury PDF (US Eastern slots). */
 export type PdfFetchOutcome =
   | { ok: true; result: PdfFetchResult }
-  | { ok: false; tryLog: PdfTryLog[] };
+  | { ok: false; tryLog: PdfTryLog[]; blocked403?: boolean };
 
 export async function fetchLatestInjuryPdf(
   gameDate: Date
 ): Promise<PdfFetchOutcome> {
   const tryLog: PdfTryLog[] = [];
-  const slots = listCandidateSlots(gameDate);
+  const slots = listCandidateSlots(gameDate, 8);
+  let forbiddenCount = 0;
 
   for (const slot of slots) {
     const url = buildInjuryReportUrl(slot.ymd, slot.hour, slot.minute);
-    const buf = await downloadInjuryPdf(url, tryLog);
+    const { buf, status } = await downloadInjuryPdf(url, tryLog);
+    if (status === 403) {
+      forbiddenCount += 1;
+      if (forbiddenCount >= 2) {
+        return { ok: false, tryLog, blocked403: true };
+      }
+      continue;
+    }
     if (!buf) continue;
 
     try {
@@ -174,7 +191,11 @@ export async function fetchLatestInjuryPdf(
   for (const row of tryLog) {
     console.warn(`  ${row.status} ${row.method} ${row.url}`);
   }
-  return { ok: false, tryLog };
+  return {
+    ok: false,
+    tryLog,
+    blocked403: forbiddenCount >= 2,
+  };
 }
 
 /** Parse "Last,FirstStatus" tuples from flattened PDF text */
