@@ -18,11 +18,18 @@ describe("Today proof text", () => {
     expect(text).not.toMatch(/bet365/i);
     expect(text.toLowerCase()).not.toMatch(/take at/);
     expect(text.toLowerCase()).not.toMatch(/best:/);
-    const builtHeader = text.match(/  [\w ():]+ \$[\d.]+/);
+    const builtMain =
+      multisRaw.bets.some(
+        (m) =>
+          m.type === "mainPlay" &&
+          m.bestBookieTotal != null &&
+          !!m.bestBookie &&
+          m.legs.length > 0
+      ) && /  Main Play\n/.test(text);
     const notBuiltMain =
       /Main Play.*No single AU bookie/i.test(text) ||
       text.includes("Not built today");
-    expect(builtHeader != null || notBuiltMain).toBe(true);
+    expect(builtMain || notBuiltMain).toBe(true);
     expect(text).not.toMatch(/cross-book|Best across books|Best mix/i);
     expect(text).toContain("What changed");
     expect(text).toContain("Audit");
