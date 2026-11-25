@@ -1,4 +1,6 @@
-import type { PickLeg, MultiBet, MultiType, MultiNotBuilt } from "./types.js";
+import type { PickLeg, MultiBet, MultiType, MultiNotBuilt, PlayerGameLog } from "./types.js";
+import { q1MultiBlendP, passesQ1MultiHitGap } from "./q1-multi-probability.js";
+import { nearestPricedRung } from "./nearest-bookie-line.js";
 import { legsClash, multiHasClash } from "./clash.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
 import {
@@ -179,16 +181,18 @@ export function buildMultis(
   slateSize: number,
   targetProfit = 300,
   minEdgeFraction = DEFAULT_MIN_EDGE,
-  q1ExclusionNotes: string[] = []
+  q1ExclusionNotes: string[] = [],
+  logsByPlayer?: Map<string, PlayerGameLog[]>
 ): MultiBuildResult {
   multiMinEdge = minEdgeFraction;
   resetMultiBuildTraces();
   const pool = picks.filter(meetsFloor);
+  const catalog = pool;
   const byP = [...pool].sort(sortLegs);
   const notBuilt: MultiNotBuilt[] = [];
   const multis: MultiBet[] = [];
 
-  const main = buildMainPlay(byP, targetProfit, slateSize, minEdgeFraction);
+  const main = buildMainPlay(byP, targetProfit, slateSize, minEdgeFraction, catalog);
   let mainPlayConfluenceRelaxed = false;
   if (main.bet) {
     multis.push(main.bet);
@@ -196,25 +200,25 @@ export function buildMultis(
   } else notBuilt.push({ type: "mainPlay", label: LABELS.mainPlay, reason: main.reason });
 
   if (main.bet) {
-    const booster = buildBooster(main.bet, pool, minEdgeFraction);
+    const booster = buildBooster(main.bet, pool, catalog);
     if (booster.bet) multis.push(booster.bet);
     else notBuilt.push({ type: "booster", label: LABELS.booster, reason: booster.reason });
   } else {
     notBuilt.push({ type: "booster", label: LABELS.booster, reason: "Needs a Main Play first" });
   }
 
-  const q1Attempt = buildQ1Multi(byP, q1ExclusionNotes);
+  const q1Attempt = buildQ1Multi(byP, q1ExclusionNotes, logsByPlayer);
   multis.push(...q1Attempt.bets);
 
-  const cross = buildCrossGameSgm(byP, minEdgeFraction);
+  const cross = buildCrossGameSgm(byP, minEdgeFraction, catalog);
   if (cross.bet) multis.push(cross.bet);
   else notBuilt.push({ type: "crossGameSgm", label: LABELS.crossGameSgm, reason: cross.reason });
 
-  const boostSgm = buildBoostSgm(byP, minEdgeFraction);
+  const boostSgm = buildBoostSgm(byP, minEdgeFraction, catalog);
   if (boostSgm.bet) multis.push(boostSgm.bet);
   else notBuilt.push({ type: "boostSgm", label: LABELS.boostSgm, reason: boostSgm.reason });
 
-  const longshot = buildLongshot(byP, minEdgeFraction);
+  const longshot = buildLongshot(byP, minEdgeFraction, catalog);
   if (longshot.bet) multis.push(longshot.bet);
   else notBuilt.push({ type: "longshot", label: LABELS.longshot, reason: longshot.reason });
 
@@ -260,7 +264,7 @@ export function buildMultis(
   for (const d of clashDropped) pushDrop(d.multi, d.reason);
   for (const d of exposureDropped) pushDrop(d.multi, d.reason, d.players);
 
-  const gated = gateAllMultis(filtered, picksById);
+  const gated = gateAllMultis(filtered, picksById, catalog);
   for (const m of gated.dropped) {
     const legs = m.legs.map((id) => picksById.get(id)).filter(Boolean) as PickLeg[];
     const legSummary = legs.map((l) => `${l.playerName} ${l.line}+ ${l.market}`).join(", ");
@@ -324,11 +328,12 @@ function hasQuestionableAnchor(legs: PickLeg[]): boolean {
 function mainPlayPoolAtBookie(
   eligible: PickLeg[],
   bookie: string,
-  minEdgeFraction: number
+  minEdgeFraction: number,
+  catalog: PickLeg[]
 ): PickLeg[] {
   const edge = eligible.filter((l) => legMeetsBookieEdge(l, bookie, minEdgeFraction));
   const priced = edge
-    .map((l) => asBookieLeg(l, bookie))
+    .map((l) => asBookieLeg(l, bookie, catalog))
     .filter(Boolean) as PickLeg[];
   const corePool = priced.filter((l) => isCoreMarket(l.market)).sort(sortLegs);
   const threesPool = priced.filter((l) => l.market === "3pm").sort(sortLegs);
@@ -345,7 +350,8 @@ function buildMainPlay(
   picks: PickLeg[],
   _targetProfit: number,
   slateSize: number,
-  minEdgeFraction: number
+  minEdgeFraction: number,
+  catalog: PickLeg[]
 ): { bet: MultiBet | null; reason: string; confluenceRelaxed?: boolean } {
   const attempt = (
     eligible: PickLeg[]
@@ -374,7 +380,7 @@ function buildMainPlay(
     const banded = eligible.filter((l) =>
       legBookiePriceInBand(l, bookie, 1.4, 2.5)
     );
-    const pool = mainPlayPoolAtBookie(banded, bookie, minEdgeFraction);
+    const pool = mainPlayPoolAtBookie(banded, bookie, minEdgeFraction, catalog);
     if (pool.length > maxEdgePool) {
       maxEdgePool = pool.length;
       maxEdgeBookie = bookie;
@@ -428,7 +434,7 @@ function buildMainPlay(
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
-      ...overlayForBookie(best.legs, best.bookie),
+      ...overlayForBookie(best.legs, best.bookie, catalog),
       summary: `${best.legs.length} starter main lines`,
     },
     reason: "",
@@ -524,9 +530,8 @@ function treblePrice(three: PickLeg[]): number {
 function boostMainLegs(
   main: MultiBet,
   picks: PickLeg[],
-  stepLegIds: Set<string>,
   bookie: string,
-  minEdgeFraction: number
+  catalog: PickLeg[]
 ): { legs: PickLeg[] | null; fail?: string } {
   const picksById = new Map(picks.map((p) => [p.id, p]));
   const boosted: PickLeg[] = [];
@@ -534,29 +539,21 @@ function boostMainLegs(
   for (const id of main.legs) {
     const leg = picksById.get(id);
     if (!leg) return { legs: null, fail: `missing Main leg ${id}` };
-    if (!meetsFloor(leg) || hasCheckNews(leg)) {
-      return {
-        legs: null,
-        fail: `${leg.playerName}: fair floor or Check news at ${bookie}`,
-      };
+    if (!meetsFloor(leg)) {
+      return { legs: null, fail: `${leg.playerName}: below fair floor` };
     }
+    const mainAtBookie =
+      nearestPricedRung(leg, bookie, catalog)?.price ?? legPriceAtBookie(leg, bookie);
     let useLeg = leg;
-    if (stepLegIds.has(id)) {
+    if (mainAtBookie != null && mainAtBookie <= 4) {
       const up = nextRung(leg, picks);
-      if (
-        up &&
-        legBookiePriceInBand(up, bookie, MIN_LEG_FAIR, 4) &&
-        meetsFloor(up) &&
-        !hasCheckNews(up)
-      ) {
-        useLeg = up;
-      }
+      if (up && meetsFloor(up)) useLeg = up;
     }
-    const priced = asBookieLeg(useLeg, bookie);
-    if (!priced || !legMeetsBookieEdge(useLeg, bookie, minEdgeFraction)) {
+    const priced = asBookieLeg(useLeg, bookie, catalog);
+    if (!priced) {
       return {
         legs: null,
-        fail: `${leg.playerName} ${useLeg.line}+ ${useLeg.market}: no edge @ ${bookie}`,
+        fail: `${leg.playerName} ${useLeg.line}+ ${useLeg.market}: no ${bookie} line`,
       };
     }
     boosted.push(priced);
@@ -570,7 +567,7 @@ function boostMainLegs(
 function buildBooster(
   main: MultiBet,
   picks: PickLeg[],
-  minEdgeFraction: number
+  catalog: PickLeg[]
 ): { bet: MultiBet | null; reason: string } {
   const bookie = main.bestBookie;
   if (!bookie) {
@@ -584,7 +581,7 @@ function buildBooster(
     return { bet: null, reason: "Booster leg missing" };
   }
 
-  const boost = boostMainLegs(main, picks, new Set(main.legs), bookie, minEdgeFraction);
+  const boost = boostMainLegs(main, picks, bookie, catalog);
   const boosted = boost.legs;
   if (!boosted?.length) {
     const detail = boost.fail ?? "rung/clash/edge at main bookie";
@@ -602,7 +599,7 @@ function buildBooster(
   }
 
   const { p, fair, takeAt } = combinedPrice(boosted);
-  const book = overlayForBookie(boosted, bookie);
+  const book = overlayForBookie(boosted, bookie, catalog);
   const triCandidates: PickLeg[][] = [];
   for (let i = 0; i < boosted.length - 2; i++) {
     for (let j = i + 1; j < boosted.length - 1; j++) {
@@ -637,7 +634,7 @@ function buildBooster(
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
       ...book,
-      summary: `Main Play +1 rung where fair ≤4, else same rung${trixieNote}`,
+      summary: `Main Play +1 rung when Main leg ≤$4 at bookie, else same rung${trixieNote}`,
     },
     reason: "",
   };
@@ -725,34 +722,57 @@ function q1ExclusionSuffix(notes: string[]): string {
   return ` · ${notes.length} Q1 leg(s) dropped (last-10 hit rate ≥20pp below model)`;
 }
 
+function bestQ1LegPerTeam(
+  picks: PickLeg[],
+  minFair: number,
+  logsByPlayer?: Map<string, PlayerGameLog[]>
+): { leg: PickLeg; score: number }[] {
+  const rows: { leg: PickLeg; score: number }[] = [];
+  for (const l of picks) {
+    if (
+      !l.market.startsWith("q1") ||
+      !l.starterEligible ||
+      (l.projectedMinutes ?? 0) < 24 ||
+      l.fairPrice < minFair ||
+      !passesQ1MultiHitGap(l)
+    ) {
+      continue;
+    }
+    const logs = logsByPlayer?.get(l.playerId) ?? [];
+    rows.push({ leg: l, score: q1MultiBlendP(l, logs) });
+  }
+  const byTeam = new Map<string, { leg: PickLeg; score: number }>();
+  for (const row of rows) {
+    const key = `${row.leg.gameId}|${row.leg.team}`;
+    const cur = byTeam.get(key);
+    if (!cur || row.score > cur.score) byTeam.set(key, row);
+  }
+  return [...byTeam.values()].sort((a, b) => b.score - a.score);
+}
+
+function selectQ1MultiLegs(
+  rankedTeams: { leg: PickLeg; score: number }[]
+): PickLeg[] | null {
+  if (rankedTeams.length < 3) return null;
+  const take = Math.min(6, rankedTeams.length);
+  const chosen = rankedTeams.slice(0, take).map((r) => r.leg);
+  if (multiHasClash(chosen)) return null;
+  return chosen;
+}
+
 function buildQ1Multi(
   picks: PickLeg[],
-  q1ExclusionNotes: string[] = []
+  q1ExclusionNotes: string[] = [],
+  logsByPlayer?: Map<string, PlayerGameLog[]>
 ): {
   bets: MultiBet[];
   coreNotBuiltReason: string;
   longshotNotBuiltReason: string;
 } {
-  const q1 = picks.filter(
-    (l) =>
-      l.market.startsWith("q1") &&
-      l.starterEligible &&
-      (l.projectedMinutes ?? 0) >= 24 &&
-      l.fairPrice >= 1.8 &&
-      l.fairPrice <= 4
-  );
-  const byTeam = new Map<string, PickLeg[]>();
-  for (const l of q1) {
-    const key = `${l.gameId}|${l.team}`;
-    const arr = byTeam.get(key) ?? [];
-    arr.push(l);
-    byTeam.set(key, arr);
-  }
-  for (const arr of byTeam.values()) arr.sort(sortLegs);
-  const teamKeys = [...byTeam.keys()].sort();
-  const thinPool = `Only ${teamKeys.length} teams with Q1 fair 1.80–4.00 (24+ min starters, need 3–6)`;
   const exSuffix = q1ExclusionSuffix(q1ExclusionNotes);
-  if (teamKeys.length < 3) {
+  const coreRanked = bestQ1LegPerTeam(picks, MIN_LEG_FAIR, logsByPlayer);
+  const thinPool = `Only ${coreRanked.length} teams with Q1 fair ≥${MIN_LEG_FAIR.toFixed(2)} (24+ min, −20pp, need 3–6)`;
+  if (coreRanked.length < 3) {
     return {
       bets: [],
       coreNotBuiltReason: thinPool + exSuffix,
@@ -761,30 +781,33 @@ function buildQ1Multi(
   }
 
   const bets: MultiBet[] = [];
-  let coreNotBuiltReason =
-    `No Q1 Multi subset (p≥0.70, 3–6 teams, one leg/team)${exSuffix}`;
-  let longshotNotBuiltReason =
-    `No Q1 Multi (Longshot) subset (fair 2.20–4.00, 3–6 teams)${exSuffix}`;
+  let coreNotBuiltReason = `No Q1 Multi (blend p rank, 1/team, 3–6 legs)${exSuffix}`;
+  let longshotNotBuiltReason = `No Q1 Multi (Longshot) fair ≥2.50${exSuffix}`;
 
-  const core = findQ1Subset(teamKeys, byTeam, 0, 0, {
-    minProbability: 0.7,
-    safeOnly: true,
-  });
+  const core = selectQ1MultiLegs(coreRanked);
   if (core) {
-    bets.push(q1MultiFromLegs(core, undefined, "Q1 Multi: p≥0.70, one leg/team, 24+ min"));
+    bets.push(
+      q1MultiFromLegs(
+        core,
+        undefined,
+        "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
+      )
+    );
     coreNotBuiltReason = "";
     pushMultiBuildTrace({
       type: "q1Multi",
       variant: "Core",
-      eligible: q1.length,
-      bestEdgePool: teamKeys.length,
+      eligible: coreRanked.length,
+      bestEdgePool: core.length,
       clashCandidates: 0,
       rangeCandidates: 1,
       built: true,
-      detail: "fair/take-at only (no bookie gate)",
+      detail: "fair×1.08 take-at (no AU Q1 feed)",
     });
   }
-  const longshot = findQ1Subset(teamKeys, byTeam, 2.2, 4);
+
+  const longRanked = bestQ1LegPerTeam(picks, 2.5, logsByPlayer);
+  const longshot = selectQ1MultiLegs(longRanked);
   if (
     longshot &&
     (!core || longshot.map((l) => l.id).join() !== core.map((l) => l.id).join())
@@ -793,19 +816,19 @@ function buildQ1Multi(
       q1MultiFromLegs(
         longshot,
         "Longshot",
-        "Q1 Multi (Longshot): fair 2.20–4.00, one leg/team"
+        "Q1 Multi (Longshot): fair ≥2.50, blend-ranked, Take fair×1.08"
       )
     );
     longshotNotBuiltReason = "";
     pushMultiBuildTrace({
       type: "q1Multi",
       variant: "Longshot",
-      eligible: q1.length,
-      bestEdgePool: teamKeys.length,
+      eligible: longRanked.length,
+      bestEdgePool: longshot.length,
       clashCandidates: 0,
       rangeCandidates: 1,
       built: true,
-      detail: "fair/take-at only (no bookie gate)",
+      detail: "fair×1.08 take-at (no AU Q1 feed)",
     });
   } else if (
     longshot &&
@@ -818,8 +841,8 @@ function buildQ1Multi(
   if (!bets.length) {
     pushMultiBuildTrace({
       type: "q1Multi",
-      eligible: q1.length,
-      bestEdgePool: teamKeys.length,
+      eligible: coreRanked.length,
+      bestEdgePool: 0,
       clashCandidates: 0,
       rangeCandidates: 0,
       built: false,
@@ -830,9 +853,22 @@ function buildQ1Multi(
   return { bets, coreNotBuiltReason, longshotNotBuiltReason };
 }
 
+function crossComboValid(chosen: PickLeg[]): boolean {
+  const byGame = new Map<string, number>();
+  for (const l of chosen) {
+    byGame.set(l.gameId, (byGame.get(l.gameId) ?? 0) + 1);
+  }
+  if (byGame.size < 2) return false;
+  for (const n of byGame.values()) {
+    if (n < 2 || n > 3) return false;
+  }
+  return chosen.length >= 4;
+}
+
 function buildCrossGameSgm(
   picks: PickLeg[],
-  minEdgeFraction: number
+  minEdgeFraction: number,
+  catalog: PickLeg[]
 ): { bet: MultiBet | null; reason: string } {
   const structural = picks.filter(
     (l) =>
@@ -877,7 +913,7 @@ function buildCrossGameSgm(
         qualifiesCrossBoostLeg(l, bookie) &&
         legMeetsBookieEdge(l, bookie, minEdgeFraction)
     );
-    const priced = edge.map((l) => asBookieLeg(l, bookie)).filter(Boolean) as PickLeg[];
+    const priced = edge.map((l) => asBookieLeg(l, bookie, catalog)).filter(Boolean) as PickLeg[];
     if (priced.length > maxEdge) {
       maxEdge = priced.length;
       maxEdgeBookie = bookie;
@@ -896,7 +932,7 @@ function buildCrossGameSgm(
     let rangeCands = 0;
 
     function dfs(gi: number, chosen: PickLeg[], perGame: Map<string, number>) {
-      if (chosen.length >= 4) {
+      if (crossComboValid(chosen)) {
         const combo = comboProduct(chosen, bookie);
         if (combo >= 10 && combo <= 30 && !multiHasClash(chosen)) {
           rangeCands += 1;
@@ -910,7 +946,7 @@ function buildCrossGameSgm(
       for (let i = gi; i < gameIds.length; i++) {
         const gid = gameIds[i];
         const count = perGame.get(gid) ?? 0;
-        if (count >= 2) continue;
+        if (count >= 3) continue;
         const legs = (byGame.get(gid) ?? []).sort(sortLegs);
         for (const leg of legs.slice(0, 10)) {
           const next = [...chosen, leg];
@@ -967,8 +1003,8 @@ function buildCrossGameSgm(
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
-      ...overlayForBookie(bestAcross.legs, bestAcross.bookie),
-      summary: "2+ legs/game, fair 1.35–2.50 each",
+      ...overlayForBookie(bestAcross.legs, bestAcross.bookie, catalog),
+      summary: "2+ games, 2–3 legs/game, $10–30 one bookie",
     },
     reason: "",
   };
@@ -976,7 +1012,8 @@ function buildCrossGameSgm(
 
 function buildBoostSgm(
   picks: PickLeg[],
-  minEdgeFraction: number
+  minEdgeFraction: number,
+  catalog: PickLeg[]
 ): { bet: MultiBet | null; reason: string } {
   const structural = picks.filter(
     (l) =>
@@ -1002,7 +1039,7 @@ function buildBoostSgm(
         qualifiesCrossBoostLeg(l, bookie) &&
         legMeetsBookieEdge(l, bookie, minEdgeFraction)
     );
-    const priced = edge.map((l) => asBookieLeg(l, bookie)).filter(Boolean) as PickLeg[];
+    const priced = edge.map((l) => asBookieLeg(l, bookie, catalog)).filter(Boolean) as PickLeg[];
     if (priced.length > maxEdge) {
       maxEdge = priced.length;
       maxEdgeBookie = bookie;
@@ -1087,7 +1124,7 @@ function buildBoostSgm(
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
-      ...overlayForBookie(bestAcross.legs, bestAcross.bookie),
+      ...overlayForBookie(bestAcross.legs, bestAcross.bookie, catalog),
       summary: "Best-value 3-leg same-game multi on the slate",
     },
     reason: "",
@@ -1127,7 +1164,8 @@ function qualifiesLongshotBuildLegAt(
 
 function buildLongshot(
   picks: PickLeg[],
-  minEdgeFraction: number
+  minEdgeFraction: number,
+  catalog: PickLeg[]
 ): { bet: MultiBet | null; reason: string } {
   let bestAcross: {
     legs: PickLeg[];
@@ -1149,7 +1187,7 @@ function buildLongshot(
     const byGame = new Map<string, PickLeg[]>();
     for (const l of picks) {
       if (!qualifiesLongshotBuildLegAt(l, bookie, minEdgeFraction)) continue;
-      const priced = asBookieLeg(l, bookie);
+      const priced = asBookieLeg(l, bookie, catalog);
       if (!priced) continue;
       const arr = byGame.get(l.gameId) ?? [];
       arr.push(priced);
@@ -1247,7 +1285,7 @@ function buildLongshot(
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
-      ...overlayForBookie(bestAcross.legs, bestAcross.bookie),
+      ...overlayForBookie(bestAcross.legs, bestAcross.bookie, catalog),
       summary: "One long leg per game",
     },
     reason: "",

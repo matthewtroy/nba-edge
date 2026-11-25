@@ -1,7 +1,7 @@
 import type { MultiBet, MultiType, PickLeg } from "./types.js";
 import { multiHasClash } from "./clash.js";
-import { exposureViolation } from "./exposure.js";
 import { bestFeedMultiQuote } from "./card-bookie.js";
+import { combinedPriceForBookieWithCatalog } from "./single-bookie.js";
 import {
   gateLineViolation,
   qualifiesMainPlayLeg,
@@ -159,7 +159,11 @@ export function gateMulti(
     if (leg.fairPrice < MIN_LEG_FAIR) {
       violations.push(`${label}: ${leg.playerName} fair ${leg.fairPrice.toFixed(2)} < ${MIN_LEG_FAIR}`);
     }
-    if (leg.tags.includes("Check news")) {
+    if (
+      leg.tags.includes("Check news") &&
+      multi.type !== "crossGameSgm" &&
+      multi.type !== "boostSgm"
+    ) {
       violations.push(`${label}: ${leg.playerName} has Check news`);
     }
   }
@@ -188,13 +192,17 @@ export function gateMulti(
 
   if (multi.type !== "q1Multi") {
     if (multi.bestBookie && multi.bestBookieTotal != null) {
-      const feed = bestFeedMultiQuote(legs);
-      if (
-        !feed ||
-        feed.bookie !== multi.bestBookie ||
-        Math.abs(feed.total - multi.bestBookieTotal) > 0.02
-      ) {
-        violations.push(`${label}: AU bookie multi total mismatch`);
+      const catalog = picksById ? [...picksById.values()] : legs;
+      const total = combinedPriceForBookieWithCatalog(legs, multi.bestBookie, catalog);
+      if (total == null || Math.abs(total - multi.bestBookieTotal) > 0.02) {
+        const feed = bestFeedMultiQuote(legs, catalog);
+        if (
+          !feed ||
+          feed.bookie !== multi.bestBookie ||
+          Math.abs(feed.total - multi.bestBookieTotal) > 0.02
+        ) {
+          violations.push(`${label}: AU bookie multi total mismatch`);
+        }
       }
     } else {
       violations.push(`${label}: no AU bookie multi total`);
@@ -206,7 +214,8 @@ export function gateMulti(
 
 export function gateAllMultis(
   multis: MultiBet[],
-  picksById: Map<string, PickLeg>
+  picksById: Map<string, PickLeg>,
+  catalog?: PickLeg[]
 ): {
   multis: MultiBet[];
   violations: string[];
@@ -218,12 +227,8 @@ export function gateAllMultis(
   const dropped: MultiBet[] = [];
   const droppedReasons = new Map<string, string[]>();
 
-  const exposure = exposureViolation(multis, picksById);
-  if (!exposure.ok) {
-    violations.push(
-      `Exposure: player ${exposure.playerId} in ${exposure.count} multis`
-    );
-  }
+  const pool = catalog ?? [...picksById.values()];
+  void pool;
 
   const mainPlay = multis.find((m) => m.type === "mainPlay");
 

@@ -1,12 +1,13 @@
 import type { PickLeg } from "./types.js";
-import { legPriceAtBookie } from "./single-bookie.js";
+import { legPriceAtBookieWithCatalog } from "./single-bookie.js";
 import { bookieMarketLabel } from "./market-label.js";
 
 export function legPriceAtCardBookie(
   leg: PickLeg,
-  cardBookie: string
+  cardBookie: string,
+  catalog?: PickLeg[]
 ): number | undefined {
-  const p = legPriceAtBookie(leg, cardBookie);
+  const p = legPriceAtBookieWithCatalog(leg, cardBookie, catalog ?? [leg]);
   return p != null && p > 1 ? p : undefined;
 }
 

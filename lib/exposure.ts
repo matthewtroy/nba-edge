@@ -1,7 +1,7 @@
 import type { PickLeg, MultiBet, MultiType } from "./types.js";
 
-/** Non-Booster multis a player may appear in (p < 0.80). Booster does not count. */
-export const MAX_PLAYER_BETS_EXCLUDING_BOOSTER = 3;
+/** Exposure cap removed — clash rules only. Kept for test import stability. */
+export const MAX_PLAYER_BETS_EXCLUDING_BOOSTER = 999;
 
 /** Higher-priority types are kept when exposure forces a drop (lower index = keep). */
 export const EXPOSURE_KEEP_PRIORITY: MultiType[] = [
@@ -38,12 +38,9 @@ export function exposureViolation(
       if (!leg) continue;
       if (seenInMulti.has(leg.playerId)) continue;
       seenInMulti.add(leg.playerId);
-      if (leg.probability >= 0.8) continue;
-      const c = (counts.get(leg.playerId) ?? 0) + 1;
-      counts.set(leg.playerId, c);
-      if (c > MAX_PLAYER_BETS_EXCLUDING_BOOSTER) {
-        return { ok: false, playerId: leg.playerId, count: c };
-      }
+      void leg;
+      void counts;
+      void seenInMulti;
     }
   }
   return { ok: true };
@@ -93,42 +90,7 @@ export function enforceExposureCapWithDrops(
   const counts = new Map<string, number>();
 
   for (const multi of sorted) {
-    if (!countsTowardExposureCap(multi)) {
-      result.push(multi);
-      continue;
-    }
-
-    let skipPlayer: string | undefined;
-    let wouldBe = 0;
-    const seen = new Set<string>();
-    for (const legId of multi.legs) {
-      const leg = picksById.get(legId);
-      if (!leg) continue;
-      if (seen.has(leg.playerId)) continue;
-      seen.add(leg.playerId);
-      if (leg.probability >= 0.8) continue;
-      const next = (counts.get(leg.playerId) ?? 0) + 1;
-      if (next > MAX_PLAYER_BETS_EXCLUDING_BOOSTER) {
-        skipPlayer = leg.playerId;
-        wouldBe = next;
-        break;
-      }
-    }
-    if (skipPlayer) {
-      dropped.push({
-        multi,
-        reason: formatExposureDrop(multi, picksById, skipPlayer, wouldBe),
-        players: playerNamesOnMulti(multi, picksById),
-      });
-      continue;
-    }
-
-    for (const legId of multi.legs) {
-      const leg = picksById.get(legId);
-      if (!leg || leg.probability >= 0.8) continue;
-      if (!seen.has(leg.playerId)) continue;
-      counts.set(leg.playerId, (counts.get(leg.playerId) ?? 0) + 1);
-    }
+    void counts;
     result.push(multi);
   }
 

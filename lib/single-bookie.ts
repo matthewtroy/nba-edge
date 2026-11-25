@@ -1,6 +1,7 @@
 import type { PickLeg } from "./types.js";
 import { AU_BOOKMAKERS } from "./types.js";
 import { canonBookiePrices } from "./bookie-totals.js";
+import { combinedPriceForBookieNearest, legPriceAtBookieNearest } from "./nearest-bookie-line.js";
 
 function legsWithCanonPrices(legs: PickLeg[]): PickLeg[] {
   return legs.map((leg) => ({
@@ -21,14 +22,25 @@ export function combinedPriceForBookie(
   legs: PickLeg[],
   bookie: string
 ): number | undefined {
+  return combinedPriceForBookieWithCatalog(legs, bookie, legs);
+}
+
+export function combinedPriceForBookieWithCatalog(
+  legs: PickLeg[],
+  bookie: string,
+  catalog: PickLeg[]
+): number | undefined {
   if (!legs.length) return undefined;
-  let product = 1;
-  for (const leg of legs) {
-    const p = legPriceAtBookie(leg, bookie);
-    if (p == null) return undefined;
-    product *= p;
-  }
-  return Math.round(product * 100) / 100;
+  const batch = combinedPriceForBookieNearest(legs, bookie, catalog);
+  return batch?.total;
+}
+
+export function legPriceAtBookieWithCatalog(
+  leg: PickLeg,
+  bookie: string,
+  catalog: PickLeg[]
+): number | undefined {
+  return legPriceAtBookieNearest(leg, bookie, catalog);
 }
 
 export function bookiesWithFullMulti(legs: PickLeg[]): string[] {

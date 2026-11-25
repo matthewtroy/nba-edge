@@ -80,9 +80,12 @@ describe("Booster stepping", () => {
     expect(stepped).toBeGreaterThanOrEqual(main.legs.length - 1);
   });
 
-  it("keeps main rung when next fair price exceeds 4", () => {
+  it("keeps main rung when main leg bookie price exceeds 4", () => {
+    const high = mainLeg("p1", "pts", 20, 2.0);
+    high.bookiePrices = { Sportsbet: 4.25, TAB: 4.25 };
+    high.bestPrice = 4.25;
     const picks: PickLeg[] = [
-      mainLeg("p1", "pts", 20, 2.0),
+      high,
       mainLeg("p1", "pts", 25, 4.5),
       mainLeg("p2", "pts", 15, 1.55),
       mainLeg("p2", "pts", 20, 2.0),

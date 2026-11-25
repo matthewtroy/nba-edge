@@ -95,6 +95,8 @@ export interface PickLeg {
   signals?: LegSignals;
   /** Grey one-liner under name (~70 chars, numbers only). */
   reasonLine?: string;
+  /** Feed priced a different rung (e.g. reb 5+ → 6+). */
+  feedLineNote?: string;
   /** Model p after matchup tweak, before market blend */
   preBlendModelProbability?: number;
   matchupDeltaPp?: number;

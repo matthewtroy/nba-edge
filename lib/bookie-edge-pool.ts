@@ -1,6 +1,7 @@
 import type { PickLeg } from "./types.js";
 import { FEED_BOOKIES } from "./card-bookie.js";
 import { legPriceAtBookie } from "./single-bookie.js";
+import { nearestPricedRung } from "./nearest-bookie-line.js";
 import { multiBookieTotals } from "./bookie-totals.js";
 import { edgeMultiplier } from "./multi-combined.js";
 
@@ -27,23 +28,35 @@ export function bookiesByCoverage(
   return [...bookies].sort((a, b) => score(b) - score(a));
 }
 
-/** Use this bookie's price as leg.bestPrice for selection heuristics. */
-export function asBookieLeg(leg: PickLeg, bookie: string): PickLeg | null {
-  const price = legPriceAtBookie(leg, bookie);
-  if (price == null) return null;
-  return { ...leg, bestPrice: price, bestBookie: bookie };
+/** Use this bookie's price (nearest main/alternate rung) as leg.bestPrice. */
+export function asBookieLeg(
+  leg: PickLeg,
+  bookie: string,
+  catalog?: PickLeg[]
+): PickLeg | null {
+  const pool = catalog ?? [leg];
+  const near = nearestPricedRung(leg, bookie, pool);
+  if (!near) return null;
+  return {
+    ...near.leg,
+    bestPrice: near.price,
+    bestBookie: bookie,
+    feedLineNote: near.lineShift,
+  };
 }
 
 export function overlayForBookie(
   legs: PickLeg[],
-  bookie: string
+  bookie: string,
+  catalog?: PickLeg[]
 ): {
   bestBookie: string;
   bestBookieTotal: number;
   bookieTotals: Record<string, number>;
 } {
+  const pool = catalog ?? legs;
   const priced = legs
-    .map((l) => asBookieLeg(l, bookie))
+    .map((l) => asBookieLeg(l, bookie, pool))
     .filter(Boolean) as PickLeg[];
   const total = priced.reduce((acc, l) => acc * (l.bestPrice ?? 1), 1);
   return {

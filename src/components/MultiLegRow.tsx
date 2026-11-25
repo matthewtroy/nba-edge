@@ -13,6 +13,7 @@ interface Props {
   picks: PickLeg[];
   slate?: SlateGame[];
   bookie: string;
+  catalog?: PickLeg[];
   fairPriceInSlot?: boolean;
   edited?: boolean;
   onSwap?: () => void;
@@ -26,6 +27,7 @@ export function MultiLegRow({
   picks,
   slate,
   bookie,
+  catalog,
   fairPriceInSlot = false,
   edited = false,
   onSwap,
@@ -42,7 +44,7 @@ export function MultiLegRow({
     inj && countedOut ? topBeneficiaryLastNames(inj, picks).join(", ") : "";
 
   const tags = displayTagsForBookie(leg, bookie);
-  const price = legPriceAtCardBookie(leg, bookie);
+  const price = legPriceAtCardBookie(leg, bookie, catalog);
   const muted = !fairPriceInSlot && bookie && price == null;
   const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
 
@@ -63,7 +65,10 @@ export function MultiLegRow({
         />
         <div className="flex-1 min-w-0">
           <div className="font-medium break-words leading-snug">
-            {leg.playerName} {bookieMarketLabel(leg.market, leg.line)}
+            {leg.playerName}{" "}
+            {leg.feedLineNote
+              ? leg.feedLineNote
+              : bookieMarketLabel(leg.market, leg.line)}
           </div>
           {subtitle && (
             <p className="text-xs text-white/45 truncate">{subtitle}</p>
@@ -94,7 +99,7 @@ export function MultiLegRow({
             ))}
             {leg.questionable && (
               <span className="text-xs px-2 py-0.5 rounded-full bg-accent-warn/20 text-accent-warn">
-                Questionable
+                Q
               </span>
             )}
           </div>
@@ -132,7 +137,7 @@ export function MultiLegRow({
               onSwap();
             }}
           >
-            Swap
+            Swap player
           </button>
         )}
         {edited && onReset && (

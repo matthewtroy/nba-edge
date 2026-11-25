@@ -20,6 +20,8 @@ function q1Leg(
     probability: Math.max(0.75, 1 / fair),
     fairPrice: fair,
     takeAt: fair * 0.95,
+    q1Last10HitRate: 0.75,
+    modelProbability: 0.75,
     reasons: [],
     tags: [],
     starterEligible: true,
@@ -38,11 +40,10 @@ describe("Q1 multi backtracking", () => {
   it("builds clash-free Q1 multi across teams", () => {
     const picks: PickLeg[] = [
       q1Leg("a1", "g1", "AAA", "pts", 2),
-      q1Leg("a2", "g1", "AAA", "reb", 2.1),
-      q1Leg("b1", "g1", "BBB", "pts", 2),
-      q1Leg("c1", "g2", "CCC", "pts", 2),
-      q1Leg("d1", "g2", "DDD", "pts", 2),
-      q1Leg("e1", "g3", "EEE", "pts", 2),
+      q1Leg("b1", "g2", "BBB", "pts", 2),
+      q1Leg("c1", "g3", "CCC", "pts", 2),
+      q1Leg("d1", "g4", "DDD", "pts", 2),
+      q1Leg("e1", "g5", "EEE", "pts", 2),
     ];
     const { bets, notBuilt } = buildMultis(picks, 3);
     const q1 = bets.filter((b) => b.type === "q1Multi");

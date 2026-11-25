@@ -52,7 +52,7 @@ describe("MultiCard layout strings", () => {
     for (const bad of FORBIDDEN_MULTI_CARD_STRINGS) {
       expect(blob.includes(bad)).toBe(false);
     }
-    expect(blob).toMatch(/: \$[\d.]+/);
+    expect(blob).toMatch(/@ \$[\d.]+/);
     expect(blob).toContain("Sportsbet");
     expect(blob.toLowerCase()).not.toContain("take at");
     expect(blob).not.toContain("once");

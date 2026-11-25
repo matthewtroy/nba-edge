@@ -5,7 +5,7 @@ import { renderMultiCardCopyText } from "@lib/multi-card-text";
 import { useMultiBookieSelect } from "../hooks/useMultiBookieSelect";
 import { multiCardTitle, type MultiCardTitleOptions } from "@lib/multi-combined";
 import { bestFeedMultiQuote } from "@lib/card-bookie";
-import { legPriceAtBookie } from "@lib/single-bookie";
+import { legPriceAtBookieWithCatalog } from "@lib/single-bookie";
 import { useMultiLegEdits } from "../hooks/useMultiLegEdits";
 import { ErrorBoundary } from "./ErrorBoundary";
 
@@ -85,7 +85,8 @@ export function MultiCard({
     multi,
     legs,
     preferredBookie,
-    lockedBookie
+    lockedBookie,
+    allPicks
   );
   const rawBook = lockedBookie ?? bookie ?? multi.bestBookie;
   const displayBook = isFeedBookie(rawBook) ? rawBook : bookie ?? multi.bestBookie;
@@ -93,23 +94,15 @@ export function MultiCard({
   const legBookie = showFairOnly ? "" : displayBook ?? cardBookie;
   const missingAtBookie =
     legBookie && !showFairOnly
-      ? legs.filter((l) => legPriceAtBookie(l, legBookie) == null).length
+      ? legs.filter(
+          (l) =>
+            legPriceAtBookieWithCatalog(l, legBookie, allPicks) == null
+        ).length
       : 0;
   const bestFeed = !lockedBookie && !showFairOnly ? bestFeedMultiQuote(legs) : undefined;
-  const colonFair = headline.indexOf(": Fair $");
-  const colonPrice = headline.indexOf(": $");
-  const titleText =
-    colonFair >= 0
-      ? headline.slice(0, colonFair)
-      : colonPrice >= 0
-        ? headline.slice(0, colonPrice)
-        : headline;
-  const totalText =
-    colonFair >= 0
-      ? headline.slice(colonFair + 2)
-      : colonPrice >= 0
-        ? headline.slice(colonPrice + 2)
-        : "";
+  const atIdx = headline.indexOf(" @ ");
+  const titleText = atIdx >= 0 ? headline.slice(0, atIdx) : headline;
+  const totalText = atIdx >= 0 ? headline.slice(atIdx + 3) : headline;
 
   return (
     <section className="bg-card rounded-xl border border-white/10 overflow-hidden mb-3">
@@ -126,7 +119,11 @@ export function MultiCard({
                 {totalText}
               </p>
             ) : null}
-            <p className="text-xs text-white/45 mt-1">{subline}</p>
+            {!showFairOnly && cardBookie ? (
+              <p className="text-xs text-white/45 mt-1">{cardBookie}</p>
+            ) : (
+              <p className="text-xs text-white/45 mt-1">{subline}</p>
+            )}
           </div>
           {onRemove && (
             <button type="button" className="text-xs text-white/50" onClick={onRemove}>
@@ -146,37 +143,81 @@ export function MultiCard({
         )}
       </header>
       <div className="px-2 divide-y divide-white/5">
-        {multi.legs.map((anchorId) => {
-          const leg = resolveLeg(anchorId);
-          if (!leg) {
+        {multi.type === "crossGameSgm" ? (
+          (() => {
+            const byGame = new Map<string, { anchorId: string; leg: PickLeg }[]>();
+            for (const anchorId of multi.legs) {
+              const leg = resolveLeg(anchorId);
+              if (!leg) continue;
+              const arr = byGame.get(leg.gameId) ?? [];
+              arr.push({ anchorId, leg });
+              byGame.set(leg.gameId, arr);
+            }
+            return [...byGame.entries()].map(([gameId, rows]) => {
+              const game = slate?.find((g) => g.id === gameId);
+              const header = game
+                ? `${game.awayTeam} @ ${game.homeTeam}`
+                : rows[0]?.leg.team ?? "Game";
+              return (
+                <div key={gameId}>
+                  <p className="text-[10px] uppercase tracking-wide text-white/40 px-2 pt-2">
+                    {header}
+                  </p>
+                  {rows.map(({ anchorId, leg }) => (
+                    <ErrorBoundary key={anchorId} name={`leg-${anchorId}`}>
+                      <MultiLegRow
+                        leg={leg}
+                        injuries={injuries}
+                        picks={allPicks}
+                        catalog={allPicks}
+                        slate={slate}
+                        bookie={legBookie}
+                        fairPriceInSlot={showFairOnly}
+                        edited={isEdited(anchorId)}
+                        onSwap={() => swapLeg(anchorId)}
+                        onReset={() => resetLeg(anchorId)}
+                        onTap={onLegTap}
+                      />
+                    </ErrorBoundary>
+                  ))}
+                </div>
+              );
+            });
+          })()
+        ) : (
+          multi.legs.map((anchorId) => {
+            const leg = resolveLeg(anchorId);
+            if (!leg) {
+              return (
+                <p key={anchorId} className="text-sm text-white/50 px-2 py-2">
+                  This bet couldn&apos;t be displayed
+                </p>
+              );
+            }
             return (
-              <p key={anchorId} className="text-sm text-white/50 px-2 py-2">
-                This bet couldn&apos;t be displayed
-              </p>
+              <ErrorBoundary key={anchorId} name={`leg-${anchorId}`}>
+                <MultiLegRow
+                  leg={leg}
+                  injuries={injuries}
+                  picks={allPicks}
+                  catalog={allPicks}
+                  slate={slate}
+                  bookie={legBookie}
+                  fairPriceInSlot={showFairOnly}
+                  edited={isEdited(anchorId)}
+                  onSwap={() => swapLeg(anchorId)}
+                  onReset={() => resetLeg(anchorId)}
+                  onTap={onLegTap}
+                />
+              </ErrorBoundary>
             );
-          }
-          return (
-            <ErrorBoundary key={anchorId} name={`leg-${anchorId}`}>
-              <MultiLegRow
-                leg={leg}
-                injuries={injuries}
-                picks={allPicks}
-                slate={slate}
-                bookie={legBookie}
-                fairPriceInSlot={showFairOnly}
-                edited={isEdited(anchorId)}
-                onSwap={() => swapLeg(anchorId)}
-                onReset={() => resetLeg(anchorId)}
-                onTap={onLegTap}
-              />
-            </ErrorBoundary>
-          );
-        })}
+          })
+        )}
       </div>
       <div className="p-3 bg-surface/40">
         {missingAtBookie > 0 && legBookie && (
           <p className="text-xs text-accent-warn mb-2">
-            {missingAtBookie} leg(s) have no {legBookie} price — total may be incomplete
+            {missingAtBookie} leg(s) missing at {legBookie} even after nearest-line
           </p>
         )}
         {bestFeed && bookie && bestFeed.bookie !== bookie && bestFeed.total > (total ?? 0) && (

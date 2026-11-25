@@ -60,13 +60,11 @@ Legs kept with p ∈ (0.05, 0.95) for expected rotation players.
 
 ---
 
-## 4. Clash & exposure
+## 4. Clash & leg rules
 
 **Clash** (never same multi): opposing reb vs pts/ast; two reb same game; two pts same team; same player twice (except Booster step / combo markets); Q1 pts + Q1 ast same player.
 
-**Exposure (spec):** across generated multis, a player in at most **2** non-Booster multis unless that leg's p ≥ 0.80. Booster does not count toward cap.
-
-**Questionable:** never the Main Play anchor (highest p leg).
+**Questionable:** never the Main Play anchor (highest p leg). Cross / Best SGM may include questionable legs (small **Q** tag); Check news does not block those bet types.
 
 ---
 
@@ -83,16 +81,16 @@ Ranking: injury news → probability → edge. **One AU bookie per built multi**
 
 ### Booster
 
-Same players as Main, one rung up where valid; ~$5 straight suggestion; Trixie when best treble ≥ 60 (wording on card).
+Same **Main Play bookie** and players; **+1 rung** when that Main leg’s bookie price ≤ 4.00, else same rung. No per-leg edge gate. Nearest main/alternate line at bookie.
 
 ### Q1 Multi (names & rules)
 
 | Variant | Label | Rules |
 |---------|--------|--------|
-| **Core** | Q1 Multi | One leg per team, 3–6 teams; leg p ≥ 0.70; 24+ min starters; last-10 Q1 hit rate within 20pp of model; fair/take-at (no AU Q1 feed) |
-| **Longshot** | Q1 Multi (Longshot) | Same structure; fair **2.20–4.00**; pool filtered fair 1.80–4.00 |
+| **Core** | Q1 Multi | Blend p = 0.3 model + 0.4 L10 Q1 + 0.3 L5 Q1; 24+ min starters; −20pp L10 gap; fair ≥ **1.30**; rank legs, **1/team**, **3–6** teams |
+| **Longshot** | Q1 Multi (Longshot) | Same structure; each leg fair ≥ **2.50** |
 
-Card copy notes: compare to your bookie (no API Q1 props).
+No AU Q1 feed — card shows **Take fair×1.08** prominently.
 
 ### Cross-Game SGM / Boost SGM / Longshot
 
@@ -147,7 +145,7 @@ Vitest: distributions, injury fixture, clash, exposure, odds pause, Main Play ra
 |--------|-----------------|------------|
 | Market blend | 60% market / 40% model | `lib/market-blend.ts`: **60% model / 40% market** |
 | Main Play combined total | **$7–$20** at chosen bookie | `lib/multis.ts` `findMainPlaySubset`: **$7–$10** |
-| Exposure cap | 2 non-Booster multis (p&lt;0.80) | `lib/exposure.ts`: **3** multis |
+| Exposure cap | Removed (clash only) | `lib/exposure.ts` no-op |
 | Main stake / targetProfit | Not on cards | Settings UI still has targetProfit; multis omit stake |
 | Q1 Multi fair band | Core p ≥ 0.70; Longshot fair 2.20–4.00 | Matches `buildQ1Multi` |
 | Value chip | At **My bookie** / card bookie | `lib/value-at-bookie.ts` |

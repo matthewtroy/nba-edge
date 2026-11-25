@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import type { MultiBet, PickLeg } from "@lib/types";
-import { swapCandidatesForLeg } from "@lib/leg-swap-candidates";
+import { swapPlayerCandidates } from "@lib/multi-player-swap";
 
 function storageKey(multi: MultiBet): string {
   return `multi-leg-edits:${multi.type}:${multi.variant ?? ""}:${multi.legs.join(",")}`;
@@ -32,7 +32,7 @@ export function useMultiLegEdits(multi: MultiBet, picks: PickLeg[]) {
     (legId: string) => {
       const current = resolveLeg(legId);
       if (!current) return;
-      const candidates = swapCandidatesForLeg(current, picks);
+      const candidates = swapPlayerCandidates(current, picks, multi.type);
       if (!candidates.length) return;
       const idx = candidates.findIndex((c) => c.id === current.id);
       const next = candidates[(idx + 1) % candidates.length];

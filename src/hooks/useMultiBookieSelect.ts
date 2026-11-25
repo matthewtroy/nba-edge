@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import type { MultiBet, PickLeg } from "@lib/types";
 import { AU_BOOKMAKERS } from "@lib/types";
-import { combinedPriceForBookie } from "@lib/single-bookie";
+import {
+  combinedPriceForBookieWithCatalog,
+} from "@lib/single-bookie";
 import { pickDefaultBookie } from "@lib/multi-display";
 
 function storageKey(multi: MultiBet): string {
@@ -12,8 +14,10 @@ export function useMultiBookieSelect(
   multi: MultiBet,
   legs: PickLeg[],
   preferred?: string,
-  locked?: string
+  locked?: string,
+  catalog?: PickLeg[]
 ) {
+  const pool = catalog?.length ? catalog : legs;
   const [bookie, setBookie] = useState<string | undefined>(() => {
     if (locked) return locked;
     try {
@@ -41,9 +45,13 @@ export function useMultiBookieSelect(
     [multi]
   );
 
-  const offered = AU_BOOKMAKERS.filter((b) => combinedPriceForBookie(legs, b) != null);
+  const offered = AU_BOOKMAKERS.filter(
+    (b) => combinedPriceForBookieWithCatalog(legs, b, pool) != null
+  );
   const total =
-    bookie != null ? combinedPriceForBookie(legs, bookie) : undefined;
+    bookie != null
+      ? combinedPriceForBookieWithCatalog(legs, bookie, pool)
+      : undefined;
 
   return { bookie, select, offered, total };
 }

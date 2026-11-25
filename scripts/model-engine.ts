@@ -329,7 +329,8 @@ export function runModel(input: ModelRunInput): {
     input.slate.length,
     300,
     edgeFraction,
-    allQ1Exclusions
+    allQ1Exclusions,
+    logsByPlayer
   );
   const picksById = new Map(eligiblePicks.map((p) => [p.id, p]));
   logSlatePickReport(eligiblePicks, multiResult.bets, picksById);

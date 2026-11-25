@@ -59,10 +59,13 @@ export function multiCardTitle(
   const q1Note = "No bookie feed for Q1: compare with your bookie's price";
 
   if (opts.fairOnly === true || multi.type === "q1Multi") {
+    const takeAt = Math.round(fair * edgeMultiplier(minEdge) * 100) / 100;
     const subline =
-      multi.type === "q1Multi" ? q1Note : opts.fairOnlyNote ?? `Fair $${fair.toFixed(2)}`;
-    return {
-      headline: `${name}: Fair $${fair.toFixed(2)}`,
+      multi.type === "q1Multi"
+        ? `Take $${takeAt.toFixed(2)} (fair×1.08) · ${q1Note}`
+        : opts.fairOnlyNote ?? `Fair $${fair.toFixed(2)}`;
+  return {
+      headline: `${name} @ Take $${takeAt.toFixed(2)}`,
       subline,
       cardBookie: "",
       fairOnly: true,
@@ -84,10 +87,9 @@ export function multiCardTitle(
       fairOnly: true,
     };
   }
-  const subline = cardBookie || `Fair $${fair.toFixed(2)}`;
   return {
-    headline: `${name}: $${total.toFixed(2)}`,
-    subline,
+    headline: `${name} @ $${total.toFixed(2)}`,
+    subline: cardBookie,
     cardBookie,
     fairOnly: false,
   };

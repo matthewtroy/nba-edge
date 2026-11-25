@@ -255,6 +255,8 @@ export function buildLegsForPlayer(
       defendingTeamId: ctx.defendingTeamId,
       playerTeamId: ctx.playerTeamId,
       playerPosition: ctx.playerPosition,
+      teamName: ctx.team,
+      opponentName: ctx.opponent,
     });
     legs.push(leg);
   };

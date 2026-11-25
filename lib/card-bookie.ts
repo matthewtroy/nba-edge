@@ -1,6 +1,10 @@
 import type { PickLeg } from "./types.js";
 import { AU_BOOKMAKERS } from "./types.js";
-import { combinedPriceForBookie, legPriceAtBookie } from "./single-bookie.js";
+import {
+  combinedPriceForBookie,
+  combinedPriceForBookieWithCatalog,
+  legPriceAtBookie,
+} from "./single-bookie.js";
 
 /** Bookies with API odds in the feed (not manual-entry). */
 export const FEED_BOOKIES = AU_BOOKMAKERS.filter((b) => b !== "bet365");
@@ -10,11 +14,13 @@ export function isFeedBookie(bookie?: string): boolean {
 }
 
 export function bestFeedMultiQuote(
-  legs: PickLeg[]
+  legs: PickLeg[],
+  catalog?: PickLeg[]
 ): { bookie: string; total: number } | undefined {
+  const pool = catalog ?? legs;
   let best: { bookie: string; total: number } | undefined;
   for (const bookie of FEED_BOOKIES) {
-    const total = combinedPriceForBookie(legs, bookie);
+    const total = combinedPriceForBookieWithCatalog(legs, bookie, pool);
     if (total == null) continue;
     if (!best || total > best.total) best = { bookie, total };
   }

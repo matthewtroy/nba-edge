@@ -45,6 +45,6 @@ describe("buildShortLegReason", () => {
 
   it("shows form at 7/10", () => {
     const leg = { ...base, reasons: [] };
-    expect(buildShortLegReason(leg, logs([8, 8, 8, 8, 8, 8, 8, 3, 3, 3]))).toMatch(/7 of last 10/);
+    expect(buildShortLegReason(leg, logs([8, 8, 8, 8, 8, 8, 8, 3, 3, 3]))).toMatch(/7\/10 hits/);
   });
 });
