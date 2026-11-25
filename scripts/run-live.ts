@@ -41,7 +41,28 @@ import {
   loadOddsBudgetFromSupabase,
   saveOddsBudgetAfterPull,
   type SlateSyncBundle,
+  type SupabaseUpsertClient,
 } from "./supabase-sync.js";
+
+const DEFAULT_ODDS_BUDGET = {
+  monthlyLimit: 500,
+  resetDay: 1,
+  pretipPull: false,
+  creditsPerGame: 10,
+};
+
+/** Supabase failures must not fail the static JSON pipeline (Actions exit 0). */
+export async function safeFinalizePipelineSupabaseSync(
+  rootDir: string,
+  bundles: SlateSyncBundle[]
+): Promise<void> {
+  try {
+    await finalizePipelineSupabaseSync(rootDir, bundles);
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error(`supabase sync failed: ${msg}`);
+  }
+}
 import { filterPlayersForSlate, writeSlateBundle } from "./slate-bundle.js";
 import {
   cacheSlateOddsSnapshot,
@@ -361,17 +382,21 @@ export async function runLivePipeline(
   let lastCreditsUsed = 0;
   let lastCreditsPerGame = 10;
 
-  const supabaseConn = await createSupabaseClient(rootDir);
-  const supabaseClient = supabaseConn.client;
   const monthKey = sydneyYmd(now).slice(0, 7);
-  const budgetFromDb = supabaseClient
-    ? await loadOddsBudgetFromSupabase(supabaseClient, monthKey)
-    : {
-        monthlyLimit: 500,
-        resetDay: 1,
-        pretipPull: false,
-        creditsPerGame: 10,
-      };
+  let supabaseClient: SupabaseUpsertClient | null = null;
+  let budgetFromDb = { ...DEFAULT_ODDS_BUDGET };
+  try {
+    const supabaseConn = await createSupabaseClient(rootDir);
+    supabaseClient = supabaseConn.client;
+    if (supabaseClient) {
+      const fromDb = await loadOddsBudgetFromSupabase(supabaseClient, monthKey);
+      budgetFromDb = fromDb ? { ...DEFAULT_ODDS_BUDGET, ...fromDb } : { ...DEFAULT_ODDS_BUDGET };
+    }
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error(`supabase sync failed: ${msg}`);
+    supabaseClient = null;
+  }
 
   const nextSlateGames = filterSlateToNextSydney(unionSlate);
   const nextSlateTip = slateTipDateFromGames(nextSlateGames) ?? undefined;
@@ -724,7 +749,7 @@ export async function runLivePipeline(
     }
   }
 
-  await finalizePipelineSupabaseSync(rootDir, syncBundles);
+  await safeFinalizePipelineSupabaseSync(rootDir, syncBundles);
 
   console.log(
     `Pipeline OK: ${slatesToPublish.length} slate(s) · ${indexEntries.map((e) => `${e.date} ${e.multiCount}m`).join(", ")} (${fromLive ? "from-live" : "live"})`

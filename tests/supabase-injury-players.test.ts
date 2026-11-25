@@ -96,5 +96,41 @@ describe("isEspnPlayerId", () => {
     expect(isEspnPlayerId("4066648")).toBe(true);
     expect(isEspnPlayerId("x")).toBe(false);
     expect(isEspnPlayerId("")).toBe(false);
+    expect(isEspnPlayerId(undefined)).toBe(false);
+    expect(isEspnPlayerId(null)).toBe(false);
+    expect(isEspnPlayerId(4066648)).toBe(false);
+  });
+});
+
+describe("supabase invalid injury id", () => {
+  it("skips and counts undefined playerId without throwing", async () => {
+    const client = mockClient();
+    const log = vi.spyOn(console, "log").mockImplementation(() => {});
+    const injuries = [
+      {
+        playerId: undefined,
+        playerName: "Broken Row",
+        teamId: "m99",
+        teamName: "Far Team",
+        gameId: "g99",
+        status: "Out",
+        source: "ESPN",
+        updatedAt: "2026-11-25T00:00:00Z",
+      },
+    ] as unknown as InjuryEntry[];
+    const { counts, failed } = await syncRunToSupabase(client, {
+      slateDate: "2026-11-26",
+      slate,
+      injuries,
+      players: [] as ModelPlayer[],
+      ranking: [],
+    });
+    expect(failed).toEqual([]);
+    expect(counts.injuries).toBe(0);
+    expect(counts.injuriesSkippedInvalidId).toBe(1);
+    expect(log).toHaveBeenCalledWith(
+      expect.stringContaining("skipped 1 injury row(s)")
+    );
+    log.mockRestore();
   });
 });

@@ -21,6 +21,7 @@ export interface SyncCounts {
   players: number;
   games: number;
   injuries: number;
+  injuriesSkippedInvalidId: number;
   logs: number;
   slates: number;
   oddsPulls: number;
@@ -87,8 +88,11 @@ function injurySource(source: string): "espn" | "nba_official" {
 }
 
 /** ESPN athlete ids are numeric; skip synthetic/missing ids for players + injuries. */
-export function isEspnPlayerId(id: string): boolean {
-  return /^\d{2,}$/.test(id.trim());
+export function isEspnPlayerId(id: unknown): boolean {
+  if (typeof id !== "string") return false;
+  const trimmed = id.trim();
+  if (!trimmed) return false;
+  return /^\d{2,}$/.test(trimmed);
 }
 
 export type SyncRunResult = {
@@ -200,12 +204,24 @@ export async function syncRunToSupabase(
     players: 0,
     games: 0,
     injuries: 0,
+    injuriesSkippedInvalidId: 0,
     logs: 0,
     slates: 0,
     oddsPulls: 0,
     oddsPrices: 0,
   };
   const failed: string[] = [];
+
+  let injuriesSkippedInvalidId = 0;
+  for (const inj of bundle.injuries) {
+    if (!isEspnPlayerId(inj.playerId)) injuriesSkippedInvalidId += 1;
+  }
+  counts.injuriesSkippedInvalidId = injuriesSkippedInvalidId;
+  if (injuriesSkippedInvalidId > 0) {
+    console.log(
+      `supabase sync: skipped ${injuriesSkippedInvalidId} injury row(s) with missing or invalid player id`
+    );
+  }
 
   const tryTable = async (table: string, fn: () => Promise<void>): Promise<void> => {
     try {
@@ -236,7 +252,9 @@ export async function syncRunToSupabase(
   const onSlate = (teamId: string) =>
     bundle.slate.some((g) => g.homeTeamId === teamId || g.awayTeamId === teamId);
 
-  const slatePlayers = bundle.players.filter((p) => onSlate(p.teamId));
+  const slatePlayers = bundle.players.filter(
+    (p) => onSlate(p.teamId) && isEspnPlayerId(p.id)
+  );
   const playerById = new Map(
     slatePlayers.map((p) => [
       p.id,
@@ -510,10 +528,14 @@ export async function saveOddsBudgetAfterPull(
 
 export function logSyncCounts(counts: SyncCounts, failed: string[] = []): void {
   const failLabel = failed.length ? failed.join(", ") : "none";
+  const skipInj =
+    counts.injuriesSkippedInvalidId > 0
+      ? `, injuries_skipped_invalid_id ${counts.injuriesSkippedInvalidId}`
+      : "";
   console.log(
     `supabase sync: teams ${counts.teams}, players ${counts.players}, games ${counts.games}, ` +
       `injuries ${counts.injuries}, logs ${counts.logs}, slates ${counts.slates}, ` +
-      `odds_pulls ${counts.oddsPulls}, odds_prices ${counts.oddsPrices} (failed: ${failLabel})`
+      `odds_pulls ${counts.oddsPulls}, odds_prices ${counts.oddsPrices}${skipInj} (failed: ${failLabel})`
   );
 }
 
@@ -535,6 +557,7 @@ export async function finalizePipelineSupabaseSync(
     players: 0,
     games: 0,
     injuries: 0,
+    injuriesSkippedInvalidId: 0,
     logs: 0,
     slates: 0,
     oddsPulls: 0,
@@ -548,6 +571,7 @@ export async function finalizePipelineSupabaseSync(
     totals.players += c.players;
     totals.games += c.games;
     totals.injuries += c.injuries;
+    totals.injuriesSkippedInvalidId += c.injuriesSkippedInvalidId;
     totals.logs += c.logs;
     totals.slates += c.slates;
     totals.oddsPulls += c.oddsPulls;
