@@ -1,0 +1,74 @@
+{
+  "labels": [
+    "MIN",
+    "FG",
+    "FG%",
+    "3PT",
+    "3P%",
+    "FT",
+    "FT%",
+    "REB",
+    "AST",
+    "BLK",
+    "STL",
+    "PF",
+    "TO",
+    "PTS"
+  ],
+  "names": [
+    "minutes",
+    "fieldGoalsMade-fieldGoalsAttempted",
+    "fieldGoalPct",
+    "threePointFieldGoalsMade-threePointFieldGoalsAttempted",
+    "threePointPct",
+    "freeThrowsMade-freeThrowsAttempted",
+    "freeThrowPct",
+    "totalRebounds",
+    "assists",
+    "blocks",
+    "steals",
+    "fouls",
+    "turnovers",
+    "points"
+  ],
+  "seasonTypes": [
+    {
+      "displayName": "Regular Season",
+      "categories": [
+        {
+          "events": [
+            {
+              "eventId": "401910034",
+              "stats": [
+                "29",
+                "9-14",
+                "64.3",
+                "4-4",
+                "100.0",
+                "8-12",
+                "66.7",
+                "13",
+                "5",
+                "2",
+                "3",
+                "5",
+                "1",
+                "30"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "401910034": {
+      "gameDate": "2026-11-24T00:00Z",
+      "homeTeamId": "18",
+      "awayTeamId": "11",
+      "team": { "id": "18" },
+      "opponent": { "id": "11", "displayName": "Indiana Pacers" },
+      "atVs": "vs"
+    }
+  }
+}

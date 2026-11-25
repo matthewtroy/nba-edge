@@ -3,6 +3,7 @@ import type { MultiBet, PickLeg } from "@lib/types";
 import { AU_BOOKMAKERS } from "@lib/types";
 import {
   combinedPriceForBookieWithCatalog,
+  type BookiePriceOpts,
 } from "@lib/single-bookie";
 import { pickDefaultBookie } from "@lib/multi-display";
 
@@ -17,7 +18,8 @@ export function useMultiBookieSelect(
   locked?: string,
   catalog?: PickLeg[],
   /** Official card: preview other books; headline stays on published bookie. */
-  displayOnlyPublished?: string
+  displayOnlyPublished?: string,
+  priceOpts?: BookiePriceOpts
 ) {
   const pool = catalog?.length ? catalog : legs;
   const hardLock = locked && !displayOnlyPublished ? locked : undefined;
@@ -58,13 +60,13 @@ export function useMultiBookieSelect(
   );
   const total =
     bookie != null
-      ? combinedPriceForBookieWithCatalog(legs, bookie, pool)
+      ? combinedPriceForBookieWithCatalog(legs, bookie, pool, priceOpts)
       : undefined;
 
   const publishedTotal =
     displayOnlyPublished != null && displayOnlyPublished.length > 0
       ? multi.bestBookieTotal ??
-        combinedPriceForBookieWithCatalog(legs, displayOnlyPublished, pool)
+        combinedPriceForBookieWithCatalog(legs, displayOnlyPublished, pool, priceOpts)
       : undefined;
 
   return {

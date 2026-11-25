@@ -1,6 +1,8 @@
 import type { Market, MultiBet, PickLeg } from "./types.js";
 import type { OfficialLegSnapshot } from "./official-card-time.js";
 import { legPriceAtBookieWithCatalog } from "./single-bookie.js";
+import { gateLegReasons } from "./reason-gate.js";
+import { topReasonLines } from "./leg-reason-types.js";
 
 export function freezeOfficialLegSnapshots(
   multis: MultiBet[],
@@ -95,7 +97,14 @@ export function picksByIdFromOfficialSnapshots(
   if (!snapshots) return live;
   const out = new Map<string, PickLeg>();
   for (const [id, snap] of Object.entries(snapshots)) {
-    out.set(id, pickLegFromSnapshot(snap));
+    const live = livePicks.find((p) => p.id === id);
+    const reasonSource =
+      live?.reasons?.length && live.reasons.length > 0 ? live.reasons : snap.reasons;
+    const reasons = gateLegReasons(reasonSource, snap.market, 3);
+    const leg = pickLegFromSnapshot(snap);
+    leg.reasons = reasons;
+    leg.reasonLine = topReasonLines(reasons, 3);
+    out.set(id, leg);
   }
   for (const p of livePicks) {
     if (!out.has(p.id)) out.set(p.id, p);

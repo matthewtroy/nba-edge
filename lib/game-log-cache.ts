@@ -10,10 +10,14 @@ import {
 
 export { modelRatesLogCount, normalizeLogsForPlayer, stampLegacyLogSources } from "./game-log-normalize.js";
 
+/** Bump when ESPN parse mapping changes (invalidates stale cached rows). */
+export const GAME_LOG_CACHE_VERSION = 2;
+
 export interface CachedGameLog {
   fetchedAt: string;
   headshot: string;
   logs: PlayerGameLog[];
+  version?: number;
 }
 
 export type GameLogCacheFile = Record<string, CachedGameLog>;
@@ -50,6 +54,7 @@ export function getCachedLogs(
 ): PlayerGameLog[] | undefined {
   const row = cache[athleteId];
   if (!row) return undefined;
+  if ((row.version ?? 1) < GAME_LOG_CACHE_VERSION) return undefined;
   const age = now.getTime() - new Date(row.fetchedAt).getTime();
   if (age > MAX_AGE_MS) return undefined;
   const logs = normalizeLogsForPlayer(row.logs);
@@ -69,6 +74,11 @@ export function cacheLogsFromRaw(
     ...g,
     source: "espn" as const,
   }));
-  cache[athleteId] = { fetchedAt: now.toISOString(), headshot, logs };
+  cache[athleteId] = {
+    fetchedAt: now.toISOString(),
+    headshot,
+    logs,
+    version: GAME_LOG_CACHE_VERSION,
+  };
   return logs;
 }

@@ -1,0 +1,84 @@
+import type { Market } from "./types.js";
+import {
+  type LegReason,
+  normalizeLegReasons,
+  reasonMatchesMarket,
+  sortLegReasons,
+} from "./leg-reason-types.js";
+import { reasonTextHasBannedPhrase } from "./reason-ban.js";
+
+const PLAUSIBILITY = {
+  fga: 35,
+  minutes: 48,
+  pts: 60,
+  reb: 25,
+  ast: 20,
+} as const;
+
+function normalizeFactKey(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .replace(/\d+\.\d+/g, "#")
+    .replace(/\d+/g, "#")
+    .trim();
+}
+
+/** Reject reason copy with impossible stat numbers (e.g. mis-parsed ESPN rows). */
+export function reasonPassesPlausibility(text: string): boolean {
+  const t = text.toLowerCase();
+  if (/allow [\d.]+\s+(pts|reb|ast|threes)/i.test(text) && /per 48|to guards|to forwards|to centers/i.test(text)) {
+    return true;
+  }
+  const nums = [...text.matchAll(/([\d.]+)\s*(fga|min|mins|minutes|pts|points|reb|rebounds|ast|assists)/gi)];
+  for (const m of nums) {
+    const v = Number(m[1]);
+    if (!Number.isFinite(v)) continue;
+    const unit = m[2].toLowerCase();
+    if (unit.startsWith("fga") && v > PLAUSIBILITY.fga) return false;
+    if ((unit.startsWith("min") || unit === "minutes") && v > PLAUSIBILITY.minutes)
+      return false;
+    if ((unit.startsWith("pt") || unit === "points") && v > PLAUSIBILITY.pts) return false;
+    if ((unit.startsWith("reb") || unit === "rebounds") && v > PLAUSIBILITY.reb) return false;
+    if ((unit.startsWith("ast") || unit === "assists") && v > PLAUSIBILITY.ast)
+      return false;
+  }
+  const formHit = t.match(/\b(\d+)\s*\/\s*(\d+)\s*at this line/);
+  if (formHit) {
+    const hits = Number(formHit[1]);
+    const denom = Number(formHit[2]);
+    if (denom > 10 || hits > denom) return false;
+  }
+  return true;
+}
+
+export function gateLegReason(
+  reason: LegReason,
+  market: Market | string
+): boolean {
+  if (reasonTextHasBannedPhrase(reason.text)) return false;
+  if (!reasonPassesPlausibility(reason.text)) return false;
+  const stat = market.replace(/^q1/, "");
+  if (reason.type === "rank" || reason.type === "form") return true;
+  return reasonMatchesMarket(reason, market, stat);
+}
+
+/** Shared builder + UI gate: stat match, bans, plausibility, dedupe facts. Max 3 lines. */
+export function gateLegReasons(
+  reasons: unknown,
+  market: Market | string,
+  maxLines = 3
+): LegReason[] {
+  const sorted = sortLegReasons(normalizeLegReasons(reasons));
+  const seen = new Set<string>();
+  const out: LegReason[] = [];
+  for (const r of sorted) {
+    if (!gateLegReason(r, market)) continue;
+    const key = normalizeFactKey(r.text);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(r);
+    if (out.length >= maxLines) break;
+  }
+  return out;
+}

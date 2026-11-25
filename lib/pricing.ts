@@ -26,6 +26,7 @@ import {
 } from "./leg-history.js";
 import { applyMatchupToModelP, matchupDeltaFromRank } from "./matchup-adjust.js";
 import { buildLegReasons } from "./leg-display.js";
+import { gateLegReasons } from "./reason-gate.js";
 import { isInjuryRedistributionReason } from "./injury-reason.js";
 import { normalizeLegReasons, topReasonLines } from "./leg-reason-types.js";
 import type { PlayerTrackingDay } from "./player-tracking-cache.js";
@@ -277,8 +278,9 @@ export function buildLegsForPlayer(
       seedReasons: injurySeeds,
       playerId: ctx.playerId,
       positionRanks: ctx.positionRanks,
-    }).slice(0, 4);
-    leg.reasonLine = topReasonLines(leg.reasons, 2);
+    });
+    leg.reasons = gateLegReasons(leg.reasons, leg.market, 3);
+    leg.reasonLine = topReasonLines(leg.reasons, 3);
     legs.push(leg);
   };
 

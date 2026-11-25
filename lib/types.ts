@@ -277,7 +277,12 @@ export const AU_BOOKMAKERS = [
   "bet365",
   "Sportsbet",
   "TAB",
+  "TABtouch",
   "Ladbrokes",
+  "Neds",
   "PointsBet",
   "Unibet",
+  "Betr",
+  "Picklebet",
+  "Bet Right",
 ] as const;

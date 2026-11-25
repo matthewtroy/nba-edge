@@ -13,6 +13,11 @@ import { CrossGameChips } from "./CrossGameChips";
 import { ui } from "../lib/card-type-scale";
 import { MultiCardHeader } from "./MultiCardHeader";
 import { formatGameOddsAge } from "@lib/odds-freshness-ui";
+import {
+  feedBookieOptionsForMulti,
+  formatFeedBookieOptionLabel,
+} from "@lib/feed-bookie-options";
+import type { BookiePriceOpts } from "@lib/single-bookie";
 
 interface Props {
   multi: MultiBet;
@@ -91,14 +96,18 @@ export function MultiCard({
   };
 
   const priceCatalog = officialDisplayOnly && liveCatalog?.length ? liveCatalog : allPicks;
+  const priceOpts: BookiePriceOpts | undefined =
+    multi.type === "longshot" ? { allowNearest: false } : undefined;
   const { bookie, select, total, publishedBookie, publishedTotal } = useMultiBookieSelect(
     multi,
     legs,
     preferredBookie,
     officialDisplayOnly ? undefined : lockedBookie,
     priceCatalog,
-    officialDisplayOnly ? lockedBookie : undefined
+    officialDisplayOnly ? lockedBookie : undefined,
+    priceOpts
   );
+  const feedOptions = feedBookieOptionsForMulti(legs, priceCatalog, priceOpts);
   const rawBook = bookie ?? lockedBookie ?? multi.bestBookie;
   const displayBook = isFeedBookie(rawBook) ? rawBook : bookie ?? multi.bestBookie;
 
@@ -117,15 +126,21 @@ export function MultiCard({
   const displayTitle = headline.includes(" @ ")
     ? headline.slice(0, headline.indexOf(" @ "))
     : headline;
-  const headerTotal = showFairOnly ? undefined : total ?? multi.bestBookieTotal ?? undefined;
-  const headerBookie = showFairOnly ? undefined : displayBook ?? cardBookie ?? subline;
-
   const missingAtBookie =
     legBookie && !showFairOnly
       ? legs.filter(
-          (l) => legPriceAtBookieWithCatalog(l, legBookie, allPicks) == null
+          (l) =>
+            legPriceAtBookieWithCatalog(l, legBookie, priceCatalog, priceOpts) ==
+            null
         ).length
       : 0;
+  const headerTotal =
+    showFairOnly || missingAtBookie > 0 ? undefined : total ?? undefined;
+  const headerBookie = showFairOnly
+    ? undefined
+    : missingAtBookie > 0 && legBookie
+      ? `${legBookie} · ${missingAtBookie} of ${legs.length} legs`
+      : displayBook ?? cardBookie ?? subline;
 
   return (
     <section className={`${ui.card} ${compact ? "" : ""}`}>
@@ -199,6 +214,7 @@ export function MultiCard({
                   catalog={priceCatalog}
                   slate={slate}
                   bookie={legBookie}
+                  priceOpts={priceOpts}
                   fairPriceInSlot={showFairOnly}
                   edited={isEdited(anchorId)}
                   compact={compact}
@@ -212,11 +228,6 @@ export function MultiCard({
         )}
       </div>
 
-      {missingAtBookie > 0 && legBookie && (
-        <p className="text-[11px] text-white/45 pb-2">
-          {missingAtBookie} leg(s) missing at {legBookie}
-        </p>
-      )}
       {!showFairOnly && !hideBookieSelect && (!lockedBookie || officialDisplayOnly) && (
         <select
           className="w-full mb-2 py-2 text-xs text-white/70 bg-transparent border-0 border-b border-white/[0.05] outline-none"
@@ -224,12 +235,10 @@ export function MultiCard({
           onChange={(e) => select(e.target.value)}
           aria-label={officialDisplayOnly ? "Preview bookie prices" : "Bookie"}
         >
-          {FEED_BOOKIES.map((b) => (
-            <option key={b} value={b}>
-              {b}
-              {officialDisplayOnly && total != null && b === displayBook
-                ? ` · $${total.toFixed(2)} preview`
-                : ""}
+          {feedOptions.map((row) => (
+            <option key={row.bookie} value={row.bookie}>
+              {formatFeedBookieOptionLabel(row)}
+              {officialDisplayOnly && row.bookie === displayBook ? " preview" : ""}
             </option>
           ))}
         </select>

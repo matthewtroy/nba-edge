@@ -26,6 +26,7 @@ import {
 } from "./player-tracking-fetch.js";
 import { h2hReasonPhrase } from "./h2h-reason.js";
 import { reasonTextHasBannedPhrase } from "./reason-ban.js";
+import { gateLegReasons } from "./reason-gate.js";
 
 function hitCountL10(logs: PlayerGameLog[], market: Market, line: number): number | null {
   const sorted = [...logs].sort((a, b) => b.date.localeCompare(a.date));
@@ -73,8 +74,9 @@ function matchupPhrase(
           : "pts";
   const leagueAvg = leagueAvgAllowed(defense, playerPosition, row.stat);
   const rankPhrase = rank === 1 ? "the most" : `${ordinal(rank)} most`;
-  const avgSuffix = leagueAvg != null ? ` (avg ${leagueAvg.toFixed(1)})` : "";
-  return `${opp} allow ${row.allowedPer48.toFixed(1)} ${statWord} to ${posLabel}, ${rankPhrase}${avgSuffix}`;
+  const avgSuffix =
+    leagueAvg != null ? ` (league avg ${leagueAvg.toFixed(1)} per 48)` : "";
+  return `${opp} allow ${row.allowedPer48.toFixed(1)} ${statWord} per 48 to ${posLabel}, ${rankPhrase}${avgSuffix}`;
 }
 
 function playerRankPhrase(
@@ -284,7 +286,8 @@ export function buildLegReasons(input: {
   if (mins) put("min", mins);
 
   const sorted = sortLegReasons([...byType.values()]);
-  return reasonsForMarket(sorted, input.leg.market);
+  const filtered = reasonsForMarket(sorted, input.leg.market);
+  return gateLegReasons(filtered, input.leg.market, 3);
 }
 
 export function buildLegReasonLine(input: Parameters<typeof buildLegReasons>[0]): string | undefined {

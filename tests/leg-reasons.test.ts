@@ -54,7 +54,7 @@ describe("leg reasons structured", () => {
         { type: "injury", text: "Jones out → +1.1 ast" },
       ])
     );
-    expect(ordered.map((r) => r.type)).toEqual(["injury", "tracking", "form"]);
+    expect(ordered.map((r) => r.type)).toEqual(["injury", "form", "tracking"]);
   });
 
   it("formats matchup allow line with rank", () => {
@@ -89,7 +89,7 @@ describe("leg reasons structured", () => {
       opponentName: "Miami Heat",
     });
     const matchup = reasons.find((r) => r.type === "matchup");
-    expect(matchup?.text).toMatch(/Heat allow 72\.7 pts to guards, the most/);
+    expect(matchup?.text).toMatch(/Heat allow 72\.7 pts per 48 to guards, the most/);
   });
 
   it("keeps separate reason lines for UI", () => {

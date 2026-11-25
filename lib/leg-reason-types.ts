@@ -18,15 +18,15 @@ export interface LegReason {
 
 export const REASON_TYPE_ORDER: LegReasonType[] = [
   "injury",
-  "tracking",
-  "angle",
   "matchup",
   "h2h",
   "rank",
   "form",
+  "tracking",
+  "min",
   "avg",
   "pace",
-  "min",
+  "angle",
   "other",
 ];
 
@@ -99,10 +99,15 @@ export function reasonText(r: LegReason | string): string {
 
 export function reasonsForMarket(reasons: LegReason[], market: string): LegReason[] {
   const stat = market.replace(/^q1/, "");
-  return reasons.filter((r) => reasonMatchesMarket(r, market, stat));
+  return reasons.filter(
+    (r) =>
+      r.type === "rank" ||
+      r.type === "form" ||
+      reasonMatchesMarket(r, market, stat)
+  );
 }
 
-function reasonMatchesMarket(r: LegReason, market: string, stat: string): boolean {
+export function reasonMatchesMarket(r: LegReason, market: string, stat: string): boolean {
   if (
     r.type === "injury" ||
     r.type === "tracking" ||

@@ -1,5 +1,9 @@
 import type { PickLeg } from "./types.js";
-import { nearestPricedRung, type NearestBookieQuote } from "./nearest-bookie-line.js";
+import {
+  nearestPricedRung,
+  type NearestBookieOpts,
+  type NearestBookieQuote,
+} from "./nearest-bookie-line.js";
 
 export interface LegBookieQuoteView {
   modelLeg: PickLeg;
@@ -14,9 +18,10 @@ export interface LegBookieQuoteView {
 export function legBookieQuoteView(
   leg: PickLeg,
   bookie: string,
-  catalog: PickLeg[]
+  catalog: PickLeg[],
+  opts?: NearestBookieOpts
 ): LegBookieQuoteView {
-  const quote = nearestPricedRung(leg, bookie, catalog);
+  const quote = nearestPricedRung(leg, bookie, catalog, opts);
   return {
     modelLeg: quote?.leg ?? leg,
     bookie,

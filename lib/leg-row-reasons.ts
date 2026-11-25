@@ -1,11 +1,10 @@
 import type { PickLeg } from "./types.js";
-import { normalizeLegReasons, reasonTexts, sortLegReasons } from "./leg-reason-types.js";
+import { reasonTexts } from "./leg-reason-types.js";
+import { gateLegReasons } from "./reason-gate.js";
 
-/** Up to two short reason lines for leg rows (structured reasons only). */
+/** Up to three short reason lines for leg rows (structured reasons only). */
 export function legRowReasonLines(leg: PickLeg): { text: string; injury: boolean }[] {
-  const texts = reasonTexts(
-    sortLegReasons(normalizeLegReasons(leg.reasons ?? []))
-  );
+  const texts = reasonTexts(gateLegReasons(leg.reasons ?? [], leg.market, 3));
   const seen = new Set<string>();
   const out: string[] = [];
   for (const t of texts) {
@@ -13,7 +12,7 @@ export function legRowReasonLines(leg: PickLeg): { text: string; injury: boolean
     if (seen.has(key)) continue;
     seen.add(key);
     out.push(t);
-    if (out.length >= 2) break;
+    if (out.length >= 3) break;
   }
   return out.map((text) => ({
     text,

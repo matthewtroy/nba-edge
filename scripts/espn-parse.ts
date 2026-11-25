@@ -182,6 +182,7 @@ export function parseGameLogsFromEspn(
 ): PlayerGameLog[] {
   const data = raw as {
     labels?: string[];
+    names?: string[];
     seasonTypes?: {
       categories?: { events?: { eventId: string; stats: string[] }[] }[];
     }[];
@@ -204,14 +205,20 @@ export function parseGameLogsFromEspn(
       .toLowerCase()
       .includes("regular")
   );
+  const ix = gamelogStatIndices(data);
   const events = regular?.categories?.[0]?.events ?? [];
   for (const ev of events) {
     const stats = ev.stats ?? [];
-    const mins = parseMinutes(stats[0]);
-    const threes = parseMade(stats[3]);
-    const reb = num(stats[7]);
-    const ast = num(stats[8]);
-    const pts = num(stats[13]);
+    const mins = parseMinutes(ix ? stats[ix.min] : stats[0]);
+    const threes = parseMade(ix ? stats[ix.threes] : stats[3]);
+    const reb = num(ix ? stats[ix.reb] : stats[7]);
+    const ast = num(ix ? stats[ix.ast] : stats[8]);
+    const pts = num(ix ? stats[ix.pts] : stats[13]);
+    const fga =
+      ix && ix.fg >= 0 ? parseAttempted(stats[ix.fg]) : parseAttempted(stats[1]);
+    const fta =
+      ix && ix.ft >= 0 ? parseAttempted(stats[ix.ft]) : parseAttempted(stats[5]);
+    const turnovers = ix && ix.to >= 0 ? num(stats[ix.to]) : num(stats[12]);
     const meta = data.events?.[ev.eventId];
     let homeId = meta?.homeTeamId;
     let awayId = meta?.awayTeamId;
@@ -250,9 +257,9 @@ export function parseGameLogsFromEspn(
       opponent: meta?.opponent?.displayName,
       opponentTeamId,
       isHome,
-      fga: num(stats[4]),
-      fta: num(stats[9]),
-      turnovers: num(stats[10]),
+      fga,
+      fta,
+      turnovers,
       source: "espn",
     });
   }
@@ -269,13 +276,59 @@ function parseMinutes(s: string | undefined): number {
   return Number(s) || 0;
 }
 
-function parseMade(s: string | undefined): number {
+export function parseMade(s: string | undefined): number {
   if (!s || !s.includes("-")) return 0;
   return Number(s.split("-")[0]) || 0;
 }
 
+export function parseAttempted(s: string | undefined): number {
+  if (!s) return 0;
+  if (s.includes("-")) {
+    const parts = s.split("-");
+    return Number(parts[1]) || Number(parts[0]) || 0;
+  }
+  return Number(s) || 0;
+}
+
 function num(s: string | undefined): number {
   return Number(s) || 0;
+}
+
+export interface GamogStatIdx {
+  min: number;
+  fg: number;
+  threes: number;
+  ft: number;
+  reb: number;
+  ast: number;
+  to: number;
+  pts: number;
+}
+
+/** Player gamelog API: map header `labels` or `names` to stat column indexes. */
+export function gamelogStatIndices(raw: {
+  labels?: string[];
+  names?: string[];
+}): GamogStatIdx | null {
+  const keys = raw.names?.length ? raw.names : raw.labels;
+  if (!keys?.length) return null;
+  const idx = (match: (k: string) => boolean) => keys.findIndex(match);
+  const min = idx((k) => k === "minutes" || k === "MIN");
+  const fg = idx(
+    (k) => k.includes("fieldGoalsMade") || k === "FG" || k === "fieldGoals"
+  );
+  const threes = idx(
+    (k) => k.includes("threePointFieldGoalsMade") || k === "3PT" || k === "3P"
+  );
+  const ft = idx(
+    (k) => k.includes("freeThrowsMade") || k === "FT" || k === "freeThrows"
+  );
+  const reb = idx((k) => k === "totalRebounds" || k === "REB" || k === "rebounds");
+  const ast = idx((k) => k === "assists" || k === "AST");
+  const to = idx((k) => k === "turnovers" || k === "TO");
+  const pts = idx((k) => k === "points" || k === "PTS");
+  if (min < 0 || reb < 0 || ast < 0 || pts < 0) return null;
+  return { min, fg, threes, ft, reb, ast, to, pts };
 }
 
 interface BoxStatIdx {
@@ -304,8 +357,8 @@ export function boxStatIndices(keys: string[] | undefined): BoxStatIdx | null {
     reb,
     ast,
     threes,
-    fga: idx("fieldGoalsMade"),
-    fta: idx("freeThrowsMade"),
+    fga: idx("fieldGoalsAttempted") >= 0 ? idx("fieldGoalsAttempted") : idx("fieldGoalsMade"),
+    fta: idx("freeThrowsAttempted") >= 0 ? idx("freeThrowsAttempted") : idx("freeThrowsMade"),
     to: keys.findIndex((k) => k === "turnovers"),
   };
 }
@@ -445,8 +498,8 @@ export function parseBoxscorePlayerLogs(
           teamId,
           opponentTeamId,
           isHome,
-          fga: ix.fga >= 0 ? num(stats[ix.fga]) : undefined,
-          fta: ix.fta >= 0 ? parseMade(stats[ix.fta]) : undefined,
+          fga: ix.fga >= 0 ? parseAttempted(stats[ix.fga]) : undefined,
+          fta: ix.fta >= 0 ? parseAttempted(stats[ix.fta]) : undefined,
           turnovers: ix.to >= 0 ? num(stats[ix.to]) : undefined,
           q1Pts: q1?.pts,
           q1Reb: q1?.reb,

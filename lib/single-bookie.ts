@@ -1,7 +1,13 @@
 import type { PickLeg } from "./types.js";
 import { AU_BOOKMAKERS } from "./types.js";
 import { canonBookiePrices } from "./bookie-totals.js";
-import { combinedPriceForBookieNearest, legPriceAtBookieNearest } from "./nearest-bookie-line.js";
+import {
+  combinedPriceForBookieNearest,
+  legPriceAtBookieNearest,
+  type NearestBookieOpts,
+} from "./nearest-bookie-line.js";
+
+export type { NearestBookieOpts as BookiePriceOpts } from "./nearest-bookie-line.js";
 
 function legsWithCanonPrices(legs: PickLeg[]): PickLeg[] {
   return legs.map((leg) => ({
@@ -28,19 +34,34 @@ export function combinedPriceForBookie(
 export function combinedPriceForBookieWithCatalog(
   legs: PickLeg[],
   bookie: string,
-  catalog: PickLeg[]
+  catalog: PickLeg[],
+  opts?: NearestBookieOpts
 ): number | undefined {
   if (!legs.length) return undefined;
-  const batch = combinedPriceForBookieNearest(legs, bookie, catalog);
+  const batch = combinedPriceForBookieNearest(legs, bookie, catalog, opts);
   return batch?.total;
 }
 
 export function legPriceAtBookieWithCatalog(
   leg: PickLeg,
   bookie: string,
-  catalog: PickLeg[]
+  catalog: PickLeg[],
+  opts?: NearestBookieOpts
 ): number | undefined {
-  return legPriceAtBookieNearest(leg, bookie, catalog);
+  return legPriceAtBookieNearest(leg, bookie, catalog, opts);
+}
+
+export function legsMissingAtBookie(
+  legs: PickLeg[],
+  bookie: string,
+  catalog: PickLeg[],
+  opts?: NearestBookieOpts
+): number {
+  let n = 0;
+  for (const leg of legs) {
+    if (legPriceAtBookieWithCatalog(leg, bookie, catalog, opts) == null) n += 1;
+  }
+  return n;
 }
 
 export function bookiesWithFullMulti(legs: PickLeg[]): string[] {

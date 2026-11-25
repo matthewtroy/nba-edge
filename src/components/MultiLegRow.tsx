@@ -1,7 +1,8 @@
 import type { InjuryEntry, PickLeg, SlateGame } from "@lib/types";
 import { bookieMarketLabel } from "@lib/market-label";
 import { displayLegRowTags } from "@lib/value-at-bookie";
-import { legPriceAtCardBookie } from "@lib/leg-card-odds";
+import { legBookieQuoteView } from "@lib/leg-bookie-quote";
+import type { BookiePriceOpts } from "@lib/single-bookie";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { LastFiveTicks } from "./LastFiveTicks";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
@@ -15,6 +16,7 @@ interface Props {
   slate?: SlateGame[];
   bookie: string;
   catalog?: PickLeg[];
+  priceOpts?: BookiePriceOpts;
   fairPriceInSlot?: boolean;
   edited?: boolean;
   hideGameLine?: boolean;
@@ -35,15 +37,22 @@ export function MultiLegRow({
   slate,
   bookie,
   catalog,
+  priceOpts,
   fairPriceInSlot = false,
   edited = false,
   hideGameLine = false,
   compact = false,
   onTap,
 }: Props) {
+  const pool = catalog ?? picks;
   const tags = displayLegRowTags(leg, bookie);
   const reasonLines = legRowReasonLines(leg);
-  const price = legPriceAtCardBookie(leg, bookie, catalog);
+  const quoteView =
+    bookie && !fairPriceInSlot
+      ? legBookieQuoteView(leg, bookie, pool, priceOpts)
+      : undefined;
+  const price = quoteView?.displayPrice;
+  const lineShift = quoteView?.lineShift;
   const muted = !fairPriceInSlot && bookie && price == null;
   const subtitle = !hideGameLine && slate ? legGameTipSubtitle(leg, slate) : null;
   const ticks = leg.recentVsLine ?? [];
@@ -66,9 +75,7 @@ export function MultiLegRow({
       <div className="min-w-0">
         <p className={`${ui.legTitle} break-words`}>
           {leg.playerName}{" "}
-          {leg.feedLineNote
-            ? leg.feedLineNote
-            : bookieMarketLabel(leg.market, leg.line)}
+          {lineShift ?? leg.feedLineNote ?? bookieMarketLabel(leg.market, leg.line)}
         </p>
         {subtitle && (
           <p className="text-[11px] text-white/40 theme-adaptive-muted truncate">
@@ -116,7 +123,7 @@ export function MultiLegRow({
                 ${price.toFixed(2)}
               </p>
             ) : bookie ? (
-              <p className="text-[11px] text-white/40">—</p>
+              <p className="text-[11px] text-white/40">not at {bookie}</p>
             ) : null}
             <p className={ui.legFair}>Fair {leg.fairPrice.toFixed(2)}</p>
           </>

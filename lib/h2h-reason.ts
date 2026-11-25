@@ -123,7 +123,7 @@ export function h2hReasonPhrase(input: {
   if (hits >= Math.ceil(vs.length * 0.6) && hits >= 2) {
     return `${hits}/${vs.length} ${statWord} ${input.line}+ vs ${opp}${seasonSuffix}`;
   }
-  return `${h2hAvg.toFixed(1)} ${statWord} vs ${opp} in ${vs.length} meetings${seasonSuffix}`;
+  return `Meeting avg ${h2hAvg.toFixed(1)} ${statWord} vs ${opp} (${vs.length} meetings)${seasonSuffix}`;
 }
 
 export { h2hStatAvg };

@@ -4,13 +4,18 @@ import { combinedPriceForBookie } from "./single-bookie.js";
 
 const ALIASES: Record<string, (typeof AU_BOOKMAKERS)[number]> = {
   sportsbet: "Sportsbet",
+  "sports bet (au)": "Sportsbet",
   tab: "TAB",
-  tabtouch: "TAB",
+  tabtouch: "TABtouch",
   unibet: "Unibet",
   pointsbet: "PointsBet",
   "pointsbet (au)": "PointsBet",
   ladbrokes: "Ladbrokes",
-  neds: "Ladbrokes",
+  neds: "Neds",
+  betr: "Betr",
+  "picklebet (au)": "Picklebet",
+  picklebet: "Picklebet",
+  "bet right": "Bet Right",
   bet365: "bet365",
 };
 

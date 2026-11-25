@@ -1,21 +1,26 @@
 import type { PickLeg } from "./types.js";
-import { legPriceAtBookieWithCatalog } from "./single-bookie.js";
+import {
+  legPriceAtBookieWithCatalog,
+  type BookiePriceOpts,
+} from "./single-bookie.js";
 import { bookieMarketLabel } from "./market-label.js";
 
 export function legPriceAtCardBookie(
   leg: PickLeg,
   cardBookie: string,
-  catalog?: PickLeg[]
+  catalog?: PickLeg[],
+  opts?: BookiePriceOpts
 ): number | undefined {
   if (
     cardBookie &&
     leg.bestBookie === cardBookie &&
     leg.bestPrice != null &&
-    leg.bestPrice > 1
+    leg.bestPrice > 1 &&
+    opts?.allowNearest !== false
   ) {
     return leg.bestPrice;
   }
-  const p = legPriceAtBookieWithCatalog(leg, cardBookie, catalog ?? [leg]);
+  const p = legPriceAtBookieWithCatalog(leg, cardBookie, catalog ?? [leg], opts);
   return p != null && p > 1 ? p : undefined;
 }
 

@@ -39,19 +39,31 @@ describe("leg bookie quote (Diabate reb line change)", () => {
   });
 
   it("nearest rung when exact line missing at bookie", () => {
-    const only10 = [rebLeg(10, 1.55, 1.72, 0.58)];
+    const catalog = [rebLeg(12, 2.2, 1.75, 0.62), rebLeg(10, 1.55, 1.72, 0.58)];
     const target = {
-      ...only10[0],
+      ...catalog[0],
       id: "diabate-reb-13",
       line: 13,
       fairPrice: 3.1,
       probability: 0.32,
       bookiePrices: {},
     };
-    const view = legBookieQuoteView(target, "Ladbrokes", only10);
+    const view = legBookieQuoteView(target, "Ladbrokes", catalog);
     expect(view.offered).toBe(true);
-    expect(view.displayPrice).toBe(1.55);
+    expect(view.displayPrice).toBe(2.2);
     expect(view.lineShift).toMatch(/13\+/);
+  });
+
+  it("does not nearest across more than one reb rung", () => {
+    const only10 = [rebLeg(10, 1.55, 1.72, 0.58)];
+    const target = {
+      ...only10[0],
+      id: "diabate-reb-13",
+      line: 13,
+      bookiePrices: {},
+    };
+    const view = legBookieQuoteView(target, "Ladbrokes", only10);
+    expect(view.offered).toBe(false);
   });
 
   it("not offered when no quote", () => {

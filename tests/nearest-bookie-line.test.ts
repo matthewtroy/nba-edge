@@ -23,6 +23,15 @@ function leg(line: number, reb: number, prices?: Record<string, number>): PickLe
 }
 
 describe("nearestPricedRung", () => {
+  it("rejects rung more than one reb step away", () => {
+    const catalog = [
+      leg(5, 6, { Sportsbet: 1.72 }),
+      leg(9, 10, { Sportsbet: 2.4 }),
+    ];
+    const target = leg(7, 8, {});
+    expect(nearestPricedRung(target, "Sportsbet", catalog)).toBeUndefined();
+  });
+
   it("uses Sportsbet price on adjacent line when exact line missing", () => {
     const catalog = [
       leg(5, 6, { Sportsbet: 1.72 }),
