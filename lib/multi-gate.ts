@@ -162,21 +162,20 @@ export function gateMulti(
     violations.push(...checkBoosterSteps(mainPlay, legs, picksById));
   }
 
-  if (multi.combinedBestBookie === "Best mix") {
-    violations.push(`${label}: forbidden Best mix bookie label`);
+  const mixedLabel =
+    multi.bestBookie ?? multi.combinedBestBookie ?? "";
+  if (
+    mixedLabel === "Best mix" ||
+    mixedLabel === "Best across books" ||
+    multi.combinedBestBookie === "Best mix" ||
+    multi.combinedBestBookie === "Best across books"
+  ) {
+    violations.push(`${label}: forbidden mixed-bookie odds label`);
   }
 
-  const bestBook = multi.bestBookie ?? multi.combinedBestBookie;
-  const bestTotal = multi.bestBookieTotal ?? multi.combinedBestPrice;
-  if (bestTotal != null && bestBook === "Best across books") {
-    if (bestTotal < multi.combinedTakeAt) {
-      violations.push(
-        `${label}: cross-book total ${bestTotal} below take-at ${multi.combinedTakeAt}`
-      );
-    }
-  } else if (bestTotal != null && bestBook) {
+  if (multi.bestBookie && multi.bestBookieTotal != null) {
     const quote = bestSingleBookieQuote(legs, multi.combinedTakeAt);
-    if (!quote || quote.bookie !== bestBook) {
+    if (!quote || quote.bookie !== multi.bestBookie) {
       violations.push(`${label}: best bookie does not match single-bookie quote`);
     } else if (quote.price < multi.combinedTakeAt) {
       violations.push(`${label}: bookie total ${quote.price} below take-at ${multi.combinedTakeAt}`);

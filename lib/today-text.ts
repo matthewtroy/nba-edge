@@ -2,9 +2,13 @@ import type { MetaJson, MultiBet, MultiNotBuilt, PickLeg, SlateGame } from "./ty
 import { auditMultisForToday } from "./audit-multis.js";
 import {
   assertNoForbiddenStrings,
-  formatLegLine,
   formatMultiHeadline,
 } from "./multi-card-text.js";
+import {
+  NO_SINGLE_BOOKIE_NOTE,
+  formatLegLineAtBookie,
+  formatMultiBookieLine,
+} from "./multi-display.js";
 
 function formatSydneyTime(iso: string): string {
   return new Date(iso).toLocaleString("en-AU", {
@@ -21,8 +25,6 @@ export function renderTodayText(input: {
   multis: MultiBet[];
   notBuilt: MultiNotBuilt[];
   picksById: Map<string, PickLeg>;
-  /** @deprecated use audit from auditMultisForToday */
-  gateViolations?: string[];
 }): string {
   const lines: string[] = [];
   const stale = Object.values(input.meta.sources).some(
@@ -67,19 +69,16 @@ export function renderTodayText(input: {
     const title = multi.variant ? `${multi.label} (${multi.variant})` : multi.label;
     lines.push(title);
     lines.push(`  ${formatMultiHeadline(multi)}`);
-    const bestTotal = multi.bestBookieTotal ?? multi.combinedBestPrice;
-    const bestBook = multi.bestBookie ?? multi.combinedBestBookie;
-    if (bestTotal != null && bestBook === "Best across books") {
-      lines.push(
-        `  Best multi odds: $${bestTotal.toFixed(2)}+ (cross-book — not one placeable multi)`
-      );
-    } else if (bestTotal != null && bestBook) {
-      lines.push(`  Best multi odds: ${bestBook} $${bestTotal.toFixed(2)}+`);
-    }
     const legs = multi.legs
       .map((id) => input.picksById.get(id))
       .filter(Boolean) as PickLeg[];
-    for (const leg of legs) lines.push(`  ${formatLegLine(leg)}`);
+    const bookieLine = formatMultiBookieLine(multi, legs);
+    if (bookieLine) lines.push(`  ${bookieLine}`);
+    else lines.push(`  ${NO_SINGLE_BOOKIE_NOTE}`);
+    const rowBook = multi.bestBookie;
+    for (const leg of legs) {
+      lines.push(`  ${formatLegLineAtBookie(leg, rowBook)}`);
+    }
     lines.push("");
   }
 
@@ -92,7 +91,7 @@ export function renderTodayText(input: {
     lines.push("Audit");
     for (const v of audit) lines.push(`  • ${v}`);
   } else {
-    lines.push("Audit: ok (one bookie where shown, take-at, no Check news)");
+    lines.push("Audit: ok (one bookie, take-at, no Check news)");
   }
 
   const text = lines.join("\n").trim();

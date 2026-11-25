@@ -62,27 +62,12 @@ function singleBookieOverlay(
   const bookieTotals = multiBookieTotals(pricedLegs) as Record<string, number>;
   const quote = bestSingleBookieQuote(pricedLegs, combinedTakeAt);
   if (!quote) {
-    const allMeetTake =
-      pricedLegs.length > 0 &&
-      pricedLegs.every((l) => l.bestPrice != null && l.bestPrice >= l.takeAt);
-    if (allMeetTake) {
-      const cross = combinedBetPrice(pricedLegs);
-      if (cross >= combinedTakeAt) {
-        return {
-          bookieTotals,
-          combinedBestBookie: "Best across books",
-          combinedBestPrice: cross,
-        };
-      }
-    }
     return { bookieTotals };
   }
   return {
     bookieTotals,
     bestBookie: quote.bookie,
     bestBookieTotal: quote.price,
-    combinedBestBookie: quote.bookie,
-    combinedBestPrice: quote.price,
   };
 }
 

@@ -64,7 +64,7 @@ describe("multi gate", () => {
       [leg, leg, leg, leg]
     );
     expect(r.ok).toBe(false);
-    expect(r.violations.some((v) => /Best mix/i.test(v))).toBe(true);
+    expect(r.violations.some((v) => /mixed-bookie|Best mix/i.test(v))).toBe(true);
   });
 
   it("accepts valid single bookie overlay", () => {
@@ -76,8 +76,8 @@ describe("multi gate", () => {
     const m = multi({
       legs: ["a", "a2", "a3", "a4"],
       combinedTakeAt: 6.0,
-      combinedBestBookie: "Sportsbet",
-      combinedBestPrice: 6.1,
+      bestBookie: "Sportsbet",
+      bestBookieTotal: 6.1,
     });
     const legs = [
       { ...priced, id: "a" },
@@ -91,8 +91,8 @@ describe("multi gate", () => {
       {
         ...m,
         combinedTakeAt: Math.round(quote.reduce((a, l) => a * l.takeAt, 1) * 100) / 100,
-        combinedBestPrice: 5.92,
-        combinedBestBookie: "Sportsbet",
+        bestBookieTotal: 5.92,
+        bestBookie: "Sportsbet",
       },
       quote
     );

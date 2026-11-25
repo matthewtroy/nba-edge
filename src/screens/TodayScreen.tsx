@@ -20,6 +20,7 @@ interface Props {
   onOpenSettings: () => void;
   showQ1: boolean;
   showLongshots: boolean;
+  myBookie?: string;
 }
 
 export function TodayScreen({
@@ -29,6 +30,7 @@ export function TodayScreen({
   onOpenSettings,
   showQ1,
   showLongshots,
+  myBookie,
 }: Props) {
   const picksById = new Map(data.picks.map((p) => [p.id, p]));
   const stale = Object.values(data.meta.sources).some(
@@ -104,6 +106,8 @@ export function TodayScreen({
           key={`${m.type}-${m.variant ?? ""}-${m.legs.join()}`}
           multi={m}
           picksById={picksById}
+          injuries={data.injuries}
+          preferredBookie={myBookie}
           onLegTap={onLegTap}
           onCopy={onCopy}
         />

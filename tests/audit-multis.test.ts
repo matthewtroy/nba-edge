@@ -28,8 +28,6 @@ describe("auditMultisForToday", () => {
       combinedProbability: 0.5,
       combinedFairPrice: 2,
       combinedTakeAt: 1.8,
-      combinedBestBookie: "Best across books",
-      combinedBestPrice: 2.1,
       bookieTotals: {},
       summary: "",
     };
@@ -46,6 +44,6 @@ describe("auditMultisForToday", () => {
     expect(issues.some((i) => i.includes("tip lock"))).toBe(true);
     expect(issues.some((i) => i.includes("Check news"))).toBe(true);
     expect(issues.some((i) => i.includes("below take-at"))).toBe(true);
-    expect(issues.some((i) => i.includes("single bookie"))).toBe(true);
+    expect(issues.some((i) => i.includes("check bet365"))).toBe(true);
   });
 });

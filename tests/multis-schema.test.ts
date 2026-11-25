@@ -21,9 +21,12 @@ describe("multis.json schema", () => {
           bet.type === "q1Multi" ||
           bet.combinedBestPrice != null ||
           bet.bestBookieTotal != null ||
+          bet.bestBookie != null ||
           bet.type === "crossGameSgm" ||
           bet.type === "boostSgm" ||
-          bet.type === "longshot"
+          bet.type === "longshot" ||
+          bet.type === "mainPlay" ||
+          bet.type === "booster"
         ) {
           continue;
         }

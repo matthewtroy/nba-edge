@@ -20,7 +20,6 @@ const text = renderTodayText({
   multis: multisRaw.bets,
   notBuilt: multisRaw.notBuilt,
   picksById: new Map(picks.map((p) => [p.id, p])),
-  gateViolations: meta.gateViolations,
 });
 
 console.log(text);

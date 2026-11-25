@@ -13,8 +13,6 @@
       "combinedFairPrice": 5.21,
       "combinedTakeAt": 7.07,
       "bookieTotals": {},
-      "combinedBestBookie": "Best across books",
-      "combinedBestPrice": 9.91,
       "summary": "4 starter main lines"
     },
     {
@@ -30,8 +28,6 @@
       "combinedFairPrice": 24.06,
       "combinedTakeAt": 32.75,
       "bookieTotals": {},
-      "combinedBestBookie": "Best across books",
-      "combinedBestPrice": 53.98,
       "summary": "Main Play +1 rung where fair ≤4, else same rung"
     },
     {

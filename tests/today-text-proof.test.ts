@@ -31,10 +31,7 @@ describe("Today proof text", () => {
       picksById: new Map(picks.map((p) => [p.id, p])),
     });
     expect(text).toMatch(/Take at \$[\d.]+\+ \(Fair \$[\d.]+\)/);
-    if ((meta.sources.odds ?? "").includes("ok")) {
-      expect(text).toMatch(/Best multi odds:/);
-      expect(text).toMatch(/Best \$[\d.]+\+/);
-    }
+    expect(text).not.toMatch(/cross-book|Best across books|Best mix/i);
     expect(text).toContain("What changed");
     expect(text).toContain("Audit");
     expect(text).not.toMatch(/~1 in/);

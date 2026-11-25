@@ -11,7 +11,8 @@ import { applyInjuryRedistribution } from "../lib/injury-redistribution.js";
 import { applyContextAdjustments } from "../lib/context.js";
 import { buildLegsForPlayer } from "../lib/pricing.js";
 import { buildMultis, type MultiBuildResult } from "../lib/multis.js";
-import { loadAliasMap } from "../lib/player-names.js";
+import { loadAliasMap, normalizePlayerName } from "../lib/player-names.js";
+import { legOddsLookupKey } from "../lib/odds.js";
 import type { PlayerGameLog } from "../lib/types.js";
 import {
   isPlayerExcluded,
@@ -187,6 +188,22 @@ export function runModel(input: ModelRunInput): {
           minEdge,
         })
       );
+    }
+  }
+
+  if (input.allOddsMap?.size) {
+    for (const leg of picks) {
+      const oddKey = legOddsLookupKey(leg.playerName, leg.market, leg.line);
+      const displayKey = `${leg.playerName}|${leg.market}|${leg.line}`;
+      const books =
+        input.allOddsMap.get(oddKey) ??
+        input.allOddsMap.get(displayKey) ??
+        input.allOddsMap.get(
+          `${normalizePlayerName(leg.playerName)}|${leg.market}|${leg.line}`
+        );
+      if (books && Object.keys(books).length) {
+        leg.bookiePrices = { ...leg.bookiePrices, ...books };
+      }
     }
   }
 
