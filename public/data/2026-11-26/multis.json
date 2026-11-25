@@ -4,20 +4,20 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
-        "4903027-pts-15",
-        "4431671-reb-5",
         "3136195-pts-20",
         "4278053-pts-15",
-        "4683021-ast-5"
+        "4683021-ast-5",
+        "4903027-reb-7",
+        "3136193-ast-5"
       ],
-      "combinedProbability": 0.19792462170096,
-      "combinedFairPrice": 5.05,
-      "combinedTakeAt": 5.45,
-      "bestBookie": "Neds",
-      "bestBookieTotal": 9.78,
+      "combinedProbability": 0.18225629547552,
+      "combinedFairPrice": 5.49,
+      "combinedTakeAt": 5.93,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 11.59,
       "bookieTotals": {
-        "Ladbrokes": 9.78,
-        "Neds": 9.78
+        "Ladbrokes": 11.59,
+        "Neds": 11.59
       },
       "summary": "5 starter main lines"
     },
@@ -25,22 +25,154 @@
       "type": "booster",
       "label": "Booster",
       "legs": [
-        "4903027-pts-20",
-        "4431671-reb-7",
         "3136195-pts-30",
         "4278053-pts-20",
-        "4683021-ast-7"
+        "4683021-ast-7",
+        "4903027-reb-7",
+        "3136193-ast-7"
       ],
-      "combinedProbability": 0.0075773205816,
-      "combinedFairPrice": 131.97,
-      "combinedTakeAt": 142.53,
-      "bestBookie": "Neds",
-      "bestBookieTotal": 302.02,
+      "combinedProbability": 0.010933618821749997,
+      "combinedFairPrice": 91.46,
+      "combinedTakeAt": 98.78,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 215.94,
       "bookieTotals": {
-        "Ladbrokes": 302.02,
-        "Neds": 302.02
+        "Ladbrokes": 215.94,
+        "Neds": 215.94
       },
       "summary": "Main Play +1 rung when Main leg ≤$4 at bookie, else same rung"
+    },
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "legs": [
+        "4601025-pts-10",
+        "4431678-ast-5",
+        "3917376-pts-20",
+        "4396971-reb-7",
+        "4433249-pts-10",
+        "3136195-pts-20",
+        "3908809-pts-25",
+        "3934672-ast-7",
+        "4683778-pts-15",
+        "4432816-pts-15",
+        "4222252-ast-5",
+        "4903027-reb-7",
+        "4065733-pts-25",
+        "3136193-ast-5",
+        "4433192-pts-10",
+        "4683021-ast-5",
+        "5104157-pts-30"
+      ],
+      "combinedProbability": 0.001289580271557657,
+      "combinedFairPrice": 775.45,
+      "combinedTakeAt": 837.49,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 6075.4,
+      "bookieTotals": {
+        "Ladbrokes": 6075.4,
+        "Neds": 6075.4
+      },
+      "crossGameGroups": [
+        {
+          "gameId": "401909317",
+          "status": "included",
+          "legs": [
+            "4601025-pts-10",
+            "4431678-ast-5",
+            "3917376-pts-20"
+          ]
+        },
+        {
+          "gameId": "401909318",
+          "status": "included",
+          "legs": [
+            "4396971-reb-7",
+            "4433249-pts-10"
+          ]
+        },
+        {
+          "gameId": "401909319",
+          "status": "included",
+          "legs": [
+            "3136195-pts-20",
+            "3908809-pts-25",
+            "3934672-ast-7"
+          ]
+        },
+        {
+          "gameId": "401909320",
+          "status": "included",
+          "legs": [
+            "4683778-pts-15",
+            "4432816-pts-15",
+            "4222252-ast-5"
+          ]
+        },
+        {
+          "gameId": "401909321",
+          "status": "included",
+          "legs": [
+            "4903027-reb-7",
+            "4065733-pts-25"
+          ]
+        },
+        {
+          "gameId": "401909322",
+          "status": "excluded",
+          "legs": [],
+          "excludedReason": "Nets @ Bucks: need 2+ legs @ Neds (found 0)."
+        },
+        {
+          "gameId": "401909323",
+          "status": "included",
+          "legs": [
+            "3136193-ast-5",
+            "4433192-pts-10"
+          ]
+        },
+        {
+          "gameId": "401909324",
+          "status": "excluded",
+          "legs": [],
+          "excludedReason": "Kings @ Warriors: no clash-free 2–3 leg combo @ Neds."
+        },
+        {
+          "gameId": "401909325",
+          "status": "included",
+          "legs": [
+            "4683021-ast-5",
+            "5104157-pts-30"
+          ]
+        }
+      ],
+      "summary": "2+ games, 2–3 legs/game, one bookie (toggle games on card)"
+    },
+    {
+      "type": "boostSgm",
+      "label": "Best SGM",
+      "legs": [
+        "3136195-pts-20",
+        "3908809-ast-5",
+        "3992-pts-20"
+      ],
+      "combinedProbability": 0.24250934400000002,
+      "combinedFairPrice": 4.12,
+      "combinedTakeAt": 4.45,
+      "bestBookie": "Picklebet",
+      "bestBookieTotal": 7.36,
+      "bookieTotals": {
+        "Sportsbet": 7.71,
+        "TABtouch": 8.7,
+        "Ladbrokes": 7.16,
+        "Neds": 7.16,
+        "PointsBet": 7.58,
+        "Unibet": 8.7,
+        "Betr": 7.2,
+        "Picklebet": 7.36,
+        "Bet Right": 7.36
+      },
+      "summary": "Best 3–4 leg same-game multi in $7–15"
     },
     {
       "type": "q1Multi",
@@ -48,14 +180,14 @@
       "legs": [
         "5104157-q1reb-3",
         "4432194-q1reb-2",
-        "4222252-q1reb-2",
+        "4066328-q1reb-2",
         "3448-q1reb-2",
-        "4601023-q1reb-2",
-        "3059318-q1reb-2"
+        "3155942-q1reb-2",
+        "4601023-q1reb-2"
       ],
-      "combinedProbability": 0.14904572810231748,
-      "combinedFairPrice": 6.71,
-      "combinedTakeAt": 7.25,
+      "combinedProbability": 0.15224574765569904,
+      "combinedFairPrice": 6.57,
+      "combinedTakeAt": 7.1,
       "bookieTotals": {},
       "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
     },
@@ -64,32 +196,11 @@
       "label": "Longshot",
       "legs": [
         "3136195-pts-30",
-        "4278073-pts-40",
-        "5104157-pts-40"
-      ],
-      "combinedProbability": 0.022470084,
-      "combinedFairPrice": 44.5,
-      "combinedTakeAt": 48.06,
-      "bestBookie": "Neds",
-      "bestBookieTotal": 134.4,
-      "bookieTotals": {
-        "TAB": 80.16,
-        "Ladbrokes": 134.4,
-        "Neds": 134.4
-      },
-      "summary": "3 legs angle-ranked @ Neds"
-    },
-    {
-      "type": "longshot",
-      "label": "Longshot 2",
-      "variant": "2",
-      "legs": [
-        "3136195-pts-30",
         "4066261-pts-30"
       ],
-      "combinedProbability": 0.034048,
-      "combinedFairPrice": 29.37,
-      "combinedTakeAt": 31.72,
+      "combinedProbability": 0.033920000000000006,
+      "combinedFairPrice": 29.48,
+      "combinedTakeAt": 31.84,
       "bestBookie": "PointsBet",
       "bestBookieTotal": 63.25,
       "bookieTotals": {
@@ -104,48 +215,14 @@
   ],
   "notBuilt": [
     {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "reason": "Clash rule: two pts same team: Pelle Larsson, Davion Mitchell",
-      "players": [
-        "Pelle Larsson",
-        "Jaylen Brown",
-        "Davion Mitchell",
-        "Moussa Diabate",
-        "Jalen Smith",
-        "Karl-Anthony Towns",
-        "Donovan Mitchell",
-        "LaMelo Ball",
-        "Shai Gilgeous-Alexander",
-        "Jared McCain",
-        "Cedric Coward",
-        "Rui Hachimura",
-        "Egor Demin",
-        "Julius Randle",
-        "Danny Wolf",
-        "Amen Thompson",
-        "Kevin Durant",
-        "Devin Booker",
-        "Zach LaVine",
-        "Darius Acuff Jr.",
-        "De'Andre Hunter"
-      ]
-    },
-    {
-      "type": "boostSgm",
-      "label": "Best SGM",
-      "reason": "Clash rule: reb (Peyton Watson) vs opp pts (Karl-Anthony Towns)",
+      "type": "longshot",
+      "label": "Longshot",
+      "variant": "2",
+      "reason": "Gate: Longshot: take-at 18.81 not 30–150 (legs: Karl-Anthony Towns 30+ pts, Victor Wembanyama 40+ pts)",
       "players": [
         "Karl-Anthony Towns",
-        "Donovan Mitchell",
-        "Peyton Watson"
+        "Victor Wembanyama"
       ]
-    },
-    {
-      "type": "q1Multi",
-      "label": "Q1 Multi",
-      "variant": "Longshot",
-      "reason": "No Q1 Multi (Longshot) fair ≥2.50"
     }
   ]
 }
