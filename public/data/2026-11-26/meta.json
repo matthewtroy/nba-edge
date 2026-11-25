@@ -1,19 +1,19 @@
 {
-  "lastUpdated": "2026-11-25T19:46:23.599Z",
+  "lastUpdated": "2026-11-25T22:10:56.674Z",
   "oddsLastPulled": "2026-11-25T10:29:00.533Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
-    "odds": "ok"
+    "odds": "stale"
   },
   "slateSize": 9,
   "smallSlate": false,
   "injuryImpactLog": [
     "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs"
   ],
-  "modelSanityChecked": 178,
+  "modelSanityChecked": 176,
   "modelSanityFailures": 11,
-  "formGuardExcludedCount": 563,
+  "formGuardExcludedCount": 559,
   "gameOddsPriceAge": {
     "401909317": "Prices from 9:29 pm",
     "401909318": "Prices from 9:29 pm",
@@ -28,32 +28,35 @@
   "slateTipDate": "2026-11-26",
   "whatChanged": [
     "Chet Holmgren out → Shai Gilgeous-Alexander +7.2 pts",
-    "OG Anunoby out → Jalen Brunson +5.0 pts",
-    "Cameron Boozer out → Ty Jerome +2.7 pts"
+    "OG Anunoby out → Jalen Brunson +4.7 pts",
+    "Cameron Boozer out → Ty Jerome +2.9 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_02_45PM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_05_00PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 391,
-      "priced": 298
+      "total": 385,
+      "priced": 292
     },
     "reb": {
-      "total": 541,
-      "priced": 230
+      "total": 532,
+      "priced": 226
     },
     "ast": {
-      "total": 400,
-      "priced": 178
+      "total": 396,
+      "priced": 177
     },
     "3pm": {
-      "total": 650,
-      "priced": 418
+      "total": 644,
+      "priced": 414
     },
     "q1reb": {
-      "total": 194,
+      "total": 188,
       "priced": 0
     }
   },
+  "gateViolations": [
+    "Booster: Shai Gilgeous-Alexander has Check news"
+  ],
   "officialCard": {
     "lockedAt": "2026-11-25T13:39:22.578Z",
     "publishedAt": "2026-11-25T11:08:41.132Z",
