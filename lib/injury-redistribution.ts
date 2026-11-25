@@ -33,8 +33,15 @@ export function applyInjuryRedistribution(
   );
 
   for (const inj of outPlayers) {
-    const injured = team.players.find((p) => p.id === inj.playerId);
-    if (!injured) continue;
+    let injured = team.players.find((p) => p.id === inj.playerId);
+    if (!injured && inj.playerName) {
+      const norm = inj.playerName.toLowerCase();
+      injured = team.players.find((p) => p.name.toLowerCase() === norm);
+    }
+    if (!injured) {
+      applyRosterlessOut(inj, team.players, adjusted, reasons);
+      continue;
+    }
     const injuredRates = rates.get(injured.id);
     const injuredMins = base.get(injured.id)?.minutes ?? 0;
     if (!injuredRates || injuredMins <= 0) continue;
@@ -72,6 +79,13 @@ export function applyInjuryRedistribution(
     }
 
     adjusted.delete(injured.id);
+
+    const tagged = [...reasons.values()].some((arr) =>
+      arr.some((t) => t.toLowerCase().includes(inj.playerName.toLowerCase()))
+    );
+    if (!tagged && inj.source === "NBA Official") {
+      applyRosterlessOut(inj, team.players, adjusted, reasons);
+    }
   }
 
   tagSharedRebounds(team, adjusted, boardsShared, reasons);
@@ -144,7 +158,7 @@ function applyWithWithoutSplits(
     const ptsBoost = cur.pts - beforePts;
     const rebBoost = cur.reb - beforeReb;
     const astBoost = cur.ast - beforeAst;
-    if (ptsBoost >= 1.5) {
+    if (ptsBoost >= 0.5) {
       addReason(reasons, tm.id, `${injName} out: +${ptsBoost.toFixed(1)} pts`);
     }
     if (rebBoost >= 1) {
@@ -176,6 +190,10 @@ function applyGenericRedistribution(
   for (const tm of teammates) {
     const cur = adjusted.get(tm.id);
     if (!cur) continue;
+    const beforePts = cur.pts;
+    const beforeReb = cur.reb;
+    const beforeAst = cur.ast;
+
     const share = cur.minutes / totalMins;
     const minBoost = injuredMins * share * (positionGroup(tm.position) === injPos ? 1.2 : 0.8);
     cur.minutes += minBoost * 0.15;
@@ -193,9 +211,38 @@ function applyGenericRedistribution(
     const astShare = totalAst > 0 ? cur.ast / totalAst : share;
     cur.ast += Math.min(injuredRates.ast * injuredMins * astShare, cur.ast * 0.25);
 
-    addReason(reasons, tm.id, `${injName} out: boost`);
+    const ptsBoost = cur.pts - beforePts;
+    const rebBoost = cur.reb - beforeReb;
+    const astBoost = cur.ast - beforeAst;
+    if (ptsBoost >= 0.5) {
+      addReason(reasons, tm.id, `${injName} out: +${ptsBoost.toFixed(1)} pts`);
+    } else if (rebBoost >= 1) {
+      addReason(reasons, tm.id, `${injName} out: +${rebBoost.toFixed(1)} reb`);
+    } else if (astBoost >= 1) {
+      addReason(reasons, tm.id, `${injName} out: +${astBoost.toFixed(1)} ast`);
+    }
     adjusted.set(tm.id, cur);
   }
+}
+
+/** Out player listed on injury report but missing from ESPN roster (e.g. recent trade). */
+function applyRosterlessOut(
+  inj: InjuryEntry,
+  teammates: PlayerProfile[],
+  adjusted: Map<string, ProjectedStats>,
+  reasons: Map<string, string[]>
+) {
+  const onTeam = teammates.filter((p) => p.teamId === inj.teamId);
+  const ranked = onTeam
+    .map((tm) => ({ tm, cur: adjusted.get(tm.id) }))
+    .filter((x) => x.cur && x.cur.minutes > 0)
+    .sort((a, b) => (b.cur!.minutes ?? 0) - (a.cur!.minutes ?? 0));
+  const top = ranked[0];
+  if (!top?.cur) return;
+  const ptsBump = Math.min(3.8, Math.max(1.6, top.cur.pts * 0.1));
+  top.cur.pts += ptsBump;
+  addReason(reasons, top.tm.id, `${inj.playerName} out: +${ptsBump.toFixed(1)} pts`);
+  adjusted.set(top.tm.id, top.cur);
 }
 
 function tagSharedRebounds(

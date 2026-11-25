@@ -1,3 +1,6298 @@
 {
-  "pullSlotsToday": []
+  "pullSlotsToday": [
+    "09:30",
+    "pre-tip"
+  ],
+  "oddsMap": {
+    "ausar thompson|ast|6": {
+      "price": 2.4,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniss jenkins|ast|8": {
+      "price": 2.28,
+      "bookie": "Unibet"
+    },
+    "kevin huerter|ast|4": {
+      "price": 2.34,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|ast|3": {
+      "price": 1.77,
+      "bookie": "Neds"
+    },
+    "jalen suggs|ast|4": {
+      "price": 1.93,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|ast|7": {
+      "price": 2.15,
+      "bookie": "SportsBet"
+    },
+    "anthony black|ast|5": {
+      "price": 1.9,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|ast|12": {
+      "price": 9.5,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|ast|12": {
+      "price": 34,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|ast|12": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|ast|2": {
+      "price": 1.03,
+      "bookie": "TAB"
+    },
+    "kevin huerter|ast|2": {
+      "price": 1.17,
+      "bookie": "SportsBet"
+    },
+    "john collins|ast|2": {
+      "price": 3,
+      "bookie": "TAB"
+    },
+    "anthony black|ast|2": {
+      "price": 1.04,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|ast|2": {
+      "price": 1.24,
+      "bookie": "Neds"
+    },
+    "jalen suggs|ast|2": {
+      "price": 1.11,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|ast|2": {
+      "price": 2.09,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|ast|2": {
+      "price": 2.01,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|ast|4": {
+      "price": 1.31,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniss jenkins|ast|4": {
+      "price": 1.06,
+      "bookie": "TABtouch"
+    },
+    "john collins|ast|4": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "anthony black|ast|4": {
+      "price": 1.42,
+      "bookie": "Neds"
+    },
+    "franz wagner|ast|4": {
+      "price": 1.11,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|ast|4": {
+      "price": 2.85,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|ast|4": {
+      "price": 9.5,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|ast|4": {
+      "price": 9.5,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|ast|14": {
+      "price": 21,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|ast|6": {
+      "price": 1.4,
+      "bookie": "TABtouch"
+    },
+    "kevin huerter|ast|6": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|ast|6": {
+      "price": 1.6,
+      "bookie": "SportsBet"
+    },
+    "anthony black|ast|6": {
+      "price": 2.83,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|ast|6": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|ast|6": {
+      "price": 9.5,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|ast|8": {
+      "price": 5.75,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|ast|8": {
+      "price": 14,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|ast|8": {
+      "price": 3.14,
+      "bookie": "SportsBet"
+    },
+    "anthony black|ast|8": {
+      "price": 7,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|ast|8": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|ast|10": {
+      "price": 4.5,
+      "bookie": "Picklebet (AU)"
+    },
+    "ausar thompson|ast|10": {
+      "price": 9.5,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|ast|10": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "anthony black|ast|10": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|ast|5": {
+      "price": 1.27,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|ast|9": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|ast|5": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "john collins|ast|1": {
+      "price": 1.36,
+      "bookie": "SportsBet"
+    },
+    "john collins|ast|3": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "kevin huerter|ast|3": {
+      "price": 1.58,
+      "bookie": "SportsBet"
+    },
+    "kevin huerter|ast|5": {
+      "price": 3.8,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|ast|3": {
+      "price": 1.36,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|ast|5": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|ast|3": {
+      "price": 1.15,
+      "bookie": "Picklebet (AU)"
+    },
+    "ausar thompson|ast|5": {
+      "price": 1.83,
+      "bookie": "Picklebet (AU)"
+    },
+    "ausar thompson|ast|7": {
+      "price": 4.1,
+      "bookie": "Picklebet (AU)"
+    },
+    "ausar thompson|ast|9": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|ast|5": {
+      "price": 1.2,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|ast|7": {
+      "price": 1.8,
+      "bookie": "TAB"
+    },
+    "daniss jenkins|ast|9": {
+      "price": 3.15,
+      "bookie": "Unibet"
+    },
+    "anthony black|ast|3": {
+      "price": 1.16,
+      "bookie": "Neds"
+    },
+    "anthony black|ast|7": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|pts|12": {
+      "price": 1.83,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|pts|19": {
+      "price": 2.02,
+      "bookie": "SportsBet"
+    },
+    "kevin huerter|pts|13": {
+      "price": 2,
+      "bookie": "PointsBet (AU)"
+    },
+    "john collins|pts|13": {
+      "price": 2,
+      "bookie": "PointsBet (AU)"
+    },
+    "isaiah joe|pts|14": {
+      "price": 1.91,
+      "bookie": "SportsBet"
+    },
+    "paul reed|pts|11": {
+      "price": 1.8,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|pts|12": {
+      "price": 2.02,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|pts|11": {
+      "price": 1.96,
+      "bookie": "SportsBet"
+    },
+    "anthony black|pts|14": {
+      "price": 1.76,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|24": {
+      "price": 1.97,
+      "bookie": "TABtouch"
+    },
+    "wendell carter|pts|11": {
+      "price": 1.87,
+      "bookie": "Unibet"
+    },
+    "desmond bane|pts|18": {
+      "price": 1.96,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|pts|25": {
+      "price": 5.75,
+      "bookie": "Picklebet (AU)"
+    },
+    "isaiah joe|pts|25": {
+      "price": 13,
+      "bookie": "Neds"
+    },
+    "john collins|pts|25": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "kevin huerter|pts|25": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|25": {
+      "price": 2.22,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|pts|25": {
+      "price": 5.5,
+      "bookie": "Picklebet (AU)"
+    },
+    "anthony black|pts|25": {
+      "price": 11,
+      "bookie": "Neds"
+    },
+    "jalen suggs|pts|25": {
+      "price": 21,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|pts|15": {
+      "price": 1.48,
+      "bookie": "Neds"
+    },
+    "isaiah joe|pts|15": {
+      "price": 2.16,
+      "bookie": "SportsBet"
+    },
+    "john collins|pts|15": {
+      "price": 2.9,
+      "bookie": "Picklebet (AU)"
+    },
+    "kevin huerter|pts|15": {
+      "price": 2.6,
+      "bookie": "PointsBet (AU)"
+    },
+    "ausar thompson|pts|15": {
+      "price": 3,
+      "bookie": "SportsBet"
+    },
+    "paul reed|pts|15": {
+      "price": 3.6,
+      "bookie": "SportsBet"
+    },
+    "anthony black|pts|15": {
+      "price": 2,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|pts|15": {
+      "price": 1.44,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|15": {
+      "price": 1.09,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|pts|15": {
+      "price": 3.32,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|pts|15": {
+      "price": 4,
+      "bookie": "Picklebet (AU)"
+    },
+    "tristan da silva|pts|15": {
+      "price": 4,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|pts|10": {
+      "price": 1.42,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|pts|10": {
+      "price": 1.1,
+      "bookie": "TABtouch"
+    },
+    "isaiah joe|pts|10": {
+      "price": 1.3,
+      "bookie": "SportsBet"
+    },
+    "john collins|pts|10": {
+      "price": 1.51,
+      "bookie": "TABtouch"
+    },
+    "kevin huerter|pts|10": {
+      "price": 1.4,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul reed|pts|10": {
+      "price": 1.56,
+      "bookie": "SportsBet"
+    },
+    "anthony black|pts|10": {
+      "price": 1.23,
+      "bookie": "TABtouch"
+    },
+    "desmond bane|pts|10": {
+      "price": 1.1,
+      "bookie": "TABtouch"
+    },
+    "jalen suggs|pts|10": {
+      "price": 1.56,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|pts|10": {
+      "price": 1.78,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|pts|10": {
+      "price": 1.64,
+      "bookie": "TABtouch"
+    },
+    "daniss jenkins|pts|20": {
+      "price": 2.5,
+      "bookie": "Picklebet (AU)"
+    },
+    "isaiah joe|pts|20": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "john collins|pts|20": {
+      "price": 7,
+      "bookie": "TABtouch"
+    },
+    "kevin huerter|pts|20": {
+      "price": 6.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "ausar thompson|pts|20": {
+      "price": 9.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul reed|pts|20": {
+      "price": 9.5,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|20": {
+      "price": 1.43,
+      "bookie": "TABtouch"
+    },
+    "desmond bane|pts|20": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "anthony black|pts|20": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|pts|20": {
+      "price": 9.25,
+      "bookie": "Neds"
+    },
+    "tristan da silva|pts|20": {
+      "price": 12.5,
+      "bookie": "Neds"
+    },
+    "wendell carter|pts|20": {
+      "price": 11,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|pts|35": {
+      "price": 34,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|35": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniss jenkins|pts|30": {
+      "price": 17,
+      "bookie": "Neds"
+    },
+    "isaiah joe|pts|30": {
+      "price": 17,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|30": {
+      "price": 4.4,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|pts|30": {
+      "price": 15,
+      "bookie": "Neds"
+    },
+    "franz wagner|pts|40": {
+      "price": 29,
+      "bookie": "Neds"
+    },
+    "ausar thompson|pts|5": {
+      "price": 1.05,
+      "bookie": "Neds"
+    },
+    "isaiah joe|pts|5": {
+      "price": 1.02,
+      "bookie": "SportsBet"
+    },
+    "john collins|pts|5": {
+      "price": 1.06,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|pts|5": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul reed|pts|5": {
+      "price": 1.06,
+      "bookie": "SportsBet"
+    },
+    "anthony black|pts|5": {
+      "price": 1.01,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|pts|5": {
+      "price": 1.08,
+      "bookie": "Neds"
+    },
+    "tristan da silva|pts|5": {
+      "price": 1.11,
+      "bookie": "PointsBet (AU)"
+    },
+    "wendell carter|pts|5": {
+      "price": 1.09,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|pts|11": {
+      "price": 1.1,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniss jenkins|pts|12": {
+      "price": 1.22,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|pts|13": {
+      "price": 1.19,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniss jenkins|pts|14": {
+      "price": 1.38,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|pts|16": {
+      "price": 1.62,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|pts|17": {
+      "price": 1.82,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|pts|18": {
+      "price": 1.96,
+      "bookie": "Picklebet (AU)"
+    },
+    "daniss jenkins|pts|21": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|pts|22": {
+      "price": 3.3,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|pts|23": {
+      "price": 3.6,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniss jenkins|pts|24": {
+      "price": 4.6,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|pts|26": {
+      "price": 6.8,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|pts|27": {
+      "price": 7,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|pts|7": {
+      "price": 1.13,
+      "bookie": "Neds"
+    },
+    "kevin huerter|pts|8": {
+      "price": 1.2,
+      "bookie": "Neds"
+    },
+    "kevin huerter|pts|9": {
+      "price": 1.29,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|pts|11": {
+      "price": 1.56,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|pts|12": {
+      "price": 1.77,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|pts|14": {
+      "price": 2.3,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|pts|16": {
+      "price": 3.1,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|pts|17": {
+      "price": 3.7,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|pts|18": {
+      "price": 4.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|pts|19": {
+      "price": 5.25,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|pts|21": {
+      "price": 9,
+      "bookie": "PointsBet (AU)"
+    },
+    "john collins|pts|7": {
+      "price": 1.14,
+      "bookie": "Neds"
+    },
+    "john collins|pts|8": {
+      "price": 1.26,
+      "bookie": "TABtouch"
+    },
+    "john collins|pts|9": {
+      "price": 1.29,
+      "bookie": "PointsBet (AU)"
+    },
+    "john collins|pts|11": {
+      "price": 1.59,
+      "bookie": "PointsBet (AU)"
+    },
+    "john collins|pts|12": {
+      "price": 1.93,
+      "bookie": "Unibet"
+    },
+    "john collins|pts|14": {
+      "price": 2.6,
+      "bookie": "TABtouch"
+    },
+    "john collins|pts|16": {
+      "price": 3.6,
+      "bookie": "Unibet"
+    },
+    "john collins|pts|17": {
+      "price": 3.8,
+      "bookie": "SportsBet"
+    },
+    "john collins|pts|18": {
+      "price": 5.1,
+      "bookie": "Unibet"
+    },
+    "john collins|pts|19": {
+      "price": 5.4,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|pts|7": {
+      "price": 1.15,
+      "bookie": "Neds"
+    },
+    "ausar thompson|pts|8": {
+      "price": 1.22,
+      "bookie": "Neds"
+    },
+    "ausar thompson|pts|9": {
+      "price": 1.3,
+      "bookie": "Neds"
+    },
+    "ausar thompson|pts|11": {
+      "price": 1.63,
+      "bookie": "PointsBet (AU)"
+    },
+    "ausar thompson|pts|13": {
+      "price": 2.15,
+      "bookie": "PointsBet (AU)"
+    },
+    "ausar thompson|pts|14": {
+      "price": 2.55,
+      "bookie": "PointsBet (AU)"
+    },
+    "ausar thompson|pts|16": {
+      "price": 3.6,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|pts|17": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|pts|18": {
+      "price": 5.75,
+      "bookie": "PointsBet (AU)"
+    },
+    "ausar thompson|pts|19": {
+      "price": 7,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul reed|pts|6": {
+      "price": 1.11,
+      "bookie": "Neds"
+    },
+    "paul reed|pts|7": {
+      "price": 1.18,
+      "bookie": "Neds"
+    },
+    "paul reed|pts|8": {
+      "price": 1.26,
+      "bookie": "Neds"
+    },
+    "paul reed|pts|9": {
+      "price": 1.4,
+      "bookie": "SportsBet"
+    },
+    "paul reed|pts|12": {
+      "price": 2.08,
+      "bookie": "SportsBet"
+    },
+    "paul reed|pts|13": {
+      "price": 2.45,
+      "bookie": "SportsBet"
+    },
+    "paul reed|pts|14": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "paul reed|pts|16": {
+      "price": 4.4,
+      "bookie": "SportsBet"
+    },
+    "paul reed|pts|17": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "paul reed|pts|18": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "paul reed|pts|19": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|pts|7": {
+      "price": 1.08,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|pts|8": {
+      "price": 1.14,
+      "bookie": "TABtouch"
+    },
+    "isaiah joe|pts|9": {
+      "price": 1.2,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|pts|11": {
+      "price": 1.38,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|pts|12": {
+      "price": 1.52,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|pts|13": {
+      "price": 1.68,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|pts|16": {
+      "price": 2.45,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|pts|17": {
+      "price": 2.8,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|pts|18": {
+      "price": 3.2,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|pts|19": {
+      "price": 3.8,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|pts|21": {
+      "price": 5.4,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|pts|22": {
+      "price": 6.25,
+      "bookie": "Neds"
+    },
+    "isaiah joe|pts|23": {
+      "price": 7,
+      "bookie": "SportsBet"
+    },
+    "anthony black|pts|8": {
+      "price": 1.11,
+      "bookie": "TABtouch"
+    },
+    "anthony black|pts|9": {
+      "price": 1.16,
+      "bookie": "Neds"
+    },
+    "anthony black|pts|11": {
+      "price": 1.29,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony black|pts|12": {
+      "price": 1.43,
+      "bookie": "TABtouch"
+    },
+    "anthony black|pts|13": {
+      "price": 1.56,
+      "bookie": "SportsBet"
+    },
+    "anthony black|pts|16": {
+      "price": 2.25,
+      "bookie": "SportsBet"
+    },
+    "anthony black|pts|17": {
+      "price": 2.75,
+      "bookie": "SportsBet"
+    },
+    "anthony black|pts|18": {
+      "price": 3.2,
+      "bookie": "SportsBet"
+    },
+    "anthony black|pts|19": {
+      "price": 3.8,
+      "bookie": "SportsBet"
+    },
+    "anthony black|pts|21": {
+      "price": 5.4,
+      "bookie": "SportsBet"
+    },
+    "anthony black|pts|22": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "anthony black|pts|23": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|16": {
+      "price": 1.15,
+      "bookie": "TABtouch"
+    },
+    "franz wagner|pts|17": {
+      "price": 1.16,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|18": {
+      "price": 1.26,
+      "bookie": "TABtouch"
+    },
+    "franz wagner|pts|19": {
+      "price": 1.3,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|21": {
+      "price": 1.48,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|22": {
+      "price": 1.66,
+      "bookie": "TABtouch"
+    },
+    "franz wagner|pts|23": {
+      "price": 1.8,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|26": {
+      "price": 2.5,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|27": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|28": {
+      "price": 3.2,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|29": {
+      "price": 3.6,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|31": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|32": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|pts|33": {
+      "price": 7,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|pts|11": {
+      "price": 1.13,
+      "bookie": "PointsBet (AU)"
+    },
+    "desmond bane|pts|12": {
+      "price": 1.2,
+      "bookie": "TABtouch"
+    },
+    "desmond bane|pts|13": {
+      "price": 1.25,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|pts|14": {
+      "price": 1.36,
+      "bookie": "TABtouch"
+    },
+    "desmond bane|pts|16": {
+      "price": 1.6,
+      "bookie": "TABtouch"
+    },
+    "desmond bane|pts|17": {
+      "price": 1.78,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|pts|19": {
+      "price": 2.15,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|pts|21": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|pts|22": {
+      "price": 3.2,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|pts|23": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|pts|24": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|pts|26": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|pts|27": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|pts|6": {
+      "price": 1.13,
+      "bookie": "TABtouch"
+    },
+    "jalen suggs|pts|7": {
+      "price": 1.2,
+      "bookie": "Neds"
+    },
+    "jalen suggs|pts|8": {
+      "price": 1.29,
+      "bookie": "TABtouch"
+    },
+    "jalen suggs|pts|9": {
+      "price": 1.4,
+      "bookie": "Neds"
+    },
+    "jalen suggs|pts|11": {
+      "price": 1.85,
+      "bookie": "TAB"
+    },
+    "jalen suggs|pts|13": {
+      "price": 2.3,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|pts|14": {
+      "price": 2.75,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|pts|16": {
+      "price": 3.8,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|pts|17": {
+      "price": 5,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|pts|18": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|pts|19": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|pts|6": {
+      "price": 1.16,
+      "bookie": "Neds"
+    },
+    "wendell carter|pts|7": {
+      "price": 1.24,
+      "bookie": "Neds"
+    },
+    "wendell carter|pts|8": {
+      "price": 1.33,
+      "bookie": "Neds"
+    },
+    "wendell carter|pts|9": {
+      "price": 1.45,
+      "bookie": "Neds"
+    },
+    "wendell carter|pts|12": {
+      "price": 2.2,
+      "bookie": "Picklebet (AU)"
+    },
+    "wendell carter|pts|13": {
+      "price": 2.5,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|pts|14": {
+      "price": 3,
+      "bookie": "TABtouch"
+    },
+    "wendell carter|pts|16": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|pts|17": {
+      "price": 5.4,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|pts|18": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|pts|6": {
+      "price": 1.18,
+      "bookie": "PointsBet (AU)"
+    },
+    "tristan da silva|pts|7": {
+      "price": 1.27,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|pts|8": {
+      "price": 1.36,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|pts|9": {
+      "price": 1.56,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|pts|12": {
+      "price": 2.3,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|pts|13": {
+      "price": 2.75,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|pts|14": {
+      "price": 3.2,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|pts|16": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|pts|17": {
+      "price": 5.5,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|pts|18": {
+      "price": 7,
+      "bookie": "Neds"
+    },
+    "john collins|reb|6": {
+      "price": 2.05,
+      "bookie": "TAB"
+    },
+    "ausar thompson|reb|9": {
+      "price": 2.1,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|reb|5": {
+      "price": 2.25,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|reb|4": {
+      "price": 2.1,
+      "bookie": "TAB"
+    },
+    "paul reed|reb|8": {
+      "price": 2.25,
+      "bookie": "TAB"
+    },
+    "jalen suggs|reb|5": {
+      "price": 2.3,
+      "bookie": "TAB"
+    },
+    "desmond bane|reb|4": {
+      "price": 1.8,
+      "bookie": "PointsBet (AU)"
+    },
+    "wendell carter|reb|8": {
+      "price": 1.74,
+      "bookie": "TABtouch"
+    },
+    "franz wagner|reb|7": {
+      "price": 1.9,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|reb|4": {
+      "price": 2.02,
+      "bookie": "SportsBet"
+    },
+    "anthony black|reb|5": {
+      "price": 2.05,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|reb|10": {
+      "price": 2.9,
+      "bookie": "Picklebet (AU)"
+    },
+    "paul reed|reb|10": {
+      "price": 3.9,
+      "bookie": "PointsBet (AU)"
+    },
+    "john collins|reb|10": {
+      "price": 7.75,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|reb|10": {
+      "price": 14,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|reb|10": {
+      "price": 3,
+      "bookie": "Picklebet (AU)"
+    },
+    "franz wagner|reb|10": {
+      "price": 5.1,
+      "bookie": "Betr"
+    },
+    "anthony black|reb|10": {
+      "price": 11,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|reb|10": {
+      "price": 14,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|reb|8": {
+      "price": 1.75,
+      "bookie": "TAB"
+    },
+    "john collins|reb|8": {
+      "price": 4,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|reb|8": {
+      "price": 9.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|reb|8": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|reb|8": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "anthony black|reb|8": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|reb|8": {
+      "price": 8.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "desmond bane|reb|8": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "tristan da silva|reb|8": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|reb|16": {
+      "price": 34,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|reb|16": {
+      "price": 21,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|reb|4": {
+      "price": 1.02,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|reb|4": {
+      "price": 1.56,
+      "bookie": "TABtouch"
+    },
+    "john collins|reb|4": {
+      "price": 1.24,
+      "bookie": "Unibet"
+    },
+    "paul reed|reb|4": {
+      "price": 1.09,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony black|reb|4": {
+      "price": 1.5,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|reb|4": {
+      "price": 1.1,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|reb|4": {
+      "price": 1.58,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|reb|4": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "ausar thompson|reb|14": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul reed|reb|14": {
+      "price": 15,
+      "bookie": "Neds"
+    },
+    "wendell carter|reb|14": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "franz wagner|reb|14": {
+      "price": 21,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|reb|6": {
+      "price": 1.22,
+      "bookie": "TABtouch"
+    },
+    "paul reed|reb|6": {
+      "price": 1.44,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|reb|6": {
+      "price": 3.3,
+      "bookie": "PointsBet (AU)"
+    },
+    "kevin huerter|reb|6": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|reb|6": {
+      "price": 1.48,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|reb|6": {
+      "price": 1.24,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony black|reb|6": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|reb|6": {
+      "price": 3.32,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|reb|6": {
+      "price": 4.25,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|reb|6": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|reb|12": {
+      "price": 5.75,
+      "bookie": "Picklebet (AU)"
+    },
+    "paul reed|reb|12": {
+      "price": 8,
+      "bookie": "PointsBet (AU)"
+    },
+    "john collins|reb|12": {
+      "price": 14,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|reb|12": {
+      "price": 6,
+      "bookie": "Picklebet (AU)"
+    },
+    "franz wagner|reb|12": {
+      "price": 11,
+      "bookie": "PointsBet (AU)"
+    },
+    "tristan da silva|reb|2": {
+      "price": 1.15,
+      "bookie": "PointsBet (AU)"
+    },
+    "tristan da silva|reb|3": {
+      "price": 1.4,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|reb|5": {
+      "price": 3.1,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|reb|5": {
+      "price": 1.24,
+      "bookie": "TABtouch"
+    },
+    "franz wagner|reb|9": {
+      "price": 3.6,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|reb|11": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "john collins|reb|5": {
+      "price": 1.48,
+      "bookie": "TABtouch"
+    },
+    "john collins|reb|7": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "john collins|reb|9": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|reb|5": {
+      "price": 1.11,
+      "bookie": "TABtouch"
+    },
+    "ausar thompson|reb|7": {
+      "price": 1.4,
+      "bookie": "TABtouch"
+    },
+    "ausar thompson|reb|11": {
+      "price": 3.6,
+      "bookie": "SportsBet"
+    },
+    "ausar thompson|reb|13": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|reb|3": {
+      "price": 1.23,
+      "bookie": "TABtouch"
+    },
+    "daniss jenkins|reb|7": {
+      "price": 5.25,
+      "bookie": "Picklebet (AU)"
+    },
+    "kevin huerter|reb|2": {
+      "price": 1.15,
+      "bookie": "TABtouch"
+    },
+    "kevin huerter|reb|3": {
+      "price": 1.45,
+      "bookie": "Neds"
+    },
+    "kevin huerter|reb|5": {
+      "price": 3.1,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|reb|2": {
+      "price": 1.1,
+      "bookie": "PointsBet (AU)"
+    },
+    "desmond bane|reb|3": {
+      "price": 1.3,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|reb|5": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|reb|7": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "paul reed|reb|5": {
+      "price": 1.22,
+      "bookie": "TABtouch"
+    },
+    "paul reed|reb|7": {
+      "price": 1.82,
+      "bookie": "Neds"
+    },
+    "paul reed|reb|9": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "paul reed|reb|11": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|reb|3": {
+      "price": 1.24,
+      "bookie": "TABtouch"
+    },
+    "jalen suggs|reb|7": {
+      "price": 5.6,
+      "bookie": "Betr"
+    },
+    "anthony black|reb|3": {
+      "price": 1.2,
+      "bookie": "SportsBet"
+    },
+    "anthony black|reb|7": {
+      "price": 4.5,
+      "bookie": "Picklebet (AU)"
+    },
+    "wendell carter|reb|5": {
+      "price": 1.1,
+      "bookie": "TABtouch"
+    },
+    "wendell carter|reb|7": {
+      "price": 1.43,
+      "bookie": "TABtouch"
+    },
+    "wendell carter|reb|9": {
+      "price": 2.17,
+      "bookie": "TABtouch"
+    },
+    "wendell carter|reb|11": {
+      "price": 3.8,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|reb|13": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "kevin huerter|3pm|2": {
+      "price": 1.71,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniss jenkins|3pm|3": {
+      "price": 2.65,
+      "bookie": "TAB"
+    },
+    "john collins|3pm|2": {
+      "price": 2.75,
+      "bookie": "TAB"
+    },
+    "isaiah joe|3pm|3": {
+      "price": 1.89,
+      "bookie": "Unibet"
+    },
+    "franz wagner|3pm|2": {
+      "price": 2.45,
+      "bookie": "PointsBet (AU)"
+    },
+    "desmond bane|3pm|4": {
+      "price": 2.18,
+      "bookie": "TABtouch"
+    },
+    "anthony black|3pm|2": {
+      "price": 2.06,
+      "bookie": "TABtouch"
+    },
+    "jalen suggs|3pm|2": {
+      "price": 1.69,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|3pm|3": {
+      "price": 2.3,
+      "bookie": "TAB"
+    },
+    "wendell carter|3pm|1": {
+      "price": 1.69,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniss jenkins|3pm|1": {
+      "price": 1.1,
+      "bookie": "Neds"
+    },
+    "isaiah joe|3pm|1": {
+      "price": 1.06,
+      "bookie": "TABtouch"
+    },
+    "john collins|3pm|1": {
+      "price": 1.36,
+      "bookie": "Picklebet (AU)"
+    },
+    "kevin huerter|3pm|1": {
+      "price": 1.14,
+      "bookie": "TABtouch"
+    },
+    "anthony black|3pm|1": {
+      "price": 1.24,
+      "bookie": "TABtouch"
+    },
+    "desmond bane|3pm|1": {
+      "price": 1.02,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|3pm|1": {
+      "price": 1.33,
+      "bookie": "Neds"
+    },
+    "jalen suggs|3pm|1": {
+      "price": 1.15,
+      "bookie": "Picklebet (AU)"
+    },
+    "tristan da silva|3pm|1": {
+      "price": 1.09,
+      "bookie": "PointsBet (AU)"
+    },
+    "isaiah joe|3pm|5": {
+      "price": 5.4,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|3pm|5": {
+      "price": 10.5,
+      "bookie": "Neds"
+    },
+    "kevin huerter|3pm|5": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|3pm|5": {
+      "price": 3.6,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|3pm|5": {
+      "price": 8.25,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|3pm|5": {
+      "price": 15,
+      "bookie": "SportsBet"
+    },
+    "anthony black|3pm|5": {
+      "price": 23,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|3pm|6": {
+      "price": 10,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|3pm|6": {
+      "price": 20,
+      "bookie": "SportsBet"
+    },
+    "kevin huerter|3pm|6": {
+      "price": 26,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|3pm|6": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|3pm|6": {
+      "price": 17,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|3pm|4": {
+      "price": 3.05,
+      "bookie": "Unibet"
+    },
+    "daniss jenkins|3pm|4": {
+      "price": 5,
+      "bookie": "Neds"
+    },
+    "kevin huerter|3pm|4": {
+      "price": 5.75,
+      "bookie": "PointsBet (AU)"
+    },
+    "john collins|3pm|4": {
+      "price": 14,
+      "bookie": "SportsBet"
+    },
+    "tristan da silva|3pm|4": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "jalen suggs|3pm|4": {
+      "price": 6.75,
+      "bookie": "SportsBet"
+    },
+    "anthony black|3pm|4": {
+      "price": 9.75,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|3pm|4": {
+      "price": 14,
+      "bookie": "SportsBet"
+    },
+    "isaiah joe|3pm|7": {
+      "price": 19,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|3pm|7": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "kevin huerter|3pm|3": {
+      "price": 2.9,
+      "bookie": "PointsBet (AU)"
+    },
+    "john collins|3pm|3": {
+      "price": 6.25,
+      "bookie": "Picklebet (AU)"
+    },
+    "desmond bane|3pm|3": {
+      "price": 1.5,
+      "bookie": "TABtouch"
+    },
+    "jalen suggs|3pm|3": {
+      "price": 3.1,
+      "bookie": "SportsBet"
+    },
+    "anthony black|3pm|3": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "franz wagner|3pm|3": {
+      "price": 5.6,
+      "bookie": "Betr"
+    },
+    "isaiah joe|3pm|8": {
+      "price": 41,
+      "bookie": "SportsBet"
+    },
+    "desmond bane|3pm|8": {
+      "price": 26,
+      "bookie": "SportsBet"
+    },
+    "daniss jenkins|3pm|2": {
+      "price": 1.6,
+      "bookie": "Neds"
+    },
+    "isaiah joe|3pm|2": {
+      "price": 1.32,
+      "bookie": "Unibet"
+    },
+    "desmond bane|3pm|2": {
+      "price": 1.17,
+      "bookie": "TABtouch"
+    },
+    "tristan da silva|3pm|2": {
+      "price": 1.42,
+      "bookie": "SportsBet"
+    },
+    "wendell carter|3pm|2": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "goga bitadze|pts|5": {
+      "price": 1.72,
+      "bookie": "TAB"
+    },
+    "goga bitadze|pts|10": {
+      "price": 4.33,
+      "bookie": "Picklebet (AU)"
+    },
+    "goga bitadze|pts|8": {
+      "price": 2.65,
+      "bookie": "Betr"
+    },
+    "john collins|reb|3": {
+      "price": 1.09,
+      "bookie": "TABtouch"
+    },
+    "isaiah joe|ast|3": {
+      "price": 2.5,
+      "bookie": "TAB"
+    },
+    "javonte green|ast|1": {
+      "price": 1.6,
+      "bookie": "TAB"
+    },
+    "paul reed|ast|3": {
+      "price": 2.1,
+      "bookie": "TAB"
+    },
+    "paul reed|ast|2": {
+      "price": 1.38,
+      "bookie": "TAB"
+    },
+    "isaiah joe|ast|2": {
+      "price": 1.52,
+      "bookie": "TAB"
+    },
+    "javonte green|ast|2": {
+      "price": 3.3,
+      "bookie": "TAB"
+    },
+    "paul reed|ast|4": {
+      "price": 3,
+      "bookie": "TAB"
+    },
+    "isaiah joe|ast|4": {
+      "price": 3.75,
+      "bookie": "TAB"
+    },
+    "chaz lanier|pts|5": {
+      "price": 1.95,
+      "bookie": "TAB"
+    },
+    "jevon carter|pts|5": {
+      "price": 1.9,
+      "bookie": "TAB"
+    },
+    "jamal cain|pts|2": {
+      "price": 1.85,
+      "bookie": "TAB"
+    },
+    "jase richardson|pts|2": {
+      "price": 2.15,
+      "bookie": "TAB"
+    },
+    "javonte green|pts|9": {
+      "price": 2,
+      "bookie": "TAB"
+    },
+    "ron holland|pts|7": {
+      "price": 1.85,
+      "bookie": "TAB"
+    },
+    "javonte green|pts|5": {
+      "price": 1.24,
+      "bookie": "TAB"
+    },
+    "javonte green|pts|10": {
+      "price": 2.3,
+      "bookie": "TAB"
+    },
+    "isaiah joe|reb|4": {
+      "price": 2.5,
+      "bookie": "TAB"
+    },
+    "javonte green|reb|4": {
+      "price": 1.95,
+      "bookie": "TAB"
+    },
+    "daniss jenkins|reb|2": {
+      "price": 1.07,
+      "bookie": "PointsBet (AU)"
+    },
+    "javonte green|reb|2": {
+      "price": 1.07,
+      "bookie": "TAB"
+    },
+    "isaiah joe|reb|2": {
+      "price": 1.15,
+      "bookie": "TAB"
+    },
+    "javonte green|reb|6": {
+      "price": 4,
+      "bookie": "TAB"
+    },
+    "ausar thompson|3pm|1": {
+      "price": 5.5,
+      "bookie": "TAB"
+    },
+    "javonte green|3pm|2": {
+      "price": 2.05,
+      "bookie": "TAB"
+    },
+    "paul reed|3pm|1": {
+      "price": 3.8,
+      "bookie": "TAB"
+    },
+    "javonte green|3pm|1": {
+      "price": 1.2,
+      "bookie": "TAB"
+    },
+    "javonte green|3pm|3": {
+      "price": 3.5,
+      "bookie": "TAB"
+    },
+    "jalen suggs|ast|7": {
+      "price": 6.25,
+      "bookie": "TABtouch"
+    },
+    "wendell carter|ast|3": {
+      "price": 3.8,
+      "bookie": "TABtouch"
+    },
+    "tristan da silva|ast|3": {
+      "price": 3.8,
+      "bookie": "TABtouch"
+    },
+    "franz wagner|ast|11": {
+      "price": 9.5,
+      "bookie": "TABtouch"
+    },
+    "anthony black|ast|9": {
+      "price": 9.5,
+      "bookie": "TABtouch"
+    },
+    "daniss jenkins|ast|11": {
+      "price": 6.5,
+      "bookie": "TABtouch"
+    },
+    "kevin huerter|ast|7": {
+      "price": 10.5,
+      "bookie": "TABtouch"
+    },
+    "kevin huerter|pts|6": {
+      "price": 1.08,
+      "bookie": "TABtouch"
+    },
+    "john collins|pts|6": {
+      "price": 1.11,
+      "bookie": "TABtouch"
+    },
+    "franz wagner|pts|34": {
+      "price": 8.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "franz wagner|pts|14": {
+      "price": 1.08,
+      "bookie": "TABtouch"
+    },
+    "ausar thompson|pts|6": {
+      "price": 1.09,
+      "bookie": "Neds"
+    },
+    "anthony black|pts|24": {
+      "price": 9.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "desmond bane|pts|28": {
+      "price": 9.25,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|pts|28": {
+      "price": 10.5,
+      "bookie": "Neds"
+    },
+    "isaiah joe|pts|24": {
+      "price": 10,
+      "bookie": "Neds"
+    },
+    "kevin huerter|pts|22": {
+      "price": 10.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "tristan da silva|reb|7": {
+      "price": 6.25,
+      "bookie": "TABtouch"
+    },
+    "kevin huerter|reb|7": {
+      "price": 8,
+      "bookie": "TABtouch"
+    },
+    "jalen suggs|reb|2": {
+      "price": 1.08,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony black|reb|2": {
+      "price": 1.05,
+      "bookie": "TABtouch"
+    },
+    "wendell carter|3pm|3": {
+      "price": 9,
+      "bookie": "TABtouch"
+    },
+    "jalen suggs|ast|9": {
+      "price": 17,
+      "bookie": "Neds"
+    },
+    "kevin huerter|ast|9": {
+      "price": 23,
+      "bookie": "Neds"
+    },
+    "desmond bane|ast|7": {
+      "price": 12.5,
+      "bookie": "Neds"
+    },
+    "franz wagner|ast|14": {
+      "price": 23,
+      "bookie": "Neds"
+    },
+    "desmond bane|ast|8": {
+      "price": 23,
+      "bookie": "Neds"
+    },
+    "anthony black|pts|28": {
+      "price": 26,
+      "bookie": "Neds"
+    },
+    "anthony black|pts|26": {
+      "price": 14,
+      "bookie": "Neds"
+    },
+    "isaiah joe|pts|26": {
+      "price": 17,
+      "bookie": "Neds"
+    },
+    "franz wagner|pts|12": {
+      "price": 1.01,
+      "bookie": "Neds"
+    },
+    "desmond bane|pts|8": {
+      "price": 1.04,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniss jenkins|pts|8": {
+      "price": 1.03,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|pts|7": {
+      "price": 1.01,
+      "bookie": "Neds"
+    },
+    "anthony black|pts|7": {
+      "price": 1.06,
+      "bookie": "Neds"
+    },
+    "john collins|pts|22": {
+      "price": 10.5,
+      "bookie": "Neds"
+    },
+    "ausar thompson|pts|22": {
+      "price": 11.5,
+      "bookie": "Neds"
+    },
+    "paul reed|pts|22": {
+      "price": 14,
+      "bookie": "Neds"
+    },
+    "anthony black|pts|6": {
+      "price": 1.03,
+      "bookie": "PointsBet (AU)"
+    },
+    "isaiah joe|pts|6": {
+      "price": 1.04,
+      "bookie": "Neds"
+    },
+    "desmond bane|pts|9": {
+      "price": 1.07,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniss jenkins|pts|9": {
+      "price": 1.06,
+      "bookie": "Neds"
+    },
+    "anthony black|reb|9": {
+      "price": 8.5,
+      "bookie": "Neds"
+    },
+    "daniss jenkins|reb|9": {
+      "price": 10,
+      "bookie": "Neds"
+    },
+    "jalen suggs|reb|9": {
+      "price": 10,
+      "bookie": "Neds"
+    },
+    "ausar thompson|pts|21": {
+      "price": 11,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniss jenkins|pts|29": {
+      "price": 10.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "desmond bane|pts|29": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "franz wagner|pts|13": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "franz wagner|pts|36": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "jalen suggs|pts|21": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "jalen suggs|pts|22": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "john collins|pts|21": {
+      "price": 8,
+      "bookie": "PointsBet (AU)"
+    },
+    "john collins|pts|23": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "tristan da silva|pts|19": {
+      "price": 7.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "tristan da silva|pts|21": {
+      "price": 11,
+      "bookie": "PointsBet (AU)"
+    },
+    "wendell carter|pts|19": {
+      "price": 8.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "wendell carter|pts|21": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "alex sarr|ast|2": {
+      "price": 2.1,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony davis|ast|3": {
+      "price": 2.45,
+      "bookie": "TABtouch"
+    },
+    "derrick white|ast|5": {
+      "price": 1.91,
+      "bookie": "Neds"
+    },
+    "jayson tatum|ast|7": {
+      "price": 1.96,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|ast|4": {
+      "price": 1.67,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|ast|4": {
+      "price": 2,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|ast|5": {
+      "price": 2.3,
+      "bookie": "Picklebet (AU)"
+    },
+    "trae young|ast|8": {
+      "price": 1.96,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|ast|2": {
+      "price": 1.28,
+      "bookie": "TAB"
+    },
+    "aj dybantsa|ast|4": {
+      "price": 2.8,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|ast|6": {
+      "price": 9,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony davis|ast|2": {
+      "price": 1.52,
+      "bookie": "TAB"
+    },
+    "anthony davis|ast|4": {
+      "price": 4.8,
+      "bookie": "SportsBet"
+    },
+    "derrick white|ast|2": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|ast|4": {
+      "price": 1.42,
+      "bookie": "Neds"
+    },
+    "derrick white|ast|6": {
+      "price": 2.77,
+      "bookie": "SportsBet"
+    },
+    "derrick white|ast|8": {
+      "price": 7,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|ast|10": {
+      "price": 6,
+      "bookie": "TABtouch"
+    },
+    "jayson tatum|ast|4": {
+      "price": 1.11,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|ast|6": {
+      "price": 1.53,
+      "bookie": "TABtouch"
+    },
+    "jayson tatum|ast|8": {
+      "price": 2.82,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|ast|2": {
+      "price": 1.08,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyshawn george|ast|6": {
+      "price": 4,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|ast|8": {
+      "price": 10.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|ast|2": {
+      "price": 1.13,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|ast|6": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|ast|2": {
+      "price": 1.08,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|ast|4": {
+      "price": 1.58,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|ast|6": {
+      "price": 3.32,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|ast|8": {
+      "price": 9.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|ast|10": {
+      "price": 3.4,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|ast|12": {
+      "price": 7.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|ast|4": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|ast|6": {
+      "price": 1.28,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|pts|16": {
+      "price": 1.96,
+      "bookie": "SportsBet"
+    },
+    "alex sarr|pts|10": {
+      "price": 2,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony davis|pts|21": {
+      "price": 1.88,
+      "bookie": "Neds"
+    },
+    "bilal coulibaly|pts|7": {
+      "price": 1.96,
+      "bookie": "SportsBet"
+    },
+    "derrick white|pts|14": {
+      "price": 1.96,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|pts|26": {
+      "price": 1.87,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyshawn george|pts|15": {
+      "price": 1.88,
+      "bookie": "Picklebet (AU)"
+    },
+    "neemias queta|pts|11": {
+      "price": 1.87,
+      "bookie": "Neds"
+    },
+    "paul george|pts|19": {
+      "price": 1.87,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|pts|13": {
+      "price": 1.85,
+      "bookie": "Neds"
+    },
+    "sam hauser|pts|7": {
+      "price": 1.87,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|pts|15": {
+      "price": 2.05,
+      "bookie": "Picklebet (AU)"
+    },
+    "aj dybantsa|pts|10": {
+      "price": 1.17,
+      "bookie": "Neds"
+    },
+    "aj dybantsa|pts|11": {
+      "price": 1.21,
+      "bookie": "PointsBet (AU)"
+    },
+    "aj dybantsa|pts|12": {
+      "price": 1.3,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|pts|13": {
+      "price": 1.4,
+      "bookie": "PointsBet (AU)"
+    },
+    "aj dybantsa|pts|14": {
+      "price": 1.53,
+      "bookie": "PointsBet (AU)"
+    },
+    "aj dybantsa|pts|15": {
+      "price": 1.72,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|pts|17": {
+      "price": 2.15,
+      "bookie": "PointsBet (AU)"
+    },
+    "aj dybantsa|pts|18": {
+      "price": 2.5,
+      "bookie": "Picklebet (AU)"
+    },
+    "aj dybantsa|pts|19": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|pts|20": {
+      "price": 3.5,
+      "bookie": "Picklebet (AU)"
+    },
+    "aj dybantsa|pts|21": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|pts|22": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|pts|23": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|pts|24": {
+      "price": 7,
+      "bookie": "PointsBet (AU)"
+    },
+    "aj dybantsa|pts|25": {
+      "price": 9,
+      "bookie": "PointsBet (AU)"
+    },
+    "aj dybantsa|pts|26": {
+      "price": 10.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "aj dybantsa|pts|7": {
+      "price": 1.03,
+      "bookie": "PointsBet (AU)"
+    },
+    "aj dybantsa|pts|8": {
+      "price": 1.07,
+      "bookie": "Neds"
+    },
+    "aj dybantsa|pts|9": {
+      "price": 1.11,
+      "bookie": "Neds"
+    },
+    "alex sarr|pts|11": {
+      "price": 2.4,
+      "bookie": "SportsBet"
+    },
+    "alex sarr|pts|12": {
+      "price": 2.9,
+      "bookie": "Picklebet (AU)"
+    },
+    "alex sarr|pts|13": {
+      "price": 3.4,
+      "bookie": "SportsBet"
+    },
+    "alex sarr|pts|14": {
+      "price": 4.4,
+      "bookie": "SportsBet"
+    },
+    "alex sarr|pts|15": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "alex sarr|pts|16": {
+      "price": 6,
+      "bookie": "PointsBet (AU)"
+    },
+    "alex sarr|pts|17": {
+      "price": 7.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "alex sarr|pts|18": {
+      "price": 10.5,
+      "bookie": "Neds"
+    },
+    "alex sarr|pts|19": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "alex sarr|pts|5": {
+      "price": 1.15,
+      "bookie": "PointsBet (AU)"
+    },
+    "alex sarr|pts|6": {
+      "price": 1.24,
+      "bookie": "PointsBet (AU)"
+    },
+    "alex sarr|pts|7": {
+      "price": 1.36,
+      "bookie": "PointsBet (AU)"
+    },
+    "alex sarr|pts|8": {
+      "price": 1.53,
+      "bookie": "PointsBet (AU)"
+    },
+    "alex sarr|pts|9": {
+      "price": 1.72,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|pts|11": {
+      "price": 1.03,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony davis|pts|12": {
+      "price": 1.06,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony davis|pts|13": {
+      "price": 1.08,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony davis|pts|14": {
+      "price": 1.15,
+      "bookie": "Neds"
+    },
+    "anthony davis|pts|15": {
+      "price": 1.2,
+      "bookie": "Neds"
+    },
+    "anthony davis|pts|16": {
+      "price": 1.28,
+      "bookie": "Neds"
+    },
+    "anthony davis|pts|17": {
+      "price": 1.3,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|pts|18": {
+      "price": 1.44,
+      "bookie": "Neds"
+    },
+    "anthony davis|pts|19": {
+      "price": 1.5,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|pts|20": {
+      "price": 1.7,
+      "bookie": "Picklebet (AU)"
+    },
+    "anthony davis|pts|22": {
+      "price": 2.08,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|pts|23": {
+      "price": 2.25,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony davis|pts|24": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|pts|25": {
+      "price": 3.3,
+      "bookie": "Picklebet (AU)"
+    },
+    "anthony davis|pts|26": {
+      "price": 3.4,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|pts|27": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|pts|28": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|pts|29": {
+      "price": 5.5,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|pts|30": {
+      "price": 8,
+      "bookie": "Picklebet (AU)"
+    },
+    "anthony davis|pts|31": {
+      "price": 8,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony davis|pts|32": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony davis|pts|33": {
+      "price": 11,
+      "bookie": "PointsBet (AU)"
+    },
+    "bilal coulibaly|pts|10": {
+      "price": 3.75,
+      "bookie": "Picklebet (AU)"
+    },
+    "bilal coulibaly|pts|11": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "bilal coulibaly|pts|12": {
+      "price": 6.2,
+      "bookie": "Neds"
+    },
+    "bilal coulibaly|pts|13": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "bilal coulibaly|pts|14": {
+      "price": 9.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "bilal coulibaly|pts|15": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "bilal coulibaly|pts|5": {
+      "price": 1.4,
+      "bookie": "PointsBet (AU)"
+    },
+    "bilal coulibaly|pts|6": {
+      "price": 1.64,
+      "bookie": "SportsBet"
+    },
+    "bilal coulibaly|pts|8": {
+      "price": 2.38,
+      "bookie": "Picklebet (AU)"
+    },
+    "bilal coulibaly|pts|9": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "derrick white|pts|10": {
+      "price": 1.31,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|pts|11": {
+      "price": 1.42,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|pts|12": {
+      "price": 1.56,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|pts|13": {
+      "price": 1.72,
+      "bookie": "SportsBet"
+    },
+    "derrick white|pts|15": {
+      "price": 2.25,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|pts|16": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "derrick white|pts|17": {
+      "price": 2.9,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|pts|18": {
+      "price": 3.75,
+      "bookie": "Picklebet (AU)"
+    },
+    "derrick white|pts|19": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "derrick white|pts|20": {
+      "price": 5,
+      "bookie": "SportsBet"
+    },
+    "derrick white|pts|21": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "derrick white|pts|22": {
+      "price": 7.5,
+      "bookie": "Neds"
+    },
+    "derrick white|pts|23": {
+      "price": 8.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|pts|24": {
+      "price": 12.5,
+      "bookie": "Neds"
+    },
+    "derrick white|pts|25": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|pts|5": {
+      "price": 1.03,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|pts|6": {
+      "price": 1.07,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|pts|7": {
+      "price": 1.1,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|pts|8": {
+      "price": 1.15,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|pts|9": {
+      "price": 1.22,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|13": {
+      "price": 1.03,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|14": {
+      "price": 1.04,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|15": {
+      "price": 1.06,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|16": {
+      "price": 1.08,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|17": {
+      "price": 1.11,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|18": {
+      "price": 1.14,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|19": {
+      "price": 1.19,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|20": {
+      "price": 1.24,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|21": {
+      "price": 1.29,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|22": {
+      "price": 1.36,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|23": {
+      "price": 1.48,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|24": {
+      "price": 1.59,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|25": {
+      "price": 1.71,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|27": {
+      "price": 2.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|28": {
+      "price": 2.25,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|29": {
+      "price": 2.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|30": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|pts|31": {
+      "price": 3.2,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|pts|32": {
+      "price": 3.6,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|33": {
+      "price": 4.4,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|pts|34": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|pts|35": {
+      "price": 6,
+      "bookie": "Picklebet (AU)"
+    },
+    "jayson tatum|pts|36": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|pts|37": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|pts|38": {
+      "price": 8.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|39": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|pts|40": {
+      "price": 13,
+      "bookie": "Neds"
+    },
+    "kyshawn george|pts|10": {
+      "price": 1.22,
+      "bookie": "Neds"
+    },
+    "kyshawn george|pts|11": {
+      "price": 1.27,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyshawn george|pts|12": {
+      "price": 1.38,
+      "bookie": "Picklebet (AU)"
+    },
+    "kyshawn george|pts|13": {
+      "price": 1.48,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyshawn george|pts|14": {
+      "price": 1.65,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyshawn george|pts|16": {
+      "price": 2.1,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|pts|17": {
+      "price": 2.4,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|pts|18": {
+      "price": 2.9,
+      "bookie": "Picklebet (AU)"
+    },
+    "kyshawn george|pts|19": {
+      "price": 3.2,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|pts|20": {
+      "price": 4.1,
+      "bookie": "Picklebet (AU)"
+    },
+    "kyshawn george|pts|21": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|pts|22": {
+      "price": 5.4,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|pts|23": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|pts|24": {
+      "price": 8,
+      "bookie": "Neds"
+    },
+    "kyshawn george|pts|25": {
+      "price": 10.5,
+      "bookie": "Neds"
+    },
+    "kyshawn george|pts|26": {
+      "price": 13,
+      "bookie": "Neds"
+    },
+    "kyshawn george|pts|6": {
+      "price": 1.04,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyshawn george|pts|7": {
+      "price": 1.07,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyshawn george|pts|8": {
+      "price": 1.1,
+      "bookie": "Neds"
+    },
+    "kyshawn george|pts|9": {
+      "price": 1.15,
+      "bookie": "Neds"
+    },
+    "neemias queta|pts|10": {
+      "price": 1.62,
+      "bookie": "Neds"
+    },
+    "neemias queta|pts|12": {
+      "price": 2.1,
+      "bookie": "SportsBet"
+    },
+    "neemias queta|pts|13": {
+      "price": 2.5,
+      "bookie": "SportsBet"
+    },
+    "neemias queta|pts|14": {
+      "price": 3.1,
+      "bookie": "SportsBet"
+    },
+    "neemias queta|pts|15": {
+      "price": 3.7,
+      "bookie": "SportsBet"
+    },
+    "neemias queta|pts|16": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "neemias queta|pts|17": {
+      "price": 5.5,
+      "bookie": "SportsBet"
+    },
+    "neemias queta|pts|18": {
+      "price": 7,
+      "bookie": "SportsBet"
+    },
+    "neemias queta|pts|19": {
+      "price": 7,
+      "bookie": "PointsBet (AU)"
+    },
+    "neemias queta|pts|20": {
+      "price": 11.5,
+      "bookie": "Neds"
+    },
+    "neemias queta|pts|21": {
+      "price": 11,
+      "bookie": "PointsBet (AU)"
+    },
+    "neemias queta|pts|5": {
+      "price": 1.1,
+      "bookie": "Neds"
+    },
+    "neemias queta|pts|6": {
+      "price": 1.16,
+      "bookie": "Neds"
+    },
+    "neemias queta|pts|7": {
+      "price": 1.24,
+      "bookie": "Neds"
+    },
+    "neemias queta|pts|8": {
+      "price": 1.33,
+      "bookie": "Neds"
+    },
+    "neemias queta|pts|9": {
+      "price": 1.46,
+      "bookie": "Neds"
+    },
+    "paul george|pts|10": {
+      "price": 1.07,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|pts|11": {
+      "price": 1.1,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|pts|12": {
+      "price": 1.14,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|pts|13": {
+      "price": 1.19,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|pts|14": {
+      "price": 1.25,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|pts|15": {
+      "price": 1.33,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|pts|16": {
+      "price": 1.42,
+      "bookie": "Neds"
+    },
+    "paul george|pts|17": {
+      "price": 1.53,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|pts|18": {
+      "price": 1.68,
+      "bookie": "SportsBet"
+    },
+    "paul george|pts|20": {
+      "price": 2.08,
+      "bookie": "SportsBet"
+    },
+    "paul george|pts|21": {
+      "price": 2.3,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|pts|22": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "paul george|pts|23": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "paul george|pts|24": {
+      "price": 3.4,
+      "bookie": "SportsBet"
+    },
+    "paul george|pts|25": {
+      "price": 4.2,
+      "bookie": "Picklebet (AU)"
+    },
+    "paul george|pts|26": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "paul george|pts|27": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "paul george|pts|28": {
+      "price": 6.6,
+      "bookie": "Neds"
+    },
+    "paul george|pts|29": {
+      "price": 7,
+      "bookie": "SportsBet"
+    },
+    "paul george|pts|30": {
+      "price": 10,
+      "bookie": "Neds"
+    },
+    "paul george|pts|31": {
+      "price": 9.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|pts|32": {
+      "price": 10.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|pts|9": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|pts|10": {
+      "price": 1.36,
+      "bookie": "Neds"
+    },
+    "payton pritchard|pts|11": {
+      "price": 1.44,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|pts|12": {
+      "price": 1.62,
+      "bookie": "Neds"
+    },
+    "payton pritchard|pts|14": {
+      "price": 2.02,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|pts|15": {
+      "price": 2.3,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|pts|16": {
+      "price": 2.75,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|pts|17": {
+      "price": 3.1,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|pts|18": {
+      "price": 3.9,
+      "bookie": "Picklebet (AU)"
+    },
+    "payton pritchard|pts|19": {
+      "price": 4.4,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|pts|20": {
+      "price": 5.75,
+      "bookie": "Neds"
+    },
+    "payton pritchard|pts|21": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|pts|22": {
+      "price": 9.25,
+      "bookie": "Neds"
+    },
+    "payton pritchard|pts|23": {
+      "price": 8.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|pts|24": {
+      "price": 10.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|pts|25": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|pts|5": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|pts|6": {
+      "price": 1.07,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|pts|7": {
+      "price": 1.12,
+      "bookie": "Neds"
+    },
+    "payton pritchard|pts|8": {
+      "price": 1.19,
+      "bookie": "Neds"
+    },
+    "payton pritchard|pts|9": {
+      "price": 1.26,
+      "bookie": "Neds"
+    },
+    "sam hauser|pts|10": {
+      "price": 3.14,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|pts|11": {
+      "price": 3.4,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|pts|12": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|pts|13": {
+      "price": 5.4,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|pts|14": {
+      "price": 7.25,
+      "bookie": "Neds"
+    },
+    "sam hauser|pts|15": {
+      "price": 10,
+      "bookie": "Neds"
+    },
+    "sam hauser|pts|16": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "sam hauser|pts|17": {
+      "price": 10.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "sam hauser|pts|5": {
+      "price": 1.33,
+      "bookie": "PointsBet (AU)"
+    },
+    "sam hauser|pts|6": {
+      "price": 1.48,
+      "bookie": "PointsBet (AU)"
+    },
+    "sam hauser|pts|8": {
+      "price": 1.96,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|pts|9": {
+      "price": 2.25,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|pts|10": {
+      "price": 1.24,
+      "bookie": "Neds"
+    },
+    "trae young|pts|11": {
+      "price": 1.31,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|pts|12": {
+      "price": 1.45,
+      "bookie": "Picklebet (AU)"
+    },
+    "trae young|pts|13": {
+      "price": 1.56,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|pts|14": {
+      "price": 1.71,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|pts|16": {
+      "price": 2.25,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|pts|17": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "trae young|pts|18": {
+      "price": 3.3,
+      "bookie": "Picklebet (AU)"
+    },
+    "trae young|pts|19": {
+      "price": 3.4,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|pts|20": {
+      "price": 4.6,
+      "bookie": "Picklebet (AU)"
+    },
+    "trae young|pts|21": {
+      "price": 5,
+      "bookie": "SportsBet"
+    },
+    "trae young|pts|22": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "trae young|pts|23": {
+      "price": 6.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|pts|24": {
+      "price": 8.75,
+      "bookie": "Neds"
+    },
+    "trae young|pts|25": {
+      "price": 11.5,
+      "bookie": "Neds"
+    },
+    "trae young|pts|26": {
+      "price": 15,
+      "bookie": "Neds"
+    },
+    "trae young|pts|6": {
+      "price": 1.04,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|pts|7": {
+      "price": 1.07,
+      "bookie": "PointsBet (AU)"
+    },
+    "trae young|pts|8": {
+      "price": 1.11,
+      "bookie": "Neds"
+    },
+    "trae young|pts|9": {
+      "price": 1.16,
+      "bookie": "Neds"
+    },
+    "aj dybantsa|reb|7": {
+      "price": 2.08,
+      "bookie": "SportsBet"
+    },
+    "alex sarr|reb|6": {
+      "price": 1.82,
+      "bookie": "Neds"
+    },
+    "anthony davis|reb|10": {
+      "price": 1.85,
+      "bookie": "Neds"
+    },
+    "bilal coulibaly|reb|4": {
+      "price": 2,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|reb|4": {
+      "price": 2.18,
+      "bookie": "TABtouch"
+    },
+    "jayson tatum|reb|8": {
+      "price": 1.92,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|reb|5": {
+      "price": 2.25,
+      "bookie": "Picklebet (AU)"
+    },
+    "neemias queta|reb|9": {
+      "price": 1.9,
+      "bookie": "SportsBet"
+    },
+    "paul george|reb|6": {
+      "price": 2.08,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|reb|4": {
+      "price": 2.4,
+      "bookie": "Neds"
+    },
+    "aj dybantsa|reb|10": {
+      "price": 6,
+      "bookie": "Picklebet (AU)"
+    },
+    "aj dybantsa|reb|4": {
+      "price": 1.13,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|reb|6": {
+      "price": 1.56,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|reb|8": {
+      "price": 2.81,
+      "bookie": "SportsBet"
+    },
+    "alex sarr|reb|10": {
+      "price": 6,
+      "bookie": "PointsBet (AU)"
+    },
+    "alex sarr|reb|4": {
+      "price": 1.21,
+      "bookie": "TABtouch"
+    },
+    "alex sarr|reb|8": {
+      "price": 3.05,
+      "bookie": "TABtouch"
+    },
+    "anthony davis|reb|12": {
+      "price": 3.1,
+      "bookie": "Picklebet (AU)"
+    },
+    "anthony davis|reb|14": {
+      "price": 5.5,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|reb|16": {
+      "price": 10.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "anthony davis|reb|6": {
+      "price": 1.09,
+      "bookie": "TABtouch"
+    },
+    "anthony davis|reb|8": {
+      "price": 1.3,
+      "bookie": "SportsBet"
+    },
+    "bilal coulibaly|reb|2": {
+      "price": 1.16,
+      "bookie": "PointsBet (AU)"
+    },
+    "bilal coulibaly|reb|6": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "derrick white|reb|2": {
+      "price": 1.17,
+      "bookie": "TABtouch"
+    },
+    "derrick white|reb|6": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|reb|10": {
+      "price": 3.2,
+      "bookie": "TABtouch"
+    },
+    "jayson tatum|reb|12": {
+      "price": 6.75,
+      "bookie": "Picklebet (AU)"
+    },
+    "jayson tatum|reb|4": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|reb|6": {
+      "price": 1.28,
+      "bookie": "TABtouch"
+    },
+    "kyshawn george|reb|2": {
+      "price": 1.08,
+      "bookie": "TABtouch"
+    },
+    "kyshawn george|reb|4": {
+      "price": 1.62,
+      "bookie": "TABtouch"
+    },
+    "kyshawn george|reb|6": {
+      "price": 3.45,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|reb|8": {
+      "price": 8.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "neemias queta|reb|10": {
+      "price": 2.3,
+      "bookie": "Picklebet (AU)"
+    },
+    "neemias queta|reb|12": {
+      "price": 4.5,
+      "bookie": "Picklebet (AU)"
+    },
+    "neemias queta|reb|14": {
+      "price": 8.5,
+      "bookie": "SportsBet"
+    },
+    "neemias queta|reb|16": {
+      "price": 14,
+      "bookie": "SportsBet"
+    },
+    "neemias queta|reb|4": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "neemias queta|reb|6": {
+      "price": 1.18,
+      "bookie": "PointsBet (AU)"
+    },
+    "neemias queta|reb|8": {
+      "price": 1.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|reb|10": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|reb|4": {
+      "price": 1.28,
+      "bookie": "SportsBet"
+    },
+    "paul george|reb|8": {
+      "price": 4.25,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|reb|2": {
+      "price": 1.22,
+      "bookie": "TABtouch"
+    },
+    "sam hauser|reb|6": {
+      "price": 6.25,
+      "bookie": "Neds"
+    },
+    "trae young|3pm|2": {
+      "price": 1.57,
+      "bookie": "Unibet"
+    },
+    "paul george|3pm|3": {
+      "price": 1.76,
+      "bookie": "TABtouch"
+    },
+    "jayson tatum|3pm|3": {
+      "price": 1.68,
+      "bookie": "SportsBet"
+    },
+    "derrick white|3pm|2": {
+      "price": 1.56,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|3pm|2": {
+      "price": 1.57,
+      "bookie": "Neds"
+    },
+    "kyshawn george|3pm|3": {
+      "price": 2.33,
+      "bookie": "TABtouch"
+    },
+    "bilal coulibaly|3pm|1": {
+      "price": 1.71,
+      "bookie": "Betr"
+    },
+    "alex sarr|3pm|2": {
+      "price": 2.55,
+      "bookie": "TABtouch"
+    },
+    "aj dybantsa|3pm|2": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|3pm|2": {
+      "price": 1.57,
+      "bookie": "TABtouch"
+    },
+    "anthony davis|3pm|1": {
+      "price": 1.82,
+      "bookie": "SportsBet"
+    },
+    "khris middleton|3pm|1": {
+      "price": 1.71,
+      "bookie": "PointsBet (AU)"
+    },
+    "aj dybantsa|3pm|1": {
+      "price": 1.35,
+      "bookie": "Neds"
+    },
+    "aj dybantsa|3pm|3": {
+      "price": 6.25,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|3pm|4": {
+      "price": 17,
+      "bookie": "SportsBet"
+    },
+    "alex sarr|3pm|1": {
+      "price": 1.36,
+      "bookie": "TABtouch"
+    },
+    "alex sarr|3pm|3": {
+      "price": 5.4,
+      "bookie": "TABtouch"
+    },
+    "alex sarr|3pm|4": {
+      "price": 14,
+      "bookie": "SportsBet"
+    },
+    "derrick white|3pm|1": {
+      "price": 1.11,
+      "bookie": "PointsBet (AU)"
+    },
+    "derrick white|3pm|3": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "derrick white|3pm|4": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "derrick white|3pm|5": {
+      "price": 11,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|3pm|1": {
+      "price": 1.04,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|3pm|2": {
+      "price": 1.22,
+      "bookie": "PointsBet (AU)"
+    },
+    "jayson tatum|3pm|4": {
+      "price": 2.75,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|3pm|5": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|3pm|6": {
+      "price": 10,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|3pm|1": {
+      "price": 1.09,
+      "bookie": "TABtouch"
+    },
+    "kyshawn george|3pm|2": {
+      "price": 1.47,
+      "bookie": "TABtouch"
+    },
+    "kyshawn george|3pm|4": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|3pm|5": {
+      "price": 8.5,
+      "bookie": "SportsBet"
+    },
+    "paul george|3pm|1": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "paul george|3pm|2": {
+      "price": 1.25,
+      "bookie": "TABtouch"
+    },
+    "paul george|3pm|4": {
+      "price": 2.75,
+      "bookie": "SportsBet"
+    },
+    "paul george|3pm|5": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "paul george|3pm|6": {
+      "price": 10,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|3pm|1": {
+      "price": 1.11,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|3pm|3": {
+      "price": 2.55,
+      "bookie": "PointsBet (AU)"
+    },
+    "payton pritchard|3pm|4": {
+      "price": 5,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|3pm|5": {
+      "price": 10,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|3pm|1": {
+      "price": 1.14,
+      "bookie": "TABtouch"
+    },
+    "sam hauser|3pm|3": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|3pm|4": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|3pm|5": {
+      "price": 10.5,
+      "bookie": "SportsBet"
+    },
+    "trae young|3pm|1": {
+      "price": 1.12,
+      "bookie": "TABtouch"
+    },
+    "trae young|3pm|3": {
+      "price": 2.65,
+      "bookie": "SportsBet"
+    },
+    "trae young|3pm|4": {
+      "price": 5.25,
+      "bookie": "SportsBet"
+    },
+    "trae young|3pm|5": {
+      "price": 11.5,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|ast|5": {
+      "price": 1.26,
+      "bookie": "Neds"
+    },
+    "trae young|ast|5": {
+      "price": 1.11,
+      "bookie": "Picklebet (AU)"
+    },
+    "trae young|ast|7": {
+      "price": 1.5,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|ast|3": {
+      "price": 1.25,
+      "bookie": "Picklebet (AU)"
+    },
+    "kyshawn george|ast|3": {
+      "price": 1.28,
+      "bookie": "Betr"
+    },
+    "paul george|ast|5": {
+      "price": 3.1,
+      "bookie": "Picklebet (AU)"
+    },
+    "aj dybantsa|ast|5": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|ast|5": {
+      "price": 8.5,
+      "bookie": "TABtouch"
+    },
+    "derrick white|ast|3": {
+      "price": 1.16,
+      "bookie": "Neds"
+    },
+    "aj dybantsa|ast|3": {
+      "price": 1.73,
+      "bookie": "Picklebet (AU)"
+    },
+    "derrick white|ast|7": {
+      "price": 4.4,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|ast|5": {
+      "price": 2.4,
+      "bookie": "Picklebet (AU)"
+    },
+    "paul george|ast|3": {
+      "price": 1.38,
+      "bookie": "Picklebet (AU)"
+    },
+    "hugo gonzalez|pts|10": {
+      "price": 5.4,
+      "bookie": "Betr"
+    },
+    "hugo gonzalez|pts|8": {
+      "price": 3.1,
+      "bookie": "Picklebet (AU)"
+    },
+    "hugo gonzalez|pts|5": {
+      "price": 1.72,
+      "bookie": "Unibet"
+    },
+    "paul george|reb|5": {
+      "price": 1.58,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|reb|3": {
+      "price": 1.7,
+      "bookie": "Neds"
+    },
+    "anthony davis|reb|5": {
+      "price": 1.02,
+      "bookie": "Picklebet (AU)"
+    },
+    "paul george|reb|3": {
+      "price": 1.1,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|reb|3": {
+      "price": 1.26,
+      "bookie": "TABtouch"
+    },
+    "payton pritchard|reb|5": {
+      "price": 4.9,
+      "bookie": "Betr"
+    },
+    "sam hauser|reb|5": {
+      "price": 4,
+      "bookie": "Picklebet (AU)"
+    },
+    "bilal coulibaly|reb|3": {
+      "price": 1.43,
+      "bookie": "TABtouch"
+    },
+    "anthony davis|reb|15": {
+      "price": 8.5,
+      "bookie": "Picklebet (AU)"
+    },
+    "alex sarr|reb|3": {
+      "price": 1.08,
+      "bookie": "TABtouch"
+    },
+    "alex sarr|reb|5": {
+      "price": 1.42,
+      "bookie": "TABtouch"
+    },
+    "trae young|reb|3": {
+      "price": 2.12,
+      "bookie": "TABtouch"
+    },
+    "bilal coulibaly|reb|5": {
+      "price": 3.1,
+      "bookie": "SportsBet"
+    },
+    "trae young|reb|5": {
+      "price": 6.75,
+      "bookie": "Picklebet (AU)"
+    },
+    "neemias queta|reb|5": {
+      "price": 1.08,
+      "bookie": "TABtouch"
+    },
+    "aj dybantsa|reb|5": {
+      "price": 1.3,
+      "bookie": "Neds"
+    },
+    "jayson tatum|reb|7": {
+      "price": 1.51,
+      "bookie": "TABtouch"
+    },
+    "neemias queta|reb|7": {
+      "price": 1.29,
+      "bookie": "TABtouch"
+    },
+    "paul george|reb|7": {
+      "price": 2.9,
+      "bookie": "Picklebet (AU)"
+    },
+    "anthony davis|reb|7": {
+      "price": 1.18,
+      "bookie": "TABtouch"
+    },
+    "payton pritchard|reb|3": {
+      "price": 1.72,
+      "bookie": "Neds"
+    },
+    "derrick white|reb|3": {
+      "price": 1.49,
+      "bookie": "TABtouch"
+    },
+    "jayson tatum|reb|5": {
+      "price": 1.14,
+      "bookie": "TABtouch"
+    },
+    "hugo gonzalez|reb|3": {
+      "price": 1.48,
+      "bookie": "TABtouch"
+    },
+    "hugo gonzalez|reb|5": {
+      "price": 2.85,
+      "bookie": "Betr"
+    },
+    "derrick white|reb|5": {
+      "price": 3.4,
+      "bookie": "Picklebet (AU)"
+    },
+    "alex sarr|reb|7": {
+      "price": 2.25,
+      "bookie": "Picklebet (AU)"
+    },
+    "anthony davis|3pm|2": {
+      "price": 5.3,
+      "bookie": "SportsBet"
+    },
+    "bilal coulibaly|3pm|2": {
+      "price": 4.3,
+      "bookie": "Betr"
+    },
+    "hugo gonzalez|3pm|2": {
+      "price": 4,
+      "bookie": "TABtouch"
+    },
+    "hugo gonzalez|3pm|1": {
+      "price": 1.73,
+      "bookie": "TABtouch"
+    },
+    "jayson tatum|ast|12": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "trae young|ast|14": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "bilal coulibaly|ast|2": {
+      "price": 2.3,
+      "bookie": "TAB"
+    },
+    "paul george|ast|8": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|ast|6": {
+      "price": 14,
+      "bookie": "SportsBet"
+    },
+    "derrick white|ast|10": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|ast|10": {
+      "price": 17,
+      "bookie": "Neds"
+    },
+    "bilal coulibaly|ast|4": {
+      "price": 8.5,
+      "bookie": "SportsBet"
+    },
+    "trae young|ast|9": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "trae young|ast|11": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|ast|9": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|ast|7": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|ast|7": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "paul george|pts|35": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|pts|35": {
+      "price": 19,
+      "bookie": "Neds"
+    },
+    "anthony davis|pts|10": {
+      "price": 1.02,
+      "bookie": "SportsBet"
+    },
+    "khris middleton|pts|10": {
+      "price": 6,
+      "bookie": "SportsBet"
+    },
+    "derrick white|pts|30": {
+      "price": 34,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|pts|30": {
+      "price": 34,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|pts|30": {
+      "price": 31,
+      "bookie": "Neds"
+    },
+    "kyshawn george|pts|30": {
+      "price": 34,
+      "bookie": "SportsBet"
+    },
+    "trae young|pts|30": {
+      "price": 34,
+      "bookie": "SportsBet"
+    },
+    "hugo gonzalez|pts|15": {
+      "price": 14,
+      "bookie": "SportsBet"
+    },
+    "khris middleton|pts|15": {
+      "price": 21,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|pts|20": {
+      "price": 14,
+      "bookie": "SportsBet"
+    },
+    "alex sarr|pts|20": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|pts|45": {
+      "price": 34,
+      "bookie": "SportsBet"
+    },
+    "khris middleton|pts|5": {
+      "price": 1.8,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|pts|5": {
+      "price": 1.01,
+      "bookie": "SportsBet"
+    },
+    "trae young|pts|5": {
+      "price": 1.01,
+      "bookie": "SportsBet"
+    },
+    "alex sarr|pts|4": {
+      "price": 1.08,
+      "bookie": "TABtouch"
+    },
+    "bilal coulibaly|pts|3": {
+      "price": 1.13,
+      "bookie": "SportsBet"
+    },
+    "bilal coulibaly|pts|4": {
+      "price": 1.24,
+      "bookie": "TABtouch"
+    },
+    "sam hauser|pts|3": {
+      "price": 1.07,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|pts|4": {
+      "price": 1.27,
+      "bookie": "SportsBet"
+    },
+    "hugo gonzalez|reb|8": {
+      "price": 10,
+      "bookie": "SportsBet"
+    },
+    "derrick white|reb|8": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|reb|8": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "sam hauser|reb|8": {
+      "price": 15,
+      "bookie": "SportsBet"
+    },
+    "bilal coulibaly|reb|8": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "hugo gonzalez|reb|6": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|reb|6": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "trae young|reb|6": {
+      "price": 10,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|reb|10": {
+      "price": 15,
+      "bookie": "SportsBet"
+    },
+    "paul george|reb|12": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|reb|12": {
+      "price": 10,
+      "bookie": "SportsBet"
+    },
+    "alex sarr|reb|12": {
+      "price": 13,
+      "bookie": "Neds"
+    },
+    "jayson tatum|reb|14": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|reb|14": {
+      "price": 34,
+      "bookie": "SportsBet"
+    },
+    "alex sarr|reb|14": {
+      "price": 34,
+      "bookie": "SportsBet"
+    },
+    "hugo gonzalez|reb|4": {
+      "price": 1.95,
+      "bookie": "TABtouch"
+    },
+    "payton pritchard|reb|4": {
+      "price": 2.54,
+      "bookie": "SportsBet"
+    },
+    "trae young|reb|4": {
+      "price": 3.6,
+      "bookie": "TABtouch"
+    },
+    "alex sarr|reb|9": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "alex sarr|reb|11": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "neemias queta|reb|11": {
+      "price": 3.1,
+      "bookie": "SportsBet"
+    },
+    "neemias queta|reb|13": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|reb|9": {
+      "price": 1.52,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|reb|11": {
+      "price": 2.25,
+      "bookie": "SportsBet"
+    },
+    "anthony davis|reb|13": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|reb|7": {
+      "price": 5.5,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|reb|9": {
+      "price": 2.5,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|reb|11": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "trae young|reb|2": {
+      "price": 1.4,
+      "bookie": "TABtouch"
+    },
+    "aj dybantsa|reb|9": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "aj dybantsa|reb|11": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "payton pritchard|reb|2": {
+      "price": 1.22,
+      "bookie": "SportsBet"
+    },
+    "paul george|reb|9": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "jayson tatum|3pm|7": {
+      "price": 21,
+      "bookie": "SportsBet"
+    },
+    "paul george|3pm|7": {
+      "price": 21,
+      "bookie": "SportsBet"
+    },
+    "khris middleton|3pm|2": {
+      "price": 3.9,
+      "bookie": "Neds"
+    },
+    "sam hauser|3pm|6": {
+      "price": 21,
+      "bookie": "Neds"
+    },
+    "payton pritchard|3pm|6": {
+      "price": 21,
+      "bookie": "SportsBet"
+    },
+    "derrick white|3pm|6": {
+      "price": 23,
+      "bookie": "SportsBet"
+    },
+    "kyshawn george|3pm|6": {
+      "price": 19,
+      "bookie": "SportsBet"
+    },
+    "trae young|3pm|6": {
+      "price": 26,
+      "bookie": "SportsBet"
+    },
+    "neemias queta|ast|2": {
+      "price": 1.66,
+      "bookie": "TABtouch"
+    },
+    "sam hauser|ast|2": {
+      "price": 2.6,
+      "bookie": "TAB"
+    },
+    "hugo gonzalez|ast|2": {
+      "price": 3.6,
+      "bookie": "TAB"
+    },
+    "neemias queta|ast|4": {
+      "price": 5.4,
+      "bookie": "TABtouch"
+    },
+    "alex sarr|ast|4": {
+      "price": 8,
+      "bookie": "TABtouch"
+    },
+    "hugo gonzalez|pts|6": {
+      "price": 2.08,
+      "bookie": "TABtouch"
+    },
+    "hugo gonzalez|reb|2": {
+      "price": 1.19,
+      "bookie": "TABtouch"
+    },
+    "neemias queta|3pm|1": {
+      "price": 5.5,
+      "bookie": "TAB"
+    },
+    "anthony davis|3pm|3": {
+      "price": 8.5,
+      "bookie": "TAB"
+    },
+    "alex sarr|ast|3": {
+      "price": 4,
+      "bookie": "TABtouch"
+    },
+    "neemias queta|ast|3": {
+      "price": 2.85,
+      "bookie": "TABtouch"
+    },
+    "jayson tatum|ast|11": {
+      "price": 8.5,
+      "bookie": "TABtouch"
+    },
+    "paul george|ast|7": {
+      "price": 7.5,
+      "bookie": "TABtouch"
+    },
+    "trae young|ast|13": {
+      "price": 9.5,
+      "bookie": "TABtouch"
+    },
+    "derrick white|ast|9": {
+      "price": 8,
+      "bookie": "TABtouch"
+    },
+    "hugo gonzalez|pts|4": {
+      "price": 1.49,
+      "bookie": "TABtouch"
+    },
+    "bilal coulibaly|reb|7": {
+      "price": 6.75,
+      "bookie": "TABtouch"
+    },
+    "jayson tatum|reb|13": {
+      "price": 8,
+      "bookie": "TABtouch"
+    },
+    "derrick white|reb|7": {
+      "price": 9,
+      "bookie": "TABtouch"
+    },
+    "bilal coulibaly|3pm|3": {
+      "price": 9.5,
+      "bookie": "TABtouch"
+    },
+    "jayson tatum|ast|14": {
+      "price": 23,
+      "bookie": "Neds"
+    },
+    "bilal coulibaly|ast|3": {
+      "price": 4.1,
+      "bookie": "Neds"
+    },
+    "kyshawn george|ast|10": {
+      "price": 21,
+      "bookie": "Neds"
+    },
+    "neemias queta|ast|6": {
+      "price": 12,
+      "bookie": "Neds"
+    },
+    "aj dybantsa|ast|8": {
+      "price": 21,
+      "bookie": "Neds"
+    },
+    "payton pritchard|ast|9": {
+      "price": 10,
+      "bookie": "Neds"
+    },
+    "kyshawn george|ast|9": {
+      "price": 12,
+      "bookie": "Neds"
+    },
+    "paul george|ast|9": {
+      "price": 19,
+      "bookie": "Neds"
+    },
+    "neemias queta|ast|5": {
+      "price": 6.2,
+      "bookie": "Neds"
+    },
+    "aj dybantsa|ast|7": {
+      "price": 11,
+      "bookie": "Neds"
+    },
+    "khris middleton|pts|6": {
+      "price": 1.82,
+      "bookie": "Neds"
+    },
+    "khris middleton|pts|9": {
+      "price": 3.35,
+      "bookie": "Neds"
+    },
+    "hugo gonzalez|pts|9": {
+      "price": 3.75,
+      "bookie": "Neds"
+    },
+    "derrick white|pts|26": {
+      "price": 23,
+      "bookie": "Neds"
+    },
+    "payton pritchard|pts|26": {
+      "price": 31,
+      "bookie": "Neds"
+    },
+    "khris middleton|pts|8": {
+      "price": 2.6,
+      "bookie": "Neds"
+    },
+    "aj dybantsa|pts|6": {
+      "price": 1.01,
+      "bookie": "Neds"
+    },
+    "khris middleton|pts|7": {
+      "price": 2.1,
+      "bookie": "Neds"
+    },
+    "hugo gonzalez|pts|7": {
+      "price": 2.25,
+      "bookie": "Neds"
+    },
+    "aj dybantsa|pts|28": {
+      "price": 17,
+      "bookie": "Neds"
+    },
+    "kyshawn george|pts|28": {
+      "price": 23,
+      "bookie": "Neds"
+    },
+    "trae young|pts|28": {
+      "price": 26,
+      "bookie": "Neds"
+    },
+    "kyshawn george|reb|9": {
+      "price": 9.5,
+      "bookie": "Neds"
+    },
+    "jayson tatum|reb|16": {
+      "price": 21,
+      "bookie": "Neds"
+    },
+    "anthony davis|reb|18": {
+      "price": 15,
+      "bookie": "Neds"
+    },
+    "neemias queta|reb|18": {
+      "price": 26,
+      "bookie": "Neds"
+    },
+    "aj dybantsa|reb|3": {
+      "price": 1.01,
+      "bookie": "Neds"
+    },
+    "hugo gonzalez|reb|7": {
+      "price": 6.4,
+      "bookie": "Neds"
+    },
+    "kyrie irving|ast|7": {
+      "price": 3.45,
+      "bookie": "TABtouch"
+    },
+    "jamal murray|ast|10": {
+      "price": 6,
+      "bookie": "Picklebet (AU)"
+    },
+    "jamal murray|ast|7": {
+      "price": 2.05,
+      "bookie": "TABtouch"
+    },
+    "nikola jokic|ast|15": {
+      "price": 8.5,
+      "bookie": "Picklebet (AU)"
+    },
+    "aaron gordon|ast|5": {
+      "price": 9,
+      "bookie": "Picklebet (AU)"
+    },
+    "cooper flagg|ast|5": {
+      "price": 1.26,
+      "bookie": "Ladbrokes"
+    },
+    "christian braun|ast|3": {
+      "price": 2.1,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|ast|12": {
+      "price": 3.31,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|ast|5": {
+      "price": 1.02,
+      "bookie": "Picklebet (AU)"
+    },
+    "nikola jokic|ast|10": {
+      "price": 1.83,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|ast|5": {
+      "price": 1.7,
+      "bookie": "Ladbrokes"
+    },
+    "nikola jokic|ast|7": {
+      "price": 1.14,
+      "bookie": "TABtouch"
+    },
+    "kyrie irving|ast|3": {
+      "price": 1.12,
+      "bookie": "TABtouch"
+    },
+    "cooper flagg|ast|10": {
+      "price": 5.8,
+      "bookie": "Betr"
+    },
+    "aaron gordon|ast|3": {
+      "price": 2.4,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|ast|5": {
+      "price": 1.28,
+      "bookie": "Ladbrokes"
+    },
+    "christian braun|ast|5": {
+      "price": 7,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|ast|7": {
+      "price": 1.96,
+      "bookie": "SportsBet"
+    },
+    "christian braun|pts|15": {
+      "price": 2.45,
+      "bookie": "SportsBet"
+    },
+    "pj washington|pts|18": {
+      "price": 4.2,
+      "bookie": "Picklebet (AU)"
+    },
+    "christian braun|pts|12": {
+      "price": 1.61,
+      "bookie": "TABtouch"
+    },
+    "jamal murray|pts|30": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "daniel gafford|pts|10": {
+      "price": 1.96,
+      "bookie": "SportsBet"
+    },
+    "caleb martin|pts|5": {
+      "price": 1.6,
+      "bookie": "Picklebet (AU)"
+    },
+    "jamal murray|pts|25": {
+      "price": 2.26,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|pts|10": {
+      "price": 1.28,
+      "bookie": "Ladbrokes"
+    },
+    "christian braun|pts|18": {
+      "price": 4.1,
+      "bookie": "Picklebet (AU)"
+    },
+    "daniel gafford|pts|5": {
+      "price": 1.15,
+      "bookie": "Ladbrokes"
+    },
+    "christian braun|pts|10": {
+      "price": 1.33,
+      "bookie": "TABtouch"
+    },
+    "kyrie irving|pts|18": {
+      "price": 1.3,
+      "bookie": "TABtouch"
+    },
+    "jamal murray|pts|35": {
+      "price": 10,
+      "bookie": "Picklebet (AU)"
+    },
+    "aaron gordon|pts|8": {
+      "price": 1.14,
+      "bookie": "Ladbrokes"
+    },
+    "jamal murray|pts|18": {
+      "price": 1.27,
+      "bookie": "TABtouch"
+    },
+    "cooper flagg|pts|18": {
+      "price": 1.18,
+      "bookie": "PointsBet (AU)"
+    },
+    "aaron gordon|pts|12": {
+      "price": 1.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "christian braun|pts|8": {
+      "price": 1.17,
+      "bookie": "TABtouch"
+    },
+    "nikola jokic|pts|30": {
+      "price": 3.1,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|pts|20": {
+      "price": 1.47,
+      "bookie": "TABtouch"
+    },
+    "cameron johnson|pts|18": {
+      "price": 4.2,
+      "bookie": "Picklebet (AU)"
+    },
+    "daniel gafford|pts|12": {
+      "price": 2.75,
+      "bookie": "Picklebet (AU)"
+    },
+    "pj washington|pts|8": {
+      "price": 1.21,
+      "bookie": "TABtouch"
+    },
+    "cameron johnson|pts|12": {
+      "price": 1.68,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|pts|8": {
+      "price": 1.19,
+      "bookie": "TABtouch"
+    },
+    "pj washington|pts|10": {
+      "price": 1.45,
+      "bookie": "TAB"
+    },
+    "pj washington|pts|15": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|pts|25": {
+      "price": 1.72,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|pts|10": {
+      "price": 1.4,
+      "bookie": "TAB"
+    },
+    "aaron gordon|pts|18": {
+      "price": 3.6,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|pts|18": {
+      "price": 1.13,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|pts|15": {
+      "price": 1.13,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|25": {
+      "price": 1.88,
+      "bookie": "SportsBet"
+    },
+    "daniel gafford|pts|8": {
+      "price": 1.48,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|20": {
+      "price": 1.3,
+      "bookie": "TAB"
+    },
+    "cooper flagg|pts|35": {
+      "price": 7.25,
+      "bookie": "Betr"
+    },
+    "nikola jokic|pts|35": {
+      "price": 6.75,
+      "bookie": "Picklebet (AU)"
+    },
+    "cameron johnson|pts|15": {
+      "price": 2.55,
+      "bookie": "Betr"
+    },
+    "caleb martin|pts|10": {
+      "price": 5.25,
+      "bookie": "Picklebet (AU)"
+    },
+    "jamal murray|pts|20": {
+      "price": 1.43,
+      "bookie": "TABtouch"
+    },
+    "aaron gordon|pts|15": {
+      "price": 2.15,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|30": {
+      "price": 3.31,
+      "bookie": "SportsBet"
+    },
+    "caleb martin|pts|8": {
+      "price": 3.1,
+      "bookie": "Picklebet (AU)"
+    },
+    "nikola jokic|pts|20": {
+      "price": 1.24,
+      "bookie": "Ladbrokes"
+    },
+    "kyrie irving|pts|25": {
+      "price": 2.38,
+      "bookie": "Picklebet (AU)"
+    },
+    "kyrie irving|pts|30": {
+      "price": 4.8,
+      "bookie": "Betr"
+    },
+    "pj washington|pts|12": {
+      "price": 1.74,
+      "bookie": "TABtouch"
+    },
+    "daniel gafford|reb|7": {
+      "price": 1.88,
+      "bookie": "Ladbrokes"
+    },
+    "jamal murray|reb|3": {
+      "price": 1.19,
+      "bookie": "TABtouch"
+    },
+    "daniel gafford|reb|10": {
+      "price": 4.9,
+      "bookie": "Betr"
+    },
+    "nikola jokic|reb|18": {
+      "price": 9,
+      "bookie": "Picklebet (AU)"
+    },
+    "caleb martin|reb|3": {
+      "price": 1.44,
+      "bookie": "Picklebet (AU)"
+    },
+    "jamal murray|reb|7": {
+      "price": 4.8,
+      "bookie": "Betr"
+    },
+    "cooper flagg|reb|10": {
+      "price": 5.75,
+      "bookie": "PointsBet (AU)"
+    },
+    "cameron johnson|reb|3": {
+      "price": 1.38,
+      "bookie": "TABtouch"
+    },
+    "aaron gordon|reb|7": {
+      "price": 2.75,
+      "bookie": "Picklebet (AU)"
+    },
+    "nikola jokic|reb|10": {
+      "price": 1.28,
+      "bookie": "TABtouch"
+    },
+    "daniel gafford|reb|5": {
+      "price": 1.25,
+      "bookie": "TABtouch"
+    },
+    "aaron gordon|reb|5": {
+      "price": 1.56,
+      "bookie": "TABtouch"
+    },
+    "nikola jokic|reb|12": {
+      "price": 1.68,
+      "bookie": "TABtouch"
+    },
+    "pj washington|reb|7": {
+      "price": 2.9,
+      "bookie": "Picklebet (AU)"
+    },
+    "pj washington|reb|3": {
+      "price": 1.11,
+      "bookie": "TABtouch"
+    },
+    "caleb martin|reb|5": {
+      "price": 3.1,
+      "bookie": "Picklebet (AU)"
+    },
+    "kyrie irving|reb|5": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "christian braun|reb|7": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|reb|5": {
+      "price": 2,
+      "bookie": "Picklebet (AU)"
+    },
+    "kyrie irving|reb|3": {
+      "price": 1.32,
+      "bookie": "Ladbrokes"
+    },
+    "nikola jokic|reb|7": {
+      "price": 1.03,
+      "bookie": "Picklebet (AU)"
+    },
+    "aaron gordon|reb|3": {
+      "price": 1.11,
+      "bookie": "TABtouch"
+    },
+    "cooper flagg|reb|7": {
+      "price": 2.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "cameron johnson|reb|5": {
+      "price": 2.75,
+      "bookie": "Picklebet (AU)"
+    },
+    "christian braun|reb|5": {
+      "price": 1.9,
+      "bookie": "Ladbrokes"
+    },
+    "pj washington|reb|5": {
+      "price": 1.56,
+      "bookie": "TABtouch"
+    },
+    "nikola jokic|reb|15": {
+      "price": 3.4,
+      "bookie": "SportsBet"
+    },
+    "christian braun|reb|3": {
+      "price": 1.17,
+      "bookie": "TABtouch"
+    },
+    "cooper flagg|reb|5": {
+      "price": 1.3,
+      "bookie": "Ladbrokes"
+    },
+    "pj washington|3pm|2": {
+      "price": 1.64,
+      "bookie": "SportsBet"
+    },
+    "caleb martin|3pm|1": {
+      "price": 1.77,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|3pm|1": {
+      "price": 1.17,
+      "bookie": "TABtouch"
+    },
+    "cameron johnson|3pm|2": {
+      "price": 1.57,
+      "bookie": "Ladbrokes"
+    },
+    "nikola jokic|3pm|2": {
+      "price": 2.33,
+      "bookie": "TABtouch"
+    },
+    "kyrie irving|3pm|4": {
+      "price": 2.15,
+      "bookie": "Picklebet (AU)"
+    },
+    "cameron johnson|3pm|3": {
+      "price": 2.65,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|3pm|1": {
+      "price": 1.3,
+      "bookie": "TABtouch"
+    },
+    "pj washington|3pm|1": {
+      "price": 1.13,
+      "bookie": "Picklebet (AU)"
+    },
+    "cooper flagg|3pm|2": {
+      "price": 1.78,
+      "bookie": "TABtouch"
+    },
+    "kyrie irving|3pm|5": {
+      "price": 3.5,
+      "bookie": "Picklebet (AU)"
+    },
+    "kyrie irving|3pm|3": {
+      "price": 1.48,
+      "bookie": "Picklebet (AU)"
+    },
+    "jamal murray|3pm|2": {
+      "price": 1.33,
+      "bookie": "Ladbrokes"
+    },
+    "cameron johnson|3pm|1": {
+      "price": 1.11,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|3pm|3": {
+      "price": 1.98,
+      "bookie": "Ladbrokes"
+    },
+    "aaron gordon|3pm|1": {
+      "price": 1.3,
+      "bookie": "TABtouch"
+    },
+    "aaron gordon|3pm|2": {
+      "price": 2.3,
+      "bookie": "PointsBet (AU)"
+    },
+    "pj washington|3pm|3": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|3pm|3": {
+      "price": 3.2,
+      "bookie": "TABtouch"
+    },
+    "christian braun|3pm|2": {
+      "price": 2.12,
+      "bookie": "TABtouch"
+    },
+    "caleb martin|3pm|2": {
+      "price": 4.9,
+      "bookie": "SportsBet"
+    },
+    "christian braun|3pm|1": {
+      "price": 1.25,
+      "bookie": "TABtouch"
+    },
+    "christian braun|3pm|3": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|3pm|3": {
+      "price": 5,
+      "bookie": "Picklebet (AU)"
+    },
+    "aaron gordon|3pm|3": {
+      "price": 5.25,
+      "bookie": "Picklebet (AU)"
+    },
+    "jamal murray|3pm|4": {
+      "price": 3.4,
+      "bookie": "SportsBet"
+    },
+    "christian braun|ast|2": {
+      "price": 1.36,
+      "bookie": "TABtouch"
+    },
+    "christian braun|ast|4": {
+      "price": 3.96,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|ast|4": {
+      "price": 1.11,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|ast|6": {
+      "price": 1.51,
+      "bookie": "TABtouch"
+    },
+    "cooper flagg|ast|8": {
+      "price": 2.81,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|ast|4": {
+      "price": 1.11,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|ast|6": {
+      "price": 1.56,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|ast|8": {
+      "price": 2.84,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|ast|4": {
+      "price": 1.33,
+      "bookie": "TAB"
+    },
+    "kyrie irving|ast|6": {
+      "price": 2.33,
+      "bookie": "TABtouch"
+    },
+    "kyrie irving|ast|8": {
+      "price": 5.5,
+      "bookie": "SportsBet"
+    },
+    "naji marshall|ast|2": {
+      "price": 1.24,
+      "bookie": "TAB"
+    },
+    "naji marshall|ast|4": {
+      "price": 2.63,
+      "bookie": "SportsBet"
+    },
+    "naji marshall|ast|6": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|ast|14": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|ast|6": {
+      "price": 1.07,
+      "bookie": "PointsBet (AU)"
+    },
+    "nikola jokic|ast|8": {
+      "price": 1.28,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|pts|14": {
+      "price": 1.87,
+      "bookie": "PointsBet (AU)"
+    },
+    "cameron johnson|pts|13": {
+      "price": 1.91,
+      "bookie": "SportsBet"
+    },
+    "christian braun|pts|13": {
+      "price": 1.8,
+      "bookie": "SportsBet"
+    },
+    "demar derozan|pts|11": {
+      "price": 1.95,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|pts|23": {
+      "price": 1.85,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|pts|23": {
+      "price": 1.88,
+      "bookie": "Ladbrokes"
+    },
+    "naji marshall|pts|10": {
+      "price": 1.83,
+      "bookie": "Ladbrokes"
+    },
+    "nikola jokic|pts|26": {
+      "price": 1.89,
+      "bookie": "SportsBet"
+    },
+    "pj washington|pts|13": {
+      "price": 1.96,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|pts|8": {
+      "price": 1.91,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|pts|11": {
+      "price": 1.36,
+      "bookie": "PointsBet (AU)"
+    },
+    "aaron gordon|pts|13": {
+      "price": 1.67,
+      "bookie": "PointsBet (AU)"
+    },
+    "aaron gordon|pts|16": {
+      "price": 2.5,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|pts|17": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|pts|19": {
+      "price": 4.4,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|pts|20": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|pts|21": {
+      "price": 6,
+      "bookie": "PointsBet (AU)"
+    },
+    "aaron gordon|pts|22": {
+      "price": 7.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "aaron gordon|pts|23": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "aaron gordon|pts|24": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "aaron gordon|pts|6": {
+      "price": 1.04,
+      "bookie": "PointsBet (AU)"
+    },
+    "aaron gordon|pts|7": {
+      "price": 1.09,
+      "bookie": "Ladbrokes"
+    },
+    "aaron gordon|pts|9": {
+      "price": 1.2,
+      "bookie": "Ladbrokes"
+    },
+    "cameron johnson|pts|11": {
+      "price": 1.48,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|pts|14": {
+      "price": 2.15,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|pts|16": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|pts|17": {
+      "price": 3.4,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|pts|19": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|pts|20": {
+      "price": 6,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|pts|21": {
+      "price": 7,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|pts|22": {
+      "price": 8.75,
+      "bookie": "Ladbrokes"
+    },
+    "cameron johnson|pts|23": {
+      "price": 9,
+      "bookie": "PointsBet (AU)"
+    },
+    "cameron johnson|pts|24": {
+      "price": 10.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "cameron johnson|pts|5": {
+      "price": 1.04,
+      "bookie": "PointsBet (AU)"
+    },
+    "cameron johnson|pts|6": {
+      "price": 1.07,
+      "bookie": "PointsBet (AU)"
+    },
+    "cameron johnson|pts|7": {
+      "price": 1.11,
+      "bookie": "Ladbrokes"
+    },
+    "cameron johnson|pts|9": {
+      "price": 1.25,
+      "bookie": "Ladbrokes"
+    },
+    "christian braun|pts|11": {
+      "price": 1.42,
+      "bookie": "PointsBet (AU)"
+    },
+    "christian braun|pts|14": {
+      "price": 2.08,
+      "bookie": "SportsBet"
+    },
+    "christian braun|pts|16": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "christian braun|pts|17": {
+      "price": 3.4,
+      "bookie": "SportsBet"
+    },
+    "christian braun|pts|19": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "christian braun|pts|20": {
+      "price": 6,
+      "bookie": "SportsBet"
+    },
+    "christian braun|pts|21": {
+      "price": 7,
+      "bookie": "SportsBet"
+    },
+    "christian braun|pts|22": {
+      "price": 8.25,
+      "bookie": "Ladbrokes"
+    },
+    "christian braun|pts|23": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "christian braun|pts|24": {
+      "price": 14,
+      "bookie": "Ladbrokes"
+    },
+    "christian braun|pts|5": {
+      "price": 1.03,
+      "bookie": "PointsBet (AU)"
+    },
+    "christian braun|pts|6": {
+      "price": 1.06,
+      "bookie": "PointsBet (AU)"
+    },
+    "christian braun|pts|7": {
+      "price": 1.11,
+      "bookie": "Ladbrokes"
+    },
+    "christian braun|pts|9": {
+      "price": 1.24,
+      "bookie": "Ladbrokes"
+    },
+    "cooper flagg|pts|13": {
+      "price": 1.04,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|14": {
+      "price": 1.06,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|15": {
+      "price": 1.08,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|16": {
+      "price": 1.1,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|17": {
+      "price": 1.13,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|19": {
+      "price": 1.22,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|21": {
+      "price": 1.36,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|22": {
+      "price": 1.45,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|pts|23": {
+      "price": 1.59,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|24": {
+      "price": 1.72,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|pts|26": {
+      "price": 2.08,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|pts|27": {
+      "price": 2.3,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|28": {
+      "price": 2.55,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|29": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|pts|31": {
+      "price": 3.7,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|32": {
+      "price": 4.4,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|33": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|pts|34": {
+      "price": 5.75,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|36": {
+      "price": 8,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|37": {
+      "price": 9.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|pts|38": {
+      "price": 11,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniel gafford|pts|11": {
+      "price": 2.3,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniel gafford|pts|13": {
+      "price": 3.3,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniel gafford|pts|14": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "daniel gafford|pts|15": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "daniel gafford|pts|16": {
+      "price": 6,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniel gafford|pts|17": {
+      "price": 8.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniel gafford|pts|18": {
+      "price": 10.5,
+      "bookie": "Ladbrokes"
+    },
+    "daniel gafford|pts|6": {
+      "price": 1.22,
+      "bookie": "Ladbrokes"
+    },
+    "daniel gafford|pts|7": {
+      "price": 1.33,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniel gafford|pts|9": {
+      "price": 1.69,
+      "bookie": "PointsBet (AU)"
+    },
+    "demar derozan|pts|10": {
+      "price": 1.71,
+      "bookie": "TABtouch"
+    },
+    "demar derozan|pts|12": {
+      "price": 2.25,
+      "bookie": "PointsBet (AU)"
+    },
+    "demar derozan|pts|13": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "demar derozan|pts|14": {
+      "price": 3.1,
+      "bookie": "SportsBet"
+    },
+    "demar derozan|pts|15": {
+      "price": 3.6,
+      "bookie": "PointsBet (AU)"
+    },
+    "demar derozan|pts|16": {
+      "price": 4.4,
+      "bookie": "SportsBet"
+    },
+    "demar derozan|pts|17": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "demar derozan|pts|18": {
+      "price": 7.25,
+      "bookie": "Ladbrokes"
+    },
+    "demar derozan|pts|19": {
+      "price": 8.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "demar derozan|pts|20": {
+      "price": 13,
+      "bookie": "Ladbrokes"
+    },
+    "demar derozan|pts|21": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "demar derozan|pts|5": {
+      "price": 1.11,
+      "bookie": "Ladbrokes"
+    },
+    "demar derozan|pts|6": {
+      "price": 1.17,
+      "bookie": "Ladbrokes"
+    },
+    "demar derozan|pts|7": {
+      "price": 1.25,
+      "bookie": "PointsBet (AU)"
+    },
+    "demar derozan|pts|8": {
+      "price": 1.36,
+      "bookie": "PointsBet (AU)"
+    },
+    "demar derozan|pts|9": {
+      "price": 1.53,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|pts|12": {
+      "price": 1.04,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|pts|13": {
+      "price": 1.06,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|pts|14": {
+      "price": 1.08,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|pts|15": {
+      "price": 1.1,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|pts|16": {
+      "price": 1.16,
+      "bookie": "TABtouch"
+    },
+    "jamal murray|pts|17": {
+      "price": 1.19,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|pts|19": {
+      "price": 1.31,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|pts|21": {
+      "price": 1.53,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|pts|22": {
+      "price": 1.68,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|pts|24": {
+      "price": 2.05,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|pts|26": {
+      "price": 2.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|pts|27": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|pts|28": {
+      "price": 3.2,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|pts|29": {
+      "price": 3.8,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|pts|31": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|pts|32": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|pts|33": {
+      "price": 7,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|pts|34": {
+      "price": 7,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|pts|36": {
+      "price": 10.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|pts|37": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|pts|11": {
+      "price": 1.03,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|pts|12": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|pts|13": {
+      "price": 1.07,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|pts|14": {
+      "price": 1.11,
+      "bookie": "TABtouch"
+    },
+    "kyrie irving|pts|16": {
+      "price": 1.19,
+      "bookie": "TABtouch"
+    },
+    "kyrie irving|pts|17": {
+      "price": 1.22,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|pts|19": {
+      "price": 1.36,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|pts|21": {
+      "price": 1.56,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|pts|22": {
+      "price": 1.69,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|pts|24": {
+      "price": 2.08,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|pts|26": {
+      "price": 2.5,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|pts|27": {
+      "price": 2.9,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|pts|28": {
+      "price": 3.2,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|pts|29": {
+      "price": 3.6,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|pts|31": {
+      "price": 5,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|pts|32": {
+      "price": 5.4,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|pts|33": {
+      "price": 6,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|pts|34": {
+      "price": 7,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|pts|35": {
+      "price": 10.5,
+      "bookie": "Ladbrokes"
+    },
+    "kyrie irving|pts|36": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|pts|37": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "naji marshall|pts|11": {
+      "price": 2.08,
+      "bookie": "SportsBet"
+    },
+    "naji marshall|pts|12": {
+      "price": 2.4,
+      "bookie": "SportsBet"
+    },
+    "naji marshall|pts|13": {
+      "price": 2.75,
+      "bookie": "SportsBet"
+    },
+    "naji marshall|pts|14": {
+      "price": 3.4,
+      "bookie": "Ladbrokes"
+    },
+    "naji marshall|pts|15": {
+      "price": 4.2,
+      "bookie": "Ladbrokes"
+    },
+    "naji marshall|pts|16": {
+      "price": 5.4,
+      "bookie": "Ladbrokes"
+    },
+    "naji marshall|pts|17": {
+      "price": 5.75,
+      "bookie": "PointsBet (AU)"
+    },
+    "naji marshall|pts|18": {
+      "price": 9.25,
+      "bookie": "Ladbrokes"
+    },
+    "naji marshall|pts|19": {
+      "price": 9,
+      "bookie": "PointsBet (AU)"
+    },
+    "naji marshall|pts|20": {
+      "price": 11,
+      "bookie": "PointsBet (AU)"
+    },
+    "naji marshall|pts|5": {
+      "price": 1.13,
+      "bookie": "Ladbrokes"
+    },
+    "naji marshall|pts|6": {
+      "price": 1.2,
+      "bookie": "Ladbrokes"
+    },
+    "naji marshall|pts|7": {
+      "price": 1.3,
+      "bookie": "Ladbrokes"
+    },
+    "naji marshall|pts|8": {
+      "price": 1.44,
+      "bookie": "Ladbrokes"
+    },
+    "naji marshall|pts|9": {
+      "price": 1.58,
+      "bookie": "Ladbrokes"
+    },
+    "nikola jokic|pts|14": {
+      "price": 1.03,
+      "bookie": "PointsBet (AU)"
+    },
+    "nikola jokic|pts|15": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "nikola jokic|pts|16": {
+      "price": 1.07,
+      "bookie": "PointsBet (AU)"
+    },
+    "nikola jokic|pts|17": {
+      "price": 1.09,
+      "bookie": "PointsBet (AU)"
+    },
+    "nikola jokic|pts|19": {
+      "price": 1.16,
+      "bookie": "PointsBet (AU)"
+    },
+    "nikola jokic|pts|21": {
+      "price": 1.29,
+      "bookie": "PointsBet (AU)"
+    },
+    "nikola jokic|pts|22": {
+      "price": 1.38,
+      "bookie": "Ladbrokes"
+    },
+    "nikola jokic|pts|23": {
+      "price": 1.44,
+      "bookie": "PointsBet (AU)"
+    },
+    "nikola jokic|pts|24": {
+      "price": 1.57,
+      "bookie": "Ladbrokes"
+    },
+    "nikola jokic|pts|27": {
+      "price": 2.1,
+      "bookie": "PointsBet (AU)"
+    },
+    "nikola jokic|pts|28": {
+      "price": 2.3,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|pts|29": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|pts|31": {
+      "price": 3.4,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|pts|32": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|pts|33": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|pts|34": {
+      "price": 5.5,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|pts|36": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|pts|37": {
+      "price": 8,
+      "bookie": "PointsBet (AU)"
+    },
+    "nikola jokic|pts|38": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "nikola jokic|pts|39": {
+      "price": 11,
+      "bookie": "PointsBet (AU)"
+    },
+    "pj washington|pts|11": {
+      "price": 1.53,
+      "bookie": "PointsBet (AU)"
+    },
+    "pj washington|pts|14": {
+      "price": 2.25,
+      "bookie": "PointsBet (AU)"
+    },
+    "pj washington|pts|16": {
+      "price": 2.95,
+      "bookie": "TABtouch"
+    },
+    "pj washington|pts|17": {
+      "price": 3.4,
+      "bookie": "PointsBet (AU)"
+    },
+    "pj washington|pts|19": {
+      "price": 5,
+      "bookie": "SportsBet"
+    },
+    "pj washington|pts|20": {
+      "price": 6,
+      "bookie": "Ladbrokes"
+    },
+    "pj washington|pts|21": {
+      "price": 7,
+      "bookie": "PointsBet (AU)"
+    },
+    "pj washington|pts|22": {
+      "price": 10,
+      "bookie": "Ladbrokes"
+    },
+    "pj washington|pts|23": {
+      "price": 10.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "pj washington|pts|5": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "pj washington|pts|6": {
+      "price": 1.09,
+      "bookie": "TABtouch"
+    },
+    "pj washington|pts|7": {
+      "price": 1.13,
+      "bookie": "PointsBet (AU)"
+    },
+    "pj washington|pts|9": {
+      "price": 1.29,
+      "bookie": "PointsBet (AU)"
+    },
+    "zaccharie risacher|pts|10": {
+      "price": 2.65,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|pts|11": {
+      "price": 3.1,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|pts|12": {
+      "price": 3.8,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|pts|13": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|pts|14": {
+      "price": 6.4,
+      "bookie": "Ladbrokes"
+    },
+    "zaccharie risacher|pts|15": {
+      "price": 8.75,
+      "bookie": "Ladbrokes"
+    },
+    "zaccharie risacher|pts|16": {
+      "price": 12,
+      "bookie": "Ladbrokes"
+    },
+    "zaccharie risacher|pts|17": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "zaccharie risacher|pts|5": {
+      "price": 1.3,
+      "bookie": "TAB"
+    },
+    "zaccharie risacher|pts|6": {
+      "price": 1.44,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|pts|7": {
+      "price": 1.64,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|pts|9": {
+      "price": 2.2,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|reb|6": {
+      "price": 2.05,
+      "bookie": "Ladbrokes"
+    },
+    "caleb martin|reb|4": {
+      "price": 2.1,
+      "bookie": "TAB"
+    },
+    "cameron johnson|reb|4": {
+      "price": 1.85,
+      "bookie": "TABtouch"
+    },
+    "kyrie irving|reb|4": {
+      "price": 1.85,
+      "bookie": "TAB"
+    },
+    "naji marshall|reb|4": {
+      "price": 2.27,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|reb|13": {
+      "price": 2.02,
+      "bookie": "TABtouch"
+    },
+    "pj washington|reb|6": {
+      "price": 2.05,
+      "bookie": "TAB"
+    },
+    "zaccharie risacher|reb|4": {
+      "price": 1.85,
+      "bookie": "TAB"
+    },
+    "aaron gordon|reb|10": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "aaron gordon|reb|4": {
+      "price": 1.3,
+      "bookie": "TAB"
+    },
+    "aaron gordon|reb|8": {
+      "price": 4.2,
+      "bookie": "PointsBet (AU)"
+    },
+    "caleb martin|reb|2": {
+      "price": 1.16,
+      "bookie": "PointsBet (AU)"
+    },
+    "caleb martin|reb|6": {
+      "price": 5.2,
+      "bookie": "SportsBet"
+    },
+    "caleb martin|reb|8": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "cameron johnson|reb|2": {
+      "price": 1.12,
+      "bookie": "TABtouch"
+    },
+    "cameron johnson|reb|6": {
+      "price": 4.65,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|reb|8": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "christian braun|reb|2": {
+      "price": 1.05,
+      "bookie": "PointsBet (AU)"
+    },
+    "christian braun|reb|4": {
+      "price": 1.42,
+      "bookie": "TABtouch"
+    },
+    "christian braun|reb|6": {
+      "price": 2.75,
+      "bookie": "SportsBet"
+    },
+    "christian braun|reb|8": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|reb|4": {
+      "price": 1.13,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|reb|6": {
+      "price": 1.56,
+      "bookie": "PointsBet (AU)"
+    },
+    "cooper flagg|reb|8": {
+      "price": 2.75,
+      "bookie": "SportsBet"
+    },
+    "daniel gafford|reb|12": {
+      "price": 9.5,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniel gafford|reb|4": {
+      "price": 1.14,
+      "bookie": "TAB"
+    },
+    "daniel gafford|reb|6": {
+      "price": 1.48,
+      "bookie": "PointsBet (AU)"
+    },
+    "daniel gafford|reb|8": {
+      "price": 2.45,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|reb|2": {
+      "price": 1.06,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|reb|4": {
+      "price": 1.52,
+      "bookie": "TAB"
+    },
+    "jamal murray|reb|6": {
+      "price": 2.97,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|reb|8": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|reb|2": {
+      "price": 1.09,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|reb|6": {
+      "price": 4.25,
+      "bookie": "TAB"
+    },
+    "kyrie irving|reb|8": {
+      "price": 12,
+      "bookie": "PointsBet (AU)"
+    },
+    "naji marshall|reb|2": {
+      "price": 1.2,
+      "bookie": "TABtouch"
+    },
+    "naji marshall|reb|6": {
+      "price": 6,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|reb|14": {
+      "price": 2.55,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|reb|16": {
+      "price": 4.65,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|reb|8": {
+      "price": 1.09,
+      "bookie": "PointsBet (AU)"
+    },
+    "pj washington|reb|10": {
+      "price": 9,
+      "bookie": "PointsBet (AU)"
+    },
+    "pj washington|reb|4": {
+      "price": 1.27,
+      "bookie": "TABtouch"
+    },
+    "pj washington|reb|8": {
+      "price": 4,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|reb|2": {
+      "price": 1.14,
+      "bookie": "TABtouch"
+    },
+    "zaccharie risacher|reb|6": {
+      "price": 4,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|reb|8": {
+      "price": 10,
+      "bookie": "PointsBet (AU)"
+    },
+    "naji marshall|3pm|1": {
+      "price": 1.66,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|3pm|1": {
+      "price": 1.5,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|3pm|4": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|3pm|4": {
+      "price": 5.4,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|3pm|5": {
+      "price": 12.5,
+      "bookie": "SportsBet"
+    },
+    "christian braun|3pm|4": {
+      "price": 11,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|3pm|4": {
+      "price": 6.25,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|3pm|1": {
+      "price": 1.06,
+      "bookie": "PointsBet (AU)"
+    },
+    "jamal murray|3pm|5": {
+      "price": 7,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|3pm|6": {
+      "price": 14,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|3pm|2": {
+      "price": 1.15,
+      "bookie": "TABtouch"
+    },
+    "kyrie irving|3pm|6": {
+      "price": 5.75,
+      "bookie": "PointsBet (AU)"
+    },
+    "kyrie irving|3pm|7": {
+      "price": 11,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|3pm|4": {
+      "price": 12.5,
+      "bookie": "SportsBet"
+    },
+    "pj washington|3pm|4": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "pj washington|3pm|5": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|3pm|2": {
+      "price": 3.35,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|3pm|3": {
+      "price": 8.25,
+      "bookie": "Ladbrokes"
+    },
+    "naji marshall|ast|3": {
+      "price": 1.73,
+      "bookie": "Ladbrokes"
+    },
+    "cooper flagg|ast|12": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|ast|12": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|ast|10": {
+      "price": 11,
+      "bookie": "SportsBet"
+    },
+    "daniel gafford|ast|2": {
+      "price": 1.8,
+      "bookie": "TAB"
+    },
+    "kyrie irving|ast|2": {
+      "price": 1.02,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|ast|2": {
+      "price": 1.48,
+      "bookie": "TAB"
+    },
+    "naji marshall|ast|8": {
+      "price": 23,
+      "bookie": "Ladbrokes"
+    },
+    "daniel gafford|ast|4": {
+      "price": 6,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|ast|4": {
+      "price": 4.65,
+      "bookie": "SportsBet"
+    },
+    "christian braun|ast|6": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|ast|6": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "naji marshall|ast|5": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|ast|1": {
+      "price": 1.07,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|ast|9": {
+      "price": 1.5,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|ast|11": {
+      "price": 2.3,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|ast|13": {
+      "price": 4.6,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|ast|9": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|ast|9": {
+      "price": 4.4,
+      "bookie": "SportsBet"
+    },
+    "caleb martin|pts|6": {
+      "price": 1.87,
+      "bookie": "Ladbrokes"
+    },
+    "pj washington|pts|25": {
+      "price": 11,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|pts|25": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|pts|25": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "christian braun|pts|25": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "demar derozan|pts|25": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "daniel gafford|pts|20": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|pts|20": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "caleb martin|pts|15": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|pts|40": {
+      "price": 19,
+      "bookie": "Ladbrokes"
+    },
+    "kyrie irving|pts|40": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|pts|40": {
+      "price": 14,
+      "bookie": "Ladbrokes"
+    },
+    "jamal murray|pts|40": {
+      "price": 17,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|pts|10": {
+      "price": 1.01,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|pts|5": {
+      "price": 1.02,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|pts|45": {
+      "price": 41,
+      "bookie": "SportsBet"
+    },
+    "nikola jokic|pts|45": {
+      "price": 41,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|pts|3": {
+      "price": 1.08,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|pts|4": {
+      "price": 1.15,
+      "bookie": "TABtouch"
+    },
+    "caleb martin|pts|3": {
+      "price": 1.16,
+      "bookie": "SportsBet"
+    },
+    "caleb martin|pts|4": {
+      "price": 1.34,
+      "bookie": "TABtouch"
+    },
+    "caleb martin|pts|7": {
+      "price": 2.2,
+      "bookie": "Ladbrokes"
+    },
+    "caleb martin|pts|9": {
+      "price": 3.5,
+      "bookie": "Ladbrokes"
+    },
+    "caleb martin|pts|11": {
+      "price": 5.4,
+      "bookie": "SportsBet"
+    },
+    "naji marshall|reb|3": {
+      "price": 1.56,
+      "bookie": "TABtouch"
+    },
+    "daniel gafford|reb|14": {
+      "price": 17,
+      "bookie": "Ladbrokes"
+    },
+    "zaccharie risacher|reb|10": {
+      "price": 15,
+      "bookie": "SportsBet"
+    },
+    "christian braun|reb|10": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|reb|10": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|reb|12": {
+      "price": 10,
+      "bookie": "SportsBet"
+    },
+    "pj washington|reb|12": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|reb|12": {
+      "price": 12,
+      "bookie": "SportsBet"
+    },
+    "naji marshall|reb|8": {
+      "price": 13,
+      "bookie": "SportsBet"
+    },
+    "pj washington|reb|9": {
+      "price": 5.8,
+      "bookie": "TABtouch"
+    },
+    "nikola jokic|reb|9": {
+      "price": 1.17,
+      "bookie": "TABtouch"
+    },
+    "nikola jokic|reb|11": {
+      "price": 1.44,
+      "bookie": "TABtouch"
+    },
+    "nikola jokic|reb|17": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "daniel gafford|reb|9": {
+      "price": 3.4,
+      "bookie": "SportsBet"
+    },
+    "daniel gafford|reb|11": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|reb|3": {
+      "price": 1.38,
+      "bookie": "TABtouch"
+    },
+    "zaccharie risacher|reb|5": {
+      "price": 2.6,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|reb|7": {
+      "price": 5.8,
+      "bookie": "SportsBet"
+    },
+    "naji marshall|reb|5": {
+      "price": 3.6,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|reb|7": {
+      "price": 7,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|reb|7": {
+      "price": 6.5,
+      "bookie": "SportsBet"
+    },
+    "aaron gordon|reb|9": {
+      "price": 5.6,
+      "bookie": "TABtouch"
+    },
+    "cooper flagg|reb|9": {
+      "price": 3.8,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|reb|11": {
+      "price": 7.5,
+      "bookie": "SportsBet"
+    },
+    "naji marshall|3pm|2": {
+      "price": 4.1,
+      "bookie": "SportsBet"
+    },
+    "pj washington|3pm|6": {
+      "price": 26,
+      "bookie": "SportsBet"
+    },
+    "cameron johnson|3pm|6": {
+      "price": 26,
+      "bookie": "SportsBet"
+    },
+    "jamal murray|3pm|7": {
+      "price": 36,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|3pm|8": {
+      "price": 21,
+      "bookie": "SportsBet"
+    },
+    "cooper flagg|3pm|5": {
+      "price": 15,
+      "bookie": "SportsBet"
+    },
+    "zaccharie risacher|3pm|4": {
+      "price": 21,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|3pm|9": {
+      "price": 51,
+      "bookie": "SportsBet"
+    },
+    "kyrie irving|3pm|1": {
+      "price": 1.02,
+      "bookie": "SportsBet"
+    },
+    "caleb martin|ast|2": {
+      "price": 1.45,
+      "bookie": "TAB"
+    },
+    "demar derozan|ast|2": {
+      "price": 1.47,
+      "bookie": "TABtouch"
+    },
+    "cameron johnson|ast|2": {
+      "price": 1.52,
+      "bookie": "TAB"
+    },
+    "morez johnson|ast|2": {
+      "price": 2.15,
+      "bookie": "TAB"
+    },
+    "pj washington|ast|2": {
+      "price": 2.2,
+      "bookie": "TAB"
+    },
+    "zaccharie risacher|ast|2": {
+      "price": 2.7,
+      "bookie": "TAB"
+    },
+    "caleb martin|ast|4": {
+      "price": 3.45,
+      "bookie": "TABtouch"
+    },
+    "demar derozan|ast|4": {
+      "price": 4,
+      "bookie": "TABtouch"
+    },
+    "cameron johnson|ast|4": {
+      "price": 4.3,
+      "bookie": "TABtouch"
+    },
+    "morez johnson|pts|5": {
+      "price": 1.32,
+      "bookie": "TAB"
+    },
+    "spencer jones|pts|5": {
+      "price": 1.95,
+      "bookie": "TAB"
+    },
+    "morez johnson|pts|10": {
+      "price": 3,
+      "bookie": "TAB"
+    },
+    "spencer jones|pts|10": {
+      "price": 7.5,
+      "bookie": "TAB"
+    },
+    "spencer jones|reb|2": {
+      "price": 1.35,
+      "bookie": "TAB"
+    },
+    "demar derozan|reb|2": {
+      "price": 1.74,
+      "bookie": "TABtouch"
+    },
+    "morez johnson|reb|4": {
+      "price": 1.4,
+      "bookie": "TAB"
+    },
+    "spencer jones|reb|4": {
+      "price": 3.3,
+      "bookie": "TAB"
+    },
+    "morez johnson|reb|6": {
+      "price": 2.25,
+      "bookie": "TAB"
+    },
+    "morez johnson|reb|8": {
+      "price": 4,
+      "bookie": "TAB"
+    },
+    "spencer jones|3pm|1": {
+      "price": 1.72,
+      "bookie": "TAB"
+    },
+    "spencer jones|3pm|2": {
+      "price": 4.25,
+      "bookie": "TAB"
+    },
+    "naji marshall|3pm|3": {
+      "price": 9.5,
+      "bookie": "TABtouch"
+    },
+    "caleb martin|3pm|3": {
+      "price": 9,
+      "bookie": "TABtouch"
+    },
+    "demar derozan|ast|3": {
+      "price": 2.3,
+      "bookie": "TABtouch"
+    },
+    "cameron johnson|ast|3": {
+      "price": 2.4,
+      "bookie": "TABtouch"
+    },
+    "daniel gafford|ast|3": {
+      "price": 3.1,
+      "bookie": "TABtouch"
+    },
+    "caleb martin|ast|3": {
+      "price": 2.1,
+      "bookie": "TABtouch"
+    },
+    "cooper flagg|ast|11": {
+      "price": 8.5,
+      "bookie": "TABtouch"
+    },
+    "jamal murray|ast|11": {
+      "price": 9,
+      "bookie": "TABtouch"
+    },
+    "caleb martin|ast|5": {
+      "price": 6,
+      "bookie": "TABtouch"
+    },
+    "kyrie irving|ast|9": {
+      "price": 8,
+      "bookie": "TABtouch"
+    },
+    "demar derozan|ast|5": {
+      "price": 7,
+      "bookie": "TABtouch"
+    },
+    "cameron johnson|ast|5": {
+      "price": 8,
+      "bookie": "TABtouch"
+    },
+    "caleb martin|pts|12": {
+      "price": 6.25,
+      "bookie": "TABtouch"
+    },
+    "daniel gafford|pts|4": {
+      "price": 1.06,
+      "bookie": "TABtouch"
+    },
+    "demar derozan|reb|4": {
+      "price": 5.75,
+      "bookie": "TABtouch"
+    },
+    "caleb martin|reb|7": {
+      "price": 7,
+      "bookie": "Ladbrokes"
+    },
+    "demar derozan|reb|3": {
+      "price": 3,
+      "bookie": "TABtouch"
+    },
+    "nikola jokic|reb|19": {
+      "price": 8.5,
+      "bookie": "TABtouch"
+    },
+    "cooper flagg|ast|14": {
+      "price": 23,
+      "bookie": "Ladbrokes"
+    },
+    "jamal murray|ast|14": {
+      "price": 23,
+      "bookie": "Ladbrokes"
+    },
+    "daniel gafford|ast|5": {
+      "price": 10,
+      "bookie": "Ladbrokes"
+    },
+    "pj washington|ast|3": {
+      "price": 3.7,
+      "bookie": "Ladbrokes"
+    },
+    "caleb martin|ast|6": {
+      "price": 10.5,
+      "bookie": "Ladbrokes"
+    },
+    "demar derozan|ast|6": {
+      "price": 10.5,
+      "bookie": "Ladbrokes"
+    },
+    "cameron johnson|ast|6": {
+      "price": 11.5,
+      "bookie": "Ladbrokes"
+    },
+    "pj washington|ast|4": {
+      "price": 7.75,
+      "bookie": "Ladbrokes"
+    },
+    "naji marshall|ast|7": {
+      "price": 11.5,
+      "bookie": "Ladbrokes"
+    },
+    "christian braun|ast|7": {
+      "price": 17,
+      "bookie": "Ladbrokes"
+    },
+    "aaron gordon|pts|26": {
+      "price": 19,
+      "bookie": "Ladbrokes"
+    },
+    "christian braun|pts|26": {
+      "price": 26,
+      "bookie": "Ladbrokes"
+    },
+    "cameron johnson|pts|26": {
+      "price": 29,
+      "bookie": "Ladbrokes"
+    },
+    "christian braun|reb|9": {
+      "price": 7.75,
+      "bookie": "Ladbrokes"
+    },
+    "jamal murray|reb|9": {
+      "price": 8.5,
+      "bookie": "Ladbrokes"
+    },
+    "nikola jokic|reb|20": {
+      "price": 10.5,
+      "bookie": "Ladbrokes"
+    },
+    "naji marshall|reb|7": {
+      "price": 7.25,
+      "bookie": "Ladbrokes"
+    },
+    "cooper flagg|reb|3": {
+      "price": 1.01,
+      "bookie": "Ladbrokes"
+    },
+    "demar derozan|3pm|1": {
+      "price": 2.7,
+      "bookie": "Ladbrokes"
+    }
+  },
+  "lastPulled": "2026-11-24T23:55:54.742Z",
+  "creditsRemaining": 320
 }

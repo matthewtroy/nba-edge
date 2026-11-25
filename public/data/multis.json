@@ -4,95 +4,98 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
-        "5160992-reb-5",
-        "3936299-pts-25",
-        "4712849-pts-15",
-        "4277847-reb-7"
+        "6583-pts-20",
+        "5041939-pts-25",
+        "3112335-pts-25",
+        "4278562-reb-7"
       ],
-      "combinedProbability": 0.16336728777599996,
-      "combinedFairPrice": 6.12,
-      "combinedTakeAt": 8.25,
-      "combinedBestPrice": 9.99,
-      "combinedBestBookie": "Unibet",
-      "oneInX": 6,
-      "stakeSuggestion": 33.37,
+      "combinedProbability": 0.18983230140600002,
+      "combinedFairPrice": 5.27,
+      "combinedTakeAt": 7.16,
+      "bookieTotals": {
+        "Sportsbet": 8.7,
+        "TAB": 7.01,
+        "Ladbrokes": 9.72,
+        "PointsBet": 8.96
+      },
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 9.72,
+      "combinedBestBookie": "Ladbrokes",
+      "combinedBestPrice": 9.72,
       "summary": "4 starter main lines"
     },
     {
       "type": "booster",
       "label": "Booster",
       "legs": [
-        "5160992-reb-7",
-        "3936299-pts-30",
-        "4712849-pts-20",
-        "4277847-reb-10"
+        "6583-pts-25",
+        "5041939-pts-30",
+        "3112335-pts-30",
+        "4278562-reb-10"
       ],
-      "combinedProbability": 0.011263137599999999,
-      "combinedFairPrice": 88.79,
-      "combinedTakeAt": 120.87,
-      "combinedBestPrice": 130.4,
-      "combinedBestBookie": "Unibet",
-      "oneInX": 89,
-      "summary": "Main Play +1 rung on every leg"
-    },
-    {
-      "type": "q1Multi",
-      "label": "Q1 Multi",
-      "variant": "Value",
-      "legs": [
-        "4566434-q1reb-2",
-        "6583-q1reb-3",
-        "3138160-q1pts-3"
-      ],
-      "combinedProbability": 0.018182749999999998,
-      "combinedFairPrice": 55,
-      "combinedTakeAt": 69.13,
-      "combinedBestPrice": 72.37,
+      "combinedProbability": 0.021451981733999998,
+      "combinedFairPrice": 46.62,
+      "combinedTakeAt": 63.24,
+      "bookieTotals": {
+        "Sportsbet": 115.04,
+        "TAB": 69.04,
+        "Ladbrokes": 88.45,
+        "PointsBet": 99.34
+      },
+      "bestBookie": "Sportsbet",
+      "bestBookieTotal": 115.04,
       "combinedBestBookie": "Sportsbet",
-      "oneInX": 55,
-      "summary": "Value Q1: fair 2.20–4.00, one leg/team"
-    },
-    {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "legs": [
-        "3138160-reb-5",
-        "5041939-pts-20",
-        "4684742-reb-7",
-        "4278562-pts-10",
-        "4397424-pts-10",
-        "4065648-ast-5"
-      ],
-      "combinedProbability": 0.070577453798775,
-      "combinedFairPrice": 14.17,
-      "combinedTakeAt": 22.51,
-      "combinedBestPrice": 30,
-      "combinedBestBookie": "Unibet",
-      "oneInX": 14,
-      "summary": "2+ legs/game, fair 1.35–2.50 each"
+      "combinedBestPrice": 115.04,
+      "summary": "Main Play +1 rung on every leg"
     },
     {
       "type": "boostSgm",
       "label": "Boost SGM",
       "legs": [
-        "5142718-pts-15",
-        "4066354-ast-5",
-        "4065648-3pm-4"
+        "3908845-pts-15",
+        "5107199-reb-5",
+        "4684742-ast-7"
       ],
-      "combinedProbability": 0.09294490799999999,
-      "combinedFairPrice": 10.76,
-      "combinedTakeAt": 13.56,
-      "combinedBestPrice": 14.82,
-      "combinedBestBookie": "Unibet",
-      "oneInX": 11,
+      "combinedProbability": 0.0891108,
+      "combinedFairPrice": 11.22,
+      "combinedTakeAt": 14.11,
+      "bookieTotals": {
+        "Sportsbet": 18.21,
+        "TAB": 15.69,
+        "Ladbrokes": 14.22
+      },
       "summary": "bet365 25% boost (needs 3 legs)"
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot",
+      "legs": [
+        "4066372-3pm-5",
+        "5174563-3pm-5"
+      ],
+      "combinedProbability": 0.011730000000000003,
+      "combinedFairPrice": 85.25,
+      "combinedTakeAt": 98.99,
+      "bookieTotals": {
+        "Sportsbet": 102,
+        "TAB": 75,
+        "Ladbrokes": 70.69,
+        "Unibet": 75
+      },
+      "summary": "One long leg per game"
     }
   ],
   "notBuilt": [
     {
-      "type": "longshot",
-      "label": "Longshot",
-      "reason": "Removed after clash check or exposure cap"
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Value",
+      "reason": "Exposure cap: Anthony Davis would appear in >2 multis (legs: Franz Wagner 2+ q1reb, Anthony Davis 3+ q1reb, Caleb Martin 3+ q1pts)"
+    },
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "reason": "Exposure cap: Paul Reed would appear in >2 multis (legs: Jayson Tatum 7+ reb, Neemias Queta 10+ pts, Daniss Jenkins 20+ pts, Paul Reed 7+ reb, Caleb Martin 5+ reb, Naji Marshall 10+ pts)"
     }
   ]
 }

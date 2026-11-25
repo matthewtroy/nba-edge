@@ -51,13 +51,11 @@ import { buildRosterIndex, mergeInjuryEntry } from "../lib/injury-match.js";
 
 const ET = "America/New_York";
 
+import { snapshotFromPicks, writeFromLiveOddsSnapshot } from "./load-from-live-odds.js";
 import {
-  loadFromLiveOddsFile,
-  oddsMapsFromSnapshot,
-  snapshotFromPicks,
-  syntheticFromLiveOddsFromPicks,
-  writeFromLiveOddsSnapshot,
-} from "./load-from-live-odds.js";
+  fetchPublishedBundle,
+  oddsMapsFromPublished,
+} from "./fetch-published-data.js";
 
 export async function runLivePipeline(
   rootDir: string,
@@ -263,7 +261,32 @@ export async function runLivePipeline(
   const apiKey = loadOddsApiKey(rootDir);
 
   let usedLiveOddsPull = false;
-  if (!apiKey) {
+  let publishedPicksCount = 0;
+
+  if (fromLive) {
+    try {
+      const published = await fetchPublishedBundle();
+      const maps = oddsMapsFromPublished(published.picks, published.oddsCache);
+      oddsMap = maps.best;
+      allOddsMap = maps.all;
+      oddsPulledAt = published.oddsCache.lastPulled ?? published.fetchedAt;
+      if (published.oddsCache.oddsMap) {
+        cache.oddsMap = published.oddsCache.oddsMap;
+        cache.lastPulled = published.oddsCache.lastPulled;
+        cache.creditsRemaining = published.oddsCache.creditsRemaining;
+        cache.pullSlotsToday = published.oddsCache.pullSlotsToday;
+      }
+      publishedPicksCount = published.picks.length;
+      sources.odds = "ok (from-live pages)";
+      usedLiveOddsPull = true;
+      console.log(
+        `from-live: loaded Pages odds (${publishedPicksCount} legs, cache keys ${Object.keys(published.oddsCache.oddsMap ?? {}).length})`
+      );
+    } catch (e) {
+      console.error("from-live Pages fetch failed:", e);
+      sources.odds = "failed (from-live pages)";
+    }
+  } else if (!apiKey) {
     sources.odds = "stale";
   } else if (cache.creditsRemaining != null && shouldPauseOdds(cache.creditsRemaining)) {
     sources.odds = "paused (credit limit)";
@@ -338,44 +361,11 @@ export async function runLivePipeline(
     metaSources: sources,
   });
 
-  if (fromLive && !usedLiveOddsPull) {
-    for (let parityPass = 0; parityPass < 2; parityPass++) {
-      const synth = syntheticFromLiveOddsFromPicks(modelRun.picks);
-      writeFromLiveOddsSnapshot(rootDir, synth);
-      const maps = oddsMapsFromSnapshot(synth);
-      oddsMap = maps.best;
-      allOddsMap = maps.all;
-      oddsPulledAt = synth.pulledAt;
-      sources.odds = "ok (from-live parity)";
-      const pricingOdds2 = expandOddsMapForPlayers(
-        oddsMap,
-        players.map((p) => p.name)
-      );
-      const pricingAll2 = new Map<string, Record<string, number>>();
-      for (const [k, v] of allOddsMap) {
-        pricingAll2.set(k, v);
-        const [name, market, line] = k.split("|");
-        for (const p of players) {
-          if (normalizePlayerName(p.name) === name) {
-            pricingAll2.set(`${p.name}|${market}|${line}`, v);
-            pricingAll2.set(`${normalizePlayerName(p.name)}|${market}|${line}`, v);
-          }
-        }
-      }
-      modelRun = runModel({
-        rootDir,
-        slate,
-        injuries,
-        players,
-        rosterIds,
-        oddsMap: pricingOdds2,
-        allOddsMap: pricingAll2,
-        oddsPulledAt,
-        metaSources: sources,
-      });
-    }
-  } else if (fromLive && usedLiveOddsPull && sources.odds.startsWith("ok")) {
-    writeFromLiveOddsSnapshot(rootDir, snapshotFromPicks(modelRun.picks, oddsPulledAt ?? now.toISOString()));
+  if (fromLive && usedLiveOddsPull && sources.odds.startsWith("ok")) {
+    writeFromLiveOddsSnapshot(
+      rootDir,
+      snapshotFromPicks(modelRun.picks, oddsPulledAt ?? now.toISOString())
+    );
   }
 
   const { picks, multis, multisPayload, meta, whatChanged } = modelRun;

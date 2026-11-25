@@ -137,9 +137,11 @@ export function gateMulti(
     violations.push(`${label}: forbidden Best mix bookie label`);
   }
 
-  if (multi.combinedBestPrice != null && multi.combinedBestBookie) {
+  const bestBook = multi.bestBookie ?? multi.combinedBestBookie;
+  const bestTotal = multi.bestBookieTotal ?? multi.combinedBestPrice;
+  if (bestTotal != null && bestBook) {
     const quote = bestSingleBookieQuote(legs, multi.combinedTakeAt);
-    if (!quote || quote.bookie !== multi.combinedBestBookie) {
+    if (!quote || quote.bookie !== bestBook) {
       violations.push(`${label}: best bookie does not match single-bookie quote`);
     } else if (quote.price < multi.combinedTakeAt) {
       violations.push(`${label}: bookie total ${quote.price} below take-at ${multi.combinedTakeAt}`);
@@ -152,10 +154,16 @@ export function gateMulti(
 export function gateAllMultis(
   multis: MultiBet[],
   picksById: Map<string, PickLeg>
-): { multis: MultiBet[]; violations: string[]; dropped: MultiBet[] } {
+): {
+  multis: MultiBet[];
+  violations: string[];
+  dropped: MultiBet[];
+  droppedReasons: Map<string, string[]>;
+} {
   const violations: string[] = [];
   const kept: MultiBet[] = [];
   const dropped: MultiBet[] = [];
+  const droppedReasons = new Map<string, string[]>();
 
   const exposure = exposureViolation(multis, picksById);
   if (!exposure.ok) {
@@ -171,8 +179,12 @@ export function gateAllMultis(
     const result = gateMulti(multi, legs, mainPlay, picksById);
     violations.push(...result.violations);
     if (result.ok) kept.push(multi);
-    else dropped.push(multi);
+    else {
+      dropped.push(multi);
+      const key = `${multi.type}|${multi.variant ?? ""}|${multi.legs.join(",")}`;
+      droppedReasons.set(key, result.violations);
+    }
   }
 
-  return { multis: kept, violations, dropped };
+  return { multis: kept, violations, dropped, droppedReasons };
 }

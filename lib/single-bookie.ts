@@ -1,8 +1,17 @@
 import type { PickLeg } from "./types.js";
 import { AU_BOOKMAKERS } from "./types.js";
+import { canonBookiePrices } from "./bookie-totals.js";
+
+function legsWithCanonPrices(legs: PickLeg[]): PickLeg[] {
+  return legs.map((leg) => ({
+    ...leg,
+    bookiePrices: canonBookiePrices(leg.bookiePrices) as Record<string, number>,
+  }));
+}
 
 export function legPriceAtBookie(leg: PickLeg, bookie: string): number | undefined {
-  const p = leg.bookiePrices?.[bookie];
+  const canon = canonBookiePrices(leg.bookiePrices);
+  const p = canon[bookie as keyof typeof canon];
   if (p == null || p <= 1) return undefined;
   return p;
 }
@@ -38,11 +47,12 @@ export function bestSingleBookieQuote(
   legs: PickLeg[],
   combinedTakeAt: number
 ): SingleBookieQuote | undefined {
+  const priced = legsWithCanonPrices(legs);
   let best: SingleBookieQuote | undefined;
   for (const bookie of AU_BOOKMAKERS) {
-    const price = combinedPriceForBookie(legs, bookie);
+    const price = combinedPriceForBookie(priced, bookie);
     if (price == null) continue;
-    const everyLegAtTakeAt = legs.every((leg) => {
+    const everyLegAtTakeAt = priced.every((leg) => {
       const p = legPriceAtBookie(leg, bookie);
       return p != null && p >= leg.takeAt;
     });

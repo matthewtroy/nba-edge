@@ -111,7 +111,9 @@ export function buildLegsForPlayer(
     const bookiePrices =
       ctx.allOdds?.get(oddKey) ?? ctx.allOdds?.get(displayKey);
 
-    const reasons = ctx.reasons.slice(0, 3);
+    const injury = ctx.reasons.filter((r) => /out:/i.test(r));
+    const other = ctx.reasons.filter((r) => !/out:/i.test(r));
+    const reasons = [...injury, ...other].slice(0, 5);
     legs.push({
       id,
       gameId: ctx.gameId,
@@ -147,13 +149,19 @@ export function buildLegsForPlayer(
     }
   }
 
-  const q1p = means.pts * q1Share(ctx.logs, "pts");
-  const q1r = means.reb * q1Share(ctx.logs, "reb");
-  const q1a = means.ast * q1Share(ctx.logs, "ast");
+  const starterQ1 =
+    ctx.flags.starterEligible === true &&
+    (ctx.flags.projectedMinutes ?? 0) >= 24;
 
-  for (const line of RUNGS.q1pts) addLeg("q1pts", line, probMarketOver("q1pts", q1p, line));
-  for (const line of RUNGS.q1reb) addLeg("q1reb", line, probMarketOver("q1reb", q1r, line));
-  for (const line of RUNGS.q1ast) addLeg("q1ast", line, probMarketOver("q1ast", q1a, line));
+  if (starterQ1) {
+    const q1p = means.pts * q1Share(ctx.logs, "pts");
+    const q1r = means.reb * q1Share(ctx.logs, "reb");
+    const q1a = means.ast * q1Share(ctx.logs, "ast");
+
+    for (const line of RUNGS.q1pts) addLeg("q1pts", line, probMarketOver("q1pts", q1p, line));
+    for (const line of RUNGS.q1reb) addLeg("q1reb", line, probMarketOver("q1reb", q1r, line));
+    for (const line of RUNGS.q1ast) addLeg("q1ast", line, probMarketOver("q1ast", q1a, line));
+  }
 
   const comboMeans = { pts: means.pts, reb: means.reb, ast: means.ast };
   const pDd = probDoubleDouble(comboMeans);

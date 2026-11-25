@@ -22,9 +22,11 @@ export function formatLegLine(leg: PickLeg): string {
 export function renderMultiCardText(multi: MultiBet, legs: PickLeg[]): string {
   const title = multi.variant ? `${multi.label} (${multi.variant})` : multi.label;
   const lines = [title, formatMultiHeadline(multi)];
-  if (multi.combinedBestPrice != null && multi.combinedBestBookie) {
+  const bestTotal = multi.bestBookieTotal ?? multi.combinedBestPrice;
+  const bestBook = multi.bestBookie ?? multi.combinedBestBookie;
+  if (bestTotal != null && bestBook) {
     lines.push(
-      `Best multi odds: ${multi.combinedBestBookie} $${multi.combinedBestPrice.toFixed(2)}+`
+      `Best multi odds: ${bestBook} $${bestTotal.toFixed(2)}+`
     );
   }
   for (const leg of legs) lines.push(formatLegLine(leg));

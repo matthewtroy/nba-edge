@@ -41,9 +41,11 @@ export function MultiCard({ multi, picksById, onLegTap, onCopy }: Props) {
       <header className="px-4 py-3 bg-surface/80 border-b border-white/5">
         <h3 className="font-semibold text-lg">{title}</h3>
         <p className="text-sm mt-1">{formatMultiHeadline(multi)}</p>
-        {multi.combinedBestPrice != null && multi.combinedBestBookie && (
+        {(multi.bestBookieTotal ?? multi.combinedBestPrice) != null &&
+          (multi.bestBookie ?? multi.combinedBestBookie) && (
           <p className="text-xs text-accent-value mt-1">
-            Best multi odds: {multi.combinedBestBookie} ${multi.combinedBestPrice.toFixed(2)}+
+            Best multi odds: {multi.bestBookie ?? multi.combinedBestBookie} $
+            {(multi.bestBookieTotal ?? multi.combinedBestPrice)!.toFixed(2)}+
           </p>
         )}
       </header>

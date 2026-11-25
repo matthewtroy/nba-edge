@@ -25,12 +25,37 @@ export function exposureViolation(
   return { ok: true };
 }
 
+function formatExposureDrop(
+  multi: MultiBet,
+  picksById: Map<string, PickLeg>,
+  playerId: string
+): string {
+  const name =
+    picksById.get(multi.legs.find((id) => picksById.get(id)?.playerId === playerId) ?? "")
+      ?.playerName ?? playerId;
+  const legLabels = multi.legs
+    .map((id) => {
+      const l = picksById.get(id);
+      return l ? `${l.playerName} ${l.line}+ ${l.market}` : id;
+    })
+    .join(", ");
+  return `Exposure cap: ${name} would appear in >2 multis (legs: ${legLabels})`;
+}
+
 export function enforceExposureCap(multis: MultiBet[], picksById: Map<string, PickLeg>): MultiBet[] {
+  return enforceExposureCapWithDrops(multis, picksById).kept;
+}
+
+export function enforceExposureCapWithDrops(
+  multis: MultiBet[],
+  picksById: Map<string, PickLeg>
+): { kept: MultiBet[]; dropped: { multi: MultiBet; reason: string }[] } {
   const result: MultiBet[] = [];
+  const dropped: { multi: MultiBet; reason: string }[] = [];
   const counts = new Map<string, number>();
 
   for (const multi of multis) {
-    let skip = false;
+    let skipPlayer: string | undefined;
     const seen = new Set<string>();
     for (const legId of multi.legs) {
       const leg = picksById.get(legId);
@@ -40,11 +65,17 @@ export function enforceExposureCap(multis: MultiBet[], picksById: Map<string, Pi
       if (leg.probability >= 0.8) continue;
       const next = (counts.get(leg.playerId) ?? 0) + 1;
       if (next > 2) {
-        skip = true;
+        skipPlayer = leg.playerId;
         break;
       }
     }
-    if (skip) continue;
+    if (skipPlayer) {
+      dropped.push({
+        multi,
+        reason: formatExposureDrop(multi, picksById, skipPlayer),
+      });
+      continue;
+    }
 
     for (const legId of multi.legs) {
       const leg = picksById.get(legId);
@@ -54,5 +85,5 @@ export function enforceExposureCap(multis: MultiBet[], picksById: Map<string, Pi
     }
     result.push(multi);
   }
-  return result;
+  return { kept: result, dropped };
 }

@@ -28,7 +28,6 @@ function multi(partial: Partial<MultiBet>): MultiBet {
     combinedProbability: 0.7,
     combinedFairPrice: 1.45,
     combinedTakeAt: 1.5,
-    oneInX: 2,
     summary: "test",
     ...partial,
   };

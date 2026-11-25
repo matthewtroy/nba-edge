@@ -7,11 +7,9 @@
     "awayTeam": "Detroit Pistons",
     "homeTeamId": "19",
     "awayTeamId": "8",
-    "spread": -3.5,
-    "total": 210.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_SCHEDULED"
+    "status": "STATUS_IN_PROGRESS"
   },
   {
     "id": "401909315",

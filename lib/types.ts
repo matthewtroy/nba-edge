@@ -98,10 +98,13 @@ export interface MultiBet {
   combinedProbability: number;
   combinedFairPrice: number;
   combinedTakeAt: number;
+  /** @deprecated use bestBookieTotal */
   combinedBestPrice?: number;
+  /** @deprecated use bestBookie */
   combinedBestBookie?: string;
-  oneInX: number;
-  stakeSuggestion?: number;
+  bestBookie?: string;
+  bestBookieTotal?: number;
+  bookieTotals?: Record<string, number>;
   summary: string;
   variant?: string;
   smallSlateNote?: boolean;
@@ -122,6 +125,7 @@ export interface MetaJson {
   pricedLegCounts?: Record<string, { total: number; priced: number }>;
   oddsAttachWarnings?: string[];
   gateViolations?: string[];
+  injuryImpactLog?: string[];
 }
 
 export interface HistoryLeg {

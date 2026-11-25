@@ -108,11 +108,15 @@ export function runModel(input: ModelRunInput): {
       ) {
         continue;
       }
-      if (outIds.has(p.id)) continue;
       const r = perMinuteRates(p.gameLogs);
       if (!r) continue;
-      rates.set(p.id, r);
       const mins = projectedMinutes(p.gameLogs);
+      if (outIds.has(p.id)) {
+        if (!base.has(p.id)) base.set(p.id, projectBaseline(r, mins));
+        if (!rates.has(p.id)) rates.set(p.id, r);
+        continue;
+      }
+      rates.set(p.id, r);
       base.set(p.id, projectBaseline(r, mins));
     }
 
@@ -201,10 +205,17 @@ export function runModel(input: ModelRunInput): {
   });
 
   const multiResult = buildMultis(eligiblePicks, input.slate.length);
+  const injuryImpactLog: string[] = [];
   const whatChanged =
     input.whatChanged && input.whatChanged.length
       ? input.whatChanged
-      : buildWhatChanged(input.injuries, eligiblePicks);
+      : buildWhatChanged(input.injuries, eligiblePicks, 3, {
+          slateGameIds: new Set(input.slate.map((g) => g.id)),
+          onSkip: (inj, detail) => {
+            injuryImpactLog.push(`${inj.playerName} (${inj.teamName}): ${detail}`);
+            console.log(`whatChanged skip ${inj.playerName} (${inj.teamName}): ${detail}`);
+          },
+        });
 
   const meta: MetaJson = {
     lastUpdated: new Date().toISOString(),
@@ -212,6 +223,7 @@ export function runModel(input: ModelRunInput): {
     sources: input.metaSources ?? { espn: "ok", nbaOfficial: "ok", odds: "stale" },
     slateSize: input.slate.length,
     smallSlate: input.smallSlate ?? input.slate.length <= 4,
+    ...(injuryImpactLog.length ? { injuryImpactLog } : {}),
   };
 
   return {
@@ -219,7 +231,7 @@ export function runModel(input: ModelRunInput): {
     multis: multiResult.bets,
     multisPayload: multiResult,
     meta,
-    whatChanged,
+    whatChanged: whatChanged,
   };
 }
 

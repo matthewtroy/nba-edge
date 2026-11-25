@@ -6,8 +6,10 @@ import {
   qualifiesLongshotLeg,
   qualifiesMainPlayLeg,
 } from "./main-play-eligibility.js";
-import { enforceExposureCap } from "./exposure.js";
+import { enforceExposureCapWithDrops } from "./exposure.js";
 import { bestSingleBookieQuote } from "./single-bookie.js";
+import { multiBookieTotals } from "./bookie-totals.js";
+import { multiClashSummary } from "./clash.js";
 import { gateAllMultis } from "./multi-gate.js";
 
 export interface MultiBuildResult {
@@ -43,10 +45,25 @@ export function combinedBetPrice(legs: PickLeg[]): number {
 function singleBookieOverlay(
   legs: PickLeg[],
   combinedTakeAt: number
-): { price?: number; bookie?: string } {
+): {
+  bestBookie?: string;
+  bestBookieTotal?: number;
+  bookieTotals: Record<string, number>;
+  combinedBestBookie?: string;
+  combinedBestPrice?: number;
+} {
+  const bookieTotals = multiBookieTotals(legs) as Record<string, number>;
   const quote = bestSingleBookieQuote(legs, combinedTakeAt);
-  if (!quote) return {};
-  return { price: quote.price, bookie: quote.bookie };
+  if (!quote) {
+    return { bookieTotals };
+  }
+  return {
+    bookieTotals,
+    bestBookie: quote.bookie,
+    bestBookieTotal: quote.price,
+    combinedBestBookie: quote.bookie,
+    combinedBestPrice: quote.price,
+  };
 }
 
 function legEdge(leg: PickLeg): number {
@@ -141,34 +158,60 @@ export function buildMultis(
   else notBuilt.push({ type: "longshot", label: LABELS.longshot, reason: longshot.reason });
 
   const picksById = new Map(pool.map((p) => [p.id, p]));
-  let filtered = multis.filter((m) => {
+  const clashDropped: { multi: MultiBet; reason: string }[] = [];
+  let filtered: MultiBet[] = [];
+  for (const m of multis) {
     const legs = m.legs.map((id) => picksById.get(id)).filter(Boolean) as PickLeg[];
-    return legs.length === m.legs.length && !multiHasClash(legs);
-  });
-  const preExposure = [...filtered];
-  filtered = enforceExposureCap(filtered, picksById);
-
-  const keptTypes = new Set(filtered.map((m) => m.type));
-  for (const m of preExposure) {
-    if (keptTypes.has(m.type)) continue;
-    if (notBuilt.some((n) => n.type === m.type && !n.variant)) continue;
-    notBuilt.push({
-      type: m.type,
-      label: LABELS[m.type],
-      variant: m.variant,
-      reason: "Removed after clash check or exposure cap",
-    });
+    if (legs.length !== m.legs.length) {
+      clashDropped.push({
+        multi: m,
+        reason: `${LABELS[m.type]}: missing pick for leg id`,
+      });
+      continue;
+    }
+    if (multiHasClash(legs)) {
+      clashDropped.push({
+        multi: m,
+        reason: `Clash rule: ${multiClashSummary(legs)}`,
+      });
+      continue;
+    }
+    filtered.push(m);
   }
+
+  const { kept, dropped: exposureDropped } = enforceExposureCapWithDrops(
+    filtered,
+    picksById
+  );
+  filtered = kept;
+
+  const keptKeys = new Set(
+    filtered.map((m) => `${m.type}|${m.variant ?? ""}`)
+  );
+
+  const pushDrop = (multi: MultiBet, reason: string) => {
+    const key = `${multi.type}|${multi.variant ?? ""}`;
+    if (keptKeys.has(key)) return;
+    if (notBuilt.some((n) => n.type === multi.type && n.variant === multi.variant)) return;
+    notBuilt.push({
+      type: multi.type,
+      label: LABELS[multi.type],
+      variant: multi.variant,
+      reason,
+    });
+  };
+
+  for (const d of clashDropped) pushDrop(d.multi, d.reason);
+  for (const d of exposureDropped) pushDrop(d.multi, d.reason);
 
   const gated = gateAllMultis(filtered, picksById);
   for (const m of gated.dropped) {
-    const base = LABELS[m.type];
-    notBuilt.push({
-      type: m.type,
-      label: base,
-      variant: m.variant,
-      reason: "Failed rule gate (see gateViolations)",
-    });
+    const legs = m.legs.map((id) => picksById.get(id)).filter(Boolean) as PickLeg[];
+    const legSummary = legs.map((l) => `${l.playerName} ${l.line}+ ${l.market}`).join(", ");
+    const key = `${m.type}|${m.variant ?? ""}|${m.legs.join(",")}`;
+    const detail =
+      (gated.droppedReasons.get(key) ?? []).slice(0, 3).join("; ") || "rule gate";
+    pushDrop(m, `Gate: ${detail} (legs: ${legSummary})`);
   }
   return {
     bets: gated.multis,
@@ -235,7 +278,6 @@ function buildMainPlay(
 
   const { p, fair, takeAt } = combinedPrice(best);
   const book = singleBookieOverlay(best, takeAt);
-  const stake = Math.round((targetProfit / (combo - 1)) * 100) / 100;
 
   return {
     bet: {
@@ -245,10 +287,7 @@ function buildMainPlay(
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
-      combinedBestPrice: book.price,
-      combinedBestBookie: book.bookie,
-      oneInX: Math.round(1 / p),
-      stakeSuggestion: stake,
+      ...book,
       summary: `${best.length} starter main lines`,
     },
     reason: "",
@@ -361,9 +400,7 @@ function buildBooster(
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
-      combinedBestPrice: book.price,
-      combinedBestBookie: book.bookie,
-      oneInX: Math.round(1 / p),
+      ...book,
       summary: `Main Play +1 rung on every leg${trixieNote}`,
     },
     reason: "",
@@ -425,9 +462,7 @@ function q1MultiFromLegs(
     combinedProbability: p,
     combinedFairPrice: fair,
     combinedTakeAt: takeAt,
-    combinedBestPrice: book.price,
-    combinedBestBookie: book.bookie,
-    oneInX: Math.round(1 / p),
+    ...book,
     summary,
   };
 }
@@ -551,9 +586,7 @@ function buildCrossGameSgm(picks: PickLeg[]): { bet: MultiBet | null; reason: st
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
-      combinedBestPrice: book.price,
-      combinedBestBookie: book.bookie,
-      oneInX: Math.round(1 / p),
+      ...book,
       summary: "2+ legs/game, fair 1.35–2.50 each",
     },
     reason: "",
@@ -607,9 +640,7 @@ function buildBoostSgm(picks: PickLeg[]): { bet: MultiBet | null; reason: string
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
-      combinedBestPrice: book.price,
-      combinedBestBookie: book.bookie,
-      oneInX: Math.round(1 / p),
+      ...book,
       summary: "bet365 25% boost (needs 3 legs)",
     },
     reason: "",
@@ -673,9 +704,7 @@ function buildLongshot(picks: PickLeg[]): { bet: MultiBet | null; reason: string
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
-      combinedBestPrice: book.price,
-      combinedBestBookie: book.bookie,
-      oneInX: Math.round(1 / p),
+      ...book,
       summary: "One long leg per game",
     },
     reason: "",

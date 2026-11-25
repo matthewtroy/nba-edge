@@ -34,6 +34,13 @@ function parseMultisJson(raw: unknown): { bets: MultiBet[]; notBuilt: MultiNotBu
 
 const dataBase = `${import.meta.env.BASE_URL}data/`;
 
+async function fetchDataJson<T>(file: string, version: string): Promise<T> {
+  const url = `${dataBase}${file}?v=${encodeURIComponent(version)}`;
+  const res = await fetch(url, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to load ${file}: ${res.status}`);
+  return res.json() as Promise<T>;
+}
+
 export function useData(): DataBundle {
   const [state, setState] = useState<DataBundle>({
     slate: [],
@@ -49,13 +56,17 @@ export function useData(): DataBundle {
   useEffect(() => {
     async function load() {
       try {
-        const [slate, injuries, picks, multisRaw, meta, history] = await Promise.all([
-          fetch(`${dataBase}slate.json`).then((r) => r.json()),
-          fetch(`${dataBase}injuries.json`).then((r) => r.json()),
-          fetch(`${dataBase}picks.json`).then((r) => r.json()),
-          fetch(`${dataBase}multis.json`).then((r) => r.json()),
-          fetch(`${dataBase}meta.json`).then((r) => r.json()),
-          fetch(`${dataBase}history.json`).then((r) => r.json()),
+        const meta = await fetchDataJson<MetaJson & { whatChanged?: string[] }>(
+          "meta.json",
+          "bootstrap"
+        );
+        const v = meta.lastUpdated || "0";
+        const [slate, injuries, picks, multisRaw, history] = await Promise.all([
+          fetchDataJson<SlateGame[]>("slate.json", v),
+          fetchDataJson<InjuryEntry[]>("injuries.json", v),
+          fetchDataJson<PickLeg[]>("picks.json", v),
+          fetchDataJson<unknown>("multis.json", v),
+          fetchDataJson<HistoryJson>("history.json", v),
         ]);
         const { bets, notBuilt } = parseMultisJson(multisRaw);
         setState({

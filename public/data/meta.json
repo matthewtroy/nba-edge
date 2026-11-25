@@ -1,47 +1,52 @@
 {
-  "lastUpdated": "2026-11-25T00:05:40.677Z",
-  "oddsLastPulled": "2026-11-25T00:05:38.858Z",
+  "lastUpdated": "2026-11-25T00:12:16.914Z",
+  "oddsLastPulled": "2026-11-24T23:55:54.742Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
-    "odds": "ok (from-live parity)"
+    "odds": "ok (from-live pages)"
   },
   "slateSize": 3,
   "smallSlate": true,
+  "injuryImpactLog": [
+    "Duncan Robinson (Detroit Pistons): NBA Official Out; estimated +2.6 pts → Daniss Jenkins (no leg reason yet)",
+    "Duncan Robinson (Detroit Pistons): no redistribution reasons on slate legs",
+    "Mitchell Robinson (Boston Celtics): no redistribution reasons on slate legs"
+  ],
   "whatChanged": [
-    "Mitchell Robinson out → Paul George boards",
-    "Tobi Lawal out → Cooper Flagg boards",
-    "Dereck Lively II out → Cooper Flagg boards"
+    "Duncan Robinson out → Daniss Jenkins +2.6 pts",
+    "Cade Cunningham out → Daniss Jenkins +4.2 pts",
+    "Amari Williams out → Jayson Tatum +2.7 pts"
   ],
   "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_07_00PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 120,
-      "priced": 119
+      "total": 125,
+      "priced": 108
     },
     "reb": {
-      "total": 176,
-      "priced": 176
+      "total": 167,
+      "priced": 118
     },
     "ast": {
-      "total": 116,
-      "priced": 116
-    },
-    "q1reb": {
-      "total": 94,
-      "priced": 94
+      "total": 112,
+      "priced": 81
     },
     "3pm": {
-      "total": 207,
-      "priced": 207
+      "total": 197,
+      "priced": 149
+    },
+    "q1reb": {
+      "total": 60,
+      "priced": 0
     },
     "q1pts": {
-      "total": 16,
-      "priced": 16
+      "total": 2,
+      "priced": 0
     },
     "q1ast": {
-      "total": 4,
-      "priced": 4
+      "total": 2,
+      "priced": 0
     }
   }
 }

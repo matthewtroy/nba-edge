@@ -65,10 +65,10 @@ export function renderTodayText(input: {
     const title = multi.variant ? `${multi.label} (${multi.variant})` : multi.label;
     lines.push(title);
     lines.push(`  ${formatMultiHeadline(multi)}`);
-    if (multi.combinedBestPrice != null && multi.combinedBestBookie) {
-      lines.push(
-        `  Best multi odds: ${multi.combinedBestBookie} $${multi.combinedBestPrice.toFixed(2)}+`
-      );
+    const bestTotal = multi.bestBookieTotal ?? multi.combinedBestPrice;
+    const bestBook = multi.bestBookie ?? multi.combinedBestBookie;
+    if (bestTotal != null && bestBook) {
+      lines.push(`  Best multi odds: ${bestBook} $${bestTotal.toFixed(2)}+`);
     }
     const legs = multi.legs
       .map((id) => input.picksById.get(id))
