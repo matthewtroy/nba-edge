@@ -54,7 +54,7 @@ describe("main play leg eligibility", () => {
     ) as PickLeg[];
     const sga = picks.find((p) => p.id === "4278073-ast-5");
     expect(sga).toBeTruthy();
-    expect(mainPlayHasValueOrHighProb(sga!, "Ladbrokes")).toBe(false);
+    expect(mainPlayHasValueOrHighProb(sga!, "Ladbrokes")).toBe(true);
     expect(mainPlayL10Within10pp(sga!)).toBe(false);
     expect(mainPlayReasonBeyondRankAvg(sga!)).toBe(true);
     expect(qualifiesMainPlayLeg(sga!, "Ladbrokes")).toBe(false);

@@ -57,6 +57,11 @@ if git -C "$WT" diff --staged --quiet; then
   exit 0
 fi
 
+if ! npx tsx "$ROOT/scripts/persist-guard-check.ts" "$WT/public/data"; then
+  PERSIST_WARN "guard blocked persist (0 priced or odds-cache shrink without force_odds)"
+  exit 0
+fi
+
 git -C "$WT" \
   -c user.name="github-actions[bot]" \
   -c user.email="github-actions[bot]@users.noreply.github.com" \

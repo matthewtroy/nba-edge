@@ -5,7 +5,10 @@ import { fileURLToPath } from "url";
 import { runModelFromFixture, loadHistory } from "./run-model.js";
 import { runLivePipeline } from "./run-live.js";
 import { skipOfficialPublishOnRun } from "../lib/pipeline-run-opts.js";
-import { restorePersistedDataFromBranch } from "../lib/restore-data-branch.js";
+import {
+  DataBranchRestoreError,
+  restorePersistedDataFromBranch,
+} from "../lib/restore-data-branch.js";
 import { computeCalibration } from "../lib/grading.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -66,17 +69,33 @@ async function main() {
     runFixturePipeline();
     return;
   }
+  const skipRestore = process.env.PIPELINE_SKIP_DATA_RESTORE === "1";
+  const restore = () => {
+    if (skipRestore) {
+      console.log("pipeline: skip data branch restore (PIPELINE_SKIP_DATA_RESTORE=1)");
+      return;
+    }
+    restorePersistedDataFromBranch(rootDir, { requireWhenDataBranch: true });
+  };
   if (process.env.SETTLE_ONLY === "1") {
-    restorePersistedDataFromBranch(rootDir);
+    restore();
     runSettleStep();
     return;
   }
   if (process.env.SETTLE_FIRST === "1") {
-    restorePersistedDataFromBranch(rootDir);
+    restore();
     runSettleStep();
   }
   const useFromLive = fromLive;
-  restorePersistedDataFromBranch(rootDir);
+  try {
+    restore();
+  } catch (e) {
+    if (e instanceof DataBranchRestoreError) {
+      console.error(e.message);
+      process.exit(1);
+    }
+    throw e;
+  }
   console.log(`pipeline: dual-slate${useFromLive ? " from-live" : ""}`);
   await runLivePipeline(rootDir, outDir, {
     forceOdds: forceOdds || useFromLive,

@@ -122,6 +122,11 @@ import {
   saveGameLogCache,
 } from "../lib/game-log-cache.js";
 import { ensureH2hSeasonLogs } from "../lib/h2h-season-logs.js";
+import {
+  mergeGlobalOddsMapRecord,
+  oddsMapDowngradeBlocked,
+  oddsMapKeyCount,
+} from "../lib/odds-cache-guard.js";
 
 const ET = "America/New_York";
 
@@ -450,9 +455,12 @@ export async function runLivePipeline(
 
   const oddsCachePath = path.join(outDir, "odds-cache.json");
   const cache: OddsCacheFile = loadOddsCache(oddsCachePath);
+  const baselineOddsMap = { ...(cache.oddsMap ?? {}) };
+  const baselineOddsMapKeys = oddsMapKeyCount(cache);
+  const baselineLastPulled = cache.lastPulled;
   resetOddsDayIfNeeded(cache, now);
   console.log(
-    `odds cache: ${Object.keys(cache.oddsMap ?? {}).length} global keys` +
+    `odds cache: ${baselineOddsMapKeys} global keys` +
       (cache.lastPulled ? ` · last pull ${cache.lastPulled}` : "")
   );
   const todayTip =
@@ -475,6 +483,7 @@ export async function runLivePipeline(
   let lastPullTrigger: OddsPullTrigger | undefined;
   let lastCreditsUsed = 0;
   let lastCreditsPerGame = 10;
+  let oddsPullSucceeded = false;
 
   const monthKey = sydneyYmd(now).slice(0, 7);
   let supabaseClient: SupabaseUpsertClient | null = null;
@@ -601,16 +610,22 @@ export async function runLivePipeline(
         oddsMap = pull.oddsMap;
         allOddsMap = pull.allOddsMap;
         oddsPayloads = pull.payloads;
-        oddsPulledAt = now.toISOString();
-        cache.lastPulled = oddsPulledAt;
-        recordOddsPull(
-          cache,
-          now,
-          pullTrigger,
-          pullTrigger === "scheduled_9pm" ? nextSlateTip : undefined
-        );
-        sources.odds = "ok";
-        usedLiveOddsPull = true;
+        const pulledAnything = pull.pulledGameIds.size > 0 && pull.creditsUsed > 0;
+        if (pulledAnything) {
+          oddsPullSucceeded = true;
+          oddsPulledAt = now.toISOString();
+          cache.lastPulled = oddsPulledAt;
+          recordOddsPull(
+            cache,
+            now,
+            pullTrigger,
+            pullTrigger === "scheduled_9pm" ? nextSlateTip : undefined
+          );
+        } else {
+          console.log("odds pull: empty — keeping prior cache and lastPulled");
+        }
+        sources.odds = pulledAnything ? "ok" : "stale";
+        usedLiveOddsPull = pulledAnything;
         lastPullTrigger = pullTrigger;
         lastCreditsUsed = pull.creditsUsed;
         lastCreditsPerGame = pull.creditsPerGame;
@@ -722,7 +737,8 @@ export async function runLivePipeline(
       matchupSignalsEnabled,
       positionRanks,
     });
-    if (tip) {
+    const forceOddsPullSucceeded = Boolean(forceOdds && oddsPullSucceeded);
+    if (tip && (slateBest.size > 0 || forceOddsPullSucceeded)) {
       cacheSlateOddsSnapshot(
         cache,
         tip,
@@ -738,11 +754,16 @@ export async function runLivePipeline(
             : oneSlate.map((g) => g.id)
         )
       );
-      if (!cache.oddsMap) cache.oddsMap = {};
-      for (const [k, v] of slateBest) cache.oddsMap[k] = v;
+      cache.oddsMap = mergeGlobalOddsMapRecord(
+        cache.oddsMap,
+        oddsMapToRecord(slateBest),
+        { forceOddsPullSucceeded }
+      );
       console.log(
         `odds cache: slate ${tip} · ${slateBest.size} merged keys (${slateMaps.best.size} cached)`
       );
+    } else if (tip && slateBest.size === 0 && baselineOddsMapKeys > 0) {
+      console.log(`odds cache: slate ${tip} · skip empty snapshot (keep ${baselineOddsMapKeys} global keys)`);
     }
     if (entry) indexEntries.push(entry);
     if (tip === todayTip) {
@@ -779,6 +800,20 @@ export async function runLivePipeline(
   const boxesByGame = await loadFinalBoxesForGrading(now, summaryCache);
   history = gradeOpenLegs(history, picksById, boxesByGame);
   history = appendRecommendations(history, todayPicks, todayMultis, todayTip);
+
+  const forceOddsPullSucceeded = Boolean(forceOdds && oddsPullSucceeded);
+  const finalKeys = oddsMapKeyCount(cache);
+  if (
+    oddsMapDowngradeBlocked(baselineOddsMapKeys, finalKeys, { forceOddsPullSucceeded })
+  ) {
+    console.warn(
+      `odds cache: blocked downgrade ${baselineOddsMapKeys}→${finalKeys} keys — keeping restored map`
+    );
+    cache.oddsMap = baselineOddsMap;
+    if (!oddsPullSucceeded && baselineLastPulled) {
+      cache.lastPulled = baselineLastPulled;
+    }
+  }
 
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, "history.json"), JSON.stringify(history, null, 2));
