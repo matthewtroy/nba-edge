@@ -67,7 +67,11 @@ export function renderTodayText(input: {
     lines.push(`  ${formatMultiHeadline(multi)}`);
     const bestTotal = multi.bestBookieTotal ?? multi.combinedBestPrice;
     const bestBook = multi.bestBookie ?? multi.combinedBestBookie;
-    if (bestTotal != null && bestBook) {
+    if (bestTotal != null && bestBook === "Best across books") {
+      lines.push(
+        `  Best multi odds: $${bestTotal.toFixed(2)}+ (cross-book — not one placeable multi)`
+      );
+    } else if (bestTotal != null && bestBook) {
       lines.push(`  Best multi odds: ${bestBook} $${bestTotal.toFixed(2)}+`);
     }
     const legs = multi.legs

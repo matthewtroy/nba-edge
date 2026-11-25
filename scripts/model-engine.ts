@@ -211,6 +211,7 @@ export function runModel(input: ModelRunInput): {
       ? input.whatChanged
       : buildWhatChanged(input.injuries, eligiblePicks, 3, {
           slateGameIds: new Set(input.slate.map((g) => g.id)),
+          playerLogsById: new Map(input.players.map((p) => [p.id, p.gameLogs])),
           onSkip: (inj, detail) => {
             injuryImpactLog.push(`${inj.playerName} (${inj.teamName}): ${detail}`);
             console.log(`whatChanged skip ${inj.playerName} (${inj.teamName}): ${detail}`);

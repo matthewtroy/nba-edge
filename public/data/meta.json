@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T00:23:10.758Z",
+  "lastUpdated": "2026-11-25T00:26:41.770Z",
   "oddsLastPulled": "2026-11-24T22:58:43.102Z",
   "sources": {
     "espn": "ok",
@@ -11,18 +11,37 @@
   "injuryImpactLog": [
     "Duncan Robinson (Detroit Pistons): NBA Official Out; estimated +2.6 pts → Daniss Jenkins (no leg reason yet)",
     "Duncan Robinson (Detroit Pistons): no redistribution reasons on slate legs",
-    "Mitchell Robinson (Boston Celtics): no redistribution reasons on slate legs"
+    "Mitchell Robinson (Boston Celtics): no redistribution reasons on slate legs",
+    "Tobi Lawal (Dallas Mavericks): no redistribution reasons on slate legs",
+    "Dereck Lively II (Dallas Mavericks): no redistribution reasons on slate legs",
+    "Sergio de Larrea (Dallas Mavericks): no redistribution reasons on slate legs",
+    "Tarik Biberovic (Dallas Mavericks): no redistribution reasons on slate legs",
+    "Ebuka Okorie (Detroit Pistons): no redistribution reasons on slate legs",
+    "Taurean Prince (Detroit Pistons): no redistribution reasons on slate legs",
+    "Jalen Duren (Detroit Pistons): no redistribution reasons on slate legs",
+    "Jonathan Isaac (Orlando Magic): no redistribution reasons on slate legs",
+    "Izaiyah Nelson (Orlando Magic): no redistribution reasons on slate legs",
+    "Noah Penda (Orlando Magic): no redistribution reasons on slate legs",
+    "Paolo Banchero (Orlando Magic): no redistribution reasons on slate legs",
+    "Tristan Vukcevic (Washington Wizards): no redistribution reasons on slate legs",
+    "Reece Beekman (Washington Wizards): no redistribution reasons on slate legs",
+    "Justin Champagnie (Washington Wizards): no redistribution reasons on slate legs",
+    "Jamir Watkins (Washington Wizards): no redistribution reasons on slate legs",
+    "Isaac Jones (Detroit Pistons): no redistribution reasons on slate legs",
+    "Ugonna Onyenso (Detroit Pistons): no redistribution reasons on slate legs",
+    "Colin Castleton (Orlando Magic): no redistribution reasons on slate legs",
+    "Amari Williams (Boston Celtics): no redistribution reasons on slate legs",
+    "Felix Okpara (Washington Wizards): no redistribution reasons on slate legs"
   ],
   "whatChanged": [
     "Duncan Robinson out → Daniss Jenkins +2.6 pts",
-    "Cade Cunningham out → Daniss Jenkins +4.2 pts",
-    "Amari Williams out → Jayson Tatum +2.7 pts"
+    "Cade Cunningham out → Daniss Jenkins +4.2 pts"
   ],
   "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_07_15PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 125,
-      "priced": 93
+      "total": 119,
+      "priced": 95
     },
     "reb": {
       "total": 167,
@@ -37,7 +56,7 @@
       "priced": 130
     },
     "q1reb": {
-      "total": 70,
+      "total": 69,
       "priced": 0
     },
     "q1pts": {
@@ -48,8 +67,5 @@
       "total": 2,
       "priced": 0
     }
-  },
-  "gateViolations": [
-    "Booster: need +1 rung on all 4 Main legs (stepped 3)"
-  ]
+  }
 }

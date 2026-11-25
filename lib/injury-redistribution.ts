@@ -1,6 +1,7 @@
 import type { PlayerProfile, InjuryEntry, PlayerGameLog } from "./types.js";
 import type { PerMinuteRates, ProjectedStats } from "./baseline.js";
 import { perMinuteRates, projectedMinutes } from "./baseline.js";
+import { isMeaningfulRotation } from "./rotation.js";
 
 export interface AdjustmentReason {
   text: string;
@@ -39,9 +40,11 @@ export function applyInjuryRedistribution(
       injured = team.players.find((p) => p.name.toLowerCase() === norm);
     }
     if (!injured) {
-      applyRosterlessOut(inj, team.players, adjusted, reasons);
       continue;
     }
+    const injLogs = team.gameLogsByPlayer.get(injured.id) ?? [];
+    if (!isMeaningfulRotation(injLogs)) continue;
+
     const injuredRates = rates.get(injured.id);
     const injuredMins = base.get(injured.id)?.minutes ?? 0;
     if (!injuredRates || injuredMins <= 0) continue;
@@ -80,12 +83,6 @@ export function applyInjuryRedistribution(
 
     adjusted.delete(injured.id);
 
-    const tagged = [...reasons.values()].some((arr) =>
-      arr.some((t) => t.toLowerCase().includes(inj.playerName.toLowerCase()))
-    );
-    if (!tagged && inj.source === "NBA Official") {
-      applyRosterlessOut(inj, team.players, adjusted, reasons);
-    }
   }
 
   tagSharedRebounds(team, adjusted, boardsShared, reasons);

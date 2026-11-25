@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { q1Share } from "../lib/baseline";
+import { probMarketOver } from "../lib/distributions";
+import { fairAndTakeAt } from "../lib/pricing";
 import type { PlayerGameLog } from "../lib/types";
 
 describe("q1Share", () => {
@@ -46,5 +48,17 @@ describe("q1Share", () => {
     expect(rebShare).toBeGreaterThan(0.2);
     expect(rebShare).toBeLessThan(0.5);
     expect(q1Share(logs, "pts")).toBeGreaterThan(0.2);
+  });
+
+  it("10 reb × 0.26 Q1 mean → Q1 2+ reb ≈ 0.69 fair ~1.5", () => {
+    const share = 0.26;
+    const q1RebMean = 10 * share;
+    expect(q1RebMean).toBeCloseTo(2.6, 5);
+    const p = probMarketOver("q1reb", q1RebMean, 2);
+    expect(p).toBeGreaterThan(0.65);
+    expect(p).toBeLessThan(0.75);
+    const { takeAt } = fairAndTakeAt(p);
+    expect(takeAt).toBeGreaterThan(1.4);
+    expect(takeAt).toBeLessThan(2.2);
   });
 });

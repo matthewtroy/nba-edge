@@ -1,6 +1,6 @@
 [
   {
-    "id": "4712849-pts-20",
+    "id": "4712849-pts-10",
     "gameId": "401909314",
     "team": "Orlando Magic",
     "opponent": "Detroit Pistons",
@@ -8,30 +8,29 @@
     "playerName": "Anthony Black",
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4712849.png",
     "market": "pts",
-    "line": 20,
-    "probability": 0.586,
-    "modelProbability": 0.849,
-    "marketProbability": 0.192,
-    "fairPrice": 1.71,
-    "takeAt": 1.85,
-    "bestPrice": 5.2,
+    "line": 10,
+    "probability": 0.883,
+    "modelProbability": 0.946,
+    "marketProbability": 0.787,
+    "fairPrice": 1.13,
+    "takeAt": 1.22,
+    "bestPrice": 1.27,
     "bestBookie": "SportsBet",
     "bookiePrices": {
-      "SportsBet": 5.2
+      "SportsBet": 1.27
     },
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [
-      "Check news"
+      "High probability",
+      "Value"
     ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
+      "hit",
+      "hit",
+      "hit",
       "hit",
       "miss"
     ],
@@ -44,7 +43,7 @@
     "starterEligible": true
   },
   {
-    "id": "4712849-pts-25",
+    "id": "4712849-pts-15",
     "gameId": "401909314",
     "team": "Orlando Magic",
     "opponent": "Detroit Pistons",
@@ -52,31 +51,29 @@
     "playerName": "Anthony Black",
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4712849.png",
     "market": "pts",
-    "line": 25,
-    "probability": 0.41,
-    "modelProbability": 0.636,
-    "marketProbability": 0.071,
-    "fairPrice": 2.44,
-    "takeAt": 2.64,
-    "bestPrice": 14,
-    "bestBookie": "Neds",
+    "line": 15,
+    "probability": 0.591,
+    "modelProbability": 0.693,
+    "marketProbability": 0.439,
+    "fairPrice": 1.69,
+    "takeAt": 1.83,
+    "bestPrice": 2.28,
+    "bestBookie": "TABtouch",
     "bookiePrices": {
-      "Neds": 14
+      "TABtouch": 2.28
     },
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [
       "Check news"
     ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
       "miss",
-      "miss",
-      "miss",
+      "hit",
+      "hit",
       "miss"
     ],
     "questionable": false,
@@ -88,7 +85,7 @@
     "starterEligible": true
   },
   {
-    "id": "4712849-pts-30",
+    "id": "4712849-pts-20",
     "gameId": "401909314",
     "team": "Orlando Magic",
     "opponent": "Detroit Pistons",
@@ -96,61 +93,29 @@
     "playerName": "Anthony Black",
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4712849.png",
     "market": "pts",
-    "line": 30,
-    "probability": 0.241,
-    "modelProbability": 0.368,
-    "marketProbability": 0.05,
-    "fairPrice": 4.15,
-    "takeAt": 4.48,
+    "line": 20,
+    "probability": 0.242,
+    "modelProbability": 0.275,
+    "marketProbability": 0.192,
+    "fairPrice": 4.13,
+    "takeAt": 4.46,
+    "bestPrice": 5.2,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 5.2
+    },
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
+    "tags": [
+      "Value"
+    ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
       "miss",
       "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 36.489999999999995,
-    "starterEligible": true
-  },
-  {
-    "id": "4712849-pts-35",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4712849",
-    "playerName": "Anthony Black",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4712849.png",
-    "market": "pts",
-    "line": 35,
-    "probability": 0.112,
-    "modelProbability": 0.153,
-    "marketProbability": 0.05,
-    "fairPrice": 8.93,
-    "takeAt": 9.64,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
+      "hit",
       "miss"
     ],
     "questionable": false,
@@ -188,9 +153,7 @@
       "Value"
     ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "hit",
@@ -233,9 +196,7 @@
       "Check news"
     ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "hit",
@@ -278,9 +239,7 @@
       "Value"
     ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -317,9 +276,7 @@
       "boards shared"
     ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -362,9 +319,7 @@
       "Value"
     ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -406,9 +361,7 @@
       "Check news"
     ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -450,9 +403,7 @@
       "Value"
     ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -487,9 +438,7 @@
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -531,9 +480,7 @@
       "Check news"
     ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "hit",
@@ -575,9 +522,7 @@
       "Check news"
     ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "hit",
@@ -619,9 +564,7 @@
       "Value"
     ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -663,9 +606,7 @@
       "Value"
     ],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -700,9 +641,7 @@
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -736,9 +675,7 @@
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "hit",
@@ -772,9 +709,7 @@
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -808,9 +743,7 @@
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Jonathan Isaac out: +1.6 pts",
-      "Izaiyah Nelson out: +1.8 pts",
-      "Noah Penda out: +2.0 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -1443,6 +1376,191 @@
     "ageB2B": false,
     "projectedMinutes": 35.12,
     "starterEligible": true
+  },
+  {
+    "id": "4348700-pts-5",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "4348700",
+    "playerName": "Goga Bitadze",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4348700.png",
+    "market": "pts",
+    "line": 5,
+    "probability": 0.674,
+    "modelProbability": 0.834,
+    "marketProbability": 0.435,
+    "fairPrice": 1.48,
+    "takeAt": 1.6,
+    "bestPrice": 2.3,
+    "bestBookie": "Neds",
+    "bookiePrices": {
+      "Neds": 2.3
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Check news"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 16.89,
+    "starterEligible": false
+  },
+  {
+    "id": "4348700-reb-3",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "4348700",
+    "playerName": "Goga Bitadze",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4348700.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.819,
+    "modelProbability": 0.819,
+    "fairPrice": 1.22,
+    "takeAt": 1.32,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "High probability",
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 16.89,
+    "starterEligible": false
+  },
+  {
+    "id": "4348700-reb-5",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "4348700",
+    "playerName": "Goga Bitadze",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4348700.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.495,
+    "modelProbability": 0.495,
+    "fairPrice": 2.02,
+    "takeAt": 2.18,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 16.89,
+    "starterEligible": false
+  },
+  {
+    "id": "4348700-reb-7",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "4348700",
+    "playerName": "Goga Bitadze",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4348700.png",
+    "market": "reb",
+    "line": 7,
+    "probability": 0.217,
+    "modelProbability": 0.217,
+    "fairPrice": 4.61,
+    "takeAt": 4.98,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 16.89,
+    "starterEligible": false
+  },
+  {
+    "id": "4348700-ast-3",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "4348700",
+    "playerName": "Goga Bitadze",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4348700.png",
+    "market": "ast",
+    "line": 3,
+    "probability": 0.088,
+    "modelProbability": 0.088,
+    "fairPrice": 11.35,
+    "takeAt": 12.26,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 16.89,
+    "starterEligible": false
   },
   {
     "id": "3133635-pts-5",
@@ -2701,191 +2819,6 @@
     "starterEligible": true
   },
   {
-    "id": "4348700-pts-5",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4348700",
-    "playerName": "Goga Bitadze",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4348700.png",
-    "market": "pts",
-    "line": 5,
-    "probability": 0.674,
-    "modelProbability": 0.834,
-    "marketProbability": 0.435,
-    "fairPrice": 1.48,
-    "takeAt": 1.6,
-    "bestPrice": 2.3,
-    "bestBookie": "Neds",
-    "bookiePrices": {
-      "Neds": 2.3
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Check news"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 16.89,
-    "starterEligible": false
-  },
-  {
-    "id": "4348700-reb-3",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4348700",
-    "playerName": "Goga Bitadze",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4348700.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.819,
-    "modelProbability": 0.819,
-    "fairPrice": 1.22,
-    "takeAt": 1.32,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "High probability",
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 16.89,
-    "starterEligible": false
-  },
-  {
-    "id": "4348700-reb-5",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4348700",
-    "playerName": "Goga Bitadze",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4348700.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.495,
-    "modelProbability": 0.495,
-    "fairPrice": 2.02,
-    "takeAt": 2.18,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 16.89,
-    "starterEligible": false
-  },
-  {
-    "id": "4348700-reb-7",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4348700",
-    "playerName": "Goga Bitadze",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4348700.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.217,
-    "modelProbability": 0.217,
-    "fairPrice": 4.61,
-    "takeAt": 4.98,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 16.89,
-    "starterEligible": false
-  },
-  {
-    "id": "4348700-ast-3",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "4348700",
-    "playerName": "Goga Bitadze",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4348700.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.088,
-    "modelProbability": 0.088,
-    "fairPrice": 11.35,
-    "takeAt": 12.26,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 16.89,
-    "starterEligible": false
-  },
-  {
     "id": "4278572-pts-5",
     "gameId": "401909314",
     "team": "Orlando Magic",
@@ -3583,6 +3516,287 @@
     "ageB2B": false,
     "projectedMinutes": 25.240000000000002,
     "starterEligible": true
+  },
+  {
+    "id": "6478-pts-5",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "6478",
+    "playerName": "Nikola Vucevic",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
+    "market": "pts",
+    "line": 5,
+    "probability": 0.757,
+    "modelProbability": 0.757,
+    "fairPrice": 1.32,
+    "takeAt": 1.43,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "High probability"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "miss",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 15.7,
+    "starterEligible": false
+  },
+  {
+    "id": "6478-reb-3",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "6478",
+    "playerName": "Nikola Vucevic",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.812,
+    "modelProbability": 0.812,
+    "fairPrice": 1.23,
+    "takeAt": 1.33,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "High probability",
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 15.7,
+    "starterEligible": false
+  },
+  {
+    "id": "6478-reb-5",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "6478",
+    "playerName": "Nikola Vucevic",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.485,
+    "modelProbability": 0.485,
+    "fairPrice": 2.06,
+    "takeAt": 2.22,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 15.7,
+    "starterEligible": false
+  },
+  {
+    "id": "6478-reb-7",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "6478",
+    "playerName": "Nikola Vucevic",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
+    "market": "reb",
+    "line": 7,
+    "probability": 0.209,
+    "modelProbability": 0.209,
+    "fairPrice": 4.79,
+    "takeAt": 5.17,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 15.7,
+    "starterEligible": false
+  },
+  {
+    "id": "6478-ast-3",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "6478",
+    "playerName": "Nikola Vucevic",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
+    "market": "ast",
+    "line": 3,
+    "probability": 0.19,
+    "modelProbability": 0.19,
+    "fairPrice": 5.25,
+    "takeAt": 5.67,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 15.7,
+    "starterEligible": false
+  },
+  {
+    "id": "6478-3pm-1",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "6478",
+    "playerName": "Nikola Vucevic",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.532,
+    "modelProbability": 0.532,
+    "fairPrice": 1.88,
+    "takeAt": 2.03,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "miss",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 15.7,
+    "starterEligible": false
+  },
+  {
+    "id": "6478-3pm-2",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "6478",
+    "playerName": "Nikola Vucevic",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.219,
+    "modelProbability": 0.219,
+    "fairPrice": 4.56,
+    "takeAt": 4.92,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 15.7,
+    "starterEligible": false
+  },
+  {
+    "id": "6478-3pm-3",
+    "gameId": "401909314",
+    "team": "Orlando Magic",
+    "opponent": "Detroit Pistons",
+    "playerId": "6478",
+    "playerName": "Nikola Vucevic",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
+    "market": "3pm",
+    "line": 3,
+    "probability": 0.079,
+    "modelProbability": 0.079,
+    "fairPrice": 12.68,
+    "takeAt": 13.69,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 15.7,
+    "starterEligible": false
   },
   {
     "id": "4593034-reb-3",
@@ -4490,287 +4704,6 @@
     "starterEligible": true
   },
   {
-    "id": "6478-pts-5",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "6478",
-    "playerName": "Nikola Vucevic",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
-    "market": "pts",
-    "line": 5,
-    "probability": 0.757,
-    "modelProbability": 0.757,
-    "fairPrice": 1.32,
-    "takeAt": 1.43,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 15.7,
-    "starterEligible": false
-  },
-  {
-    "id": "6478-reb-3",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "6478",
-    "playerName": "Nikola Vucevic",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.812,
-    "modelProbability": 0.812,
-    "fairPrice": 1.23,
-    "takeAt": 1.33,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "High probability",
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 15.7,
-    "starterEligible": false
-  },
-  {
-    "id": "6478-reb-5",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "6478",
-    "playerName": "Nikola Vucevic",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.485,
-    "modelProbability": 0.485,
-    "fairPrice": 2.06,
-    "takeAt": 2.22,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 15.7,
-    "starterEligible": false
-  },
-  {
-    "id": "6478-reb-7",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "6478",
-    "playerName": "Nikola Vucevic",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.209,
-    "modelProbability": 0.209,
-    "fairPrice": 4.79,
-    "takeAt": 5.17,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 15.7,
-    "starterEligible": false
-  },
-  {
-    "id": "6478-ast-3",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "6478",
-    "playerName": "Nikola Vucevic",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.19,
-    "modelProbability": 0.19,
-    "fairPrice": 5.25,
-    "takeAt": 5.67,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 15.7,
-    "starterEligible": false
-  },
-  {
-    "id": "6478-3pm-1",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "6478",
-    "playerName": "Nikola Vucevic",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.532,
-    "modelProbability": 0.532,
-    "fairPrice": 1.88,
-    "takeAt": 2.03,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 15.7,
-    "starterEligible": false
-  },
-  {
-    "id": "6478-3pm-2",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "6478",
-    "playerName": "Nikola Vucevic",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.219,
-    "modelProbability": 0.219,
-    "fairPrice": 4.56,
-    "takeAt": 4.92,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 15.7,
-    "starterEligible": false
-  },
-  {
-    "id": "6478-3pm-3",
-    "gameId": "401909314",
-    "team": "Orlando Magic",
-    "opponent": "Detroit Pistons",
-    "playerId": "6478",
-    "playerName": "Nikola Vucevic",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/6478.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.079,
-    "modelProbability": 0.079,
-    "fairPrice": 12.68,
-    "takeAt": 13.69,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 15.7,
-    "starterEligible": false
-  },
-  {
     "id": "5239561-pts-5",
     "gameId": "401909314",
     "team": "Orlando Magic",
@@ -4978,6 +4911,349 @@
     "starterEligible": false
   },
   {
+    "id": "2596112-pts-10",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "pts",
+    "line": 10,
+    "probability": 0.499,
+    "modelProbability": 0.673,
+    "marketProbability": 0.238,
+    "fairPrice": 2,
+    "takeAt": 2.16,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "Cade Cunningham out: +2.1 pts"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 22.450188673781746,
+    "starterEligible": false
+  },
+  {
+    "id": "2596112-pts-15",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "pts",
+    "line": 15,
+    "probability": 0.082,
+    "modelProbability": 0.103,
+    "marketProbability": 0.05,
+    "fairPrice": 12.22,
+    "takeAt": 13.2,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "Cade Cunningham out: +2.1 pts"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 22.450188673781746,
+    "starterEligible": false
+  },
+  {
+    "id": "2596112-reb-3",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.581,
+    "modelProbability": 0.672,
+    "marketProbability": 0.444,
+    "fairPrice": 1.72,
+    "takeAt": 1.86,
+    "bestPrice": 2.25,
+    "bestBookie": "TAB",
+    "bookiePrices": {
+      "TAB": 2.25
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "Cade Cunningham out: +2.1 pts"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 22.450188673781746,
+    "starterEligible": false
+  },
+  {
+    "id": "2596112-reb-5",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.257,
+    "modelProbability": 0.307,
+    "marketProbability": 0.182,
+    "fairPrice": 3.89,
+    "takeAt": 4.2,
+    "bestPrice": 5.5,
+    "bestBookie": "TAB",
+    "bookiePrices": {
+      "TAB": 5.5
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "Cade Cunningham out: +2.1 pts"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 22.450188673781746,
+    "starterEligible": false
+  },
+  {
+    "id": "2596112-reb-7",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "reb",
+    "line": 7,
+    "probability": 0.1,
+    "modelProbability": 0.098,
+    "marketProbability": 0.102,
+    "fairPrice": 10.03,
+    "takeAt": 10.83,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "Cade Cunningham out: +2.1 pts"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 22.450188673781746,
+    "starterEligible": false
+  },
+  {
+    "id": "2596112-3pm-1",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.576,
+    "modelProbability": 0.694,
+    "marketProbability": 0.4,
+    "fairPrice": 1.73,
+    "takeAt": 1.87,
+    "bestPrice": 2.5,
+    "bestBookie": "TAB",
+    "bookiePrices": {
+      "TAB": 2.5
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Check news"
+    ],
+    "reasons": [
+      "Cade Cunningham out: +2.1 pts"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 22.450188673781746,
+    "starterEligible": false
+  },
+  {
+    "id": "2596112-3pm-2",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.309,
+    "modelProbability": 0.375,
+    "marketProbability": 0.211,
+    "fairPrice": 3.23,
+    "takeAt": 3.49,
+    "bestPrice": 4.75,
+    "bestBookie": "TAB",
+    "bookiePrices": {
+      "TAB": 4.75
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "Cade Cunningham out: +2.1 pts"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 22.450188673781746,
+    "starterEligible": false
+  },
+  {
+    "id": "2596112-3pm-3",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "3pm",
+    "line": 3,
+    "probability": 0.172,
+    "modelProbability": 0.173,
+    "marketProbability": 0.171,
+    "fairPrice": 5.82,
+    "takeAt": 6.29,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "Cade Cunningham out: +2.1 pts"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 22.450188673781746,
+    "starterEligible": false
+  },
+  {
+    "id": "2596112-3pm-4",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "2596112",
+    "playerName": "Javonte Green",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
+    "market": "3pm",
+    "line": 4,
+    "probability": 0.095,
+    "modelProbability": 0.071,
+    "marketProbability": 0.131,
+    "fairPrice": 10.55,
+    "takeAt": 11.39,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "Cade Cunningham out: +2.1 pts"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 22.450188673781746,
+    "starterEligible": false
+  },
+  {
     "id": "3908845-pts-10",
     "gameId": "401909314",
     "team": "Detroit Pistons",
@@ -5161,8 +5437,8 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3908845.png",
     "market": "reb",
     "line": 5,
-    "probability": 0.554,
-    "modelProbability": 0.602,
+    "probability": 0.553,
+    "modelProbability": 0.601,
     "marketProbability": 0.481,
     "fairPrice": 1.81,
     "takeAt": 1.95,
@@ -5205,11 +5481,11 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3908845.png",
     "market": "reb",
     "line": 7,
-    "probability": 0.272,
-    "modelProbability": 0.308,
+    "probability": 0.271,
+    "modelProbability": 0.307,
     "marketProbability": 0.217,
-    "fairPrice": 3.68,
-    "takeAt": 3.97,
+    "fairPrice": 3.69,
+    "takeAt": 3.99,
     "bestPrice": 4.6,
     "bestBookie": "SportsBet",
     "bookiePrices": {
@@ -5249,11 +5525,11 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3908845.png",
     "market": "reb",
     "line": 10,
-    "probability": 0.073,
+    "probability": 0.072,
     "modelProbability": 0.069,
     "marketProbability": 0.078,
-    "fairPrice": 13.79,
-    "takeAt": 14.89,
+    "fairPrice": 13.83,
+    "takeAt": 14.94,
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [
       "boards shared"
@@ -5488,10 +5764,10 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3908845.png",
     "market": "q1reb",
     "line": 2,
-    "probability": 0.48,
-    "modelProbability": 0.48,
-    "fairPrice": 2.08,
-    "takeAt": 2.25,
+    "probability": 0.479,
+    "modelProbability": 0.479,
+    "fairPrice": 2.09,
+    "takeAt": 2.26,
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
@@ -5547,384 +5823,6 @@
     "ageB2B": false,
     "projectedMinutes": 24.122202062822314,
     "starterEligible": true
-  },
-  {
-    "id": "3908845-q1reb-5",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "3908845",
-    "playerName": "John Collins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3908845.png",
-    "market": "q1reb",
-    "line": 5,
-    "probability": 0.05,
-    "modelProbability": 0.05,
-    "fairPrice": 20,
-    "takeAt": 21.6,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Cade Cunningham out: +2.9 pts",
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 24.122202062822314,
-    "starterEligible": true
-  },
-  {
-    "id": "2596112-pts-10",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "pts",
-    "line": 10,
-    "probability": 0.499,
-    "modelProbability": 0.673,
-    "marketProbability": 0.238,
-    "fairPrice": 2,
-    "takeAt": 2.16,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Cade Cunningham out: +2.1 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 22.450188673781746,
-    "starterEligible": false
-  },
-  {
-    "id": "2596112-pts-15",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "pts",
-    "line": 15,
-    "probability": 0.082,
-    "modelProbability": 0.103,
-    "marketProbability": 0.05,
-    "fairPrice": 12.22,
-    "takeAt": 13.2,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Cade Cunningham out: +2.1 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 22.450188673781746,
-    "starterEligible": false
-  },
-  {
-    "id": "2596112-reb-3",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.58,
-    "modelProbability": 0.671,
-    "marketProbability": 0.444,
-    "fairPrice": 1.72,
-    "takeAt": 1.86,
-    "bestPrice": 2.25,
-    "bestBookie": "TAB",
-    "bookiePrices": {
-      "TAB": 2.25
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "Cade Cunningham out: +2.1 pts"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 22.450188673781746,
-    "starterEligible": false
-  },
-  {
-    "id": "2596112-reb-5",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.256,
-    "modelProbability": 0.306,
-    "marketProbability": 0.182,
-    "fairPrice": 3.9,
-    "takeAt": 4.21,
-    "bestPrice": 5.5,
-    "bestBookie": "TAB",
-    "bookiePrices": {
-      "TAB": 5.5
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "Cade Cunningham out: +2.1 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 22.450188673781746,
-    "starterEligible": false
-  },
-  {
-    "id": "2596112-reb-7",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.099,
-    "modelProbability": 0.098,
-    "marketProbability": 0.102,
-    "fairPrice": 10.07,
-    "takeAt": 10.88,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Cade Cunningham out: +2.1 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 22.450188673781746,
-    "starterEligible": false
-  },
-  {
-    "id": "2596112-3pm-1",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.576,
-    "modelProbability": 0.694,
-    "marketProbability": 0.4,
-    "fairPrice": 1.73,
-    "takeAt": 1.87,
-    "bestPrice": 2.5,
-    "bestBookie": "TAB",
-    "bookiePrices": {
-      "TAB": 2.5
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Check news"
-    ],
-    "reasons": [
-      "Cade Cunningham out: +2.1 pts"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 22.450188673781746,
-    "starterEligible": false
-  },
-  {
-    "id": "2596112-3pm-2",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.309,
-    "modelProbability": 0.375,
-    "marketProbability": 0.211,
-    "fairPrice": 3.23,
-    "takeAt": 3.49,
-    "bestPrice": 4.75,
-    "bestBookie": "TAB",
-    "bookiePrices": {
-      "TAB": 4.75
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "Cade Cunningham out: +2.1 pts"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 22.450188673781746,
-    "starterEligible": false
-  },
-  {
-    "id": "2596112-3pm-3",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.172,
-    "modelProbability": 0.173,
-    "marketProbability": 0.171,
-    "fairPrice": 5.82,
-    "takeAt": 6.29,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Cade Cunningham out: +2.1 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 22.450188673781746,
-    "starterEligible": false
-  },
-  {
-    "id": "2596112-3pm-4",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "2596112",
-    "playerName": "Javonte Green",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/2596112.png",
-    "market": "3pm",
-    "line": 4,
-    "probability": 0.095,
-    "modelProbability": 0.071,
-    "marketProbability": 0.131,
-    "fairPrice": 10.55,
-    "takeAt": 11.39,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Cade Cunningham out: +2.1 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 22.450188673781746,
-    "starterEligible": false
   },
   {
     "id": "4066372-pts-15",
@@ -6588,6 +6486,50 @@
     "starterEligible": true
   },
   {
+    "id": "5107199-pts-15",
+    "gameId": "401909314",
+    "team": "Detroit Pistons",
+    "opponent": "Orlando Magic",
+    "playerId": "5107199",
+    "playerName": "Daniss Jenkins",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5107199.png",
+    "market": "pts",
+    "line": 15,
+    "probability": 0.724,
+    "modelProbability": 0.882,
+    "marketProbability": 0.488,
+    "fairPrice": 1.38,
+    "takeAt": 1.49,
+    "bestPrice": 2.05,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 2.05
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "High probability",
+      "Check news"
+    ],
+    "reasons": [
+      "Cade Cunningham out: +4.2 pts",
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 37.94979068420617,
+    "starterEligible": true
+  },
+  {
     "id": "5107199-pts-20",
     "gameId": "401909314",
     "team": "Detroit Pistons",
@@ -6597,11 +6539,11 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5107199.png",
     "market": "pts",
     "line": 20,
-    "probability": 0.654,
-    "modelProbability": 0.945,
+    "probability": 0.462,
+    "modelProbability": 0.625,
     "marketProbability": 0.217,
-    "fairPrice": 1.53,
-    "takeAt": 1.65,
+    "fairPrice": 2.17,
+    "takeAt": 2.34,
     "bestPrice": 4.6,
     "bestBookie": "SportsBet",
     "bookiePrices": {
@@ -6613,8 +6555,7 @@
     ],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -6641,11 +6582,11 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5107199.png",
     "market": "pts",
     "line": 25,
-    "probability": 0.546,
-    "modelProbability": 0.856,
+    "probability": 0.207,
+    "modelProbability": 0.291,
     "marketProbability": 0.08,
-    "fairPrice": 1.83,
-    "takeAt": 1.98,
+    "fairPrice": 4.84,
+    "takeAt": 5.23,
     "bestPrice": 12.5,
     "bestBookie": "Neds",
     "bookiePrices": {
@@ -6653,12 +6594,11 @@
     },
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [
-      "Check news"
+      "Value"
     ],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -6685,165 +6625,16 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5107199.png",
     "market": "pts",
     "line": 30,
-    "probability": 0.44,
-    "modelProbability": 0.699,
+    "probability": 0.067,
+    "modelProbability": 0.078,
     "marketProbability": 0.05,
-    "fairPrice": 2.27,
-    "takeAt": 2.45,
+    "fairPrice": 14.98,
+    "takeAt": 16.18,
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 37.94979068420617,
-    "starterEligible": true
-  },
-  {
-    "id": "5107199-pts-35",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "5107199",
-    "playerName": "Daniss Jenkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5107199.png",
-    "market": "pts",
-    "line": 35,
-    "probability": 0.316,
-    "modelProbability": 0.494,
-    "marketProbability": 0.05,
-    "fairPrice": 3.16,
-    "takeAt": 3.41,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 37.94979068420617,
-    "starterEligible": true
-  },
-  {
-    "id": "5107199-pts-40",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "5107199",
-    "playerName": "Daniss Jenkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5107199.png",
-    "market": "pts",
-    "line": 40,
-    "probability": 0.194,
-    "modelProbability": 0.289,
-    "marketProbability": 0.05,
-    "fairPrice": 5.17,
-    "takeAt": 5.58,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 37.94979068420617,
-    "starterEligible": true
-  },
-  {
-    "id": "5107199-pts-45",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "5107199",
-    "playerName": "Daniss Jenkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5107199.png",
-    "market": "pts",
-    "line": 45,
-    "probability": 0.102,
-    "modelProbability": 0.137,
-    "marketProbability": 0.05,
-    "fairPrice": 9.79,
-    "takeAt": 10.57,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 37.94979068420617,
-    "starterEligible": true
-  },
-  {
-    "id": "5107199-pts-50",
-    "gameId": "401909314",
-    "team": "Detroit Pistons",
-    "opponent": "Orlando Magic",
-    "playerId": "5107199",
-    "playerName": "Daniss Jenkins",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5107199.png",
-    "market": "pts",
-    "line": 50,
-    "probability": 0.051,
-    "modelProbability": 0.051,
-    "marketProbability": 0.05,
-    "fairPrice": 19.72,
-    "takeAt": 21.3,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -6887,8 +6678,7 @@
     ],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "hit",
@@ -6932,8 +6722,7 @@
     ],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -6977,8 +6766,7 @@
     ],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -7022,8 +6810,7 @@
     ],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "hit",
@@ -7066,8 +6853,7 @@
     ],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -7110,8 +6896,7 @@
     ],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -7147,8 +6932,7 @@
     "tags": [],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -7192,8 +6976,7 @@
     ],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "hit",
@@ -7236,8 +7019,7 @@
     ],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -7280,8 +7062,7 @@
     ],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -7324,8 +7105,7 @@
     ],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -7368,8 +7148,7 @@
     ],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -7404,8 +7183,7 @@
     "tags": [],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "hit",
@@ -7440,8 +7218,7 @@
     "tags": [],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -7476,8 +7253,7 @@
     "tags": [],
     "reasons": [
       "Cade Cunningham out: +4.2 pts",
-      "Ebuka Okorie out: +2.1 pts",
-      "Taurean Prince out: +2.3 pts"
+      "boards shared"
     ],
     "recentVsLine": [
       "miss",
@@ -9668,1302 +9444,6 @@
     "starterEligible": false
   },
   {
-    "id": "5142718-pts-10",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "pts",
-    "line": 10,
-    "probability": 0.893,
-    "modelProbability": 0.928,
-    "marketProbability": 0.84,
-    "fairPrice": 1.12,
-    "takeAt": 1.21,
-    "bestPrice": 1.19,
-    "bestBookie": "PointsBet (AU)",
-    "bookiePrices": {
-      "PointsBet (AU)": 1.19
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5142718-pts-15",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "pts",
-    "line": 15,
-    "probability": 0.577,
-    "modelProbability": 0.609,
-    "marketProbability": 0.529,
-    "fairPrice": 1.73,
-    "takeAt": 1.87,
-    "bestPrice": 1.89,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 1.89
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5142718-pts-20",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "pts",
-    "line": 20,
-    "probability": 0.215,
-    "modelProbability": 0.182,
-    "marketProbability": 0.263,
-    "fairPrice": 4.66,
-    "takeAt": 5.03,
-    "bestPrice": 3.8,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 3.8
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5142718-reb-5",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.735,
-    "modelProbability": 0.797,
-    "marketProbability": 0.641,
-    "fairPrice": 1.36,
-    "takeAt": 1.47,
-    "bestPrice": 1.56,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 1.56
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "High probability",
-      "boards shared",
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5142718-reb-7",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.463,
-    "modelProbability": 0.537,
-    "marketProbability": 0.352,
-    "fairPrice": 2.16,
-    "takeAt": 2.33,
-    "bestPrice": 2.84,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 2.84
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "boards shared",
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5142718-reb-10",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "reb",
-    "line": 10,
-    "probability": 0.177,
-    "modelProbability": 0.193,
-    "marketProbability": 0.154,
-    "fairPrice": 5.64,
-    "takeAt": 6.09,
-    "bestPrice": 6.5,
-    "bestBookie": "TABtouch",
-    "bookiePrices": {
-      "TABtouch": 6.5
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "boards shared",
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5142718-ast-3",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.465,
-    "modelProbability": 0.533,
-    "marketProbability": 0.364,
-    "fairPrice": 2.15,
-    "takeAt": 2.32,
-    "bestPrice": 2.75,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 2.75
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5142718-ast-5",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "ast",
-    "line": 5,
-    "probability": 0.156,
-    "modelProbability": 0.182,
-    "marketProbability": 0.118,
-    "fairPrice": 6.41,
-    "takeAt": 6.92,
-    "bestPrice": 8.5,
-    "bestBookie": "PointsBet (AU)",
-    "bookiePrices": {
-      "PointsBet (AU)": 8.5
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5142718-3pm-1",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.464,
-    "modelProbability": 0.512,
-    "marketProbability": 0.392,
-    "fairPrice": 2.15,
-    "takeAt": 2.32,
-    "bestPrice": 2.55,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 2.55
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5142718-3pm-2",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.189,
-    "modelProbability": 0.204,
-    "marketProbability": 0.167,
-    "fairPrice": 5.28,
-    "takeAt": 5.7,
-    "bestPrice": 6,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 6
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5142718-3pm-3",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.066,
-    "modelProbability": 0.071,
-    "marketProbability": 0.059,
-    "fairPrice": 15.06,
-    "takeAt": 16.26,
-    "bestPrice": 17,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 17
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5142718-q1reb-2",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.525,
-    "modelProbability": 0.525,
-    "fairPrice": 1.9,
-    "takeAt": 2.05,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5142718-q1reb-3",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "q1reb",
-    "line": 3,
-    "probability": 0.291,
-    "modelProbability": 0.291,
-    "fairPrice": 3.43,
-    "takeAt": 3.7,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5142718-q1reb-5",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5142718",
-    "playerName": "AJ Dybantsa",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
-    "market": "q1reb",
-    "line": 5,
-    "probability": 0.064,
-    "modelProbability": 0.064,
-    "fairPrice": 15.64,
-    "takeAt": 16.89,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 31.513499999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-pts-15",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "pts",
-    "line": 15,
-    "probability": 0.746,
-    "modelProbability": 0.927,
-    "marketProbability": 0.476,
-    "fairPrice": 1.34,
-    "takeAt": 1.45,
-    "bestPrice": 2.1,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 2.1
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "High probability",
-      "Check news"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-pts-20",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "pts",
-    "line": 20,
-    "probability": 0.537,
-    "modelProbability": 0.75,
-    "marketProbability": 0.217,
-    "fairPrice": 1.86,
-    "takeAt": 2.01,
-    "bestPrice": 4.6,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 4.6
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Check news"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-pts-25",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "pts",
-    "line": 25,
-    "probability": 0.308,
-    "modelProbability": 0.459,
-    "marketProbability": 0.08,
-    "fairPrice": 3.25,
-    "takeAt": 3.51,
-    "bestPrice": 12.5,
-    "bestBookie": "Neds",
-    "bookiePrices": {
-      "Neds": 12.5
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Check news"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-pts-30",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "pts",
-    "line": 30,
-    "probability": 0.134,
-    "modelProbability": 0.19,
-    "marketProbability": 0.05,
-    "fairPrice": 7.47,
-    "takeAt": 8.07,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-reb-3",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.695,
-    "modelProbability": 0.749,
-    "marketProbability": 0.613,
-    "fairPrice": 1.44,
-    "takeAt": 1.56,
-    "bestPrice": 1.63,
-    "bestBookie": "PointsBet (AU)",
-    "bookiePrices": {
-      "PointsBet (AU)": 1.63
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "boards shared",
-      "Value"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-reb-5",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.348,
-    "modelProbability": 0.395,
-    "marketProbability": 0.278,
-    "fairPrice": 2.87,
-    "takeAt": 3.1,
-    "bestPrice": 3.6,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 3.6
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "boards shared",
-      "Value"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-reb-7",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.133,
-    "modelProbability": 0.148,
-    "marketProbability": 0.111,
-    "fairPrice": 7.51,
-    "takeAt": 8.11,
-    "bestPrice": 9,
-    "bestBookie": "PointsBet (AU)",
-    "bookiePrices": {
-      "PointsBet (AU)": 9
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "boards shared",
-      "Value"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-ast-3",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.684,
-    "modelProbability": 0.747,
-    "marketProbability": 0.588,
-    "fairPrice": 1.46,
-    "takeAt": 1.58,
-    "bestPrice": 1.7,
-    "bestBookie": "Neds",
-    "bookiePrices": {
-      "Neds": 1.7
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-ast-5",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "ast",
-    "line": 5,
-    "probability": 0.332,
-    "modelProbability": 0.386,
-    "marketProbability": 0.25,
-    "fairPrice": 3.01,
-    "takeAt": 3.25,
-    "bestPrice": 4,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 4
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-ast-7",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "ast",
-    "line": 7,
-    "probability": 0.123,
-    "modelProbability": 0.138,
-    "marketProbability": 0.1,
-    "fairPrice": 8.13,
-    "takeAt": 8.78,
-    "bestPrice": 10,
-    "bestBookie": "PointsBet (AU)",
-    "bookiePrices": {
-      "PointsBet (AU)": 10
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-3pm-1",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.829,
-    "modelProbability": 0.927,
-    "marketProbability": 0.68,
-    "fairPrice": 1.21,
-    "takeAt": 1.31,
-    "bestPrice": 1.47,
-    "bestBookie": "TABtouch",
-    "bookiePrices": {
-      "TABtouch": 1.47
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "High probability",
-      "Value"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-3pm-2",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.63,
-    "modelProbability": 0.76,
-    "marketProbability": 0.435,
-    "fairPrice": 1.59,
-    "takeAt": 1.72,
-    "bestPrice": 2.3,
-    "bestBookie": "PointsBet (AU)",
-    "bookiePrices": {
-      "PointsBet (AU)": 2.3
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Check news"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-3pm-3",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.423,
-    "modelProbability": 0.547,
-    "marketProbability": 0.235,
-    "fairPrice": 2.37,
-    "takeAt": 2.56,
-    "bestPrice": 4.25,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 4.25
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Check news"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-3pm-4",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "3pm",
-    "line": 4,
-    "probability": 0.256,
-    "modelProbability": 0.351,
-    "marketProbability": 0.114,
-    "fairPrice": 3.9,
-    "takeAt": 4.21,
-    "bestPrice": 8.75,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 8.75
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-3pm-5",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "3pm",
-    "line": 5,
-    "probability": 0.144,
-    "modelProbability": 0.204,
-    "marketProbability": 0.053,
-    "fairPrice": 6.97,
-    "takeAt": 7.53,
-    "bestPrice": 19,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 19
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-q1reb-2",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.383,
-    "modelProbability": 0.383,
-    "fairPrice": 2.61,
-    "takeAt": 2.82,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
-    "id": "5174563-q1reb-3",
-    "gameId": "401909315",
-    "team": "Washington Wizards",
-    "opponent": "Boston Celtics",
-    "playerId": "5174563",
-    "playerName": "Kyshawn George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
-    "market": "q1reb",
-    "line": 3,
-    "probability": 0.178,
-    "modelProbability": 0.178,
-    "fairPrice": 5.61,
-    "takeAt": 6.06,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "Tristan Vukcevic out: +1.9 pts",
-      "Reece Beekman out: +2.1 pts",
-      "Felix Okpara out: +2.3 pts"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.558,
-    "starterEligible": true
-  },
-  {
     "id": "6583-pts-15",
     "gameId": "401909315",
     "team": "Washington Wizards",
@@ -11683,6 +10163,1230 @@
     "blowoutRisk": true,
     "ageB2B": false,
     "projectedMinutes": 32.044599999999996,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-pts-10",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "pts",
+    "line": 10,
+    "probability": 0.893,
+    "modelProbability": 0.928,
+    "marketProbability": 0.84,
+    "fairPrice": 1.12,
+    "takeAt": 1.21,
+    "bestPrice": 1.19,
+    "bestBookie": "PointsBet (AU)",
+    "bookiePrices": {
+      "PointsBet (AU)": 1.19
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "High probability"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-pts-15",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "pts",
+    "line": 15,
+    "probability": 0.577,
+    "modelProbability": 0.609,
+    "marketProbability": 0.529,
+    "fairPrice": 1.73,
+    "takeAt": 1.87,
+    "bestPrice": 1.89,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 1.89
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-pts-20",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "pts",
+    "line": 20,
+    "probability": 0.215,
+    "modelProbability": 0.182,
+    "marketProbability": 0.263,
+    "fairPrice": 4.66,
+    "takeAt": 5.03,
+    "bestPrice": 3.8,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 3.8
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-reb-5",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.735,
+    "modelProbability": 0.797,
+    "marketProbability": 0.641,
+    "fairPrice": 1.36,
+    "takeAt": 1.47,
+    "bestPrice": 1.56,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 1.56
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "High probability",
+      "boards shared",
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-reb-7",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "reb",
+    "line": 7,
+    "probability": 0.463,
+    "modelProbability": 0.537,
+    "marketProbability": 0.352,
+    "fairPrice": 2.16,
+    "takeAt": 2.33,
+    "bestPrice": 2.84,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 2.84
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared",
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-reb-10",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "reb",
+    "line": 10,
+    "probability": 0.177,
+    "modelProbability": 0.193,
+    "marketProbability": 0.154,
+    "fairPrice": 5.64,
+    "takeAt": 6.09,
+    "bestPrice": 6.5,
+    "bestBookie": "TABtouch",
+    "bookiePrices": {
+      "TABtouch": 6.5
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared",
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-ast-3",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "ast",
+    "line": 3,
+    "probability": 0.465,
+    "modelProbability": 0.533,
+    "marketProbability": 0.364,
+    "fairPrice": 2.15,
+    "takeAt": 2.32,
+    "bestPrice": 2.75,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 2.75
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-ast-5",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "ast",
+    "line": 5,
+    "probability": 0.156,
+    "modelProbability": 0.182,
+    "marketProbability": 0.118,
+    "fairPrice": 6.41,
+    "takeAt": 6.92,
+    "bestPrice": 8.5,
+    "bestBookie": "PointsBet (AU)",
+    "bookiePrices": {
+      "PointsBet (AU)": 8.5
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-3pm-1",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.464,
+    "modelProbability": 0.512,
+    "marketProbability": 0.392,
+    "fairPrice": 2.15,
+    "takeAt": 2.32,
+    "bestPrice": 2.55,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 2.55
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-3pm-2",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.189,
+    "modelProbability": 0.204,
+    "marketProbability": 0.167,
+    "fairPrice": 5.28,
+    "takeAt": 5.7,
+    "bestPrice": 6,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 6
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-3pm-3",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "3pm",
+    "line": 3,
+    "probability": 0.066,
+    "modelProbability": 0.071,
+    "marketProbability": 0.059,
+    "fairPrice": 15.06,
+    "takeAt": 16.26,
+    "bestPrice": 17,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 17
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-q1reb-2",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "q1reb",
+    "line": 2,
+    "probability": 0.525,
+    "modelProbability": 0.525,
+    "fairPrice": 1.9,
+    "takeAt": 2.05,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-q1reb-3",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "q1reb",
+    "line": 3,
+    "probability": 0.291,
+    "modelProbability": 0.291,
+    "fairPrice": 3.43,
+    "takeAt": 3.7,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5142718-q1reb-5",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5142718",
+    "playerName": "AJ Dybantsa",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5142718.png",
+    "market": "q1reb",
+    "line": 5,
+    "probability": 0.064,
+    "modelProbability": 0.064,
+    "fairPrice": 15.64,
+    "takeAt": 16.89,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 31.513499999999997,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-pts-15",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "pts",
+    "line": 15,
+    "probability": 0.646,
+    "modelProbability": 0.76,
+    "marketProbability": 0.476,
+    "fairPrice": 1.55,
+    "takeAt": 1.67,
+    "bestPrice": 2.1,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 2.1
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Check news"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-pts-20",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "pts",
+    "line": 20,
+    "probability": 0.31,
+    "modelProbability": 0.372,
+    "marketProbability": 0.217,
+    "fairPrice": 3.23,
+    "takeAt": 3.49,
+    "bestPrice": 4.6,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 4.6
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-pts-25",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "pts",
+    "line": 25,
+    "probability": 0.084,
+    "modelProbability": 0.087,
+    "marketProbability": 0.08,
+    "fairPrice": 11.9,
+    "takeAt": 12.85,
+    "bestPrice": 12.5,
+    "bestBookie": "Neds",
+    "bookiePrices": {
+      "Neds": 12.5
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-reb-3",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.695,
+    "modelProbability": 0.749,
+    "marketProbability": 0.613,
+    "fairPrice": 1.44,
+    "takeAt": 1.56,
+    "bestPrice": 1.63,
+    "bestBookie": "PointsBet (AU)",
+    "bookiePrices": {
+      "PointsBet (AU)": 1.63
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared",
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-reb-5",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.348,
+    "modelProbability": 0.395,
+    "marketProbability": 0.278,
+    "fairPrice": 2.87,
+    "takeAt": 3.1,
+    "bestPrice": 3.6,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 3.6
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared",
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-reb-7",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "reb",
+    "line": 7,
+    "probability": 0.133,
+    "modelProbability": 0.148,
+    "marketProbability": 0.111,
+    "fairPrice": 7.51,
+    "takeAt": 8.11,
+    "bestPrice": 9,
+    "bestBookie": "PointsBet (AU)",
+    "bookiePrices": {
+      "PointsBet (AU)": 9
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared",
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-ast-3",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "ast",
+    "line": 3,
+    "probability": 0.684,
+    "modelProbability": 0.747,
+    "marketProbability": 0.588,
+    "fairPrice": 1.46,
+    "takeAt": 1.58,
+    "bestPrice": 1.7,
+    "bestBookie": "Neds",
+    "bookiePrices": {
+      "Neds": 1.7
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-ast-5",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "ast",
+    "line": 5,
+    "probability": 0.332,
+    "modelProbability": 0.386,
+    "marketProbability": 0.25,
+    "fairPrice": 3.01,
+    "takeAt": 3.25,
+    "bestPrice": 4,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 4
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-ast-7",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "ast",
+    "line": 7,
+    "probability": 0.123,
+    "modelProbability": 0.138,
+    "marketProbability": 0.1,
+    "fairPrice": 8.13,
+    "takeAt": 8.78,
+    "bestPrice": 10,
+    "bestBookie": "PointsBet (AU)",
+    "bookiePrices": {
+      "PointsBet (AU)": 10
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-3pm-1",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.829,
+    "modelProbability": 0.927,
+    "marketProbability": 0.68,
+    "fairPrice": 1.21,
+    "takeAt": 1.31,
+    "bestPrice": 1.47,
+    "bestBookie": "TABtouch",
+    "bookiePrices": {
+      "TABtouch": 1.47
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "High probability",
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-3pm-2",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.63,
+    "modelProbability": 0.76,
+    "marketProbability": 0.435,
+    "fairPrice": 1.59,
+    "takeAt": 1.72,
+    "bestPrice": 2.3,
+    "bestBookie": "PointsBet (AU)",
+    "bookiePrices": {
+      "PointsBet (AU)": 2.3
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Check news"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-3pm-3",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "3pm",
+    "line": 3,
+    "probability": 0.423,
+    "modelProbability": 0.547,
+    "marketProbability": 0.235,
+    "fairPrice": 2.37,
+    "takeAt": 2.56,
+    "bestPrice": 4.25,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 4.25
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Check news"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-3pm-4",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "3pm",
+    "line": 4,
+    "probability": 0.256,
+    "modelProbability": 0.351,
+    "marketProbability": 0.114,
+    "fairPrice": 3.9,
+    "takeAt": 4.21,
+    "bestPrice": 8.75,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 8.75
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-3pm-5",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "3pm",
+    "line": 5,
+    "probability": 0.144,
+    "modelProbability": 0.204,
+    "marketProbability": 0.053,
+    "fairPrice": 6.97,
+    "takeAt": 7.53,
+    "bestPrice": 19,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 19
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-q1reb-2",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "q1reb",
+    "line": 2,
+    "probability": 0.383,
+    "modelProbability": 0.383,
+    "fairPrice": 2.61,
+    "takeAt": 2.82,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
+    "starterEligible": true
+  },
+  {
+    "id": "5174563-q1reb-3",
+    "gameId": "401909315",
+    "team": "Washington Wizards",
+    "opponent": "Boston Celtics",
+    "playerId": "5174563",
+    "playerName": "Kyshawn George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5174563.png",
+    "market": "q1reb",
+    "line": 3,
+    "probability": 0.178,
+    "modelProbability": 0.178,
+    "fairPrice": 5.61,
+    "takeAt": 6.06,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 33.558,
     "starterEligible": true
   },
   {
@@ -13420,731 +13124,6 @@
     "blowoutRisk": true,
     "ageB2B": false,
     "projectedMinutes": 30.549999999999997,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-pts-15",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "pts",
-    "line": 15,
-    "probability": 0.746,
-    "modelProbability": 0.774,
-    "marketProbability": 0.704,
-    "fairPrice": 1.34,
-    "takeAt": 1.45,
-    "bestPrice": 1.42,
-    "bestBookie": "PointsBet (AU)",
-    "bookiePrices": {
-      "PointsBet (AU)": 1.42
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "High probability"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-pts-20",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "pts",
-    "line": 20,
-    "probability": 0.415,
-    "modelProbability": 0.395,
-    "marketProbability": 0.444,
-    "fairPrice": 2.41,
-    "takeAt": 2.6,
-    "bestPrice": 2.25,
-    "bestBookie": "PointsBet (AU)",
-    "bookiePrices": {
-      "PointsBet (AU)": 2.25
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-pts-25",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "pts",
-    "line": 25,
-    "probability": 0.147,
-    "modelProbability": 0.099,
-    "marketProbability": 0.217,
-    "fairPrice": 6.82,
-    "takeAt": 7.37,
-    "bestPrice": 4.6,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 4.6
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-reb-3",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.837,
-    "modelProbability": 0.875,
-    "marketProbability": 0.781,
-    "fairPrice": 1.19,
-    "takeAt": 1.29,
-    "bestPrice": 1.28,
-    "bestBookie": "TAB",
-    "bookiePrices": {
-      "TAB": 1.28
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "High probability",
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-reb-5",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.552,
-    "modelProbability": 0.595,
-    "marketProbability": 0.488,
-    "fairPrice": 1.81,
-    "takeAt": 1.95,
-    "bestPrice": 2.05,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 2.05
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "boards shared",
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-reb-7",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "reb",
-    "line": 7,
-    "probability": 0.28,
-    "modelProbability": 0.301,
-    "marketProbability": 0.25,
-    "fairPrice": 3.57,
-    "takeAt": 3.86,
-    "bestPrice": 4,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 4
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "boards shared",
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-reb-10",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "reb",
-    "line": 10,
-    "probability": 0.064,
-    "modelProbability": 0.066,
-    "marketProbability": 0.06,
-    "fairPrice": 15.67,
-    "takeAt": 16.92,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-ast-3",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.561,
-    "modelProbability": 0.602,
-    "marketProbability": 0.5,
-    "fairPrice": 1.78,
-    "takeAt": 1.92,
-    "bestPrice": 2,
-    "bestBookie": "PointsBet (AU)",
-    "bookiePrices": {
-      "PointsBet (AU)": 2
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-ast-5",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "ast",
-    "line": 5,
-    "probability": 0.218,
-    "modelProbability": 0.236,
-    "marketProbability": 0.192,
-    "fairPrice": 4.58,
-    "takeAt": 4.95,
-    "bestPrice": 5.2,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 5.2
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-ast-7",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "ast",
-    "line": 7,
-    "probability": 0.071,
-    "modelProbability": 0.062,
-    "marketProbability": 0.083,
-    "fairPrice": 14.15,
-    "takeAt": 15.28,
-    "bestPrice": 12,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 12
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-3pm-1",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.879,
-    "modelProbability": 0.935,
-    "marketProbability": 0.794,
-    "fairPrice": 1.14,
-    "takeAt": 1.23,
-    "bestPrice": 1.26,
-    "bestBookie": "TABtouch",
-    "bookiePrices": {
-      "TABtouch": 1.26
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "High probability",
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "hit",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-3pm-2",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.695,
-    "modelProbability": 0.78,
-    "marketProbability": 0.568,
-    "fairPrice": 1.44,
-    "takeAt": 1.56,
-    "bestPrice": 1.76,
-    "bestBookie": "TABtouch",
-    "bookiePrices": {
-      "TABtouch": 1.76
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-3pm-3",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.49,
-    "modelProbability": 0.575,
-    "marketProbability": 0.364,
-    "fairPrice": 2.04,
-    "takeAt": 2.2,
-    "bestPrice": 2.75,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 2.75
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-3pm-4",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "3pm",
-    "line": 4,
-    "probability": 0.307,
-    "modelProbability": 0.378,
-    "marketProbability": 0.2,
-    "fairPrice": 3.26,
-    "takeAt": 3.52,
-    "bestPrice": 5,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 5
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-3pm-5",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "3pm",
-    "line": 5,
-    "probability": 0.177,
-    "modelProbability": 0.225,
-    "marketProbability": 0.105,
-    "fairPrice": 5.64,
-    "takeAt": 6.09,
-    "bestPrice": 9.5,
-    "bestBookie": "SportsBet",
-    "bookiePrices": {
-      "SportsBet": 9.5
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-q1reb-2",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "q1reb",
-    "line": 2,
-    "probability": 0.653,
-    "modelProbability": 0.653,
-    "fairPrice": 1.53,
-    "takeAt": 1.65,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "hit",
-      "hit",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-q1reb-3",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "q1reb",
-    "line": 3,
-    "probability": 0.418,
-    "modelProbability": 0.418,
-    "fairPrice": 2.39,
-    "takeAt": 2.58,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
-    "starterEligible": true
-  },
-  {
-    "id": "4251-q1reb-5",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4251",
-    "playerName": "Paul George",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
-    "market": "q1reb",
-    "line": 5,
-    "probability": 0.122,
-    "modelProbability": 0.122,
-    "fairPrice": 8.22,
-    "takeAt": 8.88,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "na",
-      "na"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 28.168666666666667,
     "starterEligible": true
   },
   {
@@ -16459,11 +15438,11 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065648.png",
     "market": "pts",
     "line": 20,
-    "probability": 0.847,
-    "modelProbability": 0.886,
+    "probability": 0.813,
+    "modelProbability": 0.83,
     "marketProbability": 0.787,
-    "fairPrice": 1.18,
-    "takeAt": 1.27,
+    "fairPrice": 1.23,
+    "takeAt": 1.33,
     "bestPrice": 1.27,
     "bestBookie": "PointsBet (AU)",
     "bookiePrices": {
@@ -16471,11 +15450,9 @@
     },
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [
-      "High probability",
-      "Value"
+      "High probability"
     ],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -16503,22 +15480,19 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065648.png",
     "market": "pts",
     "line": 25,
-    "probability": 0.647,
-    "modelProbability": 0.714,
+    "probability": 0.578,
+    "modelProbability": 0.599,
     "marketProbability": 0.546,
-    "fairPrice": 1.55,
-    "takeAt": 1.67,
+    "fairPrice": 1.73,
+    "takeAt": 1.87,
     "bestPrice": 1.83,
     "bestBookie": "PointsBet (AU)",
     "bookiePrices": {
       "PointsBet (AU)": 1.83
     },
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
+    "tags": [],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -16546,22 +15520,19 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065648.png",
     "market": "pts",
     "line": 30,
-    "probability": 0.407,
-    "modelProbability": 0.47,
+    "probability": 0.32,
+    "modelProbability": 0.325,
     "marketProbability": 0.313,
-    "fairPrice": 2.46,
-    "takeAt": 2.66,
+    "fairPrice": 3.12,
+    "takeAt": 3.37,
     "bestPrice": 3.2,
     "bestBookie": "SportsBet",
     "bookiePrices": {
       "SportsBet": 3.2
     },
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
+    "tags": [],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -16589,63 +15560,19 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065648.png",
     "market": "pts",
     "line": 35,
-    "probability": 0.204,
-    "modelProbability": 0.237,
+    "probability": 0.136,
+    "modelProbability": 0.123,
     "marketProbability": 0.154,
-    "fairPrice": 4.91,
-    "takeAt": 5.3,
+    "fairPrice": 7.38,
+    "takeAt": 7.97,
     "bestPrice": 6.5,
     "bestBookie": "SportsBet",
     "bookiePrices": {
       "SportsBet": 6.5
     },
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "Amari Williams out: +2.7 pts",
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": true,
-    "ageB2B": false,
-    "projectedMinutes": 33.79299999999999,
-    "starterEligible": true
-  },
-  {
-    "id": "4065648-pts-40",
-    "gameId": "401909315",
-    "team": "Boston Celtics",
-    "opponent": "Washington Wizards",
-    "playerId": "4065648",
-    "playerName": "Jayson Tatum",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4065648.png",
-    "market": "pts",
-    "line": 40,
-    "probability": 0.086,
-    "modelProbability": 0.087,
-    "marketProbability": 0.083,
-    "fairPrice": 11.65,
-    "takeAt": 12.58,
-    "bestPrice": 12,
-    "bestBookie": "PointsBet (AU)",
-    "bookiePrices": {
-      "PointsBet (AU)": 12
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -16689,7 +15616,6 @@
       "boards shared"
     ],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -16733,7 +15659,6 @@
       "Value"
     ],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -16776,7 +15701,6 @@
       "boards shared"
     ],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -16819,7 +15743,6 @@
       "boards shared"
     ],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -16862,7 +15785,6 @@
       "High probability"
     ],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -16903,7 +15825,6 @@
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -16946,7 +15867,6 @@
       "Value"
     ],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -16987,7 +15907,6 @@
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -17031,7 +15950,6 @@
       "Value"
     ],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -17074,7 +15992,6 @@
       "Value"
     ],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -17117,7 +16034,6 @@
       "Value"
     ],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -17160,7 +16076,6 @@
       "Value"
     ],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -17203,7 +16118,6 @@
       "Value"
     ],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -17240,7 +16154,6 @@
       "High probability"
     ],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -17275,7 +16188,6 @@
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -17310,7 +16222,6 @@
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Amari Williams out: +2.7 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -18004,6 +16915,920 @@
     "ageB2B": false,
     "projectedMinutes": 29.61854545454545,
     "starterEligible": true
+  },
+  {
+    "id": "4251-pts-15",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "pts",
+    "line": 15,
+    "probability": 0.746,
+    "modelProbability": 0.774,
+    "marketProbability": 0.704,
+    "fairPrice": 1.34,
+    "takeAt": 1.45,
+    "bestPrice": 1.42,
+    "bestBookie": "PointsBet (AU)",
+    "bookiePrices": {
+      "PointsBet (AU)": 1.42
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "High probability"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-pts-20",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "pts",
+    "line": 20,
+    "probability": 0.415,
+    "modelProbability": 0.395,
+    "marketProbability": 0.444,
+    "fairPrice": 2.41,
+    "takeAt": 2.6,
+    "bestPrice": 2.25,
+    "bestBookie": "PointsBet (AU)",
+    "bookiePrices": {
+      "PointsBet (AU)": 2.25
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-pts-25",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "pts",
+    "line": 25,
+    "probability": 0.147,
+    "modelProbability": 0.099,
+    "marketProbability": 0.217,
+    "fairPrice": 6.82,
+    "takeAt": 7.37,
+    "bestPrice": 4.6,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 4.6
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-reb-3",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.837,
+    "modelProbability": 0.875,
+    "marketProbability": 0.781,
+    "fairPrice": 1.19,
+    "takeAt": 1.29,
+    "bestPrice": 1.28,
+    "bestBookie": "TAB",
+    "bookiePrices": {
+      "TAB": 1.28
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "High probability",
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-reb-5",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.552,
+    "modelProbability": 0.595,
+    "marketProbability": 0.488,
+    "fairPrice": 1.81,
+    "takeAt": 1.95,
+    "bestPrice": 2.05,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 2.05
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared",
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-reb-7",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "reb",
+    "line": 7,
+    "probability": 0.28,
+    "modelProbability": 0.301,
+    "marketProbability": 0.25,
+    "fairPrice": 3.57,
+    "takeAt": 3.86,
+    "bestPrice": 4,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 4
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared",
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-reb-10",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "reb",
+    "line": 10,
+    "probability": 0.064,
+    "modelProbability": 0.066,
+    "marketProbability": 0.06,
+    "fairPrice": 15.67,
+    "takeAt": 16.92,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-ast-3",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "ast",
+    "line": 3,
+    "probability": 0.561,
+    "modelProbability": 0.602,
+    "marketProbability": 0.5,
+    "fairPrice": 1.78,
+    "takeAt": 1.92,
+    "bestPrice": 2,
+    "bestBookie": "PointsBet (AU)",
+    "bookiePrices": {
+      "PointsBet (AU)": 2
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-ast-5",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "ast",
+    "line": 5,
+    "probability": 0.218,
+    "modelProbability": 0.236,
+    "marketProbability": 0.192,
+    "fairPrice": 4.58,
+    "takeAt": 4.95,
+    "bestPrice": 5.2,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 5.2
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-ast-7",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "ast",
+    "line": 7,
+    "probability": 0.071,
+    "modelProbability": 0.062,
+    "marketProbability": 0.083,
+    "fairPrice": 14.15,
+    "takeAt": 15.28,
+    "bestPrice": 12,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 12
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-3pm-1",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.879,
+    "modelProbability": 0.935,
+    "marketProbability": 0.794,
+    "fairPrice": 1.14,
+    "takeAt": 1.23,
+    "bestPrice": 1.26,
+    "bestBookie": "TABtouch",
+    "bookiePrices": {
+      "TABtouch": 1.26
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "High probability",
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-3pm-2",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.695,
+    "modelProbability": 0.78,
+    "marketProbability": 0.568,
+    "fairPrice": 1.44,
+    "takeAt": 1.56,
+    "bestPrice": 1.76,
+    "bestBookie": "TABtouch",
+    "bookiePrices": {
+      "TABtouch": 1.76
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "hit",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-3pm-3",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "3pm",
+    "line": 3,
+    "probability": 0.49,
+    "modelProbability": 0.575,
+    "marketProbability": 0.364,
+    "fairPrice": 2.04,
+    "takeAt": 2.2,
+    "bestPrice": 2.75,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 2.75
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-3pm-4",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "3pm",
+    "line": 4,
+    "probability": 0.307,
+    "modelProbability": 0.378,
+    "marketProbability": 0.2,
+    "fairPrice": 3.26,
+    "takeAt": 3.52,
+    "bestPrice": 5,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 5
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-3pm-5",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "3pm",
+    "line": 5,
+    "probability": 0.177,
+    "modelProbability": 0.225,
+    "marketProbability": 0.105,
+    "fairPrice": 5.64,
+    "takeAt": 6.09,
+    "bestPrice": 9.5,
+    "bestBookie": "SportsBet",
+    "bookiePrices": {
+      "SportsBet": 9.5
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-q1reb-2",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "q1reb",
+    "line": 2,
+    "probability": 0.653,
+    "modelProbability": 0.653,
+    "fairPrice": 1.53,
+    "takeAt": 1.65,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "hit",
+      "hit",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-q1reb-3",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "q1reb",
+    "line": 3,
+    "probability": 0.418,
+    "modelProbability": 0.418,
+    "fairPrice": 2.39,
+    "takeAt": 2.58,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "4251-q1reb-5",
+    "gameId": "401909315",
+    "team": "Boston Celtics",
+    "opponent": "Washington Wizards",
+    "playerId": "4251",
+    "playerName": "Paul George",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+    "market": "q1reb",
+    "line": 5,
+    "probability": 0.122,
+    "modelProbability": 0.122,
+    "fairPrice": 8.22,
+    "takeAt": 8.88,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "na",
+      "na"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": true,
+    "ageB2B": false,
+    "projectedMinutes": 28.168666666666667,
+    "starterEligible": true
+  },
+  {
+    "id": "3978-pts-10",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3978",
+    "playerName": "DeMar DeRozan",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
+    "market": "pts",
+    "line": 10,
+    "probability": 0.547,
+    "modelProbability": 0.57,
+    "marketProbability": 0.513,
+    "fairPrice": 1.83,
+    "takeAt": 1.98,
+    "bestPrice": 1.95,
+    "bestBookie": "PointsBet (AU)",
+    "bookiePrices": {
+      "PointsBet (AU)": 1.95
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [],
+    "recentVsLine": [
+      "miss",
+      "hit",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 21.53333333333333,
+    "starterEligible": false
+  },
+  {
+    "id": "3978-reb-3",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3978",
+    "playerName": "DeMar DeRozan",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.214,
+    "modelProbability": 0.241,
+    "marketProbability": 0.174,
+    "fairPrice": 4.67,
+    "takeAt": 5.04,
+    "bestPrice": 5.75,
+    "bestBookie": "TABtouch",
+    "bookiePrices": {
+      "TABtouch": 5.75
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 21.53333333333333,
+    "starterEligible": false
+  },
+  {
+    "id": "3978-ast-3",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3978",
+    "playerName": "DeMar DeRozan",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
+    "market": "ast",
+    "line": 3,
+    "probability": 0.327,
+    "modelProbability": 0.379,
+    "marketProbability": 0.25,
+    "fairPrice": 3.05,
+    "takeAt": 3.29,
+    "bestPrice": 4,
+    "bestBookie": "TABtouch",
+    "bookiePrices": {
+      "TABtouch": 4
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "Value"
+    ],
+    "reasons": [],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 21.53333333333333,
+    "starterEligible": false
+  },
+  {
+    "id": "3978-ast-5",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3978",
+    "playerName": "DeMar DeRozan",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
+    "market": "ast",
+    "line": 5,
+    "probability": 0.096,
+    "modelProbability": 0.093,
+    "marketProbability": 0.1,
+    "fairPrice": 10.44,
+    "takeAt": 11.28,
+    "bestPrice": 10,
+    "bestBookie": "Ladbrokes",
+    "bookiePrices": {
+      "Ladbrokes": 10
+    },
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 21.53333333333333,
+    "starterEligible": false
+  },
+  {
+    "id": "3978-3pm-1",
+    "gameId": "401909316",
+    "team": "Denver Nuggets",
+    "opponent": "Dallas Mavericks",
+    "playerId": "3978",
+    "playerName": "DeMar DeRozan",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.198,
+    "modelProbability": 0.114,
+    "marketProbability": 0.324,
+    "fairPrice": 5.06,
+    "takeAt": 5.46,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "hit",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": false,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 21.53333333333333,
+    "starterEligible": false
   },
   {
     "id": "4431767-pts-10",
@@ -18818,195 +18643,6 @@
     "blowoutRisk": false,
     "ageB2B": false,
     "projectedMinutes": 15.24,
-    "starterEligible": false
-  },
-  {
-    "id": "3978-pts-10",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3978",
-    "playerName": "DeMar DeRozan",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
-    "market": "pts",
-    "line": 10,
-    "probability": 0.547,
-    "modelProbability": 0.57,
-    "marketProbability": 0.513,
-    "fairPrice": 1.83,
-    "takeAt": 1.98,
-    "bestPrice": 1.95,
-    "bestBookie": "PointsBet (AU)",
-    "bookiePrices": {
-      "PointsBet (AU)": 1.95
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "hit",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 21.53333333333333,
-    "starterEligible": false
-  },
-  {
-    "id": "3978-reb-3",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3978",
-    "playerName": "DeMar DeRozan",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.214,
-    "modelProbability": 0.241,
-    "marketProbability": 0.174,
-    "fairPrice": 4.67,
-    "takeAt": 5.04,
-    "bestPrice": 5.75,
-    "bestBookie": "TABtouch",
-    "bookiePrices": {
-      "TABtouch": 5.75
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "hit"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 21.53333333333333,
-    "starterEligible": false
-  },
-  {
-    "id": "3978-ast-3",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3978",
-    "playerName": "DeMar DeRozan",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
-    "market": "ast",
-    "line": 3,
-    "probability": 0.327,
-    "modelProbability": 0.379,
-    "marketProbability": 0.25,
-    "fairPrice": 3.05,
-    "takeAt": 3.29,
-    "bestPrice": 4,
-    "bestBookie": "TABtouch",
-    "bookiePrices": {
-      "TABtouch": 4
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 21.53333333333333,
-    "starterEligible": false
-  },
-  {
-    "id": "3978-ast-5",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3978",
-    "playerName": "DeMar DeRozan",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
-    "market": "ast",
-    "line": 5,
-    "probability": 0.096,
-    "modelProbability": 0.093,
-    "marketProbability": 0.1,
-    "fairPrice": 10.44,
-    "takeAt": 11.28,
-    "bestPrice": 10,
-    "bestBookie": "Ladbrokes",
-    "bookiePrices": {
-      "Ladbrokes": 10
-    },
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 21.53333333333333,
-    "starterEligible": false
-  },
-  {
-    "id": "3978-3pm-1",
-    "gameId": "401909316",
-    "team": "Denver Nuggets",
-    "opponent": "Dallas Mavericks",
-    "playerId": "3978",
-    "playerName": "DeMar DeRozan",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.198,
-    "modelProbability": 0.114,
-    "marketProbability": 0.324,
-    "fairPrice": 5.06,
-    "takeAt": 5.46,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "hit",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": false,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 21.53333333333333,
     "starterEligible": false
   },
   {
@@ -21875,6 +21511,214 @@
     "starterEligible": true
   },
   {
+    "id": "4593125-pts-5",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4593125",
+    "playerName": "Santi Aldama",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4593125.png",
+    "market": "pts",
+    "line": 5,
+    "probability": 0.627,
+    "modelProbability": 0.627,
+    "fairPrice": 1.59,
+    "takeAt": 1.72,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 10.9,
+    "starterEligible": false
+  },
+  {
+    "id": "4593125-reb-3",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4593125",
+    "playerName": "Santi Aldama",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4593125.png",
+    "market": "reb",
+    "line": 3,
+    "probability": 0.384,
+    "modelProbability": 0.384,
+    "fairPrice": 2.6,
+    "takeAt": 2.81,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 10.9,
+    "starterEligible": false
+  },
+  {
+    "id": "4593125-reb-5",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4593125",
+    "playerName": "Santi Aldama",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4593125.png",
+    "market": "reb",
+    "line": 5,
+    "probability": 0.1,
+    "modelProbability": 0.1,
+    "fairPrice": 10.01,
+    "takeAt": 10.81,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [
+      "boards shared"
+    ],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 10.9,
+    "starterEligible": false
+  },
+  {
+    "id": "4593125-3pm-1",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4593125",
+    "playerName": "Santi Aldama",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4593125.png",
+    "market": "3pm",
+    "line": 1,
+    "probability": 0.483,
+    "modelProbability": 0.483,
+    "fairPrice": 2.07,
+    "takeAt": 2.24,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "hit",
+      "miss",
+      "miss",
+      "hit",
+      "hit"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 10.9,
+    "starterEligible": false
+  },
+  {
+    "id": "4593125-3pm-2",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4593125",
+    "playerName": "Santi Aldama",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4593125.png",
+    "market": "3pm",
+    "line": 2,
+    "probability": 0.183,
+    "modelProbability": 0.183,
+    "fairPrice": 5.46,
+    "takeAt": 5.9,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "hit",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 10.9,
+    "starterEligible": false
+  },
+  {
+    "id": "4593125-3pm-3",
+    "gameId": "401909316",
+    "team": "Dallas Mavericks",
+    "opponent": "Denver Nuggets",
+    "playerId": "4593125",
+    "playerName": "Santi Aldama",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4593125.png",
+    "market": "3pm",
+    "line": 3,
+    "probability": 0.061,
+    "modelProbability": 0.061,
+    "fairPrice": 16.29,
+    "takeAt": 17.59,
+    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
+    "tags": [],
+    "reasons": [
+      "boards shared"
+    ],
+    "recentVsLine": [
+      "miss",
+      "miss",
+      "miss",
+      "miss",
+      "miss"
+    ],
+    "questionable": false,
+    "boardsShared": true,
+    "b2b": false,
+    "blowoutRisk": false,
+    "ageB2B": false,
+    "projectedMinutes": 10.9,
+    "starterEligible": false
+  },
+  {
     "id": "4896372-pts-10",
     "gameId": "401909316",
     "team": "Dallas Mavericks",
@@ -22291,134 +22135,36 @@
     "starterEligible": false
   },
   {
-    "id": "4593125-pts-5",
+    "id": "5041939-pts-15",
     "gameId": "401909316",
     "team": "Dallas Mavericks",
     "opponent": "Denver Nuggets",
-    "playerId": "4593125",
-    "playerName": "Santi Aldama",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4593125.png",
+    "playerId": "5041939",
+    "playerName": "Cooper Flagg",
+    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5041939.png",
     "market": "pts",
-    "line": 5,
-    "probability": 0.627,
-    "modelProbability": 0.627,
-    "fairPrice": 1.59,
-    "takeAt": 1.72,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "hit",
-      "miss",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 10.9,
-    "starterEligible": false
-  },
-  {
-    "id": "4593125-reb-3",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4593125",
-    "playerName": "Santi Aldama",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4593125.png",
-    "market": "reb",
-    "line": 3,
-    "probability": 0.384,
-    "modelProbability": 0.384,
-    "fairPrice": 2.6,
-    "takeAt": 2.81,
+    "line": 15,
+    "probability": 0.922,
+    "modelProbability": 0.931,
+    "marketProbability": 0.909,
+    "fairPrice": 1.08,
+    "takeAt": 1.17,
+    "bestPrice": 1.1,
+    "bestBookie": "PointsBet (AU)",
+    "bookiePrices": {
+      "PointsBet (AU)": 1.1
+    },
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [
-      "boards shared"
+      "High probability"
     ],
     "reasons": [
       "boards shared"
     ],
     "recentVsLine": [
       "hit",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 10.9,
-    "starterEligible": false
-  },
-  {
-    "id": "4593125-reb-5",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4593125",
-    "playerName": "Santi Aldama",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4593125.png",
-    "market": "reb",
-    "line": 5,
-    "probability": 0.1,
-    "modelProbability": 0.1,
-    "fairPrice": 10.01,
-    "takeAt": 10.81,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "boards shared"
-    ],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 10.9,
-    "starterEligible": false
-  },
-  {
-    "id": "4593125-3pm-1",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4593125",
-    "playerName": "Santi Aldama",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4593125.png",
-    "market": "3pm",
-    "line": 1,
-    "probability": 0.483,
-    "modelProbability": 0.483,
-    "fairPrice": 2.07,
-    "takeAt": 2.24,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
       "hit",
-      "miss",
-      "miss",
+      "hit",
       "hit",
       "hit"
     ],
@@ -22427,76 +22173,8 @@
     "b2b": false,
     "blowoutRisk": false,
     "ageB2B": false,
-    "projectedMinutes": 10.9,
-    "starterEligible": false
-  },
-  {
-    "id": "4593125-3pm-2",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4593125",
-    "playerName": "Santi Aldama",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4593125.png",
-    "market": "3pm",
-    "line": 2,
-    "probability": 0.183,
-    "modelProbability": 0.183,
-    "fairPrice": 5.46,
-    "takeAt": 5.9,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "hit",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 10.9,
-    "starterEligible": false
-  },
-  {
-    "id": "4593125-3pm-3",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "4593125",
-    "playerName": "Santi Aldama",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4593125.png",
-    "market": "3pm",
-    "line": 3,
-    "probability": 0.061,
-    "modelProbability": 0.061,
-    "fairPrice": 16.29,
-    "takeAt": 17.59,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [],
-    "reasons": [
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 10.9,
-    "starterEligible": false
+    "projectedMinutes": 33.97272727272727,
+    "starterEligible": true
   },
   {
     "id": "5041939-pts-20",
@@ -22508,11 +22186,11 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5041939.png",
     "market": "pts",
     "line": 20,
-    "probability": 0.829,
-    "modelProbability": 0.892,
+    "probability": 0.753,
+    "modelProbability": 0.764,
     "marketProbability": 0.735,
-    "fairPrice": 1.21,
-    "takeAt": 1.31,
+    "fairPrice": 1.33,
+    "takeAt": 1.44,
     "bestPrice": 1.36,
     "bestBookie": "SportsBet",
     "bookiePrices": {
@@ -22520,12 +22198,9 @@
     },
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [
-      "High probability",
-      "Value"
+      "High probability"
     ],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -22553,23 +22228,19 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5041939.png",
     "market": "pts",
     "line": 25,
-    "probability": 0.629,
-    "modelProbability": 0.727,
+    "probability": 0.481,
+    "modelProbability": 0.482,
     "marketProbability": 0.481,
-    "fairPrice": 1.59,
-    "takeAt": 1.72,
+    "fairPrice": 2.08,
+    "takeAt": 2.25,
     "bestPrice": 2.08,
     "bestBookie": "SportsBet",
     "bookiePrices": {
       "SportsBet": 2.08
     },
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
+    "tags": [],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -22597,23 +22268,19 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5041939.png",
     "market": "pts",
     "line": 30,
-    "probability": 0.402,
-    "modelProbability": 0.489,
+    "probability": 0.233,
+    "modelProbability": 0.209,
     "marketProbability": 0.27,
-    "fairPrice": 2.49,
-    "takeAt": 2.69,
+    "fairPrice": 4.29,
+    "takeAt": 4.63,
     "bestPrice": 3.7,
     "bestBookie": "PointsBet (AU)",
     "bookiePrices": {
       "PointsBet (AU)": 3.7
     },
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
+    "tags": [],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -22641,60 +22308,19 @@
     "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5041939.png",
     "market": "pts",
     "line": 35,
-    "probability": 0.2,
-    "modelProbability": 0.255,
+    "probability": 0.082,
+    "modelProbability": 0.058,
     "marketProbability": 0.118,
-    "fairPrice": 5,
-    "takeAt": 5.4,
+    "fairPrice": 12.26,
+    "takeAt": 13.24,
     "bestPrice": 8.5,
     "bestBookie": "PointsBet (AU)",
     "bookiePrices": {
       "PointsBet (AU)": 8.5
     },
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
-    "tags": [
-      "Value"
-    ],
-    "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
-      "boards shared"
-    ],
-    "recentVsLine": [
-      "miss",
-      "miss",
-      "miss",
-      "miss",
-      "miss"
-    ],
-    "questionable": false,
-    "boardsShared": true,
-    "b2b": false,
-    "blowoutRisk": false,
-    "ageB2B": false,
-    "projectedMinutes": 33.97272727272727,
-    "starterEligible": true
-  },
-  {
-    "id": "5041939-pts-40",
-    "gameId": "401909316",
-    "team": "Dallas Mavericks",
-    "opponent": "Denver Nuggets",
-    "playerId": "5041939",
-    "playerName": "Cooper Flagg",
-    "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5041939.png",
-    "market": "pts",
-    "line": 40,
-    "probability": 0.079,
-    "modelProbability": 0.098,
-    "marketProbability": 0.05,
-    "fairPrice": 12.68,
-    "takeAt": 13.69,
-    "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -22738,8 +22364,6 @@
       "boards shared"
     ],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -22783,8 +22407,6 @@
       "Value"
     ],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -22828,8 +22450,6 @@
       "Value"
     ],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -22873,8 +22493,6 @@
       "Value"
     ],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -22917,8 +22535,6 @@
       "High probability"
     ],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -22961,8 +22577,6 @@
       "Value"
     ],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -23005,8 +22619,6 @@
       "Value"
     ],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -23047,8 +22659,6 @@
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -23091,8 +22701,6 @@
       "Check news"
     ],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -23135,8 +22743,6 @@
       "Value"
     ],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -23179,8 +22785,6 @@
       "Value"
     ],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -23223,8 +22827,6 @@
       "Value"
     ],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -23260,8 +22862,6 @@
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -23296,8 +22896,6 @@
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [
@@ -23332,8 +22930,6 @@
     "oddsPulledAt": "2026-11-24T22:58:43.102Z",
     "tags": [],
     "reasons": [
-      "Tobi Lawal out: +2.4 pts",
-      "Sergio de Larrea out: +2.6 pts",
       "boards shared"
     ],
     "recentVsLine": [

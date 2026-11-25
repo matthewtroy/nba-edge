@@ -94,4 +94,5 @@ describe("Booster stepping", () => {
     )!;
     expect(p1Boost.line).toBe(p1Main.line);
   });
+
 });

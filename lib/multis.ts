@@ -419,7 +419,7 @@ function buildBooster(
 
   const boosted = boostMainLegs(main, picks, new Set(main.legs));
   if (!boosted?.length) {
-    return { bet: null, reason: "Booster: could not +1 every Main leg (rung/clash)" };
+    return { bet: null, reason: "Booster: could not resolve Main legs (rung/clash)" };
   }
 
   const { p, fair, takeAt } = combinedPrice(boosted);
@@ -444,7 +444,7 @@ function buildBooster(
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
       ...book,
-      summary: `Main Play +1 rung on every leg${trixieNote}`,
+      summary: `Main Play +1 rung where fair ≤4, else same rung${trixieNote}`,
     },
     reason: "",
   };
@@ -455,7 +455,7 @@ function findQ1Subset(
   byTeam: Map<string, PickLeg[]>,
   minFair: number,
   maxFair: number,
-  opts?: { minProbability?: number }
+  opts?: { minProbability?: number; safeOnly?: boolean }
 ): PickLeg[] | null {
   const candidates: PickLeg[][] = [];
 
@@ -469,12 +469,13 @@ function findQ1Subset(
     }
     if (chosen.length >= 6 || ti >= teamKeys.length) return;
     const key = teamKeys[ti];
-    const legs = (byTeam.get(key) ?? []).filter(
-      (l) =>
-        l.fairPrice >= minFair &&
-        l.fairPrice <= maxFair &&
-        (opts?.minProbability == null || l.probability >= opts.minProbability)
-    );
+    const legs = (byTeam.get(key) ?? []).filter((l) => {
+      if (opts?.minProbability != null && l.probability < opts.minProbability) {
+        return false;
+      }
+      if (opts?.safeOnly) return true;
+      return l.fairPrice >= minFair && l.fairPrice <= maxFair;
+    });
     dfs(ti + 1, chosen);
     for (const leg of legs.slice(0, 12)) {
       const next = [...chosen, leg];
@@ -485,7 +486,13 @@ function findQ1Subset(
   dfs(0, []);
 
   if (!candidates.length) return null;
+  const sortValue = maxFair <= 4 && minFair >= 2;
   candidates.sort((a, b) => {
+    if (sortValue) {
+      const pa = a.reduce((acc, l) => acc * l.probability, 1);
+      const pb = b.reduce((acc, l) => acc * l.probability, 1);
+      if (pb !== pa) return pb - pa;
+    }
     const ca = combinedBetPrice(a);
     const cb = combinedBetPrice(b);
     if (cb !== ca) return cb - ca;
@@ -546,14 +553,17 @@ function buildQ1Multi(picks: PickLeg[]): {
 
   const bets: MultiBet[] = [];
   let safeNotBuiltReason =
-    "No Safe Q1 subset (fair 1.80–2.40, p≥0.70, 3–6 teams, one leg/team)";
+    "No Safe Q1 subset (p≥0.70, 3–6 teams, one leg/team)";
   let valueNotBuiltReason =
     "No Value Q1 subset (fair 2.20–4.00, 3–6 teams, one leg/team)";
 
-  const safe = findQ1Subset(teamKeys, byTeam, 1.8, 2.4, { minProbability: 0.7 });
+  const safe = findQ1Subset(teamKeys, byTeam, 0, 0, {
+    minProbability: 0.7,
+    safeOnly: true,
+  });
   if (safe) {
     bets.push(
-      q1MultiFromLegs(safe, "Safe", "Safe Q1: fair 1.80–2.40, p≥0.70, one leg/team")
+      q1MultiFromLegs(safe, "Safe", "Safe Q1: p≥0.70, one leg/team")
     );
     safeNotBuiltReason = "";
   }

@@ -31,6 +31,14 @@ function checkLegEligibility(type: MultiType, leg: PickLeg, multiLabel: string):
   return issues;
 }
 
+function rungIndex(leg: PickLeg, picksById: Map<string, PickLeg>): number {
+  const same = [...picksById.values()].filter(
+    (p) => p.playerId === leg.playerId && p.market === leg.market
+  );
+  same.sort((a, b) => a.line - b.line);
+  return same.findIndex((p) => p.line === leg.line);
+}
+
 function checkBoosterSteps(
   main: MultiBet | undefined,
   legs: PickLeg[],
@@ -45,7 +53,6 @@ function checkBoosterSteps(
     .map((id) => picksById.get(id))
     .filter(Boolean) as PickLeg[];
 
-  let stepped = 0;
   for (const mainLeg of mainLegs) {
     const boostLeg = legs.find(
       (l) => l.playerId === mainLeg.playerId && l.market === mainLeg.market
@@ -54,13 +61,14 @@ function checkBoosterSteps(
       issues.push(`Booster: missing leg for ${mainLeg.playerName} ${mainLeg.market}`);
       continue;
     }
-    if (boostLeg.line > mainLeg.line) stepped++;
-    else if (boostLeg.line < mainLeg.line) {
+    const mainIdx = rungIndex(mainLeg, picksById);
+    const boostIdx = rungIndex(boostLeg, picksById);
+    if (boostIdx < mainIdx) {
       issues.push(`Booster: ${mainLeg.playerName} below Main rung`);
     }
-  }
-  if (stepped !== mainLegs.length) {
-    issues.push(`Booster: need +1 rung on all ${mainLegs.length} Main legs (stepped ${stepped})`);
+    if (boostIdx > mainIdx + 1) {
+      issues.push(`Booster: ${mainLeg.playerName} more than +1 rung above Main`);
+    }
   }
   return issues;
 }

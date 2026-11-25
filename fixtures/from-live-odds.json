@@ -4,21 +4,31 @@
     {
       "playerName": "Anthony Black",
       "market": "pts",
-      "line": 20,
-      "price": 5.2,
+      "line": 10,
+      "price": 1.27,
       "bookie": "SportsBet",
       "bookiePrices": {
-        "SportsBet": 5.2
+        "SportsBet": 1.27
       }
     },
     {
       "playerName": "Anthony Black",
       "market": "pts",
-      "line": 25,
-      "price": 14,
-      "bookie": "Neds",
+      "line": 15,
+      "price": 2.28,
+      "bookie": "TABtouch",
       "bookiePrices": {
-        "Neds": 14
+        "TABtouch": 2.28
+      }
+    },
+    {
+      "playerName": "Anthony Black",
+      "market": "pts",
+      "line": 20,
+      "price": 5.2,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 5.2
       }
     },
     {
@@ -252,6 +262,16 @@
       }
     },
     {
+      "playerName": "Goga Bitadze",
+      "market": "pts",
+      "line": 5,
+      "price": 2.3,
+      "bookie": "Neds",
+      "bookiePrices": {
+        "Neds": 2.3
+      }
+    },
+    {
       "playerName": "Wendell Carter Jr.",
       "market": "pts",
       "line": 10,
@@ -449,16 +469,6 @@
       "bookie": "Neds",
       "bookiePrices": {
         "Neds": 16
-      }
-    },
-    {
-      "playerName": "Goga Bitadze",
-      "market": "pts",
-      "line": 5,
-      "price": 2.3,
-      "bookie": "Neds",
-      "bookiePrices": {
-        "Neds": 2.3
       }
     },
     {
@@ -702,6 +712,46 @@
       }
     },
     {
+      "playerName": "Javonte Green",
+      "market": "reb",
+      "line": 3,
+      "price": 2.25,
+      "bookie": "TAB",
+      "bookiePrices": {
+        "TAB": 2.25
+      }
+    },
+    {
+      "playerName": "Javonte Green",
+      "market": "reb",
+      "line": 5,
+      "price": 5.5,
+      "bookie": "TAB",
+      "bookiePrices": {
+        "TAB": 5.5
+      }
+    },
+    {
+      "playerName": "Javonte Green",
+      "market": "3pm",
+      "line": 1,
+      "price": 2.5,
+      "bookie": "TAB",
+      "bookiePrices": {
+        "TAB": 2.5
+      }
+    },
+    {
+      "playerName": "Javonte Green",
+      "market": "3pm",
+      "line": 2,
+      "price": 4.75,
+      "bookie": "TAB",
+      "bookiePrices": {
+        "TAB": 4.75
+      }
+    },
+    {
       "playerName": "John Collins",
       "market": "pts",
       "line": 10,
@@ -789,46 +839,6 @@
       "bookie": "SportsBet",
       "bookiePrices": {
         "SportsBet": 19
-      }
-    },
-    {
-      "playerName": "Javonte Green",
-      "market": "reb",
-      "line": 3,
-      "price": 2.25,
-      "bookie": "TAB",
-      "bookiePrices": {
-        "TAB": 2.25
-      }
-    },
-    {
-      "playerName": "Javonte Green",
-      "market": "reb",
-      "line": 5,
-      "price": 5.5,
-      "bookie": "TAB",
-      "bookiePrices": {
-        "TAB": 5.5
-      }
-    },
-    {
-      "playerName": "Javonte Green",
-      "market": "3pm",
-      "line": 1,
-      "price": 2.5,
-      "bookie": "TAB",
-      "bookiePrices": {
-        "TAB": 2.5
-      }
-    },
-    {
-      "playerName": "Javonte Green",
-      "market": "3pm",
-      "line": 2,
-      "price": 4.75,
-      "bookie": "TAB",
-      "bookiePrices": {
-        "TAB": 4.75
       }
     },
     {
@@ -949,6 +959,16 @@
       "bookie": "SportsBet",
       "bookiePrices": {
         "SportsBet": 31
+      }
+    },
+    {
+      "playerName": "Daniss Jenkins",
+      "market": "pts",
+      "line": 15,
+      "price": 2.05,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 2.05
       }
     },
     {
@@ -1392,6 +1412,136 @@
       }
     },
     {
+      "playerName": "Anthony Davis",
+      "market": "pts",
+      "line": 15,
+      "price": 1.22,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 1.22
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "pts",
+      "line": 20,
+      "price": 1.83,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 1.83
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "pts",
+      "line": 25,
+      "price": 3.2,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 3.2
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "pts",
+      "line": 30,
+      "price": 7,
+      "bookie": "PointsBet (AU)",
+      "bookiePrices": {
+        "PointsBet (AU)": 7
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "reb",
+      "line": 5,
+      "price": 1.11,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "TABtouch": 1.11
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "reb",
+      "line": 7,
+      "price": 1.36,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "TABtouch": 1.36
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "reb",
+      "line": 10,
+      "price": 2.38,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "TABtouch": 2.38
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "reb",
+      "line": 13,
+      "price": 5.5,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 5.5
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "reb",
+      "line": 15,
+      "price": 10.5,
+      "bookie": "PointsBet (AU)",
+      "bookiePrices": {
+        "PointsBet (AU)": 10.5
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "ast",
+      "line": 3,
+      "price": 5.2,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 5.2
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "ast",
+      "line": 5,
+      "price": 17,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 17
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "3pm",
+      "line": 1,
+      "price": 5.2,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 5.2
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "3pm",
+      "line": 2,
+      "price": 8.5,
+      "bookie": "TAB",
+      "bookiePrices": {
+        "TAB": 8.5
+      }
+    },
+    {
       "playerName": "AJ Dybantsa",
       "market": "pts",
       "line": 10,
@@ -1642,136 +1792,6 @@
       }
     },
     {
-      "playerName": "Anthony Davis",
-      "market": "pts",
-      "line": 15,
-      "price": 1.22,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 1.22
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "pts",
-      "line": 20,
-      "price": 1.83,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 1.83
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "pts",
-      "line": 25,
-      "price": 3.2,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 3.2
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "pts",
-      "line": 30,
-      "price": 7,
-      "bookie": "PointsBet (AU)",
-      "bookiePrices": {
-        "PointsBet (AU)": 7
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "reb",
-      "line": 5,
-      "price": 1.11,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "TABtouch": 1.11
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "reb",
-      "line": 7,
-      "price": 1.36,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "TABtouch": 1.36
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "reb",
-      "line": 10,
-      "price": 2.38,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "TABtouch": 2.38
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "reb",
-      "line": 13,
-      "price": 5.5,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 5.5
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "reb",
-      "line": 15,
-      "price": 10.5,
-      "bookie": "PointsBet (AU)",
-      "bookiePrices": {
-        "PointsBet (AU)": 10.5
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "ast",
-      "line": 3,
-      "price": 5.2,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 5.2
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "ast",
-      "line": 5,
-      "price": 17,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 17
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "3pm",
-      "line": 1,
-      "price": 5.2,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 5.2
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "3pm",
-      "line": 2,
-      "price": 8.5,
-      "bookie": "TAB",
-      "bookiePrices": {
-        "TAB": 8.5
-      }
-    },
-    {
       "playerName": "Khris Middleton",
       "market": "3pm",
       "line": 1,
@@ -2009,146 +2029,6 @@
       "bookie": "SportsBet",
       "bookiePrices": {
         "SportsBet": 26
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "pts",
-      "line": 15,
-      "price": 1.42,
-      "bookie": "PointsBet (AU)",
-      "bookiePrices": {
-        "PointsBet (AU)": 1.42
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "pts",
-      "line": 20,
-      "price": 2.25,
-      "bookie": "PointsBet (AU)",
-      "bookiePrices": {
-        "PointsBet (AU)": 2.25
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "pts",
-      "line": 25,
-      "price": 4.6,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 4.6
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "reb",
-      "line": 3,
-      "price": 1.28,
-      "bookie": "TAB",
-      "bookiePrices": {
-        "TAB": 1.28
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "reb",
-      "line": 5,
-      "price": 2.05,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 2.05
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "reb",
-      "line": 7,
-      "price": 4,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 4
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "ast",
-      "line": 3,
-      "price": 2,
-      "bookie": "PointsBet (AU)",
-      "bookiePrices": {
-        "PointsBet (AU)": 2
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "ast",
-      "line": 5,
-      "price": 5.2,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 5.2
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "ast",
-      "line": 7,
-      "price": 12,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 12
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "3pm",
-      "line": 1,
-      "price": 1.26,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "TABtouch": 1.26
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "3pm",
-      "line": 2,
-      "price": 1.76,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "TABtouch": 1.76
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "3pm",
-      "line": 3,
-      "price": 2.75,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 2.75
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "3pm",
-      "line": 4,
-      "price": 5,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 5
-      }
-    },
-    {
-      "playerName": "Paul George",
-      "market": "3pm",
-      "line": 5,
-      "price": 9.5,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 9.5
       }
     },
     {
@@ -2533,16 +2413,6 @@
     },
     {
       "playerName": "Jayson Tatum",
-      "market": "pts",
-      "line": 40,
-      "price": 12,
-      "bookie": "PointsBet (AU)",
-      "bookiePrices": {
-        "PointsBet (AU)": 12
-      }
-    },
-    {
-      "playerName": "Jayson Tatum",
       "market": "reb",
       "line": 5,
       "price": 1.29,
@@ -2792,6 +2662,186 @@
       }
     },
     {
+      "playerName": "Paul George",
+      "market": "pts",
+      "line": 15,
+      "price": 1.42,
+      "bookie": "PointsBet (AU)",
+      "bookiePrices": {
+        "PointsBet (AU)": 1.42
+      }
+    },
+    {
+      "playerName": "Paul George",
+      "market": "pts",
+      "line": 20,
+      "price": 2.25,
+      "bookie": "PointsBet (AU)",
+      "bookiePrices": {
+        "PointsBet (AU)": 2.25
+      }
+    },
+    {
+      "playerName": "Paul George",
+      "market": "pts",
+      "line": 25,
+      "price": 4.6,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 4.6
+      }
+    },
+    {
+      "playerName": "Paul George",
+      "market": "reb",
+      "line": 3,
+      "price": 1.28,
+      "bookie": "TAB",
+      "bookiePrices": {
+        "TAB": 1.28
+      }
+    },
+    {
+      "playerName": "Paul George",
+      "market": "reb",
+      "line": 5,
+      "price": 2.05,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 2.05
+      }
+    },
+    {
+      "playerName": "Paul George",
+      "market": "reb",
+      "line": 7,
+      "price": 4,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 4
+      }
+    },
+    {
+      "playerName": "Paul George",
+      "market": "ast",
+      "line": 3,
+      "price": 2,
+      "bookie": "PointsBet (AU)",
+      "bookiePrices": {
+        "PointsBet (AU)": 2
+      }
+    },
+    {
+      "playerName": "Paul George",
+      "market": "ast",
+      "line": 5,
+      "price": 5.2,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 5.2
+      }
+    },
+    {
+      "playerName": "Paul George",
+      "market": "ast",
+      "line": 7,
+      "price": 12,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 12
+      }
+    },
+    {
+      "playerName": "Paul George",
+      "market": "3pm",
+      "line": 1,
+      "price": 1.26,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "TABtouch": 1.26
+      }
+    },
+    {
+      "playerName": "Paul George",
+      "market": "3pm",
+      "line": 2,
+      "price": 1.76,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "TABtouch": 1.76
+      }
+    },
+    {
+      "playerName": "Paul George",
+      "market": "3pm",
+      "line": 3,
+      "price": 2.75,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 2.75
+      }
+    },
+    {
+      "playerName": "Paul George",
+      "market": "3pm",
+      "line": 4,
+      "price": 5,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 5
+      }
+    },
+    {
+      "playerName": "Paul George",
+      "market": "3pm",
+      "line": 5,
+      "price": 9.5,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 9.5
+      }
+    },
+    {
+      "playerName": "DeMar DeRozan",
+      "market": "pts",
+      "line": 10,
+      "price": 1.95,
+      "bookie": "PointsBet (AU)",
+      "bookiePrices": {
+        "PointsBet (AU)": 1.95
+      }
+    },
+    {
+      "playerName": "DeMar DeRozan",
+      "market": "reb",
+      "line": 3,
+      "price": 5.75,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "TABtouch": 5.75
+      }
+    },
+    {
+      "playerName": "DeMar DeRozan",
+      "market": "ast",
+      "line": 3,
+      "price": 4,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "TABtouch": 4
+      }
+    },
+    {
+      "playerName": "DeMar DeRozan",
+      "market": "ast",
+      "line": 5,
+      "price": 10,
+      "bookie": "Ladbrokes",
+      "bookiePrices": {
+        "Ladbrokes": 10
+      }
+    },
+    {
       "playerName": "Christian Braun",
       "market": "pts",
       "line": 10,
@@ -2899,46 +2949,6 @@
       "bookie": "SportsBet",
       "bookiePrices": {
         "SportsBet": 11
-      }
-    },
-    {
-      "playerName": "DeMar DeRozan",
-      "market": "pts",
-      "line": 10,
-      "price": 1.95,
-      "bookie": "PointsBet (AU)",
-      "bookiePrices": {
-        "PointsBet (AU)": 1.95
-      }
-    },
-    {
-      "playerName": "DeMar DeRozan",
-      "market": "reb",
-      "line": 3,
-      "price": 5.75,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "TABtouch": 5.75
-      }
-    },
-    {
-      "playerName": "DeMar DeRozan",
-      "market": "ast",
-      "line": 3,
-      "price": 4,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "TABtouch": 4
-      }
-    },
-    {
-      "playerName": "DeMar DeRozan",
-      "market": "ast",
-      "line": 5,
-      "price": 10,
-      "bookie": "Ladbrokes",
-      "bookiePrices": {
-        "Ladbrokes": 10
       }
     },
     {
@@ -3489,6 +3499,16 @@
       "bookie": "SportsBet",
       "bookiePrices": {
         "SportsBet": 14
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "pts",
+      "line": 15,
+      "price": 1.1,
+      "bookie": "PointsBet (AU)",
+      "bookiePrices": {
+        "PointsBet (AU)": 1.1
       }
     },
     {

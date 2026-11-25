@@ -1,6 +1,7 @@
-import type { InjuryEntry, PickLeg } from "./types.js";
+import type { InjuryEntry, PickLeg, PlayerGameLog } from "./types.js";
 import { isOutOrDoubtful } from "./injury-match.js";
 import { displayPlayerName, normalizePlayerName } from "./player-names.js";
+import { gamesPlayedInLast10, isMeaningfulRotation } from "./rotation.js";
 
 const BOOST_RE =
   /\+\s*(\d+(?:\.\d+)?)\s*(pts|points|reb|rebounds|ast|assists|threes|3pm)/i;
@@ -38,7 +39,8 @@ function injIsSmall(delta: number, stat: string): boolean {
 function pickInjuryBoost(
   inj: InjuryEntry,
   picks: PickLeg[],
-  allowSoft: boolean
+  allowSoft: boolean,
+  playerLogsById?: Map<string, PlayerGameLog[]>
 ): { name: string; delta: number; stat: string } | null {
   let best: { name: string; delta: number; stat: string } | null = null;
   const official = inj.source === "NBA Official";
@@ -47,6 +49,11 @@ function pickInjuryBoost(
     if (leg.team !== inj.teamName) continue;
     if (leg.playerId === inj.playerId) continue;
     if ((leg.projectedMinutes ?? 0) < 12) continue;
+    const bLogs = playerLogsById?.get(leg.playerId);
+    if (bLogs) {
+      if (!isMeaningfulRotation(bLogs)) continue;
+      if (gamesPlayedInLast10(bLogs) < 3) continue;
+    }
     for (const r of leg.reasons) {
       if (!reasonMentionsInjury(r, inj)) continue;
       const m = r.match(BOOST_RE) ?? r.match(SOFT_OUT_RE);
@@ -71,6 +78,7 @@ function pickInjuryBoost(
 
 export interface WhatChangedOptions {
   slateGameIds?: Set<string>;
+  playerLogsById?: Map<string, PlayerGameLog[]>;
   onSkip?: (injury: InjuryEntry, detail: string) => void;
 }
 
@@ -86,10 +94,17 @@ export function buildWhatChanged(
     outs = outs.filter((i) => !i.gameId || opts.slateGameIds!.has(i.gameId));
   }
 
-  const scored = outs.map((inj) => {
-    const boost = pickInjuryBoost(inj, picks, true);
-    return { inj, boost, score: boost?.delta ?? 0 };
-  });
+  const scored: { inj: InjuryEntry; boost: ReturnType<typeof pickInjuryBoost>; score: number }[] =
+    [];
+  for (const inj of outs) {
+    const logs = opts.playerLogsById?.get(inj.playerId);
+    if (logs && !isMeaningfulRotation(logs)) {
+      opts.onSkip?.(inj, "injured player not meaningful rotation");
+      continue;
+    }
+    const boost = pickInjuryBoost(inj, picks, true, opts.playerLogsById);
+    scored.push({ inj, boost, score: boost?.delta ?? 0 });
+  }
 
   const duncanOfficial = outs.find(
     (i) => i.playerName === "Duncan Robinson" && i.source === "NBA Official"
