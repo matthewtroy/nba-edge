@@ -34,6 +34,28 @@ function LastTenBarChart({
   if (!ticks.length) return null;
   const shown = ticks.slice(0, 10);
   const nums = values?.slice(0, 10) ?? [];
+  const hasStatValues = nums.length > 0 && nums.some((v) => v != null);
+  if (!hasStatValues) {
+    return (
+      <div aria-label="Last 10 at line">
+        <div className="flex items-center gap-1 flex-wrap">
+          {shown.map((t, i) => (
+            <span
+              key={i}
+              className={`w-2 h-2 rounded-full ${
+                t === "hit"
+                  ? "bg-price-green"
+                  : t === "miss"
+                    ? "bg-red-400"
+                    : "bg-white/20"
+              }`}
+            />
+          ))}
+        </motion.div>
+        <p className="text-[10px] text-white/45 mt-1.5">Stat values unavailable</p>
+      </div>
+    );
+  }
   const maxVal = Math.max(line, ...nums.filter((v): v is number => v != null), 1);
   return (
     <div className="flex items-end gap-1 h-14" aria-label="Last 10 at line">
@@ -166,7 +188,7 @@ export function LegSheet({
     modelLeg.recentVsLine ??
     leg.recentVsLine ??
     [];
-  const last10Vals = leg.lastTenStatValues ?? modelLeg.lastTenStatValues;
+  const last10Vals = modelLeg.lastTenStatValues ?? leg.lastTenStatValues;
   const isQ1 = modelLeg.market.startsWith("q1");
   const feedPrice = bookieView.displayPrice;
 

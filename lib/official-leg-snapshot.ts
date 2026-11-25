@@ -108,6 +108,18 @@ export function picksByIdFromOfficialSnapshots(
     const leg = pickLegFromSnapshot(snap);
     leg.reasons = reasons;
     leg.reasonLine = topReasonLines(reasons, 3);
+    if (
+      (!leg.lastTenStatValues || leg.lastTenStatValues.length === 0) &&
+      live?.lastTenStatValues?.length
+    ) {
+      leg.lastTenStatValues = [...live.lastTenStatValues];
+    }
+    if (
+      (!leg.recentTenVsLine || leg.recentTenVsLine.length === 0) &&
+      live?.recentTenVsLine?.length
+    ) {
+      leg.recentTenVsLine = [...live.recentTenVsLine];
+    }
     out.set(id, leg);
   }
   for (const p of livePicks) {
