@@ -2,10 +2,8 @@ import type { InjuryEntry, MultiBet, PickLeg, SlateGame } from "@lib/types";
 import { AU_BOOKMAKERS } from "@lib/types";
 import { MultiLegRow } from "./MultiLegRow";
 import { renderMultiCardCopyText } from "@lib/multi-card-text";
-import { NO_SINGLE_BOOKIE_NOTE } from "@lib/multi-display";
 import { useMultiBookieSelect } from "../hooks/useMultiBookieSelect";
-import { earliestTipIso } from "@lib/official-card-time";
-import { formatSydneyOddsTime } from "@lib/leg-tip";
+import { multiCardTitle } from "@lib/multi-combined";
 
 interface Props {
   multi: MultiBet;
@@ -15,7 +13,6 @@ interface Props {
   preferredBookie?: string;
   lockedBookie?: string;
   publishedAt?: string;
-  oddsLastPulled?: string;
   discordCopy?: boolean;
   onRemove?: () => void;
   onLegTap: (leg: PickLeg) => void;
@@ -33,6 +30,8 @@ export const FORBIDDEN_MULTI_CARD_STRINGS = [
   "Small slate",
   "cross-book",
   "Best across books",
+  "Best multi odds",
+  "once",
 ] as const;
 
 export function multiCardPlainText(multi: MultiBet, legs: PickLeg[] = []): string {
@@ -43,44 +42,31 @@ export function MultiCard({
   multi,
   picksById,
   injuries,
-  slate = [],
   preferredBookie,
   lockedBookie,
   publishedAt,
-  oddsLastPulled,
   discordCopy = false,
   onRemove,
   onLegTap,
   onCopy,
 }: Props) {
   const legs = multi.legs.map((id) => picksById.get(id)).filter(Boolean) as PickLeg[];
-  const title =
-    multi.variant != null ? `${multi.label} (${multi.variant})` : multi.label;
 
-  const { bookie, select, total } = useMultiBookieSelect(
+  const { bookie, select } = useMultiBookieSelect(
     multi,
     legs,
     preferredBookie,
     lockedBookie
   );
-  const displayBook = lockedBookie ?? bookie;
-  const displayTotal =
-    displayBook != null ? total ?? undefined : total;
+  const displayBook = lockedBookie ?? bookie ?? multi.bestBookie;
 
-  const tipIso = slate.length ? earliestTipIso(legs, slate) : null;
-  const tipNote =
-    tipIso != null
-      ? `First tip ${formatSydneyOddsTime(tipIso) ?? tipIso}`
-      : null;
-  const oddsNote = oddsLastPulled
-    ? `Odds as at ${formatSydneyOddsTime(oddsLastPulled) ?? oddsLastPulled}`
-    : null;
+  const { headline, subline } = multiCardTitle(multi, legs);
 
   return (
     <section className="bg-card rounded-xl border border-white/10 overflow-hidden mb-3">
       <header className="px-4 py-3 bg-surface/80 border-b border-white/5">
         <div className="flex justify-between gap-2">
-          <h3 className="font-semibold text-lg">{title}</h3>
+          <h3 className="font-semibold text-lg leading-snug">{headline}</h3>
           {onRemove && (
             <button type="button" className="text-xs text-white/50" onClick={onRemove}>
               Remove
@@ -88,21 +74,16 @@ export function MultiCard({
           )}
         </div>
         {publishedAt && lockedBookie && (
-          <p className="text-xs text-white/55">
-            Published {formatSydneyOddsTime(publishedAt) ?? publishedAt}
+          <p className="text-xs text-white/55 mt-0.5">
+            Published {new Date(publishedAt).toLocaleString("en-AU", {
+              timeZone: "Australia/Sydney",
+              hour: "numeric",
+              minute: "2-digit",
+              hour12: true,
+            })}
           </p>
         )}
-        <p className="text-base font-semibold text-accent-high mt-1">
-          Take at ${multi.combinedTakeAt.toFixed(2)}+ once
-        </p>
-        <p className="text-sm text-white/70">
-          Fair ${multi.combinedFairPrice.toFixed(2)}
-        </p>
-        {(tipNote || oddsNote) && (
-          <p className="text-xs text-white/55 mt-1">
-            {[tipNote, oddsNote].filter(Boolean).join(" · ")}
-          </p>
-        )}
+        <p className="text-sm text-white/70 mt-1">{subline}</p>
       </header>
       <div className="px-2 divide-y divide-white/5">
         {legs.map((leg) => (
@@ -112,24 +93,11 @@ export function MultiCard({
             injuries={injuries}
             picks={Array.from(picksById.values())}
             bookie={displayBook}
-            slate={slate}
-            oddsLastPulled={oddsLastPulled}
             onTap={onLegTap}
           />
         ))}
       </div>
-      <div className="p-3 bg-surface/40 space-y-2">
-        {displayBook && displayTotal != null && displayTotal >= multi.combinedTakeAt ? (
-          <p className="text-xs text-accent-value">
-            Multi odds: {displayBook} ${displayTotal.toFixed(2)}+
-          </p>
-        ) : displayBook && displayTotal != null ? (
-          <p className="text-xs text-white/70">
-            Multi odds: {displayBook} ${displayTotal.toFixed(2)}+ (below take-at)
-          </p>
-        ) : (
-          <p className="text-xs text-white/60">{NO_SINGLE_BOOKIE_NOTE}</p>
-        )}
+      <div className="p-3 bg-surface/40">
         <div className="flex gap-2 items-center">
           {lockedBookie ? (
             <p className="flex-1 text-sm text-white/70 py-2">Bookie: {lockedBookie}</p>

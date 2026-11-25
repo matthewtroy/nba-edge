@@ -6,11 +6,8 @@ import {
   assertNoForbiddenStrings,
   formatMultiHeadline,
 } from "./multi-card-text.js";
-import {
-  NO_SINGLE_BOOKIE_NOTE,
-  formatLegLineAtBookie,
-  formatMultiBookieLine,
-} from "./multi-display.js";
+import { formatLegLineAtBookie } from "./multi-display.js";
+import { verifyTakeAtIsFairEdge } from "./multi-card-text.js";
 
 function formatSydneyTime(iso: string): string {
   return new Date(iso).toLocaleString("en-AU", {
@@ -80,15 +77,14 @@ export function renderTodayText(input: {
   }
 
   for (const multi of multis) {
-    const title = multi.variant ? `${multi.label} (${multi.variant})` : multi.label;
-    lines.push(title);
-    lines.push(`  ${formatMultiHeadline(multi)}`);
     const legs = multi.legs
       .map((id) => input.picksById.get(id))
       .filter(Boolean) as PickLeg[];
-    const bookieLine = formatMultiBookieLine(multi, legs, cardBookie);
-    if (bookieLine) lines.push(`  ${bookieLine}`);
-    else lines.push(`  ${NO_SINGLE_BOOKIE_NOTE}`);
+    if (legs.length) verifyTakeAtIsFairEdge(multi, legs);
+    const headline = formatMultiHeadline(multi, legs);
+    for (const line of headline.split("\n")) {
+      lines.push(`  ${line}`);
+    }
     for (const leg of legs) {
       lines.push(`  ${formatLegLineAtBookie(leg, cardBookie)}`);
     }

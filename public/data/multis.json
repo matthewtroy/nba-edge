@@ -11,7 +11,7 @@
       ],
       "combinedProbability": 0.19176809324400002,
       "combinedFairPrice": 5.21,
-      "combinedTakeAt": 7.07,
+      "combinedTakeAt": 5.63,
       "bookieTotals": {},
       "summary": "4 starter main lines"
     },
@@ -26,7 +26,7 @@
       ],
       "combinedProbability": 0.041570378388,
       "combinedFairPrice": 24.06,
-      "combinedTakeAt": 32.75,
+      "combinedTakeAt": 25.98,
       "bookieTotals": {},
       "summary": "Main Play +1 rung where fair ≤4, else same rung"
     },
@@ -41,7 +41,7 @@
       ],
       "combinedProbability": 0.078171852,
       "combinedFairPrice": 12.79,
-      "combinedTakeAt": 16.12,
+      "combinedTakeAt": 13.81,
       "bookieTotals": {},
       "summary": "Value Q1: fair 2.20–4.00, one leg/team"
     },
@@ -54,7 +54,7 @@
       ],
       "combinedProbability": 0.011830000000000002,
       "combinedFairPrice": 84.53,
-      "combinedTakeAt": 98.19,
+      "combinedTakeAt": 91.29,
       "bookieTotals": {},
       "summary": "One long leg per game"
     }

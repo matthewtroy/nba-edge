@@ -221,7 +221,13 @@ export function runModel(input: ModelRunInput): {
     });
   });
 
-  const multiResult = buildMultis(eligiblePicks, input.slate.length);
+  const edgeFraction =
+    input.minEdge != null && input.minEdge > 1
+      ? input.minEdge - 1
+      : input.minEdge != null
+        ? input.minEdge
+        : 0.08;
+  const multiResult = buildMultis(eligiblePicks, input.slate.length, 300, edgeFraction);
   const injuryImpactLog: string[] = [];
   const whatChanged =
     input.whatChanged && input.whatChanged.length

@@ -21,20 +21,25 @@ const leg: PickLeg = {
 
 describe("MultiCard layout strings", () => {
   it("does not embed forbidden strings", () => {
+    const legs = [leg, { ...leg, id: "b" }, { ...leg, id: "c" }, { ...leg, id: "d" }];
+    const p = 0.6 ** 4;
+    const fair = Math.round((1 / p) * 100) / 100;
+    const takeAt = Math.round(fair * 1.08 * 100) / 100;
     const multi: MultiBet = {
       type: "mainPlay",
       label: "Main Play",
-      legs: ["a"],
-      combinedProbability: 0.1,
-      combinedFairPrice: 6.77,
-      combinedTakeAt: 9.99,
-      oneInX: 10,
+      legs: legs.map((l) => l.id),
+      combinedProbability: p,
+      combinedFairPrice: fair,
+      combinedTakeAt: takeAt,
       summary: "starter main lines",
     };
-    const blob = multiCardPlainText(multi, [leg]);
+    const blob = multiCardPlainText(multi, legs);
     for (const bad of FORBIDDEN_MULTI_CARD_STRINGS) {
       expect(blob.includes(bad)).toBe(false);
     }
-    expect(blob).toContain("Take at $9.99+ once (Fair $6.77)");
+    expect(blob).toMatch(new RegExp(`@ take at \\$${takeAt.toFixed(2)}\\+`));
+    expect(blob).toContain(`fair $${fair.toFixed(2)}`);
+    expect(blob).not.toContain("once");
   });
 });

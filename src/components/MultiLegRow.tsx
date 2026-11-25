@@ -1,9 +1,7 @@
 import type { InjuryEntry, PickLeg } from "@lib/types";
 import { marketLabel } from "@lib/market-label";
-import { legPriceAtBookie } from "@lib/single-bookie";
 import { displayTagsForBookie } from "@lib/value-at-bookie";
-import { formatSydneyOddsTime, tipLabelForLeg } from "@lib/leg-tip";
-import type { SlateGame } from "@lib/types";
+import { legOddsDisplayLine } from "@lib/multi-combined";
 import { topBeneficiaryLastNames } from "@lib/injury-beneficiaries";
 import { useQuestionableSwaps } from "../hooks/useQuestionableSwaps";
 
@@ -12,20 +10,10 @@ interface Props {
   injuries: InjuryEntry[];
   picks: PickLeg[];
   bookie?: string;
-  slate?: SlateGame[];
-  oddsLastPulled?: string;
   onTap: (leg: PickLeg) => void;
 }
 
-export function MultiLegRow({
-  leg,
-  injuries,
-  picks,
-  bookie,
-  slate = [],
-  oddsLastPulled,
-  onTap,
-}: Props) {
+export function MultiLegRow({ leg, injuries, picks, bookie, onTap }: Props) {
   const { swapAsOut, reset, isCountedOut } = useQuestionableSwaps();
   const countedOut = leg.questionable && isCountedOut(leg.playerId);
 
@@ -35,12 +23,8 @@ export function MultiLegRow({
   const sitNames =
     inj && countedOut ? topBeneficiaryLastNames(inj, picks).join(", ") : "";
 
-  const atBook =
-    bookie != null ? legPriceAtBookie(leg, bookie) : undefined;
   const tags = displayTagsForBookie(leg, bookie);
-  const tip = tipLabelForLeg(leg, slate);
-  const oddsAt =
-    formatSydneyOddsTime(leg.oddsPulledAt ?? oddsLastPulled) ?? null;
+  const oddsLine = legOddsDisplayLine(leg, bookie);
 
   return (
     <div className="py-3 px-1">
@@ -83,23 +67,8 @@ export function MultiLegRow({
             )}
           </div>
         </div>
-        <div className="text-right text-sm shrink-0 max-w-[42%]">
-          <div>Take at ${leg.takeAt.toFixed(2)}+</div>
-          {tip && <div className="text-xs text-white/45 mt-0.5">{tip}</div>}
-          {bookie ? (
-            atBook != null ? (
-              <div className="text-xs text-accent-value mt-0.5">
-                ${atBook.toFixed(2)}+ ({bookie})
-              </div>
-            ) : (
-              <div className="text-xs text-white/50 mt-0.5">
-                Not offered ({bookie})
-              </div>
-            )
-          ) : null}
-          {oddsAt && bookie && (
-            <div className="text-[10px] text-white/40 mt-0.5">Odds {oddsAt}</div>
-          )}
+        <div className="text-right text-xs shrink-0 max-w-[50%] leading-snug text-white/80">
+          {oddsLine}
         </div>
       </button>
       {leg.questionable && inj && (

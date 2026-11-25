@@ -55,12 +55,17 @@ describe("games SGM", () => {
       combinedTakeAt: 10.8,
       summary: "",
     };
+    const picks = [
+      leg("l1", { fairPrice: 1.55, probability: 0.65, line: 15 }),
+      leg("l2", { fairPrice: 1.6, probability: 0.62, playerName: "B", line: 10, market: "reb" }),
+      leg("l3", { fairPrice: 1.7, probability: 0.58, playerName: "C", line: 5, market: "ast" }),
+    ];
     const text = renderGamesText({
       slate: [game],
-      picks: [leg("l1")],
+      picks,
       multis: [multi],
     });
     expect(text).toContain("Games");
-    expect(text).toContain("take-at");
+    expect(text).toMatch(/SGM @|no 3-leg SGM/);
   });
 });

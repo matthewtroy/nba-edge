@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { gateMulti } from "../lib/multi-gate";
+import { combinedFairAndTakeAt } from "../lib/multi-combined";
 import type { MultiBet, PickLeg } from "../lib/types";
 
 const leg: PickLeg = {
@@ -87,10 +88,12 @@ describe("multi gate", () => {
     ];
     const quote = legs.map((l) => ({ ...l, takeAt: 1.55, bookiePrices: { Sportsbet: 1.56 } }));
     quote[0].probability = 0.7;
+    const { fair, takeAt } = combinedFairAndTakeAt(quote);
     const r = gateMulti(
       {
         ...m,
-        combinedTakeAt: Math.round(quote.reduce((a, l) => a * l.takeAt, 1) * 100) / 100,
+        combinedTakeAt: takeAt,
+        combinedFairPrice: fair,
         bestBookieTotal: 5.92,
         bestBookie: "Sportsbet",
       },

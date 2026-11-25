@@ -1,10 +1,12 @@
 import type { MultiBet, PickLeg } from "./types.js";
 import {
-  NO_SINGLE_BOOKIE_NOTE,
-  assertNoMixedBookieCopy,
-  formatLegLineAtBookie,
-  formatMultiBookieLine,
-} from "./multi-display.js";
+  combinedFairAndTakeAt,
+  DEFAULT_MIN_EDGE,
+  legOddsDisplayLine,
+  multiCardTitle,
+} from "./multi-combined.js";
+import { assertNoMixedBookieCopy } from "./multi-display.js";
+import { marketLabel } from "./market-label.js";
 
 export const FORBIDDEN_TODAY_STRINGS = [
   "~1 in",
@@ -16,15 +18,17 @@ export const FORBIDDEN_TODAY_STRINGS = [
   "Copy betslip",
   "cross-book",
   "Best across books",
+  "Best multi odds",
 ] as const;
 
-export function formatMultiHeadline(multi: MultiBet): string {
-  return `Take at $${multi.combinedTakeAt.toFixed(2)}+ once (Fair $${multi.combinedFairPrice.toFixed(2)})`;
+export function formatMultiHeadline(multi: MultiBet, legs: PickLeg[]): string {
+  const { headline, subline } = multiCardTitle(multi, legs, DEFAULT_MIN_EDGE);
+  return `${headline}\n${subline}`;
 }
 
-/** @deprecated use formatLegLineAtBookie */
-export function formatLegLine(leg: PickLeg, bookie?: string): string {
-  return formatLegLineAtBookie(leg, bookie);
+export function formatLegLineAtBookie(leg: PickLeg, bookie?: string): string {
+  const label = `${leg.playerName} ${marketLabel(leg.market, leg.line)}`;
+  return `${label} · ${legOddsDisplayLine(leg, bookie)}`;
 }
 
 export function renderMultiCardCopyText(
@@ -32,13 +36,12 @@ export function renderMultiCardCopyText(
   legs: PickLeg[],
   bookie?: string
 ): string {
-  const title = multi.variant ? `${multi.label} (${multi.variant})` : multi.label;
-  const lines = [title, formatMultiHeadline(multi)];
-  const bookieLine = formatMultiBookieLine(multi, legs, bookie);
-  if (bookieLine) lines.push(bookieLine);
-  else lines.push(NO_SINGLE_BOOKIE_NOTE);
+  const { headline, subline } = multiCardTitle(multi, legs, DEFAULT_MIN_EDGE);
+  const lines = [headline, subline];
   const rowBook = multi.bestBookie ?? bookie;
-  for (const leg of legs) lines.push(formatLegLineAtBookie(leg, rowBook));
+  for (const leg of legs) {
+    lines.push(formatLegLineAtBookie(leg, rowBook));
+  }
   const text = lines.join("\n");
   assertNoMixedBookieCopy(text);
   return text;
@@ -56,5 +59,14 @@ export function assertNoForbiddenStrings(text: string, extraForbidden: string[] 
   assertNoMixedBookieCopy(text);
   if (/Small slate\n[\s\S]*Small slate/.test(text)) {
     throw new Error("Small slate appears more than once in Today proof");
+  }
+}
+
+export function verifyTakeAtIsFairEdge(multi: MultiBet, legs: PickLeg[]): void {
+  const { fair, takeAt } = combinedFairAndTakeAt(legs, DEFAULT_MIN_EDGE);
+  if (Math.abs(multi.combinedTakeAt - takeAt) > 0.02) {
+    throw new Error(
+      `Multi take-at ${multi.combinedTakeAt} ≠ fair×1.08 ${takeAt} (fair ${fair})`
+    );
   }
 }

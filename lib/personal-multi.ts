@@ -1,6 +1,6 @@
 import type { MultiBet, PickLeg } from "./types.js";
-import { combinedBetPrice } from "./multis.js";
 import { multiHasClash } from "./clash.js";
+import { combinedFairAndTakeAt } from "./multi-combined.js";
 
 export interface PersonalMultiDraft {
   id: string;
@@ -16,9 +16,7 @@ export function buildPersonalMultiBet(
   const legs = draft.legIds.map((id) => picksById.get(id)).filter(Boolean) as PickLeg[];
   if (legs.length < 2 || legs.length !== draft.legIds.length) return null;
   if (multiHasClash(legs)) return null;
-  const p = legs.reduce((acc, l) => acc * l.probability, 1);
-  const fair = Math.round((1 / p) * 100) / 100;
-  const takeAt = Math.round(legs.reduce((acc, l) => acc * l.takeAt, 1) * 100) / 100;
+  const { p, fair, takeAt } = combinedFairAndTakeAt(legs);
   return {
     type: "mainPlay",
     label: draft.label,
@@ -33,5 +31,5 @@ export function buildPersonalMultiBet(
 }
 
 export function personalMultiPrice(legs: PickLeg[]): number {
-  return combinedBetPrice(legs);
+  return combinedFairAndTakeAt(legs).fair;
 }

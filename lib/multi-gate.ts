@@ -7,6 +7,7 @@ import {
   qualifiesMainPlayLeg,
   qualifiesCrossBoostLeg,
 } from "./main-play-eligibility.js";
+import { combinedFairAndTakeAt, DEFAULT_MIN_EDGE } from "./multi-combined.js";
 
 const MIN_LEG_FAIR = 1.3;
 
@@ -19,6 +20,11 @@ function isQ1Market(market: string): boolean {
   return market.startsWith("q1");
 }
 
+function expectedMultiTakeAt(legs: PickLeg[]): number {
+  return combinedFairAndTakeAt(legs, DEFAULT_MIN_EDGE).takeAt;
+}
+
+/** Product of per-leg take-ats — used only for builder range rules (7–10 etc.). */
 function takeAtProduct(legs: PickLeg[]): number {
   return Math.round(legs.reduce((acc, l) => acc * l.takeAt, 1) * 100) / 100;
 }
@@ -151,9 +157,9 @@ export function gateMulti(
     }
   }
 
-  const takeAt = takeAtProduct(legs);
+  const takeAt = expectedMultiTakeAt(legs);
   if (Math.abs(takeAt - multi.combinedTakeAt) > 0.02) {
-    violations.push(`${label}: combinedTakeAt ${multi.combinedTakeAt} ≠ legs ${takeAt}`);
+    violations.push(`${label}: combinedTakeAt ${multi.combinedTakeAt} ≠ fair×edge ${takeAt}`);
   }
 
   violations.push(...checkTypeRules(multi.type, legs, label));

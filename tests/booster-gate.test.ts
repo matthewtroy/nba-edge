@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { gateMulti } from "../lib/multi-gate";
+import { combinedFairAndTakeAt } from "../lib/multi-combined";
 import type { MultiBet, PickLeg } from "../lib/types";
 
 function leg(pid: string, line: number, takeAt: number): PickLeg {
@@ -26,27 +27,25 @@ describe("Booster gate", () => {
   it("allows mixed stepped and kept Main rungs", () => {
     const mainLegs = [leg("a", 20, 1.65), leg("b", 20, 1.66), leg("c", 20, 1.67)];
     const boostLegs = [leg("a", 25, 2.5), leg("b", 20, 1.66), leg("c", 25, 2.55)];
-    const mainTakeAt =
-      Math.round(mainLegs.reduce((acc, l) => acc * l.takeAt, 1) * 100) / 100;
+    const mainFair = combinedFairAndTakeAt(mainLegs);
     const main: MultiBet = {
       type: "mainPlay",
       label: "Main Play",
       legs: mainLegs.map((l) => l.id),
-      combinedProbability: 0.2,
-      combinedFairPrice: 5,
-      combinedTakeAt: mainTakeAt,
+      combinedProbability: mainFair.p,
+      combinedFairPrice: mainFair.fair,
+      combinedTakeAt: mainFair.takeAt,
       bookieTotals: {},
       summary: "",
     };
-    const boostTakeAt =
-      Math.round(boostLegs.reduce((acc, l) => acc * l.takeAt, 1) * 100) / 100;
+    const boostFair = combinedFairAndTakeAt(boostLegs);
     const booster: MultiBet = {
       type: "booster",
       label: "Booster",
       legs: boostLegs.map((l) => l.id),
-      combinedProbability: 0.1,
-      combinedFairPrice: 10,
-      combinedTakeAt: boostTakeAt,
+      combinedProbability: boostFair.p,
+      combinedFairPrice: boostFair.fair,
+      combinedTakeAt: boostFair.takeAt,
       bookieTotals: {},
       summary: "",
     };

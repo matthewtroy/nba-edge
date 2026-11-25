@@ -11,6 +11,10 @@ import { bestSingleBookieQuote } from "./single-bookie.js";
 import { multiBookieTotals } from "./bookie-totals.js";
 import { multiClashSummary } from "./clash.js";
 import { gateAllMultis } from "./multi-gate.js";
+import {
+  combinedFairAndTakeAt,
+  DEFAULT_MIN_EDGE,
+} from "./multi-combined.js";
 
 export interface MultiBuildResult {
   bets: MultiBet[];
@@ -20,15 +24,14 @@ export interface MultiBuildResult {
 
 export const MIN_LEG_FAIR = 1.3;
 
+let multiMinEdge = DEFAULT_MIN_EDGE;
+
 function combinedPrice(legs: PickLeg[]): {
   p: number;
   fair: number;
   takeAt: number;
 } {
-  const p = legs.reduce((acc, l) => acc * l.probability, 1);
-  const fair = Math.round((1 / p) * 100) / 100;
-  const takeAt = Math.round(legs.reduce((acc, l) => acc * l.takeAt, 1) * 100) / 100;
-  return { p, fair, takeAt };
+  return combinedFairAndTakeAt(legs, multiMinEdge);
 }
 
 function legMeetsTakeAt(leg: PickLeg): boolean {
@@ -127,8 +130,10 @@ const LABELS: Record<MultiType, string> = {
 export function buildMultis(
   picks: PickLeg[],
   slateSize: number,
-  targetProfit = 300
+  targetProfit = 300,
+  minEdgeFraction = DEFAULT_MIN_EDGE
 ): MultiBuildResult {
+  multiMinEdge = minEdgeFraction;
   const pool = picks.filter(meetsFloor);
   const byP = [...pool].sort(sortLegs);
   const notBuilt: MultiNotBuilt[] = [];

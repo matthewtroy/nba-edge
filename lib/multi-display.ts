@@ -5,9 +5,10 @@ import {
   legPriceAtBookie,
 } from "./single-bookie.js";
 import { marketLabel } from "./market-label.js";
+import { legOddsDisplayLine } from "./multi-combined.js";
 
 export const NO_SINGLE_BOOKIE_NOTE =
-  "No bookie currently beats the take-at: check bet365";
+  "No single bookie prices every leg: check bet365";
 
 export const FORBIDDEN_MULTI_ODDS_WORDS = [
   "cross-book",
@@ -38,11 +39,7 @@ export function pickDefaultBookie(
 }
 
 export function formatLegLineAtBookie(leg: PickLeg, bookie?: string): string {
-  const base = `${leg.playerName} ${marketLabel(leg.market, leg.line)} · Take at $${leg.takeAt.toFixed(2)}+`;
-  if (!bookie) return base;
-  const p = legPriceAtBookie(leg, bookie);
-  if (p == null) return `${base} · Not offered (${bookie})`;
-  return `${base} · $${p.toFixed(2)}+ (${bookie})`;
+  return `${leg.playerName} ${marketLabel(leg.market, leg.line)} · ${legOddsDisplayLine(leg, bookie)}`;
 }
 
 export function formatMultiBookieLine(
