@@ -1,3 +1,6 @@
+import type { OfficialCardMeta } from "./official-card-time.js";
+export type { OfficialCardMeta } from "./official-card-time.js";
+
 export type InjuryStatus = "Out" | "Doubtful" | "Questionable" | "Probable" | "Available";
 
 export type Market =
@@ -118,6 +121,7 @@ export interface MetaJson {
   sources: Record<string, SourceHealth | string>;
   slateSize: number;
   smallSlate?: boolean;
+  officialCard?: OfficialCardMeta;
   whatChanged?: string[];
   nbaOfficialUrl?: string;
   nbaOfficialLastTriedUrl?: string;

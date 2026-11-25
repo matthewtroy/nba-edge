@@ -8,6 +8,7 @@ import type {
   MetaJson,
   HistoryJson,
 } from "@lib/types";
+import type { OfficialCardFile } from "@lib/official-card-time";
 
 export interface DataBundle {
   slate: SlateGame[];
@@ -15,6 +16,7 @@ export interface DataBundle {
   picks: PickLeg[];
   multis: MultiBet[];
   multisNotBuilt: MultiNotBuilt[];
+  officialCard: OfficialCardFile | null;
   meta: MetaJson & { whatChanged?: string[] };
   history: HistoryJson;
   loading: boolean;
@@ -48,6 +50,7 @@ export function useData(): DataBundle {
     picks: [],
     multis: [],
     multisNotBuilt: [],
+    officialCard: null,
     meta: { lastUpdated: "", sources: {}, slateSize: 0 },
     history: { legs: [], multis: [], calibration: [] },
     loading: true,
@@ -69,12 +72,19 @@ export function useData(): DataBundle {
           fetchDataJson<HistoryJson>("history.json", v),
         ]);
         const { bets, notBuilt } = parseMultisJson(multisRaw);
+        let officialCard: OfficialCardFile | null = null;
+        try {
+          officialCard = await fetchDataJson<OfficialCardFile>("official-card.json", v);
+        } catch {
+          /* no lock yet */
+        }
         setState({
           slate,
           injuries,
           picks,
           multis: bets,
           multisNotBuilt: notBuilt,
+          officialCard,
           meta,
           history,
           loading: false,

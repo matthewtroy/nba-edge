@@ -11,9 +11,11 @@ function storageKey(multi: MultiBet): string {
 export function useMultiBookieSelect(
   multi: MultiBet,
   legs: PickLeg[],
-  preferred?: string
+  preferred?: string,
+  locked?: string
 ) {
   const [bookie, setBookie] = useState<string | undefined>(() => {
+    if (locked) return locked;
     try {
       const saved = localStorage.getItem(storageKey(multi));
       if (saved) return saved;
@@ -24,8 +26,12 @@ export function useMultiBookieSelect(
   });
 
   useEffect(() => {
-  setBookie((prev) => prev ?? pickDefaultBookie(multi, legs, preferred));
-  }, [multi, legs, preferred]);
+    if (locked) {
+      setBookie(locked);
+      return;
+    }
+    setBookie((prev) => prev ?? pickDefaultBookie(multi, legs, preferred));
+  }, [multi, legs, preferred, locked]);
 
   const select = useCallback(
     (b: string) => {

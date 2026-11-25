@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { renderTodayText } from "../lib/today-text.js";
+import type { OfficialCardFile } from "../lib/official-card.js";
 import type { MetaJson, MultiBet, MultiNotBuilt, PickLeg, SlateGame } from "../lib/types.js";
 
 const root = path.resolve(import.meta.dirname, "..");
@@ -14,12 +15,19 @@ const multisRaw = JSON.parse(fs.readFileSync(path.join(data, "multis.json"), "ut
   notBuilt: MultiNotBuilt[];
 };
 
+let officialCard: OfficialCardFile | null = null;
+const officialPath = path.join(data, "official-card.json");
+if (fs.existsSync(officialPath)) {
+  officialCard = JSON.parse(fs.readFileSync(officialPath, "utf8")) as OfficialCardFile;
+}
+
 const text = renderTodayText({
   meta,
   slate,
   multis: multisRaw.bets,
   notBuilt: multisRaw.notBuilt,
   picksById: new Map(picks.map((p) => [p.id, p])),
+  officialCard,
 });
 
 console.log(text);

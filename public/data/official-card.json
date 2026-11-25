@@ -1,0 +1,334 @@
+{
+  "lockedAt": "2026-11-25T00:50:42.854Z",
+  "slateDate": "2026-11-25",
+  "bookie": "bet365",
+  "multis": [
+    {
+      "type": "mainPlay",
+      "label": "Main Play",
+      "legs": [
+        "5041939-ast-5",
+        "3112335-pts-25",
+        "5160992-reb-5",
+        "4277847-pts-10"
+      ],
+      "combinedProbability": 0.19176809324400002,
+      "combinedFairPrice": 5.21,
+      "combinedTakeAt": 7.07,
+      "bookieTotals": {},
+      "summary": "4 starter main lines"
+    },
+    {
+      "type": "booster",
+      "label": "Booster",
+      "legs": [
+        "5041939-ast-7",
+        "3112335-pts-30",
+        "5160992-reb-7",
+        "4277847-pts-10"
+      ],
+      "combinedProbability": 0.041570378388,
+      "combinedFairPrice": 24.06,
+      "combinedTakeAt": 32.75,
+      "bookieTotals": {},
+      "summary": "Main Play +1 rung where fair ≤4, else same rung"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Value",
+      "legs": [
+        "4066372-q1reb-2",
+        "4251-q1reb-3",
+        "3064290-q1reb-2"
+      ],
+      "combinedProbability": 0.078171852,
+      "combinedFairPrice": 12.79,
+      "combinedTakeAt": 16.12,
+      "bookieTotals": {},
+      "summary": "Value Q1: fair 2.20–4.00, one leg/team"
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot",
+      "legs": [
+        "3112335-pts-35",
+        "6583-pts-35"
+      ],
+      "combinedProbability": 0.011830000000000002,
+      "combinedFairPrice": 84.53,
+      "combinedTakeAt": 98.19,
+      "bookieTotals": {},
+      "summary": "One long leg per game"
+    }
+  ],
+  "notBuilt": [
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Safe",
+      "reason": "No Safe Q1 subset (p≥0.70, 3–6 teams, one leg/team)"
+    }
+  ],
+  "whatChanged": [
+    "Duncan Robinson out → Daniss Jenkins +2.6 pts",
+    "Cade Cunningham out → Daniss Jenkins +4.2 pts"
+  ],
+  "injuries": [
+    {
+      "playerId": "4351852",
+      "playerName": "Mitchell Robinson",
+      "teamId": "2",
+      "teamName": "Boston Celtics",
+      "gameId": "401909315",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "5106040",
+      "playerName": "Tobi Lawal",
+      "teamId": "6",
+      "teamName": "Dallas Mavericks",
+      "gameId": "401909316",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "p.j. washington",
+      "playerName": "P.J. Washington",
+      "teamId": "6",
+      "teamName": "Dallas Mavericks",
+      "gameId": "401909316",
+      "status": "Questionable",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerName": "Dereck Lively II",
+      "teamId": "6",
+      "teamName": "Dallas Mavericks",
+      "gameId": "401909316",
+      "status": "Out",
+      "source": "ESPN",
+      "updatedAt": "2026-11-20T19:31Z"
+    },
+    {
+      "playerName": "Sergio de Larrea",
+      "teamId": "6",
+      "teamName": "Dallas Mavericks",
+      "gameId": "401909316",
+      "status": "Out",
+      "source": "ESPN",
+      "updatedAt": "2026-11-17T22:53Z"
+    },
+    {
+      "playerName": "Tarik Biberovic",
+      "teamId": "6",
+      "teamName": "Dallas Mavericks",
+      "gameId": "401909316",
+      "status": "Out",
+      "source": "ESPN",
+      "updatedAt": "2026-11-17T22:42Z"
+    },
+    {
+      "playerName": "Cade Cunningham",
+      "teamId": "8",
+      "teamName": "Detroit Pistons",
+      "gameId": "401909314",
+      "status": "Out",
+      "source": "ESPN",
+      "updatedAt": "2026-11-24T23:36Z"
+    },
+    {
+      "playerId": "5258459",
+      "playerName": "Ebuka Okorie",
+      "teamId": "8",
+      "teamName": "Detroit Pistons",
+      "gameId": "401909314",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "2990962",
+      "playerName": "Taurean Prince",
+      "teamId": "8",
+      "teamName": "Detroit Pistons",
+      "gameId": "401909314",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "3157465",
+      "playerName": "Duncan Robinson",
+      "teamId": "8",
+      "teamName": "Detroit Pistons",
+      "gameId": "401909314",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "4433621",
+      "playerName": "Jalen Duren",
+      "teamId": "8",
+      "teamName": "Detroit Pistons",
+      "gameId": "401909314",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "4065654",
+      "playerName": "Jonathan Isaac",
+      "teamId": "19",
+      "teamName": "Orlando Magic",
+      "gameId": "401909314",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "5107251",
+      "playerName": "Izaiyah Nelson",
+      "teamId": "19",
+      "teamName": "Orlando Magic",
+      "gameId": "401909314",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "5214637",
+      "playerName": "Noah Penda",
+      "teamId": "19",
+      "teamName": "Orlando Magic",
+      "gameId": "401909314",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerName": "Paolo Banchero",
+      "teamId": "19",
+      "teamName": "Orlando Magic",
+      "gameId": "401909314",
+      "status": "Out",
+      "source": "ESPN",
+      "updatedAt": "2026-10-24T16:47Z"
+    },
+    {
+      "playerId": "4997537",
+      "playerName": "Tristan Vukcevic",
+      "teamId": "27",
+      "teamName": "Washington Wizards",
+      "gameId": "401909315",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerName": "Reece Beekman",
+      "teamId": "27",
+      "teamName": "Washington Wizards",
+      "gameId": "401909315",
+      "status": "Out",
+      "source": "ESPN",
+      "updatedAt": "2026-11-02T18:22Z"
+    },
+    {
+      "playerId": "4432907",
+      "playerName": "Justin Champagnie",
+      "teamId": "27",
+      "teamName": "Washington Wizards",
+      "gameId": "401909315",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "4606840",
+      "playerName": "Jamir Watkins",
+      "teamId": "27",
+      "teamName": "Washington Wizards",
+      "gameId": "401909315",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "5107818",
+      "playerName": "Isaac Jones",
+      "teamId": "8",
+      "teamName": "Detroit Pistons",
+      "gameId": "401909314",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "5037878",
+      "playerName": "Ugonna Onyenso",
+      "teamId": "8",
+      "teamName": "Detroit Pistons",
+      "gameId": "401909314",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "4397204",
+      "playerName": "Colin Castleton",
+      "teamId": "19",
+      "teamName": "Orlando Magic",
+      "gameId": "401909314",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "4702745",
+      "playerName": "Amari Williams",
+      "teamId": "2",
+      "teamName": "Boston Celtics",
+      "gameId": "401909315",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "4432819",
+      "playerName": "Tre Mann",
+      "teamId": "27",
+      "teamName": "Washington Wizards",
+      "gameId": "401909315",
+      "status": "Questionable",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "5105841",
+      "playerName": "Felix Okpara",
+      "teamId": "27",
+      "teamName": "Washington Wizards",
+      "gameId": "401909315",
+      "status": "Out",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    },
+    {
+      "playerId": "3138160",
+      "playerName": "Caleb Martin",
+      "teamId": "6",
+      "teamName": "Dallas Mavericks",
+      "gameId": "401909316",
+      "status": "Questionable",
+      "source": "NBA Official",
+      "updatedAt": "2026-11-25T00:50:35.224Z"
+    }
+  ],
+  "oddsLastPulled": "2026-11-24T22:58:43.102Z"
+}

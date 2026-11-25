@@ -11,6 +11,7 @@
     "build": "vite build",
     "preview": "vite preview --port 4180",
     "pipeline": "tsx scripts/pipeline.ts",
+    "lock-official-card": "tsx scripts/lock-official-card.ts",
     "pipeline:from-live": "tsx scripts/pipeline.ts --from-live",
     "odds-check": "tsx scripts/odds-check.ts",
     "test": "vitest run",

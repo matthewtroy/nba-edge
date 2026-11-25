@@ -49,6 +49,11 @@ import {
   tracePlayerOddsStages,
 } from "../lib/odds-attach.js";
 import { buildRosterIndex, mergeInjuryEntry } from "../lib/injury-match.js";
+import {
+  OFFICIAL_CARD_BOOKIE,
+  shouldLockOfficialCardNow,
+  writeOfficialCard,
+} from "../lib/official-card.js";
 
 const ET = "America/New_York";
 
@@ -411,25 +416,38 @@ export async function runLivePipeline(
     path.join(outDir, "multis.json"),
     JSON.stringify({ bets: multis, notBuilt: multisPayload.notBuilt }, null, 2)
   );
-  fs.writeFileSync(
-    path.join(outDir, "meta.json"),
-    JSON.stringify(
-      {
-        ...meta,
-        whatChanged,
-        ...(nbaOfficialUrl ? { nbaOfficialUrl } : {}),
-        ...(nbaOfficialLastTriedUrl ? { nbaOfficialLastTriedUrl } : {}),
-        ...(oddsCoverage.note ? { oddsCoverageNote: oddsCoverage.note } : {}),
-        pricedLegCounts,
-        ...(oddsAttachWarnings.length ? { oddsAttachWarnings } : {}),
-        ...(multisPayload.gateViolations?.length
-          ? { gateViolations: multisPayload.gateViolations }
-          : {}),
-      },
-      null,
-      2
-    )
-  );
+  const metaOut = {
+    ...meta,
+    whatChanged,
+    ...(nbaOfficialUrl ? { nbaOfficialUrl } : {}),
+    ...(nbaOfficialLastTriedUrl ? { nbaOfficialLastTriedUrl } : {}),
+    ...(oddsCoverage.note ? { oddsCoverageNote: oddsCoverage.note } : {}),
+    pricedLegCounts,
+    ...(oddsAttachWarnings.length ? { oddsAttachWarnings } : {}),
+    ...(multisPayload.gateViolations?.length
+      ? { gateViolations: multisPayload.gateViolations }
+      : {}),
+  };
+
+  if (shouldLockOfficialCardNow(now)) {
+    const official = writeOfficialCard(outDir, {
+      now,
+      slate,
+      multis,
+      notBuilt: multisPayload.notBuilt,
+      injuries,
+      meta: metaOut,
+      bookie: OFFICIAL_CARD_BOOKIE,
+    });
+    metaOut.officialCard = {
+      lockedAt: official.lockedAt,
+      slateDate: official.slateDate,
+      bookie: official.bookie,
+    };
+    console.log(`Official card locked (${official.slateDate}, ${official.bookie})`);
+  }
+
+  fs.writeFileSync(path.join(outDir, "meta.json"), JSON.stringify(metaOut, null, 2));
   fs.writeFileSync(path.join(outDir, "history.json"), JSON.stringify(history, null, 2));
   fs.writeFileSync(oddsCachePath, JSON.stringify(cache, null, 2));
 
