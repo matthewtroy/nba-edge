@@ -10,9 +10,9 @@
         "4903027-reb-7",
         "3136193-ast-5"
       ],
-      "combinedProbability": 0.18225629547552,
-      "combinedFairPrice": 5.49,
-      "combinedTakeAt": 5.93,
+      "combinedProbability": 0.18250192390608,
+      "combinedFairPrice": 5.48,
+      "combinedTakeAt": 5.92,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 11.59,
       "bookieTotals": {
@@ -31,9 +31,9 @@
         "4903027-reb-7",
         "3136193-ast-7"
       ],
-      "combinedProbability": 0.010933618821749997,
-      "combinedFairPrice": 91.46,
-      "combinedTakeAt": 98.78,
+      "combinedProbability": 0.010974877760699997,
+      "combinedFairPrice": 91.12,
+      "combinedTakeAt": 98.41,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 215.94,
       "bookieTotals": {
@@ -54,9 +54,9 @@
         "4396907-pts-20",
         "3136193-ast-5"
       ],
-      "combinedProbability": 0.05569890772407191,
-      "combinedFairPrice": 17.95,
-      "combinedTakeAt": 19.39,
+      "combinedProbability": 0.05577397363744668,
+      "combinedFairPrice": 17.93,
+      "combinedTakeAt": 19.36,
       "bestBookie": "TABtouch",
       "bestBookieTotal": 44.25,
       "bookieTotals": {
@@ -138,7 +138,7 @@
         "3908809-ast-5",
         "3992-pts-20"
       ],
-      "combinedProbability": 0.24250934400000002,
+      "combinedProbability": 0.242836176,
       "combinedFairPrice": 4.12,
       "combinedTakeAt": 4.45,
       "bestBookie": "Picklebet",
@@ -180,9 +180,9 @@
         "3136195-pts-30",
         "4066261-pts-30"
       ],
-      "combinedProbability": 0.033920000000000006,
-      "combinedFairPrice": 29.48,
-      "combinedTakeAt": 31.84,
+      "combinedProbability": 0.034048,
+      "combinedFairPrice": 29.37,
+      "combinedTakeAt": 31.72,
       "bestBookie": "PointsBet",
       "bestBookieTotal": 63.25,
       "bookieTotals": {
@@ -200,7 +200,7 @@
       "type": "longshot",
       "label": "Longshot",
       "variant": "2",
-      "reason": "Gate: Longshot: take-at 18.81 not 30–150 (legs: Karl-Anthony Towns 30+ pts, Victor Wembanyama 40+ pts)",
+      "reason": "Gate: Longshot: take-at 18.72 not 30–150 (legs: Karl-Anthony Towns 30+ pts, Victor Wembanyama 40+ pts)",
       "players": [
         "Karl-Anthony Towns",
         "Victor Wembanyama"
