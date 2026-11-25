@@ -12,6 +12,7 @@ import { useGamesSgmPreset } from "../hooks/useGamesSgmPreset";
 import { useGamesRoughies } from "../hooks/useGamesRoughies";
 import { formatOddsBand } from "@lib/game-sgm-builder";
 import { formatGameOddsAge, formatOddsFreshnessSummary } from "@lib/odds-freshness-ui";
+import { injuriesForBadges } from "@lib/injury-display";
 
 interface Props {
   data: DataBundle;
@@ -34,6 +35,7 @@ export function GamesScreen({
   onCopy,
   myBookie,
 }: Props) {
+  const badgeInjuries = injuriesForBadges(data.injuries);
   const { preset, setPreset, presets } = useGamesSgmPreset();
   const { roughiesOn, setRoughiesOn } = useGamesRoughies();
   const activeSlate = useMemo(() => gamesForCards(data.slate), [data.slate]);
@@ -180,7 +182,7 @@ export function GamesScreen({
                 <MultiCard
                   multi={multi}
                   picksById={picksById}
-                  injuries={data.injuries}
+                  injuries={badgeInjuries}
                   slate={activeSlate}
                   preferredBookie={myBookie}
                   fairOnly={slateFairOnly}

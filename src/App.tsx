@@ -15,6 +15,7 @@ import { GamesScreen } from "./screens/GamesScreen";
 import type { PickLeg } from "@lib/types";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { LoadingSkeleton } from "./components/LoadingSkeleton";
+import { injuriesForBadges } from "@lib/injury-display";
 
 type Tab = "today" | "picks" | "games" | "injuries" | "results";
 
@@ -33,6 +34,7 @@ export default function App() {
   }, []);
   const { date: slateDate, setDate: setSlateDate, segment } = useSlateDate(index);
   const data = useData(slateDate);
+  const badgeInjuries = injuriesForBadges(data.injuries);
   const { settings, setSettings } = useSettings();
   useEffect(() => {
     if (data.loading || !data.picks.length) return;
@@ -117,7 +119,7 @@ export default function App() {
         leg={leg}
         picks={data.picks}
         slate={data.slate}
-        injuries={data.injuries}
+        injuries={badgeInjuries}
         myBookie={settings.myBookie}
         onClose={() => setLeg(null)}
         onSelectLeg={setLeg}

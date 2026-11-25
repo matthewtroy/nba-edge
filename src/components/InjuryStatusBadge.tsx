@@ -1,4 +1,5 @@
 import type { InjuryStatus } from "@lib/types";
+export { injuryStatusForPlayer } from "@lib/injury-display";
 
 const SHOW: Set<InjuryStatus> = new Set(["Questionable", "Doubtful"]);
 
@@ -14,11 +15,4 @@ export function InjuryStatusBadge({ status }: { status?: InjuryStatus }) {
       {status}
     </span>
   );
-}
-
-export function injuryStatusForPlayer(
-  injuries: { playerId: string; status: InjuryStatus }[],
-  playerId: string
-): InjuryStatus | undefined {
-  return injuries.find((i) => i.playerId === playerId)?.status;
 }

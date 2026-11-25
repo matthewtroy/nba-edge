@@ -11,6 +11,7 @@ import {
 import { filterAndSortPicks, marketsOnSlate } from "../lib/picks-list";
 import { ui } from "../lib/card-type-scale";
 import { formatOddsFreshnessSummary } from "@lib/odds-freshness-ui";
+import { injuriesForBadges } from "@lib/injury-display";
 
 interface Props {
   data: DataBundle;
@@ -73,6 +74,7 @@ export function PicksScreen({
   myBookie = "bet365",
   onLegTap,
 }: Props) {
+  const badgeInjuries = injuriesForBadges(data.injuries);
   const [filters, patch, toggleSortDir] = usePicksFilters();
   const markets = useMemo(() => marketsOnSlate(data.picks), [data.picks]);
 
@@ -195,7 +197,7 @@ export function PicksScreen({
             <PickLegRow
               key={leg.id}
               leg={leg}
-              injuries={data.injuries}
+              injuries={badgeInjuries}
               slate={data.slate}
               myBookie={myBookie}
               onTap={onLegTap}

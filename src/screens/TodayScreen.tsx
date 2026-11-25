@@ -13,6 +13,7 @@ import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui"
 import { formatOddsFreshnessSummary } from "@lib/odds-freshness-ui";
 import { picksByIdFromOfficialSnapshots } from "@lib/official-leg-snapshot";
 import { formatHomeSettleSummary } from "@lib/home-settle-summary";
+import { injuriesForBadges } from "@lib/injury-display";
 
 const ORDER = [
   "mainPlay",
@@ -82,6 +83,8 @@ export function TodayScreen({
   const whatChanged = useOfficial
     ? official?.whatChanged
     : data.meta.whatChanged;
+
+  const badgeInjuries = injuriesForBadges(data.injuries);
 
   const cardPlayerIds = new Set(
     displayMultis.flatMap((m) =>
@@ -221,7 +224,7 @@ export function TodayScreen({
             key={`${m.type}-${m.variant ?? ""}-${m.legs.join()}`}
             multi={m}
             picksById={picksById}
-            injuries={data.injuries}
+            injuries={badgeInjuries}
             slate={data.slate}
             compact
             preferredBookie={myBookie}
@@ -261,7 +264,7 @@ export function TodayScreen({
               key={draftId}
               multi={multi}
               picksById={picksById}
-              injuries={data.injuries}
+              injuries={badgeInjuries}
               slate={data.slate}
               preferredBookie={myBookie}
               oddsLastPulled={data.meta.oddsLastPulled}
