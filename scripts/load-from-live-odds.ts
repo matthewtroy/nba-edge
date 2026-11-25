@@ -3,6 +3,7 @@ import path from "path";
 import { parseOddsKey } from "../lib/odds.js";
 import { normalizePlayerName } from "../lib/player-names.js";
 import type { PickLeg } from "../lib/types.js";
+import type { SlateOddsSnapshot } from "../lib/odds-cache-file.js";
 
 export interface FromLiveOddsEntry {
   playerName: string;
@@ -63,6 +64,19 @@ export function snapshotFromPicks(picks: PickLeg[], pulledAt: string): FromLiveO
     });
   }
   return { pulledAt, entries };
+}
+
+export function slateOddsSnapshotFromPicks(
+  picks: PickLeg[],
+  pulledAt: string
+): SlateOddsSnapshot {
+  const file = snapshotFromPicks(picks, pulledAt);
+  const { best, all } = oddsMapsFromSnapshot(file);
+  const oddsMap: Record<string, { price: number; bookie: string }> = {};
+  for (const [k, v] of best) oddsMap[k] = v;
+  const allOddsMap: Record<string, Record<string, number>> = {};
+  for (const [k, v] of all) allOddsMap[k] = v;
+  return { lastPulled: pulledAt, oddsMap, allOddsMap };
 }
 
 export function writeFromLiveOddsSnapshot(rootDir: string, file: FromLiveOddsFile): void {

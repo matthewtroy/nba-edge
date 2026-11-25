@@ -43,6 +43,7 @@ export async function pullBudgetedOddsForSlate(opts: {
   now: Date;
   budget: OddsBudgetConfig;
   trigger: OddsPullTrigger;
+  targetSlateDate?: string;
 }): Promise<BudgetedOddsResult | null> {
   const ranking = rankGamesByInjuryAngle(
     opts.targetSlate,
@@ -81,7 +82,7 @@ export async function pullBudgetedOddsForSlate(opts: {
       allOddsMap: new Map(),
       payloads: [],
       pulledGameIds: new Set(),
-      unpulledGameIds: new Set(opts.targetSlate.map((g) => g.id)),
+      unpulledGameIds: new Set(),
       ranking,
       creditsUsed: 0,
       creditsRemaining,
@@ -128,6 +129,14 @@ export async function pullBudgetedOddsForSlate(opts: {
   const bundles = extractOddsBundles(payloads);
   const postTip = isPostTipOff(opts.now, opts.unionSlate);
   const oddsMap = mergeBestOddsMaps(priorBest, bundles.best, { postTipOff: postTip });
+  const allOddsMap = new Map<string, Record<string, number>>();
+  const snap = opts.targetSlateDate
+    ? opts.cache.bySlateDate?.[opts.targetSlateDate]
+    : undefined;
+  if (snap?.allOddsMap) {
+    for (const [k, v] of Object.entries(snap.allOddsMap)) allOddsMap.set(k, v);
+  }
+  for (const [k, v] of bundles.all) allOddsMap.set(k, v);
   const unpulled = new Set(
     opts.targetSlate.filter((g) => !pulledIds.has(g.id)).map((g) => g.id)
   );
@@ -150,7 +159,7 @@ export async function pullBudgetedOddsForSlate(opts: {
 
   return {
     oddsMap,
-    allOddsMap: bundles.all,
+    allOddsMap,
     payloads,
     pulledGameIds: pulledIds,
     unpulledGameIds: unpulled,

@@ -43,6 +43,8 @@ export async function createSupabaseClient(
     const { createClient } = await import("@supabase/supabase-js");
     const client = createClient(url, secretKey, {
       auth: { persistSession: false, autoRefreshToken: false },
+      realtime: { params: { eventsPerSecond: 0 } },
+      global: { headers: { "X-Client-Info": "nba-edge-pipeline-rest" } },
     });
     const wrapper: SupabaseUpsertClient = {
       async upsert(table, rows, onConflict) {

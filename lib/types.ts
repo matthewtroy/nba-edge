@@ -135,6 +135,8 @@ export interface MetaJson {
   slateStatusLabel?: string;
   /** Per-game when odds budget skipped pull (UI reads later; JSON only). */
   gameOddsLabels?: Record<string, string>;
+  /** Per-game cached price timestamp label (Sydney), JSON only. */
+  gameOddsPriceAge?: Record<string, string>;
 }
 
 export interface HistoryLeg {

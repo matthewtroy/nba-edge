@@ -1,4 +1,6 @@
 import type { SlateGame } from "../lib/types.js";
+import type { OddsCacheFile } from "../lib/odds-cache-file.js";
+export type { OddsCacheFile } from "../lib/odds-cache-file.js";
 
 /** Sydney-local hour/minute parts */
 function sydneyParts(d: Date): { h: number; m: number } {
@@ -15,15 +17,6 @@ function sydneyParts(d: Date): { h: number; m: number } {
 }
 
 export type OddsPullTrigger = "scheduled_9pm" | "pretip" | "force";
-
-export interface OddsCacheFile {
-  lastPulled?: string;
-  creditsRemaining?: number;
-  pullSlotsToday?: string[];
-  oddsMap?: Record<string, { price: number; bookie: string }>;
-  /** Next-slate date last covered by scheduled_9pm (Sydney YYYY-MM-DD). */
-  lastScheduled9pmSlate?: string;
-}
 
 export interface ShouldPullOddsOpts {
   pretipPull?: boolean;

@@ -16,11 +16,8 @@ import { resolveOddsLastPulled } from "../lib/odds-pull-meta.js";
 import { buildOddsCoverage } from "../lib/odds-coverage.js";
 import { countPricedLegsByMarket, coverageAttachWarnings } from "../lib/odds-attach.js";
 import { slateTeamIds, slateTipDateFromGames } from "../lib/slate-today.js";
-import type { OddsCacheFile } from "./odds-schedule.js";
-import {
-  gameOddsLabelsForUnpulled,
-  stripBookiePricesForGames,
-} from "../lib/unpulled-odds.js";
+import type { OddsCacheFile } from "../lib/odds-cache-file.js";
+import { gameOddsLabelsForUnpulled, gameOddsPriceAge } from "../lib/unpulled-odds.js";
 
 export interface SlateBundleInput {
   rootDir: string;
@@ -79,10 +76,20 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   });
 
   let { picks, multis, multisPayload, meta, whatChanged } = modelRun;
-  if (input.unpulledGameIds?.size) {
-    picks = stripBookiePricesForGames(picks, input.unpulledGameIds);
-    const labels = gameOddsLabelsForUnpulled(input.unpulledGameIds);
-    if (labels) meta = { ...meta, gameOddsLabels: labels };
+  const unpulledLabels = input.unpulledGameIds?.size
+    ? gameOddsLabelsForUnpulled(picks, input.unpulledGameIds)
+    : undefined;
+  const priceAge = gameOddsPriceAge(
+    picks,
+    input.slate,
+    input.oddsPulledAt ?? input.cache.lastPulled
+  );
+  if (unpulledLabels || priceAge) {
+    meta = {
+      ...meta,
+      ...(unpulledLabels ? { gameOddsLabels: unpulledLabels } : {}),
+      ...(priceAge ? { gameOddsPriceAge: priceAge } : {}),
+    };
   }
   const existingOfficial = loadOfficialCard(outDir);
   const oddsCoverage = {
@@ -112,6 +119,7 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
       ? { gateViolations: multisPayload.gateViolations }
       : {}),
     ...(meta.gameOddsLabels ? { gameOddsLabels: meta.gameOddsLabels } : {}),
+    ...(meta.gameOddsPriceAge ? { gameOddsPriceAge: meta.gameOddsPriceAge } : {}),
   };
 
   if (

@@ -35,7 +35,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
           cache: npm
 
       - name: Detect run mode
@@ -57,7 +57,6 @@ jobs:
           git fetch origin data:data || true
           if git show-ref --quiet refs/heads/data; then
             git checkout data -- public/data/history.json public/data/odds-cache.json public/data/index.json public/data/game-log-cache.json 2>/dev/null || true
-            git checkout data -- public/data/ 2>/dev/null || true
           fi
 
       - run: npm ci
@@ -87,11 +86,21 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin data:data 2>/dev/null || git checkout --orphan data
+          mkdir -p /tmp/pipeline-data
+          cp -a public/data/. /tmp/pipeline-data/
+          git fetch origin data
+          if git show-ref --verify --quiet refs/remotes/origin/data; then
+            git checkout -B data origin/data
+          else
+            git checkout --orphan data
+            git rm -rf . 2>/dev/null || true
+          fi
           mkdir -p public/data
-          git add public/data/ 2>/dev/null || true
+          cp -a /tmp/pipeline-data/. public/data/
+          git add public/data
           git diff --staged --quiet || git commit -m "chore: update pipeline data"
-          git push origin HEAD:data || true
+          git push origin data
+          git checkout -f "${GITHUB_REF_NAME}"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

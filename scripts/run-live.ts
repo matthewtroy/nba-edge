@@ -44,9 +44,12 @@ import {
 } from "./supabase-sync.js";
 import { filterPlayersForSlate, writeSlateBundle } from "./slate-bundle.js";
 import {
-  gameOddsLabelsForUnpulled,
-  stripBookiePricesForGames,
-} from "../lib/unpulled-odds.js";
+  cacheSlateOddsSnapshot,
+  cachedMapFromFile,
+  mergePricingMaps,
+  resolveSlateOddsMaps,
+  snapshotFromPricingMaps,
+} from "../lib/odds-slate-cache.js";
 import type { InjuryEntry, SlateGame } from "../lib/types.js";
 import { normalizePlayerName } from "../lib/player-names.js";
 import { loadAliasMap } from "../lib/player-names.js";
@@ -330,6 +333,10 @@ export async function runLivePipeline(
   const oddsCachePath = path.join(outDir, "odds-cache.json");
   const cache: OddsCacheFile = loadOddsCache(oddsCachePath);
   resetOddsDayIfNeeded(cache, now);
+  console.log(
+    `odds cache: ${Object.keys(cache.oddsMap ?? {}).length} global keys` +
+      (cache.lastPulled ? ` · last pull ${cache.lastPulled}` : "")
+  );
   const todayTip =
     slatesToPublish[0]?.length
       ? slateTipDateFromGames(slatesToPublish[0]) ?? sydneyDateString(now)
@@ -340,7 +347,7 @@ export async function runLivePipeline(
   const officialPublishedToday =
     existingTodayOfficial?.slateDate === todayTip;
 
-  let oddsMap = oddsMapFromRecord(cache.oddsMap ?? {});
+  let oddsMap = cachedMapFromFile(cache);
   let allOddsMap = new Map<string, Record<string, number>>();
   let oddsPayloads: unknown[] = [];
   let oddsPulledAt = cache.lastPulled;
@@ -449,6 +456,7 @@ export async function runLivePipeline(
           creditsPerGame: budgetFromDb?.creditsPerGame ?? 10,
         },
         trigger: pullTrigger,
+        targetSlateDate: slateTipDateFromGames(targetSlate) ?? undefined,
       });
       if (pull) {
         oddsMap = pull.oddsMap;
@@ -477,7 +485,7 @@ export async function runLivePipeline(
           });
         }
         const tip = slateTipDateFromGames(targetSlate);
-        if (tip && pull.unpulledGameIds.size) {
+        if (tip && pull.pulledGameIds.size && pull.unpulledGameIds.size) {
           unpulledBySlateDate.set(tip, pull.unpulledGameIds);
         }
         if (tip) rankingBySlateDate.set(tip, pull.ranking);
@@ -490,30 +498,41 @@ export async function runLivePipeline(
   }
 
   const playerNames = players.map((p) => p.name);
-  const pricingOdds = expandOddsMapForPlayers(oddsMap, playerNames);
-  const pricingAllBooks = new Map<string, Record<string, number>>();
-  for (const [k, v] of allOddsMap) {
-    pricingAllBooks.set(k, v);
-    const [name, market, line] = k.split("|");
-    for (const p of players) {
-      if (normalizePlayerName(p.name) === name) {
-        pricingAllBooks.set(`${p.name}|${market}|${line}`, v);
-        pricingAllBooks.set(
-          `${normalizePlayerName(p.name)}|${market}|${line}`,
-          v
-        );
-      }
-    }
-  }
-
+  const playerTeamIds = new Map(
+    players.map((p) => [normalizePlayerName(p.name), p.teamId])
+  );
+  const pulledOddsExpanded = expandOddsMapForPlayers(oddsMap, playerNames);
   const extractedKeyList = [...oddsMap.keys()];
 
   const indexEntries: import("../lib/data-index.js").DataIndexDateEntry[] = [];
   let todayPicks: ReturnType<typeof runModel>["picks"] = [];
   let todayMultis: ReturnType<typeof runModel>["multis"] = [];
+  let lastPricingMapSize = 0;
 
   for (const oneSlate of slatesToPublish) {
     const tip = slateTipDateFromGames(oneSlate);
+    const slateMaps = tip
+      ? resolveSlateOddsMaps(cache, tip, oneSlate, playerNames, playerTeamIds)
+      : {
+          best: pulledOddsExpanded,
+          all: allOddsMap,
+          lastPulled: oddsPulledAt,
+        };
+    const slateBest = mergePricingMaps(slateMaps.best, pulledOddsExpanded);
+    const slateAll = new Map(slateMaps.all);
+    for (const [k, v] of allOddsMap) slateAll.set(k, v);
+    for (const [k, v] of slateAll) {
+      const [name, market, line] = k.split("|");
+      for (const p of players) {
+        if (normalizePlayerName(p.name) === name) {
+          slateAll.set(`${p.name}|${market}|${line}`, v);
+          slateAll.set(`${normalizePlayerName(p.name)}|${market}|${line}`, v);
+        }
+      }
+    }
+    const pricingOdds = expandOddsMapForPlayers(slateBest, playerNames);
+    lastPricingMapSize = pricingOdds.size;
+    const slatePulledAt = oddsPulledAt ?? slateMaps.lastPulled;
     const entry = writeSlateBundle({
       rootDir,
       rootOutDir: outDir,
@@ -522,9 +541,9 @@ export async function runLivePipeline(
       playersAll: players,
       rosterIds,
       oddsMap: pricingOdds,
-      allOddsMap: pricingAllBooks,
-      oddsPulledAt,
-      oddsPayloads,
+      allOddsMap: slateAll,
+      oddsPulledAt: slatePulledAt,
+      oddsPayloads: tip === nextSlateTip ? oddsPayloads : [],
       sources,
       cache,
       now,
@@ -533,6 +552,28 @@ export async function runLivePipeline(
       unpulledGameIds: tip ? unpulledBySlateDate.get(tip) : undefined,
       skipOfficialPublish,
     });
+    if (tip) {
+      cacheSlateOddsSnapshot(
+        cache,
+        tip,
+        snapshotFromPricingMaps(
+          tip,
+          slateBest,
+          slateAll,
+          slatePulledAt ?? now.toISOString(),
+          unpulledBySlateDate.get(tip)?.size
+            ? oneSlate
+                .filter((g) => !unpulledBySlateDate.get(tip)!.has(g.id))
+                .map((g) => g.id)
+            : oneSlate.map((g) => g.id)
+        )
+      );
+      if (!cache.oddsMap) cache.oddsMap = {};
+      for (const [k, v] of slateBest) cache.oddsMap[k] = v;
+      console.log(
+        `odds cache: slate ${tip} · ${slateBest.size} merged keys (${slateMaps.best.size} cached)`
+      );
+    }
     if (entry) indexEntries.push(entry);
     if (tip === todayTip) {
       const picksPath = path.join(outDir, tip, "picks.json");
@@ -558,7 +599,7 @@ export async function runLivePipeline(
   if (tatumLegs.length || extractedKeyList.some((k) => k.includes("tatum"))) {
     tracePlayerOddsStages("Jayson Tatum", {
       extractedKeys: extractedKeyList,
-      pricingMapSize: pricingOdds.size,
+      pricingMapSize: lastPricingMapSize,
       pricedLegs: tatumLegs,
     });
   }
