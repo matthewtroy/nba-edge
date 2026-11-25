@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { PickLeg } from "@lib/types";
 import { visibleLegReasons } from "@lib/leg-display";
+import { siblingRungs } from "@lib/leg-rungs";
 import { marketLabel, verdict } from "../utils/format";
+import { LastFiveTicks } from "./LastFiveTicks";
+import { RungStepper } from "./RungStepper";
 
 interface Props {
   leg: PickLeg | null;
+  picks?: PickLeg[];
   myBookie?: string;
   onClose: () => void;
+  onSelectLeg?: (leg: PickLeg) => void;
 }
 
-export function LegSheet({ leg, myBookie = "bet365", onClose }: Props) {
+export function LegSheet({ leg, picks = [], myBookie = "bet365", onClose, onSelectLeg }: Props) {
   const [bookPrice, setBookPrice] = useState("");
 
   useEffect(() => {
@@ -22,6 +27,8 @@ export function LegSheet({ leg, myBookie = "bet365", onClose }: Props) {
     } else setBookPrice("");
   }, [leg, myBookie]);
 
+  const rungs = useMemo(() => (leg ? siblingRungs(picks, leg) : []), [leg, picks]);
+
   if (!leg) return null;
 
   const savePrice = (v: string) => {
@@ -32,6 +39,10 @@ export function LegSheet({ leg, myBookie = "bet365", onClose }: Props) {
   const num = Number(bookPrice);
   const v = Number.isFinite(num) && num > 1 ? verdict(num, leg.takeAt) : null;
   const ticks = leg.recentVsLine ?? [];
+  const bestFeed =
+    leg.bestPrice != null && leg.bestBookie && leg.bestBookie !== "bet365"
+      ? { bookie: leg.bestBookie, price: leg.bestPrice }
+      : null;
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/60" onClick={onClose}>
@@ -42,6 +53,9 @@ export function LegSheet({ leg, myBookie = "bet365", onClose }: Props) {
         <div className="w-12 h-1 bg-white/20 rounded mx-auto mb-3" />
         <h2 className="text-lg font-semibold mb-1 break-words">{leg.playerName}</h2>
         <p className="text-sm text-white/70 mb-3">{marketLabel(leg.market, leg.line)}</p>
+        {onSelectLeg && (
+          <RungStepper rungs={rungs} activeId={leg.id} onSelect={onSelectLeg} />
+        )}
         <p className="text-2xl font-bold mb-1">{(leg.probability * 100).toFixed(1)}% final</p>
         <p className="text-sm mb-1 text-white/70">
           Model {(leg.modelProbability ?? leg.probability) * 100}% · Market{" "}
@@ -52,14 +66,15 @@ export function LegSheet({ leg, myBookie = "bet365", onClose }: Props) {
         <p className="text-sm mb-4">
           Fair {leg.fairPrice.toFixed(2)} · Take at {leg.takeAt.toFixed(2)}+
         </p>
-        <ul className="text-sm space-y-1 mb-4 text-white/80">
+        <LastFiveTicks ticks={ticks} />
+        <ul className="text-sm space-y-1 my-4 text-white/80">
           {visibleLegReasons(leg.reasons).map((r) => (
             <li key={r}>• {r}</li>
           ))}
         </ul>
-        {leg.bestPrice != null && (
+        {bestFeed && (
           <p className="text-sm text-accent-value mb-2">
-            Best: {leg.bestBookie} {leg.bestPrice.toFixed(2)}
+            Best: {bestFeed.bookie} {bestFeed.price.toFixed(2)}
           </p>
         )}
         <label className="block text-sm text-white/70 mb-1">
@@ -80,32 +95,6 @@ export function LegSheet({ leg, myBookie = "bet365", onClose }: Props) {
             {v === "pass" && "Pass ❌"}
           </p>
         )}
-        <LastFiveTicks ticks={ticks} />
-      </div>
-    </div>
-  );
-}
-
-function LastFiveTicks({ ticks }: { ticks: ("hit" | "miss" | "na")[] }) {
-  return (
-    <div className="flex items-center gap-2 text-sm text-white/70">
-      <span className="text-xs">Last 5 vs line:</span>
-      <div className="flex gap-1">
-        {ticks.map((t, i) => (
-          <span
-            key={i}
-            className={
-              t === "hit"
-                ? "text-green-400"
-                : t === "miss"
-                  ? "text-red-400"
-                  : "text-white/30"
-            }
-            aria-label={t}
-          >
-            {t === "hit" ? "✓" : t === "miss" ? "✗" : "·"}
-          </span>
-        ))}
       </div>
     </div>
   );

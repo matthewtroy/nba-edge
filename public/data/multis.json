@@ -4,31 +4,16 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
+        "4397424-pts-10",
+        "5142718-pts-15",
         "5041939-ast-5",
-        "3112335-pts-25",
-        "5160992-reb-5",
-        "4277847-pts-10"
+        "3112335-pts-25"
       ],
-      "combinedProbability": 0.19176809324400002,
-      "combinedFairPrice": 5.21,
-      "combinedTakeAt": 5.63,
+      "combinedProbability": 0.18568224183600002,
+      "combinedFairPrice": 5.39,
+      "combinedTakeAt": 5.82,
       "bookieTotals": {},
       "summary": "4 starter main lines"
-    },
-    {
-      "type": "booster",
-      "label": "Booster",
-      "legs": [
-        "5041939-ast-7",
-        "3112335-pts-30",
-        "5160992-reb-7",
-        "4277847-pts-10"
-      ],
-      "combinedProbability": 0.041570378388,
-      "combinedFairPrice": 24.06,
-      "combinedTakeAt": 25.98,
-      "bookieTotals": {},
-      "summary": "Main Play +1 rung where fair ≤4, else same rung"
     },
     {
       "type": "q1Multi",
@@ -39,9 +24,9 @@
         "4251-q1reb-3",
         "3064290-q1reb-2"
       ],
-      "combinedProbability": 0.078171852,
-      "combinedFairPrice": 12.79,
-      "combinedTakeAt": 13.81,
+      "combinedProbability": 0.084717342,
+      "combinedFairPrice": 11.8,
+      "combinedTakeAt": 12.74,
       "bookieTotals": {},
       "summary": "Value Q1: fair 2.20–4.00, one leg/team"
     },
@@ -49,12 +34,12 @@
       "type": "longshot",
       "label": "Longshot",
       "legs": [
-        "3112335-pts-35",
-        "6583-pts-35"
+        "5107199-pts-30",
+        "4065648-pts-35"
       ],
-      "combinedProbability": 0.011830000000000002,
-      "combinedFairPrice": 84.53,
-      "combinedTakeAt": 91.29,
+      "combinedProbability": 0.011859,
+      "combinedFairPrice": 84.32,
+      "combinedTakeAt": 91.07,
       "bookieTotals": {},
       "summary": "One long leg per game"
     }

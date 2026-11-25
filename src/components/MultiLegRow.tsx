@@ -4,6 +4,7 @@ import { displayTagsForBookie } from "@lib/value-at-bookie";
 import { legOddsDisplayLine } from "@lib/multi-combined";
 import { topBeneficiaryLastNames } from "@lib/injury-beneficiaries";
 import { useQuestionableSwaps } from "../hooks/useQuestionableSwaps";
+import { LastFiveTicks } from "./LastFiveTicks";
 
 interface Props {
   leg: PickLeg;
@@ -45,6 +46,7 @@ export function MultiLegRow({ leg, injuries, picks, bookie, onTap }: Props) {
           <div className="font-medium break-words leading-snug">
             {leg.playerName} {marketLabel(leg.market, leg.line)}
           </div>
+          <LastFiveTicks ticks={leg.recentVsLine ?? []} compact />
           <div className="flex flex-wrap gap-1 mt-1">
             {tags.map((t) => (
               <span

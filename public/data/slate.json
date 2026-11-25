@@ -19,11 +19,9 @@
     "awayTeam": "Boston Celtics",
     "homeTeamId": "27",
     "awayTeamId": "2",
-    "spread": 10.5,
-    "total": 218.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_SCHEDULED"
+    "status": "STATUS_IN_PROGRESS"
   },
   {
     "id": "401909316",

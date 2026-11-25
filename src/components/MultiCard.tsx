@@ -1,5 +1,5 @@
 import type { InjuryEntry, MultiBet, PickLeg, SlateGame } from "@lib/types";
-import { AU_BOOKMAKERS } from "@lib/types";
+import { FEED_BOOKIES, isFeedBookie } from "@lib/card-bookie";
 import { MultiLegRow } from "./MultiLegRow";
 import { renderMultiCardCopyText } from "@lib/multi-card-text";
 import { useMultiBookieSelect } from "../hooks/useMultiBookieSelect";
@@ -58,7 +58,8 @@ export function MultiCard({
     preferredBookie,
     lockedBookie
   );
-  const displayBook = lockedBookie ?? bookie ?? multi.bestBookie;
+  const rawBook = lockedBookie ?? bookie ?? multi.bestBookie;
+  const displayBook = isFeedBookie(rawBook) ? rawBook : bookie ?? multi.bestBookie;
 
   const { headline, subline } = multiCardTitle(multi, legs);
 
@@ -110,7 +111,7 @@ export function MultiCard({
               <option value="" disabled>
                 Bookie
               </option>
-              {AU_BOOKMAKERS.map((b) => (
+              {FEED_BOOKIES.map((b) => (
                 <option key={b} value={b}>
                   {b}
                 </option>

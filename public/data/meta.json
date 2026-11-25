@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T01:04:56.553Z",
+  "lastUpdated": "2026-11-25T01:24:14.726Z",
   "oddsLastPulled": "2026-11-24T22:58:43.102Z",
   "sources": {
     "espn": "ok",
@@ -37,26 +37,26 @@
     "Duncan Robinson out → Daniss Jenkins +2.6 pts",
     "Cade Cunningham out → Daniss Jenkins +4.2 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_08_00PM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_08_15PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 119,
-      "priced": 95
+      "total": 125,
+      "priced": 98
     },
     "reb": {
       "total": 167,
       "priced": 123
     },
     "ast": {
-      "total": 112,
-      "priced": 79
+      "total": 114,
+      "priced": 81
     },
     "3pm": {
-      "total": 197,
-      "priced": 130
+      "total": 196,
+      "priced": 129
     },
     "q1reb": {
-      "total": 70,
+      "total": 71,
       "priced": 0
     },
     "q1pts": {
@@ -69,13 +69,15 @@
     }
   },
   "gateViolations": [
+    "Booster: best bookie does not match single-bookie quote",
     "Cross-Game SGM Multi: John Collins has Check news",
-    "Cross-Game SGM Multi: Paul Reed has Check news",
+    "Cross-Game SGM Multi: Ausar Thompson has Check news",
+    "Cross-Game SGM Multi: Jamal Murray has Check news",
     "Boost SGM: Caleb Martin has Check news"
   ],
   "officialCard": {
-    "lockedAt": "2026-11-25T01:04:56.939Z",
+    "lockedAt": "2026-11-25T01:24:17.503Z",
     "slateDate": "2026-11-25",
-    "bookie": "bet365"
+    "bookie": "Sportsbet"
   }
 }

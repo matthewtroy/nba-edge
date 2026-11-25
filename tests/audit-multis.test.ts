@@ -44,6 +44,6 @@ describe("auditMultisForToday", () => {
     expect(issues.some((i) => i.includes("tip lock"))).toBe(true);
     expect(issues.some((i) => i.includes("Check news"))).toBe(true);
     expect(issues.some((i) => i.includes("below take-at"))).toBe(true);
-    expect(issues.some((i) => i.includes("check bet365"))).toBe(true);
+    expect(issues.some((i) => i.includes("no single feed bookie"))).toBe(true);
   });
 });

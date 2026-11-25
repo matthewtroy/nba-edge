@@ -5,7 +5,8 @@ import {
   legOddsDisplayLine,
   multiCardTitle,
 } from "./multi-combined.js";
-import { assertNoMixedBookieCopy } from "./multi-display.js";
+import { isFeedBookie } from "./card-bookie.js";
+import { assertNoMixedBookieCopy, pickDefaultBookie } from "./multi-display.js";
 import { marketLabel } from "./market-label.js";
 
 export const FORBIDDEN_TODAY_STRINGS = [
@@ -38,7 +39,8 @@ export function renderMultiCardCopyText(
 ): string {
   const { headline, subline } = multiCardTitle(multi, legs, DEFAULT_MIN_EDGE);
   const lines = [headline, subline];
-  const rowBook = multi.bestBookie ?? bookie;
+  const rowBook =
+    isFeedBookie(bookie) ? bookie : pickDefaultBookie(multi, legs, bookie);
   for (const leg of legs) {
     lines.push(formatLegLineAtBookie(leg, rowBook));
   }

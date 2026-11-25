@@ -39,7 +39,7 @@ export function auditMultisForToday(input: {
     }
 
     if (!multi.bestBookie || multi.bestBookieTotal == null) {
-      issues.push(`${label}: no single bookie at take-at (check bet365)`);
+      issues.push(`${label}: no single feed bookie at take-at (price legs)`);
     } else if (multi.bestBookieTotal < multi.combinedTakeAt) {
       issues.push(
         `${label}: ${multi.bestBookie} $${multi.bestBookieTotal.toFixed(2)} below take-at $${multi.combinedTakeAt.toFixed(2)}`

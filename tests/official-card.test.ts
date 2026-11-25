@@ -54,6 +54,6 @@ describe("official card publish", () => {
   });
 
   it("defaults official bookie", () => {
-    expect(OFFICIAL_CARD_BOOKIE).toBe("bet365");
+    expect(OFFICIAL_CARD_BOOKIE).toBe("Sportsbet");
   });
 });

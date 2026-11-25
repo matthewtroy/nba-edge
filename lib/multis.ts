@@ -7,6 +7,7 @@ import {
   qualifiesMainPlayLeg,
 } from "./main-play-eligibility.js";
 import { enforceExposureCapWithDrops } from "./exposure.js";
+import { bestFeedMultiQuote } from "./card-bookie.js";
 import { bestSingleBookieQuote } from "./single-bookie.js";
 import { multiBookieTotals } from "./bookie-totals.js";
 import { multiClashSummary } from "./clash.js";
@@ -63,14 +64,15 @@ function singleBookieOverlay(
         : l
   );
   const bookieTotals = multiBookieTotals(pricedLegs) as Record<string, number>;
+  const feed = bestFeedMultiQuote(pricedLegs);
   const quote = bestSingleBookieQuote(pricedLegs, combinedTakeAt);
-  if (!quote) {
+  if (!feed && !quote) {
     return { bookieTotals };
   }
   return {
     bookieTotals,
-    bestBookie: quote.bookie,
-    bestBookieTotal: quote.price,
+    bestBookie: feed?.bookie,
+    bestBookieTotal: feed?.total,
   };
 }
 

@@ -7,6 +7,8 @@ import { displayTagsForBookie } from "@lib/value-at-bookie";
 import { legOddsDisplayLine } from "@lib/multi-combined";
 import { hasValueAtBookie } from "@lib/value-at-bookie";
 import { sydneyDateString } from "@lib/official-card-time";
+import { feedBookieForLeg, isFeedBookie, NO_FEED_MULTI_NOTE } from "@lib/card-bookie";
+import { LastFiveTicks } from "../components/LastFiveTicks";
 
 const PRESETS: { label: string; min: number; max: number }[] = [
   { label: "4–10", min: 4, max: 10 },
@@ -78,14 +80,15 @@ export function GamesScreen({ data, myBookie = "bet365", onLegTap }: Props) {
             </p>
           );
         }
-        const headline =
-          card.bestTotal != null
-            ? `${short} SGM @ $${card.bestTotal.toFixed(2)}`
-            : `${short} SGM @ take at $${card.takeAt.toFixed(2)}+`;
-        const sub =
-          card.bestBookie && card.bestTotal != null
-            ? `${card.bestBookie} · take at $${card.takeAt.toFixed(2)}+ (fair $${card.fair.toFixed(2)})`
-            : "No single bookie prices every leg: check bet365";
+        const priced =
+          isFeedBookie(card.bestBookie) && card.bestTotal != null && card.bestTotal > 1;
+        const headline = priced
+          ? `${short} SGM @ $${card.bestTotal!.toFixed(2)}`
+          : `${short} SGM @ —`;
+        const sub = priced
+          ? `${card.bestBookie} · take at $${card.takeAt.toFixed(2)}+ (fair $${card.fair.toFixed(2)})`
+          : `take at $${card.takeAt.toFixed(2)}+ (fair $${card.fair.toFixed(2)}) · ${NO_FEED_MULTI_NOTE}`;
+        const legBookie = isFeedBookie(myBookie) ? myBookie : card.bestBookie;
 
         return (
           <section
@@ -96,7 +99,7 @@ export function GamesScreen({ data, myBookie = "bet365", onLegTap }: Props) {
               <h2 className="font-semibold text-lg">{headline}</h2>
               <p className="text-sm text-white/70 mt-0.5">{sub}</p>
               <p className="text-xs text-white/50 mt-1">
-                {game.startTimeSydney} · Guide: bet365 SGM · fair {preset.min}–{preset.max}
+                {game.startTimeSydney} · Guide: SGM fair {preset.min}–{preset.max}
               </p>
               {crossGameLegs.length > 0 && (
                 <p className="text-xs text-accent-value mt-1">
@@ -120,8 +123,9 @@ export function GamesScreen({ data, myBookie = "bet365", onLegTap }: Props) {
                     {leg.playerName} {marketLabel(leg.market, leg.line)}
                   </div>
                   <div className="text-xs text-white/70 mt-1">
-                    {legOddsDisplayLine(leg, myBookie)}
+                    {legOddsDisplayLine(leg, feedBookieForLeg(leg, legBookie))}
                   </div>
+                  <LastFiveTicks ticks={leg.recentVsLine ?? []} compact />
                   <div className="flex gap-1 mt-1">
                     {displayTagsForBookie(leg, myBookie).map((t) => (
                       <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-white/10">

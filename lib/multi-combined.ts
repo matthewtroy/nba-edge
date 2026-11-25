@@ -1,4 +1,9 @@
 import type { MultiBet, PickLeg } from "./types.js";
+import {
+  bestFeedMultiQuote,
+  feedBookieForLeg,
+  NO_FEED_MULTI_NOTE,
+} from "./card-bookie.js";
 import { legPriceAtBookie } from "./single-bookie.js";
 
 export const DEFAULT_MIN_EDGE = 0.08;
@@ -18,15 +23,14 @@ export function combinedFairAndTakeAt(
 }
 
 export function legOddsDisplayLine(leg: PickLeg, cardBookie?: string): string {
+  const feed = feedBookieForLeg(leg, cardBookie);
   const parts: string[] = [];
-  if (cardBookie) {
-    const bookPx = legPriceAtBookie(leg, cardBookie);
+  if (feed) {
+    const bookPx = legPriceAtBookie(leg, feed);
     if (bookPx != null) parts.push(`$${bookPx.toFixed(2)}`);
     else parts.push("Not offered");
-  } else if (leg.bestPrice != null) {
-    parts.push(`$${leg.bestPrice.toFixed(2)} (best)`);
   }
-  if (leg.bestPrice != null && leg.bestBookie) {
+  if (leg.bestPrice != null && leg.bestBookie && leg.bestBookie !== "bet365") {
     parts.push(`best: ${leg.bestBookie} $${leg.bestPrice.toFixed(2)}`);
   }
   parts.push(`take at $${leg.takeAt.toFixed(2)}+`);
@@ -40,14 +44,18 @@ export function multiCardTitle(
 ): { headline: string; subline: string } {
   const { fair, takeAt } = combinedFairAndTakeAt(legs, minEdgeFraction);
   const name = multi.variant ? `${multi.label} (${multi.variant})` : multi.label;
-  if (multi.bestBookie && multi.bestBookieTotal != null && multi.bestBookieTotal > 1) {
+  const feed =
+    multi.bestBookie && multi.bestBookie !== "bet365" && multi.bestBookieTotal != null
+      ? { bookie: multi.bestBookie, total: multi.bestBookieTotal }
+      : bestFeedMultiQuote(legs);
+  if (feed && feed.total > 1) {
     return {
-      headline: `${name} @ $${multi.bestBookieTotal.toFixed(2)}`,
-      subline: `${multi.bestBookie} · take at $${takeAt.toFixed(2)}+ (fair $${fair.toFixed(2)})`,
+      headline: `${name} @ $${feed.total.toFixed(2)}`,
+      subline: `${feed.bookie} · take at $${takeAt.toFixed(2)}+ (fair $${fair.toFixed(2)})`,
     };
   }
   return {
-    headline: `${name} @ take at $${takeAt.toFixed(2)}+`,
-    subline: `fair $${fair.toFixed(2)} · No single bookie prices every leg: check bet365`,
+    headline: `${name} @ —`,
+    subline: `take at $${takeAt.toFixed(2)}+ (fair $${fair.toFixed(2)}) · ${NO_FEED_MULTI_NOTE}`,
   };
 }

@@ -30,7 +30,8 @@ describe("Today proof text", () => {
       notBuilt: multisRaw.notBuilt,
       picksById: new Map(picks.map((p) => [p.id, p])),
     });
-    expect(text).toMatch(/@ (take at \$[\d.]+\+|\$[\d.]+)/);
+    expect(text).toMatch(/@ (\$[\d.]+|—)/);
+    expect(text).not.toMatch(/bet365/i);
     expect(text).toMatch(/take at \$5\.63\+/);
     expect(text).toMatch(/fair \$5\.21/i);
     expect(text).not.toMatch(/cross-book|Best across books|Best mix/i);

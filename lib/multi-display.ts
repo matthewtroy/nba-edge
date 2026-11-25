@@ -5,10 +5,10 @@ import {
   legPriceAtBookie,
 } from "./single-bookie.js";
 import { marketLabel } from "./market-label.js";
+import { isFeedBookie } from "./card-bookie.js";
 import { legOddsDisplayLine } from "./multi-combined.js";
 
-export const NO_SINGLE_BOOKIE_NOTE =
-  "No single bookie prices every leg: check bet365";
+export { NO_FEED_MULTI_NOTE as NO_SINGLE_BOOKIE_NOTE } from "./card-bookie.js";
 
 export const FORBIDDEN_MULTI_ODDS_WORDS = [
   "cross-book",
@@ -27,12 +27,13 @@ export function pickDefaultBookie(
   legs: PickLeg[],
   preferred?: string
 ): string | undefined {
-  if (multi.bestBookie) return multi.bestBookie;
+  if (isFeedBookie(multi.bestBookie)) return multi.bestBookie;
   if (preferred) {
     const total = combinedPriceForBookie(legs, preferred);
     if (total != null) return preferred;
   }
   for (const book of AU_BOOKMAKERS) {
+    if (book === "bet365") continue;
     if (combinedPriceForBookie(legs, book) != null) return book;
   }
   return undefined;

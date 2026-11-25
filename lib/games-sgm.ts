@@ -1,7 +1,9 @@
 import type { MultiBet, PickLeg, SlateGame } from "./types.js";
 import { buildGameSgmCard, type GameSgmCard } from "./game-sgm-builder.js";
 import { marketLabel } from "./market-label.js";
+import { NO_FEED_MULTI_NOTE } from "./card-bookie.js";
 import { legOddsDisplayLine } from "./multi-combined.js";
+import { feedBookieForLeg, isFeedBookie } from "./card-bookie.js";
 import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
 
 export interface GameSgmBlock {
@@ -46,23 +48,31 @@ function gameLabel(game: SlateGame): string {
 
 export function renderGameSgmCard(
   card: GameSgmCard,
-  cardBookie = "bet365"
+  cardBookie?: string
 ): string {
   const label = gameLabel(card.game);
   const lines: string[] = [];
-  if (card.bestBookie && card.bestTotal != null) {
-    lines.push(`${label} SGM @ $${card.bestTotal.toFixed(2)}`);
+  const feed =
+    isFeedBookie(card.bestBookie) && card.bestTotal != null
+      ? { bookie: card.bestBookie!, total: card.bestTotal }
+      : null;
+  if (feed && feed.total > 1) {
+    lines.push(`${label} SGM @ $${feed.total.toFixed(2)}`);
     lines.push(
-      `${card.bestBookie} · take at $${card.takeAt.toFixed(2)}+ (fair $${card.fair.toFixed(2)})`
+      `${feed.bookie} · take at $${card.takeAt.toFixed(2)}+ (fair $${card.fair.toFixed(2)})`
     );
   } else {
-    lines.push(`${label} SGM @ take at $${card.takeAt.toFixed(2)}+`);
-    lines.push(`fair $${card.fair.toFixed(2)} · No single bookie prices every leg: check bet365`);
-  }
-  lines.push(`Guide: bet365 SGM · target fair $${card.fairMin.toFixed(0)}–${card.fairMax.toFixed(0)}`);
-  for (const leg of card.legs) {
+    lines.push(`${label} SGM @ —`);
     lines.push(
-      `  ${leg.playerName} ${marketLabel(leg.market, leg.line)} · ${legOddsDisplayLine(leg, cardBookie)}`
+      `take at $${card.takeAt.toFixed(2)}+ (fair $${card.fair.toFixed(2)}) · ${NO_FEED_MULTI_NOTE}`
+    );
+  }
+  lines.push(`Guide: SGM fair $${card.fairMin.toFixed(0)}–${card.fairMax.toFixed(0)}`);
+  const rowBookie = isFeedBookie(cardBookie) ? cardBookie : feed?.bookie;
+  for (const leg of card.legs) {
+    const at = feedBookieForLeg(leg, rowBookie);
+    lines.push(
+      `  ${leg.playerName} ${marketLabel(leg.market, leg.line)} · ${legOddsDisplayLine(leg, at)}`
     );
   }
   return lines.join("\n");
@@ -105,7 +115,7 @@ export function renderGamesText(input: {
 
   for (const block of blocks) {
     if (block.card) {
-      lines.push(renderGameSgmCard(block.card, input.cardBookie ?? "bet365"));
+      lines.push(renderGameSgmCard(block.card, input.cardBookie));
     } else {
       lines.push(`${gameLabel(block.game)} · no 3-leg SGM in fair ${fairMin}–${fairMax}`);
     }

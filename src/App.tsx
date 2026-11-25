@@ -66,7 +66,13 @@ export default function App() {
       {tab === "injuries" && <InjuriesScreen data={data} />}
       {tab === "results" && <ResultsScreen data={data} />}
       <TabBar active={tab} onChange={setTab} />
-      <LegSheet leg={leg} myBookie={settings.myBookie} onClose={() => setLeg(null)} />
+      <LegSheet
+        leg={leg}
+        picks={data.picks}
+        myBookie={settings.myBookie}
+        onClose={() => setLeg(null)}
+        onSelectLeg={setLeg}
+      />
       <SettingsSheet
         open={settingsOpen}
         settings={settings}

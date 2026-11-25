@@ -2,7 +2,7 @@ import type { PickLeg, SlateGame } from "./types.js";
 import { multiHasClash } from "./clash.js";
 import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
 import { combinedFairAndTakeAt, DEFAULT_MIN_EDGE } from "./multi-combined.js";
-import { bestSingleBookieQuote } from "./single-bookie.js";
+import { bestFeedMultiQuote } from "./card-bookie.js";
 
 export interface GameSgmCard {
   game: SlateGame;
@@ -62,14 +62,14 @@ export function buildGameSgmCard(
   const legs = pickGameSgmLegs(picks, game.id, fairMin, fairMax, 3);
   if (!legs?.length) return null;
   const { fair, takeAt } = combinedFairAndTakeAt(legs, DEFAULT_MIN_EDGE);
-  const quote = bestSingleBookieQuote(legs, takeAt);
+  const feed = bestFeedMultiQuote(legs);
   return {
     game,
     legs,
     fair,
     takeAt,
-    bestBookie: quote?.bookie,
-    bestTotal: quote?.price,
+    bestBookie: feed?.bookie,
+    bestTotal: feed?.total,
     fairMin,
     fairMax,
   };

@@ -38,7 +38,8 @@ describe("MultiCard layout strings", () => {
     for (const bad of FORBIDDEN_MULTI_CARD_STRINGS) {
       expect(blob.includes(bad)).toBe(false);
     }
-    expect(blob).toMatch(new RegExp(`@ take at \\$${takeAt.toFixed(2)}\\+`));
+    expect(blob).toMatch(/@ —/);
+    expect(blob).toContain(`take at $${takeAt.toFixed(2)}+`);
     expect(blob).toContain(`fair $${fair.toFixed(2)}`);
     expect(blob).not.toContain("once");
   });

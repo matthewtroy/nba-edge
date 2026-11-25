@@ -1,6 +1,7 @@
 import type { PickLeg } from "./types.js";
 
-export const OFFICIAL_CARD_BOOKIE = "bet365";
+/** Default feed bookie for official card leg copy (not manual-entry). */
+export const OFFICIAL_CARD_BOOKIE = "Sportsbet";
 
 export interface OfficialCardMeta {
   lockedAt: string;
