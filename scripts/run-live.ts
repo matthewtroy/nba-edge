@@ -15,6 +15,7 @@ import {
   extractOddsBundles,
 } from "./fetch/odds-events.js";
 import { shouldPauseOdds } from "../lib/odds.js";
+import { isPostTipOff, mergeBestOddsMaps } from "../lib/odds-cache-merge.js";
 import {
   formatYyyymmddInZone,
   parseScoreboard,
@@ -306,7 +307,9 @@ export async function runLivePipeline(
           if (data) payloads.push(data);
         }
         const bundles = extractOddsBundles(payloads);
-        oddsMap = bundles.best;
+        const postTip = isPostTipOff(now, slate);
+        const priorBest = oddsMapFromRecord(cache.oddsMap ?? {});
+        oddsMap = mergeBestOddsMaps(priorBest, bundles.best, { postTipOff: postTip });
         allOddsMap = bundles.all;
         const norm = new Map<string, { price: number; bookie: string }>();
         for (const [k, v] of oddsMap) norm.set(k, v);
@@ -314,9 +317,14 @@ export async function runLivePipeline(
         recordOddsPull(cache, now, slate);
         oddsPulledAt = now.toISOString();
         cache.lastPulled = oddsPulledAt;
-        cache.oddsMap = oddsMapToRecord(oddsMap);
+        if (postTip && bundles.best.size === 0) {
+          sources.odds = priorBest.size ? "ok (tip lock — kept cache)" : "stale";
+          console.warn("tip lock: empty post-tip odds response — kept cached oddsMap");
+        } else {
+          cache.oddsMap = oddsMapToRecord(oddsMap);
+          sources.odds = "ok";
+        }
         oddsPayloads = payloads;
-        sources.odds = "ok";
         usedLiveOddsPull = true;
       }
     } catch {

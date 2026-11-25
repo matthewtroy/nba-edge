@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-25T00:14:16.665Z",
-  "oddsLastPulled": "2026-11-24T23:55:54.742Z",
+  "lastUpdated": "2026-11-25T00:23:10.758Z",
+  "oddsLastPulled": "2026-11-24T22:58:43.102Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
@@ -18,26 +18,26 @@
     "Cade Cunningham out → Daniss Jenkins +4.2 pts",
     "Amari Williams out → Jayson Tatum +2.7 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_07_00PM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_07_15PM.pdf",
   "pricedLegCounts": {
     "pts": {
       "total": 125,
-      "priced": 108
+      "priced": 93
     },
     "reb": {
       "total": 167,
-      "priced": 118
+      "priced": 123
     },
     "ast": {
       "total": 112,
-      "priced": 81
+      "priced": 79
     },
     "3pm": {
       "total": 197,
-      "priced": 149
+      "priced": 130
     },
     "q1reb": {
-      "total": 60,
+      "total": 70,
       "priced": 0
     },
     "q1pts": {
@@ -48,5 +48,8 @@
       "total": 2,
       "priced": 0
     }
-  }
+  },
+  "gateViolations": [
+    "Booster: need +1 rung on all 4 Main legs (stepped 3)"
+  ]
 }

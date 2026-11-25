@@ -1,5 +1,9 @@
 import { normalizePlayerName } from "../lib/player-names.js";
-import { legOddsLookupKey, parseOddsKey } from "../lib/odds.js";
+import {
+  legOddsLookupKey,
+  normalizeLegMarket,
+  parseOddsKey,
+} from "../lib/odds.js";
 import type { PickLeg } from "../lib/types.js";
 import type { OddsCacheFile } from "./odds-schedule.js";
 
@@ -86,16 +90,24 @@ export function oddsMapsFromPublished(
     for (const [rawKey, v] of Object.entries(cache.oddsMap)) {
       const parts = rawKey.split("|");
       if (parts.length < 3) continue;
-      const [name, market, lineStr] = parts;
+      const [name, rawMarket, lineStr] = parts;
+      const market = normalizeLegMarket(rawMarket);
       const line = Number(lineStr);
       if (!Number.isFinite(line)) continue;
       const keys = [
-        rawKey,
         legOddsLookupKey(name, market, line),
         `${normalizePlayerName(name)}|${market}|${line}`,
+        parseOddsKey(name, market, line),
+        rawKey,
       ];
       for (const k of keys) {
-        if (!best.has(k)) best.set(k, v);
+        const prev = best.get(k);
+        if (!prev || v.price > prev.price) best.set(k, v);
+      }
+      if (market !== rawMarket) {
+        const legKey = `${normalizePlayerName(name)}|${rawMarket}|${line}`;
+        const prev = best.get(legKey);
+        if (!prev || v.price > prev.price) best.set(legKey, v);
       }
     }
   }

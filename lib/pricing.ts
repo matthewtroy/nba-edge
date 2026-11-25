@@ -108,8 +108,14 @@ export function buildLegsForPlayer(
       }
     }
 
-    const bookiePrices =
+    let bookiePrices =
       ctx.allOdds?.get(oddKey) ?? ctx.allOdds?.get(displayKey);
+    if (
+      book &&
+      (!bookiePrices || !Object.keys(bookiePrices).length)
+    ) {
+      bookiePrices = { [book.bookie]: book.price };
+    }
 
     const injury = ctx.reasons.filter((r) => /out:/i.test(r));
     const other = ctx.reasons.filter((r) => !/out:/i.test(r));

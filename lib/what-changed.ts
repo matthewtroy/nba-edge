@@ -46,6 +46,7 @@ function pickInjuryBoost(
   for (const leg of picks) {
     if (leg.team !== inj.teamName) continue;
     if (leg.playerId === inj.playerId) continue;
+    if ((leg.projectedMinutes ?? 0) < 12) continue;
     for (const r of leg.reasons) {
       if (!reasonMentionsInjury(r, inj)) continue;
       const m = r.match(BOOST_RE) ?? r.match(SOFT_OUT_RE);

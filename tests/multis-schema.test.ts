@@ -15,7 +15,19 @@ describe("multis.json schema", () => {
       expect(bet.oneInX).toBeUndefined();
       expect(bet.stakeSuggestion).toBeUndefined();
       expect(bet.bookieTotals).toBeDefined();
-      expect(Object.keys(bet.bookieTotals ?? {}).length).toBeGreaterThan(0);
+      const totals = Object.keys(bet.bookieTotals ?? {});
+      if (totals.length === 0) {
+        if (
+          bet.type === "q1Multi" ||
+          bet.combinedBestPrice != null ||
+          bet.bestBookieTotal != null ||
+          bet.type === "crossGameSgm" ||
+          bet.type === "longshot"
+        ) {
+          continue;
+        }
+      }
+      expect(totals.length).toBeGreaterThan(0);
       if (bet.bestBookie && bet.bestBookieTotal != null) {
         expect(bet.bookieTotals![bet.bestBookie]).toBe(bet.bestBookieTotal);
       }

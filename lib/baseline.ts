@@ -77,10 +77,17 @@ export function projectBaseline(
   };
 }
 
+function logsWithQ1Stat(logs: PlayerGameLog[], stat: "pts" | "reb" | "ast"): PlayerGameLog[] {
+  return logs.filter((g) => {
+    if (g.minutes < 1 || g.pts <= 0) return false;
+    if (stat === "pts") return g.q1Pts !== undefined;
+    if (stat === "reb") return g.q1Reb !== undefined;
+    return g.q1Ast !== undefined;
+  });
+}
+
 export function q1Share(logs: PlayerGameLog[], stat: "pts" | "reb" | "ast"): number {
-  const withQ1 = logs.filter(
-    (g) => g.minutes >= 1 && g.q1Pts !== undefined && g.pts > 0
-  );
+  const withQ1 = logsWithQ1Stat(logs, stat);
   if (withQ1.length < 3) return 0.26;
   let q1 = 0;
   let full = 0;

@@ -244,7 +244,8 @@ export function parseQ1FromPlays(
     else if (t.includes("made") && (t.includes("layup") || t.includes("dunk") || t.includes("shot"))) {
       pts += play.scoreValue && play.scoreValue <= 3 ? play.scoreValue : 2;
     }
-    if (t.includes("rebound") && !t.includes("offensive")) reb += 1;
+    if (t.includes("rebound")) reb += 1;
+    if (t.includes("made free throw")) pts += play.scoreValue === 1 ? 1 : play.scoreValue || 1;
     if (t.includes("assist")) ast += 1;
   }
   return { pts, reb, ast };

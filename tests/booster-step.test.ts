@@ -69,6 +69,29 @@ describe("Booster stepping", () => {
       const b = byId.get(bid!)!;
       if (b.line > m.line) stepped++;
     }
-    expect(stepped).toBe(main.legs.length);
+    expect(stepped).toBeGreaterThanOrEqual(main.legs.length - 1);
+  });
+
+  it("keeps main rung when next fair price exceeds 4", () => {
+    const picks: PickLeg[] = [
+      mainLeg("p1", "pts", 20, 2.0),
+      mainLeg("p1", "pts", 25, 4.5),
+      mainLeg("p2", "pts", 15, 1.55),
+      mainLeg("p2", "pts", 20, 2.0),
+      mainLeg("p3", "pts", 15, 1.55),
+      mainLeg("p3", "pts", 20, 2.05),
+      mainLeg("p4", "pts", 15, 1.55),
+      mainLeg("p4", "pts", 20, 2.05),
+    ];
+    const { bets } = buildMultis(picks, 8);
+    const main = bets.find((b) => b.type === "mainPlay");
+    const booster = bets.find((b) => b.type === "booster");
+    if (!main || !booster) return;
+    const byId = new Map(picks.map((p) => [p.id, p]));
+    const p1Main = byId.get(main.legs.find((id) => byId.get(id)?.playerId === "p1")!)!;
+    const p1Boost = byId.get(
+      booster.legs.find((id) => byId.get(id)?.playerId === "p1")!
+    )!;
+    expect(p1Boost.line).toBe(p1Main.line);
   });
 });

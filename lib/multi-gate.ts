@@ -157,7 +157,13 @@ export function gateMulti(
 
   const bestBook = multi.bestBookie ?? multi.combinedBestBookie;
   const bestTotal = multi.bestBookieTotal ?? multi.combinedBestPrice;
-  if (bestTotal != null && bestBook) {
+  if (bestTotal != null && bestBook === "Best across books") {
+    if (bestTotal < multi.combinedTakeAt) {
+      violations.push(
+        `${label}: cross-book total ${bestTotal} below take-at ${multi.combinedTakeAt}`
+      );
+    }
+  } else if (bestTotal != null && bestBook) {
     const quote = bestSingleBookieQuote(legs, multi.combinedTakeAt);
     if (!quote || quote.bookie !== bestBook) {
       violations.push(`${label}: best bookie does not match single-bookie quote`);

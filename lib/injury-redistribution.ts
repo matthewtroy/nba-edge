@@ -128,7 +128,7 @@ function applyWithWithoutSplits(
     const statKeys = ["pts", "reb", "ast", "threes"] as const;
     const cur = adjusted.get(tm.id);
     const r = rates.get(tm.id);
-    if (!cur || !r) continue;
+    if (!cur || !r || cur.minutes < 12) continue;
 
     const beforePts = cur.pts;
     const beforeReb = cur.reb;
@@ -189,7 +189,7 @@ function applyGenericRedistribution(
   const injPos = positionGroup(injured.position);
   for (const tm of teammates) {
     const cur = adjusted.get(tm.id);
-    if (!cur) continue;
+    if (!cur || cur.minutes < 12) continue;
     const beforePts = cur.pts;
     const beforeReb = cur.reb;
     const beforeAst = cur.ast;
@@ -235,7 +235,7 @@ function applyRosterlessOut(
   const onTeam = teammates.filter((p) => p.teamId === inj.teamId);
   const ranked = onTeam
     .map((tm) => ({ tm, cur: adjusted.get(tm.id) }))
-    .filter((x) => x.cur && x.cur.minutes > 0)
+    .filter((x) => x.cur && x.cur.minutes >= 12)
     .sort((a, b) => (b.cur!.minutes ?? 0) - (a.cur!.minutes ?? 0));
   const top = ranked[0];
   if (!top?.cur) return;

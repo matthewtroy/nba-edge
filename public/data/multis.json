@@ -4,62 +4,31 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
-        "6583-pts-20",
-        "5041939-pts-25",
+        "5041939-ast-5",
         "3112335-pts-25",
-        "4278562-reb-7"
+        "5160992-reb-5",
+        "4277847-pts-10"
       ],
-      "combinedProbability": 0.18983230140600002,
-      "combinedFairPrice": 5.27,
-      "combinedTakeAt": 7.16,
-      "bookieTotals": {
-        "Sportsbet": 8.7,
-        "TAB": 7.01,
-        "Ladbrokes": 9.72,
-        "PointsBet": 8.96
-      },
-      "bestBookie": "Ladbrokes",
-      "bestBookieTotal": 9.72,
-      "combinedBestBookie": "Ladbrokes",
-      "combinedBestPrice": 9.72,
+      "combinedProbability": 0.19176809324400002,
+      "combinedFairPrice": 5.21,
+      "combinedTakeAt": 7.07,
+      "bookieTotals": {},
+      "combinedBestBookie": "Best across books",
+      "combinedBestPrice": 9.91,
       "summary": "4 starter main lines"
-    },
-    {
-      "type": "booster",
-      "label": "Booster",
-      "legs": [
-        "6583-pts-25",
-        "5041939-pts-30",
-        "3112335-pts-30",
-        "4278562-reb-10"
-      ],
-      "combinedProbability": 0.021451981733999998,
-      "combinedFairPrice": 46.62,
-      "combinedTakeAt": 63.24,
-      "bookieTotals": {
-        "Sportsbet": 115.04,
-        "TAB": 69.04,
-        "Ladbrokes": 88.45,
-        "PointsBet": 99.34
-      },
-      "bestBookie": "Sportsbet",
-      "bestBookieTotal": 115.04,
-      "combinedBestBookie": "Sportsbet",
-      "combinedBestPrice": 115.04,
-      "summary": "Main Play +1 rung on every leg"
     },
     {
       "type": "q1Multi",
       "label": "Q1 Multi",
       "variant": "Value",
       "legs": [
-        "4566434-q1reb-2",
-        "6583-q1reb-3",
+        "3908845-q1reb-3",
+        "5142718-q1reb-3",
         "3138160-q1pts-3"
       ],
-      "combinedProbability": 0.021624,
-      "combinedFairPrice": 46.24,
-      "combinedTakeAt": 58.33,
+      "combinedProbability": 0.021999599999999998,
+      "combinedFairPrice": 45.46,
+      "combinedTakeAt": 57.3,
       "bookieTotals": {},
       "summary": "Value Q1: fair 2.20–4.00, one leg/team"
     },
@@ -67,62 +36,46 @@
       "type": "crossGameSgm",
       "label": "Cross-Game SGM Multi",
       "legs": [
-        "4065648-reb-7",
-        "4397424-pts-10",
-        "5107199-pts-20",
-        "4278562-reb-7",
-        "3138160-reb-5",
-        "4278594-pts-10"
+        "3908845-pts-10",
+        "5107199-ast-5",
+        "5041939-ast-7",
+        "3936299-ast-5",
+        "4065648-ast-5",
+        "4397424-pts-10"
       ],
-      "combinedProbability": 0.05304121483349664,
-      "combinedFairPrice": 18.85,
+      "combinedProbability": 0.05310128240619048,
+      "combinedFairPrice": 18.83,
       "combinedTakeAt": 30,
-      "bookieTotals": {
-        "Sportsbet": 49.22,
-        "TAB": 43.29,
-        "Ladbrokes": 55.9,
-        "Unibet": 43.85
-      },
+      "bookieTotals": {},
       "summary": "2+ legs/game, fair 1.35–2.50 each"
     },
     {
       "type": "boostSgm",
       "label": "Boost SGM",
       "legs": [
-        "3908845-pts-15",
-        "5107199-reb-5",
-        "4684742-ast-7"
+        "5041939-ast-7",
+        "4278594-pts-10",
+        "3936299-pts-25"
       ],
-      "combinedProbability": 0.0891108,
-      "combinedFairPrice": 11.22,
-      "combinedTakeAt": 14.11,
-      "bookieTotals": {
-        "Sportsbet": 18.21,
-        "TAB": 15.69,
-        "Ladbrokes": 14.22
-      },
+      "combinedProbability": 0.133365408,
+      "combinedFairPrice": 7.5,
+      "combinedTakeAt": 9.41,
+      "bookieTotals": {},
+      "combinedBestBookie": "Best across books",
+      "combinedBestPrice": 13.83,
       "summary": "bet365 25% boost (needs 3 legs)"
     },
     {
       "type": "longshot",
       "label": "Longshot",
       "legs": [
-        "4566434-pts-35",
-        "3936299-pts-35"
+        "4065648-pts-35",
+        "3112335-pts-40"
       ],
-      "combinedProbability": 0.018033999999999998,
-      "combinedFairPrice": 55.45,
-      "combinedTakeAt": 64.76,
-      "bookieTotals": {
-        "Sportsbet": 90.25,
-        "TAB": 45.5,
-        "Ladbrokes": 85.31,
-        "PointsBet": 90
-      },
-      "bestBookie": "Sportsbet",
-      "bestBookieTotal": 90.25,
-      "combinedBestBookie": "Sportsbet",
-      "combinedBestPrice": 90.25,
+      "combinedProbability": 0.011832,
+      "combinedFairPrice": 84.52,
+      "combinedTakeAt": 98.79,
+      "bookieTotals": {},
       "summary": "One long leg per game"
     }
   ],
@@ -131,7 +84,7 @@
       "type": "q1Multi",
       "label": "Q1 Multi",
       "variant": "Safe",
-      "reason": "No Safe Q1 subset (fair 1.80–2.40, 3–6 teams, one leg/team)"
+      "reason": "No Safe Q1 subset (fair 1.80–2.40, p≥0.70, 3–6 teams, one leg/team)"
     }
   ]
 }

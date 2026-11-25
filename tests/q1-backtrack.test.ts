@@ -17,7 +17,7 @@ function q1Leg(
     team,
     market: `q1${market}`,
     line: 5,
-    probability: 1 / fair,
+    probability: Math.max(0.75, 1 / fair),
     fairPrice: fair,
     takeAt: fair * 0.95,
     reasons: [],

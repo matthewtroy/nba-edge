@@ -62,6 +62,22 @@ export function oddsApiMarketToLeg(apiMarket: string): string {
   return map[base] ?? base;
 }
 
+/** Cache / legacy map keys may use `points` instead of model `pts`. */
+export function normalizeLegMarket(market: string): string {
+  const base = market.toLowerCase().replace("player_", "").replace("_alternate", "");
+  const map: Record<string, string> = {
+    points: "pts",
+    rebounds: "reb",
+    assists: "ast",
+    threes: "3pm",
+    pts: "pts",
+    reb: "reb",
+    ast: "ast",
+    "3pm": "3pm",
+  };
+  return map[base] ?? market;
+}
+
 export function legOddsLookupKey(
   playerName: string,
   market: string,

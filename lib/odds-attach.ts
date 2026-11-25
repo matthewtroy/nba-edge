@@ -1,7 +1,7 @@
 import type { PickLeg } from "./types.js";
 import type { OddsCoverageJson } from "./odds-coverage.js";
 import { normalizePlayerName, namesMatch } from "./player-names.js";
-import { legOddsLookupKey } from "./odds.js";
+import { legOddsLookupKey, normalizeLegMarket } from "./odds.js";
 
 export interface PricedLegCounts {
   [market: string]: { total: number; priced: number };
@@ -27,11 +27,15 @@ export function expandOddsMapForPlayers(
   for (const [key, val] of oddsMap) {
     const parts = key.split("|");
     if (parts.length < 3) continue;
-    const [, market, line] = parts;
+    const market = normalizeLegMarket(parts[1]);
+    const line = Number(parts[2]);
+    if (!Number.isFinite(line)) continue;
+    expanded.set(`${parts[0]}|${market}|${line}`, val);
+    expanded.set(legOddsLookupKey(parts[0], market, line), val);
     for (const name of playerNames) {
       if (normalizePlayerName(name) === parts[0] || namesMatch(name, parts[0])) {
         expanded.set(`${name}|${market}|${line}`, val);
-        expanded.set(legOddsLookupKey(name, market, Number(line)), val);
+        expanded.set(legOddsLookupKey(name, market, line), val);
       }
     }
   }

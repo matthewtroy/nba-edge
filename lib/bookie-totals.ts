@@ -35,12 +35,22 @@ export function canonBookiePrices(
   return out;
 }
 
+export function withSyntheticBookiePrices(leg: PickLeg): PickLeg {
+  if (leg.bookiePrices && Object.keys(leg.bookiePrices).length) return leg;
+  if (leg.bestPrice != null && leg.bestBookie) {
+    return { ...leg, bookiePrices: { [leg.bestBookie]: leg.bestPrice } };
+  }
+  return leg;
+}
+
 export function multiBookieTotals(
   legs: PickLeg[]
 ): Partial<Record<(typeof AU_BOOKMAKERS)[number], number>> {
   const totals: Partial<Record<(typeof AU_BOOKMAKERS)[number], number>> = {};
   for (const book of AU_BOOKMAKERS) {
-    const legsCanon = legs.map((leg) => ({
+    const legsCanon = legs.map((leg) =>
+      withSyntheticBookiePrices(leg)
+    ).map((leg) => ({
       ...leg,
       bookiePrices: canonBookiePrices(leg.bookiePrices) as Record<string, number>,
     }));

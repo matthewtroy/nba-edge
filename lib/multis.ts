@@ -52,9 +52,29 @@ function singleBookieOverlay(
   combinedBestBookie?: string;
   combinedBestPrice?: number;
 } {
-  const bookieTotals = multiBookieTotals(legs) as Record<string, number>;
-  const quote = bestSingleBookieQuote(legs, combinedTakeAt);
+  const pricedLegs = legs.map((l) =>
+    l.bookiePrices && Object.keys(l.bookiePrices).length
+      ? l
+      : l.bestPrice != null && l.bestBookie
+        ? { ...l, bookiePrices: { [l.bestBookie]: l.bestPrice } }
+        : l
+  );
+  const bookieTotals = multiBookieTotals(pricedLegs) as Record<string, number>;
+  const quote = bestSingleBookieQuote(pricedLegs, combinedTakeAt);
   if (!quote) {
+    const allMeetTake =
+      pricedLegs.length > 0 &&
+      pricedLegs.every((l) => l.bestPrice != null && l.bestPrice >= l.takeAt);
+    if (allMeetTake) {
+      const cross = combinedBetPrice(pricedLegs);
+      if (cross >= combinedTakeAt) {
+        return {
+          bookieTotals,
+          combinedBestBookie: "Best across books",
+          combinedBestPrice: cross,
+        };
+      }
+    }
     return { bookieTotals };
   }
   return {
@@ -367,8 +387,16 @@ function boostMainLegs(
     if (!leg || !meetsFloor(leg) || hasCheckNews(leg)) return null;
     if (stepLegIds.has(id)) {
       const up = nextRung(leg, picks);
-      if (!up || !meetsFloor(up) || hasCheckNews(up)) return null;
-      boosted.push(up);
+      if (
+        up &&
+        up.fairPrice <= 4 &&
+        meetsFloor(up) &&
+        !hasCheckNews(up)
+      ) {
+        boosted.push(up);
+      } else {
+        boosted.push(leg);
+      }
     } else {
       boosted.push(leg);
     }
@@ -426,7 +454,8 @@ function findQ1Subset(
   teamKeys: string[],
   byTeam: Map<string, PickLeg[]>,
   minFair: number,
-  maxFair: number
+  maxFair: number,
+  opts?: { minProbability?: number }
 ): PickLeg[] | null {
   const candidates: PickLeg[][] = [];
 
@@ -441,7 +470,10 @@ function findQ1Subset(
     if (chosen.length >= 6 || ti >= teamKeys.length) return;
     const key = teamKeys[ti];
     const legs = (byTeam.get(key) ?? []).filter(
-      (l) => l.fairPrice >= minFair && l.fairPrice <= maxFair
+      (l) =>
+        l.fairPrice >= minFair &&
+        l.fairPrice <= maxFair &&
+        (opts?.minProbability == null || l.probability >= opts.minProbability)
     );
     dfs(ti + 1, chosen);
     for (const leg of legs.slice(0, 12)) {
@@ -513,14 +545,15 @@ function buildQ1Multi(picks: PickLeg[]): {
   }
 
   const bets: MultiBet[] = [];
-  let safeNotBuiltReason = "No Safe Q1 subset (fair 1.80–2.40, 3–6 teams, one leg/team)";
+  let safeNotBuiltReason =
+    "No Safe Q1 subset (fair 1.80–2.40, p≥0.70, 3–6 teams, one leg/team)";
   let valueNotBuiltReason =
     "No Value Q1 subset (fair 2.20–4.00, 3–6 teams, one leg/team)";
 
-  const safe = findQ1Subset(teamKeys, byTeam, 1.8, 2.4);
+  const safe = findQ1Subset(teamKeys, byTeam, 1.8, 2.4, { minProbability: 0.7 });
   if (safe) {
     bets.push(
-      q1MultiFromLegs(safe, "Safe", "Safe Q1: fair 1.80–2.40, one leg/team")
+      q1MultiFromLegs(safe, "Safe", "Safe Q1: fair 1.80–2.40, p≥0.70, one leg/team")
     );
     safeNotBuiltReason = "";
   }

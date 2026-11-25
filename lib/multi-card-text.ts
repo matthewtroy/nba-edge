@@ -16,7 +16,11 @@ export function formatMultiHeadline(multi: MultiBet): string {
 }
 
 export function formatLegLine(leg: PickLeg): string {
-  return `${leg.playerName} ${marketLabel(leg.market, leg.line)} · Take at $${leg.takeAt.toFixed(2)}+`;
+  const pricePart =
+    leg.bestPrice != null && leg.bestPrice > 1
+      ? ` · Best $${leg.bestPrice.toFixed(2)}+${leg.bestBookie ? ` (${leg.bestBookie})` : ""}`
+      : "";
+  return `${leg.playerName} ${marketLabel(leg.market, leg.line)} · Take at $${leg.takeAt.toFixed(2)}+${pricePart}`;
 }
 
 export function renderMultiCardText(multi: MultiBet, legs: PickLeg[]): string {
