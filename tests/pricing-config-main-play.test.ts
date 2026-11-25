@@ -6,6 +6,9 @@ import {
   MAIN_PLAY_SWEET_MAX,
   ROUGHIE_LEG_MIN,
   ROUGHIE_LEG_MAX,
+  ROUGHIE_NORMAL_MIN,
+  ROUGHIE_MAX_ROUGHIE_LEGS,
+  ROUGHIE_MAX_LEGS,
   MAIN_PLAY_HIGH_PROB_P,
   MAIN_PLAY_L10_GAP_PP,
   compareMainPlayCandidates,
@@ -34,6 +37,9 @@ describe("MAIN_PLAY pricing-config", () => {
   it("exports ROUGHIE_* for Games tab", () => {
     expect(ROUGHIE_LEG_MIN).toBe(2.5);
     expect(ROUGHIE_LEG_MAX).toBe(8);
+    expect(ROUGHIE_NORMAL_MIN).toBe(1.35);
+    expect(ROUGHIE_MAX_LEGS).toBe(5);
+    expect(ROUGHIE_MAX_ROUGHIE_LEGS).toBe(2);
   });
 
   it("re-exports thresholds from main-play-eligibility", async () => {

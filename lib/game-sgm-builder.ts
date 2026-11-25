@@ -11,6 +11,7 @@ import {
   pickBestGamesTabSgmCombo,
   qualifiesGamesTabSgmLeg,
   plainEnglishGamesSgmReason,
+  qualifiesGamesTabStructure,
   GAMES_TAB_MIN_LEGS,
   GAMES_TAB_MAX_LEGS,
   GAMES_TAB_MIN_LEG_PRICE,
@@ -80,7 +81,11 @@ export function pickGameSgmLegsWithReason(
 ): GameSgmPickResult {
   const pool = catalog ?? picks;
   const eligible = picks
-    .filter((l) => l.gameId === gameId && qualifiesCrossBoostLeg(l))
+    .filter((l) => {
+      if (l.gameId !== gameId) return false;
+      if (rules.roughie) return qualifiesGamesTabStructure(l, "", true);
+      return qualifiesCrossBoostLeg(l);
+    })
     .sort((a, b) => b.probability - a.probability);
 
   const label =

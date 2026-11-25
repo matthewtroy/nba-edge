@@ -14,7 +14,10 @@ import {
   ROUGHIE_LEG_MAX,
   ROUGHIE_LEG_MIN,
   ROUGHIE_MAX_LEGS,
+  ROUGHIE_MAX_ROUGHIE_LEGS,
   ROUGHIE_MIN_LEGS,
+  ROUGHIE_NORMAL_MAX,
+  ROUGHIE_NORMAL_MIN,
 } from "./pricing-config.js";
 
 export const GAMES_TAB_MIN_LEG_PRICE = 1.3;
@@ -27,6 +30,9 @@ export interface GamesTabSgmLegRules {
   minLegs: number;
   maxLegs: number;
   roughie?: boolean;
+  maxRoughieLegs?: number;
+  normalMin?: number;
+  normalMax?: number;
 }
 
 export const GAMES_TAB_SGM_RULES: GamesTabSgmLegRules = {
@@ -36,10 +42,12 @@ export const GAMES_TAB_SGM_RULES: GamesTabSgmLegRules = {
 };
 
 export const ROUGHIE_SGM_RULES: GamesTabSgmLegRules = {
-  minLegPrice: ROUGHIE_LEG_MIN,
-  maxLegPrice: ROUGHIE_LEG_MAX,
+  minLegPrice: ROUGHIE_NORMAL_MIN,
   minLegs: ROUGHIE_MIN_LEGS,
   maxLegs: ROUGHIE_MAX_LEGS,
+  maxRoughieLegs: ROUGHIE_MAX_ROUGHIE_LEGS,
+  normalMin: ROUGHIE_NORMAL_MIN,
+  normalMax: ROUGHIE_NORMAL_MAX,
   roughie: true,
 };
 const HIGH_PROB_FAIR_RATIO = 0.97;
@@ -54,7 +62,62 @@ function totalInBand(total: number, min: number, max: number): boolean {
   return total >= min && total <= max;
 }
 
-function qualifiesGamesTabStructure(
+function legHasRealReasons(leg: PickLeg): boolean {
+  return (leg.reasons?.length ?? 0) > 0;
+}
+
+function legBookiePrice(
+  leg: PickLeg,
+  bookie: string,
+  catalog: PickLeg[]
+): number | null {
+  const priced = asBookieLeg(leg, bookie, catalog);
+  const price = priced?.bestPrice;
+  return price != null && price > 0 ? price : null;
+}
+
+function roughieLegBand(price: number): "roughie" | "normal" | null {
+  if (price >= ROUGHIE_LEG_MIN && price <= ROUGHIE_LEG_MAX) return "roughie";
+  if (price >= ROUGHIE_NORMAL_MIN && price < ROUGHIE_LEG_MIN) return "normal";
+  return null;
+}
+
+function roughieMixedComboValid(
+  chosen: PickLeg[],
+  bookie: string,
+  catalog: PickLeg[],
+  rules: GamesTabSgmLegRules
+): boolean {
+  if (!rules.roughie) return true;
+  let roughieCount = 0;
+  for (const leg of chosen) {
+    const price = legBookiePrice(leg, bookie, catalog);
+    if (price == null) return false;
+    const band = roughieLegBand(price);
+    if (!band) return false;
+    if (band === "roughie") roughieCount += 1;
+  }
+  const maxRough = rules.maxRoughieLegs ?? ROUGHIE_MAX_ROUGHIE_LEGS;
+  const normalCount = chosen.length - roughieCount;
+  return (
+    roughieCount >= 1 &&
+    roughieCount <= maxRough &&
+    normalCount >= 1
+  );
+}
+
+function roughieLegPriceQualifies(
+  price: number,
+  rules: GamesTabSgmLegRules
+): boolean {
+  if (price < (rules.normalMin ?? ROUGHIE_NORMAL_MIN)) return false;
+  if (price > ROUGHIE_LEG_MAX) return false;
+  if (price >= ROUGHIE_LEG_MIN) return true;
+  const normalMax = rules.normalMax ?? ROUGHIE_NORMAL_MAX;
+  return price <= normalMax;
+}
+
+export function qualifiesGamesTabStructure(
   leg: PickLeg,
   bookie: string,
   roughie: boolean
@@ -78,6 +141,11 @@ export function qualifiesGamesTabSgmLeg(
   const priced = asBookieLeg(leg, bookie, pool);
   if (!priced) return false;
   const price = priced.bestPrice ?? 0;
+  if (rules.roughie) {
+    if (!roughieLegPriceQualifies(price, rules)) return false;
+    if (!legHasRealReasons(leg)) return false;
+    return hasValueAtBookie(leg, bookie);
+  }
   if (price < rules.minLegPrice) return false;
   if (rules.maxLegPrice != null && price > rules.maxLegPrice) return false;
   if (legMeetsBookieEdge(leg, bookie, minEdgeFraction)) return true;
@@ -112,7 +180,11 @@ export function pickBestGamesTabSgmCombo(
     if (chosen.length >= rules.minLegs && chosen.length <= rules.maxLegs) {
       const total =
         combinedPriceForBookieWithCatalog(chosen, bookie, catalog) ?? 0;
-      if (totalInBand(total, oddsMin, oddsMax) && !sameGameSgmHasClash(chosen)) {
+      if (
+        totalInBand(total, oddsMin, oddsMax) &&
+        !sameGameSgmHasClash(chosen) &&
+        roughieMixedComboValid(chosen, bookie, catalog, rules)
+      ) {
         const p = combinedProb(chosen);
         const edge = chosen.reduce((s, l) => s + legEdgeDecimal(l), 0);
         const valueCount = chosen.filter((l) =>
@@ -153,7 +225,10 @@ export function pickBestGamesTabSgmCombo(
     if (resolved) {
       const total =
         combinedPriceForBookieWithCatalog(resolved, bookie, catalog) ?? 0;
-      if (totalInBand(total, oddsMin, oddsMax)) {
+      if (
+        totalInBand(total, oddsMin, oddsMax) &&
+        roughieMixedComboValid(resolved, bookie, catalog, rules)
+      ) {
         const p = combinedProb(resolved);
         const edge = resolved.reduce((s, l) => s + legEdgeDecimal(l), 0);
         const valueCount = resolved.filter((l) => hasValueAtBookie(l, bookie))
@@ -174,10 +249,9 @@ export function plainEnglishGamesSgmReason(
   rules: GamesTabSgmLegRules = GAMES_TAB_SGM_RULES
 ): string {
   if (eligibleCount < rules.minLegs) {
-    const legBand =
-      rules.roughie && rules.maxLegPrice != null
-        ? `Roughie legs $${rules.minLegPrice}–$${rules.maxLegPrice}`
-        : "this bookie band";
+    const legBand = rules.roughie
+      ? `Roughie mix (normal $${rules.normalMin ?? ROUGHIE_NORMAL_MIN}–$${rules.normalMax ?? ROUGHIE_NORMAL_MAX}, up to ${rules.maxRoughieLegs ?? ROUGHIE_MAX_ROUGHIE_LEGS} legs $${ROUGHIE_LEG_MIN}–$${ROUGHIE_LEG_MAX})`
+      : "this bookie band";
     return `${gameLabel}: not enough starter legs priced for ${legBand}.`;
   }
   if (inBandAttempts === 0) {

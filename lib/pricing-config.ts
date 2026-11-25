@@ -97,8 +97,11 @@ export function nbaSeasonStartDate(): Date {
   return new Date(`${NBA_SEASON_OPENING_UTC}T12:00:00.000Z`);
 }
 
-/** Games tab Roughie mode: per-leg AU bookie decimal and leg count caps. */
+/** Games tab Roughie mode: mixed same-game combos (normal filler + long-priced legs). */
 export const ROUGHIE_LEG_MIN = 2.5;
 export const ROUGHIE_LEG_MAX = 8;
+export const ROUGHIE_NORMAL_MIN = 1.35;
+export const ROUGHIE_NORMAL_MAX = 2.5;
 export const ROUGHIE_MIN_LEGS = 2;
-export const ROUGHIE_MAX_LEGS = 2;
+export const ROUGHIE_MAX_LEGS = 5;
+export const ROUGHIE_MAX_ROUGHIE_LEGS = 2;

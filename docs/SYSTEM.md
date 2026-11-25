@@ -96,7 +96,7 @@ One card; DD/TD or 30+ pts; take-at **$30–$150**; no 3PM legs.
 ### Games tab SGM & Roughies
 
 - Bookie-total bands: UI presets ($1.5–4 … $50+); persisted under `games-sgm-preset`.
-- **Roughies** toggle (`games-roughies-on` localStorage, separate from band preset): when on, same-game combos use **`ROUGHIE_*`** — legs **$2.50–$8.00** each at the card bookie, **exactly 2 legs** max (`ROUGHIE_MIN_LEGS` / `ROUGHIE_MAX_LEGS`), same form/clash/value rules as standard Games SGM. Built cards show a **Roughie** pill.
+- **Roughies** toggle (`games-roughies-on` localStorage, separate from band preset): when on, mixed same-game combos **2–5 legs** (`ROUGHIE_MIN_LEGS` / `ROUGHIE_MAX_LEGS`): up to **2** legs at **$2.50–$8.00** (`ROUGHIE_MAX_ROUGHIE_LEGS`) plus filler legs **$1.35–$2.50** (`ROUGHIE_NORMAL_*`) at the card bookie. **Value only** at the card bookie (no high-probability bypass); each leg needs **real model reasons**. Form/clash rules unchanged. Built cards show a **Roughie** pill.
 
 ---
 
