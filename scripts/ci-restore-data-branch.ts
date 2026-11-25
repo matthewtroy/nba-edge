@@ -3,14 +3,38 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import { execFileSync } from "child_process";
-import { restorePersistedDataFromBranch } from "../lib/restore-data-branch.js";
+import {
+  dataBranchPresentOnRemote,
+  restorePersistedDataFromBranch,
+} from "../lib/restore-data-branch.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 try {
-  execFileSync("git", ["fetch", "origin", "data"], { cwd: root, stdio: "inherit" });
+  execFileSync(
+    "git",
+    ["fetch", "origin", "+refs/heads/data:refs/heads/data"],
+    { cwd: root, stdio: "inherit" }
+  );
 } catch {
-  /* data branch may not exist on first run */
+  console.warn("ci-restore: fetch origin data failed (branch may not exist yet)");
 }
 
-restorePersistedDataFromBranch(root, { requireWhenDataBranch: false });
+const { restored, oddsMapKeys } = restorePersistedDataFromBranch(root, {
+  requireWhenDataBranch: false,
+});
+
+if (dataBranchPresentOnRemote(root) && restored.length === 0) {
+  console.error(
+    "::error::Fetch data branch: remote data exists but restore wrote 0 files — check git ref resolution"
+  );
+  process.exit(1);
+}
+
+if (restored.length) {
+  console.log(
+    `ci-restore OK: ${restored.length} file(s), oddsMap keys ${oddsMapKeys}`
+  );
+} else {
+  console.log("ci-restore: no data branch (first run) — skipped restore");
+}

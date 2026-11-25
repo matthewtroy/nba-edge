@@ -33,7 +33,12 @@ on_exit() {
 }
 trap on_exit EXIT
 
-if git -C "$ROOT" show-ref --verify --quiet refs/remotes/origin/data; then
+if git -C "$ROOT" show-ref --verify --quiet refs/heads/data; then
+  if ! git -C "$ROOT" worktree add -B data "$WT" data 2>/dev/null; then
+    PERSIST_WARN "worktree add from refs/heads/data failed"
+    exit 0
+  fi
+elif git -C "$ROOT" show-ref --verify --quiet refs/remotes/origin/data; then
   if ! git -C "$ROOT" worktree add -B data "$WT" origin/data 2>/dev/null; then
     PERSIST_WARN "worktree add from origin/data failed"
     exit 0

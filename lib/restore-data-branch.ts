@@ -22,33 +22,15 @@ export const DATA_BRANCH_REQUIRED_ROOT_FILES = [
 /** Per-slate files restored before each pipeline run (never dropped on normal builds). */
 export const DATA_BRANCH_SLATE_FILES = ["official-card.json"] as const;
 
-const DATA_REF = "refs/heads/data";
+const DATA_REF_CANDIDATES = [
+  "refs/heads/data",
+  "refs/remotes/origin/data",
+  "FETCH_HEAD",
+] as const;
 
-function gitShow(rootDir: string, relPath: string): Buffer | null {
+function refExists(rootDir: string, ref: string): boolean {
   try {
-    return execFileSync("git", ["show", `${DATA_REF}:${relPath}`], {
-      cwd: rootDir,
-      stdio: ["ignore", "pipe", "ignore"],
-      maxBuffer: 64 * 1024 * 1024,
-    });
-  } catch {
-    return null;
-  }
-}
-
-function restoreOne(rootDir: string, relPath: string, outPath: string): boolean {
-  const blob = gitShow(rootDir, relPath);
-  if (blob == null) return false;
-  fs.mkdirSync(path.dirname(outPath), { recursive: true });
-  fs.writeFileSync(outPath, blob);
-  return true;
-}
-
-export class DataBranchRestoreError extends Error {}
-
-function dataBranchExists(rootDir: string): boolean {
-  try {
-    execFileSync("git", ["show-ref", "--verify", "--quiet", DATA_REF], {
+    execFileSync("git", ["rev-parse", "--verify", ref], {
       cwd: rootDir,
       stdio: "ignore",
     });
@@ -58,6 +40,45 @@ function dataBranchExists(rootDir: string): boolean {
   }
 }
 
+/** Pick the git ref that holds origin/data after CI fetch (first match wins). */
+export function resolveDataGitRef(rootDir: string): string | null {
+  for (const ref of DATA_REF_CANDIDATES) {
+    if (refExists(rootDir, ref)) return ref;
+  }
+  return null;
+}
+
+function gitShow(rootDir: string, dataRef: string, relPath: string): Buffer | null {
+  try {
+    return execFileSync("git", ["show", `${dataRef}:${relPath}`], {
+      cwd: rootDir,
+      stdio: ["ignore", "pipe", "ignore"],
+      maxBuffer: 64 * 1024 * 1024,
+    });
+  } catch {
+    return null;
+  }
+}
+
+function restoreOne(
+  rootDir: string,
+  dataRef: string,
+  relPath: string,
+  outPath: string
+): boolean {
+  const blob = gitShow(rootDir, dataRef, relPath);
+  if (blob == null) return false;
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  fs.writeFileSync(outPath, blob);
+  return true;
+}
+
+export class DataBranchRestoreError extends Error {}
+
+function dataBranchExists(rootDir: string): boolean {
+  return resolveDataGitRef(rootDir) != null;
+}
+
 /** Restore must-persist JSON from origin/data into public/data (no-op if data branch missing). */
 export function restorePersistedDataFromBranch(
   rootDir: string,
@@ -65,11 +86,22 @@ export function restorePersistedDataFromBranch(
 ): {
   restored: string[];
   oddsMapKeys: number;
+  dataRef: string | null;
 } {
   const require = opts.requireWhenDataBranch ?? true;
-  const hasData = dataBranchExists(rootDir);
+  const dataRef = resolveDataGitRef(rootDir);
+  const hasData = dataRef != null;
+
+  if (dataRef) {
+    console.log(`restore: using git ref ${dataRef}`);
+  }
+
   if (require && !hasData) {
     throw new DataBranchRestoreError("data branch missing — cannot restore persisted JSON");
+  }
+
+  if (!hasData) {
+    return { restored: [], oddsMapKeys: 0, dataRef: null };
   }
 
   const dataRoot = path.join(rootDir, "public/data");
@@ -77,7 +109,7 @@ export function restorePersistedDataFromBranch(
 
   for (const name of DATA_BRANCH_ROOT_FILES) {
     const rel = `public/data/${name}`;
-    if (restoreOne(rootDir, rel, path.join(dataRoot, name))) {
+    if (restoreOne(rootDir, dataRef, rel, path.join(dataRoot, name))) {
       restored.push(rel);
     }
   }
@@ -98,7 +130,7 @@ export function restorePersistedDataFromBranch(
   try {
     const raw = execFileSync(
       "git",
-      ["ls-tree", "-r", "--name-only", DATA_REF, "public/data"],
+      ["ls-tree", "-r", "--name-only", dataRef, "public/data"],
       { cwd: rootDir, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }
     );
     const slateOfficial = raw
@@ -106,10 +138,10 @@ export function restorePersistedDataFromBranch(
       .filter((p) => /\/official-card\.json$/.test(p));
     for (const rel of slateOfficial) {
       const out = path.join(rootDir, rel);
-      if (restoreOne(rootDir, rel, out)) restored.push(rel);
+      if (restoreOne(rootDir, dataRef, rel, out)) restored.push(rel);
     }
   } catch {
-    /* data branch absent */
+    /* ls-tree failed */
   }
 
   let oddsMapKeys = 0;
@@ -132,5 +164,12 @@ export function restorePersistedDataFromBranch(
         .join(", ")})`
     );
   }
-  return { restored, oddsMapKeys };
+  return { restored, oddsMapKeys, dataRef };
+}
+
+/** True when origin/data (or local data) is reachable after fetch. */
+export function dataBranchPresentOnRemote(rootDir: string): boolean {
+  return (
+    refExists(rootDir, "refs/heads/data") || refExists(rootDir, "refs/remotes/origin/data")
+  );
 }
