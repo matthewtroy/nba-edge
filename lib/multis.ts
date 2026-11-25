@@ -227,7 +227,7 @@ const LABELS: Record<MultiType, string> = {
   mainPlay: "Main Play",
   booster: "Booster",
   q1Multi: "Q1 Multi",
-  crossGameSgm: "Best Double Up",
+  crossGameSgm: "Cross-Game SGM Multi",
   boostSgm: "Best SGM",
   longshot: "Longshot",
 };
@@ -1032,7 +1032,7 @@ function buildCrossGameSgm(
   return {
     bet: {
       type: "crossGameSgm",
-      label: "Best Double Up",
+      label: "Cross-Game SGM Multi",
       legs: bestAcross.legs.map((l) => l.id),
       combinedProbability: p,
       combinedFairPrice: fair,

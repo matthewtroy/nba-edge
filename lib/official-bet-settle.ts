@@ -13,7 +13,7 @@ export const BET_LABELS: Record<MultiType, string> = {
   mainPlay: "Main Play",
   booster: "Booster",
   q1Multi: "Q1 Multi",
-  crossGameSgm: "Best Double Up",
+  crossGameSgm: "Cross-Game SGM Multi",
   boostSgm: "Boost SGM",
   longshot: "Longshot",
 };

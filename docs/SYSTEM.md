@@ -6,7 +6,7 @@ Phone-first static app + GitHub Actions pipeline. Canonical betting rules below;
 
 ## 1. Purpose & architecture
 
-- **Purpose:** Injury-aware NBA player-prop projections → fair / take-at prices → standard multis (Main Play, Best Double Up, Booster, Q1 Multi, Best SGM, one Longshot). Copy-friendly cards; no auto betting.
+- **Purpose:** Injury-aware NBA player-prop projections → fair / take-at prices → standard multis (Main Play, Booster, Q1 Multi, Cross-Game SGM, Best SGM, one Longshot). Copy-friendly cards; no auto betting.
 - **Runtime today:** `npm run pipeline` writes JSON under `public/data/{slateDate}/`; Vite/React UI reads that JSON. GitHub Actions runs pipeline + Pages deploy.
 - **Planned:** Supabase project **NBA Edge** (`dzikozvlfrvsstkhzkzj`) for pipeline storage, Auth, Stripe **entitlements**, subscriber APIs, and optional Discord—see `docs/SCHEMA.md` and `supabase/migrations/`. Migrations only in git; no agent `db push`.
 
@@ -91,9 +91,9 @@ Same **Main Play bookie** and players; **+1 rung** when that Main leg’s bookie
 
 No AU Q1 feed — card shows **Take fair×1.08** prominently.
 
-### Best Double Up (cross-game)
+### Cross-Game SGM
 
-Label **Best Double Up** (`type: crossGameSgm`). Home card order: **Main Play → Best Double Up → Booster → …** Up to **5 games**, 1–2 legs each, combined **$15–$50** at one AU bookie.
+Label **Cross-Game SGM Multi** (`type: crossGameSgm`). Home card order: **Main Play → Booster → Q1 Multi → Cross-Game SGM → …** Up to **5 games**, 1–2 legs each, combined **$15–$50** at one AU bookie.
 
 ### Best SGM
 
@@ -155,7 +155,7 @@ Vitest: distributions, injury fixture, clash, exposure, odds pause, Main Play ra
 | Market blend | 60% market / 40% model | `lib/market-blend.ts`: **60% model / 40% market** |
 | Main Play combined total | **$5–$20** at chosen bookie | `lib/pricing-config.ts` + `findMainPlaySubset` |
 | Best SGM combined band | None | `pickBestSameGameSgmCombo` with open max |
-| Cross-game label | Best Double Up | `lib/multis.ts` `LABELS.crossGameSgm` |
+| Cross-game label | Cross-Game SGM Multi | `lib/multis.ts` `LABELS.crossGameSgm` |
 | Longshot variants | One card | `buildLongshot` — no Longshot 2/3 |
 | Home settle row | Official W–L on Today | `lib/home-settle-summary.ts`, `TodayScreen` |
 | Exposure cap | Removed (clash only) | `lib/exposure.ts` no-op |
