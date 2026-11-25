@@ -5,38 +5,38 @@
       "label": "Main Play",
       "legs": [
         "3136195-pts-20",
-        "4903027-reb-7",
-        "4278073-ast-5",
-        "4601025-pts-10",
-        "4433249-reb-10"
+        "4431678-ast-5",
+        "4871144-ast-7",
+        "4066648-reb-5"
       ],
-      "combinedProbability": 0.20011270759199995,
-      "combinedFairPrice": 5,
-      "combinedTakeAt": 5.4,
-      "bestBookie": "Ladbrokes",
-      "bestBookieTotal": 9.4,
+      "combinedProbability": 0.23351637523200003,
+      "combinedFairPrice": 4.28,
+      "combinedTakeAt": 4.62,
+      "bestBookie": "Unibet",
+      "bestBookieTotal": 7.75,
       "bookieTotals": {
-        "Ladbrokes": 9.4
+        "Ladbrokes": 7.14,
+        "Unibet": 7.75
       },
-      "summary": "5 starter main lines"
+      "summary": "4 starter main lines"
     },
     {
       "type": "booster",
       "label": "Booster",
       "legs": [
-        "3136195-pts-30",
-        "4903027-reb-7",
-        "4278073-ast-7",
-        "4601025-pts-15",
-        "4433249-reb-10"
+        "3136195-pts-20",
+        "4431678-ast-7",
+        "4871144-ast-10",
+        "4066648-reb-5"
       ],
-      "combinedProbability": 0.01668743307711,
-      "combinedFairPrice": 59.93,
-      "combinedTakeAt": 64.72,
-      "bestBookie": "Ladbrokes",
-      "bestBookieTotal": 102.67,
+      "combinedProbability": 0.06499540096,
+      "combinedFairPrice": 15.39,
+      "combinedTakeAt": 16.62,
+      "bestBookie": "Unibet",
+      "bestBookieTotal": 40.22,
       "bookieTotals": {
-        "Ladbrokes": 102.67
+        "Ladbrokes": 26.34,
+        "Unibet": 40.22
       },
       "summary": "Main Play +1 rung when Main leg ≤$4 at bookie, else same rung"
     },
@@ -54,6 +54,7 @@
       "combinedProbability": 0.15224574765569904,
       "combinedFairPrice": 6.57,
       "combinedTakeAt": 7.1,
+      "bookieTotals": {},
       "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
     },
     {
@@ -74,7 +75,7 @@
         "Ladbrokes": 61.6,
         "PointsBet": 63.25
       },
-      "summary": "One long leg per game"
+      "summary": "2 legs angle-ranked @ PointsBet"
     }
   ],
   "notBuilt": [
@@ -89,16 +90,16 @@
         "Moussa Diabate",
         "Jalen Smith",
         "Karl-Anthony Towns",
-        "Peyton Watson",
+        "Donovan Mitchell",
         "Jared McCain",
         "LaMelo Ball",
         "Shai Gilgeous-Alexander",
+        "Cedric Coward",
         "Rui Hachimura",
-        "Darius Garland",
         "Egor Demin",
         "Julius Randle",
         "Danny Wolf",
-        "Amen Thompson",
+        "Alperen Sengun",
         "Kevin Durant",
         "Devin Booker",
         "Zach LaVine",
@@ -114,6 +115,16 @@
         "Jared McCain",
         "Shai Gilgeous-Alexander",
         "Kenrich Williams"
+      ]
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot",
+      "variant": "2",
+      "reason": "Gate: Longshot: take-at 18.81 not 30–150 (legs: Karl-Anthony Towns 30+ pts, Victor Wembanyama 40+ pts)",
+      "players": [
+        "Karl-Anthony Towns",
+        "Victor Wembanyama"
       ]
     },
     {

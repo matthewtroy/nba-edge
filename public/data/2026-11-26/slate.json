@@ -22,7 +22,7 @@
     "homeTeamId": "30",
     "awayTeamId": "4",
     "spread": -3.5,
-    "total": 221.5,
+    "total": 222.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"
@@ -36,7 +36,7 @@
     "homeTeamId": "18",
     "awayTeamId": "5",
     "spread": -3.5,
-    "total": 218.5,
+    "total": 217.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"
@@ -50,7 +50,7 @@
     "homeTeamId": "25",
     "awayTeamId": "16",
     "spread": -1.5,
-    "total": 224.5,
+    "total": 225.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"

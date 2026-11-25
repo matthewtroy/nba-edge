@@ -11,7 +11,15 @@
     "player_threes",
     "player_threes_alternate",
     "player_double_double",
-    "player_triple_double"
+    "player_triple_double",
+    "player_points_rebounds",
+    "player_points_rebounds_alternate",
+    "player_points_assists",
+    "player_points_assists_alternate",
+    "player_rebounds_assists",
+    "player_rebounds_assists_alternate",
+    "player_points_rebounds_assists",
+    "player_points_rebounds_assists_alternate"
   ],
   "marketsPresent": {},
   "uniquePlayersByCoreMarket": {

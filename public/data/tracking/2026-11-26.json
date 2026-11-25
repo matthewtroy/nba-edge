@@ -1,0 +1,1490 @@
+{
+  "slateDate": "2026-11-26",
+  "nbaStatus": "blocked",
+  "players": {
+    "1966": {
+      "playerId": "1966",
+      "playerName": "LeBron James",
+      "fgaPerMinL10": 0.7386075949367089,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "3202": {
+      "playerId": "3202",
+      "playerName": "Kevin Durant",
+      "fgaPerMinL10": 1.5515723270440251,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3213": {
+      "playerId": "3213",
+      "playerName": "Al Horford",
+      "fgaPerMinL10": 0.3125,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3448": {
+      "playerId": "3448",
+      "playerName": "Brook Lopez",
+      "fgaPerMinL10": 2.06,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3975": {
+      "playerId": "3975",
+      "playerName": "Stephen Curry",
+      "fgaPerMinL10": 1.9806451612903226,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3992": {
+      "playerId": "3992",
+      "playerName": "James Harden",
+      "fgaPerMinL10": 1.1115384615384616,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3995": {
+      "playerId": "3995",
+      "playerName": "Jrue Holiday",
+      "fgaPerMinL10": 1.6363013698630138,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "6475": {
+      "playerId": "6475",
+      "playerName": "Klay Thompson",
+      "fgaPerMinL10": 1.8635593220338984,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "6578": {
+      "playerId": "6578",
+      "playerName": "Harrison Barnes",
+      "fgaPerMinL10": 0.6126436781609195,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "6585": {
+      "playerId": "6585",
+      "playerName": "Andre Drummond",
+      "fgaPerMinL10": 0.6666666666666666,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "6589": {
+      "playerId": "6589",
+      "playerName": "Draymond Green",
+      "fgaPerMinL10": 2.1186440677966103,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "6606": {
+      "playerId": "6606",
+      "playerName": "Damian Lillard",
+      "fgaPerMinL10": 0.9210526315789473,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "2528210": {
+      "playerId": "2528210",
+      "playerName": "Tim Hardaway Jr.",
+      "fgaPerMinL10": 0.7526315789473684,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "2581018": {
+      "playerId": "2581018",
+      "playerName": "Kentavious Caldwell-Pope",
+      "fgaPerMinL10": 1.2043795620437956,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "2583632": {
+      "playerId": "2583632",
+      "playerName": "Royce O'Neale",
+      "fgaPerMinL10": 2.15045871559633,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "2595516": {
+      "playerId": "2595516",
+      "playerName": "Norman Powell",
+      "fgaPerMinL10": 1.2130718954248365,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "2990969": {
+      "playerId": "2990969",
+      "playerName": "Georges Niang",
+      "fgaPerMinL10": 1.5151515151515151,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "2990984": {
+      "playerId": "2990984",
+      "playerName": "Buddy Hield",
+      "fgaPerMinL10": 1.665625,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "2990992": {
+      "playerId": "2990992",
+      "playerName": "Marcus Smart",
+      "fgaPerMinL10": 2.033,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "2991070": {
+      "playerId": "2991070",
+      "playerName": "Jerami Grant",
+      "fgaPerMinL10": 3.0138297872340427,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "2991139": {
+      "playerId": "2991139",
+      "playerName": "Kris Dunn",
+      "fgaPerMinL10": 0.660377358490566,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "2991230": {
+      "playerId": "2991230",
+      "playerName": "Fred VanVleet",
+      "fgaPerMinL10": 1.3211920529801324,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "2991235": {
+      "playerId": "2991235",
+      "playerName": "Steven Adams",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "2991350": {
+      "playerId": "2991350",
+      "playerName": "Alex Caruso",
+      "fgaPerMinL10": 1.6009803921568628,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "2995706": {
+      "playerId": "2995706",
+      "playerName": "Mario Hezonja",
+      "fgaPerMinL10": 2.0486238532110095,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3032976": {
+      "playerId": "3032976",
+      "playerName": "Rudy Gobert",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3032977": {
+      "playerId": "3032977",
+      "playerName": "Giannis Antetokounmpo",
+      "fgaPerMinL10": 0.974025974025974,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "3059318": {
+      "playerId": "3059318",
+      "playerName": "Joel Embiid",
+      "fgaPerMinL10": 0.5173913043478261,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "3059319": {
+      "playerId": "3059319",
+      "playerName": "Andrew Wiggins",
+      "fgaPerMinL10": 1.1554744525547447,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "3062679": {
+      "playerId": "3062679",
+      "playerName": "Josh Hart",
+      "fgaPerMinL10": 0.5345911949685535,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3064440": {
+      "playerId": "3064440",
+      "playerName": "Zach LaVine",
+      "fgaPerMinL10": 1.3371257485029941,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3064482": {
+      "playerId": "3064482",
+      "playerName": "Bobby Portis",
+      "fgaPerMinL10": 1.5414893617021275,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "3064514": {
+      "playerId": "3064514",
+      "playerName": "Julius Randle",
+      "fgaPerMinL10": 1.4518072289156627,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3064560": {
+      "playerId": "3064560",
+      "playerName": "Luke Kornet",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3102529": {
+      "playerId": "3102529",
+      "playerName": "Clint Capela",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3133626": {
+      "playerId": "3133626",
+      "playerName": "Kenrich Williams",
+      "fgaPerMinL10": 1.6672131147540983,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3133628": {
+      "playerId": "3133628",
+      "playerName": "Myles Turner",
+      "fgaPerMinL10": 1.475968992248062,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3134903": {
+      "playerId": "3134903",
+      "playerName": "Gary Payton II",
+      "fgaPerMinL10": 1.3513513513513513,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3134907": {
+      "playerId": "3134907",
+      "playerName": "Kyle Kuzma",
+      "fgaPerMinL10": 1.3628378378378379,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3135045": {
+      "playerId": "3135045",
+      "playerName": "Grayson Allen",
+      "fgaPerMinL10": 1.408450704225352,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3136193": {
+      "playerId": "3136193",
+      "playerName": "Devin Booker",
+      "fgaPerMinL10": 0.6269662921348315,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3136195": {
+      "playerId": "3136195",
+      "playerName": "Karl-Anthony Towns",
+      "fgaPerMinL10": 1.4594285714285715,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3136196": {
+      "playerId": "3136196",
+      "playerName": "Trey Lyles",
+      "fgaPerMinL10": 1.8627450980392157,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3147657": {
+      "playerId": "3147657",
+      "playerName": "Mikal Bridges",
+      "fgaPerMinL10": 1.1953947368421052,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3150844": {
+      "playerId": "3150844",
+      "playerName": "Moritz Wagner",
+      "fgaPerMinL10": 4.166666666666667,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3155526": {
+      "playerId": "3155526",
+      "playerName": "Dillon Brooks",
+      "fgaPerMinL10": 1.3251798561151078,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3155942": {
+      "playerId": "3155942",
+      "playerName": "Domantas Sabonis",
+      "fgaPerMinL10": 0.6535947712418301,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3899664": {
+      "playerId": "3899664",
+      "playerName": "Simone Fontecchio",
+      "fgaPerMinL10": 2.8534246575342466,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "3907823": {
+      "playerId": "3907823",
+      "playerName": "Terance Mann",
+      "fgaPerMinL10": 1.1701754385964913,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3908809": {
+      "playerId": "3908809",
+      "playerName": "Donovan Mitchell",
+      "fgaPerMinL10": 0.8776470588235293,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3912848": {
+      "playerId": "3912848",
+      "playerName": "Dean Wade",
+      "fgaPerMinL10": 1.3046052631578948,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "3913174": {
+      "playerId": "3913174",
+      "playerName": "Luke Kennard",
+      "fgaPerMinL10": 2.2279069767441864,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3914044": {
+      "playerId": "3914044",
+      "playerName": "Landry Shamet",
+      "fgaPerMinL10": 1.7572368421052633,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3917376": {
+      "playerId": "3917376",
+      "playerName": "Jaylen Brown",
+      "fgaPerMinL10": 0.9346153846153847,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "3934672": {
+      "playerId": "3934672",
+      "playerName": "Jalen Brunson",
+      "fgaPerMinL10": 1.3657303370786515,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3934719": {
+      "playerId": "3934719",
+      "playerName": "OG Anunoby",
+      "fgaPerMinL10": 0.8191256830601091,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3934723": {
+      "playerId": "3934723",
+      "playerName": "Thomas Bryant",
+      "fgaPerMinL10": 2.262962962962963,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "3936099": {
+      "playerId": "3936099",
+      "playerName": "Derrick Jones Jr.",
+      "fgaPerMinL10": 1.0899999999999999,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4065732": {
+      "playerId": "4065732",
+      "playerName": "De'Andre Hunter",
+      "fgaPerMinL10": 1.1481865284974093,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4065733": {
+      "playerId": "4065733",
+      "playerName": "Ty Jerome",
+      "fgaPerMinL10": 1.2463087248322147,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4065778": {
+      "playerId": "4065778",
+      "playerName": "Max Strus",
+      "fgaPerMinL10": 1.6962406015037594,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4066211": {
+      "playerId": "4066211",
+      "playerName": "Robert Williams III",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4066218": {
+      "playerId": "4066218",
+      "playerName": "Grant Williams",
+      "fgaPerMinL10": 1.743939393939394,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4066259": {
+      "playerId": "4066259",
+      "playerName": "De'Aaron Fox",
+      "fgaPerMinL10": 0.2042857142857143,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4066261": {
+      "playerId": "4066261",
+      "playerName": "Bam Adebayo",
+      "fgaPerMinL10": 0.9821656050955413,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4066262": {
+      "playerId": "4066262",
+      "playerName": "Malik Monk",
+      "fgaPerMinL10": 1.313793103448276,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4066328": {
+      "playerId": "4066328",
+      "playerName": "Jarrett Allen",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4066383": {
+      "playerId": "4066383",
+      "playerName": "Miles Bridges",
+      "fgaPerMinL10": 1.3633802816901408,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4066436": {
+      "playerId": "4066436",
+      "playerName": "De'Anthony Melton",
+      "fgaPerMinL10": 0.8327272727272726,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4066648": {
+      "playerId": "4066648",
+      "playerName": "Rui Hachimura",
+      "fgaPerMinL10": 2.014388489208633,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4066650": {
+      "playerId": "4066650",
+      "playerName": "Zach Collins",
+      "fgaPerMinL10": 1.8013513513513515,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4066757": {
+      "playerId": "4066757",
+      "playerName": "Sam Merrill",
+      "fgaPerMinL10": 1.35929203539823,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4222252": {
+      "playerId": "4222252",
+      "playerName": "Isaiah Hartenstein",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4277843": {
+      "playerId": "4277843",
+      "playerName": "Gary Trent Jr.",
+      "fgaPerMinL10": 0.44999999999999996,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4277922": {
+      "playerId": "4277922",
+      "playerName": "Jericho Sims",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4278053": {
+      "playerId": "4278053",
+      "playerName": "Davion Mitchell",
+      "fgaPerMinL10": 1.3712643678160918,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4278067": {
+      "playerId": "4278067",
+      "playerName": "Nic Claxton",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4278073": {
+      "playerId": "4278073",
+      "playerName": "Shai Gilgeous-Alexander",
+      "fgaPerMinL10": 1.3544444444444446,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4278104": {
+      "playerId": "4278104",
+      "playerName": "Michael Porter Jr.",
+      "fgaPerMinL10": 0.9375,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4278402": {
+      "playerId": "4278402",
+      "playerName": "Jordan Goodwin",
+      "fgaPerMinL10": 0.9719298245614035,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4278585": {
+      "playerId": "4278585",
+      "playerName": "Collin Gillespie",
+      "fgaPerMinL10": 1.9500000000000002,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4279888": {
+      "playerId": "4279888",
+      "playerName": "Ja Morant",
+      "fgaPerMinL10": 2.1798076923076923,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4351851": {
+      "playerId": "4351851",
+      "playerName": "Anfernee Simons",
+      "fgaPerMinL10": 1.0804878048780489,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4395626": {
+      "playerId": "4395626",
+      "playerName": "Tre Jones",
+      "fgaPerMinL10": 0.1941747572815534,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4395630": {
+      "playerId": "4395630",
+      "playerName": "Devin Vassell",
+      "fgaPerMinL10": 0.85,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4395650": {
+      "playerId": "4395650",
+      "playerName": "Leaky Black",
+      "fgaPerMinL10": 1.6865853658536587,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4395651": {
+      "playerId": "4395651",
+      "playerName": "Coby White",
+      "fgaPerMinL10": 1.1708333333333334,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4395723": {
+      "playerId": "4395723",
+      "playerName": "Keldon Johnson",
+      "fgaPerMinL10": 0.75,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4395725": {
+      "playerId": "4395725",
+      "playerName": "Tyler Herro",
+      "fgaPerMinL10": 1.2855263157894736,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4396907": {
+      "playerId": "4396907",
+      "playerName": "Darius Garland",
+      "fgaPerMinL10": 1.105421686746988,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4396971": {
+      "playerId": "4396971",
+      "playerName": "Naz Reid",
+      "fgaPerMinL10": 0.7627777777777779,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4397002": {
+      "playerId": "4397002",
+      "playerName": "Ayo Dosunmu",
+      "fgaPerMinL10": 1.2484848484848485,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4397040": {
+      "playerId": "4397040",
+      "playerName": "Brandon Williams",
+      "fgaPerMinL10": 0.8134146341463415,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4397189": {
+      "playerId": "4397189",
+      "playerName": "Jalen Smith",
+      "fgaPerMinL10": 1.5528571428571427,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4397475": {
+      "playerId": "4397475",
+      "playerName": "AJ Green",
+      "fgaPerMinL10": 5.416666666666667,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4397886": {
+      "playerId": "4397886",
+      "playerName": "Charles Bassey",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4431671": {
+      "playerId": "4431671",
+      "playerName": "Jaden McDaniels",
+      "fgaPerMinL10": 1.497175141242938,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4431678": {
+      "playerId": "4431678",
+      "playerName": "Tyrese Maxey",
+      "fgaPerMinL10": 0.8677966101694915,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4431679": {
+      "playerId": "4431679",
+      "playerName": "Precious Achiuwa",
+      "fgaPerMinL10": 0.5555555555555556,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4431687": {
+      "playerId": "4431687",
+      "playerName": "Patrick Williams",
+      "fgaPerMinL10": 0.5952380952380952,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4431736": {
+      "playerId": "4431736",
+      "playerName": "Toumani Camara",
+      "fgaPerMinL10": 0.6625,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4431772": {
+      "playerId": "4431772",
+      "playerName": "Myron Gardner",
+      "fgaPerMinL10": 1.1111111111111112,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4431785": {
+      "playerId": "4431785",
+      "playerName": "Scotty Pippen Jr.",
+      "fgaPerMinL10": 1.028395061728395,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4431823": {
+      "playerId": "4431823",
+      "playerName": "Miles McBride",
+      "fgaPerMinL10": 3.002985074626866,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4432158": {
+      "playerId": "4432158",
+      "playerName": "Evan Mobley",
+      "fgaPerMinL10": 1.3870967741935485,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4432170": {
+      "playerId": "4432170",
+      "playerName": "Isaiah Jackson",
+      "fgaPerMinL10": 1.5384615384615385,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4432185": {
+      "playerId": "4432185",
+      "playerName": "Micah Peavy",
+      "fgaPerMinL10": 1.7786516853932586,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4432194": {
+      "playerId": "4432194",
+      "playerName": "Day'Ron Sharpe",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4432247": {
+      "playerId": "4432247",
+      "playerName": "Jaylen Clark",
+      "fgaPerMinL10": 1.5321839080459771,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4432446": {
+      "playerId": "4432446",
+      "playerName": "Jabari Walker",
+      "fgaPerMinL10": 2.127659574468085,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4432639": {
+      "playerId": "4432639",
+      "playerName": "Jabari Smith Jr.",
+      "fgaPerMinL10": 1.2965753424657536,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4432810": {
+      "playerId": "4432810",
+      "playerName": "Isaiah Stewart",
+      "fgaPerMinL10": 0.35052631578947363,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4432816": {
+      "playerId": "4432816",
+      "playerName": "LaMelo Ball",
+      "fgaPerMinL10": 0.8861842105263157,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4432822": {
+      "playerId": "4432822",
+      "playerName": "Isaac Okoro",
+      "fgaPerMinL10": 1.4703225806451614,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4432823": {
+      "playerId": "4432823",
+      "playerName": "Jaylin Williams",
+      "fgaPerMinL10": 1.043956043956044,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4432847": {
+      "playerId": "4432847",
+      "playerName": "Terrence Shannon Jr.",
+      "fgaPerMinL10": 1.6023076923076924,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4432848": {
+      "playerId": "4432848",
+      "playerName": "Jaime Jaquez Jr.",
+      "fgaPerMinL10": 1.36,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4433083": {
+      "playerId": "4433083",
+      "playerName": "Cam Spencer",
+      "fgaPerMinL10": 1.3906474820143886,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4433149": {
+      "playerId": "4433149",
+      "playerName": "LJ Cryer",
+      "fgaPerMinL10": 1.961111111111111,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4433174": {
+      "playerId": "4433174",
+      "playerName": "Dylan Cardwell",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4433192": {
+      "playerId": "4433192",
+      "playerName": "Tari Eason",
+      "fgaPerMinL10": 1.915748031496063,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4433225": {
+      "playerId": "4433225",
+      "playerName": "Tyler Kolek",
+      "fgaPerMinL10": 1.0246153846153845,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4433247": {
+      "playerId": "4433247",
+      "playerName": "Jonathan Kuminga",
+      "fgaPerMinL10": 1.152469135802469,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4433249": {
+      "playerId": "4433249",
+      "playerName": "Moussa Diabate",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4433255": {
+      "playerId": "4433255",
+      "playerName": "Chet Holmgren",
+      "fgaPerMinL10": 0.5555555555555556,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4433287": {
+      "playerId": "4433287",
+      "playerName": "Brandon Miller",
+      "fgaPerMinL10": 1.0644927536231883,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4437244": {
+      "playerId": "4437244",
+      "playerName": "Jalen Green",
+      "fgaPerMinL10": 1.3007142857142857,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4576060": {
+      "playerId": "4576060",
+      "playerName": "Ryan Kalkbrenner",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4576087": {
+      "playerId": "4576087",
+      "playerName": "Peyton Watson",
+      "fgaPerMinL10": 1.6428571428571428,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4591725": {
+      "playerId": "4591725",
+      "playerName": "Ryan Rollins",
+      "fgaPerMinL10": 0.42983870967741933,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4592479": {
+      "playerId": "4592479",
+      "playerName": "Julian Champagnie",
+      "fgaPerMinL10": 1.4369565217391305,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4592492": {
+      "playerId": "4592492",
+      "playerName": "Bones Hyland",
+      "fgaPerMinL10": 2.272727272727273,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4593803": {
+      "playerId": "4593803",
+      "playerName": "Jalen Williams",
+      "fgaPerMinL10": 0.8768421052631579,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4594268": {
+      "playerId": "4594268",
+      "playerName": "Anthony Edwards",
+      "fgaPerMinL10": 1.1733333333333333,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4594326": {
+      "playerId": "4594326",
+      "playerName": "Kris Murray",
+      "fgaPerMinL10": 1.805,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4594327": {
+      "playerId": "4594327",
+      "playerName": "Keegan Murray",
+      "fgaPerMinL10": 0.7017543859649122,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4595400": {
+      "playerId": "4595400",
+      "playerName": "Olivier-Maxence Prosper",
+      "fgaPerMinL10": 1.2244897959183674,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4600663": {
+      "playerId": "4600663",
+      "playerName": "Zach Edey",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4601023": {
+      "playerId": "4601023",
+      "playerName": "Oso Ighodaro",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4601025": {
+      "playerId": "4601025",
+      "playerName": "Pelle Larsson",
+      "fgaPerMinL10": 2.319685039370079,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4602025": {
+      "playerId": "4602025",
+      "playerName": "Sion James",
+      "fgaPerMinL10": 0.445859872611465,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4683021": {
+      "playerId": "4683021",
+      "playerName": "Deni Avdija",
+      "fgaPerMinL10": 1.886144578313253,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4683678": {
+      "playerId": "4683678",
+      "playerName": "Scoot Henderson",
+      "fgaPerMinL10": 1.11953125,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4683692": {
+      "playerId": "4683692",
+      "playerName": "Cason Wallace",
+      "fgaPerMinL10": 1.0204081632653061,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4683747": {
+      "playerId": "4683747",
+      "playerName": "Jaylon Tyson",
+      "fgaPerMinL10": 1.0256410256410255,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4683750": {
+      "playerId": "4683750",
+      "playerName": "Jordan Hawkins",
+      "fgaPerMinL10": 1.7532467532467533,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4683778": {
+      "playerId": "4683778",
+      "playerName": "Jared McCain",
+      "fgaPerMinL10": 0.8310126582278482,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4683934": {
+      "playerId": "4683934",
+      "playerName": "Jahmai Mashack",
+      "fgaPerMinL10": 0.38461538461538464,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4684740": {
+      "playerId": "4684740",
+      "playerName": "Amen Thompson",
+      "fgaPerMinL10": 1.2903225806451613,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4684806": {
+      "playerId": "4684806",
+      "playerName": "Taylor Hendricks",
+      "fgaPerMinL10": 0.9756756756756757,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4701233": {
+      "playerId": "4701233",
+      "playerName": "Craig Porter Jr.",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4702134": {
+      "playerId": "4702134",
+      "playerName": "Norchad Omier",
+      "fgaPerMinL10": 1.4285714285714286,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4702177": {
+      "playerId": "4702177",
+      "playerName": "Keon Ellis",
+      "fgaPerMinL10": 3.801754385964912,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4702352": {
+      "playerId": "4702352",
+      "playerName": "Kobe Sanders",
+      "fgaPerMinL10": 1.3204819277108433,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4702384": {
+      "playerId": "4702384",
+      "playerName": "Nique Clifford",
+      "fgaPerMinL10": 0.9916666666666666,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4703889": {
+      "playerId": "4703889",
+      "playerName": "Jayson Kent",
+      "fgaPerMinL10": 2.4541666666666666,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4706557": {
+      "playerId": "4706557",
+      "playerName": "Chris Youngblood",
+      "fgaPerMinL10": 2.0716216216216217,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4709138": {
+      "playerId": "4709138",
+      "playerName": "Brandin Podziemski",
+      "fgaPerMinL10": 0.813907284768212,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4711272": {
+      "playerId": "4711272",
+      "playerName": "Reed Sheppard",
+      "fgaPerMinL10": 1.9128712871287128,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4711294": {
+      "playerId": "4711294",
+      "playerName": "Matas Buzelis",
+      "fgaPerMinL10": 1.4940397350993377,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4712896": {
+      "playerId": "4712896",
+      "playerName": "Noah Clowney",
+      "fgaPerMinL10": 1.0198412698412698,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4781746": {
+      "playerId": "4781746",
+      "playerName": "Javon Small",
+      "fgaPerMinL10": 0.8838709677419354,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4845367": {
+      "playerId": "4845367",
+      "playerName": "Stephon Castle",
+      "fgaPerMinL10": 1.2812121212121212,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4871144": {
+      "playerId": "4871144",
+      "playerName": "Alperen Sengun",
+      "fgaPerMinL10": 2.5179856115107913,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4871145": {
+      "playerId": "4871145",
+      "playerName": "Josh Giddey",
+      "fgaPerMinL10": 0.6521739130434783,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4888725": {
+      "playerId": "4888725",
+      "playerName": "Ryan Dunn",
+      "fgaPerMinL10": 2.735820895522388,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4897262": {
+      "playerId": "4897262",
+      "playerName": "Will Richard",
+      "fgaPerMinL10": 1.2629032258064516,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4900671": {
+      "playerId": "4900671",
+      "playerName": "Ajay Mitchell",
+      "fgaPerMinL10": 1.2865771812080535,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4903027": {
+      "playerId": "4903027",
+      "playerName": "Cedric Coward",
+      "fgaPerMinL10": 1.5158620689655173,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4917149": {
+      "playerId": "4917149",
+      "playerName": "Alex Karaban",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4997526": {
+      "playerId": "4997526",
+      "playerName": "Ousmane Dieng",
+      "fgaPerMinL10": 3.2296875,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "4997528": {
+      "playerId": "4997528",
+      "playerName": "Nikola Jovic",
+      "fgaPerMinL10": 1.3222222222222222,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "4997536": {
+      "playerId": "4997536",
+      "playerName": "Gui Santos",
+      "fgaPerMinL10": 1.229126213592233,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5023693": {
+      "playerId": "5023693",
+      "playerName": "Tyrese Proctor",
+      "fgaPerMinL10": 1.1,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5037871": {
+      "playerId": "5037871",
+      "playerName": "Dylan Harper",
+      "fgaPerMinL10": 0.7173076923076923,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5041935": {
+      "playerId": "5041935",
+      "playerName": "Cameron Boozer",
+      "fgaPerMinL10": 0.9934782608695651,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5041951": {
+      "playerId": "5041951",
+      "playerName": "Meleek Thomas",
+      "fgaPerMinL10": 1.05748031496063,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5044385": {
+      "playerId": "5044385",
+      "playerName": "Leonard Miller",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5060701": {
+      "playerId": "5060701",
+      "playerName": "Christian Anderson",
+      "fgaPerMinL10": 2.03125,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "5061568": {
+      "playerId": "5061568",
+      "playerName": "Carter Bryant",
+      "fgaPerMinL10": 1.5115384615384615,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5081727": {
+      "playerId": "5081727",
+      "playerName": "Sidy Cissoko",
+      "fgaPerMinL10": 1.5818840579710145,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5082206": {
+      "playerId": "5082206",
+      "playerName": "Brayden Burries",
+      "fgaPerMinL10": 1.6299270072992702,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5095151": {
+      "playerId": "5095151",
+      "playerName": "Caleb Wilson",
+      "fgaPerMinL10": 1.4328358208955225,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5101761": {
+      "playerId": "5101761",
+      "playerName": "Mikel Brown Jr.",
+      "fgaPerMinL10": 2.01271186440678,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5104157": {
+      "playerId": "5104157",
+      "playerName": "Victor Wembanyama",
+      "fgaPerMinL10": 0.7735483870967741,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5105550": {
+      "playerId": "5105550",
+      "playerName": "GG Jackson",
+      "fgaPerMinL10": 2.5806451612903225,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5105565": {
+      "playerId": "5105565",
+      "playerName": "Donovan Clingan",
+      "fgaPerMinL10": 1.25,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5105623": {
+      "playerId": "5105623",
+      "playerName": "Kel'el Ware",
+      "fgaPerMinL10": 1.6221238938053097,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5105800": {
+      "playerId": "5105800",
+      "playerName": "Josh Dix",
+      "fgaPerMinL10": 1.0891089108910892,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5106058": {
+      "playerId": "5106058",
+      "playerName": "Emanuel Sharp",
+      "fgaPerMinL10": 1.1486486486486487,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5106258": {
+      "playerId": "5106258",
+      "playerName": "Gradey Dick",
+      "fgaPerMinL10": 2.380952380952381,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5107157": {
+      "playerId": "5107157",
+      "playerName": "Ryan Conwell",
+      "fgaPerMinL10": 1.370138888888889,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "5107173": {
+      "playerId": "5107173",
+      "playerName": "Danny Wolf",
+      "fgaPerMinL10": 2.8911504424778762,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5112087": {
+      "playerId": "5112087",
+      "playerName": "Jaylen Wells",
+      "fgaPerMinL10": 2.0221311475409833,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5124612": {
+      "playerId": "5124612",
+      "playerName": "VJ Edgecombe",
+      "fgaPerMinL10": 0.6633333333333333,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "5142620": {
+      "playerId": "5142620",
+      "playerName": "Darius Acuff Jr.",
+      "fgaPerMinL10": 0.7418079096045198,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5164559": {
+      "playerId": "5164559",
+      "playerName": "Nate Ament",
+      "fgaPerMinL10": 0.6787037037037037,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5174655": {
+      "playerId": "5174655",
+      "playerName": "Chaney Johnson",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5174983": {
+      "playerId": "5174983",
+      "playerName": "Aday Mara",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5175643": {
+      "playerId": "5175643",
+      "playerName": "Egor Demin",
+      "fgaPerMinL10": 0.9346153846153846,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5175737": {
+      "playerId": "5175737",
+      "playerName": "Yaxel Lendeborg",
+      "fgaPerMinL10": 0.4688311688311689,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5177362": {
+      "playerId": "5177362",
+      "playerName": "Riley Minix",
+      "fgaPerMinL10": 1.2127272727272729,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5203685": {
+      "playerId": "5203685",
+      "playerName": "Khaman Maluach",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5211176": {
+      "playerId": "5211176",
+      "playerName": "Tidjane Salaun",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "5214640": {
+      "playerId": "5214640",
+      "playerName": "Kasparas Jakucionis",
+      "fgaPerMinL10": 1.6483516483516483,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5239590": {
+      "playerId": "5239590",
+      "playerName": "Liam McNeeley",
+      "fgaPerMinL10": 3.676470588235294,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.573Z"
+    },
+    "5241364": {
+      "playerId": "5241364",
+      "playerName": "Bennett Stirtz",
+      "fgaPerMinL10": 2.121818181818182,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5254165": {
+      "playerId": "5254165",
+      "playerName": "Keaton Wagler",
+      "fgaPerMinL10": 1.295959595959596,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5279130": {
+      "playerId": "5279130",
+      "playerName": "Nolan Traore",
+      "fgaPerMinL10": 1.0410714285714284,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5279133": {
+      "playerId": "5279133",
+      "playerName": "Joan Beringer",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5281370": {
+      "playerId": "5281370",
+      "playerName": "Hannes Steinbach",
+      "fgaPerMinL10": 0,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    },
+    "5289900": {
+      "playerId": "5289900",
+      "playerName": "Mohamed Diawara",
+      "fgaPerMinL10": 0.6944444444444444,
+      "source": "espn",
+      "cachedAt": "2026-11-25T11:38:14.574Z"
+    }
+  }
+}
