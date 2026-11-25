@@ -48,7 +48,7 @@
     {
       "type": "boostSgm",
       "label": "Best SGM",
-      "reason": "No same-game trio @ edge (eligible 194, best pool Ladbrokes=7, range-cands 0)"
+      "reason": "No same-game trio @ edge (eligible 190, best pool Ladbrokes=7, range-cands 0)"
     },
     {
       "type": "longshot",

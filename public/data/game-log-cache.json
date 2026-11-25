@@ -10125,7 +10125,7 @@
     ]
   },
   "6440": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/6440.png",
     "logs": [
       {
@@ -25607,7 +25607,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401910023",
@@ -25622,7 +25625,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 1,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401910020",
@@ -25637,7 +25643,10 @@
         "isHome": true,
         "fga": 0,
         "fta": 0,
-        "turnovers": 1
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401910009",
@@ -25652,7 +25661,10 @@
         "isHome": false,
         "fga": 50,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401810231",
@@ -31598,7 +31610,10 @@
         "isHome": true,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909312",
@@ -31613,7 +31628,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 1
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401910008",
@@ -31628,7 +31646,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909998",
@@ -31643,7 +31664,10 @@
         "isHome": false,
         "fga": 28.6,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909991",
@@ -31658,7 +31682,10 @@
         "isHome": false,
         "fga": 50,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0
       },
       {
         "gameId": "401909301",
@@ -54262,7 +54289,7 @@
     ]
   },
   "3907387": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3907387.png",
     "logs": [
       {
@@ -79012,7 +79039,10 @@
         "isHome": true,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909937",
@@ -79027,7 +79057,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909921",
@@ -79042,7 +79075,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 2
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401810228",
@@ -82630,7 +82666,10 @@
         "isHome": true,
         "fga": 50,
         "fta": 1,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401910024",
@@ -82645,7 +82684,10 @@
         "isHome": true,
         "fga": 40,
         "fta": 1,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401910021",
@@ -82660,7 +82702,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401910002",
@@ -82675,7 +82720,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909990",
@@ -82690,7 +82738,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909960",
@@ -103345,7 +103396,10 @@
         "isHome": true,
         "fga": 100,
         "fta": 0,
-        "turnovers": 1
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0
       },
       {
         "gameId": "401810224",
@@ -117924,7 +117978,7 @@
     ]
   },
   "4431695": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431695.png",
     "logs": [
       {
@@ -139966,7 +140020,10 @@
         "isHome": false,
         "fga": 50,
         "fta": 0,
-        "turnovers": 1
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909976",
@@ -139981,7 +140038,10 @@
         "isHome": true,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401810235",
@@ -150946,7 +151006,10 @@
         "isHome": false,
         "fga": 25,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909918",
@@ -150961,7 +151024,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401810226",
@@ -156784,7 +156850,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 1
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401910019",
@@ -156799,7 +156868,10 @@
         "isHome": true,
         "fga": 0,
         "fta": 0,
-        "turnovers": 1
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401910007",
@@ -156814,7 +156886,10 @@
         "isHome": false,
         "fga": 100,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0
       },
       {
         "gameId": "401909996",
@@ -156829,7 +156904,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909955",
@@ -156844,7 +156922,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0
       },
       {
         "gameId": "401909291",
@@ -157416,7 +157497,7 @@
     ]
   },
   "4593049": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4593049.png",
     "logs": [
       {
@@ -171493,7 +171574,7 @@
     ]
   },
   "4684269": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4684269.png",
     "logs": []
   },
@@ -174454,7 +174535,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401910011",
@@ -174469,7 +174553,10 @@
         "isHome": true,
         "fga": 0,
         "fta": 1,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909983",
@@ -174484,7 +174571,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909972",
@@ -174499,7 +174589,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909948",
@@ -174514,7 +174607,10 @@
         "isHome": false,
         "fga": 25,
         "fta": 1,
-        "turnovers": 2
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909925",
@@ -175116,7 +175212,7 @@
     ]
   },
   "4697268": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4697268.png",
     "logs": [
       {
@@ -178450,7 +178546,7 @@
     ]
   },
   "4702099": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4702099.png",
     "logs": []
   },
@@ -180294,7 +180390,7 @@
     ]
   },
   "4702384": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4702384.png",
     "logs": [
       {
@@ -183054,7 +183150,7 @@
     ]
   },
   "4709131": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4709131.png",
     "logs": [
       {
@@ -185041,7 +185137,10 @@
         "isHome": true,
         "fga": 100,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401910010",
@@ -185056,7 +185155,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909976",
@@ -185071,7 +185173,10 @@
         "isHome": true,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909961",
@@ -185086,7 +185191,10 @@
         "isHome": true,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909289",
@@ -185101,7 +185209,10 @@
         "isHome": false,
         "fga": 50,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909912",
@@ -191691,7 +191802,7 @@
     ]
   },
   "4871141": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4871141.png",
     "logs": [
       {
@@ -201698,7 +201809,7 @@
     ]
   },
   "4997530": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "",
     "logs": []
   },
@@ -204617,7 +204728,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909972",
@@ -204632,7 +204746,10 @@
         "isHome": false,
         "fga": 100,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401909948",
@@ -204647,7 +204764,10 @@
         "isHome": false,
         "fga": 0,
         "fta": 0,
-        "turnovers": 0
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
       },
       {
         "gameId": "401810228",
@@ -208813,7 +208933,7 @@
     ]
   },
   "5061603": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5061603.png",
     "logs": []
   },
@@ -210933,7 +211053,7 @@
     ]
   },
   "5101845": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5101845.png",
     "logs": []
   },
@@ -211763,7 +211883,7 @@
     ]
   },
   "5105462": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105462.png",
     "logs": []
   },
@@ -212257,7 +212377,7 @@
     ]
   },
   "5105553": {
-    "fetchedAt": "2026-11-25T07:04:43.359Z",
+    "fetchedAt": "2026-11-25T07:09:26.441Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105553.png",
     "logs": [
       {

@@ -44519,30 +44519,6 @@
           "price": 3.5,
           "bookie": "TAB"
         },
-        "joan beringer|pts|5": {
-          "price": 1.58,
-          "bookie": "TAB"
-        },
-        "joan beringer|pts|10": {
-          "price": 4.5,
-          "bookie": "TAB"
-        },
-        "joan beringer|reb|4": {
-          "price": 1.22,
-          "bookie": "TAB"
-        },
-        "joan beringer|reb|6": {
-          "price": 1.62,
-          "bookie": "TAB"
-        },
-        "joan beringer|reb|8": {
-          "price": 2.7,
-          "bookie": "TAB"
-        },
-        "joan beringer|reb|10": {
-          "price": 5.5,
-          "bookie": "TAB"
-        },
         "terrence shannon|pts|13": {
           "price": 1.9,
           "bookie": "PointsBet (AU)"
@@ -50199,10 +50175,6 @@
           "price": 1.94,
           "bookie": "Neds"
         },
-        "damian lillard|pts|21": {
-          "price": 1.87,
-          "bookie": "Neds"
-        },
         "victor wembanyama|pts|30": {
           "price": 1.92,
           "bookie": "Neds"
@@ -50231,19 +50203,11 @@
           "price": 6.2,
           "bookie": "Neds"
         },
-        "damian lillard|pts|30": {
-          "price": 6.2,
-          "bookie": "Neds"
-        },
         "deni avdija|pts|12": {
           "price": 1.01,
           "bookie": "Neds"
         },
         "stephon castle|pts|12": {
-          "price": 1.06,
-          "bookie": "Neds"
-        },
-        "damian lillard|pts|12": {
           "price": 1.06,
           "bookie": "Neds"
         },
@@ -50257,10 +50221,6 @@
         },
         "devin vassell|pts|12": {
           "price": 1.5,
-          "bookie": "Neds"
-        },
-        "scoot henderson|pts|12": {
-          "price": 2.1,
           "bookie": "Neds"
         },
         "deaaron fox|pts|6": {
@@ -50283,19 +50243,11 @@
           "price": 1.13,
           "bookie": "Neds"
         },
-        "scoot henderson|pts|6": {
-          "price": 1.16,
-          "bookie": "Neds"
-        },
         "victor wembanyama|pts|40": {
           "price": 6,
           "bookie": "Neds"
         },
         "stephon castle|pts|10": {
-          "price": 1.01,
-          "bookie": "Neds"
-        },
-        "damian lillard|pts|10": {
           "price": 1.01,
           "bookie": "Neds"
         },
@@ -50319,10 +50271,6 @@
           "price": 1.52,
           "bookie": "Neds"
         },
-        "scoot henderson|pts|10": {
-          "price": 1.62,
-          "bookie": "Neds"
-        },
         "victor wembanyama|pts|26": {
           "price": 1.42,
           "bookie": "Neds"
@@ -50332,10 +50280,6 @@
           "bookie": "Neds"
         },
         "stephon castle|pts|26": {
-          "price": 3.25,
-          "bookie": "Neds"
-        },
-        "damian lillard|pts|26": {
           "price": 3.25,
           "bookie": "Neds"
         },
@@ -50359,10 +50303,6 @@
           "price": 1.2,
           "bookie": "Neds"
         },
-        "damian lillard|pts|15": {
-          "price": 1.2,
-          "bookie": "Neds"
-        },
         "jrue holiday|pts|15": {
           "price": 1.98,
           "bookie": "Neds"
@@ -50377,10 +50317,6 @@
         },
         "donovan clingan|pts|15": {
           "price": 2.95,
-          "bookie": "Neds"
-        },
-        "scoot henderson|pts|15": {
-          "price": 3.4,
           "bookie": "Neds"
         },
         "deaaron fox|pts|9": {
@@ -50403,19 +50339,11 @@
           "price": 1.38,
           "bookie": "Neds"
         },
-        "scoot henderson|pts|9": {
-          "price": 1.46,
-          "bookie": "Neds"
-        },
         "deni avdija|pts|16": {
           "price": 1.16,
           "bookie": "Neds"
         },
         "stephon castle|pts|16": {
-          "price": 1.26,
-          "bookie": "Neds"
-        },
-        "damian lillard|pts|16": {
           "price": 1.26,
           "bookie": "Neds"
         },
@@ -50439,10 +50367,6 @@
           "price": 3.5,
           "bookie": "Neds"
         },
-        "scoot henderson|pts|16": {
-          "price": 4.2,
-          "bookie": "Neds"
-        },
         "victor wembanyama|pts|25": {
           "price": 1.35,
           "bookie": "Neds"
@@ -50452,10 +50376,6 @@
           "bookie": "Neds"
         },
         "stephon castle|pts|25": {
-          "price": 2.85,
-          "bookie": "Neds"
-        },
-        "damian lillard|pts|25": {
           "price": 2.85,
           "bookie": "Neds"
         },
@@ -50487,19 +50407,11 @@
           "price": 1.28,
           "bookie": "Neds"
         },
-        "scoot henderson|pts|8": {
-          "price": 1.33,
-          "bookie": "Neds"
-        },
         "deni avdija|pts|14": {
           "price": 1.07,
           "bookie": "Neds"
         },
         "stephon castle|pts|14": {
-          "price": 1.15,
-          "bookie": "Neds"
-        },
-        "damian lillard|pts|14": {
           "price": 1.15,
           "bookie": "Neds"
         },
@@ -50519,10 +50431,6 @@
           "price": 2.5,
           "bookie": "Neds"
         },
-        "scoot henderson|pts|14": {
-          "price": 2.85,
-          "bookie": "Neds"
-        },
         "victor wembanyama|pts|28": {
           "price": 1.62,
           "bookie": "Neds"
@@ -50532,10 +50440,6 @@
           "bookie": "Neds"
         },
         "stephon castle|pts|28": {
-          "price": 4.4,
-          "bookie": "Neds"
-        },
-        "damian lillard|pts|28": {
           "price": 4.4,
           "bookie": "Neds"
         },
@@ -50552,10 +50456,6 @@
           "bookie": "Neds"
         },
         "stephon castle|pts|35": {
-          "price": 19,
-          "bookie": "Neds"
-        },
-        "damian lillard|pts|35": {
           "price": 19,
           "bookie": "Neds"
         },
@@ -50579,10 +50479,6 @@
           "price": 1.2,
           "bookie": "Neds"
         },
-        "scoot henderson|pts|7": {
-          "price": 1.24,
-          "bookie": "Neds"
-        },
         "victor wembanyama|pts|45": {
           "price": 15,
           "bookie": "Neds"
@@ -50596,10 +50492,6 @@
           "bookie": "Neds"
         },
         "stephon castle|pts|20": {
-          "price": 1.67,
-          "bookie": "Neds"
-        },
-        "damian lillard|pts|20": {
           "price": 1.67,
           "bookie": "Neds"
         },
@@ -50623,10 +50515,6 @@
           "price": 8.75,
           "bookie": "Neds"
         },
-        "scoot henderson|pts|20": {
-          "price": 11.5,
-          "bookie": "Neds"
-        },
         "victor wembanyama|pts|18": {
           "price": 1.03,
           "bookie": "Neds"
@@ -50636,10 +50524,6 @@
           "bookie": "Neds"
         },
         "stephon castle|pts|18": {
-          "price": 1.44,
-          "bookie": "Neds"
-        },
-        "damian lillard|pts|18": {
           "price": 1.44,
           "bookie": "Neds"
         },
@@ -50663,10 +50547,6 @@
           "price": 5.4,
           "bookie": "Neds"
         },
-        "scoot henderson|pts|18": {
-          "price": 6.75,
-          "bookie": "Neds"
-        },
         "victor wembanyama|pts|24": {
           "price": 1.28,
           "bookie": "Neds"
@@ -50676,10 +50556,6 @@
           "bookie": "Neds"
         },
         "stephon castle|pts|24": {
-          "price": 2.5,
-          "bookie": "Neds"
-        },
-        "damian lillard|pts|24": {
           "price": 2.5,
           "bookie": "Neds"
         },
@@ -50704,10 +50580,6 @@
           "bookie": "Neds"
         },
         "stephon castle|pts|22": {
-          "price": 2,
-          "bookie": "Neds"
-        },
-        "damian lillard|pts|22": {
           "price": 2,
           "bookie": "Neds"
         },
@@ -50737,10 +50609,6 @@
         },
         "donovan clingan|pts|5": {
           "price": 1.07,
-          "bookie": "Neds"
-        },
-        "scoot henderson|pts|5": {
-          "price": 1.1,
           "bookie": "Neds"
         },
         "donovan clingan|reb|13": {
@@ -50895,20 +50763,12 @@
           "price": 2.2,
           "bookie": "Neds"
         },
-        "damian lillard|3pm|3": {
-          "price": 1.88,
-          "bookie": "Neds"
-        },
         "devin vassell|3pm|2": {
           "price": 1.6,
           "bookie": "Neds"
         },
         "stephon castle|3pm|2": {
           "price": 1.6,
-          "bookie": "Neds"
-        },
-        "damian lillard|3pm|4": {
-          "price": 3.05,
           "bookie": "Neds"
         },
         "victor wembanyama|3pm|4": {
@@ -50935,18 +50795,6 @@
           "price": 5.2,
           "bookie": "Neds"
         },
-        "scoot henderson|3pm|4": {
-          "price": 7.75,
-          "bookie": "Neds"
-        },
-        "damian lillard|3pm|7": {
-          "price": 23,
-          "bookie": "Neds"
-        },
-        "damian lillard|3pm|1": {
-          "price": 1.01,
-          "bookie": "Neds"
-        },
         "victor wembanyama|3pm|1": {
           "price": 1.03,
           "bookie": "Neds"
@@ -50971,16 +50819,8 @@
           "price": 1.11,
           "bookie": "Neds"
         },
-        "scoot henderson|3pm|1": {
-          "price": 1.2,
-          "bookie": "Neds"
-        },
         "deaaron fox|3pm|1": {
           "price": 1.3,
-          "bookie": "Neds"
-        },
-        "damian lillard|3pm|5": {
-          "price": 5.5,
           "bookie": "Neds"
         },
         "victor wembanyama|3pm|5": {
@@ -51007,10 +50847,6 @@
           "price": 11,
           "bookie": "Neds"
         },
-        "damian lillard|3pm|6": {
-          "price": 11,
-          "bookie": "Neds"
-        },
         "victor wembanyama|3pm|6": {
           "price": 14,
           "bookie": "Neds"
@@ -51023,10 +50859,6 @@
           "price": 16,
           "bookie": "Neds"
         },
-        "damian lillard|3pm|2": {
-          "price": 1.28,
-          "bookie": "Neds"
-        },
         "victor wembanyama|3pm|2": {
           "price": 1.36,
           "bookie": "Neds"
@@ -51037,10 +50869,6 @@
         },
         "jrue holiday|3pm|2": {
           "price": 1.4,
-          "bookie": "Neds"
-        },
-        "scoot henderson|3pm|2": {
-          "price": 1.92,
           "bookie": "Neds"
         },
         "deaaron fox|3pm|2": {
@@ -51063,17 +50891,9 @@
           "price": 2.7,
           "bookie": "Neds"
         },
-        "scoot henderson|3pm|3": {
-          "price": 3.6,
-          "bookie": "Neds"
-        },
         "deaaron fox|3pm|3": {
           "price": 5,
           "bookie": "Neds"
-        },
-        "damian lillard|ast|2": {
-          "price": 1.06,
-          "bookie": "TAB"
         },
         "victor wembanyama|ast|2": {
           "price": 1.14,
@@ -51085,10 +50905,6 @@
         },
         "donovan clingan|ast|2": {
           "price": 1.52,
-          "bookie": "TAB"
-        },
-        "scoot henderson|ast|2": {
-          "price": 1.58,
           "bookie": "TAB"
         },
         "sidy cissoko|ast|2": {
@@ -51103,10 +50919,6 @@
           "price": 2.6,
           "bookie": "TAB"
         },
-        "damian lillard|ast|4": {
-          "price": 1.5,
-          "bookie": "TAB"
-        },
         "victor wembanyama|ast|4": {
           "price": 1.8,
           "bookie": "TAB"
@@ -51119,20 +50931,12 @@
           "price": 4,
           "bookie": "TAB"
         },
-        "scoot henderson|ast|4": {
-          "price": 4,
-          "bookie": "TAB"
-        },
         "sidy cissoko|ast|4": {
           "price": 7,
           "bookie": "TAB"
         },
         "toumani camara|ast|4": {
           "price": 8.5,
-          "bookie": "TAB"
-        },
-        "damian lillard|ast|6": {
-          "price": 3,
           "bookie": "TAB"
         },
         "victor wembanyama|ast|6": {
@@ -51167,16 +50971,8 @@
           "price": 1.08,
           "bookie": "TAB"
         },
-        "damian lillard|reb|2": {
-          "price": 1.11,
-          "bookie": "TAB"
-        },
         "sidy cissoko|reb|2": {
           "price": 1.16,
-          "bookie": "TAB"
-        },
-        "scoot henderson|reb|2": {
-          "price": 1.36,
           "bookie": "TAB"
         },
         "robert williams|reb|4": {
@@ -51197,10 +50993,6 @@
         },
         "deaaron fox|reb|4": {
           "price": 1.9,
-          "bookie": "TAB"
-        },
-        "damian lillard|reb|4": {
-          "price": 2.05,
           "bookie": "TAB"
         },
         "sidy cissoko|reb|4": {
@@ -51225,10 +51017,6 @@
         },
         "deaaron fox|reb|6": {
           "price": 4,
-          "bookie": "TAB"
-        },
-        "damian lillard|reb|6": {
-          "price": 5,
           "bookie": "TAB"
         },
         "sidy cissoko|reb|6": {
@@ -56295,10 +56083,6 @@
           "price": 1.87,
           "bookie": "PointsBet (AU)"
         },
-        "khaman maluach|pts|7": {
-          "price": 2,
-          "bookie": "SportsBet"
-        },
         "dillon brooks|pts|10": {
           "price": 1.27,
           "bookie": "Unibet"
@@ -56310,10 +56094,6 @@
         "miles bridges|pts|10": {
           "price": 1.32,
           "bookie": "TAB"
-        },
-        "khaman maluach|pts|10": {
-          "price": 3.7,
-          "bookie": "PointsBet (AU)"
         },
         "oso ighodaro|pts|10": {
           "price": 4.4,
@@ -56423,10 +56203,6 @@
           "price": 2.09,
           "bookie": "SportsBet"
         },
-        "khaman maluach|pts|15": {
-          "price": 10,
-          "bookie": "SportsBet"
-        },
         "oso ighodaro|pts|15": {
           "price": 12,
           "bookie": "SportsBet"
@@ -56515,10 +56291,6 @@
           "price": 1.02,
           "bookie": "SportsBet"
         },
-        "khaman maluach|pts|5": {
-          "price": 1.44,
-          "bookie": "SportsBet"
-        },
         "miles bridges|pts|5": {
           "price": 1.02,
           "bookie": "SportsBet"
@@ -56587,16 +56359,8 @@
           "price": 1.64,
           "bookie": "SportsBet"
         },
-        "khaman maluach|reb|6": {
-          "price": 2.11,
-          "bookie": "SportsBet"
-        },
         "miles bridges|reb|8": {
           "price": 3.45,
-          "bookie": "SportsBet"
-        },
-        "khaman maluach|reb|8": {
-          "price": 4.3,
           "bookie": "SportsBet"
         },
         "oso ighodaro|reb|8": {
@@ -56639,10 +56403,6 @@
           "price": 7,
           "bookie": "TAB"
         },
-        "khaman maluach|reb|10": {
-          "price": 8,
-          "bookie": "SportsBet"
-        },
         "oso ighodaro|reb|10": {
           "price": 8.5,
           "bookie": "SportsBet"
@@ -56667,10 +56427,6 @@
           "price": 13,
           "bookie": "SportsBet"
         },
-        "khaman maluach|reb|12": {
-          "price": 14,
-          "bookie": "SportsBet"
-        },
         "oso ighodaro|reb|12": {
           "price": 17,
           "bookie": "SportsBet"
@@ -56690,10 +56446,6 @@
         "kevin durant|reb|12": {
           "price": 21,
           "bookie": "SportsBet"
-        },
-        "khaman maluach|reb|4": {
-          "price": 1.34,
-          "bookie": "Unibet"
         },
         "miles bridges|reb|4": {
           "price": 1.25,
@@ -57087,10 +56839,6 @@
           "price": 2.3,
           "bookie": "Ladbrokes"
         },
-        "khaman maluach|pts|12": {
-          "price": 6.5,
-          "bookie": "Ladbrokes"
-        },
         "devin booker|pts|22": {
           "price": 1.61,
           "bookie": "Unibet"
@@ -57191,10 +56939,6 @@
           "price": 1.57,
           "bookie": "Ladbrokes"
         },
-        "khaman maluach|pts|9": {
-          "price": 2.9,
-          "bookie": "PointsBet (AU)"
-        },
         "oso ighodaro|pts|9": {
           "price": 3.4,
           "bookie": "PointsBet (AU)"
@@ -57294,10 +57038,6 @@
         "tari eason|pts|6": {
           "price": 1.2,
           "bookie": "Ladbrokes"
-        },
-        "khaman maluach|pts|6": {
-          "price": 1.69,
-          "bookie": "PointsBet (AU)"
         },
         "tari eason|pts|5": {
           "price": 1.13,
@@ -57423,10 +57163,6 @@
           "price": 1.42,
           "bookie": "Ladbrokes"
         },
-        "khaman maluach|pts|8": {
-          "price": 2.35,
-          "bookie": "PointsBet (AU)"
-        },
         "oso ighodaro|pts|8": {
           "price": 2.85,
           "bookie": "Unibet"
@@ -57488,10 +57224,6 @@
           "bookie": "Ladbrokes"
         },
         "tari eason|reb|7": {
-          "price": 2.65,
-          "bookie": "Ladbrokes"
-        },
-        "khaman maluach|reb|7": {
           "price": 2.65,
           "bookie": "Ladbrokes"
         },
@@ -57559,10 +57291,6 @@
           "price": 1.57,
           "bookie": "Ladbrokes"
         },
-        "khaman maluach|reb|5": {
-          "price": 1.57,
-          "bookie": "Ladbrokes"
-        },
         "jalen green|reb|5": {
           "price": 2.65,
           "bookie": "Ladbrokes"
@@ -57603,10 +57331,6 @@
           "price": 5.25,
           "bookie": "Ladbrokes"
         },
-        "khaman maluach|reb|9": {
-          "price": 5.4,
-          "bookie": "Ladbrokes"
-        },
         "kevin durant|reb|9": {
           "price": 8.25,
           "bookie": "Ladbrokes"
@@ -57636,10 +57360,6 @@
           "bookie": "Ladbrokes"
         },
         "tari eason|reb|3": {
-          "price": 1.09,
-          "bookie": "Ladbrokes"
-        },
-        "khaman maluach|reb|3": {
           "price": 1.09,
           "bookie": "Ladbrokes"
         },
@@ -58167,18 +57887,6 @@
           "price": 1.03,
           "bookie": "PointsBet (AU)"
         },
-        "khaman maluach|pts|11": {
-          "price": 4.5,
-          "bookie": "PointsBet (AU)"
-        },
-        "khaman maluach|pts|13": {
-          "price": 7.5,
-          "bookie": "PointsBet (AU)"
-        },
-        "khaman maluach|pts|14": {
-          "price": 10,
-          "bookie": "PointsBet (AU)"
-        },
         "marcus smart|pts|11": {
           "price": 5,
           "bookie": "PointsBet (AU)"
@@ -58229,10 +57937,6 @@
         },
         "oso ighodaro|pts|13": {
           "price": 10.5,
-          "bookie": "PointsBet (AU)"
-        },
-        "khaman maluach|reb|2": {
-          "price": 1.06,
           "bookie": "PointsBet (AU)"
         },
         "oso ighodaro|reb|2": {
@@ -60051,14 +59755,6 @@
           "price": 14,
           "bookie": "SportsBet"
         },
-        "Joan Beringer|pts|5": {
-          "price": 1.58,
-          "bookie": "TAB"
-        },
-        "Joan Beringer|reb|10": {
-          "price": 5.5,
-          "bookie": "TAB"
-        },
         "Jonathan Kuminga|pts|15": {
           "price": 2.05,
           "bookie": "PointsBet (AU)"
@@ -61695,26 +61391,6 @@
           "price": 8.5,
           "bookie": "TAB"
         },
-        "Khaman Maluach|pts|5": {
-          "price": 1.44,
-          "bookie": "SportsBet"
-        },
-        "Khaman Maluach|pts|10": {
-          "price": 3.7,
-          "bookie": "PointsBet (AU)"
-        },
-        "Khaman Maluach|reb|3": {
-          "price": 1.09,
-          "bookie": "Ladbrokes"
-        },
-        "Khaman Maluach|reb|5": {
-          "price": 1.57,
-          "bookie": "Ladbrokes"
-        },
-        "Khaman Maluach|reb|7": {
-          "price": 2.65,
-          "bookie": "Ladbrokes"
-        },
         "Jordan Goodwin|pts|5": {
           "price": 1.36,
           "bookie": "TAB"
@@ -62235,30 +61911,6 @@
           "price": 8.5,
           "bookie": "TAB"
         },
-        "Scoot Henderson|pts|10": {
-          "price": 1.62,
-          "bookie": "Neds"
-        },
-        "Scoot Henderson|pts|15": {
-          "price": 3.4,
-          "bookie": "Neds"
-        },
-        "Scoot Henderson|3pm|1": {
-          "price": 1.2,
-          "bookie": "Neds"
-        },
-        "Scoot Henderson|3pm|2": {
-          "price": 1.92,
-          "bookie": "Neds"
-        },
-        "Scoot Henderson|3pm|3": {
-          "price": 3.6,
-          "bookie": "Neds"
-        },
-        "Scoot Henderson|3pm|4": {
-          "price": 7.75,
-          "bookie": "Neds"
-        },
         "Jrue Holiday|pts|15": {
           "price": 1.98,
           "bookie": "Neds"
@@ -62305,42 +61957,6 @@
         },
         "Jrue Holiday|3pm|5": {
           "price": 7.5,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|pts|15": {
-          "price": 1.2,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|pts|20": {
-          "price": 1.67,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|pts|25": {
-          "price": 2.85,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|pts|30": {
-          "price": 6.2,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|3pm|1": {
-          "price": 1.01,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|3pm|2": {
-          "price": 1.28,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|3pm|3": {
-          "price": 1.88,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|3pm|4": {
-          "price": 3.05,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|3pm|5": {
-          "price": 5.5,
           "bookie": "Neds"
         },
         "Robert Williams III|pts|5": {
@@ -63621,22 +63237,6 @@
         },
         "Alex Caruso|ast|4": {
           "price": 3.5,
-          "bookie": "TAB"
-        },
-        "Joan Beringer|pts|10": {
-          "price": 4.5,
-          "bookie": "TAB"
-        },
-        "Joan Beringer|reb|4": {
-          "price": 1.22,
-          "bookie": "TAB"
-        },
-        "Joan Beringer|reb|6": {
-          "price": 1.62,
-          "bookie": "TAB"
-        },
-        "Joan Beringer|reb|8": {
-          "price": 2.7,
           "bookie": "TAB"
         },
         "Terrence Shannon Jr.|pts|13": {
@@ -67775,10 +67375,6 @@
           "price": 1.94,
           "bookie": "Neds"
         },
-        "Damian Lillard|pts|21": {
-          "price": 1.87,
-          "bookie": "Neds"
-        },
         "Toumani Camara|pts|12": {
           "price": 1.94,
           "bookie": "Neds"
@@ -67803,10 +67399,6 @@
           "price": 1.06,
           "bookie": "Neds"
         },
-        "Damian Lillard|pts|12": {
-          "price": 1.06,
-          "bookie": "Neds"
-        },
         "De'Aaron Fox|pts|12": {
           "price": 1.38,
           "bookie": "Neds"
@@ -67817,10 +67409,6 @@
         },
         "Devin Vassell|pts|12": {
           "price": 1.5,
-          "bookie": "Neds"
-        },
-        "Scoot Henderson|pts|12": {
-          "price": 2.1,
           "bookie": "Neds"
         },
         "De'Aaron Fox|pts|6": {
@@ -67843,15 +67431,7 @@
           "price": 1.13,
           "bookie": "Neds"
         },
-        "Scoot Henderson|pts|6": {
-          "price": 1.16,
-          "bookie": "Neds"
-        },
         "Stephon Castle|pts|10": {
-          "price": 1.01,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|pts|10": {
           "price": 1.01,
           "bookie": "Neds"
         },
@@ -67868,10 +67448,6 @@
           "bookie": "Neds"
         },
         "Stephon Castle|pts|26": {
-          "price": 3.25,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|pts|26": {
           "price": 3.25,
           "bookie": "Neds"
         },
@@ -67911,19 +67487,11 @@
           "price": 1.38,
           "bookie": "Neds"
         },
-        "Scoot Henderson|pts|9": {
-          "price": 1.46,
-          "bookie": "Neds"
-        },
         "Deni Avdija|pts|16": {
           "price": 1.16,
           "bookie": "Neds"
         },
         "Stephon Castle|pts|16": {
-          "price": 1.26,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|pts|16": {
           "price": 1.26,
           "bookie": "Neds"
         },
@@ -67945,10 +67513,6 @@
         },
         "Donovan Clingan|pts|16": {
           "price": 3.5,
-          "bookie": "Neds"
-        },
-        "Scoot Henderson|pts|16": {
-          "price": 4.2,
           "bookie": "Neds"
         },
         "De'Aaron Fox|pts|25": {
@@ -67975,19 +67539,11 @@
           "price": 1.28,
           "bookie": "Neds"
         },
-        "Scoot Henderson|pts|8": {
-          "price": 1.33,
-          "bookie": "Neds"
-        },
         "Deni Avdija|pts|14": {
           "price": 1.07,
           "bookie": "Neds"
         },
         "Stephon Castle|pts|14": {
-          "price": 1.15,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|pts|14": {
           "price": 1.15,
           "bookie": "Neds"
         },
@@ -68007,10 +67563,6 @@
           "price": 2.5,
           "bookie": "Neds"
         },
-        "Scoot Henderson|pts|14": {
-          "price": 2.85,
-          "bookie": "Neds"
-        },
         "Victor Wembanyama|pts|28": {
           "price": 1.62,
           "bookie": "Neds"
@@ -68023,19 +67575,11 @@
           "price": 4.4,
           "bookie": "Neds"
         },
-        "Damian Lillard|pts|28": {
-          "price": 4.4,
-          "bookie": "Neds"
-        },
         "De'Aaron Fox|pts|28": {
           "price": 23,
           "bookie": "Neds"
         },
         "Stephon Castle|pts|35": {
-          "price": 19,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|pts|35": {
           "price": 19,
           "bookie": "Neds"
         },
@@ -68059,10 +67603,6 @@
           "price": 1.2,
           "bookie": "Neds"
         },
-        "Scoot Henderson|pts|7": {
-          "price": 1.24,
-          "bookie": "Neds"
-        },
         "Victor Wembanyama|pts|20": {
           "price": 1.09,
           "bookie": "Neds"
@@ -68079,10 +67619,6 @@
           "price": 8.75,
           "bookie": "Neds"
         },
-        "Scoot Henderson|pts|20": {
-          "price": 11.5,
-          "bookie": "Neds"
-        },
         "Victor Wembanyama|pts|18": {
           "price": 1.03,
           "bookie": "Neds"
@@ -68092,10 +67628,6 @@
           "bookie": "Neds"
         },
         "Stephon Castle|pts|18": {
-          "price": 1.44,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|pts|18": {
           "price": 1.44,
           "bookie": "Neds"
         },
@@ -68119,10 +67651,6 @@
           "price": 5.4,
           "bookie": "Neds"
         },
-        "Scoot Henderson|pts|18": {
-          "price": 6.75,
-          "bookie": "Neds"
-        },
         "Victor Wembanyama|pts|24": {
           "price": 1.28,
           "bookie": "Neds"
@@ -68132,10 +67660,6 @@
           "bookie": "Neds"
         },
         "Stephon Castle|pts|24": {
-          "price": 2.5,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|pts|24": {
           "price": 2.5,
           "bookie": "Neds"
         },
@@ -68160,10 +67684,6 @@
           "bookie": "Neds"
         },
         "Stephon Castle|pts|22": {
-          "price": 2,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|pts|22": {
           "price": 2,
           "bookie": "Neds"
         },
@@ -68193,10 +67713,6 @@
         },
         "Donovan Clingan|pts|5": {
           "price": 1.07,
-          "bookie": "Neds"
-        },
-        "Scoot Henderson|pts|5": {
-          "price": 1.1,
           "bookie": "Neds"
         },
         "Stephon Castle|reb|6": {
@@ -68295,16 +67811,8 @@
           "price": 8,
           "bookie": "Neds"
         },
-        "Damian Lillard|3pm|7": {
-          "price": 23,
-          "bookie": "Neds"
-        },
         "Deni Avdija|3pm|1": {
           "price": 1.11,
-          "bookie": "Neds"
-        },
-        "Damian Lillard|3pm|6": {
-          "price": 11,
           "bookie": "Neds"
         },
         "Victor Wembanyama|3pm|6": {
@@ -68323,10 +67831,6 @@
           "price": 5,
           "bookie": "Neds"
         },
-        "Damian Lillard|ast|2": {
-          "price": 1.06,
-          "bookie": "TAB"
-        },
         "Victor Wembanyama|ast|2": {
           "price": 1.14,
           "bookie": "TAB"
@@ -68337,10 +67841,6 @@
         },
         "Donovan Clingan|ast|2": {
           "price": 1.52,
-          "bookie": "TAB"
-        },
-        "Scoot Henderson|ast|2": {
-          "price": 1.58,
           "bookie": "TAB"
         },
         "Sidy Cissoko|ast|2": {
@@ -68355,10 +67855,6 @@
           "price": 2.6,
           "bookie": "TAB"
         },
-        "Damian Lillard|ast|4": {
-          "price": 1.5,
-          "bookie": "TAB"
-        },
         "Victor Wembanyama|ast|4": {
           "price": 1.8,
           "bookie": "TAB"
@@ -68371,20 +67867,12 @@
           "price": 4,
           "bookie": "TAB"
         },
-        "Scoot Henderson|ast|4": {
-          "price": 4,
-          "bookie": "TAB"
-        },
         "Sidy Cissoko|ast|4": {
           "price": 7,
           "bookie": "TAB"
         },
         "Toumani Camara|ast|4": {
           "price": 8.5,
-          "bookie": "TAB"
-        },
-        "Damian Lillard|ast|6": {
-          "price": 3,
           "bookie": "TAB"
         },
         "Victor Wembanyama|ast|6": {
@@ -68411,16 +67899,8 @@
           "price": 1.08,
           "bookie": "TAB"
         },
-        "Damian Lillard|reb|2": {
-          "price": 1.11,
-          "bookie": "TAB"
-        },
         "Sidy Cissoko|reb|2": {
           "price": 1.16,
-          "bookie": "TAB"
-        },
-        "Scoot Henderson|reb|2": {
-          "price": 1.36,
           "bookie": "TAB"
         },
         "Robert Williams III|reb|4": {
@@ -68441,10 +67921,6 @@
         },
         "De'Aaron Fox|reb|4": {
           "price": 1.9,
-          "bookie": "TAB"
-        },
-        "Damian Lillard|reb|4": {
-          "price": 2.05,
           "bookie": "TAB"
         },
         "Sidy Cissoko|reb|4": {
@@ -68469,10 +67945,6 @@
         },
         "De'Aaron Fox|reb|6": {
           "price": 4,
-          "bookie": "TAB"
-        },
-        "Damian Lillard|reb|6": {
-          "price": 5,
           "bookie": "TAB"
         },
         "Sidy Cissoko|reb|6": {
@@ -72231,10 +71703,6 @@
           "price": 1.87,
           "bookie": "PointsBet (AU)"
         },
-        "Khaman Maluach|pts|7": {
-          "price": 2,
-          "bookie": "SportsBet"
-        },
         "Oso Ighodaro|pts|10": {
           "price": 4.4,
           "bookie": "PointsBet (AU)"
@@ -72294,10 +71762,6 @@
         "Devin Booker|pts|40": {
           "price": 23,
           "bookie": "Ladbrokes"
-        },
-        "Khaman Maluach|pts|15": {
-          "price": 10,
-          "bookie": "SportsBet"
         },
         "Oso Ighodaro|pts|15": {
           "price": 12,
@@ -72371,16 +71835,8 @@
           "price": 1.64,
           "bookie": "SportsBet"
         },
-        "Khaman Maluach|reb|6": {
-          "price": 2.11,
-          "bookie": "SportsBet"
-        },
         "Miles Bridges|reb|8": {
           "price": 3.45,
-          "bookie": "SportsBet"
-        },
-        "Khaman Maluach|reb|8": {
-          "price": 4.3,
           "bookie": "SportsBet"
         },
         "Oso Ighodaro|reb|8": {
@@ -72419,20 +71875,12 @@
           "price": 14,
           "bookie": "SportsBet"
         },
-        "Khaman Maluach|reb|10": {
-          "price": 8,
-          "bookie": "SportsBet"
-        },
         "Alperen Sengun|reb|14": {
           "price": 7.75,
           "bookie": "SportsBet"
         },
         "Miles Bridges|reb|12": {
           "price": 13,
-          "bookie": "SportsBet"
-        },
-        "Khaman Maluach|reb|12": {
-          "price": 14,
           "bookie": "SportsBet"
         },
         "Oso Ighodaro|reb|12": {
@@ -72454,10 +71902,6 @@
         "Kevin Durant|reb|12": {
           "price": 21,
           "bookie": "SportsBet"
-        },
-        "Khaman Maluach|reb|4": {
-          "price": 1.34,
-          "bookie": "Unibet"
         },
         "Miles Bridges|reb|4": {
           "price": 1.25,
@@ -72619,10 +72063,6 @@
           "price": 2.3,
           "bookie": "Ladbrokes"
         },
-        "Khaman Maluach|pts|12": {
-          "price": 6.5,
-          "bookie": "Ladbrokes"
-        },
         "Devin Booker|pts|22": {
           "price": 1.61,
           "bookie": "Unibet"
@@ -72723,10 +72163,6 @@
           "price": 1.57,
           "bookie": "Ladbrokes"
         },
-        "Khaman Maluach|pts|9": {
-          "price": 2.9,
-          "bookie": "PointsBet (AU)"
-        },
         "Oso Ighodaro|pts|9": {
           "price": 3.4,
           "bookie": "PointsBet (AU)"
@@ -72826,10 +72262,6 @@
         "Tari Eason|pts|6": {
           "price": 1.2,
           "bookie": "Ladbrokes"
-        },
-        "Khaman Maluach|pts|6": {
-          "price": 1.69,
-          "bookie": "PointsBet (AU)"
         },
         "Tari Eason|pts|5": {
           "price": 1.13,
@@ -72951,10 +72383,6 @@
           "price": 1.42,
           "bookie": "Ladbrokes"
         },
-        "Khaman Maluach|pts|8": {
-          "price": 2.35,
-          "bookie": "PointsBet (AU)"
-        },
         "Oso Ighodaro|pts|8": {
           "price": 2.85,
           "bookie": "Unibet"
@@ -73045,10 +72473,6 @@
         },
         "Tari Eason|reb|9": {
           "price": 5.25,
-          "bookie": "Ladbrokes"
-        },
-        "Khaman Maluach|reb|9": {
-          "price": 5.4,
           "bookie": "Ladbrokes"
         },
         "Kevin Durant|reb|9": {
@@ -73467,18 +72891,6 @@
           "price": 1.03,
           "bookie": "PointsBet (AU)"
         },
-        "Khaman Maluach|pts|11": {
-          "price": 4.5,
-          "bookie": "PointsBet (AU)"
-        },
-        "Khaman Maluach|pts|13": {
-          "price": 7.5,
-          "bookie": "PointsBet (AU)"
-        },
-        "Khaman Maluach|pts|14": {
-          "price": 10,
-          "bookie": "PointsBet (AU)"
-        },
         "Marcus Smart|pts|11": {
           "price": 5,
           "bookie": "PointsBet (AU)"
@@ -73529,10 +72941,6 @@
         },
         "Oso Ighodaro|pts|13": {
           "price": 10.5,
-          "bookie": "PointsBet (AU)"
-        },
-        "Khaman Maluach|reb|2": {
-          "price": 1.06,
           "bookie": "PointsBet (AU)"
         },
         "Oso Ighodaro|reb|2": {
@@ -80035,6 +79443,390 @@
           "price": 2.75,
           "bookie": "Ladbrokes"
         },
+        "joan beringer|pts|5": {
+          "price": 1.58,
+          "bookie": "TAB"
+        },
+        "joan beringer|pts|10": {
+          "price": 4.5,
+          "bookie": "TAB"
+        },
+        "joan beringer|reb|4": {
+          "price": 1.22,
+          "bookie": "TAB"
+        },
+        "joan beringer|reb|6": {
+          "price": 1.62,
+          "bookie": "TAB"
+        },
+        "joan beringer|reb|8": {
+          "price": 2.7,
+          "bookie": "TAB"
+        },
+        "joan beringer|reb|10": {
+          "price": 5.5,
+          "bookie": "TAB"
+        },
+        "damian lillard|pts|21": {
+          "price": 1.87,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|30": {
+          "price": 6.2,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|12": {
+          "price": 1.06,
+          "bookie": "Neds"
+        },
+        "scoot henderson|pts|12": {
+          "price": 2.1,
+          "bookie": "Neds"
+        },
+        "scoot henderson|pts|6": {
+          "price": 1.16,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|10": {
+          "price": 1.01,
+          "bookie": "Neds"
+        },
+        "scoot henderson|pts|10": {
+          "price": 1.62,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|26": {
+          "price": 3.25,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|15": {
+          "price": 1.2,
+          "bookie": "Neds"
+        },
+        "scoot henderson|pts|15": {
+          "price": 3.4,
+          "bookie": "Neds"
+        },
+        "scoot henderson|pts|9": {
+          "price": 1.46,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|16": {
+          "price": 1.26,
+          "bookie": "Neds"
+        },
+        "scoot henderson|pts|16": {
+          "price": 4.2,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|25": {
+          "price": 2.85,
+          "bookie": "Neds"
+        },
+        "scoot henderson|pts|8": {
+          "price": 1.33,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|14": {
+          "price": 1.15,
+          "bookie": "Neds"
+        },
+        "scoot henderson|pts|14": {
+          "price": 2.85,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|28": {
+          "price": 4.4,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|35": {
+          "price": 19,
+          "bookie": "Neds"
+        },
+        "scoot henderson|pts|7": {
+          "price": 1.24,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|20": {
+          "price": 1.67,
+          "bookie": "Neds"
+        },
+        "scoot henderson|pts|20": {
+          "price": 11.5,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|18": {
+          "price": 1.44,
+          "bookie": "Neds"
+        },
+        "scoot henderson|pts|18": {
+          "price": 6.75,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|24": {
+          "price": 2.5,
+          "bookie": "Neds"
+        },
+        "damian lillard|pts|22": {
+          "price": 2,
+          "bookie": "Neds"
+        },
+        "scoot henderson|pts|5": {
+          "price": 1.1,
+          "bookie": "Neds"
+        },
+        "damian lillard|3pm|3": {
+          "price": 1.88,
+          "bookie": "Neds"
+        },
+        "damian lillard|3pm|4": {
+          "price": 3.05,
+          "bookie": "Neds"
+        },
+        "scoot henderson|3pm|4": {
+          "price": 7.75,
+          "bookie": "Neds"
+        },
+        "damian lillard|3pm|7": {
+          "price": 23,
+          "bookie": "Neds"
+        },
+        "damian lillard|3pm|1": {
+          "price": 1.01,
+          "bookie": "Neds"
+        },
+        "scoot henderson|3pm|1": {
+          "price": 1.2,
+          "bookie": "Neds"
+        },
+        "damian lillard|3pm|5": {
+          "price": 5.5,
+          "bookie": "Neds"
+        },
+        "damian lillard|3pm|6": {
+          "price": 11,
+          "bookie": "Neds"
+        },
+        "damian lillard|3pm|2": {
+          "price": 1.28,
+          "bookie": "Neds"
+        },
+        "scoot henderson|3pm|2": {
+          "price": 1.92,
+          "bookie": "Neds"
+        },
+        "scoot henderson|3pm|3": {
+          "price": 3.6,
+          "bookie": "Neds"
+        },
+        "damian lillard|ast|2": {
+          "price": 1.06,
+          "bookie": "TAB"
+        },
+        "scoot henderson|ast|2": {
+          "price": 1.58,
+          "bookie": "TAB"
+        },
+        "damian lillard|ast|4": {
+          "price": 1.5,
+          "bookie": "TAB"
+        },
+        "scoot henderson|ast|4": {
+          "price": 4,
+          "bookie": "TAB"
+        },
+        "damian lillard|ast|6": {
+          "price": 3,
+          "bookie": "TAB"
+        },
+        "damian lillard|reb|2": {
+          "price": 1.11,
+          "bookie": "TAB"
+        },
+        "scoot henderson|reb|2": {
+          "price": 1.36,
+          "bookie": "TAB"
+        },
+        "damian lillard|reb|4": {
+          "price": 2.05,
+          "bookie": "TAB"
+        },
+        "damian lillard|reb|6": {
+          "price": 5,
+          "bookie": "TAB"
+        },
+        "khaman maluach|pts|7": {
+          "price": 2,
+          "bookie": "SportsBet"
+        },
+        "khaman maluach|pts|10": {
+          "price": 3.7,
+          "bookie": "PointsBet (AU)"
+        },
+        "khaman maluach|pts|15": {
+          "price": 10,
+          "bookie": "SportsBet"
+        },
+        "khaman maluach|pts|5": {
+          "price": 1.44,
+          "bookie": "SportsBet"
+        },
+        "khaman maluach|reb|6": {
+          "price": 2.11,
+          "bookie": "SportsBet"
+        },
+        "khaman maluach|reb|8": {
+          "price": 4.3,
+          "bookie": "SportsBet"
+        },
+        "khaman maluach|reb|10": {
+          "price": 8,
+          "bookie": "SportsBet"
+        },
+        "khaman maluach|reb|12": {
+          "price": 14,
+          "bookie": "SportsBet"
+        },
+        "khaman maluach|reb|4": {
+          "price": 1.34,
+          "bookie": "Unibet"
+        },
+        "khaman maluach|pts|12": {
+          "price": 6.5,
+          "bookie": "Ladbrokes"
+        },
+        "khaman maluach|pts|9": {
+          "price": 2.9,
+          "bookie": "PointsBet (AU)"
+        },
+        "khaman maluach|pts|6": {
+          "price": 1.69,
+          "bookie": "PointsBet (AU)"
+        },
+        "khaman maluach|pts|8": {
+          "price": 2.35,
+          "bookie": "PointsBet (AU)"
+        },
+        "khaman maluach|reb|7": {
+          "price": 2.65,
+          "bookie": "Ladbrokes"
+        },
+        "khaman maluach|reb|5": {
+          "price": 1.57,
+          "bookie": "Ladbrokes"
+        },
+        "khaman maluach|reb|9": {
+          "price": 5.4,
+          "bookie": "Ladbrokes"
+        },
+        "khaman maluach|reb|3": {
+          "price": 1.09,
+          "bookie": "Ladbrokes"
+        },
+        "khaman maluach|pts|11": {
+          "price": 4.5,
+          "bookie": "PointsBet (AU)"
+        },
+        "khaman maluach|pts|13": {
+          "price": 7.5,
+          "bookie": "PointsBet (AU)"
+        },
+        "khaman maluach|pts|14": {
+          "price": 10,
+          "bookie": "PointsBet (AU)"
+        },
+        "khaman maluach|reb|2": {
+          "price": 1.06,
+          "bookie": "PointsBet (AU)"
+        },
+        "Joan Beringer|pts|5": {
+          "price": 1.58,
+          "bookie": "TAB"
+        },
+        "Joan Beringer|reb|10": {
+          "price": 5.5,
+          "bookie": "TAB"
+        },
+        "Khaman Maluach|pts|5": {
+          "price": 1.44,
+          "bookie": "SportsBet"
+        },
+        "Khaman Maluach|pts|10": {
+          "price": 3.7,
+          "bookie": "PointsBet (AU)"
+        },
+        "Khaman Maluach|reb|3": {
+          "price": 1.09,
+          "bookie": "Ladbrokes"
+        },
+        "Khaman Maluach|reb|5": {
+          "price": 1.57,
+          "bookie": "Ladbrokes"
+        },
+        "Khaman Maluach|reb|7": {
+          "price": 2.65,
+          "bookie": "Ladbrokes"
+        },
+        "Scoot Henderson|pts|10": {
+          "price": 1.62,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|pts|15": {
+          "price": 3.4,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|3pm|1": {
+          "price": 1.2,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|3pm|2": {
+          "price": 1.92,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|3pm|3": {
+          "price": 3.6,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|3pm|4": {
+          "price": 7.75,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|15": {
+          "price": 1.2,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|20": {
+          "price": 1.67,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|25": {
+          "price": 2.85,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|30": {
+          "price": 6.2,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|3pm|1": {
+          "price": 1.01,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|3pm|2": {
+          "price": 1.28,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|3pm|3": {
+          "price": 1.88,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|3pm|4": {
+          "price": 3.05,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|3pm|5": {
+          "price": 5.5,
+          "bookie": "Neds"
+        },
         "ausar thompson|ast|4": {
           "price": 2.08,
           "bookie": "SportsBet"
@@ -85706,6 +85498,214 @@
         "cooper flagg|reb|2": {
           "price": 1.01,
           "bookie": "Ladbrokes"
+        },
+        "Joan Beringer|pts|10": {
+          "price": 4.5,
+          "bookie": "TAB"
+        },
+        "Joan Beringer|reb|4": {
+          "price": 1.22,
+          "bookie": "TAB"
+        },
+        "Joan Beringer|reb|6": {
+          "price": 1.62,
+          "bookie": "TAB"
+        },
+        "Joan Beringer|reb|8": {
+          "price": 2.7,
+          "bookie": "TAB"
+        },
+        "Damian Lillard|pts|21": {
+          "price": 1.87,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|12": {
+          "price": 1.06,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|pts|12": {
+          "price": 2.1,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|pts|6": {
+          "price": 1.16,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|10": {
+          "price": 1.01,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|26": {
+          "price": 3.25,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|pts|9": {
+          "price": 1.46,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|16": {
+          "price": 1.26,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|pts|16": {
+          "price": 4.2,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|pts|8": {
+          "price": 1.33,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|14": {
+          "price": 1.15,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|pts|14": {
+          "price": 2.85,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|28": {
+          "price": 4.4,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|35": {
+          "price": 19,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|pts|7": {
+          "price": 1.24,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|pts|20": {
+          "price": 11.5,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|18": {
+          "price": 1.44,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|pts|18": {
+          "price": 6.75,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|24": {
+          "price": 2.5,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|pts|22": {
+          "price": 2,
+          "bookie": "Neds"
+        },
+        "Scoot Henderson|pts|5": {
+          "price": 1.1,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|3pm|7": {
+          "price": 23,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|3pm|6": {
+          "price": 11,
+          "bookie": "Neds"
+        },
+        "Damian Lillard|ast|2": {
+          "price": 1.06,
+          "bookie": "TAB"
+        },
+        "Scoot Henderson|ast|2": {
+          "price": 1.58,
+          "bookie": "TAB"
+        },
+        "Damian Lillard|ast|4": {
+          "price": 1.5,
+          "bookie": "TAB"
+        },
+        "Scoot Henderson|ast|4": {
+          "price": 4,
+          "bookie": "TAB"
+        },
+        "Damian Lillard|ast|6": {
+          "price": 3,
+          "bookie": "TAB"
+        },
+        "Damian Lillard|reb|2": {
+          "price": 1.11,
+          "bookie": "TAB"
+        },
+        "Scoot Henderson|reb|2": {
+          "price": 1.36,
+          "bookie": "TAB"
+        },
+        "Damian Lillard|reb|4": {
+          "price": 2.05,
+          "bookie": "TAB"
+        },
+        "Damian Lillard|reb|6": {
+          "price": 5,
+          "bookie": "TAB"
+        },
+        "Khaman Maluach|pts|7": {
+          "price": 2,
+          "bookie": "SportsBet"
+        },
+        "Khaman Maluach|pts|15": {
+          "price": 10,
+          "bookie": "SportsBet"
+        },
+        "Khaman Maluach|reb|6": {
+          "price": 2.11,
+          "bookie": "SportsBet"
+        },
+        "Khaman Maluach|reb|8": {
+          "price": 4.3,
+          "bookie": "SportsBet"
+        },
+        "Khaman Maluach|reb|10": {
+          "price": 8,
+          "bookie": "SportsBet"
+        },
+        "Khaman Maluach|reb|12": {
+          "price": 14,
+          "bookie": "SportsBet"
+        },
+        "Khaman Maluach|reb|4": {
+          "price": 1.34,
+          "bookie": "Unibet"
+        },
+        "Khaman Maluach|pts|12": {
+          "price": 6.5,
+          "bookie": "Ladbrokes"
+        },
+        "Khaman Maluach|pts|9": {
+          "price": 2.9,
+          "bookie": "PointsBet (AU)"
+        },
+        "Khaman Maluach|pts|6": {
+          "price": 1.69,
+          "bookie": "PointsBet (AU)"
+        },
+        "Khaman Maluach|pts|8": {
+          "price": 2.35,
+          "bookie": "PointsBet (AU)"
+        },
+        "Khaman Maluach|reb|9": {
+          "price": 5.4,
+          "bookie": "Ladbrokes"
+        },
+        "Khaman Maluach|pts|11": {
+          "price": 4.5,
+          "bookie": "PointsBet (AU)"
+        },
+        "Khaman Maluach|pts|13": {
+          "price": 7.5,
+          "bookie": "PointsBet (AU)"
+        },
+        "Khaman Maluach|pts|14": {
+          "price": 10,
+          "bookie": "PointsBet (AU)"
+        },
+        "Khaman Maluach|reb|2": {
+          "price": 1.06,
+          "bookie": "PointsBet (AU)"
         }
       },
       "allOddsMap": {
@@ -91531,18 +91531,6 @@
           "SportsBet": 14,
           "PointsBet (AU)": 12
         },
-        "Joan Beringer|pts|5": {
-          "TAB": 1.58
-        },
-        "joan beringer|pts|5": {
-          "TAB": 1.58
-        },
-        "Joan Beringer|reb|10": {
-          "TAB": 5.5
-        },
-        "joan beringer|reb|10": {
-          "TAB": 5.5
-        },
         "Jonathan Kuminga|pts|15": {
           "SportsBet": 2,
           "Unibet": 1.93,
@@ -96051,62 +96039,6 @@
         "luke kennard|3pm|4": {
           "TAB": 8.5
         },
-        "Khaman Maluach|pts|5": {
-          "SportsBet": 1.44,
-          "Ladbrokes": 1.42,
-          "Neds": 1.42,
-          "TAB": 1.38,
-          "PointsBet (AU)": 1.44
-        },
-        "khaman maluach|pts|5": {
-          "SportsBet": 1.44,
-          "Ladbrokes": 1.42,
-          "Neds": 1.42,
-          "TAB": 1.38,
-          "PointsBet (AU)": 1.44
-        },
-        "Khaman Maluach|pts|10": {
-          "SportsBet": 3.5,
-          "Ladbrokes": 3.6,
-          "Neds": 3.6,
-          "Unibet": 3.25,
-          "TABtouch": 3.25,
-          "TAB": 3.2,
-          "PointsBet (AU)": 3.7
-        },
-        "khaman maluach|pts|10": {
-          "SportsBet": 3.5,
-          "Ladbrokes": 3.6,
-          "Neds": 3.6,
-          "Unibet": 3.25,
-          "TABtouch": 3.25,
-          "TAB": 3.2,
-          "PointsBet (AU)": 3.7
-        },
-        "Khaman Maluach|reb|3": {
-          "Ladbrokes": 1.09,
-          "Neds": 1.09
-        },
-        "khaman maluach|reb|3": {
-          "Ladbrokes": 1.09,
-          "Neds": 1.09
-        },
-        "Khaman Maluach|reb|5": {
-          "Ladbrokes": 1.57,
-          "Neds": 1.57
-        },
-        "khaman maluach|reb|5": {
-          "Ladbrokes": 1.57,
-          "Neds": 1.57
-        },
-        "Khaman Maluach|reb|7": {
-          "Ladbrokes": 2.65,
-          "Neds": 2.65
-        },
-        "khaman maluach|reb|7": {
-          "Ladbrokes": 2.65,
-          "Neds": 2.65
-        },
         "Jordan Goodwin|pts|5": {
           "TAB": 1.36
         },
@@ -97547,66 +97479,6 @@
         "donovan clingan|3pm|3": {
           "TAB": 8.5
         },
-        "Scoot Henderson|pts|10": {
-          "Neds": 1.62,
-          "Ladbrokes": 1.62,
-          "TAB": 1.55
-        },
-        "scoot henderson|pts|10": {
-          "Neds": 1.62,
-          "Ladbrokes": 1.62,
-          "TAB": 1.55
-        },
-        "Scoot Henderson|pts|15": {
-          "Neds": 3.4,
-          "Ladbrokes": 3.4,
-          "TAB": 2.8
-        },
-        "scoot henderson|pts|15": {
-          "Neds": 3.4,
-          "Ladbrokes": 3.4,
-          "TAB": 2.8
-        },
-        "Scoot Henderson|3pm|1": {
-          "Neds": 1.2,
-          "Ladbrokes": 1.2,
-          "TAB": 1.14
-        },
-        "scoot henderson|3pm|1": {
-          "Neds": 1.2,
-          "Ladbrokes": 1.2,
-          "TAB": 1.14
-        },
-        "Scoot Henderson|3pm|2": {
-          "Neds": 1.92,
-          "Ladbrokes": 1.92,
-          "TAB": 1.65
-        },
-        "scoot henderson|3pm|2": {
-          "Neds": 1.92,
-          "Ladbrokes": 1.92,
-          "TAB": 1.65
-        },
-        "Scoot Henderson|3pm|3": {
-          "Neds": 3.6,
-          "Ladbrokes": 3.6,
-          "TAB": 3
-        },
-        "scoot henderson|3pm|3": {
-          "Neds": 3.6,
-          "Ladbrokes": 3.6,
-          "TAB": 3
-        },
-        "Scoot Henderson|3pm|4": {
-          "Neds": 7.75,
-          "Ladbrokes": 7.75,
-          "TAB": 6
-        },
-        "scoot henderson|3pm|4": {
-          "Neds": 7.75,
-          "Ladbrokes": 7.75,
-          "TAB": 6
-        },
         "Jrue Holiday|pts|15": {
           "Neds": 1.98,
           "Ladbrokes": 1.98,
@@ -97716,94 +97588,6 @@
           "Neds": 7.5,
           "Ladbrokes": 7.5,
           "TAB": 7
-        },
-        "Damian Lillard|pts|15": {
-          "Neds": 1.2,
-          "Ladbrokes": 1.2,
-          "TAB": 1.17
-        },
-        "damian lillard|pts|15": {
-          "Neds": 1.2,
-          "Ladbrokes": 1.2,
-          "TAB": 1.17
-        },
-        "Damian Lillard|pts|20": {
-          "Neds": 1.67,
-          "Ladbrokes": 1.67,
-          "TAB": 1.55
-        },
-        "damian lillard|pts|20": {
-          "Neds": 1.67,
-          "Ladbrokes": 1.67,
-          "TAB": 1.55
-        },
-        "Damian Lillard|pts|25": {
-          "Neds": 2.85,
-          "Ladbrokes": 2.85,
-          "TAB": 2.5
-        },
-        "damian lillard|pts|25": {
-          "Neds": 2.85,
-          "Ladbrokes": 2.85,
-          "TAB": 2.5
-        },
-        "Damian Lillard|pts|30": {
-          "Neds": 6.2,
-          "Ladbrokes": 6.2,
-          "TAB": 4.75
-        },
-        "damian lillard|pts|30": {
-          "Neds": 6.2,
-          "Ladbrokes": 6.2,
-          "TAB": 4.75
-        },
-        "Damian Lillard|3pm|1": {
-          "Neds": 1.01,
-          "Ladbrokes": 1.01
-        },
-        "damian lillard|3pm|1": {
-          "Neds": 1.01,
-          "Ladbrokes": 1.01
-        },
-        "Damian Lillard|3pm|2": {
-          "Neds": 1.28,
-          "Ladbrokes": 1.28,
-          "TAB": 1.2
-        },
-        "damian lillard|3pm|2": {
-          "Neds": 1.28,
-          "Ladbrokes": 1.28,
-          "TAB": 1.2
-        },
-        "Damian Lillard|3pm|3": {
-          "Neds": 1.88,
-          "Ladbrokes": 1.88,
-          "TAB": 1.6
-        },
-        "damian lillard|3pm|3": {
-          "Neds": 1.88,
-          "Ladbrokes": 1.88,
-          "TAB": 1.6
-        },
-        "Damian Lillard|3pm|4": {
-          "Neds": 3.05,
-          "Ladbrokes": 3.05,
-          "TAB": 2.5
-        },
-        "damian lillard|3pm|4": {
-          "Neds": 3.05,
-          "Ladbrokes": 3.05,
-          "TAB": 2.5
-        },
-        "Damian Lillard|3pm|5": {
-          "Neds": 5.5,
-          "Ladbrokes": 5.5,
-          "TAB": 4
-        },
-        "damian lillard|3pm|5": {
-          "Neds": 5.5,
-          "Ladbrokes": 5.5,
-          "TAB": 4
         },
         "Robert Williams III|pts|5": {
           "TAB": 1.5

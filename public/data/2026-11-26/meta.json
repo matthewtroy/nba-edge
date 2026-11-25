@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T07:05:44.482Z",
+  "lastUpdated": "2026-11-25T07:10:43.581Z",
   "oddsLastPulled": "2026-11-25T05:16:23.081Z",
   "sources": {
     "espn": "ok",
@@ -10,11 +10,12 @@
   "smallSlate": false,
   "injuryImpactLog": [
     "Jordan Clarkson (New York Knicks): injured player not meaningful rotation",
+    "Drake Powell (Brooklyn Nets): injured player not meaningful rotation",
     "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs"
   ],
   "q1ExclusionLog": [
-    "Anfernee Simons q1reb 2+: last-10 Q1 0% vs model 27%",
     "Tyrese Maxey q1reb 2+: last-10 Q1 0% vs model 29%",
+    "Anfernee Simons q1reb 2+: last-10 Q1 0% vs model 27%",
     "Jaylen Brown q1reb 2+: last-10 Q1 33% vs model 72%",
     "Jaylen Brown q1reb 3+: last-10 Q1 17% vs model 50%",
     "Bam Adebayo q1reb 2+: last-10 Q1 40% vs model 84%",
@@ -31,17 +32,10 @@
     "Shai Gilgeous-Alexander q1reb 2+: last-10 Q1 0% vs model 53%",
     "Shai Gilgeous-Alexander q1reb 3+: last-10 Q1 0% vs model 30%",
     "Kenrich Williams q1reb 3+: last-10 Q1 20% vs model 47%",
-    "Jonathan Kuminga q1reb 3+: last-10 Q1 20% vs model 43%",
-    "Rudy Gobert q1reb 2+: last-10 Q1 20% vs model 88%"
+    "Rudy Gobert q1reb 2+: last-10 Q1 20% vs model 88%",
+    "Rudy Gobert q1reb 3+: last-10 Q1 0% vs model 72%"
   ],
   "topConfluenceLegs": [
-    {
-      "player": "Isaiah Hartenstein",
-      "market": "ast",
-      "line": 5,
-      "confluence": 3,
-      "reasonLine": "Line beats model · Hit 6 of last 10"
-    },
     {
       "player": "Shai Gilgeous-Alexander",
       "market": "pts",
@@ -53,6 +47,13 @@
       "player": "Shai Gilgeous-Alexander",
       "market": "3pm",
       "line": 3,
+      "confluence": 3,
+      "reasonLine": "Line beats model · Hit 6 of last 10"
+    },
+    {
+      "player": "Isaiah Hartenstein",
+      "market": "ast",
+      "line": 5,
       "confluence": 3,
       "reasonLine": "Line beats model · Hit 6 of last 10"
     },
@@ -126,23 +127,23 @@
   "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_02_00AM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 271,
-      "priced": 207
+      "total": 256,
+      "priced": 201
     },
     "reb": {
-      "total": 466,
+      "total": 450,
       "priced": 188
     },
     "ast": {
-      "total": 317,
+      "total": 304,
       "priced": 142
     },
     "3pm": {
-      "total": 666,
-      "priced": 420
+      "total": 650,
+      "priced": 410
     },
     "q1reb": {
-      "total": 178,
+      "total": 176,
       "priced": 0
     }
   },
