@@ -23,7 +23,7 @@ export function formatLegLine(leg: PickLeg): string {
   return `${leg.playerName} ${marketLabel(leg.market, leg.line)} · Take at $${leg.takeAt.toFixed(2)}+${pricePart}`;
 }
 
-export function renderMultiCardText(multi: MultiBet, legs: PickLeg[]): string {
+export function renderMultiCardCopyText(multi: MultiBet, legs: PickLeg[]): string {
   const title = multi.variant ? `${multi.label} (${multi.variant})` : multi.label;
   const lines = [title, formatMultiHeadline(multi)];
   const bestTotal = multi.bestBookieTotal ?? multi.combinedBestPrice;
@@ -36,8 +36,12 @@ export function renderMultiCardText(multi: MultiBet, legs: PickLeg[]): string {
     lines.push(`Best multi odds: ${bestBook} $${bestTotal.toFixed(2)}+`);
   }
   for (const leg of legs) lines.push(formatLegLine(leg));
-  lines.push("Copy for Discord");
   return lines.join("\n");
+}
+
+/** @deprecated use renderMultiCardCopyText — kept for tests */
+export function renderMultiCardText(multi: MultiBet, legs: PickLeg[]): string {
+  return renderMultiCardCopyText(multi, legs);
 }
 
 export function assertNoForbiddenStrings(text: string, extraForbidden: string[] = []): void {

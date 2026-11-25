@@ -1,4 +1,5 @@
 import type { PickLeg } from "@lib/types";
+import { visibleLegTags } from "@lib/leg-display";
 import { marketLabel } from "../utils/format";
 
 interface Props {
@@ -33,7 +34,7 @@ export function LegRow({ leg, myBookie = "bet365", onTap }: Props) {
           {leg.playerName} {marketLabel(leg.market, leg.line)}
         </div>
         <div className="flex flex-wrap gap-1 mt-1">
-          {leg.tags.map((t) => (
+          {visibleLegTags(leg.tags).map((t) => (
             <span
               key={t}
               className={`text-xs px-2 py-0.5 rounded-full ${
@@ -41,9 +42,7 @@ export function LegRow({ leg, myBookie = "bet365", onTap }: Props) {
                   ? "bg-accent-value/20 text-accent-value"
                   : t === "High probability"
                     ? "bg-accent-high/20 text-accent-high"
-                    : t === "boards shared"
-                      ? "bg-white/10 text-white/70"
-                      : "bg-accent-warn/20 text-accent-warn"
+                    : "bg-accent-warn/20 text-accent-warn"
               }`}
             >
               {t}

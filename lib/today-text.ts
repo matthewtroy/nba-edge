@@ -1,4 +1,5 @@
 import type { MetaJson, MultiBet, MultiNotBuilt, PickLeg, SlateGame } from "./types.js";
+import { auditMultisForToday } from "./audit-multis.js";
 import {
   assertNoForbiddenStrings,
   formatLegLine,
@@ -20,6 +21,7 @@ export function renderTodayText(input: {
   multis: MultiBet[];
   notBuilt: MultiNotBuilt[];
   picksById: Map<string, PickLeg>;
+  /** @deprecated use audit from auditMultisForToday */
   gateViolations?: string[];
 }): string {
   const lines: string[] = [];
@@ -81,12 +83,16 @@ export function renderTodayText(input: {
     lines.push("");
   }
 
-  const violations = input.gateViolations?.filter(Boolean) ?? [];
-  if (violations.length) {
-    lines.push("Gate violations");
-    for (const v of violations) lines.push(`  • ${v}`);
+  const audit = auditMultisForToday({
+    multis: input.multis,
+    picksById: input.picksById,
+    meta: input.meta,
+  });
+  if (audit.length) {
+    lines.push("Audit");
+    for (const v of audit) lines.push(`  • ${v}`);
   } else {
-    lines.push("Gate violations: none");
+    lines.push("Audit: ok (one bookie where shown, take-at, no Check news)");
   }
 
   const text = lines.join("\n").trim();

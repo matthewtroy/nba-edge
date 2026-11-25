@@ -29,7 +29,6 @@ describe("Today proof text", () => {
       multis: multisRaw.bets,
       notBuilt: multisRaw.notBuilt,
       picksById: new Map(picks.map((p) => [p.id, p])),
-      gateViolations: meta.gateViolations,
     });
     expect(text).toMatch(/Take at \$[\d.]+\+ \(Fair \$[\d.]+\)/);
     if ((meta.sources.odds ?? "").includes("ok")) {
@@ -37,6 +36,7 @@ describe("Today proof text", () => {
       expect(text).toMatch(/Best \$[\d.]+\+/);
     }
     expect(text).toContain("What changed");
+    expect(text).toContain("Audit");
     expect(text).not.toMatch(/~1 in/);
     expect(text).not.toMatch(/\b[123]\+ 3PM\b/i);
     expect(text).not.toMatch(/2\+ 3PM/i);

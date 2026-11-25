@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { PickLeg } from "@lib/types";
+import { visibleLegReasons } from "@lib/leg-display";
 import { marketLabel, verdict } from "../utils/format";
 
 interface Props {
@@ -52,7 +53,7 @@ export function LegSheet({ leg, myBookie = "bet365", onClose }: Props) {
           Fair {leg.fairPrice.toFixed(2)} · Take at {leg.takeAt.toFixed(2)}+
         </p>
         <ul className="text-sm space-y-1 mb-4 text-white/80">
-          {leg.reasons.map((r) => (
+          {visibleLegReasons(leg.reasons).map((r) => (
             <li key={r}>• {r}</li>
           ))}
         </ul>

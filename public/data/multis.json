@@ -50,37 +50,6 @@
       "summary": "Value Q1: fair 2.20–4.00, one leg/team"
     },
     {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "legs": [
-        "3908845-pts-10",
-        "4278562-reb-7",
-        "4065648-ast-5",
-        "4277905-ast-7",
-        "4278594-pts-10",
-        "4278078-reb-5"
-      ],
-      "combinedProbability": 0.05304530434859805,
-      "combinedFairPrice": 18.85,
-      "combinedTakeAt": 30,
-      "bookieTotals": {},
-      "summary": "2+ legs/game, fair 1.35–2.50 each"
-    },
-    {
-      "type": "boostSgm",
-      "label": "Boost SGM",
-      "legs": [
-        "3138160-reb-5",
-        "5041939-pts-25",
-        "6442-ast-5"
-      ],
-      "combinedProbability": 0.08473777,
-      "combinedFairPrice": 11.8,
-      "combinedTakeAt": 14.86,
-      "bookieTotals": {},
-      "summary": "bet365 25% boost (needs 3 legs)"
-    },
-    {
       "type": "longshot",
       "label": "Longshot",
       "legs": [

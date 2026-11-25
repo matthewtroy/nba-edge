@@ -1,5 +1,6 @@
 import type { PickLeg } from "@lib/types";
 import { marketLabel } from "@lib/market-label";
+import { visibleLegTags } from "@lib/leg-display";
 
 interface Props {
   leg: PickLeg;
@@ -26,7 +27,7 @@ export function MultiLegRow({ leg, onTap }: Props) {
           {leg.playerName} {marketLabel(leg.market, leg.line)}
         </div>
         <div className="flex flex-wrap gap-1 mt-1">
-          {leg.tags.map((t) => (
+          {visibleLegTags(leg.tags).map((t) => (
             <span
               key={t}
               className={`text-xs px-2 py-0.5 rounded-full ${
@@ -34,9 +35,7 @@ export function MultiLegRow({ leg, onTap }: Props) {
                   ? "bg-accent-value/20 text-accent-value"
                   : t === "High probability"
                     ? "bg-accent-high/20 text-accent-high"
-                    : t === "boards shared"
-                      ? "bg-white/10 text-white/70"
-                      : "bg-accent-warn/20 text-accent-warn"
+                    : "bg-accent-warn/20 text-accent-warn"
               }`}
             >
               {t}
@@ -44,8 +43,14 @@ export function MultiLegRow({ leg, onTap }: Props) {
           ))}
         </div>
       </div>
-      <div className="text-right text-sm shrink-0">
-        Take at ${leg.takeAt.toFixed(2)}+
+      <div className="text-right text-sm shrink-0 max-w-[42%]">
+        <div>Take at ${leg.takeAt.toFixed(2)}+</div>
+        {leg.bestPrice != null && leg.bestPrice > 1 && (
+          <div className="text-xs text-accent-value mt-0.5">
+            Best ${leg.bestPrice.toFixed(2)}+
+            {leg.bestBookie ? ` · ${leg.bestBookie}` : ""}
+          </div>
+        )}
       </div>
     </button>
   );

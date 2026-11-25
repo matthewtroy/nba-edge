@@ -1,8 +1,6 @@
-import { useState } from "react";
 import type { MultiBet, PickLeg } from "@lib/types";
 import { MultiLegRow } from "./MultiLegRow";
-import { formatMultiHeadline, renderMultiCardText } from "@lib/multi-card-text";
-import { verdict } from "../utils/format";
+import { renderMultiCardCopyText } from "@lib/multi-card-text";
 
 interface Props {
   multi: MultiBet;
@@ -22,9 +20,9 @@ export const FORBIDDEN_MULTI_CARD_STRINGS = [
   "Small slate",
 ] as const;
 
-/** Test hook: plain text that would appear on the card. */
+/** Test hook: plain text that would be copied from the card. */
 export function multiCardPlainText(multi: MultiBet, legs: PickLeg[] = []): string {
-  return legs.length ? renderMultiCardText(multi, legs) : multi.label;
+  return legs.length ? renderMultiCardCopyText(multi, legs) : multi.label;
 }
 
 export function MultiCard({ multi, picksById, onLegTap, onCopy }: Props) {
@@ -32,20 +30,24 @@ export function MultiCard({ multi, picksById, onLegTap, onCopy }: Props) {
   const title =
     multi.variant != null ? `${multi.label} (${multi.variant})` : multi.label;
 
-  const discordText = legs
-    .map((l) => `${l.playerName} ${l.line}+ ${l.market} @ ${l.takeAt.toFixed(2)}+`)
-    .join("\n");
+  const bestTotal = multi.bestBookieTotal ?? multi.combinedBestPrice;
+  const bestBook = multi.bestBookie ?? multi.combinedBestBookie;
 
   return (
     <section className="bg-card rounded-xl border border-white/10 overflow-hidden mb-3">
       <header className="px-4 py-3 bg-surface/80 border-b border-white/5">
         <h3 className="font-semibold text-lg">{title}</h3>
-        <p className="text-sm mt-1">{formatMultiHeadline(multi)}</p>
-        {(multi.bestBookieTotal ?? multi.combinedBestPrice) != null &&
-          (multi.bestBookie ?? multi.combinedBestBookie) && (
+        <p className="text-sm mt-1">
+          Take at ${multi.combinedTakeAt.toFixed(2)}+ (Fair ${multi.combinedFairPrice.toFixed(2)})
+        </p>
+        {bestTotal != null && bestBook === "Best across books" && (
+          <p className="text-xs text-white/60 mt-1">
+            Cross-book ${bestTotal.toFixed(2)}+ — not one placeable multi
+          </p>
+        )}
+        {bestTotal != null && bestBook && bestBook !== "Best across books" && (
           <p className="text-xs text-accent-value mt-1">
-            Best multi odds: {multi.bestBookie ?? multi.combinedBestBookie} $
-            {(multi.bestBookieTotal ?? multi.combinedBestPrice)!.toFixed(2)}+
+            {bestBook} ${bestTotal.toFixed(2)}+ (all legs)
           </p>
         )}
       </header>
@@ -54,49 +56,15 @@ export function MultiCard({ multi, picksById, onLegTap, onCopy }: Props) {
           <MultiLegRow key={leg.id} leg={leg} onTap={onLegTap} />
         ))}
       </div>
-      <div className="flex gap-2 p-3 bg-surface/40">
-        <BookieTotalInput multiId={multi.legs.join("-")} takeAt={multi.combinedTakeAt} />
+      <div className="p-3 bg-surface/40">
         <button
           type="button"
-          className="flex-1 py-2 text-sm bg-surface border border-white/10 rounded-lg"
-          onClick={() => onCopy(discordText)}
+          className="w-full py-2.5 text-sm bg-surface border border-white/10 rounded-lg font-medium"
+          onClick={() => onCopy(renderMultiCardCopyText(multi, legs))}
         >
-          Copy for Discord
+          Copy bet slip
         </button>
       </div>
     </section>
-  );
-}
-
-function BookieTotalInput({ multiId, takeAt }: { multiId: string; takeAt: number }) {
-  const key = `multi-price-${multiId}`;
-  const [val, setVal] = useState(() => localStorage.getItem(key) ?? "");
-  const num = parseFloat(val);
-  const label =
-    Number.isFinite(num) && num > 1
-      ? verdict(num, takeAt) === "value"
-        ? "Value"
-        : verdict(num, takeAt) === "fair"
-          ? "Fair"
-          : "Pass"
-      : null;
-
-  return (
-    <div className="flex-1 flex flex-col gap-0.5">
-      <input
-        type="number"
-        step="0.01"
-        placeholder="Bookie total"
-        value={val}
-        onChange={(e) => {
-          setVal(e.target.value);
-          localStorage.setItem(key, e.target.value);
-        }}
-        className="w-full py-2 px-2 text-sm bg-surface border border-white/10 rounded-lg"
-      />
-      {label && (
-        <span className="text-xs text-white/60 text-center">{label}</span>
-      )}
-    </div>
   );
 }

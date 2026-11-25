@@ -146,6 +146,9 @@ export function gateMulti(
     if (leg.fairPrice < MIN_LEG_FAIR) {
       violations.push(`${label}: ${leg.playerName} fair ${leg.fairPrice.toFixed(2)} < ${MIN_LEG_FAIR}`);
     }
+    if (leg.tags.includes("Check news")) {
+      violations.push(`${label}: ${leg.playerName} has Check news`);
+    }
   }
 
   const takeAt = takeAtProduct(legs);
