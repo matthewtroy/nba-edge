@@ -68,7 +68,12 @@ export default function App() {
         <PicksScreen data={data} myBookie={settings.myBookie} onLegTap={setLeg} />
       )}
       {tab === "games" && (
-        <GamesScreen data={data} myBookie={settings.myBookie} onLegTap={setLeg} />
+        <GamesScreen
+          data={data}
+          myBookie={settings.myBookie}
+          onLegTap={setLeg}
+          onCopy={copy}
+        />
       )}
       {tab === "injuries" && <InjuriesScreen data={data} />}
       {tab === "results" && <ResultsScreen data={data} />}

@@ -14,7 +14,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "pts",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-pts-15",
@@ -23,7 +25,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "pts",
-      "line": 15
+      "line": 15,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-pts-20",
@@ -32,7 +36,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "pts",
-      "line": 20
+      "line": 20,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-reb-3",
@@ -41,7 +47,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-reb-5",
@@ -50,7 +58,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-reb-7",
@@ -59,7 +69,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-reb-10",
@@ -68,7 +80,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "reb",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-ast-3",
@@ -77,7 +91,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-ast-5",
@@ -86,7 +102,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "ast",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-ast-7",
@@ -95,7 +113,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "ast",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-ast-10",
@@ -104,7 +124,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "ast",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-3pm-1",
@@ -113,7 +135,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-3pm-2",
@@ -122,7 +146,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-3pm-3",
@@ -131,7 +157,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-3pm-4",
@@ -140,7 +168,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 4
+      "line": 4,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-3pm-5",
@@ -149,7 +179,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-q1reb-2",
@@ -158,7 +190,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-q1reb-3",
@@ -167,7 +201,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-pts-15",
@@ -176,7 +212,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "pts",
-      "line": 15
+      "line": 15,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-pts-20",
@@ -185,7 +223,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "pts",
-      "line": 20
+      "line": 20,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-pts-25",
@@ -194,7 +234,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "pts",
-      "line": 25
+      "line": 25,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-reb-3",
@@ -203,7 +245,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-reb-5",
@@ -212,7 +256,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-reb-7",
@@ -221,7 +267,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-ast-3",
@@ -230,7 +278,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-ast-5",
@@ -239,7 +289,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "ast",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-ast-7",
@@ -248,7 +300,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "ast",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-3pm-2",
@@ -257,7 +311,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-3pm-3",
@@ -266,7 +322,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-3pm-4",
@@ -275,7 +333,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 4
+      "line": 4,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-3pm-5",
@@ -284,7 +344,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-q1reb-2",
@@ -293,7 +355,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4348700-pts-5",
@@ -302,7 +366,9 @@
       "playerId": "4348700",
       "gameId": "401909314",
       "market": "pts",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4348700-reb-3",
@@ -311,7 +377,9 @@
       "playerId": "4348700",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4348700-reb-5",
@@ -320,7 +388,9 @@
       "playerId": "4348700",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4348700-reb-7",
@@ -329,7 +399,9 @@
       "playerId": "4348700",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4348700-ast-3",
@@ -338,7 +410,9 @@
       "playerId": "4348700",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4348700-q1reb-2",
@@ -347,7 +421,9 @@
       "playerId": "4348700",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4348700-q1reb-3",
@@ -356,7 +432,9 @@
       "playerId": "4348700",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4348700-q1reb-5",
@@ -365,7 +443,9 @@
       "playerId": "4348700",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3133635-pts-5",
@@ -374,7 +454,9 @@
       "playerId": "3133635",
       "gameId": "401909314",
       "market": "pts",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3133635-reb-3",
@@ -383,7 +465,9 @@
       "playerId": "3133635",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3133635-ast-3",
@@ -392,7 +476,9 @@
       "playerId": "3133635",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3133635-3pm-1",
@@ -401,7 +487,9 @@
       "playerId": "3133635",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3133635-3pm-2",
@@ -410,7 +498,9 @@
       "playerId": "3133635",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3133635-3pm-3",
@@ -419,7 +509,9 @@
       "playerId": "3133635",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3133635-3pm-4",
@@ -428,7 +520,9 @@
       "playerId": "3133635",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 4
+      "line": 4,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4277847-pts-10",
@@ -437,7 +531,9 @@
       "playerId": "4277847",
       "gameId": "401909314",
       "market": "pts",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4277847-pts-15",
@@ -446,7 +542,9 @@
       "playerId": "4277847",
       "gameId": "401909314",
       "market": "pts",
-      "line": 15
+      "line": 15,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4277847-reb-5",
@@ -455,7 +553,9 @@
       "playerId": "4277847",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4277847-reb-7",
@@ -464,7 +564,9 @@
       "playerId": "4277847",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4277847-reb-10",
@@ -473,7 +575,9 @@
       "playerId": "4277847",
       "gameId": "401909314",
       "market": "reb",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4277847-reb-13",
@@ -482,7 +586,9 @@
       "playerId": "4277847",
       "gameId": "401909314",
       "market": "reb",
-      "line": 13
+      "line": 13,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4277847-ast-3",
@@ -491,7 +597,9 @@
       "playerId": "4277847",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4277847-3pm-1",
@@ -500,7 +608,9 @@
       "playerId": "4277847",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4277847-3pm-2",
@@ -509,7 +619,9 @@
       "playerId": "4277847",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4277847-3pm-3",
@@ -518,7 +630,9 @@
       "playerId": "4277847",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4277847-q1reb-2",
@@ -527,7 +641,9 @@
       "playerId": "4277847",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4277847-q1reb-3",
@@ -536,7 +652,9 @@
       "playerId": "4277847",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4702382-pts-10",
@@ -545,7 +663,9 @@
       "playerId": "4702382",
       "gameId": "401909314",
       "market": "pts",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4702382-pts-15",
@@ -554,7 +674,9 @@
       "playerId": "4702382",
       "gameId": "401909314",
       "market": "pts",
-      "line": 15
+      "line": 15,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4702382-reb-3",
@@ -563,7 +685,9 @@
       "playerId": "4702382",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4702382-reb-5",
@@ -572,7 +696,9 @@
       "playerId": "4702382",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4702382-reb-7",
@@ -581,7 +707,9 @@
       "playerId": "4702382",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4702382-ast-3",
@@ -590,7 +718,9 @@
       "playerId": "4702382",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4702382-3pm-1",
@@ -599,7 +729,9 @@
       "playerId": "4702382",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4702382-3pm-2",
@@ -608,7 +740,9 @@
       "playerId": "4702382",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4702382-3pm-3",
@@ -617,7 +751,9 @@
       "playerId": "4702382",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4702382-3pm-4",
@@ -626,7 +762,9 @@
       "playerId": "4702382",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 4
+      "line": 4,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4702382-3pm-5",
@@ -635,7 +773,9 @@
       "playerId": "4702382",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4702382-q1reb-2",
@@ -644,7 +784,9 @@
       "playerId": "4702382",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4702382-q1reb-3",
@@ -653,7 +795,9 @@
       "playerId": "4702382",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278572-pts-5",
@@ -662,7 +806,9 @@
       "playerId": "4278572",
       "gameId": "401909314",
       "market": "pts",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278572-reb-3",
@@ -671,7 +817,9 @@
       "playerId": "4278572",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278572-reb-5",
@@ -680,7 +828,9 @@
       "playerId": "4278572",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278572-3pm-1",
@@ -689,7 +839,9 @@
       "playerId": "4278572",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278572-3pm-2",
@@ -698,7 +850,9 @@
       "playerId": "4278572",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278572-q1pts-3",
@@ -707,7 +861,9 @@
       "playerId": "4278572",
       "gameId": "401909314",
       "market": "q1pts",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278572-q1reb-2",
@@ -716,7 +872,9 @@
       "playerId": "4278572",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278572-q1reb-3",
@@ -725,7 +883,9 @@
       "playerId": "4278572",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432165-pts-10",
@@ -734,7 +894,9 @@
       "playerId": "4432165",
       "gameId": "401909314",
       "market": "pts",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432165-reb-3",
@@ -743,7 +905,9 @@
       "playerId": "4432165",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432165-reb-5",
@@ -752,7 +916,9 @@
       "playerId": "4432165",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432165-reb-7",
@@ -761,7 +927,9 @@
       "playerId": "4432165",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432165-reb-10",
@@ -770,7 +938,9 @@
       "playerId": "4432165",
       "gameId": "401909314",
       "market": "reb",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432165-ast-3",
@@ -779,7 +949,9 @@
       "playerId": "4432165",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432165-ast-5",
@@ -788,7 +960,9 @@
       "playerId": "4432165",
       "gameId": "401909314",
       "market": "ast",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432165-3pm-1",
@@ -797,7 +971,9 @@
       "playerId": "4432165",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432165-3pm-2",
@@ -806,7 +982,9 @@
       "playerId": "4432165",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432165-3pm-3",
@@ -815,7 +993,9 @@
       "playerId": "4432165",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432165-3pm-4",
@@ -824,7 +1004,9 @@
       "playerId": "4432165",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 4
+      "line": 4,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432165-3pm-5",
@@ -833,7 +1015,9 @@
       "playerId": "4432165",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432165-q1reb-2",
@@ -842,7 +1026,9 @@
       "playerId": "4432165",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4593034-reb-3",
@@ -851,7 +1037,9 @@
       "playerId": "4593034",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4593034-reb-5",
@@ -860,7 +1048,9 @@
       "playerId": "4593034",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4593034-ast-3",
@@ -869,7 +1059,9 @@
       "playerId": "4593034",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4593034-3pm-1",
@@ -878,7 +1070,9 @@
       "playerId": "4593034",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4593034-3pm-2",
@@ -887,7 +1081,9 @@
       "playerId": "4593034",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4593034-q1pts-3",
@@ -896,7 +1092,9 @@
       "playerId": "4593034",
       "gameId": "401909314",
       "market": "q1pts",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4593034-q1reb-2",
@@ -905,7 +1103,9 @@
       "playerId": "4593034",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4593034-q1reb-3",
@@ -914,7 +1114,9 @@
       "playerId": "4593034",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "6478-pts-5",
@@ -923,7 +1125,9 @@
       "playerId": "6478",
       "gameId": "401909314",
       "market": "pts",
-      "line": 5
+      "line": 5,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "6478-reb-3",
@@ -932,7 +1136,9 @@
       "playerId": "6478",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "6478-reb-5",
@@ -941,7 +1147,9 @@
       "playerId": "6478",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "6478-reb-7",
@@ -950,7 +1158,9 @@
       "playerId": "6478",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "6478-ast-3",
@@ -959,7 +1169,9 @@
       "playerId": "6478",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "6478-3pm-1",
@@ -968,7 +1180,9 @@
       "playerId": "6478",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "6478-3pm-2",
@@ -977,7 +1191,9 @@
       "playerId": "6478",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "6478-3pm-3",
@@ -986,7 +1202,9 @@
       "playerId": "6478",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "6478-q1reb-2",
@@ -995,7 +1213,9 @@
       "playerId": "6478",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-pts-20",
@@ -1004,7 +1224,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "pts",
-      "line": 20
+      "line": 20,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-pts-25",
@@ -1013,7 +1235,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "pts",
-      "line": 25
+      "line": 25,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-pts-30",
@@ -1022,7 +1246,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "pts",
-      "line": 30
+      "line": 30,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-pts-35",
@@ -1031,7 +1257,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "pts",
-      "line": 35
+      "line": 35,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-reb-5",
@@ -1040,7 +1268,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-reb-7",
@@ -1049,7 +1279,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-reb-10",
@@ -1058,7 +1290,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "reb",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-ast-5",
@@ -1067,7 +1301,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "ast",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-ast-7",
@@ -1076,7 +1312,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "ast",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-ast-10",
@@ -1085,7 +1323,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "ast",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-ast-13",
@@ -1094,7 +1334,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "ast",
-      "line": 13
+      "line": 13,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-3pm-1",
@@ -1103,7 +1345,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-3pm-2",
@@ -1112,7 +1356,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-3pm-3",
@@ -1121,7 +1367,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-3pm-4",
@@ -1130,7 +1378,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 4
+      "line": 4,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-q1reb-2",
@@ -1139,7 +1389,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-q1reb-3",
@@ -1148,7 +1400,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5239561-pts-5",
@@ -1157,7 +1411,9 @@
       "playerId": "5239561",
       "gameId": "401909314",
       "market": "pts",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5239561-reb-3",
@@ -1166,7 +1422,9 @@
       "playerId": "5239561",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5239561-ast-3",
@@ -1175,7 +1433,9 @@
       "playerId": "5239561",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5239561-ast-5",
@@ -1184,7 +1444,9 @@
       "playerId": "5239561",
       "gameId": "401909314",
       "market": "ast",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5239561-3pm-1",
@@ -1193,7 +1455,9 @@
       "playerId": "5239561",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5239561-3pm-2",
@@ -1202,7 +1466,9 @@
       "playerId": "5239561",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5239561-q1reb-2",
@@ -1211,7 +1477,9 @@
       "playerId": "5239561",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-pts-20",
@@ -1220,7 +1488,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "pts",
-      "line": 20
+      "line": 20,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-pts-25",
@@ -1229,7 +1499,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "pts",
-      "line": 25
+      "line": 25,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-pts-30",
@@ -1238,7 +1510,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "pts",
-      "line": 30
+      "line": 30,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-pts-35",
@@ -1247,7 +1521,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "pts",
-      "line": 35
+      "line": 35,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-reb-3",
@@ -1256,7 +1532,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-reb-5",
@@ -1265,7 +1543,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-reb-7",
@@ -1274,7 +1554,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-ast-5",
@@ -1283,7 +1565,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "ast",
-      "line": 5
+      "line": 5,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-ast-7",
@@ -1292,7 +1576,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "ast",
-      "line": 7
+      "line": 7,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-ast-10",
@@ -1301,7 +1587,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "ast",
-      "line": 10
+      "line": 10,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-ast-13",
@@ -1310,7 +1598,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "ast",
-      "line": 13
+      "line": 13,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-3pm-1",
@@ -1319,7 +1609,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-3pm-2",
@@ -1328,7 +1620,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-3pm-3",
@@ -1337,7 +1631,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-3pm-4",
@@ -1346,7 +1642,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 4
+      "line": 4,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-3pm-5",
@@ -1355,7 +1653,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 5
+      "line": 5,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-q1reb-2",
@@ -1364,7 +1664,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4432166-q1reb-3",
@@ -1373,7 +1675,9 @@
       "playerId": "4432166",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "void",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "2596112-pts-10",
@@ -1382,7 +1686,9 @@
       "playerId": "2596112",
       "gameId": "401909314",
       "market": "pts",
-      "line": 10
+      "line": 10,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "2596112-reb-3",
@@ -1391,7 +1697,9 @@
       "playerId": "2596112",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "2596112-reb-5",
@@ -1400,7 +1708,9 @@
       "playerId": "2596112",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "2596112-reb-7",
@@ -1409,7 +1719,9 @@
       "playerId": "2596112",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "2596112-3pm-1",
@@ -1418,7 +1730,9 @@
       "playerId": "2596112",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "2596112-3pm-2",
@@ -1427,7 +1741,9 @@
       "playerId": "2596112",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "2596112-3pm-3",
@@ -1436,7 +1752,9 @@
       "playerId": "2596112",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "2596112-3pm-4",
@@ -1445,7 +1763,9 @@
       "playerId": "2596112",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 4
+      "line": 4,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "2596112-q1reb-2",
@@ -1454,7 +1774,9 @@
       "playerId": "2596112",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-pts-10",
@@ -1463,7 +1785,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "pts",
-      "line": 10
+      "line": 10,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-pts-15",
@@ -1472,7 +1796,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "pts",
-      "line": 15
+      "line": 15,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-reb-3",
@@ -1481,7 +1807,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-reb-5",
@@ -1490,7 +1818,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-reb-7",
@@ -1499,7 +1829,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-ast-3",
@@ -1508,7 +1840,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-3pm-1",
@@ -1517,7 +1851,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-3pm-2",
@@ -1526,7 +1862,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-3pm-3",
@@ -1535,7 +1873,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-3pm-4",
@@ -1544,7 +1884,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 4
+      "line": 4,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-q1reb-2",
@@ -1553,7 +1895,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-q1reb-3",
@@ -1562,7 +1906,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-pts-10",
@@ -1571,7 +1917,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "pts",
-      "line": 10
+      "line": 10,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-pts-15",
@@ -1580,7 +1928,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "pts",
-      "line": 15
+      "line": 15,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-pts-20",
@@ -1589,7 +1939,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "pts",
-      "line": 20
+      "line": 20,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-reb-3",
@@ -1598,7 +1950,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-reb-5",
@@ -1607,7 +1961,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-reb-7",
@@ -1616,7 +1972,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-ast-3",
@@ -1625,7 +1983,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-ast-5",
@@ -1634,7 +1994,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "ast",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-ast-7",
@@ -1643,7 +2005,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "ast",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-3pm-1",
@@ -1652,7 +2016,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-3pm-2",
@@ -1661,7 +2027,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-3pm-3",
@@ -1670,7 +2038,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-3pm-4",
@@ -1679,7 +2049,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 4
+      "line": 4,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-3pm-5",
@@ -1688,7 +2060,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-q1reb-2",
@@ -1697,7 +2071,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-q1reb-3",
@@ -1706,7 +2082,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-pts-10",
@@ -1715,7 +2093,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "pts",
-      "line": 10
+      "line": 10,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-pts-15",
@@ -1724,7 +2104,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "pts",
-      "line": 15
+      "line": 15,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-pts-20",
@@ -1733,7 +2115,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "pts",
-      "line": 20
+      "line": 20,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-pts-25",
@@ -1742,7 +2126,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "pts",
-      "line": 25
+      "line": 25,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-reb-3",
@@ -1751,7 +2137,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-reb-5",
@@ -1760,7 +2148,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-reb-7",
@@ -1769,7 +2159,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-ast-3",
@@ -1778,7 +2170,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-ast-5",
@@ -1787,7 +2181,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "ast",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-ast-7",
@@ -1796,7 +2192,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "ast",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-3pm-1",
@@ -1805,7 +2203,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-3pm-2",
@@ -1814,7 +2214,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-3pm-3",
@@ -1823,7 +2225,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-3pm-4",
@@ -1832,7 +2236,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 4
+      "line": 4,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-3pm-5",
@@ -1841,7 +2247,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-q1reb-2",
@@ -1850,7 +2258,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-q1reb-3",
@@ -1859,7 +2269,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4395702-pts-10",
@@ -1868,7 +2280,9 @@
       "playerId": "4395702",
       "gameId": "401909314",
       "market": "pts",
-      "line": 10
+      "line": 10,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4395702-pts-15",
@@ -1877,7 +2291,9 @@
       "playerId": "4395702",
       "gameId": "401909314",
       "market": "pts",
-      "line": 15
+      "line": 15,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4395702-reb-3",
@@ -1886,7 +2302,9 @@
       "playerId": "4395702",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4395702-ast-3",
@@ -1895,7 +2313,9 @@
       "playerId": "4395702",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4395702-3pm-1",
@@ -1904,7 +2324,9 @@
       "playerId": "4395702",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4395702-3pm-2",
@@ -1913,7 +2335,9 @@
       "playerId": "4395702",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4395702-3pm-3",
@@ -1922,7 +2346,9 @@
       "playerId": "4395702",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4395702-3pm-4",
@@ -1931,7 +2357,9 @@
       "playerId": "4395702",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 4
+      "line": 4,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4395702-3pm-5",
@@ -1940,7 +2368,9 @@
       "playerId": "4395702",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 5
+      "line": 5,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4395702-q1reb-2",
@@ -1949,7 +2379,9 @@
       "playerId": "4395702",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4683771-pts-5",
@@ -1958,7 +2390,9 @@
       "playerId": "4683771",
       "gameId": "401909314",
       "market": "pts",
-      "line": 5
+      "line": 5,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4683771-reb-3",
@@ -1967,7 +2401,9 @@
       "playerId": "4683771",
       "gameId": "401909314",
       "market": "reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4683771-reb-5",
@@ -1976,7 +2412,9 @@
       "playerId": "4683771",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4683771-reb-7",
@@ -1985,7 +2423,9 @@
       "playerId": "4683771",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4683771-ast-3",
@@ -1994,7 +2434,9 @@
       "playerId": "4683771",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4683771-3pm-1",
@@ -2003,7 +2445,9 @@
       "playerId": "4683771",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 1
+      "line": 1,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4683771-3pm-2",
@@ -2012,7 +2456,9 @@
       "playerId": "4683771",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 2
+      "line": 2,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4683771-3pm-3",
@@ -2021,7 +2467,9 @@
       "playerId": "4683771",
       "gameId": "401909314",
       "market": "3pm",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278562-pts-10",
@@ -2030,7 +2478,9 @@
       "playerId": "4278562",
       "gameId": "401909314",
       "market": "pts",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278562-pts-15",
@@ -2039,7 +2489,9 @@
       "playerId": "4278562",
       "gameId": "401909314",
       "market": "pts",
-      "line": 15
+      "line": 15,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278562-reb-5",
@@ -2048,7 +2500,9 @@
       "playerId": "4278562",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278562-reb-7",
@@ -2057,7 +2511,9 @@
       "playerId": "4278562",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278562-reb-10",
@@ -2066,7 +2522,9 @@
       "playerId": "4278562",
       "gameId": "401909314",
       "market": "reb",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278562-reb-13",
@@ -2075,7 +2533,9 @@
       "playerId": "4278562",
       "gameId": "401909314",
       "market": "reb",
-      "line": 13
+      "line": 13,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278562-ast-3",
@@ -2084,7 +2544,9 @@
       "playerId": "4278562",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278562-ast-5",
@@ -2093,7 +2555,9 @@
       "playerId": "4278562",
       "gameId": "401909314",
       "market": "ast",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278562-q1reb-2",
@@ -2102,7 +2566,9 @@
       "playerId": "4278562",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278562-q1reb-3",
@@ -2111,7 +2577,9 @@
       "playerId": "4278562",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-pts-10",
@@ -2120,7 +2588,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "pts",
-      "line": 10
+      "line": 10,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-pts-15",
@@ -2129,7 +2599,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "pts",
-      "line": 15
+      "line": 15,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-reb-5",
@@ -2138,7 +2610,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-reb-7",
@@ -2147,7 +2621,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "reb",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-reb-10",
@@ -2156,7 +2632,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "reb",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-reb-13",
@@ -2165,7 +2643,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "reb",
-      "line": 13
+      "line": 13,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-reb-15",
@@ -2174,7 +2654,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "reb",
-      "line": 15
+      "line": 15,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-ast-3",
@@ -2183,7 +2665,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "ast",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-ast-5",
@@ -2192,7 +2676,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "ast",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-ast-7",
@@ -2201,7 +2687,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "ast",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-ast-10",
@@ -2210,7 +2698,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "ast",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-q1reb-2",
@@ -2219,7 +2709,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 2
+      "line": 2,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-q1reb-3",
@@ -2228,7 +2720,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3157465-pts-15",
@@ -7043,7 +7537,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "pts",
-      "line": 25
+      "line": 25,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-pts-30",
@@ -7052,7 +7548,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "pts",
-      "line": 30
+      "line": 30,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-pts-35",
@@ -7061,7 +7559,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "pts",
-      "line": 35
+      "line": 35,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-pts-20",
@@ -7070,7 +7570,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "pts",
-      "line": 20
+      "line": 20,
+      "result": "hit",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "3908845-reb-10",
@@ -7079,7 +7581,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "reb",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "2596112-pts-15",
@@ -7088,7 +7592,9 @@
       "playerId": "2596112",
       "gameId": "401909314",
       "market": "pts",
-      "line": 15
+      "line": 15,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066372-pts-25",
@@ -7097,7 +7603,9 @@
       "playerId": "4066372",
       "gameId": "401909314",
       "market": "pts",
-      "line": 25
+      "line": 25,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-pts-30",
@@ -7106,7 +7614,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "pts",
-      "line": 30
+      "line": 30,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-pts-35",
@@ -7115,7 +7625,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "pts",
-      "line": 35
+      "line": 35,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-pts-40",
@@ -7124,7 +7636,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "pts",
-      "line": 40
+      "line": 40,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-ast-10",
@@ -7133,7 +7647,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "ast",
-      "line": 10
+      "line": 10,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4395702-pts-20",
@@ -7142,7 +7658,9 @@
       "playerId": "4395702",
       "gameId": "401909314",
       "market": "pts",
-      "line": 20
+      "line": 20,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4395702-reb-5",
@@ -7151,7 +7669,9 @@
       "playerId": "4395702",
       "gameId": "401909314",
       "market": "reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4395702-ast-5",
@@ -7160,7 +7680,9 @@
       "playerId": "4395702",
       "gameId": "401909314",
       "market": "ast",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278562-ast-7",
@@ -7169,7 +7691,9 @@
       "playerId": "4278562",
       "gameId": "401909314",
       "market": "ast",
-      "line": 7
+      "line": 7,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-pts-20",
@@ -7178,7 +7702,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "pts",
-      "line": 20
+      "line": 20,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4684742-ast-13",
@@ -7187,7 +7713,9 @@
       "playerId": "4684742",
       "gameId": "401909314",
       "market": "ast",
-      "line": 13
+      "line": 13,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5174563-pts-30",
@@ -7232,7 +7760,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "pts",
-      "line": 45
+      "line": 45,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-pts-50",
@@ -7241,7 +7771,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "pts",
-      "line": 50
+      "line": 50,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4712849-q1reb-5",
@@ -7250,7 +7782,9 @@
       "playerId": "4712849",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4066320-q1reb-3",
@@ -7259,7 +7793,9 @@
       "playerId": "4066320",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 3
+      "line": 3,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4566434-q1reb-5",
@@ -7268,7 +7804,9 @@
       "playerId": "4566434",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5107199-q1reb-5",
@@ -7277,7 +7815,9 @@
       "playerId": "5107199",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278562-q1reb-5",
@@ -7286,7 +7826,9 @@
       "playerId": "4278562",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5142718-q1reb-5",
@@ -7331,7 +7873,9 @@
       "playerId": "3908845",
       "gameId": "401909314",
       "market": "q1reb",
-      "line": 5
+      "line": 5,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "4278562-pts-20",
@@ -7340,7 +7884,9 @@
       "playerId": "4278562",
       "gameId": "401909314",
       "market": "pts",
-      "line": 20
+      "line": 20,
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "5104155-pts-10",
@@ -27062,7 +27608,9 @@
         "4684742-reb-10",
         "5107199-ast-7",
         "4066372-ast-5"
-      ]
+      ],
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "longshot-2026-11-25",
@@ -27103,7 +27651,9 @@
         "3908845-pts-15",
         "5107199-reb-5",
         "4684742-ast-7"
-      ]
+      ],
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "longshot-2026-11-25",
@@ -27179,7 +27729,9 @@
         "4684742-ast-7",
         "4066372-ast-5",
         "4278562-reb-10"
-      ]
+      ],
+      "result": "miss",
+      "gradedAt": "2026-11-25T02:21:35.815Z"
     },
     {
       "id": "longshot-2026-11-25",
@@ -27312,26 +27864,26 @@
     {
       "range": "50-60%",
       "expected": 0.55,
-      "actual": 0,
-      "count": 0
+      "actual": 0.2,
+      "count": 20
     },
     {
       "range": "60-70%",
       "expected": 0.6499999999999999,
-      "actual": 0,
-      "count": 0
+      "actual": 0.2857142857142857,
+      "count": 14
     },
     {
       "range": "70-80%",
       "expected": 0.75,
-      "actual": 1,
-      "count": 1
+      "actual": 0.6428571428571429,
+      "count": 14
     },
     {
       "range": "80-90%",
       "expected": 0.8500000000000001,
-      "actual": 0,
-      "count": 0
+      "actual": 0.4090909090909091,
+      "count": 22
     }
   ]
 }

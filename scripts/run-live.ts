@@ -333,7 +333,8 @@ export async function runLivePipeline(
     sources.odds = "paused (credit limit)";
   } else if (
     shouldPullOddsNow(now, slate, cache, { officialPublishedToday }) ||
-    forceOdds
+    forceOdds ||
+    (slateMode === "next" && preview)
   ) {
     try {
       const { events, remaining } = await listOddsEvents(apiKey);
@@ -397,7 +398,16 @@ export async function runLivePipeline(
   const slateTeams = slateTeamIds(slate);
   injuries = injuries.filter((i) => slateTeams.has(i.teamId));
 
-  const oddsCoverage = buildOddsCoverage(oddsPayloads, oddsPulledAt ?? now.toISOString());
+  const oddsCoverage = {
+    ...buildOddsCoverage(oddsPayloads, oddsPulledAt ?? now.toISOString()),
+    slateTipDate: slateDateSydney,
+    slateGameCount: slate.length,
+  };
+  if (preview && slateMode === "next") {
+    console.log(
+      `next preview: tip ${slateDateSydney} · ${slate.length} games · odds events probed ${oddsCoverage.eventsProbed}`
+    );
+  }
   const extractedKeyList = [...oddsMap.keys()];
 
   let modelRun = runModel({

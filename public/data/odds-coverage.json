@@ -21,5 +21,7 @@
   },
   "corePlayerLines": 0,
   "threesPlayerLines": 0,
-  "onlyThreesOffered": false
+  "onlyThreesOffered": false,
+  "slateTipDate": "2026-11-26",
+  "slateGameCount": 9
 }

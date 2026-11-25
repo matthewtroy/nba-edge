@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-11-25T01:57:58.265Z",
+  "lastUpdated": "2026-11-25T02:21:35.548Z",
   "oddsLastPulled": "2026-11-24T22:58:43.102Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
-    "odds": "ok (from-live pages)"
+    "odds": "stale"
   },
   "slateSize": 9,
   "smallSlate": false,
@@ -26,12 +26,11 @@
   "slatePreview": true,
   "slateTipDate": "2026-11-26",
   "whatChanged": [
-    "OG Anunoby out → Jalen Brunson +4.6 pts",
+    "OG Anunoby out → Jalen Brunson +4.8 pts",
     "Cameron Boozer out → Ty Jerome +3.1 pts",
     "Jimmy Butler III out → Yaxel Lendeborg boards"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_08_45PM.pdf",
-  "oddsCoverageNote": "from-live odds are today's Pages cache — tomorrow bookmaker markets often missing until closer to tip",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_09_15PM.pdf",
   "pricedLegCounts": {
     "pts": {
       "total": 383,

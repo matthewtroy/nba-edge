@@ -13,6 +13,7 @@ const outDir = path.join(rootDir, "public/data");
 const fixtureMode = process.argv.includes("--fixture");
 const forceOdds = process.argv.includes("--force-odds");
 const fromLive = process.argv.includes("--from-live");
+const slateMode = parseSlateMode(process.argv);
 
 function runFixturePipeline(): void {
   const result = runModelFromFixture(rootDir);
@@ -73,11 +74,21 @@ async function main() {
     runFixturePipeline();
     return;
   }
+  const preview = parsePreviewFlag(process.argv);
+  const useFromLive = fromLive && !(slateMode === "next");
+  if (fromLive && slateMode === "next") {
+    console.log(
+      "pipeline: next slate — skipping Pages from-live; will pull odds API for preview events"
+    );
+  }
+  console.log(
+    `pipeline: slate=${slateMode}${preview ? " preview" : ""}${useFromLive ? " from-live" : ""}`
+  );
   await runLivePipeline(rootDir, outDir, {
-    forceOdds: forceOdds || fromLive,
-    fromLive,
-    slateMode: parseSlateMode(process.argv),
-    preview: parsePreviewFlag(process.argv),
+    forceOdds: forceOdds || useFromLive || slateMode === "next",
+    fromLive: useFromLive,
+    slateMode,
+    preview,
   });
 }
 

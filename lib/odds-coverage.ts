@@ -27,6 +27,8 @@ export interface OddsCoverageJson {
   threesPlayerLines: number;
   onlyThreesOffered: boolean;
   note?: string;
+  slateTipDate?: string;
+  slateGameCount?: number;
 }
 
 function normMarket(key: string): string {
