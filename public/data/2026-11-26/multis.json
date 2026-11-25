@@ -9,7 +9,7 @@
         "4278073-3pm-2",
         "4903027-reb-7"
       ],
-      "combinedProbability": 0.2987056044,
+      "combinedProbability": 0.29826518288,
       "combinedFairPrice": 3.35,
       "combinedTakeAt": 3.62,
       "bestBookie": "Ladbrokes",
@@ -59,9 +59,9 @@
         "4396907-3pm-2",
         "4903027-reb-7"
       ],
-      "combinedProbability": 0.04864535985414001,
-      "combinedFairPrice": 20.56,
-      "combinedTakeAt": 22.2,
+      "combinedProbability": 0.04857363551079887,
+      "combinedFairPrice": 20.59,
+      "combinedTakeAt": 22.24,
       "bestBookie": "Neds",
       "bestBookieTotal": 48.84,
       "bookieTotals": {
@@ -168,12 +168,12 @@
         "4432194-q1reb-2",
         "4066328-q1reb-2",
         "3448-q1reb-2",
-        "3155942-q1reb-2",
-        "4601023-q1reb-2"
+        "4601023-q1reb-2",
+        "4396971-q1reb-2"
       ],
-      "combinedProbability": 0.15224574765569904,
-      "combinedFairPrice": 6.57,
-      "combinedTakeAt": 7.1,
+      "combinedProbability": 0.1439890338278106,
+      "combinedFairPrice": 6.94,
+      "combinedTakeAt": 7.5,
       "bookieTotals": {},
       "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
     },
@@ -181,22 +181,20 @@
       "type": "longshot",
       "label": "Longshot",
       "legs": [
+        "5142620-pts-30",
         "3136195-pts-30",
-        "4066261-pts-30"
+        "5104157-pts-40"
       ],
-      "combinedProbability": 0.03481600000000001,
-      "combinedFairPrice": 28.72,
-      "combinedTakeAt": 31.02,
-      "bestBookie": "PointsBet",
-      "bestBookieTotal": 63.25,
+      "combinedProbability": 0.021272706000000006,
+      "combinedFairPrice": 47.01,
+      "combinedTakeAt": 50.77,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 120.96,
       "bookieTotals": {
-        "Sportsbet": 57,
-        "TAB": 33.75,
-        "Ladbrokes": 61.6,
-        "Neds": 61.6,
-        "PointsBet": 63.25
+        "Ladbrokes": 120.96,
+        "Neds": 120.96
       },
-      "summary": "2 legs angle-ranked @ PointsBet"
+      "summary": "3 legs angle-ranked @ Neds"
     }
   ],
   "notBuilt": [
