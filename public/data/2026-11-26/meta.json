@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T07:25:50.268Z",
+  "lastUpdated": "2026-11-25T08:03:55.654Z",
   "oddsLastPulled": "2026-11-25T05:16:23.081Z",
   "sources": {
     "espn": "ok",
@@ -9,133 +9,65 @@
   "slateSize": 9,
   "smallSlate": false,
   "injuryImpactLog": [
-    "Jordan Clarkson (New York Knicks): injured player not meaningful rotation",
-    "Drake Powell (Brooklyn Nets): injured player not meaningful rotation",
-    "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Ryan Kalkbrenner (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Dennis Schroder (Charlotte Hornets): no redistribution reasons on slate legs",
+    "Nolan Traore (Brooklyn Nets): injured player not meaningful rotation",
+    "Ryan Kalkbrenner (Charlotte Hornets): injured player not meaningful rotation",
+    "Dennis Schroder (Charlotte Hornets): injured player not meaningful rotation",
+    "Norman Powell (Chicago Bulls): injured player not meaningful rotation",
+    "Caleb Wilson (Chicago Bulls): injured player not meaningful rotation",
+    "Evan Mobley (Cleveland Cavaliers): injured player not meaningful rotation",
+    "Stephen Curry (Golden State Warriors): injured player not meaningful rotation",
+    "Jerami Grant (Memphis Grizzlies): injured player not meaningful rotation",
+    "GG Jackson (Memphis Grizzlies): injured player not meaningful rotation",
+    "Jaylen Clark (Minnesota Timberwolves): injured player not meaningful rotation",
+    "Anthony Edwards (Minnesota Timberwolves): injured player not meaningful rotation",
+    "Jaylin Williams (Oklahoma City Thunder): injured player not meaningful rotation",
+    "Aday Mara (Oklahoma City Thunder): injured player not meaningful rotation",
+    "Chris Youngblood (Portland Trail Blazers): injured player not meaningful rotation",
+    "Ja Morant (Portland Trail Blazers): injured player not meaningful rotation",
+    "Dylan Harper (San Antonio Spurs): injured player not meaningful rotation",
+    "Chaney Johnson (Brooklyn Nets): injured player not meaningful rotation",
     "Kon Knueppel (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Norman Powell (Chicago Bulls): no redistribution reasons on slate legs",
-    "Caleb Wilson (Chicago Bulls): no redistribution reasons on slate legs",
     "Nae'Qwan Tomlin (Cleveland Cavaliers): no redistribution reasons on slate legs",
-    "Evan Mobley (Cleveland Cavaliers): no redistribution reasons on slate legs",
-    "Stephen Curry (Golden State Warriors): no redistribution reasons on slate legs",
     "Kristaps Porzingis (Golden State Warriors): no redistribution reasons on slate legs",
     "Moses Moody (Golden State Warriors): no redistribution reasons on slate legs",
     "Jimmy Butler III (Golden State Warriors): no redistribution reasons on slate legs",
     "Bradley Beal (LA Clippers): no redistribution reasons on slate legs",
     "Jordan Miller (LA Clippers): no redistribution reasons on slate legs",
     "Scotty Pippen Jr. (Memphis Grizzlies): no redistribution reasons on slate legs",
-    "Jerami Grant (Memphis Grizzlies): no redistribution reasons on slate legs",
-    "GG Jackson (Memphis Grizzlies): no redistribution reasons on slate legs",
+    "Cameron Boozer (Memphis Grizzlies): no redistribution reasons on slate legs",
     "Richie Saunders (Memphis Grizzlies): no redistribution reasons on slate legs",
     "Donte DiVincenzo (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Jaylen Clark (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Anthony Edwards (Minnesota Timberwolves): no redistribution reasons on slate legs",
+    "Jordan Clarkson (New York Knicks): no redistribution reasons on slate legs",
+    "OG Anunoby (New York Knicks): no redistribution reasons on slate legs",
     "Nikola Topic (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Jaylin Williams (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Aday Mara (Oklahoma City Thunder): no redistribution reasons on slate legs",
     "Jalen Williams (Oklahoma City Thunder): no redistribution reasons on slate legs",
     "Thomas Sorber (Oklahoma City Thunder): no redistribution reasons on slate legs",
     "Cason Wallace (Oklahoma City Thunder): no redistribution reasons on slate legs",
     "Chet Holmgren (Oklahoma City Thunder): no redistribution reasons on slate legs",
     "Ariel Hukporti (Philadelphia 76ers): no redistribution reasons on slate legs",
-    "Chris Youngblood (Portland Trail Blazers): no redistribution reasons on slate legs"
+    "Mark Williams (Phoenix Suns): no redistribution reasons on slate legs",
+    "Vit Krejci (Portland Trail Blazers): no redistribution reasons on slate legs",
+    "Shaedon Sharpe (Portland Trail Blazers): no redistribution reasons on slate legs",
+    "Maxime Raynaud (Sacramento Kings): no redistribution reasons on slate legs",
+    "Ben Simmons (Sacramento Kings): no redistribution reasons on slate legs",
+    "Tobias Harris (San Antonio Spurs): no redistribution reasons on slate legs",
+    "Jayden Quaintance (San Antonio Spurs): no redistribution reasons on slate legs",
+    "Tre Donaldson (Miami Heat): no redistribution reasons on slate legs",
+    "Vladislav Goldin (Miami Heat): no redistribution reasons on slate legs",
+    "Orlando Robinson (Chicago Bulls): no redistribution reasons on slate legs",
+    "Jaylin Sellers (Chicago Bulls): no redistribution reasons on slate legs",
+    "Kylan Boswell (Charlotte Hornets): no redistribution reasons on slate legs",
+    "Khalifa Diop (Cleveland Cavaliers): no redistribution reasons on slate legs",
+    "Rocco Zikarsky (Minnesota Timberwolves): no redistribution reasons on slate legs",
+    "Joshua Jefferson (Brooklyn Nets): no redistribution reasons on slate legs",
+    "Drake Powell (Brooklyn Nets): no redistribution reasons on slate legs",
+    "Ben Saraf (Brooklyn Nets): no redistribution reasons on slate legs",
+    "Nick Martinelli (LA Clippers): no redistribution reasons on slate legs",
+    "Julian Phillips (Houston Rockets): no redistribution reasons on slate legs"
   ],
-  "q1ExclusionLog": [
-    "Anfernee Simons q1reb 2+: last-10 Q1 0% vs model 28%",
-    "Jaylen Brown q1reb 2+: last-10 Q1 40% vs model 81%",
-    "Jaylen Brown q1reb 3+: last-10 Q1 20% vs model 62%",
-    "Dean Wade q1reb 2+: last-10 Q1 20% vs model 63%",
-    "Moussa Diabate q1reb 5+: last-10 Q1 0% vs model 20%",
-    "Josh Giddey q1reb 2+: last-10 Q1 40% vs model 61%",
-    "Mikal Bridges q1reb 2+: last-10 Q1 40% vs model 63%",
-    "Mikal Bridges q1reb 3+: last-10 Q1 10% vs model 39%",
-    "Karl-Anthony Towns q1reb 5+: last-10 Q1 20% vs model 75%",
-    "Jarrett Allen q1reb 3+: last-10 Q1 50% vs model 73%",
-    "Jarrett Allen q1reb 5+: last-10 Q1 10% vs model 38%",
-    "Peyton Watson q1reb 3+: last-10 Q1 10% vs model 32%",
-    "Jaylon Tyson q1reb 2+: last-10 Q1 20% vs model 54%",
-    "Ajay Mitchell q1reb 2+: last-10 Q1 10% vs model 31%",
-    "Rudy Gobert q1reb 5+: last-10 Q1 0% vs model 83%",
-    "Ayo Dosunmu q1reb 2+: last-10 Q1 30% vs model 60%",
-    "Ayo Dosunmu q1reb 3+: last-10 Q1 10% vs model 36%",
-    "Cedric Coward q1reb 3+: last-10 Q1 40% vs model 88%",
-    "Cedric Coward q1reb 5+: last-10 Q1 10% vs model 61%",
-    "Ty Jerome q1reb 3+: last-10 Q1 0% vs model 22%"
-  ],
-  "topConfluenceLegs": [
-    {
-      "player": "Jalen Brunson",
-      "market": "3pm",
-      "line": 3,
-      "confluence": 3,
-      "reasonLine": "Line beats model · Hit 8 of last 10"
-    },
-    {
-      "player": "Zach Edey",
-      "market": "pts",
-      "line": 10,
-      "confluence": 3,
-      "reasonLine": "Line beats model · Hit 6 of last 10"
-    },
-    {
-      "player": "Ty Jerome",
-      "market": "3pm",
-      "line": 2,
-      "confluence": 3,
-      "reasonLine": "Line beats model · Hit 7 of last 8"
-    },
-    {
-      "player": "Dillon Brooks",
-      "market": "3pm",
-      "line": 2,
-      "confluence": 3,
-      "reasonLine": "Line beats model · Hit 7 of last 10"
-    },
-    {
-      "player": "Jalen Brunson",
-      "market": "3pm",
-      "line": 1,
-      "confluence": 2,
-      "reasonLine": "Hit 10 of last 10 · Injury uplift"
-    },
-    {
-      "player": "Jalen Brunson",
-      "market": "3pm",
-      "line": 2,
-      "confluence": 2,
-      "reasonLine": "Hit 8 of last 10 · Injury uplift"
-    },
-    {
-      "player": "Jalen Brunson",
-      "market": "3pm",
-      "line": 4,
-      "confluence": 2,
-      "reasonLine": "Line beats model · Injury uplift"
-    },
-    {
-      "player": "Jalen Brunson",
-      "market": "3pm",
-      "line": 5,
-      "confluence": 2,
-      "reasonLine": "Line beats model · Injury uplift"
-    },
-    {
-      "player": "Mikal Bridges",
-      "market": "3pm",
-      "line": 1,
-      "confluence": 2,
-      "reasonLine": "Hit 7 of last 10 · Injury uplift"
-    },
-    {
-      "player": "Mikal Bridges",
-      "market": "3pm",
-      "line": 2,
-      "confluence": 2,
-      "reasonLine": "Line beats model · Injury uplift"
-    }
-  ],
+  "modelSanityChecked": 0,
+  "modelSanityFailures": 0,
+  "formGuardExcludedCount": 0,
   "gameOddsPriceAge": {
     "401909317": "Prices from 4:16 pm",
     "401909318": "Prices from 4:16 pm",
@@ -148,34 +80,9 @@
     "401909325": "Prices from 4:16 pm"
   },
   "slateTipDate": "2026-11-26",
-  "whatChanged": [
-    "Cameron Boozer out → Zach Edey +2.1 pts",
-    "OG Anunoby out → Josh Hart boards",
-    "Mark Williams out → Luke Kennard boards"
-  ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_02_15AM.pdf",
-  "pricedLegCounts": {
-    "reb": {
-      "total": 230,
-      "priced": 96
-    },
-    "ast": {
-      "total": 110,
-      "priced": 46
-    },
-    "3pm": {
-      "total": 650,
-      "priced": 410
-    },
-    "q1reb": {
-      "total": 181,
-      "priced": 0
-    },
-    "pts": {
-      "total": 65,
-      "priced": 36
-    }
-  },
+  "whatChanged": [],
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_03_00AM.pdf",
+  "pricedLegCounts": {},
   "slatePublicationStatus": "draft",
   "slateStatusLabel": "Draft · updates until 9pm"
 }

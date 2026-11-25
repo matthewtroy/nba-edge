@@ -1,20 +1,5 @@
 {
-  "bets": [
-    {
-      "type": "q1Multi",
-      "label": "Q1 Multi",
-      "variant": "Longshot",
-      "legs": [
-        "5124612-q1reb-2",
-        "4711294-q1reb-2",
-        "4065732-q1reb-2"
-      ],
-      "combinedProbability": 0.088314708,
-      "combinedFairPrice": 11.32,
-      "combinedTakeAt": 12.23,
-      "summary": "Q1 Multi (Longshot): fair 2.20–4.00, one leg/team"
-    }
-  ],
+  "bets": [],
   "notBuilt": [
     {
       "type": "mainPlay",
@@ -29,12 +14,12 @@
     {
       "type": "crossGameSgm",
       "label": "Cross-Game SGM Multi",
-      "reason": "No cross-game combo @ edge (eligible 34, best edge-pool Ladbrokes=1, range-cands 0)"
+      "reason": "Need 2+ games with starter main lines fair 1.35–2.50 (0 legs)"
     },
     {
       "type": "boostSgm",
       "label": "Best SGM",
-      "reason": "No same-game trio @ edge (eligible 54, best pool Ladbrokes=7, range-cands 0)"
+      "reason": "No same-game trio @ edge (eligible 0, best pool =0, range-cands 0)"
     },
     {
       "type": "longshot",
@@ -45,7 +30,13 @@
       "type": "q1Multi",
       "label": "Q1 Multi",
       "variant": "Core",
-      "reason": "No Q1 Multi subset (p≥0.70, 3–6 teams, one leg/team) · 40 Q1 leg(s) dropped (last-10 hit rate ≥20pp below model)"
+      "reason": "Only 0 teams with Q1 fair 1.80–4.00 (24+ min starters, need 3–6)"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Longshot",
+      "reason": "Only 0 teams with Q1 fair 1.80–4.00 (24+ min starters, need 3–6)"
     }
   ]
 }
