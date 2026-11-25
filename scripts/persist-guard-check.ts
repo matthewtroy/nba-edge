@@ -6,8 +6,8 @@ import type { PickLeg } from "../lib/types.js";
 import type { OddsCacheFile } from "../lib/odds-cache-file.js";
 import {
   countPricedPickLegs,
-  oddsMapKeyCount,
   persistDataBranchGuardReason,
+  slateOddsSnapshotKeyCount,
 } from "../lib/odds-cache-guard.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -43,26 +43,40 @@ const nextCachePath = path.join(staging, "odds-cache.json");
 const nextCache: OddsCacheFile = fs.existsSync(nextCachePath)
   ? (JSON.parse(fs.readFileSync(nextCachePath, "utf8")) as OddsCacheFile)
   : {};
-const nextKeys = oddsMapKeyCount(nextCache);
+const nextSlateCacheKeys = defaultDate ? slateOddsSnapshotKeyCount(nextCache, defaultDate) : 0;
 
-let priorKeys = 0;
-try {
-  const raw = execFileSync("git", ["show", "origin/data:public/data/odds-cache.json"], {
-    cwd: rootDir,
-    encoding: "utf8",
-    stdio: ["ignore", "pipe", "ignore"],
-  });
-  const prior = JSON.parse(raw) as OddsCacheFile;
-  priorKeys = oddsMapKeyCount(prior);
-} catch {
-  priorKeys = 0;
+let priorPricedLegsOnSlate = 0;
+let priorSlateCacheKeys = 0;
+if (defaultDate) {
+  try {
+    const raw = execFileSync(
+      "git",
+      ["show", `origin/data:public/data/${defaultDate}/picks.json`],
+      { cwd: rootDir, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }
+    );
+    priorPricedLegsOnSlate = countPricedPickLegs(JSON.parse(raw) as PickLeg[]);
+  } catch {
+    priorPricedLegsOnSlate = 0;
+  }
+  try {
+    const raw = execFileSync("git", ["show", "origin/data:public/data/odds-cache.json"], {
+      cwd: rootDir,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    });
+    const prior = JSON.parse(raw) as OddsCacheFile;
+    priorSlateCacheKeys = slateOddsSnapshotKeyCount(prior, defaultDate);
+  } catch {
+    priorSlateCacheKeys = 0;
+  }
 }
 
 const reason = persistDataBranchGuardReason({
   defaultSlateDate: defaultDate,
   pricedLegs,
-  priorCacheKeys: priorKeys,
-  nextCacheKeys: nextKeys,
+  priorPricedLegsOnSlate,
+  priorSlateCacheKeys,
+  nextSlateCacheKeys,
   forceOdds,
 });
 
@@ -71,7 +85,8 @@ if (reason) {
   process.exit(1);
 }
 
+const slateLabel = defaultDate ?? "?";
 console.log(
-  `persist data branch guard: ok · slate ${defaultDate ?? "?"} · ${pricedLegs} priced · cache ${priorKeys}→${nextKeys} keys`
+  `persist data branch guard: ok · slate ${slateLabel} · ${pricedLegs} priced (was ${priorPricedLegsOnSlate}) · slate cache ${priorSlateCacheKeys}→${nextSlateCacheKeys} keys`
 );
 process.exit(0);

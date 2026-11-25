@@ -27,19 +27,33 @@ export function countPricedPickLegs(picks: PickLeg[]): number {
   ).length;
 }
 
+export function slateOddsSnapshotKeyCount(
+  cache: Pick<import("./odds-cache-file.js").OddsCacheFile, "bySlateDate"> | null | undefined,
+  slateDate: string
+): number {
+  return Object.keys(cache?.bySlateDate?.[slateDate]?.oddsMap ?? {}).length;
+}
+
 export function persistDataBranchGuardReason(opts: {
   defaultSlateDate: string | null;
   pricedLegs: number;
-  priorCacheKeys: number;
-  nextCacheKeys: number;
+  /** Priced legs on the same slate folder in origin/data before this persist (0 if new). */
+  priorPricedLegsOnSlate: number;
+  /** Odds-map keys in bySlateDate[defaultSlateDate] prior vs next (like-with-like). */
+  priorSlateCacheKeys: number;
+  nextSlateCacheKeys: number;
   forceOdds: boolean;
 }): string | null {
   if (opts.forceOdds) return null;
-  if (opts.pricedLegs === 0) {
-    return `slate ${opts.defaultSlateDate ?? "?"} has 0 priced legs`;
+  if (opts.pricedLegs === 0 && opts.priorPricedLegsOnSlate > 0) {
+    return `slate ${opts.defaultSlateDate ?? "?"} has 0 priced legs (was ${opts.priorPricedLegsOnSlate})`;
   }
-  if (oddsMapDowngradeBlocked(opts.priorCacheKeys, opts.nextCacheKeys, { forceOddsPullSucceeded: false })) {
-    return `odds-cache would shrink ${opts.priorCacheKeys} → ${opts.nextCacheKeys} keys (>50% loss)`;
+  if (
+    oddsMapDowngradeBlocked(opts.priorSlateCacheKeys, opts.nextSlateCacheKeys, {
+      forceOddsPullSucceeded: false,
+    })
+  ) {
+    return `odds-cache for slate ${opts.defaultSlateDate ?? "?"} would shrink ${opts.priorSlateCacheKeys} → ${opts.nextSlateCacheKeys} keys (>50% loss)`;
   }
   return null;
 }

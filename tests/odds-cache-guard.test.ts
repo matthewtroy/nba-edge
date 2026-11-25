@@ -30,16 +30,30 @@ describe("mergeGlobalOddsMapRecord", () => {
 });
 
 describe("persistDataBranchGuardReason", () => {
-  it("blocks 0 priced legs without force", () => {
+  it("blocks 0 priced legs when same slate had prices", () => {
     expect(
       persistDataBranchGuardReason({
         defaultSlateDate: "2026-11-26",
         pricedLegs: 0,
-        priorCacheKeys: 100,
-        nextCacheKeys: 0,
+        priorPricedLegsOnSlate: 8,
+        priorSlateCacheKeys: 100,
+        nextSlateCacheKeys: 0,
         forceOdds: false,
       })
     ).toMatch(/0 priced/);
+  });
+
+  it("allows new slate 0 priced with no prior on that folder", () => {
+    expect(
+      persistDataBranchGuardReason({
+        defaultSlateDate: "2026-11-27",
+        pricedLegs: 0,
+        priorPricedLegsOnSlate: 0,
+        priorSlateCacheKeys: 0,
+        nextSlateCacheKeys: 0,
+        forceOdds: false,
+      })
+    ).toBeNull();
   });
 
   it("allows shrink when force_odds", () => {
@@ -47,8 +61,9 @@ describe("persistDataBranchGuardReason", () => {
       persistDataBranchGuardReason({
         defaultSlateDate: "2026-11-26",
         pricedLegs: 0,
-        priorCacheKeys: 100,
-        nextCacheKeys: 0,
+        priorPricedLegsOnSlate: 8,
+        priorSlateCacheKeys: 100,
+        nextSlateCacheKeys: 0,
         forceOdds: true,
       })
     ).toBeNull();
