@@ -6,7 +6,7 @@ Phone-first static app + GitHub Actions pipeline. Canonical betting rules below;
 
 ## 1. Purpose & architecture
 
-- **Purpose:** Injury-aware NBA player-prop projections → fair / take-at prices → standard multis (Main Play, Booster, Q1 Safe/Value, Cross-Game SGM, Boost SGM, Longshot). Copy-friendly cards; no auto betting.
+- **Purpose:** Injury-aware NBA player-prop projections → fair / take-at prices → standard multis (Main Play, Booster, Q1 Multi / Q1 Multi (Longshot), Cross-Game SGM, Boost SGM, Longshot). Copy-friendly cards; no auto betting.
 - **Runtime today:** `npm run pipeline` writes JSON under `public/data/{slateDate}/`; Vite/React UI reads that JSON. GitHub Actions runs pipeline + Pages deploy.
 - **Planned:** Supabase project **NBA Edge** (`dzikozvlfrvsstkhzkzj`) for pipeline storage, Auth, Stripe **entitlements**, subscriber APIs, and optional Discord—see `docs/SCHEMA.md` and `supabase/migrations/`. Migrations only in git; no agent `db push`.
 
@@ -89,8 +89,8 @@ Same players as Main, one rung up where valid; ~$5 straight suggestion; Trixie w
 
 | Variant | Label | Rules |
 |---------|--------|--------|
-| **Safe** | Q1 Multi (Safe) | One leg per team, 3–6 teams; leg p ≥ 0.70; Q1 markets only; fair/take-at display (no AU Q1 feed) |
-| **Value** | Q1 Multi (Value) | Same structure; fair **2.20–4.00**; pool filtered fair 1.80–4.00 |
+| **Core** | Q1 Multi | One leg per team, 3–6 teams; leg p ≥ 0.70; 24+ min starters; last-10 Q1 hit rate within 20pp of model; fair/take-at (no AU Q1 feed) |
+| **Longshot** | Q1 Multi (Longshot) | Same structure; fair **2.20–4.00**; pool filtered fair 1.80–4.00 |
 
 Card copy notes: compare to your bookie (no API Q1 props).
 
@@ -149,7 +149,7 @@ Vitest: distributions, injury fixture, clash, exposure, odds pause, Main Play ra
 | Main Play combined total | **$7–$20** at chosen bookie | `lib/multis.ts` `findMainPlaySubset`: **$7–$10** |
 | Exposure cap | 2 non-Booster multis (p&lt;0.80) | `lib/exposure.ts`: **3** multis |
 | Main stake / targetProfit | Not on cards | Settings UI still has targetProfit; multis omit stake |
-| Q1 Safe fair band | p ≥ 0.70; Value fair 2.20–4.00 | Matches `buildQ1Multi` |
+| Q1 Multi fair band | Core p ≥ 0.70; Longshot fair 2.20–4.00 | Matches `buildQ1Multi` |
 | Value chip | At **My bookie** / card bookie | `lib/value-at-bookie.ts` |
 | Volume / narrative | Planned | Not in JSON |
 | Supabase persistence | Migrations + future pipeline | Static `public/data` only |
