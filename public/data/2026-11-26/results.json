@@ -1,0 +1,822 @@
+{
+  "updatedAt": "2026-11-25T19:45:09.008Z",
+  "official": {
+    "record": {
+      "won": 0,
+      "lost": 0,
+      "void": 0,
+      "staked": 0,
+      "profit": 0,
+      "roi": null,
+      "bets": 0
+    },
+    "byBetType": {
+      "Main Play": {
+        "won": 0,
+        "lost": 0,
+        "void": 0,
+        "staked": 0,
+        "profit": 0,
+        "roi": null,
+        "bets": 0
+      },
+      "Booster": {
+        "won": 0,
+        "lost": 0,
+        "void": 0,
+        "staked": 0,
+        "profit": 0,
+        "roi": null,
+        "bets": 0
+      },
+      "Cross-Game SGM Multi": {
+        "won": 0,
+        "lost": 0,
+        "void": 0,
+        "staked": 0,
+        "profit": 0,
+        "roi": null,
+        "bets": 0
+      },
+      "Boost SGM": {
+        "won": 0,
+        "lost": 0,
+        "void": 0,
+        "staked": 0,
+        "profit": 0,
+        "roi": null,
+        "bets": 0
+      },
+      "Q1 Multi": {
+        "won": 0,
+        "lost": 0,
+        "void": 0,
+        "staked": 0,
+        "profit": 0,
+        "roi": null,
+        "bets": 0
+      },
+      "Longshot": {
+        "won": 0,
+        "lost": 0,
+        "void": 0,
+        "staked": 0,
+        "profit": 0,
+        "roi": null,
+        "bets": 0
+      }
+    },
+    "last14d": [
+      {
+        "date": "2026-11-26",
+        "bets": [
+          {
+            "slateDate": "2026-11-26",
+            "betType": "mainPlay",
+            "label": "Main Play",
+            "legIds": [
+              "3136195-pts-20",
+              "4278053-pts-15",
+              "4683021-ast-5",
+              "4903027-reb-7",
+              "3136193-ast-5"
+            ],
+            "result": "pending",
+            "profitUnits": null,
+            "stakeUnits": 0,
+            "publishedCombinedPrice": 11.59
+          },
+          {
+            "slateDate": "2026-11-26",
+            "betType": "booster",
+            "label": "Booster",
+            "legIds": [
+              "3136195-pts-30",
+              "4278053-pts-20",
+              "4683021-ast-7",
+              "4903027-reb-7",
+              "3136193-ast-7"
+            ],
+            "result": "pending",
+            "profitUnits": null,
+            "stakeUnits": 0,
+            "publishedCombinedPrice": 215.94
+          },
+          {
+            "slateDate": "2026-11-26",
+            "betType": "crossGameSgm",
+            "label": "Cross-Game SGM Multi",
+            "legIds": [
+              "4601025-pts-10",
+              "4431678-ast-5",
+              "3917376-pts-20",
+              "4396971-reb-7",
+              "4433249-pts-10",
+              "3136195-pts-20",
+              "3908809-pts-25",
+              "3934672-ast-7",
+              "4683778-pts-15",
+              "4432816-pts-15",
+              "4222252-ast-5",
+              "4903027-reb-7",
+              "4065733-pts-25",
+              "3136193-ast-5",
+              "4433192-pts-10",
+              "4683021-ast-5",
+              "5104157-pts-30"
+            ],
+            "result": "pending",
+            "profitUnits": null,
+            "stakeUnits": 0,
+            "publishedCombinedPrice": 6075.4
+          },
+          {
+            "slateDate": "2026-11-26",
+            "betType": "boostSgm",
+            "label": "Best SGM",
+            "legIds": [
+              "3136195-pts-20",
+              "3908809-ast-5",
+              "3992-pts-20"
+            ],
+            "result": "pending",
+            "profitUnits": null,
+            "stakeUnits": 0,
+            "publishedCombinedPrice": 7.36
+          },
+          {
+            "slateDate": "2026-11-26",
+            "betType": "q1Multi",
+            "label": "Q1 Multi",
+            "legIds": [
+              "5104157-q1reb-3",
+              "4432194-q1reb-2",
+              "4066328-q1reb-2",
+              "3448-q1reb-2",
+              "3155942-q1reb-2",
+              "4601023-q1reb-2"
+            ],
+            "result": "pending",
+            "profitUnits": null,
+            "stakeUnits": 0
+          },
+          {
+            "slateDate": "2026-11-26",
+            "betType": "longshot",
+            "label": "Longshot",
+            "legIds": [
+              "3136195-pts-30",
+              "4066261-pts-30"
+            ],
+            "result": "pending",
+            "profitUnits": null,
+            "stakeUnits": 0,
+            "publishedCombinedPrice": 63.25
+          }
+        ]
+      }
+    ],
+    "bets": [
+      {
+        "slateDate": "2026-11-26",
+        "betType": "mainPlay",
+        "label": "Main Play",
+        "legIds": [
+          "3136195-pts-20",
+          "4278053-pts-15",
+          "4683021-ast-5",
+          "4903027-reb-7",
+          "3136193-ast-5"
+        ],
+        "result": "pending",
+        "profitUnits": null,
+        "stakeUnits": 0,
+        "publishedCombinedPrice": 11.59
+      },
+      {
+        "slateDate": "2026-11-26",
+        "betType": "booster",
+        "label": "Booster",
+        "legIds": [
+          "3136195-pts-30",
+          "4278053-pts-20",
+          "4683021-ast-7",
+          "4903027-reb-7",
+          "3136193-ast-7"
+        ],
+        "result": "pending",
+        "profitUnits": null,
+        "stakeUnits": 0,
+        "publishedCombinedPrice": 215.94
+      },
+      {
+        "slateDate": "2026-11-26",
+        "betType": "crossGameSgm",
+        "label": "Cross-Game SGM Multi",
+        "legIds": [
+          "4601025-pts-10",
+          "4431678-ast-5",
+          "3917376-pts-20",
+          "4396971-reb-7",
+          "4433249-pts-10",
+          "3136195-pts-20",
+          "3908809-pts-25",
+          "3934672-ast-7",
+          "4683778-pts-15",
+          "4432816-pts-15",
+          "4222252-ast-5",
+          "4903027-reb-7",
+          "4065733-pts-25",
+          "3136193-ast-5",
+          "4433192-pts-10",
+          "4683021-ast-5",
+          "5104157-pts-30"
+        ],
+        "result": "pending",
+        "profitUnits": null,
+        "stakeUnits": 0,
+        "publishedCombinedPrice": 6075.4
+      },
+      {
+        "slateDate": "2026-11-26",
+        "betType": "boostSgm",
+        "label": "Best SGM",
+        "legIds": [
+          "3136195-pts-20",
+          "3908809-ast-5",
+          "3992-pts-20"
+        ],
+        "result": "pending",
+        "profitUnits": null,
+        "stakeUnits": 0,
+        "publishedCombinedPrice": 7.36
+      },
+      {
+        "slateDate": "2026-11-26",
+        "betType": "q1Multi",
+        "label": "Q1 Multi",
+        "legIds": [
+          "5104157-q1reb-3",
+          "4432194-q1reb-2",
+          "4066328-q1reb-2",
+          "3448-q1reb-2",
+          "3155942-q1reb-2",
+          "4601023-q1reb-2"
+        ],
+        "result": "pending",
+        "profitUnits": null,
+        "stakeUnits": 0
+      },
+      {
+        "slateDate": "2026-11-26",
+        "betType": "longshot",
+        "label": "Longshot",
+        "legIds": [
+          "3136195-pts-30",
+          "4066261-pts-30"
+        ],
+        "result": "pending",
+        "profitUnits": null,
+        "stakeUnits": 0,
+        "publishedCombinedPrice": 63.25
+      }
+    ],
+    "legs": [
+      {
+        "id": "3136195-pts-20",
+        "slateDate": "2026-11-26",
+        "playerName": "Karl-Anthony Towns",
+        "market": "pts",
+        "line": 20,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.742,
+        "bestBookie": "Unibet",
+        "bestPrice": 1.68,
+        "tags": [
+          "High probability",
+          "Value"
+        ],
+        "betType": "mainPlay"
+      },
+      {
+        "id": "4278053-pts-15",
+        "slateDate": "2026-11-26",
+        "playerName": "Davion Mitchell",
+        "market": "pts",
+        "line": 15,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.654,
+        "bestBookie": "Neds",
+        "bestPrice": 1.85,
+        "tags": [
+          "Value"
+        ],
+        "betType": "mainPlay"
+      },
+      {
+        "id": "4683021-ast-5",
+        "slateDate": "2026-11-26",
+        "playerName": "Deni Avdija",
+        "market": "ast",
+        "line": 5,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.744,
+        "bestBookie": "Neds",
+        "bestPrice": 1.45,
+        "tags": [
+          "High probability",
+          "Value"
+        ],
+        "betType": "mainPlay"
+      },
+      {
+        "id": "4903027-reb-7",
+        "slateDate": "2026-11-26",
+        "playerName": "Cedric Coward",
+        "market": "reb",
+        "line": 7,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.711,
+        "bestBookie": "Neds",
+        "bestPrice": 1.72,
+        "tags": [
+          "boards shared",
+          "Value"
+        ],
+        "betType": "mainPlay"
+      },
+      {
+        "id": "3136193-ast-5",
+        "slateDate": "2026-11-26",
+        "playerName": "Devin Booker",
+        "market": "ast",
+        "line": 5,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.71,
+        "bestBookie": "Unibet",
+        "bestPrice": 1.56,
+        "tags": [
+          "Value"
+        ],
+        "betType": "mainPlay"
+      },
+      {
+        "id": "3136195-pts-30",
+        "slateDate": "2026-11-26",
+        "playerName": "Karl-Anthony Towns",
+        "market": "pts",
+        "line": 30,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.265,
+        "bestBookie": "Picklebet (AU)",
+        "bestPrice": 6.5,
+        "tags": [
+          "Value"
+        ],
+        "betType": "booster"
+      },
+      {
+        "id": "4278053-pts-20",
+        "slateDate": "2026-11-26",
+        "playerName": "Davion Mitchell",
+        "market": "pts",
+        "line": 20,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.295,
+        "bestBookie": "SportsBet",
+        "bestPrice": 4,
+        "tags": [
+          "Value"
+        ],
+        "betType": "booster"
+      },
+      {
+        "id": "4683021-ast-7",
+        "slateDate": "2026-11-26",
+        "playerName": "Deni Avdija",
+        "market": "ast",
+        "line": 7,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.474,
+        "bestBookie": "Neds",
+        "bestPrice": 2.35,
+        "tags": [
+          "Value"
+        ],
+        "betType": "booster"
+      },
+      {
+        "id": "3136193-ast-7",
+        "slateDate": "2026-11-26",
+        "playerName": "Devin Booker",
+        "market": "ast",
+        "line": 7,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.415,
+        "bestBookie": "Unibet",
+        "bestPrice": 3.05,
+        "tags": [
+          "Value"
+        ],
+        "betType": "booster"
+      },
+      {
+        "id": "4601025-pts-10",
+        "slateDate": "2026-11-26",
+        "playerName": "Pelle Larsson",
+        "market": "pts",
+        "line": 10,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.76,
+        "bestBookie": "Neds",
+        "bestPrice": 1.46,
+        "tags": [
+          "High probability",
+          "Value"
+        ],
+        "betType": "crossGameSgm"
+      },
+      {
+        "id": "4431678-ast-5",
+        "slateDate": "2026-11-26",
+        "playerName": "Tyrese Maxey",
+        "market": "ast",
+        "line": 5,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.741,
+        "bestBookie": "Unibet",
+        "bestPrice": 1.5,
+        "tags": [
+          "High probability",
+          "Value"
+        ],
+        "betType": "crossGameSgm"
+      },
+      {
+        "id": "3917376-pts-20",
+        "slateDate": "2026-11-26",
+        "playerName": "Jaylen Brown",
+        "market": "pts",
+        "line": 20,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.723,
+        "bestBookie": "PointsBet (AU)",
+        "bestPrice": 1.5,
+        "tags": [
+          "High probability",
+          "Value"
+        ],
+        "betType": "crossGameSgm"
+      },
+      {
+        "id": "4396971-reb-7",
+        "slateDate": "2026-11-26",
+        "playerName": "Naz Reid",
+        "market": "reb",
+        "line": 7,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.735,
+        "bestBookie": "Neds",
+        "bestPrice": 1.38,
+        "tags": [
+          "High probability",
+          "boards shared"
+        ],
+        "betType": "crossGameSgm"
+      },
+      {
+        "id": "4433249-pts-10",
+        "slateDate": "2026-11-26",
+        "playerName": "Moussa Diabate",
+        "market": "pts",
+        "line": 10,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.603,
+        "bestBookie": "Neds",
+        "bestPrice": 1.82,
+        "tags": [
+          "Value"
+        ],
+        "betType": "crossGameSgm"
+      },
+      {
+        "id": "3908809-pts-25",
+        "slateDate": "2026-11-26",
+        "playerName": "Donovan Mitchell",
+        "market": "pts",
+        "line": 25,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.624,
+        "bestBookie": "Neds",
+        "bestPrice": 1.85,
+        "tags": [
+          "Value"
+        ],
+        "betType": "crossGameSgm"
+      },
+      {
+        "id": "3934672-ast-7",
+        "slateDate": "2026-11-26",
+        "playerName": "Jalen Brunson",
+        "market": "ast",
+        "line": 7,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.572,
+        "bestBookie": "Picklebet (AU)",
+        "bestPrice": 1.92,
+        "tags": [
+          "Value"
+        ],
+        "betType": "crossGameSgm"
+      },
+      {
+        "id": "4683778-pts-15",
+        "slateDate": "2026-11-26",
+        "playerName": "Jared McCain",
+        "market": "pts",
+        "line": 15,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.749,
+        "bestBookie": "SportsBet",
+        "bestPrice": 1.74,
+        "tags": [
+          "High probability",
+          "Check news"
+        ],
+        "betType": "crossGameSgm"
+      },
+      {
+        "id": "4432816-pts-15",
+        "slateDate": "2026-11-26",
+        "playerName": "LaMelo Ball",
+        "market": "pts",
+        "line": 15,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.746,
+        "bestBookie": "SportsBet",
+        "bestPrice": 1.37,
+        "tags": [
+          "High probability"
+        ],
+        "betType": "crossGameSgm"
+      },
+      {
+        "id": "4222252-ast-5",
+        "slateDate": "2026-11-26",
+        "playerName": "Isaiah Hartenstein",
+        "market": "ast",
+        "line": 5,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.571,
+        "bestBookie": "TABtouch",
+        "bestPrice": 2.55,
+        "tags": [
+          "Check news"
+        ],
+        "betType": "crossGameSgm"
+      },
+      {
+        "id": "4065733-pts-25",
+        "slateDate": "2026-11-26",
+        "playerName": "Ty Jerome",
+        "market": "pts",
+        "line": 25,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.563,
+        "bestBookie": "SportsBet",
+        "bestPrice": 2.14,
+        "tags": [
+          "Value"
+        ],
+        "betType": "crossGameSgm"
+      },
+      {
+        "id": "4433192-pts-10",
+        "slateDate": "2026-11-26",
+        "playerName": "Tari Eason",
+        "market": "pts",
+        "line": 10,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.642,
+        "bestBookie": "Ladbrokes",
+        "bestPrice": 1.75,
+        "tags": [
+          "Value"
+        ],
+        "betType": "crossGameSgm"
+      },
+      {
+        "id": "5104157-pts-30",
+        "slateDate": "2026-11-26",
+        "playerName": "Victor Wembanyama",
+        "market": "pts",
+        "line": 30,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.623,
+        "bestBookie": "Neds",
+        "bestPrice": 1.92,
+        "tags": [
+          "Value"
+        ],
+        "betType": "crossGameSgm"
+      },
+      {
+        "id": "3908809-ast-5",
+        "slateDate": "2026-11-26",
+        "playerName": "Donovan Mitchell",
+        "market": "ast",
+        "line": 5,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.619,
+        "bestBookie": "Picklebet (AU)",
+        "bestPrice": 1.9,
+        "tags": [
+          "Value"
+        ],
+        "betType": "boostSgm"
+      },
+      {
+        "id": "3992-pts-20",
+        "slateDate": "2026-11-26",
+        "playerName": "James Harden",
+        "market": "pts",
+        "line": 20,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.528,
+        "bestBookie": "Unibet",
+        "bestPrice": 2.8,
+        "tags": [
+          "Check news"
+        ],
+        "betType": "boostSgm"
+      },
+      {
+        "id": "5104157-q1reb-3",
+        "slateDate": "2026-11-26",
+        "playerName": "Victor Wembanyama",
+        "market": "q1reb",
+        "line": 3,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.764,
+        "tags": [
+          "High probability"
+        ],
+        "betType": "q1Multi"
+      },
+      {
+        "id": "4432194-q1reb-2",
+        "slateDate": "2026-11-26",
+        "playerName": "Day'Ron Sharpe",
+        "market": "q1reb",
+        "line": 2,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.717,
+        "tags": [],
+        "betType": "q1Multi"
+      },
+      {
+        "id": "4066328-q1reb-2",
+        "slateDate": "2026-11-26",
+        "playerName": "Jarrett Allen",
+        "market": "q1reb",
+        "line": 2,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.765,
+        "tags": [
+          "High probability"
+        ],
+        "betType": "q1Multi"
+      },
+      {
+        "id": "3448-q1reb-2",
+        "slateDate": "2026-11-26",
+        "playerName": "Brook Lopez",
+        "market": "q1reb",
+        "line": 2,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.674,
+        "tags": [],
+        "betType": "q1Multi"
+      },
+      {
+        "id": "3155942-q1reb-2",
+        "slateDate": "2026-11-26",
+        "playerName": "Domantas Sabonis",
+        "market": "q1reb",
+        "line": 2,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.756,
+        "tags": [
+          "High probability"
+        ],
+        "betType": "q1Multi"
+      },
+      {
+        "id": "4601023-q1reb-2",
+        "slateDate": "2026-11-26",
+        "playerName": "Oso Ighodaro",
+        "market": "q1reb",
+        "line": 2,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.713,
+        "tags": [],
+        "betType": "q1Multi"
+      },
+      {
+        "id": "4066261-pts-30",
+        "slateDate": "2026-11-26",
+        "playerName": "Bam Adebayo",
+        "market": "pts",
+        "line": 30,
+        "result": "pending",
+        "actualValue": null,
+        "probability": 0.128,
+        "bestBookie": "Neds",
+        "bestPrice": 11,
+        "tags": [
+          "Value"
+        ],
+        "betType": "longshot"
+      }
+    ]
+  },
+  "valueLegs": {
+    "record": {
+      "won": 0,
+      "lost": 0,
+      "void": 0,
+      "staked": 0,
+      "profit": 0,
+      "roi": null,
+      "legs": 0,
+      "hitRate": null,
+      "avgPrice": null,
+      "beatMarket": null
+    },
+    "byMarket": {},
+    "byEdgeBand": {},
+    "legs": []
+  },
+  "model": {
+    "calibration": [
+      {
+        "range": "50-60%",
+        "expected": 0.55,
+        "actual": 0,
+        "count": 0
+      },
+      {
+        "range": "60-70%",
+        "expected": 0.6499999999999999,
+        "actual": 0,
+        "count": 0
+      },
+      {
+        "range": "70-80%",
+        "expected": 0.75,
+        "actual": 0,
+        "count": 0
+      },
+      {
+        "range": "80-90%",
+        "expected": 0.8500000000000001,
+        "actual": 0,
+        "count": 0
+      }
+    ],
+    "brierLive": null,
+    "brierShadow": null,
+    "tagHitRates": {}
+  },
+  "gradedLegs": []
+}

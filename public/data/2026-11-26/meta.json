@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T19:42:11.396Z",
+  "lastUpdated": "2026-11-25T19:46:23.599Z",
   "oddsLastPulled": "2026-11-25T10:29:00.533Z",
   "sources": {
     "espn": "ok",
@@ -9,64 +9,11 @@
   "slateSize": 9,
   "smallSlate": false,
   "injuryImpactLog": [
-    "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Ryan Kalkbrenner (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Grayson Allen (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Dennis Schroder (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Kon Knueppel (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Norman Powell (Chicago Bulls): no redistribution reasons on slate legs",
-    "Caleb Wilson (Chicago Bulls): no redistribution reasons on slate legs",
-    "Nae'Qwan Tomlin (Cleveland Cavaliers): no redistribution reasons on slate legs",
-    "Evan Mobley (Cleveland Cavaliers): no redistribution reasons on slate legs",
-    "Stephen Curry (Golden State Warriors): no redistribution reasons on slate legs",
-    "Kristaps Porzingis (Golden State Warriors): no redistribution reasons on slate legs",
-    "Moses Moody (Golden State Warriors): no redistribution reasons on slate legs",
-    "Jimmy Butler III (Golden State Warriors): no redistribution reasons on slate legs",
-    "Bradley Beal (LA Clippers): no redistribution reasons on slate legs",
-    "Jordan Miller (LA Clippers): no redistribution reasons on slate legs",
-    "Scotty Pippen Jr. (Memphis Grizzlies): no redistribution reasons on slate legs",
-    "Jerami Grant (Memphis Grizzlies): no redistribution reasons on slate legs",
-    "GG Jackson (Memphis Grizzlies): no redistribution reasons on slate legs",
-    "Richie Saunders (Memphis Grizzlies): no redistribution reasons on slate legs",
-    "Donte DiVincenzo (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Jaylen Clark (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Anthony Edwards (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Miles McBride (New York Knicks): no redistribution reasons on slate legs",
-    "Jordan Clarkson (New York Knicks): no redistribution reasons on slate legs",
-    "Nikola Topic (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Jaylin Williams (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Aday Mara (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Jalen Williams (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Thomas Sorber (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Cason Wallace (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Chet Holmgren (Oklahoma City Thunder): top modeled delta +0.6 pts on Ajay Mitchell (below display threshold)",
-    "Ariel Hukporti (Philadelphia 76ers): no redistribution reasons on slate legs",
-    "Mark Williams (Phoenix Suns): no redistribution reasons on slate legs",
-    "Chris Youngblood (Portland Trail Blazers): no redistribution reasons on slate legs",
-    "Vit Krejci (Portland Trail Blazers): no redistribution reasons on slate legs",
-    "Ja Morant (Portland Trail Blazers): no redistribution reasons on slate legs",
-    "Shaedon Sharpe (Portland Trail Blazers): no redistribution reasons on slate legs",
-    "Maxime Raynaud (Sacramento Kings): no redistribution reasons on slate legs",
-    "Ben Simmons (Sacramento Kings): no redistribution reasons on slate legs",
-    "Dylan Harper (San Antonio Spurs): no redistribution reasons on slate legs",
-    "Tobias Harris (San Antonio Spurs): no redistribution reasons on slate legs",
-    "Jayden Quaintance (San Antonio Spurs): no redistribution reasons on slate legs",
-    "Tre Donaldson (Miami Heat): no redistribution reasons on slate legs",
-    "Vladislav Goldin (Miami Heat): no redistribution reasons on slate legs",
-    "Jaylin Sellers (Chicago Bulls): no redistribution reasons on slate legs",
-    "Kylan Boswell (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Khalifa Diop (Cleveland Cavaliers): no redistribution reasons on slate legs",
-    "Rocco Zikarsky (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Joshua Jefferson (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Chaney Johnson (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Drake Powell (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Ben Saraf (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Nick Martinelli (LA Clippers): no redistribution reasons on slate legs",
-    "Julian Phillips (Houston Rockets): no redistribution reasons on slate legs"
+    "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs"
   ],
   "modelSanityChecked": 178,
-  "modelSanityFailures": 2,
-  "formGuardExcludedCount": 541,
+  "modelSanityFailures": 11,
+  "formGuardExcludedCount": 563,
   "gameOddsPriceAge": {
     "401909317": "Prices from 9:29 pm",
     "401909318": "Prices from 9:29 pm",
@@ -80,29 +27,30 @@
   },
   "slateTipDate": "2026-11-26",
   "whatChanged": [
-    "OG Anunoby out → Jalen Brunson +4.9 pts",
-    "Cameron Boozer out → Ty Jerome +2.9 pts"
+    "Chet Holmgren out → Shai Gilgeous-Alexander +7.2 pts",
+    "OG Anunoby out → Jalen Brunson +5.0 pts",
+    "Cameron Boozer out → Ty Jerome +2.7 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_02_30PM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_02_45PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 388,
-      "priced": 296
+      "total": 391,
+      "priced": 298
     },
     "reb": {
-      "total": 543,
-      "priced": 231
+      "total": 541,
+      "priced": 230
     },
     "ast": {
-      "total": 396,
-      "priced": 179
+      "total": 400,
+      "priced": 178
     },
     "3pm": {
-      "total": 652,
-      "priced": 420
+      "total": 650,
+      "priced": 418
     },
     "q1reb": {
-      "total": 192,
+      "total": 194,
       "priced": 0
     }
   },

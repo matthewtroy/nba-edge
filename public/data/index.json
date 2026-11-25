@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T19:41:08.691Z",
+  "updatedAt": "2026-11-25T19:45:15.024Z",
   "todayDate": "2026-11-26",
   "tomorrowDate": null,
   "defaultDate": "2026-11-26",
@@ -9,9 +9,9 @@
       "status": "official",
       "statusLabel": "Official · published 10:08pm",
       "gameCount": 9,
-      "legCount": 2171,
+      "legCount": 2176,
       "multiCount": 7,
-      "lastUpdated": "2026-11-25T19:42:11.396Z"
+      "lastUpdated": "2026-11-25T19:46:23.599Z"
     }
   ]
 }
