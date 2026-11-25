@@ -6,12 +6,19 @@ cd "$ROOT"
 if [[ -f public/data/index.json ]]; then
   exit 0
 fi
-git fetch origin data 2>/dev/null || true
+if ! git show-ref --quiet refs/remotes/origin/data && ! git show-ref --quiet refs/heads/data; then
+  git fetch --depth 1 origin data:refs/remotes/origin/data 2>/dev/null \
+    || git fetch origin data:refs/remotes/origin/data 2>/dev/null \
+    || git fetch origin data 2>/dev/null \
+    || true
+fi
 REF=""
 if git show-ref --quiet refs/remotes/origin/data; then
   REF=origin/data
 elif git show-ref --quiet refs/heads/data; then
   REF=data
+elif git show-ref --quiet FETCH_HEAD; then
+  REF=FETCH_HEAD
 fi
 if [[ -z "$REF" ]]; then
   echo "fetch-test-data: data branch not found" >&2
