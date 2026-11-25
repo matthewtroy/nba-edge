@@ -4,6 +4,7 @@ import { auditMultisForToday } from "./audit-multis.js";
 import { assertNoForbiddenStrings } from "./multi-card-text.js";
 import { multiCardTitle } from "./multi-combined.js";
 import { formatLegCardLine } from "./leg-card-odds.js";
+import { bookieMarketLabel } from "./market-label.js";
 import { verifyTakeAtIsFairEdge } from "./multi-card-text.js";
 import { formatHomeSettleSummary } from "./home-settle-summary.js";
 import type { ResultsJson } from "./results-types.js";
@@ -15,6 +16,15 @@ function formatSydneyTime(iso: string): string {
     minute: "2-digit",
     hour12: true,
   });
+}
+
+/** Rewrite stale model-line leg snippets in stored gate / notBuilt copy. */
+export function sanitizeStoredGateLegs(reason: string): string {
+  return reason.replace(
+    /([A-Za-z][\w\s.'-]*?)\s+(\d+)\+\s+(pts|reb|ast|3pm)\b/gi,
+    (_, name, line, market) =>
+      `${name.trim()} ${bookieMarketLabel(market.toLowerCase(), Number(line))}`
+  );
 }
 
 export function renderTodayText(input: {
@@ -82,7 +92,7 @@ export function renderTodayText(input: {
     lines.push(`Not built today (${notBuilt.length})`);
     for (const n of notBuilt) {
       lines.push(
-        `  ${n.label}${n.variant ? ` (${n.variant})` : ""}: ${n.reason}`
+        `  ${n.label}${n.variant ? ` (${n.variant})` : ""}: ${sanitizeStoredGateLegs(n.reason)}`
       );
     }
     lines.push("");

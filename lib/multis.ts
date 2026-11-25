@@ -43,6 +43,7 @@ import { multiBookieTotals } from "./bookie-totals.js";
 import { multiClashSummary } from "./clash.js";
 import { gateAllMultis } from "./multi-gate.js";
 import { slateMatchupAbbrev } from "./team-abbrev.js";
+import { bookieMarketLabel } from "./market-label.js";
 import { isInjuryRedistributionReason } from "./injury-reason.js";
 import { logMultiBuildSummary } from "./multi-filter-log.js";
 import {
@@ -339,7 +340,9 @@ export function buildMultis(
   const gated = gateAllMultis(filtered, picksById, catalog);
   for (const m of gated.dropped) {
     const legs = m.legs.map((id) => picksById.get(id)).filter(Boolean) as PickLeg[];
-    const legSummary = legs.map((l) => `${l.playerName} ${l.line}+ ${l.market}`).join(", ");
+    const legSummary = legs
+      .map((l) => `${l.playerName} ${bookieMarketLabel(l.market, l.line)}`)
+      .join(", ");
     const key = `${m.type}|${m.variant ?? ""}|${m.legs.join(",")}`;
     const detail =
       (gated.droppedReasons.get(key) ?? []).slice(0, 3).join("; ") || "rule gate";
