@@ -1669,7 +1669,7 @@
       "positionBucket": "G",
       "window": "season",
       "stat": "reb",
-      "allowedPer48": 4.99,
+      "allowedPer48": 5.03,
       "rank": 29
     },
     {
@@ -2381,7 +2381,7 @@
       "positionBucket": "G",
       "window": "last15",
       "stat": "reb",
-      "allowedPer48": 4.99,
+      "allowedPer48": 5.03,
       "rank": 28
     },
     {
@@ -5770,7 +5770,7 @@
     },
     {
       "teamId": "3",
-      "pacePer48": 42.76,
+      "pacePer48": 42.78,
       "rank": 2,
       "window": "season"
     },
@@ -5842,19 +5842,19 @@
     },
     {
       "teamId": "5",
-      "pacePer48": 40.42,
+      "pacePer48": 40.43,
       "rank": 14,
-      "window": "season"
-    },
-    {
-      "teamId": "14",
-      "pacePer48": 40.3,
-      "rank": 15,
       "window": "season"
     },
     {
       "teamId": "28",
       "pacePer48": 40.3,
+      "rank": 15,
+      "window": "season"
+    },
+    {
+      "teamId": "14",
+      "pacePer48": 40.27,
       "rank": 16,
       "window": "season"
     },

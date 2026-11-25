@@ -4,19 +4,19 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
-        "4278053-pts-15",
-        "4278073-3pm-2",
-        "4903027-reb-7"
+        "4903027-reb-7",
+        "3136195-pts-20",
+        "4278053-pts-15"
       ],
-      "combinedProbability": 0.345025548,
-      "combinedFairPrice": 2.9,
-      "combinedTakeAt": 3.13,
+      "combinedProbability": 0.35420378399999997,
+      "combinedFairPrice": 2.82,
+      "combinedTakeAt": 3.05,
       "bestBookie": "Ladbrokes",
-      "bestBookieTotal": 5.03,
+      "bestBookieTotal": 5.15,
       "bookieTotals": {
-        "Sportsbet": 4.8,
-        "Ladbrokes": 5.03,
-        "Neds": 5.03
+        "Sportsbet": 4.95,
+        "Ladbrokes": 5.15,
+        "Neds": 5.15
       },
       "summary": "3 starter main lines"
     },
@@ -24,24 +24,45 @@
       "type": "doubleUp",
       "label": "Best Double Up",
       "legs": [
-        "3992-3pm-2",
-        "4601025-pts-10"
+        "4903027-pts-15",
+        "3992-3pm-2"
       ],
-      "combinedProbability": 0.58064,
-      "combinedFairPrice": 1.72,
-      "combinedTakeAt": 1.86,
-      "bestBookie": "Neds",
-      "bestBookieTotal": 2.04,
+      "combinedProbability": 0.589044,
+      "combinedFairPrice": 1.7,
+      "combinedTakeAt": 1.84,
+      "bestBookie": "Sportsbet",
+      "bestBookieTotal": 2.13,
       "bookieTotals": {
-        "Sportsbet": 1.99,
-        "TAB": 1.86,
-        "TABtouch": 2.04,
-        "Ladbrokes": 2.04,
-        "Neds": 2.04,
-        "PointsBet": 1.93,
-        "Unibet": 2.04
+        "Sportsbet": 2.13,
+        "TAB": 1.73,
+        "Ladbrokes": 2.1,
+        "Neds": 2.1,
+        "PointsBet": 2.04,
+        "Betr": 1.99,
+        "Picklebet": 2.01,
+        "Bet Right": 2.01
       },
       "summary": "2 legs · aim ~$2 @ one bookie"
+    },
+    {
+      "type": "booster",
+      "label": "Booster",
+      "legs": [
+        "4903027-reb-7",
+        "3136195-pts-30",
+        "4278053-pts-20"
+      ],
+      "combinedProbability": 0.058682580000000005,
+      "combinedFairPrice": 17.04,
+      "combinedTakeAt": 18.4,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 34.68,
+      "bookieTotals": {
+        "Sportsbet": 40.32,
+        "Ladbrokes": 34.68,
+        "Neds": 34.68
+      },
+      "summary": "Main Play +1 rung when Main leg ≤$4 at bookie, else same rung"
     },
     {
       "type": "crossGameSgm",
@@ -51,22 +72,22 @@
         "3032977-reb-10",
         "3992-3pm-2",
         "3136195-pts-20",
-        "4278073-3pm-2",
+        "4278073-pts-30",
         "4397002-3pm-2",
         "4396907-3pm-2",
         "4903027-3pm-2",
         "3136193-ast-5"
       ],
-      "combinedProbability": 0.05623032113225737,
-      "combinedFairPrice": 17.78,
-      "combinedTakeAt": 19.2,
+      "combinedProbability": 0.05531604013653166,
+      "combinedFairPrice": 18.08,
+      "combinedTakeAt": 19.53,
       "bestBookie": "Unibet",
-      "bestBookieTotal": 39.71,
+      "bestBookieTotal": 41.51,
       "bookieTotals": {
-        "TABtouch": 39.48,
-        "Ladbrokes": 34.14,
-        "Neds": 34.14,
-        "Unibet": 39.71
+        "TABtouch": 41.27,
+        "Ladbrokes": 33.93,
+        "Neds": 33.93,
+        "Unibet": 41.51
       },
       "crossGameGroups": [
         {
@@ -95,7 +116,7 @@
           "gameId": "401909320",
           "status": "included",
           "legs": [
-            "4278073-3pm-2",
+            "4278073-pts-30",
             "4397002-3pm-2"
           ]
         },
@@ -139,23 +160,22 @@
       "type": "boostSgm",
       "label": "Best SGM",
       "legs": [
-        "4683778-pts-15",
-        "4278073-3pm-2"
+        "4903027-pts-15",
+        "3936099-3pm-1"
       ],
-      "combinedProbability": 0.555758,
-      "combinedFairPrice": 1.8,
-      "combinedTakeAt": 1.94,
+      "combinedProbability": 0.545868,
+      "combinedFairPrice": 1.83,
+      "combinedTakeAt": 1.98,
       "bestBookie": "Neds",
-      "bestBookieTotal": 2.65,
+      "bestBookieTotal": 2.28,
       "bookieTotals": {
-        "Sportsbet": 2.71,
-        "TAB": 2.36,
-        "Ladbrokes": 2.65,
-        "Neds": 2.65,
-        "PointsBet": 2.58,
-        "Betr": 2.52,
-        "Picklebet": 2.53,
-        "Bet Right": 2.53
+        "Sportsbet": 2.25,
+        "TAB": 1.8,
+        "Ladbrokes": 2.28,
+        "Neds": 2.28,
+        "Betr": 2.03,
+        "Picklebet": 2.07,
+        "Bet Right": 2.07
       },
       "summary": "Best 2–5 leg same-game multi · min $2 · edge curve"
     },
@@ -165,14 +185,14 @@
       "legs": [
         "5104157-q1reb-3",
         "4432194-q1reb-2",
-        "4066328-q1reb-2",
+        "4222252-q1reb-2",
         "3448-q1reb-2",
-        "3155942-q1reb-2",
-        "4601023-q1reb-2"
+        "4601023-q1reb-2",
+        "3059318-q1reb-2"
       ],
-      "combinedProbability": 0.15224574765569904,
-      "combinedFairPrice": 6.57,
-      "combinedTakeAt": 7.1,
+      "combinedProbability": 0.14904572810231748,
+      "combinedFairPrice": 6.71,
+      "combinedTakeAt": 7.25,
       "bookieTotals": {},
       "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
     },
@@ -181,33 +201,21 @@
       "label": "Longshot",
       "legs": [
         "3136195-pts-30",
-        "4066261-pts-30"
+        "4278073-pts-40",
+        "5104157-pts-40"
       ],
-      "combinedProbability": 0.034048,
-      "combinedFairPrice": 29.37,
-      "combinedTakeAt": 31.72,
-      "bestBookie": "PointsBet",
-      "bestBookieTotal": 63.25,
+      "combinedProbability": 0.023145876000000003,
+      "combinedFairPrice": 43.2,
+      "combinedTakeAt": 46.66,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 134.4,
       "bookieTotals": {
-        "Sportsbet": 57,
-        "TAB": 33.75,
-        "Ladbrokes": 61.6,
-        "Neds": 61.6,
-        "PointsBet": 63.25
+        "TAB": 80.16,
+        "Ladbrokes": 134.4,
+        "Neds": 134.4
       },
-      "summary": "2 legs angle-ranked @ PointsBet"
+      "summary": "3 legs angle-ranked @ Neds"
     }
   ],
-  "notBuilt": [
-    {
-      "type": "booster",
-      "label": "Booster",
-      "reason": "Gate: Booster: Shai Gilgeous-Alexander has Check news (legs: Davion Mitchell 20+ pts, Shai Gilgeous-Alexander 3+ 3pm, Cedric Coward 7+ reb)",
-      "players": [
-        "Davion Mitchell",
-        "Shai Gilgeous-Alexander",
-        "Cedric Coward"
-      ]
-    }
-  ]
+  "notBuilt": []
 }
