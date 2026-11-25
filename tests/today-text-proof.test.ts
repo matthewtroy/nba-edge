@@ -33,7 +33,7 @@ describe("Today proof text", () => {
     expect(text).not.toMatch(/bet365/i);
     expect(text.toLowerCase()).not.toMatch(/take at/);
     expect(text.toLowerCase()).not.toMatch(/best:/);
-    const builtHeader = text.match(/  [\w ()]+ @ \$[\d.]+/);
+    const builtHeader = text.match(/  [\w ():]+ \$[\d.]+/);
     const notBuiltMain =
       /Main Play.*No single AU bookie/i.test(text) ||
       text.includes("Not built today");

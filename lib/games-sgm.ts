@@ -1,5 +1,10 @@
 import type { MultiBet, PickLeg, SlateGame } from "./types.js";
-import { buildGameSgmCard, type GameSgmCard } from "./game-sgm-builder.js";
+import {
+  buildGameSgmCard,
+  formatOddsBand,
+  isGameSgmCard,
+  type GameSgmCard,
+} from "./game-sgm-builder.js";
 import { formatLegCardLine } from "./leg-card-odds.js";
 import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
 import { resolveMultiFeedQuote } from "./multi-combined.js";
@@ -10,6 +15,7 @@ export interface GameSgmBlock {
   crossGameLegs: PickLeg[];
   boostLegs: PickLeg[];
   card: GameSgmCard | null;
+  notBuiltReason?: string;
 }
 
 export function gameSgmBlocks(
@@ -35,8 +41,18 @@ export function gameSgmBlocks(
     const boostLegs = [...boostIds]
       .map((id) => picksById.get(id))
       .filter((l): l is PickLeg => l != null && l.gameId === game.id);
-    const card = buildGameSgmCard(game, picks, oddsMin, oddsMax);
-    return { game, sgmLegs, crossGameLegs, boostLegs, card };
+    const built = buildGameSgmCard(game, picks, oddsMin, oddsMax);
+    if (isGameSgmCard(built)) {
+      return { game, sgmLegs, crossGameLegs, boostLegs, card: built };
+    }
+    return {
+      game,
+      sgmLegs,
+      crossGameLegs,
+      boostLegs,
+      card: null,
+      notBuiltReason: built.notBuiltReason,
+    };
   });
 }
 
@@ -49,7 +65,7 @@ export function renderGameSgmCard(card: GameSgmCard): string {
   const lines: string[] = [];
   lines.push(`${label} SGM @ $${card.bestTotal.toFixed(2)}`);
   lines.push(`${card.bestBookie} · Fair $${card.fair.toFixed(2)}`);
-  lines.push(`Guide: bookie total $${card.oddsMin.toFixed(1)}–${card.oddsMax.toFixed(0)}`);
+  lines.push(`Guide: bookie total ${formatOddsBand(card.oddsMin, card.oddsMax)}`);
   for (const leg of card.legs) {
     lines.push(formatLegCardLine(leg, card.bestBookie));
   }
@@ -84,7 +100,7 @@ export function renderGamesText(input: {
   );
   const lines: string[] = [
     "Games",
-    `${input.slate.length} on slate · bookie total $${oddsMin.toFixed(1)}–${oddsMax.toFixed(0)}`,
+    `${input.slate.length} on slate · bookie total ${formatOddsBand(oddsMin, oddsMax)}`,
     "",
   ];
 
@@ -98,9 +114,10 @@ export function renderGamesText(input: {
     if (block.card) {
       lines.push(renderGameSgmCard(block.card));
     } else {
-      lines.push(
-        `${gameLabel(block.game)} · no 3-leg SGM with one AU bookie in $${oddsMin.toFixed(1)}–${oddsMax.toFixed(0)}`
-      );
+      const reason =
+        block.notBuiltReason ??
+        `No game SGM in ${formatOddsBand(oddsMin, oddsMax)}`;
+      lines.push(`${gameLabel(block.game)} · ${reason}`);
     }
     lines.push("");
   }

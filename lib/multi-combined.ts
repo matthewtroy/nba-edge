@@ -41,9 +41,10 @@ export function multiCardTitle(
   const { fair } = combinedFairAndTakeAt(legs, minEdgeFraction);
   const name = multi.variant ? `${multi.label} (${multi.variant})` : multi.label;
   const feed = resolveMultiFeedQuote(multi, legs);
+  const subline = feed.bookie || `Fair $${fair.toFixed(2)}`;
   return {
-    headline: `${name} @ $${feed.total.toFixed(2)}`,
-    subline: `${feed.bookie} · Fair $${fair.toFixed(2)}`,
+    headline: `${name}: $${feed.total.toFixed(2)}`,
+    subline,
     cardBookie: feed.bookie,
   };
 }
