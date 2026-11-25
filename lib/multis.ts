@@ -124,6 +124,8 @@ function threesCount(legs: PickLeg[]): number {
 }
 
 export function sortLegsForSelection(a: PickLeg, b: PickLeg): number {
+  const conf = (b.confluence ?? 0) - (a.confluence ?? 0);
+  if (conf !== 0) return conf;
   const inj = injuryBoostScore(b) - injuryBoostScore(a);
   if (inj !== 0) return inj;
   if (b.probability !== a.probability) return b.probability - a.probability;
@@ -481,13 +483,19 @@ function boostMainLegs(
   stepLegIds: Set<string>,
   bookie: string,
   minEdgeFraction: number
-): PickLeg[] | null {
+): { legs: PickLeg[] | null; fail?: string } {
   const picksById = new Map(picks.map((p) => [p.id, p]));
   const boosted: PickLeg[] = [];
 
   for (const id of main.legs) {
     const leg = picksById.get(id);
-    if (!leg || !meetsFloor(leg) || hasCheckNews(leg)) return null;
+    if (!leg) return { legs: null, fail: `missing Main leg ${id}` };
+    if (!meetsFloor(leg) || hasCheckNews(leg)) {
+      return {
+        legs: null,
+        fail: `${leg.playerName}: fair floor or Check news at ${bookie}`,
+      };
+    }
     let useLeg = leg;
     if (stepLegIds.has(id)) {
       const up = nextRung(leg, picks);
@@ -501,11 +509,18 @@ function boostMainLegs(
       }
     }
     const priced = asBookieLeg(useLeg, bookie);
-    if (!priced || !legMeetsBookieEdge(useLeg, bookie, minEdgeFraction)) return null;
+    if (!priced || !legMeetsBookieEdge(useLeg, bookie, minEdgeFraction)) {
+      return {
+        legs: null,
+        fail: `${leg.playerName} ${useLeg.line}+ ${useLeg.market}: no edge @ ${bookie}`,
+      };
+    }
     boosted.push(priced);
   }
-  if (multiHasClash(boosted)) return null;
-  return boosted;
+  if (multiHasClash(boosted)) {
+    return { legs: null, fail: "Booster clash: same-game or stat conflict" };
+  }
+  return { legs: boosted };
 }
 
 function buildBooster(
@@ -525,8 +540,10 @@ function buildBooster(
     return { bet: null, reason: "Booster leg missing" };
   }
 
-  const boosted = boostMainLegs(main, picks, new Set(main.legs), bookie, minEdgeFraction);
+  const boost = boostMainLegs(main, picks, new Set(main.legs), bookie, minEdgeFraction);
+  const boosted = boost.legs;
   if (!boosted?.length) {
+    const detail = boost.fail ?? "rung/clash/edge at main bookie";
     pushMultiBuildTrace({
       type: "booster",
       eligible: mainLegs.length,
@@ -535,9 +552,9 @@ function buildBooster(
       clashCandidates: 0,
       rangeCandidates: 0,
       built: false,
-      detail: "rung/clash/edge at main bookie",
+      detail,
     });
-    return { bet: null, reason: "Booster: could not resolve Main legs (rung/clash/edge)" };
+    return { bet: null, reason: `Booster: ${detail}` };
   }
 
   const { p, fair, takeAt } = combinedPrice(boosted);

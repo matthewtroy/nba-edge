@@ -23,9 +23,13 @@ function leg(
     probability: p,
     fairPrice: fair,
     takeAt,
-    tags: [],
+    tags: ["Value"],
     reasons: [],
     starterEligible: true,
+    confluence: 2,
+    signals: { PRICE: { active: true }, MATCHUP: { active: true, label: "D#3" } },
+    bestPrice: takeAt,
+    bestBookie: "Sportsbet",
   };
 }
 

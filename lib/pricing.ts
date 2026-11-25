@@ -18,6 +18,14 @@ import {
   type PricedRung,
 } from "./market-blend.js";
 import { lastFiveVsLine, q1HitRateLast10 } from "./leg-history.js";
+import { applyMatchupToModelP, matchupDeltaFromRank } from "./matchup-adjust.js";
+import {
+  buildLegSignals,
+  confluenceFromSignals,
+  reasonLineFromSignals,
+} from "./signals.js";
+import type { DefenseRatingsBundle } from "./defense-ratings.js";
+import { defenseRankFor } from "./defense-ratings.js";
 
 export const Q1_HIT_RATE_GAP_PP = 0.2;
 
@@ -59,6 +67,12 @@ export function buildLegsForPlayer(
     oddsPulledAt?: string;
     minEdge: number;
     q1Exclusions?: string[];
+    defense?: DefenseRatingsBundle;
+    defendingTeamId?: string;
+    playerPosition?: string;
+    seasonMinutes?: number;
+    injuryAngle?: boolean;
+    matchupLog?: { name: string; market: string; line: number; deltaPp: number }[];
   }
 ): PickLeg[] {
   const legs: PickLeg[] = [];
@@ -79,7 +93,22 @@ export function buildLegsForPlayer(
     }
   }
 
-  const addLeg = (market: Market, line: number, modelP: number) => {
+  const addLeg = (market: Market, line: number, rawModelP: number) => {
+    let modelP = rawModelP;
+    const mRank =
+      ctx.defense && ctx.defendingTeamId
+        ? defenseRankFor(ctx.defense, ctx.defendingTeamId, ctx.playerPosition, market)
+        : undefined;
+    const delta = matchupDeltaFromRank(mRank);
+    if (delta !== 0) {
+      modelP = applyMatchupToModelP(modelP, delta);
+      ctx.matchupLog?.push({
+        name: ctx.playerName,
+        market,
+        line,
+        deltaPp: Math.round(delta * 1000) / 10,
+      });
+    }
     if (modelP < 0.05 || modelP > 0.95) return;
     if (market.startsWith("q1")) {
       const hr = q1HitRateLast10(
@@ -137,7 +166,7 @@ export function buildLegsForPlayer(
     const injury = ctx.reasons.filter((r) => /out:/i.test(r));
     const other = ctx.reasons.filter((r) => !/out:/i.test(r));
     const reasons = [...injury, ...other].slice(0, 5);
-    legs.push({
+    const leg: PickLeg = {
       id,
       gameId: ctx.gameId,
       team: ctx.team,
@@ -149,6 +178,8 @@ export function buildLegsForPlayer(
       line,
       probability: Math.round(finalP * 1000) / 1000,
       modelProbability: Math.round(modelP * 1000) / 1000,
+      preBlendModelProbability: Math.round(modelP * 1000) / 1000,
+      matchupDeltaPp: delta !== 0 ? Math.round(delta * 1000) / 10 : undefined,
       marketProbability:
         marketP != null ? Math.round(marketP * 1000) / 1000 : undefined,
       fairPrice: fair,
@@ -170,7 +201,22 @@ export function buildLegsForPlayer(
           }
         : {}),
       ...ctx.flags,
+    };
+    const signals = buildLegSignals({
+      leg,
+      logs: ctx.logs,
+      seasonMinutes: ctx.seasonMinutes ?? ctx.flags.projectedMinutes ?? 0,
+      defendingTeamId: ctx.defendingTeamId,
+      playerPosition: ctx.playerPosition,
+      defense: ctx.defense,
+      injuryAngle:
+        ctx.injuryAngle ??
+        ctx.reasons.some((r) => /\+\d|benefit|redistrib/i.test(r)),
     });
+    leg.signals = signals;
+    leg.confluence = confluenceFromSignals(signals);
+    leg.reasonLine = reasonLineFromSignals(signals);
+    legs.push(leg);
   };
 
   for (const market of ["pts", "reb", "ast", "3pm"] as const) {

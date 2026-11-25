@@ -175,13 +175,25 @@ function normalizeName(n: string): string {
   return n.toLowerCase().replace(/\s+/g, " ").trim();
 }
 
-export function parseGameLogsFromEspn(raw: unknown, headshotUrl: string): PlayerGameLog[] {
+export function parseGameLogsFromEspn(
+  raw: unknown,
+  headshotUrl: string,
+  playerTeamId?: string
+): PlayerGameLog[] {
   const data = raw as {
     labels?: string[];
     seasonTypes?: {
       categories?: { events?: { eventId: string; stats: string[] }[] }[];
     }[];
-    events?: Record<string, { gameDate?: string }>;
+    events?: Record<
+      string,
+      {
+        gameDate?: string;
+        homeTeamId?: string;
+        awayTeamId?: string;
+        opponents?: { id: string; homeAway?: string }[];
+      }
+    >;
   };
   const logs: PlayerGameLog[] = [];
   const regular = data.seasonTypes?.find((s) =>
@@ -196,6 +208,23 @@ export function parseGameLogsFromEspn(raw: unknown, headshotUrl: string): Player
     const ast = num(stats[8]);
     const pts = num(stats[13]);
     const meta = data.events?.[ev.eventId];
+    let homeId = meta?.homeTeamId;
+    let awayId = meta?.awayTeamId;
+    for (const op of meta?.opponents ?? []) {
+      if (op.homeAway === "home") homeId = homeId ?? op.id;
+      if (op.homeAway === "away") awayId = awayId ?? op.id;
+    }
+    let opponentTeamId: string | undefined;
+    let isHome: boolean | undefined;
+    if (playerTeamId && homeId && awayId) {
+      if (playerTeamId === homeId) {
+        opponentTeamId = awayId;
+        isHome = true;
+      } else if (playerTeamId === awayId) {
+        opponentTeamId = homeId;
+        isHome = false;
+      }
+    }
     logs.push({
       gameId: ev.eventId,
       minutes: mins,
@@ -204,6 +233,12 @@ export function parseGameLogsFromEspn(raw: unknown, headshotUrl: string): Player
       ast,
       threes,
       date: meta?.gameDate ?? "",
+      teamId: playerTeamId,
+      opponentTeamId,
+      isHome,
+      fga: num(stats[4]),
+      fta: num(stats[9]),
+      turnovers: num(stats[10]),
     });
   }
   logs.sort((a, b) => (b.date > a.date ? 1 : -1));

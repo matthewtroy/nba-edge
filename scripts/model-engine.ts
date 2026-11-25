@@ -22,10 +22,12 @@ import {
 } from "../lib/player-eligibility.js";
 import { buildWhatChanged } from "../lib/what-changed.js";
 import { qualifiesStarter } from "../lib/starter-eligibility.js";
+import type { DefenseRatingsBundle } from "../lib/defense-ratings.js";
 
 export interface ModelPlayer extends PlayerProfile {
   gameId: string;
   opponent: string;
+  opponentTeamId?: string;
 }
 
 export interface ModelRunInput {
@@ -41,6 +43,7 @@ export interface ModelRunInput {
   whatChanged?: string[];
   metaSources?: MetaJson["sources"];
   smallSlate?: boolean;
+  defense?: DefenseRatingsBundle;
 }
 
 export function runModel(input: ModelRunInput): {
@@ -65,6 +68,7 @@ export function runModel(input: ModelRunInput): {
 
   const picks: PickLeg[] = [];
   const allQ1Exclusions: string[] = [];
+  const matchupLog: { name: string; market: string; line: number; deltaPp: number }[] = [];
   const byTeam = new Map<string, ModelPlayer[]>();
   for (const p of input.players) {
     const arr = byTeam.get(p.teamId) ?? [];
@@ -164,6 +168,9 @@ export function runModel(input: ModelRunInput): {
       if (inj?.status === "Questionable") playerReasons.push("voids if out");
 
       const q1Exclusions: string[] = [];
+      const seasonMinutes =
+        p.gameLogs.reduce((s, g) => s + g.minutes, 0) / Math.max(1, p.gameLogs.length);
+      const injuryAngle = playerReasons.some((r) => /\+\d|benefit|redistrib/i.test(r));
       const newLegs = buildLegsForPlayer({
           gameId: p.gameId,
           team: p.teamName,
@@ -176,6 +183,12 @@ export function runModel(input: ModelRunInput): {
           reasons: playerReasons,
           tags: [],
           q1Exclusions,
+          defense: input.defense,
+          defendingTeamId: p.opponentTeamId,
+          playerPosition: p.position,
+          seasonMinutes,
+          injuryAngle,
+          matchupLog,
           flags: {
             questionable: inj?.status === "Questionable",
             boardsShared: boardsShared.has(p.id),
@@ -235,6 +248,26 @@ export function runModel(input: ModelRunInput): {
     `picks filter: ${picks.length} legs priced → ${eligiblePicks.length} eligible (excluded ${picks.length - eligiblePicks.length})`
   );
   logMarketBlendSample(eligiblePicks);
+  if (matchupLog.length) {
+    const top = [...matchupLog].sort((a, b) => Math.abs(b.deltaPp) - Math.abs(a.deltaPp)).slice(0, 5);
+    for (const row of top) {
+      console.log(
+        `matchup adjust sample: ${row.name} ${row.market} ${row.line}+ ${row.deltaPp > 0 ? "+" : ""}${row.deltaPp.toFixed(1)}pp`
+      );
+    }
+  }
+  const signalUnavailable = input.defense?.unavailable ?? [];
+  const topConfluenceLegs = [...eligiblePicks]
+    .filter((l) => (l.confluence ?? 0) > 0)
+    .sort((a, b) => (b.confluence ?? 0) - (a.confluence ?? 0))
+    .slice(0, 10)
+    .map((l) => ({
+      player: l.playerName,
+      market: l.market,
+      line: l.line,
+      confluence: l.confluence ?? 0,
+      reasonLine: l.reasonLine,
+    }));
   const multiResult = buildMultis(
     eligiblePicks,
     input.slate.length,
@@ -266,6 +299,8 @@ export function runModel(input: ModelRunInput): {
     smallSlate: input.smallSlate ?? input.slate.length <= 4,
     ...(injuryImpactLog.length ? { injuryImpactLog } : {}),
     ...(allQ1Exclusions.length ? { q1ExclusionLog: allQ1Exclusions.slice(0, 20) } : {}),
+    ...(signalUnavailable.length ? { signalUnavailable } : {}),
+    ...(topConfluenceLegs.length ? { topConfluenceLegs } : {}),
   };
 
   return {

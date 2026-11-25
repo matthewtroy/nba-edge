@@ -64,6 +64,8 @@ export async function safeFinalizePipelineSupabaseSync(
   }
 }
 import { filterPlayersForSlate, writeSlateBundle } from "./slate-bundle.js";
+import { buildDefenseRatings } from "../lib/defense-ratings.js";
+import { backfillRosterLogsOnce } from "../lib/season-log-backfill.js";
 import {
   cacheSlateOddsSnapshot,
   cachedMapFromFile,
@@ -300,7 +302,14 @@ export async function runLivePipeline(
           cacheHits += 1;
         } else {
           const logRaw = await fetchPlayerGameLog(task.athleteId);
-          logs = cacheLogsFromRaw(gameLogCache, task.athleteId, logRaw, headshot, now);
+          logs = cacheLogsFromRaw(
+            gameLogCache,
+            task.athleteId,
+            logRaw,
+            headshot,
+            now,
+            task.teamId
+          );
         }
         if (logs.length < 3) return;
 
@@ -324,8 +333,9 @@ export async function runLivePipeline(
         const game = gameForTeam(task.teamId);
         if (!game) return;
 
-        const opponent =
-          game.homeTeamId === task.teamId ? game.awayTeam : game.homeTeam;
+        const home = game.homeTeamId === task.teamId;
+        const opponent = home ? game.awayTeam : game.homeTeam;
+        const opponentTeamId = home ? game.awayTeamId : game.homeTeamId;
 
         rosterIds.add(task.athleteId);
         players.push({
@@ -339,17 +349,47 @@ export async function runLivePipeline(
           gameLogs: logs,
           gameId: game.id,
           opponent,
+          opponentTeamId,
         });
       } catch {
         /* skip player */
       }
     });
+    const backfillTasks = tasks.map((t) => ({
+      athleteId: t.athleteId,
+      teamId: t.teamId,
+    }));
+    const backfill = await backfillRosterLogsOnce(gameLogCache, backfillTasks, now, {
+      concurrency: 3,
+    });
     saveGameLogCache(outDir, gameLogCache);
     console.log(
-      `espn logs: ${players.length} players, ${cacheHits} game-log cache hits`
+      `espn logs: ${players.length} players, ${cacheHits} game-log cache hits` +
+        ` · backfill refreshed ${backfill.refreshed}`
     );
   } catch {
     sources.espn = sources.espn === "failed" ? "failed" : "stale";
+  }
+
+  let defenseBundle: import("../lib/defense-ratings.js").DefenseRatingsBundle = {
+    defense: [],
+    pace: [],
+    unavailable: ["defense: not computed"],
+  };
+  try {
+    const playerMeta = new Map(
+      players.map((p) => [p.id, { teamId: p.teamId, position: p.position }])
+    );
+    defenseBundle = buildDefenseRatings(gameLogCache, playerMeta);
+    fs.writeFileSync(
+      path.join(outDir, "defense-ratings.json"),
+      JSON.stringify(defenseBundle, null, 2)
+    );
+    console.log(
+      `defense ranks: ${defenseBundle.defense.length} rows, pace ${defenseBundle.pace.length}`
+    );
+  } catch (e) {
+    console.warn("defense ratings:", e instanceof Error ? e.message : e);
   }
 
   await refreshRecentFinalBoxScores(now, summaryCache);
@@ -579,6 +619,7 @@ export async function runLivePipeline(
       nbaOfficialLastTriedUrl,
       unpulledGameIds: tip ? unpulledBySlateDate.get(tip) : undefined,
       skipOfficialPublish,
+      defense: defenseBundle,
     });
     if (tip) {
       cacheSlateOddsSnapshot(

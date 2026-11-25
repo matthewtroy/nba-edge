@@ -66,6 +66,36 @@ export function LegSheet({ leg, picks = [], myBookie = "bet365", onClose, onSele
         <p className="text-sm mb-4">
           Fair {leg.fairPrice.toFixed(2)} · Take at {leg.takeAt.toFixed(2)}+
         </p>
+        {(leg.confluence ?? 0) > 0 && (
+          <p className="text-sm text-white/70 mb-2">
+            Confluence {leg.confluence}/4
+            {leg.reasonLine ? ` · ${leg.reasonLine}` : ""}
+          </p>
+        )}
+        {leg.signals && (
+          <ul className="text-sm space-y-1 mb-4 text-white/75">
+            {(["PRICE", "MATCHUP", "FORM", "ANGLE"] as const).map((key) => {
+              const s = leg.signals?.[key];
+              if (!s) return null;
+              return (
+                <li key={key}>
+                  {key}: {s.active ? "✓" : "—"}
+                  {s.label ? ` (${s.label})` : ""}
+                </li>
+              );
+            })}
+            {Object.entries(leg.signals.context ?? {}).map(([k, v]) => (
+              <li key={k} className="text-white/50">
+                {k}: {v}
+              </li>
+            ))}
+            {leg.signals.unavailable?.map((u) => (
+              <li key={u} className="text-white/40 text-xs">
+                Unavailable: {u}
+              </li>
+            ))}
+          </ul>
+        )}
         <LastFiveTicks ticks={ticks} />
         {leg.market.startsWith("q1") && leg.q1Last10HitRate != null && (
           <p className="text-sm text-white/70 mb-3">

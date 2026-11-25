@@ -49,9 +49,10 @@ export function cacheLogsFromRaw(
   athleteId: string,
   logRaw: unknown,
   headshot: string,
-  now: Date
+  now: Date,
+  playerTeamId?: string
 ): PlayerGameLog[] {
-  const logs = parseGameLogsFromEspn(logRaw, headshot);
+  const logs = parseGameLogsFromEspn(logRaw, headshot, playerTeamId);
   cache[athleteId] = { fetchedAt: now.toISOString(), headshot, logs };
   return logs;
 }

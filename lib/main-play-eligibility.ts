@@ -1,5 +1,6 @@
 import type { Market, PickLeg } from "./types.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
+import { mainPlayConfluenceOk } from "./signals.js";
 
 function isCoreMarket(market: string): boolean {
   return market === "pts" || market === "reb" || market === "ast";
@@ -62,7 +63,8 @@ export function qualifiesMainPlayLeg(leg: PickLeg): boolean {
     leg.fairPrice >= 1.4 &&
     leg.fairPrice <= 2.5 &&
     !leg.ageB2B &&
-    !hasCheckNews(leg)
+    !hasCheckNews(leg) &&
+    mainPlayConfluenceOk(leg)
   );
 }
 

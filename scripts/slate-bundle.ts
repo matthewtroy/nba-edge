@@ -3,6 +3,7 @@ import path from "path";
 import type { InjuryEntry, MetaJson, MultiBet, MultiNotBuilt, SlateGame } from "../lib/types.js";
 import type { ModelPlayer } from "./model-engine.js";
 import { runModel } from "./model-engine.js";
+import type { DefenseRatingsBundle } from "../lib/defense-ratings.js";
 import { computeSlateStatus } from "../lib/slate-publication.js";
 import type { DataIndexDateEntry } from "../lib/data-index.js";
 import { slateDataDir } from "../lib/data-index.js";
@@ -37,6 +38,7 @@ export interface SlateBundleInput {
   nbaOfficialLastTriedUrl?: string;
   unpulledGameIds?: Set<string>;
   skipOfficialPublish?: boolean;
+  defense?: DefenseRatingsBundle;
 }
 
 export function filterPlayersForSlate(
@@ -73,6 +75,7 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     allOddsMap: input.allOddsMap,
     oddsPulledAt: input.oddsPulledAt,
     metaSources: { ...input.sources },
+    defense: input.defense,
   });
 
   let { picks, multis, multisPayload, meta, whatChanged } = modelRun;

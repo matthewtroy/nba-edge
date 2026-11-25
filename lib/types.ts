@@ -41,6 +41,19 @@ export interface InjuryEntry {
   updatedAt: string;
 }
 
+export type SignalKey = "PRICE" | "MATCHUP" | "FORM" | "ANGLE";
+
+export interface LegSignalDetail {
+  active: boolean;
+  /** Short numeric label for UI, e.g. "L10 70%" */
+  label?: string;
+}
+
+export type LegSignals = Partial<Record<SignalKey, LegSignalDetail>> & {
+  context?: Record<string, string>;
+  unavailable?: string[];
+};
+
 export interface PickLeg {
   id: string;
   gameId: string;
@@ -74,6 +87,14 @@ export interface PickLeg {
   ageB2B?: boolean;
   projectedMinutes?: number;
   starterEligible?: boolean;
+  /** Step 4b: PRICE+MATCHUP+FORM+ANGLE count (0–4). */
+  confluence?: number;
+  signals?: LegSignals;
+  /** Grey one-liner under name (~70 chars, numbers only). */
+  reasonLine?: string;
+  /** Model p after matchup tweak, before market blend */
+  preBlendModelProbability?: number;
+  matchupDeltaPp?: number;
 }
 
 export type MultiType =
@@ -135,6 +156,8 @@ export interface MetaJson {
   gateViolations?: string[];
   injuryImpactLog?: string[];
   q1ExclusionLog?: string[];
+  signalUnavailable?: string[];
+  topConfluenceLegs?: { player: string; market: string; line: number; confluence: number; reasonLine?: string }[];
   slateTipDate?: string;
   slatePublicationStatus?: "draft" | "official" | "locked_at_tip";
   slateStatusLabel?: string;
@@ -189,6 +212,12 @@ export interface PlayerGameLog {
   q1Reb?: number;
   q1Ast?: number;
   date: string;
+  teamId?: string;
+  opponentTeamId?: string;
+  isHome?: boolean;
+  fga?: number;
+  fta?: number;
+  turnovers?: number;
 }
 
 export interface PlayerProfile {
