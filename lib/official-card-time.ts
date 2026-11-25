@@ -8,6 +8,7 @@ export interface OfficialCardMeta {
   slateDate: string;
   bookie: string;
   publishedAt?: string;
+  republishedAt?: string;
 }
 
 export interface OfficialCardFile {
@@ -20,6 +21,7 @@ export interface OfficialCardFile {
   injuries: import("./types.js").InjuryEntry[];
   oddsLastPulled?: string;
   publishedAt?: string;
+  republishedAt?: string;
 }
 
 const EVENING_HOURS = new Set([21, 22, 23, 0, 1]);

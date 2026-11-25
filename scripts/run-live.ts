@@ -77,6 +77,7 @@ import {
   writeOfficialCard,
 } from "../lib/official-card.js";
 import { sydneyDateString } from "../lib/official-card-time.js";
+import { slateFirstTipStarted } from "../lib/slate-started.js";
 import { resolveOddsLastPulled } from "../lib/odds-pull-meta.js";
 import {
   cacheLogsFromRaw,
@@ -100,11 +101,13 @@ export async function runLivePipeline(
     forceOdds?: boolean;
     fromLive?: boolean;
     skipOfficialPublish?: boolean;
+    republishCard?: boolean;
   } = {}
 ): Promise<void> {
   const forceOdds = opts.forceOdds === true;
   const fromLive = opts.fromLive === true;
   const skipOfficialPublish = opts.skipOfficialPublish === true;
+  const republishCard = opts.republishCard === true;
   loadAliasMap(rootDir);
   const now = new Date();
   const sources: Record<string, string> = {
@@ -634,11 +637,13 @@ export async function runLivePipeline(
     if (!tip) continue;
     const tipPayloads =
       tip === slateTipDateFromGames(nextSlateGames) ? oddsPayloads : [];
+    const officialCard = loadOfficialCard(path.join(outDir, tip));
     syncBundles.push({
       slateDate: tip,
       slate: oneSlate,
       injuries,
       players,
+      officialCard: officialCard ?? undefined,
       ranking: rankingBySlateDate.get(tip) ?? [],
       pullTrigger: tip === nextSlateTip ? lastPullTrigger : undefined,
       creditsUsed: tip === nextSlateTip ? lastCreditsUsed : undefined,
@@ -653,6 +658,72 @@ export async function runLivePipeline(
       cache,
     });
   }
+  if (republishCard) {
+    const nextSlate = filterSlateToNextSydney(unionSlate);
+    const nextTip = slateTipDateFromGames(nextSlate);
+    if (!nextSlate.length || !nextTip) {
+      console.log("republish card: refused — no next slate on board");
+    } else if (slateFirstTipStarted(nextSlate, now)) {
+      console.log("republish card: refused — next slate tip already started");
+    } else {
+      const slateDir = path.join(outDir, nextTip);
+      const picksPath = path.join(slateDir, "picks.json");
+      const multisPath = path.join(slateDir, "multis.json");
+      const metaPath = path.join(slateDir, "meta.json");
+      const injPath = path.join(slateDir, "injuries.json");
+      if (
+        fs.existsSync(picksPath) &&
+        fs.existsSync(multisPath) &&
+        fs.existsSync(metaPath)
+      ) {
+        const meta = JSON.parse(fs.readFileSync(metaPath, "utf8"));
+        const multisRaw = JSON.parse(fs.readFileSync(multisPath, "utf8")) as {
+          bets: import("../lib/types.js").MultiBet[];
+          notBuilt: import("../lib/types.js").MultiNotBuilt[];
+        };
+        const injuriesSnap = fs.existsSync(injPath)
+          ? (JSON.parse(fs.readFileSync(injPath, "utf8")) as InjuryEntry[])
+          : injuries;
+        const existing = loadOfficialCard(slateDir);
+        const republishedAt = now.toISOString();
+        const official = writeOfficialCard(slateDir, {
+          now,
+          slate: nextSlate,
+          multis: multisRaw.bets,
+          notBuilt: multisRaw.notBuilt,
+          injuries: injuriesSnap,
+          meta,
+          bookie: OFFICIAL_CARD_BOOKIE,
+          republishedAt,
+          preservePublishedAt: existing?.publishedAt,
+        });
+        meta.officialCard = {
+          lockedAt: official.lockedAt,
+          publishedAt: official.publishedAt ?? official.lockedAt,
+          republishedAt: official.republishedAt,
+          slateDate: nextTip,
+          bookie: official.bookie,
+        };
+        fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2));
+        console.log(`republish card: official-card.json (${nextTip}, republishedAt ${republishedAt})`);
+        const bundle = syncBundles.find((b) => b.slateDate === nextTip);
+        if (bundle) bundle.officialCard = official;
+        else {
+          syncBundles.push({
+            slateDate: nextTip,
+            slate: nextSlate,
+            injuries,
+            players,
+            ranking: rankingBySlateDate.get(nextTip) ?? [],
+            officialCard: official,
+          });
+        }
+      } else {
+        console.log(`republish card: refused — missing JSON under ${nextTip}`);
+      }
+    }
+  }
+
   await finalizePipelineSupabaseSync(rootDir, syncBundles);
 
   console.log(

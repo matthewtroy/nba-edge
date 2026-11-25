@@ -23,6 +23,7 @@ function q1Leg(
     reasons: [],
     tags: [],
     starterEligible: true,
+    projectedMinutes: 30,
     questionable: false,
     ageB2B: false,
     bookiePrices: { Sportsbet: fair },
@@ -47,6 +48,6 @@ describe("Q1 multi backtracking", () => {
     const q1 = bets.filter((b) => b.type === "q1Multi");
     expect(q1.length).toBeGreaterThanOrEqual(1);
     expect(q1[0].legs.length).toBeGreaterThanOrEqual(3);
-    expect(q1.some((b) => b.variant === "Safe")).toBe(true);
+    expect(q1.some((b) => !b.variant || b.label === "Q1 Multi")).toBe(true);
   });
 });

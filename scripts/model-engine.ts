@@ -11,6 +11,7 @@ import { applyInjuryRedistribution } from "../lib/injury-redistribution.js";
 import { applyContextAdjustments } from "../lib/context.js";
 import { buildLegsForPlayer } from "../lib/pricing.js";
 import { buildMultis, type MultiBuildResult } from "../lib/multis.js";
+import { logMarketBlendSample } from "../lib/market-blend.js";
 import { loadAliasMap, normalizePlayerName } from "../lib/player-names.js";
 import { legOddsLookupKey } from "../lib/odds.js";
 import type { PlayerGameLog } from "../lib/types.js";
@@ -63,6 +64,7 @@ export function runModel(input: ModelRunInput): {
   }
 
   const picks: PickLeg[] = [];
+  const allQ1Exclusions: string[] = [];
   const byTeam = new Map<string, ModelPlayer[]>();
   for (const p of input.players) {
     const arr = byTeam.get(p.teamId) ?? [];
@@ -161,8 +163,8 @@ export function runModel(input: ModelRunInput): {
       const playerReasons = [...(reasons.get(p.id) ?? [])];
       if (inj?.status === "Questionable") playerReasons.push("voids if out");
 
-      picks.push(
-        ...buildLegsForPlayer({
+      const q1Exclusions: string[] = [];
+      const newLegs = buildLegsForPlayer({
           gameId: p.gameId,
           team: p.teamName,
           opponent: p.opponent,
@@ -173,6 +175,7 @@ export function runModel(input: ModelRunInput): {
           logs: p.gameLogs,
           reasons: playerReasons,
           tags: [],
+          q1Exclusions,
           flags: {
             questionable: inj?.status === "Questionable",
             boardsShared: boardsShared.has(p.id),
@@ -186,8 +189,9 @@ export function runModel(input: ModelRunInput): {
           allOdds: input.allOddsMap,
           oddsPulledAt: input.oddsPulledAt,
           minEdge,
-        })
-      );
+        });
+      picks.push(...newLegs);
+      allQ1Exclusions.push(...q1Exclusions);
     }
   }
 
@@ -230,7 +234,14 @@ export function runModel(input: ModelRunInput): {
   console.log(
     `picks filter: ${picks.length} legs priced → ${eligiblePicks.length} eligible (excluded ${picks.length - eligiblePicks.length})`
   );
-  const multiResult = buildMultis(eligiblePicks, input.slate.length, 300, edgeFraction);
+  logMarketBlendSample(eligiblePicks);
+  const multiResult = buildMultis(
+    eligiblePicks,
+    input.slate.length,
+    300,
+    edgeFraction,
+    allQ1Exclusions
+  );
   const injuryImpactLog: string[] = [];
   const whatChanged =
     input.whatChanged && input.whatChanged.length
@@ -254,6 +265,7 @@ export function runModel(input: ModelRunInput): {
     slateSize: input.slate.length,
     smallSlate: input.smallSlate ?? input.slate.length <= 4,
     ...(injuryImpactLog.length ? { injuryImpactLog } : {}),
+    ...(allQ1Exclusions.length ? { q1ExclusionLog: allQ1Exclusions.slice(0, 20) } : {}),
   };
 
   return {

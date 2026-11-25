@@ -31,12 +31,16 @@ export function writeOfficialCard(
     injuries: InjuryEntry[];
     meta: MetaJson;
     bookie?: string;
+    republishedAt?: string;
+    preservePublishedAt?: string;
   }
 ): OfficialCardFile {
-  const publishedAt = input.now.toISOString();
+  const nowIso = input.now.toISOString();
+  const publishedAt = input.preservePublishedAt ?? nowIso;
   const file: OfficialCardFile = {
-    lockedAt: publishedAt,
+    lockedAt: input.republishedAt ? nowIso : publishedAt,
     publishedAt,
+    ...(input.republishedAt ? { republishedAt: input.republishedAt } : {}),
     slateDate: slateTipDateFromGames(input.slate) ?? sydneyDateString(input.now),
     bookie: input.bookie ?? OFFICIAL_CARD_BOOKIE,
     multis: input.multis,

@@ -17,7 +17,9 @@ import {
   impliedFromDecimalPrice,
   type PricedRung,
 } from "./market-blend.js";
-import { lastFiveVsLine } from "./leg-history.js";
+import { lastFiveVsLine, q1HitRateLast10 } from "./leg-history.js";
+
+export const Q1_HIT_RATE_GAP_PP = 0.2;
 
 export const RUNGS: Record<string, number[]> = {
   pts: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
@@ -56,6 +58,7 @@ export function buildLegsForPlayer(
     allOdds?: Map<string, Record<string, number>>;
     oddsPulledAt?: string;
     minEdge: number;
+    q1Exclusions?: string[];
   }
 ): PickLeg[] {
   const legs: PickLeg[] = [];
@@ -78,6 +81,19 @@ export function buildLegsForPlayer(
 
   const addLeg = (market: Market, line: number, modelP: number) => {
     if (modelP < 0.05 || modelP > 0.95) return;
+    if (market.startsWith("q1")) {
+      const hr = q1HitRateLast10(
+        ctx.logs,
+        market as "q1pts" | "q1reb" | "q1ast",
+        line
+      );
+      if (hr != null && modelP - hr > Q1_HIT_RATE_GAP_PP) {
+        ctx.q1Exclusions?.push(
+          `${ctx.playerName} ${market} ${line}+: last-10 Q1 ${(hr * 100).toFixed(0)}% vs model ${(modelP * 100).toFixed(0)}%`
+        );
+        return;
+      }
+    }
     const oddKey = legOddsLookupKey(ctx.playerName, market, line);
     const displayKey = `${ctx.playerName}|${market}|${line}`;
     const book =
@@ -144,6 +160,15 @@ export function buildLegsForPlayer(
       tags,
       reasons,
       recentVsLine: lastFiveVsLine(ctx.logs, market, line),
+      ...(market.startsWith("q1")
+        ? {
+            q1Last10HitRate: q1HitRateLast10(
+              ctx.logs,
+              market as "q1pts" | "q1reb" | "q1ast",
+              line
+            ) ?? undefined,
+          }
+        : {}),
       ...ctx.flags,
     });
   };

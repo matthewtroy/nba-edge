@@ -67,6 +67,11 @@ export function LegSheet({ leg, picks = [], myBookie = "bet365", onClose, onSele
           Fair {leg.fairPrice.toFixed(2)} · Take at {leg.takeAt.toFixed(2)}+
         </p>
         <LastFiveTicks ticks={ticks} />
+        {leg.market.startsWith("q1") && leg.q1Last10HitRate != null && (
+          <p className="text-sm text-white/70 mb-3">
+            Last 10 Q1 hit rate @ line: {(leg.q1Last10HitRate * 100).toFixed(0)}%
+          </p>
+        )}
         <ul className="text-sm space-y-1 my-4 text-white/80">
           {visibleLegReasons(leg.reasons).map((r) => (
             <li key={r}>• {r}</li>

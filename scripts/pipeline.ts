@@ -12,6 +12,9 @@ const outDir = path.join(rootDir, "public/data");
 const fixtureMode = process.argv.includes("--fixture");
 const forceOdds =
   process.argv.includes("--force-odds") || process.env.PIPELINE_FORCE_ODDS === "1";
+const republishCard =
+  process.argv.includes("--republish-card") ||
+  process.env.PIPELINE_REPUBLISH_CARD === "1";
 const fromLive = process.argv.includes("--from-live");
 
 function runFixturePipeline(): void {
@@ -78,7 +81,8 @@ async function main() {
   await runLivePipeline(rootDir, outDir, {
     forceOdds: forceOdds || useFromLive,
     fromLive: useFromLive,
-    skipOfficialPublish: forceOdds && !useFromLive,
+    republishCard,
+    skipOfficialPublish: (forceOdds && !useFromLive) || republishCard,
   });
 }
 

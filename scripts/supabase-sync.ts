@@ -4,6 +4,7 @@ import type { GameInjuryRank } from "../lib/game-injury-ranking.js";
 import { loadSupabaseConfig } from "./lib/supabase-env.js";
 import { normalizePlayerName } from "../lib/player-names.js";
 import type { OddsCacheFile } from "./odds-schedule.js";
+import type { OfficialCardFile } from "../lib/official-card-time.js";
 
 export type SupabaseUpsertClient = {
   upsert(table: string, rows: Record<string, unknown>[], onConflict: string): Promise<void>;
@@ -110,6 +111,7 @@ export interface SlateSyncBundle {
   pulledAt?: string;
   slateStatus?: "draft" | "official" | "locked";
   cache?: OddsCacheFile;
+  officialCard?: OfficialCardFile;
 }
 
 function flattenPayloadPrices(
@@ -410,6 +412,29 @@ export async function syncRunToSupabase(
         await client.upsert("odds_prices", withPull, "pull_id,player_id,market,line,bookie");
         counts.oddsPrices = withPull.length;
       }
+    });
+  }
+
+  if (bundle.officialCard) {
+    const card = bundle.officialCard;
+    await tryTable("cards", async () => {
+      await client.upsert(
+        "cards",
+        [
+          {
+            slate_date: bundle.slateDate,
+            is_official: true,
+            is_settled: false,
+            locked_at: card.lockedAt,
+            published_at: card.republishedAt ?? card.publishedAt ?? card.lockedAt,
+            bookie: card.bookie,
+            what_changed: card.whatChanged ?? [],
+            odds_last_pulled: card.oddsLastPulled ?? null,
+            not_built: card.notBuilt ?? [],
+          },
+        ],
+        "slate_date"
+      );
     });
   }
 

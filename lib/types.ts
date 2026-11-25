@@ -65,6 +65,8 @@ export interface PickLeg {
   tags: string[];
   reasons: string[];
   recentVsLine?: ("hit" | "miss" | "na")[];
+  /** Last 10 games Q1 hit rate at this line (starters with ESPN Q1 splits). */
+  q1Last10HitRate?: number;
   questionable?: boolean;
   boardsShared?: boolean;
   b2b?: boolean;
@@ -132,6 +134,7 @@ export interface MetaJson {
   oddsAttachWarnings?: string[];
   gateViolations?: string[];
   injuryImpactLog?: string[];
+  q1ExclusionLog?: string[];
   slateTipDate?: string;
   slatePublicationStatus?: "draft" | "official" | "locked_at_tip";
   slateStatusLabel?: string;

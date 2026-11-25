@@ -159,7 +159,8 @@ export function buildMultis(
   picks: PickLeg[],
   slateSize: number,
   targetProfit = 300,
-  minEdgeFraction = DEFAULT_MIN_EDGE
+  minEdgeFraction = DEFAULT_MIN_EDGE,
+  q1ExclusionNotes: string[] = []
 ): MultiBuildResult {
   multiMinEdge = minEdgeFraction;
   resetMultiBuildTraces();
@@ -180,7 +181,7 @@ export function buildMultis(
     notBuilt.push({ type: "booster", label: LABELS.booster, reason: "Needs a Main Play first" });
   }
 
-  const q1Attempt = buildQ1Multi(byP);
+  const q1Attempt = buildQ1Multi(byP, q1ExclusionNotes);
   multis.push(...q1Attempt.bets);
 
   const cross = buildCrossGameSgm(byP, minEdgeFraction);
@@ -255,7 +256,7 @@ export function buildMultis(
       pushDrop(booster, "Booster: Main Play not built or removed");
     }
   }
-  const ensureQ1Variant = (variant: "Safe" | "Value", reason: string) => {
+  const ensureQ1Variant = (variant: "Core" | "Longshot", reason: string) => {
     if (!reason) return;
     if (finalBets.some((m) => m.type === "q1Multi" && m.variant === variant)) return;
     if (notBuilt.some((n) => n.type === "q1Multi" && n.variant === variant)) return;
@@ -266,8 +267,8 @@ export function buildMultis(
       reason,
     });
   };
-  ensureQ1Variant("Safe", q1Attempt.safeNotBuiltReason);
-  ensureQ1Variant("Value", q1Attempt.valueNotBuiltReason);
+  ensureQ1Variant("Core", q1Attempt.coreNotBuiltReason);
+  ensureQ1Variant("Longshot", q1Attempt.longshotNotBuiltReason);
 
   logMultiBuildSummary({ picks, pool, built: finalBets, notBuilt });
 
@@ -658,15 +659,24 @@ function q1MultiFromLegs(
   };
 }
 
-function buildQ1Multi(picks: PickLeg[]): {
+function q1ExclusionSuffix(notes: string[]): string {
+  if (!notes.length) return "";
+  return ` · ${notes.length} Q1 leg(s) dropped (last-10 hit rate ≥20pp below model)`;
+}
+
+function buildQ1Multi(
+  picks: PickLeg[],
+  q1ExclusionNotes: string[] = []
+): {
   bets: MultiBet[];
-  safeNotBuiltReason: string;
-  valueNotBuiltReason: string;
+  coreNotBuiltReason: string;
+  longshotNotBuiltReason: string;
 } {
   const q1 = picks.filter(
     (l) =>
       l.market.startsWith("q1") &&
       l.starterEligible &&
+      (l.projectedMinutes ?? 0) >= 24 &&
       l.fairPrice >= 1.8 &&
       l.fairPrice <= 4
   );
@@ -679,31 +689,32 @@ function buildQ1Multi(picks: PickLeg[]): {
   }
   for (const arr of byTeam.values()) arr.sort(sortLegs);
   const teamKeys = [...byTeam.keys()].sort();
-  const thinPool = `Only ${teamKeys.length} teams with Q1 fair 1.80–4.00 (need 3–6)`;
+  const thinPool = `Only ${teamKeys.length} teams with Q1 fair 1.80–4.00 (24+ min starters, need 3–6)`;
+  const exSuffix = q1ExclusionSuffix(q1ExclusionNotes);
   if (teamKeys.length < 3) {
     return {
       bets: [],
-      safeNotBuiltReason: thinPool,
-      valueNotBuiltReason: thinPool,
+      coreNotBuiltReason: thinPool + exSuffix,
+      longshotNotBuiltReason: thinPool + exSuffix,
     };
   }
 
   const bets: MultiBet[] = [];
-  let safeNotBuiltReason =
-    "No Safe Q1 subset (p≥0.70, 3–6 teams, one leg/team)";
-  let valueNotBuiltReason =
-    "No Value Q1 subset (fair 2.20–4.00, 3–6 teams, one leg/team)";
+  let coreNotBuiltReason =
+    `No Q1 Multi subset (p≥0.70, 3–6 teams, one leg/team)${exSuffix}`;
+  let longshotNotBuiltReason =
+    `No Q1 Multi (Longshot) subset (fair 2.20–4.00, 3–6 teams)${exSuffix}`;
 
-  const safe = findQ1Subset(teamKeys, byTeam, 0, 0, {
+  const core = findQ1Subset(teamKeys, byTeam, 0, 0, {
     minProbability: 0.7,
     safeOnly: true,
   });
-  if (safe) {
-    bets.push(q1MultiFromLegs(safe, "Safe", "Safe Q1: p≥0.70, one leg/team"));
-    safeNotBuiltReason = "";
+  if (core) {
+    bets.push(q1MultiFromLegs(core, undefined, "Q1 Multi: p≥0.70, one leg/team, 24+ min"));
+    coreNotBuiltReason = "";
     pushMultiBuildTrace({
       type: "q1Multi",
-      variant: "Safe",
+      variant: "Core",
       eligible: q1.length,
       bestEdgePool: teamKeys.length,
       clashCandidates: 0,
@@ -712,15 +723,22 @@ function buildQ1Multi(picks: PickLeg[]): {
       detail: "fair/take-at only (no bookie gate)",
     });
   }
-  const value = findQ1Subset(teamKeys, byTeam, 2.2, 4);
-  if (value && (!safe || value.map((l) => l.id).join() !== safe.map((l) => l.id).join())) {
+  const longshot = findQ1Subset(teamKeys, byTeam, 2.2, 4);
+  if (
+    longshot &&
+    (!core || longshot.map((l) => l.id).join() !== core.map((l) => l.id).join())
+  ) {
     bets.push(
-      q1MultiFromLegs(value, "Value", "Value Q1: fair 2.20–4.00, one leg/team")
+      q1MultiFromLegs(
+        longshot,
+        "Longshot",
+        "Q1 Multi (Longshot): fair 2.20–4.00, one leg/team"
+      )
     );
-    valueNotBuiltReason = "";
+    longshotNotBuiltReason = "";
     pushMultiBuildTrace({
       type: "q1Multi",
-      variant: "Value",
+      variant: "Longshot",
       eligible: q1.length,
       bestEdgePool: teamKeys.length,
       clashCandidates: 0,
@@ -728,8 +746,12 @@ function buildQ1Multi(picks: PickLeg[]): {
       built: true,
       detail: "fair/take-at only (no bookie gate)",
     });
-  } else if (value && safe && value.map((l) => l.id).join() === safe.map((l) => l.id).join()) {
-    valueNotBuiltReason = "Value Q1 same legs as Safe (skipped duplicate)";
+  } else if (
+    longshot &&
+    core &&
+    longshot.map((l) => l.id).join() === core.map((l) => l.id).join()
+  ) {
+    longshotNotBuiltReason = `Q1 Multi (Longshot) same legs as Q1 Multi (skipped duplicate)${exSuffix}`;
   }
 
   if (!bets.length) {
@@ -744,7 +766,7 @@ function buildQ1Multi(picks: PickLeg[]): {
     });
   }
 
-  return { bets, safeNotBuiltReason, valueNotBuiltReason };
+  return { bets, coreNotBuiltReason, longshotNotBuiltReason };
 }
 
 function buildCrossGameSgm(

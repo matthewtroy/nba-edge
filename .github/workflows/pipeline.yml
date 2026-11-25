@@ -17,6 +17,10 @@ on:
         description: Budget odds for next slate top games; no official publish
         type: boolean
         default: false
+      republish_card:
+        description: Rebuild official-card.json for next slate (pre-tip); no odds unless force_odds
+        type: boolean
+        default: false
 
 concurrency:
   group: nba-edge-pipeline
@@ -41,15 +45,27 @@ jobs:
       - name: Detect run mode
         id: mode
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force_odds }}" = "true" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.republish_card }}" = "true" ]; then
+            echo "republish_card=1" >> "$GITHUB_OUTPUT"
+            if [ "${{ inputs.force_odds }}" = "true" ]; then
+              echo "force_odds=1" >> "$GITHUB_OUTPUT"
+              echo "skip_odds=0" >> "$GITHUB_OUTPUT"
+            else
+              echo "force_odds=0" >> "$GITHUB_OUTPUT"
+              echo "skip_odds=1" >> "$GITHUB_OUTPUT"
+            fi
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force_odds }}" = "true" ]; then
             echo "force_odds=1" >> "$GITHUB_OUTPUT"
             echo "skip_odds=0" >> "$GITHUB_OUTPUT"
+            echo "republish_card=0" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event_name }}" = "schedule" ] && { [ "${{ github.event.schedule }}" = "0 10 * * *" ] || [ "${{ github.event.schedule }}" = "0 11 * * *" ]; }; then
             echo "force_odds=0" >> "$GITHUB_OUTPUT"
             echo "skip_odds=0" >> "$GITHUB_OUTPUT"
+            echo "republish_card=0" >> "$GITHUB_OUTPUT"
           else
             echo "force_odds=0" >> "$GITHUB_OUTPUT"
             echo "skip_odds=1" >> "$GITHUB_OUTPUT"
+            echo "republish_card=0" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Fetch data branch
@@ -68,8 +84,9 @@ jobs:
           NBA_EDGE_SUPABASE_SECRET_KEY: ${{ secrets.NBA_EDGE_SUPABASE_SECRET_KEY }}
           PIPELINE_FORCE_ODDS: ${{ steps.mode.outputs.force_odds }}
           SKIP_ODDS_PULL: ${{ steps.mode.outputs.skip_odds }}
+          PIPELINE_REPUBLISH_CARD: ${{ steps.mode.outputs.republish_card }}
         run: |
-          echo "Workflow pipeline (dual-slate) force_odds=${{ steps.mode.outputs.force_odds }} skip_odds=${{ steps.mode.outputs.skip_odds }}"
+          echo "Workflow pipeline (dual-slate) force_odds=${{ steps.mode.outputs.force_odds }} skip_odds=${{ steps.mode.outputs.skip_odds }} republish_card=${{ steps.mode.outputs.republish_card }}"
           npm run pipeline
 
       - run: npm run build
