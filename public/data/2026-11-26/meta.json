@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-11-25T22:10:56.674Z",
+  "lastUpdated": "2026-11-25T22:30:33.363Z",
   "oddsLastPulled": "2026-11-25T10:29:00.533Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
-    "odds": "stale"
+    "odds": "ok"
   },
   "slateSize": 9,
   "smallSlate": false,
@@ -13,7 +13,7 @@
   ],
   "modelSanityChecked": 176,
   "modelSanityFailures": 11,
-  "formGuardExcludedCount": 559,
+  "formGuardExcludedCount": 560,
   "gameOddsPriceAge": {
     "401909317": "Prices from 9:29 pm",
     "401909318": "Prices from 9:29 pm",
@@ -28,10 +28,10 @@
   "slateTipDate": "2026-11-26",
   "whatChanged": [
     "Chet Holmgren out → Shai Gilgeous-Alexander +7.2 pts",
-    "OG Anunoby out → Jalen Brunson +4.7 pts",
-    "Cameron Boozer out → Ty Jerome +2.9 pts"
+    "OG Anunoby out → Jalen Brunson +5.1 pts",
+    "Cameron Boozer out → Ty Jerome +2.7 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_05_00PM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_05_15PM.pdf",
   "pricedLegCounts": {
     "pts": {
       "total": 385,

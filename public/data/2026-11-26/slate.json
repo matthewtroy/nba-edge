@@ -7,11 +7,9 @@
     "awayTeam": "Miami Heat",
     "homeTeamId": "20",
     "awayTeamId": "14",
-    "spread": 1.5,
-    "total": 237.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_SCHEDULED"
+    "status": "STATUS_IN_PROGRESS"
   },
   {
     "id": "401909318",
@@ -22,7 +20,7 @@
     "homeTeamId": "30",
     "awayTeamId": "4",
     "spread": -3.5,
-    "total": 219.5,
+    "total": 218.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"
@@ -35,7 +33,7 @@
     "awayTeam": "Cleveland Cavaliers",
     "homeTeamId": "18",
     "awayTeamId": "5",
-    "spread": -3.5,
+    "spread": -4.5,
     "total": 219.5,
     "homeB2B": false,
     "awayB2B": false,
@@ -49,7 +47,7 @@
     "awayTeam": "Minnesota Timberwolves",
     "homeTeamId": "25",
     "awayTeamId": "16",
-    "spread": -1.5,
+    "spread": -2.5,
     "total": 222.5,
     "homeB2B": false,
     "awayB2B": false,
