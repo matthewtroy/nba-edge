@@ -15,6 +15,38 @@ describe("official bet profit", () => {
 });
 
 describe("results slice", () => {
+  it("excludes pending bets from W-L and units", () => {
+    const bets: OfficialBetRow[] = [
+      {
+        slateDate: "2026-01-01",
+        betType: "mainPlay",
+        label: "Main",
+        legIds: ["a"],
+        result: "pending",
+        profitUnits: null,
+        stakeUnits: 0,
+      },
+      {
+        slateDate: "2026-01-01",
+        betType: "booster",
+        label: "Boost",
+        legIds: ["b"],
+        result: "won",
+        profitUnits: 3,
+        stakeUnits: 1,
+      },
+    ];
+    const slice = buildResultsSlice({
+      officialLegs: [] as SettledLegRow[],
+      officialBets: bets,
+      valueLegRows: [] as ValueLegRow[],
+      gradedLegs: [],
+    });
+    expect(slice.official.record.bets).toBe(1);
+    expect(slice.official.record.won).toBe(1);
+    expect(slice.official.record.profit).toBe(3);
+  });
+
   it("aggregates bet record without leg-count ROI", () => {
     const bets: OfficialBetRow[] = [
       {

@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import type { InjuryEntry, PickLeg, SlateGame } from "../lib/types.js";
 import type { DefenseRatingsBundle } from "../lib/defense-ratings.js";
 import type { ModelPlayer } from "./model-engine.js";
@@ -10,6 +12,7 @@ import type { OfficialCardFile } from "../lib/official-card-time.js";
 export type SupabaseUpsertClient = {
   upsert(table: string, rows: Record<string, unknown>[], onConflict: string): Promise<void>;
   fromSelect<T>(table: string, query: Record<string, string>): Promise<T | null>;
+  fromSelectMany?<T>(table: string, query: Record<string, string>): Promise<T[]>;
   insert(table: string, row: Record<string, unknown>): Promise<{ id?: string }>;
 };
 
@@ -67,6 +70,15 @@ export async function createSupabaseClient(
         const { data, error } = await q.maybeSingle();
         if (error) throw new Error(error.message);
         return data as never;
+      },
+      async fromSelectMany(table, query) {
+        let q = client.from(table).select("*");
+        for (const [k, v] of Object.entries(query)) {
+          q = q.eq(k, v);
+        }
+        const { data, error } = await q;
+        if (error) throw new Error(error.message);
+        return (data ?? []) as never;
       },
       async insert(table, row) {
         const { data, error } = await client.from(table).insert(row).select("id").single();
@@ -831,6 +843,58 @@ export interface SettleSyncCounts {
   cardsSettled: number;
 }
 
+export function loadOfficialCardForSettle(
+  rootDir: string,
+  slateDate: string
+): OfficialCardFile | null {
+  const cardPath = path.join(rootDir, "public/data", slateDate, "official-card.json");
+  if (!fs.existsSync(cardPath)) return null;
+  return JSON.parse(fs.readFileSync(cardPath, "utf8")) as OfficialCardFile;
+}
+
+export function buildCardLegUpsertRows(
+  card: OfficialCardFile,
+  legById: Map<string, { result: string; actualValue: number | null }>,
+  betIdByTypeVariant: Map<string, { id: string }>,
+  settledAt: string
+): Record<string, unknown>[] {
+  const snaps = card.legSnapshots ?? {};
+  const rows: Record<string, unknown>[] = [];
+  for (const multi of card.multis) {
+    const variant = multi.variant ?? "";
+    const betKey = `${multi.type}:${variant}`;
+    const betRow = betIdByTypeVariant.get(betKey);
+    if (!betRow?.id) continue;
+    multi.legs.forEach((legId, legOrder) => {
+      const snap = snaps[legId];
+      if (!snap) return;
+      const graded = legById.get(legId);
+      const result = graded?.result ?? "pending";
+      const legTerminal = result !== "pending";
+      rows.push({
+        card_bet_id: betRow.id,
+        leg_order: legOrder,
+        player_id: snap.playerId,
+        player_name: snap.playerName,
+        team_id: snap.team,
+        game_id: snap.gameId,
+        market: snap.market,
+        line: snap.line,
+        bookie: snap.publishedBookie,
+        price: snap.publishedPrice ?? null,
+        fair_price: snap.fairPrice,
+        take_at: snap.takeAt,
+        probability: snap.probability,
+        injury_reason: null,
+        result,
+        settled_at: legTerminal ? settledAt : null,
+        projection_id: legId,
+      });
+    });
+  }
+  return rows;
+}
+
 export function logSettleSyncCounts(counts: SettleSyncCounts, failed: string[] = []): void {
   const failLabel = failed.length ? failed.join(", ") : "none";
   console.log(
@@ -885,6 +949,28 @@ export async function syncSettleToSupabase(
         counts.projections += rows.length;
       }
 
+      const cardFile = loadOfficialCardForSettle(rootDir, slate.slateDate);
+      if (cardFile) {
+        await client.upsert(
+          "cards",
+          [
+            {
+              slate_date: slate.slateDate,
+              is_official: true,
+              is_settled: false,
+              locked_at: cardFile.lockedAt,
+              published_at:
+                cardFile.republishedAt ?? cardFile.publishedAt ?? cardFile.lockedAt,
+              bookie: cardFile.bookie,
+              what_changed: cardFile.whatChanged ?? [],
+              odds_last_pulled: cardFile.oddsLastPulled ?? null,
+              not_built: cardFile.notBuilt ?? [],
+            },
+          ],
+          "slate_date"
+        );
+      }
+
       const cardRow = await client.fromSelect<{ id: string }>("cards", {
         slate_date: slate.slateDate,
       });
@@ -901,10 +987,32 @@ export async function syncSettleToSupabase(
             b.profitUnits != null && b.stakeUnits
               ? b.stakeUnits + b.profitUnits
               : null,
-          settled_at: settledAt,
+          settled_at: b.result !== "pending" ? settledAt : null,
         }));
         await client.upsert("card_bets", betRows, "card_id,bet_type,variant");
         counts.cardBets += betRows.length;
+
+        if (cardFile && client.fromSelectMany) {
+          const betRowsDb = await client.fromSelectMany<{
+            id: string;
+            bet_type: string;
+            variant: string;
+          }>("card_bets", { card_id: cardRow.id });
+          const betIdByTypeVariant = new Map(
+            betRowsDb.map((b) => [`${b.bet_type}:${b.variant ?? ""}`, b])
+          );
+          const legById = new Map(slate.officialLegs.map((l) => [l.id, l]));
+          const legRows = buildCardLegUpsertRows(
+            cardFile,
+            legById,
+            betIdByTypeVariant,
+            settledAt
+          );
+          if (legRows.length) {
+            await client.upsert("card_legs", legRows, "card_bet_id,leg_order");
+            counts.cardLegs += legRows.length;
+          }
+        }
 
         const allDone = slate.officialBets.every((b) => b.result !== "pending");
         if (allDone) {

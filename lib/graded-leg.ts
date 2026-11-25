@@ -34,8 +34,27 @@ export function gradePickLeg(
   box: BoxLine | undefined
 ): GradedProjectionLeg | null {
   if (!hasPublishedPrice(leg)) return null;
-  const graded = gradeLegFromBox(leg, box ?? { minutes: 0, pts: 0, reb: 0, ast: 0, threes: 0 });
-  const actual = box ? boxStatForMarket(leg.market, box) : null;
+  if (!box) {
+    return {
+      id: leg.id,
+      slateDate,
+      playerId: leg.playerId,
+      playerName: leg.playerName,
+      gameId: leg.gameId,
+      market: leg.market,
+      line: leg.line,
+      result: "pending",
+      actualValue: null,
+      probability: leg.probability,
+      probabilityMatchupShadow: leg.probabilityMatchupShadow,
+      fairPrice: leg.fairPrice,
+      bestPrice: leg.bestPrice,
+      bestBookie: leg.bestBookie,
+      tags: leg.tags ?? [],
+    };
+  }
+  const graded = gradeLegFromBox(leg, box);
+  const actual = boxStatForMarket(leg.market, box);
   let result: CardLegResult;
   if (graded === "void") result = "void";
   else if (graded === "hit") result = "won";

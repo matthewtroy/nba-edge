@@ -17,6 +17,7 @@ import { formatYyyymmddInZone, parseBoxscore } from "./espn-parse.js";
 import { gradePickCatalog } from "../lib/graded-leg.js";
 import { settleOfficialBets } from "../lib/official-bet-settle.js";
 import { valueLegRowsFromGraded } from "../lib/value-leg-track.js";
+import { slateResultsFrozen } from "../lib/settle-slate-freeze.js";
 import { syncSettleToSupabase } from "./supabase-sync.js";
 
 const ET = "America/New_York";
@@ -35,12 +36,21 @@ const rootDir = path.resolve(__dirname, "..");
 const outDir = path.join(rootDir, "public/data");
 const fixtureMode = process.argv.includes("--fixture");
 
-async function loadFinalBoxes(now: Date): Promise<Map<string, Map<string, BoxLine>>> {
+async function loadFinalBoxes(
+  now: Date,
+  extraSlateDates: string[] = []
+): Promise<Map<string, Map<string, BoxLine>>> {
   const cache = new Map<string, unknown>();
   const boxesByGame = new Map<string, Map<string, BoxLine>>();
+  const etDays = new Set<string>();
   for (let i = 0; i <= 5; i++) {
     const d = new Date(now.getTime() - i * 86400000);
-    const et = formatYyyymmddInZone(d, ET);
+    etDays.add(formatYyyymmddInZone(d, ET));
+  }
+  for (const slate of extraSlateDates) {
+    etDays.add(slate.replace(/-/g, ""));
+  }
+  for (const et of etDays) {
     try {
       const board = await fetchScoreboard(dateFromYyyymmdd(et));
       const data = board as { events?: { id: string; status?: { type?: { name?: string } } }[] };
@@ -105,11 +115,26 @@ function sliceUnchanged(a: ResultsSlice | null, b: ResultsSlice): boolean {
   );
 }
 
+function loadPrevSlateSlice(slateDate: string): ResultsSlice | null {
+  const slatePath = path.join(outDir, slateDate, "results.json");
+  if (!fs.existsSync(slatePath)) return null;
+  return JSON.parse(fs.readFileSync(slatePath, "utf8")) as ResultsSlice;
+}
+
 async function main() {
   restorePersistedDataFromBranch(rootDir);
   const now = new Date();
-  const boxes = fixtureMode ? loadFixtureBoxes() : await loadFinalBoxes(now);
   const slateDates = listSlateDates();
+
+  const regradeDates: string[] = [];
+  for (const slateDate of slateDates) {
+    const prev = loadPrevSlateSlice(slateDate);
+    if (!prev || !slateResultsFrozen(prev)) regradeDates.push(slateDate);
+  }
+
+  const boxes = fixtureMode
+    ? loadFixtureBoxes()
+    : await loadFinalBoxes(now, regradeDates);
 
   const allOfficialLegs: ReturnType<typeof settleOfficialCard>["legs"] = [];
   const allOfficialBets: ReturnType<typeof settleOfficialBets> = [];
@@ -117,6 +142,16 @@ async function main() {
   const allValue: ReturnType<typeof valueLegRowsFromGraded> = [];
 
   for (const slateDate of slateDates) {
+    const prevSlate = loadPrevSlateSlice(slateDate);
+    if (prevSlate && slateResultsFrozen(prevSlate)) {
+      allGraded.push(...prevSlate.gradedLegs);
+      allOfficialLegs.push(...prevSlate.official.legs);
+      allOfficialBets.push(...prevSlate.official.bets);
+      const picks = loadPicks(slateDate);
+      allValue.push(...valueLegRowsFromGraded(picks, prevSlate.gradedLegs));
+      continue;
+    }
+
     const picks = loadPicks(slateDate);
     const graded = gradePickCatalog(picks, slateDate, boxes);
     allGraded.push(...graded);
@@ -145,10 +180,6 @@ async function main() {
 
     const slateDir = path.join(outDir, slateDate);
     const slatePath = path.join(slateDir, "results.json");
-    let prevSlate: ResultsSlice | null = null;
-    if (fs.existsSync(slatePath)) {
-      prevSlate = JSON.parse(fs.readFileSync(slatePath, "utf8")) as ResultsSlice;
-    }
     if (!sliceUnchanged(prevSlate, slateSlice)) {
       fs.mkdirSync(slateDir, { recursive: true });
       fs.writeFileSync(slatePath, JSON.stringify(slateSlice, null, 2));

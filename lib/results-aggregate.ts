@@ -13,6 +13,7 @@ function emptyStat(): StatRow {
 }
 
 function addBetToStat(row: StatRow & { bets?: number }, bet: OfficialBetRow): void {
+  if (bet.result === "pending") return;
   row.bets = (row.bets ?? 0) + 1;
   if (bet.result === "won") row.won += 1;
   else if (bet.result === "lost") row.lost += 1;
@@ -49,6 +50,7 @@ function aggregateValueStats(legs: ValueLegRow[]): ResultsSlice["valueLegs"] {
   let priceSum = 0;
 
   for (const leg of legs) {
+    if (leg.result === "pending") continue;
     record.legs += 1;
     if (leg.result === "won") {
       record.won += 1;
@@ -106,7 +108,7 @@ function aggregateValueStats(legs: ValueLegRow[]): ResultsSlice["valueLegs"] {
 }
 
 function modelBlock(graded: GradedProjectionLeg[]): ResultsSlice["model"] {
-  const resolved = graded.filter((l) => l.result !== "void");
+  const resolved = graded.filter((l) => l.result !== "void" && l.result !== "pending");
   const historyLegs: HistoryLeg[] = resolved.map((l) => ({
     id: l.id,
     date: l.slateDate,

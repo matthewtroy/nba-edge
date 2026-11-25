@@ -67,7 +67,7 @@ export function valueLegRowsFromGraded(
   const rows: ValueLegRow[] = [];
   for (const leg of valuePicks) {
     const g = byId.get(leg.id);
-    if (!g || g.result === "void") continue;
+    if (!g || g.result === "void" || g.result === "pending") continue;
     const best = bestAuPriceExBet365(leg);
     if (!best) continue;
     rows.push({

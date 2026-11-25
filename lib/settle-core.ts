@@ -3,8 +3,8 @@ import { gradeLegFromBox } from "./grading.js";
 import type { BoxLine } from "../scripts/espn-parse.js";
 import type { OfficialCardFile, OfficialLegSnapshot } from "./official-card-time.js";
 
-export type CardLegResult = "won" | "lost" | "void";
-export type CardBetResult = "won" | "lost" | "void";
+export type CardLegResult = "won" | "lost" | "void" | "pending";
+export type CardBetResult = "won" | "lost" | "void" | "pending";
 
 export function boxStatForMarket(
   market: Market | string,
@@ -35,7 +35,7 @@ export function gradeOfficialLeg(
   snap: OfficialLegSnapshot,
   box: BoxLine | undefined
 ): { result: CardLegResult; actualValue: number | null } {
-  if (!box) return { result: "void", actualValue: null };
+  if (!box) return { result: "pending", actualValue: null };
   const pick: PickLeg = {
     id: snap.id,
     gameId: snap.gameId,
@@ -64,6 +64,7 @@ export function settleMultiLegs(results: CardLegResult[]): CardBetResult {
   const active = results.filter((r) => r !== "void");
   if (!active.length) return "void";
   if (active.some((r) => r === "lost")) return "lost";
+  if (active.some((r) => r === "pending")) return "pending";
   return active.every((r) => r === "won") ? "won" : "lost";
 }
 
@@ -117,7 +118,7 @@ export function settleOfficialCard(
   }
 
   const bets = card.multis.map((m) => {
-    const results = m.legs.map((id) => legResults.get(id)?.result ?? "void");
+    const results = m.legs.map((id) => legResults.get(id)?.result ?? "pending");
     return { type: m.type, legIds: m.legs, result: settleMultiLegs(results) };
   });
 

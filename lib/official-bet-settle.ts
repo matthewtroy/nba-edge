@@ -53,8 +53,8 @@ function combinedPublishedPrice(
   for (const id of multi.legs) {
     const snap = snaps[id];
     if (!snap) continue;
-    const res = legResults.get(id) ?? "void";
-    if (res === "void") continue;
+    const res = legResults.get(id) ?? "pending";
+    if (res === "void" || res === "pending") continue;
     const price = publishedLegPrice(snap);
     if (price == null || price <= 1) return undefined;
     product *= price;
@@ -68,6 +68,7 @@ export function profitUnitsForBet(
   stake: number,
   combinedPrice: number | undefined
 ): number | null {
+  if (result === "pending") return null;
   if (result === "void") return 0;
   if (result === "lost") return -stake;
   if (result === "won") {
@@ -89,10 +90,11 @@ export function settleOfficialBets(
   const rows: OfficialBetRow[] = [];
 
   for (const multi of card.multis) {
-    const legRes = multi.legs.map((id) => legResults.get(id) ?? "void");
+    const legRes = multi.legs.map((id) => legResults.get(id) ?? "pending");
     const result = settleMultiLegs(legRes);
     const combined = combinedPublishedPrice(multi, card, legResults);
-    const trackUnits = multi.type === "q1Multi" && combined == null ? false : true;
+    const trackUnits =
+      result !== "pending" && !(multi.type === "q1Multi" && combined == null);
     const profit = trackUnits ? profitUnitsForBet(result, stake, combined) : null;
 
     rows.push({
