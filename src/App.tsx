@@ -49,7 +49,7 @@ export default function App() {
     setTimeout(() => setToast(null), 1500);
   };
 
-  if (data.loading) {
+  if (!index || data.loading) {
     return (
       <PhoneShell className="flex items-center justify-center text-white/60 px-4">
         Loading…
