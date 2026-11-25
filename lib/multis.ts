@@ -52,6 +52,10 @@ import {
 import {
   MAIN_PLAY_COMBINED_MIN,
   MAIN_PLAY_COMBINED_MAX,
+  MAIN_PLAY_SWEET_MIN,
+  MAIN_PLAY_SWEET_MAX,
+  compareMainPlayCandidates,
+  mainPlayInSweetSpot,
   DOUBLE_UP_MIN,
   DOUBLE_UP_MAX,
   DOUBLE_UP_EXTRA_LEG_PP,
@@ -597,11 +601,17 @@ function buildMainPlay(
     const p = combinedProb(found.legs);
     const fair = 1 / p;
     const surplus = edgeSurplus(total, fair);
-    const better =
-      !best ||
-      surplus > best.surplus + 1e-12 ||
-      (Math.abs(surplus - best.surplus) < 1e-12 && p > best.p);
-    if (!better) continue;
+    const candidate = { total, surplus, p };
+    if (
+      best &&
+      compareMainPlayCandidates(candidate, {
+        total: best.total,
+        surplus: best.surplus,
+        p: best.p,
+      }) >= 0
+    ) {
+      continue;
+    }
     best = { legs: found.legs, bookie, p, total, surplus };
   }
 
@@ -634,7 +644,9 @@ function buildMainPlay(
     clashCandidates: maxClash,
     rangeCandidates: maxRange,
     built: true,
-    detail: `${best.legs.length} legs @ ${best.bookie} $${best.total.toFixed(2)}`,
+      detail: `${best.legs.length} legs @ ${best.bookie} $${best.total.toFixed(2)} · path ${
+        mainPlayInSweetSpot(best.total) ? "sweetSpot" : "fullBand"
+      } $${MAIN_PLAY_SWEET_MIN}–$${MAIN_PLAY_SWEET_MAX}`,
   });
 
   return {
@@ -756,11 +768,7 @@ function findMainPlaySubset(
     };
   }
 
-  passing.sort((a, b) => {
-    if (Math.abs(b.surplus - a.surplus) > 1e-12) return b.surplus - a.surplus;
-    if (Math.abs(b.p - a.p) > 1e-12) return b.p - a.p;
-    return b.total - a.total;
-  });
+  passing.sort(compareMainPlayCandidates);
 
   return {
     legs: passing[0].legs,

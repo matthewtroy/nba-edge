@@ -2,14 +2,31 @@ import { describe, expect, it } from "vitest";
 import {
   MAIN_PLAY_COMBINED_MIN,
   MAIN_PLAY_COMBINED_MAX,
+  MAIN_PLAY_SWEET_MIN,
+  MAIN_PLAY_SWEET_MAX,
   MAIN_PLAY_HIGH_PROB_P,
   MAIN_PLAY_L10_GAP_PP,
+  compareMainPlayCandidates,
+  mainPlayInSweetSpot,
 } from "../lib/pricing-config";
 
 describe("MAIN_PLAY pricing-config", () => {
   it("sliding combined total $5–$20", () => {
     expect(MAIN_PLAY_COMBINED_MIN).toBe(5);
     expect(MAIN_PLAY_COMBINED_MAX).toBe(20);
+  });
+
+  it("sweet spot band $6–$12", () => {
+    expect(MAIN_PLAY_SWEET_MIN).toBe(6);
+    expect(MAIN_PLAY_SWEET_MAX).toBe(12);
+    expect(mainPlayInSweetSpot(11.59)).toBe(true);
+    expect(mainPlayInSweetSpot(14.2)).toBe(false);
+  });
+
+  it("prefers sweet spot over higher surplus outside band", () => {
+    const sweet = { total: 10, surplus: 1.0, p: 0.35 };
+    const wide = { total: 18, surplus: 1.5, p: 0.4 };
+    expect(compareMainPlayCandidates(sweet, wide)).toBeLessThan(0);
   });
 
   it("re-exports thresholds from main-play-eligibility", async () => {

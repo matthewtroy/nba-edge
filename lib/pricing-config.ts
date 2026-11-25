@@ -4,6 +4,27 @@
 export const MAIN_PLAY_COMBINED_MIN = 5;
 export const MAIN_PLAY_COMBINED_MAX = 20;
 
+/** Prefer combined totals in this band before $5–$20 pool (surplus only within band). */
+export const MAIN_PLAY_SWEET_MIN = 6;
+export const MAIN_PLAY_SWEET_MAX = 12;
+
+export function mainPlayInSweetSpot(total: number): boolean {
+  return total >= MAIN_PLAY_SWEET_MIN && total <= MAIN_PLAY_SWEET_MAX;
+}
+
+/** Rank Main Play candidates: sweet band first (no surplus across in/out); then surplus → p → total. */
+export function compareMainPlayCandidates(
+  a: { total: number; surplus: number; p: number },
+  b: { total: number; surplus: number; p: number }
+): number {
+  const aSweet = mainPlayInSweetSpot(a.total);
+  const bSweet = mainPlayInSweetSpot(b.total);
+  if (aSweet !== bSweet) return aSweet ? -1 : 1;
+  if (Math.abs(b.surplus - a.surplus) > 1e-12) return b.surplus - a.surplus;
+  if (Math.abs(b.p - a.p) > 1e-12) return b.p - a.p;
+  return b.total - a.total;
+}
+
 /**
  * Required bookie edge vs combined fair along Main Play / Best SGM curve.
  * At $5 → 10%; at $20 → 75%; linear beyond for Best SGM.

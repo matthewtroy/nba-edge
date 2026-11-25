@@ -54,11 +54,12 @@ One AU bookie per built multi. Home card order (`TodayScreen` `ORDER`):
 
 - 3–5 legs (builder); starter main lines; per-leg bookie **1.40–2.50**; p ≥ 0.60; no Check news; no age-B2B; ≤1× 3pm leg.
 - Combined bookie total **$5–$20** (`MAIN_PLAY_COMBINED_MIN` / `MAX`).
+- **Sweet spot** **$6–$12** (`MAIN_PLAY_SWEET_MIN` / `MAX`): prefer in-band candidates before the rest of $5–$20. **Surplus compares only inside the same band** (in sweet vs in sweet, or outside vs outside) — never surplus across sweet vs non-sweet. Build trace logs `path sweetSpot` or `path fullBand`.
 - **Edge curve** (`lib/pricing-config.ts`):
   - `MAIN_PLAY_EDGE_AT_MIN = 0.10`, `MAIN_PLAY_EDGE_AT_MAX = 0.75`
   - `requiredEdge(total) = 0.10 + (total − 5) × (0.65 ÷ 15)`
   - Require `(bookieTotal / combinedFair) − 1 ≥ requiredEdge(total)`
-  - Select highest **surplus** = `actualEdge / requiredEdge`; tie-break higher combined probability
+  - Within a band: highest **surplus** = `actualEdge / requiredEdge`; tie-break higher combined probability
   - Fail → `notBuilt` shortfall e.g. `$14.20, needs 50% edge, has 38%`
 
 ### Best Double Up (`doubleUp`) — **new type, not a rename**
