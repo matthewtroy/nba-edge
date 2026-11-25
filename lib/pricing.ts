@@ -26,6 +26,7 @@ import {
 } from "./leg-history.js";
 import { applyMatchupToModelP, matchupDeltaFromRank } from "./matchup-adjust.js";
 import { buildShortLegReason } from "./leg-display.js";
+import { isInjuryRedistributionReason } from "./injury-reason.js";
 import type { DefenseRatingsBundle } from "./defense-ratings.js";
 import { defenseRankFor } from "./defense-ratings.js";
 
@@ -198,8 +199,8 @@ export function buildLegsForPlayer(
       bookiePrices = { [book.bookie]: book.price };
     }
 
-    const injury = ctx.reasons.filter((r) => /out:/i.test(r));
-    const other = ctx.reasons.filter((r) => !/out:/i.test(r));
+    const injury = ctx.reasons.filter((r) => isInjuryRedistributionReason(r));
+    const other = ctx.reasons.filter((r) => !isInjuryRedistributionReason(r));
     const reasons = [...injury, ...other].slice(0, 5);
     const leg: PickLeg = {
       id,

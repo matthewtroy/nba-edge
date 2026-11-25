@@ -23,6 +23,7 @@ import { combinedPriceForBookie, legPriceAtBookie } from "./single-bookie.js";
 import { multiBookieTotals } from "./bookie-totals.js";
 import { multiClashSummary } from "./clash.js";
 import { gateAllMultis } from "./multi-gate.js";
+import { isInjuryRedistributionReason } from "./injury-reason.js";
 import { logMultiBuildSummary } from "./multi-filter-log.js";
 import {
   combinedFairAndTakeAt,
@@ -110,7 +111,15 @@ function legEdge(leg: PickLeg): number {
 }
 
 function injuryBoostScore(leg: PickLeg): number {
-  return leg.reasons.some((r) => / out/i.test(r)) ? 1 : 0;
+  return leg.reasons.some((r) => isInjuryRedistributionReason(r)) ? 1 : 0;
+}
+
+function last10HitsAtLine(leg: PickLeg): number {
+  return (leg.recentTenVsLine ?? []).filter((t) => t === "hit").length;
+}
+
+function last5HitsAtLine(leg: PickLeg): number {
+  return (leg.recentVsLine ?? []).filter((t) => t === "hit").length;
 }
 
 function hasCheckNews(leg: PickLeg): boolean {
@@ -126,12 +135,16 @@ function threesCount(legs: PickLeg[]): number {
 }
 
 export function sortLegsForSelection(a: PickLeg, b: PickLeg): number {
-  const conf = (b.confluence ?? 0) - (a.confluence ?? 0);
-  if (conf !== 0) return conf;
   const inj = injuryBoostScore(b) - injuryBoostScore(a);
   if (inj !== 0) return inj;
+  const l10 = last10HitsAtLine(b) - last10HitsAtLine(a);
+  if (l10 !== 0) return l10;
   if (b.probability !== a.probability) return b.probability - a.probability;
-  return legEdge(b) - legEdge(a);
+  const edge = legEdge(b) - legEdge(a);
+  if (edge !== 0) return edge;
+  const coldA = injuryBoostScore(a) === 0 && last5HitsAtLine(a) <= 2 ? 1 : 0;
+  const coldB = injuryBoostScore(b) === 0 && last5HitsAtLine(b) <= 2 ? 1 : 0;
+  return coldA - coldB;
 }
 
 function sortLegs(a: PickLeg, b: PickLeg): number {
@@ -479,6 +492,17 @@ function findMainPlaySubset(
     return { legs: null, rangeCandidates: 0, clashCandidates: clashSkipped };
   }
   candidates.sort((a, b) => {
+    const score = (legs: PickLeg[]) =>
+      legs.reduce((s, leg) => {
+        let v = injuryBoostScore(leg) * 1000;
+        v += last10HitsAtLine(leg) * 10;
+        v += leg.probability;
+        if (injuryBoostScore(leg) === 0 && last5HitsAtLine(leg) <= 2) v -= 0.5;
+        return s + v;
+      }, 0);
+    const sa = score(a);
+    const sb = score(b);
+    if (sb !== sa) return sb - sa;
     const pa = combinedProb(a);
     const pb = combinedProb(b);
     if (Math.abs(pb - pa) > 1e-9) return pb - pa;
