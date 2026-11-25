@@ -13,7 +13,9 @@ const defaults: AppSettings = {
 };
 
 function sanitizeBookie(raw: string | undefined): string {
-  if (raw && raw !== "bet365" && FEED_BOOKIES.includes(raw)) return raw;
+  if (raw === "Betfair") return "Sportsbet";
+  if (raw && raw !== "bet365" && FEED_BOOKIES.includes(raw as (typeof FEED_BOOKIES)[number]))
+    return raw;
   return defaults.myBookie;
 }
 

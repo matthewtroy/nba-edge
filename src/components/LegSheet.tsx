@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import type { PickLeg } from "@lib/types";
+import type { PickLeg, SlateGame } from "@lib/types";
+import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { visibleLegReasons } from "@lib/leg-display";
 import { siblingRungs } from "@lib/leg-rungs";
 import { marketLabel, verdict } from "../utils/format";
@@ -9,12 +10,14 @@ import { RungStepper } from "./RungStepper";
 interface Props {
   leg: PickLeg | null;
   picks?: PickLeg[];
+  slate?: SlateGame[];
   myBookie?: string;
   onClose: () => void;
   onSelectLeg?: (leg: PickLeg) => void;
 }
 
-export function LegSheet({ leg, picks = [], myBookie = "bet365", onClose, onSelectLeg }: Props) {
+export function LegSheet({ leg, picks = [], slate, myBookie = "bet365", onClose, onSelectLeg }: Props) {
+  const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
   const [bookPrice, setBookPrice] = useState("");
 
   useEffect(() => {
@@ -52,7 +55,8 @@ export function LegSheet({ leg, picks = [], myBookie = "bet365", onClose, onSele
       >
         <div className="w-12 h-1 bg-white/20 rounded mx-auto mb-3" />
         <h2 className="text-lg font-semibold mb-1 break-words">{leg.playerName}</h2>
-        <p className="text-sm text-white/70 mb-3">{marketLabel(leg.market, leg.line)}</p>
+        <p className="text-sm text-white/70 mb-1">{marketLabel(leg.market, leg.line)}</p>
+        {subtitle && <p className="text-xs text-white/45 mb-3">{subtitle}</p>}
         {onSelectLeg && (
           <RungStepper rungs={rungs} activeId={leg.id} onSelect={onSelectLeg} />
         )}

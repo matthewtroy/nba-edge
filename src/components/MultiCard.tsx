@@ -4,6 +4,9 @@ import { MultiLegRow } from "./MultiLegRow";
 import { renderMultiCardCopyText } from "@lib/multi-card-text";
 import { useMultiBookieSelect } from "../hooks/useMultiBookieSelect";
 import { multiCardTitle, type MultiCardTitleOptions } from "@lib/multi-combined";
+import { bestFeedMultiQuote } from "@lib/card-bookie";
+import { legPriceAtBookie } from "@lib/single-bookie";
+import { useMultiLegEdits } from "../hooks/useMultiLegEdits";
 
 interface Props {
   multi: MultiBet;
@@ -58,8 +61,13 @@ export function MultiCard({
   onRemove,
   onLegTap,
   onCopy,
+  slate,
 }: Props) {
-  const legs = multi.legs.map((id) => picksById.get(id)).filter(Boolean) as PickLeg[];
+  const allPicks = Array.from(picksById.values());
+  const { resolveLeg, swapLeg, resetLeg, isEdited } = useMultiLegEdits(multi, allPicks);
+  const legs = multi.legs
+    .map((id) => resolveLeg(id))
+    .filter(Boolean) as PickLeg[];
 
   const titleOpts: MultiCardTitleOptions = {
     fairOnly: fairOnly || multi.type === "q1Multi",
@@ -72,7 +80,7 @@ export function MultiCard({
   );
   const showFairOnly = titleFairOnly || hideBookieSelect;
 
-  const { bookie, select } = useMultiBookieSelect(
+  const { bookie, select, total } = useMultiBookieSelect(
     multi,
     legs,
     preferredBookie,
@@ -82,6 +90,11 @@ export function MultiCard({
   const displayBook = isFeedBookie(rawBook) ? rawBook : bookie ?? multi.bestBookie;
 
   const legBookie = showFairOnly ? "" : displayBook ?? cardBookie;
+  const missingAtBookie =
+    legBookie && !showFairOnly
+      ? legs.filter((l) => legPriceAtBookie(l, legBookie) == null).length
+      : 0;
+  const bestFeed = !lockedBookie && !showFairOnly ? bestFeedMultiQuote(legs) : undefined;
   const colonFair = headline.indexOf(": Fair $");
   const colonPrice = headline.indexOf(": $");
   const titleText =
@@ -132,19 +145,41 @@ export function MultiCard({
         )}
       </header>
       <div className="px-2 divide-y divide-white/5">
-        {legs.map((leg) => (
-          <MultiLegRow
-            key={leg.id}
-            leg={leg}
-            injuries={injuries}
-            picks={Array.from(picksById.values())}
-            bookie={legBookie}
-            fairPriceInSlot={showFairOnly}
-            onTap={onLegTap}
-          />
-        ))}
+        {multi.legs.map((anchorId) => {
+          const leg = resolveLeg(anchorId);
+          if (!leg) return null;
+          return (
+            <MultiLegRow
+              key={anchorId}
+              leg={leg}
+              injuries={injuries}
+              picks={allPicks}
+              slate={slate}
+              bookie={legBookie}
+              fairPriceInSlot={showFairOnly}
+              edited={isEdited(anchorId)}
+              onSwap={() => swapLeg(anchorId)}
+              onReset={() => resetLeg(anchorId)}
+              onTap={onLegTap}
+            />
+          );
+        })}
       </div>
       <div className="p-3 bg-surface/40">
+        {missingAtBookie > 0 && legBookie && (
+          <p className="text-xs text-accent-warn mb-2">
+            {missingAtBookie} leg(s) have no {legBookie} price — total may be incomplete
+          </p>
+        )}
+        {bestFeed && bookie && bestFeed.bookie !== bookie && bestFeed.total > (total ?? 0) && (
+          <button
+            type="button"
+            className="text-xs text-white/60 mb-2 underline"
+            onClick={() => select(bestFeed.bookie)}
+          >
+            Best odds: {bestFeed.bookie} @ ${bestFeed.total.toFixed(2)}
+          </button>
+        )}
         <div className="flex gap-2 items-center">
           {showFairOnly ? (
             <p className="flex-1 text-sm text-white/55 py-2">

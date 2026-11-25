@@ -1,14 +1,17 @@
-import type { PickLeg } from "@lib/types";
+import type { PickLeg, SlateGame } from "@lib/types";
+import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { displayTagsForBookie } from "@lib/value-at-bookie";
 import { marketLabel } from "../utils/format";
 
 interface Props {
   leg: PickLeg;
+  slate?: SlateGame[];
   myBookie?: string;
   onTap: (leg: PickLeg) => void;
 }
 
-export function LegRow({ leg, myBookie = "bet365", onTap }: Props) {
+export function LegRow({ leg, slate, myBookie = "bet365", onTap }: Props) {
+  const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
   const myFromApi =
     myBookie && leg.bookiePrices?.[myBookie] != null
       ? leg.bookiePrices[myBookie]
@@ -34,6 +37,7 @@ export function LegRow({ leg, myBookie = "bet365", onTap }: Props) {
         <div className="font-medium break-words leading-snug">
           {leg.playerName} {marketLabel(leg.market, leg.line)}
         </div>
+        {subtitle && <p className="text-xs text-white/45 truncate">{subtitle}</p>}
         {leg.reasonLine && (
           <p className="text-xs text-white/45 mt-0.5 truncate">{leg.reasonLine}</p>
         )}

@@ -1,4 +1,5 @@
 import type { InjuryEntry, PickLeg, SlateGame } from "../lib/types.js";
+import type { DefenseRatingsBundle } from "../lib/defense-ratings.js";
 import type { ModelPlayer } from "./model-engine.js";
 import type { GameInjuryRank } from "../lib/game-injury-ranking.js";
 import { loadSupabaseConfig } from "./lib/supabase-env.js";
@@ -27,6 +28,8 @@ export interface SyncCounts {
   oddsPulls: number;
   oddsPrices: number;
   oddsBudget: number;
+  defenseRows: number;
+  paceRows: number;
 }
 
 export async function createSupabaseClient(
@@ -117,6 +120,7 @@ export interface SlateSyncBundle {
   slateStatus?: "draft" | "official" | "locked";
   cache?: OddsCacheFile;
   officialCard?: OfficialCardFile;
+  defense?: DefenseRatingsBundle;
 }
 
 function flattenPayloadPrices(
@@ -208,18 +212,22 @@ export type OddsPriceRow = {
 
 /** Keep best (highest decimal) price per idempotent upsert key. */
 /** Keep one injury row per player/source/report minute (ESPN updatedAt, not sync run time). */
-export function dedupeInjuryReportsByTime(injuries: InjuryEntry[]): InjuryEntry[] {
+export function dedupeInjuryReportsByTime(injuries: InjuryEntry[]): {
+  rows: InjuryEntry[];
+  dropped: number;
+} {
   const best = new Map<string, InjuryEntry>();
   for (const inj of injuries) {
     const reported = inj.updatedAt ?? "";
-    const minute = reported.slice(0, 16);
-    const key = `${inj.playerId}|${injurySource(inj.source)}|${minute}`;
+    const day = reported.slice(0, 10);
+    const key = `${inj.playerId}|${injurySource(inj.source)}|${inj.status}|${day}`;
     const prev = best.get(key);
     if (!prev || new Date(reported) >= new Date(prev.updatedAt)) {
       best.set(key, inj);
     }
   }
-  return [...best.values()];
+  const rows = [...best.values()];
+  return { rows, dropped: Math.max(0, injuries.length - rows.length) };
 }
 
 export function dedupeOddsPriceRows(rows: OddsPriceRow[]): OddsPriceRow[] {
@@ -248,10 +256,18 @@ export async function syncRunToSupabase(
     oddsPulls: 0,
     oddsPrices: 0,
     oddsBudget: 0,
+    defenseRows: 0,
+    paceRows: 0,
   };
   const failed: string[] = [];
 
-  const injuriesDeduped = dedupeInjuryReportsByTime(bundle.injuries);
+  const injuryDedupe = dedupeInjuryReportsByTime(bundle.injuries);
+  const injuriesDeduped = injuryDedupe.rows;
+  if (injuryDedupe.dropped > 0) {
+    console.log(
+      `supabase sync: injury dedupe dropped ${injuryDedupe.dropped} row(s) (${bundle.injuries.length} → ${injuriesDeduped.length})`
+    );
+  }
 
   let injuriesSkippedInvalidId = 0;
   for (const inj of injuriesDeduped) {
@@ -490,6 +506,35 @@ export async function syncRunToSupabase(
     });
   }
 
+  if (bundle.defense?.defense.length) {
+    await tryTable("team_defense_vs_position", async () => {
+      const rows = bundle.defense!.defense.map((r) => ({
+        team_id: r.teamId,
+        position_bucket: r.positionBucket,
+        window_key: r.window,
+        stat: r.stat,
+        allowed_per48: r.allowedPer48,
+        rank: r.rank,
+      }));
+      await client.upsert(
+        "team_defense_vs_position",
+        rows,
+        "team_id,position_bucket,window_key,stat"
+      );
+      counts.defenseRows = rows.length;
+    });
+    await tryTable("team_pace_ranks", async () => {
+      const rows = bundle.defense!.pace.map((r) => ({
+        team_id: r.teamId,
+        pace_per48: r.pacePer48,
+        rank: r.rank,
+        window_key: r.window,
+      }));
+      await client.upsert("team_pace_ranks", rows, "team_id");
+      counts.paceRows = rows.length;
+    });
+  }
+
   if (bundle.officialCard) {
     const card = bundle.officialCard;
     await tryTable("cards", async () => {
@@ -613,7 +658,7 @@ export function logSyncCounts(counts: SyncCounts, failed: string[] = []): void {
     `supabase sync: teams ${counts.teams}, players ${counts.players}, games ${counts.games}, ` +
       `injuries ${counts.injuries}, logs ${counts.logs}, slates ${counts.slates}, ` +
       `odds_pulls ${counts.oddsPulls}, odds_prices ${counts.oddsPrices}, ` +
-      `odds_budget ${counts.oddsBudget}${skipInj} (failed: ${failLabel})`
+      `odds_budget ${counts.oddsBudget}, defense ${counts.defenseRows}, pace ${counts.paceRows}${skipInj} (failed: ${failLabel})`
   );
 }
 
@@ -641,6 +686,8 @@ export async function finalizePipelineSupabaseSync(
     oddsPulls: 0,
     oddsPrices: 0,
     oddsBudget: 0,
+    defenseRows: 0,
+    paceRows: 0,
   };
   const allFailed = new Set<string>();
   for (const bundle of bundles) {
@@ -656,6 +703,8 @@ export async function finalizePipelineSupabaseSync(
     totals.oddsPulls += c.oddsPulls;
     totals.oddsPrices += c.oddsPrices;
     totals.oddsBudget += c.oddsBudget;
+    totals.defenseRows += c.defenseRows;
+    totals.paceRows += c.paceRows;
   }
 
   const monthKey =

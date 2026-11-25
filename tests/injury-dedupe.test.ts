@@ -14,9 +14,10 @@ describe("dedupeInjuryReportsByTime", () => {
       source: "ESPN",
       updatedAt: "2026-11-25T10:00:00.000Z",
     };
-    const dup = { ...base, status: "Questionable" as const };
-    const out = dedupeInjuryReportsByTime([base, dup]);
-    expect(out).toHaveLength(1);
-    expect(out[0].status).toBe("Questionable");
+    const dup = { ...base, updatedAt: "2026-11-25T10:30:00.000Z" };
+    const { rows, dropped } = dedupeInjuryReportsByTime([base, dup]);
+    expect(rows).toHaveLength(1);
+    expect(dropped).toBe(1);
+    expect(rows[0].updatedAt).toBe("2026-11-25T10:30:00.000Z");
   });
 });

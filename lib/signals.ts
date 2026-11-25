@@ -27,6 +27,28 @@ function minutesTrendOk(logs: PlayerGameLog[], seasonMinutes: number): boolean {
   return avg >= seasonMinutes * 0.9;
 }
 
+function plainSignalText(
+  key: "PRICE" | "MATCHUP" | "FORM" | "ANGLE",
+  active: boolean,
+  opts: { rank?: number; hits?: number; n?: number; injury?: boolean }
+): string | undefined {
+  if (!active) return undefined;
+  switch (key) {
+    case "PRICE":
+      return "Line beats model";
+    case "MATCHUP":
+      return opts.rank != null ? `Soft defence rank ${opts.rank}` : "Soft matchup";
+    case "FORM":
+      return opts.hits != null && opts.n
+        ? `Hit ${opts.hits} of last ${opts.n}`
+        : "Recent form strong";
+    case "ANGLE":
+      return opts.injury ? "Injury uplift" : "Angle";
+    default:
+      return undefined;
+  }
+}
+
 export function buildLegSignals(input: {
   leg: PickLeg;
   logs: PlayerGameLog[];
@@ -45,7 +67,6 @@ export function buildLegSignals(input: {
     (input.myBookie
       ? hasValueAtBookie(input.leg, input.myBookie)
       : input.leg.bestPrice != null && input.leg.bestPrice >= input.leg.takeAt);
-  signals.PRICE = { active: priceActive, label: priceActive ? "edge" : undefined };
 
   let matchupRank: number | undefined;
   if (input.defense && input.defendingTeamId) {
@@ -57,28 +78,34 @@ export function buildLegSignals(input: {
     );
   } else unavailable.push("MATCHUP");
   const matchupActive = matchupRank != null && matchupRank <= 8;
-  signals.MATCHUP = {
-    active: matchupActive,
-    label: matchupRank != null ? `D#${matchupRank}` : undefined,
-  };
 
   const hr = hitRateL10(input.logs, input.leg.market, input.leg.line);
   const formMinOk = minutesTrendOk(input.logs, input.seasonMinutes);
   const formActive = hr != null && hr >= 0.6 && formMinOk;
   if (hr == null) unavailable.push("FORM");
+  const hits = hr != null ? Math.round(hr * Math.min(10, input.logs.length)) : undefined;
+  const n = hr != null ? Math.min(10, input.logs.filter((g) => g.minutes > 0).length) : undefined;
+
+  signals.PRICE = {
+    active: priceActive,
+    label: plainSignalText("PRICE", priceActive, {}),
+  };
+  signals.MATCHUP = {
+    active: matchupActive,
+    label: plainSignalText("MATCHUP", matchupActive, { rank: matchupRank }),
+  };
   signals.FORM = {
     active: formActive,
-    label: hr != null ? `L10 ${(hr * 100).toFixed(0)}%` : undefined,
+    label: plainSignalText("FORM", formActive, { hits, n }),
   };
-
   signals.ANGLE = {
     active: input.injuryAngle,
-    label: input.injuryAngle ? "inj" : undefined,
+    label: plainSignalText("ANGLE", input.injuryAngle, { injury: true }),
   };
 
   if (input.defense && input.defendingTeamId) {
     const pr = paceRank(input.defense, input.defendingTeamId);
-    if (pr != null) signals.context!.pace = `T${pr}`;
+    if (pr != null) signals.context!.pace = `Pace rank ${pr}`;
     else unavailable.push("pace");
   }
 
@@ -93,10 +120,10 @@ export function buildLegSignals(input: {
         : input.leg.market === "pts" || input.leg.market === "reb" || input.leg.market === "ast"
           ? vsOpp.reduce((s, g) => s + g[input.leg.market], 0) / vsOpp.length
           : 0;
-    signals.context!.h2h = `L3 ${avg.toFixed(1)}`;
+    signals.context!.h2h = `Last 3 vs opp avg ${avg.toFixed(1)}`;
   } else unavailable.push("h2h");
 
-  if (input.leg.b2b) signals.context!.b2b = "B2B";
+  if (input.leg.b2b) signals.context!.b2b = "Back-to-back";
 
   signals.unavailable = unavailable;
   return signals;
@@ -118,19 +145,19 @@ const STRENGTH: Record<string, number> = {
   ANGLE: 1,
 };
 
-/** ~70 chars, numbers-focused, two strongest active signals. */
+/** Plain English: two strongest active signals, ≤80 chars. */
 export function reasonLineFromSignals(signals: LegSignals): string {
-  const parts: { key: string; label: string; weight: number }[] = [];
+  const parts: { label: string; weight: number }[] = [];
   for (const key of ["PRICE", "MATCHUP", "FORM", "ANGLE"] as const) {
     const s = signals[key];
-    if (s?.active && s.label) parts.push({ key, label: s.label, weight: STRENGTH[key] });
+    if (s?.active && s.label) parts.push({ label: s.label, weight: STRENGTH[key] });
   }
   parts.sort((a, b) => b.weight - a.weight);
-  const line = parts
+  return parts
     .slice(0, 2)
     .map((p) => p.label)
-    .join(" · ");
-  return line.slice(0, 70);
+    .join(" · ")
+    .slice(0, 80);
 }
 
 export function mainPlayConfluenceOk(leg: PickLeg): boolean {

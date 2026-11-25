@@ -64,7 +64,8 @@ export async function safeFinalizePipelineSupabaseSync(
   }
 }
 import { filterPlayersForSlate, writeSlateBundle } from "./slate-bundle.js";
-import { buildDefenseRatings } from "../lib/defense-ratings.js";
+import { buildDefenseRatings, logDefenseSpotCheck } from "../lib/defense-ratings.js";
+import { runLeagueSeasonBackfill } from "../lib/league-season-backfill.js";
 import { backfillRosterLogsOnce } from "../lib/season-log-backfill.js";
 import {
   cacheSlateOddsSnapshot,
@@ -362,6 +363,11 @@ export async function runLivePipeline(
     const backfill = await backfillRosterLogsOnce(gameLogCache, backfillTasks, now, {
       concurrency: 3,
     });
+    await runLeagueSeasonBackfill(outDir, gameLogCache, {
+      maxGames: Number(process.env.LEAGUE_BACKFILL_MAX_GAMES ?? 50),
+      concurrency: 2,
+      until: now,
+    });
     saveGameLogCache(outDir, gameLogCache);
     console.log(
       `espn logs: ${players.length} players, ${cacheHits} game-log cache hits` +
@@ -381,6 +387,7 @@ export async function runLivePipeline(
       players.map((p) => [p.id, { teamId: p.teamId, position: p.position }])
     );
     defenseBundle = buildDefenseRatings(gameLogCache, playerMeta);
+    logDefenseSpotCheck(defenseBundle);
     fs.writeFileSync(
       path.join(outDir, "defense-ratings.json"),
       JSON.stringify(defenseBundle, null, 2)
@@ -722,6 +729,7 @@ export async function runLivePipeline(
       oddsPayloads: tipPayloads.length ? tipPayloads : undefined,
       pulledAt: oddsPulledAt,
       cache,
+      defense: defenseBundle,
     });
   }
   if (republishCard) {

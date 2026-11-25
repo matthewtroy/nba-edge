@@ -1,17 +1,22 @@
-import type { InjuryEntry, PickLeg } from "@lib/types";
+import type { InjuryEntry, PickLeg, SlateGame } from "@lib/types";
 import { bookieMarketLabel } from "@lib/market-label";
 import { displayTagsForBookie } from "@lib/value-at-bookie";
 import { legPriceAtCardBookie } from "@lib/leg-card-odds";
 import { topBeneficiaryLastNames } from "@lib/injury-beneficiaries";
 import { useQuestionableSwaps } from "../hooks/useQuestionableSwaps";
+import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { LastFiveTicks } from "./LastFiveTicks";
 
 interface Props {
   leg: PickLeg;
   injuries: InjuryEntry[];
   picks: PickLeg[];
+  slate?: SlateGame[];
   bookie: string;
   fairPriceInSlot?: boolean;
+  edited?: boolean;
+  onSwap?: () => void;
+  onReset?: () => void;
   onTap: (leg: PickLeg) => void;
 }
 
@@ -19,8 +24,12 @@ export function MultiLegRow({
   leg,
   injuries,
   picks,
+  slate,
   bookie,
   fairPriceInSlot = false,
+  edited = false,
+  onSwap,
+  onReset,
   onTap,
 }: Props) {
   const { swapAsOut, reset, isCountedOut } = useQuestionableSwaps();
@@ -34,6 +43,8 @@ export function MultiLegRow({
 
   const tags = displayTagsForBookie(leg, bookie);
   const price = legPriceAtCardBookie(leg, bookie);
+  const muted = !fairPriceInSlot && bookie && price == null;
+  const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
 
   return (
     <div className="py-3 px-1">
@@ -54,8 +65,24 @@ export function MultiLegRow({
           <div className="font-medium break-words leading-snug">
             {leg.playerName} {bookieMarketLabel(leg.market, leg.line)}
           </div>
+          {subtitle && (
+            <p className="text-xs text-white/45 truncate">{subtitle}</p>
+          )}
+          {leg.reasonLine && (
+            <p className="text-xs text-white/45 truncate">{leg.reasonLine}</p>
+          )}
           <LastFiveTicks ticks={leg.recentVsLine ?? []} compact />
           <div className="flex flex-wrap gap-1 mt-1">
+            {(leg.confluence ?? 0) >= 2 && (
+              <span className="text-xs px-2 py-0.5 rounded-full bg-white/10 text-white/70">
+                {leg.confluence}/4
+              </span>
+            )}
+            {edited && (
+              <span className="text-xs px-2 py-0.5 rounded-full bg-white/10 text-white/60">
+                Edited
+              </span>
+            )}
             {tags.map((t) => (
               <span
                 key={t}
@@ -85,7 +112,14 @@ export function MultiLegRow({
           ) : (
             <>
               {price != null && (
-                <div className="text-xl font-semibold text-green-400">${price.toFixed(2)}</div>
+                <div
+                  className={`text-xl font-semibold ${muted ? "text-white/35" : "text-green-400"}`}
+                >
+                  ${price.toFixed(2)}
+                </div>
+              )}
+              {price == null && bookie && (
+                <div className="text-xs text-white/40">No {bookie} line</div>
               )}
               {bookie ? <div className="text-xs text-white/70">{bookie}</div> : null}
               <div className="text-xs text-white/55">Fair ${leg.fairPrice.toFixed(2)}</div>
@@ -93,6 +127,32 @@ export function MultiLegRow({
           )}
         </div>
       </button>
+      <div className="mt-2 pl-13 flex flex-wrap gap-2 items-center text-xs text-white/70">
+        {onSwap && (
+          <button
+            type="button"
+            className="px-2 py-1 rounded-lg bg-white/10"
+            onClick={(e) => {
+              e.stopPropagation();
+              onSwap();
+            }}
+          >
+            Swap
+          </button>
+        )}
+        {edited && onReset && (
+          <button
+            type="button"
+            className="px-2 py-1 rounded-lg bg-white/10"
+            onClick={(e) => {
+              e.stopPropagation();
+              onReset();
+            }}
+          >
+            Reset
+          </button>
+        )}
+      </div>
       {leg.questionable && inj && (
         <div className="mt-2 pl-13 flex flex-wrap gap-2 items-center text-xs text-white/70">
           <span>
@@ -107,7 +167,7 @@ export function MultiLegRow({
                 swapAsOut(leg.playerId);
               }}
             >
-              Swap
+              Count out
             </button>
           )}
           {countedOut && (

@@ -17,14 +17,14 @@ describe("signals confluence", () => {
     expect(c).toBe(3);
   });
 
-  it("reason line keeps two strongest under 70 chars", () => {
+  it("reason line keeps two strongest under 80 chars", () => {
     const line = reasonLineFromSignals({
-      PRICE: { active: true, label: "edge" },
-      MATCHUP: { active: true, label: "D#2" },
-      FORM: { active: true, label: "L10 70%" },
+      PRICE: { active: true, label: "Line beats model" },
+      MATCHUP: { active: true, label: "Soft defence rank 2" },
+      FORM: { active: true, label: "Hit 7 of last 10" },
     });
-    expect(line.length).toBeLessThanOrEqual(70);
-    expect(line).toContain("edge");
+    expect(line.length).toBeLessThanOrEqual(80);
+    expect(line).toMatch(/Line beats model|Soft defence/);
   });
 
   it("main play requires PRICE and one other", () => {

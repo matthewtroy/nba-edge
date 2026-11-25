@@ -114,7 +114,7 @@ export function PicksScreen({
       </button>
       <div className="bg-card rounded-xl px-2">
         {legs.map((leg) => (
-          <LegRow key={leg.id} leg={leg} myBookie={myBookie} onTap={onLegTap} />
+          <LegRow key={leg.id} leg={leg} slate={data.slate} myBookie={myBookie} onTap={onLegTap} />
         ))}
       </div>
     </div>

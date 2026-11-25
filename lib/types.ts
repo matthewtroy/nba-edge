@@ -248,5 +248,4 @@ export const AU_BOOKMAKERS = [
   "Ladbrokes",
   "PointsBet",
   "Unibet",
-  "Betfair",
 ] as const;

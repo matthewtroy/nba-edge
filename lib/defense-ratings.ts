@@ -163,3 +163,27 @@ export function defenseRankFor(
 export function paceRank(bundle: DefenseRatingsBundle, teamId: string): number | undefined {
   return bundle.pace.find((p) => p.teamId === teamId)?.rank;
 }
+
+/** Spot-check: top 3 teams allowing reb to forwards (last 15). */
+export function logDefenseSpotCheck(bundle: DefenseRatingsBundle): void {
+  const top = bundle.defense
+    .filter((r) => r.stat === "reb" && r.positionBucket === "F" && r.window === "last15")
+    .sort((a, b) => a.rank - b.rank)
+    .slice(0, 3);
+  if (!top.length) {
+    console.log("defense spot-check F reb L15: (no rows)");
+    return;
+  }
+  console.log(
+    "defense spot-check F reb L15 top3: " +
+      top.map((r) => `${r.teamId}#${r.rank} (${r.allowedPer48})`).join(", ")
+  );
+  const topAst = bundle.defense
+    .filter((r) => r.stat === "ast" && r.positionBucket === "F" && r.window === "last15")
+    .sort((a, b) => a.rank - b.rank)
+    .slice(0, 3);
+  console.log(
+    "defense spot-check F ast L15 top3: " +
+      topAst.map((r) => `${r.teamId}#${r.rank} (${r.allowedPer48})`).join(", ")
+  );
+}

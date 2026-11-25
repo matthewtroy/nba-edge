@@ -11,7 +11,6 @@ const ALIASES: Record<string, (typeof AU_BOOKMAKERS)[number]> = {
   "pointsbet (au)": "PointsBet",
   ladbrokes: "Ladbrokes",
   neds: "Ladbrokes",
-  betfair: "Betfair",
   bet365: "bet365",
 };
 

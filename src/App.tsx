@@ -104,6 +104,7 @@ export default function App() {
       <LegSheet
         leg={leg}
         picks={data.picks}
+        slate={data.slate}
         myBookie={settings.myBookie}
         onClose={() => setLeg(null)}
         onSelectLeg={setLeg}

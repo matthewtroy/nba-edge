@@ -331,6 +331,58 @@ export function parseBoxscore(summary: unknown, plays?: unknown): Map<string, Bo
   return map;
 }
 
+export function parseBoxscorePlayerLogs(
+  summary: unknown,
+  plays: unknown | undefined,
+  game: { gameId: string; date: string; homeTeamId: string; awayTeamId: string }
+): { playerId: string; log: PlayerGameLog }[] {
+  const sum = summary as {
+    boxscore?: {
+      players?: {
+        team?: { id: string };
+        statistics?: { athletes?: { athlete?: { id: string }; stats?: string[] }[] }[];
+      }[];
+    };
+  };
+  const logs: { playerId: string; log: PlayerGameLog }[] = [];
+  const pbp = plays as Parameters<typeof parseQ1FromPlays>[0] | undefined;
+
+  for (const side of sum.boxscore?.players ?? []) {
+    const teamId = side.team?.id;
+    if (!teamId) continue;
+    const isHome = teamId === game.homeTeamId;
+    const opponentTeamId = isHome ? game.awayTeamId : game.homeTeamId;
+    for (const row of side.statistics?.[0]?.athletes ?? []) {
+      const id = row.athlete?.id;
+      if (!id) continue;
+      const stats = row.stats ?? [];
+      const q1 = pbp ? parseQ1FromPlays(pbp, id) : undefined;
+      logs.push({
+        playerId: id,
+        log: {
+          gameId: game.gameId,
+          date: game.date,
+          minutes: parseMinutes(stats[0]),
+          pts: num(stats[13]),
+          reb: num(stats[7]),
+          ast: num(stats[8]),
+          threes: parseMade(stats[3]),
+          teamId,
+          opponentTeamId,
+          isHome,
+          fga: num(stats[4]),
+          fta: num(stats[9]),
+          turnovers: num(stats[10]),
+          q1Pts: q1?.pts,
+          q1Reb: q1?.reb,
+          q1Ast: q1?.ast,
+        },
+      });
+    }
+  }
+  return logs;
+}
+
 export function extractTeamIdsFromScoreboard(raw: unknown): string[] {
   const games = parseScoreboard(raw, new Set());
   return [...new Set(games.flatMap((g) => [g.homeTeamId, g.awayTeamId]))];
