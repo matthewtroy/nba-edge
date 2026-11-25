@@ -184,6 +184,7 @@ export function TodayScreen({
             picksById={picksById}
             injuries={data.injuries}
             slate={data.slate}
+            compact
             preferredBookie={myBookie}
             lockedBookie={useOfficial && !cardFairOnly ? officialBookie : undefined}
             publishedAt={useOfficial ? publishedAt : undefined}

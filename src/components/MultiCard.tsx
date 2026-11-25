@@ -9,6 +9,7 @@ import { legPriceAtBookieWithCatalog } from "@lib/single-bookie";
 import { useMultiLegEdits } from "../hooks/useMultiLegEdits";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { useCrossGameSelection } from "../hooks/useCrossGameSelection";
+import { cardType } from "../lib/card-type-scale";
 
 interface Props {
   multi: MultiBet;
@@ -23,6 +24,7 @@ interface Props {
   fairOnly?: boolean;
   oddsNote?: string;
   hideBookieSelect?: boolean;
+  compact?: boolean;
   onRemove?: () => void;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (text: string) => void;
@@ -60,6 +62,7 @@ export function MultiCard({
   fairOnly = false,
   oddsNote,
   hideBookieSelect = false,
+  compact = false,
   onRemove,
   onLegTap,
   onCopy,
@@ -117,15 +120,20 @@ export function MultiCard({
     totalText = `$${total.toFixed(2)}`;
   }
 
+  const sectionPad = compact ? cardType.section : "p-0 mb-3";
+  const headerPad = compact ? "p-3 pb-2" : "px-4 py-3";
+
   return (
-    <section className="bg-card rounded-xl border border-white/10 overflow-hidden mb-3">
-      <header className="px-4 py-3 bg-surface/80 border-b border-white/5">
+    <section className={`bg-card rounded-xl border border-white/10 overflow-hidden ${sectionPad}`}>
+      <header className={`${headerPad} bg-surface/80 border-b border-white/5`}>
         <div className="flex justify-between gap-2 items-start">
           <div>
-            <h3 className="font-semibold text-base leading-snug">{titleText}</h3>
+            <h3 className={compact ? cardType.headerTitle : "font-semibold text-base leading-snug"}>
+              {titleText}
+            </h3>
             {totalText ? (
               <p
-                className={`text-2xl font-bold leading-tight mt-0.5 ${
+                className={`${compact ? cardType.headerTotal : "text-2xl font-bold"} leading-tight mt-0.5 ${
                   showFairOnly ? "text-white/55" : "text-accent-high"
                 }`}
               >
@@ -133,9 +141,9 @@ export function MultiCard({
               </p>
             ) : null}
             {!showFairOnly && cardBookie ? (
-              <p className="text-xs text-white/45 mt-1">{cardBookie}</p>
+              <p className={`${cardType.headerBookie} mt-0.5`}>{cardBookie}</p>
             ) : (
-              <p className="text-xs text-white/45 mt-1">{subline}</p>
+              <p className={`${cardType.headerBookie} mt-0.5`}>{subline}</p>
             )}
           </div>
           {onRemove && (
@@ -155,19 +163,20 @@ export function MultiCard({
           </p>
         )}
       </header>
-      <div className="px-2 divide-y divide-white/5">
+      <div className={`${compact ? "px-1" : "px-2"} divide-y divide-white/5`}>
         {multi.type === "crossGameSgm" && (
-          <div className="px-2 pb-2 flex flex-wrap gap-1.5 border-b border-white/5">
+          <div className="px-2 py-2 flex flex-wrap gap-1 border-b border-white/10">
             {crossSel.chips.map((chip) => {
               const on = crossSel.enabled.has(chip.id);
-              const empty = chip.legCount === 0;
+              const empty = chip.excluded || chip.legCount === 0;
               return (
                 <button
                   key={chip.id}
                   type="button"
                   disabled={empty}
+                  title={chip.excludedReason}
                   onClick={() => !empty && crossSel.toggle(chip.id)}
-                  className={`text-[10px] px-2 py-1 rounded-full border ${
+                  className={`text-[10px] px-2 py-0.5 rounded-full border max-w-full truncate ${
                     empty
                       ? "border-white/10 text-white/30"
                       : on
@@ -176,7 +185,11 @@ export function MultiCard({
                   }`}
                 >
                   {chip.label}
-                  {!empty ? ` (${chip.legCount})` : ""}
+                  {!empty
+                    ? ` (${chip.legCount})`
+                    : chip.excludedReason
+                      ? ` · ${chip.excludedReason.split(":").slice(1).join(":").trim().slice(0, 36)}`
+                      : " · —"}
                 </button>
               );
             })}
@@ -184,6 +197,9 @@ export function MultiCard({
         )}
         {multi.type === "crossGameSgm" ? (
           (() => {
+            const order = slate?.length
+              ? slate.map((g) => g.id)
+              : [...new Set(multi.legs.map((id) => resolveLeg(id)?.gameId).filter(Boolean))];
             const byGame = new Map<string, { anchorId: string; leg: PickLeg }[]>();
             for (const anchorId of multi.legs) {
               const leg = resolveLeg(anchorId);
@@ -192,23 +208,30 @@ export function MultiCard({
               arr.push({ anchorId, leg });
               byGame.set(leg.gameId, arr);
             }
-            return [...byGame.entries()].map(([gameId, rows]) => {
+            return order.map((gameId) => {
+              const rows = byGame.get(gameId);
+              if (!rows?.length) return null;
               const game = slate?.find((g) => g.id === gameId);
-              const header = game
+              const headerMain = game
                 ? `${game.awayTeam} @ ${game.homeTeam}`
                 : rows[0]?.leg.team ?? "Game";
+              const time = game?.startTimeSydney ?? "";
               const blowout =
                 game?.spread != null && Math.abs(game.spread) >= 14.5;
               return (
-                <div key={gameId}>
-                  <p className="text-[10px] uppercase tracking-wide text-white/40 px-2 pt-2 flex items-center gap-2">
-                    <span>{header}</span>
-                    {blowout ? (
-                      <span className="text-accent-value normal-case tracking-normal">
-                        Blowout risk
-                      </span>
-                    ) : null}
-                  </p>
+                <div key={gameId} className="border-b border-white/10 last:border-0 bg-white/[0.02]">
+                  <div className="px-2 pt-2 pb-1 border-b border-white/5">
+                    <p className={cardType.crossGameTitle}>
+                      {headerMain}
+                      {time ? ` · ${time}` : ""}
+                    </p>
+                    <p className={`${cardType.crossGameMeta} flex items-center gap-2`}>
+                      <span>SGM · {rows.length} leg{rows.length === 1 ? "" : "s"}</span>
+                      {blowout ? (
+                        <span className="text-accent-value">Blowout risk</span>
+                      ) : null}
+                    </p>
+                  </div>
                   {rows.map(({ anchorId, leg }) => (
                     <ErrorBoundary key={anchorId} name={`leg-${anchorId}`}>
                       <MultiLegRow
@@ -220,6 +243,8 @@ export function MultiCard({
                         bookie={legBookie}
                         fairPriceInSlot={showFairOnly}
                         edited={isEdited(anchorId)}
+                        hideGameLine
+                        compact={compact}
                         onSwap={() => swapLeg(anchorId)}
                         onReset={() => resetLeg(anchorId)}
                         onTap={onLegTap}
@@ -251,6 +276,7 @@ export function MultiCard({
                   bookie={legBookie}
                   fairPriceInSlot={showFairOnly}
                   edited={isEdited(anchorId)}
+                  compact={compact}
                   onSwap={() => swapLeg(anchorId)}
                   onReset={() => resetLeg(anchorId)}
                   onTap={onLegTap}
@@ -260,7 +286,7 @@ export function MultiCard({
           })
         )}
       </div>
-      <div className="p-3 bg-surface/40">
+      <div className={`${compact ? "p-3 pt-2" : "p-3"} bg-surface/40`}>
         {missingAtBookie > 0 && legBookie && (
           <p className="text-xs text-accent-warn mb-2">
             {missingAtBookie} leg(s) missing at {legBookie} even after nearest-line

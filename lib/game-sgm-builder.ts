@@ -1,5 +1,4 @@
 import type { PickLeg, SlateGame } from "./types.js";
-import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
 import {
   combinedFairAndTakeAt,
   DEFAULT_MIN_EDGE,
@@ -7,19 +6,20 @@ import {
 import {
   asBookieLeg,
   bookiesByCoverage,
-  legMeetsBookieEdge,
 } from "./bookie-edge-pool.js";
 import {
-  pickBestSameGameSgmCombo,
-  SGM_BAND_MIN,
-  SGM_BAND_MAX,
-  SGM_MIN_LEGS,
-  SGM_MAX_LEGS,
-} from "./same-game-sgm-search.js";
+  pickBestGamesTabSgmCombo,
+  qualifiesGamesTabSgmLeg,
+  plainEnglishGamesSgmReason,
+  GAMES_TAB_MIN_LEGS,
+  GAMES_TAB_MAX_LEGS,
+  GAMES_TAB_MIN_LEG_PRICE,
+} from "./games-tab-sgm.js";
+import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
 
-export const MIN_GAME_SGM_LEG_PRICE = 1.3;
-export const MIN_GAME_SGM_LEGS = SGM_MIN_LEGS;
-export const MAX_GAME_SGM_LEGS = SGM_MAX_LEGS;
+export const MIN_GAME_SGM_LEG_PRICE = GAMES_TAB_MIN_LEG_PRICE;
+export const MIN_GAME_SGM_LEGS = GAMES_TAB_MIN_LEGS;
+export const MAX_GAME_SGM_LEGS = GAMES_TAB_MAX_LEGS;
 
 export interface GameSgmCard {
   game: SlateGame;
@@ -40,11 +40,26 @@ export interface GameSgmPickResult {
 }
 
 function betterPick(
-  current: { p: number; total: number; legs: PickLeg[]; bookie: string; edge: number } | null,
-  next: { p: number; total: number; legs: PickLeg[]; bookie: string; edge: number }
+  current: {
+    p: number;
+    total: number;
+    legs: PickLeg[];
+    bookie: string;
+    edge: number;
+    valueCount: number;
+  } | null,
+  next: {
+    p: number;
+    total: number;
+    legs: PickLeg[];
+    bookie: string;
+    edge: number;
+    valueCount: number;
+  }
 ): boolean {
   if (!current) return true;
   if (Math.abs(next.p - current.p) > 1e-9) return next.p > current.p;
+  if (next.valueCount !== current.valueCount) return next.valueCount > current.valueCount;
   if (Math.abs(next.edge - current.edge) > 1e-9) return next.edge > current.edge;
   return next.total > current.total;
 }
@@ -52,22 +67,29 @@ function betterPick(
 export function pickGameSgmLegsWithReason(
   picks: PickLeg[],
   gameId: string,
-  oddsMin = SGM_BAND_MIN,
-  oddsMax = SGM_BAND_MAX,
+  oddsMin: number,
+  oddsMax: number,
   minEdgeFraction = DEFAULT_MIN_EDGE,
-  catalog?: PickLeg[]
+  catalog?: PickLeg[],
+  gameLabel?: string
 ): GameSgmPickResult {
   const pool = catalog ?? picks;
   const eligible = picks
     .filter((l) => l.gameId === gameId && qualifiesCrossBoostLeg(l))
     .sort((a, b) => b.probability - a.probability);
 
+  const label =
+    gameLabel ??
+    picks.find((l) => l.gameId === gameId)?.team ??
+    gameId;
+  const band = formatOddsBand(oddsMin, oddsMax);
+
   if (eligible.length < MIN_GAME_SGM_LEGS) {
     return {
       legs: [],
       bookie: "",
       total: 0,
-      reason: `Need ${MIN_GAME_SGM_LEGS}+ starter main lines (${eligible.length} legs)`,
+      reason: plainEnglishGamesSgmReason(label, band, eligible.length, 0),
     };
   }
 
@@ -77,49 +99,42 @@ export function pickGameSgmLegsWithReason(
     p: number;
     total: number;
     edge: number;
+    valueCount: number;
   } | null = null;
-  let maxEdge = 0;
-  let maxEdgeBookie = "";
-  let maxRange = 0;
+  let maxPool = 0;
+  let maxPoolBookie = "";
+  let inBandAttempts = 0;
 
   for (const bookie of bookiesByCoverage(eligible)) {
-    let priced = eligible
-      .filter((l) => legMeetsBookieEdge(l, bookie, minEdgeFraction))
+    const priced = eligible
+      .filter((l) => qualifiesGamesTabSgmLeg(l, bookie, minEdgeFraction, pool))
       .map((l) => asBookieLeg(l, bookie, pool))
       .filter(Boolean) as PickLeg[];
-    priced = priced.filter((l) => (l.bestPrice ?? 0) >= MIN_GAME_SGM_LEG_PRICE);
-    if (priced.length > maxEdge) {
-      maxEdge = priced.length;
-      maxEdgeBookie = bookie;
+    if (priced.length > maxPool) {
+      maxPool = priced.length;
+      maxPoolBookie = bookie;
     }
     if (priced.length < MIN_GAME_SGM_LEGS) continue;
 
-    const combo = pickBestSameGameSgmCombo(
-      priced.slice(0, 20),
+    const combo = pickBestGamesTabSgmCombo(
+      priced.slice(0, 22),
       bookie,
       pool,
       oddsMin,
       oddsMax
     );
     if (!combo) continue;
-    maxRange += 1;
+    inBandAttempts += 1;
     if (
       betterPick(
-        bestAcross
-          ? {
-              p: bestAcross.p,
-              total: bestAcross.total,
-              legs: bestAcross.legs,
-              bookie: bestAcross.bookie,
-              edge: bestAcross.edge,
-            }
-          : null,
+        bestAcross,
         {
           p: combo.p,
           total: combo.total,
           legs: combo.legs,
           bookie,
           edge: combo.edge,
+          valueCount: combo.valueCount,
         }
       )
     ) {
@@ -129,14 +144,24 @@ export function pickGameSgmLegsWithReason(
         p: combo.p,
         total: combo.total,
         edge: combo.edge,
+        valueCount: combo.valueCount,
       };
     }
   }
 
   if (!bestAcross) {
-    const band = formatOddsBand(oddsMin, oddsMax);
-    const reason = `No ${MIN_GAME_SGM_LEGS}–${MAX_GAME_SGM_LEGS}-leg SGM in ${band} @ edge (eligible ${eligible.length}, best pool ${maxEdgeBookie}=${maxEdge}, in-band ${maxRange})`;
-    return { legs: [], bookie: "", total: 0, reason };
+    void maxPoolBookie;
+    return {
+      legs: [],
+      bookie: "",
+      total: 0,
+      reason: plainEnglishGamesSgmReason(
+        label,
+        band,
+        maxPool,
+        inBandAttempts
+      ),
+    };
   }
 
   return {
@@ -149,8 +174,8 @@ export function pickGameSgmLegsWithReason(
 export function pickGameSgmLegs(
   picks: PickLeg[],
   gameId: string,
-  oddsMin = SGM_BAND_MIN,
-  oddsMax = SGM_BAND_MAX,
+  oddsMin = 1.5,
+  oddsMax = 4,
   minEdgeFraction = DEFAULT_MIN_EDGE,
   catalog?: PickLeg[]
 ): PickLeg[] | null {
@@ -183,25 +208,27 @@ export function isGameSgmCard(r: GameSgmBuildResult): r is GameSgmCard {
 export function buildGameSgmCard(
   game: SlateGame,
   picks: PickLeg[],
-  oddsMin = SGM_BAND_MIN,
-  oddsMax = SGM_BAND_MAX,
+  oddsMin: number,
+  oddsMax: number,
   minEdgeFraction = DEFAULT_MIN_EDGE,
   catalog?: PickLeg[]
 ): GameSgmBuildResult {
+  const short = `${game.awayTeam.split(" ").pop()} @ ${game.homeTeam.split(" ").pop()}`;
   const pick = pickGameSgmLegsWithReason(
     picks,
     game.id,
     oddsMin,
     oddsMax,
     minEdgeFraction,
-    catalog ?? picks
+    catalog ?? picks,
+    short
   );
   if (!pick.legs.length) {
     return {
       game,
       notBuiltReason:
         pick.reason ??
-        `No game SGM in ${formatOddsBand(oddsMin, oddsMax)}`,
+        plainEnglishGamesSgmReason(short, formatOddsBand(oddsMin, oddsMax), 0, 0),
       oddsMin,
       oddsMax,
     };

@@ -8,16 +8,8 @@ import { gamesForCards, isGameLive } from "@lib/slate-game-ui";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
 import { MultiCard } from "../components/MultiCard";
 import { DateSwitcher } from "../components/DateSwitcher";
-
-const PRESETS: { label: string; min: number; max: number }[] = [
-  { label: "7–15", min: 7, max: 15 },
-  { label: "1.5–4", min: 1.5, max: 4 },
-  { label: "3–6", min: 3, max: 6 },
-  { label: "4–10", min: 4, max: 10 },
-  { label: "10–20", min: 10, max: 20 },
-  { label: "20–50", min: 20, max: 50 },
-  { label: "50+", min: 50, max: Number.POSITIVE_INFINITY },
-];
+import { useGamesSgmPreset } from "../hooks/useGamesSgmPreset";
+import { formatOddsBand } from "@lib/game-sgm-builder";
 
 interface Props {
   data: DataBundle;
@@ -40,7 +32,7 @@ export function GamesScreen({
   onLegTap,
   onCopy,
 }: Props) {
-  const [preset, setPreset] = useState(PRESETS[0]);
+  const { preset, setPreset, presets } = useGamesSgmPreset();
   const activeSlate = useMemo(() => gamesForCards(data.slate), [data.slate]);
   const useOfficial =
     data.officialCard != null &&
@@ -75,6 +67,7 @@ export function GamesScreen({
   const valueCount = data.picks.filter((l) => hasValueAtBookie(l, myBookie)).length;
   const slateFairOnly = !slateHasFeedOdds(data.picks);
   const oddsNote = slateOddsAvailabilityNote(data.meta, data.picks);
+  const bandLabel = formatOddsBand(preset.min, preset.max);
 
   return (
     <div className="pb-24">
@@ -86,15 +79,15 @@ export function GamesScreen({
       />
       <h1 className="text-xl font-bold mb-1">Games</h1>
       <p className="text-sm text-white/70 mb-3">
-        SGM by bookie total · Value @ {myBookie}: {valueCount}
+        SGM by bookie total ({bandLabel}) · Value @ {myBookie}: {valueCount}
       </p>
       <div className="flex flex-wrap gap-2 mb-4">
-        {PRESETS.map((p) => (
+        {presets.map((p) => (
           <button
             key={p.label}
             type="button"
             onClick={() => setPreset(p)}
-            className={`text-xs px-3 py-1.5 rounded-full border ${
+            className={`text-[11px] px-3 py-1.5 rounded-full border ${
               preset.label === p.label
                 ? "border-accent-high text-accent-high"
                 : "border-white/20"
@@ -115,11 +108,10 @@ export function GamesScreen({
         if (!card) {
           const reason =
             notBuiltReason ??
-            `No game SGM in $${preset.min.toFixed(1)}–${Number.isFinite(preset.max) ? preset.max : "50+"}`;
+            `${short}: nothing fits ${bandLabel} with edge or high-probability rules.`;
           return (
-            <p key={game.id} className="text-sm text-white/50 mb-3">
-              {short}
-              {live ? " (live)" : ""}: {reason}
+            <p key={game.id} className="text-[13px] text-white/50 mb-2 leading-snug px-1">
+              {live ? `${reason} (live)` : reason}
             </p>
           );
         }
@@ -141,13 +133,13 @@ export function GamesScreen({
             )}
             {(!live || !isCollapsed) && (
               <>
-                <p className="text-xs text-white/50 px-1 mb-1">
-                  {game.startTimeSydney} · Bookie total ${preset.label}
+                <p className="text-[11px] text-white/45 px-1 mb-1">
+                  {game.startTimeSydney} · {bandLabel}
                   {game.spread != null && Math.abs(game.spread) >= 14.5 && (
                     <span className="text-accent-value ml-1">· Blowout risk</span>
                   )}
                   {crossGameLegs.length > 0 &&
-                    ` · Cross-Game (${crossGameLegs.length})`}
+                    ` · Cross (${crossGameLegs.length})`}
                   {boostLegs.length > 0 && " · Best SGM"}
                 </p>
                 <MultiCard
@@ -159,6 +151,7 @@ export function GamesScreen({
                   fairOnly={slateFairOnly}
                   oddsNote={oddsNote}
                   hideBookieSelect={slateFairOnly}
+                  compact
                   onLegTap={onLegTap}
                   onCopy={onCopy}
                 />

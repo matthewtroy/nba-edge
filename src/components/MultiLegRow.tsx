@@ -1,12 +1,11 @@
 import type { InjuryEntry, PickLeg, SlateGame } from "@lib/types";
 import { bookieMarketLabel } from "@lib/market-label";
-import { displayTagsForBookie } from "@lib/value-at-bookie";
+import { displayLegRowTags } from "@lib/value-at-bookie";
 import { legPriceAtCardBookie } from "@lib/leg-card-odds";
-import { topBeneficiaryLastNames } from "@lib/injury-beneficiaries";
-import { useQuestionableSwaps } from "../hooks/useQuestionableSwaps";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { LastFiveTicks } from "./LastFiveTicks";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
+import { cardType } from "../lib/card-type-scale";
 
 interface Props {
   leg: PickLeg;
@@ -17,6 +16,8 @@ interface Props {
   catalog?: PickLeg[];
   fairPriceInSlot?: boolean;
   edited?: boolean;
+  hideGameLine?: boolean;
+  compact?: boolean;
   onSwap?: () => void;
   onReset?: () => void;
   onTap: (leg: PickLeg) => void;
@@ -24,74 +25,67 @@ interface Props {
 
 export function MultiLegRow({
   leg,
-  injuries,
   picks,
   slate,
   bookie,
   catalog,
   fairPriceInSlot = false,
   edited = false,
+  hideGameLine = false,
+  compact = false,
   onSwap,
   onReset,
   onTap,
 }: Props) {
-  const { swapAsOut, reset, isCountedOut } = useQuestionableSwaps();
-  const countedOut = leg.questionable && isCountedOut(leg.playerId);
-
-  const inj = injuries.find(
-    (i) => i.playerId === leg.playerId && i.status === "Questionable"
-  );
-  const sitNames =
-    inj && countedOut ? topBeneficiaryLastNames(inj, picks).join(", ") : "";
-
-  const tags = displayTagsForBookie(leg, bookie);
+  const tags = displayLegRowTags(leg, bookie);
   const reasonUi = leg.reasonLine ? legReasonLineUi(leg.reasonLine) : null;
   const price = legPriceAtCardBookie(leg, bookie, catalog);
   const muted = !fairPriceInSlot && bookie && price == null;
-  const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
+  const subtitle = !hideGameLine && slate ? legGameTipSubtitle(leg, slate) : null;
+  const img = compact ? "w-8 h-8" : "w-10 h-10";
 
   return (
-    <div className="py-3 px-1">
+    <div className={compact ? cardType.legRow : "py-3 px-1"}>
       <button
         type="button"
         onClick={() => onTap(leg)}
-        className="w-full flex items-start gap-3 text-left active:bg-white/5 rounded-lg"
+        className={`w-full flex items-start ${cardType.legGap} text-left active:bg-white/5 rounded-lg`}
       >
         <img
           src={leg.headshotUrl}
           alt=""
-          className="w-10 h-10 rounded-full bg-card object-cover shrink-0"
+          className={`${img} rounded-full bg-card object-cover shrink-0`}
           onError={(e) => {
             (e.target as HTMLImageElement).style.display = "none";
           }}
         />
         <div className="flex-1 min-w-0">
-          <div className="font-medium break-words leading-snug">
+          <div className={`${cardType.legTitle} break-words`}>
             {leg.playerName}{" "}
             {leg.feedLineNote
               ? leg.feedLineNote
               : bookieMarketLabel(leg.market, leg.line)}
           </div>
           {subtitle && (
-            <p className="text-xs text-white/40 truncate">{subtitle}</p>
+            <p className={`${cardType.legGame} truncate`}>{subtitle}</p>
           )}
           {leg.reasonLine && reasonUi && (
-            <p className={`${reasonUi.className} mt-0.5 leading-snug`}>
+            <p className={`${cardType.legReason} ${reasonUi.className} mt-0.5`}>
               {reasonUi.prefix}
               {leg.reasonLine}
             </p>
           )}
-          <LastFiveTicks ticks={leg.recentVsLine ?? []} compact />
-          <div className="flex flex-wrap gap-1 mt-1">
+          <LastFiveTicks ticks={leg.recentVsLine ?? []} compact hideLabel />
+          <div className="flex flex-wrap gap-1 mt-0.5">
             {edited && (
-              <span className="text-xs px-2 py-0.5 rounded-full bg-white/10 text-white/60">
+              <span className={`${cardType.badge} bg-white/10 text-white/60`}>
                 Edited
               </span>
             )}
             {tags.map((t) => (
               <span
                 key={t}
-                className={`text-xs px-2 py-0.5 rounded-full ${
+                className={`${cardType.badge} ${
                   t === "Value" || t === "Blowout risk"
                     ? "bg-accent-value/20 text-accent-value"
                     : t === "High probability"
@@ -103,85 +97,58 @@ export function MultiLegRow({
               </span>
             ))}
             {leg.questionable && (
-              <span className="text-xs px-2 py-0.5 rounded-full bg-accent-warn/20 text-accent-warn">
+              <span className={`${cardType.badge} bg-accent-warn/20 text-accent-warn`}>
                 Q
               </span>
             )}
           </div>
         </div>
-        <div className="text-right shrink-0 max-w-[42%] leading-tight">
+        <div className="text-right shrink-0 max-w-[40%] leading-tight">
           {fairPriceInSlot ? (
-            <div className="text-xl font-semibold text-white/55">
+            <div className={`${cardType.legPrice} text-white/55`}>
               Fair ${leg.fairPrice.toFixed(2)}
             </div>
           ) : (
             <>
               {price != null && (
                 <div
-                  className={`text-xl font-semibold ${muted ? "text-white/35" : "text-green-400"}`}
+                  className={`${cardType.legPrice} ${muted ? "text-white/35" : ""}`}
                 >
                   ${price.toFixed(2)}
                 </div>
               )}
               {price == null && bookie && (
-                <div className="text-xs text-white/40">No {bookie} line</div>
+                <div className={cardType.legGame}>No {bookie} line</div>
               )}
-              {bookie ? <div className="text-xs text-white/70">{bookie}</div> : null}
-              <div className="text-xs text-white/55">Fair ${leg.fairPrice.toFixed(2)}</div>
+              {bookie && !compact ? (
+                <div className="text-[11px] text-white/55">{bookie}</div>
+              ) : null}
+              <div className={cardType.legFair}>Fair ${leg.fairPrice.toFixed(2)}</div>
             </>
           )}
         </div>
       </button>
-      <div className="mt-2 pl-13 flex flex-wrap gap-2 items-center text-xs text-white/70">
-        {onSwap && (
-          <button
-            type="button"
-            className="px-2 py-1 rounded-lg bg-white/10"
-            onClick={(e) => {
-              e.stopPropagation();
-              onSwap();
-            }}
-          >
-            Swap player
-          </button>
-        )}
-        {edited && onReset && (
-          <button
-            type="button"
-            className="px-2 py-1 rounded-lg bg-white/10"
-            onClick={(e) => {
-              e.stopPropagation();
-              onReset();
-            }}
-          >
-            Reset
-          </button>
-        )}
-      </div>
-      {leg.questionable && inj && (
-        <div className="mt-2 pl-13 flex flex-wrap gap-2 items-center text-xs text-white/70">
-          <span>
-            If he sits: {countedOut && sitNames ? sitNames : "re-check minutes"}
-          </span>
-          {!countedOut && (
+      {!compact && (
+        <div className="mt-2 pl-11 flex flex-wrap gap-2 items-center text-xs text-white/70">
+          {onSwap && (
             <button
               type="button"
               className="px-2 py-1 rounded-lg bg-white/10"
               onClick={(e) => {
                 e.stopPropagation();
-                swapAsOut(leg.playerId);
+                onSwap();
               }}
             >
-              Count out
+              Swap player
             </button>
           )}
-          {countedOut && (
+          {edited && onReset && (
             <button
               type="button"
               className="px-2 py-1 rounded-lg bg-white/10"
               onClick={(e) => {
                 e.stopPropagation();
-                reset(leg.playerId);
+                onReset();
               }}
             >
               Reset

@@ -66,6 +66,8 @@ describe("games SGM", () => {
       multis: [multi],
     });
     expect(text).toContain("Games");
-    expect(text).toMatch(/SGM @|No .*leg SGM|No game SGM/);
+    expect(text).toMatch(
+      /SGM @|not enough starter legs|nothing fits|No game SGM/i
+    );
   });
 });

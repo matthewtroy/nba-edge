@@ -10,6 +10,10 @@ export function hasValueAtBookie(leg: PickLeg, bookie: string): boolean {
 }
 
 /** Value chip only when the card's bookie meets take-at (not another book's best). */
+export function displayLegRowTags(leg: PickLeg, bookie?: string): string[] {
+  return displayTagsForBookie(leg, bookie).filter((t) => t !== "Check prices");
+}
+
 export function displayTagsForBookie(leg: PickLeg, bookie?: string): string[] {
   const base = visibleLegTags(leg.tags).filter((t) => t !== "Value" && t !== "Check prices");
   if (leg.blowoutRisk) base.push("Blowout risk");

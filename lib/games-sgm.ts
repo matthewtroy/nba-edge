@@ -23,8 +23,8 @@ export function gameSgmBlocks(
   picks: PickLeg[],
   multis: MultiBet[],
   picksById: Map<string, PickLeg>,
-  oddsMin = 7,
-  oddsMax = 15
+  oddsMin = 1.5,
+  oddsMax = 4
 ): GameSgmBlock[] {
   const cross = multis.find((m) => m.type === "crossGameSgm");
   const boost = multis.find((m) => m.type === "boostSgm");

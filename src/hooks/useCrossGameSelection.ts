@@ -11,6 +11,18 @@ export function useCrossGameSelection(
   legs: PickLeg[],
   slate?: SlateGame[]
 ) {
+  const groupsByGame = useMemo(() => {
+    const m = new Map<string, { status: string; excludedReason?: string; legIds: Set<string> }>();
+    for (const g of multi.crossGameGroups ?? []) {
+      m.set(g.gameId, {
+        status: g.status,
+        excludedReason: g.excludedReason,
+        legIds: new Set(g.legs),
+      });
+    }
+    return m;
+  }, [multi.crossGameGroups]);
+
   const gameIds = useMemo(() => {
     if (slate?.length) return slate.map((g) => g.id);
     return [...new Set(legs.map((l) => l.gameId))];
@@ -47,14 +59,16 @@ export function useCrossGameSelection(
 
   const toggle = useCallback((gameId: string) => {
     setEnabled((prev) => {
+      const g = groupsByGame.get(gameId);
+      if (g?.status === "excluded") return prev;
       const next = new Set(prev);
       if (next.has(gameId)) {
-        if (next.size <= 2) return next;
+        if (next.size <= 2) return prev;
         next.delete(gameId);
       } else next.add(gameId);
       return next;
     });
-  }, []);
+  }, [groupsByGame]);
 
   const filteredLegs = useMemo(
     () => legs.filter((l) => enabled.has(l.gameId)),
@@ -67,14 +81,18 @@ export function useCrossGameSelection(
         id,
         label: id,
         legCount: legs.filter((l) => l.gameId === id).length,
+        excluded: groupsByGame.get(id)?.status === "excluded",
+        excludedReason: groupsByGame.get(id)?.excludedReason,
       }));
     }
     return slate.map((g) => ({
       id: g.id,
       label: gameShortLabel(g),
       legCount: legs.filter((l) => l.gameId === g.id).length,
+      excluded: groupsByGame.get(g.id)?.status === "excluded",
+      excludedReason: groupsByGame.get(g.id)?.excludedReason,
     }));
-  }, [slate, gameIds, legs]);
+  }, [slate, gameIds, legs, groupsByGame]);
 
-  return { enabled, toggle, filteredLegs, chips };
+  return { enabled, toggle, filteredLegs, chips, groupsByGame };
 }

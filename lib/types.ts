@@ -127,6 +127,15 @@ export interface MultisJson {
   notBuilt: MultiNotBuilt[];
 }
 
+export type CrossGameGroupStatus = "included" | "excluded";
+
+export interface CrossGameSgmGroup {
+  gameId: string;
+  status: CrossGameGroupStatus;
+  legs: string[];
+  excludedReason?: string;
+}
+
 export interface MultiBet {
   type: MultiType;
   label: string;
@@ -134,6 +143,8 @@ export interface MultiBet {
   combinedProbability: number;
   combinedFairPrice: number;
   combinedTakeAt: number;
+  /** Cross-game SGM: every slate game with included legs or excluded reason. */
+  crossGameGroups?: CrossGameSgmGroup[];
   /** @deprecated use bestBookieTotal */
   combinedBestPrice?: number;
   /** @deprecated use bestBookie */
