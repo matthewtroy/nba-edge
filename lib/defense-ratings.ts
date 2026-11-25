@@ -31,9 +31,38 @@ function statFromLog(log: PlayerGameLog, stat: "pts" | "reb" | "ast" | "3pm"): n
   return log[stat];
 }
 
-function windowLogs(logs: PlayerGameLog[], window: DefenseWindow): PlayerGameLog[] {
-  const sorted = [...logs].sort((a, b) => b.date.localeCompare(a.date));
-  return window === "last15" ? sorted.slice(0, 15) : sorted;
+/** Each team's 15 most recent games by date (played, win or loss). */
+export function teamLast15GameIds(cache: GameLogCacheFile): Map<string, Set<string>> {
+  const gamesByTeam = new Map<string, Map<string, string>>();
+  for (const row of Object.values(cache)) {
+    for (const log of row.logs) {
+      if (!log.gameId || !log.date) continue;
+      const register = (teamId: string) => {
+        const m = gamesByTeam.get(teamId) ?? new Map<string, string>();
+        const prev = m.get(log.gameId);
+        if (!prev || log.date > prev) m.set(log.gameId, log.date);
+        gamesByTeam.set(teamId, m);
+      };
+      if (log.teamId) register(log.teamId);
+      if (log.opponentTeamId) register(log.opponentTeamId);
+    }
+  }
+  const out = new Map<string, Set<string>>();
+  for (const [teamId, games] of gamesByTeam) {
+    const sorted = [...games.entries()].sort((a, b) => b[1].localeCompare(a[1]));
+    out.set(teamId, new Set(sorted.slice(0, 15).map(([id]) => id)));
+  }
+  return out;
+}
+
+function logInTeamWindow(
+  defTeam: string,
+  gameId: string,
+  window: DefenseWindow,
+  teamL15: Map<string, Set<string>>
+): boolean {
+  if (window === "season") return true;
+  return teamL15.get(defTeam)?.has(gameId) ?? false;
 }
 
 /** Build defense vs position + pace ranks from cached ESPN logs (no Odds API). */
@@ -47,6 +76,7 @@ export function buildDefenseRatings(
     return { defense: [], pace: [], unavailable };
   }
 
+  const teamL15 = teamLast15GameIds(cache);
   type AccKey = string;
   const acc = new Map<AccKey, { minutes: number; statSum: number }>();
   const paceAcc = new Map<string, { minutes: number; poss: number }>();
@@ -60,8 +90,7 @@ export function buildDefenseRatings(
       const defTeam = log.opponentTeamId;
       for (const stat of ["pts", "reb", "ast", "3pm"] as const) {
         for (const window of ["season", "last15"] as const) {
-          const inWindow = windowLogs(row.logs, window).some((g) => g.gameId === log.gameId);
-          if (!inWindow) continue;
+          if (!logInTeamWindow(defTeam, log.gameId, window, teamL15)) continue;
           const key = `${defTeam}|${pos}|${window}|${stat}`;
           const cur = acc.get(key) ?? { minutes: 0, statSum: 0 };
           cur.minutes += log.minutes;
@@ -69,11 +98,13 @@ export function buildDefenseRatings(
           acc.set(key, cur);
         }
       }
-      const paceKey = `${defTeam}|season`;
-      const p = paceAcc.get(paceKey) ?? { minutes: 0, poss: 0 };
-      p.minutes += log.minutes;
-      p.poss += log.pts + log.reb + log.ast + (log.turnovers ?? 0);
-      paceAcc.set(paceKey, p);
+      if (logInTeamWindow(defTeam, log.gameId, "season", teamL15)) {
+        const paceKey = `${defTeam}|season`;
+        const p = paceAcc.get(paceKey) ?? { minutes: 0, poss: 0 };
+        p.minutes += log.minutes;
+        p.poss += log.pts + log.reb + log.ast + (log.turnovers ?? 0);
+        paceAcc.set(paceKey, p);
+      }
     }
   }
 
@@ -185,5 +216,13 @@ export function logDefenseSpotCheck(bundle: DefenseRatingsBundle): void {
   console.log(
     "defense spot-check F ast L15 top3: " +
       topAst.map((r) => `${r.teamId}#${r.rank} (${r.allowedPer48})`).join(", ")
+  );
+  const worst = bundle.defense
+    .filter((r) => r.stat === "reb" && r.positionBucket === "F" && r.window === "last15")
+    .sort((a, b) => b.rank - a.rank)
+    .slice(0, 3);
+  console.log(
+    "defense spot-check F reb L15 bottom3: " +
+      worst.map((r) => `${r.teamId}#${r.rank} (${r.allowedPer48})`).join(", ")
   );
 }

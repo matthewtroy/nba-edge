@@ -58,6 +58,7 @@ export function buildLegSignals(input: {
   defense?: DefenseRatingsBundle;
   injuryAngle: boolean;
   myBookie?: string;
+  matchupSignalsEnabled?: boolean;
 }): LegSignals {
   const unavailable: string[] = [];
   const signals: LegSignals = { context: {}, unavailable: [] };
@@ -68,8 +69,9 @@ export function buildLegSignals(input: {
       ? hasValueAtBookie(input.leg, input.myBookie)
       : input.leg.bestPrice != null && input.leg.bestPrice >= input.leg.takeAt);
 
+  const matchupOn = input.matchupSignalsEnabled !== false;
   let matchupRank: number | undefined;
-  if (input.defense && input.defendingTeamId) {
+  if (matchupOn && input.defense && input.defendingTeamId) {
     matchupRank = defenseRankFor(
       input.defense,
       input.defendingTeamId,
@@ -77,7 +79,7 @@ export function buildLegSignals(input: {
       input.leg.market
     );
   } else unavailable.push("MATCHUP");
-  const matchupActive = matchupRank != null && matchupRank <= 8;
+  const matchupActive = matchupOn && matchupRank != null && matchupRank <= 8;
 
   const hr = hitRateL10(input.logs, input.leg.market, input.leg.line);
   const formMinOk = minutesTrendOk(input.logs, input.seasonMinutes);
@@ -103,7 +105,7 @@ export function buildLegSignals(input: {
     label: plainSignalText("ANGLE", input.injuryAngle, { injury: true }),
   };
 
-  if (input.defense && input.defendingTeamId) {
+  if (matchupOn && input.defense && input.defendingTeamId) {
     const pr = paceRank(input.defense, input.defendingTeamId);
     if (pr != null) signals.context!.pace = `Pace rank ${pr}`;
     else unavailable.push("pace");
@@ -168,4 +170,10 @@ export function mainPlayConfluenceOk(leg: PickLeg): boolean {
       leg.signals.FORM?.active ||
       leg.signals.ANGLE?.active
   );
+}
+
+export function mainPlayConfluenceRelaxedOk(leg: PickLeg): boolean {
+  if ((leg.confluence ?? 0) < 1) return false;
+  if (!leg.signals?.PRICE?.active) return false;
+  return true;
 }

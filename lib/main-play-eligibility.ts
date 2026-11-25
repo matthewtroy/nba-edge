@@ -1,6 +1,6 @@
 import type { Market, PickLeg } from "./types.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
-import { mainPlayConfluenceOk } from "./signals.js";
+import { mainPlayConfluenceOk, mainPlayConfluenceRelaxedOk } from "./signals.js";
 
 function isCoreMarket(market: string): boolean {
   return market === "pts" || market === "reb" || market === "ast";
@@ -54,7 +54,7 @@ export function gateLineViolation(
   return null;
 }
 
-export function qualifiesMainPlayLeg(leg: PickLeg): boolean {
+function mainPlayBaseOk(leg: PickLeg): boolean {
   return (
     leg.starterEligible === true &&
     isMainPlayStatLine(leg.market, leg.line) &&
@@ -63,9 +63,16 @@ export function qualifiesMainPlayLeg(leg: PickLeg): boolean {
     leg.fairPrice >= 1.4 &&
     leg.fairPrice <= 2.5 &&
     !leg.ageB2B &&
-    !hasCheckNews(leg) &&
-    mainPlayConfluenceOk(leg)
+    !hasCheckNews(leg)
   );
+}
+
+export function qualifiesMainPlayLeg(leg: PickLeg): boolean {
+  return mainPlayBaseOk(leg) && mainPlayConfluenceOk(leg);
+}
+
+export function qualifiesMainPlayLegRelaxed(leg: PickLeg): boolean {
+  return mainPlayBaseOk(leg) && mainPlayConfluenceRelaxedOk(leg);
 }
 
 export function qualifiesCrossBoostLeg(leg: PickLeg): boolean {

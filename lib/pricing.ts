@@ -72,6 +72,7 @@ export function buildLegsForPlayer(
     playerPosition?: string;
     seasonMinutes?: number;
     injuryAngle?: boolean;
+    matchupSignalsEnabled?: boolean;
     matchupLog?: { name: string; market: string; line: number; deltaPp: number }[];
   }
 ): PickLeg[] {
@@ -96,10 +97,10 @@ export function buildLegsForPlayer(
   const addLeg = (market: Market, line: number, rawModelP: number) => {
     let modelP = rawModelP;
     const mRank =
-      ctx.defense && ctx.defendingTeamId
+      ctx.matchupSignalsEnabled !== false && ctx.defense && ctx.defendingTeamId
         ? defenseRankFor(ctx.defense, ctx.defendingTeamId, ctx.playerPosition, market)
         : undefined;
-    const delta = matchupDeltaFromRank(mRank);
+    const delta = ctx.matchupSignalsEnabled === false ? 0 : matchupDeltaFromRank(mRank);
     if (delta !== 0) {
       modelP = applyMatchupToModelP(modelP, delta);
       ctx.matchupLog?.push({
@@ -209,6 +210,7 @@ export function buildLegsForPlayer(
       defendingTeamId: ctx.defendingTeamId,
       playerPosition: ctx.playerPosition,
       defense: ctx.defense,
+      matchupSignalsEnabled: ctx.matchupSignalsEnabled,
       injuryAngle:
         ctx.injuryAngle ??
         ctx.reasons.some((r) => /\+\d|benefit|redistrib/i.test(r)),

@@ -158,6 +158,8 @@ export interface MetaJson {
   q1ExclusionLog?: string[];
   signalUnavailable?: string[];
   topConfluenceLegs?: { player: string; market: string; line: number; confluence: number; reasonLine?: string }[];
+  mainPlayConfluenceRelaxed?: boolean;
+  mainPlayNotes?: string[];
   slateTipDate?: string;
   slatePublicationStatus?: "draft" | "official" | "locked_at_tip";
   slateStatusLabel?: string;

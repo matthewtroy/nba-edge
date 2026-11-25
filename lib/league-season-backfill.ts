@@ -7,8 +7,6 @@ import type { GameLogCacheFile } from "./game-log-cache.js";
 import { mapPool } from "../scripts/lib/concurrency.js";
 
 const NBA_SEASON_START = new Date(Date.UTC(2025, 9, 22, 12, 0, 0));
-const NBA_REGULAR_GAMES_APPROX = 1230;
-
 export type LeagueGameCacheFile = {
   processedGameIds: string[];
   lastDate?: string;
@@ -17,12 +15,17 @@ export type LeagueGameCacheFile = {
 export interface LeagueBackfillReport {
   gamesProcessed: number;
   gamesSkippedCached: number;
-  nbaGamesInCache: number;
+  /** Final games played season-to-date (unique ESPN event ids). */
+  gamesPlayedSoFar: number;
+  /** Final game ids with boxscores in cache. */
+  gamesCached: number;
   logRowsAdded: number;
   totalLogRows: number;
   teamsWithLogs: number;
   nullOpponentRows: number;
   lastDateProcessed?: string;
+  /** @deprecated use gamesCached */
+  nbaGamesInCache?: number;
 }
 
 function loadGameCache(p: string): LeagueGameCacheFile {
@@ -78,7 +81,7 @@ export async function runLeagueSeasonBackfill(
   const gameCache = loadGameCache(gameCachePath);
   const processed = new Set(gameCache.processedGameIds);
   const until = opts.until ?? new Date();
-  const maxGames = opts.maxGames ?? 80;
+  const maxGames = opts.maxGames ?? 400;
   const concurrency = opts.concurrency ?? 2;
 
   let gamesProcessed = 0;
@@ -95,6 +98,10 @@ export async function runLeagueSeasonBackfill(
       console.warn(`league backfill scoreboard ${yyyymmdd(d)}:`, e instanceof Error ? e.message : e);
     }
   }
+
+  const uniqueFinal = new Map<string, (typeof tasks)[0]>();
+  for (const t of tasks) uniqueFinal.set(t.id, t);
+  const gamesPlayedSoFar = uniqueFinal.size;
 
   const pending = tasks.filter((t) => {
     if (processed.has(t.id)) {
@@ -159,10 +166,13 @@ export async function runLeagueSeasonBackfill(
     }
   }
 
+  const gamesCached = processed.size;
   const report: LeagueBackfillReport = {
     gamesProcessed,
     gamesSkippedCached,
-    nbaGamesInCache: processed.size,
+    gamesPlayedSoFar,
+    gamesCached,
+    nbaGamesInCache: gamesCached,
     logRowsAdded,
     totalLogRows: totalRows,
     teamsWithLogs: teams.size,
@@ -171,10 +181,9 @@ export async function runLeagueSeasonBackfill(
   };
 
   console.log(
-    `league backfill report: games+${gamesProcessed} cached-skip ${gamesSkippedCached} ` +
-      `nba-games-in-cache ${report.nbaGamesInCache}/${NBA_REGULAR_GAMES_APPROX} ` +
-      `logs ${report.totalLogRows} (+${logRowsAdded}) teams ${report.teamsWithLogs}/30 ` +
-      `null-opponent ${report.nullOpponentRows}`
+    `league backfill report: games played so far ${gamesPlayedSoFar}, cached ${gamesCached}, ` +
+      `teams ${report.teamsWithLogs}/30, null-opponent ${report.nullOpponentRows} ` +
+      `(+${gamesProcessed} this run, skip ${gamesSkippedCached}, logs ${report.totalLogRows} +${logRowsAdded})`
   );
 
   return report;

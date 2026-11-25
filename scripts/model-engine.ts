@@ -44,6 +44,7 @@ export interface ModelRunInput {
   metaSources?: MetaJson["sources"];
   smallSlate?: boolean;
   defense?: DefenseRatingsBundle;
+  matchupSignalsEnabled?: boolean;
 }
 
 export function runModel(input: ModelRunInput): {
@@ -188,6 +189,7 @@ export function runModel(input: ModelRunInput): {
           playerPosition: p.position,
           seasonMinutes,
           injuryAngle,
+          matchupSignalsEnabled: input.matchupSignalsEnabled,
           matchupLog,
           flags: {
             questionable: inj?.status === "Questionable",
@@ -248,11 +250,23 @@ export function runModel(input: ModelRunInput): {
     `picks filter: ${picks.length} legs priced → ${eligiblePicks.length} eligible (excluded ${picks.length - eligiblePicks.length})`
   );
   logMarketBlendSample(eligiblePicks);
-  if (matchupLog.length) {
-    const top = [...matchupLog].sort((a, b) => Math.abs(b.deltaPp) - Math.abs(a.deltaPp)).slice(0, 5);
-    for (const row of top) {
+  if (input.matchupSignalsEnabled !== false && matchupLog.length) {
+    const pos = [...matchupLog]
+      .filter((r) => r.deltaPp > 0)
+      .sort((a, b) => b.deltaPp - a.deltaPp)
+      .slice(0, 5);
+    const neg = [...matchupLog]
+      .filter((r) => r.deltaPp < 0)
+      .sort((a, b) => a.deltaPp - b.deltaPp)
+      .slice(0, 5);
+    for (const row of pos) {
       console.log(
-        `matchup adjust sample: ${row.name} ${row.market} ${row.line}+ ${row.deltaPp > 0 ? "+" : ""}${row.deltaPp.toFixed(1)}pp`
+        `matchup adjust sample (+): ${row.name} ${row.market} ${row.line}+ +${row.deltaPp.toFixed(1)}pp`
+      );
+    }
+    for (const row of neg) {
+      console.log(
+        `matchup adjust sample (-): ${row.name} ${row.market} ${row.line}+ ${row.deltaPp.toFixed(1)}pp`
       );
     }
   }
@@ -301,6 +315,12 @@ export function runModel(input: ModelRunInput): {
     ...(allQ1Exclusions.length ? { q1ExclusionLog: allQ1Exclusions.slice(0, 20) } : {}),
     ...(signalUnavailable.length ? { signalUnavailable } : {}),
     ...(topConfluenceLegs.length ? { topConfluenceLegs } : {}),
+    ...(multiResult.mainPlayConfluenceRelaxed
+      ? {
+          mainPlayConfluenceRelaxed: true,
+          mainPlayNotes: ["Main Play: confluence relaxed"],
+        }
+      : {}),
   };
 
   return {

@@ -65,7 +65,8 @@ export async function safeFinalizePipelineSupabaseSync(
 }
 import { filterPlayersForSlate, writeSlateBundle } from "./slate-bundle.js";
 import { buildDefenseRatings, logDefenseSpotCheck } from "../lib/defense-ratings.js";
-import { runLeagueSeasonBackfill } from "../lib/league-season-backfill.js";
+import { runLeagueSeasonBackfill, type LeagueBackfillReport } from "../lib/league-season-backfill.js";
+import { matchupGateLogLine, matchupSignalsReady } from "../lib/matchup-gate.js";
 import { backfillRosterLogsOnce } from "../lib/season-log-backfill.js";
 import {
   cacheSlateOddsSnapshot,
@@ -208,6 +209,7 @@ export async function runLivePipeline(
   injuries = injuries.filter((i) => slateTeamSet.has(i.teamId));
 
   const gameLogCache = loadGameLogCache(outDir);
+  let leagueBackfillReport: LeagueBackfillReport | undefined;
   try {
     const rosters = await mapPool(teamIds, 4, async (tid) => {
       const raw = await fetchRoster(tid);
@@ -363,8 +365,8 @@ export async function runLivePipeline(
     const backfill = await backfillRosterLogsOnce(gameLogCache, backfillTasks, now, {
       concurrency: 3,
     });
-    await runLeagueSeasonBackfill(outDir, gameLogCache, {
-      maxGames: Number(process.env.LEAGUE_BACKFILL_MAX_GAMES ?? 50),
+    leagueBackfillReport = await runLeagueSeasonBackfill(outDir, gameLogCache, {
+      maxGames: Number(process.env.LEAGUE_BACKFILL_MAX_GAMES ?? 400),
       concurrency: 2,
       until: now,
     });
@@ -397,6 +399,13 @@ export async function runLivePipeline(
     );
   } catch (e) {
     console.warn("defense ratings:", e instanceof Error ? e.message : e);
+  }
+
+  const matchupSignalsEnabled = leagueBackfillReport
+    ? matchupSignalsReady(leagueBackfillReport)
+    : false;
+  if (leagueBackfillReport && !matchupSignalsEnabled) {
+    console.log(matchupGateLogLine(leagueBackfillReport));
   }
 
   await refreshRecentFinalBoxScores(now, summaryCache);
@@ -627,6 +636,7 @@ export async function runLivePipeline(
       unpulledGameIds: tip ? unpulledBySlateDate.get(tip) : undefined,
       skipOfficialPublish,
       defense: defenseBundle,
+      matchupSignalsEnabled,
     });
     if (tip) {
       cacheSlateOddsSnapshot(

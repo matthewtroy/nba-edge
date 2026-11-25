@@ -39,6 +39,7 @@ export interface SlateBundleInput {
   unpulledGameIds?: Set<string>;
   skipOfficialPublish?: boolean;
   defense?: DefenseRatingsBundle;
+  matchupSignalsEnabled?: boolean;
 }
 
 export function filterPlayersForSlate(
@@ -76,6 +77,7 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     oddsPulledAt: input.oddsPulledAt,
     metaSources: { ...input.sources },
     defense: input.defense,
+    matchupSignalsEnabled: input.matchupSignalsEnabled,
   });
 
   let { picks, multis, multisPayload, meta, whatChanged } = modelRun;

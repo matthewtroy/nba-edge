@@ -5,6 +5,7 @@ import {
   qualifiesCrossBoostLeg,
   qualifiesLongshotLeg,
   qualifiesMainPlayLeg,
+  qualifiesMainPlayLegRelaxed,
 } from "./main-play-eligibility.js";
 import {
   enforceExposureCapWithDrops,
@@ -32,6 +33,7 @@ export interface MultiBuildResult {
   bets: MultiBet[];
   notBuilt: MultiNotBuilt[];
   gateViolations: string[];
+  mainPlayConfluenceRelaxed?: boolean;
 }
 
 export const MIN_LEG_FAIR = 1.3;
@@ -172,8 +174,11 @@ export function buildMultis(
   const multis: MultiBet[] = [];
 
   const main = buildMainPlay(byP, targetProfit, slateSize, minEdgeFraction);
-  if (main.bet) multis.push(main.bet);
-  else notBuilt.push({ type: "mainPlay", label: LABELS.mainPlay, reason: main.reason });
+  let mainPlayConfluenceRelaxed = false;
+  if (main.bet) {
+    multis.push(main.bet);
+    mainPlayConfluenceRelaxed = main.confluenceRelaxed === true;
+  } else notBuilt.push({ type: "mainPlay", label: LABELS.mainPlay, reason: main.reason });
 
   if (main.bet) {
     const booster = buildBooster(main.bet, pool, minEdgeFraction);
@@ -278,6 +283,7 @@ export function buildMultis(
     bets: finalBets,
     notBuilt,
     gateViolations: gated.violations,
+    ...(mainPlayConfluenceRelaxed ? { mainPlayConfluenceRelaxed: true } : {}),
   };
 }
 
@@ -325,8 +331,10 @@ function buildMainPlay(
   _targetProfit: number,
   slateSize: number,
   minEdgeFraction: number
-): { bet: MultiBet | null; reason: string } {
-  const eligible = picks.filter(qualifiesMainPlayLeg);
+): { bet: MultiBet | null; reason: string; confluenceRelaxed?: boolean } {
+  const attempt = (
+    eligible: PickLeg[]
+  ): { bet: MultiBet | null; reason: string } => {
   if (eligible.length < 3) {
     const reason = `Only ${eligible.length} legs meet fair 1.40–2.50, p≥0.60 (need 3–5)`;
     pushMultiBuildTrace({
@@ -407,6 +415,16 @@ function buildMainPlay(
     },
     reason: "",
   };
+  };
+
+  const strict = picks.filter(qualifiesMainPlayLeg);
+  const strictOut = attempt(strict);
+  if (strictOut.bet) return { ...strictOut, confluenceRelaxed: false };
+
+  const relaxed = picks.filter(qualifiesMainPlayLegRelaxed);
+  const relaxedOut = attempt(relaxed);
+  if (relaxedOut.bet) return { ...relaxedOut, confluenceRelaxed: true };
+  return relaxedOut;
 }
 
 function findMainPlaySubset(
