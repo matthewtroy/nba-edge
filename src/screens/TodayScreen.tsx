@@ -12,12 +12,13 @@ import { sydneyTimeFromIso } from "../utils/format";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
 import { formatOddsFreshnessSummary } from "@lib/odds-freshness-ui";
 import { picksByIdFromOfficialSnapshots } from "@lib/official-leg-snapshot";
+import { formatHomeSettleSummary } from "@lib/home-settle-summary";
 
 const ORDER = [
   "mainPlay",
+  "crossGameSgm",
   "booster",
   "q1Multi",
-  "crossGameSgm",
   "boostSgm",
   "longshot",
 ] as const;
@@ -117,6 +118,7 @@ export function TodayScreen({
 
   const ageH =
     (Date.now() - new Date(data.meta.lastUpdated).getTime()) / (1000 * 60 * 60);
+  const settleSummary = formatHomeSettleSummary(data.results);
 
   return (
     <div className="pb-24">
@@ -151,6 +153,9 @@ export function TodayScreen({
           </p>
           {oddsFreshness && (
             <p className="text-[11px] text-white/45 mt-0.5">{oddsFreshness}</p>
+          )}
+          {settleSummary && (
+            <p className="text-[11px] text-white/55 mt-0.5 tabular-nums">{settleSummary}</p>
           )}
           {useOfficial && officialBookie && (
             <p className="text-xs text-white/45 mt-1">Card bookie · {officialBookie}</p>

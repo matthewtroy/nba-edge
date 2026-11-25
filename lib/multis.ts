@@ -227,7 +227,7 @@ const LABELS: Record<MultiType, string> = {
   mainPlay: "Main Play",
   booster: "Booster",
   q1Multi: "Q1 Multi",
-  crossGameSgm: "Cross-Game SGM Multi",
+  crossGameSgm: "Best Double Up",
   boostSgm: "Best SGM",
   longshot: "Longshot",
 };
@@ -388,10 +388,10 @@ function mainPlayPoolAtBookie(
   catalog: PickLeg[]
 ): PickLeg[] {
   const edge = eligible.filter((l) => legMeetsBookieEdge(l, bookie, minEdgeFraction));
-  return edge
+  const priced = edge
     .map((l) => asBookieLeg(l, bookie, catalog))
-    .filter(Boolean)
-    .sort(sortLegs) as PickLeg[];
+    .filter((l): l is PickLeg => l != null);
+  return priced.sort(sortLegs);
 }
 
 function buildMainPlay(
@@ -1032,7 +1032,7 @@ function buildCrossGameSgm(
   return {
     bet: {
       type: "crossGameSgm",
-      label: "Cross-Game SGM Multi",
+      label: "Best Double Up",
       legs: bestAcross.legs.map((l) => l.id),
       combinedProbability: p,
       combinedFairPrice: fair,

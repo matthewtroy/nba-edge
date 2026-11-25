@@ -5,6 +5,8 @@ import { assertNoForbiddenStrings } from "./multi-card-text.js";
 import { multiCardTitle } from "./multi-combined.js";
 import { formatLegCardLine } from "./leg-card-odds.js";
 import { verifyTakeAtIsFairEdge } from "./multi-card-text.js";
+import { formatHomeSettleSummary } from "./home-settle-summary.js";
+import type { ResultsJson } from "./results-types.js";
 
 function formatSydneyTime(iso: string): string {
   return new Date(iso).toLocaleString("en-AU", {
@@ -22,6 +24,7 @@ export function renderTodayText(input: {
   notBuilt: MultiNotBuilt[];
   picksById: Map<string, PickLeg>;
   officialCard?: OfficialCardFile | null;
+  results?: ResultsJson | null;
 }): string {
   const official = input.officialCard;
   const useOfficial = official != null;
@@ -48,6 +51,8 @@ export function renderTodayText(input: {
         : ""
     }${stale ? " · (stale)" : ""}`
   );
+  const settle = formatHomeSettleSummary(input.results ?? null);
+  if (settle) lines.push(settle);
 
   if (input.meta.smallSlate) {
     lines.push("Small slate");
