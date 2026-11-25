@@ -5,6 +5,7 @@ import {
   isGameSgmCard,
   type GameSgmCard,
 } from "./game-sgm-builder.js";
+import { GAMES_TAB_SGM_RULES, ROUGHIE_SGM_RULES } from "./games-tab-sgm.js";
 import { formatLegCardLine } from "./leg-card-odds.js";
 import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
 import { resolveMultiFeedQuote } from "./multi-combined.js";
@@ -24,8 +25,10 @@ export function gameSgmBlocks(
   multis: MultiBet[],
   picksById: Map<string, PickLeg>,
   oddsMin = 1.5,
-  oddsMax = 4
+  oddsMax = 4,
+  roughiesEnabled = false
 ): GameSgmBlock[] {
+  const rules = roughiesEnabled ? ROUGHIE_SGM_RULES : GAMES_TAB_SGM_RULES;
   const cross = multis.find((m) => m.type === "crossGameSgm");
   const boost = multis.find((m) => m.type === "boostSgm");
   const crossIds = new Set(cross?.legs ?? []);
@@ -41,7 +44,15 @@ export function gameSgmBlocks(
     const boostLegs = [...boostIds]
       .map((id) => picksById.get(id))
       .filter((l): l is PickLeg => l != null && l.gameId === game.id);
-    const built = buildGameSgmCard(game, picks, oddsMin, oddsMax, undefined, picks);
+    const built = buildGameSgmCard(
+      game,
+      picks,
+      oddsMin,
+      oddsMax,
+      undefined,
+      picks,
+      rules
+    );
     if (isGameSgmCard(built)) {
       return { game, sgmLegs, crossGameLegs, boostLegs, card: built };
     }

@@ -96,3 +96,9 @@ export const NBA_SEASON_OPENING_UTC = "2026-10-21";
 export function nbaSeasonStartDate(): Date {
   return new Date(`${NBA_SEASON_OPENING_UTC}T12:00:00.000Z`);
 }
+
+/** Games tab Roughie mode: per-leg AU bookie decimal and leg count caps. */
+export const ROUGHIE_LEG_MIN = 2.5;
+export const ROUGHIE_LEG_MAX = 8;
+export const ROUGHIE_MIN_LEGS = 2;
+export const ROUGHIE_MAX_LEGS = 2;

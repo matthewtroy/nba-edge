@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import type { MultiBet } from "../lib/types";
 import { multiBookieStorageKey } from "../src/hooks/useMultiBookieSelect";
 import { crossGameStorageKey } from "../src/hooks/useCrossGameSelection";
+import { GAMES_ROUGHIES_STORAGE_KEY } from "../src/hooks/useGamesRoughies";
 
 const multi: MultiBet = {
   type: "crossGameSgm",
@@ -20,6 +21,11 @@ describe("localStorage keys", () => {
     expect(today).toContain(":today:");
     expect(games).toContain(":games:");
     expect(today).not.toBe(games);
+  });
+
+  it("keeps Roughies toggle key separate from games SGM preset", () => {
+    expect(GAMES_ROUGHIES_STORAGE_KEY).toBe("games-roughies-on");
+    expect(GAMES_ROUGHIES_STORAGE_KEY).not.toBe("games-sgm-preset");
   });
 
   it("scopes cross-game chips by slate date", () => {

@@ -9,6 +9,7 @@ import { picksByIdFromOfficialSnapshots } from "@lib/official-leg-snapshot";
 import { MultiCard } from "../components/MultiCard";
 import { DateSwitcher } from "../components/DateSwitcher";
 import { useGamesSgmPreset } from "../hooks/useGamesSgmPreset";
+import { useGamesRoughies } from "../hooks/useGamesRoughies";
 import { formatOddsBand } from "@lib/game-sgm-builder";
 import { formatGameOddsAge, formatOddsFreshnessSummary } from "@lib/odds-freshness-ui";
 
@@ -34,6 +35,7 @@ export function GamesScreen({
   myBookie,
 }: Props) {
   const { preset, setPreset, presets } = useGamesSgmPreset();
+  const { roughiesOn, setRoughiesOn } = useGamesRoughies();
   const activeSlate = useMemo(() => gamesForCards(data.slate), [data.slate]);
   const useOfficial =
     data.officialCard != null &&
@@ -55,9 +57,10 @@ export function GamesScreen({
         multis,
         picksById,
         preset.min,
-        preset.max
+        preset.max,
+        roughiesOn
       ),
-    [activeSlate, data.picks, multis, picksById, preset]
+    [activeSlate, data.picks, multis, picksById, preset, roughiesOn]
   );
 
   const built = useMemo(() => blocks.filter((b) => b.card), [blocks]);
@@ -98,7 +101,7 @@ export function GamesScreen({
           <p className="text-[11px] text-white/45 mt-1">{oddsFreshness}</p>
         )}
       </header>
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-4 items-center">
         {presets.map((p) => (
           <button
             key={p.label}
@@ -113,6 +116,17 @@ export function GamesScreen({
             ${p.label}
           </button>
         ))}
+        <button
+          type="button"
+          onClick={() => setRoughiesOn(!roughiesOn)}
+          className={`text-[11px] px-3 py-1.5 rounded-full border ${
+            roughiesOn
+              ? "border-amber-400/50 text-amber-200"
+              : "border-white/20 text-white/55"
+          }`}
+        >
+          Roughies {roughiesOn ? "on" : "off"}
+        </button>
       </div>
 
       {activeSlate.length === 0 && (
@@ -147,6 +161,11 @@ export function GamesScreen({
               <>
                 <p className="text-[13px] font-semibold text-white theme-adaptive-title mb-2">
                   {gameListRowLabel(game)}
+                  {card.roughie && (
+                    <span className="text-[10px] font-medium px-1.5 py-px rounded-full bg-amber-500/20 text-amber-200 ml-2 align-middle">
+                      Roughie
+                    </span>
+                  )}
                   {gameOddsAge ? (
                     <span className="text-white/40 font-normal text-[11px] ml-2">
                       {gameOddsAge}

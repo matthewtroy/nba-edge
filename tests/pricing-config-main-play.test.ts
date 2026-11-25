@@ -4,6 +4,8 @@ import {
   MAIN_PLAY_COMBINED_MAX,
   MAIN_PLAY_SWEET_MIN,
   MAIN_PLAY_SWEET_MAX,
+  ROUGHIE_LEG_MIN,
+  ROUGHIE_LEG_MAX,
   MAIN_PLAY_HIGH_PROB_P,
   MAIN_PLAY_L10_GAP_PP,
   compareMainPlayCandidates,
@@ -27,6 +29,11 @@ describe("MAIN_PLAY pricing-config", () => {
     const sweet = { total: 10, surplus: 1.0, p: 0.35 };
     const wide = { total: 18, surplus: 1.5, p: 0.4 };
     expect(compareMainPlayCandidates(sweet, wide)).toBeLessThan(0);
+  });
+
+  it("exports ROUGHIE_* for Games tab", () => {
+    expect(ROUGHIE_LEG_MIN).toBe(2.5);
+    expect(ROUGHIE_LEG_MAX).toBe(8);
   });
 
   it("re-exports thresholds from main-play-eligibility", async () => {

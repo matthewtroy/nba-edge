@@ -14,6 +14,9 @@ import {
   GAMES_TAB_MIN_LEGS,
   GAMES_TAB_MAX_LEGS,
   GAMES_TAB_MIN_LEG_PRICE,
+  GAMES_TAB_SGM_RULES,
+  ROUGHIE_SGM_RULES,
+  type GamesTabSgmLegRules,
 } from "./games-tab-sgm.js";
 import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
 
@@ -30,6 +33,7 @@ export interface GameSgmCard {
   bestTotal: number;
   oddsMin: number;
   oddsMax: number;
+  roughie?: boolean;
 }
 
 export interface GameSgmPickResult {
@@ -71,7 +75,8 @@ export function pickGameSgmLegsWithReason(
   oddsMax: number,
   minEdgeFraction = DEFAULT_MIN_EDGE,
   catalog?: PickLeg[],
-  gameLabel?: string
+  gameLabel?: string,
+  rules: GamesTabSgmLegRules = GAMES_TAB_SGM_RULES
 ): GameSgmPickResult {
   const pool = catalog ?? picks;
   const eligible = picks
@@ -84,12 +89,13 @@ export function pickGameSgmLegsWithReason(
     gameId;
   const band = formatOddsBand(oddsMin, oddsMax);
 
-  if (eligible.length < MIN_GAME_SGM_LEGS) {
+  const minLegs = rules.minLegs;
+  if (eligible.length < minLegs) {
     return {
       legs: [],
       bookie: "",
       total: 0,
-      reason: plainEnglishGamesSgmReason(label, band, eligible.length, 0),
+      reason: plainEnglishGamesSgmReason(label, band, eligible.length, 0, rules),
     };
   }
 
@@ -107,21 +113,24 @@ export function pickGameSgmLegsWithReason(
 
   for (const bookie of bookiesByCoverage(eligible)) {
     const priced = eligible
-      .filter((l) => qualifiesGamesTabSgmLeg(l, bookie, minEdgeFraction, pool))
+      .filter((l) =>
+        qualifiesGamesTabSgmLeg(l, bookie, minEdgeFraction, pool, rules)
+      )
       .map((l) => asBookieLeg(l, bookie, pool))
       .filter(Boolean) as PickLeg[];
     if (priced.length > maxPool) {
       maxPool = priced.length;
       maxPoolBookie = bookie;
     }
-    if (priced.length < MIN_GAME_SGM_LEGS) continue;
+    if (priced.length < minLegs) continue;
 
     const combo = pickBestGamesTabSgmCombo(
       priced.slice(0, 22),
       bookie,
       pool,
       oddsMin,
-      oddsMax
+      oddsMax,
+      rules
     );
     if (!combo) continue;
     inBandAttempts += 1;
@@ -159,7 +168,8 @@ export function pickGameSgmLegsWithReason(
         label,
         band,
         maxPool,
-        inBandAttempts
+        inBandAttempts,
+        rules
       ),
     };
   }
@@ -211,7 +221,8 @@ export function buildGameSgmCard(
   oddsMin: number,
   oddsMax: number,
   minEdgeFraction = DEFAULT_MIN_EDGE,
-  catalog?: PickLeg[]
+  catalog?: PickLeg[],
+  rules: GamesTabSgmLegRules = GAMES_TAB_SGM_RULES
 ): GameSgmBuildResult {
   const short = `${game.awayTeam.split(" ").pop()} @ ${game.homeTeam.split(" ").pop()}`;
   const pick = pickGameSgmLegsWithReason(
@@ -221,14 +232,21 @@ export function buildGameSgmCard(
     oddsMax,
     minEdgeFraction,
     catalog ?? picks,
-    short
+    short,
+    rules
   );
   if (!pick.legs.length) {
     return {
       game,
       notBuiltReason:
         pick.reason ??
-        plainEnglishGamesSgmReason(short, formatOddsBand(oddsMin, oddsMax), 0, 0),
+        plainEnglishGamesSgmReason(
+          short,
+          formatOddsBand(oddsMin, oddsMax),
+          0,
+          0,
+          rules
+        ),
       oddsMin,
       oddsMax,
     };
@@ -244,5 +262,6 @@ export function buildGameSgmCard(
     bestTotal: pick.total,
     oddsMin,
     oddsMax,
+    roughie: rules.roughie === true,
   };
 }

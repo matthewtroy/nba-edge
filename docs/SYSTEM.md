@@ -93,6 +93,11 @@ One card; DD/TD or 30+ pts; take-at **$30–$150**; no 3PM legs.
 
 ≤4 games: Main Play first, then at most two others; `smallSlateNote` when applicable.
 
+### Games tab SGM & Roughies
+
+- Bookie-total bands: UI presets ($1.5–4 … $50+); persisted under `games-sgm-preset`.
+- **Roughies** toggle (`games-roughies-on` localStorage, separate from band preset): when on, same-game combos use **`ROUGHIE_*`** — legs **$2.50–$8.00** each at the card bookie, **exactly 2 legs** max (`ROUGHIE_MIN_LEGS` / `ROUGHIE_MAX_LEGS`), same form/clash/value rules as standard Games SGM. Built cards show a **Roughie** pill.
+
 ---
 
 ## 6. Odds pulls & budget
