@@ -75,6 +75,11 @@ git -C "$WT" \
   exit 0
 }
 
+if [[ "${PERSIST_DRY_RUN:-}" = "1" ]]; then
+  echo "persist data branch: dry-run (commit ok, skip push)"
+  exit 0
+fi
+
 if ! git -C "$WT" push origin data; then
   PERSIST_WARN "push to origin/data failed"
   exit 0
