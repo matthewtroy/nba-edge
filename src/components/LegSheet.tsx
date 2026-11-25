@@ -9,6 +9,7 @@ import { legReasonLineUi } from "../lib/leg-reason-ui";
 import { visibleLegReasons } from "@lib/leg-display";
 import { isInjuryRedistributionReason, formatInjuryReasonLine } from "@lib/injury-reason";
 import { FEED_BOOKIES } from "@lib/card-bookie";
+import { legBookieQuoteView } from "@lib/leg-bookie-quote";
 
 interface Props {
   leg: PickLeg | null;
@@ -97,9 +98,14 @@ export function LegSheet({
     const key = `leg-price-${leg.id}`;
     const saved = localStorage.getItem(key);
     if (saved) setBookPrice(saved);
-    else if (leg.bookiePrices?.[myBookie]) {
-      setBookPrice(String(leg.bookiePrices[myBookie]));
-    } else setBookPrice("");
+    else {
+      const view = legBookieQuoteView(leg, myBookie, picks);
+      if (view.displayPrice != null && view.displayPrice > 1) {
+        setBookPrice(String(view.displayPrice));
+      } else if (leg.bookiePrices?.[myBookie]) {
+        setBookPrice(String(leg.bookiePrices[myBookie]));
+      } else setBookPrice("");
+    }
     setDragY(0);
   }, [leg, myBookie]);
 
@@ -113,13 +119,17 @@ export function LegSheet({
   }, [leg]);
 
   const rungs = useMemo(() => (leg ? siblingRungs(picks, leg) : []), [leg, picks]);
+  const bookieView = useMemo(
+    () => (leg ? legBookieQuoteView(leg, myBookie, picks) : null),
+    [leg, myBookie, picks]
+  );
 
-  if (!leg) return null;
-
+  if (!leg || !bookieView) return null;
+  const modelLeg = bookieView.modelLeg;
   const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
-  const last10 = leg.recentTenVsLine ?? leg.recentVsLine ?? [];
-  const isQ1 = leg.market.startsWith("q1");
-  const myBookPrice = leg.bookiePrices?.[myBookie];
+  const last10 = modelLeg.recentTenVsLine ?? modelLeg.recentVsLine ?? leg.recentTenVsLine ?? leg.recentVsLine ?? [];
+  const isQ1 = modelLeg.market.startsWith("q1");
+  const feedPrice = bookieView.displayPrice;
 
   const savePrice = (v: string) => {
     setBookPrice(v);
@@ -127,15 +137,15 @@ export function LegSheet({
   };
 
   const num = Number(bookPrice);
-  const v = Number.isFinite(num) && num > 1 ? verdict(num, leg.takeAt) : null;
+  const v = Number.isFinite(num) && num > 1 ? verdict(num, modelLeg.takeAt) : null;
 
-  const whyLines = visibleLegReasons(leg.reasons)
+  const whyLines = visibleLegReasons(modelLeg.reasons)
     .map((r) =>
       isInjuryRedistributionReason(r) ? formatInjuryReasonLine(r) : r
     )
     .slice(0, 4);
-  if (leg.reasonLine && !whyLines.includes(leg.reasonLine)) {
-    whyLines.unshift(leg.reasonLine);
+  if (modelLeg.reasonLine && !whyLines.includes(modelLeg.reasonLine)) {
+    whyLines.unshift(modelLeg.reasonLine);
   }
 
   const bookies = [...new Set([...FEED_BOOKIES, ...AU_BOOKMAKERS])];
@@ -167,7 +177,17 @@ export function LegSheet({
         <h2 className="text-lg font-semibold text-white theme-adaptive-title leading-tight pr-8">
           {leg.playerName}
         </h2>
-        <p className="text-sm text-white/55 mt-0.5">{marketLabel(leg.market, leg.line)}</p>
+        <p className="text-sm text-white/55 mt-0.5">
+          {marketLabel(modelLeg.market, modelLeg.line)}
+        </p>
+        {bookieView.lineShift && (
+          <p className="text-[11px] text-white/45 mt-0.5">{bookieView.lineShift}</p>
+        )}
+        {!bookieView.offered && (
+          <p className="text-[11px] text-red-400/90 mt-1">
+            Not offered at {myBookie} for this line
+          </p>
+        )}
         {subtitle && (
           <p className="text-[11px] text-white/40 mt-0.5">{subtitle}</p>
         )}
@@ -199,31 +219,34 @@ export function LegSheet({
         )}
 
         <section className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-[11px]">
-          <StatCell label="Fair" value={`$${leg.fairPrice.toFixed(2)}`} green />
-          <StatCell label="Take at" value={`$${leg.takeAt.toFixed(2)}`} />
+          <StatCell label="Fair" value={`$${modelLeg.fairPrice.toFixed(2)}`} green />
+          <StatCell label="Take at" value={`$${modelLeg.takeAt.toFixed(2)}`} />
           <StatCell
             label="Model p"
-            value={`${(leg.probability * 100).toFixed(0)}%`}
+            value={`${(modelLeg.probability * 100).toFixed(0)}%`}
           />
-          {leg.projectedMinutes != null && (
-            <StatCell label="Min" value={leg.projectedMinutes.toFixed(0)} />
+          {feedPrice != null && feedPrice > 1 && (
+            <StatCell label={`${myBookie}`} value={`$${feedPrice.toFixed(2)}`} green />
           )}
-          {leg.seasonAvg && (
+          {modelLeg.projectedMinutes != null && (
+            <StatCell label="Min" value={modelLeg.projectedMinutes.toFixed(0)} />
+          )}
+          {modelLeg.seasonAvg && (
             <>
-              <StatCell label="Szn pts" value={leg.seasonAvg.pts.toFixed(1)} />
-              <StatCell label="Szn reb" value={leg.seasonAvg.reb.toFixed(1)} />
+              <StatCell label="Szn pts" value={modelLeg.seasonAvg.pts.toFixed(1)} />
+              <StatCell label="Szn reb" value={modelLeg.seasonAvg.reb.toFixed(1)} />
             </>
           )}
-          {isQ1 && leg.q1SeasonHitAtLine && (
+          {isQ1 && modelLeg.q1SeasonHitAtLine && (
             <StatCell
               label="Q1 hit @ line"
-              value={`${leg.q1SeasonHitAtLine.hits}/${leg.q1SeasonHitAtLine.total}`}
+              value={`${modelLeg.q1SeasonHitAtLine.hits}/${modelLeg.q1SeasonHitAtLine.total}`}
             />
           )}
-          {isQ1 && leg.q1Last10HitRate != null && (
+          {isQ1 && modelLeg.q1Last10HitRate != null && (
             <StatCell
               label="Q1 L10"
-              value={`${(leg.q1Last10HitRate * 100).toFixed(0)}%`}
+              value={`${(modelLeg.q1Last10HitRate * 100).toFixed(0)}%`}
             />
           )}
         </section>
@@ -264,11 +287,6 @@ export function LegSheet({
           {v && (
             <p className="text-xs text-white/55 mt-1 capitalize">{v}</p>
           )}
-          {myBookPrice != null && myBookPrice > 1 && (
-            <p className="text-[11px] text-white/40 mt-1">
-              Feed: ${myBookPrice.toFixed(2)}
-            </p>
-          )}
         </section>
       </motionPanel>
     </motionOverlay>,
@@ -308,12 +326,19 @@ function motionOverlay({
 }) {
   return (
     <div
-      className="fixed inset-0 z-[100] flex flex-col justify-end bg-black/55"
-      onClick={onClose}
+      className="fixed inset-0 z-[200] pointer-events-auto"
       role="dialog"
       aria-modal="true"
     >
-      {children}
+      <button
+        type="button"
+        className="absolute inset-0 bg-black/60"
+        aria-label="Close leg details"
+        onClick={onClose}
+      />
+      <div className="absolute inset-x-0 bottom-0 flex justify-center">
+        {children}
+      </div>
     </div>
   );
 }
@@ -358,8 +383,11 @@ function motionPanelInner({
 }) {
   return (
     <div
-      className="bg-card rounded-t-[20px] px-4 pt-2 pb-6 max-h-[85vh] overflow-y-auto animate-slide-up border-t border-white/[0.06] w-full max-w-phone mx-auto"
-      style={{ transform: dragY ? `translateY(${dragY}px)` : undefined }}
+      className="bg-card rounded-t-[20px] px-4 pt-2 pb-8 max-h-[85vh] overflow-y-auto overscroll-contain animate-slide-up border-t border-white/[0.08] w-full max-w-phone shadow-[0_-8px_40px_rgba(0,0,0,0.45)]"
+      style={{
+        transform: dragY ? `translateY(${dragY}px)` : undefined,
+        backgroundColor: "#121821",
+      }}
       onClick={(e) => e.stopPropagation()}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}

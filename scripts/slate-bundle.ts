@@ -20,6 +20,8 @@ import { slateTeamIds, slateTipDateFromGames } from "../lib/slate-today.js";
 import type { OddsCacheFile } from "../lib/odds-cache-file.js";
 import { gameOddsLabelsForUnpulled, gameOddsPriceAge } from "../lib/unpulled-odds.js";
 import { evaluateOfficialPublishGate } from "../lib/official-card-gate.js";
+import { logOfficialCard } from "../lib/official-card-log.js";
+import { hasAuPropPrices, isEveningSydney } from "../lib/official-card-time.js";
 
 export interface SlateBundleInput {
   rootDir: string;
@@ -157,7 +159,7 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
 
   const oddsLastDisplayed = resolveOddsLastPulled(
     picks,
-    input.cache.lastPulled,
+    input.oddsPulledAt ?? input.cache.lastPulled,
     meta.oddsLastPulled
   );
 
@@ -198,7 +200,7 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
       slateDate: tipDate,
       bookie: official.bookie,
     };
-    console.log(`Official card published (${tipDate}, ${official.bookie})`);
+    logOfficialCard("published", `${tipDate}, ${official.bookie}`);
   } else if (existingOfficial?.slateDate === tipDate) {
     metaOut.officialCard = {
       lockedAt: existingOfficial.lockedAt,
@@ -206,6 +208,22 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
       slateDate: existingOfficial.slateDate,
       bookie: existingOfficial.bookie,
     };
+  } else {
+    const reasons: string[] = [];
+    if (input.skipOfficialPublish) reasons.push("skip official publish flag");
+    if (blockOfficialRepublish || publishGate.block) {
+      reasons.push(...publishGate.reasons);
+      if (modelRun.modelSanity.blockRepublish) reasons.push("model sanity failed");
+    }
+    if (existingOfficial?.slateDate === tipDate) reasons.push("already locked");
+    if (
+      !isEveningSydney(input.now) &&
+      process.env.OFFICIAL_CARD_LOCK !== "1"
+    ) {
+      reasons.push("outside evening window");
+    }
+    if (!hasAuPropPrices(picks)) reasons.push("no AU prop prices");
+    logOfficialCard("blocked", reasons.join("; ") || "gate");
   }
 
   const officialForStatus = loadOfficialCard(outDir);

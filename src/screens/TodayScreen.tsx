@@ -121,6 +121,11 @@ export function TodayScreen({
               Draft
             </span>
           )}
+          {useOfficial && publishedAt && (
+            <span className="inline-flex text-[11px] px-2 py-0.5 rounded-full bg-white/[0.08] text-white/70 border border-white/[0.06] mt-1">
+              Official · {sydneyTimeFromIso(publishedAt)}
+            </span>
+          )}
           {data.meta.slateStatusLabel &&
             !data.meta.slateStatusLabel.toLowerCase().includes("draft") && (
             <p className="text-xs text-white/45 mt-1">{data.meta.slateStatusLabel}</p>
@@ -132,11 +137,8 @@ export function TodayScreen({
             )}
             {stale && <span className="text-accent-warn ml-1" title="Source stale or paused">●</span>}
           </p>
-          {useOfficial && publishedAt && (
-            <p className="text-xs text-white/45 mt-1">
-              Published {sydneyTimeFromIso(publishedAt)}
-              {officialBookie ? ` · ${officialBookie}` : ""}
-            </p>
+          {useOfficial && officialBookie && (
+            <p className="text-xs text-white/45 mt-1">Card bookie · {officialBookie}</p>
           )}
         </div>
         <button type="button" onClick={onOpenSettings} className="p-2 text-white/70" aria-label="Settings">

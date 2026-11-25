@@ -21,6 +21,10 @@ on:
         description: Rebuild official-card.json for next slate (pre-tip); no odds unless force_odds
         type: boolean
         default: false
+      odds_games:
+        description: When force_odds, pull exactly this many top games (0 = budget allowance)
+        type: number
+        default: 0
 
 concurrency:
   group: nba-edge-pipeline
@@ -85,8 +89,10 @@ jobs:
           PIPELINE_FORCE_ODDS: ${{ steps.mode.outputs.force_odds }}
           SKIP_ODDS_PULL: ${{ steps.mode.outputs.skip_odds }}
           PIPELINE_REPUBLISH_CARD: ${{ steps.mode.outputs.republish_card }}
+          PIPELINE_ODDS_GAMES: ${{ github.event_name == 'workflow_dispatch' && inputs.odds_games || 0 }}
+          ODDS_RESERVE_CREDITS: "20"
         run: |
-          echo "Workflow pipeline (dual-slate) force_odds=${{ steps.mode.outputs.force_odds }} skip_odds=${{ steps.mode.outputs.skip_odds }} republish_card=${{ steps.mode.outputs.republish_card }}"
+          echo "Workflow pipeline (dual-slate) force_odds=${{ steps.mode.outputs.force_odds }} skip_odds=${{ steps.mode.outputs.skip_odds }} republish_card=${{ steps.mode.outputs.republish_card }} odds_games=${PIPELINE_ODDS_GAMES}"
           npm run pipeline
 
       - run: npm run build

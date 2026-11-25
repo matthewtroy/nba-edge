@@ -46,8 +46,5 @@ export function evaluateOfficialPublishGate(input: {
   }
 
   const block = reasons.length > 0;
-  if (block) {
-    console.log(`official card blocked: ${reasons.join("; ")}`);
-  }
   return { block, reasons, starterProjectedRate: starterRate };
 }

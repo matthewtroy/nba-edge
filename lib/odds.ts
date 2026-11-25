@@ -1,5 +1,6 @@
 import type { SourceHealth } from "./types.js";
 import { namesMatch, normalizePlayerName } from "./player-names.js";
+import { oddsReserveCredits } from "./odds-reserve.js";
 
 export interface OddsPullResult {
   byLegKey: Map<string, { price: number; bookie: string }>;
@@ -12,10 +13,12 @@ export interface OddsPullResult {
 
 export function shouldPauseOdds(
   remaining: number | undefined,
-  totalMonthly = 500
+  _totalMonthly = 500,
+  reserveCredits?: number
 ): boolean {
   if (remaining === undefined) return false;
-  return remaining < totalMonthly * 0.2;
+  const reserve = reserveCredits ?? oddsReserveCredits();
+  return remaining < reserve;
 }
 
 export function parseOddsKey(player: string, market: string, line: number): string {

@@ -64,7 +64,6 @@ export function logModelSanity(result: ModelSanityResult): void {
       (result.examples.length ? ` (examples: ${result.examples.join("; ")})` : "")
   );
   if (result.blockRepublish) {
-    console.log("official card blocked: model sanity failed");
   }
 }
 

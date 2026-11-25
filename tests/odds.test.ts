@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 import { shouldPauseOdds } from "../lib/odds";
 
 describe("odds credit limit", () => {
-  it("pauses below 20% monthly", () => {
-    expect(shouldPauseOdds(99, 500)).toBe(true);
-    expect(shouldPauseOdds(150, 500)).toBe(false);
+  it("pauses below flat reserve", () => {
+    expect(shouldPauseOdds(19, 500, 20)).toBe(true);
+    expect(shouldPauseOdds(25, 500, 20)).toBe(false);
   });
 });

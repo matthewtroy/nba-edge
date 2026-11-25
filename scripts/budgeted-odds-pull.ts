@@ -4,10 +4,12 @@ import type { GameInjuryRank } from "../lib/game-injury-ranking.js";
 import {
   computeAllowance,
   formatBudgetLog,
+  maxGamesAboveReserve,
   selectGamesForAllowance,
   shouldPauseForReserve,
   type OddsBudgetConfig,
 } from "../lib/odds-budget.js";
+import { oddsReserveCredits } from "../lib/odds-reserve.js";
 import {
   listOddsEvents,
   matchOddsEventId,
@@ -44,6 +46,8 @@ export async function pullBudgetedOddsForSlate(opts: {
   budget: OddsBudgetConfig;
   trigger: OddsPullTrigger;
   targetSlateDate?: string;
+  /** When > 0, pull exactly this many top games (capped by reserve). */
+  fixedGameCount?: number;
 }): Promise<BudgetedOddsResult | null> {
   const ranking = rankGamesByInjuryAngle(
     opts.targetSlate,
@@ -57,8 +61,9 @@ export async function pullBudgetedOddsForSlate(opts: {
   let creditsRemaining = opts.budget.creditsRemaining ?? opts.cache.creditsRemaining;
   const remainingBefore = creditsRemaining;
 
-  if (shouldPauseForReserve(creditsRemaining, opts.budget.monthlyLimit)) {
-    console.log("odds pull: paused — below 20% monthly reserve");
+  const reserve = opts.budget.reserveCredits ?? oddsReserveCredits();
+  if (shouldPauseForReserve(creditsRemaining, reserve)) {
+    console.log(`odds pull: paused — below ${reserve} credit reserve`);
     return null;
   }
 
@@ -66,15 +71,30 @@ export async function pullBudgetedOddsForSlate(opts: {
     ...opts.budget,
     creditsRemaining,
     creditsPerGame,
+    reserveCredits: reserve,
   });
   console.log(formatBudgetLog(allowance, creditsRemaining ?? 0));
 
-  const selected = selectGamesForAllowance(
-    ranking,
-    allowance.allowance,
-    1,
-    creditsPerGame
-  );
+  const capGames =
+    creditsRemaining != null
+      ? maxGamesAboveReserve(creditsRemaining, creditsPerGame, 1, reserve)
+      : 0;
+
+  let selected: typeof ranking;
+  if (opts.fixedGameCount != null && opts.fixedGameCount > 0) {
+    const n = Math.min(opts.fixedGameCount, capGames, ranking.length);
+    selected = ranking.slice(0, n);
+    console.log(
+      `odds pull: fixed game count ${opts.fixedGameCount} → pulling ${n} (cap ${capGames} above reserve)`
+    );
+  } else {
+    selected = selectGamesForAllowance(
+      ranking,
+      allowance.allowance,
+      1,
+      creditsPerGame
+    );
+  }
   if (!selected.length) {
     console.log("odds pull: no allowance for games this run");
     return {
@@ -110,10 +130,7 @@ export async function pullBudgetedOddsForSlate(opts: {
       pulledIds.add(g.id);
       gameNames.push(`${g.awayTeam} @ ${g.homeTeam}`);
     }
-    if (
-      creditsRemaining != null &&
-      shouldPauseForReserve(creditsRemaining, opts.budget.monthlyLimit)
-    ) {
+    if (creditsRemaining != null && shouldPauseForReserve(creditsRemaining, reserve)) {
       break;
     }
   }

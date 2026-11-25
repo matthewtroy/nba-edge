@@ -9,6 +9,7 @@ import {
 } from "./fetch/espn.js";
 import { fetchLatestInjuryPdf, parsePdfInjuries } from "./fetch/nba-pdf.js";
 import { shouldPauseOdds } from "../lib/odds.js";
+import { oddsReserveCredits } from "../lib/odds-reserve.js";
 import { sydneyYmd } from "../lib/odds-budget.js";
 import { isPostTipOff, mergeBestOddsMaps } from "../lib/odds-cache-merge.js";
 import {
@@ -110,6 +111,7 @@ import {
 import { sydneyDateString } from "../lib/official-card-time.js";
 import { slateFirstTipStarted } from "../lib/slate-started.js";
 import { resolveOddsLastPulled } from "../lib/odds-pull-meta.js";
+import { logOfficialCard } from "../lib/official-card-log.js";
 import {
   cacheLogsFromRaw,
   getCachedLogs,
@@ -138,6 +140,13 @@ export async function runLivePipeline(
 ): Promise<void> {
   const forceOdds = opts.forceOdds === true;
   const fromLive = opts.fromLive === true;
+  const reserveCredits = oddsReserveCredits();
+  const fixedOddsGames = (() => {
+    const raw = process.env.PIPELINE_ODDS_GAMES;
+    if (raw == null || raw.trim() === "") return 0;
+    const n = Number(raw);
+    return Number.isFinite(n) && n > 0 ? Math.floor(n) : 0;
+  })();
   const skipOfficialPublish = opts.skipOfficialPublish === true;
   const republishCard = opts.republishCard === true;
   loadAliasMap(rootDir);
@@ -518,7 +527,7 @@ export async function runLivePipeline(
     sources.odds = "stale";
   } else if (
     cache.creditsRemaining != null &&
-    shouldPauseOdds(cache.creditsRemaining, budgetFromDb?.monthlyLimit ?? 500)
+    shouldPauseOdds(cache.creditsRemaining, budgetFromDb?.monthlyLimit ?? 500, reserveCredits)
   ) {
     sources.odds = "paused (credit limit)";
   } else if (pullTrigger) {
@@ -553,9 +562,11 @@ export async function runLivePipeline(
           creditsRemaining:
             budgetFromDb?.creditsRemaining ?? cache.creditsRemaining,
           creditsPerGame: budgetFromDb?.creditsPerGame ?? 10,
+          reserveCredits,
         },
         trigger: pullTrigger,
         targetSlateDate: slateTipDateFromGames(targetSlate) ?? undefined,
+        fixedGameCount: forceOdds && fixedOddsGames > 0 ? fixedOddsGames : undefined,
       });
       if (pull) {
         oddsMap = pull.oddsMap;
@@ -768,9 +779,9 @@ export async function runLivePipeline(
     const nextSlate = filterSlateToNextSydney(unionSlate);
     const nextTip = slateTipDateFromGames(nextSlate);
     if (!nextSlate.length || !nextTip) {
-      console.log("republish card: refused — no next slate on board");
+      logOfficialCard("blocked", "no next slate on board");
     } else if (slateFirstTipStarted(nextSlate, now)) {
-      console.log("republish card: refused — next slate tip already started");
+      logOfficialCard("blocked", "next slate tip already started");
     } else {
       const slateDir = path.join(outDir, nextTip);
       const picksPath = path.join(slateDir, "picks.json");
@@ -811,7 +822,10 @@ export async function runLivePipeline(
           bookie: official.bookie,
         };
         fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2));
-        console.log(`republish card: official-card.json (${nextTip}, republishedAt ${republishedAt})`);
+        logOfficialCard(
+          existing ? "republished" : "published",
+          `${nextTip}, ${official.bookie}`
+        );
         const bundle = syncBundles.find((b) => b.slateDate === nextTip);
         if (bundle) bundle.officialCard = official;
         else {
@@ -825,7 +839,7 @@ export async function runLivePipeline(
           });
         }
       } else {
-        console.log(`republish card: refused — missing JSON under ${nextTip}`);
+        logOfficialCard("blocked", `missing JSON under ${nextTip}`);
       }
     }
   }

@@ -1,5 +1,7 @@
 /** Pure odds credit budgeting (no I/O). */
 
+import { oddsReserveCredits } from "./odds-reserve.js";
+
 export interface OddsBudgetConfig {
   monthlyLimit: number;
   resetDay: number;
@@ -8,6 +10,8 @@ export interface OddsBudgetConfig {
   creditsUsedThisMonth?: number;
   /** Rolling average credits per game event pull (default 10). */
   creditsPerGame?: number;
+  /** Flat credits held in reserve (default from ODDS_RESERVE_CREDITS). */
+  reserveCredits?: number;
 }
 
 export interface AllowanceResult {
@@ -74,7 +78,7 @@ export function computeAllowance(
   const remaining =
     config.creditsRemaining ??
     Math.max(0, config.monthlyLimit - (config.creditsUsedThisMonth ?? 0));
-  const reserve = config.monthlyLimit * 0.2;
+  const reserve = config.reserveCredits ?? oddsReserveCredits();
   const spendable = Math.max(0, remaining - reserve);
   const pullsLeft = pullsLeftBeforeReset(now, config);
   const allowance =
@@ -110,8 +114,21 @@ export function selectGamesForAllowance<T extends { gameId: string }>(
 
 export function shouldPauseForReserve(
   creditsRemaining: number | undefined,
-  monthlyLimit: number
+  reserveCredits?: number
 ): boolean {
   if (creditsRemaining === undefined) return false;
-  return creditsRemaining < monthlyLimit * 0.2;
+  const reserve = reserveCredits ?? oddsReserveCredits();
+  return creditsRemaining < reserve;
+}
+
+/** Max full-game event pulls affordable above flat reserve (minus list-events credit). */
+export function maxGamesAboveReserve(
+  creditsRemaining: number,
+  creditsPerGame: number,
+  listEventCost = 1,
+  reserveCredits?: number
+): number {
+  const reserve = reserveCredits ?? oddsReserveCredits();
+  const spendable = Math.max(0, creditsRemaining - reserve - listEventCost);
+  return Math.floor(spendable / Math.max(1, creditsPerGame));
 }
