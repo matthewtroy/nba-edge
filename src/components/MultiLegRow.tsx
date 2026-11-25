@@ -5,7 +5,6 @@ import { legBookieQuoteView } from "@lib/leg-bookie-quote";
 import type { BookiePriceOpts } from "@lib/single-bookie";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { LastFiveTicks } from "./LastFiveTicks";
-import { hotStreakLabel, isHotStreak } from "@lib/hot-streak";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
 import { legRowReasonLines } from "@lib/leg-row-reasons";
 import { ui } from "../lib/card-type-scale";
@@ -60,7 +59,6 @@ export function MultiLegRow({
   const muted = !fairPriceInSlot && bookie && price == null;
   const subtitle = !hideGameLine && slate ? legGameTipSubtitle(leg, slate) : null;
   const ticks = leg.recentVsLine ?? [];
-  const streakLabel = hotStreakLabel(ticks);
   const injStatus = injuryStatusForPlayer(injuries, leg.playerId);
   const showFormer = leg.tags?.includes("former_team");
 
@@ -99,11 +97,9 @@ export function MultiLegRow({
             })}
           </div>
         )}
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1.5">
+        <div className="mt-1.5">
           <LastFiveTicks ticks={ticks} inline past5Label />
-          {streakLabel && isHotStreak(ticks) ? (
-            <LegBadge label={streakLabel} />
-          ) : null}
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1">
           <InjuryStatusBadge status={injStatus} />
           {showFormer ? <LegBadge label="Former team" /> : null}
           {edited && <LegBadge label="Edited" />}
@@ -114,6 +110,7 @@ export function MultiLegRow({
               danger={t === "Blowout risk"}
             />
           ))}
+          </div>
         </div>
         {compact && null}
       </div>

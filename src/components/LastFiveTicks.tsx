@@ -1,4 +1,4 @@
-import { displayTicksChronological } from "@lib/hot-streak";
+import { displayTicksChronological } from "@lib/form-ticks";
 
 export function LastFiveTicks({
   ticks,
