@@ -23,7 +23,8 @@ describe("Cross-Game SGM label restored", () => {
   it("SYSTEM.md documents Cross-Game SGM not Best Double Up rename", () => {
     const sys = fs.readFileSync(path.join(process.cwd(), "docs/SYSTEM.md"), "utf8");
     expect(sys).toMatch(/### Cross-Game SGM/);
-    expect(sys).toMatch(/type: crossGameSgm/);
+    expect(sys).toMatch(/`crossGameSgm`/);
+    expect(sys).toMatch(/Cross-Game SGM Multi/);
     expect(sys).not.toMatch(/Best Double Up \(`type: crossGameSgm`\)/);
     expect(sys).not.toMatch(/Label \*\*Best Double Up\*\* \(`type: crossGameSgm`\)/);
     expect(sys).toMatch(/`doubleUp`/);
