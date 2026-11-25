@@ -43,10 +43,12 @@ export function LegSheet({ leg, picks = [], slate, myBookie = "bet365", onClose,
   const num = Number(bookPrice);
   const v = Number.isFinite(num) && num > 1 ? verdict(num, leg.takeAt) : null;
   const ticks = leg.recentVsLine ?? [];
+  const last10 = leg.recentTenVsLine ?? [];
   const bestFeed =
-    leg.bestPrice != null && leg.bestBookie && leg.bestBookie !== "bet365"
+    leg.bestPrice != null && leg.bestBookie
       ? { bookie: leg.bestBookie, price: leg.bestPrice }
       : null;
+  const injuryLines = visibleLegReasons(leg.reasons).filter((r) => /out:|benefit/i.test(r));
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/60" onClick={onClose}>
@@ -57,65 +59,44 @@ export function LegSheet({ leg, picks = [], slate, myBookie = "bet365", onClose,
         <div className="w-12 h-1 bg-white/20 rounded mx-auto mb-3" />
         <h2 className="text-lg font-semibold mb-1 break-words">{leg.playerName}</h2>
         <p className="text-sm text-white/70 mb-1">{marketLabel(leg.market, leg.line)}</p>
-        {subtitle && <p className="text-xs text-white/45 mb-3">{subtitle}</p>}
+        {subtitle && <p className="text-xs text-white/45 mb-2">{subtitle}</p>}
+        {leg.reasonLine && <p className="text-sm text-white/80 mb-2">{leg.reasonLine}</p>}
         {onSelectLeg && (
           <RungStepper rungs={rungs} activeId={leg.id} onSelect={onSelectLeg} />
         )}
-        <p className="text-2xl font-bold mb-1">{(leg.probability * 100).toFixed(1)}% final</p>
-        <p className="text-sm mb-1 text-white/70">
-          Model {(leg.modelProbability ?? leg.probability) * 100}% · Market{" "}
-          {leg.marketProbability != null
-            ? `${(leg.marketProbability * 100).toFixed(1)}%`
-            : "n/a"}
-        </p>
-        <p className="text-sm mb-4">
-          Fair {leg.fairPrice.toFixed(2)} · Take at {leg.takeAt.toFixed(2)}+
-        </p>
-        {(leg.confluence ?? 0) > 0 && (
-          <p className="text-sm text-white/70 mb-2">
-            Confluence {leg.confluence}/4
-            {leg.reasonLine ? ` · ${leg.reasonLine}` : ""}
+        {leg.seasonAvg && (
+          <p className="text-xs text-white/55 mb-2">
+            Season avg {leg.seasonAvg.pts.toFixed(1)}/{leg.seasonAvg.reb.toFixed(1)}/
+            {leg.seasonAvg.ast.toFixed(1)}
+            {leg.lastFiveAvg
+              ? ` · L5 ${leg.lastFiveAvg.pts.toFixed(1)}/${leg.lastFiveAvg.reb.toFixed(1)}/${leg.lastFiveAvg.ast.toFixed(1)}`
+              : ""}
+            {leg.projectedMinutes != null ? ` · ${leg.projectedMinutes.toFixed(0)} min proj` : ""}
           </p>
         )}
-        {leg.signals && (
-          <ul className="text-sm space-y-1 mb-4 text-white/75">
-            {(["PRICE", "MATCHUP", "FORM", "ANGLE"] as const).map((key) => {
-              const s = leg.signals?.[key];
-              if (!s) return null;
-              return (
-                <li key={key}>
-                  {key}: {s.active ? "✓" : "—"}
-                  {s.label ? ` (${s.label})` : ""}
-                </li>
-              );
-            })}
-            {Object.entries(leg.signals.context ?? {}).map(([k, v]) => (
-              <li key={k} className="text-white/50">
-                {k}: {v}
-              </li>
-            ))}
-            {leg.signals.unavailable?.map((u) => (
-              <li key={u} className="text-white/40 text-xs">
-                Unavailable: {u}
-              </li>
+        <p className="text-sm mb-2 text-white/70">
+          Fair {leg.fairPrice.toFixed(2)}
+          {bestFeed ? ` · Best ${bestFeed.bookie} ${bestFeed.price.toFixed(2)}` : ""}
+        </p>
+        <LastFiveTicks ticks={ticks} />
+        {last10.length > 0 && (
+          <div className="mt-2">
+            <p className="text-xs text-white/55 mb-1">Last 10 @ line</p>
+            <LastFiveTicks ticks={last10} compact />
+          </div>
+        )}
+        {leg.market.startsWith("q1") && leg.q1SeasonHitAtLine && (
+          <p className="text-sm text-white/70 mt-2 mb-2">
+            Q1 hit rate this season @ line: {leg.q1SeasonHitAtLine.hits}/
+            {leg.q1SeasonHitAtLine.total}
+          </p>
+        )}
+        {injuryLines.length > 0 && (
+          <ul className="text-sm space-y-1 my-3 text-white/75">
+            {injuryLines.map((r) => (
+              <li key={r}>• {r}</li>
             ))}
           </ul>
-        )}
-        <LastFiveTicks ticks={ticks} />
-        {leg.market.startsWith("q1") && leg.q1Last10HitRate != null && (
-          <p className="text-sm text-white/70 mb-3">
-            Last 10 Q1 hit rate @ line: {(leg.q1Last10HitRate * 100).toFixed(0)}%
-          </p>
-        )}
-        <ul className="text-sm space-y-1 my-4 text-white/80">
-          {visibleLegReasons(leg.reasons).map((r) => (
-            <li key={r}>• {r}</li>
-          ))}
-        </ul>
-        {bestFeed && (
-          <p className="text-sm text-accent-value mb-2">
-            Best: {bestFeed.bookie} {bestFeed.price.toFixed(2)}
-          </p>
         )}
         <label className="block text-sm text-white/70 mb-1">
           My bookie ({myBookie})

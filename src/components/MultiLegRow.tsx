@@ -73,11 +73,6 @@ export function MultiLegRow({
           )}
           <LastFiveTicks ticks={leg.recentVsLine ?? []} compact />
           <div className="flex flex-wrap gap-1 mt-1">
-            {(leg.confluence ?? 0) >= 2 && (
-              <span className="text-xs px-2 py-0.5 rounded-full bg-white/10 text-white/70">
-                {leg.confluence}/4
-              </span>
-            )}
             {edited && (
               <span className="text-xs px-2 py-0.5 rounded-full bg-white/10 text-white/60">
                 Edited

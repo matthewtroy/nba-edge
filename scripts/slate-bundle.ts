@@ -38,6 +38,7 @@ export interface SlateBundleInput {
   nbaOfficialLastTriedUrl?: string;
   unpulledGameIds?: Set<string>;
   skipOfficialPublish?: boolean;
+  blockOfficialRepublish?: boolean;
   defense?: DefenseRatingsBundle;
   matchupSignalsEnabled?: boolean;
 }
@@ -81,6 +82,7 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   });
 
   let { picks, multis, multisPayload, meta, whatChanged } = modelRun;
+  const blockOfficialRepublish = modelRun.modelSanity.blockRepublish;
   const unpulledLabels = input.unpulledGameIds?.size
     ? gameOddsLabelsForUnpulled(picks, input.unpulledGameIds)
     : undefined;
@@ -129,6 +131,8 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
 
   if (
     !input.skipOfficialPublish &&
+    !blockOfficialRepublish &&
+    !input.blockOfficialRepublish &&
     shouldPublishOfficialCard(input.now, picks, existingOfficial, tipDate)
   ) {
     const official = writeOfficialCard(outDir, {

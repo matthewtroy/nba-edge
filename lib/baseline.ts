@@ -1,6 +1,18 @@
 import type { PlayerGameLog } from "./types.js";
+import { NBA_SEASON_OPENING_UTC } from "./pricing-config.js";
 
 const WEIGHTS = { season: 0.5, last10: 0.3, last5: 0.2 };
+
+/** Rates use only this-season ESPN player game logs (not league boxscore backfill). */
+export function logsForModelRates(logs: PlayerGameLog[]): PlayerGameLog[] {
+  return logs.filter(
+    (g) =>
+      g.source !== "boxscore" &&
+      (!g.date || g.date >= NBA_SEASON_OPENING_UTC) &&
+      g.minutes >= 1 &&
+      g.pts + g.reb + g.ast + g.threes > 0
+  );
+}
 
 export interface PerMinuteRates {
   pts: number;
@@ -10,7 +22,7 @@ export interface PerMinuteRates {
 }
 
 export function perMinuteRates(logs: PlayerGameLog[]): PerMinuteRates | null {
-  const played = logs.filter((g) => g.minutes >= 1);
+  const played = logsForModelRates(logs);
   if (played.length < 3) return null;
 
   const avgMin =
@@ -42,7 +54,7 @@ export function perMinuteRates(logs: PlayerGameLog[]): PerMinuteRates | null {
 }
 
 export function projectedMinutes(logs: PlayerGameLog[]): number {
-  const played = logs.filter((g) => g.minutes >= 1);
+  const played = logsForModelRates(logs);
   if (played.length === 0) return 0;
   const last5 = played.slice(0, 5).map((g) => g.minutes);
   last5.sort((a, b) => a - b);

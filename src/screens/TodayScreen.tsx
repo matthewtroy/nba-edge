@@ -59,9 +59,6 @@ export function TodayScreen({
 
   const displayMultis = useOfficial ? official.multis : data.multis;
   const displayNotBuilt = useOfficial ? official.notBuilt : data.multisNotBuilt;
-  const displayWhatChanged = useOfficial
-    ? official.whatChanged
-    : data.meta.whatChanged;
   const officialBookie = official?.bookie ?? data.meta.officialCard?.bookie;
   const headerOddsPull =
     official?.oddsLastPulled && useOfficial
@@ -163,19 +160,6 @@ export function TodayScreen({
       {data.meta.smallSlate && (
         <p className="text-sm text-accent-warn mb-3">Small slate</p>
       )}
-
-      <section className="mb-4">
-        <h2 className="text-sm font-semibold text-white/80 mb-2">What changed</h2>
-        {(displayWhatChanged ?? []).length > 0 ? (
-          <ul className="text-sm text-white/70 space-y-1">
-            {(displayWhatChanged ?? []).slice(0, 3).map((line) => (
-              <li key={line}>• {line}</li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-sm text-white/50">(none)</p>
-        )}
-      </section>
 
       <NotBuiltSection items={notBuilt} />
 

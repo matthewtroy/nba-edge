@@ -152,8 +152,15 @@ export async function runLeagueSeasonBackfill(
         if (!existing) {
           entry.logs.push(row);
           logRowsAdded += 1;
-        } else {
-          Object.assign(existing, row);
+        } else if (existing.source === "boxscore" || !existing.source) {
+          Object.assign(existing, row, { source: "boxscore" as const });
+        } else if (existing.source === "espn") {
+          if (existing.q1Pts == null && row.q1Pts != null) existing.q1Pts = row.q1Pts;
+          if (existing.q1Reb == null && row.q1Reb != null) existing.q1Reb = row.q1Reb;
+          if (existing.q1Ast == null && row.q1Ast != null) existing.q1Ast = row.q1Ast;
+          if (!existing.opponentTeamId && row.opponentTeamId) {
+            existing.opponentTeamId = row.opponentTeamId;
+          }
         }
         entry.logs.sort((a, b) => b.date.localeCompare(a.date));
         logCache[playerId] = entry;

@@ -239,6 +239,7 @@ export function parseGameLogsFromEspn(
       fga: num(stats[4]),
       fta: num(stats[9]),
       turnovers: num(stats[10]),
+      source: "espn",
     });
   }
   logs.sort((a, b) => (b.date > a.date ? 1 : -1));
@@ -261,6 +262,56 @@ function parseMade(s: string | undefined): number {
 
 function num(s: string | undefined): number {
   return Number(s) || 0;
+}
+
+interface BoxStatIdx {
+  min: number;
+  pts: number;
+  reb: number;
+  ast: number;
+  threes: number;
+  fga: number;
+  fta: number;
+  to: number;
+}
+
+/** ESPN game-summary boxscore uses a different column order than the player gamelog API. */
+export function boxStatIndices(keys: string[] | undefined): BoxStatIdx | null {
+  if (!keys?.length) return null;
+  const idx = (sub: string) => keys.findIndex((k) => k.includes(sub));
+  const pts = keys.findIndex((k) => k === "points");
+  const reb = keys.findIndex((k) => k === "rebounds");
+  const ast = keys.findIndex((k) => k === "assists");
+  const threes = keys.findIndex((k) => k.includes("threePointFieldGoalsMade"));
+  if (pts < 0 || reb < 0 || ast < 0 || threes < 0) return null;
+  return {
+    min: 0,
+    pts,
+    reb,
+    ast,
+    threes,
+    fga: idx("fieldGoalsMade"),
+    fta: idx("freeThrowsMade"),
+    to: keys.findIndex((k) => k === "turnovers"),
+  };
+}
+
+function lineFromBoxStats(stats: string[], ix: BoxStatIdx): Omit<BoxLine, "playerId" | "q1"> | null {
+  if (!stats.length) return null;
+  const minutes = parseMinutes(stats[ix.min]);
+  if (minutes < 0.01) return null;
+  const pts = num(stats[ix.pts]);
+  const reb = num(stats[ix.reb]);
+  const ast = num(stats[ix.ast]);
+  const threes = parseMade(stats[ix.threes]);
+  if (pts === 0 && reb === 0 && ast === 0 && threes === 0 && minutes < 1) return null;
+  return {
+    minutes,
+    pts,
+    reb,
+    ast,
+    threes,
+  };
 }
 
 export function parseQ1FromPlays(
@@ -301,7 +352,10 @@ export function parseBoxscore(summary: unknown, plays?: unknown): Map<string, Bo
     boxscore?: {
       players?: {
         team?: { id: string };
-        statistics?: { athletes?: { athlete?: { id: string }; stats?: string[] }[] }[];
+        statistics?: {
+          keys?: string[];
+          athletes?: { athlete?: { id: string }; stats?: string[]; didNotPlay?: boolean }[];
+        }[];
       }[];
     };
   };
@@ -311,18 +365,17 @@ export function parseBoxscore(summary: unknown, plays?: unknown): Map<string, Bo
     | undefined;
 
   for (const side of sum.boxscore?.players ?? []) {
-    const athletes = side.statistics?.[0]?.athletes ?? [];
-    for (const row of athletes) {
+    const statBlock = side.statistics?.[0];
+    const ix = boxStatIndices(statBlock?.keys);
+    if (!ix) continue;
+    for (const row of statBlock?.athletes ?? []) {
       const id = row.athlete?.id;
-      if (!id) continue;
-      const stats = row.stats ?? [];
+      if (!id || row.didNotPlay) continue;
+      const parsed = lineFromBoxStats(row.stats ?? [], ix);
+      if (!parsed) continue;
       const line: BoxLine = {
         playerId: id,
-        minutes: parseMinutes(stats[0]),
-        pts: num(stats[13]),
-        reb: num(stats[7]),
-        ast: num(stats[8]),
-        threes: parseMade(stats[3]),
+        ...parsed,
       };
       if (pbp) line.q1 = parseQ1FromPlays(pbp, id);
       map.set(id, line);
@@ -340,7 +393,10 @@ export function parseBoxscorePlayerLogs(
     boxscore?: {
       players?: {
         team?: { id: string };
-        statistics?: { athletes?: { athlete?: { id: string }; stats?: string[] }[] }[];
+        statistics?: {
+          keys?: string[];
+          athletes?: { athlete?: { id: string }; stats?: string[]; didNotPlay?: boolean }[];
+        }[];
       }[];
     };
   };
@@ -352,30 +408,36 @@ export function parseBoxscorePlayerLogs(
     if (!teamId) continue;
     const isHome = teamId === game.homeTeamId;
     const opponentTeamId = isHome ? game.awayTeamId : game.homeTeamId;
-    for (const row of side.statistics?.[0]?.athletes ?? []) {
+    const statBlock = side.statistics?.[0];
+    const ix = boxStatIndices(statBlock?.keys);
+    if (!ix) continue;
+    for (const row of statBlock?.athletes ?? []) {
       const id = row.athlete?.id;
-      if (!id) continue;
+      if (!id || row.didNotPlay) continue;
       const stats = row.stats ?? [];
+      const parsed = lineFromBoxStats(stats, ix);
+      if (!parsed) continue;
       const q1 = pbp ? parseQ1FromPlays(pbp, id) : undefined;
       logs.push({
         playerId: id,
         log: {
           gameId: game.gameId,
           date: game.date,
-          minutes: parseMinutes(stats[0]),
-          pts: num(stats[13]),
-          reb: num(stats[7]),
-          ast: num(stats[8]),
-          threes: parseMade(stats[3]),
+          minutes: parsed.minutes,
+          pts: parsed.pts,
+          reb: parsed.reb,
+          ast: parsed.ast,
+          threes: parsed.threes,
           teamId,
           opponentTeamId,
           isHome,
-          fga: num(stats[4]),
-          fta: num(stats[9]),
-          turnovers: num(stats[10]),
+          fga: ix.fga >= 0 ? num(stats[ix.fga]) : undefined,
+          fta: ix.fta >= 0 ? parseMade(stats[ix.fta]) : undefined,
+          turnovers: ix.to >= 0 ? num(stats[ix.to]) : undefined,
           q1Pts: q1?.pts,
           q1Reb: q1?.reb,
           q1Ast: q1?.ast,
+          source: "boxscore",
         },
       });
     }

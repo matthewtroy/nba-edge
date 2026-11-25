@@ -1,9 +1,9 @@
 {
-  "date": "2025-11-24",
+  "date": "2026-11-24",
   "games": [
     {
       "id": "401584701",
-      "startTime": "2025-11-25T00:00:00Z",
+      "startTime": "2026-11-25T00:00:00Z",
       "homeTeam": "Orlando Magic",
       "awayTeam": "Boston Celtics",
       "homeTeamId": "19",
@@ -16,7 +16,7 @@
     },
     {
       "id": "401584702",
-      "startTime": "2025-11-25T02:30:00Z",
+      "startTime": "2026-11-25T02:30:00Z",
       "homeTeam": "Detroit Pistons",
       "awayTeam": "Indiana Pacers",
       "homeTeamId": "8",
@@ -29,7 +29,7 @@
     },
     {
       "id": "401584703",
-      "startTime": "2025-11-25T05:00:00Z",
+      "startTime": "2026-11-25T05:00:00Z",
       "homeTeam": "Dallas Mavericks",
       "awayTeam": "Los Angeles Lakers",
       "homeTeamId": "6",
@@ -42,7 +42,7 @@
     },
     {
       "id": "401584704",
-      "startTime": "2025-11-25T07:30:00Z",
+      "startTime": "2026-11-25T07:30:00Z",
       "homeTeam": "Miami Heat",
       "awayTeam": "New York Knicks",
       "homeTeamId": "14",
@@ -63,7 +63,7 @@
       "gameId": "401584701",
       "status": "Out",
       "source": "ESPN",
-      "updatedAt": "2025-11-24T18:00:00Z"
+      "updatedAt": "2026-11-24T18:00:00Z"
     },
     {
       "playerId": "4066261",
@@ -73,7 +73,7 @@
       "gameId": "401584702",
       "status": "Doubtful",
       "source": "ESPN",
-      "updatedAt": "2025-11-24T17:30:00Z"
+      "updatedAt": "2026-11-24T17:30:00Z"
     },
     {
       "playerId": "3945274",
@@ -83,7 +83,7 @@
       "gameId": "401584703",
       "status": "Questionable",
       "source": "ESPN",
-      "updatedAt": "2025-11-24T19:00:00Z"
+      "updatedAt": "2026-11-24T19:00:00Z"
     }
   ],
   "players": [
@@ -98,12 +98,12 @@
       "gameId": "401584701",
       "opponent": "Boston Celtics",
       "gameLogs": [
-        { "gameId": "g1", "minutes": 34, "pts": 24, "reb": 6, "ast": 4, "threes": 2, "q1Pts": 7, "q1Reb": 2, "q1Ast": 1, "date": "2025-11-20" },
-        { "gameId": "g2", "minutes": 36, "pts": 28, "reb": 5, "ast": 3, "threes": 3, "q1Pts": 9, "q1Reb": 1, "q1Ast": 0, "date": "2025-11-18" },
-        { "gameId": "g3", "minutes": 32, "pts": 18, "reb": 7, "ast": 5, "threes": 1, "q1Pts": 5, "q1Reb": 3, "q1Ast": 2, "date": "2025-11-16" },
-        { "gameId": "g4", "minutes": 35, "pts": 22, "reb": 4, "ast": 6, "threes": 2, "q1Pts": 6, "q1Reb": 1, "q1Ast": 2, "date": "2025-11-14" },
-        { "gameId": "g5", "minutes": 33, "pts": 26, "reb": 8, "ast": 2, "threes": 4, "q1Pts": 8, "q1Reb": 2, "q1Ast": 0, "date": "2025-11-12" },
-        { "gameId": "g6", "minutes": 31, "pts": 20, "reb": 5, "ast": 4, "threes": 1, "date": "2025-11-10" }
+        { "gameId": "g1", "minutes": 34, "pts": 24, "reb": 6, "ast": 4, "threes": 2, "q1Pts": 7, "q1Reb": 2, "q1Ast": 1, "date": "2026-11-20" },
+        { "gameId": "g2", "minutes": 36, "pts": 28, "reb": 5, "ast": 3, "threes": 3, "q1Pts": 9, "q1Reb": 1, "q1Ast": 0, "date": "2026-11-18" },
+        { "gameId": "g3", "minutes": 32, "pts": 18, "reb": 7, "ast": 5, "threes": 1, "q1Pts": 5, "q1Reb": 3, "q1Ast": 2, "date": "2026-11-16" },
+        { "gameId": "g4", "minutes": 35, "pts": 22, "reb": 4, "ast": 6, "threes": 2, "q1Pts": 6, "q1Reb": 1, "q1Ast": 2, "date": "2026-11-14" },
+        { "gameId": "g5", "minutes": 33, "pts": 26, "reb": 8, "ast": 2, "threes": 4, "q1Pts": 8, "q1Reb": 2, "q1Ast": 0, "date": "2026-11-12" },
+        { "gameId": "g6", "minutes": 31, "pts": 20, "reb": 5, "ast": 4, "threes": 1, "date": "2026-11-10" }
       ]
     },
     {
@@ -117,12 +117,12 @@
       "gameId": "401584702",
       "opponent": "Indiana Pacers",
       "gameLogs": [
-        { "gameId": "d1", "minutes": 36, "pts": 26, "reb": 5, "ast": 9, "threes": 2, "q1Pts": 8, "q1Reb": 1, "q1Ast": 3, "date": "2025-11-21" },
-        { "gameId": "d2", "minutes": 38, "pts": 30, "reb": 4, "ast": 11, "threes": 3, "q1Pts": 10, "q1Reb": 0, "q1Ast": 4, "date": "2025-11-19" },
-        { "gameId": "d3", "minutes": 35, "pts": 22, "reb": 6, "ast": 8, "threes": 1, "q1Pts": 6, "q1Reb": 2, "q1Ast": 2, "date": "2025-11-17" },
-        { "gameId": "d4", "minutes": 37, "pts": 28, "reb": 3, "ast": 10, "threes": 2, "q1Pts": 7, "q1Reb": 1, "q1Ast": 3, "date": "2025-11-15" },
-        { "gameId": "d5", "minutes": 34, "pts": 24, "reb": 5, "ast": 7, "threes": 2, "date": "2025-11-13" },
-        { "gameId": "d6", "minutes": 36, "pts": 27, "reb": 4, "ast": 9, "threes": 3, "date": "2025-11-11" }
+        { "gameId": "d1", "minutes": 36, "pts": 26, "reb": 5, "ast": 9, "threes": 2, "q1Pts": 8, "q1Reb": 1, "q1Ast": 3, "date": "2026-11-21" },
+        { "gameId": "d2", "minutes": 38, "pts": 30, "reb": 4, "ast": 11, "threes": 3, "q1Pts": 10, "q1Reb": 0, "q1Ast": 4, "date": "2026-11-19" },
+        { "gameId": "d3", "minutes": 35, "pts": 22, "reb": 6, "ast": 8, "threes": 1, "q1Pts": 6, "q1Reb": 2, "q1Ast": 2, "date": "2026-11-17" },
+        { "gameId": "d4", "minutes": 37, "pts": 28, "reb": 3, "ast": 10, "threes": 2, "q1Pts": 7, "q1Reb": 1, "q1Ast": 3, "date": "2026-11-15" },
+        { "gameId": "d5", "minutes": 34, "pts": 24, "reb": 5, "ast": 7, "threes": 2, "date": "2026-11-13" },
+        { "gameId": "d6", "minutes": 36, "pts": 27, "reb": 4, "ast": 9, "threes": 3, "date": "2026-11-11" }
       ]
     },
     {
@@ -136,11 +136,11 @@
       "gameId": "401584702",
       "opponent": "Indiana Pacers",
       "gameLogs": [
-        { "gameId": "d1", "minutes": 28, "pts": 12, "reb": 9, "ast": 3, "threes": 0, "q1Pts": 3, "q1Reb": 4, "q1Ast": 1, "date": "2025-11-21" },
-        { "gameId": "d2", "minutes": 30, "pts": 14, "reb": 8, "ast": 2, "threes": 1, "q1Pts": 4, "q1Reb": 3, "q1Ast": 0, "date": "2025-11-19" },
-        { "gameId": "d3", "minutes": 27, "pts": 10, "reb": 10, "ast": 4, "threes": 0, "date": "2025-11-17" },
-        { "gameId": "d4", "minutes": 29, "pts": 16, "reb": 7, "ast": 2, "threes": 1, "date": "2025-11-15" },
-        { "gameId": "d5", "minutes": 26, "pts": 11, "reb": 9, "ast": 1, "threes": 0, "date": "2025-11-13" }
+        { "gameId": "d1", "minutes": 28, "pts": 12, "reb": 9, "ast": 3, "threes": 0, "q1Pts": 3, "q1Reb": 4, "q1Ast": 1, "date": "2026-11-21" },
+        { "gameId": "d2", "minutes": 30, "pts": 14, "reb": 8, "ast": 2, "threes": 1, "q1Pts": 4, "q1Reb": 3, "q1Ast": 0, "date": "2026-11-19" },
+        { "gameId": "d3", "minutes": 27, "pts": 10, "reb": 10, "ast": 4, "threes": 0, "date": "2026-11-17" },
+        { "gameId": "d4", "minutes": 29, "pts": 16, "reb": 7, "ast": 2, "threes": 1, "date": "2026-11-15" },
+        { "gameId": "d5", "minutes": 26, "pts": 11, "reb": 9, "ast": 1, "threes": 0, "date": "2026-11-13" }
       ]
     },
     {
@@ -154,11 +154,11 @@
       "gameId": "401584703",
       "opponent": "Dallas Mavericks",
       "gameLogs": [
-        { "gameId": "l1", "minutes": 35, "pts": 27, "reb": 12, "ast": 3, "threes": 0, "date": "2025-11-22" },
-        { "gameId": "l2", "minutes": 36, "pts": 24, "reb": 11, "ast": 4, "threes": 1, "date": "2025-11-20" },
-        { "gameId": "l3", "minutes": 34, "pts": 30, "reb": 13, "ast": 2, "threes": 0, "date": "2025-11-18" },
-        { "gameId": "l4", "minutes": 33, "pts": 22, "reb": 10, "ast": 5, "threes": 0, "date": "2025-11-16" },
-        { "gameId": "l5", "minutes": 35, "pts": 26, "reb": 14, "ast": 3, "threes": 0, "date": "2025-11-14" }
+        { "gameId": "l1", "minutes": 35, "pts": 27, "reb": 12, "ast": 3, "threes": 0, "date": "2026-11-22" },
+        { "gameId": "l2", "minutes": 36, "pts": 24, "reb": 11, "ast": 4, "threes": 1, "date": "2026-11-20" },
+        { "gameId": "l3", "minutes": 34, "pts": 30, "reb": 13, "ast": 2, "threes": 0, "date": "2026-11-18" },
+        { "gameId": "l4", "minutes": 33, "pts": 22, "reb": 10, "ast": 5, "threes": 0, "date": "2026-11-16" },
+        { "gameId": "l5", "minutes": 35, "pts": 26, "reb": 14, "ast": 3, "threes": 0, "date": "2026-11-14" }
       ]
     },
     {
@@ -172,11 +172,11 @@
       "gameId": "401584703",
       "opponent": "Los Angeles Lakers",
       "gameLogs": [
-        { "gameId": "m1", "minutes": 37, "pts": 33, "reb": 8, "ast": 10, "threes": 4, "q1Pts": 11, "q1Reb": 2, "q1Ast": 3, "date": "2025-11-22" },
-        { "gameId": "m2", "minutes": 38, "pts": 35, "reb": 7, "ast": 9, "threes": 5, "q1Pts": 12, "q1Reb": 1, "q1Ast": 4, "date": "2025-11-20" },
-        { "gameId": "m3", "minutes": 36, "pts": 28, "reb": 9, "ast": 11, "threes": 3, "q1Pts": 9, "q1Reb": 3, "q1Ast": 3, "date": "2025-11-18" },
-        { "gameId": "m4", "minutes": 35, "pts": 31, "reb": 6, "ast": 8, "threes": 4, "date": "2025-11-16" },
-        { "gameId": "m5", "minutes": 37, "pts": 29, "reb": 8, "ast": 12, "threes": 2, "date": "2025-11-14" }
+        { "gameId": "m1", "minutes": 37, "pts": 33, "reb": 8, "ast": 10, "threes": 4, "q1Pts": 11, "q1Reb": 2, "q1Ast": 3, "date": "2026-11-22" },
+        { "gameId": "m2", "minutes": 38, "pts": 35, "reb": 7, "ast": 9, "threes": 5, "q1Pts": 12, "q1Reb": 1, "q1Ast": 4, "date": "2026-11-20" },
+        { "gameId": "m3", "minutes": 36, "pts": 28, "reb": 9, "ast": 11, "threes": 3, "q1Pts": 9, "q1Reb": 3, "q1Ast": 3, "date": "2026-11-18" },
+        { "gameId": "m4", "minutes": 35, "pts": 31, "reb": 6, "ast": 8, "threes": 4, "date": "2026-11-16" },
+        { "gameId": "m5", "minutes": 37, "pts": 29, "reb": 8, "ast": 12, "threes": 2, "date": "2026-11-14" }
       ]
     },
     {
@@ -190,9 +190,9 @@
       "gameId": "401584702",
       "opponent": "Indiana Pacers",
       "gameLogs": [
-        { "gameId": "d1", "minutes": 30, "pts": 14, "reb": 11, "ast": 2, "threes": 0, "date": "2025-11-21" },
-        { "gameId": "d2", "minutes": 28, "pts": 12, "reb": 10, "ast": 1, "threes": 0, "date": "2025-11-19" },
-        { "gameId": "d3", "minutes": 32, "pts": 16, "reb": 13, "ast": 2, "threes": 0, "date": "2025-11-17" }
+        { "gameId": "d1", "minutes": 30, "pts": 14, "reb": 11, "ast": 2, "threes": 0, "date": "2026-11-21" },
+        { "gameId": "d2", "minutes": 28, "pts": 12, "reb": 10, "ast": 1, "threes": 0, "date": "2026-11-19" },
+        { "gameId": "d3", "minutes": 32, "pts": 16, "reb": 13, "ast": 2, "threes": 0, "date": "2026-11-17" }
       ]
     },
     {
@@ -206,11 +206,11 @@
       "gameId": "401584702",
       "opponent": "Detroit Pistons",
       "gameLogs": [
-        { "gameId": "i1", "minutes": 35, "pts": 22, "reb": 4, "ast": 11, "threes": 3, "date": "2025-11-21" },
-        { "gameId": "i2", "minutes": 36, "pts": 19, "reb": 3, "ast": 9, "threes": 2, "date": "2025-11-19" },
-        { "gameId": "i3", "minutes": 34, "pts": 24, "reb": 5, "ast": 10, "threes": 4, "date": "2025-11-17" },
-        { "gameId": "i4", "minutes": 35, "pts": 21, "reb": 4, "ast": 12, "threes": 2, "date": "2025-11-15" },
-        { "gameId": "i5", "minutes": 33, "pts": 18, "reb": 3, "ast": 8, "threes": 1, "date": "2025-11-13" }
+        { "gameId": "i1", "minutes": 35, "pts": 22, "reb": 4, "ast": 11, "threes": 3, "date": "2026-11-21" },
+        { "gameId": "i2", "minutes": 36, "pts": 19, "reb": 3, "ast": 9, "threes": 2, "date": "2026-11-19" },
+        { "gameId": "i3", "minutes": 34, "pts": 24, "reb": 5, "ast": 10, "threes": 4, "date": "2026-11-17" },
+        { "gameId": "i4", "minutes": 35, "pts": 21, "reb": 4, "ast": 12, "threes": 2, "date": "2026-11-15" },
+        { "gameId": "i5", "minutes": 33, "pts": 18, "reb": 3, "ast": 8, "threes": 1, "date": "2026-11-13" }
       ]
     },
     {
@@ -224,11 +224,11 @@
       "gameId": "401584704",
       "opponent": "New York Knicks",
       "gameLogs": [
-        { "gameId": "h1", "minutes": 33, "pts": 21, "reb": 5, "ast": 4, "threes": 1, "date": "2025-11-22" },
-        { "gameId": "h2", "minutes": 34, "pts": 24, "reb": 6, "ast": 5, "threes": 0, "date": "2025-11-20" },
-        { "gameId": "h3", "minutes": 32, "pts": 19, "reb": 4, "ast": 6, "threes": 1, "date": "2025-11-18" },
-        { "gameId": "h4", "minutes": 35, "pts": 22, "reb": 5, "ast": 3, "threes": 2, "date": "2025-11-16" },
-        { "gameId": "h5", "minutes": 31, "pts": 20, "reb": 4, "ast": 4, "threes": 1, "date": "2025-11-14" }
+        { "gameId": "h1", "minutes": 33, "pts": 21, "reb": 5, "ast": 4, "threes": 1, "date": "2026-11-22" },
+        { "gameId": "h2", "minutes": 34, "pts": 24, "reb": 6, "ast": 5, "threes": 0, "date": "2026-11-20" },
+        { "gameId": "h3", "minutes": 32, "pts": 19, "reb": 4, "ast": 6, "threes": 1, "date": "2026-11-18" },
+        { "gameId": "h4", "minutes": 35, "pts": 22, "reb": 5, "ast": 3, "threes": 2, "date": "2026-11-16" },
+        { "gameId": "h5", "minutes": 31, "pts": 20, "reb": 4, "ast": 4, "threes": 1, "date": "2026-11-14" }
       ]
     },
     {
@@ -242,8 +242,8 @@
       "gameId": "401584701",
       "opponent": "Boston Celtics",
       "gameLogs": [
-        { "gameId": "o1", "minutes": 36, "pts": 28, "reb": 8, "ast": 5, "threes": 2, "date": "2025-11-20" },
-        { "gameId": "o2", "minutes": 35, "pts": 25, "reb": 7, "ast": 4, "threes": 1, "date": "2025-11-18" }
+        { "gameId": "o1", "minutes": 36, "pts": 28, "reb": 8, "ast": 5, "threes": 2, "date": "2026-11-20" },
+        { "gameId": "o2", "minutes": 35, "pts": 25, "reb": 7, "ast": 4, "threes": 1, "date": "2026-11-18" }
       ]
     }
   ],

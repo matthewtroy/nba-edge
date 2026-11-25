@@ -42,11 +42,6 @@ export function LegRow({ leg, slate, myBookie = "bet365", onTap }: Props) {
           <p className="text-xs text-white/45 mt-0.5 truncate">{leg.reasonLine}</p>
         )}
         <div className="flex flex-wrap gap-1 mt-1">
-          {(leg.confluence ?? 0) >= 2 && (
-            <span className="text-xs px-2 py-0.5 rounded-full bg-white/10 text-white/70">
-              {leg.confluence}/4
-            </span>
-          )}
           {tags.map((t) => (
             <span
               key={t}

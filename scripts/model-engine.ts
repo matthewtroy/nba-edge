@@ -28,6 +28,8 @@ import {
 import { buildWhatChanged } from "../lib/what-changed.js";
 import { qualifiesStarter } from "../lib/starter-eligibility.js";
 import type { DefenseRatingsBundle } from "../lib/defense-ratings.js";
+import { applyFormGuardExclusions, passesFormGuard } from "../lib/form-guard.js";
+import { checkModelSanity, logModelSanity, type ModelSanityResult } from "../lib/model-sanity.js";
 
 export interface ModelPlayer extends PlayerProfile {
   gameId: string;
@@ -58,6 +60,7 @@ export function runModel(input: ModelRunInput): {
   multisPayload: MultiBuildResult;
   meta: MetaJson;
   whatChanged: string[];
+  modelSanity: ModelSanityResult;
 } {
   loadAliasMap(input.rootDir);
   const minEdge = input.minEdge ?? 1.08;
@@ -75,6 +78,7 @@ export function runModel(input: ModelRunInput): {
   const picks: PickLeg[] = [];
   const allQ1Exclusions: string[] = [];
   const matchupLog: { name: string; market: string; line: number; deltaPp: number }[] = [];
+  const sanityInputs: { playerName: string; gameLogs: PlayerGameLog[]; projected: import("../lib/baseline.js").ProjectedStats }[] = [];
   const byTeam = new Map<string, ModelPlayer[]>();
   for (const p of input.players) {
     const arr = byTeam.get(p.teamId) ?? [];
@@ -239,8 +243,16 @@ export function runModel(input: ModelRunInput): {
         });
       picks.push(...newLegs);
       allQ1Exclusions.push(...q1Exclusions);
+      sanityInputs.push({
+        playerName: p.name,
+        gameLogs: p.gameLogs,
+        projected: ctxAdj,
+      });
     }
   }
+
+  const modelSanity = checkModelSanity(sanityInputs);
+  logModelSanity(modelSanity);
 
   if (input.allOddsMap?.size) {
     for (const leg of picks) {
@@ -306,20 +318,12 @@ export function runModel(input: ModelRunInput): {
       );
     }
   }
-  const signalUnavailable = input.defense?.unavailable ?? [];
-  const topConfluenceLegs = [...eligiblePicks]
-    .filter((l) => (l.confluence ?? 0) > 0)
-    .sort((a, b) => (b.confluence ?? 0) - (a.confluence ?? 0))
-    .slice(0, 10)
-    .map((l) => ({
-      player: l.playerName,
-      market: l.market,
-      line: l.line,
-      confluence: l.confluence ?? 0,
-      reasonLine: l.reasonLine,
-    }));
+  const logsByPlayer = new Map(input.players.map((p) => [p.id, p.gameLogs]));
+  const formGuardExcludedCount = applyFormGuardExclusions(eligiblePicks, logsByPlayer);
+  const multisPicks = eligiblePicks.filter(passesFormGuard);
+
   const multiResult = buildMultis(
-    eligiblePicks,
+    multisPicks,
     input.slate.length,
     300,
     edgeFraction,
@@ -351,14 +355,9 @@ export function runModel(input: ModelRunInput): {
     smallSlate: input.smallSlate ?? input.slate.length <= 4,
     ...(injuryImpactLog.length ? { injuryImpactLog } : {}),
     ...(allQ1Exclusions.length ? { q1ExclusionLog: allQ1Exclusions.slice(0, 20) } : {}),
-    ...(signalUnavailable.length ? { signalUnavailable } : {}),
-    ...(topConfluenceLegs.length ? { topConfluenceLegs } : {}),
-    ...(multiResult.mainPlayConfluenceRelaxed
-      ? {
-          mainPlayConfluenceRelaxed: true,
-          mainPlayNotes: ["Main Play: confluence relaxed"],
-        }
-      : {}),
+    modelSanityChecked: modelSanity.checked,
+    modelSanityFailures: modelSanity.failed,
+    formGuardExcludedCount,
   };
 
   return {
@@ -367,6 +366,7 @@ export function runModel(input: ModelRunInput): {
     multisPayload: multiResult,
     meta,
     whatChanged: whatChanged,
+    modelSanity,
   };
 }
 

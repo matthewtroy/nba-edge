@@ -80,6 +80,9 @@ export interface PickLeg {
   recentVsLine?: ("hit" | "miss" | "na")[];
   /** Last 10 games Q1 hit rate at this line (starters with ESPN Q1 splits). */
   q1Last10HitRate?: number;
+  /** Season Q1 clears at this line (numerator/denominator). */
+  q1SeasonHitAtLine?: { hits: number; total: number };
+  recentTenVsLine?: ("hit" | "miss" | "na")[];
   questionable?: boolean;
   boardsShared?: boolean;
   b2b?: boolean;
@@ -95,6 +98,9 @@ export interface PickLeg {
   /** Model p after matchup tweak, before market blend */
   preBlendModelProbability?: number;
   matchupDeltaPp?: number;
+  formGuardExcluded?: boolean;
+  seasonAvg?: { pts: number; reb: number; ast: number; threes: number };
+  lastFiveAvg?: { pts: number; reb: number; ast: number; threes: number };
 }
 
 export type MultiType =
@@ -167,6 +173,9 @@ export interface MetaJson {
   gameOddsLabels?: Record<string, string>;
   /** Per-game cached price timestamp label (Sydney), JSON only. */
   gameOddsPriceAge?: Record<string, string>;
+  modelSanityFailures?: number;
+  modelSanityChecked?: number;
+  formGuardExcludedCount?: number;
 }
 
 export interface HistoryLeg {
@@ -203,6 +212,8 @@ export interface HistoryJson {
   calibration: CalibrationBucket[];
 }
 
+export type GameLogSource = "espn" | "boxscore";
+
 export interface PlayerGameLog {
   gameId: string;
   minutes: number;
@@ -220,6 +231,8 @@ export interface PlayerGameLog {
   fga?: number;
   fta?: number;
   turnovers?: number;
+  /** ESPN player endpoint vs league boxscore backfill */
+  source?: GameLogSource;
 }
 
 export interface PlayerProfile {

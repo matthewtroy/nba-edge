@@ -14,9 +14,9 @@ describe("injury redistribution", () => {
       headshotUrl: "",
       seasonAvgMinutes: 35,
       gameLogs: [
-        { gameId: "a", minutes: 36, pts: 28, reb: 8, ast: 5, threes: 2, date: "2025-01-01" },
-        { gameId: "b", minutes: 34, pts: 26, reb: 7, ast: 4, threes: 1, date: "2025-01-02" },
-        { gameId: "c", minutes: 35, pts: 30, reb: 9, ast: 6, threes: 2, date: "2025-01-03" },
+        { gameId: "a", minutes: 36, pts: 28, reb: 8, ast: 5, threes: 2, date: "2026-11-01" },
+        { gameId: "b", minutes: 34, pts: 26, reb: 7, ast: 4, threes: 1, date: "2026-11-02" },
+        { gameId: "c", minutes: 35, pts: 30, reb: 9, ast: 6, threes: 2, date: "2026-11-03" },
       ],
     };
     const wing: PlayerProfile = {
@@ -28,10 +28,10 @@ describe("injury redistribution", () => {
       headshotUrl: "",
       seasonAvgMinutes: 32,
       gameLogs: [
-        { gameId: "a", minutes: 32, pts: 18, reb: 5, ast: 3, threes: 1, date: "2025-01-01" },
-        { gameId: "b", minutes: 33, pts: 20, reb: 4, ast: 2, threes: 2, date: "2025-01-02" },
-        { gameId: "c", minutes: 31, pts: 16, reb: 6, ast: 4, threes: 1, date: "2025-01-03" },
-        { gameId: "d", minutes: 34, pts: 22, reb: 5, ast: 3, threes: 2, date: "2025-01-04" },
+        { gameId: "a", minutes: 32, pts: 18, reb: 5, ast: 3, threes: 1, date: "2026-11-01" },
+        { gameId: "b", minutes: 33, pts: 20, reb: 4, ast: 2, threes: 2, date: "2026-11-02" },
+        { gameId: "c", minutes: 31, pts: 16, reb: 6, ast: 4, threes: 1, date: "2026-11-03" },
+        { gameId: "d", minutes: 34, pts: 22, reb: 5, ast: 3, threes: 2, date: "2026-11-04" },
       ],
     };
     const logs = new Map([

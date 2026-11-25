@@ -7,7 +7,7 @@ import {
   probTripleDouble,
   probComboRebAst,
 } from "./distributions.js";
-import { q1Share } from "./baseline.js";
+import { logsForModelRates, q1Share } from "./baseline.js";
 import type { ProjectedStats } from "./baseline.js";
 import type { PlayerGameLog } from "./types.js";
 import {
@@ -17,17 +17,35 @@ import {
   impliedFromDecimalPrice,
   type PricedRung,
 } from "./market-blend.js";
-import { lastFiveVsLine, q1HitRateLast10 } from "./leg-history.js";
-import { applyMatchupToModelP, matchupDeltaFromRank } from "./matchup-adjust.js";
 import {
-  buildLegSignals,
-  confluenceFromSignals,
-  reasonLineFromSignals,
-} from "./signals.js";
+  lastFiveVsLine,
+  lastTenVsLine,
+  q1HitRateLast10,
+  q1HitRateLast5,
+  q1SeasonHitFraction,
+} from "./leg-history.js";
+import { applyMatchupToModelP, matchupDeltaFromRank } from "./matchup-adjust.js";
+import { buildShortLegReason } from "./leg-display.js";
 import type { DefenseRatingsBundle } from "./defense-ratings.js";
 import { defenseRankFor } from "./defense-ratings.js";
 
 export const Q1_HIT_RATE_GAP_PP = 0.2;
+
+function q1BlendedModelP(
+  rawModelP: number,
+  logs: PlayerGameLog[],
+  market: "q1pts" | "q1reb" | "q1ast",
+  line: number
+): number {
+  const l10 = q1HitRateLast10(logs, market, line);
+  const l5 = q1HitRateLast5(logs, market, line);
+  if (l10 != null && l5 != null) {
+    return 0.5 * rawModelP + 0.3 * l10 + 0.2 * l5;
+  }
+  if (l10 != null) return 0.6 * rawModelP + 0.4 * l10;
+  if (l5 != null) return 0.7 * rawModelP + 0.3 * l5;
+  return rawModelP;
+}
 
 export const RUNGS: Record<string, number[]> = {
   pts: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
@@ -78,6 +96,19 @@ export function buildLegsForPlayer(
 ): PickLeg[] {
   const legs: PickLeg[] = [];
   const means = ctx.stats;
+  const modelLogs = logsForModelRates(ctx.logs);
+  const avgFrom = (slice: PlayerGameLog[]) => {
+    if (!slice.length) return undefined;
+    const n = slice.length;
+    return {
+      pts: slice.reduce((s, g) => s + g.pts, 0) / n,
+      reb: slice.reduce((s, g) => s + g.reb, 0) / n,
+      ast: slice.reduce((s, g) => s + g.ast, 0) / n,
+      threes: slice.reduce((s, g) => s + g.threes, 0) / n,
+    };
+  };
+  const seasonAvg = avgFrom(modelLogs);
+  const lastFiveAvg = avgFrom(modelLogs.slice(0, 5));
 
   const pricedByMarket = new Map<string, PricedRung[]>();
   if (ctx.bestOdds) {
@@ -95,7 +126,10 @@ export function buildLegsForPlayer(
   }
 
   const addLeg = (market: Market, line: number, rawModelP: number) => {
-    let modelP = rawModelP;
+    let modelP =
+      market === "q1pts" || market === "q1reb" || market === "q1ast"
+        ? q1BlendedModelP(rawModelP, ctx.logs, market, line)
+        : rawModelP;
     const mRank =
       ctx.matchupSignalsEnabled !== false && ctx.defense && ctx.defendingTeamId
         ? defenseRankFor(ctx.defense, ctx.defendingTeamId, ctx.playerPosition, market)
@@ -192,6 +226,7 @@ export function buildLegsForPlayer(
       tags,
       reasons,
       recentVsLine: lastFiveVsLine(ctx.logs, market, line),
+      recentTenVsLine: lastTenVsLine(ctx.logs, market, line),
       ...(market.startsWith("q1")
         ? {
             q1Last10HitRate: q1HitRateLast10(
@@ -199,25 +234,19 @@ export function buildLegsForPlayer(
               market as "q1pts" | "q1reb" | "q1ast",
               line
             ) ?? undefined,
+            q1SeasonHitAtLine:
+              q1SeasonHitFraction(
+                ctx.logs,
+                market as "q1pts" | "q1reb" | "q1ast",
+                line
+              ) ?? undefined,
           }
         : {}),
       ...ctx.flags,
+      ...(seasonAvg ? { seasonAvg } : {}),
+      ...(lastFiveAvg ? { lastFiveAvg } : {}),
     };
-    const signals = buildLegSignals({
-      leg,
-      logs: ctx.logs,
-      seasonMinutes: ctx.seasonMinutes ?? ctx.flags.projectedMinutes ?? 0,
-      defendingTeamId: ctx.defendingTeamId,
-      playerPosition: ctx.playerPosition,
-      defense: ctx.defense,
-      matchupSignalsEnabled: ctx.matchupSignalsEnabled,
-      injuryAngle:
-        ctx.injuryAngle ??
-        ctx.reasons.some((r) => /\+\d|benefit|redistrib/i.test(r)),
-    });
-    leg.signals = signals;
-    leg.confluence = confluenceFromSignals(signals);
-    leg.reasonLine = reasonLineFromSignals(signals);
+    leg.reasonLine = buildShortLegReason(leg, modelLogs);
     legs.push(leg);
   };
 
