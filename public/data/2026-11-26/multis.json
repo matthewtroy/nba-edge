@@ -4,37 +4,37 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
-        "5104157-pts-30",
-        "4397189-pts-15",
-        "4351851-pts-10"
+        "4278073-ast-5",
+        "4278053-pts-15",
+        "5107173-pts-10",
+        "4397189-pts-15"
       ],
-      "combinedProbability": 0.25803164799999995,
-      "combinedFairPrice": 3.88,
-      "combinedTakeAt": 4.19,
-      "bestBookie": "Ladbrokes",
-      "bestBookieTotal": 7.06,
+      "combinedProbability": 0.177759162,
+      "combinedFairPrice": 5.63,
+      "combinedTakeAt": 6.08,
+      "bestBookie": "TAB",
+      "bestBookieTotal": 9.31,
       "bookieTotals": {
-        "TAB": 5.88,
-        "Ladbrokes": 7.06
+        "TAB": 9.31
       },
-      "summary": "3 starter main lines"
+      "summary": "4 starter main lines"
     },
     {
       "type": "booster",
       "label": "Booster",
       "legs": [
-        "5104157-pts-35",
-        "4397189-pts-15",
-        "4351851-pts-10"
+        "4278073-ast-7",
+        "4278053-pts-20",
+        "5107173-pts-10",
+        "4397189-pts-15"
       ],
-      "combinedProbability": 0.174368096,
-      "combinedFairPrice": 5.73,
-      "combinedTakeAt": 6.19,
-      "bestBookie": "Ladbrokes",
-      "bestBookieTotal": 11.21,
+      "combinedProbability": 0.0460473111,
+      "combinedFairPrice": 21.72,
+      "combinedTakeAt": 23.46,
+      "bestBookie": "TAB",
+      "bestBookieTotal": 36.15,
       "bookieTotals": {
-        "TAB": 9.23,
-        "Ladbrokes": 11.21
+        "TAB": 36.15
       },
       "summary": "Main Play +1 rung where fair ≤4, else same rung"
     },
@@ -43,13 +43,13 @@
       "label": "Q1 Multi",
       "variant": "Longshot",
       "legs": [
-        "5124612-q1reb-2",
-        "4576087-q1reb-2",
+        "3917376-q1reb-2",
+        "5082206-q1reb-2",
         "3064440-q1reb-2"
       ],
-      "combinedProbability": 0.08632935,
-      "combinedFairPrice": 11.58,
-      "combinedTakeAt": 12.51,
+      "combinedProbability": 0.084599267,
+      "combinedFairPrice": 11.82,
+      "combinedTakeAt": 12.77,
       "summary": "Q1 Multi (Longshot): fair 2.20–4.00, one leg/team"
     },
     {
@@ -59,9 +59,9 @@
         "3136195-pts-30",
         "4066261-pts-30"
       ],
-      "combinedProbability": 0.034048,
-      "combinedFairPrice": 29.37,
-      "combinedTakeAt": 31.72,
+      "combinedProbability": 0.03481600000000001,
+      "combinedFairPrice": 28.72,
+      "combinedTakeAt": 31.02,
       "bestBookie": "PointsBet",
       "bestBookieTotal": 63.25,
       "bookieTotals": {
@@ -76,23 +76,22 @@
     {
       "type": "crossGameSgm",
       "label": "Cross-Game SGM Multi",
-      "reason": "Gate: Cross-Game SGM Multi: Karl-Anthony Towns has Check news; Cross-Game SGM Multi: VJ Edgecombe has Check news (legs: Karl-Anthony Towns 13+ reb, Jalen Brunson 30+ pts, Shai Gilgeous-Alexander 30+ pts, Tyrese Maxey 5+ ast, VJ Edgecombe 5+ ast)",
+      "reason": "Gate: Cross-Game SGM Multi: James Harden has Check news; Cross-Game SGM Multi: Jared McCain has Check news (legs: James Harden 20+ pts, Jared McCain 20+ pts, Kevin Durant 20+ pts, Danny Wolf 10+ pts)",
       "players": [
-        "Karl-Anthony Towns",
-        "Jalen Brunson",
-        "Shai Gilgeous-Alexander",
-        "Tyrese Maxey",
-        "VJ Edgecombe"
+        "James Harden",
+        "Jared McCain",
+        "Kevin Durant",
+        "Danny Wolf"
       ]
     },
     {
       "type": "boostSgm",
       "label": "Best SGM",
-      "reason": "Gate: Best SGM: Tyrese Proctor has Check news; Best SGM: bookie total 6.54 not 7–15; Best SGM: AU bookie multi total mismatch (legs: Tyrese Proctor 10+ pts, Peyton Watson 5+ reb, Donovan Mitchell 5+ ast)",
+      "reason": "Gate: Best SGM: Isaiah Hartenstein has Check news; Best SGM: Shai Gilgeous-Alexander has Check news; Best SGM: bookie total 6.21 not 7–15 (legs: Isaiah Hartenstein 5+ ast, Shai Gilgeous-Alexander 35+ pts, Jonathan Kuminga 15+ pts)",
       "players": [
-        "Tyrese Proctor",
-        "Peyton Watson",
-        "Donovan Mitchell"
+        "Isaiah Hartenstein",
+        "Shai Gilgeous-Alexander",
+        "Jonathan Kuminga"
       ]
     },
     {

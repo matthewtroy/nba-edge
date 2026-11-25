@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T08:11:20.957Z",
+  "lastUpdated": "2026-11-25T08:25:19.467Z",
   "oddsLastPulled": "2026-11-25T05:16:23.081Z",
   "sources": {
     "espn": "ok",
@@ -9,39 +9,11 @@
   "slateSize": 9,
   "smallSlate": false,
   "injuryImpactLog": [
-    "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Ryan Kalkbrenner (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Dennis Schroder (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Kon Knueppel (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Norman Powell (Chicago Bulls): no redistribution reasons on slate legs",
-    "Caleb Wilson (Chicago Bulls): no redistribution reasons on slate legs",
-    "Nae'Qwan Tomlin (Cleveland Cavaliers): no redistribution reasons on slate legs",
-    "Evan Mobley (Cleveland Cavaliers): no redistribution reasons on slate legs",
-    "Stephen Curry (Golden State Warriors): no redistribution reasons on slate legs",
-    "Kristaps Porzingis (Golden State Warriors): no redistribution reasons on slate legs",
-    "Moses Moody (Golden State Warriors): no redistribution reasons on slate legs",
-    "Jimmy Butler III (Golden State Warriors): no redistribution reasons on slate legs",
-    "Bradley Beal (LA Clippers): no redistribution reasons on slate legs",
-    "Jordan Miller (LA Clippers): no redistribution reasons on slate legs",
-    "Scotty Pippen Jr. (Memphis Grizzlies): no redistribution reasons on slate legs",
-    "Jerami Grant (Memphis Grizzlies): no redistribution reasons on slate legs",
-    "GG Jackson (Memphis Grizzlies): no redistribution reasons on slate legs",
-    "Richie Saunders (Memphis Grizzlies): no redistribution reasons on slate legs",
-    "Donte DiVincenzo (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Jaylen Clark (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Anthony Edwards (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Jordan Clarkson (New York Knicks): no redistribution reasons on slate legs",
-    "Nikola Topic (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Jaylin Williams (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Aday Mara (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Jalen Williams (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Thomas Sorber (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Cason Wallace (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Ariel Hukporti (Philadelphia 76ers): no redistribution reasons on slate legs"
+    "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs"
   ],
   "modelSanityChecked": 180,
-  "modelSanityFailures": 0,
-  "formGuardExcludedCount": 521,
+  "modelSanityFailures": 6,
+  "formGuardExcludedCount": 538,
   "gameOddsPriceAge": {
     "401909317": "Prices from 4:16 pm",
     "401909318": "Prices from 4:16 pm",
@@ -55,39 +27,39 @@
   },
   "slateTipDate": "2026-11-26",
   "whatChanged": [
-    "OG Anunoby out → Jalen Brunson +4.6 pts",
-    "Cameron Boozer out → Ty Jerome +2.9 pts",
-    "Chet Holmgren out → Ajay Mitchell boards"
+    "Chet Holmgren out → Shai Gilgeous-Alexander +7.2 pts",
+    "OG Anunoby out → Jalen Brunson +4.3 pts",
+    "Cameron Boozer out → Ty Jerome +2.8 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_03_00AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_03_15AM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 393,
-      "priced": 293
+      "total": 396,
+      "priced": 294
     },
     "reb": {
-      "total": 546,
-      "priced": 218
+      "total": 543,
+      "priced": 217
     },
     "ast": {
-      "total": 383,
+      "total": 386,
       "priced": 168
     },
     "3pm": {
-      "total": 661,
-      "priced": 414
+      "total": 659,
+      "priced": 412
     },
     "q1reb": {
-      "total": 194,
+      "total": 196,
       "priced": 0
     }
   },
   "gateViolations": [
-    "Cross-Game SGM Multi: Karl-Anthony Towns has Check news",
-    "Cross-Game SGM Multi: VJ Edgecombe has Check news",
-    "Best SGM: Tyrese Proctor has Check news",
-    "Best SGM: bookie total 6.54 not 7–15",
-    "Best SGM: AU bookie multi total mismatch"
+    "Cross-Game SGM Multi: James Harden has Check news",
+    "Cross-Game SGM Multi: Jared McCain has Check news",
+    "Best SGM: Isaiah Hartenstein has Check news",
+    "Best SGM: Shai Gilgeous-Alexander has Check news",
+    "Best SGM: bookie total 6.21 not 7–15"
   ],
   "slatePublicationStatus": "draft",
   "slateStatusLabel": "Draft · updates until 9pm"
