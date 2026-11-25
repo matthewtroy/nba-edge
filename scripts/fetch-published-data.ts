@@ -40,13 +40,20 @@ export interface PublishedBundle {
 
 /** Download real JSON published on GitHub Pages (production parity inputs). */
 export async function fetchPublishedBundle(): Promise<PublishedBundle> {
+  let prefix = "";
+  try {
+    const index = await fetchJson<{ defaultDate?: string }>(`${PAGES_DATA_BASE}index.json`);
+    if (index.defaultDate) prefix = `${index.defaultDate}/`;
+  } catch {
+    /* legacy flat layout */
+  }
   const [meta, slate, injuries, picks, oddsCache, oddsCoverage] = await Promise.all([
-    fetchJson<Record<string, unknown>>(`${PAGES_DATA_BASE}meta.json`),
-    fetchJson<unknown>(`${PAGES_DATA_BASE}slate.json`),
-    fetchJson<unknown>(`${PAGES_DATA_BASE}injuries.json`),
-    fetchJson<PickLeg[]>(`${PAGES_DATA_BASE}picks.json`),
+    fetchJson<Record<string, unknown>>(`${PAGES_DATA_BASE}${prefix}meta.json`),
+    fetchJson<unknown>(`${PAGES_DATA_BASE}${prefix}slate.json`),
+    fetchJson<unknown>(`${PAGES_DATA_BASE}${prefix}injuries.json`),
+    fetchJson<PickLeg[]>(`${PAGES_DATA_BASE}${prefix}picks.json`),
     fetchJson<OddsCacheFile>(`${PAGES_DATA_BASE}odds-cache.json`),
-    fetchJson<unknown>(`${PAGES_DATA_BASE}odds-coverage.json`).catch(() => undefined),
+    fetchJson<unknown>(`${PAGES_DATA_BASE}${prefix}odds-coverage.json`).catch(() => undefined),
   ]);
 
   return {

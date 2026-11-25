@@ -48,7 +48,8 @@ import {
   slateTipDateFromGames,
   tomorrowSydneyDateString,
 } from "../lib/slate-today.js";
-import type { SlateMode } from "../lib/slate-mode.js";
+import { buildDataIndex, writeDataIndex } from "../lib/data-index.js";
+import { writeSlateBundle } from "./slate-bundle.js";
 import { buildOddsCoverage } from "../lib/odds-coverage.js";
 import {
   countPricedLegsByMarket,
@@ -86,14 +87,10 @@ export async function runLivePipeline(
   opts: {
     forceOdds?: boolean;
     fromLive?: boolean;
-    slateMode?: SlateMode;
-    preview?: boolean;
   } = {}
 ): Promise<void> {
   const forceOdds = opts.forceOdds === true;
   const fromLive = opts.fromLive === true;
-  const slateMode = opts.slateMode ?? "auto";
-  const preview = opts.preview === true;
   loadAliasMap(rootDir);
   const now = new Date();
   const sources: Record<string, string> = {
@@ -102,7 +99,8 @@ export async function runLivePipeline(
     odds: "stale",
   };
 
-  let slate: SlateGame[] = [];
+  let slatesToPublish: SlateGame[][] = [];
+  let unionSlate: SlateGame[] = [];
   let yesterdayPlayed = new Set<string>();
 
   try {
@@ -116,26 +114,29 @@ export async function runLivePipeline(
     ]);
 
     yesterdayPlayed = teamIdsFromFinalGames(boardYesterday);
-    const fromToday = parseScoreboard(boardToday, yesterdayPlayed);
-    let merged = dedupeGames(fromToday);
-    if (slateMode === "next") {
-      const tomorrowBoard = await maybeTomorrowBoard(now, [], yesterdayPlayed);
+    let merged = dedupeGames(parseScoreboard(boardToday, yesterdayPlayed));
+    const todaySlate = filterSlateToTodaySydney(merged, now);
+    let tomorrowSlate = filterSlateToNextSydney(merged);
+    if (!tomorrowSlate.length) {
+      const tomorrowBoard = await maybeTomorrowBoard(now, todaySlate, yesterdayPlayed);
       merged = dedupeGames([...merged, ...tomorrowBoard]);
-      slate = filterSlateToNextSydney(merged);
-      if (!slate.length) {
-        const tomorrowYmd = tomorrowSydneyDateString(now);
-        slate = filterOpenGamesOnSydneyDate(merged, tomorrowYmd);
-      }
-      if (!slate.length) {
-        console.warn("next slate: no open games on tomorrow Sydney date");
-      }
-    } else {
-      slate = filterSlateToTodaySydney(merged, now);
+      tomorrowSlate = filterOpenGamesOnSydneyDate(
+        merged,
+        tomorrowSydneyDateString(now)
+      );
     }
+    if (todaySlate.length) slatesToPublish.push(todaySlate);
+    if (tomorrowSlate.length) {
+      const todayIds = new Set(todaySlate.map((g) => g.id));
+      const tomOnly = tomorrowSlate.filter((g) => !todayIds.has(g.id));
+      if (tomOnly.length) slatesToPublish.push(tomOnly);
+    }
+    unionSlate = dedupeGames(slatesToPublish.flat());
   } catch (e) {
     console.error("ESPN scoreboard error:", e);
     sources.espn = "failed";
   }
+  const slate = unionSlate;
 
   const slateByTeam = new Map<string, string>();
   for (const g of slate) {
@@ -310,9 +311,15 @@ export async function runLivePipeline(
   const oddsCachePath = path.join(outDir, "odds-cache.json");
   const cache: OddsCacheFile = loadOddsCache(oddsCachePath);
   resetOddsDayIfNeeded(cache, now);
-  const slateDateSydney = slateTipDateFromGames(slate) ?? sydneyDateString(now);
-  const existingOfficial = loadOfficialCard(outDir);
-  const officialPublishedToday = existingOfficial?.slateDate === slateDateSydney;
+  const todayTip =
+    slatesToPublish[0]?.length
+      ? slateTipDateFromGames(slatesToPublish[0]) ?? sydneyDateString(now)
+      : sydneyDateString(now);
+  const existingTodayOfficial = loadOfficialCard(
+    path.join(outDir, todayTip)
+  );
+  const officialPublishedToday =
+    existingTodayOfficial?.slateDate === todayTip;
 
   let oddsMap = oddsMapFromRecord(cache.oddsMap ?? {});
   let allOddsMap = new Map<string, Record<string, number>>();
@@ -351,9 +358,8 @@ export async function runLivePipeline(
   } else if (cache.creditsRemaining != null && shouldPauseOdds(cache.creditsRemaining)) {
     sources.odds = "paused (credit limit)";
   } else if (
-    shouldPullOddsNow(now, slate, cache, { officialPublishedToday }) ||
-    forceOdds ||
-    (slateMode === "next" && preview)
+    shouldPullOddsNow(now, unionSlate, cache, { officialPublishedToday }) ||
+    forceOdds
   ) {
     try {
       const { events, remaining } = await listOddsEvents(apiKey);
@@ -362,7 +368,7 @@ export async function runLivePipeline(
         sources.odds = "paused (credit limit)";
       } else {
         const payloads: unknown[] = [];
-        for (const g of slate) {
+        for (const g of unionSlate) {
           const oddsId = matchOddsEventId(g, events);
           if (!oddsId) continue;
           const { data, remaining: rem } = await fetchOddsForEvent(apiKey, oddsId);
@@ -370,14 +376,14 @@ export async function runLivePipeline(
           if (data) payloads.push(data);
         }
         const bundles = extractOddsBundles(payloads);
-        const postTip = isPostTipOff(now, slate);
+        const postTip = isPostTipOff(now, unionSlate);
         const priorBest = oddsMapFromRecord(cache.oddsMap ?? {});
         oddsMap = mergeBestOddsMaps(priorBest, bundles.best, { postTipOff: postTip });
         allOddsMap = bundles.all;
         const norm = new Map<string, { price: number; bookie: string }>();
         for (const [k, v] of oddsMap) norm.set(k, v);
         oddsMap = norm;
-        recordOddsPull(cache, now, slate);
+        recordOddsPull(cache, now, unionSlate);
         oddsPulledAt = now.toISOString();
         cache.lastPulled = oddsPulledAt;
         if (postTip && bundles.best.size === 0) {
@@ -414,55 +420,53 @@ export async function runLivePipeline(
     }
   }
 
-  const slateTeams = slateTeamIds(slate);
-  injuries = injuries.filter((i) => slateTeams.has(i.teamId));
-
-  const oddsCoverage = {
-    ...buildOddsCoverage(oddsPayloads, oddsPulledAt ?? now.toISOString()),
-    slateTipDate: slateDateSydney,
-    slateGameCount: slate.length,
-  };
-  if (preview && slateMode === "next") {
-    console.log(
-      `next preview: tip ${slateDateSydney} · ${slate.length} games · odds events probed ${oddsCoverage.eventsProbed}`
-    );
-  }
   const extractedKeyList = [...oddsMap.keys()];
 
-  let modelRun = runModel({
-    rootDir,
-    slate,
-    injuries,
-    players,
-    rosterIds,
-    oddsMap: pricingOdds,
-    allOddsMap: pricingAllBooks,
-    oddsPulledAt,
-    metaSources: sources,
-  });
+  const indexEntries: import("../lib/data-index.js").DataIndexDateEntry[] = [];
+  let todayPicks: ReturnType<typeof runModel>["picks"] = [];
+  let todayMultis: ReturnType<typeof runModel>["multis"] = [];
 
-  if (fromLive && usedLiveOddsPull && sources.odds.startsWith("ok")) {
+  for (const oneSlate of slatesToPublish) {
+    const entry = writeSlateBundle({
+      rootDir,
+      rootOutDir: outDir,
+      slate: oneSlate,
+      injuriesAll: injuries,
+      playersAll: players,
+      rosterIds,
+      oddsMap: pricingOdds,
+      allOddsMap: pricingAllBooks,
+      oddsPulledAt,
+      oddsPayloads,
+      sources,
+      cache,
+      now,
+      nbaOfficialUrl,
+      nbaOfficialLastTriedUrl,
+    });
+    if (entry) indexEntries.push(entry);
+    const tip = slateTipDateFromGames(oneSlate);
+    if (tip === todayTip) {
+      const picksPath = path.join(outDir, tip, "picks.json");
+      const multisPath = path.join(outDir, tip, "multis.json");
+      if (fs.existsSync(picksPath)) {
+        todayPicks = JSON.parse(fs.readFileSync(picksPath, "utf8"));
+        const multisRaw = JSON.parse(fs.readFileSync(multisPath, "utf8")) as {
+          bets: typeof todayMultis;
+        };
+        todayMultis = multisRaw.bets;
+      }
+    }
+  }
+
+  if (fromLive && usedLiveOddsPull && sources.odds.startsWith("ok") && todayPicks.length) {
     writeFromLiveOddsSnapshot(
       rootDir,
-      snapshotFromPicks(modelRun.picks, oddsPulledAt ?? now.toISOString())
+      snapshotFromPicks(todayPicks, oddsPulledAt ?? now.toISOString())
     );
   }
 
-  const { picks, multis, multisPayload, meta, whatChanged } = modelRun;
-
-  let history = loadHistory(rootDir);
-  const slateDate = now.toLocaleDateString("en-CA", { timeZone: "Australia/Sydney" });
-  const picksById = new Map(picks.map((p) => [p.id, p]));
-
-  const boxesByGame = await loadFinalBoxesForGrading(now, summaryCache);
-  history = gradeOpenLegs(history, picksById, boxesByGame);
-  history = appendRecommendations(history, picks, multis, slateDate);
-
-  const pricedLegCounts = countPricedLegsByMarket(picks);
-  const oddsAttachWarnings = coverageAttachWarnings(oddsCoverage, pricedLegCounts);
-  for (const w of oddsAttachWarnings) console.warn(w);
-
-  const tatumLegs = picks.filter((p) => p.playerName === "Jayson Tatum");
+  const tatumLegs = todayPicks.filter((p) => p.playerName === "Jayson Tatum");
   if (tatumLegs.length || extractedKeyList.some((k) => k.includes("tatum"))) {
     tracePlayerOddsStages("Jayson Tatum", {
       extractedKeys: extractedKeyList,
@@ -471,83 +475,32 @@ export async function runLivePipeline(
     });
   }
 
+  let history = loadHistory(rootDir);
+  const picksById = new Map(todayPicks.map((p) => [p.id, p]));
+  const boxesByGame = await loadFinalBoxesForGrading(now, summaryCache);
+  history = gradeOpenLegs(history, picksById, boxesByGame);
+  history = appendRecommendations(history, todayPicks, todayMultis, todayTip);
+
   fs.mkdirSync(outDir, { recursive: true });
-  fs.writeFileSync(path.join(outDir, "slate.json"), JSON.stringify(slate, null, 2));
-  fs.writeFileSync(path.join(outDir, "injuries.json"), JSON.stringify(injuries, null, 2));
-  fs.writeFileSync(path.join(outDir, "picks.json"), JSON.stringify(picks, null, 2));
-  fs.writeFileSync(
-    path.join(outDir, "odds-coverage.json"),
-    JSON.stringify(oddsCoverage, null, 2)
-  );
-  fs.writeFileSync(
-    path.join(outDir, "multis.json"),
-    JSON.stringify({ bets: multis, notBuilt: multisPayload.notBuilt }, null, 2)
-  );
-  const oddsLastDisplayed = resolveOddsLastPulled(
-    picks,
-    cache.lastPulled,
-    meta.oddsLastPulled
-  );
-
-  let oddsNote = meta.oddsCoverageNote;
-  if (preview && fromLive && slateMode === "next") {
-    oddsNote =
-      "from-live odds are today's Pages cache — tomorrow bookmaker markets often missing until closer to tip";
-  }
-
-  const metaOut = {
-    ...meta,
-    slateMode,
-    slatePreview: preview,
-    slateTipDate: slateDateSydney,
-    oddsLastPulled: oddsLastDisplayed,
-    whatChanged,
-    ...(nbaOfficialUrl ? { nbaOfficialUrl } : {}),
-    ...(nbaOfficialLastTriedUrl ? { nbaOfficialLastTriedUrl } : {}),
-    ...(oddsNote ? { oddsCoverageNote: oddsNote } : {}),
-    pricedLegCounts,
-    ...(oddsAttachWarnings.length ? { oddsAttachWarnings } : {}),
-    ...(multisPayload.gateViolations?.length
-      ? { gateViolations: multisPayload.gateViolations }
-      : {}),
-  };
-
-  if (
-    !preview &&
-    shouldPublishOfficialCard(now, picks, existingOfficial, slateDateSydney)
-  ) {
-    const official = writeOfficialCard(outDir, {
-      now,
-      slate,
-      multis,
-      notBuilt: multisPayload.notBuilt,
-      injuries,
-      meta: metaOut,
-      bookie: OFFICIAL_CARD_BOOKIE,
-    });
-    metaOut.officialCard = {
-      lockedAt: official.lockedAt,
-      publishedAt: official.publishedAt ?? official.lockedAt,
-      slateDate: official.slateDate,
-      bookie: official.bookie,
-    };
-    console.log(`Official card published (${official.slateDate}, ${official.bookie})`);
-  } else if (existingOfficial?.slateDate === slateDateSydney) {
-    metaOut.officialCard = {
-      lockedAt: existingOfficial.lockedAt,
-      publishedAt: existingOfficial.publishedAt ?? existingOfficial.lockedAt,
-      slateDate: existingOfficial.slateDate,
-      bookie: existingOfficial.bookie,
-    };
-  }
-
-  fs.writeFileSync(path.join(outDir, "meta.json"), JSON.stringify(metaOut, null, 2));
   fs.writeFileSync(path.join(outDir, "history.json"), JSON.stringify(history, null, 2));
   fs.writeFileSync(oddsCachePath, JSON.stringify(cache, null, 2));
+  writeDataIndex(outDir, buildDataIndex(indexEntries, now));
 
-  const modeLabel = preview ? "preview" : "live";
+  for (const legacy of [
+    "slate.json",
+    "picks.json",
+    "multis.json",
+    "meta.json",
+    "injuries.json",
+    "odds-coverage.json",
+    "official-card.json",
+  ]) {
+    const legacyPath = path.join(outDir, legacy);
+    if (fs.existsSync(legacyPath)) fs.unlinkSync(legacyPath);
+  }
+
   console.log(
-    `Pipeline OK: ${slate.length} games, ${picks.length} legs, ${multis.length} multis (slate=${slateMode}, ${fromLive ? "from-live" : modeLabel})`
+    `Pipeline OK: ${slatesToPublish.length} slate(s) · ${indexEntries.map((e) => `${e.date} ${e.multiCount}m`).join(", ")} (${fromLive ? "from-live" : "live"})`
   );
 }
 

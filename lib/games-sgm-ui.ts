@@ -9,7 +9,7 @@ export function gameSgmAsMulti(card: GameSgmCard, game: SlateGame): MultiBet {
   const p = card.legs.reduce((acc, l) => acc * l.probability, 1);
   return {
     type: "boostSgm",
-    label: `${gameShortLabel(game)} SGM`,
+    label: `${gameShortLabel(game)}: SGM`,
     legs: card.legs.map((l) => l.id),
     combinedProbability: p,
     combinedFairPrice: card.fair,

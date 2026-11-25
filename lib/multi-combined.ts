@@ -40,12 +40,20 @@ export function multiCardTitle(
 ): { headline: string; subline: string; cardBookie: string } {
   const { fair } = combinedFairAndTakeAt(legs, minEdgeFraction);
   const name = multi.variant ? `${multi.label} (${multi.variant})` : multi.label;
-  const feed = resolveMultiFeedQuote(multi, legs);
-  const subline = feed.bookie || `Fair $${fair.toFixed(2)}`;
+  let total: number;
+  let cardBookie = multi.bestBookie ?? "";
+  try {
+    const feed = resolveMultiFeedQuote(multi, legs);
+    total = feed.total;
+    cardBookie = feed.bookie;
+  } catch {
+    total = combinedFairAndTakeAt(legs, minEdgeFraction).takeAt;
+  }
+  const subline = cardBookie || `Fair $${fair.toFixed(2)}`;
   return {
-    headline: `${name}: $${feed.total.toFixed(2)}`,
+    headline: `${name}: $${total.toFixed(2)}`,
     subline,
-    cardBookie: feed.bookie,
+    cardBookie,
   };
 }
 

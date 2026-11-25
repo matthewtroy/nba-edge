@@ -9,8 +9,11 @@ import type {
   HistoryJson,
 } from "@lib/types";
 import type { OfficialCardFile } from "@lib/official-card-time";
+import type { DataIndexFile } from "@lib/data-index";
 
 export interface DataBundle {
+  index: DataIndexFile | null;
+  selectedDate: string;
   slate: SlateGame[];
   injuries: InjuryEntry[];
   picks: PickLeg[];
@@ -43,8 +46,10 @@ async function fetchDataJson<T>(file: string, version: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-export function useData(): DataBundle {
+export function useData(selectedDate: string): DataBundle {
   const [state, setState] = useState<DataBundle>({
+    index: null,
+    selectedDate,
     slate: [],
     injuries: [],
     picks: [],
@@ -57,48 +62,80 @@ export function useData(): DataBundle {
   });
 
   useEffect(() => {
+    let cancelled = false;
     async function load() {
+      setState((s) => ({ ...s, loading: true, selectedDate, error: undefined }));
       try {
+        let index: DataIndexFile | null = null;
+        try {
+          index = await fetchDataJson<DataIndexFile>("index.json", "idx");
+        } catch {
+          /* legacy flat layout */
+        }
+
+        const dateKey = selectedDate || index?.defaultDate;
+        const prefix = index && dateKey ? `${dateKey}/` : "";
+
         const meta = await fetchDataJson<MetaJson & { whatChanged?: string[] }>(
-          "meta.json",
-          "bootstrap"
+          `${prefix}meta.json`,
+          dateKey || "bootstrap"
         );
         const v = meta.lastUpdated || "0";
         const [slate, injuries, picks, multisRaw, history] = await Promise.all([
-          fetchDataJson<SlateGame[]>("slate.json", v),
-          fetchDataJson<InjuryEntry[]>("injuries.json", v),
-          fetchDataJson<PickLeg[]>("picks.json", v),
-          fetchDataJson<unknown>("multis.json", v),
+          fetchDataJson<SlateGame[]>(`${prefix}slate.json`, v),
+          fetchDataJson<InjuryEntry[]>(`${prefix}injuries.json`, v),
+          fetchDataJson<PickLeg[]>(`${prefix}picks.json`, v),
+          fetchDataJson<unknown>(`${prefix}multis.json`, v),
           fetchDataJson<HistoryJson>("history.json", v),
         ]);
         const { bets, notBuilt } = parseMultisJson(multisRaw);
         let officialCard: OfficialCardFile | null = null;
         try {
-          officialCard = await fetchDataJson<OfficialCardFile>("official-card.json", v);
+          officialCard = await fetchDataJson<OfficialCardFile>(
+            `${prefix}official-card.json`,
+            v
+          );
         } catch {
           /* no lock yet */
         }
-        setState({
-          slate,
-          injuries,
-          picks,
-          multis: bets,
-          multisNotBuilt: notBuilt,
-          officialCard,
-          meta,
-          history,
-          loading: false,
-        });
+        if (!cancelled) {
+          setState({
+            index,
+            selectedDate: dateKey ?? "",
+            slate,
+            injuries,
+            picks,
+            multis: bets,
+            multisNotBuilt: notBuilt,
+            officialCard,
+            meta,
+            history,
+            loading: false,
+          });
+        }
       } catch (e) {
-        setState((s) => ({
-          ...s,
-          loading: false,
-          error: e instanceof Error ? e.message : "Failed to load data",
-        }));
+        if (!cancelled) {
+          setState((s) => ({
+            ...s,
+            loading: false,
+            error: e instanceof Error ? e.message : "Failed to load data",
+          }));
+        }
       }
     }
     load();
-  }, []);
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedDate]);
 
   return state;
+}
+
+export async function loadDataIndex(): Promise<DataIndexFile | null> {
+  try {
+    return await fetchDataJson<DataIndexFile>("index.json", "idx");
+  } catch {
+    return null;
+  }
 }

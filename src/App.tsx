@@ -1,6 +1,8 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { bookieWithMostCoverage } from "@lib/card-bookie";
-import { useData } from "./hooks/useData";
+import { loadDataIndex, useData } from "./hooks/useData";
+import { useSlateDate } from "./hooks/useSlateDate";
+import type { DataIndexFile } from "@lib/data-index";
 import { useSettings } from "./hooks/useSettings";
 import { TabBar } from "./components/TabBar";
 import { LegSheet } from "./components/LegSheet";
@@ -12,7 +14,7 @@ import { ResultsScreen } from "./screens/ResultsScreen";
 import { GamesScreen } from "./screens/GamesScreen";
 import type { PickLeg } from "@lib/types";
 
-type Tab = "today" | "picks" | "injuries" | "results";
+type Tab = "today" | "picks" | "games" | "injuries" | "results";
 
 function PhoneShell({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
@@ -23,7 +25,12 @@ function PhoneShell({ children, className = "" }: { children: ReactNode; classNa
 }
 
 export default function App() {
-  const data = useData();
+  const [index, setIndex] = useState<DataIndexFile | null>(null);
+  useEffect(() => {
+    loadDataIndex().then(setIndex);
+  }, []);
+  const { date: slateDate, setDate: setSlateDate, segment } = useSlateDate(index);
+  const data = useData(slateDate);
   const { settings, setSettings } = useSettings();
   useEffect(() => {
     if (data.loading || !data.picks.length) return;
@@ -56,6 +63,10 @@ export default function App() {
       {tab === "today" && (
         <TodayScreen
           data={data}
+          slateDate={slateDate}
+          todayDate={segment.today}
+          tomorrowDate={segment.tomorrow}
+          onSlateDateChange={setSlateDate}
           onLegTap={setLeg}
           onCopy={copy}
           onOpenSettings={() => setSettingsOpen(true)}
@@ -65,11 +76,23 @@ export default function App() {
         />
       )}
       {tab === "picks" && (
-        <PicksScreen data={data} myBookie={settings.myBookie} onLegTap={setLeg} />
+        <PicksScreen
+          data={data}
+          slateDate={slateDate}
+          todayDate={segment.today}
+          tomorrowDate={segment.tomorrow}
+          onSlateDateChange={setSlateDate}
+          myBookie={settings.myBookie}
+          onLegTap={setLeg}
+        />
       )}
       {tab === "games" && (
         <GamesScreen
           data={data}
+          slateDate={slateDate}
+          todayDate={segment.today}
+          tomorrowDate={segment.tomorrow}
+          onSlateDateChange={setSlateDate}
           myBookie={settings.myBookie}
           onLegTap={setLeg}
           onCopy={copy}

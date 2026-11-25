@@ -5,7 +5,8 @@ import { MultiCard } from "../components/MultiCard";
 import { NotBuiltSection } from "../components/NotBuiltSection";
 import { PersonalMultiBuilder } from "../components/PersonalMultiBuilder";
 import { usePersonalMultis } from "../hooks/usePersonalMultis";
-import { injuryAlertsSinceLock } from "@lib/injury-alerts";
+import { injuryAlertsForCard } from "@lib/injury-alerts-card";
+import { DateSwitcher } from "../components/DateSwitcher";
 import { sydneyDateString } from "@lib/official-card-time";
 import { sydneyTimeFromIso } from "../utils/format";
 
@@ -20,6 +21,10 @@ const ORDER = [
 
 interface Props {
   data: DataBundle;
+  slateDate: string;
+  todayDate: string;
+  tomorrowDate: string | null;
+  onSlateDateChange: (d: string) => void;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (t: string) => void;
   onOpenSettings: () => void;
@@ -30,6 +35,10 @@ interface Props {
 
 export function TodayScreen({
   data,
+  slateDate,
+  todayDate,
+  tomorrowDate,
+  onSlateDateChange,
   onLegTap,
   onCopy,
   onOpenSettings,
@@ -42,13 +51,10 @@ export function TodayScreen({
     (s) => s === "stale" || s === "paused" || String(s).includes("paused")
   );
 
-  const todaySydney = sydneyDateString(new Date());
   const official = data.officialCard;
   const useOfficial =
-    !data.meta.slatePreview &&
     official != null &&
-    (official.slateDate === todaySydney ||
-      data.meta.officialCard?.slateDate === official.slateDate);
+    official.slateDate === (data.meta.slateTipDate ?? official.slateDate);
 
   const displayMultis = useOfficial ? official.multis : data.multis;
   const displayNotBuilt = useOfficial ? official.notBuilt : data.multisNotBuilt;
@@ -63,9 +69,16 @@ export function TodayScreen({
   const oddsForCard = headerOddsPull;
   const publishedAt = official?.publishedAt ?? official?.lockedAt;
 
+  const cardPlayerIds = new Set(
+    displayMultis.flatMap((m) =>
+      m.legs
+        .map((id) => picksById.get(id)?.playerId)
+        .filter(Boolean) as string[]
+    )
+  );
   const injuryAlerts = useOfficial
-    ? injuryAlertsSinceLock(official.injuries, data.injuries)
-  : [];
+    ? injuryAlertsForCard(official.injuries, data.injuries, cardPlayerIds)
+    : [];
 
   const { multis: personalMultis, addMulti, removeMulti } = usePersonalMultis(data.picks);
   const [builderOpen, setBuilderOpen] = useState(false);
@@ -93,9 +106,18 @@ export function TodayScreen({
 
   return (
     <div className="pb-24">
+      <DateSwitcher
+        todayDate={todayDate}
+        tomorrowDate={tomorrowDate}
+        selected={slateDate}
+        onSelect={onSlateDateChange}
+      />
       <header className="mb-4 flex justify-between items-start">
         <div>
-          <h1 className="text-xl font-bold">Today</h1>
+          <h1 className="text-xl font-bold">{slateDate === todayDate ? "Today" : "Tomorrow"}</h1>
+          {data.meta.slateStatusLabel && (
+            <p className="text-xs text-accent-high mt-0.5">{data.meta.slateStatusLabel}</p>
+          )}
           <p className="text-sm text-white/70">
             {data.slate.length} games · Updated {sydneyTimeFromIso(data.meta.lastUpdated)}
             {headerOddsPull && (
@@ -103,12 +125,6 @@ export function TodayScreen({
             )}
             {stale && <span className="text-accent-warn ml-1" title="Source stale or paused">●</span>}
           </p>
-          {data.meta.slatePreview && (
-            <p className="text-xs text-accent-warn mt-1">
-              Preview · {data.meta.slateMode ?? "next"} slate
-              {data.meta.slateTipDate ? ` · tips ${data.meta.slateTipDate}` : ""} (not official)
-            </p>
-          )}
           {useOfficial && publishedAt && (
             <p className="text-xs text-accent-high mt-1">
               Published {sydneyTimeFromIso(publishedAt)}

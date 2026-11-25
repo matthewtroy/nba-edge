@@ -2,10 +2,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
-const base = process.env.VITE_BASE ?? "/nba-edge/";
-
 export default defineConfig({
-  base,
+  base: "/nba-edge/",
   plugins: [react()],
   server: {
     port: 5180,

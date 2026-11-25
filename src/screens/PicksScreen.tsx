@@ -2,15 +2,28 @@ import { useMemo, useState } from "react";
 import type { DataBundle } from "../hooks/useData";
 import type { PickLeg } from "@lib/types";
 import { LegRow } from "../components/LegRow";
+import { DateSwitcher } from "../components/DateSwitcher";
 import { hasValueAtBookie } from "@lib/value-at-bookie";
 
 interface Props {
   data: DataBundle;
+  slateDate: string;
+  todayDate: string;
+  tomorrowDate: string | null;
+  onSlateDateChange: (d: string) => void;
   myBookie?: string;
   onLegTap: (leg: PickLeg) => void;
 }
 
-export function PicksScreen({ data, myBookie = "bet365", onLegTap }: Props) {
+export function PicksScreen({
+  data,
+  slateDate,
+  todayDate,
+  tomorrowDate,
+  onSlateDateChange,
+  myBookie = "bet365",
+  onLegTap,
+}: Props) {
   const [showAll, setShowAll] = useState(false);
   const [filter, setFilter] = useState<"all" | "value" | "high" | string>("value");
 
@@ -48,6 +61,12 @@ export function PicksScreen({ data, myBookie = "bet365", onLegTap }: Props) {
 
   return (
     <div className="pb-24">
+      <DateSwitcher
+        todayDate={todayDate}
+        tomorrowDate={tomorrowDate}
+        selected={slateDate}
+        onSelect={onSlateDateChange}
+      />
       <h1 className="text-xl font-bold mb-3">Picks</h1>
 
       {!hasValueOdds && (

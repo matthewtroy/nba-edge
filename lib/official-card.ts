@@ -6,6 +6,7 @@ import {
   type OfficialCardFile,
   sydneyDateString,
 } from "./official-card-time.js";
+import { slateTipDateFromGames } from "./slate-today.js";
 
 export {
   OFFICIAL_CARD_BOOKIE,
@@ -36,7 +37,7 @@ export function writeOfficialCard(
   const file: OfficialCardFile = {
     lockedAt: publishedAt,
     publishedAt,
-    slateDate: sydneyDateString(input.now),
+    slateDate: slateTipDateFromGames(input.slate) ?? sydneyDateString(input.now),
     bookie: input.bookie ?? OFFICIAL_CARD_BOOKIE,
     multis: input.multis,
     notBuilt: input.notBuilt,

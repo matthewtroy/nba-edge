@@ -6,23 +6,11 @@ on:
     - cron: "0,30 10,11,12,13,14 * * *"
     # 19:00–03:30 UTC ≈ 06:00–14:30 Sydney (AEDT).
     - cron: "0,30 19,20,21,22,23,0,1,2,3 * * *"
-    # 06:00 UTC = 17:00 Sydney (AEDT) / 16:00 (AEST) — next-slate preview prep.
+    # 06:00 UTC = 17:00 Sydney (AEDT) / 16:00 (AEST) — morning odds window.
     - cron: "0 6 * * *"
     # 20:00 UTC ≈ 07:00 Sydney next calendar day (AEDT) — pre-tip odds window.
     - cron: "0 20 * * *"
   workflow_dispatch:
-    inputs:
-      slate:
-        description: Slate window (auto = earliest open Sydney day, next = following day)
-        type: choice
-        default: auto
-        options:
-          - auto
-          - next
-      preview:
-        description: Preview only — do not publish official card
-        type: boolean
-        default: false
 
 permissions:
   contents: write
@@ -32,11 +20,6 @@ permissions:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
-    env:
-      SLATE_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.slate || (github.event.schedule == '0 6 * * *' && 'next' || 'auto') }}
-      SLATE_PREVIEW: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.preview || (github.event.schedule == '0 6 * * *' && 'true' || 'false') }}
-    outputs:
-      skip_deploy: ${{ steps.deploy_gate.outputs.skip_deploy }}
     steps:
       - uses: actions/checkout@v4
 
@@ -49,7 +32,8 @@ jobs:
         run: |
           git fetch origin data:data || true
           if git show-ref --quiet refs/heads/data; then
-            git checkout data -- public/data/history.json public/data/odds-cache.json public/data/official-card.json 2>/dev/null || true
+            git checkout data -- public/data/history.json public/data/odds-cache.json public/data/index.json public/data/game-log-cache.json 2>/dev/null || true
+            git checkout data -- public/data/ 2>/dev/null || true
           fi
 
       - run: npm ci
@@ -58,30 +42,10 @@ jobs:
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: |
-          EXTRA="--slate=${SLATE_MODE}"
-          [ "${SLATE_PREVIEW}" = "true" ] && EXTRA="$EXTRA --preview"
-          echo "Workflow pipeline flags: ${EXTRA} (event=${{ github.event_name }} schedule=${{ github.event.schedule }})"
-          npm run pipeline ${EXTRA}
+          echo "Workflow pipeline (dual-slate)"
+          npm run pipeline
 
-      - name: Deploy gate
-        id: deploy_gate
-        run: |
-          if [ "${SLATE_PREVIEW}" = "true" ]; then
-            echo "skip_deploy=false" >> "$GITHUB_OUTPUT"
-            echo "preview_deploy=true" >> "$GITHUB_OUTPUT"
-            echo "Pages deploy will run after build (preview at /nba-edge/preview/)"
-          else
-            echo "skip_deploy=false" >> "$GITHUB_OUTPUT"
-            echo "preview_deploy=false" >> "$GITHUB_OUTPUT"
-            echo "Pages deploy will run after build"
-          fi
-
-      - name: Build site
-        env:
-          PREVIEW_ONLY: ${{ steps.deploy_gate.outputs.preview_deploy }}
-        run: |
-          chmod +x scripts/prepare-pages-dist.sh
-          PREVIEW_ONLY="${PREVIEW_ONLY}" ./scripts/prepare-pages-dist.sh
+      - run: npm run build
 
       - name: Upload odds coverage
         uses: actions/upload-artifact@v4
@@ -97,19 +61,17 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git fetch origin data:data 2>/dev/null || git checkout --orphan data
           mkdir -p public/data
-          git add public/data/history.json public/data/odds-cache.json public/data/official-card.json 2>/dev/null || true
+          git add public/data/ 2>/dev/null || true
           git diff --staged --quiet || git commit -m "chore: update pipeline data"
           git push origin HEAD:data || true
 
       - name: Upload Pages artifact
-        if: steps.deploy_gate.outputs.skip_deploy != 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
   deploy:
     needs: pipeline
-    if: needs.pipeline.outputs.skip_deploy != 'true'
     runs-on: ubuntu-latest
     permissions:
       pages: write

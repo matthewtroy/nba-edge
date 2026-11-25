@@ -1,0 +1,40 @@
+import { weekdayShort } from "../hooks/useSlateDate";
+
+interface Props {
+  todayDate: string;
+  tomorrowDate: string | null;
+  selected: string;
+  onSelect: (date: string) => void;
+}
+
+export function DateSwitcher({ todayDate, tomorrowDate, selected, onSelect }: Props) {
+  if (!tomorrowDate || tomorrowDate === todayDate) return null;
+  const opts = [
+    { date: todayDate, label: "Today" },
+    { date: tomorrowDate, label: `Tomorrow (${weekdayShort(tomorrowDate)})` },
+  ];
+  return (
+    <div
+      className="flex rounded-lg border border-white/15 overflow-hidden mb-3"
+      role="tablist"
+      aria-label="Slate date"
+    >
+      {opts.map((o) => (
+        <button
+          key={o.date}
+          type="button"
+          role="tab"
+          aria-selected={selected === o.date}
+          onClick={() => onSelect(o.date)}
+          className={`flex-1 py-2 text-xs sm:text-sm font-medium ${
+            selected === o.date
+              ? "bg-accent-high/20 text-accent-high"
+              : "text-white/65"
+          }`}
+        >
+          {o.label}
+        </button>
+      ))}
+    </div>
+  );
+}

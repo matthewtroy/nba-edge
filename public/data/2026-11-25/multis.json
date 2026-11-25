@@ -1,0 +1,63 @@
+{
+  "bets": [
+    {
+      "type": "boostSgm",
+      "label": "Boost SGM",
+      "legs": [
+        "3112335-pts-25",
+        "4431767-reb-5",
+        "3936299-ast-7"
+      ],
+      "combinedProbability": 0.11346974399999998,
+      "combinedFairPrice": 8.81,
+      "combinedTakeAt": 9.51,
+      "bestBookie": "Sportsbet",
+      "bestBookieTotal": 14.76,
+      "bookieTotals": {
+        "Sportsbet": 14.76
+      },
+      "summary": "Same-game trio for boost offer (3 legs)"
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot",
+      "legs": [
+        "6583-pts-30",
+        "3936299-pts-35"
+      ],
+      "combinedProbability": 0.037520000000000005,
+      "combinedFairPrice": 26.65,
+      "combinedTakeAt": 28.78,
+      "bestBookie": "PointsBet",
+      "bestBookieTotal": 73.5,
+      "bookieTotals": {
+        "PointsBet": 73.5
+      },
+      "summary": "One long leg per game"
+    }
+  ],
+  "notBuilt": [
+    {
+      "type": "mainPlay",
+      "label": "Main Play",
+      "reason": "No 4–5 leg main @ edge+clash+range 7–10 (edge best Sportsbet=4, range-cands 0)"
+    },
+    {
+      "type": "booster",
+      "label": "Booster",
+      "reason": "Needs a Main Play first"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Safe",
+      "reason": "No Safe Q1 subset (p≥0.70, 3–6 teams, one leg/team)"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Value",
+      "reason": "No Value Q1 subset (fair 2.20–4.00, 3–6 teams, one leg/team)"
+    }
+  ]
+}

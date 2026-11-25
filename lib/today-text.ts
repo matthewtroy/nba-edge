@@ -25,7 +25,7 @@ export function renderTodayText(input: {
   officialCard?: OfficialCardFile | null;
 }): string {
   const official = input.officialCard;
-  const useOfficial = !input.meta.slatePreview && official != null;
+  const useOfficial = official != null;
   const multis = useOfficial ? official!.multis : input.multis;
   const notBuilt = useOfficial ? official!.notBuilt : input.notBuilt;
   const whatChanged = useOfficial ? official!.whatChanged : input.meta.whatChanged;
@@ -39,10 +39,8 @@ export function renderTodayText(input: {
   );
 
   lines.push("Today");
-  if (input.meta.slatePreview) {
-    lines.push(
-      `Preview · ${input.meta.slateMode ?? "next"} slate · tip ${input.meta.slateTipDate ?? ""} (not official)`
-    );
+  if (input.meta.slateStatusLabel) {
+    lines.push(input.meta.slateStatusLabel);
   }
   lines.push(
     `${input.slate.length} games · Updated ${formatSydneyTime(input.meta.lastUpdated)}${
@@ -60,10 +58,6 @@ export function renderTodayText(input: {
   if (useOfficial && official) {
     const pub = official.publishedAt ?? official.lockedAt;
     lines.push(`Official card · Published ${formatSydneyTime(pub)} · ${cardBookie}`);
-    lines.push("");
-  }
-  if (input.meta.slatePreview && input.meta.oddsCoverageNote) {
-    lines.push(`Odds note: ${input.meta.oddsCoverageNote}`);
     lines.push("");
   }
 

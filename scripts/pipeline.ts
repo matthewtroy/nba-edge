@@ -3,7 +3,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { runModelFromFixture, loadHistory } from "./run-model.js";
 import { runLivePipeline } from "./run-live.js";
-import { parsePreviewFlag, parseSlateMode } from "../lib/slate-mode.js";
 import { computeCalibration, emptyHistory } from "../lib/grading.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -13,7 +12,6 @@ const outDir = path.join(rootDir, "public/data");
 const fixtureMode = process.argv.includes("--fixture");
 const forceOdds = process.argv.includes("--force-odds");
 const fromLive = process.argv.includes("--from-live");
-const slateMode = parseSlateMode(process.argv);
 
 function runFixturePipeline(): void {
   const result = runModelFromFixture(rootDir);
@@ -74,25 +72,11 @@ async function main() {
     runFixturePipeline();
     return;
   }
-  const preview = parsePreviewFlag(process.argv);
   const useFromLive = fromLive;
-  if (!fromLive && slateMode === "next") {
-    console.log(
-      "pipeline: next slate — skipping Pages from-live; will pull odds API for preview events"
-    );
-  } else if (fromLive && slateMode === "next") {
-    console.log(
-      "pipeline: next slate from-live — using Pages odds cache (markets may be thin until closer to tip)"
-    );
-  }
-  console.log(
-    `pipeline: slate=${slateMode}${preview ? " preview" : ""}${useFromLive ? " from-live" : ""}`
-  );
+  console.log(`pipeline: dual-slate${useFromLive ? " from-live" : ""}`);
   await runLivePipeline(rootDir, outDir, {
-    forceOdds: forceOdds || useFromLive || slateMode === "next",
+    forceOdds: forceOdds || useFromLive,
     fromLive: useFromLive,
-    slateMode,
-    preview,
   });
 }
 

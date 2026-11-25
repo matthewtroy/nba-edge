@@ -63,12 +63,23 @@ export function MultiCard({
 
   const { headline, subline, cardBookie } = multiCardTitle(multi, legs);
   const legBookie = displayBook ?? cardBookie;
+  const colon = headline.indexOf(": $");
+  const titleText = colon >= 0 ? headline.slice(0, colon) : headline;
+  const totalText = colon >= 0 ? headline.slice(colon + 2) : "";
 
   return (
     <section className="bg-card rounded-xl border border-white/10 overflow-hidden mb-3">
       <header className="px-4 py-3 bg-surface/80 border-b border-white/5">
-        <div className="flex justify-between gap-2">
-          <h3 className="font-semibold text-lg leading-snug">{headline}</h3>
+        <div className="flex justify-between gap-2 items-start">
+          <div>
+            <h3 className="font-semibold text-base leading-snug">{titleText}</h3>
+            {totalText ? (
+              <p className="text-2xl font-bold text-accent-high leading-tight mt-0.5">
+                {totalText}
+              </p>
+            ) : null}
+            <p className="text-xs text-white/45 mt-1">{subline}</p>
+          </div>
           {onRemove && (
             <button type="button" className="text-xs text-white/50" onClick={onRemove}>
               Remove
@@ -85,7 +96,6 @@ export function MultiCard({
             })}
           </p>
         )}
-        <p className="text-sm text-white/70 mt-1">{subline}</p>
       </header>
       <div className="px-2 divide-y divide-white/5">
         {legs.map((leg) => (

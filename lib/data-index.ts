@@ -3,47 +3,78 @@ import path from "path";
 import type { SlatePublicationStatus } from "./slate-publication.js";
 import { sydneyDateString } from "./official-card-time.js";
 
-export interface SlateIndexEntry {
-  tipDate: string;
+export interface DataIndexDateEntry {
+  date: string;
+  status: SlatePublicationStatus;
+  statusLabel: string;
   gameCount: number;
-  mode?: "auto" | "next";
-  dir?: string;
-  publishedAt?: string;
-  status?: SlatePublicationStatus;
+  legCount: number;
+  multiCount: number;
+  lastUpdated: string;
 }
 
-export interface SlateIndexFile {
-  defaultDate: string;
+export interface DataIndexFile {
   updatedAt: string;
-  slates: SlateIndexEntry[];
+  todayDate: string;
+  tomorrowDate: string | null;
+  defaultDate: string;
+  dates: DataIndexDateEntry[];
 }
 
-export function defaultDateForIndex(
-  entries: SlateIndexEntry[],
+export function slateDataDir(outDir: string, date: string): string {
+  return path.join(outDir, date);
+}
+
+export function defaultSlateDate(
+  index: DataIndexFile,
   now = new Date()
 ): string {
-  if (!entries.length) return sydneyDateString(now);
-  const today = sydneyDateString(now);
-  if (entries.some((e) => e.tipDate === today)) return today;
-  const dates = [...new Set(entries.map((e) => e.tipDate))].sort();
-  const future = dates.find((d) => d >= today);
-  return future ?? dates[dates.length - 1]!;
+  const today = index.todayDate;
+  if (index.dates.some((d) => d.date === today) && !todaySlateComplete(index, today)) {
+    return today;
+  }
+  if (index.tomorrowDate && index.dates.some((d) => d.date === index.tomorrowDate)) {
+    return index.tomorrowDate;
+  }
+  return index.defaultDate;
 }
 
-export function writeSlateIndex(
-  outDir: string,
-  entries: SlateIndexEntry[],
-  now = new Date()
-): SlateIndexFile {
-  const file: SlateIndexFile = {
-    defaultDate: defaultDateForIndex(entries, now),
-    updatedAt: now.toISOString(),
-    slates: [...entries].sort((a, b) => a.tipDate.localeCompare(b.tipDate)),
-  };
+function todaySlateComplete(index: DataIndexFile, today: string): boolean {
+  const entry = index.dates.find((d) => d.date === today);
+  return entry?.status === "locked_at_tip";
+}
+
+export function writeDataIndex(outDir: string, file: DataIndexFile): void {
   fs.mkdirSync(outDir, { recursive: true });
-  fs.writeFileSync(
-    path.join(outDir, "slate-index.json"),
-    JSON.stringify(file, null, 2)
-  );
-  return file;
+  fs.writeFileSync(path.join(outDir, "index.json"), JSON.stringify(file, null, 2));
+}
+
+export function buildDataIndex(
+  entries: DataIndexDateEntry[],
+  now = new Date()
+): DataIndexFile {
+  const sorted = [...entries].sort((a, b) => a.date.localeCompare(b.date));
+  const todayDate = sydneyDateString(now);
+  const tomorrowDate =
+    sorted.find((d) => d.date > todayDate)?.date ??
+    new Date(now.getTime() + 86_400_000).toLocaleDateString("en-CA", {
+      timeZone: "Australia/Sydney",
+    });
+  const hasTomorrow = sorted.some((d) => d.date === tomorrowDate);
+  return {
+    updatedAt: now.toISOString(),
+    todayDate,
+    tomorrowDate: hasTomorrow ? tomorrowDate : null,
+    defaultDate: defaultSlateDate(
+      {
+        updatedAt: now.toISOString(),
+        todayDate,
+        tomorrowDate: hasTomorrow ? tomorrowDate : null,
+        defaultDate: todayDate,
+        dates: sorted,
+      },
+      now
+    ),
+    dates: sorted,
+  };
 }

@@ -6,6 +6,7 @@ import { gameSgmAsMulti, gameShortLabel } from "@lib/games-sgm-ui";
 import { hasValueAtBookie } from "@lib/value-at-bookie";
 import { gamesForCards, isGameLive } from "@lib/slate-game-ui";
 import { MultiCard } from "../components/MultiCard";
+import { DateSwitcher } from "../components/DateSwitcher";
 
 const PRESETS: { label: string; min: number; max: number }[] = [
   { label: "1.5–4", min: 1.5, max: 4 },
@@ -13,20 +14,33 @@ const PRESETS: { label: string; min: number; max: number }[] = [
   { label: "4–10", min: 4, max: 10 },
   { label: "10–20", min: 10, max: 20 },
   { label: "20–50", min: 20, max: 50 },
+  { label: "50+", min: 50, max: Number.POSITIVE_INFINITY },
 ];
 
 interface Props {
   data: DataBundle;
+  slateDate: string;
+  todayDate: string;
+  tomorrowDate: string | null;
+  onSlateDateChange: (d: string) => void;
   myBookie?: string;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (text: string) => void;
 }
 
-export function GamesScreen({ data, myBookie = "Sportsbet", onLegTap, onCopy }: Props) {
+export function GamesScreen({
+  data,
+  slateDate,
+  todayDate,
+  tomorrowDate,
+  onSlateDateChange,
+  myBookie = "Sportsbet",
+  onLegTap,
+  onCopy,
+}: Props) {
   const [preset, setPreset] = useState(PRESETS[2]);
   const activeSlate = useMemo(() => gamesForCards(data.slate), [data.slate]);
   const useOfficial =
-    !data.meta.slatePreview &&
     data.officialCard != null &&
     data.officialCard.slateDate === data.meta.slateTipDate;
   const multis = useOfficial ? data.officialCard!.multis : data.multis;
@@ -60,12 +74,13 @@ export function GamesScreen({ data, myBookie = "Sportsbet", onLegTap, onCopy }: 
 
   return (
     <div className="pb-24">
+      <DateSwitcher
+        todayDate={todayDate}
+        tomorrowDate={tomorrowDate}
+        selected={slateDate}
+        onSelect={onSlateDateChange}
+      />
       <h1 className="text-xl font-bold mb-1">Games</h1>
-      {data.meta.slatePreview && (
-        <p className="text-xs text-accent-warn mb-2">
-          Preview · {data.meta.slateMode ?? "next"} · tips {data.meta.slateTipDate ?? "—"}
-        </p>
-      )}
       <p className="text-sm text-white/70 mb-3">
         SGM by bookie total · Value @ {myBookie}: {valueCount}
       </p>
@@ -86,15 +101,17 @@ export function GamesScreen({ data, myBookie = "Sportsbet", onLegTap, onCopy }: 
         ))}
       </div>
 
-      {blocks.map(({ game, card, crossGameLegs, boostLegs }) => {
+      {blocks.map(({ game, card, crossGameLegs, boostLegs, notBuiltReason }) => {
         const short = gameShortLabel(game);
         const live = isGameLive(game.status);
         if (!card) {
+          const reason =
+            block.notBuiltReason ??
+            `No game SGM in $${preset.min.toFixed(1)}–${Number.isFinite(preset.max) ? preset.max : "50+"}`;
           return (
             <p key={game.id} className="text-sm text-white/50 mb-3">
               {short}
-              {live ? " (live)" : ""}: no 3-leg SGM with one AU bookie in $
-              {preset.min.toFixed(1)}–{preset.max}
+              {live ? " (live)" : ""}: {reason}
             </p>
           );
         }

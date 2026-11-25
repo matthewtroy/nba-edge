@@ -1,0 +1,17 @@
+{
+  "updatedAt": "2026-11-25T03:14:23.583Z",
+  "todayDate": "2026-11-25",
+  "tomorrowDate": null,
+  "defaultDate": "2026-11-25",
+  "dates": [
+    {
+      "date": "2026-11-25",
+      "status": "locked_at_tip",
+      "statusLabel": "Locked at tip",
+      "gameCount": 2,
+      "legCount": 446,
+      "multiCount": 2,
+      "lastUpdated": "2026-11-25T03:14:27.144Z"
+    }
+  ]
+}
