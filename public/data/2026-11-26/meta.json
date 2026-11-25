@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T06:48:52.686Z",
+  "lastUpdated": "2026-11-25T06:51:53.381Z",
   "oddsLastPulled": "2026-11-25T05:16:23.081Z",
   "sources": {
     "espn": "ok",
@@ -9,31 +9,39 @@
   "slateSize": 9,
   "smallSlate": false,
   "injuryImpactLog": [
+    "Jordan Clarkson (New York Knicks): injured player not meaningful rotation",
     "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs"
   ],
   "q1ExclusionLog": [
-    "Tyrese Maxey q1reb 2+: last-10 Q1 0% vs model 30%",
     "Joel Embiid q1reb 2+: last-10 Q1 50% vs model 71%",
-    "Giannis Antetokounmpo q1reb 5+: last-10 Q1 33% vs model 54%",
+    "Tyrese Maxey q1reb 2+: last-10 Q1 0% vs model 30%",
     "Bam Adebayo q1reb 2+: last-10 Q1 40% vs model 67%",
     "Bam Adebayo q1reb 3+: last-10 Q1 20% vs model 43%",
-    "Sion James q1reb 2+: last-10 Q1 17% vs model 37%",
+    "Giannis Antetokounmpo q1reb 5+: last-10 Q1 33% vs model 54%",
     "Coby White q1reb 2+: last-10 Q1 0% vs model 24%",
-    "Naz Reid q1reb 3+: last-10 Q1 0% vs model 23%",
-    "Mikal Bridges q1reb 3+: last-10 Q1 0% vs model 26%",
+    "Sion James q1reb 2+: last-10 Q1 17% vs model 37%",
+    "Naz Reid q1reb 3+: last-10 Q1 0% vs model 21%",
+    "Mikal Bridges q1reb 3+: last-10 Q1 0% vs model 27%",
+    "Karl-Anthony Towns q1reb 5+: last-10 Q1 20% vs model 44%",
     "Jalen Brunson q1reb 2+: last-10 Q1 20% vs model 48%",
-    "Karl-Anthony Towns q1reb 5+: last-10 Q1 20% vs model 43%",
     "Jarrett Allen q1reb 5+: last-10 Q1 0% vs model 20%",
     "Shai Gilgeous-Alexander q1reb 2+: last-10 Q1 0% vs model 36%",
-    "Jonathan Kuminga q1reb 3+: last-10 Q1 20% vs model 44%",
     "Rudy Gobert q1reb 2+: last-10 Q1 20% vs model 52%",
     "Rudy Gobert q1reb 3+: last-10 Q1 0% vs model 28%",
+    "Jonathan Kuminga q1reb 3+: last-10 Q1 20% vs model 44%",
     "Derrick Jones Jr. q1reb 2+: last-10 Q1 40% vs model 73%",
     "Derrick Jones Jr. q1reb 3+: last-10 Q1 20% vs model 50%",
     "Brook Lopez q1reb 3+: last-10 Q1 40% vs model 68%",
     "Brook Lopez q1reb 5+: last-10 Q1 0% vs model 33%"
   ],
   "topConfluenceLegs": [
+    {
+      "player": "Karl-Anthony Towns",
+      "market": "reb",
+      "line": 13,
+      "confluence": 4,
+      "reasonLine": "Line beats model · Soft defence rank 8"
+    },
     {
       "player": "Isaiah Hartenstein",
       "market": "ast",
@@ -53,14 +61,14 @@
       "market": "3pm",
       "line": 2,
       "confluence": 4,
-      "reasonLine": "Line beats model · Soft defence rank 8"
+      "reasonLine": "Line beats model · Soft defence rank 7"
     },
     {
       "player": "Shai Gilgeous-Alexander",
       "market": "3pm",
       "line": 3,
       "confluence": 4,
-      "reasonLine": "Line beats model · Soft defence rank 8"
+      "reasonLine": "Line beats model · Soft defence rank 7"
     },
     {
       "player": "Brook Lopez",
@@ -84,11 +92,11 @@
       "reasonLine": "Line beats model · Soft defence rank 8"
     },
     {
-      "player": "Kris Dunn",
-      "market": "pts",
+      "player": "Devin Booker",
+      "market": "ast",
       "line": 5,
       "confluence": 4,
-      "reasonLine": "Line beats model · Soft defence rank 7"
+      "reasonLine": "Line beats model · Soft defence rank 8"
     },
     {
       "player": "Sion James",
@@ -96,13 +104,6 @@
       "line": 5,
       "confluence": 3,
       "reasonLine": "Line beats model · Soft defence rank 1"
-    },
-    {
-      "player": "Landry Shamet",
-      "market": "pts",
-      "line": 10,
-      "confluence": 3,
-      "reasonLine": "Line beats model · Hit 7 of last 10"
     }
   ],
   "gameOddsPriceAge": {
@@ -119,42 +120,43 @@
   "slateTipDate": "2026-11-26",
   "whatChanged": [
     "Chet Holmgren out → Shai Gilgeous-Alexander +8.6 pts",
-    "OG Anunoby out → Jalen Brunson +4.2 pts",
-    "Bradley Beal out → Brook Lopez +3.6 pts"
+    "Mark Williams out → Devin Booker +5.2 pts",
+    "OG Anunoby out → Jalen Brunson +4.1 pts"
   ],
   "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_01_45AM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 1435,
-      "priced": 472
+      "total": 1466,
+      "priced": 484
     },
     "reb": {
-      "total": 989,
-      "priced": 228
+      "total": 1003,
+      "priced": 229
     },
     "ast": {
-      "total": 787,
-      "priced": 172
+      "total": 809,
+      "priced": 174
     },
     "3pm": {
-      "total": 842,
-      "priced": 429
+      "total": 856,
+      "priced": 432
     },
     "q1pts": {
-      "total": 312,
+      "total": 320,
       "priced": 0
     },
     "q1reb": {
-      "total": 253,
+      "total": 254,
       "priced": 0
     },
     "q1ast": {
-      "total": 234,
+      "total": 240,
       "priced": 0
     }
   },
   "gateViolations": [
-    "Cross-Game SGM Multi: AU bookie multi total mismatch"
+    "Cross-Game SGM Multi: Shai Gilgeous-Alexander has Check news",
+    "Longshot: Shai Gilgeous-Alexander has Check news"
   ],
   "slatePublicationStatus": "draft",
   "slateStatusLabel": "Draft · updates until 9pm"
