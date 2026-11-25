@@ -19,8 +19,8 @@ function mockClient(): SupabaseUpsertClient & {
       if (this.failTable === table) throw new Error(`mock ${table} down`);
       tables[table] = [...(tables[table] ?? []), ...rows];
     },
-    async fromSelect() {
-      return { id: "pull-1" };
+    async fromSelect<T>() {
+      return { id: "pull-1" } as T;
     },
     async insert(table, row) {
       tables[table] = [...(tables[table] ?? []), row];

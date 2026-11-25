@@ -70,7 +70,7 @@ describe("pending settlement", () => {
     expect(
       gradeOfficialLeg(
         snap({ id: "v", playerId: "p-void", gameId: "fixture-game-won", market: "pts", line: 20 }),
-        raw["fixture-game-won"]["p-void"]
+        { ...raw["fixture-game-won"]["p-void"], playerId: "p-void" }
       ).result
     ).toBe("void");
   });
@@ -143,7 +143,17 @@ describe("pending settlement", () => {
       lockedAt: "2026-01-02",
       slateDate: "2026-01-02",
       bookie: "TAB",
-      multis: [{ type: "mainPlay", legs: ["l1", "l2"], combinedFairPrice: 8 }],
+      multis: [
+        {
+          type: "mainPlay",
+          label: "Main",
+          legs: ["l1", "l2"],
+          combinedProbability: 0.2,
+          combinedFairPrice: 8,
+          combinedTakeAt: 9,
+          summary: "test",
+        },
+      ],
       notBuilt: [],
       whatChanged: [],
       injuries: [],

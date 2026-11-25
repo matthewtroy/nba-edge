@@ -25,7 +25,17 @@ describe("settle card_legs upsert rows", () => {
       lockedAt: "2026-01-01",
       slateDate: "2026-01-01",
       bookie: "TAB",
-      multis: [{ type: "mainPlay", legs: ["l1", "l2"], combinedFairPrice: 4 }],
+      multis: [
+        {
+          type: "mainPlay",
+          label: "Main",
+          legs: ["l1", "l2"],
+          combinedProbability: 0.2,
+          combinedFairPrice: 4,
+          combinedTakeAt: 4.5,
+          summary: "test",
+        },
+      ],
       notBuilt: [],
       whatChanged: [],
       injuries: [],

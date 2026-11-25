@@ -23,11 +23,11 @@ describe("official main play bookie totals", () => {
     .map((id) => picksByIdFromOfficialSnapshots(official.legSnapshots, picks).get(id))
     .filter(Boolean) as PickLeg[];
 
-  it("Ladbrokes and Neds main play $9.40", () => {
+  it("Ladbrokes and Neds main play $11.59 (republished 2026-11-26)", () => {
     const lad = combinedPriceForBookieWithCatalog(legs, "Ladbrokes", picks);
     const neds = combinedPriceForBookieWithCatalog(legs, "Neds", picks);
-    expect(lad).toBeCloseTo(9.4, 2);
-    expect(neds).toBeCloseTo(9.4, 2);
+    expect(lad).toBeCloseTo(11.59, 2);
+    expect(neds).toBeCloseTo(11.59, 2);
   });
 
   it("Unibet incomplete on Coward and Diabaté", () => {

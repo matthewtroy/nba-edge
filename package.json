@@ -17,6 +17,7 @@
     "pipeline:from-live": "tsx scripts/pipeline.ts --from-live",
     "odds-check": "tsx scripts/odds-check.ts",
     "typecheck": "tsc -p tsconfig.pipeline.json --noEmit",
+    "typecheck:tests": "tsc -p tsconfig.tests.json --noEmit",
     "test": "vitest run",
     "screenshots:leg-sheet": "npm run build && tsx scripts/capture-leg-sheet-screenshots.ts",
     "screenshots:picks": "npm run build && tsx scripts/capture-picks-screenshots.ts",

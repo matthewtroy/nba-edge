@@ -26,6 +26,7 @@ const baseLeg = {
 
 function logsWithAvg(avg: number): PlayerGameLog[] {
   return Array.from({ length: 10 }, (_, i) => ({
+    gameId: `g-${i}`,
     date: `2026-01-${String(i + 1).padStart(2, "0")}`,
     pts: avg,
     reb: 5,

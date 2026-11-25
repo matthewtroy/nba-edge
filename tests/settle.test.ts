@@ -15,7 +15,7 @@ const raw = JSON.parse(fs.readFileSync(boxesPath, "utf8")) as Record<
 >;
 
 function box(gameId: string, playerId: string) {
-  return raw[gameId][playerId];
+  return { ...raw[gameId][playerId], playerId };
 }
 
 function snap(
@@ -72,7 +72,17 @@ describe("settle", () => {
       lockedAt: "2026-01-01",
       slateDate: "2026-01-01",
       bookie: "TAB",
-      multis: [{ type: "mainPlay", legs: ["l1", "l2"], combinedFairPrice: 8 }],
+      multis: [
+        {
+          type: "mainPlay",
+          label: "Main",
+          legs: ["l1", "l2"],
+          combinedProbability: 0.2,
+          combinedFairPrice: 8,
+          combinedTakeAt: 9,
+          summary: "test",
+        },
+      ],
       notBuilt: [],
       whatChanged: [],
       injuries: [],
@@ -97,7 +107,10 @@ describe("settle", () => {
       [
         "fixture-game-void-leg",
         new Map(
-          Object.entries(raw["fixture-game-void-leg"]).map(([k, v]) => [k, v])
+          Object.entries(raw["fixture-game-void-leg"]).map(([k, v]) => [
+            k,
+            { ...v, playerId: k },
+          ])
         ),
       ],
     ]);

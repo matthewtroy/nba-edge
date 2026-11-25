@@ -10,6 +10,7 @@ const multi: MultiBet = {
   combinedProbability: 0.1,
   combinedFairPrice: 10,
   combinedTakeAt: 12,
+  summary: "test",
 };
 
 describe("localStorage keys", () => {

@@ -41,11 +41,12 @@ describe("reason gate avg vs rank", () => {
     }
   });
 
-  it("Diabaté official fixture drops banned copy cleanly", () => {
+  it("Coward official snapshot drops banned copy cleanly", () => {
     const official = JSON.parse(
       fs.readFileSync(path.join(DATA, "official-card.json"), "utf8")
     ) as { legSnapshots: Record<string, { reasons: unknown; market: string; line: number }> };
-    const snap = official.legSnapshots["4433249-reb-10"];
+    const snap = official.legSnapshots["4903027-reb-7"];
+    expect(snap).toBeTruthy();
     const out = gateLegReasons(snap.reasons, snap.market, 3, snap.line);
     for (const r of out) {
       expect(r.text.toLowerCase()).not.toContain("boards shared");

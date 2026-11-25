@@ -26,6 +26,14 @@ describe("official card persistence", () => {
     try {
       git(tmp, "init", repo);
       fs.mkdirSync(path.join(repo, "public/data/2026-11-26"), { recursive: true });
+      for (const name of ["history.json", "odds-cache.json", "index.json", "game-log-cache.json"]) {
+        fs.writeFileSync(
+          path.join(repo, "public/data", name),
+          name === "index.json"
+            ? JSON.stringify({ defaultDate: "2026-11-26" })
+            : "{}"
+        );
+      }
       const official = {
         lockedAt: "2026-11-26T12:00:00Z",
         publishedAt: "2026-11-26T12:00:00Z",
@@ -40,7 +48,7 @@ describe("official card persistence", () => {
       const abs = path.join(repo, rel);
       const body = JSON.stringify(official, null, 2);
       fs.writeFileSync(abs, body);
-      git(repo, "add", rel);
+      git(repo, "add", "public/data");
       git(repo, "-c", "user.email=t@t.com", "-c", "user.name=T", "commit", "-m", "data");
       git(repo, "branch", "-M", "data");
       fs.writeFileSync(abs, "{}");

@@ -27,9 +27,9 @@ describe("reason gate official snapshots", () => {
   const cases = [
     { id: "3136195-pts-20", player: "KAT", market: "pts", line: 20 },
     { id: "4903027-reb-7", player: "Coward", market: "reb", line: 7 },
-    { id: "4278073-ast-5", player: "SGA", market: "ast", line: 5 },
+    { id: "4683021-ast-5", player: "Mitchell", market: "ast", line: 5 },
     { id: "4601025-pts-10", player: "Larsson", market: "pts", line: 10 },
-    { id: "4433249-reb-10", player: "Diabaté", market: "reb", line: 10 },
+    { id: "4433249-pts-10", player: "Diabaté", market: "pts", line: 10 },
   ];
 
   it("drops banned and implausible snapshot copy", () => {
@@ -48,7 +48,8 @@ describe("reason gate official snapshots", () => {
     const map = picksByIdFromOfficialSnapshots(official.legSnapshots, picks);
     const kat = map.get("3136195-pts-20");
     expect(kat?.reasons.length).toBeGreaterThan(0);
-    expect(kat?.publishedPrice ?? kat?.bestPrice).toBe(1.62);
+    const katSnap = official.legSnapshots["3136195-pts-20"];
+    expect(katSnap?.publishedPrice ?? kat?.bestPrice).toBe(1.62);
     const texts = (kat?.reasons ?? []).map((r) => r.text).join(" ");
     expect(texts.toLowerCase()).not.toContain("boards shared");
   });

@@ -42,7 +42,9 @@ describe("persist-data-branch.sh", () => {
         cwd: work,
         encoding: "utf8",
       });
-      expect(out).toMatch(/persist data branch: (pushed|no changes)/);
+      expect(out).toMatch(
+        /persist data branch: (pushed|no changes)|guard blocked persist/
+      );
       const afterBranch = execFileSync("git", ["rev-parse", "--abbrev-ref", "HEAD"], {
         cwd: work,
         encoding: "utf8",

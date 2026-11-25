@@ -32,7 +32,7 @@ describe("buildWhatChanged", () => {
         takeAt: 1.62,
         projectedMinutes: 34,
         tags: [],
-        reasons: ["Duncan Robinson out: +3.2 pts"],
+        reasons: [{ type: "injury", text: "Duncan Robinson out: +3.2 pts" }],
       },
     ];
     expect(buildWhatChanged(injuries, picks)).toEqual([
@@ -68,7 +68,7 @@ describe("buildWhatChanged", () => {
         fairPrice: 1.5,
         takeAt: 1.6,
         tags: [],
-        reasons: ["X Player out: +0.8 pts"],
+        reasons: [{ type: "injury", text: "X Player out: +0.8 pts" }],
       },
     ];
     expect(buildWhatChanged(injuries, picks)).toEqual([]);
