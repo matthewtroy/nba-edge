@@ -5,14 +5,14 @@
       "label": "Main Play",
       "legs": [
         "3136195-pts-20",
-        "4431671-reb-5",
         "4903027-reb-7",
+        "4431671-reb-5",
         "4601025-pts-10",
         "4433249-reb-10"
       ],
-      "combinedProbability": 0.20267248585391995,
-      "combinedFairPrice": 4.93,
-      "combinedTakeAt": 5.32,
+      "combinedProbability": 0.20325733585415995,
+      "combinedFairPrice": 4.92,
+      "combinedTakeAt": 5.31,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 8.26,
       "bookieTotals": {
@@ -25,14 +25,14 @@
       "label": "Booster",
       "legs": [
         "3136195-pts-30",
-        "4431671-reb-7",
         "4903027-reb-7",
+        "4431671-reb-7",
         "4601025-pts-15",
         "4433249-reb-10"
       ],
-      "combinedProbability": 0.01832505154128,
-      "combinedFairPrice": 54.57,
-      "combinedTakeAt": 58.94,
+      "combinedProbability": 0.0182648521242,
+      "combinedFairPrice": 54.75,
+      "combinedTakeAt": 59.13,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 87.94,
       "bookieTotals": {
@@ -59,9 +59,9 @@
         "4683021-ast-5",
         "5104157-pts-30"
       ],
-      "combinedProbability": 0.003980829252954261,
-      "combinedFairPrice": 251.2,
-      "combinedTakeAt": 271.3,
+      "combinedProbability": 0.00399231669279957,
+      "combinedFairPrice": 250.48,
+      "combinedTakeAt": 270.52,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 1099.2,
       "bookieTotals": {
@@ -147,9 +147,9 @@
         "3908809-ast-5",
         "3992-pts-20"
       ],
-      "combinedProbability": 0.225182496,
-      "combinedFairPrice": 4.44,
-      "combinedTakeAt": 4.8,
+      "combinedProbability": 0.224879424,
+      "combinedFairPrice": 4.45,
+      "combinedTakeAt": 4.81,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 7.37,
       "bookieTotals": {
@@ -184,9 +184,9 @@
         "3136195-pts-30",
         "4066261-pts-30"
       ],
-      "combinedProbability": 0.034176000000000005,
-      "combinedFairPrice": 29.26,
-      "combinedTakeAt": 31.6,
+      "combinedProbability": 0.033920000000000006,
+      "combinedFairPrice": 29.48,
+      "combinedTakeAt": 31.84,
       "bestBookie": "PointsBet",
       "bestBookieTotal": 63.25,
       "bookieTotals": {
