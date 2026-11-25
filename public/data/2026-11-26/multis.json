@@ -4,39 +4,21 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
-        "4278073-ast-5",
-        "4278053-pts-15",
-        "5107173-pts-10",
-        "4397189-pts-15"
+        "3136195-pts-20",
+        "4431671-reb-5",
+        "4903027-reb-7",
+        "4601025-pts-10",
+        "4433249-reb-10"
       ],
-      "combinedProbability": 0.177759162,
-      "combinedFairPrice": 5.63,
-      "combinedTakeAt": 6.08,
-      "bestBookie": "TAB",
-      "bestBookieTotal": 9.31,
+      "combinedProbability": 0.20268558526103997,
+      "combinedFairPrice": 4.93,
+      "combinedTakeAt": 5.32,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 8.26,
       "bookieTotals": {
-        "TAB": 9.31
+        "Ladbrokes": 8.26
       },
-      "summary": "4 starter main lines"
-    },
-    {
-      "type": "booster",
-      "label": "Booster",
-      "legs": [
-        "4278073-ast-7",
-        "4278053-pts-20",
-        "5107173-pts-10",
-        "4397189-pts-15"
-      ],
-      "combinedProbability": 0.0460473111,
-      "combinedFairPrice": 21.72,
-      "combinedTakeAt": 23.46,
-      "bestBookie": "TAB",
-      "bestBookieTotal": 36.15,
-      "bookieTotals": {
-        "TAB": 36.15
-      },
-      "summary": "Main Play +1 rung where fair ≤4, else same rung"
+      "summary": "5 starter main lines"
     },
     {
       "type": "q1Multi",
@@ -51,47 +33,44 @@
       "combinedFairPrice": 11.82,
       "combinedTakeAt": 12.77,
       "summary": "Q1 Multi (Longshot): fair 2.20–4.00, one leg/team"
-    },
-    {
-      "type": "longshot",
-      "label": "Longshot",
-      "legs": [
-        "3136195-pts-30",
-        "4066261-pts-30"
-      ],
-      "combinedProbability": 0.03481600000000001,
-      "combinedFairPrice": 28.72,
-      "combinedTakeAt": 31.02,
-      "bestBookie": "PointsBet",
-      "bestBookieTotal": 63.25,
-      "bookieTotals": {
-        "Sportsbet": 57,
-        "Ladbrokes": 60.5,
-        "PointsBet": 63.25
-      },
-      "summary": "One long leg per game"
     }
   ],
   "notBuilt": [
     {
+      "type": "booster",
+      "label": "Booster",
+      "reason": "Booster: Pelle Larsson 15+ pts: no edge @ Ladbrokes"
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot",
+      "reason": "Exposure cap: Karl-Anthony Towns would appear in 4 bets (max 3, Booster exempt; legs: Karl-Anthony Towns 30+ pts, Bam Adebayo 30+ pts)",
+      "players": [
+        "Karl-Anthony Towns",
+        "Bam Adebayo"
+      ]
+    },
+    {
       "type": "crossGameSgm",
       "label": "Cross-Game SGM Multi",
-      "reason": "Gate: Cross-Game SGM Multi: James Harden has Check news; Cross-Game SGM Multi: Jared McCain has Check news (legs: James Harden 20+ pts, Jared McCain 20+ pts, Kevin Durant 20+ pts, Danny Wolf 10+ pts)",
+      "reason": "Gate: Cross-Game SGM Multi: Jared McCain has Check news; Cross-Game SGM Multi: Egor Demin has Check news; Cross-Game SGM Multi: AU bookie multi total mismatch (legs: Jared McCain 15+ pts, Karl-Anthony Towns 20+ pts, Darius Garland 20+ pts, Pelle Larsson 10+ pts, Egor Demin 10+ pts, Jalen Smith 15+ pts)",
       "players": [
-        "James Harden",
         "Jared McCain",
-        "Kevin Durant",
-        "Danny Wolf"
+        "Karl-Anthony Towns",
+        "Darius Garland",
+        "Pelle Larsson",
+        "Egor Demin",
+        "Jalen Smith"
       ]
     },
     {
       "type": "boostSgm",
       "label": "Best SGM",
-      "reason": "Gate: Best SGM: Isaiah Hartenstein has Check news; Best SGM: Shai Gilgeous-Alexander has Check news; Best SGM: bookie total 6.21 not 7–15 (legs: Isaiah Hartenstein 5+ ast, Shai Gilgeous-Alexander 35+ pts, Jonathan Kuminga 15+ pts)",
+      "reason": "Gate: Best SGM: James Harden has Check news; Best SGM: bookie total 5.60 not 7–15; Best SGM: AU bookie multi total mismatch (legs: Karl-Anthony Towns 20+ pts, Donovan Mitchell 5+ ast, James Harden 20+ pts)",
       "players": [
-        "Isaiah Hartenstein",
-        "Shai Gilgeous-Alexander",
-        "Jonathan Kuminga"
+        "Karl-Anthony Towns",
+        "Donovan Mitchell",
+        "James Harden"
       ]
     },
     {

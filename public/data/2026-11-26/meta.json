@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T08:25:19.467Z",
+  "lastUpdated": "2026-11-25T08:37:04.891Z",
   "oddsLastPulled": "2026-11-25T05:16:23.081Z",
   "sources": {
     "espn": "ok",
@@ -13,7 +13,7 @@
   ],
   "modelSanityChecked": 180,
   "modelSanityFailures": 6,
-  "formGuardExcludedCount": 538,
+  "formGuardExcludedCount": 539,
   "gameOddsPriceAge": {
     "401909317": "Prices from 4:16 pm",
     "401909318": "Prices from 4:16 pm",
@@ -28,17 +28,17 @@
   "slateTipDate": "2026-11-26",
   "whatChanged": [
     "Chet Holmgren out → Shai Gilgeous-Alexander +7.2 pts",
-    "OG Anunoby out → Jalen Brunson +4.3 pts",
-    "Cameron Boozer out → Ty Jerome +2.8 pts"
+    "OG Anunoby out → Jalen Brunson +4.8 pts",
+    "Cameron Boozer out → Ty Jerome +2.7 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_03_15AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_03_30AM.pdf",
   "pricedLegCounts": {
     "pts": {
       "total": 396,
       "priced": 294
     },
     "reb": {
-      "total": 543,
+      "total": 544,
       "priced": 217
     },
     "ast": {
@@ -55,11 +55,12 @@
     }
   },
   "gateViolations": [
-    "Cross-Game SGM Multi: James Harden has Check news",
     "Cross-Game SGM Multi: Jared McCain has Check news",
-    "Best SGM: Isaiah Hartenstein has Check news",
-    "Best SGM: Shai Gilgeous-Alexander has Check news",
-    "Best SGM: bookie total 6.21 not 7–15"
+    "Cross-Game SGM Multi: Egor Demin has Check news",
+    "Cross-Game SGM Multi: AU bookie multi total mismatch",
+    "Best SGM: James Harden has Check news",
+    "Best SGM: bookie total 5.60 not 7–15",
+    "Best SGM: AU bookie multi total mismatch"
   ],
   "slatePublicationStatus": "draft",
   "slateStatusLabel": "Draft · updates until 9pm"
