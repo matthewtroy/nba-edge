@@ -3,15 +3,19 @@ import { NBA_SEASON_OPENING_UTC } from "./pricing-config.js";
 
 const WEIGHTS = { season: 0.5, last10: 0.3, last5: 0.2 };
 
+function logSeasonDate(date: string | undefined): string {
+  if (!date) return "";
+  return date.slice(0, 10);
+}
+
 /** Rates use only this-season ESPN player game logs (not league boxscore backfill). */
 export function logsForModelRates(logs: PlayerGameLog[]): PlayerGameLog[] {
-  return logs.filter(
-    (g) =>
-      g.source !== "boxscore" &&
-      (!g.date || g.date >= NBA_SEASON_OPENING_UTC) &&
-      g.minutes >= 1 &&
-      g.pts + g.reb + g.ast + g.threes > 0
-  );
+  return logs.filter((g) => {
+    if (g.source === "boxscore") return false;
+    const d = logSeasonDate(g.date);
+    if (d && d < NBA_SEASON_OPENING_UTC) return false;
+    return g.minutes >= 1 && g.pts + g.reb + g.ast + g.threes > 0;
+  });
 }
 
 export interface PerMinuteRates {

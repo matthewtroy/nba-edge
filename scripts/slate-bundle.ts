@@ -19,6 +19,7 @@ import { countPricedLegsByMarket, coverageAttachWarnings } from "../lib/odds-att
 import { slateTeamIds, slateTipDateFromGames } from "../lib/slate-today.js";
 import type { OddsCacheFile } from "../lib/odds-cache-file.js";
 import { gameOddsLabelsForUnpulled, gameOddsPriceAge } from "../lib/unpulled-odds.js";
+import { evaluateOfficialPublishGate } from "../lib/official-card-gate.js";
 
 export interface SlateBundleInput {
   rootDir: string;
@@ -79,10 +80,35 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     metaSources: { ...input.sources },
     defense: input.defense,
     matchupSignalsEnabled: input.matchupSignalsEnabled,
+    slateTipDate: tipDate,
   });
 
   let { picks, multis, multisPayload, meta, whatChanged } = modelRun;
-  const blockOfficialRepublish = modelRun.modelSanity.blockRepublish;
+  const publishGate = evaluateOfficialPublishGate({
+    slateGameCount: input.slate.length,
+    pickCount: picks.length,
+    players,
+    sanity: modelRun.modelSanity,
+  });
+  const blockOfficialRepublish =
+    modelRun.modelSanity.blockRepublish || publishGate.block;
+
+  const picksPath = path.join(outDir, "picks.json");
+  let previousLegCount = 0;
+  if (fs.existsSync(picksPath)) {
+    try {
+      const prev = JSON.parse(fs.readFileSync(picksPath, "utf8")) as unknown[];
+      if (Array.isArray(prev)) previousLegCount = prev.length;
+    } catch {
+      previousLegCount = 0;
+    }
+  }
+  if (picks.length === 0 && input.slate.length > 0 && previousLegCount > 0) {
+    console.log(
+      `slate bundle blocked: refusing to overwrite ${tipDate} picks (${previousLegCount} legs) with 0 legs`
+    );
+    return null;
+  }
   const unpulledLabels = input.unpulledGameIds?.size
     ? gameOddsLabelsForUnpulled(picks, input.unpulledGameIds)
     : undefined;

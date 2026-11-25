@@ -52,6 +52,7 @@ export interface ModelRunInput {
   smallSlate?: boolean;
   defense?: DefenseRatingsBundle;
   matchupSignalsEnabled?: boolean;
+  slateTipDate?: string;
 }
 
 export function runModel(input: ModelRunInput): {
@@ -294,10 +295,7 @@ export function runModel(input: ModelRunInput): {
     `picks filter: ${picks.length} legs priced → ${eligiblePicks.length} eligible (excluded ${picks.length - eligiblePicks.length})`
   );
   logMarketBlendSample(eligiblePicks);
-  logInjuryAngleLegs(
-    eligiblePicks,
-    input.slate[0]?.startTime?.slice(0, 10)
-  );
+  logInjuryAngleLegs(eligiblePicks, input.slateTipDate);
   if (input.matchupSignalsEnabled !== false && matchupLog.length) {
     const pos = [...matchupLog]
       .filter((r) => r.deltaPp > 0)

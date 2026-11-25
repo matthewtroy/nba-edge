@@ -63,6 +63,7 @@ export async function safeFinalizePipelineSupabaseSync(
     console.error(`supabase sync failed: ${msg}`);
   }
 }
+import { logsForModelRates } from "../lib/baseline.js";
 import { filterPlayersForSlate, writeSlateBundle } from "./slate-bundle.js";
 import { buildDefenseRatings, logDefenseSpotCheck } from "../lib/defense-ratings.js";
 import {
@@ -113,6 +114,7 @@ import {
   cacheLogsFromRaw,
   getCachedLogs,
   loadGameLogCache,
+  normalizeLogsForPlayer,
   saveGameLogCache,
 } from "../lib/game-log-cache.js";
 
@@ -319,9 +321,11 @@ export async function runLivePipeline(
             task.teamId
           );
         }
-        if (logs.length < 3) return;
+        logs = normalizeLogsForPlayer(logs);
+        const rateLogs = logsForModelRates(logs);
+        if (rateLogs.length < 3) return;
 
-        const avgMin = logs.reduce((s, g) => s + g.minutes, 0) / logs.length;
+        const avgMin = rateLogs.reduce((s, g) => s + g.minutes, 0) / rateLogs.length;
         if (avgMin < 12) return;
 
         const recentIds = logs.slice(0, 5).map((g) => g.gameId);

@@ -2,6 +2,13 @@ import fs from "fs";
 import path from "path";
 import type { PlayerGameLog } from "./types.js";
 import { parseGameLogsFromEspn } from "../scripts/espn-parse.js";
+import {
+  modelRatesLogCount,
+  normalizeLogsForPlayer,
+  stampLegacyLogSources,
+} from "./game-log-normalize.js";
+
+export { modelRatesLogCount, normalizeLogsForPlayer, stampLegacyLogSources } from "./game-log-normalize.js";
 
 export interface CachedGameLog {
   fetchedAt: string;
@@ -21,7 +28,11 @@ export function loadGameLogCache(outDir: string): GameLogCacheFile {
   const p = gameLogCachePath(outDir);
   if (!fs.existsSync(p)) return {};
   try {
-    return JSON.parse(fs.readFileSync(p, "utf8")) as GameLogCacheFile;
+    const raw = JSON.parse(fs.readFileSync(p, "utf8")) as GameLogCacheFile;
+    for (const row of Object.values(raw)) {
+      row.logs = stampLegacyLogSources(row.logs);
+    }
+    return raw;
   } catch {
     return {};
   }
@@ -41,7 +52,9 @@ export function getCachedLogs(
   if (!row) return undefined;
   const age = now.getTime() - new Date(row.fetchedAt).getTime();
   if (age > MAX_AGE_MS) return undefined;
-  return row.logs;
+  const logs = normalizeLogsForPlayer(row.logs);
+  if (modelRatesLogCount(logs) < 3) return undefined;
+  return logs;
 }
 
 export function cacheLogsFromRaw(
