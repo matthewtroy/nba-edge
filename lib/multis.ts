@@ -1306,7 +1306,6 @@ function buildLongshot(
     if (seen.has(key)) continue;
     seen.add(key);
     unique.push(c);
-    if (unique.length >= 3) break;
   }
 
   if (!unique.length) {
@@ -1324,24 +1323,20 @@ function buildLongshot(
     return { bets: [], reason };
   }
 
-  const labels = ["Longshot", "Longshot 2", "Longshot 3"];
-  const variants: (string | undefined)[] = [undefined, "2", "3"];
-  const bets: MultiBet[] = [];
-  for (let i = 0; i < unique.length; i++) {
-    const c = unique[i];
-    const { p, fair, takeAt } = combinedPrice(c.legs);
-    bets.push({
+  const c = unique[0];
+  const { p, fair, takeAt } = combinedPrice(c.legs);
+  const bets: MultiBet[] = [
+    {
       type: "longshot",
-      label: labels[i] ?? `Longshot ${i + 1}`,
-      variant: variants[i],
+      label: "Longshot",
       legs: c.legs.map((l) => l.id),
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
       ...overlayForBookie(c.legs, c.bookie, catalog),
       summary: `${c.legs.length} legs angle-ranked @ ${c.bookie}`,
-    });
-  }
+    },
+  ];
 
   pushMultiBuildTrace({
     type: "longshot",
