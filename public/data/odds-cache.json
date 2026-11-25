@@ -73539,6 +73539,86 @@
           "price": 1.04,
           "bookie": "PointsBet (AU)"
         },
+        "Kris Murray|ast|2": {
+          "price": 2.37,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|ast|4": {
+          "price": 9.5,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|pts|5": {
+          "price": 1.78,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|pts|10": {
+          "price": 6,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|reb|2": {
+          "price": 1.02,
+          "bookie": "TAB"
+        },
+        "Kris Murray|reb|4": {
+          "price": 2.58,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|reb|6": {
+          "price": 7,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|3pm|1": {
+          "price": 1.47,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|3pm|2": {
+          "price": 3.2,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|3pm|3": {
+          "price": 7,
+          "bookie": "TAB"
+        },
+        "Kris Murray|pts|15": {
+          "price": 17,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|reb|3": {
+          "price": 1.69,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|reb|8": {
+          "price": 21,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|pts|6": {
+          "price": 2.05,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|pts|11": {
+          "price": 7,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|pts|12": {
+          "price": 10,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|pts|13": {
+          "price": 12,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|pts|7": {
+          "price": 2.55,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|pts|8": {
+          "price": 3.25,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|pts|9": {
+          "price": 4.2,
+          "bookie": "PointsBet (AU)"
+        },
         "ausar thompson|assists|4": {
           "price": 2.08,
           "bookie": "SportsBet"
@@ -85626,86 +85706,6 @@
         "cooper flagg|reb|2": {
           "price": 1.01,
           "bookie": "Ladbrokes"
-        },
-        "Kris Murray|ast|2": {
-          "price": 2.37,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|ast|4": {
-          "price": 9.5,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|pts|5": {
-          "price": 1.78,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|pts|10": {
-          "price": 6,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|reb|2": {
-          "price": 1.02,
-          "bookie": "TAB"
-        },
-        "Kris Murray|reb|4": {
-          "price": 2.58,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|reb|6": {
-          "price": 7,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|3pm|1": {
-          "price": 1.47,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|3pm|2": {
-          "price": 3.2,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|3pm|3": {
-          "price": 7,
-          "bookie": "TAB"
-        },
-        "Kris Murray|pts|15": {
-          "price": 17,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|reb|3": {
-          "price": 1.69,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|reb|8": {
-          "price": 21,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|pts|6": {
-          "price": 2.05,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|pts|11": {
-          "price": 7,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|pts|12": {
-          "price": 10,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|pts|13": {
-          "price": 12,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|pts|7": {
-          "price": 2.55,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|pts|8": {
-          "price": 3.25,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|pts|9": {
-          "price": 4.2,
-          "bookie": "PointsBet (AU)"
         }
       },
       "allOddsMap": {

@@ -78,7 +78,7 @@
     "homeTeamId": "15",
     "awayTeamId": "17",
     "spread": -1.5,
-    "total": 231.5,
+    "total": 232.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"
@@ -91,8 +91,8 @@
     "awayTeam": "Phoenix Suns",
     "homeTeamId": "10",
     "awayTeamId": "21",
-    "spread": -9.5,
-    "total": 224.5,
+    "spread": -8.5,
+    "total": 223.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"
@@ -119,8 +119,8 @@
     "awayTeam": "San Antonio Spurs",
     "homeTeamId": "22",
     "awayTeamId": "24",
-    "spread": 3.5,
-    "total": 225.5,
+    "spread": 2.5,
+    "total": 226.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"

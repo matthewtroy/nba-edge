@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T06:51:53.381Z",
+  "lastUpdated": "2026-11-25T07:05:44.482Z",
   "oddsLastPulled": "2026-11-25T05:16:23.081Z",
   "sources": {
     "espn": "ok",
@@ -13,97 +13,97 @@
     "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs"
   ],
   "q1ExclusionLog": [
-    "Joel Embiid q1reb 2+: last-10 Q1 50% vs model 71%",
-    "Tyrese Maxey q1reb 2+: last-10 Q1 0% vs model 30%",
-    "Bam Adebayo q1reb 2+: last-10 Q1 40% vs model 67%",
-    "Bam Adebayo q1reb 3+: last-10 Q1 20% vs model 43%",
-    "Giannis Antetokounmpo q1reb 5+: last-10 Q1 33% vs model 54%",
-    "Coby White q1reb 2+: last-10 Q1 0% vs model 24%",
-    "Sion James q1reb 2+: last-10 Q1 17% vs model 37%",
-    "Naz Reid q1reb 3+: last-10 Q1 0% vs model 21%",
-    "Mikal Bridges q1reb 3+: last-10 Q1 0% vs model 27%",
-    "Karl-Anthony Towns q1reb 5+: last-10 Q1 20% vs model 44%",
-    "Jalen Brunson q1reb 2+: last-10 Q1 20% vs model 48%",
-    "Jarrett Allen q1reb 5+: last-10 Q1 0% vs model 20%",
-    "Shai Gilgeous-Alexander q1reb 2+: last-10 Q1 0% vs model 36%",
-    "Rudy Gobert q1reb 2+: last-10 Q1 20% vs model 52%",
-    "Rudy Gobert q1reb 3+: last-10 Q1 0% vs model 28%",
-    "Jonathan Kuminga q1reb 3+: last-10 Q1 20% vs model 44%",
-    "Derrick Jones Jr. q1reb 2+: last-10 Q1 40% vs model 73%",
-    "Derrick Jones Jr. q1reb 3+: last-10 Q1 20% vs model 50%",
-    "Brook Lopez q1reb 3+: last-10 Q1 40% vs model 68%",
-    "Brook Lopez q1reb 5+: last-10 Q1 0% vs model 33%"
+    "Anfernee Simons q1reb 2+: last-10 Q1 0% vs model 27%",
+    "Tyrese Maxey q1reb 2+: last-10 Q1 0% vs model 29%",
+    "Jaylen Brown q1reb 2+: last-10 Q1 33% vs model 72%",
+    "Jaylen Brown q1reb 3+: last-10 Q1 17% vs model 50%",
+    "Bam Adebayo q1reb 2+: last-10 Q1 40% vs model 84%",
+    "Bam Adebayo q1reb 3+: last-10 Q1 20% vs model 66%",
+    "Bam Adebayo q1reb 5+: last-10 Q1 0% vs model 30%",
+    "Giannis Antetokounmpo q1reb 3+: last-10 Q1 50% vs model 71%",
+    "Naz Reid q1reb 3+: last-10 Q1 0% vs model 25%",
+    "Mikal Bridges q1reb 3+: last-10 Q1 0% vs model 20%",
+    "Karl-Anthony Towns q1reb 5+: last-10 Q1 20% vs model 45%",
+    "Jarrett Allen q1reb 5+: last-10 Q1 0% vs model 33%",
+    "Peyton Watson q1reb 2+: last-10 Q1 29% vs model 60%",
+    "Peyton Watson q1reb 3+: last-10 Q1 14% vs model 37%",
+    "Jaylon Tyson q1reb 2+: last-10 Q1 20% vs model 46%",
+    "Shai Gilgeous-Alexander q1reb 2+: last-10 Q1 0% vs model 53%",
+    "Shai Gilgeous-Alexander q1reb 3+: last-10 Q1 0% vs model 30%",
+    "Kenrich Williams q1reb 3+: last-10 Q1 20% vs model 47%",
+    "Jonathan Kuminga q1reb 3+: last-10 Q1 20% vs model 43%",
+    "Rudy Gobert q1reb 2+: last-10 Q1 20% vs model 88%"
   ],
   "topConfluenceLegs": [
     {
-      "player": "Karl-Anthony Towns",
-      "market": "reb",
-      "line": 13,
-      "confluence": 4,
-      "reasonLine": "Line beats model · Soft defence rank 8"
-    },
-    {
-      "player": "Isaiah Hartenstein",
-      "market": "ast",
-      "line": 3,
-      "confluence": 4,
-      "reasonLine": "Line beats model · Soft defence rank 3"
-    },
-    {
       "player": "Isaiah Hartenstein",
       "market": "ast",
       "line": 5,
-      "confluence": 4,
-      "reasonLine": "Line beats model · Soft defence rank 3"
+      "confluence": 3,
+      "reasonLine": "Line beats model · Hit 6 of last 10"
     },
     {
       "player": "Shai Gilgeous-Alexander",
-      "market": "3pm",
-      "line": 2,
-      "confluence": 4,
-      "reasonLine": "Line beats model · Soft defence rank 7"
+      "market": "pts",
+      "line": 30,
+      "confluence": 3,
+      "reasonLine": "Line beats model · Hit 8 of last 10"
     },
     {
       "player": "Shai Gilgeous-Alexander",
       "market": "3pm",
       "line": 3,
-      "confluence": 4,
-      "reasonLine": "Line beats model · Soft defence rank 7"
+      "confluence": 3,
+      "reasonLine": "Line beats model · Hit 6 of last 10"
     },
     {
-      "player": "Brook Lopez",
-      "market": "pts",
-      "line": 10,
-      "confluence": 4,
-      "reasonLine": "Line beats model · Soft defence rank 8"
-    },
-    {
-      "player": "Brook Lopez",
-      "market": "pts",
-      "line": 15,
-      "confluence": 4,
-      "reasonLine": "Line beats model · Soft defence rank 8"
-    },
-    {
-      "player": "Brook Lopez",
-      "market": "pts",
-      "line": 20,
-      "confluence": 4,
-      "reasonLine": "Line beats model · Soft defence rank 8"
-    },
-    {
-      "player": "Devin Booker",
-      "market": "ast",
-      "line": 5,
-      "confluence": 4,
-      "reasonLine": "Line beats model · Soft defence rank 8"
-    },
-    {
-      "player": "Sion James",
+      "player": "Luke Kennard",
       "market": "pts",
       "line": 5,
       "confluence": 3,
-      "reasonLine": "Line beats model · Soft defence rank 1"
+      "reasonLine": "Line beats model · Hit 7 of last 10"
+    },
+    {
+      "player": "Dillon Brooks",
+      "market": "3pm",
+      "line": 2,
+      "confluence": 3,
+      "reasonLine": "Line beats model · Hit 7 of last 10"
+    },
+    {
+      "player": "Collin Gillespie",
+      "market": "pts",
+      "line": 10,
+      "confluence": 3,
+      "reasonLine": "Line beats model · Hit 6 of last 10"
+    },
+    {
+      "player": "Landry Shamet",
+      "market": "pts",
+      "line": 10,
+      "confluence": 2,
+      "reasonLine": "Hit 7 of last 10 · Injury uplift"
+    },
+    {
+      "player": "Landry Shamet",
+      "market": "3pm",
+      "line": 1,
+      "confluence": 2,
+      "reasonLine": "Hit 10 of last 10 · Injury uplift"
+    },
+    {
+      "player": "Landry Shamet",
+      "market": "3pm",
+      "line": 2,
+      "confluence": 2,
+      "reasonLine": "Hit 8 of last 10 · Injury uplift"
+    },
+    {
+      "player": "Josh Hart",
+      "market": "reb",
+      "line": 3,
+      "confluence": 2,
+      "reasonLine": "Hit 9 of last 10 · Injury uplift"
     }
   ],
   "gameOddsPriceAge": {
@@ -119,45 +119,33 @@
   },
   "slateTipDate": "2026-11-26",
   "whatChanged": [
-    "Chet Holmgren out → Shai Gilgeous-Alexander +8.6 pts",
-    "Mark Williams out → Devin Booker +5.2 pts",
-    "OG Anunoby out → Jalen Brunson +4.1 pts"
+    "Chet Holmgren out → Shai Gilgeous-Alexander +7.5 pts",
+    "Mark Williams out → Devin Booker +4.3 pts",
+    "Jimmy Butler III out → Charles Bassey +2.6 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_01_45AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_02_00AM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 1466,
-      "priced": 484
+      "total": 271,
+      "priced": 207
     },
     "reb": {
-      "total": 1003,
-      "priced": 229
+      "total": 466,
+      "priced": 188
     },
     "ast": {
-      "total": 809,
-      "priced": 174
+      "total": 317,
+      "priced": 142
     },
     "3pm": {
-      "total": 856,
-      "priced": 432
-    },
-    "q1pts": {
-      "total": 320,
-      "priced": 0
+      "total": 666,
+      "priced": 420
     },
     "q1reb": {
-      "total": 254,
-      "priced": 0
-    },
-    "q1ast": {
-      "total": 240,
+      "total": 178,
       "priced": 0
     }
   },
-  "gateViolations": [
-    "Cross-Game SGM Multi: Shai Gilgeous-Alexander has Check news",
-    "Longshot: Shai Gilgeous-Alexander has Check news"
-  ],
   "slatePublicationStatus": "draft",
   "slateStatusLabel": "Draft · updates until 9pm"
 }

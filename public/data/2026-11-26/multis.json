@@ -1,37 +1,36 @@
 {
   "bets": [
     {
-      "type": "boostSgm",
-      "label": "Best SGM",
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
       "legs": [
-        "3136195-reb-13",
-        "3914044-pts-15",
-        "3934672-3pm-4"
+        "4278073-pts-30",
+        "4433083-pts-10",
+        "4065733-3pm-4",
+        "4437244-reb-5"
       ],
-      "combinedProbability": 0.09349104,
-      "combinedFairPrice": 10.7,
-      "combinedTakeAt": 11.56,
-      "bestBookie": "Sportsbet",
-      "bestBookieTotal": 14.33,
+      "combinedProbability": 0.07672642520399998,
+      "combinedFairPrice": 13.03,
+      "combinedTakeAt": 14.07,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 22.59,
       "bookieTotals": {
-        "Sportsbet": 14.33,
-        "Ladbrokes": 13.24,
-        "PointsBet": 12.2
+        "Ladbrokes": 22.59
       },
-      "summary": "Best-value 3-leg same-game multi on the slate"
+      "summary": "2+ legs/game, fair 1.35–2.50 each"
     },
     {
       "type": "q1Multi",
       "label": "Q1 Multi",
       "variant": "Longshot",
       "legs": [
-        "4396971-q1reb-2",
-        "3134907-q1reb-2",
-        "4065732-q1reb-3"
+        "3059318-q1reb-3",
+        "4433249-q1reb-3",
+        "4065732-q1reb-2"
       ],
-      "combinedProbability": 0.08712477,
-      "combinedFairPrice": 11.48,
-      "combinedTakeAt": 12.4,
+      "combinedProbability": 0.08593128,
+      "combinedFairPrice": 11.64,
+      "combinedTakeAt": 12.57,
       "summary": "Q1 Multi (Longshot): fair 2.20–4.00, one leg/team"
     }
   ],
@@ -39,7 +38,7 @@
     {
       "type": "mainPlay",
       "label": "Main Play",
-      "reason": "No 3–5 leg main @ edge+clash+bookie total $7–$20 (edge best Ladbrokes=4, range-cands 0)"
+      "reason": "No bookie with 3+ main legs at edge (best TAB=2)"
     },
     {
       "type": "booster",
@@ -47,30 +46,20 @@
       "reason": "Needs a Main Play first"
     },
     {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "reason": "Gate: Cross-Game SGM Multi: Shai Gilgeous-Alexander has Check news (legs: Devin Booker 5+ ast, Collin Gillespie 10+ pts, Isaiah Hartenstein 5+ ast, Shai Gilgeous-Alexander 40+ pts)",
-      "players": [
-        "Devin Booker",
-        "Collin Gillespie",
-        "Isaiah Hartenstein",
-        "Shai Gilgeous-Alexander"
-      ]
+      "type": "boostSgm",
+      "label": "Best SGM",
+      "reason": "No same-game trio @ edge (eligible 194, best pool Ladbrokes=7, range-cands 0)"
     },
     {
       "type": "longshot",
       "label": "Longshot",
-      "reason": "Gate: Longshot: Shai Gilgeous-Alexander has Check news (legs: Shai Gilgeous-Alexander 40+ pts, Devin Booker 40+ pts)",
-      "players": [
-        "Shai Gilgeous-Alexander",
-        "Devin Booker"
-      ]
+      "reason": "No 2-game longshot @ edge (DD/TD/combo or 30+ pts priced at one AU bookie)"
     },
     {
       "type": "q1Multi",
       "label": "Q1 Multi",
       "variant": "Core",
-      "reason": "No Q1 Multi subset (p≥0.70, 3–6 teams, one leg/team) · 27 Q1 leg(s) dropped (last-10 hit rate ≥20pp below model)"
+      "reason": "No Q1 Multi subset (p≥0.70, 3–6 teams, one leg/team) · 49 Q1 leg(s) dropped (last-10 hit rate ≥20pp below model)"
     }
   ]
 }
