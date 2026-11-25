@@ -10,7 +10,8 @@ const rootDir = path.resolve(__dirname, "..");
 const outDir = path.join(rootDir, "public/data");
 
 const fixtureMode = process.argv.includes("--fixture");
-const forceOdds = process.argv.includes("--force-odds");
+const forceOdds =
+  process.argv.includes("--force-odds") || process.env.PIPELINE_FORCE_ODDS === "1";
 const fromLive = process.argv.includes("--from-live");
 
 function runFixturePipeline(): void {
@@ -77,6 +78,7 @@ async function main() {
   await runLivePipeline(rootDir, outDir, {
     forceOdds: forceOdds || useFromLive,
     fromLive: useFromLive,
+    skipOfficialPublish: forceOdds && !useFromLive,
   });
 }
 

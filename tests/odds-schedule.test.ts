@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { shouldPullOddsNow, type OddsCacheFile } from "../scripts/odds-schedule";
+import {
+  detectOddsPullTrigger,
+  shouldPullOddsNow,
+  type OddsCacheFile,
+} from "../scripts/odds-schedule";
 
 const slate = [
   {
@@ -19,23 +23,22 @@ const slate = [
 describe("shouldPullOddsNow", () => {
   const emptyCache: OddsCacheFile = { pullSlotsToday: [] };
 
-  it("pulls on Sydney evening before official published", () => {
-    // 21:15 Sydney AEDT ≈ 10:15 UTC
+  it("pulls at scheduled 9pm Sydney", () => {
     const now = new Date("2026-01-15T10:15:00Z");
-    expect(shouldPullOddsNow(now, slate, emptyCache, { officialPublishedToday: false })).toBe(
-      true
-    );
-  });
-
-  it("skips evening pull after official published", () => {
-    const now = new Date("2026-01-15T10:15:00Z");
-    expect(shouldPullOddsNow(now, slate, emptyCache, { officialPublishedToday: true })).toBe(
-      false
-    );
-  });
-
-  it("pulls at 07:00 Sydney", () => {
-    const now = new Date("2026-01-14T20:15:00Z"); // 07:15 Sydney Jan 15
     expect(shouldPullOddsNow(now, slate, emptyCache)).toBe(true);
+    expect(detectOddsPullTrigger(now, slate, emptyCache)).toBe("scheduled_9pm");
+  });
+
+  it("does not pull at 07:00 Sydney anymore", () => {
+    const now = new Date("2026-01-14T20:15:00Z");
+    expect(shouldPullOddsNow(now, slate, emptyCache)).toBe(false);
+  });
+
+  it("pretip when enabled ~2h before tip", () => {
+    const tipSoon = [{ ...slate[0], startTime: "2026-01-15T09:00:00Z" }];
+    const now = new Date("2026-01-15T07:30:00Z");
+    expect(
+      detectOddsPullTrigger(now, tipSoon, emptyCache, { pretipPull: true })
+    ).toBe("pretip");
   });
 });

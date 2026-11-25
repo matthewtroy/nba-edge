@@ -8,13 +8,8 @@ import {
   fetchPlayerGameLog,
 } from "./fetch/espn.js";
 import { fetchLatestInjuryPdf, parsePdfInjuries } from "./fetch/nba-pdf.js";
-import {
-  listOddsEvents,
-  matchOddsEventId,
-  fetchOddsForEvent,
-  extractOddsBundles,
-} from "./fetch/odds-events.js";
 import { shouldPauseOdds } from "../lib/odds.js";
+import { sydneyYmd } from "../lib/odds-budget.js";
 import { isPostTipOff, mergeBestOddsMaps } from "../lib/odds-cache-merge.js";
 import {
   formatYyyymmddInZone,
@@ -32,11 +27,24 @@ import { runModel, oddsMapFromRecord, oddsMapToRecord, type ModelPlayer } from "
 import { loadHistory } from "./run-model.js";
 import { appendRecommendations, gradeOpenLegs } from "./grading-run.js";
 import {
-  shouldPullOddsNow,
+  detectOddsPullTrigger,
   recordOddsPull,
   resetOddsDayIfNeeded,
+  injuryRefreshSkipsOdds,
   type OddsCacheFile,
+  type OddsPullTrigger,
 } from "./odds-schedule.js";
+import { pullBudgetedOddsForSlate } from "./budgeted-odds-pull.js";
+import {
+  createSupabaseClient,
+  loadOddsBudgetFromSupabase,
+  syncRunToSupabase,
+} from "./supabase-sync.js";
+import { filterPlayersForSlate, writeSlateBundle } from "./slate-bundle.js";
+import {
+  gameOddsLabelsForUnpulled,
+  stripBookiePricesForGames,
+} from "../lib/unpulled-odds.js";
 import type { InjuryEntry, SlateGame } from "../lib/types.js";
 import { normalizePlayerName } from "../lib/player-names.js";
 import { loadAliasMap } from "../lib/player-names.js";
@@ -49,7 +57,6 @@ import {
   tomorrowSydneyDateString,
 } from "../lib/slate-today.js";
 import { buildDataIndex, writeDataIndex } from "../lib/data-index.js";
-import { writeSlateBundle } from "./slate-bundle.js";
 import { buildOddsCoverage } from "../lib/odds-coverage.js";
 import {
   countPricedLegsByMarket,
@@ -87,10 +94,12 @@ export async function runLivePipeline(
   opts: {
     forceOdds?: boolean;
     fromLive?: boolean;
+    skipOfficialPublish?: boolean;
   } = {}
 ): Promise<void> {
   const forceOdds = opts.forceOdds === true;
   const fromLive = opts.fromLive === true;
+  const skipOfficialPublish = opts.skipOfficialPublish === true;
   loadAliasMap(rootDir);
   const now = new Date();
   const sources: Record<string, string> = {
@@ -331,6 +340,31 @@ export async function runLivePipeline(
   let oddsPayloads: unknown[] = [];
   let oddsPulledAt = cache.lastPulled;
   const apiKey = loadOddsApiKey(rootDir);
+  const unpulledBySlateDate = new Map<string, Set<string>>();
+  const rankingBySlateDate = new Map<string, import("../lib/game-injury-ranking.js").GameInjuryRank[]>();
+  let lastPullTrigger: OddsPullTrigger | undefined;
+  let lastCreditsUsed = 0;
+
+  const supabaseClient = await createSupabaseClient(rootDir);
+  const monthKey = sydneyYmd(now).slice(0, 7);
+  const budgetFromDb = supabaseClient
+    ? await loadOddsBudgetFromSupabase(supabaseClient, monthKey)
+    : { monthlyLimit: 500, resetDay: 1, pretipPull: false, creditsUsedThisMonth: 0 };
+
+  const skipOddsEnv = injuryRefreshSkipsOdds() && !forceOdds;
+  let pullTrigger = detectOddsPullTrigger(now, unionSlate, cache, {
+    officialPublishedToday,
+    pretipPull: budgetFromDb?.pretipPull ?? false,
+    forceOdds,
+    skipScheduled9pm: skipOddsEnv,
+  });
+  if (skipOddsEnv && pullTrigger === "scheduled_9pm") {
+    pullTrigger = detectOddsPullTrigger(now, unionSlate, cache, {
+      pretipPull: budgetFromDb?.pretipPull ?? false,
+      skipScheduled9pm: true,
+    });
+  }
+  if (skipOddsEnv && pullTrigger !== "pretip") pullTrigger = null;
 
   let usedLiveOddsPull = false;
   let publishedPicksCount = 0;
@@ -360,49 +394,64 @@ export async function runLivePipeline(
     }
   } else if (!apiKey) {
     sources.odds = "stale";
-  } else if (cache.creditsRemaining != null && shouldPauseOdds(cache.creditsRemaining)) {
-    sources.odds = "paused (credit limit)";
   } else if (
-    shouldPullOddsNow(now, unionSlate, cache, { officialPublishedToday }) ||
-    forceOdds
+    cache.creditsRemaining != null &&
+    shouldPauseOdds(cache.creditsRemaining, budgetFromDb?.monthlyLimit ?? 500)
   ) {
+    sources.odds = "paused (credit limit)";
+  } else if (pullTrigger) {
+    const targetSlate =
+      pullTrigger === "scheduled_9pm" || forceOdds
+        ? filterSlateToNextSydney(unionSlate).length
+          ? filterSlateToNextSydney(unionSlate)
+          : unionSlate
+        : unionSlate;
+    const preview = runModel({
+      rootDir,
+      slate: targetSlate,
+      injuries,
+      players: filterPlayersForSlate(players, targetSlate),
+      rosterIds,
+      oddsMap: expandOddsMapForPlayers(oddsMap, players.map((p) => p.name)),
+      metaSources: sources,
+    });
     try {
-      const { events, remaining } = await listOddsEvents(apiKey);
-      if (remaining != null) cache.creditsRemaining = remaining;
-      if (remaining != null && shouldPauseOdds(remaining)) {
-        sources.odds = "paused (credit limit)";
-      } else {
-        const payloads: unknown[] = [];
-        for (const g of unionSlate) {
-          const oddsId = matchOddsEventId(g, events);
-          if (!oddsId) continue;
-          const { data, remaining: rem } = await fetchOddsForEvent(apiKey, oddsId);
-          if (rem != null) cache.creditsRemaining = rem;
-          if (data) payloads.push(data);
-        }
-        const bundles = extractOddsBundles(payloads);
-        const postTip = isPostTipOff(now, unionSlate);
-        const priorBest = oddsMapFromRecord(cache.oddsMap ?? {});
-        oddsMap = mergeBestOddsMaps(priorBest, bundles.best, { postTipOff: postTip });
-        allOddsMap = bundles.all;
-        const norm = new Map<string, { price: number; bookie: string }>();
-        for (const [k, v] of oddsMap) norm.set(k, v);
-        oddsMap = norm;
-        recordOddsPull(cache, now, unionSlate);
+      const pull = await pullBudgetedOddsForSlate({
+        apiKey,
+        targetSlate,
+        unionSlate,
+        injuries,
+        picksForRanking: preview.picks,
+        cache,
+        now,
+        budget: {
+          monthlyLimit: budgetFromDb?.monthlyLimit ?? 500,
+          resetDay: budgetFromDb?.resetDay ?? 1,
+          pretipPull: budgetFromDb?.pretipPull ?? false,
+          creditsRemaining: cache.creditsRemaining,
+          creditsUsedThisMonth: budgetFromDb?.creditsUsedThisMonth,
+        },
+        trigger: pullTrigger,
+      });
+      if (pull) {
+        oddsMap = pull.oddsMap;
+        allOddsMap = pull.allOddsMap;
+        oddsPayloads = pull.payloads;
         oddsPulledAt = now.toISOString();
         cache.lastPulled = oddsPulledAt;
-        if (postTip && bundles.best.size === 0) {
-          sources.odds = priorBest.size ? "ok (tip lock — kept cache)" : "stale";
-          console.warn("tip lock: empty post-tip odds response — kept cached oddsMap");
-        } else {
-          cache.oddsMap = oddsMapToRecord(oddsMap);
-          sources.odds = "ok";
-        }
-        oddsPayloads = payloads;
+        recordOddsPull(cache, now, pullTrigger);
+        sources.odds = "ok";
         usedLiveOddsPull = true;
+        lastPullTrigger = pullTrigger;
+        lastCreditsUsed = pull.creditsUsed;
+        const tip = slateTipDateFromGames(targetSlate);
+        if (tip && pull.unpulledGameIds.size) {
+          unpulledBySlateDate.set(tip, pull.unpulledGameIds);
+        }
+        if (tip) rankingBySlateDate.set(tip, pull.ranking);
       }
     } catch {
-      sources.odds = sources.odds === "paused (credit limit)" ? sources.odds : "stale";
+      sources.odds = "stale";
     }
   } else if (Object.keys(cache.oddsMap ?? {}).length) {
     sources.odds = "ok";
@@ -432,6 +481,7 @@ export async function runLivePipeline(
   let todayMultis: ReturnType<typeof runModel>["multis"] = [];
 
   for (const oneSlate of slatesToPublish) {
+    const tip = slateTipDateFromGames(oneSlate);
     const entry = writeSlateBundle({
       rootDir,
       rootOutDir: outDir,
@@ -448,9 +498,10 @@ export async function runLivePipeline(
       now,
       nbaOfficialUrl,
       nbaOfficialLastTriedUrl,
+      unpulledGameIds: tip ? unpulledBySlateDate.get(tip) : undefined,
+      skipOfficialPublish,
     });
     if (entry) indexEntries.push(entry);
-    const tip = slateTipDateFromGames(oneSlate);
     if (tip === todayTip) {
       const picksPath = path.join(outDir, tip, "picks.json");
       const multisPath = path.join(outDir, tip, "multis.json");
@@ -502,6 +553,31 @@ export async function runLivePipeline(
   ]) {
     const legacyPath = path.join(outDir, legacy);
     if (fs.existsSync(legacyPath)) fs.unlinkSync(legacyPath);
+  }
+
+  if (supabaseClient) {
+    for (const oneSlate of slatesToPublish) {
+      const tip = slateTipDateFromGames(oneSlate);
+      if (!tip) continue;
+      await syncRunToSupabase(supabaseClient, {
+        slateDate: tip,
+        slate: oneSlate,
+        injuries,
+        players,
+        ranking: rankingBySlateDate.get(tip) ?? [],
+        pullTrigger: lastPullTrigger,
+        creditsUsed: lastCreditsUsed,
+        creditsRemaining: cache.creditsRemaining,
+        gamesPulled: [
+          ...new Set(
+            oneSlate
+              .filter((g) => !unpulledBySlateDate.get(tip)?.has(g.id))
+              .map((g) => g.id)
+          ),
+        ],
+        pulledAt: oddsPulledAt,
+      });
+    }
   }
 
   console.log(

@@ -17,6 +17,10 @@ import { buildOddsCoverage } from "../lib/odds-coverage.js";
 import { countPricedLegsByMarket, coverageAttachWarnings } from "../lib/odds-attach.js";
 import { slateTeamIds, slateTipDateFromGames } from "../lib/slate-today.js";
 import type { OddsCacheFile } from "./odds-schedule.js";
+import {
+  gameOddsLabelsForUnpulled,
+  stripBookiePricesForGames,
+} from "../lib/unpulled-odds.js";
 
 export interface SlateBundleInput {
   rootDir: string;
@@ -34,6 +38,8 @@ export interface SlateBundleInput {
   now: Date;
   nbaOfficialUrl?: string;
   nbaOfficialLastTriedUrl?: string;
+  unpulledGameIds?: Set<string>;
+  skipOfficialPublish?: boolean;
 }
 
 export function filterPlayersForSlate(
@@ -72,7 +78,12 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     metaSources: { ...input.sources },
   });
 
-  const { picks, multis, multisPayload, meta, whatChanged } = modelRun;
+  let { picks, multis, multisPayload, meta, whatChanged } = modelRun;
+  if (input.unpulledGameIds?.size) {
+    picks = stripBookiePricesForGames(picks, input.unpulledGameIds);
+    const labels = gameOddsLabelsForUnpulled(input.unpulledGameIds);
+    if (labels) meta = { ...meta, gameOddsLabels: labels };
+  }
   const existingOfficial = loadOfficialCard(outDir);
   const oddsCoverage = {
     ...buildOddsCoverage(input.oddsPayloads, input.oddsPulledAt ?? input.now.toISOString()),
@@ -100,9 +111,13 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     ...(multisPayload.gateViolations?.length
       ? { gateViolations: multisPayload.gateViolations }
       : {}),
+    ...(meta.gameOddsLabels ? { gameOddsLabels: meta.gameOddsLabels } : {}),
   };
 
-  if (shouldPublishOfficialCard(input.now, picks, existingOfficial, tipDate)) {
+  if (
+    !input.skipOfficialPublish &&
+    shouldPublishOfficialCard(input.now, picks, existingOfficial, tipDate)
+  ) {
     const official = writeOfficialCard(outDir, {
       now: input.now,
       slate: input.slate,

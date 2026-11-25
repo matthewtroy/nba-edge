@@ -1,16 +1,27 @@
 name: NBA Edge Pipeline
 
+# Scheduled workflows only fire from default branch. This repo had 0 schedule
+# events in Actions history until enabled — confirm Actions → General →
+# "Allow scheduled workflows" is on for private repos.
+
 on:
   schedule:
-    # 10:00–14:30 UTC = 21:00–01:30 Sydney (AEDT, Nov–Mar).
-    - cron: "0,30 10,11,12,13,14 * * *"
-    # 19:00–03:30 UTC ≈ 06:00–14:30 Sydney (AEDT).
+    # Injury/model refresh: 19:00–03:30 UTC ≈ 6:00–14:30 Sydney (AEDT, Nov–Mar).
     - cron: "0,30 19,20,21,22,23,0,1,2,3 * * *"
-    # 06:00 UTC = 17:00 Sydney (AEDT) / 16:00 (AEST) — morning odds window.
-    - cron: "0 6 * * *"
-    # 20:00 UTC ≈ 07:00 Sydney next calendar day (AEDT) — pre-tip odds window.
-    - cron: "0 20 * * *"
+    # 10:00–14:30 UTC = 21:00–01:30 Sydney — evening index only (no odds on these crons).
+    - cron: "0,30 10,11,12,13,14 * * *"
+    # 10:00 UTC = 21:00 Sydney (AEDT) — odds budget pull for next slate + official card path.
+    - cron: "0 10 * * *"
   workflow_dispatch:
+    inputs:
+      force_odds:
+        description: Budget odds for next slate top games; no official publish
+        type: boolean
+        default: false
+
+concurrency:
+  group: nba-edge-pipeline
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -28,6 +39,20 @@ jobs:
           node-version: "20"
           cache: npm
 
+      - name: Detect run mode
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force_odds }}" = "true" ]; then
+            echo "force_odds=1" >> "$GITHUB_OUTPUT"
+            echo "skip_odds=0" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "schedule" ] && [ "${{ github.event.schedule }}" = "0 10 * * *" ]; then
+            echo "force_odds=0" >> "$GITHUB_OUTPUT"
+            echo "skip_odds=0" >> "$GITHUB_OUTPUT"
+          else
+            echo "force_odds=0" >> "$GITHUB_OUTPUT"
+            echo "skip_odds=1" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Fetch data branch
         run: |
           git fetch origin data:data || true
@@ -41,8 +66,12 @@ jobs:
       - name: Run pipeline
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          NBA_EDGE_SUPABASE_URL: ${{ secrets.NBA_EDGE_SUPABASE_URL }}
+          NBA_EDGE_SUPABASE_SECRET_KEY: ${{ secrets.NBA_EDGE_SUPABASE_SECRET_KEY }}
+          PIPELINE_FORCE_ODDS: ${{ steps.mode.outputs.force_odds }}
+          SKIP_ODDS_PULL: ${{ steps.mode.outputs.skip_odds }}
         run: |
-          echo "Workflow pipeline (dual-slate)"
+          echo "Workflow pipeline (dual-slate) force_odds=${{ steps.mode.outputs.force_odds }} skip_odds=${{ steps.mode.outputs.skip_odds }}"
           npm run pipeline
 
       - run: npm run build

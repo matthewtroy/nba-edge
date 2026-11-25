@@ -45,7 +45,7 @@ describe("odds attach", () => {
   });
 
   it("fixture attaches pts/reb/ast to picks", () => {
-    const root = path.resolve("/agent");
+    const root = path.resolve(import.meta.dirname, "..");
     const { picks } = runModelFromFixture(root);
     const counts = countPricedLegsByMarket(picks);
     expect(counts.pts?.priced).toBeGreaterThan(0);

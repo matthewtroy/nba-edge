@@ -133,6 +133,8 @@ export interface MetaJson {
   slateTipDate?: string;
   slatePublicationStatus?: "draft" | "official" | "locked_at_tip";
   slateStatusLabel?: string;
+  /** Per-game when odds budget skipped pull (UI reads later; JSON only). */
+  gameOddsLabels?: Record<string, string>;
 }
 
 export interface HistoryLeg {
