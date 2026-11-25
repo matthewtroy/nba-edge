@@ -4,6 +4,7 @@
 
 - **Only** Supabase project **NBA Edge**, ref `dzikozvlfrvsstkhzkzj`. Never other projects, orgs, or **Childcare Hub**.
 - **No** `supabase link`, `supabase login`, `supabase db push`, or any remote Supabase CLI/MCP from agents or CI in this repo. **No** Supabase MCP server config in the repo. Schema changes are **migration files only**; GitHub integration applies migrations on push to `main`.
+- **Migrations:** Before push, read all prior `supabase/migrations/*.sql` in timestamp order and ensure the new file is safe against that **cumulative** schema. Use `if not exists` / `if exists` (or guarded `DO` blocks) for tables, columns, policies, and grants. **Never edit migrations that have already been applied** on NBA Edge — add a new file instead. If a migration has **not** yet been applied, you may fix it in place when explicitly requested.
 - Environment variables for the future hosted backend use the **`NBA_EDGE_*`** prefix only (e.g. `NBA_EDGE_SUPABASE_URL`, `NBA_EDGE_SUPABASE_ANON_KEY`). Never unprefixed `SUPABASE_*` in app, workflow, or docs examples.
 
 ## Product & data
