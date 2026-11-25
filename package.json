@@ -20,6 +20,7 @@
     "screenshots:leg-sheet": "npm run build && tsx scripts/capture-leg-sheet-screenshots.ts",
     "screenshots:picks": "npm run build && tsx scripts/capture-picks-screenshots.ts",
     "screenshots:run44": "npm run build && tsx scripts/capture-run44-screenshots.ts",
+    "screenshots:bookie-switch": "npm run build && tsx scripts/capture-bookie-switch-screenshots.ts",
     "test:watch": "vitest"
   },
   "dependencies": {

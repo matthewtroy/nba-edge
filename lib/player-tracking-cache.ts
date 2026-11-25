@@ -7,7 +7,8 @@ export interface PlayerTrackingDay {
   /** Per-game potential assists (L10 window when from NBA). */
   potentialAst?: number;
   potentialReb?: number;
-  /** ESPN proxy: FGA per minute L10 */
+  fgaLast5PerGame?: number;
+  fgaSeasonPerGame?: number;
   fgaPerMinL10?: number;
   source: "nba" | "espn";
   cachedAt: string;

@@ -3,6 +3,7 @@ export type LegReasonType =
   | "tracking"
   | "angle"
   | "matchup"
+  | "h2h"
   | "rank"
   | "form"
   | "avg"
@@ -20,6 +21,7 @@ export const REASON_TYPE_ORDER: LegReasonType[] = [
   "tracking",
   "angle",
   "matchup",
+  "h2h",
   "rank",
   "form",
   "avg",
@@ -68,10 +70,11 @@ export function inferReasonType(text: string): LegReasonType {
   if (/out →|out:|only big|missing \d+ big|benefit|redistrib|teammate/i.test(t)) return "injury";
   if (/potential ast|shot volume|tracking/i.test(t)) return "tracking";
   if (/allow [\d.]+\s+(pts|points|reb|rebounds|ast|assists|threes)/i.test(t)) return "matchup";
+  if (/vs .+ in \d+ meetings|\/\d+ .+ vs /i.test(t)) return "h2h";
   if (/averages [\d.]+\s+(pts|reb|ast)/i.test(t)) return "rank";
   if (/rank \d|worst defending|pace ·/i.test(t)) return "matchup";
-  if (/\/10 hits|5\/5 hits/i.test(t)) return "form";
-  if (/l10 avg/i.test(t)) return "avg";
+  if (/\/10 at this line|5\/5 at this line/i.test(t)) return "form";
+  if (/^avg /i.test(t)) return "avg";
   if (/pace /i.test(t) && !/worst defending/i.test(t)) return "pace";
   if (/minutes (up|down)/i.test(t)) return "min";
   if (/angle|role|\+[\d.]+ min/i.test(t)) return "angle";
@@ -100,7 +103,14 @@ export function reasonsForMarket(reasons: LegReason[], market: string): LegReaso
 }
 
 function reasonMatchesMarket(r: LegReason, market: string, stat: string): boolean {
-  if (r.type === "injury" || r.type === "tracking" || r.type === "angle" || r.type === "pace" || r.type === "min") {
+  if (
+    r.type === "injury" ||
+    r.type === "tracking" ||
+    r.type === "angle" ||
+    r.type === "h2h" ||
+    r.type === "pace" ||
+    r.type === "min"
+  ) {
     return true;
   }
   if (r.type === "form") return true;

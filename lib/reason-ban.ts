@@ -1,14 +1,23 @@
 /** Banned phrases in user-facing leg reason copy (templates only). */
 export const BANNED_REASON_PHRASES = [
-  "(ESPN proxy)",
+  "proxy",
+  "(above",
+  "line)",
+  "l10 pts avg",
+  "l10 reb avg",
+  "l10 ast avg",
+  "l10 3pm avg",
+  "vs prior",
+  "injury beneficiary",
   "boards shared",
   "vs 10+",
-  "L5 vs prior",
+  "l5 vs prior",
 ] as const;
 
 export function reasonTextHasBannedPhrase(text: string): string | null {
   const t = text.toLowerCase();
-  for (const phrase of BANNED_REASON_PHRASES) {
+  const ordered = [...BANNED_REASON_PHRASES].sort((a, b) => b.length - a.length);
+  for (const phrase of ordered) {
     if (t.includes(phrase.toLowerCase())) return phrase;
   }
   return null;

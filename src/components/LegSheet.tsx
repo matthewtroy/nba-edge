@@ -20,17 +20,30 @@ interface Props {
   onSelectLeg?: (leg: PickLeg) => void;
 }
 
-function LastTenBarChart({ ticks }: { ticks: ("hit" | "miss" | "na")[] }) {
+function LastTenBarChart({
+  ticks,
+  values,
+  line,
+}: {
+  ticks: ("hit" | "miss" | "na")[];
+  values?: (number | null)[];
+  line: number;
+}) {
   if (!ticks.length) return null;
   const shown = ticks.slice(0, 10);
+  const nums = values?.slice(0, 10) ?? [];
+  const maxVal = Math.max(line, ...nums.filter((v): v is number => v != null), 1);
   return (
-    <div className="flex items-end gap-1 h-16" aria-label="Last 10 at line">
+    <div className="flex items-end gap-1 h-14" aria-label="Last 10 at line">
       {shown.map((t, i) => (
         <MotionBar
           key={i}
           hit={t === "hit"}
           miss={t === "miss"}
           na={t === "na"}
+          value={nums[i]}
+          line={line}
+          maxVal={maxVal}
         />
       ))}
     </div>
@@ -41,14 +54,31 @@ function MotionBar({
   hit,
   miss,
   na,
+  value,
+  line,
+  maxVal,
 }: {
   hit: boolean;
   miss: boolean;
   na: boolean;
+  value?: number | null;
+  line: number;
+  maxVal: number;
 }) {
-  const h = hit || miss ? "h-14" : "h-3";
+  const scale = maxVal > 0 && value != null ? value / maxVal : hit || miss ? line / maxVal : 0.15;
+  const hPx = Math.max(8, Math.round(scale * 56));
   const color = hit ? "bg-price-green" : miss ? "bg-red-400" : "bg-white/15";
-  return <div className={`flex-1 min-w-[6px] max-w-3 rounded-sm ${h} ${color}`} />;
+  return (
+    <div className="flex-1 min-w-[6px] max-w-3 flex flex-col items-center justify-end gap-0.5">
+      {value != null && !na ? (
+        <span className="text-[9px] tabular-nums text-white/55 leading-none">{value}</span>
+      ) : null}
+      <div
+        className={`w-full rounded-sm ${color}`}
+        style={{ height: `${hPx}px` }}
+      />
+    </div>
+  );
 }
 
 function RungChips({
@@ -127,7 +157,13 @@ export function LegSheet({
   if (!leg || !bookieView) return null;
   const modelLeg = bookieView.modelLeg;
   const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
-  const last10 = modelLeg.recentTenVsLine ?? modelLeg.recentVsLine ?? leg.recentTenVsLine ?? leg.recentVsLine ?? [];
+  const last10 =
+    modelLeg.recentTenVsLine ??
+    modelLeg.recentVsLine ??
+    leg.recentTenVsLine ??
+    leg.recentVsLine ??
+    [];
+  const last10Vals = modelLeg.lastTenStatValues ?? leg.lastTenStatValues;
   const isQ1 = modelLeg.market.startsWith("q1");
   const feedPrice = bookieView.displayPrice;
 
@@ -172,26 +208,15 @@ export function LegSheet({
       >
         <MotionHandleRow onClose={onClose} />
 
-        <header className="min-h-[64px] pr-8 flex flex-col justify-center">
+        <header className="min-h-[56px] pr-8 flex flex-col justify-center">
           <h2 className="text-base font-semibold text-white theme-adaptive-title leading-tight">
             {leg.playerName}
           </h2>
           <p className="text-sm text-white/55 mt-0.5">
             {marketLabel(modelLeg.market, modelLeg.line)}
           </p>
-          {feedPrice != null && feedPrice > 1 && (
-            <p className="text-[22px] font-bold text-price-green tabular-nums leading-none mt-1">
-              ${feedPrice.toFixed(2)}
-              <span className="text-xs font-normal text-white/45 ml-2">{myBookie}</span>
-            </p>
-          )}
           {bookieView.lineShift && (
             <p className="text-[11px] text-white/45 mt-0.5">{bookieView.lineShift}</p>
-          )}
-          {!bookieView.offered && (
-            <p className="text-[11px] text-red-400/90 mt-0.5">
-              Not offered at {myBookie} for this line
-            </p>
           )}
           {subtitle && <p className="text-[11px] text-white/40 mt-0.5">{subtitle}</p>}
         </header>
@@ -200,10 +225,31 @@ export function LegSheet({
           <RungChips rungs={rungs} activeId={leg.id} onSelect={onSelectLeg} />
         )}
 
+        {(v || feedPrice != null) && (
+          <section className="mt-3 p-3 rounded-xl border border-white/[0.08] bg-white/[0.03]">
+            <p className="text-[11px] text-white/45 uppercase tracking-wide">Value verdict</p>
+            {v ? (
+              <p className="text-lg font-semibold text-white capitalize mt-1">{v}</p>
+            ) : (
+              <p className="text-sm text-white/55 mt-1">Enter your price below</p>
+            )}
+            {feedPrice != null && feedPrice > 1 && (
+              <p className="text-sm text-price-green tabular-nums mt-1">
+                ${feedPrice.toFixed(2)} · {myBookie}
+              </p>
+            )}
+            {!bookieView.offered && (
+              <p className="text-[11px] text-red-400/90 mt-1">
+                Not offered at {myBookie} for this line
+              </p>
+            )}
+          </section>
+        )}
+
         {last10.length > 0 && (
-          <section className="mt-3">
-            <p className="text-[11px] text-white/45 mb-1.5">Last 10 @ line</p>
-            <LastTenBarChart ticks={last10} />
+          <section className="mt-4">
+            <p className="text-[11px] text-white/45 mb-1.5">Last 10</p>
+            <LastTenBarChart ticks={last10} values={last10Vals} line={modelLeg.line} />
           </section>
         )}
 
@@ -393,7 +439,7 @@ function MotionPanelInner({
       onClick={(e) => e.stopPropagation()}
     >
       <div
-        className="rounded-t-[20px] px-4 pt-2 pb-8 max-h-[85vh] overflow-y-auto overscroll-contain w-full"
+        className="rounded-t-[20px] px-4 pt-2 pb-8 max-h-[70vh] overflow-y-auto overscroll-contain w-full"
         style={{ transform: dragY ? `translateY(${dragY}px)` : undefined }}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}

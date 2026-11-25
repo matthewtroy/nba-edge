@@ -21,6 +21,7 @@ interface Props {
   myBookie?: string;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (text: string) => void;
+  myBookie?: string;
 }
 
 export function GamesScreen({
@@ -31,6 +32,7 @@ export function GamesScreen({
   onSlateDateChange,
   onLegTap,
   onCopy,
+  myBookie,
 }: Props) {
   const { preset, setPreset, presets } = useGamesSgmPreset();
   const activeSlate = useMemo(() => gamesForCards(data.slate), [data.slate]);
@@ -118,6 +120,26 @@ export function GamesScreen({
         <p className="text-sm text-white/50">No games on this slate yet.</p>
       )}
 
+      {multis
+        .filter((m) => m.type === "crossGameSgm")
+        .map((m) => (
+          <MultiCard
+            key={`${m.type}-${m.legs.join()}`}
+            multi={m}
+            picksById={picksById}
+            injuries={data.injuries}
+            slate={activeSlate}
+            preferredBookie={myBookie}
+            fairOnly={slateFairOnly}
+            oddsNote={oddsNote}
+            hideBookieSelect={slateFairOnly}
+            liveCatalog={data.picks}
+            compact
+            onLegTap={onLegTap}
+            onCopy={onCopy}
+          />
+        ))}
+
       {built.map(({ game, card }) => {
         if (!card) return null;
         const multi = gameSgmAsMulti(card, game);
@@ -162,10 +184,11 @@ export function GamesScreen({
                   picksById={picksById}
                   injuries={data.injuries}
                   slate={activeSlate}
-                  lockedBookie={slateFairOnly ? undefined : card.bestBookie}
+                  preferredBookie={myBookie}
                   fairOnly={slateFairOnly}
                   oddsNote={oddsNote}
                   hideBookieSelect={slateFairOnly}
+                  liveCatalog={data.picks}
                   compact
                   onLegTap={onLegTap}
                   onCopy={onCopy}

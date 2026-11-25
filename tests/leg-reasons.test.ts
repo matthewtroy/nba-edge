@@ -49,7 +49,7 @@ describe("leg reasons structured", () => {
   it("orders injury before tracking before form", () => {
     const ordered = sortLegReasons(
       normalizeLegReasons([
-        { type: "form", text: "7/10 at line" },
+        { type: "form", text: "7/10 at this line" },
         { type: "tracking", text: "11.2 potential ast (L10)" },
         { type: "injury", text: "Jones out → +1.1 ast" },
       ])

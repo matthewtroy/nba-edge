@@ -1,0 +1,69 @@
+{
+  "lastUpdated": "2026-11-25T12:03:18.993Z",
+  "oddsLastPulled": "2026-11-25T10:29:00.533Z",
+  "sources": {
+    "espn": "ok",
+    "nbaOfficial": "ok",
+    "odds": "stale"
+  },
+  "slateSize": 9,
+  "smallSlate": false,
+  "injuryImpactLog": [
+    "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs"
+  ],
+  "modelSanityChecked": 180,
+  "modelSanityFailures": 81,
+  "formGuardExcludedCount": 663,
+  "gameOddsPriceAge": {
+    "401909317": "Prices from 9:29 pm",
+    "401909318": "Prices from 9:29 pm",
+    "401909319": "Prices from 9:29 pm",
+    "401909320": "Prices from 9:29 pm",
+    "401909321": "Prices from 9:29 pm",
+    "401909322": "Prices from 9:29 pm",
+    "401909323": "Prices from 9:29 pm",
+    "401909324": "Prices from 9:29 pm",
+    "401909325": "Prices from 9:29 pm"
+  },
+  "slateTipDate": "2026-11-26",
+  "whatChanged": [
+    "Chet Holmgren out → Shai Gilgeous-Alexander +7.2 pts",
+    "OG Anunoby out → Jalen Brunson +4.8 pts",
+    "Cameron Boozer out → Ty Jerome +2.7 pts"
+  ],
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_07_00AM.pdf",
+  "pricedLegCounts": {
+    "pts": {
+      "total": 396,
+      "priced": 301
+    },
+    "reb": {
+      "total": 544,
+      "priced": 232
+    },
+    "ast": {
+      "total": 462,
+      "priced": 177
+    },
+    "3pm": {
+      "total": 659,
+      "priced": 423
+    },
+    "q1reb": {
+      "total": 196,
+      "priced": 0
+    }
+  },
+  "gateViolations": [
+    "Main Play: leg fails starter/main-line/eligibility",
+    "Longshot: take-at 18.76 not 30–150"
+  ],
+  "officialCard": {
+    "lockedAt": "2026-11-25T11:08:41.132Z",
+    "publishedAt": "2026-11-25T11:08:41.132Z",
+    "slateDate": "2026-11-26",
+    "bookie": "Ladbrokes"
+  },
+  "slatePublicationStatus": "official",
+  "slateStatusLabel": "Official · published 10:08pm"
+}

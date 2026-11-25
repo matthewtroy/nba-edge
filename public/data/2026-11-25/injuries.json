@@ -1,0 +1,128 @@
+[
+  {
+    "playerId": "4351852",
+    "playerName": "Mitchell Robinson",
+    "teamId": "2",
+    "teamName": "Boston Celtics",
+    "gameId": "401909315",
+    "status": "Out",
+    "source": "NBA Official",
+    "updatedAt": "2026-11-25T03:15:17.798Z"
+  },
+  {
+    "playerId": "5106040",
+    "playerName": "Tobi Lawal",
+    "teamId": "6",
+    "teamName": "Dallas Mavericks",
+    "gameId": "401909316",
+    "status": "Out",
+    "source": "NBA Official",
+    "updatedAt": "2026-11-25T03:15:17.798Z"
+  },
+  {
+    "playerName": "Dereck Lively II",
+    "teamId": "6",
+    "teamName": "Dallas Mavericks",
+    "gameId": "401909316",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-20T19:31Z"
+  },
+  {
+    "playerName": "Sergio de Larrea",
+    "teamId": "6",
+    "teamName": "Dallas Mavericks",
+    "gameId": "401909316",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-17T22:53Z"
+  },
+  {
+    "playerName": "Tarik Biberovic",
+    "teamId": "6",
+    "teamName": "Dallas Mavericks",
+    "gameId": "401909316",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-17T22:42Z"
+  },
+  {
+    "playerId": "4997537",
+    "playerName": "Tristan Vukcevic",
+    "teamId": "27",
+    "teamName": "Washington Wizards",
+    "gameId": "401909315",
+    "status": "Out",
+    "source": "NBA Official",
+    "updatedAt": "2026-11-25T03:15:17.798Z"
+  },
+  {
+    "playerName": "Reece Beekman",
+    "teamId": "27",
+    "teamName": "Washington Wizards",
+    "gameId": "401909315",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-02T18:22Z"
+  },
+  {
+    "playerId": "4432907",
+    "playerName": "Justin Champagnie",
+    "teamId": "27",
+    "teamName": "Washington Wizards",
+    "gameId": "401909315",
+    "status": "Out",
+    "source": "NBA Official",
+    "updatedAt": "2026-11-25T03:15:17.798Z"
+  },
+  {
+    "playerId": "4606840",
+    "playerName": "Jamir Watkins",
+    "teamId": "27",
+    "teamName": "Washington Wizards",
+    "gameId": "401909315",
+    "status": "Out",
+    "source": "NBA Official",
+    "updatedAt": "2026-11-25T03:15:17.798Z"
+  },
+  {
+    "playerId": "4702745",
+    "playerName": "Amari Williams",
+    "teamId": "2",
+    "teamName": "Boston Celtics",
+    "gameId": "401909315",
+    "status": "Out",
+    "source": "NBA Official",
+    "updatedAt": "2026-11-25T03:15:17.798Z"
+  },
+  {
+    "playerId": "4432819",
+    "playerName": "Tre Mann",
+    "teamId": "27",
+    "teamName": "Washington Wizards",
+    "gameId": "401909315",
+    "status": "Questionable",
+    "source": "NBA Official",
+    "updatedAt": "2026-11-25T03:15:17.798Z"
+  },
+  {
+    "playerId": "5105841",
+    "playerName": "Felix Okpara",
+    "teamId": "27",
+    "teamName": "Washington Wizards",
+    "gameId": "401909315",
+    "status": "Out",
+    "source": "NBA Official",
+    "updatedAt": "2026-11-25T03:15:17.798Z"
+  },
+  {
+    "playerId": "3138160",
+    "playerName": "Caleb Martin",
+    "teamId": "6",
+    "teamName": "Dallas Mavericks",
+    "gameId": "401909316",
+    "status": "Questionable",
+    "source": "NBA Official",
+    "updatedAt": "2026-11-25T03:15:17.798Z"
+  }
+]

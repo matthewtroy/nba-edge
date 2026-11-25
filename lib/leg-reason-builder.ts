@@ -24,6 +24,8 @@ import {
   potentialAstReason,
   shotVolumeReason,
 } from "./player-tracking-fetch.js";
+import { h2hReasonPhrase } from "./h2h-reason.js";
+import { reasonTextHasBannedPhrase } from "./reason-ban.js";
 
 function hitCountL10(logs: PlayerGameLog[], market: Market, line: number): number | null {
   const sorted = [...logs].sort((a, b) => b.date.localeCompare(a.date));
@@ -118,13 +120,18 @@ function pacePhrase(
 
 function formPhrase(logs: PlayerGameLog[], market: Market, line: number): string | undefined {
   const hits = hitCountL10(logs, market, line);
-  if (hits != null && hits >= 7) return `${hits}/10 at line`;
+  if (hits != null && hits >= 7) return `${hits}/10 at this line`;
   const l5 = lastFiveVsLine(logs, market, line).filter((t) => t !== "na");
-  if (l5.length === 5 && l5.every((t) => t === "hit")) return "5/5 at line";
+  if (l5.length === 5 && l5.every((t) => t === "hit")) return "5/5 at this line";
   return undefined;
 }
 
-function avgPhrase(logs: PlayerGameLog[], market: Market, line: number): string | undefined {
+function avgPhrase(
+  logs: PlayerGameLog[],
+  market: Market,
+  line: number,
+  seasonAvg?: { pts: number; reb: number; ast: number; threes: number }
+): string | undefined {
   const sorted = [...logs].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
   if (sorted.length < 5) return undefined;
   let sum = 0;
@@ -146,17 +153,27 @@ function avgPhrase(logs: PlayerGameLog[], market: Market, line: number): string 
   const avg = sum / n;
   if (avg < line) return undefined;
   const stat = market === "3pm" ? "3pm" : market.replace(/^q1/, "");
-  return `L10 ${stat} avg ${avg.toFixed(1)} (above ${line}+ line)`;
+  const seasonStat =
+    stat === "reb"
+      ? seasonAvg?.reb
+      : stat === "ast"
+        ? seasonAvg?.ast
+        : stat === "3pm"
+          ? seasonAvg?.threes
+          : seasonAvg?.pts;
+  const seasonSuffix =
+    seasonStat != null ? ` (season ${seasonStat.toFixed(1)})` : "";
+  return `Avg ${avg.toFixed(1)} ${stat} last 10${seasonSuffix}`;
 }
 
 function minutesPhrase(logs: PlayerGameLog[]): string | undefined {
   const sorted = [...logs].sort((a, b) => b.date.localeCompare(a.date));
   if (sorted.length < 10) return undefined;
   const l5 = sorted.slice(0, 5).reduce((s, g) => s + g.minutes, 0) / 5;
-  const p5 = sorted.slice(5, 10).reduce((s, g) => s + g.minutes, 0) / 5;
-  const diff = l5 - p5;
-  if (diff < 1.5) return undefined;
-  return `Min up ${diff.toFixed(1)} L5`;
+  const season =
+    sorted.reduce((s, g) => s + g.minutes, 0) / Math.max(1, sorted.length);
+  if (l5 < season + 1.5) return undefined;
+  return `Minutes up: ${Math.round(l5)} last 5 (season ${Math.round(season)})`;
 }
 
 export function buildLegReasons(input: {
@@ -172,12 +189,15 @@ export function buildLegReasons(input: {
   seedReasons?: LegReason[];
   playerId?: string;
   positionRanks?: Map<string, Partial<Record<"pts" | "reb" | "ast", PlayerStatRankRow>>>;
+  seasonAvg?: { pts: number; reb: number; ast: number; threes: number };
+  /** Full ESPN logs (incl. prior seasons) for H2H context. */
+  h2hLogs?: PlayerGameLog[];
 }): LegReason[] {
   const byType = new Map<string, LegReason>();
 
   const put = (type: LegReason["type"], text: string) => {
     const t = text.trim();
-    if (!t || byType.has(type)) return;
+    if (!t || byType.has(type) || reasonTextHasBannedPhrase(t)) return;
     byType.set(type, { type, text: t });
   };
 
@@ -206,9 +226,9 @@ export function buildLegReasons(input: {
     if (m === "ast" || m === "q1ast") {
       const t = potentialAstReason(input.tracking);
       if (t) put("tracking", t);
-    } else if (input.tracking.source === "espn") {
+    } else if (m === "pts" || m === "3pm") {
       const t = shotVolumeReason(input.tracking);
-      if (t && (m === "pts" || m === "3pm")) put("tracking", t);
+      if (t) put("tracking", t);
     }
   }
 
@@ -220,6 +240,17 @@ export function buildLegReasons(input: {
     input.opponentName
   );
   if (matchup) put("matchup", matchup);
+
+  const h2h = h2hReasonPhrase({
+    logs: input.h2hLogs ?? input.logs,
+    playerId: input.playerId ?? input.leg.playerId,
+    defendingTeamId: input.defendingTeamId,
+    market: input.leg.market,
+    line: input.leg.line,
+    opponentName: input.opponentName,
+    seasonAvg: input.seasonAvg,
+  });
+  if (h2h) put("h2h", h2h);
 
   const rankLine = playerRankPhrase(
     input.leg.market,
@@ -241,7 +272,12 @@ export function buildLegReasons(input: {
   const form = formPhrase(input.logs, input.leg.market, input.leg.line);
   if (form) put("form", form);
 
-  const avg = avgPhrase(input.logs, input.leg.market, input.leg.line);
+  const avg = avgPhrase(
+    input.logs,
+    input.leg.market,
+    input.leg.line,
+    input.seasonAvg
+  );
   if (avg) put("avg", avg);
 
   const mins = minutesPhrase(input.logs);

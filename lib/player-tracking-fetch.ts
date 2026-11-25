@@ -55,10 +55,22 @@ function espnStandInFromLogs(playerId: string, name: string, logs: PlayerGameLog
   }
   const rate = mins > 0 ? fga / mins : 0;
   const priorRate = priorMins > 0 ? priorFga / priorMins : rate;
+  const last5Games = l10.slice(0, 5);
+  const fgaLast5 =
+    last5Games.length > 0
+      ? last5Games.reduce((s, g) => s + (g.fga ?? 0), 0) / last5Games.length
+      : undefined;
+  const seasonPlayed = sorted.filter((g) => g.minutes >= 1);
+  const fgaSeason =
+    seasonPlayed.length > 0
+      ? seasonPlayed.reduce((s, g) => s + (g.fga ?? 0), 0) / seasonPlayed.length
+      : undefined;
   return {
     playerId,
     playerName: name,
     fgaPerMinL10: rate,
+    fgaLast5PerGame: fgaLast5,
+    fgaSeasonPerGame: fgaSeason,
     source: "espn",
     cachedAt: new Date().toISOString(),
     ...(priorRate > 0 && rate > priorRate * 1.05 ? {} : {}),
@@ -66,9 +78,10 @@ function espnStandInFromLogs(playerId: string, name: string, logs: PlayerGameLog
 }
 
 export function shotVolumeReason(tr: PlayerTrackingDay): string | undefined {
-  if (tr.source !== "espn" || tr.fgaPerMinL10 == null) return undefined;
-  if (tr.fgaPerMinL10 == null) return undefined;
-  return `Shot volume ${tr.fgaPerMinL10.toFixed(2)} FGA/min (L10)`;
+  const { fgaLast5PerGame: l5, fgaSeasonPerGame: season } = tr;
+  if (l5 == null || season == null || season <= 0) return undefined;
+  if (l5 < season * 1.05 && l5 < season + 1) return undefined;
+  return `Shot volume up: ${l5.toFixed(1)} FGA last 5 (season ${season.toFixed(1)})`;
 }
 
 export function potentialAstReason(tr: PlayerTrackingDay): string | undefined {

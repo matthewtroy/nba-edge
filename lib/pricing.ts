@@ -19,6 +19,7 @@ import {
 import {
   lastFiveVsLine,
   lastTenVsLine,
+  statValue,
   q1HitRateLast10,
   q1HitRateLast5,
   q1SeasonHitFraction,
@@ -109,9 +110,6 @@ export function buildLegsForPlayer(
         : { type: "other" as const, text }
     )
   );
-  if (ctx.injuryAngle) {
-    injurySeeds.push({ type: "angle", text: "Injury beneficiary" });
-  }
   const modelLogs = logsForModelRates(ctx.logs);
   const avgFrom = (slice: PlayerGameLog[]) => {
     if (!slice.length) return undefined;
@@ -240,6 +238,10 @@ export function buildLegsForPlayer(
       reasons: [],
       recentVsLine: lastFiveVsLine(ctx.logs, market, line),
       recentTenVsLine: lastTenVsLine(ctx.logs, market, line),
+      lastTenStatValues: [...modelLogs]
+        .sort((a, b) => b.date.localeCompare(a.date))
+        .slice(0, 10)
+        .map((g) => statValue(g, market)),
       ...(market.startsWith("q1")
         ? {
             q1Last10HitRate: q1HitRateLast10(
@@ -262,6 +264,8 @@ export function buildLegsForPlayer(
     leg.reasons = buildLegReasons({
       leg,
       logs: modelLogs,
+      h2hLogs: ctx.logs,
+      seasonAvg,
       defense: ctx.defense,
       defendingTeamId: ctx.defendingTeamId,
       playerTeamId: ctx.playerTeamId,

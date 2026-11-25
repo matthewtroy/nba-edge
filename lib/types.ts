@@ -84,6 +84,8 @@ export interface PickLeg {
   /** Season Q1 clears at this line (numerator/denominator). */
   q1SeasonHitAtLine?: { hits: number; total: number };
   recentTenVsLine?: ("hit" | "miss" | "na")[];
+  /** Raw stat values for last-10 chart (most recent first). */
+  lastTenStatValues?: (number | null)[];
   questionable?: boolean;
   boardsShared?: boolean;
   b2b?: boolean;

@@ -57,7 +57,7 @@ describe("slate reason copy", () => {
       logs: logsWithAvg(24),
     });
     const avg = reasons.find((r) => r.type === "avg");
-    expect(avg?.text).toMatch(/above 20\+ line/);
+    expect(avg?.text).toMatch(/Avg 24\.0 pts last 10/);
     expect(reasonTextHasBannedPhrase(avg?.text ?? "")).toBeNull();
   });
 
