@@ -76,6 +76,7 @@ Ranking: injury news → probability → edge. **One AU bookie per built multi**
 
 - 4–5 legs; starter main lines (pts ≥10, reb/ast ≥5, **3pm ≥2**); per-leg fair **1.40–2.50** (`MAIN_PLAY_LEG_FAIR_*` in `lib/pricing-config.ts`), p ≥ 0.60; no Check news; no age-B2B.
 - **Combined range on real bookie total: $5–$20** (`MAIN_PLAY_COMBINED_MIN` / `MAX` in `lib/pricing-config.ts`). Spec prefers 1 leg/game; 2/game only on thin slates.
+- **Edge curve:** `requiredEdge(total) = 0.10 + (total − 5) × (0.65/15)` (`MAIN_PLAY_EDGE_AT_MIN`/`MAX`). Require `(bookieTotal/combinedFair)−1 ≥ requiredEdge(total)`; pick highest **surplus** (`actual/required`), tie-break higher combined p. Misses → `notBuilt` shortfall e.g. `$14.20, needs 50% edge, has 38%`.
 - **3PM** is a first-class Main Play market in the builder pool (at most one 3pm leg per card).
 - **No target-profit stake line on cards** (stake UI removed from multis JSON; settings may still store a personal target for future use only).
 

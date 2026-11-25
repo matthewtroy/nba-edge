@@ -4,6 +4,42 @@
 export const MAIN_PLAY_COMBINED_MIN = 5;
 export const MAIN_PLAY_COMBINED_MAX = 20;
 
+/**
+ * Required bookie edge vs combined fair along Main Play / Best SGM curve.
+ * At $5 → 10%; at $20 → 75%; linear beyond for Best SGM.
+ */
+export const MAIN_PLAY_EDGE_AT_MIN = 0.1;
+export const MAIN_PLAY_EDGE_AT_MAX = 0.75;
+
+/** requiredEdge(total) = 0.10 + (total − 5) × (0.65 ÷ 15) */
+export function requiredEdge(total: number): number {
+  return MAIN_PLAY_EDGE_AT_MIN + (total - MAIN_PLAY_COMBINED_MIN) * (0.65 / 15);
+}
+
+/** (bookieTotal / combinedFair) − 1 */
+export function actualEdgeFraction(bookieTotal: number, combinedFair: number): number {
+  if (combinedFair <= 0) return 0;
+  return bookieTotal / combinedFair - 1;
+}
+
+/** actualEdge / requiredEdge — higher is better */
+export function edgeSurplus(bookieTotal: number, combinedFair: number): number {
+  const req = requiredEdge(bookieTotal);
+  if (req <= 0) return Number.POSITIVE_INFINITY;
+  return actualEdgeFraction(bookieTotal, combinedFair) / req;
+}
+
+/** e.g. "$14.20, needs 50% edge, has 38%" */
+export function formatEdgeShortfall(
+  bookieTotal: number,
+  actual: number,
+  required: number
+): string {
+  const needsPct = Math.round(required * 100);
+  const hasPct = Math.round(actual * 100);
+  return `$${bookieTotal.toFixed(2)}, needs ${needsPct}% edge, has ${hasPct}%`;
+}
+
 /** Best Double Up combined bookie total band (~double your stake). */
 export const DOUBLE_UP_MIN = 1.8;
 export const DOUBLE_UP_MAX = 2.2;

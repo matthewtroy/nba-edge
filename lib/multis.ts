@@ -56,6 +56,10 @@ import {
   DOUBLE_UP_MIN,
   DOUBLE_UP_MAX,
   DOUBLE_UP_EXTRA_LEG_PP,
+  requiredEdge,
+  actualEdgeFraction,
+  edgeSurplus,
+  formatEdgeShortfall,
 } from "./pricing-config.js";
 
 export interface MultiBuildResult {
@@ -564,11 +568,18 @@ function buildMainPlay(
     return { bet: null, reason };
   }
 
-  let best: { legs: PickLeg[]; bookie: string; p: number; total: number } | null = null;
+  let best: {
+    legs: PickLeg[];
+    bookie: string;
+    p: number;
+    total: number;
+    surplus: number;
+  } | null = null;
   let maxEdgePool = 0;
   let maxEdgeBookie = "";
   let maxRange = 0;
   let maxClash = 0;
+  let bestShortfall: string | null = null;
 
   for (const bookie of bookiesByCoverage(eligible)) {
     const banded = eligible.filter((l) => qualifiesMainPlayLeg(l, bookie));
@@ -581,18 +592,27 @@ function buildMainPlay(
     const found = findMainPlaySubset(pool, slateSize, bookie);
     maxRange = Math.max(maxRange, found.rangeCandidates);
     maxClash = Math.max(maxClash, found.clashCandidates);
+    if (found.shortfall) bestShortfall = found.shortfall;
     if (!found.legs) continue;
     const total = comboProduct(found.legs, bookie);
     const p = combinedProb(found.legs);
-    if (!betterBookiePick(best, p, total)) continue;
-    best = { legs: found.legs, bookie, p, total };
+    const fair = 1 / p;
+    const surplus = edgeSurplus(total, fair);
+    const better =
+      !best ||
+      surplus > best.surplus + 1e-12 ||
+      (Math.abs(surplus - best.surplus) < 1e-12 && p > best.p);
+    if (!better) continue;
+    best = { legs: found.legs, bookie, p, total, surplus };
   }
 
   if (!best) {
     const reason =
       maxEdgePool < 3
         ? `No bookie with 3+ main legs at edge (best ${maxEdgeBookie}=${maxEdgePool})`
-        : `No 3–5 leg main @ edge+clash+bookie total $${MAIN_PLAY_COMBINED_MIN}–$${MAIN_PLAY_COMBINED_MAX} (edge best ${maxEdgeBookie}=${maxEdgePool}, range-cands ${maxRange})`;
+        : bestShortfall
+          ? `Main Play edge shortfall: ${bestShortfall}`
+          : `No 3–5 leg main @ edge+clash+bookie total $${MAIN_PLAY_COMBINED_MIN}–$${MAIN_PLAY_COMBINED_MAX} (edge best ${maxEdgeBookie}=${maxEdgePool}, range-cands ${maxRange})`;
     pushMultiBuildTrace({
       type: "mainPlay",
       eligible: eligible.length,
@@ -642,7 +662,12 @@ function findMainPlaySubset(
   pool: PickLeg[],
   slateSize: number,
   bookie?: string
-): { legs: PickLeg[] | null; rangeCandidates: number; clashCandidates: number } {
+): {
+  legs: PickLeg[] | null;
+  rangeCandidates: number;
+  clashCandidates: number;
+  shortfall?: string;
+} {
   const byGame = new Map<string, PickLeg[]>();
   for (const leg of pool) {
     const arr = byGame.get(leg.gameId) ?? [];
@@ -689,25 +714,57 @@ function findMainPlaySubset(
   if (!candidates.length) {
     return { legs: null, rangeCandidates: 0, clashCandidates: clashSkipped };
   }
-  candidates.sort((a, b) => {
-    const score = (legs: PickLeg[]) =>
-      legs.reduce((s, leg) => {
-        let v = injuryBoostScore(leg) * 1000;
-        v += last10HitsAtLine(leg) * 10;
-        v += leg.probability;
-        if (injuryBoostScore(leg) === 0 && last5HitsAtLine(leg) <= 2) v -= 0.5;
-        return s + v;
-      }, 0);
-    const sa = score(a);
-    const sb = score(b);
-    if (sb !== sa) return sb - sa;
-    const pa = combinedProb(a);
-    const pb = combinedProb(b);
-    if (Math.abs(pb - pa) > 1e-9) return pb - pa;
-    return comboProduct(b, bookie) - comboProduct(a, bookie);
+
+  type Ranked = {
+    legs: PickLeg[];
+    total: number;
+    p: number;
+    surplus: number;
+    actual: number;
+    req: number;
+  };
+  const passing: Ranked[] = [];
+  let worstShort: Ranked | null = null;
+
+  for (const legs of candidates) {
+    const total = comboProduct(legs, bookie);
+    const p = combinedProb(legs);
+    const fair = 1 / p;
+    const actual = actualEdgeFraction(total, fair);
+    const req = requiredEdge(total);
+    const surplus = edgeSurplus(total, fair);
+    const row: Ranked = { legs, total, p, surplus, actual, req };
+    if (actual + 1e-12 >= req) passing.push(row);
+    else if (
+      !worstShort ||
+      actual > worstShort.actual + 1e-12 ||
+      (Math.abs(actual - worstShort.actual) < 1e-12 && total > worstShort.total)
+    ) {
+      // Keep the closest miss (highest actual edge under the curve) for notBuilt copy.
+      worstShort = row;
+    }
+  }
+
+  if (!passing.length) {
+    const shortfall = worstShort
+      ? formatEdgeShortfall(worstShort.total, worstShort.actual, worstShort.req)
+      : undefined;
+    return {
+      legs: null,
+      rangeCandidates: candidates.length,
+      clashCandidates: clashSkipped,
+      shortfall,
+    };
+  }
+
+  passing.sort((a, b) => {
+    if (Math.abs(b.surplus - a.surplus) > 1e-12) return b.surplus - a.surplus;
+    if (Math.abs(b.p - a.p) > 1e-12) return b.p - a.p;
+    return b.total - a.total;
   });
+
   return {
-    legs: candidates[0],
+    legs: passing[0].legs,
     rangeCandidates: candidates.length,
     clashCandidates: clashSkipped,
   };
