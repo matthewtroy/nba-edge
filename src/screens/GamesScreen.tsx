@@ -89,7 +89,7 @@ export function GamesScreen({
             onClick={() => setPreset(p)}
             className={`text-[11px] px-3 py-1.5 rounded-full border ${
               preset.label === p.label
-                ? "border-accent-high text-accent-high"
+                ? "border-white/30 text-white"
                 : "border-white/20"
             }`}
           >

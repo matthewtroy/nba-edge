@@ -115,8 +115,15 @@ export function TodayScreen({
       <header className="mb-4 flex justify-between items-start">
         <div>
           <h1 className="text-xl font-bold">{slateDate === todayDate ? "Home" : "Tomorrow"}</h1>
-          {data.meta.slateStatusLabel && (
-            <p className="text-xs text-accent-high mt-0.5">{data.meta.slateStatusLabel}</p>
+          {(data.meta.slatePublicationStatus === "draft" ||
+            data.meta.slateStatusLabel?.toLowerCase().includes("draft")) && (
+            <span className="inline-flex text-[11px] px-2 py-0.5 rounded-full bg-white/[0.08] text-white/55 border border-white/[0.06] mt-1">
+              Draft
+            </span>
+          )}
+          {data.meta.slateStatusLabel &&
+            !data.meta.slateStatusLabel.toLowerCase().includes("draft") && (
+            <p className="text-xs text-white/45 mt-1">{data.meta.slateStatusLabel}</p>
           )}
           <p className="text-sm text-white/70">
             {data.slate.length} games · Updated {sydneyTimeFromIso(data.meta.lastUpdated)}
@@ -126,7 +133,7 @@ export function TodayScreen({
             {stale && <span className="text-accent-warn ml-1" title="Source stale or paused">●</span>}
           </p>
           {useOfficial && publishedAt && (
-            <p className="text-xs text-accent-high mt-1">
+            <p className="text-xs text-white/45 mt-1">
               Published {sydneyTimeFromIso(publishedAt)}
               {officialBookie ? ` · ${officialBookie}` : ""}
             </p>

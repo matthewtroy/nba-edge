@@ -23,7 +23,7 @@ export function TabBar({ active, onChange }: Props) {
             type="button"
             onClick={() => onChange(t.id)}
             className={`flex-1 py-2.5 text-[11px] sm:text-xs font-medium ${
-              active === t.id ? "text-accent-high" : "text-white/60"
+              active === t.id ? "text-white" : "text-white/50"
             }`}
           >
             {t.label}

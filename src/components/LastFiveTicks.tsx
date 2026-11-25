@@ -2,36 +2,37 @@ export function LastFiveTicks({
   ticks,
   compact = false,
   hideLabel = false,
+  inline = false,
 }: {
   ticks: ("hit" | "miss" | "na")[];
   compact?: boolean;
   hideLabel?: boolean;
+  inline?: boolean;
 }) {
   if (!ticks.length) return null;
+  const dot = compact || inline ? "w-1.5 h-1.5 rounded-full" : "w-2 h-2 rounded-full";
   return (
-    <div
-      className={`flex items-center gap-1 ${compact ? "text-[10px] text-white/55" : "text-sm text-white/70"}`}
+    <span
+      className={`inline-flex items-center shrink-0 ${
+        compact || inline ? "gap-0.5" : "gap-1"
+      }`}
     >
-      {!hideLabel && !compact ? (
-        <span className="text-xs">Last 5:</span>
+      {!hideLabel && !compact && !inline ? (
+        <span className="text-xs text-white/45 mr-1">Last 5:</span>
       ) : null}
-      <div className="flex gap-0.5">
-        {ticks.map((t, i) => (
-          <span
-            key={i}
-            className={
-              t === "hit"
-                ? "text-green-400"
-                : t === "miss"
-                  ? "text-red-400"
-                  : "text-white/30"
-            }
-            aria-label={t}
-          >
-            {t === "hit" ? "✓" : t === "miss" ? "✗" : "·"}
-          </span>
-        ))}
-      </div>
-    </div>
+      {ticks.map((t, i) => (
+        <span
+          key={i}
+          className={`${dot} ${
+            t === "hit"
+              ? "bg-price-green"
+              : t === "miss"
+                ? "bg-red-400"
+                : "bg-white/20"
+          }`}
+          aria-label={t}
+        />
+      ))}
+    </span>
   );
 }

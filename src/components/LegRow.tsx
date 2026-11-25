@@ -50,12 +50,8 @@ export function LegRow({ leg, slate, myBookie = "bet365", onTap }: Props) {
           {tags.map((t) => (
             <span
               key={t}
-              className={`text-xs px-2 py-0.5 rounded-full ${
-                t === "Value" || t === "Blowout risk"
-                  ? "bg-accent-value/20 text-accent-value"
-                  : t === "High probability"
-                    ? "bg-accent-high/20 text-accent-high"
-                    : "bg-accent-warn/20 text-accent-warn"
+              className={`text-[10px] px-1.5 py-px rounded-full bg-white/[0.08] ${
+                t === "Blowout risk" ? "text-red-400" : "text-white/65"
               }`}
             >
               {t}
@@ -66,7 +62,7 @@ export function LegRow({ leg, slate, myBookie = "bet365", onTap }: Props) {
       <div className="text-right text-sm shrink-0 max-w-[40%]">
         <div>Take at {leg.takeAt.toFixed(2)}+</div>
         {leg.bestPrice != null && (
-          <div className="text-accent-value text-xs break-words">
+          <div className="text-price-green text-xs break-words tabular-nums">
             Best: {leg.bestBookie} {leg.bestPrice.toFixed(2)}
           </div>
         )}

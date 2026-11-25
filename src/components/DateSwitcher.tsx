@@ -28,7 +28,7 @@ export function DateSwitcher({ todayDate, tomorrowDate, selected, onSelect }: Pr
           onClick={() => onSelect(o.date)}
           className={`flex-1 py-2 text-xs sm:text-sm font-medium ${
             selected === o.date
-              ? "bg-accent-high/20 text-accent-high"
+              ? "bg-white/[0.12] text-white"
               : "text-white/65"
           }`}
         >

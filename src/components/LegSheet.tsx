@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import type { PickLeg, SlateGame } from "@lib/types";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { siblingRungs } from "@lib/leg-rungs";
@@ -6,6 +6,7 @@ import { marketLabel, verdict } from "../utils/format";
 import { LastFiveTicks } from "./LastFiveTicks";
 import { RungStepper } from "./RungStepper";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
+import { ui } from "../lib/card-type-scale";
 
 interface Props {
   leg: PickLeg | null;
@@ -50,20 +51,19 @@ export function LegSheet({ leg, picks = [], slate, myBookie = "bet365", onClose,
   const v = Number.isFinite(num) && num > 1 ? verdict(num, leg.takeAt) : null;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/60" onClick={onClose}>
-      <div
-        className="bg-card rounded-t-2xl px-3 py-3 max-h-[85vh] overflow-y-auto"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="w-10 h-1 bg-white/20 rounded mx-auto mb-2" />
-        <h2 className="text-base font-semibold break-words leading-tight">{leg.playerName}</h2>
-        <p className="text-xs text-white/65">{marketLabel(leg.market, leg.line)}</p>
+    <motionBackdrop onClose={onClose}>
+      <motionPanel>
+        <div className="w-9 h-1 bg-white/15 rounded-full mx-auto mb-4" />
+        <h2 className="text-base font-semibold break-words leading-tight text-white theme-adaptive-title">
+          {leg.playerName}
+        </h2>
+        <p className="text-xs text-white/55 mt-0.5">{marketLabel(leg.market, leg.line)}</p>
         {subtitle && <p className="text-[11px] text-white/40 mt-0.5">{subtitle}</p>}
         {leg.reasonLine && (() => {
-          const ui = legReasonLineUi(leg.reasonLine);
+          const reasonUi = legReasonLineUi(leg.reasonLine);
           return (
-            <p className={`${ui.className} mt-2 leading-snug`}>
-              {ui.prefix}
+            <p className={`mt-3 ${reasonUi.className}`} style={{ whiteSpace: "normal" }}>
+              {reasonUi.prefix}
               {leg.reasonLine}
             </p>
           );
@@ -71,50 +71,93 @@ export function LegSheet({ leg, picks = [], slate, myBookie = "bet365", onClose,
         {onSelectLeg && (
           <RungStepper rungs={rungs} activeId={leg.id} onSelect={onSelectLeg} compact />
         )}
-        <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[11px] text-white/55 mt-2 mb-2">
+        <dl className="grid grid-cols-2 gap-x-4 gap-y-1 text-[11px] text-white/50 mt-3 mb-3">
           {leg.seasonAvg && (
-            <span>
-              Szn {leg.seasonAvg.pts.toFixed(1)}/{leg.seasonAvg.reb.toFixed(1)}/
-              {leg.seasonAvg.ast.toFixed(1)}
+            <motionDlItem
+              label="Season"
+              value={`${leg.seasonAvg.pts.toFixed(1)}/${leg.seasonAvg.reb.toFixed(1)}/${leg.seasonAvg.ast.toFixed(1)}`}
+            />
+          )}
+          {leg.projectedMinutes != null && (
+            <motionDlItem label="Min" value={`${leg.projectedMinutes.toFixed(0)}`} />
+          )}
+        </dl>
+        <p className="text-sm mb-2">
+          <span className={ui.legFair}>Fair {leg.fairPrice.toFixed(2)}</span>
+          {bestFeed && (
+            <span className={`ml-2 ${ui.legPrice} !text-lg`}>
+              {bestFeed.bookie} ${bestFeed.price.toFixed(2)}
             </span>
           )}
-          {leg.projectedMinutes != null && <span>{leg.projectedMinutes.toFixed(0)} min</span>}
-        </div>
-        <p className="text-xs text-white/75 mb-1.5">
-          Fair {leg.fairPrice.toFixed(2)}
-          {bestFeed ? ` · ${bestFeed.bookie} ${bestFeed.price.toFixed(2)}` : ""}
-          {myBookPrice != null && myBookPrice > 1
-            ? ` · ${myBookie} ${myBookPrice.toFixed(2)}`
-            : ""}
         </p>
         {last10.length > 0 && (
-          <div className="mb-2">
-            <p className="text-[10px] text-white/45 mb-0.5">Last 10 @ line</p>
-            <LastFiveTicks ticks={last10} compact />
-          </div>
+          <motionLastTen>
+            <LastFiveTicks ticks={last10} compact hideLabel />
+          </motionLastTen>
         )}
         {leg.market.startsWith("q1") && leg.q1SeasonHitAtLine && (
-          <p className="text-xs text-white/65 mb-2">
-            Q1 hit rate @ line: {leg.q1SeasonHitAtLine.hits}/{leg.q1SeasonHitAtLine.total}
+          <p className="text-xs text-white/55 mb-2">
+            Q1 @ line: {leg.q1SeasonHitAtLine.hits}/{leg.q1SeasonHitAtLine.total}
           </p>
         )}
-        <label className="block text-[11px] text-white/55 mb-0.5">My {myBookie}</label>
+        <label className="block text-[11px] text-white/45 mb-1">My {myBookie}</label>
         <input
           type="number"
           step="0.01"
           value={bookPrice}
           onChange={(e) => savePrice(e.target.value)}
-          className="w-full bg-surface border border-white/10 rounded-lg px-2 py-1.5 text-sm mb-1"
+          className="w-full bg-transparent border border-white/[0.08] rounded-xl px-3 py-2 text-sm mb-2 text-white outline-none"
           placeholder="Price"
         />
         {v && (
-          <p className="text-xs mb-2">
-            {v === "value" && "Value"}
-            {v === "fair" && "Fair"}
-            {v === "pass" && "Pass"}
-          </p>
+          <p className="text-xs text-white/55 mb-2 capitalize">{v}</p>
         )}
-      </div>
+      </motionPanel>
+    </motionBackdrop>
+  );
+}
+
+function motionBackdrop({
+  children,
+  onClose,
+}: {
+  children: ReactNode;
+  onClose: () => void;
+}) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex flex-col justify-end bg-black/50"
+      onClick={onClose}
+    >
+      {children}
     </div>
   );
+}
+
+function motionPanel({ children }: { children: ReactNode }) {
+  return (
+    <div
+      className="bg-card rounded-t-[20px] px-4 py-4 max-h-[85vh] overflow-y-auto animate-slide-up border-t border-white/[0.06]"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {children}
+    </div>
+  );
+}
+
+function motionDlItem({ label, value }: { label: string; value: string }) {
+  return (
+    <motionDtDd>
+      <dt className="text-white/35">{label}</dt>
+      <dd>{value}</dd>
+    </motionDtDd>
+  );
+}
+
+function motionDtDd({ children }: { children: ReactNode }) {
+  return <div>{children}</div>;
+}
+
+function motionLastTen({ children }: { children: ReactNode }) {
+  return <div className="mb-3">{children}</div>;
 }

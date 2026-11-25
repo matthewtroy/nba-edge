@@ -14,12 +14,13 @@ import { ResultsScreen } from "./screens/ResultsScreen";
 import { GamesScreen } from "./screens/GamesScreen";
 import type { PickLeg } from "@lib/types";
 import { ErrorBoundary } from "./components/ErrorBoundary";
+import { LoadingSkeleton } from "./components/LoadingSkeleton";
 
 type Tab = "today" | "picks" | "games" | "injuries" | "results";
 
 function PhoneShell({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <div className={`mx-auto w-full max-w-phone min-h-full bg-surface text-white ${className}`}>
+    <div className={`mx-auto w-full max-w-phone min-h-full bg-page text-white ${className}`}>
       {children}
     </div>
   );
@@ -51,11 +52,7 @@ export default function App() {
   };
 
   if (!index || data.loading) {
-    return (
-      <PhoneShell className="flex items-center justify-center text-white/60 px-4">
-        Loading…
-      </PhoneShell>
-    );
+    return <LoadingSkeleton />;
   }
 
   return (

@@ -1,4 +1,4 @@
-/** Injury / redistribution vs matchup / form styling on reason copy. */
+/** Injury vs matchup / form copy (UI only). */
 export function legReasonLineUi(reasonLine: string): {
   className: string;
   prefix: string;
@@ -7,6 +7,12 @@ export function legReasonLineUi(reasonLine: string): {
     reasonLine
   );
   return injury
-    ? { className: "text-sm text-amber-400/95 font-medium", prefix: "⚡ " }
-    : { className: "text-sm text-green-400/90 font-medium", prefix: "↗ " };
+    ? {
+        className: "text-xs text-reason-injury font-medium truncate",
+        prefix: "⚡ ",
+      }
+    : {
+        className: "text-xs text-reason-matchup font-medium truncate",
+        prefix: "",
+      };
 }

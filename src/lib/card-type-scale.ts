@@ -1,18 +1,21 @@
-/** Shared compact type scale for multi / game SGM cards (390px target). */
-export const cardType = {
-  section: "p-3 mb-2",
-  headerTitle: "text-[17px] font-semibold leading-snug",
-  headerTotal: "text-[17px] font-bold leading-tight",
-  headerBookie: "text-xs text-white/45 leading-tight",
-  crossGameTitle: "text-[13px] font-semibold text-white/90 leading-tight",
-  crossGameMeta: "text-[11px] text-white/45 leading-tight",
-  legRow: "py-2",
-  legTitle: "text-sm font-medium leading-snug",
-  legGame: "text-[11px] text-white/40",
-  legPrice: "text-[15px] font-semibold text-green-400 leading-tight",
-  legFair: "text-[11px] text-white/50",
-  legReason: "text-xs leading-snug",
-  badge: "text-[10px] px-1.5 py-px rounded-full",
-  legGap: "gap-2",
-  footerBtn: "text-xs py-2 px-2",
+/** Premium calm card tokens (390px-first). */
+export const ui = {
+  card: "theme-adaptive-card bg-card rounded-card border border-white/[0.06] p-4 mb-3",
+  divider: "border-white/[0.05]",
+  headerTitle: "text-base font-semibold text-white theme-adaptive-title leading-snug",
+  headerTotal: "text-[22px] font-bold text-price-green tabular-nums leading-none",
+  headerBookie: "text-xs text-white/45 theme-adaptive-muted leading-tight mt-1",
+  legTitle: "text-sm font-medium text-white theme-adaptive-title leading-snug",
+  legPrice: "text-lg font-bold text-price-green tabular-nums leading-tight",
+  legFair: "text-[11px] text-white/45 theme-adaptive-muted tabular-nums",
+  badge:
+    "text-[10px] px-1.5 py-px rounded-full bg-white/[0.08] text-white/65 border-0",
+  badgeDanger: "text-[10px] px-1.5 py-px rounded-full bg-white/[0.08] text-red-400",
+  copyBtn:
+    "w-full py-3 text-sm text-white/70 border-t border-white/[0.05] hover:bg-white/[0.03] transition-colors",
+  chip:
+    "text-[10px] px-2.5 py-1 rounded-full bg-white/[0.08] text-white/70 border-0",
+  chipOn: "ring-1 ring-white/20 bg-white/[0.12] text-white",
+  chipOff: "opacity-60",
+  chipExcluded: "opacity-40",
 } as const;
