@@ -117,13 +117,18 @@ export async function runLivePipeline(
     let merged = dedupeGames(parseScoreboard(boardToday, yesterdayPlayed));
     const todaySlate = filterSlateToTodaySydney(merged, now);
     let tomorrowSlate = filterSlateToNextSydney(merged);
+    const tomorrowYmd = tomorrowSydneyDateString(now);
+    console.log(
+      `dual-slate: scoreboard ET ${todayEt} · merged=${merged.length} · today Sydney=${todaySlate.length} · tomorrow on board=${tomorrowSlate.length}`
+    );
     if (!tomorrowSlate.length) {
       const tomorrowBoard = await maybeTomorrowBoard(now, todaySlate, yesterdayPlayed);
-      merged = dedupeGames([...merged, ...tomorrowBoard]);
-      tomorrowSlate = filterOpenGamesOnSydneyDate(
-        merged,
-        tomorrowSydneyDateString(now)
+      const tEt = formatYyyymmddInZone(new Date(now.getTime() + 86400000), ET);
+      console.log(
+        `dual-slate: scoreboard ET ${tEt} probed · ${tomorrowBoard.length} games parsed · filter Sydney ${tomorrowYmd}`
       );
+      merged = dedupeGames([...merged, ...tomorrowBoard]);
+      tomorrowSlate = filterOpenGamesOnSydneyDate(merged, tomorrowYmd);
     }
     if (todaySlate.length) slatesToPublish.push(todaySlate);
     if (tomorrowSlate.length) {
@@ -513,10 +518,9 @@ function dateFromYyyymmdd(s: string): Date {
 
 async function maybeTomorrowBoard(
   now: Date,
-  today: SlateGame[],
+  _today: SlateGame[],
   yesterdayPlayed: Set<string>
 ): Promise<SlateGame[]> {
-  if (today.length >= 2) return [];
   const tomorrow = new Date(now.getTime() + 86400000);
   const tEt = formatYyyymmddInZone(tomorrow, ET);
   try {

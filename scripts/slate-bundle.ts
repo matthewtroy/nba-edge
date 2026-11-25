@@ -151,8 +151,13 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   );
   fs.writeFileSync(path.join(outDir, "meta.json"), JSON.stringify(metaOut, null, 2));
 
+  const priced = picks.filter(
+    (p) =>
+      (p.bestPrice != null && p.bestPrice > 1) ||
+      (p.bookiePrices && Object.values(p.bookiePrices).some((v) => v > 1))
+  ).length;
   console.log(
-    `slate ${tipDate}: ${input.slate.length} games, ${picks.length} legs, ${multis.length} multis (${statusLabel})`
+    `slate ${tipDate}: ${input.slate.length} games, ${picks.length} legs, ${multis.length} multis, ${priced} priced`
   );
 
   return {
