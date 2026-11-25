@@ -5,6 +5,7 @@ import { displayLegRowTags } from "@lib/value-at-bookie";
 import { legPriceAtBookie } from "@lib/single-bookie";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { LastFiveTicks } from "./LastFiveTicks";
+import { hotStreakLabel, isHotStreak } from "@lib/hot-streak";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
 import { legRowReasonLines } from "@lib/leg-row-reasons";
 import { ui } from "../lib/card-type-scale";
@@ -30,6 +31,7 @@ export function PickLegRow({ leg, injuries, slate, myBookie, onTap }: Props) {
   const price = legPriceAtBookie(leg, myBookie);
   const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
   const ticks = leg.recentVsLine ?? [];
+  const streakLabel = hotStreakLabel(ticks);
   const injStatus = injuryStatusForPlayer(injuries, leg.playerId);
 
   return (
@@ -70,8 +72,11 @@ export function PickLegRow({ leg, injuries, slate, myBookie, onTap }: Props) {
           </div>
         )}
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1.5">
+          <LastFiveTicks ticks={ticks} inline past5Label />
+          {streakLabel && isHotStreak(ticks) ? (
+            <LegBadge label={streakLabel} />
+          ) : null}
           <InjuryStatusBadge status={injStatus} />
-          <LastFiveTicks ticks={ticks} inline hideLabel />
           {tags.map((t) => (
             <LegBadge key={t} label={t} danger={t === "Blowout risk"} />
           ))}

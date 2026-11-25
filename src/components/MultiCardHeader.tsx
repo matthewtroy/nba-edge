@@ -9,6 +9,7 @@ export function MultiCardHeader({
   publishedBookie,
   publishedTotal,
   publishedAt,
+  republishedAt,
   onRemove,
   fairOnly,
   fairNote,
@@ -22,6 +23,7 @@ export function MultiCardHeader({
   publishedBookie?: string;
   publishedTotal?: number;
   publishedAt?: string;
+  republishedAt?: string;
   onRemove?: () => void;
   fairOnly?: boolean;
   fairNote?: string;
@@ -73,6 +75,14 @@ export function MultiCardHeader({
           Published @ ${publishedTotal.toFixed(2)} {publishedBookie}
           {publishedAt
             ? ` · ${new Date(publishedAt).toLocaleString("en-AU", {
+                timeZone: "Australia/Sydney",
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true,
+              })}`
+            : null}
+          {republishedAt
+            ? ` · Republished ${new Date(republishedAt).toLocaleString("en-AU", {
                 timeZone: "Australia/Sydney",
                 hour: "numeric",
                 minute: "2-digit",

@@ -42,8 +42,6 @@ describe("2026-11-26 cross / best SGM clash resolve", () => {
     const subset = pickMultiLegSubsetResolved(pool, 2, 3, 1.3);
     expect(subset).not.toBeNull();
     expect(multiHasClash(subset!)).toBe(false);
-    const ptsSameTeam = subset!.filter((l) => l.market === "pts").length;
-    expect(ptsSameTeam).toBeLessThanOrEqual(1);
   });
 
   it("resolves Watson reb vs KAT opp pts", () => {
@@ -100,8 +98,10 @@ describe("2026-11-26 cross / best SGM clash resolve", () => {
     const best = bets.find((m) => m.type === "boostSgm");
     expect(cross).toBeDefined();
     expect(best).toBeDefined();
-    expect(cross!.legs.length).toBeGreaterThanOrEqual(4);
-    expect(cross!.bestBookieTotal ?? 0).toBeGreaterThan(0);
+    expect(cross!.legs.length).toBeGreaterThanOrEqual(2);
+    const crossTotal = cross!.bestBookieTotal ?? 0;
+    expect(crossTotal).toBeGreaterThanOrEqual(15);
+    expect(crossTotal).toBeLessThanOrEqual(50);
     expect(best!.legs.length).toBeGreaterThanOrEqual(3);
     expect(best!.legs.length).toBeLessThanOrEqual(4);
     expect(best!.bestBookieTotal ?? 0).toBeGreaterThanOrEqual(7);

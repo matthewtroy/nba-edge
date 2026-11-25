@@ -2,14 +2,16 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import type { MultiBet, PickLeg, SlateGame } from "@lib/types";
 import { gameShortLabel } from "@lib/games-sgm-ui";
 
-function storageKey(multi: MultiBet): string {
-  return `cross-games:${multi.type}:${multi.legs.join(",")}`;
+export function crossGameStorageKey(multi: MultiBet, slateDate?: string): string {
+  const day = slateDate?.trim() || "slate";
+  return `cross-games:today:${day}:${multi.type}:${multi.legs.join(",")}`;
 }
 
 export function useCrossGameSelection(
   multi: MultiBet,
   legs: PickLeg[],
-  slate?: SlateGame[]
+  slate?: SlateGame[],
+  slateDate?: string
 ) {
   const groupsByGame = useMemo(() => {
     const m = new Map<string, { status: string; excludedReason?: string; legIds: Set<string> }>();
@@ -30,7 +32,7 @@ export function useCrossGameSelection(
 
   const [enabled, setEnabled] = useState<Set<string>>(() => {
     try {
-      const raw = localStorage.getItem(storageKey(multi));
+      const raw = localStorage.getItem(crossGameStorageKey(multi, slateDate));
       if (raw) {
         const arr = JSON.parse(raw) as string[];
         return new Set(arr);
@@ -54,8 +56,8 @@ export function useCrossGameSelection(
   }, [gameIds, multi.legs.join(",")]);
 
   useEffect(() => {
-    localStorage.setItem(storageKey(multi), JSON.stringify([...enabled]));
-  }, [enabled, multi]);
+    localStorage.setItem(crossGameStorageKey(multi, slateDate), JSON.stringify([...enabled]));
+  }, [enabled, multi, slateDate]);
 
   const toggle = useCallback((gameId: string) => {
     setEnabled((prev) => {

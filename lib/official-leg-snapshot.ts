@@ -39,6 +39,9 @@ export function freezeOfficialLegSnapshots(
         reasonLine: leg.reasonLine,
         recentVsLine: leg.recentVsLine,
         recentTenVsLine: leg.recentTenVsLine,
+        lastTenStatValues: leg.lastTenStatValues
+          ? [...leg.lastTenStatValues]
+          : undefined,
         bookiePrices: leg.bookiePrices ? { ...leg.bookiePrices } : undefined,
         feedLineNote: leg.feedLineNote,
         questionable: leg.questionable,
@@ -80,6 +83,7 @@ export function pickLegFromSnapshot(snap: OfficialLegSnapshot): PickLeg {
     reasonLine: snap.reasonLine,
     recentVsLine: snap.recentVsLine,
     recentTenVsLine: snap.recentTenVsLine,
+    lastTenStatValues: snap.lastTenStatValues,
     bookiePrices,
     bestBookie: bookie,
     bestPrice: price,

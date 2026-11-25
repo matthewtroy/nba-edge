@@ -161,12 +161,12 @@ export function LegSheet({
   const modelLeg = bookieView.modelLeg;
   const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
   const last10 =
+    leg.recentTenVsLine ??
     modelLeg.recentTenVsLine ??
     modelLeg.recentVsLine ??
-    leg.recentTenVsLine ??
     leg.recentVsLine ??
     [];
-  const last10Vals = modelLeg.lastTenStatValues ?? leg.lastTenStatValues;
+  const last10Vals = leg.lastTenStatValues ?? modelLeg.lastTenStatValues;
   const isQ1 = modelLeg.market.startsWith("q1");
   const feedPrice = bookieView.displayPrice;
 
@@ -445,7 +445,7 @@ function MotionPanelInner({
       onClick={(e) => e.stopPropagation()}
     >
       <div
-        className="rounded-t-[20px] px-4 pt-2 pb-8 max-h-[70vh] overflow-y-auto overscroll-contain w-full"
+        className="rounded-t-[20px] px-4 pt-1 pb-6 max-h-[65vh] overflow-y-auto overscroll-contain w-full"
         style={{ transform: dragY ? `translateY(${dragY}px)` : undefined }}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}

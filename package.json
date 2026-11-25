@@ -22,10 +22,12 @@
     "screenshots:picks": "npm run build && tsx scripts/capture-picks-screenshots.ts",
     "screenshots:run44": "npm run build && tsx scripts/capture-run44-screenshots.ts",
     "screenshots:bookie-switch": "npm run build && tsx scripts/capture-bookie-switch-screenshots.ts",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "check:tracked-data": "bash scripts/check-tracked-data.sh"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.49.1"
+    "@supabase/supabase-js": "^2.49.1",
+    "html-to-image": "^1.11.13"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",

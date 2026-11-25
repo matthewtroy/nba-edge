@@ -27,7 +27,7 @@ function normalizeFactKey(text: string): string {
 /** Reject reason copy with impossible stat numbers (e.g. mis-parsed ESPN rows). */
 export function reasonPassesPlausibility(text: string): boolean {
   const t = text.toLowerCase();
-  if (/allow [\d.]+\s+(pts|reb|ast|threes)/i.test(text) && /per 48|to guards|to forwards|to centers/i.test(text)) {
+  if (/allow [\d.]+\s+(pts|reb|ast|threes)/i.test(text) && /per game|to guards|to forwards|to centers/i.test(text)) {
     return true;
   }
   const nums = [...text.matchAll(/([\d.]+)\s*(fga|min|mins|minutes|pts|points|reb|rebounds|ast|assists)/gi)];

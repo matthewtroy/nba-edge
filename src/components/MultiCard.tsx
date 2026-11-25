@@ -1,8 +1,14 @@
+import { useRef, useState } from "react";
 import type { InjuryEntry, MultiBet, PickLeg, SlateGame } from "@lib/types";
 import { FEED_BOOKIES, isFeedBookie } from "@lib/card-bookie";
 import { MultiLegRow } from "./MultiLegRow";
 import { renderMultiCardCopyText } from "@lib/multi-card-text";
-import { useMultiBookieSelect } from "../hooks/useMultiBookieSelect";
+import {
+  useMultiBookieSelect,
+  type MultiBookieStorageScope,
+} from "../hooks/useMultiBookieSelect";
+import { BookieBottomSheet } from "./BookieBottomSheet";
+import { captureMultiCardPng } from "../lib/share-multi-image";
 import { multiCardTitle, type MultiCardTitleOptions } from "@lib/multi-combined";
 import { bestFeedMultiQuote } from "@lib/card-bookie";
 import { legPriceAtBookieWithCatalog } from "@lib/single-bookie";
@@ -19,6 +25,7 @@ import {
 } from "@lib/feed-bookie-options";
 import type { BookiePriceOpts } from "@lib/single-bookie";
 import { multiCardBookieHeaderLabel } from "@lib/multi-card-bookie-header";
+import { slateMatchupAbbrev } from "@lib/team-abbrev";
 
 interface Props {
   multi: MultiBet;
@@ -36,9 +43,13 @@ interface Props {
   officialDisplayOnly?: boolean;
   liveCatalog?: PickLeg[];
   compact?: boolean;
+  slateDate?: string;
+  bookieStorageScope?: MultiBookieStorageScope;
+  republishedAt?: string;
   onRemove?: () => void;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (text: string) => void;
+  onShareError?: (message: string) => void;
 }
 
 export const FORBIDDEN_MULTI_CARD_STRINGS = [
@@ -81,13 +92,19 @@ export function MultiCard({
   onCopy,
   slate,
   oddsLastPulled,
+  slateDate,
+  bookieStorageScope = "today",
+  republishedAt,
+  onShareError,
 }: Props) {
+  const cardRef = useRef<HTMLElement>(null);
+  const [bookieSheetOpen, setBookieSheetOpen] = useState(false);
   const allPicks = Array.from(picksById.values());
   const { resolveLeg, swapLeg, resetLeg, isEdited } = useMultiLegEdits(multi, allPicks);
   const legsAll = multi.legs
     .map((id) => resolveLeg(id))
     .filter(Boolean) as PickLeg[];
-  const crossSel = useCrossGameSelection(multi, legsAll, slate);
+  const crossSel = useCrossGameSelection(multi, legsAll, slate, slateDate);
   const legs =
     multi.type === "crossGameSgm" ? crossSel.filteredLegs : legsAll;
 
@@ -106,7 +123,8 @@ export function MultiCard({
     officialDisplayOnly ? undefined : lockedBookie,
     priceCatalog,
     officialDisplayOnly ? lockedBookie : undefined,
-    priceOpts
+    priceOpts,
+    bookieStorageScope
   );
   const feedOptions = feedBookieOptionsForMulti(legs, priceCatalog, priceOpts);
   const rawBook = bookie ?? lockedBookie ?? multi.bestBookie;
@@ -149,8 +167,33 @@ export function MultiCard({
         showFairOnly,
       });
 
+  const bookieOptions = feedOptions.map((row) => ({
+    value: row.bookie,
+    label: formatFeedBookieOptionLabel(row),
+  }));
+
+  async function shareImage() {
+    if (!cardRef.current) return;
+    try {
+      const blob = await captureMultiCardPng(cardRef.current, legs.length);
+      const file = new File([blob], "nba-edge-multi.png", { type: "image/png" });
+      if (navigator.share && navigator.canShare?.({ files: [file] })) {
+        await navigator.share({ files: [file], title: multi.label });
+        return;
+      }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "nba-edge-multi.png";
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      onShareError?.(err instanceof Error ? err.message : "Share failed");
+    }
+  }
+
   return (
-    <section className={`${ui.card} ${compact ? "" : ""}`}>
+    <section ref={cardRef} className={`${ui.card} ${compact ? "" : ""}`}>
       <MultiCardHeader
         title={displayTitle}
         total={headerTotal}
@@ -171,6 +214,7 @@ export function MultiCard({
           officialDisplayOnly ? publishedTotal ?? multi.bestBookieTotal : undefined
         }
         publishedAt={officialDisplayOnly ? publishedAt : undefined}
+        republishedAt={officialDisplayOnly ? republishedAt : undefined}
         fairOnly={showFairOnly}
         fairNote={showFairOnly ? subline || oddsNote : undefined}
         onRemove={onRemove}
@@ -236,32 +280,52 @@ export function MultiCard({
       </div>
 
       {!showFairOnly && !hideBookieSelect && (!lockedBookie || officialDisplayOnly) && (
-        <select
-          className="w-full mb-2 py-2 text-xs text-white/70 bg-transparent border-0 border-b border-white/[0.05] outline-none"
-          value={displayBook ?? ""}
-          onChange={(e) => select(e.target.value)}
-          aria-label={officialDisplayOnly ? "Preview bookie prices" : "Bookie"}
-        >
-          {feedOptions.map((row) => (
-            <option key={row.bookie} value={row.bookie}>
-              {formatFeedBookieOptionLabel(row)}
-              {officialDisplayOnly && row.bookie === displayBook ? " preview" : ""}
-            </option>
-          ))}
-        </select>
+        <>
+          <button
+            type="button"
+            className="w-full mb-2 py-2 text-xs text-left text-white/70 border-b border-white/[0.05]"
+            onClick={() => setBookieSheetOpen(true)}
+            aria-label={officialDisplayOnly ? "Preview bookie prices" : "Bookie"}
+          >
+            {displayBook
+              ? formatFeedBookieOptionLabel(
+                  feedOptions.find((r) => r.bookie === displayBook) ?? {
+                    bookie: displayBook,
+                    missing: missingAtBookie,
+                    complete: missingAtBookie === 0,
+                    total,
+                  }
+                )
+              : "Select bookie"}
+            <span className="float-right text-white/35">▾</span>
+          </button>
+          <BookieBottomSheet
+            open={bookieSheetOpen}
+            title={officialDisplayOnly ? "Preview bookie" : "Bookie"}
+            options={bookieOptions}
+            value={displayBook ?? ""}
+            onSelect={select}
+            onClose={() => setBookieSheetOpen(false)}
+          />
+        </>
       )}
 
-      <button
-        type="button"
-        className={ui.copyBtn}
-        onClick={() =>
-          onCopy(
-            renderMultiCardCopyText(multi, legs, legBookie || undefined, titleOpts)
-          )
-        }
-      >
-        {discordCopy ? "Copy for Discord" : "Copy"}
-      </button>
+      <div className="flex gap-2">
+        <button
+          type="button"
+          className={`${ui.copyBtn} flex-1`}
+          onClick={() =>
+            onCopy(
+              renderMultiCardCopyText(multi, legs, legBookie || undefined, titleOpts)
+            )
+          }
+        >
+          {discordCopy ? "Copy for Discord" : "Copy"}
+        </button>
+        <button type="button" className={`${ui.copyBtn} flex-1`} onClick={() => void shareImage()}>
+          Share
+        </button>
+      </div>
     </section>
   );
 }
@@ -317,7 +381,7 @@ function CrossLegGroups({
         if (!rows?.length) return null;
         const game = slate?.find((g) => g.id === gameId);
         const matchup = game
-          ? `${game.awayTeam} @ ${game.homeTeam}`
+          ? slateMatchupAbbrev(game)
           : rows[0]?.leg.team ?? "Game";
         const time = game?.startTimeSydney ?? "";
         const blowout = game?.spread != null && Math.abs(game.spread) >= 14.5;

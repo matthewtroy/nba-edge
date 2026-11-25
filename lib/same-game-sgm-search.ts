@@ -10,6 +10,9 @@ import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
 
 export const SGM_BAND_MIN = 7;
 export const SGM_BAND_MAX = 15;
+export const CROSS_SGM_BAND_MIN = 15;
+export const CROSS_SGM_BAND_MAX = 50;
+export const CROSS_SGM_MAX_GAMES = 5;
 export const SGM_MIN_LEGS = 3;
 export const SGM_MAX_LEGS = 4;
 export const SGM_MIN_LEG_PRICE = 1.3;
@@ -85,8 +88,8 @@ export function pickBestSameGameSgmCombo(
   return best;
 }
 
-const CROSS_MIN_LEGS = 2;
-const CROSS_MAX_LEGS = 3;
+const CROSS_MIN_LEGS = 1;
+const CROSS_MAX_LEGS = 2;
 
 /** Best 2–3 leg same-game subset for cross-game multis (clash resolve: keep higher p). */
 export function pickBestCrossGameLegSubset(pool: PickLeg[]): PickLeg[] | null {

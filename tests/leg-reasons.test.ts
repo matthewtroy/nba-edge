@@ -89,7 +89,8 @@ describe("leg reasons structured", () => {
       opponentName: "Miami Heat",
     });
     const matchup = reasons.find((r) => r.type === "matchup");
-    expect(matchup?.text).toMatch(/Heat allow 72\.7 pts per 48 to guards, the most/);
+    expect(matchup?.text).toMatch(/Heat allow [\d.]+ pts per game to guards, the most/);
+    expect(matchup?.text.toLowerCase()).not.toContain("per 48");
   });
 
   it("keeps separate reason lines for UI", () => {

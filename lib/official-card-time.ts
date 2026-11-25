@@ -23,6 +23,7 @@ export interface OfficialLegSnapshot {
   reasonLine?: string;
   recentVsLine?: ("hit" | "miss" | "na")[];
   recentTenVsLine?: ("hit" | "miss" | "na")[];
+  lastTenStatValues?: (number | null)[];
   bookiePrices?: Record<string, number>;
   feedLineNote?: string;
   questionable?: boolean;

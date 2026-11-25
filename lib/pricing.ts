@@ -260,7 +260,7 @@ export function buildLegsForPlayer(
       reasons: [],
       recentVsLine: lastFiveVsLine(ctx.logs, market, line),
       recentTenVsLine: lastTenVsLine(ctx.logs, market, line),
-      lastTenStatValues: [...modelLogs]
+      lastTenStatValues: [...ctx.logs]
         .sort((a, b) => b.date.localeCompare(a.date))
         .slice(0, 10)
         .map((g) => statValue(g, market)),

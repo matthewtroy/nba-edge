@@ -1,15 +1,21 @@
+import { displayTicksChronological } from "@lib/hot-streak";
+
 export function LastFiveTicks({
   ticks,
   compact = false,
   hideLabel = false,
   inline = false,
+  past5Label = false,
 }: {
   ticks: ("hit" | "miss" | "na")[];
   compact?: boolean;
   hideLabel?: boolean;
   inline?: boolean;
+  /** Show "Past 5" label on leg rows (meta row). */
+  past5Label?: boolean;
 }) {
   if (!ticks.length) return null;
+  const ordered = displayTicksChronological(ticks);
   const dot = compact || inline ? "w-1.5 h-1.5 rounded-full" : "w-2 h-2 rounded-full";
   return (
     <span
@@ -17,10 +23,12 @@ export function LastFiveTicks({
         compact || inline ? "gap-0.5" : "gap-1"
       }`}
     >
-      {!hideLabel && !compact && !inline ? (
-        <span className="text-xs text-white/45 mr-1">Last 5:</span>
-      ) : null}
-      {ticks.map((t, i) => (
+      {(past5Label || (!hideLabel && !compact && !inline)) && (
+        <span className="text-[10px] text-white/45 mr-0.5">
+          {past5Label ? "Past 5" : "Last 5:"}
+        </span>
+      )}
+      {ordered.map((t, i) => (
         <span
           key={i}
           className={`${dot} ${

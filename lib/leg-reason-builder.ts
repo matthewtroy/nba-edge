@@ -74,9 +74,12 @@ function matchupPhrase(
           : "pts";
   const leagueAvg = leagueAvgAllowed(defense, playerPosition, row.stat);
   const rankPhrase = rank === 1 ? "the most" : `${ordinal(rank)} most`;
+  const perGame = Math.round((row.allowedPer48 * 36) / 48 * 10) / 10;
   const avgSuffix =
-    leagueAvg != null ? ` (league avg ${leagueAvg.toFixed(1)} per 48)` : "";
-  return `${opp} allow ${row.allowedPer48.toFixed(1)} ${statWord} per 48 to ${posLabel}, ${rankPhrase}${avgSuffix}`;
+    leagueAvg != null
+      ? ` (league avg ${((leagueAvg * 36) / 48).toFixed(1)} per game)`
+      : "";
+  return `${opp} allow ${perGame.toFixed(1)} ${statWord} per game to ${posLabel}, ${rankPhrase}${avgSuffix}`;
 }
 
 function playerRankPhrase(

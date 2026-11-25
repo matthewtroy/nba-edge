@@ -7,8 +7,13 @@ import {
 } from "@lib/single-bookie";
 import { pickDefaultBookie } from "@lib/multi-display";
 
-function storageKey(multi: MultiBet): string {
-  return `multi-bookie:${multi.type}:${multi.variant ?? ""}:${multi.legs.join(",")}`;
+export type MultiBookieStorageScope = "today" | "games" | "personal";
+
+export function multiBookieStorageKey(
+  multi: MultiBet,
+  scope: MultiBookieStorageScope
+): string {
+  return `multi-bookie:${scope}:${multi.type}:${multi.variant ?? ""}:${multi.legs.join(",")}`;
 }
 
 export function useMultiBookieSelect(
@@ -19,7 +24,8 @@ export function useMultiBookieSelect(
   catalog?: PickLeg[],
   /** Official card: preview other books; headline stays on published bookie. */
   displayOnlyPublished?: string,
-  priceOpts?: BookiePriceOpts
+  priceOpts?: BookiePriceOpts,
+  scope: MultiBookieStorageScope = "today"
 ) {
   const pool = catalog?.length ? catalog : legs;
   const hardLock = locked && !displayOnlyPublished ? locked : undefined;
@@ -27,7 +33,7 @@ export function useMultiBookieSelect(
     if (displayOnlyPublished) return displayOnlyPublished;
     if (hardLock) return hardLock;
     try {
-      const saved = localStorage.getItem(storageKey(multi));
+      const saved = localStorage.getItem(multiBookieStorageKey(multi, scope));
       if (saved) return saved;
     } catch {
       /* ignore */
@@ -50,9 +56,9 @@ export function useMultiBookieSelect(
   const select = useCallback(
     (b: string) => {
       setBookie(b);
-      localStorage.setItem(storageKey(multi), b);
+      localStorage.setItem(multiBookieStorageKey(multi, scope), b);
     },
-    [multi]
+    [multi, scope]
   );
 
   const offered = AU_BOOKMAKERS.filter(

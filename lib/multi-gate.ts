@@ -7,6 +7,7 @@ import {
   qualifiesMainPlayLeg,
   qualifiesCrossBoostLeg,
 } from "./main-play-eligibility.js";
+import { CROSS_SGM_BAND_MIN, CROSS_SGM_BAND_MAX } from "./same-game-sgm-search.js";
 import { combinedFairAndTakeAt, DEFAULT_MIN_EDGE } from "./multi-combined.js";
 
 const MIN_LEG_FAIR = 1.3;
@@ -147,10 +148,18 @@ function checkTypeRules(
       byGame.set(l.gameId, (byGame.get(l.gameId) ?? 0) + 1);
     }
     if (byGame.size < 2) issues.push("Cross-Game: need legs from 2+ games");
+    if (byGame.size > 5) issues.push("Cross-Game: more than 5 games");
     for (const [gid, n] of byGame) {
-      if (n < 2 || n > 3) {
-        issues.push(`Cross-Game: game ${gid} has ${n} legs (need 2–3)`);
+      if (n < 1 || n > 2) {
+        issues.push(`Cross-Game: game ${gid} has ${n} legs (need 1–2)`);
       }
+    }
+    const bookTotal =
+      multi.bestBookieTotal ?? bestFeedMultiQuote(legs)?.total ?? null;
+    if (bookTotal == null || bookTotal < CROSS_SGM_BAND_MIN || bookTotal > CROSS_SGM_BAND_MAX) {
+      issues.push(
+        `Cross-Game: bookie total ${bookTotal != null ? bookTotal.toFixed(2) : "?"} not $${CROSS_SGM_BAND_MIN}–$${CROSS_SGM_BAND_MAX}`
+      );
     }
   }
   return issues;

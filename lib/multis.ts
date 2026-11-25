@@ -6,6 +6,9 @@ import {
   pickBestCrossGameLegSubset,
   SGM_BAND_MIN,
   SGM_BAND_MAX,
+  CROSS_SGM_BAND_MIN,
+  CROSS_SGM_BAND_MAX,
+  CROSS_SGM_MAX_GAMES,
   legEdgeDecimal,
   SGM_MIN_LEG_PRICE,
 } from "./same-game-sgm-search.js";
@@ -40,6 +43,7 @@ import { combinedPriceForBookie, legPriceAtBookie } from "./single-bookie.js";
 import { multiBookieTotals } from "./bookie-totals.js";
 import { multiClashSummary } from "./clash.js";
 import { gateAllMultis } from "./multi-gate.js";
+import { slateMatchupAbbrev } from "./team-abbrev.js";
 import { isInjuryRedistributionReason } from "./injury-reason.js";
 import { logMultiBuildSummary } from "./multi-filter-log.js";
 import {
@@ -864,9 +868,7 @@ function buildQ1Multi(
 }
 
 function gameCrossLabel(game: SlateGame): string {
-  const away = game.awayTeam.split(" ").pop() ?? game.awayTeam;
-  const home = game.homeTeam.split(" ").pop() ?? game.homeTeam;
-  return `${away} @ ${home}`;
+  return slateMatchupAbbrev(game);
 }
 
 function buildCrossGameSgm(
@@ -888,7 +890,7 @@ function buildCrossGameSgm(
     }
   }
   const eligibleUnique = [...new Map(eligible.map((l) => [l.id, l])).values()];
-  if (eligibleUnique.length < 4) {
+  if (eligibleUnique.length < 2) {
     const reason = `Need 2+ games with starter main lines 1.35–2.50 @ bookie (${eligibleUnique.length} legs)`;
     pushMultiBuildTrace({
       type: "crossGameSgm",
@@ -961,12 +963,21 @@ function buildCrossGameSgm(
         .sort(sortLegs);
       const label = gameCrossLabel(game);
       const subset = pickBestCrossGameLegSubset(pool.slice(0, 16));
-      if (!subset || subset.length < 2) {
+      if (!subset?.length) {
         groups.push({
           gameId: gid,
           status: "excluded",
           legs: [],
           excludedReason: crossGameExcludedReason(label, bookie, pool.length),
+        });
+        continue;
+      }
+      if (gamesIncluded >= CROSS_SGM_MAX_GAMES) {
+        groups.push({
+          gameId: gid,
+          status: "excluded",
+          legs: [],
+          excludedReason: `${label}: cross capped at ${CROSS_SGM_MAX_GAMES} games`,
         });
         continue;
       }
@@ -978,9 +989,10 @@ function buildCrossGameSgm(
       });
       assembled.push(...subset);
     }
-    if (gamesIncluded < 2 || assembled.length < 4) continue;
-    maxRange += 1;
+    if (gamesIncluded < 2 || assembled.length < 2) continue;
     const total = comboProduct(assembled, bookie);
+    if (total < CROSS_SGM_BAND_MIN || total > CROSS_SGM_BAND_MAX) continue;
+    maxRange += 1;
     const p = combinedProb(assembled);
     const better =
       !bestAcross ||
@@ -1031,7 +1043,7 @@ function buildCrossGameSgm(
       combinedTakeAt: takeAt,
       ...overlayForBookie(bestAcross.legs, bestAcross.bookie, catalog),
       crossGameGroups: bestAcross.groups,
-      summary: "2+ games, 2–3 legs/game, one bookie (toggle games on card)",
+      summary: "2–5 games, 1–2 legs/game, $15–50 @ one bookie (toggle games on card)",
     },
     reason: "",
   };

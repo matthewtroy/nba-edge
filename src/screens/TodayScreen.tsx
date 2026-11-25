@@ -76,6 +76,10 @@ export function TodayScreen({
     headerOddsPull
   );
   const publishedAt = official?.publishedAt ?? official?.lockedAt;
+  const republishedAt = official?.republishedAt;
+  const whatChanged = useOfficial
+    ? official?.whatChanged
+    : data.meta.whatChanged;
 
   const cardPlayerIds = new Set(
     displayMultis.flatMap((m) =>
@@ -134,6 +138,7 @@ export function TodayScreen({
           {useOfficial && publishedAt && (
             <span className="inline-flex text-[11px] px-2 py-0.5 rounded-full bg-white/[0.08] text-white/70 border border-white/[0.06] mt-1">
               Official · {sydneyTimeFromIso(publishedAt)}
+              {republishedAt ? ` · Republished ${sydneyTimeFromIso(republishedAt)}` : ""}
             </span>
           )}
           {data.meta.slateStatusLabel &&
@@ -180,6 +185,15 @@ export function TodayScreen({
         <p className="text-sm text-accent-warn mb-3">Small slate</p>
       )}
 
+      {whatChanged && whatChanged.length > 0 && (
+        <div className="text-[11px] text-white/55 mb-3 space-y-0.5">
+          <p className="text-white/45 uppercase tracking-wide">What changed</p>
+          {whatChanged.slice(0, 4).map((line) => (
+            <p key={line}>• {line}</p>
+          ))}
+        </div>
+      )}
+
       <NotBuiltSection items={notBuilt} />
 
       {useOfficial && (
@@ -207,6 +221,8 @@ export function TodayScreen({
             preferredBookie={myBookie}
             lockedBookie={useOfficial && !cardFairOnly ? m.bestBookie : undefined}
             publishedAt={useOfficial ? publishedAt : undefined}
+            republishedAt={useOfficial ? republishedAt : undefined}
+            slateDate={data.meta.slateTipDate ?? slateDate}
             officialDisplayOnly={useOfficial && !cardFairOnly}
             hideBookieSelect={m.type === "q1Multi" || (slateFairOnly && !useOfficial)}
             oddsLastPulled={oddsForCard}

@@ -1,4 +1,5 @@
 import type { PickLeg, SlateGame } from "./types.js";
+import { slateMatchupWithTip } from "./team-abbrev.js";
 
 function findSlateGame(slate: SlateGame[], gameId: string | undefined): SlateGame | undefined {
   if (!gameId) return undefined;
@@ -12,7 +13,5 @@ export function legGameTipSubtitle(
   if (!leg?.gameId) return null;
   const g = findSlateGame(slate, leg.gameId);
   if (!g) return null;
-  const matchup = `${g.awayTeam} @ ${g.homeTeam}`;
-  const tip = g.startTimeSydney?.trim();
-  return tip ? `${matchup} · ${tip}` : matchup;
+  return slateMatchupWithTip(g);
 }

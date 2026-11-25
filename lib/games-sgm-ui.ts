@@ -1,14 +1,14 @@
 import type { MultiBet, PickLeg, SlateGame } from "./types.js";
 import type { GameSgmCard } from "./game-sgm-builder.js";
+import { slateMatchupAbbrev, slateMatchupWithTip } from "./team-abbrev.js";
 
 export function gameShortLabel(game: SlateGame): string {
-  return `${game.awayTeam.split(" ").pop()} @ ${game.homeTeam.split(" ").pop()}`;
+  return slateMatchupAbbrev(game);
 }
 
-/** Games list row: "Heat @ 76ers · 9:00am" */
+/** Games list row: "CLE @ NYK · 11:30am" */
 export function gameListRowLabel(game: SlateGame): string {
-  const time = game.startTimeSydney.replace(/\s+/g, "").toLowerCase();
-  return `${gameShortLabel(game)} · ${time}`;
+  return slateMatchupWithTip(game);
 }
 
 export function gameSgmAsMulti(card: GameSgmCard, game: SlateGame): MultiBet {

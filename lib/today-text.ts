@@ -57,6 +57,9 @@ export function renderTodayText(input: {
   if (useOfficial && official) {
     const pub = official.publishedAt ?? official.lockedAt;
     lines.push(`Official card · Published ${formatSydneyTime(pub)} · ${cardBookie}`);
+    if (official.republishedAt) {
+      lines.push(`Republished ${formatSydneyTime(official.republishedAt)}`);
+    }
     lines.push("");
   }
 
