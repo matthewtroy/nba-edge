@@ -1,76 +1,65 @@
 {
-  "lastUpdated": "2026-11-25T01:28:30.559Z",
+  "lastUpdated": "2026-11-25T01:57:58.265Z",
   "oddsLastPulled": "2026-11-24T22:58:43.102Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
     "odds": "ok (from-live pages)"
   },
-  "slateSize": 3,
-  "smallSlate": true,
+  "slateSize": 9,
+  "smallSlate": false,
   "injuryImpactLog": [
-    "Duncan Robinson (Detroit Pistons): NBA Official Out; estimated +2.6 pts → Daniss Jenkins (no leg reason yet)",
-    "Duncan Robinson (Detroit Pistons): no redistribution reasons on slate legs",
-    "Mitchell Robinson (Boston Celtics): no redistribution reasons on slate legs",
-    "Tobi Lawal (Dallas Mavericks): no redistribution reasons on slate legs",
-    "Dereck Lively II (Dallas Mavericks): no redistribution reasons on slate legs",
-    "Sergio de Larrea (Dallas Mavericks): no redistribution reasons on slate legs",
-    "Tarik Biberovic (Dallas Mavericks): no redistribution reasons on slate legs",
-    "Ebuka Okorie (Detroit Pistons): no redistribution reasons on slate legs",
-    "Taurean Prince (Detroit Pistons): no redistribution reasons on slate legs",
-    "Jalen Duren (Detroit Pistons): no redistribution reasons on slate legs",
-    "Jonathan Isaac (Orlando Magic): no redistribution reasons on slate legs",
-    "Izaiyah Nelson (Orlando Magic): no redistribution reasons on slate legs",
-    "Noah Penda (Orlando Magic): no redistribution reasons on slate legs",
-    "Paolo Banchero (Orlando Magic): no redistribution reasons on slate legs",
-    "Tristan Vukcevic (Washington Wizards): no redistribution reasons on slate legs",
-    "Reece Beekman (Washington Wizards): no redistribution reasons on slate legs",
-    "Justin Champagnie (Washington Wizards): no redistribution reasons on slate legs",
-    "Jamir Watkins (Washington Wizards): no redistribution reasons on slate legs",
-    "Isaac Jones (Detroit Pistons): no redistribution reasons on slate legs",
-    "Ugonna Onyenso (Detroit Pistons): no redistribution reasons on slate legs",
-    "Colin Castleton (Orlando Magic): no redistribution reasons on slate legs",
-    "Amari Williams (Boston Celtics): no redistribution reasons on slate legs",
-    "Felix Okpara (Washington Wizards): no redistribution reasons on slate legs"
+    "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs",
+    "Ryan Kalkbrenner (Charlotte Hornets): no redistribution reasons on slate legs",
+    "Dennis Schroder (Charlotte Hornets): no redistribution reasons on slate legs",
+    "Kon Knueppel (Charlotte Hornets): no redistribution reasons on slate legs",
+    "Norman Powell (Chicago Bulls): no redistribution reasons on slate legs",
+    "Caleb Wilson (Chicago Bulls): no redistribution reasons on slate legs",
+    "Nae'Qwan Tomlin (Cleveland Cavaliers): no redistribution reasons on slate legs",
+    "Evan Mobley (Cleveland Cavaliers): no redistribution reasons on slate legs",
+    "Stephen Curry (Golden State Warriors): no redistribution reasons on slate legs",
+    "Kristaps Porzingis (Golden State Warriors): no redistribution reasons on slate legs",
+    "Moses Moody (Golden State Warriors): no redistribution reasons on slate legs",
+    "Bradley Beal (LA Clippers): no redistribution reasons on slate legs"
   ],
+  "slateMode": "next",
+  "slatePreview": true,
+  "slateTipDate": "2026-11-26",
   "whatChanged": [
-    "Duncan Robinson out → Daniss Jenkins +2.6 pts",
-    "Cade Cunningham out → Daniss Jenkins +4.2 pts"
+    "OG Anunoby out → Jalen Brunson +4.6 pts",
+    "Cameron Boozer out → Ty Jerome +3.1 pts",
+    "Jimmy Butler III out → Yaxel Lendeborg boards"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_08_15PM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_08_45PM.pdf",
+  "oddsCoverageNote": "from-live odds are today's Pages cache — tomorrow bookmaker markets often missing until closer to tip",
   "pricedLegCounts": {
     "pts": {
-      "total": 124,
-      "priced": 98
+      "total": 383,
+      "priced": 0
     },
     "reb": {
-      "total": 167,
-      "priced": 123
+      "total": 519,
+      "priced": 0
     },
     "ast": {
-      "total": 114,
-      "priced": 81
+      "total": 375,
+      "priced": 0
     },
     "3pm": {
-      "total": 196,
-      "priced": 129
+      "total": 647,
+      "priced": 0
     },
     "q1reb": {
-      "total": 70,
+      "total": 200,
       "priced": 0
     },
     "q1pts": {
-      "total": 2,
+      "total": 5,
       "priced": 0
     },
     "q1ast": {
-      "total": 2,
+      "total": 4,
       "priced": 0
     }
-  },
-  "officialCard": {
-    "lockedAt": "2026-11-25T01:28:33.043Z",
-    "slateDate": "2026-11-25",
-    "bookie": "Sportsbet"
   }
 }

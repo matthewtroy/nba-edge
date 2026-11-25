@@ -13,6 +13,18 @@ on:
     # Evening Sydney 21:00, 22:00, 23:00, 00:00, 01:00 (AEDT = 10–14 UTC; AEST = 9–13 UTC).
     - cron: "0 10,11,12,13,14 * * *"
   workflow_dispatch:
+    inputs:
+      slate:
+        description: Slate window (auto = earliest open Sydney day, next = following day)
+        type: choice
+        default: auto
+        options:
+          - auto
+          - next
+      preview:
+        description: Preview only — do not publish official card
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -38,7 +50,17 @@ jobs:
           fi
 
       - run: npm ci
-      - run: npm run pipeline
+
+      - name: Run pipeline
+        run: |
+          EXTRA=""
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            EXTRA="--slate=${{ inputs.slate }}"
+            [ "${{ inputs.preview }}" = "true" ] && EXTRA="$EXTRA --preview"
+          elif [ "${{ github.event.schedule }}" = "0 6 * * *" ]; then
+            EXTRA="--slate=next --preview"
+          fi
+          npm run pipeline $EXTRA
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
 

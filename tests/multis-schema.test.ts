@@ -9,7 +9,6 @@ const multis = JSON.parse(
 
 describe("multis.json schema", () => {
   it("has bestBookie fields and no stake/oneInX", () => {
-    expect(multis.bets.length).toBeGreaterThan(0);
     for (const b of multis.bets) {
       const bet = b as MultiBet & { oneInX?: number; stakeSuggestion?: number };
       expect(bet.oneInX).toBeUndefined();

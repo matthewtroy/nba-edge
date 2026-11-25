@@ -4,7 +4,7 @@ import {
   combinedPriceForBookie,
   legPriceAtBookie,
 } from "./single-bookie.js";
-import { marketLabel } from "./market-label.js";
+import { bookieMarketLabel } from "./market-label.js";
 import { isFeedBookie } from "./card-bookie.js";
 import { formatLegCardLine } from "./leg-card-odds.js";
 
@@ -40,7 +40,7 @@ export function pickDefaultBookie(
 }
 
 export function formatLegLineAtBookie(leg: PickLeg, bookie?: string): string {
-  if (!bookie) return `${leg.playerName} ${marketLabel(leg.market, leg.line)}`;
+  if (!bookie) return `${leg.playerName} ${bookieMarketLabel(leg.market, leg.line)}`;
   return formatLegCardLine(leg, bookie).trimStart();
 }
 

@@ -40,7 +40,15 @@ import {
 import type { InjuryEntry, SlateGame } from "../lib/types.js";
 import { normalizePlayerName } from "../lib/player-names.js";
 import { loadAliasMap } from "../lib/player-names.js";
-import { filterSlateToTodaySydney, slateTeamIds } from "../lib/slate-today.js";
+import {
+  filterOpenGamesOnSydneyDate,
+  filterSlateToNextSydney,
+  filterSlateToTodaySydney,
+  slateTeamIds,
+  slateTipDateFromGames,
+  tomorrowSydneyDateString,
+} from "../lib/slate-today.js";
+import type { SlateMode } from "../lib/slate-mode.js";
 import { buildOddsCoverage } from "../lib/odds-coverage.js";
 import {
   countPricedLegsByMarket,
@@ -69,10 +77,17 @@ import {
 export async function runLivePipeline(
   rootDir: string,
   outDir: string,
-  opts: { forceOdds?: boolean; fromLive?: boolean } = {}
+  opts: {
+    forceOdds?: boolean;
+    fromLive?: boolean;
+    slateMode?: SlateMode;
+    preview?: boolean;
+  } = {}
 ): Promise<void> {
   const forceOdds = opts.forceOdds === true;
   const fromLive = opts.fromLive === true;
+  const slateMode = opts.slateMode ?? "auto";
+  const preview = opts.preview === true;
   loadAliasMap(rootDir);
   const now = new Date();
   const sources: Record<string, string> = {
@@ -96,7 +111,21 @@ export async function runLivePipeline(
 
     yesterdayPlayed = teamIdsFromFinalGames(boardYesterday);
     const fromToday = parseScoreboard(boardToday, yesterdayPlayed);
-    slate = filterSlateToTodaySydney(dedupeGames(fromToday), now);
+    let merged = dedupeGames(fromToday);
+    if (slateMode === "next") {
+      const tomorrowBoard = await maybeTomorrowBoard(now, [], yesterdayPlayed);
+      merged = dedupeGames([...merged, ...tomorrowBoard]);
+      slate = filterSlateToNextSydney(merged);
+      if (!slate.length) {
+        const tomorrowYmd = tomorrowSydneyDateString(now);
+        slate = filterOpenGamesOnSydneyDate(merged, tomorrowYmd);
+      }
+      if (!slate.length) {
+        console.warn("next slate: no open games on tomorrow Sydney date");
+      }
+    } else {
+      slate = filterSlateToTodaySydney(merged, now);
+    }
   } catch (e) {
     console.error("ESPN scoreboard error:", e);
     sources.espn = "failed";
@@ -262,7 +291,7 @@ export async function runLivePipeline(
   const oddsCachePath = path.join(outDir, "odds-cache.json");
   const cache: OddsCacheFile = loadOddsCache(oddsCachePath);
   resetOddsDayIfNeeded(cache, now);
-  const slateDateSydney = sydneyDateString(now);
+  const slateDateSydney = slateTipDateFromGames(slate) ?? sydneyDateString(now);
   const existingOfficial = loadOfficialCard(outDir);
   const officialPublishedToday = existingOfficial?.slateDate === slateDateSydney;
 
@@ -431,13 +460,22 @@ export async function runLivePipeline(
     meta.oddsLastPulled
   );
 
+  let oddsNote = meta.oddsCoverageNote;
+  if (preview && fromLive && slateMode === "next") {
+    oddsNote =
+      "from-live odds are today's Pages cache — tomorrow bookmaker markets often missing until closer to tip";
+  }
+
   const metaOut = {
     ...meta,
+    slateMode,
+    slatePreview: preview,
+    slateTipDate: slateDateSydney,
     oddsLastPulled: oddsLastDisplayed,
     whatChanged,
     ...(nbaOfficialUrl ? { nbaOfficialUrl } : {}),
     ...(nbaOfficialLastTriedUrl ? { nbaOfficialLastTriedUrl } : {}),
-    ...(oddsCoverage.note ? { oddsCoverageNote: oddsCoverage.note } : {}),
+    ...(oddsNote ? { oddsCoverageNote: oddsNote } : {}),
     pricedLegCounts,
     ...(oddsAttachWarnings.length ? { oddsAttachWarnings } : {}),
     ...(multisPayload.gateViolations?.length
@@ -446,6 +484,7 @@ export async function runLivePipeline(
   };
 
   if (
+    !preview &&
     shouldPublishOfficialCard(now, picks, existingOfficial, slateDateSydney)
   ) {
     const official = writeOfficialCard(outDir, {
@@ -477,8 +516,9 @@ export async function runLivePipeline(
   fs.writeFileSync(path.join(outDir, "history.json"), JSON.stringify(history, null, 2));
   fs.writeFileSync(oddsCachePath, JSON.stringify(cache, null, 2));
 
+  const modeLabel = preview ? "preview" : "live";
   console.log(
-    `Pipeline OK: ${slate.length} games, ${picks.length} legs, ${multis.length} multis (${fromLive ? "from-live" : "live"})`
+    `Pipeline OK: ${slate.length} games, ${picks.length} legs, ${multis.length} multis (slate=${slateMode}, ${fromLive ? "from-live" : modeLabel})`
   );
 }
 

@@ -1,5 +1,5 @@
 import type { InjuryEntry, PickLeg } from "@lib/types";
-import { marketLabel } from "@lib/market-label";
+import { bookieMarketLabel } from "@lib/market-label";
 import { displayTagsForBookie } from "@lib/value-at-bookie";
 import { legPriceAtCardBookie } from "@lib/leg-card-odds";
 import { topBeneficiaryLastNames } from "@lib/injury-beneficiaries";
@@ -44,7 +44,7 @@ export function MultiLegRow({ leg, injuries, picks, bookie, onTap }: Props) {
         />
         <div className="flex-1 min-w-0">
           <div className="font-medium break-words leading-snug">
-            {leg.playerName} {marketLabel(leg.market, leg.line)}
+            {leg.playerName} {bookieMarketLabel(leg.market, leg.line)}
           </div>
           <LastFiveTicks ticks={leg.recentVsLine ?? []} compact />
           <div className="flex flex-wrap gap-1 mt-1">

@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { runModelFromFixture, loadHistory } from "./run-model.js";
 import { runLivePipeline } from "./run-live.js";
+import { parsePreviewFlag, parseSlateMode } from "../lib/slate-mode.js";
 import { computeCalibration, emptyHistory } from "../lib/grading.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -72,7 +73,12 @@ async function main() {
     runFixturePipeline();
     return;
   }
-  await runLivePipeline(rootDir, outDir, { forceOdds: forceOdds || fromLive, fromLive });
+  await runLivePipeline(rootDir, outDir, {
+    forceOdds: forceOdds || fromLive,
+    fromLive,
+    slateMode: parseSlateMode(process.argv),
+    preview: parsePreviewFlag(process.argv),
+  });
 }
 
 main().catch((e) => {

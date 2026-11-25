@@ -45,6 +45,7 @@ export function TodayScreen({
   const todaySydney = sydneyDateString(new Date());
   const official = data.officialCard;
   const useOfficial =
+    !data.meta.slatePreview &&
     official != null &&
     (official.slateDate === todaySydney ||
       data.meta.officialCard?.slateDate === official.slateDate);
@@ -102,6 +103,12 @@ export function TodayScreen({
             )}
             {stale && <span className="text-accent-warn ml-1" title="Source stale or paused">●</span>}
           </p>
+          {data.meta.slatePreview && (
+            <p className="text-xs text-accent-warn mt-1">
+              Preview · {data.meta.slateMode ?? "next"} slate
+              {data.meta.slateTipDate ? ` · tips ${data.meta.slateTipDate}` : ""} (not official)
+            </p>
+          )}
           {useOfficial && publishedAt && (
             <p className="text-xs text-accent-high mt-1">
               Published {sydneyTimeFromIso(publishedAt)}

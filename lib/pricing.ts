@@ -101,6 +101,7 @@ export function buildLegsForPlayer(
     if (finalP >= 0.72) tags.push("High probability");
     if (ctx.flags.boardsShared && market === "reb") tags.push("boards shared");
     if (book) {
+      if (book.price > fair * 1.6) tags.push("Check prices");
       if (book.price >= takeAt) {
         const implied = impliedFromDecimalPrice(book.price);
         if (finalP - implied > CHECK_NEWS_PP) tags.push("Check news");

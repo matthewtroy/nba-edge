@@ -130,6 +130,9 @@ export interface MetaJson {
   oddsAttachWarnings?: string[];
   gateViolations?: string[];
   injuryImpactLog?: string[];
+  slateMode?: "auto" | "next";
+  slatePreview?: boolean;
+  slateTipDate?: string;
 }
 
 export interface HistoryLeg {

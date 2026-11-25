@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import type { DataBundle } from "../hooks/useData";
 import type { PickLeg } from "@lib/types";
 import { gameSgmBlocks } from "@lib/games-sgm";
-import { marketLabel } from "@lib/market-label";
+import { bookieMarketLabel } from "@lib/market-label";
 import { displayTagsForBookie } from "@lib/value-at-bookie";
 import { legPriceAtCardBookie } from "@lib/leg-card-odds";
 import { hasValueAtBookie } from "@lib/value-at-bookie";
@@ -118,7 +118,7 @@ export function GamesScreen({ data, myBookie = "Sportsbet", onLegTap }: Props) {
                   >
                     <div className="flex-1 min-w-0">
                       <div className="font-medium text-sm">
-                        {leg.playerName} {marketLabel(leg.market, leg.line)}
+                        {leg.playerName} {bookieMarketLabel(leg.market, leg.line)}
                       </div>
                       <LastFiveTicks ticks={leg.recentVsLine ?? []} compact />
                       <div className="flex gap-1 mt-1">
