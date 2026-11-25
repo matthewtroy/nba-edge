@@ -5,8 +5,26 @@ import { parseBoxscorePlayerLogs } from "../scripts/espn-parse.js";
 import type { PlayerGameLog } from "./types.js";
 import type { GameLogCacheFile } from "./game-log-cache.js";
 import { mapPool } from "../scripts/lib/concurrency.js";
+import { nbaSeasonStartDate, NBA_SEASON_OPENING_UTC } from "./pricing-config.js";
 
-const NBA_SEASON_START = new Date(Date.UTC(2025, 9, 22, 12, 0, 0));
+const NBA_SEASON_START = nbaSeasonStartDate();
+
+/** Drop pre-season log rows so backfill stats reflect 2026–27 regular season only. */
+export function pruneGameLogCacheBeforeSeason(cache: GameLogCacheFile): number {
+  let dropped = 0;
+  for (const row of Object.values(cache)) {
+    const kept: PlayerGameLog[] = [];
+    for (const g of row.logs) {
+      if (g.date && g.date < NBA_SEASON_OPENING_UTC) {
+        dropped += 1;
+      } else {
+        kept.push(g);
+      }
+    }
+    row.logs = kept;
+  }
+  return dropped;
+}
 export type LeagueGameCacheFile = {
   processedGameIds: string[];
   lastDate?: string;
@@ -160,13 +178,23 @@ export async function runLeagueSeasonBackfill(
   let totalRows = 0;
   for (const row of Object.values(logCache)) {
     for (const g of row.logs) {
+      if (g.date && g.date < NBA_SEASON_OPENING_UTC) continue;
       totalRows += 1;
       if (g.teamId) teams.add(g.teamId);
       if (!g.opponentTeamId) nullOpp += 1;
     }
   }
 
-  const gamesCached = processed.size;
+  const seasonGameIds = new Set<string>();
+  for (const row of Object.values(logCache)) {
+    for (const g of row.logs) {
+      if (g.date && g.date >= NBA_SEASON_OPENING_UTC && g.gameId) {
+        seasonGameIds.add(g.gameId);
+      }
+    }
+  }
+
+  const gamesCached = seasonGameIds.size;
   const report: LeagueBackfillReport = {
     gamesProcessed,
     gamesSkippedCached,

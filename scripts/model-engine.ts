@@ -7,7 +7,12 @@ import type {
   MetaJson,
 } from "../lib/types.js";
 import { perMinuteRates, projectedMinutes, projectBaseline } from "../lib/baseline.js";
-import { applyInjuryRedistribution } from "../lib/injury-redistribution.js";
+import {
+  applyInjuryRedistribution,
+  countOpponentOutBigs,
+} from "../lib/injury-redistribution.js";
+import { logInjuryAngleLegs } from "../lib/injury-angle-log.js";
+import { logSlatePickReport } from "../lib/slate-pick-report.js";
 import { applyContextAdjustments } from "../lib/context.js";
 import { buildLegsForPlayer } from "../lib/pricing.js";
 import { buildMultis, type MultiBuildResult } from "../lib/multis.js";
@@ -128,8 +133,35 @@ export function runModel(input: ModelRunInput): {
       base.set(p.id, projectBaseline(r, mins));
     }
 
+    const teamGame = input.slate.find((g) => g.homeTeamId === teamId || g.awayTeamId === teamId);
+    const oppTeamId =
+      teamGame?.homeTeamId === teamId ? teamGame.awayTeamId : teamGame?.homeTeamId;
+    const oppProfiles: import("../lib/types.js").PlayerProfile[] | undefined = oppTeamId
+      ? (byTeam.get(oppTeamId) ?? []).map((p) => ({
+          id: p.id,
+          name: p.name,
+          teamId: p.teamId,
+          teamName: p.teamName,
+          position: p.position,
+          age: p.age,
+          headshotUrl: p.headshotUrl,
+          seasonAvgMinutes:
+            p.gameLogs.reduce((s, g) => s + g.minutes, 0) / Math.max(1, p.gameLogs.length),
+          gameLogs: p.gameLogs,
+        }))
+      : undefined;
+    const opponentOutBigCount = countOpponentOutBigs(
+      oppProfiles,
+      oppTeamId ? injuriesByTeam.get(oppTeamId) ?? [] : []
+    );
+
     const { adjusted, reasons, boardsShared } = applyInjuryRedistribution(
-      { players: profiles, injuries: teamInjuries, gameLogsByPlayer },
+      {
+        players: profiles,
+        injuries: teamInjuries,
+        gameLogsByPlayer,
+        opponentOutBigCount,
+      },
       base,
       rates as Map<string, NonNullable<ReturnType<typeof perMinuteRates>>>
     );
@@ -250,6 +282,10 @@ export function runModel(input: ModelRunInput): {
     `picks filter: ${picks.length} legs priced → ${eligiblePicks.length} eligible (excluded ${picks.length - eligiblePicks.length})`
   );
   logMarketBlendSample(eligiblePicks);
+  logInjuryAngleLegs(
+    eligiblePicks,
+    input.slate[0]?.startTime?.slice(0, 10)
+  );
   if (input.matchupSignalsEnabled !== false && matchupLog.length) {
     const pos = [...matchupLog]
       .filter((r) => r.deltaPp > 0)
@@ -289,6 +325,8 @@ export function runModel(input: ModelRunInput): {
     edgeFraction,
     allQ1Exclusions
   );
+  const picksById = new Map(eligiblePicks.map((p) => [p.id, p]));
+  logSlatePickReport(eligiblePicks, multiResult.bets, picksById);
   const injuryImpactLog: string[] = [];
   const whatChanged =
     input.whatChanged && input.whatChanged.length

@@ -7,6 +7,7 @@ import { multiCardTitle, type MultiCardTitleOptions } from "@lib/multi-combined"
 import { bestFeedMultiQuote } from "@lib/card-bookie";
 import { legPriceAtBookie } from "@lib/single-bookie";
 import { useMultiLegEdits } from "../hooks/useMultiLegEdits";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 interface Props {
   multi: MultiBet;
@@ -147,21 +148,28 @@ export function MultiCard({
       <div className="px-2 divide-y divide-white/5">
         {multi.legs.map((anchorId) => {
           const leg = resolveLeg(anchorId);
-          if (!leg) return null;
+          if (!leg) {
+            return (
+              <p key={anchorId} className="text-sm text-white/50 px-2 py-2">
+                This bet couldn&apos;t be displayed
+              </p>
+            );
+          }
           return (
-            <MultiLegRow
-              key={anchorId}
-              leg={leg}
-              injuries={injuries}
-              picks={allPicks}
-              slate={slate}
-              bookie={legBookie}
-              fairPriceInSlot={showFairOnly}
-              edited={isEdited(anchorId)}
-              onSwap={() => swapLeg(anchorId)}
-              onReset={() => resetLeg(anchorId)}
-              onTap={onLegTap}
-            />
+            <ErrorBoundary key={anchorId} name={`leg-${anchorId}`}>
+              <MultiLegRow
+                leg={leg}
+                injuries={injuries}
+                picks={allPicks}
+                slate={slate}
+                bookie={legBookie}
+                fairPriceInSlot={showFairOnly}
+                edited={isEdited(anchorId)}
+                onSwap={() => swapLeg(anchorId)}
+                onReset={() => resetLeg(anchorId)}
+                onTap={onLegTap}
+              />
+            </ErrorBoundary>
           );
         })}
       </div>

@@ -1,27 +1,25 @@
 import type { PickLeg } from "./types.js";
+import { MODEL_WEIGHT, MARKET_WEIGHT } from "./pricing-config.js";
 
-/** Canonical blend: P_final = clamp(0.6×P_market + 0.4×P_model). Unpriced legs stay model-only. */
+/** Canonical blend: P_final = MODEL_WEIGHT×P_model + MARKET_WEIGHT×P_market */
 
-export const MARKET_BLEND_WEIGHT = 0.6;
-export const MODEL_BLEND_WEIGHT = 0.4;
-/** @deprecated use MARKET_BLEND_WEIGHT / MODEL_BLEND_WEIGHT */
-export const MODEL_WEIGHT = MODEL_BLEND_WEIGHT;
-/** @deprecated use MARKET_BLEND_WEIGHT */
-export const MARKET_WEIGHT = MARKET_BLEND_WEIGHT;
-/** Model prob minus implied prob above this → Check news */
-export const CHECK_NEWS_PP = 0.15;
+export { MODEL_WEIGHT, MARKET_WEIGHT } from "./pricing-config.js";
+/** @deprecated use MODEL_WEIGHT */
+export const MODEL_BLEND_WEIGHT = MODEL_WEIGHT;
+/** @deprecated use MARKET_WEIGHT */
+export const MARKET_BLEND_WEIGHT = MARKET_WEIGHT;
 
 export function clampProbability(p: number): number {
   return Math.min(0.95, Math.max(0.05, p));
 }
 
 export function blendProbability(modelP: number, marketP: number): number {
-  return clampProbability(MARKET_BLEND_WEIGHT * marketP + MODEL_BLEND_WEIGHT * modelP);
+  return clampProbability(MODEL_WEIGHT * modelP + MARKET_WEIGHT * marketP);
 }
 
-/** Prior bug (model-heavy 60/40) — for migration logging only. */
+/** Prior market-heavy blend — for migration logging only. */
 export function priorInvertedBlend(modelP: number, marketP: number): number {
-  return clampProbability(0.6 * modelP + 0.4 * marketP);
+  return clampProbability(0.6 * marketP + 0.4 * modelP);
 }
 
 export function logMarketBlendSample(picks: PickLeg[]): void {
@@ -39,7 +37,7 @@ export function logMarketBlendSample(picks: PickLeg[]): void {
   }
   if (priced.length) {
     console.log(
-      `market blend: ${shifted}/${priced.length} priced legs moved >3pp vs prior model-heavy blend`
+      `market blend: ${shifted}/${priced.length} priced legs moved >3pp vs prior market-heavy blend`
     );
   }
   for (const p of priced.slice(0, 5)) {
@@ -52,6 +50,8 @@ export function logMarketBlendSample(picks: PickLeg[]): void {
     );
   }
 }
+
+export const CHECK_NEWS_PP = 0.15;
 
 export function impliedFromDecimalPrice(price: number): number {
   if (price <= 1) return 0.5;

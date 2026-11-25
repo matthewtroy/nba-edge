@@ -25,6 +25,7 @@ export interface SyncCounts {
   injuriesSkippedInvalidId: number;
   logs: number;
   slates: number;
+  projections: number;
   oddsPulls: number;
   oddsPrices: number;
   oddsBudget: number;
@@ -211,7 +212,23 @@ export type OddsPriceRow = {
 };
 
 /** Keep best (highest decimal) price per idempotent upsert key. */
-/** Keep one injury row per player/source/report minute (ESPN updatedAt, not sync run time). */
+const INJURY_REPORT_TZ = "America/New_York";
+
+/** Report calendar day in US Eastern for idempotent injury_reports keys. */
+export function injuryReportDayEt(iso: string): string {
+  try {
+    return new Intl.DateTimeFormat("en-CA", {
+      timeZone: INJURY_REPORT_TZ,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(new Date(iso));
+  } catch {
+    return iso.slice(0, 10);
+  }
+}
+
+/** Keep one injury row per player/source/status/report ET day (ESPN updatedAt). */
 export function dedupeInjuryReportsByTime(injuries: InjuryEntry[]): {
   rows: InjuryEntry[];
   dropped: number;
@@ -219,7 +236,7 @@ export function dedupeInjuryReportsByTime(injuries: InjuryEntry[]): {
   const best = new Map<string, InjuryEntry>();
   for (const inj of injuries) {
     const reported = inj.updatedAt ?? "";
-    const day = reported.slice(0, 10);
+    const day = injuryReportDayEt(reported);
     const key = `${inj.playerId}|${injurySource(inj.source)}|${inj.status}|${day}`;
     const prev = best.get(key);
     if (!prev || new Date(reported) >= new Date(prev.updatedAt)) {
@@ -253,6 +270,7 @@ export async function syncRunToSupabase(
     injuriesSkippedInvalidId: 0,
     logs: 0,
     slates: 0,
+    projections: 0,
     oddsPulls: 0,
     oddsPrices: 0,
     oddsBudget: 0,
@@ -417,6 +435,37 @@ export async function syncRunToSupabase(
     );
     counts.slates = 1;
   });
+
+  if (bundle.picks?.length) {
+    await tryTable("projections", async () => {
+      const rows = bundle.picks!
+        .filter((l) => isEspnPlayerId(l.playerId) && l.gameId)
+        .map((l) => ({
+          id: l.id,
+          slate_date: bundle.slateDate,
+          game_id: l.gameId,
+          player_id: l.playerId,
+          market: l.market,
+          line: l.line,
+          model_probability: l.modelProbability ?? null,
+          market_probability: l.marketProbability ?? null,
+          probability: l.probability,
+          fair_price: l.fairPrice,
+          take_at: l.takeAt,
+          tags: l.tags,
+          reasons: l.reasons,
+          confluence: l.confluence ?? 0,
+          reason_line: l.reasonLine ?? null,
+          signals: l.signals ?? {},
+          flags: {
+            questionable: l.questionable ?? false,
+            boards_shared: l.boardsShared ?? false,
+          },
+        }));
+      await client.upsert("projections", rows, "slate_date,player_id,market,line");
+      counts.projections = rows.length;
+    });
+  }
 
   const syncedPlayerIds = new Set(playerRows.map((p) => p.id));
   const playerByNorm = new Map<string, string>();
@@ -656,7 +705,7 @@ export function logSyncCounts(counts: SyncCounts, failed: string[] = []): void {
       : "";
   console.log(
     `supabase sync: teams ${counts.teams}, players ${counts.players}, games ${counts.games}, ` +
-      `injuries ${counts.injuries}, logs ${counts.logs}, slates ${counts.slates}, ` +
+      `injuries ${counts.injuries}, logs ${counts.logs}, slates ${counts.slates}, projections ${counts.projections}, ` +
       `odds_pulls ${counts.oddsPulls}, odds_prices ${counts.oddsPrices}, ` +
       `odds_budget ${counts.oddsBudget}, defense ${counts.defenseRows}, pace ${counts.paceRows}${skipInj} (failed: ${failLabel})`
   );
@@ -683,6 +732,7 @@ export async function finalizePipelineSupabaseSync(
     injuriesSkippedInvalidId: 0,
     logs: 0,
     slates: 0,
+    projections: 0,
     oddsPulls: 0,
     oddsPrices: 0,
     oddsBudget: 0,
@@ -700,6 +750,7 @@ export async function finalizePipelineSupabaseSync(
     totals.injuriesSkippedInvalidId += c.injuriesSkippedInvalidId;
     totals.logs += c.logs;
     totals.slates += c.slates;
+    totals.projections += c.projections;
     totals.oddsPulls += c.oddsPulls;
     totals.oddsPrices += c.oddsPrices;
     totals.oddsBudget += c.oddsBudget;

@@ -17,7 +17,6 @@ interface Props {
 }
 
 export function LegSheet({ leg, picks = [], slate, myBookie = "bet365", onClose, onSelectLeg }: Props) {
-  const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
   const [bookPrice, setBookPrice] = useState("");
 
   useEffect(() => {
@@ -33,6 +32,8 @@ export function LegSheet({ leg, picks = [], slate, myBookie = "bet365", onClose,
   const rungs = useMemo(() => (leg ? siblingRungs(picks, leg) : []), [leg, picks]);
 
   if (!leg) return null;
+
+  const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
 
   const savePrice = (v: string) => {
     setBookPrice(v);

@@ -46,7 +46,7 @@ Full-game: Normal PTS; NB REB/AST/3PM; MC for DD/TD/combos. Q1 share from PBP pe
 
 When a book price exists for a rung (or **borrowed** implied from nearest priced rung on that player/market):
 
-**Blended probability = 0.6 × market implied + 0.4 × model** (then clamp 0.05–0.95).
+**Blended probability = 60% model / 40% market (configurable via `lib/pricing-config.ts`)** — `P_final = MODEL_WEIGHT × P_model + (1 − MODEL_WEIGHT) × P_market` with `MODEL_WEIGHT = 0.6` (then clamp 0.05–0.95).
 
 Fair = 1/p; take-at = fair × (1 + min edge), default **8%**. **Check news:** model minus implied **&gt; 15 percentage points** → tag Check news (no Value / no Main anchor).
 

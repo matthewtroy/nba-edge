@@ -18,6 +18,142 @@ export interface TeamContext {
   players: PlayerProfile[];
   injuries: InjuryEntry[];
   gameLogsByPlayer: Map<string, PlayerGameLog[]>;
+  /** Opponent bigs (C / PF) ruled out — lifts our bigs' rebound projection */
+  opponentOutBigCount?: number;
+}
+
+function isRotationBig(position: string | undefined, minutes: number): boolean {
+  const p = (position ?? "").toUpperCase();
+  const big =
+    p.includes("C") || p === "PF" || p.includes("F-C") || p === "F-C" || p.startsWith("C");
+  return big && minutes >= 15;
+}
+
+function countAvailableBigs(
+  players: PlayerProfile[],
+  injuries: InjuryEntry[],
+  adjusted: Map<string, ProjectedStats>
+): PlayerProfile[] {
+  const out = new Set(
+    injuries.filter((i) => i.status === "Out" || i.status === "Doubtful").map((i) => i.playerId)
+  );
+  return players.filter((p) => {
+    if (out.has(p.id)) return false;
+    const mins = adjusted.get(p.id)?.minutes ?? 0;
+    return isRotationBig(p.position, mins);
+  });
+}
+
+function applyExplicitReboundRedistribution(
+  team: TeamContext,
+  adjusted: Map<string, ProjectedStats>,
+  rates: Map<string, PerMinuteRates>,
+  reasons: Map<string, string[]>
+): void {
+  const outInjuries = team.injuries.filter(
+    (i) => i.status === "Out" || i.status === "Doubtful"
+  );
+
+  for (const inj of outInjuries) {
+    const injured = team.players.find((p) => p.id === inj.playerId);
+    if (!injured || !isRotationBig(injured.position, adjusted.get(injured.id)?.minutes ?? 0)) {
+      continue;
+    }
+    const injuredRates = rates.get(injured.id);
+    const injuredMins = adjusted.get(injured.id)?.minutes ?? 0;
+    if (!injuredRates || injuredMins <= 0) continue;
+
+    const rebPool = injuredRates.reb * injuredMins * 0.85;
+    let bigs = countAvailableBigs(team.players, team.injuries, adjusted).filter(
+      (p) => p.id !== injured.id
+    );
+    if (!bigs.length) continue;
+
+    const lastName = inj.playerName?.split(" ").pop() ?? injured.name.split(" ").pop() ?? "Big";
+
+    if (bigs.length === 1) {
+      const only = bigs[0];
+      const cur = adjusted.get(only.id);
+      if (cur) {
+        const boost = Math.min(rebPool, cur.reb * 0.35);
+        cur.reb += boost;
+        adjusted.set(only.id, cur);
+        addReason(reasons, only.id, `${lastName} out → only big left: +${boost.toFixed(1)} reb`);
+      }
+      continue;
+    }
+
+    const weightSum = bigs.reduce((s, p) => {
+      const cur = adjusted.get(p.id);
+      const r = rates.get(p.id);
+      if (!cur || !r || cur.minutes < 1) return s;
+      return s + Math.max(0.01, r.reb);
+    }, 0);
+
+    const wings = team.players.filter((p) => {
+      if (bigs.some((b) => b.id === p.id)) return false;
+      const out = team.injuries.some(
+        (i) => i.playerId === p.id && (i.status === "Out" || i.status === "Doubtful")
+      );
+      if (out) return false;
+      return positionGroup(p.position) === "wing";
+    });
+
+    let wingPool = rebPool * 0.08;
+    const bigPool = rebPool - wingPool;
+
+    for (const tm of bigs) {
+      const cur = adjusted.get(tm.id);
+      const r = rates.get(tm.id);
+      if (!cur || !r) continue;
+      const share = Math.max(0.01, r.reb) / weightSum;
+      const boost = Math.min(bigPool * share, cur.reb * 0.3);
+      if (boost > 0.15) {
+        cur.reb += boost;
+        adjusted.set(tm.id, cur);
+        addReason(reasons, tm.id, `${lastName} out: +${boost.toFixed(1)} reb`);
+      }
+    }
+
+    if (wings.length && wingPool > 0.1) {
+      const per = wingPool / wings.length;
+      for (const w of wings) {
+        const cur = adjusted.get(w.id);
+        if (!cur || cur.minutes < 12) continue;
+        const bump = Math.min(per, cur.reb * 0.08);
+        if (bump > 0.05) {
+          cur.reb += bump;
+          adjusted.set(w.id, cur);
+        }
+      }
+    }
+  }
+
+  const opp = team.opponentOutBigCount ?? 0;
+  if (opp > 0) {
+    const ourBigs = countAvailableBigs(team.players, team.injuries, adjusted);
+    const bumpEach = Math.min(1.2 * opp, 2.5);
+    for (const b of ourBigs) {
+      const cur = adjusted.get(b.id);
+      if (!cur) continue;
+      cur.reb += bumpEach;
+      adjusted.set(b.id, cur);
+      addReason(reasons, b.id, `Opponent missing ${opp} big(s): +${bumpEach.toFixed(1)} reb`);
+    }
+  }
+}
+
+export function countOpponentOutBigs(
+  opponentPlayers: PlayerProfile[] | undefined,
+  opponentInjuries: InjuryEntry[]
+): number {
+  if (!opponentPlayers?.length) return 0;
+  const out = new Set(
+    opponentInjuries
+      .filter((i) => i.status === "Out" || i.status === "Doubtful")
+      .map((i) => i.playerId)
+  );
+  return opponentPlayers.filter((p) => out.has(p.id) && isRotationBig(p.position, 20)).length;
 }
 
 export function applyInjuryRedistribution(
@@ -85,6 +221,7 @@ export function applyInjuryRedistribution(
 
   }
 
+  applyExplicitReboundRedistribution(team, adjusted, rates, reasons);
   tagSharedRebounds(team, adjusted, boardsShared, reasons);
 
   return { adjusted, reasons, boardsShared };

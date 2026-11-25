@@ -7,9 +7,9 @@ import {
 } from "../lib/market-blend";
 
 describe("market blend", () => {
-  it("60% market / 40% model blend", () => {
+  it("60% model / 40% market blend", () => {
     const p = blendProbability(0.7, 0.5);
-    expect(p).toBeCloseTo(0.58, 2);
+    expect(p).toBeCloseTo(0.62, 2);
   });
 
   it("borrow from nearest priced rung", () => {

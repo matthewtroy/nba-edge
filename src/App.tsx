@@ -13,6 +13,7 @@ import { InjuriesScreen } from "./screens/InjuriesScreen";
 import { ResultsScreen } from "./screens/ResultsScreen";
 import { GamesScreen } from "./screens/GamesScreen";
 import type { PickLeg } from "@lib/types";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 type Tab = "today" | "picks" | "games" | "injuries" | "results";
 
@@ -61,45 +62,59 @@ export default function App() {
     <PhoneShell className="px-4 pt-4">
       {data.error && <p className="text-sm text-red-400 mb-2">{data.error}</p>}
       {tab === "today" && (
-        <TodayScreen
-          data={data}
-          slateDate={slateDate}
-          todayDate={segment.today}
-          tomorrowDate={segment.tomorrow}
-          onSlateDateChange={setSlateDate}
-          onLegTap={setLeg}
-          onCopy={copy}
-          onOpenSettings={() => setSettingsOpen(true)}
-          showQ1={settings.showQ1Bets}
-          showLongshots={settings.showLongshots}
-          myBookie={settings.myBookie}
-        />
+        <ErrorBoundary name="TodayScreen">
+          <TodayScreen
+            data={data}
+            slateDate={slateDate}
+            todayDate={segment.today}
+            tomorrowDate={segment.tomorrow}
+            onSlateDateChange={setSlateDate}
+            onLegTap={setLeg}
+            onCopy={copy}
+            onOpenSettings={() => setSettingsOpen(true)}
+            showQ1={settings.showQ1Bets}
+            showLongshots={settings.showLongshots}
+            myBookie={settings.myBookie}
+          />
+        </ErrorBoundary>
       )}
       {tab === "picks" && (
-        <PicksScreen
-          data={data}
-          slateDate={slateDate}
-          todayDate={segment.today}
-          tomorrowDate={segment.tomorrow}
-          onSlateDateChange={setSlateDate}
-          myBookie={settings.myBookie}
-          onLegTap={setLeg}
-        />
+        <ErrorBoundary name="PicksScreen">
+          <PicksScreen
+            data={data}
+            slateDate={slateDate}
+            todayDate={segment.today}
+            tomorrowDate={segment.tomorrow}
+            onSlateDateChange={setSlateDate}
+            myBookie={settings.myBookie}
+            onLegTap={setLeg}
+          />
+        </ErrorBoundary>
       )}
       {tab === "games" && (
-        <GamesScreen
-          data={data}
-          slateDate={slateDate}
-          todayDate={segment.today}
-          tomorrowDate={segment.tomorrow}
-          onSlateDateChange={setSlateDate}
-          myBookie={settings.myBookie}
-          onLegTap={setLeg}
-          onCopy={copy}
-        />
+        <ErrorBoundary name="GamesScreen">
+          <GamesScreen
+            data={data}
+            slateDate={slateDate}
+            todayDate={segment.today}
+            tomorrowDate={segment.tomorrow}
+            onSlateDateChange={setSlateDate}
+            myBookie={settings.myBookie}
+            onLegTap={setLeg}
+            onCopy={copy}
+          />
+        </ErrorBoundary>
       )}
-      {tab === "injuries" && <InjuriesScreen data={data} />}
-      {tab === "results" && <ResultsScreen data={data} />}
+      {tab === "injuries" && (
+        <ErrorBoundary name="InjuriesScreen">
+          <InjuriesScreen data={data} />
+        </ErrorBoundary>
+      )}
+      {tab === "results" && (
+        <ErrorBoundary name="ResultsScreen">
+          <ResultsScreen data={data} />
+        </ErrorBoundary>
+      )}
       <TabBar active={tab} onChange={setTab} />
       <LegSheet
         leg={leg}

@@ -65,8 +65,13 @@ export async function safeFinalizePipelineSupabaseSync(
 }
 import { filterPlayersForSlate, writeSlateBundle } from "./slate-bundle.js";
 import { buildDefenseRatings, logDefenseSpotCheck } from "../lib/defense-ratings.js";
-import { runLeagueSeasonBackfill, type LeagueBackfillReport } from "../lib/league-season-backfill.js";
+import {
+  pruneGameLogCacheBeforeSeason,
+  runLeagueSeasonBackfill,
+  type LeagueBackfillReport,
+} from "../lib/league-season-backfill.js";
 import { matchupGateLogLine, matchupSignalsReady } from "../lib/matchup-gate.js";
+import { MATCHUP_ENABLED } from "../lib/pricing-config.js";
 import { backfillRosterLogsOnce } from "../lib/season-log-backfill.js";
 import {
   cacheSlateOddsSnapshot,
@@ -365,6 +370,10 @@ export async function runLivePipeline(
     const backfill = await backfillRosterLogsOnce(gameLogCache, backfillTasks, now, {
       concurrency: 3,
     });
+    const prunedRows = pruneGameLogCacheBeforeSeason(gameLogCache);
+    if (prunedRows > 0) {
+      console.log(`league backfill: pruned ${prunedRows} pre-season log rows from cache`);
+    }
     leagueBackfillReport = await runLeagueSeasonBackfill(outDir, gameLogCache, {
       maxGames: Number(process.env.LEAGUE_BACKFILL_MAX_GAMES ?? 400),
       concurrency: 2,
@@ -401,10 +410,12 @@ export async function runLivePipeline(
     console.warn("defense ratings:", e instanceof Error ? e.message : e);
   }
 
-  const matchupSignalsEnabled = leagueBackfillReport
-    ? matchupSignalsReady(leagueBackfillReport)
-    : false;
-  if (leagueBackfillReport && !matchupSignalsEnabled) {
+  const matchupSignalsEnabled =
+    MATCHUP_ENABLED &&
+    Boolean(leagueBackfillReport && matchupSignalsReady(leagueBackfillReport));
+  if (!MATCHUP_ENABLED) {
+    console.log("matchup signals off: MATCHUP_ENABLED=false");
+  } else if (leagueBackfillReport && !matchupSignalsEnabled) {
     console.log(matchupGateLogLine(leagueBackfillReport));
   }
 
@@ -721,11 +732,18 @@ export async function runLivePipeline(
     const tipPayloads =
       tip === slateTipDateFromGames(nextSlateGames) ? oddsPayloads : [];
     const officialCard = loadOfficialCard(path.join(outDir, tip));
+    const tipDir = path.join(outDir, tip);
+    const picksForSync = fs.existsSync(path.join(tipDir, "picks.json"))
+      ? (JSON.parse(
+          fs.readFileSync(path.join(tipDir, "picks.json"), "utf8")
+        ) as import("../lib/types.js").PickLeg[])
+      : undefined;
     syncBundles.push({
       slateDate: tip,
       slate: oneSlate,
       injuries,
       players,
+      picks: picksForSync,
       officialCard: officialCard ?? undefined,
       ranking: rankingBySlateDate.get(tip) ?? [],
       pullTrigger: tip === nextSlateTip ? lastPullTrigger : undefined,
