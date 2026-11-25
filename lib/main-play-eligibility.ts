@@ -36,7 +36,8 @@ export function isSgmMainLine(market: Market, line: number): boolean {
 /** Gate: non-Q1 multis (and longshot full-game legs). */
 export function gateLineViolation(
   leg: PickLeg,
-  allowQ1: boolean
+  allowQ1: boolean,
+  opts?: { mainPlay?: boolean }
 ): string | null {
   if (!leg.starterEligible) {
     return `${leg.playerName}: not a starter (24+ min, 3/5 starts)`;
@@ -48,8 +49,11 @@ export function gateLineViolation(
   if (isQ1Market(leg.market)) {
     return `${leg.playerName}: Q1 leg only in Q1 Multi`;
   }
-  if (leg.market === "3pm" && leg.line < 4) {
-    return `${leg.playerName}: forbidden ${leg.line}+ 3PM (need 4+)`;
+  if (leg.market === "3pm") {
+    const min3pm = opts?.mainPlay ? 2 : 4;
+    if (leg.line < min3pm) {
+      return `${leg.playerName}: forbidden ${leg.line}+ 3PM (need ${min3pm}+)`;
+    }
   }
   if (leg.market === "reb" && leg.line < 5) {
     return `${leg.playerName}: forbidden ${leg.line}+ reb (need 5+)`;

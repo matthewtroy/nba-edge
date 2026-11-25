@@ -7,6 +7,7 @@ import {
   mainPlayHasValueOrHighProb,
   mainPlayStructuralOk,
   qualifiesMainPlayLeg,
+  gateLineViolation,
 } from "../lib/main-play-eligibility";
 import { mainPlayReasonBeyondRankAvg } from "../lib/leg-display";
 
@@ -65,6 +66,12 @@ describe("main play leg eligibility", () => {
     const leg = synth({ id: "high" });
     expect(mainPlayL10Within10pp(leg)).toBe(true);
     expect(qualifiesMainPlayLeg(leg, "Ladbrokes")).toBe(true);
+  });
+
+  it("Main Play gate allows 3pm 2+ (SGM still needs 4+)", () => {
+    const leg = synth({ id: "sga3", market: "3pm", line: 2 });
+    expect(gateLineViolation(leg, false, { mainPlay: true })).toBeNull();
+    expect(gateLineViolation(leg, false)).toMatch(/need 4\+/);
   });
 
   it("3pm main lines qualify Main Play structure", () => {

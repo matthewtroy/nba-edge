@@ -37,7 +37,9 @@ function takeAtProduct(legs: PickLeg[]): number {
 function checkLegEligibility(type: MultiType, leg: PickLeg, multiLabel: string): string[] {
   const allowQ1 = type === "q1Multi";
   const issues: string[] = [];
-  const lineIssue = gateLineViolation(leg, allowQ1);
+  const lineIssue = gateLineViolation(leg, allowQ1, {
+    mainPlay: type === "mainPlay",
+  });
   if (lineIssue) issues.push(`${multiLabel}: ${lineIssue}`);
   return issues;
 }
