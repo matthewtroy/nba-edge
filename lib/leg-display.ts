@@ -21,9 +21,22 @@ export function visibleLegReasons(reasons: PickLeg["reasons"]): string[] {
 
 export { buildLegReasonLine, buildLegReasons };
 
-export function mainPlayReasonOk(leg: PickLeg): boolean {
+export function mainPlayReasonBeyondRankAvg(leg: PickLeg): boolean {
+  const reasons = normalizeLegReasons(leg.reasons ?? []);
+  if (reasons.length) {
+    return reasons.some((r) => r.type !== "rank" && r.type !== "avg");
+  }
   const line = (leg.reasonLine ?? "").trim();
+  if (!line) return false;
+  const lower = line.toLowerCase();
+  if (/^averages?\b/i.test(line) && !line.includes("·")) return false;
+  if (lower.includes("averages") && !/[·/]|\d+\/\d+/.test(line)) return false;
   return line.length > 0;
+}
+
+/** @deprecated use mainPlayReasonBeyondRankAvg */
+export function mainPlayReasonOk(leg: PickLeg): boolean {
+  return mainPlayReasonBeyondRankAvg(leg);
 }
 
 /** @deprecated use buildLegReasonLine */

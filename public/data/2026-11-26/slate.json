@@ -35,7 +35,7 @@
     "awayTeam": "Cleveland Cavaliers",
     "homeTeamId": "18",
     "awayTeamId": "5",
-    "spread": -2.5,
+    "spread": -3.5,
     "total": 218.5,
     "homeB2B": false,
     "awayB2B": false,
@@ -50,7 +50,7 @@
     "homeTeamId": "25",
     "awayTeamId": "16",
     "spread": -1.5,
-    "total": 223.5,
+    "total": 222.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"
@@ -78,7 +78,7 @@
     "homeTeamId": "15",
     "awayTeamId": "17",
     "spread": -1.5,
-    "total": 232.5,
+    "total": 233.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"
@@ -106,7 +106,7 @@
     "homeTeamId": "9",
     "awayTeamId": "23",
     "spread": -6.5,
-    "total": 217.5,
+    "total": 218.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"
@@ -119,8 +119,8 @@
     "awayTeam": "San Antonio Spurs",
     "homeTeamId": "22",
     "awayTeamId": "24",
-    "spread": 3.5,
-    "total": 225.5,
+    "spread": 2.5,
+    "total": 226.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"

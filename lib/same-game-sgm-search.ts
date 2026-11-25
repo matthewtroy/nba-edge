@@ -1,6 +1,9 @@
 import type { PickLeg } from "./types.js";
-import { sameGameSgmHasClash } from "./clash.js";
-import { pickSameGameLegSubsetResolved } from "./same-game-leg-resolve.js";
+import { multiHasClash } from "./clash.js";
+import {
+  pickMultiLegSubsetResolved,
+  pickSameGameLegSubsetResolved,
+} from "./same-game-leg-resolve.js";
 import { combinedPriceForBookieWithCatalog } from "./single-bookie.js";
 import { legMeetsBookieEdge } from "./bookie-edge-pool.js";
 import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
@@ -38,7 +41,7 @@ export function pickBestSameGameSgmCombo(
   function dfs(start: number, chosen: PickLeg[]) {
     if (chosen.length >= SGM_MIN_LEGS && chosen.length <= SGM_MAX_LEGS) {
       const total = combinedPriceForBookieWithCatalog(chosen, bookie, catalog) ?? 0;
-      if (totalInBand(total, oddsMin, oddsMax) && !sameGameSgmHasClash(chosen)) {
+      if (totalInBand(total, oddsMin, oddsMax) && !multiHasClash(chosen)) {
         const p = combinedProb(chosen);
         const edge = chosen.reduce((s, l) => s + legEdgeDecimal(l), 0);
         if (
@@ -56,11 +59,28 @@ export function pickBestSameGameSgmCombo(
     if (chosen.length >= SGM_MAX_LEGS) return;
     for (let i = start; i < pool.length; i++) {
       const next = [...chosen, pool[i]];
-      if (sameGameSgmHasClash(next)) continue;
+      if (multiHasClash(next)) continue;
       dfs(i + 1, next);
     }
   }
   dfs(0, []);
+
+  if (!best && pool.length >= SGM_MIN_LEGS) {
+    const resolved = pickMultiLegSubsetResolved(
+      pool,
+      SGM_MIN_LEGS,
+      SGM_MAX_LEGS,
+      SGM_MIN_LEG_PRICE
+    );
+    if (resolved) {
+      const total = combinedPriceForBookieWithCatalog(resolved, bookie, catalog) ?? 0;
+      if (totalInBand(total, oddsMin, oddsMax)) {
+        const p = combinedProb(resolved);
+        const edge = resolved.reduce((s, l) => s + legEdgeDecimal(l), 0);
+        best = { legs: resolved, p, total, edge };
+      }
+    }
+  }
 
   return best;
 }
@@ -70,7 +90,7 @@ const CROSS_MAX_LEGS = 3;
 
 /** Best 2–3 leg same-game subset for cross-game multis (clash resolve: keep higher p). */
 export function pickBestCrossGameLegSubset(pool: PickLeg[]): PickLeg[] | null {
-  return pickSameGameLegSubsetResolved(
+  return pickMultiLegSubsetResolved(
     pool,
     CROSS_MIN_LEGS,
     CROSS_MAX_LEGS,

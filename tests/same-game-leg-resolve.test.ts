@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import type { PickLeg } from "../lib/types";
-import { pickSameGameLegSubsetResolved } from "../lib/same-game-leg-resolve";
+import {
+  pickMultiLegSubsetResolved,
+  pickSameGameLegSubsetResolved,
+} from "../lib/same-game-leg-resolve";
+import { multiHasClash } from "../lib/clash";
 
 function leg(id: string, pid: string, market: string, line: number, p: number): PickLeg {
   return {
@@ -34,5 +38,17 @@ describe("same-game leg clash resolve", () => {
 
   it("returns null when fewer than 2 legs possible", () => {
     expect(pickSameGameLegSubsetResolved([leg("a", "p1", "reb", 10, 0.4)], 2, 3)).toBeNull();
+  });
+
+  it("multi rules drop lower-p pts when teammates clash", () => {
+    const pool = [
+      leg("a", "p1", "pts", 10, 0.62),
+      leg("b", "p2", "pts", 15, 0.48),
+      leg("c", "p3", "reb", 5, 0.55),
+    ];
+    const picked = pickMultiLegSubsetResolved(pool, 2, 3);
+    expect(picked).not.toBeNull();
+    expect(multiHasClash(picked!)).toBe(false);
+    expect(picked!.some((l) => l.id === "b")).toBe(false);
   });
 });

@@ -2,7 +2,8 @@ import type { Market, PickLeg } from "./types.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
 import { passesFormGuard } from "./form-guard.js";
 import { legBookiePriceInBand } from "./leg-bookie-band.js";
-import { mainPlayReasonOk } from "./leg-display.js";
+import { mainPlayReasonBeyondRankAvg } from "./leg-display.js";
+import { hasValueAtBookie } from "./value-at-bookie.js";
 
 function isCoreMarket(market: string): boolean {
   return market === "pts" || market === "reb" || market === "ast";
@@ -67,11 +68,48 @@ export function mainPlayStructuralOk(leg: PickLeg): boolean {
   );
 }
 
-export function qualifiesMainPlayLeg(leg: PickLeg, bookie?: string): boolean {
+/** Same p threshold as `High probability` tag in `lib/pricing.ts`. */
+export const MAIN_PLAY_HIGH_PROB_P = 0.72;
+
+/** Main Play: last-10 hit rate within 10pp of model p (68.5% → 6/10). */
+export const MAIN_PLAY_L10_GAP_PP = 0.1;
+
+function lastTenHits(leg: PickLeg): number | null {
+  const ticks = leg.recentTenVsLine;
+  if (ticks?.length === 10) {
+    return ticks.filter((t) => t === "hit").length;
+  }
+  return null;
+}
+
+export function mainPlayL10Within10pp(leg: PickLeg): boolean {
+  const hits = lastTenHits(leg);
+  if (hits == null) return true;
+  const hr = hits / 10;
+  return leg.probability - hr <= MAIN_PLAY_L10_GAP_PP + 1e-9;
+}
+
+/** Shared Value / High probability thresholds with picks tags & display. */
+export function mainPlayHasValueOrHighProb(leg: PickLeg, bookie?: string): boolean {
+  if (leg.probability >= MAIN_PLAY_HIGH_PROB_P) return true;
+  if (leg.tags.includes("High probability")) return true;
+  if (bookie) return hasValueAtBookie(leg, bookie);
+  return leg.tags.includes("Value");
+}
+
+export function mainPlayQualifiersOk(leg: PickLeg, bookie?: string): boolean {
   return (
     mainPlayStructuralOk(leg) &&
     passesFormGuard(leg) &&
-    mainPlayReasonOk(leg) &&
+    mainPlayHasValueOrHighProb(leg, bookie) &&
+    mainPlayL10Within10pp(leg) &&
+    mainPlayReasonBeyondRankAvg(leg)
+  );
+}
+
+export function qualifiesMainPlayLeg(leg: PickLeg, bookie?: string): boolean {
+  return (
+    mainPlayQualifiersOk(leg, bookie) &&
     legBookiePriceInBand(leg, bookie, 1.4, 2.5)
   );
 }

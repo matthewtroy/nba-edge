@@ -20,7 +20,7 @@ import {
   qualifiesCrossBoostLeg,
   qualifiesLongshotLeg,
   qualifiesMainPlayLeg,
-  mainPlayStructuralOk,
+  mainPlayQualifiersOk,
 } from "./main-play-eligibility.js";
 import { legBookiePriceInBand } from "./leg-bookie-band.js";
 import { passesFormGuard } from "./form-guard.js";
@@ -425,9 +425,7 @@ function buildMainPlay(
   let maxClash = 0;
 
   for (const bookie of bookiesByCoverage(eligible)) {
-    const banded = eligible.filter((l) =>
-      legBookiePriceInBand(l, bookie, 1.4, 2.5)
-    );
+    const banded = eligible.filter((l) => qualifiesMainPlayLeg(l, bookie));
     const pool = mainPlayPoolAtBookie(banded, bookie, minEdgeFraction, catalog);
     if (pool.length > maxEdgePool) {
       maxEdgePool = pool.length;
@@ -489,9 +487,7 @@ function buildMainPlay(
   };
   };
 
-  const structural = picks.filter(
-    (l) => mainPlayStructuralOk(l) && passesFormGuard(l)
-  );
+  const structural = picks.filter((l) => mainPlayQualifiersOk(l));
   const out = attempt(structural);
   return { ...out, confluenceRelaxed: false };
 }
