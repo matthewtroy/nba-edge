@@ -102,7 +102,7 @@ Label **Cross-Game SGM Multi** (`type: crossGameSgm`). Up to **5 games**, 1–2 
 
 ### Best SGM
 
-Same-game **3–4** legs, one game, one bookie — **no combined price band** (search ranks probability / edge only).
+Same-game **2–5** legs, one game, one bookie — combined total **≥ $2** (no upper cap). Same `requiredEdge` / surplus selection as Main Play (curve continues beyond $20).
 
 ### Longshot
 
@@ -159,7 +159,7 @@ Vitest: distributions, injury fixture, clash, exposure, odds pause, Main Play ra
 |--------|-----------------|------------|
 | Market blend | 60% market / 40% model | `lib/market-blend.ts`: **60% model / 40% market** |
 | Main Play combined total | **$5–$20** at chosen bookie | `lib/pricing-config.ts` + `findMainPlaySubset` |
-| Best SGM combined band | None | `pickBestSameGameSgmCombo` with open max |
+| Best SGM combined band | ≥ $2, open max + edge curve | `SGM_NO_ODDS_MIN=2`, `requiredEdge` surplus |
 | Cross-game label | Cross-Game SGM Multi | `lib/multis.ts` `LABELS.crossGameSgm` |
 | Longshot variants | One card | `buildLongshot` — no Longshot 2/3 |
 | Home settle row | Official W–L on Today | `lib/home-settle-summary.ts`, `TodayScreen` |

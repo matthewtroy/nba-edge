@@ -102,8 +102,8 @@ describe("2026-11-26 cross / best SGM clash resolve", () => {
     const crossTotal = cross!.bestBookieTotal ?? 0;
     expect(crossTotal).toBeGreaterThanOrEqual(15);
     expect(crossTotal).toBeLessThanOrEqual(50);
-    expect(best!.legs.length).toBeGreaterThanOrEqual(3);
-    expect(best!.legs.length).toBeLessThanOrEqual(4);
-    expect(best!.bestBookieTotal ?? 0).toBeGreaterThan(1);
+    expect(best!.legs.length).toBeGreaterThanOrEqual(2);
+    expect(best!.legs.length).toBeLessThanOrEqual(5);
+    expect(best!.bestBookieTotal ?? 0).toBeGreaterThanOrEqual(2);
   });
 });

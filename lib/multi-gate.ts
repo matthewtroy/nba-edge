@@ -150,8 +150,15 @@ function checkTypeRules(
     issues.push("Booster: invalid fair");
   }
   if (type === "boostSgm") {
-    if (legs.length < 3 || legs.length > 4) {
-      issues.push(`Best SGM: ${legs.length} legs (need 3–4)`);
+    if (legs.length < 2 || legs.length > 5) {
+      issues.push(`Best SGM: ${legs.length} legs (need 2–5)`);
+    }
+    const bookTotal =
+      multi.bestBookieTotal ?? bestFeedMultiQuote(legs)?.total ?? null;
+    if (bookTotal == null || bookTotal < 2) {
+      issues.push(
+        `Best SGM: bookie total ${bookTotal != null ? bookTotal.toFixed(2) : "?"} below $2`
+      );
     }
     if (!legs.every((l) => qualifiesCrossBoostLeg(l, multi.bestBookie))) {
       issues.push("Best SGM: leg fails starter main-line eligibility");

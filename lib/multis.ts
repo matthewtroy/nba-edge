@@ -9,7 +9,6 @@ import {
   CROSS_SGM_BAND_MIN,
   CROSS_SGM_BAND_MAX,
   CROSS_SGM_MAX_GAMES,
-  legEdgeDecimal,
   SGM_MIN_LEG_PRICE,
 } from "./same-game-sgm-search.js";
 import {
@@ -1265,6 +1264,7 @@ function buildBoostSgm(
     bookie: string;
     p: number;
     total: number;
+    surplus: number;
   } | null = null;
   let maxEdge = 0;
   let maxEdgeBookie = "";
@@ -1294,6 +1294,7 @@ function buildBoostSgm(
       p: number;
       total: number;
       edge: number;
+      surplus: number;
     } | null = null;
     let rangeCands = 0;
 
@@ -1310,37 +1311,33 @@ function buildBoostSgm(
       rangeCands += 1;
       if (
         !bookieBest ||
-        combo.p > bookieBest.p ||
-        (Math.abs(combo.p - bookieBest.p) < 1e-9 && combo.edge > bookieBest.edge)
+        combo.surplus > bookieBest.surplus + 1e-12 ||
+        (Math.abs(combo.surplus - bookieBest.surplus) < 1e-12 &&
+          combo.p > bookieBest.p)
       ) {
         bookieBest = combo;
       }
     }
     maxRange = Math.max(maxRange, rangeCands);
     if (!bookieBest) continue;
-    const prevEdge = bestAcross
-      ? bestAcross.legs.reduce((s, l) => s + legEdgeDecimal(l), 0)
-      : 0;
     if (
       !bestAcross ||
-      bookieBest.p > bestAcross.p ||
-      (Math.abs(bookieBest.p - bestAcross.p) < 1e-9 &&
-        bookieBest.edge > prevEdge) ||
-      (Math.abs(bookieBest.p - bestAcross.p) < 1e-9 &&
-        Math.abs(bookieBest.edge - prevEdge) < 1e-9 &&
-        betterBookiePick(bestAcross, bookieBest.p, bookieBest.total))
+      bookieBest.surplus > bestAcross.surplus + 1e-12 ||
+      (Math.abs(bookieBest.surplus - bestAcross.surplus) < 1e-12 &&
+        bookieBest.p > bestAcross.p)
     ) {
       bestAcross = {
         legs: bookieBest.legs,
         bookie,
         p: bookieBest.p,
         total: bookieBest.total,
+        surplus: bookieBest.surplus,
       };
     }
   }
 
   if (!bestAcross) {
-    const reason = `No same-game SGM @ edge (eligible ${structural.length}, best pool ${maxEdgeBookie}=${maxEdge}, games ${maxRange})`;
+    const reason = `No same-game SGM @ ≥$${SGM_NO_ODDS_MIN} + edge curve (eligible ${structural.length}, best pool ${maxEdgeBookie}=${maxEdge}, games ${maxRange})`;
     pushMultiBuildTrace({
       type: "boostSgm",
       eligible: structural.length,
@@ -1375,7 +1372,7 @@ function buildBoostSgm(
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
       ...overlayForBookie(bestAcross.legs, bestAcross.bookie, catalog),
-      summary: "Best 3–4 leg same-game multi",
+      summary: "Best 2–5 leg same-game multi · min $2 · edge curve",
     },
     reason: "",
   };
