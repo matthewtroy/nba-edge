@@ -8,6 +8,7 @@ import { TodayScreen } from "./screens/TodayScreen";
 import { PicksScreen } from "./screens/PicksScreen";
 import { InjuriesScreen } from "./screens/InjuriesScreen";
 import { ResultsScreen } from "./screens/ResultsScreen";
+import { GamesScreen } from "./screens/GamesScreen";
 import type { PickLeg } from "@lib/types";
 
 type Tab = "today" | "picks" | "injuries" | "results";
@@ -58,6 +59,9 @@ export default function App() {
       )}
       {tab === "picks" && (
         <PicksScreen data={data} myBookie={settings.myBookie} onLegTap={setLeg} />
+      )}
+      {tab === "games" && (
+        <GamesScreen data={data} myBookie={settings.myBookie} onLegTap={setLeg} />
       )}
       {tab === "injuries" && <InjuriesScreen data={data} />}
       {tab === "results" && <ResultsScreen data={data} />}

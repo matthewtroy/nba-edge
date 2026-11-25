@@ -92,9 +92,11 @@ export function MultiCard({
             Published {formatSydneyOddsTime(publishedAt) ?? publishedAt}
           </p>
         )}
-        <p className="text-sm mt-1">
-          Take at ${multi.combinedTakeAt.toFixed(2)}+ (Fair $
-          {multi.combinedFairPrice.toFixed(2)})
+        <p className="text-base font-semibold text-accent-high mt-1">
+          Take at ${multi.combinedTakeAt.toFixed(2)}+ once
+        </p>
+        <p className="text-sm text-white/70">
+          Fair ${multi.combinedFairPrice.toFixed(2)}
         </p>
         {(tipNote || oddsNote) && (
           <p className="text-xs text-white/55 mt-1">

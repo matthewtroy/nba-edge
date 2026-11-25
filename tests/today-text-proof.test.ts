@@ -30,7 +30,7 @@ describe("Today proof text", () => {
       notBuilt: multisRaw.notBuilt,
       picksById: new Map(picks.map((p) => [p.id, p])),
     });
-    expect(text).toMatch(/Take at \$[\d.]+\+ \(Fair \$[\d.]+\)/);
+    expect(text).toMatch(/Take at \$[\d.]+\+ once \(Fair \$[\d.]+\)/);
     expect(text).not.toMatch(/cross-book|Best across books|Best mix/i);
     expect(text).toContain("What changed");
     expect(text).toContain("Audit");

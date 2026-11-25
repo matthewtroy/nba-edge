@@ -1,5 +1,5 @@
 import type { PickLeg } from "@lib/types";
-import { visibleLegTags } from "@lib/leg-display";
+import { displayTagsForBookie } from "@lib/value-at-bookie";
 import { marketLabel } from "../utils/format";
 
 interface Props {
@@ -14,6 +14,7 @@ export function LegRow({ leg, myBookie = "bet365", onTap }: Props) {
       ? leg.bookiePrices[myBookie]
       : undefined;
   const myNum = myFromApi;
+  const tags = displayTagsForBookie(leg, myBookie);
 
   return (
     <button
@@ -34,7 +35,7 @@ export function LegRow({ leg, myBookie = "bet365", onTap }: Props) {
           {leg.playerName} {marketLabel(leg.market, leg.line)}
         </div>
         <div className="flex flex-wrap gap-1 mt-1">
-          {visibleLegTags(leg.tags).map((t) => (
+          {tags.map((t) => (
             <span
               key={t}
               className={`text-xs px-2 py-0.5 rounded-full ${

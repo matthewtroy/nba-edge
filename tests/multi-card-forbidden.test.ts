@@ -35,6 +35,6 @@ describe("MultiCard layout strings", () => {
     for (const bad of FORBIDDEN_MULTI_CARD_STRINGS) {
       expect(blob.includes(bad)).toBe(false);
     }
-    expect(blob).toContain("Take at $9.99+ (Fair $6.77)");
+    expect(blob).toContain("Take at $9.99+ once (Fair $6.77)");
   });
 });

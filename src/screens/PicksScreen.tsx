@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import type { DataBundle } from "../hooks/useData";
 import type { PickLeg } from "@lib/types";
 import { LegRow } from "../components/LegRow";
+import { hasValueAtBookie } from "@lib/value-at-bookie";
 
 interface Props {
   data: DataBundle;
@@ -9,23 +10,28 @@ interface Props {
   onLegTap: (leg: PickLeg) => void;
 }
 
-export function PicksScreen({ data, myBookie, onLegTap }: Props) {
+export function PicksScreen({ data, myBookie = "bet365", onLegTap }: Props) {
   const [showAll, setShowAll] = useState(false);
   const [filter, setFilter] = useState<"all" | "value" | "high" | string>("value");
 
-  const hasValueOdds = data.picks.some((l) => l.tags.includes("Value"));
+  const valueAtBookie = useMemo(
+    () => data.picks.filter((l) => hasValueAtBookie(l, myBookie)),
+    [data.picks, myBookie]
+  );
+  const hasValueOdds = valueAtBookie.length > 0;
 
   const legs = useMemo(() => {
     let list = [...data.picks];
     if (filter === "value") {
-      list = list.filter((l) => l.tags.includes("Value"));
+      list = list.filter((l) => hasValueAtBookie(l, myBookie));
     } else if (filter === "high") {
       list = list.filter((l) => l.tags.includes("High probability"));
       if (!showAll) list = list.slice(0, 15);
     } else if (!showAll) {
       list = list
         .filter(
-          (l) => l.tags.includes("High probability") || l.tags.includes("Value")
+          (l) =>
+            l.tags.includes("High probability") || hasValueAtBookie(l, myBookie)
         )
         .sort((a, b) => b.probability - a.probability)
         .slice(0, 15);
@@ -38,7 +44,7 @@ export function PicksScreen({ data, myBookie, onLegTap }: Props) {
       list = [...data.picks].sort((a, b) => b.probability - a.probability);
     }
     return list.sort((a, b) => b.probability - a.probability);
-  }, [data.picks, showAll, filter]);
+  }, [data.picks, showAll, filter, myBookie]);
 
   return (
     <div className="pb-24">
@@ -46,7 +52,7 @@ export function PicksScreen({ data, myBookie, onLegTap }: Props) {
 
       {!hasValueOdds && (
         <p className="text-sm text-accent-warn mb-3 px-1">
-          No bookie prices yet: type a bet365 price on any leg to check it
+          No {myBookie} value yet: type a price on any leg to check it
         </p>
       )}
 
@@ -60,7 +66,11 @@ export function PicksScreen({ data, myBookie, onLegTap }: Props) {
               filter === f ? "border-accent-high text-accent-high" : "border-white/20"
             }`}
           >
-            {f === "high" ? "High probability" : f === "value" ? "Value" : "All"}
+            {f === "high"
+              ? "High probability"
+              : f === "value"
+                ? `Value @ ${myBookie}`
+                : "All"}
           </button>
         ))}
         {data.slate.map((g) => (

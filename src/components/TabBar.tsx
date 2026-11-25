@@ -1,4 +1,4 @@
-type Tab = "today" | "picks" | "injuries" | "results";
+type Tab = "today" | "picks" | "games" | "injuries" | "results";
 
 interface Props {
   active: Tab;
@@ -8,6 +8,7 @@ interface Props {
 const tabs: { id: Tab; label: string }[] = [
   { id: "today", label: "Today" },
   { id: "picks", label: "Picks" },
+  { id: "games", label: "Games" },
   { id: "injuries", label: "Injuries" },
   { id: "results", label: "Results" },
 ];
@@ -21,7 +22,7 @@ export function TabBar({ active, onChange }: Props) {
             key={t.id}
             type="button"
             onClick={() => onChange(t.id)}
-            className={`flex-1 py-3 text-sm font-medium ${
+            className={`flex-1 py-2.5 text-[11px] sm:text-xs font-medium ${
               active === t.id ? "text-accent-high" : "text-white/60"
             }`}
           >

@@ -19,7 +19,7 @@ export const FORBIDDEN_TODAY_STRINGS = [
 ] as const;
 
 export function formatMultiHeadline(multi: MultiBet): string {
-  return `Take at $${multi.combinedTakeAt.toFixed(2)}+ (Fair $${multi.combinedFairPrice.toFixed(2)})`;
+  return `Take at $${multi.combinedTakeAt.toFixed(2)}+ once (Fair $${multi.combinedFairPrice.toFixed(2)})`;
 }
 
 /** @deprecated use formatLegLineAtBookie */
