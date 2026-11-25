@@ -30,3 +30,24 @@ export function injuryStatusForPlayer(
 ): InjuryStatus | undefined {
   return injuriesByPlayerId(injuries).get(playerId)?.status;
 }
+
+const BADGE_STATUSES: Set<InjuryStatus> = new Set([
+  "Probable",
+  "Questionable",
+  "Doubtful",
+]);
+
+/** Injury statuses that render a row badge (not Available / Out / none). */
+export function injuryStatusShowsBadge(
+  status?: InjuryStatus
+): status is InjuryStatus {
+  return status != null && BADGE_STATUSES.has(status);
+}
+
+export type InjuryBadgeTone = "muted-green" | "orange" | "red";
+
+export function injuryBadgeTone(status: InjuryStatus): InjuryBadgeTone {
+  if (status === "Probable") return "muted-green";
+  if (status === "Questionable") return "orange";
+  return "red";
+}

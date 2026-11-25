@@ -1,16 +1,26 @@
 import type { InjuryStatus } from "@lib/types";
-export { injuryStatusForPlayer } from "@lib/injury-display";
+import {
+  injuryBadgeTone,
+  injuryStatusForPlayer,
+  injuryStatusShowsBadge,
+} from "@lib/injury-display";
 
-const SHOW: Set<InjuryStatus> = new Set(["Questionable", "Doubtful"]);
+export { injuryStatusForPlayer };
+
+const TONE_CLASS: Record<
+  ReturnType<typeof injuryBadgeTone>,
+  string
+> = {
+  "muted-green": "bg-emerald-500/15 text-emerald-400/90",
+  orange: "bg-orange-500/20 text-orange-300",
+  red: "bg-red-500/20 text-red-300",
+};
 
 export function InjuryStatusBadge({ status }: { status?: InjuryStatus }) {
-  if (!status || !SHOW.has(status)) return null;
-  const orange = status === "Questionable";
+  if (!injuryStatusShowsBadge(status)) return null;
   return (
     <span
-      className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${
-        orange ? "bg-orange-500/20 text-orange-300" : "bg-red-500/20 text-red-300"
-      }`}
+      className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full ${TONE_CLASS[injuryBadgeTone(status)]}`}
     >
       {status}
     </span>

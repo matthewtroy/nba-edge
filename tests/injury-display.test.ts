@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import type { InjuryEntry } from "../lib/types";
 import {
+  injuryBadgeTone,
   injuryStatusForPlayer,
+  injuryStatusShowsBadge,
   mergeInjuriesNewestFirst,
 } from "../lib/injury-display";
 
@@ -33,5 +35,20 @@ describe("injury display badges", () => {
     const newer = kat("Probable", "2026-11-25T19:45:00.000Z");
     expect(injuryStatusForPlayer([older, newer], "3136195")).toBe("Probable");
     expect(injuryStatusForPlayer([newer, older], "3136195")).toBe("Probable");
+  });
+
+  it("shows badge only for Probable, Questionable, Doubtful", () => {
+    expect(injuryStatusShowsBadge("Probable")).toBe(true);
+    expect(injuryStatusShowsBadge("Questionable")).toBe(true);
+    expect(injuryStatusShowsBadge("Doubtful")).toBe(true);
+    expect(injuryStatusShowsBadge("Available")).toBe(false);
+    expect(injuryStatusShowsBadge("Out")).toBe(false);
+    expect(injuryStatusShowsBadge(undefined)).toBe(false);
+  });
+
+  it("maps injury badge tones", () => {
+    expect(injuryBadgeTone("Probable")).toBe("muted-green");
+    expect(injuryBadgeTone("Questionable")).toBe("orange");
+    expect(injuryBadgeTone("Doubtful")).toBe("red");
   });
 });
