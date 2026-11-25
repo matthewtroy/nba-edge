@@ -29,7 +29,8 @@ describe("slate today/next", () => {
       game("g3", "2026-11-26T10:00:00Z"),
     ];
     expect(filterSlateToTodaySydney(games).map((g) => g.id)).toEqual(["g1", "g2"]);
-    expect(filterSlateToNextSydney(games).map((g) => g.id)).toEqual(["g3"]);
+    const now = new Date("2026-11-26T08:00:00Z");
+    expect(filterSlateToNextSydney(games, now).map((g) => g.id)).toEqual(["g3"]);
   });
 
   it("filters by explicit Sydney date", () => {

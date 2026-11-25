@@ -1,5 +1,6 @@
 import type { PickLeg } from "./types.js";
 import { sameGameSgmHasClash } from "./clash.js";
+import { pickSameGameLegSubsetResolved } from "./same-game-leg-resolve.js";
 import { combinedPriceForBookieWithCatalog } from "./single-bookie.js";
 import { legMeetsBookieEdge, asBookieLeg } from "./bookie-edge-pool.js";
 import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
@@ -99,6 +100,26 @@ export function pickBestGamesTabSgmCombo(
     }
   }
   dfs(0, []);
+
+  if (!best && pool.length >= GAMES_TAB_MIN_LEGS) {
+    const resolved = pickSameGameLegSubsetResolved(
+      pool,
+      GAMES_TAB_MIN_LEGS,
+      GAMES_TAB_MAX_LEGS,
+      GAMES_TAB_MIN_LEG_PRICE
+    );
+    if (resolved) {
+      const total =
+        combinedPriceForBookieWithCatalog(resolved, bookie, catalog) ?? 0;
+      if (totalInBand(total, oddsMin, oddsMax)) {
+        const p = combinedProb(resolved);
+        const edge = resolved.reduce((s, l) => s + legEdgeDecimal(l), 0);
+        const valueCount = resolved.filter((l) => hasValueAtBookie(l, bookie))
+          .length;
+        best = { legs: resolved, p, total, edge, valueCount };
+      }
+    }
+  }
 
   return best;
 }

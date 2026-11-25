@@ -16,6 +16,7 @@
     "pipeline:from-live": "tsx scripts/pipeline.ts --from-live",
     "odds-check": "tsx scripts/odds-check.ts",
     "test": "vitest run",
+    "screenshots:leg-sheet": "npm run build && tsx scripts/capture-leg-sheet-screenshots.ts",
     "test:watch": "vitest"
   },
   "dependencies": {
@@ -28,6 +29,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "pdf-parse": "^1.1.1",
+    "playwright": "^1.49.1",
     "postcss": "^8.4.49",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

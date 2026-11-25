@@ -50,6 +50,7 @@ export function MultiLegRow({
   return (
     <button
       type="button"
+      data-testid="leg-row"
       onClick={() => onTap(leg)}
       className="w-full grid grid-cols-[32px_1fr_76px] gap-3 py-3 text-left border-b border-white/[0.05] last:border-0 active:opacity-90"
     >

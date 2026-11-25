@@ -22,15 +22,22 @@ export function filterSlateToTodaySydney(games: SlateGame[], _now = new Date()):
   return open.filter((g) => sydneyTipDate(g.startTime) === activeDate);
 }
 
-/** Second-earliest Sydney tip date among open games (tomorrow prep). */
-export function filterSlateToNextSydney(games: SlateGame[]): SlateGame[] {
+/**
+ * Next slate for odds / official republish: earliest Sydney tip date whose first game is still in the future.
+ */
+export function filterSlateToNextSydney(
+  games: SlateGame[],
+  now = new Date()
+): SlateGame[] {
   const open = games.filter((g) => !isFinalStatus(g.status));
   if (open.length === 0) return [];
 
-  const dates = [...new Set(open.map((g) => sydneyTipDate(g.startTime)))].sort();
-  if (dates.length < 2) return [];
-  const nextDate = dates[1];
-  return open.filter((g) => sydneyTipDate(g.startTime) === nextDate);
+  const future = open.filter((g) => new Date(g.startTime).getTime() > now.getTime());
+  const base = future.length ? future : open;
+  const dates = [...new Set(base.map((g) => sydneyTipDate(g.startTime)))].sort();
+  if (!dates.length) return [];
+  const nextDate = dates[0];
+  return base.filter((g) => sydneyTipDate(g.startTime) === nextDate);
 }
 
 export function filterOpenGamesOnSydneyDate(games: SlateGame[], ymd: string): SlateGame[] {

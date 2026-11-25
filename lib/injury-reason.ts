@@ -46,6 +46,18 @@ export function injuryReasonForMarket(
   return raw ? formatInjuryReasonLine(raw) : undefined;
 }
 
+/** Teammate injury redistribution that does not apply directly to this leg's stat. */
+export function teammateInjuryReasonForLeg(
+  reasons: string[],
+  market: Market
+): string | undefined {
+  const raw = reasons
+    .filter(isInjuryRedistributionReason)
+    .filter((r) => !/voids if out/i.test(r))
+    .find((r) => !reasonStatMatchesMarket(r, market));
+  return raw ? formatInjuryReasonLine(raw) : undefined;
+}
+
 export function pickPrimaryInjuryReason(
   reasons: string[],
   market?: Market

@@ -38,9 +38,11 @@ describe("buildShortLegReason", () => {
     expect(line).toMatch(/Allen out/);
   });
 
-  it("skips form below 7/10", () => {
+  it("uses L10 avg fallback when form below 7/10", () => {
     const leg = { ...base, reasons: [] };
-    expect(buildShortLegReason(leg, logs([3, 3, 3, 3, 3, 8, 8, 8, 8, 8]))).toBeUndefined();
+    expect(buildShortLegReason(leg, logs([3, 3, 3, 3, 3, 8, 8, 8, 8, 8]))).toMatch(
+      /L10 avg/
+    );
   });
 
   it("shows form at 7/10", () => {

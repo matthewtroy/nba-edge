@@ -26,7 +26,7 @@ function LastTenBarChart({ ticks }: { ticks: ("hit" | "miss" | "na")[] }) {
   return (
     <div className="flex items-end gap-1 h-10" aria-label="Last 10 at line">
       {shown.map((t, i) => (
-        <motionBar
+        <MotionBar
           key={i}
           hit={t === "hit"}
           miss={t === "miss"}
@@ -37,7 +37,7 @@ function LastTenBarChart({ ticks }: { ticks: ("hit" | "miss" | "na")[] }) {
   );
 }
 
-function motionBar({
+function MotionBar({
   hit,
   miss,
   na,
@@ -62,7 +62,7 @@ function RungChips({
 }) {
   if (rungs.length <= 1) return null;
   return (
-    <motionChipRow className="flex flex-wrap gap-1.5 mt-3">
+    <MotionChipRow className="flex flex-wrap gap-1.5 mt-3">
       {rungs.map((r) => (
         <button
           key={r.id}
@@ -77,7 +77,7 @@ function RungChips({
           {marketLabel(r.market, r.line)}
         </button>
       ))}
-    </motionChipRow>
+    </MotionChipRow>
   );
 }
 
@@ -164,15 +164,20 @@ export function LegSheet({
     setTouchStartY(null);
   };
 
+  const portalTarget =
+    typeof document !== "undefined"
+      ? document.getElementById("leg-sheet-portal") ?? document.body
+      : document.body;
+
   return createPortal(
-    <motionOverlay onClose={onClose}>
-      <motionPanel
+    <MotionOverlay onClose={onClose}>
+      <MotionPanel
         dragY={dragY}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <motionHandleRow onClose={onClose} />
+        <MotionHandleRow onClose={onClose} />
 
         <h2 className="text-lg font-semibold text-white theme-adaptive-title leading-tight pr-8">
           {leg.playerName}
@@ -288,9 +293,9 @@ export function LegSheet({
             <p className="text-xs text-white/55 mt-1 capitalize">{v}</p>
           )}
         </section>
-      </motionPanel>
-    </motionOverlay>,
-    document.body
+      </MotionPanel>
+    </MotionOverlay>,
+    portalTarget
   );
 }
 
@@ -317,7 +322,7 @@ function StatCell({
   );
 }
 
-function motionOverlay({
+function MotionOverlay({
   children,
   onClose,
 }: {
@@ -329,6 +334,7 @@ function motionOverlay({
       className="fixed inset-0 z-[200] pointer-events-auto"
       role="dialog"
       aria-modal="true"
+      data-testid="leg-sheet"
     >
       <button
         type="button"
@@ -336,14 +342,14 @@ function motionOverlay({
         aria-label="Close leg details"
         onClick={onClose}
       />
-      <div className="absolute inset-x-0 bottom-0 flex justify-center">
-        {children}
+      <div className="absolute inset-x-0 bottom-0 flex justify-center pointer-events-none">
+        <div className="w-full max-w-phone pointer-events-auto">{children}</div>
       </div>
     </div>
   );
 }
 
-function motionPanel({
+function MotionPanel({
   children,
   dragY,
   onTouchStart,
@@ -357,18 +363,18 @@ function motionPanel({
   onTouchMove: (e: React.TouchEvent) => void;
 }) {
   return (
-    <motionPanelInner
+    <MotionPanelInner
       dragY={dragY}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
       {children}
-    </motionPanelInner>
+    </MotionPanelInner>
   );
 }
 
-function motionPanelInner({
+function MotionPanelInner({
   children,
   dragY,
   onTouchStart,
@@ -383,22 +389,24 @@ function motionPanelInner({
 }) {
   return (
     <div
-      className="bg-card rounded-t-[20px] px-4 pt-2 pb-8 max-h-[85vh] overflow-y-auto overscroll-contain animate-slide-up border-t border-white/[0.08] w-full max-w-phone shadow-[0_-8px_40px_rgba(0,0,0,0.45)]"
-      style={{
-        transform: dragY ? `translateY(${dragY}px)` : undefined,
-        backgroundColor: "#121821",
-      }}
+      className="w-full border-t border-white/[0.08] shadow-[0_-8px_40px_rgba(0,0,0,0.45)]"
+      style={{ backgroundColor: "#121821" }}
       onClick={(e) => e.stopPropagation()}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
     >
-      {children}
+      <div
+        className="rounded-t-[20px] px-4 pt-2 pb-8 max-h-[85vh] overflow-y-auto overscroll-contain w-full"
+        style={{ transform: dragY ? `translateY(${dragY}px)` : undefined }}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        {children}
+      </div>
     </div>
   );
 }
 
-function motionHandleRow({ onClose }: { onClose: () => void }) {
+function MotionHandleRow({ onClose }: { onClose: () => void }) {
   return (
     <div className="relative flex justify-center pt-1 pb-3">
       <div className="w-9 h-1 bg-white/15 rounded-full" aria-hidden />
@@ -414,7 +422,7 @@ function motionHandleRow({ onClose }: { onClose: () => void }) {
   );
 }
 
-function motionChipRow({
+function MotionChipRow({
   children,
   className,
 }: {

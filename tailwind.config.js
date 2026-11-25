@@ -31,8 +31,8 @@ export default {
       },
       keyframes: {
         "slide-up": {
-          from: { transform: "translateY(100%)", opacity: "0.6" },
-          to: { transform: "translateY(0)", opacity: "1" },
+          from: { transform: "translateY(100%)" },
+          to: { transform: "translateY(0)" },
         },
         shimmer: {
           "0%": { backgroundPosition: "-200% 0" },

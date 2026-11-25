@@ -31,6 +31,7 @@ function synthLeg(
     bookiePrices: { Sportsbet: Math.round(fair * 1.1 * 100) / 100 },
     bestBookie: "Sportsbet",
     bestPrice: Math.round(fair * 1.1 * 100) / 100,
+    reasonLine: "7/10 hits at line",
   };
 }
 

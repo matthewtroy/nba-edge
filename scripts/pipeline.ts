@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { runModelFromFixture, loadHistory } from "./run-model.js";
 import { runLivePipeline } from "./run-live.js";
+import { skipOfficialPublishOnRun } from "../lib/pipeline-run-opts.js";
 import { computeCalibration, emptyHistory } from "../lib/grading.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -82,7 +83,11 @@ async function main() {
     forceOdds: forceOdds || useFromLive,
     fromLive: useFromLive,
     republishCard,
-    skipOfficialPublish: (forceOdds && !useFromLive) || republishCard,
+    skipOfficialPublish: skipOfficialPublishOnRun({
+      forceOdds,
+      republishCard,
+      fromLive: useFromLive,
+    }),
   });
 }
 

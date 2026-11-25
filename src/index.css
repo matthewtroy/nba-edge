@@ -18,6 +18,12 @@ body,
   box-sizing: border-box;
 }
 
+/* Leg sheet portal: outside #root so prod transforms on the phone shell cannot break fixed positioning */
+#leg-sheet-portal {
+  position: relative;
+  z-index: 0;
+}
+
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }

@@ -108,7 +108,7 @@ import {
   shouldPublishOfficialCard,
   writeOfficialCard,
 } from "../lib/official-card.js";
-import { sydneyDateString } from "../lib/official-card-time.js";
+import { sydneyDateString, sydneyHour } from "../lib/official-card-time.js";
 import { slateFirstTipStarted } from "../lib/slate-started.js";
 import { resolveOddsLastPulled } from "../lib/odds-pull-meta.js";
 import { logOfficialCard } from "../lib/official-card-log.js";
@@ -496,6 +496,21 @@ export async function runLivePipeline(
     });
   }
   if (skipOddsEnv && pullTrigger !== "pretip") pullTrigger = null;
+
+  const eveningSydney = sydneyHour(now) >= 21 && sydneyHour(now) < 22;
+  if (eveningSydney && !forceOdds && !fromLive) {
+    const pulled = new Set(cache.pullSlotsToday ?? []);
+    if (pullTrigger === "scheduled_9pm") {
+      console.log("scheduled: acted");
+    } else if (pulled.has("scheduled_9pm")) {
+      console.log("scheduled: already done");
+    } else if (
+      nextSlateTip &&
+      cache.lastScheduled9pmSlate === nextSlateTip
+    ) {
+      console.log("scheduled: already done");
+    }
+  }
 
   let usedLiveOddsPull = false;
   let publishedPicksCount = 0;

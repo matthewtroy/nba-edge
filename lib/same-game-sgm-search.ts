@@ -1,5 +1,6 @@
 import type { PickLeg } from "./types.js";
 import { sameGameSgmHasClash } from "./clash.js";
+import { pickSameGameLegSubsetResolved } from "./same-game-leg-resolve.js";
 import { combinedPriceForBookieWithCatalog } from "./single-bookie.js";
 import { legMeetsBookieEdge } from "./bookie-edge-pool.js";
 import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
@@ -67,37 +68,14 @@ export function pickBestSameGameSgmCombo(
 const CROSS_MIN_LEGS = 2;
 const CROSS_MAX_LEGS = 3;
 
-/** Best 2–3 leg same-game subset for cross-game multis (no total band; edge @ bookie). */
+/** Best 2–3 leg same-game subset for cross-game multis (clash resolve: keep higher p). */
 export function pickBestCrossGameLegSubset(pool: PickLeg[]): PickLeg[] | null {
-  if (pool.length < CROSS_MIN_LEGS) return null;
-  let best: { legs: PickLeg[]; p: number; edge: number } | null = null;
-
-  function dfs(start: number, chosen: PickLeg[]) {
-    if (chosen.length >= CROSS_MIN_LEGS && chosen.length <= CROSS_MAX_LEGS) {
-      if (
-        !sameGameSgmHasClash(chosen) &&
-        chosen.every((l) => (l.bestPrice ?? 0) >= SGM_MIN_LEG_PRICE)
-      ) {
-        const p = combinedProb(chosen);
-        const edge = chosen.reduce((s, l) => s + legEdgeDecimal(l), 0);
-        if (
-          !best ||
-          p > best.p ||
-          (Math.abs(p - best.p) < 1e-9 && edge > best.edge)
-        ) {
-          best = { legs: [...chosen], p, edge };
-        }
-      }
-    }
-    if (chosen.length >= CROSS_MAX_LEGS) return;
-    for (let i = start; i < pool.length; i++) {
-      const next = [...chosen, pool[i]];
-      if (sameGameSgmHasClash(next)) continue;
-      dfs(i + 1, next);
-    }
-  }
-  dfs(0, []);
-  return best?.legs ?? null;
+  return pickSameGameLegSubsetResolved(
+    pool,
+    CROSS_MIN_LEGS,
+    CROSS_MAX_LEGS,
+    SGM_MIN_LEG_PRICE
+  );
 }
 
 export function gameSgmEligibleAtBookie(

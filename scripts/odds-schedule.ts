@@ -47,7 +47,8 @@ export function detectOddsPullTrigger(
     }
   }
 
-  if (!opts.skipScheduled9pm && h === 21) {
+  const eveningSlot = h >= 21 && h < 22;
+  if (!opts.skipScheduled9pm && eveningSlot) {
     if (pulled.has("scheduled_9pm")) return null;
     if (
       opts.nextSlateTipDate &&

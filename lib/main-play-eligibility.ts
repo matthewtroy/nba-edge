@@ -2,6 +2,7 @@ import type { Market, PickLeg } from "./types.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
 import { passesFormGuard } from "./form-guard.js";
 import { legBookiePriceInBand } from "./leg-bookie-band.js";
+import { mainPlayReasonOk } from "./leg-display.js";
 
 function isCoreMarket(market: string): boolean {
   return market === "pts" || market === "reb" || market === "ast";
@@ -70,6 +71,7 @@ export function qualifiesMainPlayLeg(leg: PickLeg, bookie?: string): boolean {
   return (
     mainPlayStructuralOk(leg) &&
     passesFormGuard(leg) &&
+    mainPlayReasonOk(leg) &&
     legBookiePriceInBand(leg, bookie, 1.4, 2.5)
   );
 }

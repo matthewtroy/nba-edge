@@ -31,6 +31,7 @@ function leg(
     bestPrice: takeAt,
     bestBookie: "Sportsbet",
     bookiePrices: { Sportsbet: takeAt },
+    reasonLine: "7/10 hits at line",
   };
 }
 

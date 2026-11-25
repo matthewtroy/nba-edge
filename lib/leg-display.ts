@@ -1,6 +1,6 @@
 import type { Market, PickLeg, PlayerGameLog } from "./types.js";
 import { lastFiveVsLine } from "./leg-history.js";
-import { injuryReasonForMarket } from "./injury-reason.js";
+import { injuryReasonForMarket, teammateInjuryReasonForLeg } from "./injury-reason.js";
 import type { DefenseRatingsBundle } from "./defense-ratings.js";
 import { defenseRankFor, paceRank } from "./defense-ratings.js";
 import { MATCHUP_REASONS_ENABLED } from "./pricing-config.js";
@@ -97,6 +97,49 @@ function formPhrase(logs: PlayerGameLog[], market: Market, line: number): string
   return undefined;
 }
 
+function avgVsLinePhrase(
+  logs: PlayerGameLog[],
+  market: Market,
+  line: number
+): string | undefined {
+  const sorted = [...logs].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
+  if (sorted.length < 5) return undefined;
+  let sum = 0;
+  let n = 0;
+  for (const g of sorted) {
+    let v: number | null = null;
+    if (market === "3pm") v = g.threes;
+    else if (market === "pts" || market === "reb" || market === "ast") v = g[market];
+    else if (market.startsWith("q1")) {
+      if (market === "q1pts") v = g.q1Pts ?? null;
+      else if (market === "q1reb") v = g.q1Reb ?? null;
+      else v = g.q1Ast ?? null;
+    }
+    if (v == null) continue;
+    sum += v;
+    n += 1;
+  }
+  if (n < 5) return undefined;
+  const avg = sum / n;
+  const stat = statLabel(market);
+  return `L10 avg ${avg.toFixed(1)} ${stat} vs ${line}+ line`;
+}
+
+function minutesTrendPhrase(logs: PlayerGameLog[]): string | undefined {
+  const sorted = [...logs].sort((a, b) => b.date.localeCompare(a.date));
+  if (sorted.length < 6) return undefined;
+  const l5 = sorted.slice(0, 5).reduce((s, g) => s + g.minutes, 0) / 5;
+  const prev5 = sorted.slice(5, 10);
+  if (prev5.length < 5) return undefined;
+  const p5 = prev5.reduce((s, g) => s + g.minutes, 0) / 5;
+  const diff = l5 - p5;
+  if (Math.abs(diff) < 1.5) return undefined;
+  return diff > 0
+    ? `Minutes up ${diff.toFixed(1)} last 5 vs prior 5`
+    : `Minutes down ${Math.abs(diff).toFixed(1)} last 5`;
+}
+
+
 /** Up to two reasons, max ~80 chars: injury, matchup/pace, form. */
 export function buildLegReasonLine(input: {
   leg: PickLeg;
@@ -133,8 +176,25 @@ export function buildLegReasonLine(input: {
     const form = formPhrase(input.logs, input.leg.market, input.leg.line);
     if (form) parts.push(form);
   }
+  if (parts.length < 2) {
+    const teammate = teammateInjuryReasonForLeg(input.leg.reasons, input.leg.market);
+    if (teammate) parts.push(`Teammate ${teammate}`);
+  }
+  if (parts.length < 2) {
+    const avg = avgVsLinePhrase(input.logs, input.leg.market, input.leg.line);
+    if (avg) parts.push(avg);
+  }
+  if (parts.length < 1) {
+    const mins = minutesTrendPhrase(input.logs);
+    if (mins) parts.push(mins);
+  }
   if (!parts.length) return undefined;
   return parts.join(" · ").slice(0, 80);
+}
+
+export function mainPlayReasonOk(leg: PickLeg): boolean {
+  const line = (leg.reasonLine ?? "").trim();
+  return line.length > 0;
 }
 
 /** @deprecated use buildLegReasonLine */
