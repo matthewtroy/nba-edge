@@ -67,7 +67,7 @@ export function renderTodayText(input: {
     lines.push(`  ${formatMultiHeadline(multi)}`);
     if (multi.combinedBestPrice != null && multi.combinedBestBookie) {
       lines.push(
-        `  ${multi.combinedBestBookie} $${multi.combinedBestPrice.toFixed(2)}+ (all legs)`
+        `  Best multi odds: ${multi.combinedBestBookie} $${multi.combinedBestPrice.toFixed(2)}+`
       );
     }
     const legs = multi.legs

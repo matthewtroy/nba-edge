@@ -32,6 +32,9 @@ describe("Today proof text", () => {
       gateViolations: meta.gateViolations,
     });
     expect(text).toMatch(/Take at \$[\d.]+\+ \(Fair \$[\d.]+\)/);
+    if ((meta.sources.odds ?? "").includes("ok")) {
+      expect(text).toMatch(/Best multi odds:/);
+    }
     expect(text).toContain("What changed");
     expect(text).not.toMatch(/~1 in/);
     expect(text).not.toMatch(/\b[123]\+ 3PM\b/i);

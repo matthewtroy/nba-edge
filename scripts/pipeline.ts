@@ -11,6 +11,7 @@ const outDir = path.join(rootDir, "public/data");
 
 const fixtureMode = process.argv.includes("--fixture");
 const forceOdds = process.argv.includes("--force-odds");
+const fromLive = process.argv.includes("--from-live");
 
 function runFixturePipeline(): void {
   const result = runModelFromFixture(rootDir);
@@ -71,7 +72,7 @@ async function main() {
     runFixturePipeline();
     return;
   }
-  await runLivePipeline(rootDir, outDir, { forceOdds });
+  await runLivePipeline(rootDir, outDir, { forceOdds: forceOdds || fromLive, fromLive });
 }
 
 main().catch((e) => {

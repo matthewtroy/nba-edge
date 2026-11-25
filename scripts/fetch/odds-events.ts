@@ -13,7 +13,7 @@ export async function listOddsEvents(
   apiKey: string
 ): Promise<{ events: { id: string; home_team: string; away_team: string; commence_time: string }[]; remaining?: number }> {
   const url = `https://api.the-odds-api.com/v4/sports/basketball_nba/events?apiKey=${apiKey}`;
-  const res = await fetch(url);
+  const res = await fetch(url, { cache: "no-store" });
   const remaining = res.headers.get("x-requests-remaining");
   if (!res.ok) return { events: [] };
   const events = (await res.json()) as { id: string; home_team: string; away_team: string; commence_time: string }[];
@@ -46,7 +46,7 @@ export async function fetchOddsForEvent(
     ...ODDS_COMBO_MARKETS,
   ].join(",");
   const url = `https://api.the-odds-api.com/v4/sports/basketball_nba/events/${eventId}/odds?apiKey=${apiKey}&regions=au&oddsFormat=decimal&markets=${markets}`;
-  const res = await fetch(url);
+  const res = await fetch(url, { cache: "no-store" });
   const remaining = res.headers.get("x-requests-remaining");
   return {
     data: res.ok ? await res.json() : null,

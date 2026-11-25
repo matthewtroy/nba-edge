@@ -335,41 +335,12 @@ function buildBooster(
     return { bet: null, reason: "Booster leg missing" };
   }
 
-  const allBoost = new Set(main.legs);
-  let boosted = boostMainLegs(main, picks, allBoost);
-  let summary = "Main Play +1 rung on every leg";
-
-  let fair = boosted ? combinedPrice(boosted).fair : 0;
-  if (!boosted || fair > 120) {
-    boosted = null;
-    const bySafe = [...mainLegs].sort((a, b) => b.probability - a.probability);
-    for (const n of [3, 2]) {
-      const stepIds = new Set(bySafe.slice(0, n).map((l) => l.id));
-      const tryLegs = boostMainLegs(main, picks, stepIds);
-      if (!tryLegs) continue;
-      const f = combinedPrice(tryLegs).fair;
-      if (f >= 30 && f <= 120) {
-        boosted = tryLegs;
-        fair = f;
-        summary = `Stepped ${n} safest Main legs; rest at Main rung`;
-        break;
-      }
-    }
-  } else if (fair < 30) {
-    boosted = null;
+  const boosted = boostMainLegs(main, picks, new Set(main.legs));
+  if (!boosted?.length) {
+    return { bet: null, reason: "Booster: could not +1 every Main leg (rung/clash)" };
   }
 
-  if (!boosted) {
-    return {
-      bet: null,
-      reason:
-        fair > 120
-          ? "Booster: fair above 120 even stepping 2–3 safest legs"
-          : `Booster combined fair ${fair.toFixed(1)} outside 30–120`,
-    };
-  }
-
-  const { p, takeAt } = combinedPrice(boosted);
+  const { p, fair, takeAt } = combinedPrice(boosted);
   const book = singleBookieOverlay(boosted, takeAt);
   const triCandidates: PickLeg[][] = [];
   for (let i = 0; i < boosted.length - 2; i++) {
@@ -393,7 +364,7 @@ function buildBooster(
       combinedBestPrice: book.price,
       combinedBestBookie: book.bookie,
       oneInX: Math.round(1 / p),
-      summary: `${summary}${trixieNote}`,
+      summary: `Main Play +1 rung on every leg${trixieNote}`,
     },
     reason: "",
   };

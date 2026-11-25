@@ -69,6 +69,46 @@ export function buildWhatChanged(
           ? `+${best.delta.toFixed(1)} pts`
           : `+${Math.round(best.delta)} ${best.stat}`;
       lines.push(`${injLabel} out → ${best.name} ${bump}`);
+    } else {
+      const boardLeg = picks
+        .filter((l) => l.team === inj.teamName)
+        .find(
+          (l) =>
+            l.tags.includes("boards shared") &&
+            l.reasons.some((r) => reasonMentionsInjury(r, inj))
+        );
+      const starterBump = picks
+        .filter((l) => l.team === inj.teamName && l.starterEligible)
+        .flatMap((l) =>
+          l.reasons
+            .filter((r) => reasonMentionsInjury(r, inj))
+            .map((r) => ({ leg: l, reason: r }))
+        )
+        .sort((a, b) => b.leg.probability - a.leg.probability)[0];
+      if (boardLeg) {
+        lines.push(`${injLabel} out → ${displayPlayerName(boardLeg.playerName)} boards`);
+      } else if (starterBump) {
+        const m = starterBump.reason.match(BOOST_RE);
+        if (m) {
+          const stat = normalizeStat(m[2]);
+          const bump =
+            stat === "pts"
+              ? `+${Number(m[1]).toFixed(1)} pts`
+              : `+${Math.round(Number(m[1]))} ${stat}`;
+          lines.push(
+            `${injLabel} out → ${displayPlayerName(starterBump.leg.playerName)} ${bump}`
+          );
+        }
+      } else {
+        const topBoard = picks
+          .filter((l) => l.team === inj.teamName && l.tags.includes("boards shared"))
+          .sort((a, b) => b.probability - a.probability)[0];
+        if (topBoard) {
+          lines.push(
+            `${injLabel} out → ${displayPlayerName(topBoard.playerName)} boards`
+          );
+        }
+      }
     }
     if (lines.length >= limit) break;
   }

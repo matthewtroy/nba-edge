@@ -4,74 +4,91 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
-        "5107199-pts-15",
+        "5160992-reb-5",
+        "3936299-pts-25",
         "4712849-pts-15",
-        "5211175-pts-10",
-        "3112335-pts-25",
-        "4277905-ast-7"
+        "4277847-reb-7"
       ],
-      "combinedProbability": 0.147783722004072,
-      "combinedFairPrice": 6.77,
-      "combinedTakeAt": 9.99,
-      "oneInX": 7,
+      "combinedProbability": 0.16336728777599996,
+      "combinedFairPrice": 6.12,
+      "combinedTakeAt": 8.25,
+      "combinedBestPrice": 9.99,
+      "combinedBestBookie": "Unibet",
+      "oneInX": 6,
       "stakeSuggestion": 33.37,
-      "summary": "5 starter main lines"
+      "summary": "4 starter main lines"
     },
     {
       "type": "booster",
       "label": "Booster",
       "legs": [
-        "5107199-pts-20",
-        "4712849-pts-15",
-        "5211175-pts-15",
-        "3112335-pts-25",
-        "4277905-ast-7"
+        "5160992-reb-7",
+        "3936299-pts-30",
+        "4712849-pts-20",
+        "4277847-reb-10"
       ],
-      "combinedProbability": 0.011133348168096002,
-      "combinedFairPrice": 89.82,
-      "combinedTakeAt": 132.72,
-      "oneInX": 90,
-      "summary": "Stepped 2 safest Main legs; rest at Main rung"
+      "combinedProbability": 0.011263137599999999,
+      "combinedFairPrice": 88.79,
+      "combinedTakeAt": 120.87,
+      "combinedBestPrice": 130.4,
+      "combinedBestBookie": "Unibet",
+      "oneInX": 89,
+      "summary": "Main Play +1 rung on every leg"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Value",
+      "legs": [
+        "4566434-q1reb-2",
+        "6583-q1reb-3",
+        "3138160-q1pts-3"
+      ],
+      "combinedProbability": 0.018182749999999998,
+      "combinedFairPrice": 55,
+      "combinedTakeAt": 69.13,
+      "combinedBestPrice": 72.37,
+      "combinedBestBookie": "Sportsbet",
+      "oneInX": 55,
+      "summary": "Value Q1: fair 2.20–4.00, one leg/team"
     },
     {
       "type": "crossGameSgm",
       "label": "Cross-Game SGM Multi",
       "legs": [
         "3138160-reb-5",
-        "6442-pts-20",
-        "4684742-ast-5",
-        "4066320-3pm-4",
-        "5142718-pts-15",
-        "4065648-pts-25"
+        "5041939-pts-20",
+        "4684742-reb-7",
+        "4278562-pts-10",
+        "4397424-pts-10",
+        "4065648-ast-5"
       ],
-      "combinedProbability": 0.05261298582037108,
-      "combinedFairPrice": 19.01,
-      "combinedTakeAt": 30,
-      "oneInX": 19,
+      "combinedProbability": 0.070577453798775,
+      "combinedFairPrice": 14.17,
+      "combinedTakeAt": 22.51,
+      "combinedBestPrice": 30,
+      "combinedBestBookie": "Unibet",
+      "oneInX": 14,
       "summary": "2+ legs/game, fair 1.35–2.50 each"
     },
     {
       "type": "boostSgm",
       "label": "Boost SGM",
       "legs": [
-        "3078576-ast-5",
+        "5142718-pts-15",
         "4066354-ast-5",
-        "4397424-reb-10"
+        "4065648-3pm-4"
       ],
-      "combinedProbability": 0.08912748000000001,
-      "combinedFairPrice": 11.22,
-      "combinedTakeAt": 14.1,
+      "combinedProbability": 0.09294490799999999,
+      "combinedFairPrice": 10.76,
+      "combinedTakeAt": 13.56,
+      "combinedBestPrice": 14.82,
+      "combinedBestBookie": "Unibet",
       "oneInX": 11,
       "summary": "bet365 25% boost (needs 3 legs)"
     }
   ],
   "notBuilt": [
-    {
-      "type": "q1Multi",
-      "label": "Q1 Multi",
-      "variant": "Value",
-      "reason": "Removed after clash check or exposure cap"
-    },
     {
       "type": "longshot",
       "label": "Longshot",

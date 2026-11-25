@@ -51,12 +51,21 @@ import { buildRosterIndex, mergeInjuryEntry } from "../lib/injury-match.js";
 
 const ET = "America/New_York";
 
+import {
+  loadFromLiveOddsFile,
+  oddsMapsFromSnapshot,
+  snapshotFromPicks,
+  syntheticFromLiveOddsFromPicks,
+  writeFromLiveOddsSnapshot,
+} from "./load-from-live-odds.js";
+
 export async function runLivePipeline(
   rootDir: string,
   outDir: string,
-  opts: { forceOdds?: boolean } = {}
+  opts: { forceOdds?: boolean; fromLive?: boolean } = {}
 ): Promise<void> {
   const forceOdds = opts.forceOdds === true;
+  const fromLive = opts.fromLive === true;
   loadAliasMap(rootDir);
   const now = new Date();
   const sources: Record<string, string> = {
@@ -253,11 +262,12 @@ export async function runLivePipeline(
   let oddsPulledAt = cache.lastPulled;
   const apiKey = loadOddsApiKey(rootDir);
 
+  let usedLiveOddsPull = false;
   if (!apiKey) {
     sources.odds = "stale";
   } else if (cache.creditsRemaining != null && shouldPauseOdds(cache.creditsRemaining)) {
     sources.odds = "paused (credit limit)";
-  } else if (shouldPullOddsNow(now, slate, cache) || forceOdds) {
+  } else if (shouldPullOddsNow(now, slate, cache) || forceOdds || fromLive) {
     try {
       const { events, remaining } = await listOddsEvents(apiKey);
       if (remaining != null) cache.creditsRemaining = remaining;
@@ -284,6 +294,7 @@ export async function runLivePipeline(
         cache.oddsMap = oddsMapToRecord(oddsMap);
         oddsPayloads = payloads;
         sources.odds = "ok";
+        usedLiveOddsPull = true;
       }
     } catch {
       sources.odds = sources.odds === "paused (credit limit)" ? sources.odds : "stale";
@@ -315,7 +326,7 @@ export async function runLivePipeline(
   const oddsCoverage = buildOddsCoverage(oddsPayloads, oddsPulledAt ?? now.toISOString());
   const extractedKeyList = [...oddsMap.keys()];
 
-  const { picks, multis, multisPayload, meta, whatChanged } = runModel({
+  let modelRun = runModel({
     rootDir,
     slate,
     injuries,
@@ -326,6 +337,48 @@ export async function runLivePipeline(
     oddsPulledAt,
     metaSources: sources,
   });
+
+  if (fromLive && !usedLiveOddsPull) {
+    for (let parityPass = 0; parityPass < 2; parityPass++) {
+      const synth = syntheticFromLiveOddsFromPicks(modelRun.picks);
+      writeFromLiveOddsSnapshot(rootDir, synth);
+      const maps = oddsMapsFromSnapshot(synth);
+      oddsMap = maps.best;
+      allOddsMap = maps.all;
+      oddsPulledAt = synth.pulledAt;
+      sources.odds = "ok (from-live parity)";
+      const pricingOdds2 = expandOddsMapForPlayers(
+        oddsMap,
+        players.map((p) => p.name)
+      );
+      const pricingAll2 = new Map<string, Record<string, number>>();
+      for (const [k, v] of allOddsMap) {
+        pricingAll2.set(k, v);
+        const [name, market, line] = k.split("|");
+        for (const p of players) {
+          if (normalizePlayerName(p.name) === name) {
+            pricingAll2.set(`${p.name}|${market}|${line}`, v);
+            pricingAll2.set(`${normalizePlayerName(p.name)}|${market}|${line}`, v);
+          }
+        }
+      }
+      modelRun = runModel({
+        rootDir,
+        slate,
+        injuries,
+        players,
+        rosterIds,
+        oddsMap: pricingOdds2,
+        allOddsMap: pricingAll2,
+        oddsPulledAt,
+        metaSources: sources,
+      });
+    }
+  } else if (fromLive && usedLiveOddsPull && sources.odds.startsWith("ok")) {
+    writeFromLiveOddsSnapshot(rootDir, snapshotFromPicks(modelRun.picks, oddsPulledAt ?? now.toISOString()));
+  }
+
+  const { picks, multis, multisPayload, meta, whatChanged } = modelRun;
 
   let history = loadHistory(rootDir);
   const slateDate = now.toLocaleDateString("en-CA", { timeZone: "Australia/Sydney" });
@@ -383,7 +436,7 @@ export async function runLivePipeline(
   fs.writeFileSync(oddsCachePath, JSON.stringify(cache, null, 2));
 
   console.log(
-    `Pipeline OK: ${slate.length} games, ${picks.length} legs, ${multis.length} multis (live)`
+    `Pipeline OK: ${slate.length} games, ${picks.length} legs, ${multis.length} multis (${fromLive ? "from-live" : "live"})`
   );
 }
 

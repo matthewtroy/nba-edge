@@ -69,7 +69,6 @@ describe("Booster stepping", () => {
       const b = byId.get(bid!)!;
       if (b.line > m.line) stepped++;
     }
-    expect(stepped).toBeGreaterThanOrEqual(2);
-    expect(stepped).toBeLessThanOrEqual(3);
+    expect(stepped).toBe(main.legs.length);
   });
 });

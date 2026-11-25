@@ -1,42 +1,47 @@
 {
-  "lastUpdated": "2026-11-24T23:54:21.722Z",
+  "lastUpdated": "2026-11-25T00:05:40.677Z",
+  "oddsLastPulled": "2026-11-25T00:05:38.858Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
-    "odds": "stale"
+    "odds": "ok (from-live parity)"
   },
   "slateSize": 3,
   "smallSlate": true,
-  "whatChanged": [],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_06_45PM.pdf",
+  "whatChanged": [
+    "Mitchell Robinson out → Paul George boards",
+    "Tobi Lawal out → Cooper Flagg boards",
+    "Dereck Lively II out → Cooper Flagg boards"
+  ],
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_07_00PM.pdf",
   "pricedLegCounts": {
     "pts": {
       "total": 120,
-      "priced": 0
+      "priced": 119
     },
     "reb": {
       "total": 176,
-      "priced": 0
+      "priced": 176
     },
     "ast": {
       "total": 116,
-      "priced": 0
-    },
-    "3pm": {
-      "total": 207,
-      "priced": 0
+      "priced": 116
     },
     "q1reb": {
       "total": 94,
-      "priced": 0
+      "priced": 94
+    },
+    "3pm": {
+      "total": 207,
+      "priced": 207
     },
     "q1pts": {
       "total": 16,
-      "priced": 0
+      "priced": 16
     },
     "q1ast": {
       "total": 4,
-      "priced": 0
+      "priced": 4
     }
   }
 }

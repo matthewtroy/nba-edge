@@ -14,7 +14,6 @@ interface Props {
 export const FORBIDDEN_MULTI_CARD_STRINGS = [
   "~1 in",
   "Stake",
-  "Best:",
   "My (",
   "legs @",
   "Bookie:",
@@ -44,7 +43,7 @@ export function MultiCard({ multi, picksById, onLegTap, onCopy }: Props) {
         <p className="text-sm mt-1">{formatMultiHeadline(multi)}</p>
         {multi.combinedBestPrice != null && multi.combinedBestBookie && (
           <p className="text-xs text-accent-value mt-1">
-            {multi.combinedBestBookie} ${multi.combinedBestPrice.toFixed(2)}+ (all legs)
+            Best multi odds: {multi.combinedBestBookie} ${multi.combinedBestPrice.toFixed(2)}+
           </p>
         )}
       </header>

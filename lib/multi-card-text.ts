@@ -4,7 +4,6 @@ import { marketLabel } from "./market-label.js";
 export const FORBIDDEN_TODAY_STRINGS = [
   "~1 in",
   "Stake",
-  "Best:",
   "My (",
   "legs @",
   "Bookie:",
@@ -25,7 +24,7 @@ export function renderMultiCardText(multi: MultiBet, legs: PickLeg[]): string {
   const lines = [title, formatMultiHeadline(multi)];
   if (multi.combinedBestPrice != null && multi.combinedBestBookie) {
     lines.push(
-      `${multi.combinedBestBookie} $${multi.combinedBestPrice.toFixed(2)}+ (all legs)`
+      `Best multi odds: ${multi.combinedBestBookie} $${multi.combinedBestPrice.toFixed(2)}+`
     );
   }
   for (const leg of legs) lines.push(formatLegLine(leg));

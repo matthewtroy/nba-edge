@@ -58,8 +58,9 @@ function checkBoosterSteps(
       issues.push(`Booster: ${mainLeg.playerName} below Main rung`);
     }
   }
-  if (stepped < 2) issues.push("Booster: need at least 2 legs stepped from Main");
-  if (stepped > 3) issues.push("Booster: stepped more than 3 legs (max 2–3 safest)");
+  if (stepped !== mainLegs.length) {
+    issues.push(`Booster: need +1 rung on all ${mainLegs.length} Main legs (stepped ${stepped})`);
+  }
   return issues;
 }
 
@@ -83,8 +84,8 @@ function checkTypeRules(
       issues.push("Main Play: leg fails starter/main-line/eligibility");
     }
   }
-  if (type === "booster") {
-    if (fair < 30 || fair > 120) issues.push(`Booster: fair ${fair.toFixed(1)} not 30–120`);
+  if (type === "booster" && fair < 1) {
+    issues.push("Booster: invalid fair");
   }
   if (type === "boostSgm") {
     if (legs.length !== 3) issues.push("Boost SGM: need 3 legs");
