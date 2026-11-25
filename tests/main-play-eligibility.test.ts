@@ -5,6 +5,7 @@ import type { PickLeg } from "../lib/types";
 import {
   mainPlayL10Within10pp,
   mainPlayHasValueOrHighProb,
+  mainPlayStructuralOk,
   qualifiesMainPlayLeg,
 } from "../lib/main-play-eligibility";
 import { mainPlayReasonBeyondRankAvg } from "../lib/leg-display";
@@ -63,6 +64,17 @@ describe("main play leg eligibility", () => {
   it("passes at 73% with 7/10 hits and High prob", () => {
     const leg = synth({ id: "high" });
     expect(mainPlayL10Within10pp(leg)).toBe(true);
+    expect(qualifiesMainPlayLeg(leg, "Ladbrokes")).toBe(true);
+  });
+
+  it("3pm main lines qualify Main Play structure", () => {
+    const leg = synth({
+      id: "threes",
+      market: "3pm",
+      line: 3,
+      reasonLine: "7/10 hits at line · Pace top-8",
+    });
+    expect(mainPlayStructuralOk(leg)).toBe(true);
     expect(qualifiesMainPlayLeg(leg, "Ladbrokes")).toBe(true);
   });
 

@@ -5,8 +5,8 @@ import { legBookiePriceInBand } from "./leg-bookie-band.js";
 import { mainPlayReasonBeyondRankAvg } from "./leg-display.js";
 import { hasValueAtBookie } from "./value-at-bookie.js";
 
-function isCoreMarket(market: string): boolean {
-  return market === "pts" || market === "reb" || market === "ast";
+export function isMainPlayCoreMarket(market: string): boolean {
+  return market === "pts" || market === "reb" || market === "ast" || market === "3pm";
 }
 
 function hasCheckNews(leg: PickLeg): boolean {
@@ -61,7 +61,7 @@ export function mainPlayStructuralOk(leg: PickLeg): boolean {
   return (
     leg.starterEligible === true &&
     isMainPlayStatLine(leg.market, leg.line) &&
-    isCoreMarket(leg.market) &&
+    isMainPlayCoreMarket(leg.market) &&
     leg.probability >= 0.6 &&
     !leg.ageB2B &&
     !hasCheckNews(leg)

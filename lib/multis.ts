@@ -384,18 +384,10 @@ function mainPlayPoolAtBookie(
   catalog: PickLeg[]
 ): PickLeg[] {
   const edge = eligible.filter((l) => legMeetsBookieEdge(l, bookie, minEdgeFraction));
-  const priced = edge
+  return edge
     .map((l) => asBookieLeg(l, bookie, catalog))
-    .filter(Boolean) as PickLeg[];
-  const corePool = priced.filter((l) => isCoreMarket(l.market)).sort(sortLegs);
-  const threesPool = priced.filter((l) => l.market === "3pm").sort(sortLegs);
-  if (corePool.length >= 3) return corePool;
-  return [...corePool, ...threesPool].sort((a, b) => {
-    const ac = isCoreMarket(a.market) ? 1 : 0;
-    const bc = isCoreMarket(b.market) ? 1 : 0;
-    if (bc !== ac) return bc - ac;
-    return sortLegs(a, b);
-  });
+    .filter(Boolean)
+    .sort(sortLegs) as PickLeg[];
 }
 
 function buildMainPlay(
