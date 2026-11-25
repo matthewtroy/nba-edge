@@ -10,7 +10,7 @@
         "4601025-pts-10",
         "4433249-reb-10"
       ],
-      "combinedProbability": 0.20268558526103997,
+      "combinedProbability": 0.20267248585391995,
       "combinedFairPrice": 4.93,
       "combinedTakeAt": 5.32,
       "bestBookie": "Ladbrokes",
@@ -30,9 +30,9 @@
         "4601025-pts-15",
         "4433249-reb-10"
       ],
-      "combinedProbability": 0.0182134741998,
-      "combinedFairPrice": 54.9,
-      "combinedTakeAt": 59.29,
+      "combinedProbability": 0.01832505154128,
+      "combinedFairPrice": 54.57,
+      "combinedTakeAt": 58.94,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 87.94,
       "bookieTotals": {
@@ -46,20 +46,97 @@
       "legs": [
         "4601025-pts-10",
         "3917376-pts-20",
+        "4396971-reb-7",
+        "4433249-pts-10",
         "3136195-pts-20",
-        "3062679-ast-5",
+        "3908809-pts-25",
         "4683778-pts-15",
-        "4278073-ast-5"
+        "4432816-pts-15",
+        "4903027-reb-7",
+        "4065733-pts-25",
+        "4433192-pts-10",
+        "3136193-pts-25",
+        "4683021-ast-5",
+        "5104157-pts-30"
       ],
-      "combinedProbability": 0.10303450543041599,
-      "combinedFairPrice": 9.71,
-      "combinedTakeAt": 10.49,
-      "bestBookie": "TAB",
-      "bestBookieTotal": 20.29,
+      "combinedProbability": 0.003980829252954261,
+      "combinedFairPrice": 251.2,
+      "combinedTakeAt": 271.3,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 1099.2,
       "bookieTotals": {
-        "TAB": 20.29,
-        "Ladbrokes": 18.48
+        "Ladbrokes": 1099.2
       },
+      "crossGameGroups": [
+        {
+          "gameId": "401909317",
+          "status": "included",
+          "legs": [
+            "4601025-pts-10",
+            "3917376-pts-20"
+          ]
+        },
+        {
+          "gameId": "401909318",
+          "status": "included",
+          "legs": [
+            "4396971-reb-7",
+            "4433249-pts-10"
+          ]
+        },
+        {
+          "gameId": "401909319",
+          "status": "included",
+          "legs": [
+            "3136195-pts-20",
+            "3908809-pts-25"
+          ]
+        },
+        {
+          "gameId": "401909320",
+          "status": "included",
+          "legs": [
+            "4683778-pts-15",
+            "4432816-pts-15"
+          ]
+        },
+        {
+          "gameId": "401909321",
+          "status": "included",
+          "legs": [
+            "4903027-reb-7",
+            "4065733-pts-25"
+          ]
+        },
+        {
+          "gameId": "401909322",
+          "status": "excluded",
+          "legs": [],
+          "excludedReason": "Nets @ Bucks: need 2+ legs @ Ladbrokes (found 0)."
+        },
+        {
+          "gameId": "401909323",
+          "status": "included",
+          "legs": [
+            "4433192-pts-10",
+            "3136193-pts-25"
+          ]
+        },
+        {
+          "gameId": "401909324",
+          "status": "excluded",
+          "legs": [],
+          "excludedReason": "Kings @ Warriors: no clash-free 2–3 leg combo @ Ladbrokes."
+        },
+        {
+          "gameId": "401909325",
+          "status": "included",
+          "legs": [
+            "4683021-ast-5",
+            "5104157-pts-30"
+          ]
+        }
+      ],
       "summary": "2+ games, 2–3 legs/game, one bookie (toggle games on card)"
     },
     {
@@ -70,9 +147,9 @@
         "3908809-ast-5",
         "3992-pts-20"
       ],
-      "combinedProbability": 0.224879424,
-      "combinedFairPrice": 4.45,
-      "combinedTakeAt": 4.81,
+      "combinedProbability": 0.225182496,
+      "combinedFairPrice": 4.44,
+      "combinedTakeAt": 4.8,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 7.37,
       "bookieTotals": {
@@ -107,9 +184,9 @@
         "3136195-pts-30",
         "4066261-pts-30"
       ],
-      "combinedProbability": 0.033920000000000006,
-      "combinedFairPrice": 29.48,
-      "combinedTakeAt": 31.84,
+      "combinedProbability": 0.034176000000000005,
+      "combinedFairPrice": 29.26,
+      "combinedTakeAt": 31.6,
       "bestBookie": "PointsBet",
       "bestBookieTotal": 63.25,
       "bookieTotals": {
