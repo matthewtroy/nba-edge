@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import type { PickLeg, SlateGame } from "@lib/types";
+import { AU_BOOKMAKERS } from "@lib/types";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { siblingRungs } from "@lib/leg-rungs";
 import { marketLabel, verdict } from "../utils/format";
-import { LastFiveTicks } from "./LastFiveTicks";
-import { RungStepper } from "./RungStepper";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
-import { ui } from "../lib/card-type-scale";
+import { visibleLegReasons } from "@lib/leg-display";
+import { isInjuryRedistributionReason, formatInjuryReasonLine } from "@lib/injury-reason";
+import { FEED_BOOKIES } from "@lib/card-bookie";
 
 interface Props {
   leg: PickLeg | null;
@@ -17,8 +19,78 @@ interface Props {
   onSelectLeg?: (leg: PickLeg) => void;
 }
 
-export function LegSheet({ leg, picks = [], slate, myBookie = "bet365", onClose, onSelectLeg }: Props) {
+function LastTenBarChart({ ticks }: { ticks: ("hit" | "miss" | "na")[] }) {
+  if (!ticks.length) return null;
+  const shown = ticks.slice(0, 10);
+  return (
+    <div className="flex items-end gap-1 h-10" aria-label="Last 10 at line">
+      {shown.map((t, i) => (
+        <motionBar
+          key={i}
+          hit={t === "hit"}
+          miss={t === "miss"}
+          na={t === "na"}
+        />
+      ))}
+    </div>
+  );
+}
+
+function motionBar({
+  hit,
+  miss,
+  na,
+}: {
+  hit: boolean;
+  miss: boolean;
+  na: boolean;
+}) {
+  const h = hit || miss ? "h-8" : "h-3";
+  const color = hit ? "bg-price-green" : miss ? "bg-red-400" : "bg-white/15";
+  return <div className={`flex-1 min-w-[6px] max-w-3 rounded-sm ${h} ${color}`} />;
+}
+
+function RungChips({
+  rungs,
+  activeId,
+  onSelect,
+}: {
+  rungs: PickLeg[];
+  activeId: string;
+  onSelect: (leg: PickLeg) => void;
+}) {
+  if (rungs.length <= 1) return null;
+  return (
+    <motionChipRow className="flex flex-wrap gap-1.5 mt-3">
+      {rungs.map((r) => (
+        <button
+          key={r.id}
+          type="button"
+          onClick={() => onSelect(r)}
+          className={`text-xs px-2.5 py-1 rounded-full ${
+            r.id === activeId
+              ? "bg-white/[0.14] text-white"
+              : "bg-white/[0.06] text-white/55"
+          }`}
+        >
+          {marketLabel(r.market, r.line)}
+        </button>
+      ))}
+    </motionChipRow>
+  );
+}
+
+export function LegSheet({
+  leg,
+  picks = [],
+  slate,
+  myBookie = "bet365",
+  onClose,
+  onSelectLeg,
+}: Props) {
   const [bookPrice, setBookPrice] = useState("");
+  const [dragY, setDragY] = useState(0);
+  const [touchStartY, setTouchStartY] = useState<number | null>(null);
 
   useEffect(() => {
     if (!leg) return;
@@ -28,18 +100,25 @@ export function LegSheet({ leg, picks = [], slate, myBookie = "bet365", onClose,
     else if (leg.bookiePrices?.[myBookie]) {
       setBookPrice(String(leg.bookiePrices[myBookie]));
     } else setBookPrice("");
+    setDragY(0);
   }, [leg, myBookie]);
+
+  useEffect(() => {
+    if (!leg) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [leg]);
 
   const rungs = useMemo(() => (leg ? siblingRungs(picks, leg) : []), [leg, picks]);
 
   if (!leg) return null;
 
   const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
-  const last10 = leg.recentTenVsLine ?? [];
-  const bestFeed =
-    leg.bestPrice != null && leg.bestBookie
-      ? { bookie: leg.bestBookie, price: leg.bestPrice }
-      : null;
+  const last10 = leg.recentTenVsLine ?? leg.recentVsLine ?? [];
+  const isQ1 = leg.market.startsWith("q1");
   const myBookPrice = leg.bookiePrices?.[myBookie];
 
   const savePrice = (v: string) => {
@@ -50,74 +129,177 @@ export function LegSheet({ leg, picks = [], slate, myBookie = "bet365", onClose,
   const num = Number(bookPrice);
   const v = Number.isFinite(num) && num > 1 ? verdict(num, leg.takeAt) : null;
 
-  return (
-    <motionBackdrop onClose={onClose}>
-      <motionPanel>
-        <div className="w-9 h-1 bg-white/15 rounded-full mx-auto mb-4" />
-        <h2 className="text-base font-semibold break-words leading-tight text-white theme-adaptive-title">
+  const whyLines = visibleLegReasons(leg.reasons)
+    .map((r) =>
+      isInjuryRedistributionReason(r) ? formatInjuryReasonLine(r) : r
+    )
+    .slice(0, 4);
+  if (leg.reasonLine && !whyLines.includes(leg.reasonLine)) {
+    whyLines.unshift(leg.reasonLine);
+  }
+
+  const bookies = [...new Set([...FEED_BOOKIES, ...AU_BOOKMAKERS])];
+
+  const onTouchStart = (e: { touches: { clientY: number }[] }) => {
+    setTouchStartY(e.touches[0].clientY);
+  };
+  const onTouchMove = (e: { touches: { clientY: number }[] }) => {
+    if (touchStartY == null) return;
+    const dy = e.touches[0].clientY - touchStartY;
+    if (dy > 0) setDragY(dy);
+  };
+  const onTouchEnd = () => {
+    if (dragY > 80) onClose();
+    setDragY(0);
+    setTouchStartY(null);
+  };
+
+  return createPortal(
+    <motionOverlay onClose={onClose}>
+      <motionPanel
+        dragY={dragY}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        <motionHandleRow onClose={onClose} />
+
+        <h2 className="text-lg font-semibold text-white theme-adaptive-title leading-tight pr-8">
           {leg.playerName}
         </h2>
-        <p className="text-xs text-white/55 mt-0.5">{marketLabel(leg.market, leg.line)}</p>
-        {subtitle && <p className="text-[11px] text-white/40 mt-0.5">{subtitle}</p>}
-        {leg.reasonLine && (() => {
-          const reasonUi = legReasonLineUi(leg.reasonLine);
-          return (
-            <p className={`mt-3 ${reasonUi.className}`} style={{ whiteSpace: "normal" }}>
-              {reasonUi.prefix}
-              {leg.reasonLine}
-            </p>
-          );
-        })()}
-        {onSelectLeg && (
-          <RungStepper rungs={rungs} activeId={leg.id} onSelect={onSelectLeg} compact />
+        <p className="text-sm text-white/55 mt-0.5">{marketLabel(leg.market, leg.line)}</p>
+        {subtitle && (
+          <p className="text-[11px] text-white/40 mt-0.5">{subtitle}</p>
         )}
-        <dl className="grid grid-cols-2 gap-x-4 gap-y-1 text-[11px] text-white/50 mt-3 mb-3">
+
+        {onSelectLeg && (
+          <RungChips rungs={rungs} activeId={leg.id} onSelect={onSelectLeg} />
+        )}
+
+        {last10.length > 0 && (
+          <section className="mt-4">
+            <p className="text-[11px] text-white/45 mb-2">Last 10 @ line</p>
+            <LastTenBarChart ticks={last10} />
+          </section>
+        )}
+
+        {whyLines.length > 0 && (
+          <section className="mt-4 space-y-1.5">
+            <p className="text-[11px] text-white/45">Why</p>
+            {whyLines.map((line) => {
+              const ui = legReasonLineUi(line);
+              return (
+                <p key={line} className={ui.className}>
+                  {ui.prefix}
+                  {line}
+                </p>
+              );
+            })}
+          </section>
+        )}
+
+        <section className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-[11px]">
+          <StatCell label="Fair" value={`$${leg.fairPrice.toFixed(2)}`} green />
+          <StatCell label="Take at" value={`$${leg.takeAt.toFixed(2)}`} />
+          <StatCell
+            label="Model p"
+            value={`${(leg.probability * 100).toFixed(0)}%`}
+          />
+          {leg.projectedMinutes != null && (
+            <StatCell label="Min" value={leg.projectedMinutes.toFixed(0)} />
+          )}
           {leg.seasonAvg && (
-            <motionDlItem
-              label="Season"
-              value={`${leg.seasonAvg.pts.toFixed(1)}/${leg.seasonAvg.reb.toFixed(1)}/${leg.seasonAvg.ast.toFixed(1)}`}
+            <>
+              <StatCell label="Szn pts" value={leg.seasonAvg.pts.toFixed(1)} />
+              <StatCell label="Szn reb" value={leg.seasonAvg.reb.toFixed(1)} />
+            </>
+          )}
+          {isQ1 && leg.q1SeasonHitAtLine && (
+            <StatCell
+              label="Q1 hit @ line"
+              value={`${leg.q1SeasonHitAtLine.hits}/${leg.q1SeasonHitAtLine.total}`}
             />
           )}
-          {leg.projectedMinutes != null && (
-            <motionDlItem label="Min" value={`${leg.projectedMinutes.toFixed(0)}`} />
+          {isQ1 && leg.q1Last10HitRate != null && (
+            <StatCell
+              label="Q1 L10"
+              value={`${(leg.q1Last10HitRate * 100).toFixed(0)}%`}
+            />
           )}
-        </dl>
-        <p className="text-sm mb-2">
-          <span className={ui.legFair}>Fair {leg.fairPrice.toFixed(2)}</span>
-          {bestFeed && (
-            <span className={`ml-2 ${ui.legPrice} !text-lg`}>
-              {bestFeed.bookie} ${bestFeed.price.toFixed(2)}
-            </span>
+        </section>
+
+        <section className="mt-4">
+          <p className="text-[11px] text-white/45 mb-2">Bookies</p>
+          <ul className="space-y-1 max-h-32 overflow-y-auto">
+            {bookies.map((b) => {
+              const p = leg.bookiePrices?.[b];
+              if (p == null || p <= 1) return null;
+              return (
+                <li
+                  key={b}
+                  className="flex justify-between text-xs text-white/70"
+                >
+                  <span>{b}</span>
+                  <span className="text-price-green tabular-nums">
+                    ${p.toFixed(2)}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
+        <section className="mt-4">
+          <label className="block text-[11px] text-white/45 mb-1">
+            Your {myBookie} price
+          </label>
+          <input
+            type="number"
+            step="0.01"
+            value={bookPrice}
+            onChange={(e) => savePrice(e.target.value)}
+            className="w-full bg-transparent border border-white/[0.08] rounded-xl px-3 py-2.5 text-sm text-white tabular-nums outline-none"
+            placeholder="e.g. 1.85"
+          />
+          {v && (
+            <p className="text-xs text-white/55 mt-1 capitalize">{v}</p>
           )}
-        </p>
-        {last10.length > 0 && (
-          <motionLastTen>
-            <LastFiveTicks ticks={last10} compact hideLabel />
-          </motionLastTen>
-        )}
-        {leg.market.startsWith("q1") && leg.q1SeasonHitAtLine && (
-          <p className="text-xs text-white/55 mb-2">
-            Q1 @ line: {leg.q1SeasonHitAtLine.hits}/{leg.q1SeasonHitAtLine.total}
-          </p>
-        )}
-        <label className="block text-[11px] text-white/45 mb-1">My {myBookie}</label>
-        <input
-          type="number"
-          step="0.01"
-          value={bookPrice}
-          onChange={(e) => savePrice(e.target.value)}
-          className="w-full bg-transparent border border-white/[0.08] rounded-xl px-3 py-2 text-sm mb-2 text-white outline-none"
-          placeholder="Price"
-        />
-        {v && (
-          <p className="text-xs text-white/55 mb-2 capitalize">{v}</p>
-        )}
+          {myBookPrice != null && myBookPrice > 1 && (
+            <p className="text-[11px] text-white/40 mt-1">
+              Feed: ${myBookPrice.toFixed(2)}
+            </p>
+          )}
+        </section>
       </motionPanel>
-    </motionBackdrop>
+    </motionOverlay>,
+    document.body
   );
 }
 
-function motionBackdrop({
+function StatCell({
+  label,
+  value,
+  green,
+}: {
+  label: string;
+  value: string;
+  green?: boolean;
+}) {
+  return (
+    <div>
+      <dt className="text-white/35">{label}</dt>
+      <dd
+        className={`font-medium tabular-nums ${
+          green ? "text-price-green" : "text-white/80"
+        }`}
+      >
+        {value}
+      </dd>
+    </div>
+  );
+}
+
+function motionOverlay({
   children,
   onClose,
 }: {
@@ -126,38 +308,90 @@ function motionBackdrop({
 }) {
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col justify-end bg-black/50"
+      className="fixed inset-0 z-[100] flex flex-col justify-end bg-black/55"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
     >
       {children}
     </div>
   );
 }
 
-function motionPanel({ children }: { children: ReactNode }) {
+function motionPanel({
+  children,
+  dragY,
+  onTouchStart,
+  onTouchMove,
+  onTouchEnd,
+}: {
+  children: ReactNode;
+  dragY: number;
+  onTouchStart: (e: React.TouchEvent) => void;
+  onTouchEnd: () => void;
+  onTouchMove: (e: React.TouchEvent) => void;
+}) {
+  return (
+    <motionPanelInner
+      dragY={dragY}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
+      {children}
+    </motionPanelInner>
+  );
+}
+
+function motionPanelInner({
+  children,
+  dragY,
+  onTouchStart,
+  onTouchMove,
+  onTouchEnd,
+}: {
+  children: ReactNode;
+  dragY: number;
+  onTouchStart: (e: React.TouchEvent) => void;
+  onTouchEnd: () => void;
+  onTouchMove: (e: React.TouchEvent) => void;
+}) {
   return (
     <div
-      className="bg-card rounded-t-[20px] px-4 py-4 max-h-[85vh] overflow-y-auto animate-slide-up border-t border-white/[0.06]"
+      className="bg-card rounded-t-[20px] px-4 pt-2 pb-6 max-h-[85vh] overflow-y-auto animate-slide-up border-t border-white/[0.06] w-full max-w-phone mx-auto"
+      style={{ transform: dragY ? `translateY(${dragY}px)` : undefined }}
       onClick={(e) => e.stopPropagation()}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
     >
       {children}
     </div>
   );
 }
 
-function motionDlItem({ label, value }: { label: string; value: string }) {
+function motionHandleRow({ onClose }: { onClose: () => void }) {
   return (
-    <motionDtDd>
-      <dt className="text-white/35">{label}</dt>
-      <dd>{value}</dd>
-    </motionDtDd>
+    <div className="relative flex justify-center pt-1 pb-3">
+      <div className="w-9 h-1 bg-white/15 rounded-full" aria-hidden />
+      <button
+        type="button"
+        onClick={onClose}
+        className="absolute right-0 top-0 p-2 text-white/45 text-lg leading-none"
+        aria-label="Close"
+      >
+        ✕
+      </button>
+    </div>
   );
 }
 
-function motionDtDd({ children }: { children: ReactNode }) {
-  return <div>{children}</div>;
-}
-
-function motionLastTen({ children }: { children: ReactNode }) {
-  return <div className="mb-3">{children}</div>;
+function motionChipRow({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return <div className={className}>{children}</div>;
 }

@@ -2,8 +2,7 @@ import { useMemo, useState } from "react";
 import type { DataBundle } from "../hooks/useData";
 import type { PickLeg } from "@lib/types";
 import { gameSgmBlocks } from "@lib/games-sgm";
-import { gameSgmAsMulti, gameShortLabel } from "@lib/games-sgm-ui";
-import { hasValueAtBookie } from "@lib/value-at-bookie";
+import { gameSgmAsMulti, gameListRowLabel } from "@lib/games-sgm-ui";
 import { gamesForCards, isGameLive } from "@lib/slate-game-ui";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
 import { MultiCard } from "../components/MultiCard";
@@ -28,7 +27,6 @@ export function GamesScreen({
   todayDate,
   tomorrowDate,
   onSlateDateChange,
-  myBookie = "Sportsbet",
   onLegTap,
   onCopy,
 }: Props) {
@@ -56,6 +54,9 @@ export function GamesScreen({
     [activeSlate, data.picks, multis, picksById, preset]
   );
 
+  const built = useMemo(() => blocks.filter((b) => b.card), [blocks]);
+  const empty = useMemo(() => blocks.filter((b) => !b.card), [blocks]);
+
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
     for (const g of activeSlate) {
@@ -63,8 +64,8 @@ export function GamesScreen({
     }
     return init;
   });
+  const [emptyOpen, setEmptyOpen] = useState(false);
 
-  const valueCount = data.picks.filter((l) => hasValueAtBookie(l, myBookie)).length;
   const slateFairOnly = !slateHasFeedOdds(data.picks);
   const oddsNote = slateOddsAvailabilityNote(data.meta, data.picks);
   const bandLabel = formatOddsBand(preset.min, preset.max);
@@ -77,10 +78,12 @@ export function GamesScreen({
         selected={slateDate}
         onSelect={onSlateDateChange}
       />
-      <h1 className="text-xl font-bold mb-1">Games</h1>
-      <p className="text-sm text-white/70 mb-3">
-        SGM by bookie total ({bandLabel}) · Value @ {myBookie}: {valueCount}
-      </p>
+      <header className="mb-4">
+        <h1 className="text-xl font-bold text-white theme-adaptive-title">Games</h1>
+        <p className="text-sm text-white/45 theme-adaptive-muted mt-0.5">
+          SGMs by bookie total · {bandLabel}
+        </p>
+      </header>
       <div className="flex flex-wrap gap-2 mb-4">
         {presets.map((p) => (
           <button
@@ -90,7 +93,7 @@ export function GamesScreen({
             className={`text-[11px] px-3 py-1.5 rounded-full border ${
               preset.label === p.label
                 ? "border-white/30 text-white"
-                : "border-white/20"
+                : "border-white/20 text-white/55"
             }`}
           >
             ${p.label}
@@ -102,45 +105,34 @@ export function GamesScreen({
         <p className="text-sm text-white/50">No games on this slate yet.</p>
       )}
 
-      {blocks.map(({ game, card, crossGameLegs, boostLegs, notBuiltReason }) => {
-        const short = gameShortLabel(game);
-        const live = isGameLive(game.status);
-        if (!card) {
-          const reason =
-            notBuiltReason ??
-            `${short}: nothing fits ${bandLabel} with edge or high-probability rules.`;
-          return (
-            <p key={game.id} className="text-[13px] text-white/50 mb-2 leading-snug px-1">
-              {live ? `${reason} (live)` : reason}
-            </p>
-          );
-        }
+      {built.map(({ game, card }) => {
+        if (!card) return null;
         const multi = gameSgmAsMulti(card, game);
         const isCollapsed = collapsed[game.id] ?? false;
+        const live = isGameLive(game.status);
 
         return (
-          <div key={game.id} className="mb-1">
+          <div key={game.id} className="mb-4">
             {live && (
               <button
                 type="button"
-                className="text-xs text-white/60 mb-1 px-1"
+                className="text-xs text-white/50 mb-1"
                 onClick={() =>
                   setCollapsed((c) => ({ ...c, [game.id]: !isCollapsed }))
                 }
               >
-                {short} · live · {isCollapsed ? "Show SGM" : "Hide"}
+                {isCollapsed ? "Show live SGM" : "Hide live SGM"}
               </button>
             )}
             {(!live || !isCollapsed) && (
               <>
-                <p className="text-[11px] text-white/45 px-1 mb-1">
-                  {game.startTimeSydney} · {bandLabel}
+                <p className="text-[13px] font-semibold text-white theme-adaptive-title mb-2">
+                  {gameListRowLabel(game)}
                   {game.spread != null && Math.abs(game.spread) >= 14.5 && (
-                    <span className="text-accent-value ml-1">· Blowout risk</span>
+                    <span className="text-red-400 font-normal text-xs ml-2">
+                      Blowout
+                    </span>
                   )}
-                  {crossGameLegs.length > 0 &&
-                    ` · Cross (${crossGameLegs.length})`}
-                  {boostLegs.length > 0 && " · Best SGM"}
                 </p>
                 <MultiCard
                   multi={multi}
@@ -160,6 +152,54 @@ export function GamesScreen({
           </div>
         );
       })}
+
+      {empty.length > 0 && (
+        <motionEmptyBlock
+          count={empty.length}
+          open={emptyOpen}
+          onToggle={() => setEmptyOpen((o) => !o)}
+          reasons={empty.map((b) => ({
+            id: b.game.id,
+            text:
+              b.notBuiltReason ??
+              `${gameListRowLabel(b.game)}: nothing fits ${bandLabel}.`,
+          }))}
+        />
+      )}
+    </div>
+  );
+}
+
+function motionEmptyBlock({
+  count,
+  open,
+  onToggle,
+  reasons,
+}: {
+  count: number;
+  open: boolean;
+  onToggle: () => void;
+  reasons: { id: string; text: string }[];
+}) {
+  return (
+    <div className="mt-2 border-t border-white/[0.05] pt-3">
+      <button
+        type="button"
+        onClick={onToggle}
+        className="text-sm text-white/45 w-full text-left"
+      >
+        {count} game{count === 1 ? "" : "s"} have no SGM in this range{" "}
+        <span className="text-white/30">{open ? "▾" : "▸"}</span>
+      </button>
+      {open && (
+        <ul className="mt-2 space-y-2 pl-1">
+          {reasons.map((r) => (
+            <li key={r.id} className="text-[12px] text-white/45 leading-snug">
+              {r.text}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

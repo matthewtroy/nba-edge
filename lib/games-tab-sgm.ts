@@ -1,5 +1,5 @@
 import type { PickLeg } from "./types.js";
-import { multiHasClash } from "./clash.js";
+import { sameGameSgmHasClash } from "./clash.js";
 import { combinedPriceForBookieWithCatalog } from "./single-bookie.js";
 import { legMeetsBookieEdge, asBookieLeg } from "./bookie-edge-pool.js";
 import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
@@ -69,7 +69,7 @@ export function pickBestGamesTabSgmCombo(
     ) {
       const total =
         combinedPriceForBookieWithCatalog(chosen, bookie, catalog) ?? 0;
-      if (totalInBand(total, oddsMin, oddsMax) && !multiHasClash(chosen)) {
+      if (totalInBand(total, oddsMin, oddsMax) && !sameGameSgmHasClash(chosen)) {
         const p = combinedProb(chosen);
         const edge = chosen.reduce((s, l) => s + legEdgeDecimal(l), 0);
         const valueCount = chosen.filter((l) =>
@@ -94,7 +94,7 @@ export function pickBestGamesTabSgmCombo(
     if (chosen.length >= GAMES_TAB_MAX_LEGS) return;
     for (let i = start; i < pool.length; i++) {
       const next = [...chosen, pool[i]];
-      if (multiHasClash(next)) continue;
+      if (sameGameSgmHasClash(next)) continue;
       dfs(i + 1, next);
     }
   }

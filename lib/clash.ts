@@ -85,6 +85,44 @@ export function describeClash(a: PickLeg, b: PickLeg): string {
   return `${a.playerName} ${a.market}${a.line}+ vs ${b.playerName} ${b.market}${b.line}+`;
 }
 
+/** Same-game SGM (Games tab + Best SGM): narrow rules only — no full multi clash set. */
+export function sameGameSgmLegsClash(a: PickLeg, b: PickLeg): boolean {
+  if (a.id === b.id) return true;
+  if (a.gameId !== b.gameId) return false;
+
+  if (a.playerId === b.playerId && a.market === b.market) return true;
+
+  if (
+    a.playerId === b.playerId &&
+    ((a.market === "q1pts" && b.market === "q1ast") ||
+      (a.market === "q1ast" && b.market === "q1pts"))
+  ) {
+    return true;
+  }
+
+  const reb = (m: string) => m === "reb" || m === "q1reb";
+  if (
+    reb(a.market) &&
+    reb(b.market) &&
+    a.team === b.team &&
+    a.line >= 10 &&
+    b.line >= 10
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
+export function sameGameSgmHasClash(legs: PickLeg[]): boolean {
+  for (let i = 0; i < legs.length; i++) {
+    for (let j = i + 1; j < legs.length; j++) {
+      if (sameGameSgmLegsClash(legs[i], legs[j])) return true;
+    }
+  }
+  return false;
+}
+
 export function multiClashSummary(legs: PickLeg[]): string {
   for (let i = 0; i < legs.length; i++) {
     for (let j = i + 1; j < legs.length; j++) {

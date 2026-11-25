@@ -1,5 +1,5 @@
 import type { PickLeg } from "./types.js";
-import { multiHasClash } from "./clash.js";
+import { sameGameSgmHasClash } from "./clash.js";
 import { combinedPriceForBookieWithCatalog } from "./single-bookie.js";
 import { legMeetsBookieEdge } from "./bookie-edge-pool.js";
 import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
@@ -37,7 +37,7 @@ export function pickBestSameGameSgmCombo(
   function dfs(start: number, chosen: PickLeg[]) {
     if (chosen.length >= SGM_MIN_LEGS && chosen.length <= SGM_MAX_LEGS) {
       const total = combinedPriceForBookieWithCatalog(chosen, bookie, catalog) ?? 0;
-      if (totalInBand(total, oddsMin, oddsMax) && !multiHasClash(chosen)) {
+      if (totalInBand(total, oddsMin, oddsMax) && !sameGameSgmHasClash(chosen)) {
         const p = combinedProb(chosen);
         const edge = chosen.reduce((s, l) => s + legEdgeDecimal(l), 0);
         if (
@@ -55,7 +55,7 @@ export function pickBestSameGameSgmCombo(
     if (chosen.length >= SGM_MAX_LEGS) return;
     for (let i = start; i < pool.length; i++) {
       const next = [...chosen, pool[i]];
-      if (multiHasClash(next)) continue;
+      if (sameGameSgmHasClash(next)) continue;
       dfs(i + 1, next);
     }
   }
@@ -75,7 +75,7 @@ export function pickBestCrossGameLegSubset(pool: PickLeg[]): PickLeg[] | null {
   function dfs(start: number, chosen: PickLeg[]) {
     if (chosen.length >= CROSS_MIN_LEGS && chosen.length <= CROSS_MAX_LEGS) {
       if (
-        !multiHasClash(chosen) &&
+        !sameGameSgmHasClash(chosen) &&
         chosen.every((l) => (l.bestPrice ?? 0) >= SGM_MIN_LEG_PRICE)
       ) {
         const p = combinedProb(chosen);
@@ -92,7 +92,7 @@ export function pickBestCrossGameLegSubset(pool: PickLeg[]): PickLeg[] | null {
     if (chosen.length >= CROSS_MAX_LEGS) return;
     for (let i = start; i < pool.length; i++) {
       const next = [...chosen, pool[i]];
-      if (multiHasClash(next)) continue;
+      if (sameGameSgmHasClash(next)) continue;
       dfs(i + 1, next);
     }
   }

@@ -11,6 +11,7 @@ import { ErrorBoundary } from "./ErrorBoundary";
 import { useCrossGameSelection } from "../hooks/useCrossGameSelection";
 import { CrossGameChips } from "./CrossGameChips";
 import { ui } from "../lib/card-type-scale";
+import { MultiCardHeader } from "./MultiCardHeader";
 
 interface Props {
   multi: MultiBet;
@@ -103,23 +104,24 @@ export function MultiCard({
   const legBookie = showFairOnly ? "" : displayBook ?? cardBookie;
   const bestFeed = !lockedBookie && !showFairOnly ? bestFeedMultiQuote(legs) : undefined;
 
-  const atIdx = headline.indexOf(" @ ");
-  const titleText = atIdx >= 0 ? headline.slice(0, atIdx) : headline;
-  let totalText = atIdx >= 0 ? headline.slice(atIdx + 3) : headline;
+  let displayHeadline = headline;
   if (
     multi.type === "crossGameSgm" &&
     !showFairOnly &&
     total != null &&
     legs.length < legsAll.length
   ) {
-    totalText = `$${total.toFixed(2)}`;
+    const name = headline.includes(" @ ")
+      ? headline.slice(0, headline.indexOf(" @ "))
+      : headline;
+    displayHeadline = `${name} @ $${total.toFixed(2)}`;
   }
 
   const headerBookie = showFairOnly
     ? multi.type === "q1Multi"
-      ? "Fair / take-at — no AU Q1 feed"
+      ? undefined
       : oddsNote ?? subline
-    : cardBookie || subline;
+    : cardBookie || subline || undefined;
 
   const missingAtBookie =
     legBookie && !showFairOnly
@@ -130,11 +132,9 @@ export function MultiCard({
 
   return (
     <section className={`${ui.card} ${compact ? "" : ""}`}>
-      <ButtonHeaderRow
-        titleText={titleText}
-        totalText={totalText}
-        headerBookie={headerBookie}
-        showFairOnly={showFairOnly}
+      <MultiCardHeader
+        headline={displayHeadline}
+        bookie={headerBookie}
         onRemove={onRemove}
         publishedAt={publishedAt}
         lockedBookie={lockedBookie}
@@ -238,62 +238,6 @@ export function MultiCard({
         {discordCopy ? "Copy for Discord" : "Copy"}
       </button>
     </section>
-  );
-}
-
-function ButtonHeaderRow({
-  titleText,
-  totalText,
-  headerBookie,
-  showFairOnly,
-  onRemove,
-  publishedAt,
-  lockedBookie,
-}: {
-  titleText: string;
-  totalText: string;
-  headerBookie: string;
-  showFairOnly: boolean;
-  onRemove?: () => void;
-  publishedAt?: string;
-  lockedBookie?: string;
-}) {
-  return (
-    <header className="flex items-start justify-between gap-4 mb-3">
-      <div className="min-w-0 flex-1">
-        <h3 className={ui.headerTitle}>{titleText}</h3>
-        {publishedAt && lockedBookie && (
-          <p className="text-[11px] text-white/40 mt-1">
-            Published{" "}
-            {new Date(publishedAt).toLocaleString("en-AU", {
-              timeZone: "Australia/Sydney",
-              hour: "numeric",
-              minute: "2-digit",
-              hour12: true,
-            })}
-          </p>
-        )}
-        {onRemove && (
-          <button type="button" className="text-[11px] text-white/40 mt-1" onClick={onRemove}>
-            Remove
-          </button>
-        )}
-      </div>
-      <div className="text-right shrink-0">
-        {totalText ? (
-          <p
-            className={`${ui.headerTotal} ${
-              showFairOnly ? "text-price-green" : ""
-            }`}
-          >
-            {totalText}
-          </p>
-        ) : null}
-        {headerBookie ? (
-          <p className={ui.headerBookie}>{headerBookie}</p>
-        ) : null}
-      </div>
-    </header>
   );
 }
 

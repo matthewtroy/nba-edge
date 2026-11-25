@@ -5,11 +5,17 @@ export function gameShortLabel(game: SlateGame): string {
   return `${game.awayTeam.split(" ").pop()} @ ${game.homeTeam.split(" ").pop()}`;
 }
 
+/** Games list row: "Heat @ 76ers · 9:00am" */
+export function gameListRowLabel(game: SlateGame): string {
+  const time = game.startTimeSydney.replace(/\s+/g, "").toLowerCase();
+  return `${gameShortLabel(game)} · ${time}`;
+}
+
 export function gameSgmAsMulti(card: GameSgmCard, game: SlateGame): MultiBet {
   const p = card.legs.reduce((acc, l) => acc * l.probability, 1);
   return {
     type: "boostSgm",
-    label: `${gameShortLabel(game)}: SGM`,
+    label: `${gameShortLabel(game)} SGM`,
     legs: card.legs.map((l) => l.id),
     combinedProbability: p,
     combinedFairPrice: card.fair,

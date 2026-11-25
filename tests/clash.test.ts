@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { legsClash } from "../lib/clash";
+import { legsClash, sameGameSgmLegsClash } from "../lib/clash";
 import type { PickLeg } from "../lib/types";
 
 function leg(partial: Partial<PickLeg> & Pick<PickLeg, "id" | "gameId" | "team" | "playerId" | "market">): PickLeg {
@@ -46,5 +46,25 @@ describe("clash rules", () => {
     const a = leg({ id: "1", gameId: "g", team: "A", playerId: "p1", market: "pts" });
     const b = leg({ id: "2", gameId: "g", team: "A", playerId: "p1", market: "ast" });
     expect(legsClash(a, b)).toBe(true);
+  });
+});
+
+describe("same-game SGM clash", () => {
+  it("allows two pts same team under narrow rules", () => {
+    const a = leg({ id: "1", gameId: "g", team: "A", playerId: "p1", market: "pts" });
+    const b = leg({ id: "2", gameId: "g", team: "A", playerId: "p2", market: "pts" });
+    expect(sameGameSgmLegsClash(a, b)).toBe(false);
+  });
+
+  it("blocks same player same market", () => {
+    const a = leg({ id: "1", gameId: "g", team: "A", playerId: "p1", market: "pts", line: 20 });
+    const b = leg({ id: "2", gameId: "g", team: "A", playerId: "p1", market: "pts", line: 25 });
+    expect(sameGameSgmLegsClash(a, b)).toBe(true);
+  });
+
+  it("blocks teammates both 10+ reb", () => {
+    const a = leg({ id: "1", gameId: "g", team: "A", playerId: "p1", market: "reb", line: 10 });
+    const b = leg({ id: "2", gameId: "g", team: "A", playerId: "p2", market: "reb", line: 12 });
+    expect(sameGameSgmLegsClash(a, b)).toBe(true);
   });
 });

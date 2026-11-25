@@ -65,7 +65,7 @@ export function multiCardTitle(
         ? `Take $${takeAt.toFixed(2)} (fair×1.08) · ${q1Note}`
         : opts.fairOnlyNote ?? `Fair $${fair.toFixed(2)}`;
   return {
-      headline: `${name} @ Take $${takeAt.toFixed(2)}`,
+      headline: `${name} @ take $${takeAt.toFixed(2)}`,
       subline,
       cardBookie: "",
       fairOnly: true,
