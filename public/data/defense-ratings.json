@@ -5764,181 +5764,181 @@
   "pace": [
     {
       "teamId": "15",
-      "pacePer48": 43.59,
+      "pacePer48": 44.09,
       "rank": 1,
       "window": "season"
     },
     {
-      "teamId": "17",
-      "pacePer48": 42.07,
+      "teamId": "3",
+      "pacePer48": 42.76,
       "rank": 2,
       "window": "season"
     },
     {
-      "teamId": "23",
-      "pacePer48": 41.95,
+      "teamId": "17",
+      "pacePer48": 42.55,
       "rank": 3,
       "window": "season"
     },
     {
-      "teamId": "3",
-      "pacePer48": 41.74,
+      "teamId": "23",
+      "pacePer48": 42.53,
       "rank": 4,
       "window": "season"
     },
     {
       "teamId": "4",
-      "pacePer48": 41.21,
+      "pacePer48": 41.93,
       "rank": 5,
       "window": "season"
     },
     {
-      "teamId": "27",
-      "pacePer48": 40.94,
+      "teamId": "9",
+      "pacePer48": 41.57,
       "rank": 6,
       "window": "season"
     },
     {
-      "teamId": "9",
-      "pacePer48": 40.68,
+      "teamId": "27",
+      "pacePer48": 41.47,
       "rank": 7,
       "window": "season"
     },
     {
-      "teamId": "11",
-      "pacePer48": 40.33,
+      "teamId": "1",
+      "pacePer48": 41.42,
       "rank": 8,
       "window": "season"
     },
     {
-      "teamId": "1",
-      "pacePer48": 40.29,
+      "teamId": "7",
+      "pacePer48": 41.21,
       "rank": 9,
       "window": "season"
     },
     {
-      "teamId": "7",
-      "pacePer48": 40.12,
+      "teamId": "11",
+      "pacePer48": 41.19,
       "rank": 10,
       "window": "season"
     },
     {
       "teamId": "12",
-      "pacePer48": 39.98,
+      "pacePer48": 41.03,
       "rank": 11,
       "window": "season"
     },
     {
-      "teamId": "20",
-      "pacePer48": 39.92,
+      "teamId": "21",
+      "pacePer48": 41,
       "rank": 12,
       "window": "season"
     },
     {
-      "teamId": "5",
-      "pacePer48": 39.89,
+      "teamId": "20",
+      "pacePer48": 40.52,
       "rank": 13,
       "window": "season"
     },
     {
-      "teamId": "21",
-      "pacePer48": 39.77,
+      "teamId": "5",
+      "pacePer48": 40.42,
       "rank": 14,
       "window": "season"
     },
     {
-      "teamId": "6",
-      "pacePer48": 39.3,
+      "teamId": "14",
+      "pacePer48": 40.3,
       "rank": 15,
       "window": "season"
     },
     {
-      "teamId": "14",
-      "pacePer48": 39.15,
+      "teamId": "28",
+      "pacePer48": 40.3,
       "rank": 16,
       "window": "season"
     },
     {
-      "teamId": "28",
-      "pacePer48": 38.91,
+      "teamId": "6",
+      "pacePer48": 40.17,
       "rank": 17,
       "window": "season"
     },
     {
-      "teamId": "26",
-      "pacePer48": 38.72,
+      "teamId": "25",
+      "pacePer48": 39.59,
       "rank": 18,
       "window": "season"
     },
     {
-      "teamId": "25",
-      "pacePer48": 38.57,
+      "teamId": "13",
+      "pacePer48": 39.24,
       "rank": 19,
       "window": "season"
     },
     {
-      "teamId": "19",
-      "pacePer48": 38.34,
+      "teamId": "26",
+      "pacePer48": 39.14,
       "rank": 20,
       "window": "season"
     },
     {
-      "teamId": "13",
-      "pacePer48": 37.87,
+      "teamId": "19",
+      "pacePer48": 39.06,
       "rank": 21,
       "window": "season"
     },
     {
-      "teamId": "22",
-      "pacePer48": 37.63,
+      "teamId": "16",
+      "pacePer48": 38.69,
       "rank": 22,
       "window": "season"
     },
     {
-      "teamId": "16",
-      "pacePer48": 37.6,
+      "teamId": "22",
+      "pacePer48": 38.63,
       "rank": 23,
       "window": "season"
     },
     {
       "teamId": "29",
-      "pacePer48": 37.57,
+      "pacePer48": 38.44,
       "rank": 24,
       "window": "season"
     },
     {
       "teamId": "8",
-      "pacePer48": 37.22,
+      "pacePer48": 37.97,
       "rank": 25,
       "window": "season"
     },
     {
       "teamId": "10",
-      "pacePer48": 37.05,
+      "pacePer48": 37.62,
       "rank": 26,
       "window": "season"
     },
     {
-      "teamId": "30",
-      "pacePer48": 36.67,
+      "teamId": "24",
+      "pacePer48": 37.24,
       "rank": 27,
       "window": "season"
     },
     {
-      "teamId": "24",
-      "pacePer48": 36.04,
+      "teamId": "30",
+      "pacePer48": 37.23,
       "rank": 28,
       "window": "season"
     },
     {
       "teamId": "2",
-      "pacePer48": 35.64,
+      "pacePer48": 36.85,
       "rank": 29,
       "window": "season"
     },
     {
       "teamId": "18",
-      "pacePer48": 34.31,
+      "pacePer48": 35.3,
       "rank": 30,
       "window": "season"
     }
