@@ -16,9 +16,9 @@ export function LegRowMeta({
   children?: ReactNode;
 }) {
   return (
-    <div className="mt-1.5">
+    <div className="mt-1">
       <LastFiveTicks ticks={ticks} inline past5Label />
-      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1">
+      <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 mt-1">
         <InjuryStatusBadge status={injuryStatus} />
         {children}
       </div>

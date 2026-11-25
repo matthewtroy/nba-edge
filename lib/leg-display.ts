@@ -13,6 +13,25 @@ export function visibleLegTags(tags: string[]): string[] {
   return tags.filter((t) => t !== "boards shared");
 }
 
+const LEG_ROW_BADGE_ORDER = [
+  "Value",
+  "High probability",
+  "Former team",
+  "Roughie",
+  "Blowout risk",
+  "Edited",
+  "Check prices",
+] as const;
+
+/** Badge order after injury: Value → High prob → Former team → Roughie → rest. */
+export function sortLegRowBadgeTags(labels: string[]): string[] {
+  const rank = (t: string) => {
+    const i = LEG_ROW_BADGE_ORDER.indexOf(t as (typeof LEG_ROW_BADGE_ORDER)[number]);
+    return i >= 0 ? i : LEG_ROW_BADGE_ORDER.length;
+  };
+  return [...labels].sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
+}
+
 export function visibleLegReasons(reasons: PickLeg["reasons"]): string[] {
   return reasonTexts(normalizeLegReasons(reasons)).filter(
     (r) => r.toLowerCase() !== "boards shared" && !/voids if out/i.test(r)

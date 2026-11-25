@@ -9,8 +9,9 @@ export const ui = {
   legPrice: "text-lg font-bold text-price-green tabular-nums leading-tight",
   legFair: "text-[11px] text-white/45 theme-adaptive-muted tabular-nums",
   badge:
-    "text-[10px] px-1.5 py-px rounded-full bg-white/[0.08] text-white/65 border-0",
-  badgeDanger: "text-[10px] px-1.5 py-px rounded-full bg-white/[0.08] text-red-400",
+    "text-[10px] px-1 py-px rounded-full bg-white/[0.08] text-white/65 border-0 leading-tight",
+  badgeDanger:
+    "text-[10px] px-1 py-px rounded-full bg-white/[0.08] text-red-400 leading-tight",
   copyBtn:
     "w-full py-3 text-sm text-white/70 border-t border-white/[0.05] hover:bg-white/[0.03] transition-colors",
   chip:

@@ -1,5 +1,6 @@
 import type { InjuryEntry, PickLeg, SlateGame } from "@lib/types";
 import { bookieMarketLabel } from "@lib/market-label";
+import { sortLegRowBadgeTags } from "@lib/leg-display";
 import { displayLegRowTags } from "@lib/value-at-bookie";
 import { legBookieQuoteView } from "@lib/leg-bookie-quote";
 import type { BookiePriceOpts } from "@lib/single-bookie";
@@ -49,7 +50,11 @@ export function MultiLegRow({
   onTap,
 }: Props) {
   const pool = catalog ?? picks;
-  const tags = displayLegRowTags(leg, bookie);
+  const badgeLabels = sortLegRowBadgeTags([
+    ...(leg.tags?.includes("former_team") ? ["Former team"] : []),
+    ...(edited ? ["Edited"] : []),
+    ...displayLegRowTags(leg, bookie),
+  ]);
   const reasonLines = legRowReasonLines(leg);
   const quoteView =
     bookie && !fairPriceInSlot
@@ -61,14 +66,12 @@ export function MultiLegRow({
   const subtitle = !hideGameLine && slate ? legGameTipSubtitle(leg, slate) : null;
   const ticks = leg.recentVsLine ?? [];
   const injStatus = injuryStatusForPlayer(injuries, leg.playerId);
-  const showFormer = leg.tags?.includes("former_team");
-
   return (
     <button
       type="button"
       data-testid="leg-row"
       onClick={() => onTap(leg)}
-      className="w-full grid grid-cols-[32px_1fr_76px] gap-3 py-3 text-left border-b border-white/[0.05] last:border-0 active:opacity-90"
+      className="w-full grid grid-cols-[32px_1fr_76px] gap-2.5 py-2.5 text-left border-b border-white/[0.05] last:border-0 active:opacity-90 min-h-[44px]"
     >
       <PlayerAvatar
         name={leg.playerName}
@@ -86,7 +89,7 @@ export function MultiLegRow({
           </p>
         )}
         {reasonLines.length > 0 && (
-          <div className="mt-1 space-y-0.5">
+          <div className="mt-1 space-y-px">
             {reasonLines.map((r) => {
               const reasonUi = legReasonLineUi(r.text);
               return (
@@ -99,9 +102,7 @@ export function MultiLegRow({
           </div>
         )}
         <LegRowMeta ticks={ticks} injuryStatus={injStatus}>
-          {showFormer ? <LegBadge label="Former team" /> : null}
-          {edited && <LegBadge label="Edited" />}
-          {tags.map((t) => (
+          {badgeLabels.map((t) => (
             <LegBadge
               key={t}
               label={t}

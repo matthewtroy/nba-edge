@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildShortLegReason } from "../lib/leg-display";
+import { buildShortLegReason, sortLegRowBadgeTags } from "../lib/leg-display";
 import type { PickLeg, PlayerGameLog } from "../lib/types";
 
 const base: PickLeg = {
@@ -31,6 +31,14 @@ function logs(reb: number[]): PlayerGameLog[] {
     source: "espn" as const,
   }));
 }
+
+describe("sortLegRowBadgeTags", () => {
+  it("orders Value before High probability before Former team", () => {
+    expect(
+      sortLegRowBadgeTags(["Roughie", "Former team", "High probability", "Value"])
+    ).toEqual(["Value", "High probability", "Former team", "Roughie"]);
+  });
+});
 
 describe("buildShortLegReason", () => {
   it("prefers injury redistribution over form", () => {
