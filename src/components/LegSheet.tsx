@@ -212,10 +212,10 @@ export function LegSheet({
         <MotionHandleRow onClose={onClose} />
 
         <header className="min-h-[56px] pr-8 flex flex-col justify-center">
-          <div className="flex flex-wrap items-center gap-2">
-            <h2 className="text-base font-semibold text-white theme-adaptive-title leading-tight">
-              {leg.playerName}
-            </h2>
+          <h2 className="text-base font-semibold text-white theme-adaptive-title leading-tight">
+            {leg.playerName}
+          </h2>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1">
             <InjuryStatusBadge status={injuryStatusForPlayer(injuries, leg.playerId)} />
           </div>
           <p className="text-sm text-white/55 mt-0.5">

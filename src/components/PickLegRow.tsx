@@ -1,10 +1,10 @@
 import type { InjuryEntry, PickLeg, SlateGame } from "@lib/types";
-import { InjuryStatusBadge, injuryStatusForPlayer } from "./InjuryStatusBadge";
+import { injuryStatusForPlayer } from "./InjuryStatusBadge";
+import { LegRowMeta } from "./LegRowMeta";
 import { bookieMarketLabel } from "@lib/market-label";
 import { displayLegRowTags } from "@lib/value-at-bookie";
 import { legPriceAtBookie } from "@lib/single-bookie";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
-import { LastFiveTicks } from "./LastFiveTicks";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
 import { legRowReasonLines } from "@lib/leg-row-reasons";
 import { ui } from "../lib/card-type-scale";
@@ -69,15 +69,11 @@ export function PickLegRow({ leg, injuries, slate, myBookie, onTap }: Props) {
             })}
           </div>
         )}
-        <div className="mt-1.5">
-          <LastFiveTicks ticks={ticks} inline past5Label />
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1">
-            <InjuryStatusBadge status={injStatus} />
-            {tags.map((t) => (
-              <LegBadge key={t} label={t} danger={t === "Blowout risk"} />
-            ))}
-          </div>
-        </div>
+        <LegRowMeta ticks={ticks} injuryStatus={injStatus}>
+          {tags.map((t) => (
+            <LegBadge key={t} label={t} danger={t === "Blowout risk"} />
+          ))}
+        </LegRowMeta>
       </div>
       <div className="text-right w-[76px] shrink-0">
         {price != null && price > 1 ? (

@@ -4,12 +4,12 @@ import { displayLegRowTags } from "@lib/value-at-bookie";
 import { legBookieQuoteView } from "@lib/leg-bookie-quote";
 import type { BookiePriceOpts } from "@lib/single-bookie";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
-import { LastFiveTicks } from "./LastFiveTicks";
+import { LegRowMeta } from "./LegRowMeta";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
 import { legRowReasonLines } from "@lib/leg-row-reasons";
 import { ui } from "../lib/card-type-scale";
 import { PlayerAvatar } from "./PlayerAvatar";
-import { InjuryStatusBadge, injuryStatusForPlayer } from "./InjuryStatusBadge";
+import { injuryStatusForPlayer } from "./InjuryStatusBadge";
 
 interface Props {
   leg: PickLeg;
@@ -97,10 +97,7 @@ export function MultiLegRow({
             })}
           </div>
         )}
-        <div className="mt-1.5">
-          <LastFiveTicks ticks={ticks} inline past5Label />
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1">
-          <InjuryStatusBadge status={injStatus} />
+        <LegRowMeta ticks={ticks} injuryStatus={injStatus}>
           {showFormer ? <LegBadge label="Former team" /> : null}
           {edited && <LegBadge label="Edited" />}
           {tags.map((t) => (
@@ -110,8 +107,7 @@ export function MultiLegRow({
               danger={t === "Blowout risk"}
             />
           ))}
-          </div>
-        </div>
+        </LegRowMeta>
         {compact && null}
       </div>
       <div className="text-right w-[76px] shrink-0">
