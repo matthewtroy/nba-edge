@@ -1,46 +1,6 @@
 {
   "bets": [
     {
-      "type": "mainPlay",
-      "label": "Main Play",
-      "legs": [
-        "3136195-pts-20",
-        "4431678-ast-5",
-        "4871144-ast-7",
-        "4066648-reb-5"
-      ],
-      "combinedProbability": 0.23351637523200003,
-      "combinedFairPrice": 4.28,
-      "combinedTakeAt": 4.62,
-      "bestBookie": "Unibet",
-      "bestBookieTotal": 7.75,
-      "bookieTotals": {
-        "Ladbrokes": 7.14,
-        "Unibet": 7.75
-      },
-      "summary": "4 starter main lines"
-    },
-    {
-      "type": "booster",
-      "label": "Booster",
-      "legs": [
-        "3136195-pts-20",
-        "4431678-ast-7",
-        "4871144-ast-10",
-        "4066648-reb-5"
-      ],
-      "combinedProbability": 0.06499540096,
-      "combinedFairPrice": 15.39,
-      "combinedTakeAt": 16.62,
-      "bestBookie": "Unibet",
-      "bestBookieTotal": 40.22,
-      "bookieTotals": {
-        "Ladbrokes": 26.34,
-        "Unibet": 40.22
-      },
-      "summary": "Main Play +1 rung when Main leg ≤$4 at bookie, else same rung"
-    },
-    {
       "type": "q1Multi",
       "label": "Q1 Multi",
       "legs": [
@@ -118,6 +78,17 @@
       ]
     },
     {
+      "type": "mainPlay",
+      "label": "Main Play",
+      "reason": "Gate: Main Play: leg fails starter/main-line/eligibility (legs: Karl-Anthony Towns 20+ pts, Tyrese Maxey 5+ ast, Alperen Sengun 7+ ast, Rui Hachimura 5+ reb)",
+      "players": [
+        "Karl-Anthony Towns",
+        "Tyrese Maxey",
+        "Alperen Sengun",
+        "Rui Hachimura"
+      ]
+    },
+    {
       "type": "longshot",
       "label": "Longshot",
       "variant": "2",
@@ -125,6 +96,17 @@
       "players": [
         "Karl-Anthony Towns",
         "Victor Wembanyama"
+      ]
+    },
+    {
+      "type": "booster",
+      "label": "Booster",
+      "reason": "Booster: Main Play not built or removed",
+      "players": [
+        "Karl-Anthony Towns",
+        "Tyrese Maxey",
+        "Alperen Sengun",
+        "Rui Hachimura"
       ]
     },
     {

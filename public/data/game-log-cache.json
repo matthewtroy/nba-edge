@@ -3360,12 +3360,12 @@
     "logs": []
   },
   "6430": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/6430.png",
     "logs": []
   },
   "6440": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/6440.png",
     "logs": []
   },
@@ -4640,7 +4640,7 @@
     ]
   },
   "6580": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/6580.png",
     "logs": []
   },
@@ -6257,7 +6257,7 @@
     "logs": []
   },
   "2488653": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/2488653.png",
     "logs": [
       {
@@ -6269,6 +6269,7 @@
         "threes": 0,
         "date": "2026-11-19T03:00:00.000+00:00",
         "teamId": "23",
+        "opponent": "Phoenix Suns",
         "opponentTeamId": "21",
         "isHome": true,
         "fga": 0,
@@ -6288,6 +6289,7 @@
         "threes": 0,
         "date": "2026-11-16T02:00:00.000+00:00",
         "teamId": "23",
+        "opponent": "Oklahoma City Thunder",
         "opponentTeamId": "25",
         "isHome": true,
         "fga": 0,
@@ -13065,7 +13067,7 @@
     "logs": []
   },
   "3032979": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3032979.png",
     "logs": [
       {
@@ -13077,6 +13079,7 @@
         "threes": 1,
         "date": "2026-11-05T00:30:00.000+00:00",
         "teamId": "30",
+        "opponent": "Brooklyn Nets",
         "opponentTeamId": "17",
         "isHome": false,
         "fga": 50,
@@ -13096,6 +13099,7 @@
         "threes": 0,
         "date": "2026-11-03T00:30:00.000+00:00",
         "teamId": "30",
+        "opponent": "Detroit Pistons",
         "opponentTeamId": "8",
         "isHome": true,
         "fga": 0,
@@ -16444,7 +16448,7 @@
     "logs": []
   },
   "3102531": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3102531.png",
     "logs": []
   },
@@ -21329,7 +21333,7 @@
     ]
   },
   "3137259": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3137259.png",
     "logs": [
       {
@@ -21341,6 +21345,7 @@
         "threes": 0,
         "date": "2026-11-24T03:00:00.000+00:00",
         "teamId": "23",
+        "opponent": "San Antonio Spurs",
         "opponentTeamId": "24",
         "isHome": true,
         "fga": 0,
@@ -24533,7 +24538,7 @@
     "logs": []
   },
   "3907387": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3907387.png",
     "logs": []
   },
@@ -26442,7 +26447,7 @@
     ]
   },
   "3913176": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3913176.png",
     "logs": [
       {
@@ -26454,6 +26459,7 @@
         "threes": 0,
         "date": "2026-11-24T01:30:00.000+00:00",
         "teamId": "12",
+        "opponent": "Houston Rockets",
         "opponentTeamId": "10",
         "isHome": false,
         "fga": 0,
@@ -27374,7 +27380,7 @@
     ]
   },
   "3934673": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3934673.png",
     "logs": []
   },
@@ -33067,7 +33073,7 @@
     ]
   },
   "4066268": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066268.png",
     "logs": [
       {
@@ -33079,6 +33085,7 @@
         "threes": 0,
         "date": "2026-11-10T02:00:00.000+00:00",
         "teamId": "21",
+        "opponent": "San Antonio Spurs",
         "opponentTeamId": "24",
         "isHome": true,
         "fga": 0,
@@ -33098,6 +33105,7 @@
         "threes": 0,
         "date": "2026-11-06T02:00:00.000+00:00",
         "teamId": "21",
+        "opponent": "Orlando Magic",
         "opponentTeamId": "19",
         "isHome": true,
         "fga": 0,
@@ -33117,6 +33125,7 @@
         "threes": 1,
         "date": "2026-11-05T02:00:00.000+00:00",
         "teamId": "21",
+        "opponent": "Portland Trail Blazers",
         "opponentTeamId": "22",
         "isHome": true,
         "fga": 50,
@@ -36376,7 +36385,7 @@
     "logs": []
   },
   "4066993": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066993.png",
     "logs": [
       {
@@ -36388,6 +36397,7 @@
         "threes": 0,
         "date": "2026-11-14T01:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Cleveland Cavaliers",
         "opponentTeamId": "5",
         "isHome": true,
         "fga": 0,
@@ -36407,6 +36417,7 @@
         "threes": 0,
         "date": "2026-11-06T03:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Golden State Warriors",
         "opponentTeamId": "9",
         "isHome": false,
         "fga": 0,
@@ -36426,6 +36437,7 @@
         "threes": 0,
         "date": "2026-11-03T03:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Los Angeles Lakers",
         "opponentTeamId": "13",
         "isHome": false,
         "fga": 0,
@@ -41659,7 +41671,7 @@
     ]
   },
   "4278076": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4278076.png",
     "logs": [
       {
@@ -41671,6 +41683,7 @@
         "threes": 0,
         "date": "2026-11-19T00:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Milwaukee Bucks",
         "opponentTeamId": "15",
         "isHome": true,
         "fga": 0,
@@ -41690,6 +41703,7 @@
         "threes": 0,
         "date": "2026-11-17T00:30:00.000+00:00",
         "teamId": "14",
+        "opponent": "Houston Rockets",
         "opponentTeamId": "10",
         "isHome": true,
         "fga": 0,
@@ -41709,6 +41723,7 @@
         "threes": 0,
         "date": "2026-11-06T03:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Golden State Warriors",
         "opponentTeamId": "9",
         "isHome": false,
         "fga": 0,
@@ -41728,6 +41743,7 @@
         "threes": 0,
         "date": "2026-11-03T03:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Los Angeles Lakers",
         "opponentTeamId": "13",
         "isHome": false,
         "fga": 0,
@@ -50067,7 +50083,7 @@
     ]
   },
   "4396818": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4396818.png",
     "logs": []
   },
@@ -52688,7 +52704,7 @@
     ]
   },
   "4397114": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4397114.png",
     "logs": []
   },
@@ -53968,7 +53984,7 @@
     "logs": []
   },
   "4397233": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4397233.png",
     "logs": [
       {
@@ -53980,6 +53996,7 @@
         "threes": 1,
         "date": "2026-11-20T01:00:00.000+00:00",
         "teamId": "15",
+        "opponent": "Portland Trail Blazers",
         "opponentTeamId": "22",
         "isHome": true,
         "fga": 20,
@@ -53999,6 +54016,7 @@
         "threes": 0,
         "date": "2026-11-12T01:00:00.000+00:00",
         "teamId": "15",
+        "opponent": "Los Angeles Lakers",
         "opponentTeamId": "13",
         "isHome": true,
         "fga": 0,
@@ -56495,7 +56513,7 @@
     "logs": []
   },
   "4398390": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4398390.png",
     "logs": [
       {
@@ -56507,6 +56525,7 @@
         "threes": 0,
         "date": "2026-11-20T01:00:00.000+00:00",
         "teamId": "12",
+        "opponent": "San Antonio Spurs",
         "opponentTeamId": "24",
         "isHome": false,
         "fga": 0,
@@ -56526,6 +56545,7 @@
         "threes": 1,
         "date": "2026-11-11T02:00:00.000+00:00",
         "teamId": "12",
+        "opponent": "Phoenix Suns",
         "opponentTeamId": "21",
         "isHome": false,
         "fga": 100,
@@ -56545,6 +56565,7 @@
         "threes": 0,
         "date": "2026-11-09T02:00:00.000+00:00",
         "teamId": "12",
+        "opponent": "New Orleans Pelicans",
         "opponentTeamId": "3",
         "isHome": true,
         "fga": 0,
@@ -56564,6 +56585,7 @@
         "threes": 0,
         "date": "2026-11-02T01:30:00.000+00:00",
         "teamId": "12",
+        "opponent": "Golden State Warriors",
         "opponentTeamId": "9",
         "isHome": false,
         "fga": 0,
@@ -59006,7 +59028,7 @@
     ]
   },
   "4431695": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431695.png",
     "logs": []
   },
@@ -60407,7 +60429,7 @@
     ]
   },
   "4431786": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431786.png",
     "logs": [
       {
@@ -60419,6 +60441,7 @@
         "threes": 0,
         "date": "2026-11-17T00:30:00.000+00:00",
         "teamId": "14",
+        "opponent": "Houston Rockets",
         "opponentTeamId": "10",
         "isHome": true,
         "fga": 0,
@@ -60438,6 +60461,7 @@
         "threes": 0,
         "date": "2026-11-15T01:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Detroit Pistons",
         "opponentTeamId": "8",
         "isHome": true,
         "fga": 0,
@@ -62561,7 +62585,7 @@
     ]
   },
   "4432171": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432171.png",
     "logs": []
   },
@@ -69205,7 +69229,7 @@
     ]
   },
   "4433144": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433144.png",
     "logs": [
       {
@@ -69217,6 +69241,7 @@
         "threes": 1,
         "date": "2026-11-19T00:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Orlando Magic",
         "opponentTeamId": "19",
         "isHome": false,
         "fga": 50,
@@ -69236,6 +69261,7 @@
         "threes": 0,
         "date": "2026-11-13T00:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Toronto Raptors",
         "opponentTeamId": "28",
         "isHome": true,
         "fga": 0,
@@ -74120,7 +74146,7 @@
     ]
   },
   "4578893": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4578893.png",
     "logs": [
       {
@@ -74132,6 +74158,7 @@
         "threes": 1,
         "date": "2026-11-05T02:00:00.000+00:00",
         "teamId": "22",
+        "opponent": "Phoenix Suns",
         "opponentTeamId": "21",
         "isHome": false,
         "fga": 25,
@@ -74151,6 +74178,7 @@
         "threes": 0,
         "date": "2026-11-03T02:00:00.000+00:00",
         "teamId": "22",
+        "opponent": "Denver Nuggets",
         "opponentTeamId": "7",
         "isHome": false,
         "fga": 0,
@@ -76036,7 +76064,7 @@
     ]
   },
   "4592714": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4592714.png",
     "logs": [
       {
@@ -76048,6 +76076,7 @@
         "threes": 0,
         "date": "2026-11-10T02:00:00.000+00:00",
         "teamId": "21",
+        "opponent": "San Antonio Spurs",
         "opponentTeamId": "24",
         "isHome": true,
         "fga": 0,
@@ -76067,6 +76096,7 @@
         "threes": 0,
         "date": "2026-11-06T02:00:00.000+00:00",
         "teamId": "21",
+        "opponent": "Orlando Magic",
         "opponentTeamId": "19",
         "isHome": true,
         "fga": 0,
@@ -76086,6 +76116,7 @@
         "threes": 0,
         "date": "2026-11-05T02:00:00.000+00:00",
         "teamId": "21",
+        "opponent": "Portland Trail Blazers",
         "opponentTeamId": "22",
         "isHome": true,
         "fga": 0,
@@ -76466,7 +76497,7 @@
     ]
   },
   "4592857": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4592857.png",
     "logs": [
       {
@@ -76478,6 +76509,7 @@
         "threes": 0,
         "date": "2026-11-19T00:00:00.000+00:00",
         "teamId": "10",
+        "opponent": "Indiana Pacers",
         "opponentTeamId": "11",
         "isHome": false,
         "fga": 0,
@@ -76497,6 +76529,7 @@
         "threes": 1,
         "date": "2026-11-17T00:30:00.000+00:00",
         "teamId": "10",
+        "opponent": "Miami Heat",
         "opponentTeamId": "14",
         "isHome": false,
         "fga": 50,
@@ -76516,6 +76549,7 @@
         "threes": 0,
         "date": "2026-11-16T00:00:00.000+00:00",
         "teamId": "10",
+        "opponent": "Washington Wizards",
         "opponentTeamId": "27",
         "isHome": false,
         "fga": 0,
@@ -76535,6 +76569,7 @@
         "threes": 0,
         "date": "2026-11-12T02:30:00.000+00:00",
         "teamId": "10",
+        "opponent": "Golden State Warriors",
         "opponentTeamId": "9",
         "isHome": true,
         "fga": 0,
@@ -76554,6 +76589,7 @@
         "threes": 0,
         "date": "2026-11-10T01:30:00.000+00:00",
         "teamId": "10",
+        "opponent": "Denver Nuggets",
         "opponentTeamId": "7",
         "isHome": true,
         "fga": 0,
@@ -76573,6 +76609,7 @@
         "threes": 0,
         "date": "2026-11-03T01:30:00.000+00:00",
         "teamId": "10",
+        "opponent": "Boston Celtics",
         "opponentTeamId": "2",
         "isHome": true,
         "fga": 0,
@@ -76681,7 +76718,7 @@
     ]
   },
   "4592979": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4592979.png",
     "logs": [
       {
@@ -76693,6 +76730,7 @@
         "threes": 0,
         "date": "2026-11-24T00:30:00.000+00:00",
         "teamId": "16",
+        "opponent": "Brooklyn Nets",
         "opponentTeamId": "17",
         "isHome": true,
         "fga": 0,
@@ -76712,6 +76750,7 @@
         "threes": 0,
         "date": "2026-11-17T01:00:00.000+00:00",
         "teamId": "16",
+        "opponent": "Portland Trail Blazers",
         "opponentTeamId": "22",
         "isHome": true,
         "fga": 0,
@@ -77408,7 +77447,7 @@
     ]
   },
   "4593049": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4593049.png",
     "logs": []
   },
@@ -81250,7 +81289,7 @@
     ]
   },
   "4683730": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4683730.png",
     "logs": [
       {
@@ -81262,6 +81301,7 @@
         "threes": 0,
         "date": "2026-10-28T00:00:00.000+00:00",
         "teamId": "18",
+        "opponent": "Detroit Pistons",
         "opponentTeamId": "8",
         "isHome": true,
         "fga": 0,
@@ -83323,7 +83363,7 @@
     "logs": []
   },
   "4683860": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4683860.png",
     "logs": []
   },
@@ -83488,7 +83528,7 @@
     ]
   },
   "4683935": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4683935.png",
     "logs": [
       {
@@ -83500,6 +83540,7 @@
         "threes": 0,
         "date": "2026-11-02T01:30:00.000+00:00",
         "teamId": "12",
+        "opponent": "Golden State Warriors",
         "opponentTeamId": "9",
         "isHome": false,
         "fga": 0,
@@ -83728,7 +83769,7 @@
     ]
   },
   "4684269": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4684269.png",
     "logs": []
   },
@@ -85552,7 +85593,7 @@
     "logs": []
   },
   "4697268": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4697268.png",
     "logs": []
   },
@@ -85867,7 +85908,7 @@
     ]
   },
   "4700818": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4700818.png",
     "logs": []
   },
@@ -86492,7 +86533,7 @@
     ]
   },
   "4701225": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4701225.png",
     "logs": [
       {
@@ -86504,6 +86545,7 @@
         "threes": 0,
         "date": "2026-10-30T23:00:00.000+00:00",
         "teamId": "30",
+        "opponent": "Washington Wizards",
         "opponentTeamId": "27",
         "isHome": false,
         "fga": 0,
@@ -86523,6 +86565,7 @@
         "threes": 0,
         "date": "2026-10-23T23:00:00.000+00:00",
         "teamId": "30",
+        "opponent": "Atlanta Hawks",
         "opponentTeamId": "1",
         "isHome": true,
         "fga": 0,
@@ -86808,7 +86851,7 @@
     ]
   },
   "4701232": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4701232.png",
     "logs": []
   },
@@ -87071,7 +87114,7 @@
     "logs": []
   },
   "4702099": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4702099.png",
     "logs": []
   },
@@ -88787,7 +88830,7 @@
     ]
   },
   "4702670": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4702670.png",
     "logs": [
       {
@@ -88799,6 +88842,7 @@
         "threes": 0,
         "date": "2026-11-24T00:30:00.000+00:00",
         "teamId": "17",
+        "opponent": "Minnesota Timberwolves",
         "opponentTeamId": "16",
         "isHome": false,
         "fga": 0,
@@ -89661,7 +89705,7 @@
     ]
   },
   "4709131": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4709131.png",
     "logs": []
   },
@@ -91720,7 +91764,7 @@
     ]
   },
   "4837356": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4837356.png",
     "logs": [
       {
@@ -91732,6 +91776,7 @@
         "threes": 0,
         "date": "2026-11-19T00:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Milwaukee Bucks",
         "opponentTeamId": "15",
         "isHome": true,
         "fga": 0,
@@ -91751,6 +91796,7 @@
         "threes": 0,
         "date": "2026-11-17T00:30:00.000+00:00",
         "teamId": "14",
+        "opponent": "Houston Rockets",
         "opponentTeamId": "10",
         "isHome": true,
         "fga": 0,
@@ -91770,6 +91816,7 @@
         "threes": 0,
         "date": "2026-11-15T01:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Detroit Pistons",
         "opponentTeamId": "8",
         "isHome": true,
         "fga": 0,
@@ -91783,7 +91830,7 @@
     ]
   },
   "4838721": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4838721.png",
     "logs": []
   },
@@ -93768,7 +93815,7 @@
     ]
   },
   "4870562": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4870562.png",
     "logs": [
       {
@@ -93780,6 +93827,7 @@
         "threes": 0,
         "date": "2026-11-24T00:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Portland Trail Blazers",
         "opponentTeamId": "22",
         "isHome": true,
         "fga": 0,
@@ -93799,6 +93847,7 @@
         "threes": 1,
         "date": "2026-11-21T18:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Milwaukee Bucks",
         "opponentTeamId": "15",
         "isHome": true,
         "fga": 50,
@@ -93812,7 +93861,7 @@
     ]
   },
   "4870564": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4870564.png",
     "logs": [
       {
@@ -93824,6 +93873,7 @@
         "threes": 0,
         "date": "2026-10-25T22:00:00.000+00:00",
         "teamId": "17",
+        "opponent": "Indiana Pacers",
         "opponentTeamId": "11",
         "isHome": true,
         "fga": 0,
@@ -93837,7 +93887,7 @@
     ]
   },
   "4871141": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4871141.png",
     "logs": []
   },
@@ -96986,7 +97036,7 @@
     ]
   },
   "4897943": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4897943.png",
     "logs": [
       {
@@ -96998,6 +97048,7 @@
         "threes": 0,
         "date": "2026-11-22T00:30:00.000+00:00",
         "teamId": "18",
+        "opponent": "Portland Trail Blazers",
         "opponentTeamId": "22",
         "isHome": true,
         "fga": 0,
@@ -97017,6 +97068,7 @@
         "threes": 1,
         "date": "2026-11-11T00:30:00.000+00:00",
         "teamId": "18",
+        "opponent": "Milwaukee Bucks",
         "opponentTeamId": "15",
         "isHome": true,
         "fga": 50,
@@ -97036,6 +97088,7 @@
         "threes": 0,
         "date": "2026-11-08T01:00:00.000+00:00",
         "teamId": "18",
+        "opponent": "Cleveland Cavaliers",
         "opponentTeamId": "5",
         "isHome": false,
         "fga": 0,
@@ -97055,6 +97108,7 @@
         "threes": 2,
         "date": "2026-11-05T00:30:00.000+00:00",
         "teamId": "18",
+        "opponent": "Chicago Bulls",
         "opponentTeamId": "4",
         "isHome": true,
         "fga": 50,
@@ -97212,7 +97266,7 @@
     "logs": []
   },
   "4898371": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4898371.png",
     "logs": []
   },
@@ -97842,7 +97896,7 @@
     "logs": []
   },
   "4914336": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4914336.png",
     "logs": []
   },
@@ -98397,7 +98451,7 @@
     ]
   },
   "4997530": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "",
     "logs": []
   },
@@ -102258,7 +102312,7 @@
     ]
   },
   "5061575": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5061575.png",
     "logs": [
       {
@@ -102270,6 +102324,7 @@
         "threes": 0,
         "date": "2026-11-05T00:30:00.000+00:00",
         "teamId": "30",
+        "opponent": "Brooklyn Nets",
         "opponentTeamId": "17",
         "isHome": false,
         "fga": 0,
@@ -102283,7 +102338,7 @@
     ]
   },
   "5061585": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5061585.png",
     "logs": [
       {
@@ -102295,6 +102350,7 @@
         "threes": 0,
         "date": "2026-11-24T00:30:00.000+00:00",
         "teamId": "16",
+        "opponent": "Brooklyn Nets",
         "opponentTeamId": "17",
         "isHome": true,
         "fga": 0,
@@ -102314,6 +102370,7 @@
         "threes": 0,
         "date": "2026-11-17T01:00:00.000+00:00",
         "teamId": "16",
+        "opponent": "Portland Trail Blazers",
         "opponentTeamId": "22",
         "isHome": true,
         "fga": 0,
@@ -102333,6 +102390,7 @@
         "threes": 0,
         "date": "2026-11-13T01:00:00.000+00:00",
         "teamId": "16",
+        "opponent": "Dallas Mavericks",
         "opponentTeamId": "6",
         "isHome": true,
         "fga": 0,
@@ -102352,6 +102410,7 @@
         "threes": 0,
         "date": "2026-11-09T00:00:00.000+00:00",
         "teamId": "16",
+        "opponent": "Utah Jazz",
         "opponentTeamId": "26",
         "isHome": true,
         "fga": 0,
@@ -102599,7 +102658,7 @@
     ]
   },
   "5061603": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5061603.png",
     "logs": []
   },
@@ -104059,7 +104118,7 @@
     ]
   },
   "5099752": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5099752.png",
     "logs": [
       {
@@ -104071,6 +104130,7 @@
         "threes": 0,
         "date": "2026-11-11T01:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Boston Celtics",
         "opponentTeamId": "2",
         "isHome": true,
         "fga": 0,
@@ -104090,6 +104150,7 @@
         "threes": 0,
         "date": "2026-11-03T00:30:00.000+00:00",
         "teamId": "20",
+        "opponent": "Chicago Bulls",
         "opponentTeamId": "4",
         "isHome": true,
         "fga": 0,
@@ -104337,7 +104398,7 @@
     ]
   },
   "5101845": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5101845.png",
     "logs": []
   },
@@ -105000,7 +105061,7 @@
     ]
   },
   "5105337": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105337.png",
     "logs": [
       {
@@ -105012,6 +105073,7 @@
         "threes": 0,
         "date": "2026-11-24T03:00:00.000+00:00",
         "teamId": "24",
+        "opponent": "Sacramento Kings",
         "opponentTeamId": "23",
         "isHome": false,
         "fga": 0,
@@ -105025,7 +105087,7 @@
     ]
   },
   "5105462": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105462.png",
     "logs": []
   },
@@ -105264,12 +105326,12 @@
     ]
   },
   "5105553": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105553.png",
     "logs": []
   },
   "5105555": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105555.png",
     "logs": [
       {
@@ -105281,6 +105343,7 @@
         "threes": 0,
         "date": "2026-11-03T00:30:00.000+00:00",
         "teamId": "4",
+        "opponent": "Philadelphia 76ers",
         "opponentTeamId": "20",
         "isHome": false,
         "fga": 0,
@@ -106091,7 +106154,7 @@
     ]
   },
   "5105626": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105626.png",
     "logs": []
   },
@@ -109511,7 +109574,7 @@
     ]
   },
   "5106261": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5106261.png",
     "logs": []
   },
@@ -109826,7 +109889,7 @@
     ]
   },
   "5106268": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5106268.png",
     "logs": []
   },
@@ -111026,7 +111089,7 @@
     ]
   },
   "5107897": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5107897.png",
     "logs": [
       {
@@ -111038,6 +111101,7 @@
         "threes": 0,
         "date": "2026-11-09T02:00:00.000+00:00",
         "teamId": "23",
+        "opponent": "Miami Heat",
         "opponentTeamId": "14",
         "isHome": true,
         "fga": 0,
@@ -111127,7 +111191,7 @@
     ]
   },
   "5107968": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5107968.png",
     "logs": [
       {
@@ -111139,6 +111203,7 @@
         "threes": 1,
         "date": "2026-11-24T03:00:00.000+00:00",
         "teamId": "24",
+        "opponent": "Sacramento Kings",
         "opponentTeamId": "23",
         "isHome": false,
         "fga": 33.3,
@@ -114464,7 +114529,7 @@
     "logs": []
   },
   "5157587": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5157587.png",
     "logs": [
       {
@@ -114476,6 +114541,7 @@
         "threes": 0,
         "date": "2026-11-09T00:00:00.000+00:00",
         "teamId": "16",
+        "opponent": "Utah Jazz",
         "opponentTeamId": "26",
         "isHome": true,
         "fga": 0,
@@ -117371,7 +117437,7 @@
     ]
   },
   "5176517": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5176517.png",
     "logs": []
   },
@@ -118861,7 +118927,7 @@
     ]
   },
   "5214989": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5214989.png",
     "logs": [
       {
@@ -118873,6 +118939,7 @@
         "threes": 0,
         "date": "2026-11-12T01:00:00.000+00:00",
         "teamId": "15",
+        "opponent": "Los Angeles Lakers",
         "opponentTeamId": "13",
         "isHome": true,
         "fga": 0,
@@ -118892,6 +118959,7 @@
         "threes": 0,
         "date": "2026-11-11T00:30:00.000+00:00",
         "teamId": "15",
+        "opponent": "New York Knicks",
         "opponentTeamId": "18",
         "isHome": false,
         "fga": 0,
@@ -120752,7 +120820,7 @@
     ]
   },
   "5242502": {
-    "fetchedAt": "2026-11-25T11:37:43.944Z",
+    "fetchedAt": "2026-11-25T12:12:29.448Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5242502.png",
     "logs": [
       {
@@ -120764,6 +120832,7 @@
         "threes": 0,
         "date": "2026-10-25T22:00:00.000+00:00",
         "teamId": "17",
+        "opponent": "Indiana Pacers",
         "opponentTeamId": "11",
         "isHome": true,
         "fga": 0,
