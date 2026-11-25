@@ -10,9 +10,9 @@
         "4601025-pts-10",
         "4433249-reb-10"
       ],
-      "combinedProbability": 0.20268558526103997,
-      "combinedFairPrice": 4.93,
-      "combinedTakeAt": 5.32,
+      "combinedProbability": 0.20490092617103994,
+      "combinedFairPrice": 4.88,
+      "combinedTakeAt": 5.27,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 8.26,
       "bookieTotals": {
@@ -21,52 +21,87 @@
       "summary": "5 starter main lines"
     },
     {
-      "type": "q1Multi",
-      "label": "Q1 Multi",
-      "variant": "Longshot",
-      "legs": [
-        "3917376-q1reb-2",
-        "5082206-q1reb-2",
-        "3064440-q1reb-2"
-      ],
-      "combinedProbability": 0.084599267,
-      "combinedFairPrice": 11.82,
-      "combinedTakeAt": 12.77,
-      "summary": "Q1 Multi (Longshot): fair 2.20–4.00, one leg/team"
-    }
-  ],
-  "notBuilt": [
-    {
       "type": "booster",
       "label": "Booster",
-      "reason": "Booster: Pelle Larsson 15+ pts: no edge @ Ladbrokes"
-    },
-    {
-      "type": "longshot",
-      "label": "Longshot",
-      "reason": "Exposure cap: Karl-Anthony Towns would appear in 4 bets (max 3, Booster exempt; legs: Karl-Anthony Towns 30+ pts, Bam Adebayo 30+ pts)",
-      "players": [
-        "Karl-Anthony Towns",
-        "Bam Adebayo"
-      ]
+      "legs": [
+        "3136195-pts-30",
+        "4431671-reb-7",
+        "4903027-reb-7",
+        "4601025-pts-15",
+        "4433249-reb-10"
+      ],
+      "combinedProbability": 0.01922978770812,
+      "combinedFairPrice": 52,
+      "combinedTakeAt": 56.16,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 87.94,
+      "bookieTotals": {
+        "Ladbrokes": 87.94
+      },
+      "summary": "Main Play +1 rung when Main leg ≤$4 at bookie, else same rung"
     },
     {
       "type": "crossGameSgm",
       "label": "Cross-Game SGM Multi",
-      "reason": "Gate: Cross-Game SGM Multi: Jared McCain has Check news; Cross-Game SGM Multi: Egor Demin has Check news; Cross-Game SGM Multi: AU bookie multi total mismatch (legs: Jared McCain 15+ pts, Karl-Anthony Towns 20+ pts, Darius Garland 20+ pts, Pelle Larsson 10+ pts, Egor Demin 10+ pts, Jalen Smith 15+ pts)",
-      "players": [
-        "Jared McCain",
-        "Karl-Anthony Towns",
-        "Darius Garland",
-        "Pelle Larsson",
-        "Egor Demin",
-        "Jalen Smith"
-      ]
+      "legs": [
+        "4278073-ast-5",
+        "3133626-pts-10",
+        "4431671-pts-20",
+        "3136195-pts-20",
+        "3062679-ast-5"
+      ],
+      "combinedProbability": 0.07512959894439998,
+      "combinedFairPrice": 13.31,
+      "combinedTakeAt": 14.37,
+      "bestBookie": "TAB",
+      "bestBookieTotal": 30,
+      "bookieTotals": {
+        "TAB": 30,
+        "Ladbrokes": 24.92
+      },
+      "summary": "2+ games, 2–3 legs/game, $10–30 one bookie"
     },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "legs": [
+        "5104157-q1reb-3",
+        "4432194-q1reb-2",
+        "4066328-q1reb-2",
+        "3448-q1reb-2",
+        "3155942-q1reb-2",
+        "4601023-q1reb-2"
+      ],
+      "combinedProbability": 0.15224574765569904,
+      "combinedFairPrice": 6.57,
+      "combinedTakeAt": 7.1,
+      "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot",
+      "legs": [
+        "3136195-pts-30",
+        "4066261-pts-30"
+      ],
+      "combinedProbability": 0.035712,
+      "combinedFairPrice": 28,
+      "combinedTakeAt": 30.24,
+      "bestBookie": "PointsBet",
+      "bestBookieTotal": 63.25,
+      "bookieTotals": {
+        "Sportsbet": 57,
+        "Ladbrokes": 60.5,
+        "PointsBet": 63.25
+      },
+      "summary": "One long leg per game"
+    }
+  ],
+  "notBuilt": [
     {
       "type": "boostSgm",
       "label": "Best SGM",
-      "reason": "Gate: Best SGM: James Harden has Check news; Best SGM: bookie total 5.60 not 7–15; Best SGM: AU bookie multi total mismatch (legs: Karl-Anthony Towns 20+ pts, Donovan Mitchell 5+ ast, James Harden 20+ pts)",
+      "reason": "Gate: Best SGM: bookie total 5.56 not 7–15 (legs: Karl-Anthony Towns 20+ pts, Donovan Mitchell 5+ ast, James Harden 20+ pts)",
       "players": [
         "Karl-Anthony Towns",
         "Donovan Mitchell",
@@ -76,8 +111,8 @@
     {
       "type": "q1Multi",
       "label": "Q1 Multi",
-      "variant": "Core",
-      "reason": "No Q1 Multi subset (p≥0.70, 3–6 teams, one leg/team)"
+      "variant": "Longshot",
+      "reason": "No Q1 Multi (Longshot) fair ≥2.50"
     }
   ]
 }
