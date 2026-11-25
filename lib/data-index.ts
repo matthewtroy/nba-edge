@@ -11,6 +11,8 @@ export interface DataIndexDateEntry {
   legCount: number;
   multiCount: number;
   lastUpdated: string;
+  /** Earliest game tip ISO — viewer-local Today/Tomorrow mapping */
+  firstTipIso?: string;
 }
 
 export interface DataIndexFile {

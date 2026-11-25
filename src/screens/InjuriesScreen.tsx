@@ -3,9 +3,14 @@ import type { InjuryEntry } from "@lib/types";
 import { topBeneficiaryLastNames } from "@lib/injury-beneficiaries";
 import { sydneyTimeFromIso } from "../utils/format";
 import { useQuestionableSwaps } from "../hooks/useQuestionableSwaps";
+import { DateSwitcher } from "../components/DateSwitcher";
 
 interface Props {
   data: DataBundle;
+  slateDate: string;
+  todayDate: string;
+  tomorrowDate: string | null;
+  onSlateDateChange: (d: string) => void;
 }
 
 function teamAbbr(name: string): string {
@@ -13,7 +18,13 @@ function teamAbbr(name: string): string {
   return parts.length > 1 ? parts[parts.length - 1]! : name;
 }
 
-export function InjuriesScreen({ data }: Props) {
+export function InjuriesScreen({
+  data,
+  slateDate,
+  todayDate,
+  tomorrowDate,
+  onSlateDateChange,
+}: Props) {
   const { swapAsOut, reset, isCountedOut } = useQuestionableSwaps();
   const byGame = new Map<string, InjuryEntry[]>();
   for (const inj of data.injuries) {
@@ -24,6 +35,12 @@ export function InjuriesScreen({ data }: Props) {
 
   return (
     <div className="pb-24">
+      <DateSwitcher
+        todayDate={todayDate}
+        tomorrowDate={tomorrowDate}
+        selected={slateDate}
+        onSelect={onSlateDateChange}
+      />
       <h1 className="text-xl font-bold mb-4">Injuries</h1>
       {[...byGame.entries()].map(([gameId, list]) => {
         const game = data.slate.find((g) => g.id === gameId);

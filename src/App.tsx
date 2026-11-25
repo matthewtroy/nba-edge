@@ -32,7 +32,13 @@ export default function App() {
   useEffect(() => {
     loadDataIndex().then(setIndex);
   }, []);
-  const { date: slateDate, setDate: setSlateDate, segment } = useSlateDate(index);
+  const {
+    date: slateDate,
+    setDate: setSlateDate,
+    segment,
+    noGamesToday,
+    timeZone,
+  } = useSlateDate(index);
   const data = useData(slateDate);
   const badgeInjuries = injuriesForBadges(data.injuries);
   const { settings, setSettings } = useSettings();
@@ -67,6 +73,8 @@ export default function App() {
             slateDate={slateDate}
             todayDate={segment.today}
             tomorrowDate={segment.tomorrow}
+            noGamesToday={noGamesToday}
+            viewerTimeZone={timeZone}
             onSlateDateChange={setSlateDate}
             onLegTap={setLeg}
             onCopy={copy}
@@ -106,7 +114,13 @@ export default function App() {
       )}
       {tab === "injuries" && (
         <ErrorBoundary name="InjuriesScreen">
-          <InjuriesScreen data={data} />
+          <InjuriesScreen
+            data={data}
+            slateDate={slateDate}
+            todayDate={segment.today}
+            tomorrowDate={segment.tomorrow}
+            onSlateDateChange={setSlateDate}
+          />
         </ErrorBoundary>
       )}
       {tab === "results" && (

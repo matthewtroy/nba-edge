@@ -265,6 +265,13 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     `slate ${tipDate}: ${input.slate.length} games, ${picks.length} legs, ${multis.length} multis, ${priced} priced`
   );
 
+  const firstTipMs = Math.min(
+    ...input.slate.map((g) => new Date(g.startTime).getTime()).filter(Number.isFinite)
+  );
+  const firstTipIso = Number.isFinite(firstTipMs)
+    ? new Date(firstTipMs).toISOString()
+    : undefined;
+
   return {
     date: tipDate,
     status,
@@ -273,5 +280,6 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     legCount: picks.length,
     multiCount: multis.length,
     lastUpdated: metaOut.lastUpdated,
+    firstTipIso,
   };
 }

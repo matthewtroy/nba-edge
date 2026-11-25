@@ -8,7 +8,8 @@ import { usePersonalMultis } from "../hooks/usePersonalMultis";
 import { injuryAlertsForCard } from "@lib/injury-alerts-card";
 import { DateSwitcher } from "../components/DateSwitcher";
 import { sydneyDateString } from "@lib/official-card-time";
-import { sydneyTimeFromIso } from "../utils/format";
+import { sydneyTimeFromIso, viewerTimeFromIso } from "../utils/format";
+import { noGamesTodayMessage, viewerZoneLabel } from "@lib/viewer-slate";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
 import { formatOddsFreshnessSummary } from "@lib/odds-freshness-ui";
 import { picksByIdFromOfficialSnapshots } from "@lib/official-leg-snapshot";
@@ -30,6 +31,8 @@ interface Props {
   slateDate: string;
   todayDate: string;
   tomorrowDate: string | null;
+  noGamesToday?: boolean;
+  viewerTimeZone?: string;
   onSlateDateChange: (d: string) => void;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (t: string) => void;
@@ -44,6 +47,8 @@ export function TodayScreen({
   slateDate,
   todayDate,
   tomorrowDate,
+  noGamesToday,
+  viewerTimeZone,
   onSlateDateChange,
   onLegTap,
   onCopy,
@@ -123,9 +128,20 @@ export function TodayScreen({
   const ageH =
     (Date.now() - new Date(data.meta.lastUpdated).getTime()) / (1000 * 60 * 60);
   const settleSummary = formatHomeSettleSummary(data.results);
+  const timeFmt = (iso: string) =>
+    viewerTimeZone && viewerTimeZone !== "Australia/Sydney"
+      ? viewerTimeFromIso(iso, viewerTimeZone)
+      : sydneyTimeFromIso(iso);
+  const zoneNote =
+    viewerTimeZone && viewerZoneLabel(viewerTimeZone)
+      ? ` · ${viewerZoneLabel(viewerTimeZone)}`
+      : "";
 
   return (
     <div className="pb-24">
+      {noGamesToday && (
+        <p className="text-sm text-white/70 mb-3">{noGamesTodayMessage()}</p>
+      )}
       <DateSwitcher
         todayDate={todayDate}
         tomorrowDate={tomorrowDate}
@@ -143,8 +159,8 @@ export function TodayScreen({
           )}
           {useOfficial && publishedAt && (
             <span className="inline-flex text-[11px] px-2 py-0.5 rounded-full bg-white/[0.08] text-white/70 border border-white/[0.06] mt-1">
-              Official · {sydneyTimeFromIso(publishedAt)}
-              {republishedAt ? ` · Republished ${sydneyTimeFromIso(republishedAt)}` : ""}
+              Official · {timeFmt(publishedAt)}
+              {republishedAt ? ` · Republished ${timeFmt(republishedAt)}` : ""}
             </span>
           )}
           {data.meta.slateStatusLabel &&
@@ -152,7 +168,8 @@ export function TodayScreen({
             <p className="text-xs text-white/45 mt-1">{data.meta.slateStatusLabel}</p>
           )}
           <p className="text-sm text-white/70">
-            {data.slate.length} games · Updated {sydneyTimeFromIso(data.meta.lastUpdated)}
+            {data.slate.length} games · Updated {timeFmt(data.meta.lastUpdated)}
+            {zoneNote}
             {stale && <span className="text-accent-warn ml-1" title="Source stale or paused">●</span>}
           </p>
           {oddsFreshness && (
