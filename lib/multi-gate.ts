@@ -122,13 +122,6 @@ function checkTypeRules(
     if (legs.length < 3 || legs.length > 4) {
       issues.push(`Best SGM: ${legs.length} legs (need 3–4)`);
     }
-    const bookTotal =
-      multi.bestBookieTotal ?? bestFeedMultiQuote(legs)?.total ?? null;
-    if (bookTotal == null || bookTotal < 7 || bookTotal > 15) {
-      issues.push(
-        `Best SGM: bookie total ${bookTotal != null ? bookTotal.toFixed(2) : "?"} not $7–$15`
-      );
-    }
     if (!legs.every((l) => qualifiesCrossBoostLeg(l, multi.bestBookie))) {
       issues.push("Best SGM: leg fails starter main-line eligibility");
     }

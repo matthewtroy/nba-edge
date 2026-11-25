@@ -4,8 +4,8 @@ import { nearestPricedRung } from "./nearest-bookie-line.js";
 import {
   pickBestSameGameSgmCombo,
   pickBestCrossGameLegSubset,
-  SGM_BAND_MIN,
-  SGM_BAND_MAX,
+  SGM_NO_ODDS_MIN,
+  SGM_NO_ODDS_MAX,
   CROSS_SGM_BAND_MIN,
   CROSS_SGM_BAND_MAX,
   CROSS_SGM_MAX_GAMES,
@@ -1100,8 +1100,8 @@ function buildBoostSgm(
         legs.slice(0, 18),
         bookie,
         catalog,
-        SGM_BAND_MIN,
-        SGM_BAND_MAX
+        SGM_NO_ODDS_MIN,
+        SGM_NO_ODDS_MAX
       );
       if (!combo) continue;
       rangeCands += 1;
@@ -1137,7 +1137,7 @@ function buildBoostSgm(
   }
 
   if (!bestAcross) {
-    const reason = `No in-band same-game SGM @ edge (eligible ${structural.length}, best pool ${maxEdgeBookie}=${maxEdge}, in-band games ${maxRange})`;
+    const reason = `No same-game SGM @ edge (eligible ${structural.length}, best pool ${maxEdgeBookie}=${maxEdge}, games ${maxRange})`;
     pushMultiBuildTrace({
       type: "boostSgm",
       eligible: structural.length,
@@ -1172,7 +1172,7 @@ function buildBoostSgm(
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
       ...overlayForBookie(bestAcross.legs, bestAcross.bookie, catalog),
-      summary: "Best 3–4 leg same-game multi in $7–15",
+      summary: "Best 3–4 leg same-game multi",
     },
     reason: "",
   };

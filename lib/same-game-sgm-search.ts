@@ -26,7 +26,11 @@ export function legEdgeDecimal(leg: PickLeg): number {
   return leg.bestPrice - leg.takeAt;
 }
 
+export const SGM_NO_ODDS_MIN = 0;
+export const SGM_NO_ODDS_MAX = Number.POSITIVE_INFINITY;
+
 function totalInBand(total: number, min = SGM_BAND_MIN, max = SGM_BAND_MAX): boolean {
+  if (!Number.isFinite(max)) return total >= min;
   return total >= min && total <= max;
 }
 
