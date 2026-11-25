@@ -1,14 +1,11 @@
 import type { PickLeg } from "./types.js";
 import { normalizeLegReasons, reasonTexts, sortLegReasons } from "./leg-reason-types.js";
 
-/** Up to two short reason lines for leg rows (wrap, no ellipsis). */
+/** Up to two short reason lines for leg rows (structured reasons only). */
 export function legRowReasonLines(leg: PickLeg): { text: string; injury: boolean }[] {
-  const texts =
-    reasonTexts(sortLegReasons(normalizeLegReasons(leg.reasons))).length > 0
-      ? reasonTexts(sortLegReasons(normalizeLegReasons(leg.reasons)))
-      : leg.reasonLine
-        ? leg.reasonLine.split(" · ")
-        : [];
+  const texts = reasonTexts(
+    sortLegReasons(normalizeLegReasons(leg.reasons ?? []))
+  );
   const seen = new Set<string>();
   const out: string[] = [];
   for (const t of texts) {

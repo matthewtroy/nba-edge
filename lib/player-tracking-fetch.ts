@@ -67,7 +67,8 @@ function espnStandInFromLogs(playerId: string, name: string, logs: PlayerGameLog
 
 export function shotVolumeReason(tr: PlayerTrackingDay): string | undefined {
   if (tr.source !== "espn" || tr.fgaPerMinL10 == null) return undefined;
-  return "Shot volume up L5 vs prior (ESPN proxy)";
+  if (tr.fgaPerMinL10 == null) return undefined;
+  return `Shot volume ${tr.fgaPerMinL10.toFixed(2)} FGA/min (L10)`;
 }
 
 export function potentialAstReason(tr: PlayerTrackingDay): string | undefined {

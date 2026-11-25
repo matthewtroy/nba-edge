@@ -213,6 +213,8 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
       slateDate: existingOfficial.slateDate,
       bookie: existingOfficial.bookie,
     };
+    const pub = existingOfficial.publishedAt ?? existingOfficial.lockedAt;
+    logOfficialCard("kept", `published ${pub}`);
   } else {
     const reasons: string[] = [];
     if (input.skipOfficialPublish) reasons.push("skip official publish flag");

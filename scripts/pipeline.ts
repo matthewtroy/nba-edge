@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import { runModelFromFixture, loadHistory } from "./run-model.js";
 import { runLivePipeline } from "./run-live.js";
 import { skipOfficialPublishOnRun } from "../lib/pipeline-run-opts.js";
+import { restorePersistedDataFromBranch } from "../lib/restore-data-branch.js";
 import { computeCalibration, emptyHistory } from "../lib/grading.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -78,6 +79,7 @@ async function main() {
     return;
   }
   const useFromLive = fromLive;
+  restorePersistedDataFromBranch(rootDir);
   console.log(`pipeline: dual-slate${useFromLive ? " from-live" : ""}`);
   await runLivePipeline(rootDir, outDir, {
     forceOdds: forceOdds || useFromLive,

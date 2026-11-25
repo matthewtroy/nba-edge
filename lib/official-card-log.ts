@@ -1,4 +1,4 @@
-export type OfficialCardLogAction = "published" | "republished" | "blocked";
+export type OfficialCardLogAction = "published" | "republished" | "blocked" | "kept";
 
 export function logOfficialCard(action: OfficialCardLogAction, detail?: string): void {
   if (action === "blocked") {

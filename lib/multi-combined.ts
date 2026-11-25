@@ -88,7 +88,7 @@ export function multiCardTitle(
     };
   }
   return {
-    headline: `${name} @ $${total.toFixed(2)}`,
+    headline: name,
     subline: cardBookie,
     cardBookie,
     fairOnly: false,

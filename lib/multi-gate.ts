@@ -132,13 +132,13 @@ function checkTypeRules(
   if (type === "longshot") {
     if (combo < 30 || combo > 150) issues.push(`Longshot: take-at ${combo.toFixed(2)} not 30–150`);
     if (legs.some((l) => l.market === "3pm")) {
-      issues.push("Longshot: forbidden 3PM legs (use DD/TD/combo or 30+ pts)");
+      issues.push("Longshot: forbidden 3PM legs (use DD/TD or 30+ pts)");
     }
     const hasSpecial = legs.some((l) =>
-      ["dd", "td", "combo"].includes(l.market)
+      ["dd", "td"].includes(l.market)
     );
   if (!hasSpecial && !legs.every((l) => l.market === "pts" && l.line >= 30)) {
-      issues.push("Longshot: need priced DD/TD/combo or 30+ pts starters");
+      issues.push("Longshot: need priced DD/TD or 30+ pts starters");
     }
   }
   if (type === "crossGameSgm") {

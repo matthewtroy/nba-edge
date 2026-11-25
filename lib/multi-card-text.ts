@@ -3,6 +3,7 @@ import {
   combinedFairAndTakeAt,
   DEFAULT_MIN_EDGE,
   multiCardTitle,
+  resolveMultiFeedQuote,
   type MultiCardTitleOptions,
 } from "./multi-combined.js";
 import { assertNoMixedBookieCopy } from "./multi-display.js";
@@ -39,7 +40,14 @@ export function renderMultiCardCopyText(
 ): string {
   const opts: MultiCardTitleOptions = titleOpts ?? { minEdgeFraction: DEFAULT_MIN_EDGE };
   const { headline, subline, cardBookie, fairOnly } = multiCardTitle(multi, legs, opts);
-  const lines = [headline, subline];
+  const lines: string[] = [];
+  if (fairOnly) {
+    lines.push(headline);
+    if (subline) lines.push(subline);
+  } else {
+    const feed = resolveMultiFeedQuote(multi, legs);
+    lines.push(`${headline} @ $${feed.total.toFixed(2)} · ${feed.bookie}`);
+  }
   for (const leg of legs) {
   if (fairOnly) {
     lines.push(

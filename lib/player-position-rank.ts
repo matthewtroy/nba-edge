@@ -1,5 +1,5 @@
 import type { GameLogCacheFile } from "./game-log-cache.js";
-import { positionBucketLabel } from "./combo-markets.js";
+import { positionBucketLabel } from "./position-label.js";
 import { positionBucket } from "./position-bucket.js";
 import { logsForModelRates } from "./baseline.js";
 

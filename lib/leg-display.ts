@@ -28,7 +28,11 @@ export function mainPlayReasonOk(leg: PickLeg): boolean {
 
 /** @deprecated use buildLegReasonLine */
 export function buildShortLegReason(leg: PickLeg, logs: PlayerGameLog[]): string | undefined {
-  return buildLegReasonLine({ leg, logs });
+  return buildLegReasonLine({
+    leg,
+    logs,
+    seedReasons: normalizeLegReasons(leg.reasons ?? []),
+  });
 }
 
 export function countLegsWithInjuryReason(picks: PickLeg[]): number {

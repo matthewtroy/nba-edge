@@ -5,8 +5,6 @@ import {
   probMarketOver,
   probDoubleDouble,
   probTripleDouble,
-  probComboRebAst,
-  probStatSumOver,
 } from "./distributions.js";
 import { logsForModelRates, q1Share } from "./baseline.js";
 import type { ProjectedStats } from "./baseline.js";
@@ -60,10 +58,6 @@ export const RUNGS: Record<string, number[]> = {
   q1pts: [3, 5, 7, 10],
   q1reb: [2, 3, 5],
   q1ast: [2, 3, 5],
-  ptsreb: [15, 20, 25, 30, 35, 40],
-  ptsast: [15, 20, 25, 30, 35],
-  rebast: [8, 10, 12, 14, 16],
-  pra: [25, 30, 35, 40, 45, 50],
 };
 
 export function fairAndTakeAt(p: number, minEdge = 1.08): { fair: number; takeAt: number; oneInX: number } {
@@ -308,17 +302,8 @@ export function buildLegsForPlayer(
   const comboMeans = { pts: means.pts, reb: means.reb, ast: means.ast };
   const pDd = probDoubleDouble(comboMeans);
   const pTd = probTripleDouble(comboMeans);
-  const pCombo = probComboRebAst(comboMeans);
   if (pDd >= 0.03) addLeg("dd", 1, pDd);
   if (pTd >= 0.03) addLeg("td", 1, pTd);
-  if (pCombo >= 0.03) addLeg("combo", 7, pCombo);
-
-  for (const market of ["ptsreb", "ptsast", "rebast", "pra"] as const) {
-    for (const line of RUNGS[market]) {
-      const p = probStatSumOver(market, comboMeans, line);
-      addLeg(market, line, p);
-    }
-  }
 
   return legs;
 }

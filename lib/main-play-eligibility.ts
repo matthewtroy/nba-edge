@@ -1,5 +1,4 @@
 import type { Market, PickLeg } from "./types.js";
-import { isStatComboMarket } from "./combo-markets.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
 import { passesFormGuard } from "./form-guard.js";
 import { legBookiePriceInBand } from "./leg-bookie-band.js";
@@ -24,10 +23,6 @@ export function isSgmMainLine(market: Market, line: number): boolean {
   if (market === "reb") return line >= 5;
   if (market === "ast") return line >= 5;
   if (market === "3pm") return line >= 4;
-  if (isStatComboMarket(market)) {
-    if (market === "ptsreb" || market === "ptsast" || market === "pra") return line >= 20;
-    if (market === "rebast") return line >= 10;
-  }
   return false;
 }
 
@@ -105,8 +100,6 @@ export function qualifiesLongshotLeg(leg: PickLeg): boolean {
   const special =
     leg.market === "dd" ||
     leg.market === "td" ||
-    leg.market === "combo" ||
-    isStatComboMarket(leg.market) ||
     (leg.market === "pts" && leg.line >= 30);
   if (special) return !isQ1Market(leg.market);
   return false;

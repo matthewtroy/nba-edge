@@ -12,36 +12,9 @@ export const ODDS_THREES_MARKETS = [
   "player_threes_alternate",
 ] as const;
 
-export const ODDS_COMBO_MARKETS = [
-  "player_double_double",
-  "player_triple_double",
-] as const;
-
-export const ODDS_COMBO_STAT_MARKETS = [
-  "player_points_rebounds",
-  "player_points_rebounds_alternate",
-  "player_points_assists",
-  "player_points_assists_alternate",
-  "player_rebounds_assists",
-  "player_rebounds_assists_alternate",
-  "player_points_rebounds_assists",
-  "player_points_rebounds_assists_alternate",
-] as const;
-
-/** Combo stat API markets on by default (set ODDS_COMBO_MARKETS=false to disable). */
-export function oddsComboStatMarketsEnabled(): boolean {
-  return process.env.ODDS_COMBO_MARKETS !== "false";
-}
-
+/** 8 markets/event — budget uses {@link DEFAULT_CREDITS_PER_GAME} per game. */
 export function oddsMarketsForEventPull(): string[] {
-  const base = [...ODDS_CORE_MARKETS, ...ODDS_THREES_MARKETS, ...ODDS_COMBO_MARKETS];
-  if (oddsComboStatMarketsEnabled()) return [...base, ...ODDS_COMBO_STAT_MARKETS];
-  return base;
-}
-
-/** Extra Odds API markets per game when combo stats are enabled (for budget logging). */
-export function oddsComboStatMarketCount(): number {
-  return oddsComboStatMarketsEnabled() ? ODDS_COMBO_STAT_MARKETS.length : 0;
+  return [...ODDS_CORE_MARKETS, ...ODDS_THREES_MARKETS];
 }
 
 export interface OddsCoverageJson {
@@ -61,12 +34,6 @@ export interface OddsCoverageJson {
 function normMarket(key: string): string {
   let m = key.replace("player_", "").replace("_alternate", "");
   if (m === "threes") return "3pm";
-  if (m === "double_double") return "dd";
-  if (m === "triple_double") return "td";
-  if (m === "points_rebounds") return "ptsreb";
-  if (m === "points_assists") return "ptsast";
-  if (m === "rebounds_assists") return "rebast";
-  if (m === "points_rebounds_assists") return "pra";
   if (m === "points") return "pts";
   if (m === "rebounds") return "reb";
   if (m === "assists") return "ast";

@@ -1,76 +1,87 @@
-/** One-line multi header: "Main Play @ $8.26" with bookie below. */
-export function parseMultiHeadline(headline: string): {
-  name: string;
-  suffix: string;
-  amount: string;
-} {
-  const fair = /^(.+):\s*Fair\s+(\$[\d.]+)$/i.exec(headline);
-  if (fair) {
-    return { name: fair[1].trim(), suffix: "", amount: fair[2] };
-  }
-  const at = headline.indexOf(" @ ");
-  if (at < 0) {
-    return { name: headline, suffix: "", amount: "" };
-  }
-  const name = headline.slice(0, at).trim();
-  const rest = headline.slice(at + 3).trim();
-  const takeMatch = /^take\s+(\$[\d.]+)$/i.exec(rest);
-  if (takeMatch) {
-    return { name, suffix: "take", amount: takeMatch[1] };
-  }
-  if (rest.startsWith("$")) {
-    return { name, suffix: "", amount: rest };
-  }
-  return { name, suffix: "", amount: rest };
-}
-
+/** Multi header: "Main Play @ $7.14 · Ladbrokes" with optional published / best lines. */
 export function MultiCardHeader({
-  headline,
+  title,
+  total,
   bookie,
+  bestBookie,
+  bestTotal,
+  onSelectBest,
+  publishedBookie,
+  publishedTotal,
   publishedAt,
-  lockedBookie,
   onRemove,
+  fairOnly,
+  fairNote,
 }: {
-  headline: string;
+  title: string;
+  total?: number;
   bookie?: string;
+  bestBookie?: string;
+  bestTotal?: number;
+  onSelectBest?: () => void;
+  publishedBookie?: string;
+  publishedTotal?: number;
   publishedAt?: string;
-  lockedBookie?: string;
   onRemove?: () => void;
+  fairOnly?: boolean;
+  fairNote?: string;
 }) {
-  const { name, suffix, amount } = parseMultiHeadline(headline);
+  const amount =
+    total != null && Number.isFinite(total) ? `$${total.toFixed(2)}` : undefined;
 
   return (
     <header className="mb-3">
       <p className="text-base leading-snug flex flex-wrap items-baseline gap-x-1">
-        <span className="font-semibold text-white theme-adaptive-title">{name}</span>
-        <span className="text-white/40 font-normal">@</span>
-        {suffix === "take" ? (
+        <span className="font-semibold text-white theme-adaptive-title">{title}</span>
+        {!fairOnly && amount ? (
           <>
-            <span className="text-white/45 font-normal lowercase">take</span>
+            <span className="text-white/40 font-normal">@</span>
             <span className="text-lg font-bold text-price-green tabular-nums">
               {amount}
             </span>
+            {bookie ? (
+              <>
+                <span className="text-white/35 font-normal">·</span>
+                <span className="text-sm text-white/55 theme-adaptive-muted">
+                  {bookie}
+                </span>
+              </>
+            ) : null}
           </>
-        ) : amount ? (
-          <span className="text-lg font-bold text-price-green tabular-nums">
-            {amount}
-          </span>
+        ) : fairOnly && fairNote ? (
+          <span className="text-sm text-white/55 ml-1">{fairNote}</span>
         ) : null}
       </p>
-      {bookie ? (
-        <p className="text-xs text-white/45 theme-adaptive-muted mt-1">{bookie}</p>
-      ) : null}
-      {publishedAt && lockedBookie && (
+
+      {bestBookie &&
+        bestTotal != null &&
+        bookie &&
+        bestBookie !== bookie &&
+        bestTotal > (total ?? 0) &&
+        onSelectBest && (
+          <button
+            type="button"
+            className="text-[11px] text-white/50 mt-1 w-full text-left"
+            onClick={onSelectBest}
+          >
+            Best: {bestBookie} ${bestTotal.toFixed(2)}
+          </button>
+        )}
+
+      {publishedBookie && publishedTotal != null && (
         <p className="text-[11px] text-white/40 mt-1">
-          Published{" "}
-          {new Date(publishedAt).toLocaleString("en-AU", {
-            timeZone: "Australia/Sydney",
-            hour: "numeric",
-            minute: "2-digit",
-            hour12: true,
-          })}
+          Published @ ${publishedTotal.toFixed(2)} {publishedBookie}
+          {publishedAt
+            ? ` · ${new Date(publishedAt).toLocaleString("en-AU", {
+                timeZone: "Australia/Sydney",
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true,
+              })}`
+            : null}
         </p>
       )}
+
       {onRemove && (
         <button
           type="button"

@@ -17,7 +17,7 @@ import {
   extractOddsBundles,
 } from "./fetch/odds-events.js";
 import { isPostTipOff, mergeBestOddsMaps } from "../lib/odds-cache-merge.js";
-import { oddsComboStatMarketCount, oddsMarketsForEventPull } from "../lib/odds-coverage.js";
+import { oddsMarketsForEventPull } from "../lib/odds-coverage.js";
 import { rankGamesByInjuryAngle, logGameInjuryRanks } from "../lib/game-injury-ranking.js";
 import { oddsMapFromRecord, oddsMapToRecord } from "./model-engine.js";
 import type { OddsCacheFile } from "./odds-schedule.js";
@@ -59,12 +59,8 @@ export async function pullBudgetedOddsForSlate(opts: {
 
   const creditsPerGame = opts.budget.creditsPerGame ?? 10;
   const marketsPerEvent = oddsMarketsForEventPull().length;
-  const comboStatMarkets = oddsComboStatMarketCount();
   console.log(
-    `odds pull: ${marketsPerEvent} API markets/event` +
-      (comboStatMarkets
-        ? ` (+${comboStatMarkets} combo stat markets; budget credits/game still ${creditsPerGame})`
-        : "")
+    `odds pull: ${marketsPerEvent} API markets/event · ${creditsPerGame} credits/game`
   );
   const priorBest = oddsMapFromRecord(opts.cache.oddsMap ?? {});
   let creditsRemaining = opts.budget.creditsRemaining ?? opts.cache.creditsRemaining;

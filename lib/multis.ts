@@ -150,9 +150,7 @@ function qualifiesAngleLongshotAt(
 ): boolean {
   if (
     !qualifiesLongshotLeg(leg) &&
-    !["pts", "reb", "ast", "dd", "td", "combo", "ptsreb", "ptsast", "rebast", "pra"].includes(
-      leg.market
-    )
+    !["pts", "reb", "ast", "dd", "td"].includes(leg.market)
   ) {
     return false;
   }
@@ -1216,7 +1214,6 @@ function buildBoostSgm(
 function longshotLegScore(l: PickLeg): number {
   if (l.market === "td") return 4;
   if (l.market === "dd") return 3;
-  if (l.market === "combo") return 2;
   if (l.market === "pts" && l.line >= 30) return 1;
   return 0;
 }
@@ -1228,7 +1225,7 @@ function qualifiesLongshotBuildLegAt(
 ): boolean {
   if (!qualifiesLongshotLeg(l)) return false;
   if (l.market === "3pm") return false;
-  if (l.market === "dd" || l.market === "td" || l.market === "combo") {
+  if (l.market === "dd" || l.market === "td") {
     return (
       legPriceAtBookie(l, bookie) != null &&
       legMeetsBookieEdge(l, bookie, minEdgeFraction)

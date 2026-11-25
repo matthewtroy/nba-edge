@@ -107,12 +107,10 @@ function reasonMatchesMarket(r: LegReason, market: string, stat: string): boolea
   if (r.type === "matchup" || r.type === "avg" || r.type === "rank") {
     const t = r.text.toLowerCase();
     if (stat === "3pm") return t.includes("three") || t.includes("3pm");
-    if (stat === "pts" || stat === "ptsreb" || stat === "ptsast" || stat === "pra")
+    if (stat === "pts")
       return t.includes("point") || t.includes(" pts") || t.includes("pts ");
-    if (stat === "reb" || stat === "rebast" || stat === "ptsreb")
-      return t.includes("reb");
-    if (stat === "ast" || stat === "ptsast" || stat === "rebast")
-      return t.includes("ast") || t.includes("assist");
+    if (stat === "reb") return t.includes("reb");
+    if (stat === "ast") return t.includes("ast") || t.includes("assist");
     if (market.startsWith("q1")) return t.includes(stat) || t.includes("q1");
     return true;
   }

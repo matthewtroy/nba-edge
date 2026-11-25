@@ -40,7 +40,7 @@ Opponent allowance ±8% cap; spread ≥10 → −6% minutes, ≥13 → −9%; B2
 
 ### 3.4 Distributions & Q1
 
-Full-game: Normal PTS; NB REB/AST/3PM; MC for DD/TD/combos. Q1 share from PBP period 1 (last 10) or 0.26 default; Q1 NB dispersions per `lib/distributions.ts`.
+Full-game: Normal PTS; NB REB/AST/3PM; MC for DD/TD milestone legs only (no Pts+Reb/Pts+Ast/Reb+Ast/PRA combo markets). Q1 share from PBP period 1 (last 10) or 0.26 default; Q1 NB dispersions per `lib/distributions.ts`.
 
 ### 3.5 Market blend (canonical spec)
 
@@ -94,7 +94,7 @@ No AU Q1 feed — card shows **Take fair×1.08** prominently.
 
 ### Cross-Game SGM / Boost SGM / Longshot
 
-Per `lib/multis.ts` + `lib/main-play-eligibility.ts`: cross-game legs need starter + main-line floors; Boost SGM 3 legs one game; Longshot DD/TD/combo/high pts, fair band 30–100.
+Per `lib/multis.ts` + `lib/main-play-eligibility.ts`: cross-game legs need starter + main-line floors; Boost SGM 3 legs one game; Longshot DD/TD/high pts, fair band 30–100.
 
 ### Small slate
 
@@ -108,13 +108,15 @@ Windows (Australia/Sydney): **evening** (official-card window, 21:00–01:00), *
 
 Before pull: if remaining credits **&lt; 20%** of monthly budget → pause day (`paused (credit limit)` in meta). Budget row in DB: `odds_budget` (see schema).
 
+Odds API requests use **8 markets per game** (core pts/reb/ast + alternates + threes)—**10 credits/game** in budget math; stat-combo and DD/TD API markets are not pulled.
+
 Injury-ranked event ordering for pulls is **planned** when Supabase stores slate priority (not in static pipeline yet).
 
 ---
 
 ## 7. Official card & slates
 
-First qualifying evening with AU props → lock `official-card.json` (see `lib/official-card-time.ts`). Dual today/tomorrow folders under `public/data/{date}/`. UI: official vs draft, My bookie, Value filter, Q1/longshot toggles, questionable Swap (localStorage).
+First qualifying evening with AU props → lock `official-card.json` (see `lib/official-card-time.ts`). Each pipeline run restores must-persist files from the `data` branch (`lib/restore-data-branch.ts`) before build; normal runs log `official card: kept (published …)` instead of overwriting an existing lock. Dual today/tomorrow folders under `public/data/{date}/`. UI: official vs draft, My bookie, Value filter, Q1/longshot toggles, questionable Swap (localStorage).
 
 ---
 

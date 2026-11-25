@@ -401,7 +401,6 @@ function tagSharedRebounds(
     );
     if (within) {
       boardsShared.add(rebRates[i].id);
-      addReason(reasons, rebRates[i].id, "boards shared");
     }
   }
 }

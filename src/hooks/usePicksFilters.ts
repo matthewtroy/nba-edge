@@ -7,7 +7,7 @@ export type PicksSortKey = "edge" | "prob" | "price" | "l5" | "tip";
 
 export interface PicksFilterState {
   multi: PicksMultiFilter;
-  market: "all" | Market | "combos";
+  market: "all" | Market;
   show: PicksShowFilter;
   sort: PicksSortKey;
   sortAsc: boolean;

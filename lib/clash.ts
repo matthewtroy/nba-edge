@@ -1,5 +1,4 @@
 import type { PickLeg } from "./types.js";
-import { comboContainedStats, isComboPickMarket, singleMarketTouchesStat } from "./combo-markets.js";
 
 function legGameTeam(leg: PickLeg) {
   return { gameId: leg.gameId, team: leg.team };
@@ -15,26 +14,18 @@ function isAst(market: string) {
   return market === "ast" || market === "q1ast";
 }
 
+const MILESTONE_MARKETS = new Set(["dd", "td"]);
+
 /** Two legs clash and must not be in the same multi */
 export function legsClash(a: PickLeg, b: PickLeg): boolean {
   if (a.id === b.id) return true;
 
-  // 6: same player except booster rungs and combo — handled by caller for booster
+  // 6: same player except booster rungs and DD/TD — handled by caller for booster
   if (a.playerId === b.playerId) {
-    const aCombo = isComboPickMarket(a.market);
-    const bCombo = isComboPickMarket(b.market);
-    if (aCombo && !bCombo) {
-      for (const stat of comboContainedStats(a.market)) {
-        if (singleMarketTouchesStat(b.market, stat)) return true;
-      }
-    }
-    if (bCombo && !aCombo) {
-      for (const stat of comboContainedStats(b.market)) {
-        if (singleMarketTouchesStat(a.market, stat)) return true;
-      }
-    }
-    if (!aCombo && !bCombo) return true;
-    if (aCombo && bCombo && a.market !== b.market) return true;
+    const aM = MILESTONE_MARKETS.has(a.market);
+    const bM = MILESTONE_MARKETS.has(b.market);
+    if (!aM && !bM) return true;
+    if (aM && bM && a.market !== b.market) return true;
   }
 
   if (a.gameId !== b.gameId) return false;

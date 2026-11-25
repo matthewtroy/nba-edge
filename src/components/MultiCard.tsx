@@ -110,31 +110,15 @@ export function MultiCard({
   const showFairOnly = titleFairOnly || hideBookieSelect;
 
   const legBookie = showFairOnly ? "" : displayBook ?? cardBookie;
-  const bestFeed =
-    !showFairOnly && !officialDisplayOnly
-      ? bestFeedMultiQuote(legs, priceCatalog)
-      : officialDisplayOnly && priceCatalog.length
-        ? bestFeedMultiQuote(legs, priceCatalog)
-        : undefined;
+  const bestFeed = !showFairOnly
+    ? bestFeedMultiQuote(legs, priceCatalog)
+    : undefined;
 
-  let displayHeadline = headline;
-  if (
-    multi.type === "crossGameSgm" &&
-    !showFairOnly &&
-    total != null &&
-    legs.length < legsAll.length
-  ) {
-    const name = headline.includes(" @ ")
-      ? headline.slice(0, headline.indexOf(" @ "))
-      : headline;
-    displayHeadline = `${name} @ $${total.toFixed(2)}`;
-  }
-
-  const headerBookie = showFairOnly
-    ? multi.type === "q1Multi"
-      ? undefined
-      : oddsNote ?? subline
-    : cardBookie || subline || undefined;
+  const displayTitle = headline.includes(" @ ")
+    ? headline.slice(0, headline.indexOf(" @ "))
+    : headline;
+  const headerTotal = showFairOnly ? undefined : total ?? multi.bestBookieTotal ?? undefined;
+  const headerBookie = showFairOnly ? undefined : displayBook ?? cardBookie ?? subline;
 
   const missingAtBookie =
     legBookie && !showFairOnly
@@ -146,11 +130,28 @@ export function MultiCard({
   return (
     <section className={`${ui.card} ${compact ? "" : ""}`}>
       <MultiCardHeader
-        headline={displayHeadline}
+        title={displayTitle}
+        total={headerTotal}
         bookie={headerBookie}
+        bestBookie={!officialDisplayOnly ? bestFeed?.bookie : undefined}
+        bestTotal={!officialDisplayOnly ? bestFeed?.total : undefined}
+        onSelectBest={
+          bestFeed && bookie
+            ? () => select(bestFeed.bookie)
+            : undefined
+        }
+        publishedBookie={
+          officialDisplayOnly && (publishedBookie ?? lockedBookie)
+            ? publishedBookie ?? lockedBookie
+            : undefined
+        }
+        publishedTotal={
+          officialDisplayOnly ? publishedTotal ?? multi.bestBookieTotal : undefined
+        }
+        publishedAt={officialDisplayOnly ? publishedAt : undefined}
+        fairOnly={showFairOnly}
+        fairNote={showFairOnly ? subline || oddsNote : undefined}
         onRemove={onRemove}
-        publishedAt={publishedAt}
-        lockedBookie={lockedBookie}
       />
 
       {multi.type === "crossGameSgm" && (
@@ -216,30 +217,6 @@ export function MultiCard({
           {missingAtBookie} leg(s) missing at {legBookie}
         </p>
       )}
-      {officialDisplayOnly && publishedBookie && publishedTotal != null && (
-        <p className="text-[11px] text-white/45 pb-1">
-          Published @ {publishedBookie} ${publishedTotal.toFixed(2)} · switcher shows nearest-line prices
-        </p>
-      )}
-      {bestFeed &&
-        bookie &&
-        bestFeed.bookie !== bookie &&
-        bestFeed.total > (total ?? 0) && (
-          officialDisplayOnly ? (
-            <p className="text-[11px] text-white/50 pb-2">
-              Best odds {bestFeed.bookie} ${bestFeed.total.toFixed(2)} (preview only)
-            </p>
-          ) : (
-            <button
-              type="button"
-              className="text-[11px] text-white/50 pb-2 w-full text-left"
-              onClick={() => select(bestFeed.bookie)}
-            >
-              Higher at {bestFeed.bookie} (${bestFeed.total.toFixed(2)})
-            </button>
-          )
-        )}
-
       {!showFairOnly && !hideBookieSelect && (!lockedBookie || officialDisplayOnly) && (
         <select
           className="w-full mb-2 py-2 text-xs text-white/70 bg-transparent border-0 border-b border-white/[0.05] outline-none"
@@ -287,6 +264,7 @@ function CrossLegGroups({
   swapLeg,
   resetLeg,
   compact,
+  oddsFallbackIso,
 }: {
   multi: MultiBet;
   slate?: SlateGame[];
@@ -347,8 +325,8 @@ function CrossLegGroups({
             swapLeg={swapLeg}
             resetLeg={resetLeg}
             gameId={gameId}
-            oddsFallbackIso={props.oddsFallbackIso}
-            catalog={props.allPicks}
+            oddsFallbackIso={oddsFallbackIso}
+            catalog={allPicks}
           />
         );
         first = false;

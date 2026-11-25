@@ -32,12 +32,6 @@ const MARKET_LABEL: Record<string, string> = {
   q1ast: "Q1 ast",
   dd: "DD",
   td: "TD",
-  combo: "Combo",
-  ptsreb: "Pts+Reb",
-  ptsast: "Pts+Ast",
-  rebast: "Reb+Ast",
-  pra: "PRA",
-  combos: "Combos",
 };
 
 function FilterPill({
@@ -135,10 +129,9 @@ export function PicksScreen({
           label="Market"
           testId="picks-filter-market"
           value={filters.market}
-          onChange={(v) => patch({ market: v as "all" | Market | "combos" })}
+          onChange={(v) => patch({ market: v as "all" | Market })}
         >
           <option value="all">All</option>
-          <option value="combos">Combos</option>
           {markets.map((m) => (
             <option key={m} value={m}>
               {MARKET_LABEL[m] ?? m}

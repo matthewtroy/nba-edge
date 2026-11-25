@@ -34,16 +34,6 @@ export function gradeLegFromBox(
     }
     case "td":
       return box.pts >= 10 && box.reb >= 10 && box.ast >= 10 ? "hit" : "miss";
-    case "combo":
-      return box.reb >= 7 && box.ast >= 7 ? "hit" : "miss";
-    case "ptsreb":
-      return box.pts + box.reb >= leg.line ? "hit" : "miss";
-    case "ptsast":
-      return box.pts + box.ast >= leg.line ? "hit" : "miss";
-    case "rebast":
-      return box.reb + box.ast >= leg.line ? "hit" : "miss";
-    case "pra":
-      return box.pts + box.reb + box.ast >= leg.line ? "hit" : "miss";
     default:
       return "miss";
   }

@@ -8,7 +8,7 @@ import {
 } from "./defense-ratings.js";
 import { MATCHUP_REASONS_ENABLED } from "./pricing-config.js";
 import { ordinal, shortTeamName } from "./ordinal.js";
-import { positionBucketLabel } from "./combo-markets.js";
+import { positionBucketLabel } from "./position-label.js";
 import { positionBucket } from "./position-bucket.js";
 import type { PlayerStatRankRow } from "./player-position-rank.js";
 import { lastFiveVsLine } from "./leg-history.js";
@@ -78,20 +78,21 @@ function matchupPhrase(
 function playerRankPhrase(
   market: Market,
   playerId: string | undefined,
-  positionRanks: Map<string, Partial<Record<"pts" | "reb" | "ast", PlayerStatRankRow>>> | undefined
+  positionRanks: Map<string, Partial<Record<"pts" | "reb" | "ast", PlayerStatRankRow>>> | undefined,
+  line: number
 ): string | undefined {
   if (!playerId || !positionRanks) return undefined;
   const stat =
-    market === "reb" || market === "rebast"
+    market === "reb"
       ? "reb"
-      : market === "ast" || market === "ptsast"
+      : market === "ast"
         ? "ast"
         : market === "3pm"
           ? undefined
           : "pts";
   if (!stat) return undefined;
   const row = positionRanks.get(playerId)?.[stat];
-  if (!row || row.rank > 15) return undefined;
+  if (!row || row.rank > 15 || row.avg < line) return undefined;
   const statWord = stat === "reb" ? "reb" : stat === "ast" ? "ast" : "pts";
   return `Averages ${row.avg.toFixed(1)} ${statWord}, ${ordinal(row.rank)} of ${row.total} ${row.posLabel}`;
 }
@@ -142,8 +143,10 @@ function avgPhrase(logs: PlayerGameLog[], market: Market, line: number): string 
     n += 1;
   }
   if (n < 5) return undefined;
+  const avg = sum / n;
+  if (avg < line) return undefined;
   const stat = market === "3pm" ? "3pm" : market.replace(/^q1/, "");
-  return `L10 ${stat} avg ${(sum / n).toFixed(1)} vs ${line}+`;
+  return `L10 ${stat} avg ${avg.toFixed(1)} (above ${line}+ line)`;
 }
 
 function minutesPhrase(logs: PlayerGameLog[]): string | undefined {
@@ -152,8 +155,8 @@ function minutesPhrase(logs: PlayerGameLog[]): string | undefined {
   const l5 = sorted.slice(0, 5).reduce((s, g) => s + g.minutes, 0) / 5;
   const p5 = sorted.slice(5, 10).reduce((s, g) => s + g.minutes, 0) / 5;
   const diff = l5 - p5;
-  if (Math.abs(diff) < 1.5) return undefined;
-  return diff > 0 ? `Min up ${diff.toFixed(1)} L5` : `Min down ${Math.abs(diff).toFixed(1)} L5`;
+  if (diff < 1.5) return undefined;
+  return `Min up ${diff.toFixed(1)} L5`;
 }
 
 export function buildLegReasons(input: {
@@ -198,13 +201,6 @@ export function buildLegReasons(input: {
     }
   }
 
-  for (const raw of input.leg.reasons ?? []) {
-    const r = typeof raw === "string" ? { type: inferReasonType(raw), text: raw } : raw;
-    if (isInjuryRedistributionReason(r.text)) put("injury", formatInjuryReasonLine(r.text));
-    else if (r.type === "tracking") put("tracking", r.text);
-    else if (r.type === "angle") put("angle", r.text);
-  }
-
   if (input.tracking) {
     const m = input.leg.market;
     if (m === "ast" || m === "q1ast") {
@@ -228,7 +224,8 @@ export function buildLegReasons(input: {
   const rankLine = playerRankPhrase(
     input.leg.market,
     input.playerId ?? input.leg.playerId,
-    input.positionRanks
+    input.positionRanks,
+    input.leg.line
   );
   if (rankLine) put("rank", rankLine);
 

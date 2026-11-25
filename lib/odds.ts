@@ -61,10 +61,6 @@ export function oddsApiMarketToLeg(apiMarket: string): string {
     threes: "3pm",
     double_double: "dd",
     triple_double: "td",
-    points_rebounds: "ptsreb",
-    points_assists: "ptsast",
-    rebounds_assists: "rebast",
-    points_rebounds_assists: "pra",
   };
   return map[base] ?? base;
 }
@@ -81,10 +77,6 @@ export function normalizeLegMarket(market: string): string {
     reb: "reb",
     ast: "ast",
     "3pm": "3pm",
-    ptsreb: "ptsreb",
-    ptsast: "ptsast",
-    rebast: "rebast",
-    pra: "pra",
   };
   return map[base] ?? market;
 }

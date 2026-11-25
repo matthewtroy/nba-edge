@@ -164,7 +164,7 @@ export function buildDefenseRatings(
 
 function defenseStatForMarket(market: string): "pts" | "reb" | "ast" | "3pm" {
   if (market === "3pm") return "3pm";
-  if (market === "reb" || market === "q1reb" || market === "rebast") return "reb";
+  if (market === "reb" || market === "q1reb") return "reb";
   if (market === "ast" || market === "q1ast") return "ast";
   return "pts";
 }
