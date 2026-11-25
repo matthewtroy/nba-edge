@@ -61,10 +61,10 @@ export function gradeOfficialLeg(
 
 export function settleMultiLegs(results: CardLegResult[]): CardBetResult {
   if (!results.length) return "void";
-  if (results.every((r) => r === "void")) return "void";
-  if (results.some((r) => r === "lost")) return "lost";
-  if (results.some((r) => r === "void")) return "void";
-  return results.every((r) => r === "won") ? "won" : "lost";
+  const active = results.filter((r) => r !== "void");
+  if (!active.length) return "void";
+  if (active.some((r) => r === "lost")) return "lost";
+  return active.every((r) => r === "won") ? "won" : "lost";
 }
 
 export interface SettledLegRow {

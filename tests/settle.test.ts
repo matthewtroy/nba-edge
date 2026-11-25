@@ -61,8 +61,10 @@ describe("settle", () => {
     ).toBe("won");
   });
 
-  it("card void leg voids multi", () => {
-    expect(settleMultiLegs(["won", "void"])).toBe("void");
+  it("void leg is ignored; any loss loses multi", () => {
+    expect(settleMultiLegs(["won", "void"])).toBe("won");
+    expect(settleMultiLegs(["lost", "void"])).toBe("lost");
+    expect(settleMultiLegs(["void", "void"])).toBe("void");
   });
 
   it("idempotent settleOfficialCard output", () => {
@@ -102,6 +104,6 @@ describe("settle", () => {
     const a = settleOfficialCard(card, map);
     const b = settleOfficialCard(card, map);
     expect(JSON.stringify(a)).toBe(JSON.stringify(b));
-    expect(a.bets[0].result).toBe("void");
+    expect(a.bets[0].result).toBe("won");
   });
 });

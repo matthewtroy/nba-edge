@@ -1,18 +1,23 @@
 #!/usr/bin/env tsx
 /**
- * Grade official card legs from ESPN finals; write results.json (idempotent).
- * No Supabase CLI — DB updates go through sync client when NBA_EDGE_* env is set.
+ * Grade official card + priced projections; write per-slate and aggregate results.json.
+ * Idempotent. Supabase settle sync uses NBA_EDGE_* when configured (no Supabase CLI).
  */
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { loadHistory } from "./run-model.js";
 import { restorePersistedDataFromBranch } from "../lib/restore-data-branch.js";
 import { settleOfficialCard } from "../lib/settle-core.js";
-import { buildResultsJson } from "../lib/results-aggregate.js";
+import { buildResultsSlice } from "../lib/results-aggregate.js";
 import type { OfficialCardFile } from "../lib/official-card-time.js";
+import type { PickLeg } from "../lib/types.js";
+import type { ResultsSlice } from "../lib/results-types.js";
 import { fetchScoreboard, fetchSummary } from "./fetch/espn.js";
 import { formatYyyymmddInZone, parseBoxscore } from "./espn-parse.js";
+import { gradePickCatalog } from "../lib/graded-leg.js";
+import { settleOfficialBets } from "../lib/official-bet-settle.js";
+import { valueLegRowsFromGraded } from "../lib/value-leg-track.js";
+import { syncSettleToSupabase } from "./supabase-sync.js";
 
 const ET = "America/New_York";
 
@@ -22,6 +27,7 @@ function dateFromYyyymmdd(s: string): Date {
   const d = Number(s.slice(6, 8));
   return new Date(Date.UTC(y, m, d, 17, 0, 0));
 }
+
 import type { BoxLine } from "./espn-parse.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -64,49 +70,153 @@ function loadFixtureBoxes(): Map<string, Map<string, BoxLine>> {
   return out;
 }
 
-function listOfficialCards(): OfficialCardFile[] {
-  const cards: OfficialCardFile[] = [];
-  if (!fs.existsSync(outDir)) return cards;
+function listSlateDates(): string[] {
+  const dates = new Set<string>();
+  if (!fs.existsSync(outDir)) return [];
+  for (const name of fs.readdirSync(outDir)) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(name)) continue;
+  if (fs.existsSync(path.join(outDir, name, "picks.json"))) dates.add(name);
+  }
   for (const name of fs.readdirSync(outDir)) {
     const cardPath = path.join(outDir, name, "official-card.json");
-    if (fs.existsSync(cardPath)) {
-      cards.push(JSON.parse(fs.readFileSync(cardPath, "utf8")) as OfficialCardFile);
-    }
+    if (fs.existsSync(cardPath)) dates.add(name);
   }
-  return cards;
+  return [...dates].sort();
+}
+
+function loadPicks(slateDate: string): PickLeg[] {
+  const p = path.join(outDir, slateDate, "picks.json");
+  if (!fs.existsSync(p)) return [];
+  return JSON.parse(fs.readFileSync(p, "utf8")) as PickLeg[];
+}
+
+function loadOfficialCard(slateDate: string): OfficialCardFile | null {
+  const cardPath = path.join(outDir, slateDate, "official-card.json");
+  if (!fs.existsSync(cardPath)) return null;
+  return JSON.parse(fs.readFileSync(cardPath, "utf8")) as OfficialCardFile;
+}
+
+function sliceUnchanged(a: ResultsSlice | null, b: ResultsSlice): boolean {
+  if (!a) return false;
+  return (
+    JSON.stringify(a.official.legs) === JSON.stringify(b.official.legs) &&
+    JSON.stringify(a.official.bets) === JSON.stringify(b.official.bets) &&
+    JSON.stringify(a.gradedLegs) === JSON.stringify(b.gradedLegs)
+  );
 }
 
 async function main() {
   restorePersistedDataFromBranch(rootDir);
   const now = new Date();
   const boxes = fixtureMode ? loadFixtureBoxes() : await loadFinalBoxes(now);
-  const cards = listOfficialCards();
-  const allLegs = [];
-  for (const card of cards) {
-    const { legs } = settleOfficialCard(card, boxes);
-    allLegs.push(...legs);
+  const slateDates = listSlateDates();
+
+  const allOfficialLegs: ReturnType<typeof settleOfficialCard>["legs"] = [];
+  const allOfficialBets: ReturnType<typeof settleOfficialBets> = [];
+  const allGraded: ReturnType<typeof gradePickCatalog> = [];
+  const allValue: ReturnType<typeof valueLegRowsFromGraded> = [];
+
+  for (const slateDate of slateDates) {
+    const picks = loadPicks(slateDate);
+    const graded = gradePickCatalog(picks, slateDate, boxes);
+    allGraded.push(...graded);
+
+    const card = loadOfficialCard(slateDate);
+    let officialLegs: ReturnType<typeof settleOfficialCard>["legs"] = [];
+    let officialBets: ReturnType<typeof settleOfficialBets> = [];
+    if (card) {
+      const settled = settleOfficialCard(card, boxes);
+      officialLegs = settled.legs;
+      officialBets = settleOfficialBets(card, officialLegs);
+      allOfficialLegs.push(...officialLegs);
+      allOfficialBets.push(...officialBets);
+    }
+
+    const valueRows = valueLegRowsFromGraded(picks, graded);
+    allValue.push(...valueRows);
+
+    const slateSlice = buildResultsSlice({
+      officialLegs,
+      officialBets,
+      valueLegRows: valueRows,
+      gradedLegs: graded,
+      now,
+    });
+
+    const slateDir = path.join(outDir, slateDate);
+    const slatePath = path.join(slateDir, "results.json");
+    let prevSlate: ResultsSlice | null = null;
+    if (fs.existsSync(slatePath)) {
+      prevSlate = JSON.parse(fs.readFileSync(slatePath, "utf8")) as ResultsSlice;
+    }
+    if (!sliceUnchanged(prevSlate, slateSlice)) {
+      fs.mkdirSync(slateDir, { recursive: true });
+      fs.writeFileSync(slatePath, JSON.stringify(slateSlice, null, 2));
+    }
   }
 
-  const history = loadHistory(rootDir);
+  const aggregate = buildResultsSlice({
+    officialLegs: allOfficialLegs,
+    officialBets: allOfficialBets,
+    valueLegRows: allValue,
+    gradedLegs: allGraded,
+    now,
+  });
+
   const resultsPath = path.join(outDir, "results.json");
-  let previous: ReturnType<typeof buildResultsJson> | null = null;
+  let previous: ResultsSlice | null = null;
   if (fs.existsSync(resultsPath)) {
-    previous = JSON.parse(fs.readFileSync(resultsPath, "utf8"));
+    previous = JSON.parse(fs.readFileSync(resultsPath, "utf8")) as ResultsSlice;
   }
-  const next = buildResultsJson({ officialLegs: allLegs, history, now });
-  const unchanged =
-    previous &&
-    JSON.stringify(previous.legs) === JSON.stringify(next.legs) &&
-    previous.updatedAt === next.updatedAt;
+
+  const unchanged = sliceUnchanged(previous, aggregate);
   if (!unchanged) {
     fs.mkdirSync(outDir, { recursive: true });
-    fs.writeFileSync(resultsPath, JSON.stringify(next, null, 2));
+    fs.writeFileSync(resultsPath, JSON.stringify(aggregate, null, 2));
+    const { record } = aggregate.official;
     console.log(
-      `settle: ${allLegs.length} official legs graded · W-${next.official.record.won} L-${next.official.record.lost} V-${next.official.record.void}`
+      `settle: bets ${record.bets} · W-${record.won} L-${record.lost} V-${record.void} · ` +
+        `staked ${record.staked}u profit ${record.profit.toFixed(2)}u` +
+        (record.roi != null ? ` ROI ${(record.roi * 100).toFixed(1)}%` : "")
     );
   } else {
     console.log("settle: idempotent — no changes");
   }
+
+  await syncSettleToSupabase(rootDir, {
+    slates: slateDates.map((slateDate) => ({
+      slateDate,
+      graded: allGraded
+        .filter((g) => g.slateDate === slateDate)
+        .map((g) => ({
+          id: g.id,
+          slateDate: g.slateDate,
+          playerId: g.playerId,
+          gameId: g.gameId,
+          market: g.market,
+          line: g.line,
+          result: g.result,
+          actualValue: g.actualValue,
+          probability: g.probability,
+          probabilityMatchupShadow: g.probabilityMatchupShadow,
+          bestPrice: g.bestPrice,
+          bestBookie: g.bestBookie,
+          fairPrice: g.fairPrice,
+        })),
+      officialBets: allOfficialBets
+        .filter((b) => b.slateDate === slateDate)
+        .map((b) => ({
+          slateDate: b.slateDate,
+          betType: b.betType,
+          label: b.label,
+          variant: b.variant,
+          result: b.result,
+          profitUnits: b.profitUnits,
+          stakeUnits: b.stakeUnits,
+        })),
+      officialLegs: allOfficialLegs.filter((l) => l.slateDate === slateDate),
+    })),
+  });
 }
 
 main().catch((e) => {

@@ -6,7 +6,7 @@ import { runModelFromFixture, loadHistory } from "./run-model.js";
 import { runLivePipeline } from "./run-live.js";
 import { skipOfficialPublishOnRun } from "../lib/pipeline-run-opts.js";
 import { restorePersistedDataFromBranch } from "../lib/restore-data-branch.js";
-import { computeCalibration, emptyHistory } from "../lib/grading.js";
+import { computeCalibration } from "../lib/grading.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -41,31 +41,7 @@ function runFixturePipeline(): void {
     JSON.stringify({ ...result.meta, whatChanged: beneficiaries }, null, 2)
   );
 
-  let history = loadHistory(rootDir);
-  if (!history.legs.length) {
-    history = {
-      ...emptyHistory(),
-      legs: [
-        {
-          id: "sample-leg",
-          date: "2025-11-23",
-          probability: 0.72,
-          result: "hit",
-          gradedAt: "2025-11-24T06:00:00Z",
-        },
-      ],
-      multis: [
-        {
-          id: "sample-multi",
-          type: "mainPlay",
-          date: "2025-11-23",
-          legIds: ["sample-leg"],
-          result: "hit",
-          gradedAt: "2025-11-24T06:00:00Z",
-        },
-      ],
-    };
-  }
+  const history = loadHistory(rootDir);
   history.calibration = computeCalibration(history.legs);
   fs.writeFileSync(path.join(outDir, "history.json"), JSON.stringify(history, null, 2));
 
