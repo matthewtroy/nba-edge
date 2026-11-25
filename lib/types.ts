@@ -87,6 +87,8 @@ export interface MultiNotBuilt {
   label: string;
   variant?: string;
   reason: string;
+  /** Players on the attempted multi when dropped post-build (exposure/gate/clash). */
+  players?: string[];
 }
 
 export interface MultisJson {

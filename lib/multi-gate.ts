@@ -82,7 +82,8 @@ function checkBoosterSteps(
 function checkTypeRules(
   type: MultiType,
   legs: PickLeg[],
-  label: string
+  label: string,
+  multi: MultiBet
 ): string[] {
   const issues: string[] = [];
   const combo = takeAtProduct(legs);
@@ -93,8 +94,14 @@ function checkTypeRules(
   }
 
   if (type === "mainPlay") {
-    if (legs.length < 4 || legs.length > 5) issues.push(`Main Play: ${legs.length} legs (need 4–5)`);
-    if (combo < 7 || combo > 10) issues.push(`Main Play: take-at product ${combo.toFixed(2)} not 7–10`);
+    if (legs.length < 3 || legs.length > 5) issues.push(`Main Play: ${legs.length} legs (need 3–5)`);
+    const bookTotal =
+      multi.bestBookieTotal ?? bestFeedMultiQuote(legs)?.total ?? null;
+    if (bookTotal == null || bookTotal < 7 || bookTotal > 20) {
+      issues.push(
+        `Main Play: bookie total ${bookTotal != null ? bookTotal.toFixed(2) : "?"} not $7–$20`
+      );
+    }
     if (!legs.every((l) => qualifiesMainPlayLeg(l))) {
       issues.push("Main Play: leg fails starter/main-line/eligibility");
     }
@@ -162,7 +169,7 @@ export function gateMulti(
     violations.push(`${label}: combinedTakeAt ${multi.combinedTakeAt} ≠ fair×edge ${takeAt}`);
   }
 
-  violations.push(...checkTypeRules(multi.type, legs, label));
+  violations.push(...checkTypeRules(multi.type, legs, label, multi));
 
   if (multi.type === "booster" && mainPlay && picksById) {
     violations.push(...checkBoosterSteps(mainPlay, legs, picksById));

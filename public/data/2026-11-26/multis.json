@@ -1,22 +1,42 @@
 {
   "bets": [
     {
+      "type": "mainPlay",
+      "label": "Main Play",
+      "legs": [
+        "5112087-pts-10",
+        "4397189-pts-15",
+        "4065732-pts-15"
+      ],
+      "combinedProbability": 0.26828009599999997,
+      "combinedFairPrice": 3.73,
+      "combinedTakeAt": 4.03,
+      "bestBookie": "Sportsbet",
+      "bestBookieTotal": 7.01,
+      "bookieTotals": {
+        "Sportsbet": 7.01,
+        "Ladbrokes": 6.12,
+        "PointsBet": 6.56
+      },
+      "summary": "3 starter main lines"
+    },
+    {
       "type": "booster",
       "label": "Booster",
       "legs": [
-        "3147657-pts-10",
         "5112087-pts-10",
-        "5107173-pts-10",
+        "4397189-pts-15",
         "4065732-pts-20"
       ],
-      "combinedProbability": 0.09230061456,
-      "combinedFairPrice": 10.83,
-      "combinedTakeAt": 11.7,
+      "combinedProbability": 0.11997619199999998,
+      "combinedFairPrice": 8.33,
+      "combinedTakeAt": 9,
       "bestBookie": "Sportsbet",
-      "bestBookieTotal": 21,
+      "bestBookieTotal": 14.76,
       "bookieTotals": {
-        "Sportsbet": 21,
-        "PointsBet": 19.43
+        "Sportsbet": 14.76,
+        "Ladbrokes": 11.78,
+        "PointsBet": 12.99
       },
       "summary": "Main Play +1 rung where fair ≤4, else same rung"
     },
@@ -29,9 +49,9 @@
         "4903027-q1reb-3",
         "4432848-q1reb-2"
       ],
-      "combinedProbability": 0.081425088,
-      "combinedFairPrice": 12.28,
-      "combinedTakeAt": 13.26,
+      "combinedProbability": 0.080482668,
+      "combinedFairPrice": 12.43,
+      "combinedTakeAt": 13.42,
       "summary": "Value Q1: fair 2.20–4.00, one leg/team"
     },
     {
@@ -56,6 +76,28 @@
     }
   ],
   "notBuilt": [
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "reason": "Gate: Cross-Game SGM Multi: VJ Edgecombe has Check news (legs: Karl-Anthony Towns 13+ reb, Jalen Brunson 30+ pts, Shai Gilgeous-Alexander 30+ pts, Tyrese Maxey 5+ ast, VJ Edgecombe 5+ ast)",
+      "players": [
+        "Karl-Anthony Towns",
+        "Jalen Brunson",
+        "Shai Gilgeous-Alexander",
+        "Tyrese Maxey",
+        "VJ Edgecombe"
+      ]
+    },
+    {
+      "type": "boostSgm",
+      "label": "Best SGM",
+      "reason": "Gate: Best SGM: Tyrese Proctor has Check news; Best SGM: bookie total 6.54 not 7–15; Best SGM: AU bookie multi total mismatch (legs: Tyrese Proctor 10+ pts, Peyton Watson 5+ reb, Donovan Mitchell 5+ ast)",
+      "players": [
+        "Tyrese Proctor",
+        "Peyton Watson",
+        "Donovan Mitchell"
+      ]
+    },
     {
       "type": "q1Multi",
       "label": "Q1 Multi",

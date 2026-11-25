@@ -49,13 +49,14 @@ describe("supabase sync idempotent upsert", () => {
       players: [],
       ranking: [],
     });
-    await syncRunToSupabase(client, {
+    const { counts } = await syncRunToSupabase(client, {
       slateDate: "2026-11-26",
       slate,
       injuries: [],
       players: [],
       ranking: [],
     });
+    expect(counts.slates).toBe(1);
     expect(client.tables.slates?.length).toBe(2);
     expect(client.tables.teams?.length).toBeGreaterThan(0);
   });

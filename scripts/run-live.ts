@@ -632,17 +632,12 @@ export async function runLivePipeline(
   for (const oneSlate of slatesToPublish) {
     const tip = slateTipDateFromGames(oneSlate);
     if (!tip) continue;
-    const slateInjuries = injuries.filter((i) =>
-      oneSlate.some(
-        (g) => g.homeTeamId === i.teamId || g.awayTeamId === i.teamId
-      )
-    );
     const tipPayloads =
       tip === slateTipDateFromGames(nextSlateGames) ? oddsPayloads : [];
     syncBundles.push({
       slateDate: tip,
       slate: oneSlate,
-      injuries: slateInjuries,
+      injuries,
       players,
       ranking: rankingBySlateDate.get(tip) ?? [],
       pullTrigger: tip === nextSlateTip ? lastPullTrigger : undefined,

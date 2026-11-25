@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T05:44:39.359Z",
+  "lastUpdated": "2026-11-25T06:03:41.498Z",
   "oddsLastPulled": "2026-11-25T05:16:23.081Z",
   "sources": {
     "espn": "ok",
@@ -37,9 +37,9 @@
   "whatChanged": [
     "OG Anunoby out → Jalen Brunson +4.6 pts",
     "Cameron Boozer out → Ty Jerome +3.0 pts",
-    "Jimmy Butler III out → De'Anthony Melton boards"
+    "Jimmy Butler III out → Yaxel Lendeborg boards"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_12_30AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_01_00AM.pdf",
   "pricedLegCounts": {
     "pts": {
       "total": 391,
@@ -63,7 +63,6 @@
     }
   },
   "gateViolations": [
-    "Main Play: take-at product 6.57 not 7–10",
     "Cross-Game SGM Multi: VJ Edgecombe has Check news",
     "Best SGM: Tyrese Proctor has Check news",
     "Best SGM: bookie total 6.54 not 7–15",

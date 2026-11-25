@@ -53,12 +53,16 @@ describe("Booster stepping", () => {
     const picks: PickLeg[] = [
       mainLeg("p1", "pts", 15, 1.55),
       mainLeg("p1", "pts", 20, 2.0),
+      mainLeg("p1", "pts", 25, 2.9),
       mainLeg("p2", "pts", 15, 1.55),
       mainLeg("p2", "pts", 20, 2.0),
+      mainLeg("p2", "pts", 25, 2.9),
       mainLeg("p3", "pts", 15, 1.55),
       mainLeg("p3", "pts", 20, 2.05),
+      mainLeg("p3", "pts", 25, 2.9),
       mainLeg("p4", "pts", 15, 1.55),
       mainLeg("p4", "pts", 20, 2.05),
+      mainLeg("p4", "pts", 25, 2.9),
     ];
     const { bets } = buildMultis(picks, 8);
     const main = bets.find((b) => b.type === "mainPlay");

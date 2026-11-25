@@ -85,6 +85,16 @@ function injurySource(source: string): "espn" | "nba_official" {
   return source === "NBA Official" ? "nba_official" : "espn";
 }
 
+/** ESPN athlete ids are numeric; skip synthetic/missing ids for players + injuries. */
+export function isEspnPlayerId(id: string): boolean {
+  return /^\d{2,}$/.test(id.trim());
+}
+
+export type SyncRunResult = {
+  counts: SyncCounts;
+  failed: string[];
+};
+
 export interface SlateSyncBundle {
   slateDate: string;
   slate: SlateGame[];
@@ -182,7 +192,7 @@ function pricesFromOddsMap(
 export async function syncRunToSupabase(
   client: SupabaseUpsertClient,
   bundle: SlateSyncBundle
-): Promise<SyncCounts> {
+): Promise<SyncRunResult> {
   const counts: SyncCounts = {
     teams: 0,
     players: 0,
@@ -193,29 +203,63 @@ export async function syncRunToSupabase(
     oddsPulls: 0,
     oddsPrices: 0,
   };
+  const failed: string[] = [];
+
+  const tryTable = async (table: string, fn: () => Promise<void>): Promise<void> => {
+    try {
+      await fn();
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      console.warn(`supabase sync: ${table} failed: ${msg}`);
+      failed.push(table);
+    }
+  };
 
   const teamRows = new Map<string, { id: string; name: string }>();
   for (const g of bundle.slate) {
     teamRows.set(g.homeTeamId, { id: g.homeTeamId, name: g.homeTeam });
     teamRows.set(g.awayTeamId, { id: g.awayTeamId, name: g.awayTeam });
   }
+  for (const inj of bundle.injuries) {
+    if (inj.teamId && inj.teamName) {
+      teamRows.set(inj.teamId, { id: inj.teamId, name: inj.teamName });
+    }
+  }
   const teams = [...teamRows.values()];
-  await client.upsert("teams", teams, "id");
-  counts.teams = teams.length;
+  await tryTable("teams", async () => {
+    await client.upsert("teams", teams, "id");
+    counts.teams = teams.length;
+  });
 
-  const slatePlayers = bundle.players.filter((p) =>
-    bundle.slate.some(
-      (g) => g.homeTeamId === p.teamId || g.awayTeamId === p.teamId
-    )
+  const onSlate = (teamId: string) =>
+    bundle.slate.some((g) => g.homeTeamId === teamId || g.awayTeamId === teamId);
+
+  const slatePlayers = bundle.players.filter((p) => onSlate(p.teamId));
+  const playerById = new Map(
+    slatePlayers.map((p) => [
+      p.id,
+      {
+        id: p.id,
+        team_id: p.teamId,
+        full_name: p.name,
+        headshot_url: p.headshotUrl,
+      },
+    ])
   );
-  const playerRows = slatePlayers.map((p) => ({
-    id: p.id,
-    team_id: p.teamId,
-    full_name: p.name,
-    headshot_url: p.headshotUrl,
-  }));
-  await client.upsert("players", playerRows, "id");
-  counts.players = playerRows.length;
+  for (const inj of bundle.injuries) {
+    if (!isEspnPlayerId(inj.playerId) || playerById.has(inj.playerId)) continue;
+    playerById.set(inj.playerId, {
+      id: inj.playerId,
+      team_id: inj.teamId,
+      full_name: inj.playerName,
+      headshot_url: "",
+    });
+  }
+  const playerRows = [...playerById.values()];
+  await tryTable("players", async () => {
+    await client.upsert("players", playerRows, "id");
+    counts.players = playerRows.length;
+  });
 
   const gameRows = bundle.slate.map((g) => ({
     id: g.id,
@@ -230,14 +274,13 @@ export async function syncRunToSupabase(
     away_b2b: g.awayB2B,
     status: mapGameStatus(g.status),
   }));
-  await client.upsert("games", gameRows, "id");
-  counts.games = gameRows.length;
+  await tryTable("games", async () => {
+    await client.upsert("games", gameRows, "id");
+    counts.games = gameRows.length;
+  });
 
-  const slateTeamIds = new Set(
-    bundle.slate.flatMap((g) => [g.homeTeamId, g.awayTeamId])
-  );
   const injRows = bundle.injuries
-    .filter((i) => slateTeamIds.has(i.teamId))
+    .filter((i) => isEspnPlayerId(i.playerId))
     .map((i) => ({
       player_id: i.playerId,
       team_id: i.teamId,
@@ -247,12 +290,10 @@ export async function syncRunToSupabase(
       reported_at: i.updatedAt,
       payload: { player_name: i.playerName, team_name: i.teamName },
     }));
-  await client.upsert(
-    "injury_reports",
-    injRows,
-    "player_id,reported_at,source"
-  );
-  counts.injuries = injRows.length;
+  await tryTable("injury_reports", async () => {
+    await client.upsert("injury_reports", injRows, "player_id,reported_at,source");
+    counts.injuries = injRows.length;
+  });
 
   const logRows: Record<string, unknown>[] = [];
   for (const p of slatePlayers) {
@@ -272,36 +313,47 @@ export async function syncRunToSupabase(
       });
     }
   }
-  await client.upsert(
-    "player_game_logs",
-    logRows,
-    "player_id,game_date,game_id"
-  );
-  counts.logs = logRows.length;
+  await tryTable("player_game_logs", async () => {
+    await client.upsert("player_game_logs", logRows, "player_id,game_date,game_id");
+    counts.logs = logRows.length;
+  });
 
-  await client.upsert(
-    "slates",
-    [
-      {
-        slate_date: bundle.slateDate,
-        status: bundle.slateStatus ?? "draft",
-        game_count: bundle.slate.length,
-        last_updated: new Date().toISOString(),
-      },
-    ],
-    "slate_date"
-  );
-  counts.slates = 1;
+  await tryTable("slates", async () => {
+    await client.upsert(
+      "slates",
+      [
+        {
+          slate_date: bundle.slateDate,
+          status: bundle.slateStatus ?? "draft",
+          game_count: bundle.slate.length,
+          last_updated: new Date().toISOString(),
+        },
+      ],
+      "slate_date"
+    );
+    counts.slates = 1;
+  });
 
-  const playerByNorm = new Map(
-    slatePlayers.map((p) => [normalizePlayerName(p.name), p.id])
-  );
-  for (const p of slatePlayers) {
-    playerByNorm.set(p.id, p.id);
+  const syncedPlayerIds = new Set(playerRows.map((p) => p.id));
+  const playerByNorm = new Map<string, string>();
+  for (const p of bundle.players) {
+    if (syncedPlayerIds.has(p.id)) {
+      playerByNorm.set(normalizePlayerName(p.name), p.id);
+    }
+  }
+  for (const inj of bundle.injuries) {
+    if (isEspnPlayerId(inj.playerId)) {
+      playerByNorm.set(normalizePlayerName(inj.playerName), inj.playerId);
+    }
   }
   const gameByPlayer = new Map<string, string>();
   for (const p of slatePlayers) {
     gameByPlayer.set(p.id, p.gameId);
+  }
+  for (const inj of bundle.injuries) {
+    if (isEspnPlayerId(inj.playerId) && inj.gameId) {
+      gameByPlayer.set(inj.playerId, inj.gameId);
+    }
   }
 
   const pullTrigger =
@@ -313,48 +365,55 @@ export async function syncRunToSupabase(
         : undefined);
 
   if (pullTrigger || bundle.cache?.oddsMap) {
-    const pulledAt = bundle.pulledAt ?? bundle.cache?.lastPulled ?? new Date().toISOString();
-    await client.upsert(
-      "odds_pulls",
-      [
-        {
-          slate_date: bundle.slateDate,
-          pull_trigger: pullTrigger ?? "scheduled_9pm",
-          pulled_at: pulledAt,
-          ranking: bundle.ranking,
-          credits_used: bundle.creditsUsed ?? null,
-          credits_remaining: bundle.creditsRemaining ?? bundle.cache?.creditsRemaining ?? null,
-          games_pulled: bundle.gamesPulled ?? [],
-        },
-      ],
-      "slate_date,pull_trigger"
-    );
-    counts.oddsPulls = 1;
+    const pulledAt =
+      bundle.pulledAt ?? bundle.cache?.lastPulled ?? new Date().toISOString();
 
-    const pullRow = await client.fromSelect<{ id: string }>("odds_pulls", {
-      slate_date: bundle.slateDate,
-      pull_trigger: pullTrigger ?? "scheduled_9pm",
+    await tryTable("odds_pulls", async () => {
+      await client.upsert(
+        "odds_pulls",
+        [
+          {
+            slate_date: bundle.slateDate,
+            pull_trigger: pullTrigger ?? "scheduled_9pm",
+            pulled_at: pulledAt,
+            ranking: bundle.ranking,
+            credits_used: bundle.creditsUsed ?? null,
+            credits_remaining:
+              bundle.creditsRemaining ?? bundle.cache?.creditsRemaining ?? null,
+            games_pulled: bundle.gamesPulled ?? [],
+          },
+        ],
+        "slate_date,pull_trigger"
+      );
+      counts.oddsPulls = 1;
     });
 
-    let priceRows =
-      bundle.oddsPayloads?.length
-        ? flattenPayloadPrices(bundle.oddsPayloads, playerByNorm, gameByPlayer)
-        : [];
-    if (!priceRows.length && bundle.cache?.oddsMap) {
-      priceRows = pricesFromOddsMap(
-        bundle.cache.oddsMap,
-        playerByNorm,
-        gameByPlayer
-      );
-    }
-    if (pullRow?.id && priceRows.length) {
-      const withPull = priceRows.map((r) => ({ ...r, pull_id: pullRow.id }));
-      await client.upsert("odds_prices", withPull, "pull_id,player_id,market,line,bookie");
-      counts.oddsPrices = withPull.length;
-    }
+    await tryTable("odds_prices", async () => {
+      const pullRow = await client.fromSelect<{ id: string }>("odds_pulls", {
+        slate_date: bundle.slateDate,
+        pull_trigger: pullTrigger ?? "scheduled_9pm",
+      });
+
+      let priceRows =
+        bundle.oddsPayloads?.length
+          ? flattenPayloadPrices(bundle.oddsPayloads, playerByNorm, gameByPlayer)
+          : [];
+      if (!priceRows.length && bundle.cache?.oddsMap) {
+        priceRows = pricesFromOddsMap(
+          bundle.cache.oddsMap,
+          playerByNorm,
+          gameByPlayer
+        );
+      }
+      if (pullRow?.id && priceRows.length) {
+        const withPull = priceRows.map((r) => ({ ...r, pull_id: pullRow.id }));
+        await client.upsert("odds_prices", withPull, "pull_id,player_id,market,line,bookie");
+        counts.oddsPrices = withPull.length;
+      }
+    });
   }
 
-  return counts;
+  return { counts, failed };
 }
 
 export async function loadOddsBudgetFromSupabase(
@@ -424,11 +483,12 @@ export async function saveOddsBudgetAfterPull(
   }
 }
 
-export function logSyncCounts(counts: SyncCounts): void {
+export function logSyncCounts(counts: SyncCounts, failed: string[] = []): void {
+  const failLabel = failed.length ? failed.join(", ") : "none";
   console.log(
     `supabase sync: teams ${counts.teams}, players ${counts.players}, games ${counts.games}, ` +
       `injuries ${counts.injuries}, logs ${counts.logs}, slates ${counts.slates}, ` +
-      `odds_pulls ${counts.oddsPulls}, odds_prices ${counts.oddsPrices}`
+      `odds_pulls ${counts.oddsPulls}, odds_prices ${counts.oddsPrices} (failed: ${failLabel})`
   );
 }
 
@@ -455,23 +515,18 @@ export async function finalizePipelineSupabaseSync(
     oddsPulls: 0,
     oddsPrices: 0,
   };
+  const allFailed = new Set<string>();
   for (const bundle of bundles) {
-    try {
-      const c = await syncRunToSupabase(conn.client, bundle);
-      totals.teams += c.teams;
-      totals.players += c.players;
-      totals.games += c.games;
-      totals.injuries += c.injuries;
-      totals.logs += c.logs;
-      totals.slates += c.slates;
-      totals.oddsPulls += c.oddsPulls;
-      totals.oddsPrices += c.oddsPrices;
-    } catch (e) {
-      console.warn(
-        `supabase sync failed for ${bundle.slateDate} (JSON OK):`,
-        e instanceof Error ? e.message : e
-      );
-    }
+    const { counts: c, failed } = await syncRunToSupabase(conn.client, bundle);
+    for (const f of failed) allFailed.add(f);
+    totals.teams += c.teams;
+    totals.players += c.players;
+    totals.games += c.games;
+    totals.injuries += c.injuries;
+    totals.logs += c.logs;
+    totals.slates += c.slates;
+    totals.oddsPulls += c.oddsPulls;
+    totals.oddsPrices += c.oddsPrices;
   }
-  logSyncCounts(totals);
+  logSyncCounts(totals, [...allFailed]);
 }

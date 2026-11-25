@@ -68,7 +68,27 @@ describe("exposure cap", () => {
       multi("crossGameSgm", ["d"]),
     ];
     expect(exposureViolation(multis, map).ok).toBe(false);
-    const { dropped } = enforceExposureCapWithDrops(multis, map);
+    const { kept, dropped } = enforceExposureCapWithDrops(multis, map);
+    expect(kept.map((m) => m.type)).toEqual(["mainPlay", "crossGameSgm", "boostSgm"]);
+    expect(dropped[0].multi.type).toBe("longshot");
     expect(dropped[0].reason).toMatch(/max 3, Booster exempt/);
+  });
+
+  it("keeps Main Play when lower-priority multis would breach exposure", () => {
+    const map = new Map([
+      ["a", pick("a", "p1")],
+      ["b", pick("b", "p1")],
+      ["c", pick("c", "p1")],
+      ["m", pick("m", "p1")],
+    ]);
+    const multis: MultiBet[] = [
+      multi("longshot", ["a"]),
+      multi("boostSgm", ["b"]),
+      multi("crossGameSgm", ["c"]),
+      multi("mainPlay", ["m"]),
+    ];
+    const { kept } = enforceExposureCapWithDrops(multis, map);
+    expect(kept.some((m) => m.type === "mainPlay")).toBe(true);
+    expect(kept.length).toBe(3);
   });
 });

@@ -6,7 +6,10 @@ import {
   qualifiesLongshotLeg,
   qualifiesMainPlayLeg,
 } from "./main-play-eligibility.js";
-import { enforceExposureCapWithDrops } from "./exposure.js";
+import {
+  enforceExposureCapWithDrops,
+  playerNamesOnMulti,
+} from "./exposure.js";
 import { bestFeedMultiQuote } from "./card-bookie.js";
 import {
   asBookieLeg,
@@ -220,24 +223,19 @@ export function buildMultis(
   );
   filtered = kept;
 
-  const keptKeys = new Set(
-    filtered.map((m) => `${m.type}|${m.variant ?? ""}`)
-  );
-
-  const pushDrop = (multi: MultiBet, reason: string) => {
-    const key = `${multi.type}|${multi.variant ?? ""}`;
-    if (keptKeys.has(key)) return;
+  const pushDrop = (multi: MultiBet, reason: string, players?: string[]) => {
     if (notBuilt.some((n) => n.type === multi.type && n.variant === multi.variant)) return;
     notBuilt.push({
       type: multi.type,
       label: LABELS[multi.type],
       variant: multi.variant,
       reason,
+      players: players ?? playerNamesOnMulti(multi, picksById),
     });
   };
 
   for (const d of clashDropped) pushDrop(d.multi, d.reason);
-  for (const d of exposureDropped) pushDrop(d.multi, d.reason);
+  for (const d of exposureDropped) pushDrop(d.multi, d.reason, d.players);
 
   const gated = gateAllMultis(filtered, picksById);
   for (const m of gated.dropped) {
@@ -249,7 +247,14 @@ export function buildMultis(
     pushDrop(m, `Gate: ${detail} (legs: ${legSummary})`);
   }
 
-  const finalBets = gated.multis;
+  let finalBets = gated.multis;
+  if (!finalBets.some((m) => m.type === "mainPlay")) {
+    const booster = finalBets.find((m) => m.type === "booster");
+    if (booster) {
+      finalBets = finalBets.filter((m) => m.type !== "booster");
+      pushDrop(booster, "Booster: Main Play not built or removed");
+    }
+  }
   const ensureQ1Variant = (variant: "Safe" | "Value", reason: string) => {
     if (!reason) return;
     if (finalBets.some((m) => m.type === "q1Multi" && m.variant === variant)) return;
@@ -303,7 +308,7 @@ function mainPlayPoolAtBookie(
     .filter(Boolean) as PickLeg[];
   const corePool = priced.filter((l) => isCoreMarket(l.market)).sort(sortLegs);
   const threesPool = priced.filter((l) => l.market === "3pm").sort(sortLegs);
-  if (corePool.length >= 4) return corePool;
+  if (corePool.length >= 3) return corePool;
   return [...corePool, ...threesPool].sort((a, b) => {
     const ac = isCoreMarket(a.market) ? 1 : 0;
     const bc = isCoreMarket(b.market) ? 1 : 0;
@@ -319,8 +324,8 @@ function buildMainPlay(
   minEdgeFraction: number
 ): { bet: MultiBet | null; reason: string } {
   const eligible = picks.filter(qualifiesMainPlayLeg);
-  if (eligible.length < 4) {
-    const reason = `Only ${eligible.length} legs meet fair 1.40–2.50, p≥0.60 (need 4–5)`;
+  if (eligible.length < 3) {
+    const reason = `Only ${eligible.length} legs meet fair 1.40–2.50, p≥0.60 (need 3–5)`;
     pushMultiBuildTrace({
       type: "mainPlay",
       eligible: eligible.length,
@@ -345,7 +350,7 @@ function buildMainPlay(
       maxEdgePool = pool.length;
       maxEdgeBookie = bookie;
     }
-    if (pool.length < 4) continue;
+    if (pool.length < 3) continue;
     const found = findMainPlaySubset(pool, slateSize, bookie);
     maxRange = Math.max(maxRange, found.rangeCandidates);
     maxClash = Math.max(maxClash, found.clashCandidates);
@@ -358,9 +363,9 @@ function buildMainPlay(
 
   if (!best) {
     const reason =
-      maxEdgePool < 4
-        ? `No bookie with 4+ main legs at edge (best ${maxEdgeBookie}=${maxEdgePool})`
-        : `No 4–5 leg main @ edge+clash+range 7–10 (edge best ${maxEdgeBookie}=${maxEdgePool}, range-cands ${maxRange})`;
+      maxEdgePool < 3
+        ? `No bookie with 3+ main legs at edge (best ${maxEdgeBookie}=${maxEdgePool})`
+        : `No 3–5 leg main @ edge+clash+bookie total $7–$20 (edge best ${maxEdgeBookie}=${maxEdgePool}, range-cands ${maxRange})`;
     pushMultiBuildTrace({
       type: "mainPlay",
       eligible: eligible.length,
@@ -417,11 +422,11 @@ function findMainPlaySubset(
   let clashSkipped = 0;
 
   function dfs(depth: number, chosen: PickLeg[]) {
-    if (depth >= 4 && depth <= 5) {
+    if (depth >= 3 && depth <= 5) {
       const combo = comboProduct(chosen, bookie);
       if (
         combo >= 7 &&
-        combo <= 10 &&
+        combo <= 20 &&
         threesCount(chosen) <= 1 &&
         !multiHasClash(chosen) &&
         !hasQuestionableAnchor(chosen)
@@ -429,7 +434,7 @@ function findMainPlaySubset(
         candidates.push([...chosen]);
       } else if (
         combo >= 7 &&
-        combo <= 10 &&
+        combo <= 20 &&
         threesCount(chosen) <= 1 &&
         multiHasClash(chosen)
       ) {
@@ -452,7 +457,12 @@ function findMainPlaySubset(
   if (!candidates.length) {
     return { legs: null, rangeCandidates: 0, clashCandidates: clashSkipped };
   }
-  candidates.sort((a, b) => comboProduct(b, bookie) - comboProduct(a, bookie));
+  candidates.sort((a, b) => {
+    const pa = combinedProb(a);
+    const pb = combinedProb(b);
+    if (Math.abs(pb - pa) > 1e-9) return pb - pa;
+    return comboProduct(b, bookie) - comboProduct(a, bookie);
+  });
   return {
     legs: candidates[0],
     rangeCandidates: candidates.length,

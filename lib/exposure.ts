@@ -1,7 +1,22 @@
-import type { PickLeg, MultiBet } from "./types.js";
+import type { PickLeg, MultiBet, MultiType } from "./types.js";
 
 /** Non-Booster multis a player may appear in (p < 0.80). Booster does not count. */
 export const MAX_PLAYER_BETS_EXCLUDING_BOOSTER = 3;
+
+/** Higher-priority types are kept when exposure forces a drop (lower index = keep). */
+export const EXPOSURE_KEEP_PRIORITY: MultiType[] = [
+  "mainPlay",
+  "booster",
+  "crossGameSgm",
+  "boostSgm",
+  "q1Multi",
+  "longshot",
+];
+
+function exposureRank(multi: MultiBet): number {
+  const i = EXPOSURE_KEEP_PRIORITY.indexOf(multi.type);
+  return i === -1 ? 99 : i;
+}
 
 export function countsTowardExposureCap(multi: MultiBet): boolean {
   return multi.type !== "booster";
@@ -12,9 +27,10 @@ export function exposureViolation(
   multis: MultiBet[],
   picksById: Map<string, PickLeg>
 ): { ok: boolean; playerId?: string; count?: number } {
+  const sorted = [...multis].sort((a, b) => exposureRank(a) - exposureRank(b));
   const counts = new Map<string, number>();
 
-  for (const multi of multis) {
+  for (const multi of sorted) {
     if (!countsTowardExposureCap(multi)) continue;
     const seenInMulti = new Set<string>();
     for (const legId of multi.legs) {
@@ -51,6 +67,18 @@ function formatExposureDrop(
   return `Exposure cap: ${name} would appear in ${wouldBeCount} bets (max ${MAX_PLAYER_BETS_EXCLUDING_BOOSTER}, Booster exempt; legs: ${legLabels})`;
 }
 
+export function playerNamesOnMulti(
+  multi: MultiBet,
+  picksById: Map<string, PickLeg>
+): string[] {
+  const names = new Set<string>();
+  for (const id of multi.legs) {
+    const leg = picksById.get(id);
+    if (leg?.playerName) names.add(leg.playerName);
+  }
+  return [...names];
+}
+
 export function enforceExposureCap(multis: MultiBet[], picksById: Map<string, PickLeg>): MultiBet[] {
   return enforceExposureCapWithDrops(multis, picksById).kept;
 }
@@ -58,12 +86,13 @@ export function enforceExposureCap(multis: MultiBet[], picksById: Map<string, Pi
 export function enforceExposureCapWithDrops(
   multis: MultiBet[],
   picksById: Map<string, PickLeg>
-): { kept: MultiBet[]; dropped: { multi: MultiBet; reason: string }[] } {
+): { kept: MultiBet[]; dropped: { multi: MultiBet; reason: string; players: string[] }[] } {
+  const sorted = [...multis].sort((a, b) => exposureRank(a) - exposureRank(b));
   const result: MultiBet[] = [];
-  const dropped: { multi: MultiBet; reason: string }[] = [];
+  const dropped: { multi: MultiBet; reason: string; players: string[] }[] = [];
   const counts = new Map<string, number>();
 
-  for (const multi of multis) {
+  for (const multi of sorted) {
     if (!countsTowardExposureCap(multi)) {
       result.push(multi);
       continue;
@@ -89,6 +118,7 @@ export function enforceExposureCapWithDrops(
       dropped.push({
         multi,
         reason: formatExposureDrop(multi, picksById, skipPlayer, wouldBe),
+        players: playerNamesOnMulti(multi, picksById),
       });
       continue;
     }
@@ -101,5 +131,11 @@ export function enforceExposureCapWithDrops(
     }
     result.push(multi);
   }
+
+  const order = new Map(EXPOSURE_KEEP_PRIORITY.map((t, i) => [t, i]));
+  result.sort(
+    (a, b) => (order.get(a.type) ?? 99) - (order.get(b.type) ?? 99)
+  );
+
   return { kept: result, dropped };
 }

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T05:43:29.441Z",
+  "updatedAt": "2026-11-25T06:02:31.375Z",
   "todayDate": "2026-11-25",
   "tomorrowDate": "2026-11-26",
   "defaultDate": "2026-11-26",
@@ -10,8 +10,8 @@
       "statusLabel": "Draft · updates until 9pm",
       "gameCount": 9,
       "legCount": 2175,
-      "multiCount": 3,
-      "lastUpdated": "2026-11-25T05:44:39.359Z"
+      "multiCount": 4,
+      "lastUpdated": "2026-11-25T06:03:41.498Z"
     }
   ]
 }
