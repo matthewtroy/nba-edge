@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T06:24:09.552Z",
+  "lastUpdated": "2026-11-25T06:36:03.541Z",
   "oddsLastPulled": "2026-11-25T05:16:23.081Z",
   "sources": {
     "espn": "ok",
@@ -23,17 +23,89 @@
     "Bradley Beal (LA Clippers): no redistribution reasons on slate legs"
   ],
   "q1ExclusionLog": [
-    "Giannis Antetokounmpo q1reb 3+: last-10 Q1 60% vs model 81%",
-    "Moussa Diabate q1reb 5+: last-10 Q1 0% vs model 23%",
+    "Tyrese Maxey q1reb 2+: last-10 Q1 0% vs model 21%",
+    "Giannis Antetokounmpo q1reb 3+: last-10 Q1 60% vs model 83%",
+    "Naz Reid q1reb 3+: last-10 Q1 0% vs model 26%",
     "Coby White q1reb 2+: last-10 Q1 0% vs model 21%",
-    "Naz Reid q1reb 3+: last-10 Q1 0% vs model 27%",
-    "Cedric Coward q1reb 2+: last-10 Q1 40% vs model 66%",
-    "Cedric Coward q1reb 3+: last-10 Q1 20% vs model 43%",
-    "Rui Hachimura q1reb 2+: last-10 Q1 40% vs model 60%",
-    "Jaime Jaquez Jr. q1reb 2+: last-10 Q1 20% vs model 45%",
-    "Alperen Sengun q1reb 3+: last-10 Q1 40% vs model 61%",
-    "Kevin Durant q1reb 2+: last-10 Q1 20% vs model 40%",
+    "Moussa Diabate q1reb 5+: last-10 Q1 0% vs model 21%",
+    "Mikal Bridges q1reb 3+: last-10 Q1 0% vs model 20%",
+    "Cedric Coward q1reb 2+: last-10 Q1 40% vs model 69%",
+    "Cedric Coward q1reb 3+: last-10 Q1 20% vs model 46%",
+    "Jaime Jaquez Jr. q1reb 2+: last-10 Q1 20% vs model 47%",
+    "Alperen Sengun q1reb 3+: last-10 Q1 40% vs model 62%",
     "Keldon Johnson q1reb 2+: last-10 Q1 0% vs model 22%"
+  ],
+  "topConfluenceLegs": [
+    {
+      "player": "Landry Shamet",
+      "market": "pts",
+      "line": 10,
+      "confluence": 4,
+      "reasonLine": "edge · D#5"
+    },
+    {
+      "player": "Karl-Anthony Towns",
+      "market": "reb",
+      "line": 13,
+      "confluence": 4,
+      "reasonLine": "edge · D#7"
+    },
+    {
+      "player": "Cedric Coward",
+      "market": "pts",
+      "line": 15,
+      "confluence": 4,
+      "reasonLine": "edge · D#3"
+    },
+    {
+      "player": "Cedric Coward",
+      "market": "reb",
+      "line": 7,
+      "confluence": 4,
+      "reasonLine": "edge · D#6"
+    },
+    {
+      "player": "Cam Spencer",
+      "market": "ast",
+      "line": 5,
+      "confluence": 4,
+      "reasonLine": "edge · D#7"
+    },
+    {
+      "player": "Davion Mitchell",
+      "market": "pts",
+      "line": 10,
+      "confluence": 3,
+      "reasonLine": "edge · D#7"
+    },
+    {
+      "player": "Davion Mitchell",
+      "market": "pts",
+      "line": 15,
+      "confluence": 3,
+      "reasonLine": "edge · D#7"
+    },
+    {
+      "player": "Klay Thompson",
+      "market": "pts",
+      "line": 10,
+      "confluence": 3,
+      "reasonLine": "edge · D#7"
+    },
+    {
+      "player": "Tyler Kolek",
+      "market": "ast",
+      "line": 3,
+      "confluence": 3,
+      "reasonLine": "D#6 · L10 70%"
+    },
+    {
+      "player": "Landry Shamet",
+      "market": "pts",
+      "line": 5,
+      "confluence": 3,
+      "reasonLine": "D#5 · L10 100%"
+    }
   ],
   "gameOddsPriceAge": {
     "401909317": "Prices from 4:16 pm",
@@ -48,36 +120,41 @@
   },
   "slateTipDate": "2026-11-26",
   "whatChanged": [
-    "OG Anunoby out → Jalen Brunson +4.8 pts",
+    "OG Anunoby out → Jalen Brunson +4.6 pts",
     "Cameron Boozer out → Ty Jerome +3.0 pts",
-    "Jimmy Butler III out → De'Anthony Melton boards"
+    "Jimmy Butler III out → Yaxel Lendeborg boards"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_01_15AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_01_30AM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 391,
-      "priced": 293
+      "total": 1591,
+      "priced": 514
     },
     "reb": {
-      "total": 537,
-      "priced": 218
+      "total": 985,
+      "priced": 228
     },
     "ast": {
-      "total": 382,
-      "priced": 168
+      "total": 782,
+      "priced": 177
     },
     "3pm": {
-      "total": 655,
-      "priced": 412
+      "total": 842,
+      "priced": 426
+    },
+    "q1pts": {
+      "total": 336,
+      "priced": 0
     },
     "q1reb": {
-      "total": 199,
+      "total": 272,
+      "priced": 0
+    },
+    "q1ast": {
+      "total": 252,
       "priced": 0
     }
   },
-  "gateViolations": [
-    "Cross-Game SGM Multi: Tyrese Proctor has Check news"
-  ],
   "slatePublicationStatus": "draft",
   "slateStatusLabel": "Draft · updates until 9pm"
 }

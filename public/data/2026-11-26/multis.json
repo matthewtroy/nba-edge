@@ -4,37 +4,81 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
-        "3136195-reb-13",
         "4903027-reb-7",
+        "3136195-pts-20",
         "5175643-pts-10",
         "4278053-pts-15"
       ],
-      "combinedProbability": 0.19175221665599998,
-      "combinedFairPrice": 5.22,
-      "combinedTakeAt": 5.64,
+      "combinedProbability": 0.21272212777999996,
+      "combinedFairPrice": 4.7,
+      "combinedTakeAt": 5.08,
       "bestBookie": "Sportsbet",
-      "bestBookieTotal": 9.03,
+      "bestBookieTotal": 8.26,
       "bookieTotals": {
-        "Sportsbet": 9.03
+        "Sportsbet": 8.26
       },
       "summary": "4 starter main lines"
+    },
+    {
+      "type": "booster",
+      "label": "Booster",
+      "legs": [
+        "4903027-reb-10",
+        "3136195-pts-25",
+        "5175643-pts-15",
+        "4278053-pts-20"
+      ],
+      "combinedProbability": 0.014581364511999999,
+      "combinedFairPrice": 68.58,
+      "combinedTakeAt": 74.07,
+      "bestBookie": "Sportsbet",
+      "bestBookieTotal": 168.72,
+      "bookieTotals": {
+        "Sportsbet": 168.72,
+        "PointsBet": 132.19
+      },
+      "summary": "Main Play +1 rung where fair ≤4, else same rung"
+    },
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "legs": [
+        "3136195-pts-20",
+        "3992-pts-20",
+        "5112087-pts-10",
+        "4396907-pts-20",
+        "5175643-pts-10"
+      ],
+      "combinedProbability": 0.079788946885824,
+      "combinedFairPrice": 12.53,
+      "combinedTakeAt": 13.53,
+      "bestBookie": "PointsBet",
+      "bestBookieTotal": 30,
+      "bookieTotals": {
+        "Sportsbet": 28.78,
+        "TAB": 17.59,
+        "PointsBet": 30
+      },
+      "summary": "2+ legs/game, fair 1.35–2.50 each"
     },
     {
       "type": "boostSgm",
       "label": "Best SGM",
       "legs": [
-        "4351851-pts-10",
-        "4278053-pts-15",
-        "5124612-ast-5"
+        "3136195-reb-13",
+        "3934672-pts-30",
+        "3062679-ast-5"
       ],
-      "combinedProbability": 0.162538992,
-      "combinedFairPrice": 6.15,
-      "combinedTakeAt": 6.64,
-      "bestBookie": "TAB",
-      "bestBookieTotal": 10.99,
+      "combinedProbability": 0.16624596600000002,
+      "combinedFairPrice": 6.02,
+      "combinedTakeAt": 6.5,
+      "bestBookie": "Unibet",
+      "bestBookieTotal": 9.03,
       "bookieTotals": {
-        "TAB": 10.99,
-        "Ladbrokes": 9.43
+        "Sportsbet": 8.1,
+        "Ladbrokes": 7.85,
+        "PointsBet": 8.22,
+        "Unibet": 9.03
       },
       "summary": "Best-value 3-leg same-game multi on the slate"
     },
@@ -43,13 +87,13 @@
       "label": "Q1 Multi",
       "variant": "Longshot",
       "legs": [
-        "1966-q1reb-2",
-        "3134907-q1reb-2",
-        "5081727-q1reb-2"
+        "4576087-q1reb-2",
+        "3448-q1reb-3",
+        "4601023-q1reb-3"
       ],
-      "combinedProbability": 0.07250796,
-      "combinedFairPrice": 13.79,
-      "combinedTakeAt": 14.89,
+      "combinedProbability": 0.09295650000000001,
+      "combinedFairPrice": 10.76,
+      "combinedTakeAt": 11.62,
       "summary": "Q1 Multi (Longshot): fair 2.20–4.00, one leg/team"
     },
     {
@@ -59,9 +103,9 @@
         "4278073-pts-45",
         "4066261-pts-30"
       ],
-      "combinedProbability": 0.019895,
-      "combinedFairPrice": 50.26,
-      "combinedTakeAt": 54.28,
+      "combinedProbability": 0.016583,
+      "combinedFairPrice": 60.3,
+      "combinedTakeAt": 65.12,
       "bestBookie": "PointsBet",
       "bestBookieTotal": 99,
       "bookieTotals": {
@@ -74,23 +118,6 @@
     }
   ],
   "notBuilt": [
-    {
-      "type": "booster",
-      "label": "Booster",
-      "reason": "Booster: could not resolve Main legs (rung/clash/edge)"
-    },
-    {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "reason": "Gate: Cross-Game SGM Multi: Tyrese Proctor has Check news (legs: Cedric Coward 15+ pts, Darius Garland 20+ pts, Karl-Anthony Towns 20+ pts, Tyrese Proctor 10+ pts, Danny Wolf 10+ pts)",
-      "players": [
-        "Cedric Coward",
-        "Darius Garland",
-        "Karl-Anthony Towns",
-        "Tyrese Proctor",
-        "Danny Wolf"
-      ]
-    },
     {
       "type": "q1Multi",
       "label": "Q1 Multi",
