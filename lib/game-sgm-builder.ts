@@ -9,17 +9,17 @@ export interface GameSgmCard {
   legs: PickLeg[];
   fair: number;
   takeAt: number;
-  bestBookie?: string;
-  bestTotal?: number;
-  fairMin: number;
-  fairMax: number;
+  bestBookie: string;
+  bestTotal: number;
+  oddsMin: number;
+  oddsMax: number;
 }
 
 export function pickGameSgmLegs(
   picks: PickLeg[],
   gameId: string,
-  fairMin = 4,
-  fairMax = 10,
+  oddsMin = 4,
+  oddsMax = 10,
   legCount = 3
 ): PickLeg[] | null {
   const pool = picks
@@ -30,14 +30,16 @@ export function pickGameSgmLegs(
   if (pool.length < legCount) return null;
 
   let best: PickLeg[] | null = null;
-  let bestFair = 0;
+  let bestProb = 0;
 
   function dfs(start: number, chosen: PickLeg[]) {
     if (chosen.length === legCount) {
       if (multiHasClash(chosen)) return;
-      const { fair } = combinedFairAndTakeAt(chosen, DEFAULT_MIN_EDGE);
-      if (fair >= fairMin && fair <= fairMax && fair > bestFair) {
-        bestFair = fair;
+      const quote = bestFeedMultiQuote(chosen);
+      if (!quote || quote.total < oddsMin || quote.total > oddsMax) return;
+      const prob = chosen.reduce((acc, l) => acc * l.probability, 1);
+      if (prob > bestProb) {
+        bestProb = prob;
         best = [...chosen];
       }
       return;
@@ -56,21 +58,22 @@ export function pickGameSgmLegs(
 export function buildGameSgmCard(
   game: SlateGame,
   picks: PickLeg[],
-  fairMin = 4,
-  fairMax = 10
+  oddsMin = 4,
+  oddsMax = 10
 ): GameSgmCard | null {
-  const legs = pickGameSgmLegs(picks, game.id, fairMin, fairMax, 3);
+  const legs = pickGameSgmLegs(picks, game.id, oddsMin, oddsMax, 3);
   if (!legs?.length) return null;
   const { fair, takeAt } = combinedFairAndTakeAt(legs, DEFAULT_MIN_EDGE);
   const feed = bestFeedMultiQuote(legs);
+  if (!feed) return null;
   return {
     game,
     legs,
     fair,
     takeAt,
-    bestBookie: feed?.bookie,
-    bestTotal: feed?.total,
-    fairMin,
-    fairMax,
+    bestBookie: feed.bookie,
+    bestTotal: feed.total,
+    oddsMin,
+    oddsMax,
   };
 }

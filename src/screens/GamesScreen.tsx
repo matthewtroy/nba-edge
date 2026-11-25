@@ -4,16 +4,17 @@ import type { PickLeg } from "@lib/types";
 import { gameSgmBlocks } from "@lib/games-sgm";
 import { marketLabel } from "@lib/market-label";
 import { displayTagsForBookie } from "@lib/value-at-bookie";
-import { legOddsDisplayLine } from "@lib/multi-combined";
+import { legPriceAtCardBookie } from "@lib/leg-card-odds";
 import { hasValueAtBookie } from "@lib/value-at-bookie";
 import { sydneyDateString } from "@lib/official-card-time";
-import { feedBookieForLeg, isFeedBookie, NO_FEED_MULTI_NOTE } from "@lib/card-bookie";
 import { LastFiveTicks } from "../components/LastFiveTicks";
 
 const PRESETS: { label: string; min: number; max: number }[] = [
+  { label: "1.5–4", min: 1.5, max: 4 },
+  { label: "3–6", min: 3, max: 6 },
   { label: "4–10", min: 4, max: 10 },
-  { label: "7–15", min: 7, max: 15 },
-  { label: "10–30", min: 10, max: 30 },
+  { label: "10–20", min: 10, max: 20 },
+  { label: "20–50", min: 20, max: 50 },
 ];
 
 interface Props {
@@ -22,8 +23,8 @@ interface Props {
   onLegTap: (leg: PickLeg) => void;
 }
 
-export function GamesScreen({ data, myBookie = "bet365", onLegTap }: Props) {
-  const [preset, setPreset] = useState(PRESETS[0]);
+export function GamesScreen({ data, myBookie = "Sportsbet", onLegTap }: Props) {
+  const [preset, setPreset] = useState(PRESETS[2]);
   const today = sydneyDateString(new Date());
   const useOfficial =
     data.officialCard != null && data.officialCard.slateDate === today;
@@ -52,9 +53,9 @@ export function GamesScreen({ data, myBookie = "bet365", onLegTap }: Props) {
     <div className="pb-24">
       <h1 className="text-xl font-bold mb-1">Games</h1>
       <p className="text-sm text-white/70 mb-3">
-        SGM fair presets · Value @ {myBookie}: {valueCount}
+        SGM by bookie total · Value @ {myBookie}: {valueCount}
       </p>
-      <div className="flex gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-4">
         {PRESETS.map((p) => (
           <button
             key={p.label}
@@ -66,7 +67,7 @@ export function GamesScreen({ data, myBookie = "bet365", onLegTap }: Props) {
                 : "border-white/20"
             }`}
           >
-            Fair {p.label}
+            ${p.label}
           </button>
         ))}
       </div>
@@ -76,19 +77,13 @@ export function GamesScreen({ data, myBookie = "bet365", onLegTap }: Props) {
         if (!card) {
           return (
             <p key={game.id} className="text-sm text-white/50 mb-3">
-              {short}: no 3-leg SGM in fair {preset.min}–{preset.max}
+              {short}: no 3-leg SGM with one AU bookie in ${preset.min.toFixed(1)}–
+              {preset.max}
             </p>
           );
         }
-        const priced =
-          isFeedBookie(card.bestBookie) && card.bestTotal != null && card.bestTotal > 1;
-        const headline = priced
-          ? `${short} SGM @ $${card.bestTotal!.toFixed(2)}`
-          : `${short} SGM @ —`;
-        const sub = priced
-          ? `${card.bestBookie} · take at $${card.takeAt.toFixed(2)}+ (fair $${card.fair.toFixed(2)})`
-          : `take at $${card.takeAt.toFixed(2)}+ (fair $${card.fair.toFixed(2)}) · ${NO_FEED_MULTI_NOTE}`;
-        const legBookie = isFeedBookie(myBookie) ? myBookie : card.bestBookie;
+        const headline = `${short} SGM @ $${card.bestTotal.toFixed(2)}`;
+        const sub = `${card.bestBookie} · Fair $${card.fair.toFixed(2)}`;
 
         return (
           <section
@@ -99,7 +94,7 @@ export function GamesScreen({ data, myBookie = "bet365", onLegTap }: Props) {
               <h2 className="font-semibold text-lg">{headline}</h2>
               <p className="text-sm text-white/70 mt-0.5">{sub}</p>
               <p className="text-xs text-white/50 mt-1">
-                {game.startTimeSydney} · Guide: SGM fair {preset.min}–{preset.max}
+                {game.startTimeSydney} · Bookie total ${preset.label}
               </p>
               {crossGameLegs.length > 0 && (
                 <p className="text-xs text-accent-value mt-1">
@@ -112,29 +107,45 @@ export function GamesScreen({ data, myBookie = "bet365", onLegTap }: Props) {
               )}
             </header>
             <div className="px-2 divide-y divide-white/5">
-              {card.legs.map((leg) => (
-                <button
-                  key={leg.id}
-                  type="button"
-                  onClick={() => onLegTap(leg)}
-                  className="w-full py-3 px-1 text-left active:bg-white/5"
-                >
-                  <div className="font-medium text-sm">
-                    {leg.playerName} {marketLabel(leg.market, leg.line)}
-                  </div>
-                  <div className="text-xs text-white/70 mt-1">
-                    {legOddsDisplayLine(leg, feedBookieForLeg(leg, legBookie))}
-                  </div>
-                  <LastFiveTicks ticks={leg.recentVsLine ?? []} compact />
-                  <div className="flex gap-1 mt-1">
-                    {displayTagsForBookie(leg, myBookie).map((t) => (
-                      <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-white/10">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </button>
-              ))}
+              {card.legs.map((leg) => {
+                const price = legPriceAtCardBookie(leg, card.bestBookie);
+                return (
+                  <button
+                    key={leg.id}
+                    type="button"
+                    onClick={() => onLegTap(leg)}
+                    className="w-full py-3 px-1 text-left active:bg-white/5 flex gap-3"
+                  >
+                    <div className="flex-1 min-w-0">
+                      <div className="font-medium text-sm">
+                        {leg.playerName} {marketLabel(leg.market, leg.line)}
+                      </div>
+                      <LastFiveTicks ticks={leg.recentVsLine ?? []} compact />
+                      <div className="flex gap-1 mt-1">
+                        {displayTagsForBookie(leg, myBookie).map((t) => (
+                          <span
+                            key={t}
+                            className="text-[10px] px-2 py-0.5 rounded-full bg-white/10"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="text-right shrink-0">
+                      {price != null && (
+                        <div className="text-lg font-semibold text-green-400">
+                          ${price.toFixed(2)}
+                        </div>
+                      )}
+                      <div className="text-xs text-white/70">{card.bestBookie}</div>
+                      <div className="text-xs text-white/55">
+                        Fair ${leg.fairPrice.toFixed(2)}
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </section>
         );

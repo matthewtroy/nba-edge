@@ -1,6 +1,6 @@
 import type { MetaJson, MultiBet, PickLeg } from "./types.js";
 import { assertNoMixedBookieCopy } from "./multi-display.js";
-import { bestSingleBookieQuote } from "./single-bookie.js";
+import { bestFeedMultiQuote } from "./card-bookie.js";
 
 /** Small bettor-facing audit (not full builder gate). */
 export function auditMultisForToday(input: {
@@ -31,24 +31,13 @@ export function auditMultisForToday(input: {
       if (leg.tags.includes("Check news")) {
         issues.push(`${label}: ${leg.playerName} has Check news`);
       }
-      if (leg.bestPrice != null && leg.bestPrice < leg.takeAt) {
-        issues.push(
-          `${label}: ${leg.playerName} best $${leg.bestPrice.toFixed(2)} below take-at $${leg.takeAt.toFixed(2)}`
-        );
-      }
     }
 
-    if (!multi.bestBookie || multi.bestBookieTotal == null) {
-      issues.push(`${label}: no single feed bookie at take-at (price legs)`);
-    } else if (multi.bestBookieTotal < multi.combinedTakeAt) {
-      issues.push(
-        `${label}: ${multi.bestBookie} $${multi.bestBookieTotal.toFixed(2)} below take-at $${multi.combinedTakeAt.toFixed(2)}`
-      );
-    } else {
-      const quote = bestSingleBookieQuote(legs, multi.combinedTakeAt);
-      if (!quote || quote.bookie !== multi.bestBookie) {
-        issues.push(`${label}: ${multi.bestBookie} does not price every leg at one bookie`);
-      }
+    const feed = bestFeedMultiQuote(legs);
+    if (!multi.bestBookie || multi.bestBookieTotal == null || !feed) {
+      issues.push(`${label}: no single AU bookie prices every leg`);
+    } else if (feed.bookie !== multi.bestBookie || feed.total !== multi.bestBookieTotal) {
+      issues.push(`${label}: ${multi.bestBookie} multi total mismatch`);
     }
   }
 

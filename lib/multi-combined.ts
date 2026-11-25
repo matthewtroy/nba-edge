@@ -1,9 +1,5 @@
 import type { MultiBet, PickLeg } from "./types.js";
-import {
-  bestFeedMultiQuote,
-  feedBookieForLeg,
-  NO_FEED_MULTI_NOTE,
-} from "./card-bookie.js";
+import { bestFeedMultiQuote } from "./card-bookie.js";
 import { legPriceAtBookie } from "./single-bookie.js";
 
 export const DEFAULT_MIN_EDGE = 0.08;
@@ -22,40 +18,40 @@ export function combinedFairAndTakeAt(
   return { p, fair, takeAt };
 }
 
-export function legOddsDisplayLine(leg: PickLeg, cardBookie?: string): string {
-  const feed = feedBookieForLeg(leg, cardBookie);
-  const parts: string[] = [];
-  if (feed) {
-    const bookPx = legPriceAtBookie(leg, feed);
-    if (bookPx != null) parts.push(`$${bookPx.toFixed(2)}`);
-    else parts.push("Not offered");
+export function resolveMultiFeedQuote(
+  multi: MultiBet,
+  legs: PickLeg[]
+): { bookie: string; total: number } {
+  const fromMulti =
+    multi.bestBookie && multi.bestBookieTotal != null
+      ? { bookie: multi.bestBookie, total: multi.bestBookieTotal }
+      : undefined;
+  const feed = fromMulti ?? bestFeedMultiQuote(legs);
+  if (!feed || feed.total <= 1) {
+    throw new Error("multiCardTitle: multi missing AU bookie total");
   }
-  if (leg.bestPrice != null && leg.bestBookie && leg.bestBookie !== "bet365") {
-    parts.push(`best: ${leg.bestBookie} $${leg.bestPrice.toFixed(2)}`);
-  }
-  parts.push(`take at $${leg.takeAt.toFixed(2)}+`);
-  return parts.join(" · ");
+  return feed;
 }
 
 export function multiCardTitle(
   multi: MultiBet,
   legs: PickLeg[],
   minEdgeFraction = DEFAULT_MIN_EDGE
-): { headline: string; subline: string } {
-  const { fair, takeAt } = combinedFairAndTakeAt(legs, minEdgeFraction);
+): { headline: string; subline: string; cardBookie: string } {
+  const { fair } = combinedFairAndTakeAt(legs, minEdgeFraction);
   const name = multi.variant ? `${multi.label} (${multi.variant})` : multi.label;
-  const feed =
-    multi.bestBookie && multi.bestBookie !== "bet365" && multi.bestBookieTotal != null
-      ? { bookie: multi.bestBookie, total: multi.bestBookieTotal }
-      : bestFeedMultiQuote(legs);
-  if (feed && feed.total > 1) {
-    return {
-      headline: `${name} @ $${feed.total.toFixed(2)}`,
-      subline: `${feed.bookie} · take at $${takeAt.toFixed(2)}+ (fair $${fair.toFixed(2)})`,
-    };
-  }
+  const feed = resolveMultiFeedQuote(multi, legs);
   return {
-    headline: `${name} @ —`,
-    subline: `take at $${takeAt.toFixed(2)}+ (fair $${fair.toFixed(2)}) · ${NO_FEED_MULTI_NOTE}`,
+    headline: `${name} @ $${feed.total.toFixed(2)}`,
+    subline: `${feed.bookie} · Fair $${fair.toFixed(2)}`,
+    cardBookie: feed.bookie,
   };
+}
+
+/** @deprecated use formatLegCardLine — kept for any non-card callers */
+export function legOddsDisplayLine(leg: PickLeg, cardBookie?: string): string {
+  if (!cardBookie) return `${leg.playerName} · Fair $${leg.fairPrice.toFixed(2)}`;
+  const p = legPriceAtBookie(leg, cardBookie);
+  if (p == null) return `${leg.playerName} · Fair $${leg.fairPrice.toFixed(2)}`;
+  return `$${p.toFixed(2)} · ${cardBookie} · Fair $${leg.fairPrice.toFixed(2)}`;
 }

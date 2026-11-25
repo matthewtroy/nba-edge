@@ -2,12 +2,10 @@ import type { MultiBet, PickLeg } from "./types.js";
 import {
   combinedFairAndTakeAt,
   DEFAULT_MIN_EDGE,
-  legOddsDisplayLine,
   multiCardTitle,
 } from "./multi-combined.js";
-import { isFeedBookie } from "./card-bookie.js";
-import { assertNoMixedBookieCopy, pickDefaultBookie } from "./multi-display.js";
-import { marketLabel } from "./market-label.js";
+import { assertNoMixedBookieCopy } from "./multi-display.js";
+import { formatLegCardLine } from "./leg-card-odds.js";
 
 export const FORBIDDEN_TODAY_STRINGS = [
   "~1 in",
@@ -20,6 +18,11 @@ export const FORBIDDEN_TODAY_STRINGS = [
   "cross-book",
   "Best across books",
   "Best multi odds",
+  "take at",
+  "Take at",
+  "@ —",
+  "best:",
+  "Not offered",
 ] as const;
 
 export function formatMultiHeadline(multi: MultiBet, legs: PickLeg[]): string {
@@ -27,22 +30,15 @@ export function formatMultiHeadline(multi: MultiBet, legs: PickLeg[]): string {
   return `${headline}\n${subline}`;
 }
 
-export function formatLegLineAtBookie(leg: PickLeg, bookie?: string): string {
-  const label = `${leg.playerName} ${marketLabel(leg.market, leg.line)}`;
-  return `${label} · ${legOddsDisplayLine(leg, bookie)}`;
-}
-
 export function renderMultiCardCopyText(
   multi: MultiBet,
   legs: PickLeg[],
-  bookie?: string
+  _bookie?: string
 ): string {
-  const { headline, subline } = multiCardTitle(multi, legs, DEFAULT_MIN_EDGE);
+  const { headline, subline, cardBookie } = multiCardTitle(multi, legs, DEFAULT_MIN_EDGE);
   const lines = [headline, subline];
-  const rowBook =
-    isFeedBookie(bookie) ? bookie : pickDefaultBookie(multi, legs, bookie);
   for (const leg of legs) {
-    lines.push(formatLegLineAtBookie(leg, rowBook));
+    lines.push(formatLegCardLine(leg, cardBookie).trimStart());
   }
   const text = lines.join("\n");
   assertNoMixedBookieCopy(text);
@@ -56,7 +52,9 @@ export function renderMultiCardText(multi: MultiBet, legs: PickLeg[]): string {
 export function assertNoForbiddenStrings(text: string, extraForbidden: string[] = []): void {
   const bad = [...FORBIDDEN_TODAY_STRINGS, ...extraForbidden];
   for (const s of bad) {
-    if (text.includes(s)) throw new Error(`Forbidden string in Today proof: ${s}`);
+    if (text.toLowerCase().includes(s.toLowerCase())) {
+      throw new Error(`Forbidden string in Today proof: ${s}`);
+    }
   }
   assertNoMixedBookieCopy(text);
   if (/Small slate\n[\s\S]*Small slate/.test(text)) {

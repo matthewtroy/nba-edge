@@ -20,6 +20,9 @@ function leg(pid: string, line: number, takeAt: number): PickLeg {
     starterEligible: true,
     tags: [],
     reasons: [],
+    bookiePrices: { Sportsbet: takeAt },
+    bestBookie: "Sportsbet",
+    bestPrice: takeAt,
   };
 }
 
@@ -35,7 +38,9 @@ describe("Booster gate", () => {
       combinedProbability: mainFair.p,
       combinedFairPrice: mainFair.fair,
       combinedTakeAt: mainFair.takeAt,
-      bookieTotals: {},
+      bookieTotals: { Sportsbet: 4.58 },
+      bestBookie: "Sportsbet",
+      bestBookieTotal: 4.58,
       summary: "",
     };
     const boostFair = combinedFairAndTakeAt(boostLegs);
@@ -46,7 +51,9 @@ describe("Booster gate", () => {
       combinedProbability: boostFair.p,
       combinedFairPrice: boostFair.fair,
       combinedTakeAt: boostFair.takeAt,
-      bookieTotals: {},
+      bookieTotals: { Sportsbet: 10.59 },
+      bestBookie: "Sportsbet",
+      bestBookieTotal: 10.59,
       summary: "",
     };
     const picksById = new Map([...mainLegs, ...boostLegs].map((l) => [l.id, l]));

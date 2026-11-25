@@ -34,13 +34,27 @@ describe("MultiCard layout strings", () => {
       combinedTakeAt: takeAt,
       summary: "starter main lines",
     };
-    const blob = multiCardPlainText(multi, legs);
+    const priced = legs.map((l, i) => ({
+      ...l,
+      id: l.id,
+      bookiePrices: { Sportsbet: 1.9 + i * 0.05 },
+      bestBookie: "Sportsbet",
+      bestPrice: 1.9 + i * 0.05,
+    }));
+    const blob = multiCardPlainText(
+      {
+        ...multi,
+        bestBookie: "Sportsbet",
+        bestBookieTotal: priced.reduce((a, l) => a * (l.bestPrice ?? 1), 1),
+      },
+      priced
+    );
     for (const bad of FORBIDDEN_MULTI_CARD_STRINGS) {
       expect(blob.includes(bad)).toBe(false);
     }
-    expect(blob).toMatch(/@ —/);
-    expect(blob).toContain(`take at $${takeAt.toFixed(2)}+`);
-    expect(blob).toContain(`fair $${fair.toFixed(2)}`);
+    expect(blob).toMatch(/@ \$[\d.]+/);
+    expect(blob).toContain(`Fair $${fair.toFixed(2)}`);
+    expect(blob.toLowerCase()).not.toContain("take at");
     expect(blob).not.toContain("once");
   });
 });

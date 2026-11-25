@@ -2,11 +2,9 @@ import type { MetaJson, MultiBet, MultiNotBuilt, PickLeg, SlateGame } from "./ty
 import type { OfficialCardFile } from "./official-card.js";
 import { OFFICIAL_CARD_BOOKIE } from "./official-card.js";
 import { auditMultisForToday } from "./audit-multis.js";
-import {
-  assertNoForbiddenStrings,
-  formatMultiHeadline,
-} from "./multi-card-text.js";
-import { formatLegLineAtBookie } from "./multi-display.js";
+import { assertNoForbiddenStrings } from "./multi-card-text.js";
+import { multiCardTitle } from "./multi-combined.js";
+import { formatLegCardLine } from "./leg-card-odds.js";
 import { verifyTakeAtIsFairEdge } from "./multi-card-text.js";
 
 function formatSydneyTime(iso: string): string {
@@ -80,13 +78,13 @@ export function renderTodayText(input: {
     const legs = multi.legs
       .map((id) => input.picksById.get(id))
       .filter(Boolean) as PickLeg[];
+    if (!legs.length || multi.bestBookieTotal == null || !multi.bestBookie) continue;
     if (legs.length) verifyTakeAtIsFairEdge(multi, legs);
-    const headline = formatMultiHeadline(multi, legs);
-    for (const line of headline.split("\n")) {
-      lines.push(`  ${line}`);
-    }
+    const { headline, subline, cardBookie: multiBookie } = multiCardTitle(multi, legs);
+    lines.push(`  ${headline}`);
+    lines.push(`  ${subline}`);
     for (const leg of legs) {
-      lines.push(`  ${formatLegLineAtBookie(leg, cardBookie)}`);
+      lines.push(formatLegCardLine(leg, multiBookie));
     }
     lines.push("");
   }
@@ -100,7 +98,7 @@ export function renderTodayText(input: {
     lines.push("Audit");
     for (const v of audit) lines.push(`  • ${v}`);
   } else {
-    lines.push("Audit: ok (one bookie, take-at, no Check news)");
+    lines.push("Audit: ok (one AU bookie, no Check news)");
   }
 
   const text = lines.join("\n").trim();

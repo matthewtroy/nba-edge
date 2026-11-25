@@ -6,9 +6,9 @@ import {
 } from "./single-bookie.js";
 import { marketLabel } from "./market-label.js";
 import { isFeedBookie } from "./card-bookie.js";
-import { legOddsDisplayLine } from "./multi-combined.js";
+import { formatLegCardLine } from "./leg-card-odds.js";
 
-export { NO_FEED_MULTI_NOTE as NO_SINGLE_BOOKIE_NOTE } from "./card-bookie.js";
+export { NO_AU_MULTI_REASON as NO_SINGLE_BOOKIE_NOTE } from "./card-bookie.js";
 
 export const FORBIDDEN_MULTI_ODDS_WORDS = [
   "cross-book",
@@ -40,7 +40,8 @@ export function pickDefaultBookie(
 }
 
 export function formatLegLineAtBookie(leg: PickLeg, bookie?: string): string {
-  return `${leg.playerName} ${marketLabel(leg.market, leg.line)} · ${legOddsDisplayLine(leg, bookie)}`;
+  if (!bookie) return `${leg.playerName} ${marketLabel(leg.market, leg.line)}`;
+  return formatLegCardLine(leg, bookie).trimStart();
 }
 
 export function formatMultiBookieLine(

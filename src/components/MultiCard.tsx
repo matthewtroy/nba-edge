@@ -61,7 +61,8 @@ export function MultiCard({
   const rawBook = lockedBookie ?? bookie ?? multi.bestBookie;
   const displayBook = isFeedBookie(rawBook) ? rawBook : bookie ?? multi.bestBookie;
 
-  const { headline, subline } = multiCardTitle(multi, legs);
+  const { headline, subline, cardBookie } = multiCardTitle(multi, legs);
+  const legBookie = displayBook ?? cardBookie;
 
   return (
     <section className="bg-card rounded-xl border border-white/10 overflow-hidden mb-3">
@@ -93,7 +94,7 @@ export function MultiCard({
             leg={leg}
             injuries={injuries}
             picks={Array.from(picksById.values())}
-            bookie={displayBook}
+            bookie={legBookie}
             onTap={onLegTap}
           />
         ))}
@@ -122,7 +123,7 @@ export function MultiCard({
             type="button"
             className="flex-1 py-2 text-sm bg-surface border border-white/10 rounded-lg font-medium"
             onClick={() =>
-              onCopy(renderMultiCardCopyText(multi, legs, displayBook))
+              onCopy(renderMultiCardCopyText(multi, legs, legBookie))
             }
           >
             {discordCopy ? "Copy for Discord" : "Copy"}

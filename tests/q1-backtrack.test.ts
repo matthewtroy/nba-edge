@@ -25,6 +25,11 @@ function q1Leg(
     starterEligible: true,
     questionable: false,
     ageB2B: false,
+    bookiePrices: { Sportsbet: fair },
+    bestBookie: "Sportsbet",
+    bestPrice: fair,
+    headshotUrl: "",
+    opponent: "Opp",
   };
 }
 

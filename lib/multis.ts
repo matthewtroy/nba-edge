@@ -1,5 +1,5 @@
 import type { PickLeg, MultiBet, MultiType, MultiNotBuilt } from "./types.js";
-import { legsClash, multiClashSummary, multiHasClash } from "./clash.js";
+import { legsClash, multiHasClash } from "./clash.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
 import {
   qualifiesCrossBoostLeg,
@@ -8,7 +8,6 @@ import {
 } from "./main-play-eligibility.js";
 import { enforceExposureCapWithDrops } from "./exposure.js";
 import { bestFeedMultiQuote } from "./card-bookie.js";
-import { bestSingleBookieQuote } from "./single-bookie.js";
 import { multiBookieTotals } from "./bookie-totals.js";
 import { multiClashSummary } from "./clash.js";
 import { gateAllMultis } from "./multi-gate.js";
@@ -46,16 +45,13 @@ export function combinedBetPrice(legs: PickLeg[]): number {
   return Math.round(legs.reduce((acc, l) => acc * l.takeAt, 1) * 100) / 100;
 }
 
-function singleBookieOverlay(
-  legs: PickLeg[],
-  combinedTakeAt: number
-): {
-  bestBookie?: string;
-  bestBookieTotal?: number;
+const NO_AU_MULTI = "No single AU bookie prices every leg";
+
+function singleBookieOverlay(legs: PickLeg[]): {
+  bestBookie: string;
+  bestBookieTotal: number;
   bookieTotals: Record<string, number>;
-  combinedBestBookie?: string;
-  combinedBestPrice?: number;
-} {
+} | null {
   const pricedLegs = legs.map((l) =>
     l.bookiePrices && Object.keys(l.bookiePrices).length
       ? l
@@ -65,14 +61,11 @@ function singleBookieOverlay(
   );
   const bookieTotals = multiBookieTotals(pricedLegs) as Record<string, number>;
   const feed = bestFeedMultiQuote(pricedLegs);
-  const quote = bestSingleBookieQuote(pricedLegs, combinedTakeAt);
-  if (!feed && !quote) {
-    return { bookieTotals };
-  }
+  if (!feed) return null;
   return {
     bookieTotals,
-    bestBookie: feed?.bookie,
-    bestBookieTotal: feed?.total,
+    bestBookie: feed.bookie,
+    bestBookieTotal: feed.total,
   };
 }
 
@@ -304,7 +297,8 @@ function buildMainPlay(
   }
 
   const { p, fair, takeAt } = combinedPrice(best);
-  const book = singleBookieOverlay(best, takeAt);
+  const book = singleBookieOverlay(best);
+  if (!book) return { bet: null, reason: NO_AU_MULTI };
 
   return {
     bet: {
@@ -415,7 +409,8 @@ function buildBooster(
   }
 
   const { p, fair, takeAt } = combinedPrice(boosted);
-  const book = singleBookieOverlay(boosted, takeAt);
+  const book = singleBookieOverlay(boosted);
+  if (!book) return { bet: null, reason: NO_AU_MULTI };
   const triCandidates: PickLeg[][] = [];
   for (let i = 0; i < boosted.length - 2; i++) {
     for (let j = i + 1; j < boosted.length - 1; j++) {
@@ -497,9 +492,10 @@ function q1MultiFromLegs(
   legs: PickLeg[],
   variant: string | undefined,
   summary: string
-): MultiBet {
+): MultiBet | null {
   const { p, fair, takeAt } = combinedPrice(legs);
-  const book = singleBookieOverlay(legs, takeAt);
+  const book = singleBookieOverlay(legs);
+  if (!book) return null;
   return {
     type: "q1Multi",
     label: "Q1 Multi",
@@ -554,17 +550,27 @@ function buildQ1Multi(picks: PickLeg[]): {
     safeOnly: true,
   });
   if (safe) {
-    bets.push(
-      q1MultiFromLegs(safe, "Safe", "Safe Q1: p≥0.70, one leg/team")
-    );
-    safeNotBuiltReason = "";
+    const safeBet = q1MultiFromLegs(safe, "Safe", "Safe Q1: p≥0.70, one leg/team");
+    if (safeBet) {
+      bets.push(safeBet);
+      safeNotBuiltReason = "";
+    } else {
+      safeNotBuiltReason = NO_AU_MULTI;
+    }
   }
   const value = findQ1Subset(teamKeys, byTeam, 2.2, 4);
   if (value && (!safe || value.map((l) => l.id).join() !== safe.map((l) => l.id).join())) {
-    bets.push(
-      q1MultiFromLegs(value, "Value", "Value Q1: fair 2.20–4.00, one leg/team")
+    const valueBet = q1MultiFromLegs(
+      value,
+      "Value",
+      "Value Q1: fair 2.20–4.00, one leg/team"
     );
-    valueNotBuiltReason = "";
+    if (valueBet) {
+      bets.push(valueBet);
+      valueNotBuiltReason = "";
+    } else {
+      valueNotBuiltReason = NO_AU_MULTI;
+    }
   } else if (value && safe && value.map((l) => l.id).join() === safe.map((l) => l.id).join()) {
     valueNotBuiltReason = "Value Q1 same legs as Safe (skipped duplicate)";
   }
@@ -628,7 +634,8 @@ function buildCrossGameSgm(picks: PickLeg[]): { bet: MultiBet | null; reason: st
   const chosen = best;
   const combo = combinedBetPrice(chosen);
   const { p, fair, takeAt } = combinedPrice(chosen);
-  const book = singleBookieOverlay(chosen, takeAt);
+  const book = singleBookieOverlay(chosen);
+  if (!book) return { bet: null, reason: NO_AU_MULTI };
   return {
     bet: {
       type: "crossGameSgm",
@@ -682,7 +689,8 @@ function buildBoostSgm(picks: PickLeg[]): { bet: MultiBet | null; reason: string
   }
   const trio = bestTrio;
   const { p, fair, takeAt } = combinedPrice(trio);
-  const book = singleBookieOverlay(trio, takeAt);
+  const book = singleBookieOverlay(trio);
+  if (!book) return { bet: null, reason: NO_AU_MULTI };
   return {
     bet: {
       type: "boostSgm",
@@ -692,7 +700,7 @@ function buildBoostSgm(picks: PickLeg[]): { bet: MultiBet | null; reason: string
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
       ...book,
-      summary: "bet365 25% boost (needs 3 legs)",
+      summary: "Same-game trio for boost offer (3 legs)",
     },
     reason: "",
   };
@@ -775,7 +783,8 @@ function buildLongshot(picks: PickLeg[]): { bet: MultiBet | null; reason: string
   }
   const combo = combinedBetPrice(chosenLegs);
   const { p, fair, takeAt } = combinedPrice(chosenLegs);
-  const book = singleBookieOverlay(chosenLegs, takeAt);
+  const book = singleBookieOverlay(chosenLegs);
+  if (!book) return { bet: null, reason: NO_AU_MULTI };
   return {
     bet: {
       type: "longshot",

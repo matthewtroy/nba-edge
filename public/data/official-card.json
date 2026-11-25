@@ -1,59 +1,46 @@
 {
-  "lockedAt": "2026-11-25T01:24:17.503Z",
-  "publishedAt": "2026-11-25T01:24:17.503Z",
+  "lockedAt": "2026-11-25T01:28:33.043Z",
+  "publishedAt": "2026-11-25T01:28:33.043Z",
   "slateDate": "2026-11-25",
   "bookie": "Sportsbet",
-  "multis": [
+  "multis": [],
+  "notBuilt": [
     {
       "type": "mainPlay",
       "label": "Main Play",
-      "legs": [
-        "4397424-pts-10",
-        "5142718-pts-15",
-        "5041939-ast-5",
-        "3112335-pts-25"
-      ],
-      "combinedProbability": 0.18568224183600002,
-      "combinedFairPrice": 5.39,
-      "combinedTakeAt": 5.82,
-      "bookieTotals": {},
-      "summary": "4 starter main lines"
+      "reason": "No single AU bookie prices every leg"
     },
     {
-      "type": "q1Multi",
-      "label": "Q1 Multi",
-      "variant": "Value",
-      "legs": [
-        "4066372-q1reb-2",
-        "4251-q1reb-3",
-        "3064290-q1reb-2"
-      ],
-      "combinedProbability": 0.084717342,
-      "combinedFairPrice": 11.8,
-      "combinedTakeAt": 12.74,
-      "bookieTotals": {},
-      "summary": "Value Q1: fair 2.20–4.00, one leg/team"
+      "type": "booster",
+      "label": "Booster",
+      "reason": "Needs a Main Play first"
+    },
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "reason": "No single AU bookie prices every leg"
+    },
+    {
+      "type": "boostSgm",
+      "label": "Boost SGM",
+      "reason": "No single AU bookie prices every leg"
     },
     {
       "type": "longshot",
       "label": "Longshot",
-      "legs": [
-        "5107199-pts-30",
-        "4065648-pts-35"
-      ],
-      "combinedProbability": 0.011859,
-      "combinedFairPrice": 84.32,
-      "combinedTakeAt": 91.07,
-      "bookieTotals": {},
-      "summary": "One long leg per game"
-    }
-  ],
-  "notBuilt": [
+      "reason": "No single AU bookie prices every leg"
+    },
     {
       "type": "q1Multi",
       "label": "Q1 Multi",
       "variant": "Safe",
       "reason": "No Safe Q1 subset (p≥0.70, 3–6 teams, one leg/team)"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Value",
+      "reason": "No single AU bookie prices every leg"
     }
   ],
   "whatChanged": [
@@ -69,7 +56,7 @@
       "gameId": "401909315",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "5106040",
@@ -79,7 +66,7 @@
       "gameId": "401909316",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "p.j. washington",
@@ -89,7 +76,7 @@
       "gameId": "401909316",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerName": "Dereck Lively II",
@@ -135,7 +122,7 @@
       "gameId": "401909314",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "2990962",
@@ -145,7 +132,7 @@
       "gameId": "401909314",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "3157465",
@@ -155,7 +142,7 @@
       "gameId": "401909314",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "4433621",
@@ -165,7 +152,7 @@
       "gameId": "401909314",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "4065654",
@@ -175,7 +162,7 @@
       "gameId": "401909314",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "5107251",
@@ -185,7 +172,7 @@
       "gameId": "401909314",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "5214637",
@@ -195,7 +182,7 @@
       "gameId": "401909314",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerName": "Paolo Banchero",
@@ -214,7 +201,7 @@
       "gameId": "401909315",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerName": "Reece Beekman",
@@ -233,7 +220,7 @@
       "gameId": "401909315",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "4606840",
@@ -243,7 +230,7 @@
       "gameId": "401909315",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "5107818",
@@ -253,7 +240,7 @@
       "gameId": "401909314",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "5037878",
@@ -263,7 +250,7 @@
       "gameId": "401909314",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "4397204",
@@ -273,7 +260,7 @@
       "gameId": "401909314",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "4702745",
@@ -283,7 +270,7 @@
       "gameId": "401909315",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "4432819",
@@ -293,7 +280,7 @@
       "gameId": "401909315",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "5105841",
@@ -303,7 +290,7 @@
       "gameId": "401909315",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     },
     {
       "playerId": "3138160",
@@ -313,7 +300,7 @@
       "gameId": "401909316",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T01:24:07.655Z"
+      "updatedAt": "2026-11-25T01:28:25.001Z"
     }
   ],
   "oddsLastPulled": "2026-11-24T22:58:43.102Z"

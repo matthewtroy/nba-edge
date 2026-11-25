@@ -1,4 +1,5 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { bookieWithMostCoverage } from "@lib/card-bookie";
 import { useData } from "./hooks/useData";
 import { useSettings } from "./hooks/useSettings";
 import { TabBar } from "./components/TabBar";
@@ -24,6 +25,12 @@ function PhoneShell({ children, className = "" }: { children: ReactNode; classNa
 export default function App() {
   const data = useData();
   const { settings, setSettings } = useSettings();
+  useEffect(() => {
+    if (data.loading || !data.picks.length) return;
+    if (settings.myBookie === "bet365") {
+      setSettings({ ...settings, myBookie: bookieWithMostCoverage(data.picks) });
+    }
+  }, [data.loading, data.picks, settings, setSettings]);
   const [tab, setTab] = useState<Tab>("today");
   const [leg, setLeg] = useState<PickLeg | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);

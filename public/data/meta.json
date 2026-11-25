@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T01:24:14.726Z",
+  "lastUpdated": "2026-11-25T01:28:30.559Z",
   "oddsLastPulled": "2026-11-24T22:58:43.102Z",
   "sources": {
     "espn": "ok",
@@ -40,7 +40,7 @@
   "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_08_15PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 125,
+      "total": 124,
       "priced": 98
     },
     "reb": {
@@ -56,7 +56,7 @@
       "priced": 129
     },
     "q1reb": {
-      "total": 71,
+      "total": 70,
       "priced": 0
     },
     "q1pts": {
@@ -68,15 +68,8 @@
       "priced": 0
     }
   },
-  "gateViolations": [
-    "Booster: best bookie does not match single-bookie quote",
-    "Cross-Game SGM Multi: John Collins has Check news",
-    "Cross-Game SGM Multi: Ausar Thompson has Check news",
-    "Cross-Game SGM Multi: Jamal Murray has Check news",
-    "Boost SGM: Caleb Martin has Check news"
-  ],
   "officialCard": {
-    "lockedAt": "2026-11-25T01:24:17.503Z",
+    "lockedAt": "2026-11-25T01:28:33.043Z",
     "slateDate": "2026-11-25",
     "bookie": "Sportsbet"
   }

@@ -1,5 +1,5 @@
 import type { AppSettings } from "@lib/types";
-import { AU_BOOKMAKERS } from "@lib/types";
+import { FEED_BOOKIES } from "@lib/card-bookie";
 
 interface Props {
   open: boolean;
@@ -23,15 +23,14 @@ export function SettingsSheet({ open, settings, onChange, onClose }: Props) {
           onChange={(e) => onChange({ ...settings, myBookie: e.target.value })}
           className="w-full mb-4 bg-surface border border-white/10 rounded-lg px-3 py-2"
         >
-          {AU_BOOKMAKERS.map((b) => (
+          {FEED_BOOKIES.map((b) => (
             <option key={b} value={b}>
               {b}
             </option>
           ))}
         </select>
         <p className="text-xs text-white/50 mb-4">
-          bet365 has no API — type prices on each leg. Other bookies fill from odds when
-          available.
+          AU feed bookies only. Odds fill from the API when available.
         </p>
         <label className="block text-sm mb-2">Target profit ($)</label>
         <input

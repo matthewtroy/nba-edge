@@ -1,7 +1,7 @@
 import type { InjuryEntry, PickLeg } from "@lib/types";
 import { marketLabel } from "@lib/market-label";
 import { displayTagsForBookie } from "@lib/value-at-bookie";
-import { legOddsDisplayLine } from "@lib/multi-combined";
+import { legPriceAtCardBookie } from "@lib/leg-card-odds";
 import { topBeneficiaryLastNames } from "@lib/injury-beneficiaries";
 import { useQuestionableSwaps } from "../hooks/useQuestionableSwaps";
 import { LastFiveTicks } from "./LastFiveTicks";
@@ -10,7 +10,7 @@ interface Props {
   leg: PickLeg;
   injuries: InjuryEntry[];
   picks: PickLeg[];
-  bookie?: string;
+  bookie: string;
   onTap: (leg: PickLeg) => void;
 }
 
@@ -25,7 +25,7 @@ export function MultiLegRow({ leg, injuries, picks, bookie, onTap }: Props) {
     inj && countedOut ? topBeneficiaryLastNames(inj, picks).join(", ") : "";
 
   const tags = displayTagsForBookie(leg, bookie);
-  const oddsLine = legOddsDisplayLine(leg, bookie);
+  const price = legPriceAtCardBookie(leg, bookie);
 
   return (
     <div className="py-3 px-1">
@@ -69,8 +69,12 @@ export function MultiLegRow({ leg, injuries, picks, bookie, onTap }: Props) {
             )}
           </div>
         </div>
-        <div className="text-right text-xs shrink-0 max-w-[50%] leading-snug text-white/80">
-          {oddsLine}
+        <div className="text-right shrink-0 max-w-[42%] leading-tight">
+          {price != null && (
+            <div className="text-xl font-semibold text-green-400">${price.toFixed(2)}</div>
+          )}
+          <div className="text-xs text-white/70">{bookie}</div>
+          <div className="text-xs text-white/55">Fair ${leg.fairPrice.toFixed(2)}</div>
         </div>
       </button>
       {leg.questionable && inj && (

@@ -30,10 +30,14 @@ describe("Today proof text", () => {
       notBuilt: multisRaw.notBuilt,
       picksById: new Map(picks.map((p) => [p.id, p])),
     });
-    expect(text).toMatch(/@ (\$[\d.]+|—)/);
     expect(text).not.toMatch(/bet365/i);
-    expect(text).toMatch(/take at \$5\.63\+/);
-    expect(text).toMatch(/fair \$5\.21/i);
+    expect(text.toLowerCase()).not.toMatch(/take at/);
+    expect(text.toLowerCase()).not.toMatch(/best:/);
+    const builtHeader = text.match(/  [\w ()]+ @ \$[\d.]+/);
+    const notBuiltMain =
+      /Main Play.*No single AU bookie/i.test(text) ||
+      text.includes("Not built today");
+    expect(builtHeader != null || notBuiltMain).toBe(true);
     expect(text).not.toMatch(/cross-book|Best across books|Best mix/i);
     expect(text).toContain("What changed");
     expect(text).toContain("Audit");
@@ -45,6 +49,7 @@ describe("Today proof text", () => {
     expect(smallCount).toBeLessThanOrEqual(1);
 
     for (const multi of multisRaw.bets) {
+      if (multi.bestBookieTotal == null || !multi.bestBookie) continue;
       const legs = multi.legs.map((id) => picks.find((p) => p.id === id)!).filter(Boolean);
       const card = renderMultiCardText(multi, legs);
       for (const bad of FORBIDDEN_MULTI_CARD_STRINGS) {

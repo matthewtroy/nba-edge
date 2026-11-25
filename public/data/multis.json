@@ -1,55 +1,42 @@
 {
-  "bets": [
+  "bets": [],
+  "notBuilt": [
     {
       "type": "mainPlay",
       "label": "Main Play",
-      "legs": [
-        "4397424-pts-10",
-        "5142718-pts-15",
-        "5041939-ast-5",
-        "3112335-pts-25"
-      ],
-      "combinedProbability": 0.18568224183600002,
-      "combinedFairPrice": 5.39,
-      "combinedTakeAt": 5.82,
-      "bookieTotals": {},
-      "summary": "4 starter main lines"
+      "reason": "No single AU bookie prices every leg"
     },
     {
-      "type": "q1Multi",
-      "label": "Q1 Multi",
-      "variant": "Value",
-      "legs": [
-        "4066372-q1reb-2",
-        "4251-q1reb-3",
-        "3064290-q1reb-2"
-      ],
-      "combinedProbability": 0.084717342,
-      "combinedFairPrice": 11.8,
-      "combinedTakeAt": 12.74,
-      "bookieTotals": {},
-      "summary": "Value Q1: fair 2.20–4.00, one leg/team"
+      "type": "booster",
+      "label": "Booster",
+      "reason": "Needs a Main Play first"
+    },
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "reason": "No single AU bookie prices every leg"
+    },
+    {
+      "type": "boostSgm",
+      "label": "Boost SGM",
+      "reason": "No single AU bookie prices every leg"
     },
     {
       "type": "longshot",
       "label": "Longshot",
-      "legs": [
-        "5107199-pts-30",
-        "4065648-pts-35"
-      ],
-      "combinedProbability": 0.011859,
-      "combinedFairPrice": 84.32,
-      "combinedTakeAt": 91.07,
-      "bookieTotals": {},
-      "summary": "One long leg per game"
-    }
-  ],
-  "notBuilt": [
+      "reason": "No single AU bookie prices every leg"
+    },
     {
       "type": "q1Multi",
       "label": "Q1 Multi",
       "variant": "Safe",
       "reason": "No Safe Q1 subset (p≥0.70, 3–6 teams, one leg/team)"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Value",
+      "reason": "No single AU bookie prices every leg"
     }
   ]
 }

@@ -1,7 +1,7 @@
 import type { MultiBet, MultiType, PickLeg } from "./types.js";
 import { multiHasClash } from "./clash.js";
 import { exposureViolation } from "./exposure.js";
-import { bestSingleBookieQuote } from "./single-bookie.js";
+import { bestFeedMultiQuote } from "./card-bookie.js";
 import {
   gateLineViolation,
   qualifiesMainPlayLeg,
@@ -180,12 +180,16 @@ export function gateMulti(
   }
 
   if (multi.bestBookie && multi.bestBookieTotal != null) {
-    const quote = bestSingleBookieQuote(legs, multi.combinedTakeAt);
-    if (!quote || quote.bookie !== multi.bestBookie) {
-      violations.push(`${label}: best bookie does not match single-bookie quote`);
-    } else if (quote.price < multi.combinedTakeAt) {
-      violations.push(`${label}: bookie total ${quote.price} below take-at ${multi.combinedTakeAt}`);
+    const feed = bestFeedMultiQuote(legs);
+    if (
+      !feed ||
+      feed.bookie !== multi.bestBookie ||
+      Math.abs(feed.total - multi.bestBookieTotal) > 0.02
+    ) {
+      violations.push(`${label}: AU bookie multi total mismatch`);
     }
+  } else {
+    violations.push(`${label}: no AU bookie multi total`);
   }
 
   return { ok: violations.length === 0, violations };
