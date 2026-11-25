@@ -192,12 +192,17 @@ export function parseGameLogsFromEspn(
         homeTeamId?: string;
         awayTeamId?: string;
         opponents?: { id: string; homeAway?: string }[];
+        opponent?: { id: string; displayName?: string };
+        team?: { id: string };
+        atVs?: string;
       }
     >;
   };
   const logs: PlayerGameLog[] = [];
   const regular = data.seasonTypes?.find((s) =>
-    s.categories?.some((c) => c.events?.length)
+    String((s as { displayName?: string }).displayName ?? "")
+      .toLowerCase()
+      .includes("regular")
   );
   const events = regular?.categories?.[0]?.events ?? [];
   for (const ev of events) {
@@ -214,16 +219,24 @@ export function parseGameLogsFromEspn(
       if (op.homeAway === "home") homeId = homeId ?? op.id;
       if (op.homeAway === "away") awayId = awayId ?? op.id;
     }
-    let opponentTeamId: string | undefined;
+    const metaTeamId = meta?.team?.id;
+    const gameTeamId = playerTeamId ?? metaTeamId;
+    let opponentTeamId: string | undefined = meta?.opponent?.id;
     let isHome: boolean | undefined;
-    if (playerTeamId && homeId && awayId) {
-      if (playerTeamId === homeId) {
-        opponentTeamId = awayId;
+    if (gameTeamId && homeId && awayId) {
+      if (gameTeamId === homeId) {
+        opponentTeamId = opponentTeamId ?? awayId;
         isHome = true;
-      } else if (playerTeamId === awayId) {
-        opponentTeamId = homeId;
+      } else if (gameTeamId === awayId) {
+        opponentTeamId = opponentTeamId ?? homeId;
         isHome = false;
       }
+    } else if (meta?.atVs === "vs" && homeId) {
+      isHome = true;
+      opponentTeamId = opponentTeamId ?? awayId;
+    } else if (meta?.atVs === "@" && awayId) {
+      isHome = false;
+      opponentTeamId = opponentTeamId ?? homeId;
     }
     logs.push({
       gameId: ev.eventId,
@@ -233,7 +246,8 @@ export function parseGameLogsFromEspn(
       ast,
       threes,
       date: meta?.gameDate ?? "",
-      teamId: playerTeamId,
+      teamId: gameTeamId,
+      opponent: meta?.opponent?.displayName,
       opponentTeamId,
       isHome,
       fga: num(stats[4]),

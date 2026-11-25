@@ -54,3 +54,49 @@ export function putH2hCached(
 ): void {
   cache[cacheKey(summary.playerId, summary.opponentTeamId)] = summary;
 }
+
+export interface H2hSeasonLogRow {
+  playerId: string;
+  season: number;
+  fetchedAt: string;
+  logs: import("./types.js").PlayerGameLog[];
+}
+
+export type H2hSeasonLogCacheFile = Record<string, H2hSeasonLogRow>;
+
+function seasonCacheKey(playerId: string, season: number): string {
+  return `${playerId}:${season}`;
+}
+
+/** `dataDir` is usually `public/data` (same as game-log cache). */
+export function h2hSeasonCachePath(dataDir: string): string {
+  return path.join(dataDir, "h2h-season-cache.json");
+}
+
+export function loadH2hSeasonCache(rootDir: string): H2hSeasonLogCacheFile {
+  const p = h2hSeasonCachePath(rootDir);
+  if (!fs.existsSync(p)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(p, "utf8")) as H2hSeasonLogCacheFile;
+  } catch {
+    return {};
+  }
+}
+
+export function saveH2hSeasonCache(rootDir: string, file: H2hSeasonLogCacheFile): void {
+  const p = h2hSeasonCachePath(rootDir);
+  fs.mkdirSync(path.dirname(p), { recursive: true });
+  fs.writeFileSync(p, JSON.stringify(file, null, 2));
+}
+
+export function getH2hSeasonCached(
+  cache: H2hSeasonLogCacheFile,
+  playerId: string,
+  season: number
+): H2hSeasonLogRow | undefined {
+  return cache[seasonCacheKey(playerId, season)];
+}
+
+export function putH2hSeasonCached(cache: H2hSeasonLogCacheFile, row: H2hSeasonLogRow): void {
+  cache[seasonCacheKey(row.playerId, row.season)] = row;
+}

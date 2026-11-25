@@ -38,6 +38,7 @@ export interface ModelPlayer extends PlayerProfile {
   gameId: string;
   opponent: string;
   opponentTeamId?: string;
+  h2hLogs?: PlayerGameLog[];
 }
 
 export interface ModelRunInput {
@@ -231,6 +232,7 @@ export function runModel(input: ModelRunInput): {
           headshotUrl: p.headshotUrl,
           stats: ctxAdj,
           logs: p.gameLogs,
+          h2hLogs: p.h2hLogs,
           reasons: playerReasons,
           tags: [],
           q1Exclusions,

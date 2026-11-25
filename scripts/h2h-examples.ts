@@ -2,8 +2,9 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import type { PickLeg, SlateGame } from "../lib/types.js";
-import { loadGameLogCache } from "../lib/game-log-cache.js";
 import { filterH2hLogs, h2hReasonPhrase } from "../lib/h2h-reason.js";
+import { ensureH2hSeasonLogs, h2hMeetingsPerEspnSeason } from "../lib/h2h-season-logs.js";
+import type { PlayerGameLog } from "../lib/types.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -18,11 +19,27 @@ function opponentTeamIdForLeg(leg: PickLeg, slate: SlateGame[]): string | undefi
   return leg.team === game.homeTeam ? game.awayTeamId : game.homeTeamId;
 }
 
-function main(): void {
+async function main(): Promise<void> {
   const slateDate = process.argv[2] ?? "2026-11-26";
-  const picks = loadJson<PickLeg[]>(path.join(root, "public/data", slateDate, "picks.json"));
-  const slate = loadJson<SlateGame[]>(path.join(root, "public/data", slateDate, "slate.json"));
-  const cache = loadGameLogCache(path.join(root, "public/data"));
+  const asOf = new Date(`${slateDate}T12:00:00.000Z`);
+  const dataDir = path.join(root, "public/data");
+  const picks = loadJson<PickLeg[]>(path.join(dataDir, slateDate, "picks.json"));
+  const slate = loadJson<SlateGame[]>(path.join(dataDir, slateDate, "slate.json"));
+  const logByPlayer = new Map<string, PlayerGameLog[]>();
+  const loadLogs = async (playerId: string) => {
+    let logs = logByPlayer.get(playerId);
+    if (!logs) {
+      logs = await ensureH2hSeasonLogs({
+        rootDir: dataDir,
+        playerId,
+        asOf,
+        fetchMissing: true,
+      });
+      logByPlayer.set(playerId, logs);
+    }
+    return logs;
+  };
+
   const examples: {
     player: string;
     market: string;
@@ -31,14 +48,24 @@ function main(): void {
     meetings: number;
     text: string;
   }[] = [];
+  let sengunSeasonCounts: Record<number, number> | undefined;
+  let sengunNote: string | undefined;
 
   const sengun = picks.find(
     (l) => /sengün|sengun/i.test(l.playerName) && l.market === "ast"
   );
   if (sengun) {
-    const logs = cache[sengun.playerId]?.logs ?? [];
+    const logs = await loadLogs(sengun.playerId);
     const oppId = opponentTeamIdForLeg(sengun, slate);
     const meetings = oppId ? filterH2hLogs(logs, oppId, sengun.opponent).length : 0;
+    if (oppId) {
+      sengunSeasonCounts = h2hMeetingsPerEspnSeason(
+        logs,
+        oppId,
+        sengun.opponent,
+        asOf
+      );
+    }
     const text =
       oppId &&
       h2hReasonPhrase({
@@ -50,23 +77,16 @@ function main(): void {
         opponentName: sengun.opponent,
         seasonAvg: sengun.seasonAvg,
       });
-    examples.push({
-      player: sengun.playerName,
-      market: sengun.market,
-      line: sengun.line,
-      opponent: sengun.opponent,
-      meetings,
-      text:
-        text ??
-        (meetings < 3
-          ? `No h2h copy (${meetings} ESPN meetings vs ${sengun.opponent} in cache; need ≥3)`
-          : "No standout pattern"),
-    });
+    sengunNote =
+      text ??
+      (meetings < 3
+        ? `No h2h copy (${meetings} ESPN meetings vs ${sengun.opponent}; need ≥3)`
+        : "No standout pattern");
   }
 
   for (const leg of picks) {
     if (examples.length >= 5) break;
-    const logs = cache[leg.playerId]?.logs ?? [];
+    const logs = await loadLogs(leg.playerId);
     const oppId = opponentTeamIdForLeg(leg, slate);
     if (!oppId) continue;
     const meetings = filterH2hLogs(logs, oppId, leg.opponent).length;
@@ -93,7 +113,21 @@ function main(): void {
     });
   }
 
-  console.log(JSON.stringify({ slateDate, examples: examples.slice(0, 5) }, null, 2));
+  console.log(
+    JSON.stringify(
+      {
+        slateDate,
+        sengunVsSunsByEspnSeason: sengunSeasonCounts,
+        sengunNote,
+        examples: examples.slice(0, 5),
+      },
+      null,
+      2
+    )
+  );
 }
 
-main();
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

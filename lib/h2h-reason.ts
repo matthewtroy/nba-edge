@@ -45,7 +45,8 @@ export function filterH2hLogs(
 export function summarizeH2hMeetings(
   playerId: string,
   opponentTeamId: string,
-  logs: PlayerGameLog[]
+  logs: PlayerGameLog[],
+  opponentName?: string
 ): H2hMeetingSummary | null {
   const vs = filterH2hLogs(logs, opponentTeamId, opponentName);
   if (vs.length < 3) return null;
@@ -97,7 +98,7 @@ export function h2hReasonPhrase(input: {
 }): string | undefined {
   const { defendingTeamId } = input;
   if (!defendingTeamId) return undefined;
-  const vs = filterH2hLogs(input.logs, defendingTeamId);
+  const vs = filterH2hLogs(input.logs, defendingTeamId, input.opponentName);
   if (vs.length < 3) return undefined;
 
   const h2hAvg = vs.reduce((s, g) => s + (statValue(g, input.market) ?? 0), 0) / vs.length;

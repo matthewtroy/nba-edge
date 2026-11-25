@@ -120,6 +120,7 @@ import {
   normalizeLogsForPlayer,
   saveGameLogCache,
 } from "../lib/game-log-cache.js";
+import { ensureH2hSeasonLogs } from "../lib/h2h-season-logs.js";
 
 const ET = "America/New_York";
 
@@ -647,6 +648,25 @@ export async function runLivePipeline(
     } catch (e) {
       console.warn("tracking refresh failed:", e);
     }
+  }
+
+  try {
+    const byId = new Map(players.map((p) => [p.id, p]));
+    let h2hReady = 0;
+    await mapPool([...byId.values()], 4, async (p) => {
+      const merged = await ensureH2hSeasonLogs({
+        rootDir: outDir,
+        playerId: p.id,
+        asOf: now,
+      });
+      if (merged.length) {
+        p.h2hLogs = merged;
+        h2hReady += 1;
+      }
+    });
+    console.log(`h2h season logs: ${h2hReady}/${byId.size} players (${3} ESPN seasons)`);
+  } catch (e) {
+    console.warn("h2h season logs:", e instanceof Error ? e.message : e);
   }
 
   const indexEntries: import("../lib/data-index.js").DataIndexDateEntry[] = [];

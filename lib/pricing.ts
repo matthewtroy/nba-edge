@@ -78,6 +78,7 @@ export function buildLegsForPlayer(
     headshotUrl: string;
     stats: ProjectedStats;
     logs: PlayerGameLog[];
+    h2hLogs?: PlayerGameLog[];
     reasons: string[];
     tags: string[];
     flags: Partial<PickLeg> & {
@@ -264,7 +265,7 @@ export function buildLegsForPlayer(
     leg.reasons = buildLegReasons({
       leg,
       logs: modelLogs,
-      h2hLogs: ctx.logs,
+      h2hLogs: ctx.h2hLogs ?? ctx.logs,
       seasonAvg,
       defense: ctx.defense,
       defendingTeamId: ctx.defendingTeamId,

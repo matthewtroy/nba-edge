@@ -243,6 +243,7 @@ export interface PlayerGameLog {
   date: string;
   teamId?: string;
   opponentTeamId?: string;
+  opponent?: string;
   isHome?: boolean;
   fga?: number;
   fta?: number;

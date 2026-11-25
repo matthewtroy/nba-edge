@@ -42,6 +42,7 @@ export async function fetchRoster(teamId: string) {
   return fetchJson<unknown>(`${BASE}/teams/${teamId}/roster`);
 }
 
-export async function fetchPlayerGameLog(athleteId: string) {
-  return fetchJson<unknown>(`${LOG_BASE}/athletes/${athleteId}/gamelog`);
+export async function fetchPlayerGameLog(athleteId: string, season?: number) {
+  const q = season != null ? `?season=${season}` : "";
+  return fetchJson<unknown>(`${LOG_BASE}/athletes/${athleteId}/gamelog${q}`);
 }
