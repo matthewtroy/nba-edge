@@ -71,12 +71,6 @@ export function LegSheet({ leg, picks = [], slate, myBookie = "bet365", onClose,
               {leg.seasonAvg.ast.toFixed(1)}
             </span>
           )}
-          {leg.lastFiveAvg && (
-            <span>
-              L5 {leg.lastFiveAvg.pts.toFixed(1)}/{leg.lastFiveAvg.reb.toFixed(1)}/
-              {leg.lastFiveAvg.ast.toFixed(1)}
-            </span>
-          )}
           {leg.projectedMinutes != null && <span>{leg.projectedMinutes.toFixed(0)} min</span>}
         </div>
         <p className="text-xs text-white/75 mb-1.5">

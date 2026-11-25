@@ -7,6 +7,9 @@ export const MARKET_WEIGHT = 1 - MODEL_WEIGHT;
 /** Matchup pp adjustment OFF until explicitly enabled in product */
 export const MATCHUP_ENABLED = false;
 
+/** Matchup/pace copy on reasonLine only (no probability adjust) */
+export const MATCHUP_REASONS_ENABLED = true;
+
 /** 2026–27 regular season opening window (UTC); backfill counts games from this date only */
 export const NBA_SEASON_OPENING_UTC = "2026-10-21";
 

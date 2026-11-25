@@ -25,7 +25,7 @@ import {
   q1SeasonHitFraction,
 } from "./leg-history.js";
 import { applyMatchupToModelP, matchupDeltaFromRank } from "./matchup-adjust.js";
-import { buildShortLegReason } from "./leg-display.js";
+import { buildLegReasonLine } from "./leg-display.js";
 import { isInjuryRedistributionReason } from "./injury-reason.js";
 import type { DefenseRatingsBundle } from "./defense-ratings.js";
 import { defenseRankFor } from "./defense-ratings.js";
@@ -88,6 +88,7 @@ export function buildLegsForPlayer(
     q1Exclusions?: string[];
     defense?: DefenseRatingsBundle;
     defendingTeamId?: string;
+    playerTeamId?: string;
     playerPosition?: string;
     seasonMinutes?: number;
     injuryAngle?: boolean;
@@ -247,7 +248,14 @@ export function buildLegsForPlayer(
       ...(seasonAvg ? { seasonAvg } : {}),
       ...(lastFiveAvg ? { lastFiveAvg } : {}),
     };
-    leg.reasonLine = buildShortLegReason(leg, modelLogs);
+    leg.reasonLine = buildLegReasonLine({
+      leg,
+      logs: modelLogs,
+      defense: ctx.defense,
+      defendingTeamId: ctx.defendingTeamId,
+      playerTeamId: ctx.playerTeamId,
+      playerPosition: ctx.playerPosition,
+    });
     legs.push(leg);
   };
 

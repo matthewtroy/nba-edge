@@ -5,8 +5,10 @@ import {
   qualifiesCrossBoostLeg,
   qualifiesLongshotLeg,
   qualifiesMainPlayLeg,
-  qualifiesMainPlayLegRelaxed,
+  mainPlayStructuralOk,
 } from "./main-play-eligibility.js";
+import { legBookiePriceInBand } from "./leg-bookie-band.js";
+import { passesFormGuard } from "./form-guard.js";
 import {
   enforceExposureCapWithDrops,
   playerNamesOnMulti,
@@ -369,7 +371,10 @@ function buildMainPlay(
   let maxClash = 0;
 
   for (const bookie of bookiesByCoverage(eligible)) {
-    const pool = mainPlayPoolAtBookie(eligible, bookie, minEdgeFraction);
+    const banded = eligible.filter((l) =>
+      legBookiePriceInBand(l, bookie, 1.4, 2.5)
+    );
+    const pool = mainPlayPoolAtBookie(banded, bookie, minEdgeFraction);
     if (pool.length > maxEdgePool) {
       maxEdgePool = pool.length;
       maxEdgeBookie = bookie;
@@ -430,14 +435,11 @@ function buildMainPlay(
   };
   };
 
-  const strict = picks.filter(qualifiesMainPlayLeg);
-  const strictOut = attempt(strict);
-  if (strictOut.bet) return { ...strictOut, confluenceRelaxed: false };
-
-  const relaxed = picks.filter(qualifiesMainPlayLegRelaxed);
-  const relaxedOut = attempt(relaxed);
-  if (relaxedOut.bet) return { ...relaxedOut, confluenceRelaxed: true };
-  return relaxedOut;
+  const structural = picks.filter(
+    (l) => mainPlayStructuralOk(l) && passesFormGuard(l)
+  );
+  const out = attempt(structural);
+  return { ...out, confluenceRelaxed: false };
 }
 
 function findMainPlaySubset(
@@ -543,7 +545,7 @@ function boostMainLegs(
       const up = nextRung(leg, picks);
       if (
         up &&
-        up.fairPrice <= 4 &&
+        legBookiePriceInBand(up, bookie, MIN_LEG_FAIR, 4) &&
         meetsFloor(up) &&
         !hasCheckNews(up)
       ) {
@@ -832,14 +834,24 @@ function buildCrossGameSgm(
   picks: PickLeg[],
   minEdgeFraction: number
 ): { bet: MultiBet | null; reason: string } {
-  const eligible = picks.filter(
-    (l) => qualifiesCrossBoostLeg(l) && l.fairPrice >= 1.35 && l.fairPrice <= 2.5
+  const structural = picks.filter(
+    (l) =>
+      l.starterEligible === true &&
+      !l.market.startsWith("q1") &&
+      passesFormGuard(l)
   );
-  if (eligible.length < 4) {
-    const reason = `Need 2+ games with starter main lines fair 1.35–2.50 (${eligible.length} legs)`;
+  const eligible: PickLeg[] = [];
+  for (const bookie of bookiesByCoverage(structural)) {
+    for (const l of structural) {
+      if (qualifiesCrossBoostLeg(l, bookie)) eligible.push(l);
+    }
+  }
+  const eligibleUnique = [...new Map(eligible.map((l) => [l.id, l])).values()];
+  if (eligibleUnique.length < 4) {
+    const reason = `Need 2+ games with starter main lines 1.35–2.50 @ bookie (${eligibleUnique.length} legs)`;
     pushMultiBuildTrace({
       type: "crossGameSgm",
-      eligible: eligible.length,
+      eligible: eligibleUnique.length,
       bestEdgePool: 0,
       clashCandidates: 0,
       rangeCandidates: 0,
@@ -859,8 +871,12 @@ function buildCrossGameSgm(
   let maxEdgeBookie = "";
   let maxRange = 0;
 
-  for (const bookie of bookiesByCoverage(eligible)) {
-    const edge = eligible.filter((l) => legMeetsBookieEdge(l, bookie, minEdgeFraction));
+  for (const bookie of bookiesByCoverage(eligibleUnique)) {
+    const edge = eligibleUnique.filter(
+      (l) =>
+        qualifiesCrossBoostLeg(l, bookie) &&
+        legMeetsBookieEdge(l, bookie, minEdgeFraction)
+    );
     const priced = edge.map((l) => asBookieLeg(l, bookie)).filter(Boolean) as PickLeg[];
     if (priced.length > maxEdge) {
       maxEdge = priced.length;
@@ -917,10 +933,10 @@ function buildCrossGameSgm(
   }
 
   if (!bestAcross) {
-    const reason = `No cross-game combo @ edge (eligible ${eligible.length}, best edge-pool ${maxEdgeBookie}=${maxEdge}, range-cands ${maxRange})`;
+    const reason = `No cross-game combo @ edge (eligible ${eligibleUnique.length}, best edge-pool ${maxEdgeBookie}=${maxEdge}, range-cands ${maxRange})`;
     pushMultiBuildTrace({
       type: "crossGameSgm",
-      eligible: eligible.length,
+      eligible: eligibleUnique.length,
       bestEdgePool: maxEdge,
       bestBookie: maxEdgeBookie,
       clashCandidates: 0,
@@ -934,7 +950,7 @@ function buildCrossGameSgm(
   const { p, fair, takeAt } = combinedPrice(bestAcross.legs);
   pushMultiBuildTrace({
     type: "crossGameSgm",
-    eligible: eligible.length,
+    eligible: eligibleUnique.length,
     bestEdgePool: maxEdge,
     bestBookie: bestAcross.bookie,
     clashCandidates: 0,
@@ -962,11 +978,11 @@ function buildBoostSgm(
   picks: PickLeg[],
   minEdgeFraction: number
 ): { bet: MultiBet | null; reason: string } {
-  const eligible = picks.filter(
+  const structural = picks.filter(
     (l) =>
-      l.fairPrice >= 1.5 &&
-      l.fairPrice <= 3.0 &&
-      qualifiesCrossBoostLeg(l)
+      l.starterEligible === true &&
+      !l.market.startsWith("q1") &&
+      passesFormGuard(l)
   );
 
   let bestAcross: {
@@ -979,8 +995,13 @@ function buildBoostSgm(
   let maxEdgeBookie = "";
   let maxRange = 0;
 
-  for (const bookie of bookiesByCoverage(eligible)) {
-    const edge = eligible.filter((l) => legMeetsBookieEdge(l, bookie, minEdgeFraction));
+  for (const bookie of bookiesByCoverage(structural)) {
+    const edge = structural.filter(
+      (l) =>
+        legBookiePriceInBand(l, bookie, 1.5, 3.0) &&
+        qualifiesCrossBoostLeg(l, bookie) &&
+        legMeetsBookieEdge(l, bookie, minEdgeFraction)
+    );
     const priced = edge.map((l) => asBookieLeg(l, bookie)).filter(Boolean) as PickLeg[];
     if (priced.length > maxEdge) {
       maxEdge = priced.length;
@@ -1032,10 +1053,10 @@ function buildBoostSgm(
   }
 
   if (!bestAcross) {
-    const reason = `No same-game trio @ edge (eligible ${eligible.length}, best pool ${maxEdgeBookie}=${maxEdge}, range-cands ${maxRange})`;
+    const reason = `No same-game trio @ edge (eligible ${structural.length}, best pool ${maxEdgeBookie}=${maxEdge}, range-cands ${maxRange})`;
     pushMultiBuildTrace({
       type: "boostSgm",
-      eligible: eligible.length,
+      eligible: structural.length,
       bestEdgePool: maxEdge,
       bestBookie: maxEdgeBookie,
       clashCandidates: 0,
@@ -1049,7 +1070,7 @@ function buildBoostSgm(
   const { p, fair, takeAt } = combinedPrice(bestAcross.legs);
   pushMultiBuildTrace({
     type: "boostSgm",
-    eligible: eligible.length,
+    eligible: structural.length,
     bestEdgePool: maxEdge,
     bestBookie: bestAcross.bookie,
     clashCandidates: 0,

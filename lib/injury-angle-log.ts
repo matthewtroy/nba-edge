@@ -13,7 +13,8 @@ export function logInjuryAngleLegs(picks: PickLeg[], slateDate?: string): void {
   });
   console.log(`injury-angle legs (${dateLabel}): ${legs.length} total`);
   for (const l of legs) {
-    const injuryReason = pickPrimaryInjuryReason(l.reasons) ?? l.reasonLine ?? "";
+    const injuryReason =
+      pickPrimaryInjuryReason(l.reasons, l.market) ?? l.reasonLine ?? "";
     const edge =
       l.bestPrice != null && l.bestPrice > 1
         ? ((l.probability - 1 / l.bestPrice) * 100).toFixed(1)

@@ -1,6 +1,7 @@
 import type { Market, PickLeg } from "./types.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
 import { passesFormGuard } from "./form-guard.js";
+import { legBookiePriceInBand } from "./leg-bookie-band.js";
 
 function isCoreMarket(market: string): boolean {
   return market === "pts" || market === "reb" || market === "ast";
@@ -54,33 +55,35 @@ export function gateLineViolation(
   return null;
 }
 
-function mainPlayBaseOk(leg: PickLeg): boolean {
+export function mainPlayStructuralOk(leg: PickLeg): boolean {
   return (
     leg.starterEligible === true &&
     isMainPlayStatLine(leg.market, leg.line) &&
     isCoreMarket(leg.market) &&
     leg.probability >= 0.6 &&
-    leg.fairPrice >= 1.4 &&
-    leg.fairPrice <= 2.5 &&
     !leg.ageB2B &&
     !hasCheckNews(leg)
   );
 }
 
-export function qualifiesMainPlayLeg(leg: PickLeg): boolean {
-  return mainPlayBaseOk(leg) && passesFormGuard(leg);
+export function qualifiesMainPlayLeg(leg: PickLeg, bookie?: string): boolean {
+  return (
+    mainPlayStructuralOk(leg) &&
+    passesFormGuard(leg) &&
+    legBookiePriceInBand(leg, bookie, 1.4, 2.5)
+  );
 }
 
-export function qualifiesMainPlayLegRelaxed(leg: PickLeg): boolean {
-  return mainPlayBaseOk(leg) && passesFormGuard(leg);
+export function qualifiesMainPlayLegRelaxed(leg: PickLeg, bookie?: string): boolean {
+  return qualifiesMainPlayLeg(leg, bookie);
 }
 
-export function qualifiesCrossBoostLeg(leg: PickLeg): boolean {
+export function qualifiesCrossBoostLeg(leg: PickLeg, bookie?: string): boolean {
   return (
     leg.starterEligible === true &&
     isSgmMainLine(leg.market, leg.line) &&
     !isQ1Market(leg.market) &&
-    leg.fairPrice >= 1.35 &&
+    legBookiePriceInBand(leg, bookie, 1.35, 2.5) &&
     passesFormGuard(leg)
   );
 }

@@ -102,7 +102,7 @@ function checkTypeRules(
         `Main Play: bookie total ${bookTotal != null ? bookTotal.toFixed(2) : "?"} not $7–$20`
       );
     }
-    if (!legs.every((l) => qualifiesMainPlayLeg(l))) {
+    if (!legs.every((l) => qualifiesMainPlayLeg(l, multi.bestBookie))) {
       issues.push("Main Play: leg fails starter/main-line/eligibility");
     }
   }
@@ -112,7 +112,7 @@ function checkTypeRules(
   if (type === "boostSgm") {
     if (legs.length !== 3) issues.push("Best SGM: need 3 legs");
     if (combo < 7 || combo > 15) issues.push(`Best SGM: bookie total ${combo.toFixed(2)} not 7–15`);
-    if (!legs.every((l) => qualifiesCrossBoostLeg(l))) {
+    if (!legs.every((l) => qualifiesCrossBoostLeg(l, multi.bestBookie))) {
       issues.push("Best SGM: leg fails starter main-line eligibility");
     }
     for (const leg of legs) {

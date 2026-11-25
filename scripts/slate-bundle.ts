@@ -44,7 +44,8 @@ export interface SlateBundleInput {
   matchupSignalsEnabled?: boolean;
 }
 
-export function filterPlayersForSlate(
+/** Drop players not on this slate and pin gameId / opponent to today's slate game (not stale IDs). */
+export function alignPlayersToSlate(
   players: ModelPlayer[],
   slate: SlateGame[]
 ): ModelPlayer[] {
@@ -53,7 +54,28 @@ export function filterPlayersForSlate(
     gameByTeam.set(g.homeTeamId, g);
     gameByTeam.set(g.awayTeamId, g);
   }
-  return players.filter((p) => gameByTeam.has(p.teamId));
+  const slateIds = new Set(slate.map((g) => g.id));
+  return players
+    .filter((p) => gameByTeam.has(p.teamId))
+    .map((p) => {
+      const game = gameByTeam.get(p.teamId)!;
+      const home = game.homeTeamId === p.teamId;
+      return {
+        ...p,
+        gameId: game.id,
+        opponent: home ? game.awayTeam : game.homeTeam,
+        opponentTeamId: home ? game.awayTeamId : game.homeTeamId,
+      };
+    })
+    .filter((p) => slateIds.has(p.gameId));
+}
+
+/** @deprecated use alignPlayersToSlate */
+export function filterPlayersForSlate(
+  players: ModelPlayer[],
+  slate: SlateGame[]
+): ModelPlayer[] {
+  return alignPlayersToSlate(players, slate);
 }
 
 export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | null {

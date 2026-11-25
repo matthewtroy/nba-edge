@@ -75,8 +75,10 @@ function applyExplicitReboundRedistribution(
       const only = bigs[0];
       const cur = adjusted.get(only.id);
       if (cur) {
-        const boost = Math.min(rebPool, cur.reb * 0.35);
+        const boost = Math.min(rebPool, cur.reb * 0.6);
         cur.reb += boost;
+        const extraMin = Math.min(4, injuredMins * 0.12);
+        if (extraMin > 0.5) cur.minutes += extraMin;
         adjusted.set(only.id, cur);
         addReason(reasons, only.id, `${lastName} out → only big left: +${boost.toFixed(1)} reb`);
       }

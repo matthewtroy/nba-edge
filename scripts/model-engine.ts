@@ -223,6 +223,7 @@ export function runModel(input: ModelRunInput): {
           q1Exclusions,
           defense: input.defense,
           defendingTeamId: p.opponentTeamId,
+          playerTeamId: p.teamId,
           playerPosition: p.position,
           seasonMinutes,
           injuryAngle,
@@ -271,7 +272,10 @@ export function runModel(input: ModelRunInput): {
     }
   }
 
-  const eligiblePicks = picks.filter((leg) => {
+  const slateGameIds = new Set(input.slate.map((g) => g.id));
+  const slatePicks = picks.filter((leg) => slateGameIds.has(leg.gameId));
+
+  const eligiblePicks = slatePicks.filter((leg) => {
     const p = input.players.find((x) => x.id === leg.playerId);
     if (!p) return false;
     return !isPlayerExcluded({

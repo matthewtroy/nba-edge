@@ -1,6 +1,9 @@
 import type { Market, PickLeg, PlayerGameLog } from "./types.js";
 import { lastFiveVsLine } from "./leg-history.js";
-import { pickPrimaryInjuryReason } from "./injury-reason.js";
+import { injuryReasonForMarket } from "./injury-reason.js";
+import type { DefenseRatingsBundle } from "./defense-ratings.js";
+import { defenseRankFor, paceRank } from "./defense-ratings.js";
+import { MATCHUP_REASONS_ENABLED } from "./pricing-config.js";
 
 /** Tags shown on leg rows / sheets (model-only tags stay internal). */
 export function visibleLegTags(tags: string[]): string[] {
@@ -8,7 +11,9 @@ export function visibleLegTags(tags: string[]): string[] {
 }
 
 export function visibleLegReasons(reasons: string[]): string[] {
-  return reasons.filter((r) => r.toLowerCase() !== "boards shared");
+  return reasons.filter(
+    (r) => r.toLowerCase() !== "boards shared" && !/voids if out/i.test(r)
+  );
 }
 
 function hitCountL10(logs: PlayerGameLog[], market: Market, line: number): number | null {
@@ -32,21 +37,82 @@ function hitCountL10(logs: PlayerGameLog[], market: Market, line: number): numbe
   return hits;
 }
 
-/** One short betting reason: injury first; form only if 7+/10 or 5/5 at line. */
-export function buildShortLegReason(leg: PickLeg, logs: PlayerGameLog[]): string | undefined {
-  const injury = pickPrimaryInjuryReason(leg.reasons);
-  if (injury) return injury.slice(0, 72);
-  const hits = hitCountL10(logs, leg.market, leg.line);
+function matchupPhrase(
+  defense: DefenseRatingsBundle | undefined,
+  defendingTeamId: string | undefined,
+  playerPosition: string | undefined,
+  market: Market
+): string | undefined {
+  if (!MATCHUP_REASONS_ENABLED || !defense || !defendingTeamId) return undefined;
+  const rank = defenseRankFor(defense, defendingTeamId, playerPosition, market);
+  if (rank == null || rank > 8) return undefined;
+  return `Opp allows ${market.startsWith("q1") ? market.slice(2) : market} rank ${rank}`;
+}
+
+function pacePhrase(
+  defense: DefenseRatingsBundle | undefined,
+  teamId: string | undefined,
+  defendingTeamId: string | undefined
+): string | undefined {
+  if (!MATCHUP_REASONS_ENABLED || !defense || !teamId || !defendingTeamId) return undefined;
+  const p1 = paceRank(defense, teamId);
+  const p2 = paceRank(defense, defendingTeamId);
+  if (p1 == null || p2 == null) return undefined;
+  if (p1 <= 8 && p2 <= 8) return `Pace top-8 both (#${p1}, #${p2})`;
+  return undefined;
+}
+
+function formPhrase(logs: PlayerGameLog[], market: Market, line: number): string | undefined {
+  const hits = hitCountL10(logs, market, line);
   if (hits != null && hits >= 7) {
     return `Hit ${hits} of last 10 at this line`;
   }
-  const l5 = lastFiveVsLine(logs, leg.market, leg.line).filter((t) => t !== "na");
+  const l5 = lastFiveVsLine(logs, market, line).filter((t) => t !== "na");
   if (l5.length === 5 && l5.every((t) => t === "hit")) {
     return "Hit 5 of last 5 at this line";
   }
   return undefined;
 }
 
+/** Up to two reasons, max ~80 chars: injury (stat-matched), matchup/pace, form. */
+export function buildLegReasonLine(input: {
+  leg: PickLeg;
+  logs: PlayerGameLog[];
+  defense?: DefenseRatingsBundle;
+  defendingTeamId?: string;
+  playerTeamId?: string;
+  playerPosition?: string;
+}): string | undefined {
+  const parts: string[] = [];
+  const inj = injuryReasonForMarket(input.leg.reasons, input.leg.market);
+  if (inj) parts.push(inj);
+  const matchup = matchupPhrase(
+    input.defense,
+    input.defendingTeamId,
+    input.playerPosition,
+    input.leg.market
+  );
+  if (matchup && parts.length < 2) parts.push(matchup);
+  else if (parts.length < 2) {
+    const pace = pacePhrase(input.defense, input.playerTeamId, input.defendingTeamId);
+    if (pace) parts.push(pace);
+  }
+  if (parts.length < 2) {
+    const form = formPhrase(input.logs, input.leg.market, input.leg.line);
+    if (form) parts.push(form);
+  }
+  if (!parts.length) return undefined;
+  return parts.join(" · ").slice(0, 80);
+}
+
+/** @deprecated use buildLegReasonLine */
+export function buildShortLegReason(leg: PickLeg, logs: PlayerGameLog[]): string | undefined {
+  return buildLegReasonLine({
+    leg,
+    logs,
+  });
+}
+
 export function countLegsWithInjuryReason(picks: PickLeg[]): number {
-  return picks.filter((l) => pickPrimaryInjuryReason(l.reasons) != null).length;
+  return picks.filter((l) => injuryReasonForMarket(l.reasons, l.market) != null).length;
 }
