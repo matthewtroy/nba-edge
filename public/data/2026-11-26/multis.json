@@ -5,14 +5,14 @@
       "label": "Main Play",
       "legs": [
         "3136195-pts-20",
-        "4903027-reb-7",
         "4431671-reb-5",
+        "4903027-reb-7",
         "4601025-pts-10",
         "4433249-reb-10"
       ],
-      "combinedProbability": 0.20325733585415995,
-      "combinedFairPrice": 4.92,
-      "combinedTakeAt": 5.31,
+      "combinedProbability": 0.20268558526103997,
+      "combinedFairPrice": 4.93,
+      "combinedTakeAt": 5.32,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 8.26,
       "bookieTotals": {
@@ -25,141 +25,20 @@
       "label": "Booster",
       "legs": [
         "3136195-pts-30",
-        "4903027-reb-7",
         "4431671-reb-7",
+        "4903027-reb-7",
         "4601025-pts-15",
         "4433249-reb-10"
       ],
-      "combinedProbability": 0.0182648521242,
-      "combinedFairPrice": 54.75,
-      "combinedTakeAt": 59.13,
+      "combinedProbability": 0.0182134741998,
+      "combinedFairPrice": 54.9,
+      "combinedTakeAt": 59.29,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 87.94,
       "bookieTotals": {
         "Ladbrokes": 87.94
       },
       "summary": "Main Play +1 rung when Main leg ≤$4 at bookie, else same rung"
-    },
-    {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "legs": [
-        "4601025-pts-10",
-        "3917376-pts-20",
-        "4396971-reb-7",
-        "4433249-pts-10",
-        "3136195-pts-20",
-        "3908809-pts-25",
-        "4683778-pts-15",
-        "4432816-pts-15",
-        "4903027-reb-7",
-        "4065733-pts-25",
-        "4433192-pts-10",
-        "3136193-pts-25",
-        "4683021-ast-5",
-        "5104157-pts-30"
-      ],
-      "combinedProbability": 0.00399231669279957,
-      "combinedFairPrice": 250.48,
-      "combinedTakeAt": 270.52,
-      "bestBookie": "Ladbrokes",
-      "bestBookieTotal": 1099.2,
-      "bookieTotals": {
-        "Ladbrokes": 1099.2
-      },
-      "crossGameGroups": [
-        {
-          "gameId": "401909317",
-          "status": "included",
-          "legs": [
-            "4601025-pts-10",
-            "3917376-pts-20"
-          ]
-        },
-        {
-          "gameId": "401909318",
-          "status": "included",
-          "legs": [
-            "4396971-reb-7",
-            "4433249-pts-10"
-          ]
-        },
-        {
-          "gameId": "401909319",
-          "status": "included",
-          "legs": [
-            "3136195-pts-20",
-            "3908809-pts-25"
-          ]
-        },
-        {
-          "gameId": "401909320",
-          "status": "included",
-          "legs": [
-            "4683778-pts-15",
-            "4432816-pts-15"
-          ]
-        },
-        {
-          "gameId": "401909321",
-          "status": "included",
-          "legs": [
-            "4903027-reb-7",
-            "4065733-pts-25"
-          ]
-        },
-        {
-          "gameId": "401909322",
-          "status": "excluded",
-          "legs": [],
-          "excludedReason": "Nets @ Bucks: need 2+ legs @ Ladbrokes (found 0)."
-        },
-        {
-          "gameId": "401909323",
-          "status": "included",
-          "legs": [
-            "4433192-pts-10",
-            "3136193-pts-25"
-          ]
-        },
-        {
-          "gameId": "401909324",
-          "status": "excluded",
-          "legs": [],
-          "excludedReason": "Kings @ Warriors: no clash-free 2–3 leg combo @ Ladbrokes."
-        },
-        {
-          "gameId": "401909325",
-          "status": "included",
-          "legs": [
-            "4683021-ast-5",
-            "5104157-pts-30"
-          ]
-        }
-      ],
-      "summary": "2+ games, 2–3 legs/game, one bookie (toggle games on card)"
-    },
-    {
-      "type": "boostSgm",
-      "label": "Best SGM",
-      "legs": [
-        "3136195-pts-20",
-        "3908809-ast-5",
-        "3992-pts-20"
-      ],
-      "combinedProbability": 0.224879424,
-      "combinedFairPrice": 4.45,
-      "combinedTakeAt": 4.81,
-      "bestBookie": "Ladbrokes",
-      "bestBookieTotal": 7.37,
-      "bookieTotals": {
-        "Sportsbet": 7.82,
-        "TAB": 8,
-        "Ladbrokes": 7.37,
-        "PointsBet": 7.93,
-        "Unibet": 8
-      },
-      "summary": "Best 3–4 leg same-game multi in $7–15"
     },
     {
       "type": "q1Multi",
@@ -198,6 +77,38 @@
     }
   ],
   "notBuilt": [
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "reason": "Clash rule: reb (Moussa Diabate) vs opp pts (Jalen Smith)",
+      "players": [
+        "Pelle Larsson",
+        "Jaylen Brown",
+        "Moussa Diabate",
+        "Jalen Smith",
+        "Karl-Anthony Towns",
+        "Jared McCain",
+        "LaMelo Ball",
+        "Ty Jerome",
+        "Darius Garland",
+        "Julius Randle",
+        "Egor Demin",
+        "Kevin Durant",
+        "Amen Thompson",
+        "Zach LaVine",
+        "Darius Acuff Jr."
+      ]
+    },
+    {
+      "type": "boostSgm",
+      "label": "Best SGM",
+      "reason": "Clash rule: two pts same team: Jared McCain, Shai Gilgeous-Alexander",
+      "players": [
+        "Jared McCain",
+        "Shai Gilgeous-Alexander",
+        "Kenrich Williams"
+      ]
+    },
     {
       "type": "q1Multi",
       "label": "Q1 Multi",
