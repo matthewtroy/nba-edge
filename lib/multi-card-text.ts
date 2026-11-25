@@ -3,6 +3,7 @@ import {
   combinedFairAndTakeAt,
   DEFAULT_MIN_EDGE,
   multiCardTitle,
+  type MultiCardTitleOptions,
 } from "./multi-combined.js";
 import { assertNoMixedBookieCopy } from "./multi-display.js";
 import { formatLegCardLine } from "./leg-card-odds.js";
@@ -33,12 +34,20 @@ export function formatMultiHeadline(multi: MultiBet, legs: PickLeg[]): string {
 export function renderMultiCardCopyText(
   multi: MultiBet,
   legs: PickLeg[],
-  _bookie?: string
+  _bookie?: string,
+  titleOpts?: MultiCardTitleOptions
 ): string {
-  const { headline, subline, cardBookie } = multiCardTitle(multi, legs, DEFAULT_MIN_EDGE);
+  const opts: MultiCardTitleOptions = titleOpts ?? { minEdgeFraction: DEFAULT_MIN_EDGE };
+  const { headline, subline, cardBookie, fairOnly } = multiCardTitle(multi, legs, opts);
   const lines = [headline, subline];
   for (const leg of legs) {
+  if (fairOnly) {
+    lines.push(
+      `${leg.playerName} · Fair $${leg.fairPrice.toFixed(2)}`
+    );
+  } else {
     lines.push(formatLegCardLine(leg, cardBookie).trimStart());
+  }
   }
   const text = lines.join("\n");
   assertNoMixedBookieCopy(text);

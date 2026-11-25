@@ -107,7 +107,7 @@ export function renderGamesText(input: {
   const cross = input.multis.find((m) => m.type === "crossGameSgm");
   const boost = input.multis.find((m) => m.type === "boostSgm");
   lines.push(cross ? formatBuiltMultiLine(cross, picksById) : "Cross-Game SGM · not built");
-  lines.push(boost ? formatBuiltMultiLine(boost, picksById) : "Boost SGM · not built");
+  lines.push(boost ? formatBuiltMultiLine(boost, picksById) : "Best SGM · not built");
   lines.push("");
 
   for (const block of blocks) {

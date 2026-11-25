@@ -266,7 +266,7 @@ export async function runLivePipeline(
         const avgMin = logs.reduce((s, g) => s + g.minutes, 0) / logs.length;
         if (avgMin < 12) return;
 
-        const recentIds = logs.slice(0, 3).map((g) => g.gameId);
+        const recentIds = logs.slice(0, 5).map((g) => g.gameId);
         for (const gid of recentIds) {
           try {
             const sum = await getSummary(gid);

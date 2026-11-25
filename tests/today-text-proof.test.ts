@@ -1,28 +1,12 @@
 import { describe, expect, it } from "vitest";
-import fs from "fs";
-import path from "path";
 import { renderTodayText } from "../lib/today-text";
 import { renderMultiCardText } from "../lib/multi-card-text";
 import { FORBIDDEN_MULTI_CARD_STRINGS } from "../src/components/MultiCard";
-import type { MetaJson, MultiBet, MultiNotBuilt, PickLeg, SlateGame } from "../lib/types";
-
-const root = path.resolve(import.meta.dirname, "..");
-const data = path.join(root, "public/data");
-
-function loadFixture() {
-  const meta = JSON.parse(fs.readFileSync(path.join(data, "meta.json"), "utf8")) as MetaJson;
-  const slate = JSON.parse(fs.readFileSync(path.join(data, "slate.json"), "utf8")) as SlateGame[];
-  const picks = JSON.parse(fs.readFileSync(path.join(data, "picks.json"), "utf8")) as PickLeg[];
-  const multisRaw = JSON.parse(fs.readFileSync(path.join(data, "multis.json"), "utf8")) as {
-    bets: MultiBet[];
-    notBuilt: MultiNotBuilt[];
-  };
-  return { meta, slate, picks, multisRaw };
-}
+import { loadPublishedSlate } from "./public-data-fixture";
 
 describe("Today proof text", () => {
   it("renders clean layout from public data", () => {
-    const { meta, slate, picks, multisRaw } = loadFixture();
+    const { meta, slate, picks, multisRaw } = loadPublishedSlate();
     const text = renderTodayText({
       meta,
       slate,

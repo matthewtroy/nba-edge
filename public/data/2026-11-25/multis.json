@@ -2,7 +2,7 @@
   "bets": [
     {
       "type": "boostSgm",
-      "label": "Boost SGM",
+      "label": "Best SGM",
       "legs": [
         "3112335-pts-25",
         "4431767-reb-5",
@@ -16,7 +16,7 @@
       "bookieTotals": {
         "Sportsbet": 14.76
       },
-      "summary": "Same-game trio for boost offer (3 legs)"
+      "summary": "Best-value 3-leg same-game multi on the slate"
     },
     {
       "type": "longshot",

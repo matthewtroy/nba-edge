@@ -1,11 +1,8 @@
 import { describe, expect, it } from "vitest";
-import fs from "fs";
-import path from "path";
-import type { MultiBet, MultisJson } from "../lib/types";
+import type { MultiBet } from "../lib/types";
+import { loadPublishedMultis } from "./public-data-fixture";
 
-const multis = JSON.parse(
-  fs.readFileSync(path.join(import.meta.dirname, "../public/data/multis.json"), "utf8")
-) as MultisJson;
+const multis = loadPublishedMultis("2026-11-25");
 
 describe("multis.json schema", () => {
   it("has bestBookie fields and no stake/oneInX", () => {

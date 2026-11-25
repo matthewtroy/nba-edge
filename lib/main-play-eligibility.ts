@@ -13,7 +13,7 @@ function isQ1Market(market: string): boolean {
   return market.startsWith("q1");
 }
 
-/** Cross / Boost SGM main lines — no micro threes, no sub-5 reb/ast. */
+/** Cross / Best SGM main lines — no micro threes, no sub-5 reb/ast. */
 export function isSgmMainLine(market: Market, line: number): boolean {
   if (isQ1Market(market)) return false;
   if (market === "pts") return line >= 10;

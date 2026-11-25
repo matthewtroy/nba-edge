@@ -3,7 +3,7 @@ import { FEED_BOOKIES, isFeedBookie } from "@lib/card-bookie";
 import { MultiLegRow } from "./MultiLegRow";
 import { renderMultiCardCopyText } from "@lib/multi-card-text";
 import { useMultiBookieSelect } from "../hooks/useMultiBookieSelect";
-import { multiCardTitle } from "@lib/multi-combined";
+import { multiCardTitle, type MultiCardTitleOptions } from "@lib/multi-combined";
 
 interface Props {
   multi: MultiBet;
@@ -13,7 +13,11 @@ interface Props {
   preferredBookie?: string;
   lockedBookie?: string;
   publishedAt?: string;
+  oddsLastPulled?: string;
   discordCopy?: boolean;
+  fairOnly?: boolean;
+  oddsNote?: string;
+  hideBookieSelect?: boolean;
   onRemove?: () => void;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (text: string) => void;
@@ -32,6 +36,8 @@ export const FORBIDDEN_MULTI_CARD_STRINGS = [
   "Best across books",
   "Best multi odds",
   "once",
+  "take at",
+  "Take at",
 ] as const;
 
 export function multiCardPlainText(multi: MultiBet, legs: PickLeg[] = []): string {
@@ -46,11 +52,25 @@ export function MultiCard({
   lockedBookie,
   publishedAt,
   discordCopy = false,
+  fairOnly = false,
+  oddsNote,
+  hideBookieSelect = false,
   onRemove,
   onLegTap,
   onCopy,
 }: Props) {
   const legs = multi.legs.map((id) => picksById.get(id)).filter(Boolean) as PickLeg[];
+
+  const titleOpts: MultiCardTitleOptions = {
+    fairOnly: fairOnly || multi.type === "q1Multi",
+    fairOnlyNote: oddsNote,
+  };
+  const { headline, subline, cardBookie, fairOnly: titleFairOnly } = multiCardTitle(
+    multi,
+    legs,
+    titleOpts
+  );
+  const showFairOnly = titleFairOnly || hideBookieSelect;
 
   const { bookie, select } = useMultiBookieSelect(
     multi,
@@ -61,11 +81,21 @@ export function MultiCard({
   const rawBook = lockedBookie ?? bookie ?? multi.bestBookie;
   const displayBook = isFeedBookie(rawBook) ? rawBook : bookie ?? multi.bestBookie;
 
-  const { headline, subline, cardBookie } = multiCardTitle(multi, legs);
-  const legBookie = displayBook ?? cardBookie;
-  const colon = headline.indexOf(": $");
-  const titleText = colon >= 0 ? headline.slice(0, colon) : headline;
-  const totalText = colon >= 0 ? headline.slice(colon + 2) : "";
+  const legBookie = showFairOnly ? "" : displayBook ?? cardBookie;
+  const colonFair = headline.indexOf(": Fair $");
+  const colonPrice = headline.indexOf(": $");
+  const titleText =
+    colonFair >= 0
+      ? headline.slice(0, colonFair)
+      : colonPrice >= 0
+        ? headline.slice(0, colonPrice)
+        : headline;
+  const totalText =
+    colonFair >= 0
+      ? headline.slice(colonFair + 2)
+      : colonPrice >= 0
+        ? headline.slice(colonPrice + 2)
+        : "";
 
   return (
     <section className="bg-card rounded-xl border border-white/10 overflow-hidden mb-3">
@@ -74,7 +104,11 @@ export function MultiCard({
           <div>
             <h3 className="font-semibold text-base leading-snug">{titleText}</h3>
             {totalText ? (
-              <p className="text-2xl font-bold text-accent-high leading-tight mt-0.5">
+              <p
+                className={`text-2xl font-bold leading-tight mt-0.5 ${
+                  showFairOnly ? "text-white/55" : "text-accent-high"
+                }`}
+              >
                 {totalText}
               </p>
             ) : null}
@@ -105,13 +139,20 @@ export function MultiCard({
             injuries={injuries}
             picks={Array.from(picksById.values())}
             bookie={legBookie}
+            fairPriceInSlot={showFairOnly}
             onTap={onLegTap}
           />
         ))}
       </div>
       <div className="p-3 bg-surface/40">
         <div className="flex gap-2 items-center">
-          {lockedBookie ? (
+          {showFairOnly ? (
+            <p className="flex-1 text-sm text-white/55 py-2">
+              {multi.type === "q1Multi"
+                ? "Model fair only — no AU Q1 feed"
+                : oddsNote ?? "Fair model only"}
+            </p>
+          ) : lockedBookie ? (
             <p className="flex-1 text-sm text-white/70 py-2">Bookie: {lockedBookie}</p>
           ) : (
             <select
@@ -133,7 +174,9 @@ export function MultiCard({
             type="button"
             className="flex-1 py-2 text-sm bg-surface border border-white/10 rounded-lg font-medium"
             onClick={() =>
-              onCopy(renderMultiCardCopyText(multi, legs, legBookie))
+              onCopy(
+                renderMultiCardCopyText(multi, legs, legBookie || undefined, titleOpts)
+              )
             }
           >
             {discordCopy ? "Copy for Discord" : "Copy"}

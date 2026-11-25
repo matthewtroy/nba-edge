@@ -9,4 +9,19 @@ describe("lastFiveVsLine", () => {
     ];
     expect(lastFiveVsLine(logs, "pts", 20)).toEqual(["hit", "miss"]);
   });
+
+  it("returns up to five ticks without padding", () => {
+    const logs = Array.from({ length: 7 }, (_, i) => ({
+      gameId: `g${i}`,
+      minutes: 30,
+      pts: 10 + i,
+      reb: 5,
+      ast: 3,
+      threes: 2,
+      date: `2026-01-${String(20 - i).padStart(2, "0")}`,
+    }));
+    const ticks = lastFiveVsLine(logs, "pts", 12);
+    expect(ticks).toHaveLength(5);
+    expect(ticks).toEqual(["miss", "miss", "hit", "hit", "hit"]);
+  });
 });

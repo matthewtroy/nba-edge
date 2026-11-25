@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-11-25T03:14:27.144Z",
+  "lastUpdated": "2026-11-25T03:15:24.942Z",
   "oddsLastPulled": "2026-11-24T22:58:43.102Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
-    "odds": "failed (from-live pages)"
+    "odds": "stale"
   },
   "slateSize": 2,
   "smallSlate": true,
@@ -23,7 +23,7 @@
   ],
   "slateTipDate": "2026-11-25",
   "whatChanged": [],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_10_00PM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_10_15PM.pdf",
   "pricedLegCounts": {
     "pts": {
       "total": 83,

@@ -8,7 +8,7 @@ const TYPE_LABEL: Record<MultiType, string> = {
   booster: "Booster",
   q1Multi: "Q1 Multi",
   crossGameSgm: "Cross-Game SGM",
-  boostSgm: "Boost SGM",
+  boostSgm: "Best SGM",
   longshot: "Longshot",
 };
 

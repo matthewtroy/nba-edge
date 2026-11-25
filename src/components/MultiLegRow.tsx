@@ -11,10 +11,18 @@ interface Props {
   injuries: InjuryEntry[];
   picks: PickLeg[];
   bookie: string;
+  fairPriceInSlot?: boolean;
   onTap: (leg: PickLeg) => void;
 }
 
-export function MultiLegRow({ leg, injuries, picks, bookie, onTap }: Props) {
+export function MultiLegRow({
+  leg,
+  injuries,
+  picks,
+  bookie,
+  fairPriceInSlot = false,
+  onTap,
+}: Props) {
   const { swapAsOut, reset, isCountedOut } = useQuestionableSwaps();
   const countedOut = leg.questionable && isCountedOut(leg.playerId);
 
@@ -70,11 +78,19 @@ export function MultiLegRow({ leg, injuries, picks, bookie, onTap }: Props) {
           </div>
         </div>
         <div className="text-right shrink-0 max-w-[42%] leading-tight">
-          {price != null && (
-            <div className="text-xl font-semibold text-green-400">${price.toFixed(2)}</div>
+          {fairPriceInSlot ? (
+            <div className="text-xl font-semibold text-white/55">
+              Fair ${leg.fairPrice.toFixed(2)}
+            </div>
+          ) : (
+            <>
+              {price != null && (
+                <div className="text-xl font-semibold text-green-400">${price.toFixed(2)}</div>
+              )}
+              {bookie ? <div className="text-xs text-white/70">{bookie}</div> : null}
+              <div className="text-xs text-white/55">Fair ${leg.fairPrice.toFixed(2)}</div>
+            </>
           )}
-          <div className="text-xs text-white/70">{bookie}</div>
-          <div className="text-xs text-white/55">Fair ${leg.fairPrice.toFixed(2)}</div>
         </div>
       </button>
       {leg.questionable && inj && (

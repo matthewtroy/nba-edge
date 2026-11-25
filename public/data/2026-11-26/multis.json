@@ -1,0 +1,51 @@
+{
+  "bets": [
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Value",
+      "legs": [
+        "3059318-q1reb-3",
+        "3934672-q1reb-2",
+        "3133628-q1reb-3"
+      ],
+      "combinedProbability": 0.08451539999999999,
+      "combinedFairPrice": 11.83,
+      "combinedTakeAt": 12.78,
+      "summary": "Value Q1: fair 2.20–4.00, one leg/team"
+    }
+  ],
+  "notBuilt": [
+    {
+      "type": "mainPlay",
+      "label": "Main Play",
+      "reason": "No bookie with 4+ main legs at edge (best =0)"
+    },
+    {
+      "type": "booster",
+      "label": "Booster",
+      "reason": "Needs a Main Play first"
+    },
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "reason": "No cross-game combo @ edge (eligible 185, best edge-pool =0, range-cands 0)"
+    },
+    {
+      "type": "boostSgm",
+      "label": "Best SGM",
+      "reason": "No same-game trio @ edge (eligible 194, best pool =0, range-cands 0)"
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot",
+      "reason": "No 2-game longshot @ edge (DD/TD/combo or 30+ pts priced at one AU bookie)"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Safe",
+      "reason": "No Safe Q1 subset (p≥0.70, 3–6 teams, one leg/team)"
+    }
+  ]
+}

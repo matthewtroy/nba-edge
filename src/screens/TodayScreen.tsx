@@ -9,6 +9,7 @@ import { injuryAlertsForCard } from "@lib/injury-alerts-card";
 import { DateSwitcher } from "../components/DateSwitcher";
 import { sydneyDateString } from "@lib/official-card-time";
 import { sydneyTimeFromIso } from "../utils/format";
+import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
 
 const ORDER = [
   "mainPlay",
@@ -82,6 +83,8 @@ export function TodayScreen({
 
   const { multis: personalMultis, addMulti, removeMulti } = usePersonalMultis(data.picks);
   const [builderOpen, setBuilderOpen] = useState(false);
+  const slateFairOnly = !slateHasFeedOdds(data.picks);
+  const slateOddsNote = slateOddsAvailabilityNote(data.meta, data.picks);
 
   const builtTypes = new Set(displayMultis.map((m) => (m.variant ? `${m.type}:${m.variant}` : m.type)));
   const notBuilt = displayNotBuilt.filter((n) => {
@@ -114,7 +117,7 @@ export function TodayScreen({
       />
       <header className="mb-4 flex justify-between items-start">
         <div>
-          <h1 className="text-xl font-bold">{slateDate === todayDate ? "Today" : "Tomorrow"}</h1>
+          <h1 className="text-xl font-bold">{slateDate === todayDate ? "Home" : "Tomorrow"}</h1>
           {data.meta.slateStatusLabel && (
             <p className="text-xs text-accent-high mt-0.5">{data.meta.slateStatusLabel}</p>
           )}
@@ -187,22 +190,29 @@ export function TodayScreen({
         </h2>
       )}
 
-      {multis.map((m) => (
-        <MultiCard
-          key={`${m.type}-${m.variant ?? ""}-${m.legs.join()}`}
-          multi={m}
-          picksById={picksById}
-          injuries={data.injuries}
-          slate={data.slate}
-          preferredBookie={myBookie}
-          lockedBookie={useOfficial ? officialBookie : undefined}
-          publishedAt={useOfficial ? publishedAt : undefined}
-          oddsLastPulled={oddsForCard}
-          discordCopy={useOfficial}
-          onLegTap={onLegTap}
-          onCopy={onCopy}
-        />
-      ))}
+      {multis.map((m) => {
+        const cardFairOnly =
+          m.type === "q1Multi" || (slateFairOnly && m.type !== "q1Multi");
+        return (
+          <MultiCard
+            key={`${m.type}-${m.variant ?? ""}-${m.legs.join()}`}
+            multi={m}
+            picksById={picksById}
+            injuries={data.injuries}
+            slate={data.slate}
+            preferredBookie={myBookie}
+            lockedBookie={useOfficial && !cardFairOnly ? officialBookie : undefined}
+            publishedAt={useOfficial ? publishedAt : undefined}
+            oddsLastPulled={oddsForCard}
+            fairOnly={cardFairOnly}
+            oddsNote={m.type === "q1Multi" ? undefined : slateOddsNote}
+            hideBookieSelect={m.type === "q1Multi" || slateFairOnly}
+            discordCopy={useOfficial}
+            onLegTap={onLegTap}
+            onCopy={onCopy}
+          />
+        );
+      })}
 
       <section className="mt-6">
         <div className="flex items-center justify-between mb-2">
@@ -227,6 +237,9 @@ export function TodayScreen({
               slate={data.slate}
               preferredBookie={myBookie}
               oddsLastPulled={data.meta.oddsLastPulled}
+              fairOnly={slateFairOnly || multi.type === "q1Multi"}
+              oddsNote={slateOddsNote}
+              hideBookieSelect={slateFairOnly || multi.type === "q1Multi"}
               discordCopy={false}
               onRemove={() => removeMulti(draftId)}
               onLegTap={onLegTap}

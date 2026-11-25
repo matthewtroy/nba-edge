@@ -148,7 +148,7 @@ const LABELS: Record<MultiType, string> = {
   booster: "Booster",
   q1Multi: "Q1 Multi",
   crossGameSgm: "Cross-Game SGM Multi",
-  boostSgm: "Boost SGM",
+  boostSgm: "Best SGM",
   longshot: "Longshot",
 };
 
@@ -903,7 +903,7 @@ function buildBoostSgm(
     }
 
     let bestTrio: PickLeg[] | null = null;
-    let bestCombo = 0;
+    let bestPick: { p: number; total: number } | null = null;
     let rangeCands = 0;
 
     for (const legs of byGame.values()) {
@@ -914,8 +914,9 @@ function buildBoostSgm(
           const combo = comboProduct(chosen, bookie);
           if (combo >= 7 && combo <= 15 && !multiHasClash(chosen)) {
             rangeCands += 1;
-            if (combo > bestCombo) {
-              bestCombo = combo;
+            const p = combinedProb(chosen);
+            if (betterBookiePick(bestPick, p, combo)) {
+              bestPick = { p, total: combo };
               bestTrio = [...chosen];
             }
           }
@@ -969,13 +970,13 @@ function buildBoostSgm(
   return {
     bet: {
       type: "boostSgm",
-      label: "Boost SGM",
+      label: "Best SGM",
       legs: bestAcross.legs.map((l) => l.id),
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
       ...overlayForBookie(bestAcross.legs, bestAcross.bookie),
-      summary: "Same-game trio for boost offer (3 legs)",
+      summary: "Best-value 3-leg same-game multi on the slate",
     },
     reason: "",
   };

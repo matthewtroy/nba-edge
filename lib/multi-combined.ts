@@ -33,13 +33,42 @@ export function resolveMultiFeedQuote(
   return feed;
 }
 
+export interface MultiCardTitleOptions {
+  fairOnly?: boolean;
+  fairOnlyNote?: string;
+  minEdgeFraction?: number;
+}
+
+function resolveTitleOpts(
+  minEdgeOrOpts: number | MultiCardTitleOptions
+): MultiCardTitleOptions {
+  return typeof minEdgeOrOpts === "number"
+    ? { minEdgeFraction: minEdgeOrOpts }
+    : minEdgeOrOpts;
+}
+
 export function multiCardTitle(
   multi: MultiBet,
   legs: PickLeg[],
-  minEdgeFraction = DEFAULT_MIN_EDGE
-): { headline: string; subline: string; cardBookie: string } {
-  const { fair } = combinedFairAndTakeAt(legs, minEdgeFraction);
+  minEdgeOrOpts: number | MultiCardTitleOptions = DEFAULT_MIN_EDGE
+): { headline: string; subline: string; cardBookie: string; fairOnly: boolean } {
+  const opts = resolveTitleOpts(minEdgeOrOpts);
+  const minEdge = opts.minEdgeFraction ?? DEFAULT_MIN_EDGE;
+  const { fair } = combinedFairAndTakeAt(legs, minEdge);
   const name = multi.variant ? `${multi.label} (${multi.variant})` : multi.label;
+  const q1Note = "No bookie feed for Q1: compare with your bookie's price";
+
+  if (opts.fairOnly === true || multi.type === "q1Multi") {
+    const subline =
+      multi.type === "q1Multi" ? q1Note : opts.fairOnlyNote ?? `Fair $${fair.toFixed(2)}`;
+    return {
+      headline: `${name}: Fair $${fair.toFixed(2)}`,
+      subline,
+      cardBookie: "",
+      fairOnly: true,
+    };
+  }
+
   let total: number;
   let cardBookie = multi.bestBookie ?? "";
   try {
@@ -47,13 +76,20 @@ export function multiCardTitle(
     total = feed.total;
     cardBookie = feed.bookie;
   } catch {
-    total = combinedFairAndTakeAt(legs, minEdgeFraction).takeAt;
+    const subline = opts.fairOnlyNote ?? "Fair model only — no bookmaker feed yet";
+    return {
+      headline: `${name}: Fair $${fair.toFixed(2)}`,
+      subline,
+      cardBookie: "",
+      fairOnly: true,
+    };
   }
   const subline = cardBookie || `Fair $${fair.toFixed(2)}`;
   return {
     headline: `${name}: $${total.toFixed(2)}`,
     subline,
     cardBookie,
+    fairOnly: false,
   };
 }
 

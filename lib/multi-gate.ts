@@ -103,14 +103,14 @@ function checkTypeRules(
     issues.push("Booster: invalid fair");
   }
   if (type === "boostSgm") {
-    if (legs.length !== 3) issues.push("Boost SGM: need 3 legs");
-    if (combo < 7 || combo > 15) issues.push(`Boost SGM: take-at ${combo.toFixed(2)} not 7–15`);
+    if (legs.length !== 3) issues.push("Best SGM: need 3 legs");
+    if (combo < 7 || combo > 15) issues.push(`Best SGM: bookie total ${combo.toFixed(2)} not 7–15`);
     if (!legs.every((l) => qualifiesCrossBoostLeg(l))) {
-      issues.push("Boost SGM: leg fails starter main-line eligibility");
+      issues.push("Best SGM: leg fails starter main-line eligibility");
     }
     for (const leg of legs) {
       if ((leg.projectedMinutes ?? 0) < 24) {
-        issues.push(`Boost SGM: ${leg.playerName} projected ${(leg.projectedMinutes ?? 0).toFixed(0)} min (<24)`);
+        issues.push(`Best SGM: ${leg.playerName} projected ${(leg.projectedMinutes ?? 0).toFixed(0)} min (<24)`);
       }
     }
   }

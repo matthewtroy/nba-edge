@@ -5,6 +5,7 @@ import { gameSgmBlocks } from "@lib/games-sgm";
 import { gameSgmAsMulti, gameShortLabel } from "@lib/games-sgm-ui";
 import { hasValueAtBookie } from "@lib/value-at-bookie";
 import { gamesForCards, isGameLive } from "@lib/slate-game-ui";
+import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
 import { MultiCard } from "../components/MultiCard";
 import { DateSwitcher } from "../components/DateSwitcher";
 
@@ -71,6 +72,8 @@ export function GamesScreen({
   });
 
   const valueCount = data.picks.filter((l) => hasValueAtBookie(l, myBookie)).length;
+  const slateFairOnly = !slateHasFeedOdds(data.picks);
+  const oddsNote = slateOddsAvailabilityNote(data.meta, data.picks);
 
   return (
     <div className="pb-24">
@@ -101,12 +104,16 @@ export function GamesScreen({
         ))}
       </div>
 
+      {activeSlate.length === 0 && (
+        <p className="text-sm text-white/50">No games on this slate yet.</p>
+      )}
+
       {blocks.map(({ game, card, crossGameLegs, boostLegs, notBuiltReason }) => {
         const short = gameShortLabel(game);
         const live = isGameLive(game.status);
         if (!card) {
           const reason =
-            block.notBuiltReason ??
+            notBuiltReason ??
             `No game SGM in $${preset.min.toFixed(1)}–${Number.isFinite(preset.max) ? preset.max : "50+"}`;
           return (
             <p key={game.id} className="text-sm text-white/50 mb-3">
@@ -137,13 +144,16 @@ export function GamesScreen({
                   {game.startTimeSydney} · Bookie total ${preset.label}
                   {crossGameLegs.length > 0 &&
                     ` · Cross-Game (${crossGameLegs.length})`}
-                  {boostLegs.length > 0 && " · Boost SGM"}
+                  {boostLegs.length > 0 && " · Best SGM"}
                 </p>
                 <MultiCard
                   multi={multi}
                   picksById={picksById}
                   injuries={data.injuries}
-                  lockedBookie={card.bestBookie}
+                  lockedBookie={slateFairOnly ? undefined : card.bestBookie}
+                  fairOnly={slateFairOnly}
+                  oddsNote={oddsNote}
+                  hideBookieSelect={slateFairOnly}
                   onLegTap={onLegTap}
                   onCopy={onCopy}
                 />
