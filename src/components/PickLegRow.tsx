@@ -1,4 +1,5 @@
-import type { PickLeg, SlateGame } from "@lib/types";
+import type { InjuryEntry, PickLeg, SlateGame } from "@lib/types";
+import { InjuryStatusBadge, injuryStatusForPlayer } from "./InjuryStatusBadge";
 import { bookieMarketLabel } from "@lib/market-label";
 import { displayLegRowTags } from "@lib/value-at-bookie";
 import { legPriceAtBookie } from "@lib/single-bookie";
@@ -11,6 +12,7 @@ import { PlayerAvatar } from "./PlayerAvatar";
 
 interface Props {
   leg: PickLeg;
+  injuries: InjuryEntry[];
   slate?: SlateGame[];
   myBookie: string;
   onTap: (leg: PickLeg) => void;
@@ -22,12 +24,13 @@ function LegBadge({ label, danger }: { label: string; danger?: boolean }) {
   );
 }
 
-export function PickLegRow({ leg, slate, myBookie, onTap }: Props) {
+export function PickLegRow({ leg, injuries, slate, myBookie, onTap }: Props) {
   const tags = displayLegRowTags(leg, myBookie);
   const reasonLines = legRowReasonLines(leg);
   const price = legPriceAtBookie(leg, myBookie);
   const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
   const ticks = leg.recentVsLine ?? [];
+  const injStatus = injuryStatusForPlayer(injuries, leg.playerId);
 
   return (
     <button
@@ -67,11 +70,11 @@ export function PickLegRow({ leg, slate, myBookie, onTap }: Props) {
           </div>
         )}
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1.5">
+          <InjuryStatusBadge status={injStatus} />
           <LastFiveTicks ticks={ticks} inline hideLabel />
           {tags.map((t) => (
             <LegBadge key={t} label={t} danger={t === "Blowout risk"} />
           ))}
-          {leg.questionable && <LegBadge label="Q" />}
         </div>
       </div>
       <div className="text-right w-[76px] shrink-0">

@@ -195,6 +195,7 @@ export function PicksScreen({
             <PickLegRow
               key={leg.id}
               leg={leg}
+              injuries={data.injuries}
               slate={data.slate}
               myBookie={myBookie}
               onTap={onLegTap}

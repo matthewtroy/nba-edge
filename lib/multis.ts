@@ -331,19 +331,18 @@ export function buildMultis(
       pushDrop(booster, "Booster: Main Play not built or removed");
     }
   }
-  const ensureQ1Variant = (variant: "Core" | "Longshot", reason: string) => {
-    if (!reason) return;
-    if (finalBets.some((m) => m.type === "q1Multi" && m.variant === variant)) return;
-    if (notBuilt.some((n) => n.type === "q1Multi" && n.variant === variant)) return;
-    notBuilt.push({
-      type: "q1Multi",
-      label: LABELS.q1Multi,
-      variant,
-      reason,
-    });
-  };
-  ensureQ1Variant("Core", q1Attempt.coreNotBuiltReason);
-  ensureQ1Variant("Longshot", q1Attempt.longshotNotBuiltReason);
+  if (q1Attempt.coreNotBuiltReason) {
+    if (
+      !finalBets.some((m) => m.type === "q1Multi") &&
+      !notBuilt.some((n) => n.type === "q1Multi")
+    ) {
+      notBuilt.push({
+        type: "q1Multi",
+        label: LABELS.q1Multi,
+        reason: q1Attempt.coreNotBuiltReason,
+      });
+    }
+  }
 
   logMultiBuildSummary({ picks, pool, built: finalBets, notBuilt });
 
@@ -818,7 +817,6 @@ function buildQ1Multi(
 ): {
   bets: MultiBet[];
   coreNotBuiltReason: string;
-  longshotNotBuiltReason: string;
 } {
   const exSuffix = q1ExclusionSuffix(q1ExclusionNotes);
   const coreRanked = bestQ1LegPerTeam(picks, MIN_LEG_FAIR, logsByPlayer);
@@ -827,13 +825,11 @@ function buildQ1Multi(
     return {
       bets: [],
       coreNotBuiltReason: thinPool + exSuffix,
-      longshotNotBuiltReason: thinPool + exSuffix,
     };
   }
 
   const bets: MultiBet[] = [];
   let coreNotBuiltReason = `No Q1 Multi (blend p rank, 1/team, 3–6 legs)${exSuffix}`;
-  let longshotNotBuiltReason = `No Q1 Multi (Longshot) fair ≥2.50${exSuffix}`;
 
   const core = selectQ1MultiLegs(coreRanked);
   if (core) {
@@ -847,7 +843,6 @@ function buildQ1Multi(
     coreNotBuiltReason = "";
     pushMultiBuildTrace({
       type: "q1Multi",
-      variant: "Core",
       eligible: coreRanked.length,
       bestEdgePool: core.length,
       clashCandidates: 0,
@@ -855,38 +850,6 @@ function buildQ1Multi(
       built: true,
       detail: "fair×1.08 take-at (no AU Q1 feed)",
     });
-  }
-
-  const longRanked = bestQ1LegPerTeam(picks, 2.5, logsByPlayer);
-  const longshot = selectQ1MultiLegs(longRanked);
-  if (
-    longshot &&
-    (!core || longshot.map((l) => l.id).join() !== core.map((l) => l.id).join())
-  ) {
-    bets.push(
-      q1MultiFromLegs(
-        longshot,
-        "Longshot",
-        "Q1 Multi (Longshot): fair ≥2.50, blend-ranked, Take fair×1.08"
-      )
-    );
-    longshotNotBuiltReason = "";
-    pushMultiBuildTrace({
-      type: "q1Multi",
-      variant: "Longshot",
-      eligible: longRanked.length,
-      bestEdgePool: longshot.length,
-      clashCandidates: 0,
-      rangeCandidates: 1,
-      built: true,
-      detail: "fair×1.08 take-at (no AU Q1 feed)",
-    });
-  } else if (
-    longshot &&
-    core &&
-    longshot.map((l) => l.id).join() === core.map((l) => l.id).join()
-  ) {
-    longshotNotBuiltReason = `Q1 Multi (Longshot) same legs as Q1 Multi (skipped duplicate)${exSuffix}`;
   }
 
   if (!bets.length) {
@@ -901,7 +864,7 @@ function buildQ1Multi(
     });
   }
 
-  return { bets, coreNotBuiltReason, longshotNotBuiltReason };
+  return { bets, coreNotBuiltReason };
 }
 
 function gameCrossLabel(game: SlateGame): string {

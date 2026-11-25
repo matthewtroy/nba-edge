@@ -12,6 +12,7 @@ export const BANNED_REASON_PHRASES = [
   "boards shared",
   "vs 10+",
   "l5 vs prior",
+  "voids if out",
 ] as const;
 
 export function reasonTextHasBannedPhrase(text: string): string | null {

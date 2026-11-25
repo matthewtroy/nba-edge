@@ -1,25 +1,88 @@
 {
   "bets": [
     {
+      "type": "mainPlay",
+      "label": "Main Play",
+      "legs": [
+        "4903027-pts-15",
+        "4431671-reb-5",
+        "3136195-pts-20",
+        "4278053-pts-15",
+        "4683021-ast-5"
+      ],
+      "combinedProbability": 0.19765823593824,
+      "combinedFairPrice": 5.06,
+      "combinedTakeAt": 5.46,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 9.78,
+      "bookieTotals": {
+        "Ladbrokes": 9.78,
+        "Neds": 9.78
+      },
+      "summary": "5 starter main lines"
+    },
+    {
+      "type": "booster",
+      "label": "Booster",
+      "legs": [
+        "4903027-pts-20",
+        "4431671-reb-7",
+        "3136195-pts-30",
+        "4278053-pts-20",
+        "4683021-ast-7"
+      ],
+      "combinedProbability": 0.007548834414,
+      "combinedFairPrice": 132.47,
+      "combinedTakeAt": 143.07,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 302.02,
+      "bookieTotals": {
+        "Ladbrokes": 302.02,
+        "Neds": 302.02
+      },
+      "summary": "Main Play +1 rung when Main leg ≤$4 at bookie, else same rung"
+    },
+    {
       "type": "q1Multi",
       "label": "Q1 Multi",
       "legs": [
         "5104157-q1reb-3",
         "4432194-q1reb-2",
-        "4066328-q1reb-2",
+        "4222252-q1reb-2",
         "3448-q1reb-2",
-        "3155942-q1reb-2",
-        "4601023-q1reb-2"
+        "4601023-q1reb-2",
+        "3059318-q1reb-2"
       ],
-      "combinedProbability": 0.15224574765569904,
-      "combinedFairPrice": 6.57,
-      "combinedTakeAt": 7.1,
+      "combinedProbability": 0.14904572810231748,
+      "combinedFairPrice": 6.71,
+      "combinedTakeAt": 7.25,
       "bookieTotals": {},
       "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
     },
     {
       "type": "longshot",
       "label": "Longshot",
+      "legs": [
+        "3136195-pts-30",
+        "4278073-pts-40",
+        "5104157-pts-40"
+      ],
+      "combinedProbability": 0.02238561,
+      "combinedFairPrice": 44.67,
+      "combinedTakeAt": 48.24,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 134.4,
+      "bookieTotals": {
+        "TAB": 80.16,
+        "Ladbrokes": 134.4,
+        "Neds": 134.4
+      },
+      "summary": "3 legs angle-ranked @ Neds"
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot 2",
+      "variant": "2",
       "legs": [
         "3136195-pts-30",
         "4066261-pts-30"
@@ -33,6 +96,7 @@
         "Sportsbet": 57,
         "TAB": 33.75,
         "Ladbrokes": 61.6,
+        "Neds": 61.6,
         "PointsBet": 63.25
       },
       "summary": "2 legs angle-ranked @ PointsBet"
@@ -51,15 +115,15 @@
         "Jalen Smith",
         "Karl-Anthony Towns",
         "Donovan Mitchell",
-        "Jared McCain",
         "LaMelo Ball",
         "Shai Gilgeous-Alexander",
+        "Jared McCain",
         "Cedric Coward",
         "Rui Hachimura",
         "Egor Demin",
         "Julius Randle",
         "Danny Wolf",
-        "Alperen Sengun",
+        "Amen Thompson",
         "Kevin Durant",
         "Devin Booker",
         "Zach LaVine",
@@ -70,50 +134,12 @@
     {
       "type": "boostSgm",
       "label": "Best SGM",
-      "reason": "Clash rule: two pts same team: Jared McCain, Shai Gilgeous-Alexander",
-      "players": [
-        "Jared McCain",
-        "Shai Gilgeous-Alexander",
-        "Kenrich Williams"
-      ]
-    },
-    {
-      "type": "mainPlay",
-      "label": "Main Play",
-      "reason": "Gate: Main Play: leg fails starter/main-line/eligibility (legs: Karl-Anthony Towns 20+ pts, Tyrese Maxey 5+ ast, Alperen Sengun 7+ ast, Rui Hachimura 5+ reb)",
+      "reason": "Clash rule: reb (Peyton Watson) vs opp pts (Karl-Anthony Towns)",
       "players": [
         "Karl-Anthony Towns",
-        "Tyrese Maxey",
-        "Alperen Sengun",
-        "Rui Hachimura"
+        "Donovan Mitchell",
+        "Peyton Watson"
       ]
-    },
-    {
-      "type": "longshot",
-      "label": "Longshot",
-      "variant": "2",
-      "reason": "Gate: Longshot: take-at 18.76 not 30–150 (legs: Karl-Anthony Towns 30+ pts, Victor Wembanyama 40+ pts)",
-      "players": [
-        "Karl-Anthony Towns",
-        "Victor Wembanyama"
-      ]
-    },
-    {
-      "type": "booster",
-      "label": "Booster",
-      "reason": "Booster: Main Play not built or removed",
-      "players": [
-        "Karl-Anthony Towns",
-        "Tyrese Maxey",
-        "Alperen Sengun",
-        "Rui Hachimura"
-      ]
-    },
-    {
-      "type": "q1Multi",
-      "label": "Q1 Multi",
-      "variant": "Longshot",
-      "reason": "No Q1 Multi (Longshot) fair ≥2.50"
     }
   ]
 }

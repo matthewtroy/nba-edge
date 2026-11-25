@@ -109,7 +109,6 @@ export function MultiLegRow({
               danger={t === "Blowout risk"}
             />
           ))}
-          {leg.questionable && <LegBadge label="Q" />}
         </div>
         {compact && null}
       </div>

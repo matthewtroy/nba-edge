@@ -216,7 +216,6 @@ export function runModel(input: ModelRunInput): {
       });
 
       const playerReasons = [...(reasons.get(p.id) ?? [])];
-      if (inj?.status === "Questionable") playerReasons.push("voids if out");
 
       const q1Exclusions: string[] = [];
       const seasonMinutes =

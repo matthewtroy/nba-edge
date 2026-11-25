@@ -8,6 +8,11 @@ interface Props {
   data: DataBundle;
 }
 
+function teamAbbr(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  return parts.length > 1 ? parts[parts.length - 1]! : name;
+}
+
 export function InjuriesScreen({ data }: Props) {
   const { swapAsOut, reset, isCountedOut } = useQuestionableSwaps();
   const byGame = new Map<string, InjuryEntry[]>();
@@ -22,32 +27,49 @@ export function InjuriesScreen({ data }: Props) {
       <h1 className="text-xl font-bold mb-4">Injuries</h1>
       {[...byGame.entries()].map(([gameId, list]) => {
         const game = data.slate.find((g) => g.id === gameId);
+        const byTeam = new Map<string, InjuryEntry[]>();
+        for (const inj of list) {
+          const key = inj.teamId || inj.teamName;
+          const arr = byTeam.get(key) ?? [];
+          arr.push(inj);
+          byTeam.set(key, arr);
+        }
+        const teamBlocks = [...byTeam.entries()].sort((a, b) =>
+          a[1][0]!.teamName.localeCompare(b[1][0]!.teamName)
+        );
         return (
           <section key={gameId} className="mb-4 bg-card rounded-xl p-4">
             <h2 className="text-sm font-semibold text-white/80 mb-3">
               {game
-                ? `${game.awayTeam.split(" ").pop()} @ ${game.homeTeam.split(" ").pop()}`
+                ? `${teamAbbr(game.awayTeam)} @ ${teamAbbr(game.homeTeam)}`
                 : gameId}
             </h2>
-            {list.map((inj) => (
-              <InjuryRow
-                key={inj.playerId}
-                inj={inj}
-                picks={data.picks}
-                countedOut={
-                  inj.status === "Questionable" && isCountedOut(inj.playerId)
-                }
-                onSwap={
-                  inj.status === "Questionable"
-                    ? () => swapAsOut(inj.playerId)
-                    : undefined
-                }
-                onReset={
-                  inj.status === "Questionable"
-                    ? () => reset(inj.playerId)
-                    : undefined
-                }
-              />
+            {teamBlocks.map(([teamKey, teamList]) => (
+              <div key={teamKey} className="mb-4 last:mb-0">
+                <h3 className="text-xs font-semibold text-white/55 mb-2 uppercase tracking-wide">
+                  {teamList[0]?.teamName ?? teamKey}
+                </h3>
+                {teamList.map((inj) => (
+                  <InjuryRow
+                    key={inj.playerId}
+                    inj={inj}
+                    picks={data.picks}
+                    countedOut={
+                      inj.status === "Questionable" && isCountedOut(inj.playerId)
+                    }
+                    onSwap={
+                      inj.status === "Questionable"
+                        ? () => swapAsOut(inj.playerId)
+                        : undefined
+                    }
+                    onReset={
+                      inj.status === "Questionable"
+                        ? () => reset(inj.playerId)
+                        : undefined
+                    }
+                  />
+                ))}
+              </div>
             ))}
           </section>
         );
@@ -94,7 +116,7 @@ function InjuryRow({
         </span>
       </div>
       <p className="text-xs text-white/50 mt-1">
-        {inj.teamName} · {inj.source} · {sydneyTimeFromIso(inj.updatedAt)}
+        {inj.source} · {sydneyTimeFromIso(inj.updatedAt)}
       </p>
       {benefits && (
         <p className="text-xs text-white/70 mt-1">Who benefits: {benefits || "—"}</p>
