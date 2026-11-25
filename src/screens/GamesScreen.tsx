@@ -5,6 +5,7 @@ import { gameSgmBlocks } from "@lib/games-sgm";
 import { gameSgmAsMulti, gameListRowLabel } from "@lib/games-sgm-ui";
 import { gamesForCards, isGameLive } from "@lib/slate-game-ui";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
+import { picksByIdFromOfficialSnapshots } from "@lib/official-leg-snapshot";
 import { MultiCard } from "../components/MultiCard";
 import { DateSwitcher } from "../components/DateSwitcher";
 import { useGamesSgmPreset } from "../hooks/useGamesSgmPreset";
@@ -37,8 +38,11 @@ export function GamesScreen({
     data.officialCard.slateDate === data.meta.slateTipDate;
   const multis = useOfficial ? data.officialCard!.multis : data.multis;
   const picksById = useMemo(
-    () => new Map(data.picks.map((p) => [p.id, p])),
-    [data.picks]
+    () =>
+      useOfficial
+        ? picksByIdFromOfficialSnapshots(data.officialCard!.legSnapshots, data.picks)
+        : new Map(data.picks.map((p) => [p.id, p])),
+    [data.picks, useOfficial, data.officialCard]
   );
 
   const blocks = useMemo(
@@ -154,7 +158,7 @@ export function GamesScreen({
       })}
 
       {empty.length > 0 && (
-        <motionEmptyBlock
+        <MotionEmptyBlock
           count={empty.length}
           open={emptyOpen}
           onToggle={() => setEmptyOpen((o) => !o)}
@@ -170,7 +174,7 @@ export function GamesScreen({
   );
 }
 
-function motionEmptyBlock({
+function MotionEmptyBlock({
   count,
   open,
   onToggle,

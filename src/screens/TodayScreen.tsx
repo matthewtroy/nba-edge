@@ -10,6 +10,7 @@ import { DateSwitcher } from "../components/DateSwitcher";
 import { sydneyDateString } from "@lib/official-card-time";
 import { sydneyTimeFromIso } from "../utils/format";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
+import { picksByIdFromOfficialSnapshots } from "@lib/official-leg-snapshot";
 
 const ORDER = [
   "mainPlay",
@@ -47,7 +48,6 @@ export function TodayScreen({
   showLongshots,
   myBookie,
 }: Props) {
-  const picksById = new Map(data.picks.map((p) => [p.id, p]));
   const stale = Object.values(data.meta.sources).some(
     (s) => s === "stale" || s === "paused" || String(s).includes("paused")
   );
@@ -57,9 +57,13 @@ export function TodayScreen({
     official != null &&
     official.slateDate === (data.meta.slateTipDate ?? official.slateDate);
 
+  const picksById = useOfficial
+    ? picksByIdFromOfficialSnapshots(official!.legSnapshots, data.picks)
+    : new Map(data.picks.map((p) => [p.id, p]));
+
   const displayMultis = useOfficial ? official.multis : data.multis;
   const displayNotBuilt = useOfficial ? official.notBuilt : data.multisNotBuilt;
-  const officialBookie = official?.bookie ?? data.meta.officialCard?.bookie;
+  const officialBookie = official?.bookie ?? data.meta.officialCard?.bookie ?? "";
   const headerOddsPull =
     official?.oddsLastPulled && useOfficial
       ? official.oddsLastPulled
@@ -195,13 +199,15 @@ export function TodayScreen({
             slate={data.slate}
             compact
             preferredBookie={myBookie}
-            lockedBookie={useOfficial && !cardFairOnly ? officialBookie : undefined}
+            lockedBookie={useOfficial && !cardFairOnly ? m.bestBookie : undefined}
             publishedAt={useOfficial ? publishedAt : undefined}
+            officialDisplayOnly={useOfficial && !cardFairOnly}
+            hideBookieSelect={m.type === "q1Multi" || (slateFairOnly && !useOfficial)}
             oddsLastPulled={oddsForCard}
             fairOnly={cardFairOnly}
             oddsNote={m.type === "q1Multi" ? undefined : slateOddsNote}
-            hideBookieSelect={m.type === "q1Multi" || slateFairOnly}
             discordCopy={useOfficial}
+            liveCatalog={data.picks}
             onLegTap={onLegTap}
             onCopy={onCopy}
           />

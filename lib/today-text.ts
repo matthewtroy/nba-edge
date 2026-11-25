@@ -1,6 +1,5 @@
 import type { MetaJson, MultiBet, MultiNotBuilt, PickLeg, SlateGame } from "./types.js";
 import type { OfficialCardFile } from "./official-card.js";
-import { OFFICIAL_CARD_BOOKIE } from "./official-card.js";
 import { auditMultisForToday } from "./audit-multis.js";
 import { assertNoForbiddenStrings } from "./multi-card-text.js";
 import { multiCardTitle } from "./multi-combined.js";
@@ -32,7 +31,7 @@ export function renderTodayText(input: {
   const cardBookie =
     (useOfficial ? official!.bookie : undefined) ??
     input.meta.officialCard?.bookie ??
-    OFFICIAL_CARD_BOOKIE;
+    "";
   const lines: string[] = [];
   const stale = Object.values(input.meta.sources).some(
     (s) => s === "stale" || s === "paused" || String(s).includes("paused")

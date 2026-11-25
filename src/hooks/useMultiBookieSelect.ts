@@ -15,11 +15,15 @@ export function useMultiBookieSelect(
   legs: PickLeg[],
   preferred?: string,
   locked?: string,
-  catalog?: PickLeg[]
+  catalog?: PickLeg[],
+  /** Official card: preview other books; headline stays on published bookie. */
+  displayOnlyPublished?: string
 ) {
   const pool = catalog?.length ? catalog : legs;
+  const hardLock = locked && !displayOnlyPublished ? locked : undefined;
   const [bookie, setBookie] = useState<string | undefined>(() => {
-    if (locked) return locked;
+    if (displayOnlyPublished) return displayOnlyPublished;
+    if (hardLock) return hardLock;
     try {
       const saved = localStorage.getItem(storageKey(multi));
       if (saved) return saved;
@@ -30,12 +34,16 @@ export function useMultiBookieSelect(
   });
 
   useEffect(() => {
-    if (locked) {
-      setBookie(locked);
+    if (hardLock) {
+      setBookie(hardLock);
       return;
     }
-    setBookie((prev) => prev ?? pickDefaultBookie(multi, legs, preferred));
-  }, [multi, legs, preferred, locked]);
+    setBookie((prev) => {
+      if (prev != null && prev !== "") return prev;
+      if (displayOnlyPublished) return displayOnlyPublished;
+      return pickDefaultBookie(multi, legs, preferred);
+    });
+  }, [multi, legs, preferred, hardLock, displayOnlyPublished]);
 
   const select = useCallback(
     (b: string) => {
@@ -53,5 +61,18 @@ export function useMultiBookieSelect(
       ? combinedPriceForBookieWithCatalog(legs, bookie, pool)
       : undefined;
 
-  return { bookie, select, offered, total };
+  const publishedTotal =
+    displayOnlyPublished != null && displayOnlyPublished.length > 0
+      ? multi.bestBookieTotal ??
+        combinedPriceForBookieWithCatalog(legs, displayOnlyPublished, pool)
+      : undefined;
+
+  return {
+    bookie,
+    select,
+    offered,
+    total,
+    publishedBookie: displayOnlyPublished,
+    publishedTotal,
+  };
 }

@@ -2,11 +2,15 @@ import fs from "fs";
 import path from "path";
 import type { InjuryEntry, MetaJson, MultiBet, MultiNotBuilt, SlateGame } from "./types.js";
 import {
-  OFFICIAL_CARD_BOOKIE,
   type OfficialCardFile,
   sydneyDateString,
 } from "./official-card-time.js";
 import { slateTipDateFromGames } from "./slate-today.js";
+import {
+  freezeOfficialLegSnapshots,
+  officialCardPrimaryBookie,
+} from "./official-leg-snapshot.js";
+import type { PickLeg } from "./types.js";
 
 export {
   OFFICIAL_CARD_BOOKIE,
@@ -30,19 +34,26 @@ export function writeOfficialCard(
     notBuilt: MultiNotBuilt[];
     injuries: InjuryEntry[];
     meta: MetaJson;
-    bookie?: string;
+    picks: PickLeg[];
     republishedAt?: string;
     preservePublishedAt?: string;
   }
 ): OfficialCardFile {
   const nowIso = input.now.toISOString();
   const publishedAt = input.preservePublishedAt ?? nowIso;
+  const picksById = new Map(input.picks.map((p) => [p.id, p]));
+  const legSnapshots = freezeOfficialLegSnapshots(
+    input.multis,
+    picksById,
+    input.picks
+  );
   const file: OfficialCardFile = {
     lockedAt: input.republishedAt ? nowIso : publishedAt,
     publishedAt,
     ...(input.republishedAt ? { republishedAt: input.republishedAt } : {}),
     slateDate: slateTipDateFromGames(input.slate) ?? sydneyDateString(input.now),
-    bookie: input.bookie ?? OFFICIAL_CARD_BOOKIE,
+    bookie: officialCardPrimaryBookie(input.multis),
+    legSnapshots,
     multis: input.multis,
     notBuilt: input.notBuilt,
     whatChanged: input.meta.whatChanged ?? [],

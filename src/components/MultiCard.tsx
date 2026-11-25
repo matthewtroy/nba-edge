@@ -26,6 +26,8 @@ interface Props {
   fairOnly?: boolean;
   oddsNote?: string;
   hideBookieSelect?: boolean;
+  officialDisplayOnly?: boolean;
+  liveCatalog?: PickLeg[];
   compact?: boolean;
   onRemove?: () => void;
   onLegTap: (leg: PickLeg) => void;
@@ -64,6 +66,8 @@ export function MultiCard({
   fairOnly = false,
   oddsNote,
   hideBookieSelect = false,
+  officialDisplayOnly = false,
+  liveCatalog,
   compact = true,
   onRemove,
   onLegTap,
@@ -84,14 +88,16 @@ export function MultiCard({
     fairOnlyNote: oddsNote,
   };
 
-  const { bookie, select, total } = useMultiBookieSelect(
+  const priceCatalog = officialDisplayOnly && liveCatalog?.length ? liveCatalog : allPicks;
+  const { bookie, select, total, publishedBookie, publishedTotal } = useMultiBookieSelect(
     multi,
     legs,
     preferredBookie,
-    lockedBookie,
-    allPicks
+    officialDisplayOnly ? undefined : lockedBookie,
+    priceCatalog,
+    officialDisplayOnly ? lockedBookie : undefined
   );
-  const rawBook = lockedBookie ?? bookie ?? multi.bestBookie;
+  const rawBook = bookie ?? lockedBookie ?? multi.bestBookie;
   const displayBook = isFeedBookie(rawBook) ? rawBook : bookie ?? multi.bestBookie;
 
   const { headline, subline, cardBookie, fairOnly: titleFairOnly } = multiCardTitle(
@@ -102,7 +108,12 @@ export function MultiCard({
   const showFairOnly = titleFairOnly || hideBookieSelect;
 
   const legBookie = showFairOnly ? "" : displayBook ?? cardBookie;
-  const bestFeed = !lockedBookie && !showFairOnly ? bestFeedMultiQuote(legs) : undefined;
+  const bestFeed =
+    !showFairOnly && !officialDisplayOnly
+      ? bestFeedMultiQuote(legs, priceCatalog)
+      : officialDisplayOnly && priceCatalog.length
+        ? bestFeedMultiQuote(legs, priceCatalog)
+        : undefined;
 
   let displayHeadline = headline;
   if (
@@ -181,7 +192,7 @@ export function MultiCard({
                   leg={leg}
                   injuries={injuries}
                   picks={allPicks}
-                  catalog={allPicks}
+                  catalog={priceCatalog}
                   slate={slate}
                   bookie={legBookie}
                   fairPriceInSlot={showFairOnly}
@@ -202,25 +213,43 @@ export function MultiCard({
           {missingAtBookie} leg(s) missing at {legBookie}
         </p>
       )}
-      {bestFeed && bookie && bestFeed.bookie !== bookie && bestFeed.total > (total ?? 0) && (
-        <button
-          type="button"
-          className="text-[11px] text-white/50 pb-2 w-full text-left"
-          onClick={() => select(bestFeed.bookie)}
-        >
-          Higher at {bestFeed.bookie} (${bestFeed.total.toFixed(2)})
-        </button>
+      {officialDisplayOnly && publishedBookie && publishedTotal != null && (
+        <p className="text-[11px] text-white/45 pb-1">
+          Published @ {publishedBookie} ${publishedTotal.toFixed(2)} · switcher shows nearest-line prices
+        </p>
       )}
+      {bestFeed &&
+        bookie &&
+        bestFeed.bookie !== bookie &&
+        bestFeed.total > (total ?? 0) && (
+          officialDisplayOnly ? (
+            <p className="text-[11px] text-white/50 pb-2">
+              Best odds {bestFeed.bookie} ${bestFeed.total.toFixed(2)} (preview only)
+            </p>
+          ) : (
+            <button
+              type="button"
+              className="text-[11px] text-white/50 pb-2 w-full text-left"
+              onClick={() => select(bestFeed.bookie)}
+            >
+              Higher at {bestFeed.bookie} (${bestFeed.total.toFixed(2)})
+            </button>
+          )
+        )}
 
-      {!showFairOnly && !lockedBookie && (
+      {!showFairOnly && !hideBookieSelect && (!lockedBookie || officialDisplayOnly) && (
         <select
           className="w-full mb-2 py-2 text-xs text-white/70 bg-transparent border-0 border-b border-white/[0.05] outline-none"
           value={displayBook ?? ""}
           onChange={(e) => select(e.target.value)}
+          aria-label={officialDisplayOnly ? "Preview bookie prices" : "Bookie"}
         >
           {FEED_BOOKIES.map((b) => (
             <option key={b} value={b}>
               {b}
+              {officialDisplayOnly && total != null && b === displayBook
+                ? ` · $${total.toFixed(2)} preview`
+                : ""}
             </option>
           ))}
         </select>
@@ -295,7 +324,7 @@ function CrossLegGroups({
         const time = game?.startTimeSydney ?? "";
         const blowout = game?.spread != null && Math.abs(game.spread) >= 14.5;
         const block = (
-          <motionBlock
+          <MotionBlock
             key={gameId}
             spacingTop={!first}
             matchup={matchup}
@@ -322,7 +351,7 @@ function CrossLegGroups({
   );
 }
 
-function motionBlock(props: {
+function MotionBlock(props: {
   spacingTop: boolean;
   matchup: string;
   time: string;
@@ -344,7 +373,7 @@ function motionBlock(props: {
     <div
       className={`${props.spacingTop ? "mt-4 pt-4 border-t border-white/[0.05]" : ""}`}
     >
-      <motionGroupHeader
+      <MotionGroupHeader
         matchup={props.matchup}
         time={props.time}
         legCount={props.legCount}
@@ -373,7 +402,7 @@ function motionBlock(props: {
   );
 }
 
-function motionGroupHeader({
+function MotionGroupHeader({
   matchup,
   time,
   legCount,

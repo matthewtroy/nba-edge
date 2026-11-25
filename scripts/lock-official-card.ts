@@ -4,8 +4,15 @@
  */
 import fs from "fs";
 import path from "path";
-import type { InjuryEntry, MetaJson, MultiBet, MultiNotBuilt, SlateGame } from "../lib/types.js";
-import { OFFICIAL_CARD_BOOKIE, writeOfficialCard } from "../lib/official-card.js";
+import type {
+  InjuryEntry,
+  MetaJson,
+  MultiBet,
+  MultiNotBuilt,
+  PickLeg,
+  SlateGame,
+} from "../lib/types.js";
+import { writeOfficialCard } from "../lib/official-card.js";
 
 const root = path.resolve(import.meta.dirname, "..");
 const outDir = path.join(root, "public/data");
@@ -33,6 +40,7 @@ if (existing?.slateDate === slateToday && process.env.FORCE_OFFICIAL_LOCK !== "1
   process.exit(0);
 }
 
+const picks = readJson<PickLeg[]>("picks.json");
 const official = writeOfficialCard(outDir, {
   now,
   slate,
@@ -40,7 +48,7 @@ const official = writeOfficialCard(outDir, {
   notBuilt: multisRaw.notBuilt,
   injuries,
   meta,
-  bookie: OFFICIAL_CARD_BOOKIE,
+  picks,
 });
 
 const metaOut = { ...meta, officialCard: {

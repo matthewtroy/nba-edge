@@ -8,11 +8,11 @@ export function legReasonLineUi(reasonLine: string): {
   );
   return injury
     ? {
-        className: "text-xs text-reason-injury font-medium truncate",
+        className: "text-xs text-reason-injury font-medium leading-snug break-words",
         prefix: "⚡ ",
       }
     : {
-        className: "text-xs text-reason-matchup font-medium truncate",
+        className: "text-xs text-reason-matchup font-medium leading-snug break-words",
         prefix: "",
       };
 }

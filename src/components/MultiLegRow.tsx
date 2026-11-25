@@ -5,6 +5,7 @@ import { legPriceAtCardBookie } from "@lib/leg-card-odds";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { LastFiveTicks } from "./LastFiveTicks";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
+import { legRowReasonLines } from "@lib/leg-row-reasons";
 import { ui } from "../lib/card-type-scale";
 
 interface Props {
@@ -41,7 +42,7 @@ export function MultiLegRow({
   onTap,
 }: Props) {
   const tags = displayLegRowTags(leg, bookie);
-  const reasonUi = leg.reasonLine ? legReasonLineUi(leg.reasonLine) : null;
+  const reasonLines = legRowReasonLines(leg);
   const price = legPriceAtCardBookie(leg, bookie, catalog);
   const muted = !fairPriceInSlot && bookie && price == null;
   const subtitle = !hideGameLine && slate ? legGameTipSubtitle(leg, slate) : null;
@@ -74,11 +75,18 @@ export function MultiLegRow({
             {subtitle}
           </p>
         )}
-        {leg.reasonLine && reasonUi && (
-          <p className={`mt-1 ${reasonUi.className}`} title={leg.reasonLine}>
-            {reasonUi.prefix}
-            {leg.reasonLine}
-          </p>
+        {reasonLines.length > 0 && (
+          <div className="mt-1 space-y-0.5">
+            {reasonLines.map((r) => {
+              const reasonUi = legReasonLineUi(r.text);
+              return (
+                <p key={r.text} className={reasonUi.className}>
+                  {reasonUi.prefix}
+                  {r.text}
+                </p>
+              );
+            })}
+          </div>
         )}
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1.5">
           <LastFiveTicks ticks={ticks} inline hideLabel />

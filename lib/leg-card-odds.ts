@@ -7,6 +7,14 @@ export function legPriceAtCardBookie(
   cardBookie: string,
   catalog?: PickLeg[]
 ): number | undefined {
+  if (
+    cardBookie &&
+    leg.bestBookie === cardBookie &&
+    leg.bestPrice != null &&
+    leg.bestPrice > 1
+  ) {
+    return leg.bestPrice;
+  }
   const p = legPriceAtBookieWithCatalog(leg, cardBookie, catalog ?? [leg]);
   return p != null && p > 1 ? p : undefined;
 }

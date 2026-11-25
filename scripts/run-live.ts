@@ -103,7 +103,6 @@ import {
 } from "../lib/odds-attach.js";
 import { buildRosterIndex, mergeInjuryEntry } from "../lib/injury-match.js";
 import {
-  OFFICIAL_CARD_BOOKIE,
   loadOfficialCard,
   shouldPublishOfficialCard,
   writeOfficialCard,
@@ -816,6 +815,9 @@ export async function runLivePipeline(
         const injuriesSnap = fs.existsSync(injPath)
           ? (JSON.parse(fs.readFileSync(injPath, "utf8")) as InjuryEntry[])
           : injuries;
+        const picksSnap = JSON.parse(
+          fs.readFileSync(picksPath, "utf8")
+        ) as import("../lib/types.js").PickLeg[];
         const existing = loadOfficialCard(slateDir);
         const republishedAt = now.toISOString();
         const official = writeOfficialCard(slateDir, {
@@ -825,7 +827,7 @@ export async function runLivePipeline(
           notBuilt: multisRaw.notBuilt,
           injuries: injuriesSnap,
           meta,
-          bookie: OFFICIAL_CARD_BOOKIE,
+          picks: picksSnap,
           republishedAt,
           preservePublishedAt: existing?.publishedAt,
         });

@@ -11,7 +11,6 @@ import {
   loadOfficialCard,
   shouldPublishOfficialCard,
   writeOfficialCard,
-  OFFICIAL_CARD_BOOKIE,
 } from "../lib/official-card.js";
 import { resolveOddsLastPulled } from "../lib/odds-pull-meta.js";
 import { buildOddsCoverage } from "../lib/odds-coverage.js";
@@ -192,7 +191,7 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
       notBuilt: multisPayload.notBuilt,
       injuries,
       meta: metaOut,
-      bookie: OFFICIAL_CARD_BOOKIE,
+      picks,
     });
     metaOut.officialCard = {
       lockedAt: official.lockedAt,

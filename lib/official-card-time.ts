@@ -1,7 +1,32 @@
 import type { PickLeg } from "./types.js";
 
-/** Default feed bookie for official card leg copy (not manual-entry). */
-export const OFFICIAL_CARD_BOOKIE = "Sportsbet";
+/** @deprecated Official card uses each multi's bestBookie — not a single default. */
+export const OFFICIAL_CARD_BOOKIE = "";
+
+export interface OfficialLegSnapshot {
+  id: string;
+  playerId: string;
+  playerName: string;
+  headshotUrl?: string;
+  gameId: string;
+  team: string;
+  opponent?: string;
+  market: string;
+  line: number;
+  publishedBookie: string;
+  publishedPrice?: number;
+  fairPrice: number;
+  takeAt: number;
+  probability: number;
+  reasons: string[];
+  reasonLine?: string;
+  recentVsLine?: ("hit" | "miss" | "na")[];
+  recentTenVsLine?: ("hit" | "miss" | "na")[];
+  bookiePrices?: Record<string, number>;
+  feedLineNote?: string;
+  questionable?: boolean;
+  tags?: string[];
+}
 
 export interface OfficialCardMeta {
   lockedAt: string;
@@ -14,7 +39,9 @@ export interface OfficialCardMeta {
 export interface OfficialCardFile {
   lockedAt: string;
   slateDate: string;
+  /** Primary bookie (Main Play bestBookie when present). */
   bookie: string;
+  legSnapshots?: Record<string, OfficialLegSnapshot>;
   multis: import("./types.js").MultiBet[];
   notBuilt: import("./types.js").MultiNotBuilt[];
   whatChanged: string[];

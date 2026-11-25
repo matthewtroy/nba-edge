@@ -53,7 +53,7 @@ describe("official card publish", () => {
     expect(hasAuPropPrices([legWithAu])).toBe(true);
   });
 
-  it("defaults official bookie", () => {
-    expect(OFFICIAL_CARD_BOOKIE).toBe("Sportsbet");
+  it("has no hardcoded default bookie", () => {
+    expect(OFFICIAL_CARD_BOOKIE).toBe("");
   });
 });

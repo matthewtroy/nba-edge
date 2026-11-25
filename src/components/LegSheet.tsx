@@ -24,7 +24,7 @@ function LastTenBarChart({ ticks }: { ticks: ("hit" | "miss" | "na")[] }) {
   if (!ticks.length) return null;
   const shown = ticks.slice(0, 10);
   return (
-    <div className="flex items-end gap-1 h-10" aria-label="Last 10 at line">
+    <div className="flex items-end gap-1 h-16" aria-label="Last 10 at line">
       {shown.map((t, i) => (
         <MotionBar
           key={i}
@@ -46,7 +46,7 @@ function MotionBar({
   miss: boolean;
   na: boolean;
 }) {
-  const h = hit || miss ? "h-8" : "h-3";
+  const h = hit || miss ? "h-14" : "h-3";
   const color = hit ? "bg-price-green" : miss ? "bg-red-400" : "bg-white/15";
   return <div className={`flex-1 min-w-[6px] max-w-3 rounded-sm ${h} ${color}`} />;
 }
@@ -179,31 +179,37 @@ export function LegSheet({
       >
         <MotionHandleRow onClose={onClose} />
 
-        <h2 className="text-lg font-semibold text-white theme-adaptive-title leading-tight pr-8">
-          {leg.playerName}
-        </h2>
-        <p className="text-sm text-white/55 mt-0.5">
-          {marketLabel(modelLeg.market, modelLeg.line)}
-        </p>
-        {bookieView.lineShift && (
-          <p className="text-[11px] text-white/45 mt-0.5">{bookieView.lineShift}</p>
-        )}
-        {!bookieView.offered && (
-          <p className="text-[11px] text-red-400/90 mt-1">
-            Not offered at {myBookie} for this line
+        <header className="min-h-[64px] pr-8 flex flex-col justify-center">
+          <h2 className="text-base font-semibold text-white theme-adaptive-title leading-tight">
+            {leg.playerName}
+          </h2>
+          <p className="text-sm text-white/55 mt-0.5">
+            {marketLabel(modelLeg.market, modelLeg.line)}
           </p>
-        )}
-        {subtitle && (
-          <p className="text-[11px] text-white/40 mt-0.5">{subtitle}</p>
-        )}
+          {feedPrice != null && feedPrice > 1 && (
+            <p className="text-[22px] font-bold text-price-green tabular-nums leading-none mt-1">
+              ${feedPrice.toFixed(2)}
+              <span className="text-xs font-normal text-white/45 ml-2">{myBookie}</span>
+            </p>
+          )}
+          {bookieView.lineShift && (
+            <p className="text-[11px] text-white/45 mt-0.5">{bookieView.lineShift}</p>
+          )}
+          {!bookieView.offered && (
+            <p className="text-[11px] text-red-400/90 mt-0.5">
+              Not offered at {myBookie} for this line
+            </p>
+          )}
+          {subtitle && <p className="text-[11px] text-white/40 mt-0.5">{subtitle}</p>}
+        </header>
 
         {onSelectLeg && (
           <RungChips rungs={rungs} activeId={leg.id} onSelect={onSelectLeg} />
         )}
 
         {last10.length > 0 && (
-          <section className="mt-4">
-            <p className="text-[11px] text-white/45 mb-2">Last 10 @ line</p>
+          <section className="mt-3">
+            <p className="text-[11px] text-white/45 mb-1.5">Last 10 @ line</p>
             <LastTenBarChart ticks={last10} />
           </section>
         )}
@@ -223,7 +229,7 @@ export function LegSheet({
           </section>
         )}
 
-        <section className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-[11px]">
+        <section className="mt-3 grid grid-cols-3 gap-x-3 gap-y-2 text-[11px]">
           <StatCell label="Fair" value={`$${modelLeg.fairPrice.toFixed(2)}`} green />
           <StatCell label="Take at" value={`$${modelLeg.takeAt.toFixed(2)}`} />
           <StatCell
