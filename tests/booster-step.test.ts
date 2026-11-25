@@ -100,10 +100,11 @@ describe("Booster stepping", () => {
     if (!main || !booster) return;
     const byId = new Map(picks.map((p) => [p.id, p]));
     const p1Main = byId.get(main.legs.find((id) => byId.get(id)?.playerId === "p1")!)!;
-    const p1Boost = byId.get(
-      booster.legs.find((id) => byId.get(id)?.playerId === "p1")!
-    )!;
-    expect(p1Boost.line).toBe(p1Main.line);
+    const p1Boost = booster.legs
+      .map((id) => byId.get(id))
+      .find((l) => l?.playerId === "p1");
+    expect(p1Boost).toBeDefined();
+    expect(p1Boost!.line).toBe(p1Main.line);
   });
 
 });
