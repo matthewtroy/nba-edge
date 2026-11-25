@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-11-25T06:09:36.916Z",
+  "lastUpdated": "2026-11-25T06:24:09.552Z",
   "oddsLastPulled": "2026-11-25T05:16:23.081Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
-    "odds": "stale"
+    "odds": "ok"
   },
   "slateSize": 9,
   "smallSlate": false,
@@ -24,15 +24,15 @@
   ],
   "q1ExclusionLog": [
     "Giannis Antetokounmpo q1reb 3+: last-10 Q1 60% vs model 81%",
-    "Naz Reid q1reb 3+: last-10 Q1 0% vs model 27%",
-    "Coby White q1reb 2+: last-10 Q1 0% vs model 21%",
     "Moussa Diabate q1reb 5+: last-10 Q1 0% vs model 23%",
+    "Coby White q1reb 2+: last-10 Q1 0% vs model 21%",
+    "Naz Reid q1reb 3+: last-10 Q1 0% vs model 27%",
     "Cedric Coward q1reb 2+: last-10 Q1 40% vs model 66%",
     "Cedric Coward q1reb 3+: last-10 Q1 20% vs model 43%",
     "Rui Hachimura q1reb 2+: last-10 Q1 40% vs model 60%",
     "Jaime Jaquez Jr. q1reb 2+: last-10 Q1 20% vs model 45%",
-    "Kevin Durant q1reb 2+: last-10 Q1 20% vs model 40%",
     "Alperen Sengun q1reb 3+: last-10 Q1 40% vs model 61%",
+    "Kevin Durant q1reb 2+: last-10 Q1 20% vs model 40%",
     "Keldon Johnson q1reb 2+: last-10 Q1 0% vs model 22%"
   ],
   "gameOddsPriceAge": {
@@ -48,11 +48,11 @@
   },
   "slateTipDate": "2026-11-26",
   "whatChanged": [
-    "OG Anunoby out → Jalen Brunson +4.7 pts",
+    "OG Anunoby out → Jalen Brunson +4.8 pts",
     "Cameron Boozer out → Ty Jerome +3.0 pts",
-    "Jimmy Butler III out → Yaxel Lendeborg boards"
+    "Jimmy Butler III out → De'Anthony Melton boards"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_01_00AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_01_15AM.pdf",
   "pricedLegCounts": {
     "pts": {
       "total": 391,
