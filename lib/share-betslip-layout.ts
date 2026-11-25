@@ -1,8 +1,10 @@
-import type { MultiBet, PickLeg, SlateGame } from "./types.js";
+import type { InjuryEntry, InjuryStatus, MultiBet, PickLeg, SlateGame } from "./types.js";
 import { bookieMarketLabel } from "./market-label.js";
 import { legGameTipSubtitle } from "./leg-game-label.js";
 import { legPriceAtBookieWithCatalog } from "./single-bookie.js";
 import { formatLegCardLine } from "./leg-card-odds.js";
+import { injuryStatusForPlayer } from "./injury-display.js";
+import { playerInitials } from "./player-headshot.js";
 
 export const SHARE_BETSLIP_WIDTH_PX = 540;
 export const SHARE_BETSLIP_DPR = 2;
@@ -11,9 +13,14 @@ export type SettleMark = "won" | "lost" | "pending";
 
 export interface ShareBetslipLegBlock {
   key: string;
-  playerLine: string;
+  playerName: string;
+  initials: string;
+  marketLine: string;
+  matchup?: string;
   gameHint?: string;
   priceText: string;
+  fairText: string;
+  injuryStatus?: InjuryStatus;
   settleMark?: SettleMark;
 }
 
@@ -36,7 +43,7 @@ export interface ShareBetslipLayout {
 
 const HEADER_PX = 92;
 const FOOTER_PX = 80;
-const LEG_BLOCK_PX = 68;
+const LEG_BLOCK_PX = 78;
 const GROUP_HEADER_PX = 34;
 const DIVIDER_PX = 1;
 
@@ -56,6 +63,42 @@ function settleFromLeg(leg: PickLeg): SettleMark | undefined {
   return undefined;
 }
 
+function legBlockFromPick(
+  leg: PickLeg,
+  bookie: string,
+  slate: SlateGame[] | undefined,
+  catalog: PickLeg[] | undefined,
+  injuries: InjuryEntry[] | undefined,
+  gameHint?: string
+): ShareBetslipLegBlock {
+  const quoted =
+    bookie && legPriceAtBookieWithCatalog(leg, bookie, catalog ?? []);
+  const price =
+    typeof quoted === "number" && Number.isFinite(quoted) ? quoted : undefined;
+  const priceText =
+    price != null && price > 1
+      ? `$${price.toFixed(2)}`
+      : formatLegCardLine(leg, bookie);
+  const matchup =
+    (slate && leg.gameId
+      ? legGameTipSubtitle(leg, slate)
+      : null) ?? `${leg.team} vs ${leg.opponent}`;
+  return {
+    key: leg.id,
+    playerName: leg.playerName,
+    initials: playerInitials(leg.playerName),
+    marketLine: bookieMarketLabel(leg.market, leg.line),
+    matchup,
+    gameHint,
+    priceText,
+    fairText: `Fair ${leg.fairPrice.toFixed(2)}`,
+    injuryStatus: injuries
+      ? injuryStatusForPlayer(injuries, leg.playerId)
+      : undefined,
+    settleMark: settleFromLeg(leg),
+  };
+}
+
 export function buildShareBetslipLayout(input: {
   multi: MultiBet;
   legs: PickLeg[];
@@ -63,8 +106,9 @@ export function buildShareBetslipLayout(input: {
   bookie?: string;
   total?: number;
   catalog?: PickLeg[];
+  injuries?: InjuryEntry[];
 }): ShareBetslipLayout {
-  const { multi, legs, slate, catalog } = input;
+  const { multi, legs, slate, catalog, injuries } = input;
   const bookie = input.bookie ?? multi.bestBookie ?? "";
   let total = input.total;
   if (total == null && bookie) {
@@ -89,22 +133,14 @@ export function buildShareBetslipLayout(input: {
         : `${leg.team} vs ${leg.opponent}`;
     gameLabels.set(gid, gameLabel);
 
-    const quoted =
-      bookie && legPriceAtBookieWithCatalog(leg, bookie, catalog ?? legs);
-    const price =
-      typeof quoted === "number" && Number.isFinite(quoted) ? quoted : undefined;
-    const priceText =
-      price != null && price > 1
-        ? `$${price.toFixed(2)}`
-        : formatLegCardLine(leg, bookie);
-
-    const block: ShareBetslipLegBlock = {
-      key: leg.id,
-      playerLine: `${leg.playerName} — ${bookieMarketLabel(leg.market, leg.line)}`,
-      gameHint: multi.type === "crossGameSgm" ? gameLabel : undefined,
-      priceText,
-      settleMark: settleFromLeg(leg),
-    };
+    const block = legBlockFromPick(
+      leg,
+      bookie,
+      slate,
+      catalog ?? legs,
+      injuries,
+      multi.type === "crossGameSgm" ? gameLabel : undefined
+    );
     const list = byGame.get(gid) ?? [];
     list.push(block);
     byGame.set(gid, list);
@@ -121,21 +157,9 @@ export function buildShareBetslipLayout(input: {
           {
             gameKey: "sgm",
             gameLabel: "",
-            legs: legs.map((leg) => {
-              const quoted =
-                bookie && legPriceAtBookieWithCatalog(leg, bookie, catalog ?? legs);
-              const price =
-                typeof quoted === "number" && Number.isFinite(quoted) ? quoted : undefined;
-              return {
-                key: leg.id,
-                playerLine: `${leg.playerName} — ${bookieMarketLabel(leg.market, leg.line)}`,
-                priceText:
-                  price != null && price > 1
-                    ? `$${price.toFixed(2)}`
-                    : formatLegCardLine(leg, bookie),
-                settleMark: settleFromLeg(leg),
-              };
-            }),
+            legs: legs.map((leg) =>
+              legBlockFromPick(leg, bookie, slate, catalog ?? legs, injuries)
+            ),
           },
         ];
 

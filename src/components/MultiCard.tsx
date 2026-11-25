@@ -182,6 +182,7 @@ export function MultiCard({
         bookie: legBookie || displayBook,
         total: headerTotal ?? publishedTotal ?? multi.bestBookieTotal,
         catalog: priceCatalog,
+        injuries,
       });
       const blob = await captureShareBetslipPng(layout);
       const file = new File([blob], "nba-edge-multi.png", { type: "image/png" });

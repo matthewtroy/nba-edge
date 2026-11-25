@@ -56,6 +56,23 @@ describe("share multi image layout", () => {
     expect(shareMultiCanvasSize(17).height).toBeGreaterThan(shareMultiCanvasSize(5).height);
   });
 
+  it("includes fair line and settle marks on leg blocks", () => {
+    const legs = stubLegs(2).map((l, i) => ({
+      ...l,
+      result: i === 0 ? ("won" as const) : ("lost" as const),
+    }));
+    const layout = buildShareBetslipLayout({
+      multi: stubMulti(2),
+      legs,
+      bookie: "TAB",
+      total: 4.2,
+    });
+    expect(layout.groups[0].legs[0].fairText).toMatch(/^Fair /);
+    expect(layout.groups[0].legs[0].initials).toBeTruthy();
+    expect(layout.groups[0].legs[0].settleMark).toBe("won");
+    expect(layout.groups[0].legs[1].settleMark).toBe("lost");
+  });
+
   it("builds grouped leg blocks for cross-game SGM", () => {
     const layout = buildShareBetslipLayout({
       multi: stubMulti(5, "crossGameSgm"),
