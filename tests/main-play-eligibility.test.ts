@@ -68,17 +68,19 @@ describe("main play leg eligibility", () => {
     expect(qualifiesMainPlayLeg(leg, "Ladbrokes")).toBe(true);
   });
 
-  it("Main Play gate allows 3pm 2+ (SGM still needs 4+)", () => {
-    const leg = synth({ id: "sga3", market: "3pm", line: 2 });
-    expect(gateLineViolation(leg, false, { mainPlay: true })).toBeNull();
-    expect(gateLineViolation(leg, false)).toMatch(/need 4\+/);
+  it("Main Play and SGM gates allow 3pm 1+", () => {
+    const leg1 = synth({ id: "sga1", market: "3pm", line: 1 });
+    const leg2 = synth({ id: "sga3", market: "3pm", line: 2 });
+    expect(gateLineViolation(leg1, false, { mainPlay: true })).toBeNull();
+    expect(gateLineViolation(leg1, false)).toBeNull();
+    expect(gateLineViolation(leg2, false)).toBeNull();
   });
 
-  it("3pm main lines qualify Main Play structure", () => {
+  it("3pm 1+ qualifies Main Play structure", () => {
     const leg = synth({
       id: "threes",
       market: "3pm",
-      line: 3,
+      line: 1,
       reasonLine: "7/10 hits at line · Pace top-8",
     });
     expect(mainPlayStructuralOk(leg)).toBe(true);

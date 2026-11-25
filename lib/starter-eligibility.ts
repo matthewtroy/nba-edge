@@ -21,6 +21,6 @@ export function isMainPlayStatLine(market: Market, line: number): boolean {
   if (market === "pts") return line >= 10;
   if (market === "reb") return line >= 5;
   if (market === "ast") return line >= 5;
-  if (market === "3pm") return line >= 2;
+  if (market === "3pm") return line >= 1;
   return false;
 }

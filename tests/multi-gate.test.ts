@@ -35,24 +35,24 @@ function multi(partial: Partial<MultiBet>): MultiBet {
 }
 
 describe("multi gate", () => {
-  it("rejects micro 3PM on cross-game", () => {
-    const leg2pm: PickLeg = {
+  it("allows 3pm 1+ on cross-game (no micro-3PM floor)", () => {
+    const leg1pm: PickLeg = {
       ...leg,
+      id: "t1",
       market: "3pm",
-      line: 2,
+      line: 1,
       starterEligible: true,
     };
     const r = gateMulti(
       multi({
         type: "crossGameSgm",
         label: "Cross-Game SGM Multi",
-        legs: ["a", "b", "c", "d"],
+        legs: ["t1", "b", "c", "d"],
         combinedTakeAt: 12,
       }),
-      [leg2pm, leg2pm, leg, leg]
+      [leg1pm, leg, leg, leg]
     );
-    expect(r.ok).toBe(false);
-    expect(r.violations.some((v) => /forbidden.*3PM/i.test(v))).toBe(true);
+    expect(r.violations.some((v) => /forbidden.*3PM/i.test(v))).toBe(false);
   });
 
   it("rejects Best mix label", () => {

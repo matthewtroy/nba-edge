@@ -29,7 +29,7 @@ export function isSgmMainLine(market: Market, line: number): boolean {
   if (market === "pts") return line >= 10;
   if (market === "reb") return line >= 5;
   if (market === "ast") return line >= 5;
-  if (market === "3pm") return line >= 4;
+  if (market === "3pm") return line >= 1;
   return false;
 }
 
@@ -50,9 +50,8 @@ export function gateLineViolation(
     return `${leg.playerName}: Q1 leg only in Q1 Multi`;
   }
   if (leg.market === "3pm") {
-    const min3pm = opts?.mainPlay ? 2 : 4;
-    if (leg.line < min3pm) {
-      return `${leg.playerName}: forbidden ${leg.line}+ 3PM (need ${min3pm}+)`;
+    if (leg.line < 1) {
+      return `${leg.playerName}: forbidden ${leg.line}+ 3PM (need 1+)`;
     }
   }
   if (leg.market === "reb" && leg.line < 5) {
