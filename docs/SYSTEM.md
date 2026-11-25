@@ -6,7 +6,7 @@ Phone-first static app + GitHub Actions pipeline. Canonical betting rules below;
 
 ## 1. Purpose & architecture
 
-- **Purpose:** Injury-aware NBA player-prop projections → fair / take-at prices → standard multis (Main Play, Booster, Q1 Multi / Q1 Multi (Longshot), Cross-Game SGM, Boost SGM, Longshot). Copy-friendly cards; no auto betting.
+- **Purpose:** Injury-aware NBA player-prop projections → fair / take-at prices → standard multis (Main Play, Best Double Up, Booster, Q1 Multi, Best SGM, one Longshot). Copy-friendly cards; no auto betting.
 - **Runtime today:** `npm run pipeline` writes JSON under `public/data/{slateDate}/`; Vite/React UI reads that JSON. GitHub Actions runs pipeline + Pages deploy.
 - **Planned:** Supabase project **NBA Edge** (`dzikozvlfrvsstkhzkzj`) for pipeline storage, Auth, Stripe **entitlements**, subscriber APIs, and optional Discord—see `docs/SCHEMA.md` and `supabase/migrations/`. Migrations only in git; no agent `db push`.
 
@@ -74,27 +74,34 @@ Ranking: injury news → probability → edge. **One AU bookie per built multi**
 
 ### Main Play
 
-- 4–5 legs; starter main lines (pts ≥10, reb/ast ≥5, 3pm ≥2 for Main stat set); per-leg fair **1.40–2.50**, p ≥ 0.60; no Check news; no age-B2B.
-- **Combined range on real bookie total: $7–$20** (decimal product at the chosen book). Spec prefers 1 leg/game; 2/game only on thin slates.
-- Prefer pts/reb/ast; at most one 3pm leg.
+- 4–5 legs; starter main lines (pts ≥10, reb/ast ≥5, **3pm ≥2**); per-leg fair **1.40–2.50** (`MAIN_PLAY_LEG_FAIR_*` in `lib/pricing-config.ts`), p ≥ 0.60; no Check news; no age-B2B.
+- **Combined range on real bookie total: $5–$20** (`MAIN_PLAY_COMBINED_MIN` / `MAX` in `lib/pricing-config.ts`). Spec prefers 1 leg/game; 2/game only on thin slates.
+- **3PM** is a first-class Main Play market in the builder pool (at most one 3pm leg per card).
 - **No target-profit stake line on cards** (stake UI removed from multis JSON; settings may still store a personal target for future use only).
 
 ### Booster
 
 Same **Main Play bookie** and players; **+1 rung** when that Main leg’s bookie price ≤ 4.00, else same rung. No per-leg edge gate. Nearest main/alternate line at bookie.
 
-### Q1 Multi (names & rules)
+### Q1 Multi
 
-| Variant | Label | Rules |
-|---------|--------|--------|
-| **Core** | Q1 Multi | Blend p = 0.3 model + 0.4 L10 Q1 + 0.3 L5 Q1; 24+ min starters; −20pp L10 gap; fair ≥ **1.30**; rank legs, **1/team**, **3–6** teams |
-| **Longshot** | Q1 Multi (Longshot) | Same structure; each leg fair ≥ **2.50** |
+| Label | Rules |
+|--------|--------|
+| **Q1 Multi** | Blend p = 0.3 model + 0.4 L10 Q1 + 0.3 L5 Q1; 24+ min starters; −20pp L10 gap; fair ≥ **1.30**; rank legs, **1/team**, **3–6** teams |
 
 No AU Q1 feed — card shows **Take fair×1.08** prominently.
 
-### Cross-Game SGM / Boost SGM / Longshot
+### Best Double Up (cross-game)
 
-Per `lib/multis.ts` + `lib/main-play-eligibility.ts`: cross-game legs need starter + main-line floors; Boost SGM 3 legs one game; Longshot DD/TD/high pts, fair band 30–100.
+Label **Best Double Up** (`type: crossGameSgm`). Home card order: **Main Play → Best Double Up → Booster → …** Up to **5 games**, 1–2 legs each, combined **$15–$50** at one AU bookie.
+
+### Best SGM
+
+Same-game **3–4** legs, one game, one bookie — **no combined price band** (search ranks probability / edge only).
+
+### Longshot
+
+**One** card per slate when built — DD/TD or 30+ pts starters, combined take-at **$30–$150**, no 3PM legs.
 
 ### Small slate
 
@@ -137,7 +144,7 @@ Not implemented in pipeline JSON today. Planned layer on top of picks/multis: sh
 
 ## 10. Tests & quality bar
 
-Vitest: distributions, injury fixture, clash, exposure, odds pause, Main Play range, multis schema (no stake on bets). Keep tests light.
+Vitest: distributions, injury fixture, clash, exposure, odds pause, Main Play range, multis schema (no stake on bets). Prefer **`tests/fixtures/`** for unit data (e.g. Games tab SAC/BKN SGM); `pretest` may still fetch `public/data` for integration proofs. Keep tests light.
 
 ---
 
@@ -146,7 +153,11 @@ Vitest: distributions, injury fixture, clash, exposure, odds pause, Main Play ra
 | Topic | Spec (this doc) | Code today |
 |--------|-----------------|------------|
 | Market blend | 60% market / 40% model | `lib/market-blend.ts`: **60% model / 40% market** |
-| Main Play combined total | **$7–$20** at chosen bookie | `lib/multis.ts` `findMainPlaySubset`: **$7–$10** |
+| Main Play combined total | **$5–$20** at chosen bookie | `lib/pricing-config.ts` + `findMainPlaySubset` |
+| Best SGM combined band | None | `pickBestSameGameSgmCombo` with open max |
+| Cross-game label | Best Double Up | `lib/multis.ts` `LABELS.crossGameSgm` |
+| Longshot variants | One card | `buildLongshot` — no Longshot 2/3 |
+| Home settle row | Official W–L on Today | `lib/home-settle-summary.ts`, `TodayScreen` |
 | Exposure cap | Removed (clash only) | `lib/exposure.ts` no-op |
 | Main stake / targetProfit | Not on cards | Settings UI still has targetProfit; multis omit stake |
 | Q1 Multi fair band | Core p ≥ 0.70; Longshot fair 2.20–4.00 | Matches `buildQ1Multi` |
@@ -164,7 +175,9 @@ Vitest: distributions, injury fixture, clash, exposure, odds pause, Main Play ra
 | Pipeline entry | `scripts/run-live.ts`, `scripts/pipeline.ts` |
 | Model | `scripts/model-engine.ts`, `lib/baseline.ts`, `lib/injury-redistribution.ts` |
 | Blend & Value | `lib/market-blend.ts`, `lib/value-at-bookie.ts` |
-| Multis | `lib/multis.ts`, `lib/multi-gate.ts`, `lib/bookie-edge-pool.ts` |
+| Multis | `lib/multis.ts`, `lib/multi-gate.ts`, `lib/bookie-edge-pool.ts`, `lib/pricing-config.ts` |
+| Games tab SGM | `lib/games-tab-sgm.ts`, `lib/game-sgm-builder.ts`, `tests/fixtures/games-tab-sac-bkn.json` |
+| Home / results | `lib/home-settle-summary.ts`, `src/screens/TodayScreen.tsx`, `src/screens/ResultsScreen.tsx` |
 | Odds schedule | `scripts/odds-schedule.ts`, `lib/odds.ts` |
 | Official card | `lib/official-card.ts`, `lib/official-card-time.ts` |
 | UI | `src/screens/TodayScreen.tsx`, `src/components/MultiCard.tsx` |
