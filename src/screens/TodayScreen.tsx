@@ -10,6 +10,7 @@ import { DateSwitcher } from "../components/DateSwitcher";
 import { sydneyDateString } from "@lib/official-card-time";
 import { sydneyTimeFromIso } from "../utils/format";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
+import { formatOddsFreshnessSummary } from "@lib/odds-freshness-ui";
 import { picksByIdFromOfficialSnapshots } from "@lib/official-leg-snapshot";
 
 const ORDER = [
@@ -69,6 +70,11 @@ export function TodayScreen({
       ? official.oddsLastPulled
       : data.meta.oddsLastPulled;
   const oddsForCard = headerOddsPull;
+  const oddsFreshness = formatOddsFreshnessSummary(
+    data.picks,
+    data.slate,
+    headerOddsPull
+  );
   const publishedAt = official?.publishedAt ?? official?.lockedAt;
 
   const cardPlayerIds = new Set(
@@ -136,11 +142,11 @@ export function TodayScreen({
           )}
           <p className="text-sm text-white/70">
             {data.slate.length} games · Updated {sydneyTimeFromIso(data.meta.lastUpdated)}
-            {headerOddsPull && (
-              <> · Odds from {sydneyTimeFromIso(headerOddsPull)}</>
-            )}
             {stale && <span className="text-accent-warn ml-1" title="Source stale or paused">●</span>}
           </p>
+          {oddsFreshness && (
+            <p className="text-[11px] text-white/45 mt-0.5">{oddsFreshness}</p>
+          )}
           {useOfficial && officialBookie && (
             <p className="text-xs text-white/45 mt-1">Card bookie · {officialBookie}</p>
           )}

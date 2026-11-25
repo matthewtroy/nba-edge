@@ -10,6 +10,7 @@ import { MultiCard } from "../components/MultiCard";
 import { DateSwitcher } from "../components/DateSwitcher";
 import { useGamesSgmPreset } from "../hooks/useGamesSgmPreset";
 import { formatOddsBand } from "@lib/game-sgm-builder";
+import { formatGameOddsAge, formatOddsFreshnessSummary } from "@lib/odds-freshness-ui";
 
 interface Props {
   data: DataBundle;
@@ -73,6 +74,11 @@ export function GamesScreen({
   const slateFairOnly = !slateHasFeedOdds(data.picks);
   const oddsNote = slateOddsAvailabilityNote(data.meta, data.picks);
   const bandLabel = formatOddsBand(preset.min, preset.max);
+  const oddsFreshness = formatOddsFreshnessSummary(
+    data.picks,
+    data.slate,
+    data.meta.oddsLastPulled
+  );
 
   return (
     <div className="pb-24">
@@ -87,6 +93,9 @@ export function GamesScreen({
         <p className="text-sm text-white/45 theme-adaptive-muted mt-0.5">
           SGMs by bookie total · {bandLabel}
         </p>
+        {oddsFreshness && (
+          <p className="text-[11px] text-white/45 mt-1">{oddsFreshness}</p>
+        )}
       </header>
       <div className="flex flex-wrap gap-2 mb-4">
         {presets.map((p) => (
@@ -114,6 +123,11 @@ export function GamesScreen({
         const multi = gameSgmAsMulti(card, game);
         const isCollapsed = collapsed[game.id] ?? false;
         const live = isGameLive(game.status);
+        const gameOddsAge = formatGameOddsAge(
+          data.picks,
+          game.id,
+          data.meta.oddsLastPulled
+        );
 
         return (
           <div key={game.id} className="mb-4">
@@ -132,6 +146,11 @@ export function GamesScreen({
               <>
                 <p className="text-[13px] font-semibold text-white theme-adaptive-title mb-2">
                   {gameListRowLabel(game)}
+                  {gameOddsAge ? (
+                    <span className="text-white/40 font-normal text-[11px] ml-2">
+                      {gameOddsAge}
+                    </span>
+                  ) : null}
                   {game.spread != null && Math.abs(game.spread) >= 14.5 && (
                     <span className="text-red-400 font-normal text-xs ml-2">
                       Blowout

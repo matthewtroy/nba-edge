@@ -17,6 +17,7 @@
     "odds-check": "tsx scripts/odds-check.ts",
     "test": "vitest run",
     "screenshots:leg-sheet": "npm run build && tsx scripts/capture-leg-sheet-screenshots.ts",
+    "screenshots:picks": "npm run build && tsx scripts/capture-picks-screenshots.ts",
     "test:watch": "vitest"
   },
   "dependencies": {

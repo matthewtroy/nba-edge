@@ -1,12 +1,16 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, type ReactNode } from "react";
 import type { DataBundle } from "../hooks/useData";
-import type { PickLeg } from "@lib/types";
-import { LegRow } from "../components/LegRow";
+import type { PickLeg, Market } from "@lib/types";
+import { PickLegRow } from "../components/PickLegRow";
 import { DateSwitcher } from "../components/DateSwitcher";
-import { hasValueAtBookie } from "@lib/value-at-bookie";
-import { legPriceAtBookie } from "@lib/single-bookie";
-
-type SortKey = "player" | "market" | "prob" | "fair" | "take" | "edge" | "book";
+import {
+  usePicksFilters,
+  picksFilterSummaryLabels,
+  type PicksSortKey,
+} from "../hooks/usePicksFilters";
+import { filterAndSortPicks, marketsOnSlate } from "../lib/picks-list";
+import { ui } from "../lib/card-type-scale";
+import { formatOddsFreshnessSummary } from "@lib/odds-freshness-ui";
 
 interface Props {
   data: DataBundle;
@@ -18,12 +22,47 @@ interface Props {
   onLegTap: (leg: PickLeg) => void;
 }
 
-const SORT_KEY = "picks-sort-v1";
+const MARKET_LABEL: Record<string, string> = {
+  pts: "Pts",
+  reb: "Reb",
+  ast: "Ast",
+  "3pm": "3PM",
+  q1pts: "Q1 pts",
+  q1reb: "Q1 reb",
+  q1ast: "Q1 ast",
+  dd: "DD",
+  td: "TD",
+  combo: "Combo",
+};
 
-function edgeAtBookie(leg: PickLeg, bookie: string): number {
-  const p = legPriceAtBookie(leg, bookie);
-  if (p == null || p <= 1) return -999;
-  return p / leg.fairPrice - 1;
+function FilterPill({
+  label,
+  value,
+  testId,
+  onChange,
+  children,
+}: {
+  label: string;
+  value: string;
+  testId?: string;
+  onChange: (v: string) => void;
+  children: ReactNode;
+}) {
+  return (
+    <label
+      className={`${ui.chip} inline-flex items-center gap-1 pl-2.5 pr-1 py-1 shrink-0`}
+    >
+      <span className="text-white/45 text-[10px]">{label}</span>
+      <select
+        data-testid={testId}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="bg-transparent text-[10px] text-white/80 border-0 outline-none max-w-[5.5rem] truncate"
+      >
+        {children}
+      </select>
+    </label>
+  );
 }
 
 export function PicksScreen({
@@ -35,93 +74,27 @@ export function PicksScreen({
   myBookie = "bet365",
   onLegTap,
 }: Props) {
-  const [showAll, setShowAll] = useState(false);
-  const [filter, setFilter] = useState<"all" | "value" | "high" | string>("value");
-  const [sortKey, setSortKey] = useState<SortKey>("edge");
-  const [sortAsc, setSortAsc] = useState(false);
+  const [filters, patch, toggleSortDir] = usePicksFilters();
+  const markets = useMemo(() => marketsOnSlate(data.picks), [data.picks]);
 
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem(SORT_KEY);
-      if (!raw) return;
-      const parsed = JSON.parse(raw) as { key: SortKey; asc: boolean };
-      setSortKey(parsed.key);
-      setSortAsc(parsed.asc);
-    } catch {
-      /* ignore */
-    }
-  }, []);
-
-  const toggleSort = (key: SortKey) => {
-    const asc = sortKey === key ? !sortAsc : key === "player" || key === "market";
-    setSortKey(key);
-    setSortAsc(asc);
-    localStorage.setItem(SORT_KEY, JSON.stringify({ key, asc }));
-  };
-
-  const arrow = (key: SortKey) =>
-    sortKey === key ? (sortAsc ? " ↑" : " ↓") : "";
-
-  const valueAtBookie = useMemo(
-    () => data.picks.filter((l) => hasValueAtBookie(l, myBookie)),
-    [data.picks, myBookie]
+  const legs = useMemo(
+    () =>
+      filterAndSortPicks({
+        picks: data.picks,
+        slate: data.slate,
+        multis: data.multis,
+        myBookie,
+        filters,
+      }),
+    [data.picks, data.slate, data.multis, myBookie, filters]
   );
-  const hasValueOdds = valueAtBookie.length > 0;
 
-  const legs = useMemo(() => {
-    let list = [...data.picks];
-    if (filter === "value") {
-      list = list.filter((l) => hasValueAtBookie(l, myBookie));
-    } else if (filter === "high") {
-      list = list.filter((l) => l.tags.includes("High probability"));
-      if (!showAll) list = list.slice(0, 15);
-    } else if (!showAll) {
-      list = list
-        .filter(
-          (l) =>
-            l.tags.includes("High probability") || hasValueAtBookie(l, myBookie)
-        )
-        .slice(0, 15);
-    }
-    if (filter.startsWith("game:")) {
-      const gid = filter.slice(5);
-      list = data.picks.filter((l) => l.gameId === gid);
-    }
-    const dir = sortAsc ? 1 : -1;
-    list.sort((a, b) => {
-      switch (sortKey) {
-        case "player":
-          return dir * a.playerName.localeCompare(b.playerName);
-        case "market":
-          return dir * `${a.market}${a.line}`.localeCompare(`${b.market}${b.line}`);
-        case "prob":
-          return dir * (a.probability - b.probability);
-        case "fair":
-          return dir * (a.fairPrice - b.fairPrice);
-        case "take":
-          return dir * (a.takeAt - b.takeAt);
-        case "book": {
-          const pa = legPriceAtBookie(a, myBookie) ?? 0;
-          const pb = legPriceAtBookie(b, myBookie) ?? 0;
-          return dir * (pa - pb);
-        }
-        case "edge":
-        default:
-          return dir * (edgeAtBookie(a, myBookie) - edgeAtBookie(b, myBookie));
-      }
-    });
-    return list;
-  }, [data.picks, showAll, filter, myBookie, sortKey, sortAsc]);
-
-  const headers: { key: SortKey; label: string }[] = [
-    { key: "player", label: "Player" },
-    { key: "market", label: "Line" },
-    { key: "prob", label: "P" },
-    { key: "fair", label: "Fair" },
-    { key: "take", label: "Take" },
-    { key: "edge", label: "Edge" },
-    { key: "book", label: myBookie },
-  ];
+  const { show, sort } = picksFilterSummaryLabels(filters);
+  const oddsSummary = formatOddsFreshnessSummary(
+    data.picks,
+    data.slate,
+    data.meta.oddsLastPulled
+  );
 
   return (
     <div className="pb-24">
@@ -131,69 +104,105 @@ export function PicksScreen({
         selected={slateDate}
         onSelect={onSlateDateChange}
       />
-      <h1 className="text-xl font-bold mb-3">Picks</h1>
+      <header className="mb-3">
+        <h1 className="text-xl font-bold text-white theme-adaptive-title">Picks</h1>
+        {oddsSummary && (
+          <p className="text-[11px] text-white/45 mt-1">{oddsSummary}</p>
+        )}
+      </header>
 
-      {!hasValueOdds && (
-        <p className="text-sm text-accent-warn mb-3 px-1">
-          No {myBookie} value yet: type a price on any leg to check it
-        </p>
-      )}
-
-      <div className="flex flex-wrap gap-2 mb-3">
-        {(["high", "value", "all"] as const).map((f) => (
-          <button
-            key={f}
-            type="button"
-            onClick={() => setFilter(f === "all" ? "all" : f)}
-            className={`text-xs px-3 py-1 rounded-full border ${
-              filter === f ? "border-accent-high text-accent-high" : "border-white/20"
-            }`}
-          >
-            {f === "high"
-              ? "High probability"
-              : f === "value"
-                ? `Value @ ${myBookie}`
-                : "All"}
-          </button>
-        ))}
-        {data.slate.map((g) => (
-          <button
-            key={g.id}
-            type="button"
-            onClick={() => setFilter(`game:${g.id}`)}
-            className={`text-xs px-3 py-1 rounded-full border ${
-              filter === `game:${g.id}` ? "border-accent-high" : "border-white/20"
-            }`}
-          >
-            {g.awayTeam.split(" ").pop()} @ {g.homeTeam.split(" ").pop()}
-          </button>
-        ))}
-      </div>
-      <button
-        type="button"
-        className="text-sm text-accent-high mb-3"
-        onClick={() => setShowAll((s) => !s)}
+      <div
+        data-testid="picks-filters"
+        className="flex flex-nowrap gap-1.5 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-hide"
       >
-        {showAll ? "Show high-prob top 15" : "Show all"}
-      </button>
-      <div className="flex flex-wrap gap-1 mb-2 px-1">
-        {headers.map((h) => (
-          <button
-            key={h.key}
-            type="button"
-            className="text-[10px] px-2 py-1 rounded border border-white/15 text-white/70"
-            onClick={() => toggleSort(h.key)}
-          >
-            {h.label}
-            {arrow(h.key)}
-          </button>
-        ))}
+        <FilterPill
+          label="Multi"
+          testId="picks-filter-multi"
+          value={filters.multi}
+          onChange={(v) =>
+            patch({ multi: v === "inMulti" ? "inMulti" : "all" })
+          }
+        >
+          <option value="all">All legs</option>
+          <option value="inMulti">In multis</option>
+        </FilterPill>
+        <FilterPill
+          label="Market"
+          testId="picks-filter-market"
+          value={filters.market}
+          onChange={(v) => patch({ market: v as "all" | Market })}
+        >
+          <option value="all">All</option>
+          {markets.map((m) => (
+            <option key={m} value={m}>
+              {MARKET_LABEL[m] ?? m}
+            </option>
+          ))}
+        </FilterPill>
+        <FilterPill
+          label="Show"
+          testId="picks-filter-show"
+          value={filters.show}
+          onChange={(v) =>
+            patch({
+              show:
+                v === "high" || v === "all"
+                  ? v
+                  : "value",
+            })
+          }
+        >
+          <option value="value">Value</option>
+          <option value="high">High</option>
+          <option value="all">All</option>
+        </FilterPill>
+        <FilterPill
+          label="Sort"
+          testId="picks-filter-sort"
+          value={filters.sort}
+          onChange={(v) => patch({ sort: v as PicksSortKey })}
+        >
+          <option value="edge">Edge</option>
+          <option value="prob">Prob</option>
+          <option value="price">Price</option>
+          <option value="l5">L5</option>
+          <option value="tip">Tip</option>
+        </FilterPill>
+        <button
+          type="button"
+          data-testid="picks-sort-dir"
+          onClick={toggleSortDir}
+          className={`${ui.chip} px-2.5 py-1 text-[10px] text-white/70 shrink-0`}
+          aria-label="Toggle sort direction"
+        >
+          {filters.sortAsc ? "↑" : "↓"}
+        </button>
       </div>
-      <div className="bg-card rounded-xl px-2">
-        {legs.map((leg) => (
-          <LegRow key={leg.id} leg={leg} slate={data.slate} myBookie={myBookie} onTap={onLegTap} />
-        ))}
-      </div>
+
+      <p className="text-[11px] text-white/45 mb-2">
+        {legs.length} picks · {show} · {sort}
+      </p>
+
+      {legs.length === 0 ? (
+        <div className={`${ui.card} text-center py-8`}>
+          <p className="text-sm text-white/55">No picks match these filters</p>
+          <p className="text-[11px] text-white/40 mt-2">
+            Try Show All, another market, or All legs
+          </p>
+        </div>
+      ) : (
+        <section className={`${ui.card} px-2 py-0`}>
+          {legs.map((leg) => (
+            <PickLegRow
+              key={leg.id}
+              leg={leg}
+              slate={data.slate}
+              myBookie={myBookie}
+              onTap={onLegTap}
+            />
+          ))}
+        </section>
+      )}
     </div>
   );
 }

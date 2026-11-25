@@ -12,6 +12,7 @@ import { useCrossGameSelection } from "../hooks/useCrossGameSelection";
 import { CrossGameChips } from "./CrossGameChips";
 import { ui } from "../lib/card-type-scale";
 import { MultiCardHeader } from "./MultiCardHeader";
+import { formatGameOddsAge } from "@lib/odds-freshness-ui";
 
 interface Props {
   multi: MultiBet;
@@ -73,6 +74,7 @@ export function MultiCard({
   onLegTap,
   onCopy,
   slate,
+  oddsLastPulled,
 }: Props) {
   const allPicks = Array.from(picksById.values());
   const { resolveLeg, swapLeg, resetLeg, isEdited } = useMultiLegEdits(multi, allPicks);
@@ -175,6 +177,7 @@ export function MultiCard({
             swapLeg={swapLeg}
             resetLeg={resetLeg}
             compact={compact}
+            oddsFallbackIso={oddsLastPulled}
           />
         ) : (
           multi.legs.map((anchorId) => {
@@ -298,6 +301,7 @@ function CrossLegGroups({
   swapLeg: (id: string) => void;
   resetLeg: (id: string) => void;
   compact: boolean;
+  oddsFallbackIso?: string;
 }) {
   const order = slate?.length
     ? slate.map((g) => g.id)
@@ -342,6 +346,9 @@ function CrossLegGroups({
             onLegTap={onLegTap}
             swapLeg={swapLeg}
             resetLeg={resetLeg}
+            gameId={gameId}
+            oddsFallbackIso={props.oddsFallbackIso}
+            catalog={props.allPicks}
           />
         );
         first = false;
@@ -368,7 +375,14 @@ function MotionBlock(props: {
   onLegTap: (leg: PickLeg) => void;
   swapLeg: (id: string) => void;
   resetLeg: (id: string) => void;
+  gameId: string;
+  oddsFallbackIso?: string;
+  catalog: PickLeg[];
 }) {
+  const oddsAge =
+    props.gameId && props.catalog.length
+      ? formatGameOddsAge(props.catalog, props.gameId, props.oddsFallbackIso)
+      : undefined;
   return (
     <div
       className={`${props.spacingTop ? "mt-4 pt-4 border-t border-white/[0.05]" : ""}`}
@@ -378,6 +392,7 @@ function MotionBlock(props: {
         time={props.time}
         legCount={props.legCount}
         blowout={props.blowout}
+        oddsAge={oddsAge}
       />
       {props.rows.map(({ anchorId, leg }) => (
         <ErrorBoundary key={anchorId} name={`leg-${anchorId}`}>
@@ -407,16 +422,23 @@ function MotionGroupHeader({
   time,
   legCount,
   blowout,
+  oddsAge,
 }: {
   matchup: string;
   time: string;
   legCount: number;
   blowout: boolean;
+  oddsAge?: string;
 }) {
   return (
     <div className="flex items-baseline justify-between gap-2 mb-1 px-0">
       <p className="text-[13px] font-semibold text-white theme-adaptive-title truncate">
         {matchup}
+        {oddsAge ? (
+          <span className="text-white/40 font-normal text-[11px] ml-1.5">
+            {oddsAge}
+          </span>
+        ) : null}
       </p>
       <p className="text-[11px] text-white/45 theme-adaptive-muted shrink-0 text-right">
         {time ? `${time} · ` : ""}
