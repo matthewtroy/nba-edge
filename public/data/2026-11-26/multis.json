@@ -1,42 +1,105 @@
 {
-  "bets": [],
-  "notBuilt": [
+  "bets": [
     {
       "type": "mainPlay",
       "label": "Main Play",
-      "reason": "Only 0 legs meet fair 1.40–2.50, p≥0.60 (need 3–5)"
+      "legs": [
+        "5104157-pts-30",
+        "4397189-pts-15",
+        "4351851-pts-10"
+      ],
+      "combinedProbability": 0.25803164799999995,
+      "combinedFairPrice": 3.88,
+      "combinedTakeAt": 4.19,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 7.06,
+      "bookieTotals": {
+        "TAB": 5.88,
+        "Ladbrokes": 7.06
+      },
+      "summary": "3 starter main lines"
     },
     {
       "type": "booster",
       "label": "Booster",
-      "reason": "Needs a Main Play first"
-    },
-    {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "reason": "Need 2+ games with starter main lines fair 1.35–2.50 (0 legs)"
-    },
-    {
-      "type": "boostSgm",
-      "label": "Best SGM",
-      "reason": "No same-game trio @ edge (eligible 0, best pool =0, range-cands 0)"
-    },
-    {
-      "type": "longshot",
-      "label": "Longshot",
-      "reason": "No 2-game longshot @ edge (DD/TD/combo or 30+ pts priced at one AU bookie)"
-    },
-    {
-      "type": "q1Multi",
-      "label": "Q1 Multi",
-      "variant": "Core",
-      "reason": "Only 0 teams with Q1 fair 1.80–4.00 (24+ min starters, need 3–6)"
+      "legs": [
+        "5104157-pts-35",
+        "4397189-pts-15",
+        "4351851-pts-10"
+      ],
+      "combinedProbability": 0.174368096,
+      "combinedFairPrice": 5.73,
+      "combinedTakeAt": 6.19,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 11.21,
+      "bookieTotals": {
+        "TAB": 9.23,
+        "Ladbrokes": 11.21
+      },
+      "summary": "Main Play +1 rung where fair ≤4, else same rung"
     },
     {
       "type": "q1Multi",
       "label": "Q1 Multi",
       "variant": "Longshot",
-      "reason": "Only 0 teams with Q1 fair 1.80–4.00 (24+ min starters, need 3–6)"
+      "legs": [
+        "5124612-q1reb-2",
+        "4576087-q1reb-2",
+        "3064440-q1reb-2"
+      ],
+      "combinedProbability": 0.08632935,
+      "combinedFairPrice": 11.58,
+      "combinedTakeAt": 12.51,
+      "summary": "Q1 Multi (Longshot): fair 2.20–4.00, one leg/team"
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot",
+      "legs": [
+        "3136195-pts-30",
+        "4066261-pts-30"
+      ],
+      "combinedProbability": 0.034048,
+      "combinedFairPrice": 29.37,
+      "combinedTakeAt": 31.72,
+      "bestBookie": "PointsBet",
+      "bestBookieTotal": 63.25,
+      "bookieTotals": {
+        "Sportsbet": 57,
+        "Ladbrokes": 60.5,
+        "PointsBet": 63.25
+      },
+      "summary": "One long leg per game"
+    }
+  ],
+  "notBuilt": [
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "reason": "Gate: Cross-Game SGM Multi: Karl-Anthony Towns has Check news; Cross-Game SGM Multi: VJ Edgecombe has Check news (legs: Karl-Anthony Towns 13+ reb, Jalen Brunson 30+ pts, Shai Gilgeous-Alexander 30+ pts, Tyrese Maxey 5+ ast, VJ Edgecombe 5+ ast)",
+      "players": [
+        "Karl-Anthony Towns",
+        "Jalen Brunson",
+        "Shai Gilgeous-Alexander",
+        "Tyrese Maxey",
+        "VJ Edgecombe"
+      ]
+    },
+    {
+      "type": "boostSgm",
+      "label": "Best SGM",
+      "reason": "Gate: Best SGM: Tyrese Proctor has Check news; Best SGM: bookie total 6.54 not 7–15; Best SGM: AU bookie multi total mismatch (legs: Tyrese Proctor 10+ pts, Peyton Watson 5+ reb, Donovan Mitchell 5+ ast)",
+      "players": [
+        "Tyrese Proctor",
+        "Peyton Watson",
+        "Donovan Mitchell"
+      ]
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Core",
+      "reason": "No Q1 Multi subset (p≥0.70, 3–6 teams, one leg/team)"
     }
   ]
 }

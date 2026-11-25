@@ -49495,6 +49495,10 @@
           "price": 1.96,
           "bookie": "SportsBet"
         },
+        "kris murray|ast|2": {
+          "price": 2.37,
+          "bookie": "SportsBet"
+        },
         "rui hachimura|ast|2": {
           "price": 2.1,
           "bookie": "TAB"
@@ -49515,6 +49519,10 @@
           "price": 3,
           "bookie": "TAB"
         },
+        "taylor hendricks|ast|2": {
+          "price": 3,
+          "bookie": "TAB"
+        },
         "cedric coward|ast|4": {
           "price": 2.45,
           "bookie": "SportsBet"
@@ -49525,6 +49533,10 @@
         },
         "brook lopez|ast|4": {
           "price": 8,
+          "bookie": "SportsBet"
+        },
+        "kris murray|ast|4": {
+          "price": 9.5,
           "bookie": "SportsBet"
         },
         "cedric coward|ast|6": {
@@ -49543,6 +49555,14 @@
           "price": 1.15,
           "bookie": "TAB"
         },
+        "taylor hendricks|pts|5": {
+          "price": 1.15,
+          "bookie": "TAB"
+        },
+        "kris murray|pts|5": {
+          "price": 1.78,
+          "bookie": "SportsBet"
+        },
         "kris dunn|pts|5": {
           "price": 1.58,
           "bookie": "TAB"
@@ -49551,16 +49571,36 @@
           "price": 2.16,
           "bookie": "SportsBet"
         },
+        "taylor hendricks|pts|10": {
+          "price": 2.05,
+          "bookie": "TAB"
+        },
         "derrick jones|pts|10": {
           "price": 2.1,
           "bookie": "TAB"
+        },
+        "kris murray|pts|10": {
+          "price": 6,
+          "bookie": "SportsBet"
         },
         "zach edey|pts|15": {
           "price": 5.7,
           "bookie": "SportsBet"
         },
+        "taylor hendricks|pts|15": {
+          "price": 4.75,
+          "bookie": "TAB"
+        },
         "derrick jones|pts|15": {
           "price": 5,
+          "bookie": "TAB"
+        },
+        "kris murray|reb|2": {
+          "price": 1.02,
+          "bookie": "TAB"
+        },
+        "taylor hendricks|reb|2": {
+          "price": 1.02,
           "bookie": "TAB"
         },
         "jaylen wells|reb|2": {
@@ -49587,6 +49627,14 @@
           "price": 1.55,
           "bookie": "TAB"
         },
+        "taylor hendricks|reb|4": {
+          "price": 1.55,
+          "bookie": "TAB"
+        },
+        "kris murray|reb|4": {
+          "price": 2.58,
+          "bookie": "SportsBet"
+        },
         "jaylen wells|reb|4": {
           "price": 3.32,
           "bookie": "SportsBet"
@@ -49599,9 +49647,17 @@
           "price": 1.31,
           "bookie": "PointsBet (AU)"
         },
+        "taylor hendricks|reb|6": {
+          "price": 2.6,
+          "bookie": "TAB"
+        },
         "derrick jones|reb|6": {
           "price": 2.7,
           "bookie": "TAB"
+        },
+        "kris murray|reb|6": {
+          "price": 7,
+          "bookie": "SportsBet"
         },
         "jaylen wells|reb|6": {
           "price": 10,
@@ -49614,6 +49670,10 @@
         "zach edey|reb|8": {
           "price": 1.92,
           "bookie": "SportsBet"
+        },
+        "taylor hendricks|reb|8": {
+          "price": 6,
+          "bookie": "TAB"
         },
         "derrick jones|reb|8": {
           "price": 6.5,
@@ -49631,6 +49691,14 @@
           "price": 1.33,
           "bookie": "TAB"
         },
+        "kris murray|3pm|1": {
+          "price": 1.47,
+          "bookie": "SportsBet"
+        },
+        "taylor hendricks|3pm|1": {
+          "price": 1.42,
+          "bookie": "TAB"
+        },
         "kris dunn|3pm|1": {
           "price": 1.7,
           "bookie": "TAB"
@@ -49639,8 +49707,24 @@
           "price": 2.3,
           "bookie": "TAB"
         },
+        "kris murray|3pm|2": {
+          "price": 3.2,
+          "bookie": "SportsBet"
+        },
+        "taylor hendricks|3pm|2": {
+          "price": 2.9,
+          "bookie": "TAB"
+        },
         "derrick jones|3pm|3": {
           "price": 5.25,
+          "bookie": "TAB"
+        },
+        "kris murray|3pm|3": {
+          "price": 7,
+          "bookie": "TAB"
+        },
+        "taylor hendricks|3pm|3": {
+          "price": 7.5,
           "bookie": "TAB"
         },
         "jaylen wells|ast|4": {
@@ -49687,6 +49771,10 @@
           "price": 34,
           "bookie": "SportsBet"
         },
+        "kris murray|pts|15": {
+          "price": 17,
+          "bookie": "SportsBet"
+        },
         "ty jerome|pts|45": {
           "price": 41,
           "bookie": "SportsBet"
@@ -49694,6 +49782,10 @@
         "jaylen wells|reb|3": {
           "price": 1.9,
           "bookie": "SportsBet"
+        },
+        "kris murray|reb|3": {
+          "price": 1.69,
+          "bookie": "PointsBet (AU)"
         },
         "darius garland|reb|3": {
           "price": 2.25,
@@ -49705,6 +49797,10 @@
         },
         "ty jerome|reb|8": {
           "price": 12,
+          "bookie": "SportsBet"
+        },
+        "kris murray|reb|8": {
+          "price": 21,
           "bookie": "SportsBet"
         },
         "zach edey|reb|16": {
@@ -49725,6 +49821,10 @@
         },
         "zach edey|ast|1": {
           "price": 1.48,
+          "bookie": "PointsBet (AU)"
+        },
+        "kris murray|pts|6": {
+          "price": 2.05,
           "bookie": "PointsBet (AU)"
         },
         "brook lopez|pts|11": {
@@ -49825,6 +49925,30 @@
         },
         "jaylen wells|pts|21": {
           "price": 12,
+          "bookie": "PointsBet (AU)"
+        },
+        "kris murray|pts|11": {
+          "price": 7,
+          "bookie": "PointsBet (AU)"
+        },
+        "kris murray|pts|12": {
+          "price": 10,
+          "bookie": "PointsBet (AU)"
+        },
+        "kris murray|pts|13": {
+          "price": 12,
+          "bookie": "PointsBet (AU)"
+        },
+        "kris murray|pts|7": {
+          "price": 2.55,
+          "bookie": "PointsBet (AU)"
+        },
+        "kris murray|pts|8": {
+          "price": 3.25,
+          "bookie": "PointsBet (AU)"
+        },
+        "kris murray|pts|9": {
+          "price": 4.2,
           "bookie": "PointsBet (AU)"
         },
         "ty jerome|pts|11": {
@@ -57595,6 +57719,10 @@
           "price": 2.4,
           "bookie": "TAB"
         },
+        "steven adams|ast|2": {
+          "price": 3.1,
+          "bookie": "TAB"
+        },
         "collin gillespie|ast|4": {
           "price": 1.9,
           "bookie": "TAB"
@@ -57631,6 +57759,10 @@
           "price": 1.45,
           "bookie": "TAB"
         },
+        "steven adams|pts|5": {
+          "price": 2.2,
+          "bookie": "TAB"
+        },
         "collin gillespie|pts|10": {
           "price": 1.8,
           "bookie": "TAB"
@@ -57647,12 +57779,20 @@
           "price": 3.5,
           "bookie": "TAB"
         },
+        "steven adams|pts|10": {
+          "price": 8,
+          "bookie": "TAB"
+        },
         "collin gillespie|pts|15": {
           "price": 3.6,
           "bookie": "TAB"
         },
         "reed sheppard|pts|15": {
           "price": 6,
+          "bookie": "TAB"
+        },
+        "steven adams|reb|2": {
+          "price": 1.05,
           "bookie": "TAB"
         },
         "jordan goodwin|reb|2": {
@@ -57671,6 +57811,10 @@
           "price": 1.9,
           "bookie": "TAB"
         },
+        "steven adams|reb|4": {
+          "price": 1.52,
+          "bookie": "TAB"
+        },
         "jordan goodwin|reb|4": {
           "price": 1.9,
           "bookie": "TAB"
@@ -57679,12 +57823,24 @@
           "price": 2.4,
           "bookie": "TAB"
         },
+        "steven adams|reb|6": {
+          "price": 2.25,
+          "bookie": "TAB"
+        },
         "jordan goodwin|reb|6": {
           "price": 4,
           "bookie": "TAB"
         },
         "collin gillespie|reb|6": {
           "price": 6.5,
+          "bookie": "TAB"
+        },
+        "steven adams|reb|8": {
+          "price": 4.25,
+          "bookie": "TAB"
+        },
+        "steven adams|reb|10": {
+          "price": 8,
           "bookie": "TAB"
         },
         "collin gillespie|3pm|1": {
@@ -60235,6 +60391,26 @@
           "price": 3.1,
           "bookie": "TAB"
         },
+        "Taylor Hendricks|pts|10": {
+          "price": 2.05,
+          "bookie": "TAB"
+        },
+        "Taylor Hendricks|pts|15": {
+          "price": 4.75,
+          "bookie": "TAB"
+        },
+        "Taylor Hendricks|3pm|1": {
+          "price": 1.42,
+          "bookie": "TAB"
+        },
+        "Taylor Hendricks|3pm|2": {
+          "price": 2.9,
+          "bookie": "TAB"
+        },
+        "Taylor Hendricks|3pm|3": {
+          "price": 7.5,
+          "bookie": "TAB"
+        },
         "Cedric Coward|pts|15": {
           "price": 1.51,
           "bookie": "SportsBet"
@@ -61102,6 +61278,14 @@
         "Danny Wolf|3pm|5": {
           "price": 14,
           "bookie": "SportsBet"
+        },
+        "Steven Adams|pts|5": {
+          "price": 2.2,
+          "bookie": "TAB"
+        },
+        "Steven Adams|reb|10": {
+          "price": 8,
+          "bookie": "TAB"
         },
         "Reed Sheppard|pts|10": {
           "price": 2.5,
@@ -67127,6 +67311,10 @@
           "price": 3,
           "bookie": "TAB"
         },
+        "Taylor Hendricks|ast|2": {
+          "price": 3,
+          "bookie": "TAB"
+        },
         "Cedric Coward|ast|4": {
           "price": 2.45,
           "bookie": "SportsBet"
@@ -67155,8 +67343,16 @@
           "price": 1.15,
           "bookie": "TAB"
         },
+        "Taylor Hendricks|pts|5": {
+          "price": 1.15,
+          "bookie": "TAB"
+        },
         "Derrick Jones Jr.|pts|15": {
           "price": 5,
+          "bookie": "TAB"
+        },
+        "Taylor Hendricks|reb|2": {
+          "price": 1.02,
           "bookie": "TAB"
         },
         "Jaylen Wells|reb|2": {
@@ -67183,6 +67379,10 @@
           "price": 1.55,
           "bookie": "TAB"
         },
+        "Taylor Hendricks|reb|4": {
+          "price": 1.55,
+          "bookie": "TAB"
+        },
         "Jaylen Wells|reb|4": {
           "price": 3.32,
           "bookie": "SportsBet"
@@ -67194,6 +67394,10 @@
         "Zach Edey|reb|6": {
           "price": 1.31,
           "bookie": "PointsBet (AU)"
+        },
+        "Taylor Hendricks|reb|6": {
+          "price": 2.6,
+          "bookie": "TAB"
         },
         "Derrick Jones Jr.|reb|6": {
           "price": 2.7,
@@ -67210,6 +67414,10 @@
         "Zach Edey|reb|8": {
           "price": 1.92,
           "bookie": "SportsBet"
+        },
+        "Taylor Hendricks|reb|8": {
+          "price": 6,
+          "bookie": "TAB"
         },
         "Derrick Jones Jr.|reb|8": {
           "price": 6.5,
@@ -72907,6 +73115,10 @@
           "price": 2.4,
           "bookie": "TAB"
         },
+        "Steven Adams|ast|2": {
+          "price": 3.1,
+          "bookie": "TAB"
+        },
         "Collin Gillespie|ast|4": {
           "price": 1.9,
           "bookie": "TAB"
@@ -72939,8 +73151,16 @@
           "price": 1.45,
           "bookie": "TAB"
         },
+        "Steven Adams|pts|10": {
+          "price": 8,
+          "bookie": "TAB"
+        },
         "Reed Sheppard|pts|15": {
           "price": 6,
+          "bookie": "TAB"
+        },
+        "Steven Adams|reb|2": {
+          "price": 1.05,
           "bookie": "TAB"
         },
         "Jordan Goodwin|reb|2": {
@@ -72959,6 +73179,10 @@
           "price": 1.9,
           "bookie": "TAB"
         },
+        "Steven Adams|reb|4": {
+          "price": 1.52,
+          "bookie": "TAB"
+        },
         "Jordan Goodwin|reb|4": {
           "price": 1.9,
           "bookie": "TAB"
@@ -72967,12 +73191,20 @@
           "price": 2.4,
           "bookie": "TAB"
         },
+        "Steven Adams|reb|6": {
+          "price": 2.25,
+          "bookie": "TAB"
+        },
         "Jordan Goodwin|reb|6": {
           "price": 4,
           "bookie": "TAB"
         },
         "Collin Gillespie|reb|6": {
           "price": 6.5,
+          "bookie": "TAB"
+        },
+        "Steven Adams|reb|8": {
+          "price": 4.25,
           "bookie": "TAB"
         },
         "Alperen Sengun|pts|11": {
@@ -73305,6 +73537,86 @@
         },
         "Oso Ighodaro|reb|2": {
           "price": 1.04,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|ast|2": {
+          "price": 2.37,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|ast|4": {
+          "price": 9.5,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|pts|5": {
+          "price": 1.78,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|pts|10": {
+          "price": 6,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|reb|2": {
+          "price": 1.02,
+          "bookie": "TAB"
+        },
+        "Kris Murray|reb|4": {
+          "price": 2.58,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|reb|6": {
+          "price": 7,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|3pm|1": {
+          "price": 1.47,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|3pm|2": {
+          "price": 3.2,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|3pm|3": {
+          "price": 7,
+          "bookie": "TAB"
+        },
+        "Kris Murray|pts|15": {
+          "price": 17,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|reb|3": {
+          "price": 1.69,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|reb|8": {
+          "price": 21,
+          "bookie": "SportsBet"
+        },
+        "Kris Murray|pts|6": {
+          "price": 2.05,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|pts|11": {
+          "price": 7,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|pts|12": {
+          "price": 10,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|pts|13": {
+          "price": 12,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|pts|7": {
+          "price": 2.55,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|pts|8": {
+          "price": 3.25,
+          "bookie": "PointsBet (AU)"
+        },
+        "Kris Murray|pts|9": {
+          "price": 4.2,
           "bookie": "PointsBet (AU)"
         },
         "ausar thompson|assists|4": {
@@ -79723,190 +80035,6 @@
           "price": 2.75,
           "bookie": "Ladbrokes"
         },
-        "kris murray|ast|2": {
-          "price": 2.37,
-          "bookie": "SportsBet"
-        },
-        "taylor hendricks|ast|2": {
-          "price": 3,
-          "bookie": "TAB"
-        },
-        "kris murray|ast|4": {
-          "price": 9.5,
-          "bookie": "SportsBet"
-        },
-        "taylor hendricks|pts|5": {
-          "price": 1.15,
-          "bookie": "TAB"
-        },
-        "kris murray|pts|5": {
-          "price": 1.78,
-          "bookie": "SportsBet"
-        },
-        "taylor hendricks|pts|10": {
-          "price": 2.05,
-          "bookie": "TAB"
-        },
-        "kris murray|pts|10": {
-          "price": 6,
-          "bookie": "SportsBet"
-        },
-        "taylor hendricks|pts|15": {
-          "price": 4.75,
-          "bookie": "TAB"
-        },
-        "kris murray|reb|2": {
-          "price": 1.02,
-          "bookie": "TAB"
-        },
-        "taylor hendricks|reb|2": {
-          "price": 1.02,
-          "bookie": "TAB"
-        },
-        "taylor hendricks|reb|4": {
-          "price": 1.55,
-          "bookie": "TAB"
-        },
-        "kris murray|reb|4": {
-          "price": 2.58,
-          "bookie": "SportsBet"
-        },
-        "taylor hendricks|reb|6": {
-          "price": 2.6,
-          "bookie": "TAB"
-        },
-        "kris murray|reb|6": {
-          "price": 7,
-          "bookie": "SportsBet"
-        },
-        "taylor hendricks|reb|8": {
-          "price": 6,
-          "bookie": "TAB"
-        },
-        "kris murray|3pm|1": {
-          "price": 1.47,
-          "bookie": "SportsBet"
-        },
-        "taylor hendricks|3pm|1": {
-          "price": 1.42,
-          "bookie": "TAB"
-        },
-        "kris murray|3pm|2": {
-          "price": 3.2,
-          "bookie": "SportsBet"
-        },
-        "taylor hendricks|3pm|2": {
-          "price": 2.9,
-          "bookie": "TAB"
-        },
-        "kris murray|3pm|3": {
-          "price": 7,
-          "bookie": "TAB"
-        },
-        "taylor hendricks|3pm|3": {
-          "price": 7.5,
-          "bookie": "TAB"
-        },
-        "kris murray|pts|15": {
-          "price": 17,
-          "bookie": "SportsBet"
-        },
-        "kris murray|reb|3": {
-          "price": 1.69,
-          "bookie": "PointsBet (AU)"
-        },
-        "kris murray|reb|8": {
-          "price": 21,
-          "bookie": "SportsBet"
-        },
-        "kris murray|pts|6": {
-          "price": 2.05,
-          "bookie": "PointsBet (AU)"
-        },
-        "kris murray|pts|11": {
-          "price": 7,
-          "bookie": "PointsBet (AU)"
-        },
-        "kris murray|pts|12": {
-          "price": 10,
-          "bookie": "PointsBet (AU)"
-        },
-        "kris murray|pts|13": {
-          "price": 12,
-          "bookie": "PointsBet (AU)"
-        },
-        "kris murray|pts|7": {
-          "price": 2.55,
-          "bookie": "PointsBet (AU)"
-        },
-        "kris murray|pts|8": {
-          "price": 3.25,
-          "bookie": "PointsBet (AU)"
-        },
-        "kris murray|pts|9": {
-          "price": 4.2,
-          "bookie": "PointsBet (AU)"
-        },
-        "steven adams|ast|2": {
-          "price": 3.1,
-          "bookie": "TAB"
-        },
-        "steven adams|pts|5": {
-          "price": 2.2,
-          "bookie": "TAB"
-        },
-        "steven adams|pts|10": {
-          "price": 8,
-          "bookie": "TAB"
-        },
-        "steven adams|reb|2": {
-          "price": 1.05,
-          "bookie": "TAB"
-        },
-        "steven adams|reb|4": {
-          "price": 1.52,
-          "bookie": "TAB"
-        },
-        "steven adams|reb|6": {
-          "price": 2.25,
-          "bookie": "TAB"
-        },
-        "steven adams|reb|8": {
-          "price": 4.25,
-          "bookie": "TAB"
-        },
-        "steven adams|reb|10": {
-          "price": 8,
-          "bookie": "TAB"
-        },
-        "Taylor Hendricks|pts|10": {
-          "price": 2.05,
-          "bookie": "TAB"
-        },
-        "Taylor Hendricks|pts|15": {
-          "price": 4.75,
-          "bookie": "TAB"
-        },
-        "Taylor Hendricks|3pm|1": {
-          "price": 1.42,
-          "bookie": "TAB"
-        },
-        "Taylor Hendricks|3pm|2": {
-          "price": 2.9,
-          "bookie": "TAB"
-        },
-        "Taylor Hendricks|3pm|3": {
-          "price": 7.5,
-          "bookie": "TAB"
-        },
-        "Steven Adams|pts|5": {
-          "price": 2.2,
-          "bookie": "TAB"
-        },
-        "Steven Adams|reb|10": {
-          "price": 8,
-          "bookie": "TAB"
-        },
         "ausar thompson|ast|4": {
           "price": 2.08,
           "bookie": "SportsBet"
@@ -85578,134 +85706,6 @@
         "cooper flagg|reb|2": {
           "price": 1.01,
           "bookie": "Ladbrokes"
-        },
-        "Taylor Hendricks|ast|2": {
-          "price": 3,
-          "bookie": "TAB"
-        },
-        "Taylor Hendricks|pts|5": {
-          "price": 1.15,
-          "bookie": "TAB"
-        },
-        "Taylor Hendricks|reb|2": {
-          "price": 1.02,
-          "bookie": "TAB"
-        },
-        "Taylor Hendricks|reb|4": {
-          "price": 1.55,
-          "bookie": "TAB"
-        },
-        "Taylor Hendricks|reb|6": {
-          "price": 2.6,
-          "bookie": "TAB"
-        },
-        "Taylor Hendricks|reb|8": {
-          "price": 6,
-          "bookie": "TAB"
-        },
-        "Steven Adams|ast|2": {
-          "price": 3.1,
-          "bookie": "TAB"
-        },
-        "Steven Adams|pts|10": {
-          "price": 8,
-          "bookie": "TAB"
-        },
-        "Steven Adams|reb|2": {
-          "price": 1.05,
-          "bookie": "TAB"
-        },
-        "Steven Adams|reb|4": {
-          "price": 1.52,
-          "bookie": "TAB"
-        },
-        "Steven Adams|reb|6": {
-          "price": 2.25,
-          "bookie": "TAB"
-        },
-        "Steven Adams|reb|8": {
-          "price": 4.25,
-          "bookie": "TAB"
-        },
-        "Kris Murray|ast|2": {
-          "price": 2.37,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|ast|4": {
-          "price": 9.5,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|pts|5": {
-          "price": 1.78,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|pts|10": {
-          "price": 6,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|reb|2": {
-          "price": 1.02,
-          "bookie": "TAB"
-        },
-        "Kris Murray|reb|4": {
-          "price": 2.58,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|reb|6": {
-          "price": 7,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|3pm|1": {
-          "price": 1.47,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|3pm|2": {
-          "price": 3.2,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|3pm|3": {
-          "price": 7,
-          "bookie": "TAB"
-        },
-        "Kris Murray|pts|15": {
-          "price": 17,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|reb|3": {
-          "price": 1.69,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|reb|8": {
-          "price": 21,
-          "bookie": "SportsBet"
-        },
-        "Kris Murray|pts|6": {
-          "price": 2.05,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|pts|11": {
-          "price": 7,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|pts|12": {
-          "price": 10,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|pts|13": {
-          "price": 12,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|pts|7": {
-          "price": 2.55,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|pts|8": {
-          "price": 3.25,
-          "bookie": "PointsBet (AU)"
-        },
-        "Kris Murray|pts|9": {
-          "price": 4.2,
-          "bookie": "PointsBet (AU)"
         }
       },
       "allOddsMap": {
