@@ -1,64 +1,68 @@
 {
-  "lastUpdated": "2026-11-25T02:21:35.548Z",
+  "lastUpdated": "2026-11-25T02:51:39.698Z",
   "oddsLastPulled": "2026-11-24T22:58:43.102Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
-    "odds": "stale"
+    "odds": "ok (from-live pages)"
   },
-  "slateSize": 9,
-  "smallSlate": false,
+  "slateSize": 2,
+  "smallSlate": true,
   "injuryImpactLog": [
-    "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Ryan Kalkbrenner (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Dennis Schroder (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Kon Knueppel (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Norman Powell (Chicago Bulls): no redistribution reasons on slate legs",
-    "Caleb Wilson (Chicago Bulls): no redistribution reasons on slate legs",
-    "Nae'Qwan Tomlin (Cleveland Cavaliers): no redistribution reasons on slate legs",
-    "Evan Mobley (Cleveland Cavaliers): no redistribution reasons on slate legs",
-    "Stephen Curry (Golden State Warriors): no redistribution reasons on slate legs",
-    "Kristaps Porzingis (Golden State Warriors): no redistribution reasons on slate legs",
-    "Moses Moody (Golden State Warriors): no redistribution reasons on slate legs",
-    "Bradley Beal (LA Clippers): no redistribution reasons on slate legs"
+    "Mitchell Robinson (Boston Celtics): no redistribution reasons on slate legs",
+    "Tobi Lawal (Dallas Mavericks): no redistribution reasons on slate legs",
+    "Dereck Lively II (Dallas Mavericks): no redistribution reasons on slate legs",
+    "Sergio de Larrea (Dallas Mavericks): no redistribution reasons on slate legs",
+    "Tarik Biberovic (Dallas Mavericks): no redistribution reasons on slate legs",
+    "Tristan Vukcevic (Washington Wizards): no redistribution reasons on slate legs",
+    "Reece Beekman (Washington Wizards): no redistribution reasons on slate legs",
+    "Justin Champagnie (Washington Wizards): no redistribution reasons on slate legs",
+    "Jamir Watkins (Washington Wizards): no redistribution reasons on slate legs",
+    "Amari Williams (Boston Celtics): no redistribution reasons on slate legs",
+    "Felix Okpara (Washington Wizards): no redistribution reasons on slate legs"
   ],
-  "slateMode": "next",
-  "slatePreview": true,
-  "slateTipDate": "2026-11-26",
-  "whatChanged": [
-    "OG Anunoby out → Jalen Brunson +4.8 pts",
-    "Cameron Boozer out → Ty Jerome +3.1 pts",
-    "Jimmy Butler III out → Yaxel Lendeborg boards"
-  ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_09_15PM.pdf",
+  "slateMode": "auto",
+  "slatePreview": false,
+  "slateTipDate": "2026-11-25",
+  "whatChanged": [],
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-24_09_45PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 383,
-      "priced": 0
+      "total": 83,
+      "priced": 67
     },
     "reb": {
-      "total": 519,
-      "priced": 0
+      "total": 108,
+      "priced": 84
     },
     "ast": {
-      "total": 375,
-      "priced": 0
+      "total": 75,
+      "priced": 58
     },
     "3pm": {
-      "total": 647,
-      "priced": 0
+      "total": 131,
+      "priced": 87
     },
     "q1reb": {
-      "total": 200,
+      "total": 45,
       "priced": 0
     },
     "q1pts": {
-      "total": 5,
+      "total": 2,
       "priced": 0
     },
     "q1ast": {
-      "total": 4,
+      "total": 2,
       "priced": 0
     }
+  },
+  "gateViolations": [
+    "Cross-Game SGM Multi: Kyshawn George has Check news"
+  ],
+  "officialCard": {
+    "lockedAt": "2026-11-25T01:28:33.043Z",
+    "publishedAt": "2026-11-25T01:28:33.043Z",
+    "slateDate": "2026-11-25",
+    "bookie": "Sportsbet"
   }
 }

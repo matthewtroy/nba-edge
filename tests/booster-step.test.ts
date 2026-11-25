@@ -23,6 +23,7 @@ function leg(id: string, pid: string, line: number, fair: number): PickLeg {
 }
 
 function mainLeg(pid: string, market: "pts" | "ast", line: number, fair: number): PickLeg {
+  const px = Math.round(fair * 1.1 * 100) / 100;
   return {
     id: `${pid}-${market}-${line}`,
     gameId: `g-${pid}`,
@@ -41,6 +42,9 @@ function mainLeg(pid: string, market: "pts" | "ast", line: number, fair: number)
     reasons: [],
     questionable: false,
     ageB2B: false,
+    bookiePrices: { Sportsbet: px, TAB: px },
+    bestBookie: "Sportsbet",
+    bestPrice: px,
   };
 }
 

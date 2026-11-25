@@ -26,9 +26,9 @@ function synthLeg(
     tags: [],
     reasons: [],
     starterEligible: true,
-    bookiePrices: { Sportsbet: fair },
+    bookiePrices: { Sportsbet: Math.round(fair * 1.1 * 100) / 100 },
     bestBookie: "Sportsbet",
-    bestPrice: fair,
+    bestPrice: Math.round(fair * 1.1 * 100) / 100,
   };
 }
 
@@ -40,10 +40,10 @@ describe("main play builder", () => {
 
   it("combined take-at between 7 and 10 when buildable", () => {
     const picks: PickLeg[] = [
-      synthLeg(1, "g1", "p1", 0.62, 1.75, 1.77),
-      synthLeg(2, "g2", "p2", 0.61, 1.75, 1.77),
-      synthLeg(3, "g3", "p3", 0.6, 1.75, 1.77),
-      synthLeg(4, "g4", "p4", 0.6, 1.75, 1.77),
+      synthLeg(1, "g1", "p1", 0.65, 1.55, 1.67),
+      synthLeg(2, "g2", "p2", 0.65, 1.55, 1.67),
+      synthLeg(3, "g3", "p3", 0.65, 1.55, 1.67),
+      synthLeg(4, "g4", "p4", 0.65, 1.55, 1.67),
     ];
     const { bets } = buildMultis(picks, 8);
     const main = bets.find((m) => m.type === "mainPlay");

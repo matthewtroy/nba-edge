@@ -179,17 +179,19 @@ export function gateMulti(
     violations.push(`${label}: forbidden mixed-bookie odds label`);
   }
 
-  if (multi.bestBookie && multi.bestBookieTotal != null) {
-    const feed = bestFeedMultiQuote(legs);
-    if (
-      !feed ||
-      feed.bookie !== multi.bestBookie ||
-      Math.abs(feed.total - multi.bestBookieTotal) > 0.02
-    ) {
-      violations.push(`${label}: AU bookie multi total mismatch`);
+  if (multi.type !== "q1Multi") {
+    if (multi.bestBookie && multi.bestBookieTotal != null) {
+      const feed = bestFeedMultiQuote(legs);
+      if (
+        !feed ||
+        feed.bookie !== multi.bestBookie ||
+        Math.abs(feed.total - multi.bestBookieTotal) > 0.02
+      ) {
+        violations.push(`${label}: AU bookie multi total mismatch`);
+      }
+    } else {
+      violations.push(`${label}: no AU bookie multi total`);
     }
-  } else {
-    violations.push(`${label}: no AU bookie multi total`);
   }
 
   return { ok: violations.length === 0, violations };

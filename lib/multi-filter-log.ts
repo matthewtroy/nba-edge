@@ -1,6 +1,7 @@
 import type { MultiBet, MultiNotBuilt, MultiType, PickLeg } from "./types.js";
 import { qualifiesCrossBoostLeg, qualifiesMainPlayLeg } from "./main-play-eligibility.js";
 import { MIN_LEG_FAIR as MULTIS_MIN_FAIR } from "./multis.js";
+import { getMultiBuildTraces } from "./multi-build-trace.js";
 
 const TYPE_LABEL: Record<MultiType, string> = {
   mainPlay: "Main Play",
@@ -39,15 +40,32 @@ export function logMultiBuildSummary(input: {
   console.log(
     `multis filter: picks=${input.picks.length} pool=${input.pool.length} (fair≥${MULTIS_MIN_FAIR}) · main-eligible=${counts.mainPlay} crossBoost=${counts.crossBoost} q1Teams=${counts.q1Teams}`
   );
+  for (const t of getMultiBuildTraces()) {
+    const stage = `eligible=${t.eligible} edge-pool=${t.bestBookie ?? "?"}:${t.bestEdgePool} clash-skipped=${t.clashCandidates} range-cands=${t.rangeCandidates}`;
+    console.log(
+      `multis filter [${t.type}${t.variant ? `:${t.variant}` : ""}] stages: ${stage}`
+    );
+    console.log(
+      `multis filter [${t.type}${t.variant ? `:${t.variant}` : ""}]: ${t.built ? "built" : "not built"} — ${t.detail}`
+    );
+  }
+  for (const n of input.notBuilt) {
+    const key = `${n.type}${n.variant ? `:${n.variant}` : ""}`;
+    if (getMultiBuildTraces().some((t) => `${t.type}${t.variant ? `:${t.variant}` : ""}` === key)) {
+      continue;
+    }
+    const label = n.variant ? `${TYPE_LABEL[n.type]} (${n.variant})` : TYPE_LABEL[n.type];
+    console.log(`multis filter [${key}]: not built — ${n.reason}`);
+  }
   for (const b of input.built) {
+    const key = `${b.type}${b.variant ? `:${b.variant}` : ""}`;
+    if (getMultiBuildTraces().some((t) => `${t.type}${t.variant ? `:${t.variant}` : ""}` === key && t.built)) {
+      continue;
+    }
     const total =
       b.bestBookieTotal != null && b.bestBookie
         ? `$${b.bestBookieTotal.toFixed(2)} @ ${b.bestBookie}`
-        : "no AU total";
-    console.log(`multis filter [${b.type}]: built — ${b.legs.length} legs · ${total}`);
-  }
-  for (const n of input.notBuilt) {
-    const label = n.variant ? `${TYPE_LABEL[n.type]} (${n.variant})` : TYPE_LABEL[n.type];
-    console.log(`multis filter [${n.type}${n.variant ? `:${n.variant}` : ""}]: not built — ${n.reason}`);
+        : "fair/take-at";
+    console.log(`multis filter [${key}]: built — ${b.legs.length} legs · ${total}`);
   }
 }
