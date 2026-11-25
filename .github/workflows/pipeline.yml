@@ -32,6 +32,11 @@ permissions:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
+    env:
+      SLATE_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.slate || (github.event.schedule == '0 6 * * *' && 'next' || 'auto') }}
+      SLATE_PREVIEW: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.preview || (github.event.schedule == '0 6 * * *' && 'true' || 'false') }}
+    outputs:
+      skip_deploy: ${{ steps.deploy_gate.outputs.skip_deploy }}
     steps:
       - uses: actions/checkout@v4
 
@@ -52,13 +57,22 @@ jobs:
       - name: Run pipeline
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-          SLATE_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.slate || (github.event.schedule == '0 6 * * *' && 'next' || 'auto') }}
-          SLATE_PREVIEW: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.preview || (github.event.schedule == '0 6 * * *' && 'true' || 'false') }}
         run: |
           EXTRA="--slate=${SLATE_MODE}"
           [ "${SLATE_PREVIEW}" = "true" ] && EXTRA="$EXTRA --preview"
           echo "Workflow pipeline flags: ${EXTRA} (event=${{ github.event_name }} schedule=${{ github.event.schedule }})"
           npm run pipeline ${EXTRA}
+
+      - name: Deploy gate
+        id: deploy_gate
+        run: |
+          if [ "${SLATE_PREVIEW}" = "true" ]; then
+            echo "skip_deploy=true" >> "$GITHUB_OUTPUT"
+            echo "Pages deploy skipped (preview run)"
+          else
+            echo "skip_deploy=false" >> "$GITHUB_OUTPUT"
+            echo "Pages deploy will run after build"
+          fi
 
       - run: npm run build
 
@@ -81,14 +95,18 @@ jobs:
           git push origin HEAD:data || true
 
       - name: Upload Pages artifact
+        if: steps.deploy_gate.outputs.skip_deploy != 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
   deploy:
     needs: pipeline
-    if: github.event_name == 'workflow_dispatch'
+    if: needs.pipeline.outputs.skip_deploy != 'true'
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
