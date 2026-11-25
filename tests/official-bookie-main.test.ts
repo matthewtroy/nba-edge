@@ -6,7 +6,9 @@ import { combinedPriceForBookieWithCatalog, legsMissingAtBookie } from "../lib/s
 import type { MultiBet, PickLeg } from "../lib/types";
 import type { OfficialLegSnapshot } from "../lib/official-card-time";
 
-const DATA = path.join(process.cwd(), "public/data/2026-11-26");
+import { fixtureSlateDir } from "./public-data-fixture";
+
+const DATA = fixtureSlateDir("2026-11-26");
 
 describe("official main play bookie totals", () => {
   const official = JSON.parse(

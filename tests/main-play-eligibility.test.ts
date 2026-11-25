@@ -11,7 +11,9 @@ import {
 } from "../lib/main-play-eligibility";
 import { mainPlayReasonBeyondRankAvg } from "../lib/leg-display";
 
-const DATA = path.join(process.cwd(), "public/data/2026-11-26");
+import { fixtureSlateDir } from "./public-data-fixture";
+
+const DATA = fixtureSlateDir("2026-11-26");
 
 function synth(overrides: Partial<PickLeg> & Pick<PickLeg, "id">): PickLeg {
   return {

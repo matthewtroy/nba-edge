@@ -6,7 +6,9 @@ import { legsMissingAtBookie } from "../lib/single-bookie";
 import { multiCardBookieHeaderLabel } from "../lib/multi-card-bookie-header";
 import type { MultiBet, PickLeg } from "../lib/types";
 
-const DATA = path.join(process.cwd(), "public/data/2026-11-26");
+import { fixtureSlateDir } from "./public-data-fixture";
+
+const DATA = fixtureSlateDir("2026-11-26");
 
 describe("MultiCard bookie header", () => {
   const official = JSON.parse(

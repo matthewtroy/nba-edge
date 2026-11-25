@@ -7,7 +7,9 @@ import { picksByIdFromOfficialSnapshots } from "../lib/official-leg-snapshot";
 import type { PickLeg } from "../lib/types";
 import type { OfficialLegSnapshot } from "../lib/official-card-time";
 
-const DATA = path.join(process.cwd(), "public/data/2026-11-26");
+import { fixtureSlateDir } from "./public-data-fixture";
+
+const DATA = fixtureSlateDir("2026-11-26");
 
 function loadOfficial() {
   const official = JSON.parse(

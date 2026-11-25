@@ -5,7 +5,9 @@ import { buildMultis } from "../lib/multis";
 import { probabilityWithMatchupShadow } from "../lib/matchup-shadow";
 import type { PickLeg } from "../lib/types";
 
-const DATA = path.join(process.cwd(), "public/data/2026-11-26/picks.json");
+import { fixtureSlateDir } from "./public-data-fixture";
+
+const DATA = path.join(fixtureSlateDir("2026-11-26"), "picks.json");
 
 describe("matchup shadow", () => {
   it("stores shadow p separately without changing published probability", () => {

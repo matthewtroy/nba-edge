@@ -7,7 +7,9 @@ import { pickMultiLegSubsetResolved } from "../lib/same-game-leg-resolve";
 import { multiHasClash } from "../lib/clash";
 import { DEFAULT_MIN_EDGE } from "../lib/multi-combined";
 
-const DATA = path.join(process.cwd(), "public/data/2026-11-26");
+import { fixtureSlateDir } from "./public-data-fixture";
+
+const DATA = fixtureSlateDir("2026-11-26");
 
 function loadSlate(): { picks: PickLeg[]; games: SlateGame[]; size: number } {
   const picks = JSON.parse(

@@ -5,7 +5,9 @@ import { gateLegReasons, dropRedundantAvgReasons } from "../lib/reason-gate";
 import { buildLegReasons } from "../lib/leg-reason-builder";
 import type { PickLeg, PlayerGameLog } from "../lib/types";
 
-const DATA = path.join(process.cwd(), "public/data/2026-11-26");
+import { fixtureSlateDir } from "./public-data-fixture";
+
+const DATA = fixtureSlateDir("2026-11-26");
 
 describe("reason gate avg vs rank", () => {
   it("drops avg when equal to rank (1 dec)", () => {

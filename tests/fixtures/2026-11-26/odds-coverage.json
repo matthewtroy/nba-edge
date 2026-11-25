@@ -1,0 +1,25 @@
+{
+  "pulledAt": "2026-11-25T10:29:00.533Z",
+  "eventsProbed": 0,
+  "marketsRequested": [
+    "player_points",
+    "player_rebounds",
+    "player_assists",
+    "player_points_alternate",
+    "player_rebounds_alternate",
+    "player_assists_alternate",
+    "player_threes",
+    "player_threes_alternate"
+  ],
+  "marketsPresent": {},
+  "uniquePlayersByCoreMarket": {
+    "pts": 0,
+    "reb": 0,
+    "ast": 0
+  },
+  "corePlayerLines": 0,
+  "threesPlayerLines": 0,
+  "onlyThreesOffered": false,
+  "slateTipDate": "2026-11-26",
+  "slateGameCount": 9
+}
