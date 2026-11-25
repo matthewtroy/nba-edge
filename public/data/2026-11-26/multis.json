@@ -1,0 +1,66 @@
+{
+  "bets": [
+    {
+      "type": "booster",
+      "label": "Booster",
+      "legs": [
+        "3147657-pts-10",
+        "5112087-pts-10",
+        "5107173-pts-10",
+        "4065732-pts-20"
+      ],
+      "combinedProbability": 0.09230061456,
+      "combinedFairPrice": 10.83,
+      "combinedTakeAt": 11.7,
+      "bestBookie": "Sportsbet",
+      "bestBookieTotal": 21,
+      "bookieTotals": {
+        "Sportsbet": 21,
+        "PointsBet": 19.43
+      },
+      "summary": "Main Play +1 rung where fair ≤4, else same rung"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Value",
+      "legs": [
+        "1966-q1reb-2",
+        "4903027-q1reb-3",
+        "4432848-q1reb-2"
+      ],
+      "combinedProbability": 0.081425088,
+      "combinedFairPrice": 12.28,
+      "combinedTakeAt": 13.26,
+      "summary": "Value Q1: fair 2.20–4.00, one leg/team"
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot",
+      "legs": [
+        "4278073-pts-45",
+        "4066261-pts-30"
+      ],
+      "combinedProbability": 0.026112,
+      "combinedFairPrice": 38.3,
+      "combinedTakeAt": 41.36,
+      "bestBookie": "PointsBet",
+      "bestBookieTotal": 99,
+      "bookieTotals": {
+        "Sportsbet": 76,
+        "TAB": 60,
+        "Ladbrokes": 90.75,
+        "PointsBet": 99
+      },
+      "summary": "One long leg per game"
+    }
+  ],
+  "notBuilt": [
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Safe",
+      "reason": "No Safe Q1 subset (p≥0.70, 3–6 teams, one leg/team)"
+    }
+  ]
+}

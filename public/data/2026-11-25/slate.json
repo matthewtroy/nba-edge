@@ -1,0 +1,26 @@
+[
+  {
+    "id": "401909315",
+    "startTime": "2026-11-25T01:00Z",
+    "startTimeSydney": "12:00 pm",
+    "homeTeam": "Washington Wizards",
+    "awayTeam": "Boston Celtics",
+    "homeTeamId": "27",
+    "awayTeamId": "2",
+    "homeB2B": false,
+    "awayB2B": false,
+    "status": "STATUS_IN_PROGRESS"
+  },
+  {
+    "id": "401909316",
+    "startTime": "2026-11-25T03:00Z",
+    "startTimeSydney": "2:00 pm",
+    "homeTeam": "Denver Nuggets",
+    "awayTeam": "Dallas Mavericks",
+    "homeTeamId": "7",
+    "awayTeamId": "6",
+    "homeB2B": false,
+    "awayB2B": false,
+    "status": "STATUS_IN_PROGRESS"
+  }
+]
