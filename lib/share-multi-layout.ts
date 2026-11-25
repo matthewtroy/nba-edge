@@ -1,12 +1,8 @@
-/** Layout hint for multi share image height (px width 390). */
-export function shareMultiImageHeightPx(legCount: number): number {
-  const header = 72;
-  const perLeg = 52;
-  const footer = 48;
-  return header + legCount * perLeg + footer;
-}
-
-export function shareMultiCanvasSize(legCount: number): { width: number; height: number } {
-  const width = 390;
-  return { width, height: shareMultiImageHeightPx(legCount) };
-}
+export {
+  shareBetslipHeightPx as shareMultiImageHeightPx,
+  shareMultiCanvasSize,
+  SHARE_BETSLIP_WIDTH_PX,
+  SHARE_BETSLIP_DPR,
+  buildShareBetslipLayout,
+} from "./share-betslip-layout.js";
+export type { ShareBetslipLayout } from "./share-betslip-layout.js";

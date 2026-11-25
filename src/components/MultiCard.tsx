@@ -8,7 +8,8 @@ import {
   type MultiBookieStorageScope,
 } from "../hooks/useMultiBookieSelect";
 import { BookieBottomSheet } from "./BookieBottomSheet";
-import { captureMultiCardPng } from "../lib/share-multi-image";
+import { buildShareBetslipLayout } from "@lib/share-betslip-layout";
+import { captureShareBetslipPng } from "../lib/share-multi-image";
 import { multiCardTitle, type MultiCardTitleOptions } from "@lib/multi-combined";
 import { bestFeedMultiQuote } from "@lib/card-bookie";
 import { legPriceAtBookieWithCatalog } from "@lib/single-bookie";
@@ -173,9 +174,16 @@ export function MultiCard({
   }));
 
   async function shareImage() {
-    if (!cardRef.current) return;
     try {
-      const blob = await captureMultiCardPng(cardRef.current, legs.length);
+      const layout = buildShareBetslipLayout({
+        multi,
+        legs,
+        slate,
+        bookie: legBookie || displayBook,
+        total: headerTotal ?? publishedTotal ?? multi.bestBookieTotal,
+        catalog: priceCatalog,
+      });
+      const blob = await captureShareBetslipPng(layout);
       const file = new File([blob], "nba-edge-multi.png", { type: "image/png" });
       if (navigator.share && navigator.canShare?.({ files: [file] })) {
         await navigator.share({ files: [file], title: multi.label });
