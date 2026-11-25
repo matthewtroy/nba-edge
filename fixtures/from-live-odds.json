@@ -2,6 +2,215 @@
   "pulledAt": "2026-11-24T23:55:54.742Z",
   "entries": [
     {
+      "playerName": "Desmond Bane",
+      "market": "pts",
+      "line": 15,
+      "price": 1.44,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 1.44,
+        "Picklebet (AU)": 1.44,
+        "Betr": 1.42,
+        "TAB": 1.35,
+        "Neds": 1.44,
+        "Ladbrokes": 1.44,
+        "PointsBet (AU)": 1.42
+      }
+    },
+    {
+      "playerName": "Desmond Bane",
+      "market": "pts",
+      "line": 20,
+      "price": 2.6,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 2.6,
+        "Picklebet (AU)": 2.5,
+        "Betr": 2.45,
+        "TAB": 2,
+        "TABtouch": 2.43,
+        "Unibet": 2.43,
+        "Neds": 2.35,
+        "Ladbrokes": 2.35,
+        "PointsBet (AU)": 2.4
+      }
+    },
+    {
+      "playerName": "Desmond Bane",
+      "market": "pts",
+      "line": 25,
+      "price": 5.5,
+      "bookie": "Picklebet (AU)",
+      "bookiePrices": {
+        "SportsBet": 5.4,
+        "Picklebet (AU)": 5.5,
+        "Betr": 5.4,
+        "TAB": 3.75,
+        "Neds": 5,
+        "Ladbrokes": 5,
+        "PointsBet (AU)": 4.75
+      }
+    },
+    {
+      "playerName": "Desmond Bane",
+      "market": "reb",
+      "line": 3,
+      "price": 1.3,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 1.3,
+        "Picklebet (AU)": 1.3,
+        "Betr": 1.3,
+        "TABtouch": 1.3,
+        "Unibet": 1.3,
+        "Neds": 1.3,
+        "Ladbrokes": 1.3
+      }
+    },
+    {
+      "playerName": "Desmond Bane",
+      "market": "reb",
+      "line": 5,
+      "price": 2.6,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 2.6,
+        "Picklebet (AU)": 2.5,
+        "Betr": 2.55,
+        "TABtouch": 2.38,
+        "Unibet": 2.38,
+        "Neds": 2.35,
+        "Ladbrokes": 2.35
+      }
+    },
+    {
+      "playerName": "Desmond Bane",
+      "market": "reb",
+      "line": 7,
+      "price": 6.5,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 6.5,
+        "TABtouch": 5.75,
+        "Unibet": 5.75,
+        "Neds": 5.2,
+        "Ladbrokes": 5.2
+      }
+    },
+    {
+      "playerName": "Desmond Bane",
+      "market": "ast",
+      "line": 3,
+      "price": 1.77,
+      "bookie": "Neds",
+      "bookiePrices": {
+        "SportsBet": 1.72,
+        "Picklebet (AU)": 1.73,
+        "Betr": 1.74,
+        "TABtouch": 1.63,
+        "Unibet": 1.63,
+        "Neds": 1.77,
+        "Ladbrokes": 1.77
+      }
+    },
+    {
+      "playerName": "Desmond Bane",
+      "market": "ast",
+      "line": 5,
+      "price": 5.2,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 5.2,
+        "Picklebet (AU)": 5,
+        "Betr": 5.1,
+        "TABtouch": 4.3,
+        "Unibet": 4.2,
+        "Neds": 4,
+        "Ladbrokes": 4
+      }
+    },
+    {
+      "playerName": "Desmond Bane",
+      "market": "ast",
+      "line": 7,
+      "price": 12.5,
+      "bookie": "Neds",
+      "bookiePrices": {
+        "Neds": 12.5,
+        "Ladbrokes": 12.5
+      }
+    },
+    {
+      "playerName": "Desmond Bane",
+      "market": "3pm",
+      "line": 2,
+      "price": 1.17,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "SportsBet": 1.13,
+        "TAB": 1.08,
+        "TABtouch": 1.17,
+        "Unibet": 1.17,
+        "Neds": 1.12,
+        "Ladbrokes": 1.12,
+        "PointsBet (AU)": 1.14
+      }
+    },
+    {
+      "playerName": "Desmond Bane",
+      "market": "3pm",
+      "line": 3,
+      "price": 1.5,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "SportsBet": 1.46,
+        "Picklebet (AU)": 1.46,
+        "Betr": 1.45,
+        "TAB": 1.33,
+        "TABtouch": 1.5,
+        "Unibet": 1.5,
+        "Neds": 1.46,
+        "Ladbrokes": 1.46,
+        "PointsBet (AU)": 1.44
+      }
+    },
+    {
+      "playerName": "Desmond Bane",
+      "market": "3pm",
+      "line": 4,
+      "price": 2.18,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "SportsBet": 2.15,
+        "Picklebet (AU)": 2.1,
+        "Betr": 2.1,
+        "TAB": 2.15,
+        "TABtouch": 2.18,
+        "Unibet": 2.17,
+        "Neds": 2.1,
+        "Ladbrokes": 2.1,
+        "PointsBet (AU)": 2.15
+      }
+    },
+    {
+      "playerName": "Desmond Bane",
+      "market": "3pm",
+      "line": 5,
+      "price": 3.6,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 3.6,
+        "Picklebet (AU)": 3.5,
+        "Betr": 3.5,
+        "TAB": 2.9,
+        "TABtouch": 3.45,
+        "Unibet": 3.4,
+        "Neds": 3.2,
+        "Ladbrokes": 3.2,
+        "PointsBet (AU)": 3.4
+      }
+    },
+    {
       "playerName": "Anthony Black",
       "market": "pts",
       "line": 20,
@@ -226,215 +435,6 @@
       "bookie": "SportsBet",
       "bookiePrices": {
         "SportsBet": 23
-      }
-    },
-    {
-      "playerName": "Desmond Bane",
-      "market": "pts",
-      "line": 15,
-      "price": 1.44,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 1.44,
-        "Picklebet (AU)": 1.44,
-        "Betr": 1.42,
-        "TAB": 1.35,
-        "Neds": 1.44,
-        "Ladbrokes": 1.44,
-        "PointsBet (AU)": 1.42
-      }
-    },
-    {
-      "playerName": "Desmond Bane",
-      "market": "pts",
-      "line": 20,
-      "price": 2.6,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 2.6,
-        "Picklebet (AU)": 2.5,
-        "Betr": 2.45,
-        "TAB": 2,
-        "TABtouch": 2.43,
-        "Unibet": 2.43,
-        "Neds": 2.35,
-        "Ladbrokes": 2.35,
-        "PointsBet (AU)": 2.4
-      }
-    },
-    {
-      "playerName": "Desmond Bane",
-      "market": "pts",
-      "line": 25,
-      "price": 5.5,
-      "bookie": "Picklebet (AU)",
-      "bookiePrices": {
-        "SportsBet": 5.4,
-        "Picklebet (AU)": 5.5,
-        "Betr": 5.4,
-        "TAB": 3.75,
-        "Neds": 5,
-        "Ladbrokes": 5,
-        "PointsBet (AU)": 4.75
-      }
-    },
-    {
-      "playerName": "Desmond Bane",
-      "market": "reb",
-      "line": 3,
-      "price": 1.3,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 1.3,
-        "Picklebet (AU)": 1.3,
-        "Betr": 1.3,
-        "TABtouch": 1.3,
-        "Unibet": 1.3,
-        "Neds": 1.3,
-        "Ladbrokes": 1.3
-      }
-    },
-    {
-      "playerName": "Desmond Bane",
-      "market": "reb",
-      "line": 5,
-      "price": 2.6,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 2.6,
-        "Picklebet (AU)": 2.5,
-        "Betr": 2.55,
-        "TABtouch": 2.38,
-        "Unibet": 2.38,
-        "Neds": 2.35,
-        "Ladbrokes": 2.35
-      }
-    },
-    {
-      "playerName": "Desmond Bane",
-      "market": "reb",
-      "line": 7,
-      "price": 6.5,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 6.5,
-        "TABtouch": 5.75,
-        "Unibet": 5.75,
-        "Neds": 5.2,
-        "Ladbrokes": 5.2
-      }
-    },
-    {
-      "playerName": "Desmond Bane",
-      "market": "ast",
-      "line": 3,
-      "price": 1.77,
-      "bookie": "Neds",
-      "bookiePrices": {
-        "SportsBet": 1.72,
-        "Picklebet (AU)": 1.73,
-        "Betr": 1.74,
-        "TABtouch": 1.63,
-        "Unibet": 1.63,
-        "Neds": 1.77,
-        "Ladbrokes": 1.77
-      }
-    },
-    {
-      "playerName": "Desmond Bane",
-      "market": "ast",
-      "line": 5,
-      "price": 5.2,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 5.2,
-        "Picklebet (AU)": 5,
-        "Betr": 5.1,
-        "TABtouch": 4.3,
-        "Unibet": 4.2,
-        "Neds": 4,
-        "Ladbrokes": 4
-      }
-    },
-    {
-      "playerName": "Desmond Bane",
-      "market": "ast",
-      "line": 7,
-      "price": 12.5,
-      "bookie": "Neds",
-      "bookiePrices": {
-        "Neds": 12.5,
-        "Ladbrokes": 12.5
-      }
-    },
-    {
-      "playerName": "Desmond Bane",
-      "market": "3pm",
-      "line": 2,
-      "price": 1.17,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "SportsBet": 1.13,
-        "TAB": 1.08,
-        "TABtouch": 1.17,
-        "Unibet": 1.17,
-        "Neds": 1.12,
-        "Ladbrokes": 1.12,
-        "PointsBet (AU)": 1.14
-      }
-    },
-    {
-      "playerName": "Desmond Bane",
-      "market": "3pm",
-      "line": 3,
-      "price": 1.5,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "SportsBet": 1.46,
-        "Picklebet (AU)": 1.46,
-        "Betr": 1.45,
-        "TAB": 1.33,
-        "TABtouch": 1.5,
-        "Unibet": 1.5,
-        "Neds": 1.46,
-        "Ladbrokes": 1.46,
-        "PointsBet (AU)": 1.44
-      }
-    },
-    {
-      "playerName": "Desmond Bane",
-      "market": "3pm",
-      "line": 4,
-      "price": 2.18,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "SportsBet": 2.15,
-        "Picklebet (AU)": 2.1,
-        "Betr": 2.1,
-        "TAB": 2.15,
-        "TABtouch": 2.18,
-        "Unibet": 2.17,
-        "Neds": 2.1,
-        "Ladbrokes": 2.1,
-        "PointsBet (AU)": 2.15
-      }
-    },
-    {
-      "playerName": "Desmond Bane",
-      "market": "3pm",
-      "line": 5,
-      "price": 3.6,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 3.6,
-        "Picklebet (AU)": 3.5,
-        "Betr": 3.5,
-        "TAB": 2.9,
-        "TABtouch": 3.45,
-        "Unibet": 3.4,
-        "Neds": 3.2,
-        "Ladbrokes": 3.2,
-        "PointsBet (AU)": 3.4
       }
     },
     {
@@ -2278,6 +2278,233 @@
       }
     },
     {
+      "playerName": "Anthony Davis",
+      "market": "pts",
+      "line": 15,
+      "price": 1.2,
+      "bookie": "Neds",
+      "bookiePrices": {
+        "PointsBet (AU)": 1.15,
+        "Picklebet (AU)": 1.15,
+        "SportsBet": 1.17,
+        "TAB": 1.1,
+        "Betr": 1.15,
+        "Neds": 1.2,
+        "Ladbrokes": 1.2
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "pts",
+      "line": 20,
+      "price": 1.7,
+      "bookie": "Picklebet (AU)",
+      "bookiePrices": {
+        "PointsBet (AU)": 1.63,
+        "Picklebet (AU)": 1.7,
+        "SportsBet": 1.64,
+        "TAB": 1.52,
+        "Betr": 1.69,
+        "TABtouch": 1.61,
+        "Unibet": 1.61,
+        "Neds": 1.68,
+        "Ladbrokes": 1.68
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "pts",
+      "line": 25,
+      "price": 3.3,
+      "bookie": "Picklebet (AU)",
+      "bookiePrices": {
+        "PointsBet (AU)": 2.85,
+        "Picklebet (AU)": 3.3,
+        "SportsBet": 3.03,
+        "TAB": 2.5,
+        "Betr": 3.3,
+        "Neds": 2.85,
+        "Ladbrokes": 2.85
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "pts",
+      "line": 30,
+      "price": 8,
+      "bookie": "Picklebet (AU)",
+      "bookiePrices": {
+        "PointsBet (AU)": 6.5,
+        "Picklebet (AU)": 8,
+        "SportsBet": 6.5,
+        "TAB": 5.5,
+        "Betr": 8,
+        "TABtouch": 5,
+        "Unibet": 5,
+        "Neds": 6.4,
+        "Ladbrokes": 6.4
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "pts",
+      "line": 35,
+      "price": 19,
+      "bookie": "Neds",
+      "bookiePrices": {
+        "SportsBet": 12,
+        "Neds": 19,
+        "Ladbrokes": 19
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "reb",
+      "line": 5,
+      "price": 1.02,
+      "bookie": "Picklebet (AU)",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.02,
+        "Betr": 1.02
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "reb",
+      "line": 7,
+      "price": 1.18,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.14,
+        "SportsBet": 1.16,
+        "Betr": 1.14,
+        "TABtouch": 1.18,
+        "Unibet": 1.18,
+        "Neds": 1.16,
+        "Ladbrokes": 1.16
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "reb",
+      "line": 10,
+      "price": 1.85,
+      "bookie": "Neds",
+      "bookiePrices": {
+        "PointsBet (AU)": 1.77,
+        "Picklebet (AU)": 1.78,
+        "SportsBet": 1.78,
+        "TAB": 1.58,
+        "Betr": 1.77,
+        "TABtouch": 1.79,
+        "Unibet": 1.8,
+        "Neds": 1.85,
+        "Ladbrokes": 1.85
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "reb",
+      "line": 13,
+      "price": 4.1,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 4.1,
+        "TABtouch": 3.55,
+        "Unibet": 3.55
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "reb",
+      "line": 15,
+      "price": 8.5,
+      "bookie": "Picklebet (AU)",
+      "bookiePrices": {
+        "Picklebet (AU)": 8.5,
+        "SportsBet": 7.5,
+        "Betr": 8.5,
+        "TABtouch": 6,
+        "Unibet": 6
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "ast",
+      "line": 3,
+      "price": 2.45,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "PointsBet (AU)": 2.4,
+        "Picklebet (AU)": 1.98,
+        "Betr": 1.95,
+        "TABtouch": 2.45,
+        "Unibet": 2.45,
+        "Neds": 2.2,
+        "Ladbrokes": 2.2
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "ast",
+      "line": 5,
+      "price": 8.5,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "Picklebet (AU)": 6.25,
+        "Betr": 6.25,
+        "TABtouch": 8.5,
+        "Unibet": 8.5,
+        "Neds": 6.75,
+        "Ladbrokes": 6.75
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "3pm",
+      "line": 1,
+      "price": 1.82,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "PointsBet (AU)": 1.77,
+        "Picklebet (AU)": 1.73,
+        "SportsBet": 1.82,
+        "TAB": 1.52,
+        "Betr": 1.74,
+        "TABtouch": 1.75,
+        "Unibet": 1.75,
+        "Neds": 1.7,
+        "Ladbrokes": 1.7
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "3pm",
+      "line": 2,
+      "price": 5.3,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "Picklebet (AU)": 4.75,
+        "SportsBet": 5.3,
+        "TAB": 3.3,
+        "Betr": 4.9,
+        "TABtouch": 4.4,
+        "Unibet": 4.4,
+        "Neds": 4.1,
+        "Ladbrokes": 4.1
+      }
+    },
+    {
+      "playerName": "Anthony Davis",
+      "market": "3pm",
+      "line": 3,
+      "price": 8.5,
+      "bookie": "TAB",
+      "bookiePrices": {
+        "TAB": 8.5
+      }
+    },
+    {
       "playerName": "AJ Dybantsa",
       "market": "pts",
       "line": 10,
@@ -2744,233 +2971,6 @@
         "SportsBet": 3.6,
         "Neds": 3.9,
         "Ladbrokes": 3.9
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "pts",
-      "line": 15,
-      "price": 1.2,
-      "bookie": "Neds",
-      "bookiePrices": {
-        "PointsBet (AU)": 1.15,
-        "Picklebet (AU)": 1.15,
-        "SportsBet": 1.17,
-        "TAB": 1.1,
-        "Betr": 1.15,
-        "Neds": 1.2,
-        "Ladbrokes": 1.2
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "pts",
-      "line": 20,
-      "price": 1.7,
-      "bookie": "Picklebet (AU)",
-      "bookiePrices": {
-        "PointsBet (AU)": 1.63,
-        "Picklebet (AU)": 1.7,
-        "SportsBet": 1.64,
-        "TAB": 1.52,
-        "Betr": 1.69,
-        "TABtouch": 1.61,
-        "Unibet": 1.61,
-        "Neds": 1.68,
-        "Ladbrokes": 1.68
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "pts",
-      "line": 25,
-      "price": 3.3,
-      "bookie": "Picklebet (AU)",
-      "bookiePrices": {
-        "PointsBet (AU)": 2.85,
-        "Picklebet (AU)": 3.3,
-        "SportsBet": 3.03,
-        "TAB": 2.5,
-        "Betr": 3.3,
-        "Neds": 2.85,
-        "Ladbrokes": 2.85
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "pts",
-      "line": 30,
-      "price": 8,
-      "bookie": "Picklebet (AU)",
-      "bookiePrices": {
-        "PointsBet (AU)": 6.5,
-        "Picklebet (AU)": 8,
-        "SportsBet": 6.5,
-        "TAB": 5.5,
-        "Betr": 8,
-        "TABtouch": 5,
-        "Unibet": 5,
-        "Neds": 6.4,
-        "Ladbrokes": 6.4
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "pts",
-      "line": 35,
-      "price": 19,
-      "bookie": "Neds",
-      "bookiePrices": {
-        "SportsBet": 12,
-        "Neds": 19,
-        "Ladbrokes": 19
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "reb",
-      "line": 5,
-      "price": 1.02,
-      "bookie": "Picklebet (AU)",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.02,
-        "Betr": 1.02
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "reb",
-      "line": 7,
-      "price": 1.18,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.14,
-        "SportsBet": 1.16,
-        "Betr": 1.14,
-        "TABtouch": 1.18,
-        "Unibet": 1.18,
-        "Neds": 1.16,
-        "Ladbrokes": 1.16
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "reb",
-      "line": 10,
-      "price": 1.85,
-      "bookie": "Neds",
-      "bookiePrices": {
-        "PointsBet (AU)": 1.77,
-        "Picklebet (AU)": 1.78,
-        "SportsBet": 1.78,
-        "TAB": 1.58,
-        "Betr": 1.77,
-        "TABtouch": 1.79,
-        "Unibet": 1.8,
-        "Neds": 1.85,
-        "Ladbrokes": 1.85
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "reb",
-      "line": 13,
-      "price": 4.1,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 4.1,
-        "TABtouch": 3.55,
-        "Unibet": 3.55
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "reb",
-      "line": 15,
-      "price": 8.5,
-      "bookie": "Picklebet (AU)",
-      "bookiePrices": {
-        "Picklebet (AU)": 8.5,
-        "SportsBet": 7.5,
-        "Betr": 8.5,
-        "TABtouch": 6,
-        "Unibet": 6
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "ast",
-      "line": 3,
-      "price": 2.45,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "PointsBet (AU)": 2.4,
-        "Picklebet (AU)": 1.98,
-        "Betr": 1.95,
-        "TABtouch": 2.45,
-        "Unibet": 2.45,
-        "Neds": 2.2,
-        "Ladbrokes": 2.2
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "ast",
-      "line": 5,
-      "price": 8.5,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "Picklebet (AU)": 6.25,
-        "Betr": 6.25,
-        "TABtouch": 8.5,
-        "Unibet": 8.5,
-        "Neds": 6.75,
-        "Ladbrokes": 6.75
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "3pm",
-      "line": 1,
-      "price": 1.82,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "PointsBet (AU)": 1.77,
-        "Picklebet (AU)": 1.73,
-        "SportsBet": 1.82,
-        "TAB": 1.52,
-        "Betr": 1.74,
-        "TABtouch": 1.75,
-        "Unibet": 1.75,
-        "Neds": 1.7,
-        "Ladbrokes": 1.7
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "3pm",
-      "line": 2,
-      "price": 5.3,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "Picklebet (AU)": 4.75,
-        "SportsBet": 5.3,
-        "TAB": 3.3,
-        "Betr": 4.9,
-        "TABtouch": 4.4,
-        "Unibet": 4.4,
-        "Neds": 4.1,
-        "Ladbrokes": 4.1
-      }
-    },
-    {
-      "playerName": "Anthony Davis",
-      "market": "3pm",
-      "line": 3,
-      "price": 8.5,
-      "bookie": "TAB",
-      "bookiePrices": {
-        "TAB": 8.5
       }
     },
     {
@@ -5341,217 +5341,6 @@
       }
     },
     {
-      "playerName": "Christian Braun",
-      "market": "pts",
-      "line": 10,
-      "price": 1.33,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.29,
-        "Betr": 1.29,
-        "PointsBet (AU)": 1.29,
-        "SportsBet": 1.3,
-        "TAB": 1.32,
-        "TABtouch": 1.33,
-        "Unibet": 1.33,
-        "Ladbrokes": 1.33,
-        "Neds": 1.33
-      }
-    },
-    {
-      "playerName": "Christian Braun",
-      "market": "pts",
-      "line": 15,
-      "price": 2.45,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "Picklebet (AU)": 2.3,
-        "Betr": 2.35,
-        "PointsBet (AU)": 2.3,
-        "SportsBet": 2.45,
-        "TAB": 2.1,
-        "Ladbrokes": 2.2,
-        "Neds": 2.2
-      }
-    },
-    {
-      "playerName": "Christian Braun",
-      "market": "pts",
-      "line": 20,
-      "price": 6,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "PointsBet (AU)": 5.25,
-        "SportsBet": 6,
-        "TAB": 4.75,
-        "TABtouch": 5.2,
-        "Unibet": 5.2,
-        "Ladbrokes": 5.25,
-        "Neds": 5.25
-      }
-    },
-    {
-      "playerName": "Christian Braun",
-      "market": "reb",
-      "line": 3,
-      "price": 1.17,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.14,
-        "Betr": 1.14,
-        "SportsBet": 1.13,
-        "TABtouch": 1.17,
-        "Unibet": 1.17,
-        "Ladbrokes": 1.16,
-        "Neds": 1.16
-      }
-    },
-    {
-      "playerName": "Christian Braun",
-      "market": "reb",
-      "line": 5,
-      "price": 1.9,
-      "bookie": "Ladbrokes",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.82,
-        "Betr": 1.8,
-        "PointsBet (AU)": 1.87,
-        "SportsBet": 1.86,
-        "TABtouch": 1.85,
-        "Unibet": 1.85,
-        "Ladbrokes": 1.9,
-        "Neds": 1.9
-      }
-    },
-    {
-      "playerName": "Christian Braun",
-      "market": "reb",
-      "line": 7,
-      "price": 4.1,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "Picklebet (AU)": 4,
-        "Betr": 4,
-        "SportsBet": 4.1,
-        "TABtouch": 3.8,
-        "Unibet": 3.8,
-        "Ladbrokes": 3.45,
-        "Neds": 3.45
-      }
-    },
-    {
-      "playerName": "Christian Braun",
-      "market": "reb",
-      "line": 10,
-      "price": 12,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 12
-      }
-    },
-    {
-      "playerName": "Christian Braun",
-      "market": "ast",
-      "line": 3,
-      "price": 2.1,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.98,
-        "Betr": 1.95,
-        "SportsBet": 2.1,
-        "TABtouch": 2.06,
-        "Unibet": 2.07,
-        "Ladbrokes": 1.98,
-        "Neds": 1.98
-      }
-    },
-    {
-      "playerName": "Christian Braun",
-      "market": "ast",
-      "line": 5,
-      "price": 7,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "Picklebet (AU)": 6.5,
-        "Betr": 6.5,
-        "SportsBet": 7,
-        "TABtouch": 6.4,
-        "Unibet": 6.4,
-        "Ladbrokes": 5,
-        "Neds": 5
-      }
-    },
-    {
-      "playerName": "Christian Braun",
-      "market": "3pm",
-      "line": 1,
-      "price": 1.25,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.22,
-        "Betr": 1.22,
-        "PointsBet (AU)": 1.22,
-        "SportsBet": 1.21,
-        "TAB": 1.14,
-        "TABtouch": 1.25,
-        "Unibet": 1.25,
-        "Ladbrokes": 1.24,
-        "Neds": 1.24
-      }
-    },
-    {
-      "playerName": "Christian Braun",
-      "market": "3pm",
-      "line": 2,
-      "price": 2.12,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "Picklebet (AU)": 2,
-        "Betr": 2,
-        "PointsBet (AU)": 2,
-        "SportsBet": 2.1,
-        "TAB": 1.8,
-        "TABtouch": 2.12,
-        "Unibet": 2.12,
-        "Ladbrokes": 2.05,
-        "Neds": 2.05
-      }
-    },
-    {
-      "playerName": "Christian Braun",
-      "market": "3pm",
-      "line": 3,
-      "price": 4.6,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "Picklebet (AU)": 4.1,
-        "Betr": 4.1,
-        "PointsBet (AU)": 4,
-        "SportsBet": 4.6,
-        "TAB": 3.1,
-        "TABtouch": 4.2,
-        "Unibet": 4.2,
-        "Ladbrokes": 4,
-        "Neds": 4
-      }
-    },
-    {
-      "playerName": "Christian Braun",
-      "market": "3pm",
-      "line": 4,
-      "price": 11,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "PointsBet (AU)": 10,
-        "SportsBet": 11,
-        "TAB": 7,
-        "TABtouch": 8.5,
-        "Unibet": 8.5,
-        "Ladbrokes": 9,
-        "Neds": 9
-      }
-    },
-    {
       "playerName": "Jamal Murray",
       "market": "pts",
       "line": 20,
@@ -5812,6 +5601,217 @@
         "Unibet": 5.6,
         "Ladbrokes": 6,
         "Neds": 6
+      }
+    },
+    {
+      "playerName": "Christian Braun",
+      "market": "pts",
+      "line": 10,
+      "price": 1.33,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.29,
+        "Betr": 1.29,
+        "PointsBet (AU)": 1.29,
+        "SportsBet": 1.3,
+        "TAB": 1.32,
+        "TABtouch": 1.33,
+        "Unibet": 1.33,
+        "Ladbrokes": 1.33,
+        "Neds": 1.33
+      }
+    },
+    {
+      "playerName": "Christian Braun",
+      "market": "pts",
+      "line": 15,
+      "price": 2.45,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "Picklebet (AU)": 2.3,
+        "Betr": 2.35,
+        "PointsBet (AU)": 2.3,
+        "SportsBet": 2.45,
+        "TAB": 2.1,
+        "Ladbrokes": 2.2,
+        "Neds": 2.2
+      }
+    },
+    {
+      "playerName": "Christian Braun",
+      "market": "pts",
+      "line": 20,
+      "price": 6,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "PointsBet (AU)": 5.25,
+        "SportsBet": 6,
+        "TAB": 4.75,
+        "TABtouch": 5.2,
+        "Unibet": 5.2,
+        "Ladbrokes": 5.25,
+        "Neds": 5.25
+      }
+    },
+    {
+      "playerName": "Christian Braun",
+      "market": "reb",
+      "line": 3,
+      "price": 1.17,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.14,
+        "Betr": 1.14,
+        "SportsBet": 1.13,
+        "TABtouch": 1.17,
+        "Unibet": 1.17,
+        "Ladbrokes": 1.16,
+        "Neds": 1.16
+      }
+    },
+    {
+      "playerName": "Christian Braun",
+      "market": "reb",
+      "line": 5,
+      "price": 1.9,
+      "bookie": "Ladbrokes",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.82,
+        "Betr": 1.8,
+        "PointsBet (AU)": 1.87,
+        "SportsBet": 1.86,
+        "TABtouch": 1.85,
+        "Unibet": 1.85,
+        "Ladbrokes": 1.9,
+        "Neds": 1.9
+      }
+    },
+    {
+      "playerName": "Christian Braun",
+      "market": "reb",
+      "line": 7,
+      "price": 4.1,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "Picklebet (AU)": 4,
+        "Betr": 4,
+        "SportsBet": 4.1,
+        "TABtouch": 3.8,
+        "Unibet": 3.8,
+        "Ladbrokes": 3.45,
+        "Neds": 3.45
+      }
+    },
+    {
+      "playerName": "Christian Braun",
+      "market": "reb",
+      "line": 10,
+      "price": 12,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 12
+      }
+    },
+    {
+      "playerName": "Christian Braun",
+      "market": "ast",
+      "line": 3,
+      "price": 2.1,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.98,
+        "Betr": 1.95,
+        "SportsBet": 2.1,
+        "TABtouch": 2.06,
+        "Unibet": 2.07,
+        "Ladbrokes": 1.98,
+        "Neds": 1.98
+      }
+    },
+    {
+      "playerName": "Christian Braun",
+      "market": "ast",
+      "line": 5,
+      "price": 7,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "Picklebet (AU)": 6.5,
+        "Betr": 6.5,
+        "SportsBet": 7,
+        "TABtouch": 6.4,
+        "Unibet": 6.4,
+        "Ladbrokes": 5,
+        "Neds": 5
+      }
+    },
+    {
+      "playerName": "Christian Braun",
+      "market": "3pm",
+      "line": 1,
+      "price": 1.25,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.22,
+        "Betr": 1.22,
+        "PointsBet (AU)": 1.22,
+        "SportsBet": 1.21,
+        "TAB": 1.14,
+        "TABtouch": 1.25,
+        "Unibet": 1.25,
+        "Ladbrokes": 1.24,
+        "Neds": 1.24
+      }
+    },
+    {
+      "playerName": "Christian Braun",
+      "market": "3pm",
+      "line": 2,
+      "price": 2.12,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "Picklebet (AU)": 2,
+        "Betr": 2,
+        "PointsBet (AU)": 2,
+        "SportsBet": 2.1,
+        "TAB": 1.8,
+        "TABtouch": 2.12,
+        "Unibet": 2.12,
+        "Ladbrokes": 2.05,
+        "Neds": 2.05
+      }
+    },
+    {
+      "playerName": "Christian Braun",
+      "market": "3pm",
+      "line": 3,
+      "price": 4.6,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "Picklebet (AU)": 4.1,
+        "Betr": 4.1,
+        "PointsBet (AU)": 4,
+        "SportsBet": 4.6,
+        "TAB": 3.1,
+        "TABtouch": 4.2,
+        "Unibet": 4.2,
+        "Ladbrokes": 4,
+        "Neds": 4
+      }
+    },
+    {
+      "playerName": "Christian Braun",
+      "market": "3pm",
+      "line": 4,
+      "price": 11,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "PointsBet (AU)": 10,
+        "SportsBet": 11,
+        "TAB": 7,
+        "TABtouch": 8.5,
+        "Unibet": 8.5,
+        "Ladbrokes": 9,
+        "Neds": 9
       }
     },
     {
@@ -6140,276 +6140,6 @@
       "bookie": "TAB",
       "bookiePrices": {
         "TAB": 1.32
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "pts",
-      "line": 20,
-      "price": 1.3,
-      "bookie": "TAB",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.22,
-        "Betr": 1.23,
-        "PointsBet (AU)": 1.29,
-        "SportsBet": 1.28,
-        "TAB": 1.3,
-        "TABtouch": 1.23,
-        "Unibet": 1.23,
-        "Ladbrokes": 1.28,
-        "Neds": 1.28
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "pts",
-      "line": 25,
-      "price": 1.88,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.8,
-        "Betr": 1.8,
-        "PointsBet (AU)": 1.87,
-        "SportsBet": 1.88,
-        "TAB": 1.72,
-        "Ladbrokes": 1.87,
-        "Neds": 1.87
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "pts",
-      "line": 30,
-      "price": 3.31,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "Picklebet (AU)": 3.3,
-        "Betr": 3.3,
-        "PointsBet (AU)": 3.25,
-        "SportsBet": 3.31,
-        "TAB": 2.8,
-        "TABtouch": 2.65,
-        "Unibet": 2.65,
-        "Ladbrokes": 3.05,
-        "Neds": 3.05
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "pts",
-      "line": 35,
-      "price": 7.25,
-      "bookie": "Betr",
-      "bookiePrices": {
-        "Picklebet (AU)": 7,
-        "Betr": 7.25,
-        "PointsBet (AU)": 7,
-        "SportsBet": 6.5,
-        "TAB": 5.5,
-        "Ladbrokes": 6.5,
-        "Neds": 6.5
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "pts",
-      "line": 40,
-      "price": 19,
-      "bookie": "Ladbrokes"
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "reb",
-      "line": 3,
-      "price": 1.01,
-      "bookie": "Ladbrokes",
-      "bookiePrices": {
-        "Ladbrokes": 1.01,
-        "Neds": 1.01
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "reb",
-      "line": 5,
-      "price": 1.3,
-      "bookie": "Ladbrokes",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.22,
-        "Betr": 1.22,
-        "SportsBet": 1.22,
-        "TABtouch": 1.29,
-        "Unibet": 1.29,
-        "Ladbrokes": 1.3,
-        "Neds": 1.3
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "reb",
-      "line": 7,
-      "price": 2.05,
-      "bookie": "PointsBet (AU)",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.83,
-        "Betr": 1.83,
-        "PointsBet (AU)": 2.05,
-        "SportsBet": 1.96,
-        "TABtouch": 2,
-        "Unibet": 2,
-        "Ladbrokes": 2.02,
-        "Neds": 2.02
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "reb",
-      "line": 10,
-      "price": 5.75,
-      "bookie": "PointsBet (AU)",
-      "bookiePrices": {
-        "Picklebet (AU)": 5.25,
-        "Betr": 5.4,
-        "PointsBet (AU)": 5.75,
-        "SportsBet": 5.2,
-        "TAB": 4.75,
-        "TABtouch": 5.2,
-        "Unibet": 5.2,
-        "Ladbrokes": 4.4,
-        "Neds": 4.4
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "ast",
-      "line": 5,
-      "price": 1.26,
-      "bookie": "Ladbrokes",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.25,
-        "Betr": 1.25,
-        "SportsBet": 1.22,
-        "TABtouch": 1.25,
-        "Unibet": 1.25,
-        "Ladbrokes": 1.26,
-        "Neds": 1.26
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "ast",
-      "line": 7,
-      "price": 1.96,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.92,
-        "Betr": 1.91,
-        "PointsBet (AU)": 1.95,
-        "SportsBet": 1.96,
-        "TABtouch": 1.96,
-        "Unibet": 1.96,
-        "Ladbrokes": 1.95,
-        "Neds": 1.95
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "ast",
-      "line": 10,
-      "price": 5.8,
-      "bookie": "Betr",
-      "bookiePrices": {
-        "Picklebet (AU)": 5.75,
-        "Betr": 5.8,
-        "PointsBet (AU)": 5.75,
-        "SportsBet": 5.5,
-        "TAB": 4.5,
-        "TABtouch": 5.8,
-        "Unibet": 5.8,
-        "Ladbrokes": 4.4,
-        "Neds": 4.4
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "3pm",
-      "line": 1,
-      "price": 1.17,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.14,
-        "Betr": 1.14,
-        "PointsBet (AU)": 1.14,
-        "SportsBet": 1.12,
-        "TAB": 1.1,
-        "TABtouch": 1.17,
-        "Unibet": 1.17,
-        "Ladbrokes": 1.14,
-        "Neds": 1.14
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "3pm",
-      "line": 2,
-      "price": 1.78,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "Picklebet (AU)": 1.65,
-        "Betr": 1.65,
-        "PointsBet (AU)": 1.69,
-        "SportsBet": 1.66,
-        "TAB": 1.58,
-        "TABtouch": 1.78,
-        "Unibet": 1.78,
-        "Ladbrokes": 1.73,
-        "Neds": 1.73
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "3pm",
-      "line": 3,
-      "price": 3.2,
-      "bookie": "TABtouch",
-      "bookiePrices": {
-        "Picklebet (AU)": 2.9,
-        "Betr": 2.9,
-        "PointsBet (AU)": 2.85,
-        "SportsBet": 3.1,
-        "TAB": 2.7,
-        "TABtouch": 3.2,
-        "Unibet": 3.2,
-        "Ladbrokes": 3,
-        "Neds": 3
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "3pm",
-      "line": 4,
-      "price": 6.25,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "PointsBet (AU)": 5.75,
-        "SportsBet": 6.25,
-        "TAB": 4.75,
-        "TABtouch": 6.25,
-        "Unibet": 6.25,
-        "Ladbrokes": 5.8,
-        "Neds": 5.8
-      }
-    },
-    {
-      "playerName": "Cooper Flagg",
-      "market": "3pm",
-      "line": 5,
-      "price": 15,
-      "bookie": "SportsBet",
-      "bookiePrices": {
-        "SportsBet": 15,
-        "Ladbrokes": 13,
-        "Neds": 13
       }
     },
     {
@@ -7019,6 +6749,276 @@
         "Unibet": 9,
         "Ladbrokes": 11.5,
         "Neds": 11.5
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "pts",
+      "line": 20,
+      "price": 1.3,
+      "bookie": "TAB",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.22,
+        "Betr": 1.23,
+        "PointsBet (AU)": 1.29,
+        "SportsBet": 1.28,
+        "TAB": 1.3,
+        "TABtouch": 1.23,
+        "Unibet": 1.23,
+        "Ladbrokes": 1.28,
+        "Neds": 1.28
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "pts",
+      "line": 25,
+      "price": 1.88,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.8,
+        "Betr": 1.8,
+        "PointsBet (AU)": 1.87,
+        "SportsBet": 1.88,
+        "TAB": 1.72,
+        "Ladbrokes": 1.87,
+        "Neds": 1.87
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "pts",
+      "line": 30,
+      "price": 3.31,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "Picklebet (AU)": 3.3,
+        "Betr": 3.3,
+        "PointsBet (AU)": 3.25,
+        "SportsBet": 3.31,
+        "TAB": 2.8,
+        "TABtouch": 2.65,
+        "Unibet": 2.65,
+        "Ladbrokes": 3.05,
+        "Neds": 3.05
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "pts",
+      "line": 35,
+      "price": 7.25,
+      "bookie": "Betr",
+      "bookiePrices": {
+        "Picklebet (AU)": 7,
+        "Betr": 7.25,
+        "PointsBet (AU)": 7,
+        "SportsBet": 6.5,
+        "TAB": 5.5,
+        "Ladbrokes": 6.5,
+        "Neds": 6.5
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "pts",
+      "line": 40,
+      "price": 19,
+      "bookie": "Ladbrokes"
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "reb",
+      "line": 3,
+      "price": 1.01,
+      "bookie": "Ladbrokes",
+      "bookiePrices": {
+        "Ladbrokes": 1.01,
+        "Neds": 1.01
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "reb",
+      "line": 5,
+      "price": 1.3,
+      "bookie": "Ladbrokes",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.22,
+        "Betr": 1.22,
+        "SportsBet": 1.22,
+        "TABtouch": 1.29,
+        "Unibet": 1.29,
+        "Ladbrokes": 1.3,
+        "Neds": 1.3
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "reb",
+      "line": 7,
+      "price": 2.05,
+      "bookie": "PointsBet (AU)",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.83,
+        "Betr": 1.83,
+        "PointsBet (AU)": 2.05,
+        "SportsBet": 1.96,
+        "TABtouch": 2,
+        "Unibet": 2,
+        "Ladbrokes": 2.02,
+        "Neds": 2.02
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "reb",
+      "line": 10,
+      "price": 5.75,
+      "bookie": "PointsBet (AU)",
+      "bookiePrices": {
+        "Picklebet (AU)": 5.25,
+        "Betr": 5.4,
+        "PointsBet (AU)": 5.75,
+        "SportsBet": 5.2,
+        "TAB": 4.75,
+        "TABtouch": 5.2,
+        "Unibet": 5.2,
+        "Ladbrokes": 4.4,
+        "Neds": 4.4
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "ast",
+      "line": 5,
+      "price": 1.26,
+      "bookie": "Ladbrokes",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.25,
+        "Betr": 1.25,
+        "SportsBet": 1.22,
+        "TABtouch": 1.25,
+        "Unibet": 1.25,
+        "Ladbrokes": 1.26,
+        "Neds": 1.26
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "ast",
+      "line": 7,
+      "price": 1.96,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.92,
+        "Betr": 1.91,
+        "PointsBet (AU)": 1.95,
+        "SportsBet": 1.96,
+        "TABtouch": 1.96,
+        "Unibet": 1.96,
+        "Ladbrokes": 1.95,
+        "Neds": 1.95
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "ast",
+      "line": 10,
+      "price": 5.8,
+      "bookie": "Betr",
+      "bookiePrices": {
+        "Picklebet (AU)": 5.75,
+        "Betr": 5.8,
+        "PointsBet (AU)": 5.75,
+        "SportsBet": 5.5,
+        "TAB": 4.5,
+        "TABtouch": 5.8,
+        "Unibet": 5.8,
+        "Ladbrokes": 4.4,
+        "Neds": 4.4
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "3pm",
+      "line": 1,
+      "price": 1.17,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.14,
+        "Betr": 1.14,
+        "PointsBet (AU)": 1.14,
+        "SportsBet": 1.12,
+        "TAB": 1.1,
+        "TABtouch": 1.17,
+        "Unibet": 1.17,
+        "Ladbrokes": 1.14,
+        "Neds": 1.14
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "3pm",
+      "line": 2,
+      "price": 1.78,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "Picklebet (AU)": 1.65,
+        "Betr": 1.65,
+        "PointsBet (AU)": 1.69,
+        "SportsBet": 1.66,
+        "TAB": 1.58,
+        "TABtouch": 1.78,
+        "Unibet": 1.78,
+        "Ladbrokes": 1.73,
+        "Neds": 1.73
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "3pm",
+      "line": 3,
+      "price": 3.2,
+      "bookie": "TABtouch",
+      "bookiePrices": {
+        "Picklebet (AU)": 2.9,
+        "Betr": 2.9,
+        "PointsBet (AU)": 2.85,
+        "SportsBet": 3.1,
+        "TAB": 2.7,
+        "TABtouch": 3.2,
+        "Unibet": 3.2,
+        "Ladbrokes": 3,
+        "Neds": 3
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "3pm",
+      "line": 4,
+      "price": 6.25,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "PointsBet (AU)": 5.75,
+        "SportsBet": 6.25,
+        "TAB": 4.75,
+        "TABtouch": 6.25,
+        "Unibet": 6.25,
+        "Ladbrokes": 5.8,
+        "Neds": 5.8
+      }
+    },
+    {
+      "playerName": "Cooper Flagg",
+      "market": "3pm",
+      "line": 5,
+      "price": 15,
+      "bookie": "SportsBet",
+      "bookiePrices": {
+        "SportsBet": 15,
+        "Ladbrokes": 13,
+        "Neds": 13
       }
     }
   ]

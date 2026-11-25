@@ -1,6 +1,13 @@
 import type { PickLeg, MultiBet } from "./types.js";
 
-/** Player may appear in at most 2 multis unless leg p >= 0.80 */
+/** Non-Booster multis a player may appear in (p < 0.80). Booster does not count. */
+export const MAX_PLAYER_BETS_EXCLUDING_BOOSTER = 3;
+
+export function countsTowardExposureCap(multi: MultiBet): boolean {
+  return multi.type !== "booster";
+}
+
+/** Player may appear in at most 3 non-Booster multis unless leg p >= 0.80 */
 export function exposureViolation(
   multis: MultiBet[],
   picksById: Map<string, PickLeg>
@@ -8,6 +15,7 @@ export function exposureViolation(
   const counts = new Map<string, number>();
 
   for (const multi of multis) {
+    if (!countsTowardExposureCap(multi)) continue;
     const seenInMulti = new Set<string>();
     for (const legId of multi.legs) {
       const leg = picksById.get(legId);
@@ -17,7 +25,7 @@ export function exposureViolation(
       if (leg.probability >= 0.8) continue;
       const c = (counts.get(leg.playerId) ?? 0) + 1;
       counts.set(leg.playerId, c);
-      if (c > 2) {
+      if (c > MAX_PLAYER_BETS_EXCLUDING_BOOSTER) {
         return { ok: false, playerId: leg.playerId, count: c };
       }
     }
@@ -28,7 +36,8 @@ export function exposureViolation(
 function formatExposureDrop(
   multi: MultiBet,
   picksById: Map<string, PickLeg>,
-  playerId: string
+  playerId: string,
+  wouldBeCount: number
 ): string {
   const name =
     picksById.get(multi.legs.find((id) => picksById.get(id)?.playerId === playerId) ?? "")
@@ -39,7 +48,7 @@ function formatExposureDrop(
       return l ? `${l.playerName} ${l.line}+ ${l.market}` : id;
     })
     .join(", ");
-  return `Exposure cap: ${name} would appear in >2 multis (legs: ${legLabels})`;
+  return `Exposure cap: ${name} would appear in ${wouldBeCount} bets (max ${MAX_PLAYER_BETS_EXCLUDING_BOOSTER}, Booster exempt; legs: ${legLabels})`;
 }
 
 export function enforceExposureCap(multis: MultiBet[], picksById: Map<string, PickLeg>): MultiBet[] {
@@ -55,7 +64,13 @@ export function enforceExposureCapWithDrops(
   const counts = new Map<string, number>();
 
   for (const multi of multis) {
+    if (!countsTowardExposureCap(multi)) {
+      result.push(multi);
+      continue;
+    }
+
     let skipPlayer: string | undefined;
+    let wouldBe = 0;
     const seen = new Set<string>();
     for (const legId of multi.legs) {
       const leg = picksById.get(legId);
@@ -64,15 +79,16 @@ export function enforceExposureCapWithDrops(
       seen.add(leg.playerId);
       if (leg.probability >= 0.8) continue;
       const next = (counts.get(leg.playerId) ?? 0) + 1;
-      if (next > 2) {
+      if (next > MAX_PLAYER_BETS_EXCLUDING_BOOSTER) {
         skipPlayer = leg.playerId;
+        wouldBe = next;
         break;
       }
     }
     if (skipPlayer) {
       dropped.push({
         multi,
-        reason: formatExposureDrop(multi, picksById, skipPlayer),
+        reason: formatExposureDrop(multi, picksById, skipPlayer, wouldBe),
       });
       continue;
     }

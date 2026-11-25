@@ -42,7 +42,6 @@ describe("Q1 multi backtracking", () => {
     const q1 = bets.filter((b) => b.type === "q1Multi");
     expect(q1.length).toBeGreaterThanOrEqual(1);
     expect(q1[0].legs.length).toBeGreaterThanOrEqual(3);
-    const q1Reason = notBuilt.find((n) => n.type === "q1Multi");
-    expect(q1Reason).toBeUndefined();
+    expect(q1.some((b) => b.variant === "Safe")).toBe(true);
   });
 });

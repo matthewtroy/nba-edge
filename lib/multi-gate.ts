@@ -5,6 +5,7 @@ import { bestSingleBookieQuote } from "./single-bookie.js";
 import {
   gateLineViolation,
   qualifiesMainPlayLeg,
+  qualifiesCrossBoostLeg,
 } from "./main-play-eligibility.js";
 
 const MIN_LEG_FAIR = 1.3;
@@ -90,9 +91,26 @@ function checkTypeRules(
   if (type === "boostSgm") {
     if (legs.length !== 3) issues.push("Boost SGM: need 3 legs");
     if (combo < 7 || combo > 15) issues.push(`Boost SGM: take-at ${combo.toFixed(2)} not 7–15`);
+    if (!legs.every((l) => qualifiesCrossBoostLeg(l))) {
+      issues.push("Boost SGM: leg fails starter main-line eligibility");
+    }
+    for (const leg of legs) {
+      if ((leg.projectedMinutes ?? 0) < 24) {
+        issues.push(`Boost SGM: ${leg.playerName} projected ${(leg.projectedMinutes ?? 0).toFixed(0)} min (<24)`);
+      }
+    }
   }
   if (type === "longshot") {
     if (combo < 30 || combo > 100) issues.push(`Longshot: take-at ${combo.toFixed(2)} not 30–100`);
+    if (legs.some((l) => l.market === "3pm")) {
+      issues.push("Longshot: forbidden 3PM legs (use DD/TD/combo or 30+ pts)");
+    }
+    const hasSpecial = legs.some((l) =>
+      ["dd", "td", "combo"].includes(l.market)
+    );
+  if (!hasSpecial && !legs.every((l) => l.market === "pts" && l.line >= 30)) {
+      issues.push("Longshot: need priced DD/TD/combo or 30+ pts starters");
+    }
   }
   if (type === "crossGameSgm") {
     if (combo < 10 || combo > 30) issues.push(`Cross-Game: take-at ${combo.toFixed(2)} not 10–30`);

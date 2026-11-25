@@ -141,9 +141,8 @@ export function buildMultis(
     notBuilt.push({ type: "booster", label: LABELS.booster, reason: "Needs a Main Play first" });
   }
 
-  const q1 = buildQ1Multi(byP);
-  if (q1.bets.length) multis.push(...q1.bets);
-  else notBuilt.push({ type: "q1Multi", label: LABELS.q1Multi, reason: q1.reason });
+  const q1Attempt = buildQ1Multi(byP);
+  multis.push(...q1Attempt.bets);
 
   const cross = buildCrossGameSgm(byP);
   if (cross.bet) multis.push(cross.bet);
@@ -213,8 +212,24 @@ export function buildMultis(
       (gated.droppedReasons.get(key) ?? []).slice(0, 3).join("; ") || "rule gate";
     pushDrop(m, `Gate: ${detail} (legs: ${legSummary})`);
   }
+
+  const finalBets = gated.multis;
+  const ensureQ1Variant = (variant: "Safe" | "Value", reason: string) => {
+    if (!reason) return;
+    if (finalBets.some((m) => m.type === "q1Multi" && m.variant === variant)) return;
+    if (notBuilt.some((n) => n.type === "q1Multi" && n.variant === variant)) return;
+    notBuilt.push({
+      type: "q1Multi",
+      label: LABELS.q1Multi,
+      variant,
+      reason,
+    });
+  };
+  ensureQ1Variant("Safe", q1Attempt.safeNotBuiltReason);
+  ensureQ1Variant("Value", q1Attempt.valueNotBuiltReason);
+
   return {
-    bets: gated.multis,
+    bets: finalBets,
     notBuilt,
     gateViolations: gated.violations,
   };
@@ -467,7 +482,11 @@ function q1MultiFromLegs(
   };
 }
 
-function buildQ1Multi(picks: PickLeg[]): { bets: MultiBet[]; reason: string } {
+function buildQ1Multi(picks: PickLeg[]): {
+  bets: MultiBet[];
+  safeNotBuiltReason: string;
+  valueNotBuiltReason: string;
+} {
   const q1 = picks.filter(
     (l) =>
       l.market.startsWith("q1") &&
@@ -484,41 +503,38 @@ function buildQ1Multi(picks: PickLeg[]): { bets: MultiBet[]; reason: string } {
   }
   for (const arr of byTeam.values()) arr.sort(sortLegs);
   const teamKeys = [...byTeam.keys()].sort();
+  const thinPool = `Only ${teamKeys.length} teams with Q1 fair 1.80–4.00 (need 3–6)`;
   if (teamKeys.length < 3) {
     return {
       bets: [],
-      reason: `Only ${teamKeys.length} teams with Q1 fair 1.80–4.00 (need 3–6)`,
+      safeNotBuiltReason: thinPool,
+      valueNotBuiltReason: thinPool,
     };
   }
 
   const bets: MultiBet[] = [];
+  let safeNotBuiltReason = "No Safe Q1 subset (fair 1.80–2.40, 3–6 teams, one leg/team)";
+  let valueNotBuiltReason =
+    "No Value Q1 subset (fair 2.20–4.00, 3–6 teams, one leg/team)";
+
   const safe = findQ1Subset(teamKeys, byTeam, 1.8, 2.4);
   if (safe) {
     bets.push(
       q1MultiFromLegs(safe, "Safe", "Safe Q1: fair 1.80–2.40, one leg/team")
     );
+    safeNotBuiltReason = "";
   }
   const value = findQ1Subset(teamKeys, byTeam, 2.2, 4);
   if (value && (!safe || value.map((l) => l.id).join() !== safe.map((l) => l.id).join())) {
     bets.push(
       q1MultiFromLegs(value, "Value", "Value Q1: fair 2.20–4.00, one leg/team")
     );
+    valueNotBuiltReason = "";
+  } else if (value && safe && value.map((l) => l.id).join() === safe.map((l) => l.id).join()) {
+    valueNotBuiltReason = "Value Q1 same legs as Safe (skipped duplicate)";
   }
-  if (!bets.length) {
-    const any = findQ1Subset(teamKeys, byTeam, 1.8, 4);
-    if (any) {
-      bets.push(
-        q1MultiFromLegs(any, undefined, "One Q1 leg per team, fair 1.80–4.00")
-      );
-    }
-  }
-  if (!bets.length) {
-    return {
-      bets: [],
-      reason: "No clash-free Q1 combo (3–6 teams, one leg each)",
-    };
-  }
-  return { bets, reason: "" };
+
+  return { bets, safeNotBuiltReason, valueNotBuiltReason };
 }
 
 function buildCrossGameSgm(picks: PickLeg[]): { bet: MultiBet | null; reason: string } {
@@ -647,17 +663,30 @@ function buildBoostSgm(picks: PickLeg[]): { bet: MultiBet | null; reason: string
   };
 }
 
+function longshotLegScore(l: PickLeg): number {
+  if (l.market === "td") return 4;
+  if (l.market === "dd") return 3;
+  if (l.market === "combo") return 2;
+  if (l.market === "pts" && l.line >= 30) return 1;
+  return 0;
+}
+
+function qualifiesLongshotBuildLeg(l: PickLeg): boolean {
+  if (!qualifiesLongshotLeg(l)) return false;
+  if (l.market === "3pm") return false;
+  if (l.market === "dd" || l.market === "td" || l.market === "combo") {
+    return l.bestPrice != null && l.bestPrice > 1;
+  }
+  if (l.market === "pts" && l.line >= 30) {
+    return l.fairPrice >= 2.5 && l.fairPrice <= 20;
+  }
+  return false;
+}
+
 function buildLongshot(picks: PickLeg[]): { bet: MultiBet | null; reason: string } {
   const byGame = new Map<string, PickLeg[]>();
   for (const l of picks) {
-  if (!qualifiesLongshotLeg(l)) continue;
-    const special =
-      l.market === "dd" ||
-      l.market === "td" ||
-      l.market === "combo" ||
-      (l.market === "pts" && l.line >= 30);
-    if (!special && l.fairPrice < 2.5) continue;
-    if (l.fairPrice > 20) continue;
+    if (!qualifiesLongshotBuildLeg(l)) continue;
     const arr = byGame.get(l.gameId) ?? [];
     arr.push(l);
     byGame.set(l.gameId, arr);
@@ -678,7 +707,10 @@ function buildLongshot(picks: PickLeg[]): { bet: MultiBet | null; reason: string
     for (let i = gi; i < gameIds.length; i++) {
       const gid = gameIds[i];
       const legs = (byGame.get(gid) ?? []).sort(
-        (a, b) => injuryBoostScore(b) - injuryBoostScore(a) || b.fairPrice - a.fairPrice
+        (a, b) =>
+          longshotLegScore(b) - longshotLegScore(a) ||
+          injuryBoostScore(b) - injuryBoostScore(a) ||
+          b.fairPrice - a.fairPrice
       );
       for (const leg of legs.slice(0, 8)) {
         const next = [...chosen, leg];
@@ -690,17 +722,30 @@ function buildLongshot(picks: PickLeg[]): { bet: MultiBet | null; reason: string
   dfs(0, []);
 
   if (!best || best.length < 2) {
-    return { bet: null, reason: "Need 2+ games with long legs (fair 2.50–20)" };
+    return {
+      bet: null,
+      reason:
+        "No 2-game longshot: need starter DD/TD/combo with odds feed (or 30+ pts), no 3PM micro",
+    };
   }
-  const chosen = best;
-  const combo = combinedBetPrice(chosen);
-  const { p, fair, takeAt } = combinedPrice(chosen);
-  const book = singleBookieOverlay(chosen, takeAt);
+  const chosenLegs = best as PickLeg[];
+  if (
+    !chosenLegs.some((l) => ["dd", "td", "combo"].includes(l.market)) &&
+    !chosenLegs.every((l) => l.market === "pts" && l.line >= 30)
+  ) {
+    return {
+      bet: null,
+      reason: "Longshot rejected: no priced DD/TD/combo starter legs",
+    };
+  }
+  const combo = combinedBetPrice(chosenLegs);
+  const { p, fair, takeAt } = combinedPrice(chosenLegs);
+  const book = singleBookieOverlay(chosenLegs, takeAt);
   return {
     bet: {
       type: "longshot",
       label: "Longshot",
-      legs: chosen.map((l) => l.id),
+      legs: chosenLegs.map((l) => l.id),
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,

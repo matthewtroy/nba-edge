@@ -81,13 +81,14 @@ export function qualifiesQ1MultiLeg(leg: PickLeg): boolean {
 
 export function qualifiesLongshotLeg(leg: PickLeg): boolean {
   if (!leg.starterEligible) return false;
+  if ((leg.projectedMinutes ?? 0) < 24) return false;
   const special =
     leg.market === "dd" ||
     leg.market === "td" ||
     leg.market === "combo" ||
     (leg.market === "pts" && leg.line >= 30);
   if (special) return !isQ1Market(leg.market);
-  return isSgmMainLine(leg.market, leg.line) || gateLineViolation(leg, false) === null;
+  return false;
 }
 
 /** @deprecated use qualifiesCrossBoostLeg */

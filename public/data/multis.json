@@ -49,6 +49,43 @@
       "summary": "Main Play +1 rung on every leg"
     },
     {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "variant": "Value",
+      "legs": [
+        "4566434-q1reb-2",
+        "6583-q1reb-3",
+        "3138160-q1pts-3"
+      ],
+      "combinedProbability": 0.021624,
+      "combinedFairPrice": 46.24,
+      "combinedTakeAt": 58.33,
+      "bookieTotals": {},
+      "summary": "Value Q1: fair 2.20–4.00, one leg/team"
+    },
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "legs": [
+        "4065648-reb-7",
+        "4397424-pts-10",
+        "5107199-pts-20",
+        "4278562-reb-7",
+        "3138160-reb-5",
+        "4278594-pts-10"
+      ],
+      "combinedProbability": 0.05304121483349664,
+      "combinedFairPrice": 18.85,
+      "combinedTakeAt": 30,
+      "bookieTotals": {
+        "Sportsbet": 49.22,
+        "TAB": 43.29,
+        "Ladbrokes": 55.9,
+        "Unibet": 43.85
+      },
+      "summary": "2+ legs/game, fair 1.35–2.50 each"
+    },
+    {
       "type": "boostSgm",
       "label": "Boost SGM",
       "legs": [
@@ -70,18 +107,22 @@
       "type": "longshot",
       "label": "Longshot",
       "legs": [
-        "4066372-3pm-5",
-        "5174563-3pm-5"
+        "4566434-pts-35",
+        "3936299-pts-35"
       ],
-      "combinedProbability": 0.011730000000000003,
-      "combinedFairPrice": 85.25,
-      "combinedTakeAt": 98.99,
+      "combinedProbability": 0.018033999999999998,
+      "combinedFairPrice": 55.45,
+      "combinedTakeAt": 64.76,
       "bookieTotals": {
-        "Sportsbet": 102,
-        "TAB": 75,
-        "Ladbrokes": 70.69,
-        "Unibet": 75
+        "Sportsbet": 90.25,
+        "TAB": 45.5,
+        "Ladbrokes": 85.31,
+        "PointsBet": 90
       },
+      "bestBookie": "Sportsbet",
+      "bestBookieTotal": 90.25,
+      "combinedBestBookie": "Sportsbet",
+      "combinedBestPrice": 90.25,
       "summary": "One long leg per game"
     }
   ],
@@ -89,13 +130,8 @@
     {
       "type": "q1Multi",
       "label": "Q1 Multi",
-      "variant": "Value",
-      "reason": "Exposure cap: Anthony Davis would appear in >2 multis (legs: Franz Wagner 2+ q1reb, Anthony Davis 3+ q1reb, Caleb Martin 3+ q1pts)"
-    },
-    {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "reason": "Exposure cap: Paul Reed would appear in >2 multis (legs: Jayson Tatum 7+ reb, Neemias Queta 10+ pts, Daniss Jenkins 20+ pts, Paul Reed 7+ reb, Caleb Martin 5+ reb, Naji Marshall 10+ pts)"
+      "variant": "Safe",
+      "reason": "No Safe Q1 subset (fair 1.80–2.40, 3–6 teams, one leg/team)"
     }
   ]
 }
