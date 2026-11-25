@@ -8,6 +8,8 @@ import { LastFiveTicks } from "./LastFiveTicks";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
 import { legRowReasonLines } from "@lib/leg-row-reasons";
 import { ui } from "../lib/card-type-scale";
+import { PlayerAvatar } from "./PlayerAvatar";
+import { InjuryStatusBadge, injuryStatusForPlayer } from "./InjuryStatusBadge";
 
 interface Props {
   leg: PickLeg;
@@ -34,6 +36,7 @@ function LegBadge({ label, danger }: { label: string; danger?: boolean }) {
 
 export function MultiLegRow({
   leg,
+  injuries,
   slate,
   bookie,
   catalog,
@@ -56,6 +59,8 @@ export function MultiLegRow({
   const muted = !fairPriceInSlot && bookie && price == null;
   const subtitle = !hideGameLine && slate ? legGameTipSubtitle(leg, slate) : null;
   const ticks = leg.recentVsLine ?? [];
+  const injStatus = injuryStatusForPlayer(injuries, leg.playerId);
+  const showFormer = leg.tags?.includes("former_team");
 
   return (
     <button
@@ -64,13 +69,10 @@ export function MultiLegRow({
       onClick={() => onTap(leg)}
       className="w-full grid grid-cols-[32px_1fr_76px] gap-3 py-3 text-left border-b border-white/[0.05] last:border-0 active:opacity-90"
     >
-      <img
-        src={leg.headshotUrl}
-        alt=""
+      <PlayerAvatar
+        name={leg.playerName}
+        headshotUrl={leg.headshotUrl}
         className="w-8 h-8 rounded-full bg-page object-cover shrink-0 mt-0.5"
-        onError={(e) => {
-          (e.target as HTMLImageElement).style.display = "none";
-        }}
       />
       <div className="min-w-0">
         <p className={`${ui.legTitle} break-words`}>
@@ -96,6 +98,8 @@ export function MultiLegRow({
           </div>
         )}
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1.5">
+          <InjuryStatusBadge status={injStatus} />
+          {showFormer ? <LegBadge label="Former team" /> : null}
           <LastFiveTicks ticks={ticks} inline hideLabel />
           {edited && <LegBadge label="Edited" />}
           {tags.map((t) => (

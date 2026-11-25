@@ -455,8 +455,11 @@ export async function syncRunToSupabase(
           model_probability: l.modelProbability ?? null,
           market_probability: l.marketProbability ?? null,
           probability: l.probability,
+          probability_matchup_shadow: l.probabilityMatchupShadow ?? null,
           fair_price: l.fairPrice,
           take_at: l.takeAt,
+          best_bookie: l.bestBookie ?? null,
+          best_price: l.bestPrice ?? null,
           tags: l.tags,
           reasons: l.reasons,
           confluence: l.confluence ?? 0,
@@ -783,4 +786,142 @@ export async function finalizePipelineSupabaseSync(
   }
 
   logSyncCounts(totals, [...allFailed]);
+}
+
+export interface SettleSyncSlate {
+  slateDate: string;
+  graded: {
+    id: string;
+    slateDate: string;
+    playerId: string;
+    gameId: string;
+    market: string;
+    line: number;
+    result: string;
+    actualValue: number | null;
+    probability: number;
+    probabilityMatchupShadow?: number;
+    bestPrice?: number;
+    bestBookie?: string;
+    fairPrice: number;
+  }[];
+  officialLegs: {
+    id: string;
+    slateDate: string;
+    result: string;
+    actualValue: number | null;
+    bestBookie?: string;
+    bestPrice?: number;
+  }[];
+  officialBets: {
+    slateDate: string;
+    betType: string;
+    label: string;
+    variant?: string;
+    result: string;
+    profitUnits: number | null;
+    stakeUnits: number;
+  }[];
+}
+
+export interface SettleSyncCounts {
+  projections: number;
+  cardLegs: number;
+  cardBets: number;
+  cardsSettled: number;
+}
+
+export function logSettleSyncCounts(counts: SettleSyncCounts, failed: string[] = []): void {
+  const failLabel = failed.length ? failed.join(", ") : "none";
+  console.log(
+    `supabase settle sync: projections ${counts.projections}, card_legs ${counts.cardLegs}, ` +
+      `card_bets ${counts.cardBets}, cards_settled ${counts.cardsSettled} (failed: ${failLabel})`
+  );
+}
+
+export async function syncSettleToSupabase(
+  rootDir: string,
+  payload: { slates: SettleSyncSlate[] }
+): Promise<void> {
+  if (!payload.slates.length) {
+    console.log("supabase settle sync skipped: no slates");
+    return;
+  }
+  const conn = await createSupabaseClient(rootDir);
+  if (!conn.client) {
+    console.log(`supabase settle sync skipped: ${conn.skipReason}`);
+    return;
+  }
+  const client = conn.client;
+  const counts: SettleSyncCounts = {
+    projections: 0,
+    cardLegs: 0,
+    cardBets: 0,
+    cardsSettled: 0,
+  };
+  const failed: string[] = [];
+  const settledAt = new Date().toISOString();
+
+  for (const slate of payload.slates) {
+    try {
+      if (slate.graded.length) {
+        const rows = slate.graded.map((g) => ({
+          id: g.id,
+          slate_date: slate.slateDate,
+          player_id: g.playerId,
+          game_id: g.gameId,
+          market: g.market,
+          line: g.line,
+          result: g.result,
+          actual_value: g.actualValue,
+          settled_at: settledAt,
+          probability_matchup_shadow: g.probabilityMatchupShadow ?? null,
+          best_price: g.bestPrice ?? null,
+          best_bookie: g.bestBookie ?? null,
+          fair_price: g.fairPrice,
+          probability: g.probability,
+        }));
+        await client.upsert("projections", rows, "id");
+        counts.projections += rows.length;
+      }
+
+      const cardRow = await client.fromSelect<{ id: string }>("cards", {
+        slate_date: slate.slateDate,
+      });
+      if (cardRow?.id && slate.officialBets.length) {
+        const betRows = slate.officialBets.map((b) => ({
+          card_id: cardRow.id,
+          bet_type: b.betType,
+          label: b.label,
+          variant: b.variant ?? "",
+          status: b.result,
+          stake_units: b.stakeUnits,
+          profit_units: b.profitUnits,
+          return_units:
+            b.profitUnits != null && b.stakeUnits
+              ? b.stakeUnits + b.profitUnits
+              : null,
+          settled_at: settledAt,
+        }));
+        await client.upsert("card_bets", betRows, "card_id,bet_type,variant");
+        counts.cardBets += betRows.length;
+
+        const allDone = slate.officialBets.every((b) => b.result !== "pending");
+        if (allDone) {
+          await client.upsert(
+            "cards",
+            [{ slate_date: slate.slateDate, is_official: true, is_settled: true }],
+            "slate_date"
+          );
+          counts.cardsSettled += 1;
+        }
+      }
+
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      failed.push(`${slate.slateDate}:${msg}`);
+    }
+  }
+
+  logSettleSyncCounts(counts, failed);
 }

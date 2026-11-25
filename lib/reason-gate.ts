@@ -64,12 +64,47 @@ export function gateLegReason(
 }
 
 /** Shared builder + UI gate: stat match, bans, plausibility, dedupe facts. Max 3 lines. */
+function parseAvgLast10(text: string): number | null {
+  const m = text.match(/^avg ([\d.]+)/i);
+  if (!m) return null;
+  const v = Number(m[1]);
+  return Number.isFinite(v) ? v : null;
+}
+
+function parseRankAvg(text: string): number | null {
+  const m = text.match(/averages ([\d.]+)/i);
+  if (!m) return null;
+  const v = Number(m[1]);
+  return Number.isFinite(v) ? v : null;
+}
+
+/** Drop redundant "Avg last 10" when rank avg matches (1 dec) or avg ≤ line. */
+export function dropRedundantAvgReasons(
+  reasons: LegReason[],
+  line: number
+): LegReason[] {
+  const rank = reasons.find((r) => r.type === "rank");
+  const rankAvg = rank ? parseRankAvg(rank.text) : null;
+  return reasons.filter((r) => {
+    if (r.type !== "avg") return true;
+    const avg = parseAvgLast10(r.text);
+    if (avg == null) return true;
+    if (avg <= line) return false;
+    if (rankAvg != null && avg.toFixed(1) === rankAvg.toFixed(1)) return false;
+    return true;
+  });
+}
+
 export function gateLegReasons(
   reasons: unknown,
   market: Market | string,
-  maxLines = 3
+  maxLines = 3,
+  line?: number
 ): LegReason[] {
-  const sorted = sortLegReasons(normalizeLegReasons(reasons));
+  let sorted = sortLegReasons(normalizeLegReasons(reasons));
+  if (line != null) {
+    sorted = dropRedundantAvgReasons(sorted, line);
+  }
   const seen = new Set<string>();
   const out: LegReason[] = [];
   for (const r of sorted) {

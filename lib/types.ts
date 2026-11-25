@@ -102,6 +102,8 @@ export interface PickLeg {
   feedLineNote?: string;
   /** Model p after matchup tweak, before market blend */
   preBlendModelProbability?: number;
+  /** Shadow matchup p (±4pp); not used for cards when MATCHUP_ENABLED=false */
+  probabilityMatchupShadow?: number;
   matchupDeltaPp?: number;
   formGuardExcluded?: boolean;
   seasonAvg?: { pts: number; reb: number; ast: number; threes: number };

@@ -8,6 +8,7 @@ import type {
   MetaJson,
   HistoryJson,
 } from "@lib/types";
+import type { ResultsJson } from "@lib/results-types";
 import type { OfficialCardFile } from "@lib/official-card-time";
 import type { DataIndexFile } from "@lib/data-index";
 
@@ -22,6 +23,7 @@ export interface DataBundle {
   officialCard: OfficialCardFile | null;
   meta: MetaJson & { whatChanged?: string[] };
   history: HistoryJson;
+  results: ResultsJson | null;
   loading: boolean;
   error?: string;
 }
@@ -58,6 +60,7 @@ export function useData(selectedDate: string): DataBundle {
     officialCard: null,
     meta: { lastUpdated: "", sources: {}, slateSize: 0 },
     history: { legs: [], multis: [], calibration: [] },
+    results: null,
     loading: true,
   });
 
@@ -88,6 +91,12 @@ export function useData(selectedDate: string): DataBundle {
           fetchDataJson<unknown>(`${prefix}multis.json`, v),
           fetchDataJson<HistoryJson>("history.json", v),
         ]);
+        let results: ResultsJson | null = null;
+        try {
+          results = await fetchDataJson<ResultsJson>("results.json", v);
+        } catch {
+          results = null;
+        }
         const { bets, notBuilt } = parseMultisJson(multisRaw);
         let officialCard: OfficialCardFile | null = null;
         try {
@@ -110,6 +119,7 @@ export function useData(selectedDate: string): DataBundle {
             officialCard,
             meta,
             history,
+            results,
             loading: false,
           });
         }

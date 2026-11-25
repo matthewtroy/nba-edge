@@ -4,6 +4,9 @@ name: NBA Edge Pipeline
 
 on:
   schedule:
+    # Settle official cards after US finals (~07:00 UTC) + backup (09:00 UTC).
+    - cron: "0 7 * * *"
+    - cron: "0 9 * * *"
     # Injury/model refresh: 19:00–03:30 UTC ≈ 6:00–14:30 Sydney (AEDT, Nov–Mar).
     - cron: "0,30 19,20,21,22,23,0,1,2,3 * * *"
     # 10:00–14:30 UTC = 21:00–01:30 Sydney — evening JSON refresh only (no odds pull).
@@ -28,6 +31,10 @@ on:
         description: When force_odds, pull exactly this many top games (0 = budget allowance)
         type: number
         default: 0
+      settle_only:
+        description: Grade pending official legs only; no full pipeline / no odds
+        type: boolean
+        default: false
 
 concurrency:
   group: nba-edge-pipeline
@@ -52,7 +59,25 @@ jobs:
       - name: Detect run mode
         id: mode
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.republish_card }}" = "true" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.settle_only }}" = "true" ]; then
+            echo "settle_only=1" >> "$GITHUB_OUTPUT"
+            echo "force_odds=0" >> "$GITHUB_OUTPUT"
+            echo "skip_odds=1" >> "$GITHUB_OUTPUT"
+            echo "republish_card=0" >> "$GITHUB_OUTPUT"
+            echo "settle_first=0" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "schedule" ] && { [ "${{ github.event.schedule }}" = "0 7 * * *" ] || [ "${{ github.event.schedule }}" = "0 9 * * *" ]; }; then
+            echo "settle_only=1" >> "$GITHUB_OUTPUT"
+            echo "force_odds=0" >> "$GITHUB_OUTPUT"
+            echo "skip_odds=1" >> "$GITHUB_OUTPUT"
+            echo "republish_card=0" >> "$GITHUB_OUTPUT"
+            echo "settle_first=0" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "schedule" ] && [ "${{ github.event.schedule }}" = "0 10 * * *" ]; then
+            echo "settle_only=0" >> "$GITHUB_OUTPUT"
+            echo "force_odds=0" >> "$GITHUB_OUTPUT"
+            echo "skip_odds=1" >> "$GITHUB_OUTPUT"
+            echo "republish_card=0" >> "$GITHUB_OUTPUT"
+            echo "settle_first=1" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.republish_card }}" = "true" ]; then
             echo "republish_card=1" >> "$GITHUB_OUTPUT"
             if [ "${{ inputs.force_odds }}" = "true" ]; then
               echo "force_odds=1" >> "$GITHUB_OUTPUT"
@@ -73,13 +98,15 @@ jobs:
             echo "force_odds=0" >> "$GITHUB_OUTPUT"
             echo "skip_odds=1" >> "$GITHUB_OUTPUT"
             echo "republish_card=0" >> "$GITHUB_OUTPUT"
+            echo "settle_only=0" >> "$GITHUB_OUTPUT"
+            echo "settle_first=0" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Fetch data branch
         run: |
           git fetch origin data:data || true
           if git show-ref --quiet refs/heads/data; then
-            git checkout data -- public/data/history.json public/data/odds-cache.json public/data/index.json public/data/game-log-cache.json 2>/dev/null || true
+            git checkout data -- public/data/history.json public/data/results.json public/data/odds-cache.json public/data/index.json public/data/game-log-cache.json 2>/dev/null || true
           fi
 
       - run: npm ci
@@ -101,6 +128,8 @@ jobs:
           PIPELINE_REPUBLISH_CARD: ${{ steps.mode.outputs.republish_card }}
           PIPELINE_ODDS_GAMES: ${{ github.event_name == 'workflow_dispatch' && inputs.odds_games || 0 }}
           ODDS_RESERVE_CREDITS: "20"
+          SETTLE_ONLY: ${{ steps.mode.outputs.settle_only }}
+          SETTLE_FIRST: ${{ steps.mode.outputs.settle_first }}
         run: |
           echo "Workflow pipeline (dual-slate) force_odds=${{ steps.mode.outputs.force_odds }} skip_odds=${{ steps.mode.outputs.skip_odds }} republish_card=${{ steps.mode.outputs.republish_card }} odds_games=${PIPELINE_ODDS_GAMES}"
           npm run pipeline

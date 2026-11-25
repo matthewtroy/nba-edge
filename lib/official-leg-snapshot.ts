@@ -100,7 +100,7 @@ export function picksByIdFromOfficialSnapshots(
     const live = livePicks.find((p) => p.id === id);
     const reasonSource =
       live?.reasons?.length && live.reasons.length > 0 ? live.reasons : snap.reasons;
-    const reasons = gateLegReasons(reasonSource, snap.market, 3);
+    const reasons = gateLegReasons(reasonSource, snap.market, 3, snap.line);
     const leg = pickLegFromSnapshot(snap);
     leg.reasons = reasons;
     leg.reasonLine = topReasonLines(reasons, 3);

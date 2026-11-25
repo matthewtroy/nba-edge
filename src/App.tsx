@@ -117,6 +117,7 @@ export default function App() {
         leg={leg}
         picks={data.picks}
         slate={data.slate}
+        injuries={data.injuries}
         myBookie={settings.myBookie}
         onClose={() => setLeg(null)}
         onSelectLeg={setLeg}

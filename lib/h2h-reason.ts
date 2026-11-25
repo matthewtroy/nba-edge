@@ -118,12 +118,19 @@ export function h2hReasonPhrase(input: {
     seasonStat != null && h2hAvg >= seasonStat * 1.12 && h2hAvg >= input.line * 0.85;
   if (!standoutAtLine && !standoutVsSeason) return undefined;
 
-  const seasonSuffix =
-    seasonStat != null ? ` (season ${seasonStat.toFixed(1)})` : "";
-  if (hits >= Math.ceil(vs.length * 0.6) && hits >= 2) {
-    return `${hits}/${vs.length} ${statWord} ${input.line}+ vs ${opp}${seasonSuffix}`;
+  const allHit =
+    hits === vs.length &&
+    vs.every((g) => {
+      const v = statValue(g, input.market);
+      return v != null && v >= input.line;
+    });
+  if (allHit && vs.length >= 3) {
+    return `Hit ${input.line}+ in all ${vs.length} vs ${opp} (avg ${h2hAvg.toFixed(1)})`;
   }
-  return `Meeting avg ${h2hAvg.toFixed(1)} ${statWord} vs ${opp} (${vs.length} meetings)${seasonSuffix}`;
+  if (hits >= Math.ceil(vs.length * 0.6) && hits >= 2) {
+    return `${hits} of ${vs.length} ${statWord} ${input.line}+ vs ${opp}`;
+  }
+  return `Meeting avg ${h2hAvg.toFixed(1)} ${statWord} vs ${opp} (${vs.length} meetings)`;
 }
 
 export { h2hStatAvg };

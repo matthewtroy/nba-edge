@@ -7,6 +7,9 @@ export const MARKET_WEIGHT = 1 - MODEL_WEIGHT;
 /** Matchup pp adjustment OFF until explicitly enabled in product */
 export const MATCHUP_ENABLED = false;
 
+/** Shadow matchup probability on picks only (never cards / sort / edges). */
+export const MATCHUP_SHADOW_ENABLED = true;
+
 /** Matchup/pace copy on reasonLine only (no probability adjust) */
 export const MATCHUP_REASONS_ENABLED = true;
 

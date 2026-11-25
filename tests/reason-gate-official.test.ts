@@ -36,7 +36,7 @@ describe("reason gate official snapshots", () => {
     for (const c of cases) {
       const snap = official.legSnapshots[c.id];
       expect(snap).toBeTruthy();
-      const out = gateLegReasons(snap.reasons, c.market, 3);
+      const out = gateLegReasons(snap.reasons, c.market, 3, c.line);
       for (const r of out) {
         expect(reasonTextHasBannedPhrase(r.text)).toBeNull();
         expect(reasonPassesPlausibility(r.text)).toBe(true);

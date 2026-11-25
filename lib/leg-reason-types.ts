@@ -74,6 +74,8 @@ export function inferReasonType(text: string): LegReasonType {
   if (/averages [\d.]+\s+(pts|reb|ast)/i.test(t)) return "rank";
   if (/rank \d|worst defending|pace ·/i.test(t)) return "matchup";
   if (/\/10 at this line|5\/5 at this line/i.test(t)) return "form";
+  if (/hit .+ in all \d+ vs/i.test(t) || /\d+ of \d+ .+ vs /i.test(t)) return "h2h";
+  if (/meeting avg [\d.]+ .+ vs /i.test(t)) return "h2h";
   if (/^avg /i.test(t)) return "avg";
   if (/pace /i.test(t) && !/worst defending/i.test(t)) return "pace";
   if (/minutes (up|down)/i.test(t)) return "min";
