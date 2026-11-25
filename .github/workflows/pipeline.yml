@@ -103,11 +103,7 @@ jobs:
           fi
 
       - name: Fetch data branch
-        run: |
-          git fetch origin data:data || true
-          if git show-ref --quiet refs/heads/data; then
-            git checkout data -- public/data/history.json public/data/results.json public/data/odds-cache.json public/data/index.json public/data/game-log-cache.json 2>/dev/null || true
-          fi
+        run: npx tsx scripts/ci-restore-data-branch.ts
 
       - run: npm ci
 
