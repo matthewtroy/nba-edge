@@ -1,4 +1,5 @@
 import type { SlateGame } from "../lib/types.js";
+import { isEveningSydney } from "../lib/official-card-time.js";
 
 /** Sydney-local hour/minute parts */
 function sydneyParts(d: Date): { h: number; m: number } {
@@ -21,29 +22,35 @@ export interface OddsCacheFile {
   oddsMap?: Record<string, { price: number; bookie: string }>;
 }
 
-const SLOTS = [
-  { label: "07:00", h: 7, m: 0, windowMin: 35 },
-  { label: "09:30", h: 9, m: 30, windowMin: 35 },
-] as const;
+const PULL_WINDOW_MIN = 35;
+
+export interface ShouldPullOddsOpts {
+  /** Official card already published for today's Sydney slate */
+  officialPublishedToday?: boolean;
+}
 
 export function shouldPullOddsNow(
   now: Date,
   slate: SlateGame[],
-  cache: OddsCacheFile
+  cache: OddsCacheFile,
+  opts: ShouldPullOddsOpts = {}
 ): boolean {
   const { h, m } = sydneyParts(now);
   const pulled = new Set(cache.pullSlotsToday ?? []);
+  const nowMin = h * 60 + m;
 
-  for (const slot of SLOTS) {
-    if (pulled.has(slot.label)) continue;
-    const after = h > slot.h || (h === slot.h && m >= slot.m);
-    const beforeEnd =
-      h < slot.h ||
-      (h === slot.h && m <= slot.m + slot.windowMin) ||
-      (h === slot.h + 1 && slot.m + slot.windowMin >= 60 && m <= (slot.m + slot.windowMin) % 60);
-    if (after && (h * 60 + m) <= slot.h * 60 + slot.m + slot.windowMin) {
-      return true;
+  if (isEveningSydney(now) && !opts.officialPublishedToday) {
+    const label = `evening-${h}`;
+    if (!pulled.has(label)) {
+      const slotStart = h * 60;
+      if (nowMin >= slotStart && nowMin <= slotStart + PULL_WINDOW_MIN) return true;
     }
+  }
+
+  const morningLabel = "07:00";
+  if (!pulled.has(morningLabel)) {
+    const start = 7 * 60;
+    if (nowMin >= start && nowMin <= start + PULL_WINDOW_MIN) return true;
   }
 
   if (slate.length && !pulled.has("pre-tip")) {
@@ -51,7 +58,7 @@ export function shouldPullOddsNow(
       .map((g) => new Date(g.startTime).getTime())
       .sort((a, b) => a - b)[0];
     const preTipStart = first - 60 * 60 * 1000;
-    if (now.getTime() >= preTipStart && now.getTime() <= first) {
+    if (now.getTime() >= preTipStart && now.getTime() < first) {
       return true;
     }
   }
@@ -63,13 +70,20 @@ export function recordOddsPull(cache: OddsCacheFile, now: Date, slate: SlateGame
   const { h, m } = sydneyParts(now);
   const pulled = new Set(cache.pullSlotsToday ?? []);
   let label = "adhoc";
-  for (const slot of SLOTS) {
-    if (h === slot.h && m >= slot.m && m <= slot.m + slot.windowMin) label = slot.label;
+
+  if (isEveningSydney(now)) {
+    label = `evening-${h}`;
+  } else if (h === 7 && m < PULL_WINDOW_MIN + 5) {
+    label = "07:00";
   }
+
   if (slate.length) {
-    const first = new Date(slate[0].startTime).getTime();
-    if (now.getTime() >= first - 60 * 60 * 1000) label = "pre-tip";
+    const first = Math.min(...slate.map((g) => new Date(g.startTime).getTime()));
+    if (now.getTime() >= first - 60 * 60 * 1000 && now.getTime() < first) {
+      label = "pre-tip";
+    }
   }
+
   pulled.add(label);
   cache.pullSlotsToday = [...pulled];
   return label;

@@ -51,9 +51,12 @@ import {
 import { buildRosterIndex, mergeInjuryEntry } from "../lib/injury-match.js";
 import {
   OFFICIAL_CARD_BOOKIE,
-  shouldLockOfficialCardNow,
+  loadOfficialCard,
+  shouldPublishOfficialCard,
   writeOfficialCard,
 } from "../lib/official-card.js";
+import { sydneyDateString } from "../lib/official-card-time.js";
+import { resolveOddsLastPulled } from "../lib/odds-pull-meta.js";
 
 const ET = "America/New_York";
 
@@ -259,6 +262,9 @@ export async function runLivePipeline(
   const oddsCachePath = path.join(outDir, "odds-cache.json");
   const cache: OddsCacheFile = loadOddsCache(oddsCachePath);
   resetOddsDayIfNeeded(cache, now);
+  const slateDateSydney = sydneyDateString(now);
+  const existingOfficial = loadOfficialCard(outDir);
+  const officialPublishedToday = existingOfficial?.slateDate === slateDateSydney;
 
   let oddsMap = oddsMapFromRecord(cache.oddsMap ?? {});
   let allOddsMap = new Map<string, Record<string, number>>();
@@ -296,7 +302,10 @@ export async function runLivePipeline(
     sources.odds = "stale";
   } else if (cache.creditsRemaining != null && shouldPauseOdds(cache.creditsRemaining)) {
     sources.odds = "paused (credit limit)";
-  } else if (shouldPullOddsNow(now, slate, cache) || forceOdds || fromLive) {
+  } else if (
+    shouldPullOddsNow(now, slate, cache, { officialPublishedToday }) ||
+    forceOdds
+  ) {
     try {
       const { events, remaining } = await listOddsEvents(apiKey);
       if (remaining != null) cache.creditsRemaining = remaining;
@@ -416,8 +425,15 @@ export async function runLivePipeline(
     path.join(outDir, "multis.json"),
     JSON.stringify({ bets: multis, notBuilt: multisPayload.notBuilt }, null, 2)
   );
+  const oddsLastDisplayed = resolveOddsLastPulled(
+    picks,
+    cache.lastPulled,
+    meta.oddsLastPulled
+  );
+
   const metaOut = {
     ...meta,
+    oddsLastPulled: oddsLastDisplayed,
     whatChanged,
     ...(nbaOfficialUrl ? { nbaOfficialUrl } : {}),
     ...(nbaOfficialLastTriedUrl ? { nbaOfficialLastTriedUrl } : {}),
@@ -429,7 +445,9 @@ export async function runLivePipeline(
       : {}),
   };
 
-  if (shouldLockOfficialCardNow(now)) {
+  if (
+    shouldPublishOfficialCard(now, picks, existingOfficial, slateDateSydney)
+  ) {
     const official = writeOfficialCard(outDir, {
       now,
       slate,
@@ -441,10 +459,18 @@ export async function runLivePipeline(
     });
     metaOut.officialCard = {
       lockedAt: official.lockedAt,
+      publishedAt: official.publishedAt ?? official.lockedAt,
       slateDate: official.slateDate,
       bookie: official.bookie,
     };
-    console.log(`Official card locked (${official.slateDate}, ${official.bookie})`);
+    console.log(`Official card published (${official.slateDate}, ${official.bookie})`);
+  } else if (existingOfficial?.slateDate === slateDateSydney) {
+    metaOut.officialCard = {
+      lockedAt: existingOfficial.lockedAt,
+      publishedAt: existingOfficial.publishedAt ?? existingOfficial.lockedAt,
+      slateDate: existingOfficial.slateDate,
+      bookie: existingOfficial.bookie,
+    };
   }
 
   fs.writeFileSync(path.join(outDir, "meta.json"), JSON.stringify(metaOut, null, 2));

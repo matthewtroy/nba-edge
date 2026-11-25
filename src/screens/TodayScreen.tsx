@@ -55,9 +55,12 @@ export function TodayScreen({
     ? official.whatChanged
     : data.meta.whatChanged;
   const officialBookie = official?.bookie ?? data.meta.officialCard?.bookie;
-  const oddsForCard = useOfficial
-    ? official.oddsLastPulled ?? data.meta.oddsLastPulled
-    : data.meta.oddsLastPulled;
+  const headerOddsPull =
+    official?.oddsLastPulled && useOfficial
+      ? official.oddsLastPulled
+      : data.meta.oddsLastPulled;
+  const oddsForCard = headerOddsPull;
+  const publishedAt = official?.publishedAt ?? official?.lockedAt;
 
   const injuryAlerts = useOfficial
     ? injuryAlertsSinceLock(official.injuries, data.injuries)
@@ -94,14 +97,14 @@ export function TodayScreen({
           <h1 className="text-xl font-bold">Today</h1>
           <p className="text-sm text-white/70">
             {data.slate.length} games · Updated {sydneyTimeFromIso(data.meta.lastUpdated)}
-            {data.meta.oddsLastPulled && (
-              <> · Odds from {sydneyTimeFromIso(data.meta.oddsLastPulled)}</>
+            {headerOddsPull && (
+              <> · Odds from {sydneyTimeFromIso(headerOddsPull)}</>
             )}
             {stale && <span className="text-accent-warn ml-1" title="Source stale or paused">●</span>}
           </p>
-          {useOfficial && official && (
+          {useOfficial && publishedAt && (
             <p className="text-xs text-accent-high mt-1">
-              Official card locked {sydneyTimeFromIso(official.lockedAt)}
+              Published {sydneyTimeFromIso(publishedAt)}
               {officialBookie ? ` · ${officialBookie}` : ""}
             </p>
           )}
@@ -151,7 +154,14 @@ export function TodayScreen({
       <NotBuiltSection items={notBuilt} />
 
       {useOfficial && (
-        <h2 className="text-sm font-semibold text-white/80 mb-2">Official card</h2>
+        <h2 className="text-sm font-semibold text-white/80 mb-2">
+          Official card
+          {publishedAt ? (
+            <span className="block text-xs font-normal text-white/55 mt-0.5">
+              Published {sydneyTimeFromIso(publishedAt)}
+            </span>
+          ) : null}
+        </h2>
       )}
 
       {multis.map((m) => (
@@ -163,6 +173,7 @@ export function TodayScreen({
           slate={data.slate}
           preferredBookie={myBookie}
           lockedBookie={useOfficial ? officialBookie : undefined}
+          publishedAt={useOfficial ? publishedAt : undefined}
           oddsLastPulled={oddsForCard}
           discordCopy={useOfficial}
           onLegTap={onLegTap}

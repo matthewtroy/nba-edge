@@ -14,6 +14,7 @@ interface Props {
   slate?: SlateGame[];
   preferredBookie?: string;
   lockedBookie?: string;
+  publishedAt?: string;
   oddsLastPulled?: string;
   discordCopy?: boolean;
   onRemove?: () => void;
@@ -45,6 +46,7 @@ export function MultiCard({
   slate = [],
   preferredBookie,
   lockedBookie,
+  publishedAt,
   oddsLastPulled,
   discordCopy = false,
   onRemove,
@@ -85,6 +87,11 @@ export function MultiCard({
             </button>
           )}
         </div>
+        {publishedAt && lockedBookie && (
+          <p className="text-xs text-white/55">
+            Published {formatSydneyOddsTime(publishedAt) ?? publishedAt}
+          </p>
+        )}
         <p className="text-sm mt-1">
           Take at ${multi.combinedTakeAt.toFixed(2)}+ (Fair $
           {multi.combinedFairPrice.toFixed(2)})

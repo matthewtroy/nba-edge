@@ -19,6 +19,20 @@ const slate = readJson<SlateGame[]>("slate.json");
 const injuries = readJson<InjuryEntry[]>("injuries.json");
 const multisRaw = readJson<{ bets: MultiBet[]; notBuilt: MultiNotBuilt[] }>("multis.json");
 const meta = readJson<MetaJson>("meta.json");
+const existing = (() => {
+  const p = path.join(outDir, "official-card.json");
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, "utf8")) as { slateDate: string };
+})();
+
+const slateToday = new Date().toLocaleDateString("en-CA", {
+  timeZone: "Australia/Sydney",
+});
+if (existing?.slateDate === slateToday && process.env.FORCE_OFFICIAL_LOCK !== "1") {
+  console.log(`Official card already published for ${slateToday} — not overwriting`);
+  process.exit(0);
+}
+
 const official = writeOfficialCard(outDir, {
   now,
   slate,

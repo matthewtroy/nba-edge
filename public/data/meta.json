@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T00:50:41.408Z",
+  "lastUpdated": "2026-11-25T00:52:27.477Z",
   "oddsLastPulled": "2026-11-24T22:58:43.102Z",
   "sources": {
     "espn": "ok",
@@ -75,6 +75,7 @@
   ],
   "officialCard": {
     "lockedAt": "2026-11-25T00:50:42.854Z",
+    "publishedAt": "2026-11-25T00:50:42.854Z",
     "slateDate": "2026-11-25",
     "bookie": "bet365"
   }

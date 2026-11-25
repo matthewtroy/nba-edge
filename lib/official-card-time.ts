@@ -1,9 +1,12 @@
+import type { PickLeg } from "./types.js";
+
 export const OFFICIAL_CARD_BOOKIE = "bet365";
 
 export interface OfficialCardMeta {
   lockedAt: string;
   slateDate: string;
   bookie: string;
+  publishedAt?: string;
 }
 
 export interface OfficialCardFile {
@@ -15,7 +18,10 @@ export interface OfficialCardFile {
   whatChanged: string[];
   injuries: import("./types.js").InjuryEntry[];
   oddsLastPulled?: string;
+  publishedAt?: string;
 }
+
+const EVENING_HOURS = new Set([21, 22, 23, 0, 1]);
 
 export function sydneyDateString(d: Date): string {
   return d.toLocaleDateString("en-CA", { timeZone: "Australia/Sydney" });
@@ -31,11 +37,40 @@ export function sydneyHour(d: Date): number {
   );
 }
 
-/** Evening lock window ~7–9pm Sydney (pipeline may also force via env). */
+/** 21:00–01:00 Sydney — official card publish window */
+export function isEveningSydney(now: Date): boolean {
+  return EVENING_HOURS.has(sydneyHour(now));
+}
+
+export function hasAuPropPrices(picks: PickLeg[]): boolean {
+  return picks.some(
+    (p) =>
+      (p.bookiePrices && Object.values(p.bookiePrices).some((v) => v > 1)) ||
+      (p.bestPrice != null && p.bestPrice > 1)
+  );
+}
+
+/**
+ * First evening run with AU props for this slate date; never overwrite an existing lock.
+ */
+export function shouldPublishOfficialCard(
+  now: Date,
+  picks: PickLeg[],
+  existing: OfficialCardFile | null,
+  slateDate: string
+): boolean {
+  if (process.env.OFFICIAL_CARD_LOCK === "1") {
+    if (existing?.slateDate === slateDate) return false;
+    return true;
+  }
+  if (existing?.slateDate === slateDate) return false;
+  if (!isEveningSydney(now)) return false;
+  return hasAuPropPrices(picks);
+}
+
+/** @deprecated use shouldPublishOfficialCard */
 export function shouldLockOfficialCardNow(now: Date): boolean {
-  if (process.env.OFFICIAL_CARD_LOCK === "1") return true;
-  const h = sydneyHour(now);
-  return h >= 19 && h <= 21;
+  return isEveningSydney(now) || process.env.OFFICIAL_CARD_LOCK === "1";
 }
 
 export function earliestTipIso(
@@ -49,4 +84,12 @@ export function earliestTipIso(
     .filter(Number.isFinite);
   if (!times.length) return null;
   return new Date(Math.min(...times)).toISOString();
+}
+
+export function latestOddsPullIso(
+  ...candidates: (string | undefined)[]
+): string | undefined {
+  const ok = candidates.filter((c): c is string => Boolean(c));
+  if (!ok.length) return undefined;
+  return ok.sort()[ok.length - 1];
 }

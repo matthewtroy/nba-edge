@@ -9,7 +9,10 @@ import {
 
 export {
   OFFICIAL_CARD_BOOKIE,
+  shouldPublishOfficialCard,
   shouldLockOfficialCardNow,
+  hasAuPropPrices,
+  isEveningSydney,
   sydneyDateString,
   sydneyHour,
   earliestTipIso,
@@ -29,8 +32,10 @@ export function writeOfficialCard(
     bookie?: string;
   }
 ): OfficialCardFile {
+  const publishedAt = input.now.toISOString();
   const file: OfficialCardFile = {
-    lockedAt: input.now.toISOString(),
+    lockedAt: publishedAt,
+    publishedAt,
     slateDate: sydneyDateString(input.now),
     bookie: input.bookie ?? OFFICIAL_CARD_BOOKIE,
     multis: input.multis,
