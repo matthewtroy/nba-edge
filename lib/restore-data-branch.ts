@@ -5,6 +5,7 @@ import { execFileSync } from "child_process";
 /** Files at `public/data/` root persisted on the data branch. */
 export const DATA_BRANCH_ROOT_FILES = [
   "history.json",
+  "results.json",
   "odds-cache.json",
   "index.json",
   "game-log-cache.json",

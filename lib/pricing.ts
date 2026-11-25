@@ -25,6 +25,9 @@ import {
   q1SeasonHitFraction,
 } from "./leg-history.js";
 import { applyMatchupToModelP, matchupDeltaFromRank } from "./matchup-adjust.js";
+import { probabilityWithMatchupShadow } from "./matchup-shadow.js";
+import { MATCHUP_ENABLED, MATCHUP_SHADOW_ENABLED } from "./pricing-config.js";
+import { formerTeamOpponentTag } from "./former-team.js";
 import { buildLegReasons } from "./leg-display.js";
 import { gateLegReasons } from "./reason-gate.js";
 import { isInjuryRedistributionReason } from "./injury-reason.js";
@@ -150,7 +153,14 @@ export function buildLegsForPlayer(
       ctx.matchupSignalsEnabled !== false && ctx.defense && ctx.defendingTeamId
         ? defenseRankFor(ctx.defense, ctx.defendingTeamId, ctx.playerPosition, market)
         : undefined;
-    const delta = ctx.matchupSignalsEnabled === false ? 0 : matchupDeltaFromRank(mRank);
+    const delta =
+      MATCHUP_ENABLED && ctx.matchupSignalsEnabled !== false
+        ? matchupDeltaFromRank(mRank)
+        : 0;
+    const probabilityMatchupShadow =
+      MATCHUP_SHADOW_ENABLED && !MATCHUP_ENABLED
+        ? probabilityWithMatchupShadow(modelP, mRank)
+        : undefined;
     if (delta !== 0) {
       modelP = applyMatchupToModelP(modelP, delta);
       ctx.matchupLog?.push({
@@ -193,8 +203,17 @@ export function buildLegsForPlayer(
 
     const { fair, takeAt } = fairAndTakeAt(finalP, ctx.minEdge);
     const id = `${ctx.playerId}-${market}-${line}`;
-    const tags: string[] = [];
+    const tags: string[] = [...(ctx.tags ?? [])];
     if (finalP >= 0.72) tags.push("High probability");
+    if (
+      formerTeamOpponentTag({
+        logs: ctx.h2hLogs ?? ctx.logs,
+        currentTeamId: ctx.playerTeamId ?? "",
+        opponentTeamId: ctx.defendingTeamId,
+      })
+    ) {
+      tags.push("former_team");
+    }
     if (ctx.flags.boardsShared && market === "reb") tags.push("boards shared");
     if (book) {
       if (book.price > fair * 1.6) tags.push("Check prices");
@@ -227,6 +246,7 @@ export function buildLegsForPlayer(
       probability: Math.round(finalP * 1000) / 1000,
       modelProbability: Math.round(modelP * 1000) / 1000,
       preBlendModelProbability: Math.round(modelP * 1000) / 1000,
+      probabilityMatchupShadow,
       matchupDeltaPp: delta !== 0 ? Math.round(delta * 1000) / 10 : undefined,
       marketProbability:
         marketP != null ? Math.round(marketP * 1000) / 1000 : undefined,
@@ -279,7 +299,7 @@ export function buildLegsForPlayer(
       playerId: ctx.playerId,
       positionRanks: ctx.positionRanks,
     });
-    leg.reasons = gateLegReasons(leg.reasons, leg.market, 3);
+    leg.reasons = gateLegReasons(leg.reasons, leg.market, 3, leg.line);
     leg.reasonLine = topReasonLines(leg.reasons, 3);
     legs.push(leg);
   };

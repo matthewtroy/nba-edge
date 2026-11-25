@@ -4,7 +4,7 @@ import { gateLegReasons } from "./reason-gate.js";
 
 /** Up to three short reason lines for leg rows (structured reasons only). */
 export function legRowReasonLines(leg: PickLeg): { text: string; injury: boolean }[] {
-  const texts = reasonTexts(gateLegReasons(leg.reasons ?? [], leg.market, 3));
+  const texts = reasonTexts(gateLegReasons(leg.reasons ?? [], leg.market, 3, leg.line));
   const seen = new Set<string>();
   const out: string[] = [];
   for (const t of texts) {

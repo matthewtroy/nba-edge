@@ -3,6 +3,7 @@ import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { displayLegRowTags } from "@lib/value-at-bookie";
 import { marketLabel } from "../utils/format";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
+import { PlayerAvatar } from "./PlayerAvatar";
 
 interface Props {
   leg: PickLeg;
@@ -27,13 +28,10 @@ export function LegRow({ leg, slate, myBookie = "bet365", onTap }: Props) {
       onClick={() => onTap(leg)}
       className="w-full flex items-start gap-3 py-3 text-left active:bg-white/5 rounded-lg px-1"
     >
-      <img
-        src={leg.headshotUrl}
-        alt=""
+      <PlayerAvatar
+        name={leg.playerName}
+        headshotUrl={leg.headshotUrl}
         className="w-10 h-10 rounded-full bg-card object-cover shrink-0"
-        onError={(e) => {
-          (e.target as HTMLImageElement).style.display = "none";
-        }}
       />
       <div className="flex-1 min-w-0">
         <div className="font-medium break-words leading-snug">

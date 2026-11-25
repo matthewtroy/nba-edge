@@ -23,6 +23,7 @@ import {
   parseQ1FromPlays,
 } from "./espn-parse.js";
 import { mapPool } from "./lib/concurrency.js";
+import { espnHeadshotUrl } from "../lib/player-headshot.js";
 import { loadOddsApiKey } from "./lib/env.js";
 import { runModel, oddsMapFromRecord, oddsMapToRecord, type ModelPlayer } from "./model-engine.js";
 import { loadHistory } from "./run-model.js";
@@ -320,12 +321,13 @@ export async function runLivePipeline(
     let cacheHits = 0;
     await mapPool(tasks, 8, async (task) => {
       try {
-        const headshot = task.meta.headshot?.href ?? "";
+        const headshotHref = task.meta.headshot?.href ?? "";
         let logs = getCachedLogs(gameLogCache, task.athleteId, now);
         if (logs) {
           cacheHits += 1;
         } else {
           const logRaw = await fetchPlayerGameLog(task.athleteId);
+          const headshot = espnHeadshotUrl(task.athleteId, headshotHref);
           logs = cacheLogsFromRaw(
             gameLogCache,
             task.athleteId,
@@ -371,7 +373,7 @@ export async function runLivePipeline(
           teamName: task.teamName,
           position: task.meta.position?.abbreviation ?? "G",
           age: task.meta.age,
-          headshotUrl: headshot,
+          headshotUrl: espnHeadshotUrl(task.athleteId, headshotHref),
           gameLogs: logs,
           seasonAvgMinutes: avgMin,
           gameId: game.id,

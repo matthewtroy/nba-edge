@@ -11,6 +11,7 @@
     "build": "vite build",
     "preview": "vite preview --port 4180",
     "pipeline": "tsx scripts/pipeline.ts",
+    "settle": "tsx scripts/settle.ts",
     "lock-official-card": "tsx scripts/lock-official-card.ts",
     "render-games-text": "tsx scripts/render-games-text.ts",
     "pipeline:from-live": "tsx scripts/pipeline.ts --from-live",

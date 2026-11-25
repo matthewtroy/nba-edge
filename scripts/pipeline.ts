@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { execFileSync } from "child_process";
 import { fileURLToPath } from "url";
 import { runModelFromFixture, loadHistory } from "./run-model.js";
 import { runLivePipeline } from "./run-live.js";
@@ -73,10 +74,30 @@ function runFixturePipeline(): void {
   );
 }
 
+function runSettleStep(): void {
+  try {
+    execFileSync("npx", ["tsx", "scripts/settle.ts"], {
+      cwd: rootDir,
+      stdio: "inherit",
+    });
+  } catch (e) {
+    console.warn("settle step failed:", e instanceof Error ? e.message : e);
+  }
+}
+
 async function main() {
   if (fixtureMode) {
     runFixturePipeline();
     return;
+  }
+  if (process.env.SETTLE_ONLY === "1") {
+    restorePersistedDataFromBranch(rootDir);
+    runSettleStep();
+    return;
+  }
+  if (process.env.SETTLE_FIRST === "1") {
+    restorePersistedDataFromBranch(rootDir);
+    runSettleStep();
   }
   const useFromLive = fromLive;
   restorePersistedDataFromBranch(rootDir);

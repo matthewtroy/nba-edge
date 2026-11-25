@@ -7,6 +7,7 @@ import { LastFiveTicks } from "./LastFiveTicks";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
 import { legRowReasonLines } from "@lib/leg-row-reasons";
 import { ui } from "../lib/card-type-scale";
+import { PlayerAvatar } from "./PlayerAvatar";
 
 interface Props {
   leg: PickLeg;
@@ -35,13 +36,10 @@ export function PickLegRow({ leg, slate, myBookie, onTap }: Props) {
       onClick={() => onTap(leg)}
       className="w-full grid grid-cols-[32px_1fr_76px] gap-3 py-3 text-left border-b border-white/[0.05] last:border-0 active:opacity-90"
     >
-      <img
-        src={leg.headshotUrl}
-        alt=""
+      <PlayerAvatar
+        name={leg.playerName}
+        headshotUrl={leg.headshotUrl}
         className="w-8 h-8 rounded-full bg-page object-cover shrink-0 mt-0.5"
-        onError={(e) => {
-          (e.target as HTMLImageElement).style.display = "none";
-        }}
       />
       <div className="min-w-0">
         <p className={`${ui.legTitle} break-words`}>

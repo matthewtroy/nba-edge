@@ -287,7 +287,7 @@ export function buildLegReasons(input: {
 
   const sorted = sortLegReasons([...byType.values()]);
   const filtered = reasonsForMarket(sorted, input.leg.market);
-  return gateLegReasons(filtered, input.leg.market, 3);
+  return gateLegReasons(filtered, input.leg.market, 3, input.leg.line);
 }
 
 export function buildLegReasonLine(input: Parameters<typeof buildLegReasons>[0]): string | undefined {

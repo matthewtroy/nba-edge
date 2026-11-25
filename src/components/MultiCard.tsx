@@ -18,6 +18,7 @@ import {
   formatFeedBookieOptionLabel,
 } from "@lib/feed-bookie-options";
 import type { BookiePriceOpts } from "@lib/single-bookie";
+import { multiCardBookieHeaderLabel } from "@lib/multi-card-bookie-header";
 
 interface Props {
   multi: MultiBet;
@@ -136,11 +137,17 @@ export function MultiCard({
       : 0;
   const headerTotal =
     showFairOnly || missingAtBookie > 0 ? undefined : total ?? undefined;
+  const pricedAtBookie = legs.length - missingAtBookie;
   const headerBookie = showFairOnly
     ? undefined
-    : missingAtBookie > 0 && legBookie
-      ? `${legBookie} · ${missingAtBookie} of ${legs.length} legs`
-      : displayBook ?? cardBookie ?? subline;
+    : multiCardBookieHeaderLabel({
+        legBookie: legBookie || undefined,
+        pricedCount: pricedAtBookie,
+        legCount: legs.length,
+        displayBook,
+        fallback: cardBookie ?? subline,
+        showFairOnly,
+      });
 
   return (
     <section className={`${ui.card} ${compact ? "" : ""}`}>

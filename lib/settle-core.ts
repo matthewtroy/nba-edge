@@ -1,0 +1,130 @@
+import type { Market, MultiType, PickLeg } from "./types.js";
+import { gradeLegFromBox } from "./grading.js";
+import type { BoxLine } from "../scripts/espn-parse.js";
+import type { OfficialCardFile, OfficialLegSnapshot } from "./official-card-time.js";
+
+export type CardLegResult = "won" | "lost" | "void";
+export type CardBetResult = "won" | "lost" | "void";
+
+export function boxStatForMarket(
+  market: Market | string,
+  box: BoxLine
+): number | null {
+  if (box.minutes <= 0) return null;
+  switch (market) {
+    case "pts":
+      return box.pts;
+    case "reb":
+      return box.reb;
+    case "ast":
+      return box.ast;
+    case "3pm":
+      return box.threes;
+    case "q1pts":
+      return box.q1?.pts ?? null;
+    case "q1reb":
+      return box.q1?.reb ?? null;
+    case "q1ast":
+      return box.q1?.ast ?? null;
+    default:
+      return null;
+  }
+}
+
+export function gradeOfficialLeg(
+  snap: OfficialLegSnapshot,
+  box: BoxLine | undefined
+): { result: CardLegResult; actualValue: number | null } {
+  if (!box) return { result: "void", actualValue: null };
+  const pick: PickLeg = {
+    id: snap.id,
+    gameId: snap.gameId,
+    team: snap.team,
+    opponent: snap.opponent ?? "",
+    playerId: snap.playerId,
+    playerName: snap.playerName,
+    headshotUrl: snap.headshotUrl ?? "",
+    market: snap.market as Market,
+    line: snap.line,
+    probability: snap.probability,
+    fairPrice: snap.fairPrice,
+    takeAt: snap.takeAt,
+    tags: snap.tags ?? [],
+    reasons: snap.reasons ?? [],
+  };
+  const graded = gradeLegFromBox(pick, box);
+  const actual = boxStatForMarket(snap.market, box);
+  if (graded === "void") return { result: "void", actualValue: actual };
+  if (graded === "hit") return { result: "won", actualValue: actual };
+  return { result: "lost", actualValue: actual };
+}
+
+export function settleMultiLegs(results: CardLegResult[]): CardBetResult {
+  if (!results.length) return "void";
+  if (results.every((r) => r === "void")) return "void";
+  if (results.some((r) => r === "lost")) return "lost";
+  if (results.some((r) => r === "void")) return "void";
+  return results.every((r) => r === "won") ? "won" : "lost";
+}
+
+export interface SettledLegRow {
+  id: string;
+  slateDate: string;
+  betType: MultiType;
+  playerName: string;
+  market: string;
+  line: number;
+  result: CardLegResult;
+  actualValue: number | null;
+  probability: number;
+  bestBookie?: string;
+  bestPrice?: number;
+  tags: string[];
+}
+
+export function settleOfficialCard(
+  card: OfficialCardFile,
+  boxesByGame: Map<string, Map<string, BoxLine>>
+): {
+  legs: SettledLegRow[];
+  bets: { type: MultiType; legIds: string[]; result: CardBetResult }[];
+} {
+  const snaps = card.legSnapshots ?? {};
+  const legResults = new Map<string, { result: CardLegResult; actualValue: number | null }>();
+  const legs: SettledLegRow[] = [];
+
+  for (const snap of Object.values(snaps)) {
+    const box = boxesByGame.get(snap.gameId)?.get(snap.playerId);
+    const graded = gradeOfficialLeg(snap, box);
+    legResults.set(snap.id, graded);
+    const best = snap.bookiePrices
+      ? Object.entries(snap.bookiePrices).sort((a, b) => b[1] - a[1])[0]
+      : undefined;
+    legs.push({
+      id: snap.id,
+      slateDate: card.slateDate,
+      playerName: snap.playerName,
+      market: snap.market,
+      line: snap.line,
+      result: graded.result,
+      actualValue: graded.actualValue,
+      probability: snap.probability,
+      bestBookie: best?.[0],
+      bestPrice: best?.[1],
+      tags: snap.tags ?? [],
+      betType: "mainPlay",
+    });
+  }
+
+  const bets = card.multis.map((m) => {
+    const results = m.legs.map((id) => legResults.get(id)?.result ?? "void");
+    return { type: m.type, legIds: m.legs, result: settleMultiLegs(results) };
+  });
+
+  for (const leg of legs) {
+  const multi = card.multis.find((m) => m.legs.includes(leg.id));
+    if (multi) leg.betType = multi.type;
+  }
+
+  return { legs, bets };
+}

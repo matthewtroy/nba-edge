@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import type { PickLeg, SlateGame } from "@lib/types";
+import type { InjuryEntry, PickLeg, SlateGame } from "@lib/types";
 import { AU_BOOKMAKERS } from "@lib/types";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { siblingRungs } from "@lib/leg-rungs";
@@ -10,11 +10,13 @@ import { visibleLegReasons } from "@lib/leg-display";
 import { isInjuryRedistributionReason, formatInjuryReasonLine } from "@lib/injury-reason";
 import { FEED_BOOKIES } from "@lib/card-bookie";
 import { legBookieQuoteView } from "@lib/leg-bookie-quote";
+import { InjuryStatusBadge, injuryStatusForPlayer } from "./InjuryStatusBadge";
 
 interface Props {
   leg: PickLeg | null;
   picks?: PickLeg[];
   slate?: SlateGame[];
+  injuries?: InjuryEntry[];
   myBookie?: string;
   onClose: () => void;
   onSelectLeg?: (leg: PickLeg) => void;
@@ -115,6 +117,7 @@ export function LegSheet({
   leg,
   picks = [],
   slate,
+  injuries = [],
   myBookie = "bet365",
   onClose,
   onSelectLeg,
@@ -209,9 +212,12 @@ export function LegSheet({
         <MotionHandleRow onClose={onClose} />
 
         <header className="min-h-[56px] pr-8 flex flex-col justify-center">
-          <h2 className="text-base font-semibold text-white theme-adaptive-title leading-tight">
-            {leg.playerName}
-          </h2>
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="text-base font-semibold text-white theme-adaptive-title leading-tight">
+              {leg.playerName}
+            </h2>
+            <InjuryStatusBadge status={injuryStatusForPlayer(injuries, leg.playerId)} />
+          </div>
           <p className="text-sm text-white/55 mt-0.5">
             {marketLabel(modelLeg.market, modelLeg.line)}
           </p>

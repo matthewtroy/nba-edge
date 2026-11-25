@@ -1,0 +1,19 @@
+{
+  "fixture-game-won": {
+    "p-won": { "minutes": 32, "pts": 24, "reb": 8, "ast": 5, "threes": 2 },
+    "p-lost": { "minutes": 28, "pts": 14, "reb": 6, "ast": 4, "threes": 1 },
+    "p-void": { "minutes": 0, "pts": 0, "reb": 0, "ast": 0, "threes": 0 },
+    "p-q1": {
+      "minutes": 30,
+      "pts": 20,
+      "reb": 5,
+      "ast": 3,
+      "threes": 2,
+      "q1": { "pts": 8, "reb": 2, "ast": 1 }
+    }
+  },
+  "fixture-game-void-leg": {
+    "p-card-void": { "minutes": 0, "pts": 0, "reb": 0, "ast": 0, "threes": 0 },
+    "p-card-hit": { "minutes": 35, "pts": 22, "reb": 9, "ast": 6, "threes": 1 }
+  }
+}

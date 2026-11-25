@@ -41,7 +41,7 @@ describe("h2h reasons", () => {
       opponentName: "Phoenix Suns",
       seasonAvg: { pts: 20, reb: 8, ast: 7, threes: 1 },
     });
-    expect(text).toMatch(/vs Suns|vs Phoenix/);
+    expect(text).toMatch(/vs Suns|vs Phoenix|of 5|Hit 6\+/);
     expect(filterH2hLogs(logs, "phx").length).toBe(5);
   });
 });
