@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T09:06:36.945Z",
+  "lastUpdated": "2026-11-25T09:24:58.119Z",
   "oddsLastPulled": "2026-11-25T05:16:23.081Z",
   "sources": {
     "espn": "ok",
@@ -28,10 +28,10 @@
   "slateTipDate": "2026-11-26",
   "whatChanged": [
     "Chet Holmgren out → Shai Gilgeous-Alexander +7.2 pts",
-    "OG Anunoby out → Jalen Brunson +4.3 pts",
+    "OG Anunoby out → Jalen Brunson +4.7 pts",
     "Cameron Boozer out → Ty Jerome +2.7 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_04_00AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_04_15AM.pdf",
   "pricedLegCounts": {
     "pts": {
       "total": 396,
@@ -54,9 +54,6 @@
       "priced": 0
     }
   },
-  "gateViolations": [
-    "Best SGM: bookie total 5.56 not 7–15"
-  ],
   "slatePublicationStatus": "draft",
   "slateStatusLabel": "Draft · updates until 9pm"
 }
