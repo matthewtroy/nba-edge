@@ -3,6 +3,8 @@ import path from "path";
 import type { InjuryEntry, MetaJson, MultiBet, MultiNotBuilt, SlateGame } from "../lib/types.js";
 import type { ModelPlayer } from "./model-engine.js";
 import { runModel } from "./model-engine.js";
+import { loadTrackingCache } from "../lib/player-tracking-cache.js";
+import { buildEspnTrackingCache } from "../lib/player-tracking-espn.js";
 import type { DefenseRatingsBundle } from "../lib/defense-ratings.js";
 import { computeSlateStatus } from "../lib/slate-publication.js";
 import type { DataIndexDateEntry } from "../lib/data-index.js";
@@ -90,6 +92,8 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   const injuries = input.injuriesAll.filter((i) => teams.has(i.teamId));
   const players = filterPlayersForSlate(input.playersAll, input.slate);
   const rosterIds = new Set([...input.rosterIds].filter((id) => players.some((p) => p.id === id)));
+
+  ensureTrackingCacheLoaded(input.rootDir, tipDate, players);
 
   const modelRun = runModel({
     rootDir: input.rootDir,

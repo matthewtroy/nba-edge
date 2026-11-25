@@ -1,5 +1,7 @@
 import type { OfficialCardMeta } from "./official-card-time.js";
+import type { LegReason } from "./leg-reason-types.js";
 export type { OfficialCardMeta } from "./official-card-time.js";
+export type { LegReason, LegReasonType } from "./leg-reason-types.js";
 
 export type InjuryStatus = "Out" | "Doubtful" | "Questionable" | "Probable" | "Available";
 
@@ -76,7 +78,7 @@ export interface PickLeg {
   bookiePrices?: Record<string, number>;
   oddsPulledAt?: string;
   tags: string[];
-  reasons: string[];
+  reasons: LegReason[];
   recentVsLine?: ("hit" | "miss" | "na")[];
   /** Last 10 games Q1 hit rate at this line (starters with ESPN Q1 splits). */
   q1Last10HitRate?: number;

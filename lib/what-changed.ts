@@ -1,4 +1,5 @@
 import type { InjuryEntry, PickLeg, PlayerGameLog } from "./types.js";
+import { reasonText } from "./leg-reason-types.js";
 import { isOutOrDoubtful } from "./injury-match.js";
 import { displayPlayerName, normalizePlayerName } from "./player-names.js";
 import { gamesPlayedInLast10, isMeaningfulRotation } from "./rotation.js";
@@ -55,8 +56,9 @@ function pickInjuryBoost(
       if (gamesPlayedInLast10(bLogs) < 3) continue;
     }
     for (const r of leg.reasons) {
-      if (!reasonMentionsInjury(r, inj)) continue;
-      const m = r.match(BOOST_RE) ?? r.match(SOFT_OUT_RE);
+      const text = reasonText(r);
+      if (!reasonMentionsInjury(text, inj)) continue;
+      const m = text.match(BOOST_RE) ?? text.match(SOFT_OUT_RE);
       if (!m) continue;
       const delta = Number(m[1]);
       const stat = normalizeStat(m[2]);
@@ -155,7 +157,7 @@ export function buildWhatChanged(
       .find(
         (l) =>
           l.tags.includes("boards shared") &&
-          l.reasons.some((r) => reasonMentionsInjury(r, inj))
+          l.reasons.some((r) => reasonMentionsInjury(reasonText(r), inj))
       );
     if (boardLeg) {
       lines.push(`${injLabel} out → ${displayPlayerName(boardLeg.playerName)} boards`);
@@ -166,9 +168,10 @@ export function buildWhatChanged(
       .filter((l) => l.team === inj.teamName && l.playerId !== inj.playerId)
       .flatMap((l) =>
         l.reasons
-          .filter((r) => reasonMentionsInjury(r, inj))
+          .filter((r) => reasonMentionsInjury(reasonText(r), inj))
           .map((r) => {
-            const m = r.match(BOOST_RE) ?? r.match(SOFT_OUT_RE);
+            const text = reasonText(r);
+            const m = text.match(BOOST_RE) ?? text.match(SOFT_OUT_RE);
             return m ? { leg: l, delta: Number(m[1]), stat: m[2] } : null;
           })
       )

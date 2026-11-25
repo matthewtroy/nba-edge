@@ -1,3 +1,4 @@
+import type { LegReason } from "./leg-reason-types.js";
 import type { PickLeg } from "./types.js";
 
 /** @deprecated Official card uses each multi's bestBookie — not a single default. */
@@ -18,7 +19,7 @@ export interface OfficialLegSnapshot {
   fairPrice: number;
   takeAt: number;
   probability: number;
-  reasons: string[];
+  reasons: LegReason[];
   reasonLine?: string;
   recentVsLine?: ("hit" | "miss" | "na")[];
   recentTenVsLine?: ("hit" | "miss" | "na")[];

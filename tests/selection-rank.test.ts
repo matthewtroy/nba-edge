@@ -18,7 +18,7 @@ function leg(id: string, p: number, inj: boolean, edge: number): PickLeg {
     takeAt: 1.7,
     bestPrice: 1.7 + edge,
     tags: [],
-    reasons: inj ? ["Star out: +2 pts"] : [],
+    reasons: inj ? [{ type: "injury" as const, text: "Star out: +2 pts" }] : [],
   };
 }
 

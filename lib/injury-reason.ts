@@ -1,4 +1,11 @@
-import type { Market } from "./types.js";
+import type { LegReason, Market } from "./types.js";
+import { normalizeLegReasons, reasonTexts } from "./leg-reason-types.js";
+
+function asTexts(reasons: LegReason[] | string[]): string[] {
+  if (!reasons.length) return [];
+  if (typeof reasons[0] === "string") return reasons as string[];
+  return reasonTexts(normalizeLegReasons(reasons));
+}
 
 /** Matches rotation redistribution strings on legs (not matchup/form copy). */
 export function isInjuryRedistributionReason(text: string): boolean {
@@ -36,10 +43,10 @@ export function formatInjuryReasonLine(reason: string): string {
 
 /** Injury reason that applies to this leg's market (not pts boost on ast leg). */
 export function injuryReasonForMarket(
-  reasons: string[],
+  reasons: LegReason[] | string[],
   market: Market
 ): string | undefined {
-  const raw = reasons
+  const raw = asTexts(reasons)
     .filter(isInjuryRedistributionReason)
     .filter((r) => !/boards shared|voids if out/i.test(r))
     .find((r) => reasonStatMatchesMarket(r, market));
@@ -48,10 +55,10 @@ export function injuryReasonForMarket(
 
 /** Teammate injury redistribution that does not apply directly to this leg's stat. */
 export function teammateInjuryReasonForLeg(
-  reasons: string[],
+  reasons: LegReason[] | string[],
   market: Market
 ): string | undefined {
-  const raw = reasons
+  const raw = asTexts(reasons)
     .filter(isInjuryRedistributionReason)
     .filter((r) => !/voids if out/i.test(r))
     .find((r) => !reasonStatMatchesMarket(r, market));
@@ -59,9 +66,9 @@ export function teammateInjuryReasonForLeg(
 }
 
 export function pickPrimaryInjuryReason(
-  reasons: string[],
+  reasons: LegReason[] | string[],
   market?: Market
 ): string | undefined {
   if (market) return injuryReasonForMarket(reasons, market);
-  return reasons.find(isInjuryRedistributionReason);
+  return asTexts(reasons).find(isInjuryRedistributionReason);
 }

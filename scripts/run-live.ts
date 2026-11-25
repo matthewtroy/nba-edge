@@ -44,6 +44,7 @@ import {
   type SlateSyncBundle,
   type SupabaseUpsertClient,
 } from "./supabase-sync.js";
+import { ensurePlayerTracking } from "../lib/player-tracking-fetch.js";
 
 const DEFAULT_ODDS_BUDGET = {
   monthlyLimit: 500,
@@ -627,6 +628,15 @@ export async function runLivePipeline(
   );
   const pulledOddsExpanded = expandOddsMapForPlayers(oddsMap, playerNames);
   const extractedKeyList = [...oddsMap.keys()];
+
+  if (nextSlateTip) {
+    const slatePlayers = filterPlayersForSlate(players, nextSlateGames);
+    try {
+      await ensurePlayerTracking(rootDir, nextSlateTip, slatePlayers);
+    } catch (e) {
+      console.warn("tracking refresh failed:", e);
+    }
+  }
 
   const indexEntries: import("../lib/data-index.js").DataIndexDateEntry[] = [];
   let todayPicks: ReturnType<typeof runModel>["picks"] = [];

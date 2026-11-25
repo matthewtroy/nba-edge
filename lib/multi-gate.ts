@@ -130,7 +130,7 @@ function checkTypeRules(
     }
   }
   if (type === "longshot") {
-    if (combo < 30 || combo > 100) issues.push(`Longshot: take-at ${combo.toFixed(2)} not 30–100`);
+    if (combo < 30 || combo > 150) issues.push(`Longshot: take-at ${combo.toFixed(2)} not 30–150`);
     if (legs.some((l) => l.market === "3pm")) {
       issues.push("Longshot: forbidden 3PM legs (use DD/TD/combo or 30+ pts)");
     }

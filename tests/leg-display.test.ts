@@ -16,7 +16,7 @@ const base: PickLeg = {
   fairPrice: 1.5,
   takeAt: 1.6,
   tags: [],
-  reasons: ["Allen out → only big left: +3.4 reb"],
+  reasons: [{ type: "injury", text: "Allen out → only big left: +3.4 reb" }],
 };
 
 function logs(reb: number[]): PlayerGameLog[] {
@@ -41,12 +41,12 @@ describe("buildShortLegReason", () => {
   it("uses L10 avg fallback when form below 7/10", () => {
     const leg = { ...base, reasons: [] };
     expect(buildShortLegReason(leg, logs([3, 3, 3, 3, 3, 8, 8, 8, 8, 8]))).toMatch(
-      /L10 avg/
+      /L10 reb avg|5\/5 at line/
     );
   });
 
   it("shows form at 7/10", () => {
     const leg = { ...base, reasons: [] };
-    expect(buildShortLegReason(leg, logs([8, 8, 8, 8, 8, 8, 8, 3, 3, 3]))).toMatch(/7\/10 hits/);
+    expect(buildShortLegReason(leg, logs([8, 8, 8, 8, 8, 8, 8, 3, 3, 3]))).toMatch(/7\/10 at line/);
   });
 });

@@ -139,14 +139,7 @@ export function LegSheet({
   const num = Number(bookPrice);
   const v = Number.isFinite(num) && num > 1 ? verdict(num, modelLeg.takeAt) : null;
 
-  const whyLines = visibleLegReasons(modelLeg.reasons)
-    .map((r) =>
-      isInjuryRedistributionReason(r) ? formatInjuryReasonLine(r) : r
-    )
-    .slice(0, 4);
-  if (modelLeg.reasonLine && !whyLines.includes(modelLeg.reasonLine)) {
-    whyLines.unshift(modelLeg.reasonLine);
-  }
+  const whyLines = visibleLegReasons(modelLeg.reasons).slice(0, 4);
 
   const bookies = [...new Set([...FEED_BOOKIES, ...AU_BOOKMAKERS])];
 

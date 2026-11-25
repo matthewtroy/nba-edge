@@ -33,7 +33,7 @@ export function freezeOfficialLegSnapshots(
         fairPrice: leg.fairPrice,
         takeAt: leg.takeAt,
         probability: leg.probability,
-        reasons: [...(leg.reasons ?? [])],
+        reasons: (leg.reasons ?? []).map((r) => ({ ...r })),
         reasonLine: leg.reasonLine,
         recentVsLine: leg.recentVsLine,
         recentTenVsLine: leg.recentTenVsLine,

@@ -29,6 +29,8 @@ import { buildWhatChanged } from "../lib/what-changed.js";
 import { qualifiesStarter } from "../lib/starter-eligibility.js";
 import type { DefenseRatingsBundle } from "../lib/defense-ratings.js";
 import { applyFormGuardExclusions, passesFormGuard } from "../lib/form-guard.js";
+import { loadTrackingCache } from "../lib/player-tracking-cache.js";
+import { blendRatesWithTracking } from "../lib/tracking-blend.js";
 import { checkModelSanity, logModelSanity, type ModelSanityResult } from "../lib/model-sanity.js";
 
 export interface ModelPlayer extends PlayerProfile {
@@ -65,6 +67,10 @@ export function runModel(input: ModelRunInput): {
 } {
   loadAliasMap(input.rootDir);
   const minEdge = input.minEdge ?? 1.08;
+  const trackingCache =
+    input.slateTipDate != null
+      ? loadTrackingCache(input.rootDir, input.slateTipDate)
+      : null;
 
   const injMap = injuriesByPlayerId(input.injuries);
   const returning = detectReturningFromNotes(input.injuries);
@@ -126,9 +132,13 @@ export function runModel(input: ModelRunInput): {
       ) {
         continue;
       }
-      const r = perMinuteRates(p.gameLogs);
+      let r = perMinuteRates(p.gameLogs);
       if (!r) continue;
       const mins = projectedMinutes(p.gameLogs);
+      const trackingRow = trackingCache?.players[p.id];
+      if (trackingRow) {
+        r = blendRatesWithTracking(r, trackingRow, mins);
+      }
       if (outIds.has(p.id)) {
         if (!base.has(p.id)) base.set(p.id, projectBaseline(r, mins));
         if (!rates.has(p.id)) rates.set(p.id, r);
@@ -209,6 +219,7 @@ export function runModel(input: ModelRunInput): {
       const seasonMinutes =
         p.gameLogs.reduce((s, g) => s + g.minutes, 0) / Math.max(1, p.gameLogs.length);
       const injuryAngle = playerReasons.some((r) => /\+\d|benefit|redistrib/i.test(r));
+      const trackingRow = trackingCache?.players[p.id];
       const newLegs = buildLegsForPlayer({
           gameId: p.gameId,
           team: p.teamName,
@@ -242,6 +253,7 @@ export function runModel(input: ModelRunInput): {
           allOdds: input.allOddsMap,
           oddsPulledAt: input.oddsPulledAt,
           minEdge,
+          tracking: trackingRow,
         });
       picks.push(...newLegs);
       allQ1Exclusions.push(...q1Exclusions);

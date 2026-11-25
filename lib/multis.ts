@@ -128,7 +128,39 @@ function legEdge(leg: PickLeg): number {
 }
 
 function injuryBoostScore(leg: PickLeg): number {
-  return leg.reasons.some((r) => isInjuryRedistributionReason(r)) ? 1 : 0;
+  return leg.reasons.some(
+    (r) => r.type === "injury" || isInjuryRedistributionReason(r.text)
+  )
+    ? 1
+    : 0;
+}
+
+function longshotAngleScore(leg: PickLeg): number {
+  let s = injuryBoostScore(leg) * 4;
+  if (leg.signals?.ANGLE?.active) s += 3;
+  if (leg.reasons.some((r) => r.type === "angle")) s += 2;
+  if (/Min up/i.test(leg.reasonLine ?? "")) s += 2;
+  return s;
+}
+
+function qualifiesAngleLongshotAt(
+  leg: PickLeg,
+  bookie: string,
+  minEdgeFraction: number
+): boolean {
+  if (!qualifiesLongshotLeg(leg) && !["pts", "reb", "ast", "dd", "td", "combo"].includes(leg.market)) {
+    return false;
+  }
+  if (leg.market === "3pm") return false;
+  if ((leg.projectedMinutes ?? 0) < 20) return false;
+  const price = legPriceAtBookie(leg, bookie);
+  if (price == null || price <= 1) return false;
+  if (legMeetsBookieEdge(leg, bookie, minEdgeFraction)) return true;
+  return (
+    longshotAngleScore(leg) >= 2 &&
+    leg.probability >= 0.25 &&
+    price >= leg.fairPrice * 0.95
+  );
 }
 
 function last10HitsAtLine(leg: PickLeg): number {
@@ -233,7 +265,7 @@ export function buildMultis(
   else notBuilt.push({ type: "boostSgm", label: LABELS.boostSgm, reason: boostSgm.reason });
 
   const longshot = buildLongshot(byP, minEdgeFraction, catalog);
-  if (longshot.bet) multis.push(longshot.bet);
+  if (longshot.bets.length) multis.push(...longshot.bets);
   else notBuilt.push({ type: "longshot", label: LABELS.longshot, reason: longshot.reason });
 
   const picksById = new Map(pool.map((p) => [p.id, p]));
@@ -1209,128 +1241,146 @@ function buildLongshot(
   picks: PickLeg[],
   minEdgeFraction: number,
   catalog: PickLeg[]
-): { bet: MultiBet | null; reason: string } {
-  let bestAcross: {
+): { bets: MultiBet[]; reason: string } {
+  const candidates: {
     legs: PickLeg[];
     bookie: string;
-    p: number;
     total: number;
-  } | null = null;
-  let maxEdge = 0;
-  let maxEdgeBookie = "";
-  let maxRange = 0;
-  const eligibleCount = picks.filter((l) =>
-    bookiesByCoverage(picks).some((b) =>
-      qualifiesLongshotBuildLegAt(l, b, minEdgeFraction)
-    )
-  ).length;
-
+    score: number;
+  }[] = [];
   const bookies = bookiesByCoverage(picks);
+
   for (const bookie of bookies) {
-    const byGame = new Map<string, PickLeg[]>();
-    for (const l of picks) {
-      if (!qualifiesLongshotBuildLegAt(l, bookie, minEdgeFraction)) continue;
-      const priced = asBookieLeg(l, bookie, catalog);
-      if (!priced) continue;
-      const arr = byGame.get(l.gameId) ?? [];
-      arr.push(priced);
-      byGame.set(l.gameId, arr);
+    const priced = picks
+      .filter((l) => qualifiesAngleLongshotAt(l, bookie, minEdgeFraction))
+      .map((l) => asBookieLeg(l, bookie, catalog))
+      .filter(Boolean) as PickLeg[];
+
+    const byPlayer = new Map<string, PickLeg[]>();
+    for (const leg of priced) {
+      const arr = byPlayer.get(leg.playerId) ?? [];
+      if (!arr.some((x) => x.market === leg.market && x.line === leg.line)) arr.push(leg);
+      byPlayer.set(leg.playerId, arr);
     }
-    const poolSize = [...byGame.values()].reduce((n, a) => n + a.length, 0);
-    if (poolSize > maxEdge) {
-      maxEdge = poolSize;
-      maxEdgeBookie = bookie;
+    for (const legs of byPlayer.values()) {
+      if (legs.length < 2) continue;
+      legs.sort((a, b) => longshotAngleScore(b) - longshotAngleScore(a));
+      for (let n = 2; n <= Math.min(4, legs.length); n++) {
+        const slice = legs.slice(0, n);
+        if (multiHasClash(slice)) continue;
+        const total = comboProduct(slice, bookie);
+        if (total < 30 || total > 150) continue;
+        candidates.push({
+          legs: slice,
+          bookie,
+          total,
+          score: slice.reduce((s, l) => s + longshotAngleScore(l), 0),
+        });
+      }
+    }
+
+    const byGame = new Map<string, PickLeg[]>();
+    for (const leg of priced) {
+      if (!qualifiesLongshotBuildLegAt(leg, bookie, minEdgeFraction)) continue;
+      const arr = byGame.get(leg.gameId) ?? [];
+      arr.push(leg);
+      byGame.set(leg.gameId, arr);
     }
     const gameIds = [...byGame.keys()];
-    if (gameIds.length < 2) continue;
-
-    let best: PickLeg[] | null = null;
-    let bestCombo = 0;
-    let rangeCands = 0;
-
-    function dfs(gi: number, chosen: PickLeg[]) {
-      if (chosen.length >= 2) {
-        const combo = comboProduct(chosen, bookie);
-        if (combo >= 30 && combo <= 100 && !multiHasClash(chosen)) {
-          rangeCands += 1;
-          if (combo > bestCombo) {
-            bestCombo = combo;
-            best = [...chosen];
+    if (gameIds.length >= 2) {
+      let best: PickLeg[] | null = null;
+      let bestScore = 0;
+      let bestTotal = 0;
+      let bestBookie = bookie;
+      function dfs(gi: number, chosen: PickLeg[]) {
+        if (chosen.length >= 2) {
+          const combo = comboProduct(chosen, bookie);
+          if (combo >= 30 && combo <= 150 && !multiHasClash(chosen)) {
+            const score = chosen.reduce((s, l) => s + longshotAngleScore(l), 0);
+            if (score > bestScore) {
+              bestScore = score;
+              bestTotal = combo;
+              best = [...chosen];
+            }
+          }
+        }
+        if (chosen.length >= gameIds.length) return;
+        for (let i = gi; i < gameIds.length; i++) {
+          const gid = gameIds[i];
+          const legs = (byGame.get(gid) ?? []).sort(
+            (a, b) => longshotAngleScore(b) - longshotAngleScore(a)
+          );
+          for (const leg of legs.slice(0, 6)) {
+            dfs(i + 1, [...chosen, leg]);
           }
         }
       }
-      if (chosen.length >= gameIds.length) return;
-      for (let i = gi; i < gameIds.length; i++) {
-        const gid = gameIds[i];
-        const legs = (byGame.get(gid) ?? []).sort(
-          (a, b) =>
-            longshotLegScore(b) - longshotLegScore(a) ||
-            injuryBoostScore(b) - injuryBoostScore(a) ||
-            b.fairPrice - a.fairPrice
-        );
-        for (const leg of legs.slice(0, 8)) {
-          const next = [...chosen, leg];
-          if (multiHasClash(next)) continue;
-          dfs(i + 1, next);
-        }
+      dfs(0, []);
+      if (best) {
+        candidates.push({
+          legs: best,
+          bookie: bestBookie,
+          total: bestTotal,
+          score: bestScore,
+        });
       }
-    }
-    dfs(0, []);
-    maxRange = Math.max(maxRange, rangeCands);
-    if (!best || best.length < 2) continue;
-    const chosenLegs = best;
-    if (
-      !chosenLegs.some((l) => ["dd", "td", "combo"].includes(l.market)) &&
-      !chosenLegs.every((l) => l.market === "pts" && l.line >= 30)
-    ) {
-      continue;
-    }
-    const total = comboProduct(chosenLegs, bookie);
-    const p = combinedProb(chosenLegs);
-    if (betterBookiePick(bestAcross, p, total)) {
-      bestAcross = { legs: chosenLegs, bookie, p, total };
     }
   }
 
-  if (!bestAcross) {
+  candidates.sort((a, b) => b.score - a.score || b.total - a.total);
+  const unique: typeof candidates = [];
+  const seen = new Set<string>();
+  for (const c of candidates) {
+    const key = c.legs.map((l) => l.id).sort().join("|");
+    if (seen.has(key)) continue;
+    seen.add(key);
+    unique.push(c);
+    if (unique.length >= 3) break;
+  }
+
+  if (!unique.length) {
     const reason =
-      "No 2-game longshot @ edge (DD/TD/combo or 30+ pts priced at one AU bookie)";
+      "No angle longshot @ one bookie ($30–150, 2–4 legs, edge or narrative)";
     pushMultiBuildTrace({
       type: "longshot",
-      eligible: eligibleCount,
-      bestEdgePool: maxEdge,
-      bestBookie: maxEdgeBookie,
+      eligible: picks.length,
+      bestEdgePool: 0,
       clashCandidates: 0,
-      rangeCandidates: maxRange,
+      rangeCandidates: 0,
       built: false,
       detail: reason,
     });
-    return { bet: null, reason };
+    return { bets: [], reason };
   }
 
-  const { p, fair, takeAt } = combinedPrice(bestAcross.legs);
-  pushMultiBuildTrace({
-    type: "longshot",
-    eligible: eligibleCount,
-    bestEdgePool: maxEdge,
-    bestBookie: bestAcross.bookie,
-    clashCandidates: 0,
-    rangeCandidates: maxRange,
-    built: true,
-    detail: `${bestAcross.legs.length} legs @ ${bestAcross.bookie} $${bestAcross.total.toFixed(2)}`,
-  });
-
-  return {
-    bet: {
+  const labels = ["Longshot", "Longshot 2", "Longshot 3"];
+  const variants: (string | undefined)[] = [undefined, "2", "3"];
+  const bets: MultiBet[] = [];
+  for (let i = 0; i < unique.length; i++) {
+    const c = unique[i];
+    const { p, fair, takeAt } = combinedPrice(c.legs);
+    bets.push({
       type: "longshot",
-      label: "Longshot",
-      legs: bestAcross.legs.map((l) => l.id),
+      label: labels[i] ?? `Longshot ${i + 1}`,
+      variant: variants[i],
+      legs: c.legs.map((l) => l.id),
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
-      ...overlayForBookie(bestAcross.legs, bestAcross.bookie, catalog),
-      summary: "One long leg per game",
-    },
-    reason: "",
-  };
+      ...overlayForBookie(c.legs, c.bookie, catalog),
+      summary: `${c.legs.length} legs angle-ranked @ ${c.bookie}`,
+    });
+  }
+
+  pushMultiBuildTrace({
+    type: "longshot",
+    eligible: picks.length,
+    bestEdgePool: unique.length,
+    clashCandidates: 0,
+    rangeCandidates: candidates.length,
+    built: true,
+    detail: `${bets.length} longshot card(s)`,
+  });
+
+  return { bets, reason: "" };
 }

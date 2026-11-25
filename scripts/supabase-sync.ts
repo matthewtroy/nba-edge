@@ -387,7 +387,11 @@ export async function syncRunToSupabase(
       payload: { player_name: i.playerName, team_name: i.teamName },
     }));
   await tryTable("injury_reports", async () => {
-    await client.upsert("injury_reports", injRows, "player_id,reported_at,source");
+    await client.upsert(
+      "injury_reports",
+      injRows,
+      "player_id,source,status,reported_et_date"
+    );
     counts.injuries = injRows.length;
   });
 

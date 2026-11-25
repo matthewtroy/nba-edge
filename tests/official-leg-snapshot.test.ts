@@ -20,7 +20,7 @@ const leg = {
   fairPrice: 1.67,
   takeAt: 1.8,
   tags: [],
-  reasons: ["L10 avg 12 pts vs 10+"],
+  reasons: [{ type: "avg", text: "L10 avg 12 pts vs 10+" }],
   reasonLine: "L10 avg 12 pts vs 10+",
   bookiePrices: { Ladbrokes: 1.62, Neds: 1.55 },
   bestBookie: "Neds",

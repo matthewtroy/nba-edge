@@ -1,4 +1,5 @@
 import type { InjuryEntry, PickLeg } from "./types.js";
+import { reasonText } from "./leg-reason-types.js";
 
 /** Last names of teammates with leg reasons mentioning this injury (up to 3). */
 export function topBeneficiaryLastNames(
@@ -13,7 +14,7 @@ export function topBeneficiaryLastNames(
     if (p.team !== inj.teamName) continue;
     if (p.playerId === inj.playerId) continue;
     const hit = p.reasons.some((r) => {
-      const low = r.toLowerCase();
+      const low = reasonText(r).toLowerCase();
       return low.includes(full) || (last.length > 2 && low.includes(last));
     });
     if (!hit) continue;

@@ -25,8 +25,10 @@ import {
   q1SeasonHitFraction,
 } from "./leg-history.js";
 import { applyMatchupToModelP, matchupDeltaFromRank } from "./matchup-adjust.js";
-import { buildLegReasonLine } from "./leg-display.js";
+import { buildLegReasons } from "./leg-display.js";
 import { isInjuryRedistributionReason } from "./injury-reason.js";
+import { normalizeLegReasons, topReasonLines } from "./leg-reason-types.js";
+import type { PlayerTrackingDay } from "./player-tracking-cache.js";
 import type { DefenseRatingsBundle } from "./defense-ratings.js";
 import { defenseRankFor } from "./defense-ratings.js";
 
@@ -94,10 +96,21 @@ export function buildLegsForPlayer(
     injuryAngle?: boolean;
     matchupSignalsEnabled?: boolean;
     matchupLog?: { name: string; market: string; line: number; deltaPp: number }[];
+    tracking?: PlayerTrackingDay;
   }
 ): PickLeg[] {
   const legs: PickLeg[] = [];
   const means = ctx.stats;
+  const injurySeeds = normalizeLegReasons(
+    ctx.reasons.map((text) =>
+      isInjuryRedistributionReason(text)
+        ? { type: "injury" as const, text }
+        : { type: "other" as const, text }
+    )
+  );
+  if (ctx.injuryAngle) {
+    injurySeeds.push({ type: "angle", text: "Injury beneficiary" });
+  }
   const modelLogs = logsForModelRates(ctx.logs);
   const avgFrom = (slice: PlayerGameLog[]) => {
     if (!slice.length) return undefined;
@@ -200,9 +213,6 @@ export function buildLegsForPlayer(
       bookiePrices = { [book.bookie]: book.price };
     }
 
-    const injury = ctx.reasons.filter((r) => isInjuryRedistributionReason(r));
-    const other = ctx.reasons.filter((r) => !isInjuryRedistributionReason(r));
-    const reasons = [...injury, ...other].slice(0, 5);
     const leg: PickLeg = {
       id,
       gameId: ctx.gameId,
@@ -226,7 +236,7 @@ export function buildLegsForPlayer(
       bookiePrices,
       oddsPulledAt: ctx.oddsPulledAt,
       tags,
-      reasons,
+      reasons: [],
       recentVsLine: lastFiveVsLine(ctx.logs, market, line),
       recentTenVsLine: lastTenVsLine(ctx.logs, market, line),
       ...(market.startsWith("q1")
@@ -248,7 +258,7 @@ export function buildLegsForPlayer(
       ...(seasonAvg ? { seasonAvg } : {}),
       ...(lastFiveAvg ? { lastFiveAvg } : {}),
     };
-    leg.reasonLine = buildLegReasonLine({
+    leg.reasons = buildLegReasons({
       leg,
       logs: modelLogs,
       defense: ctx.defense,
@@ -257,7 +267,10 @@ export function buildLegsForPlayer(
       playerPosition: ctx.playerPosition,
       teamName: ctx.team,
       opponentName: ctx.opponent,
-    });
+      tracking: ctx.tracking,
+      seedReasons: injurySeeds,
+    }).slice(0, 6);
+    leg.reasonLine = topReasonLines(leg.reasons, 2);
     legs.push(leg);
   };
 

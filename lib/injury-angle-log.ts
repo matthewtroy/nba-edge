@@ -7,7 +7,9 @@ import {
 export function logInjuryAngleLegs(picks: PickLeg[], slateDate?: string): void {
   const dateLabel = slateDate ?? "slate";
   const legs = picks.filter((l) => {
-    const injuryReason = l.reasons.some((r) => isInjuryRedistributionReason(r));
+    const injuryReason = l.reasons.some(
+      (r) => r.type === "injury" || isInjuryRedistributionReason(r.text)
+    );
     if (!injuryReason) return false;
     return l.market === "pts" || l.market === "reb" || l.market === "ast";
   });
