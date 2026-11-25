@@ -6,13 +6,13 @@
       "legs": [
         "3136195-pts-20",
         "4903027-reb-7",
-        "4278073-ast-5",
         "4601025-pts-10",
-        "4433249-reb-10"
+        "4433249-reb-10",
+        "4278073-ast-5"
       ],
-      "combinedProbability": 0.20011270759199995,
-      "combinedFairPrice": 5,
-      "combinedTakeAt": 5.4,
+      "combinedProbability": 0.19954980264799996,
+      "combinedFairPrice": 5.01,
+      "combinedTakeAt": 5.41,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 9.4,
       "bookieTotals": {
@@ -26,13 +26,13 @@
       "legs": [
         "3136195-pts-30",
         "4903027-reb-7",
-        "4278073-ast-7",
         "4601025-pts-15",
-        "4433249-reb-10"
+        "4433249-reb-10",
+        "4278073-ast-7"
       ],
-      "combinedProbability": 0.01668743307711,
-      "combinedFairPrice": 59.93,
-      "combinedTakeAt": 64.72,
+      "combinedProbability": 0.01664049233709,
+      "combinedFairPrice": 60.09,
+      "combinedTakeAt": 64.9,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 102.67,
       "bookieTotals": {
@@ -81,22 +81,29 @@
     {
       "type": "crossGameSgm",
       "label": "Cross-Game SGM Multi",
-      "reason": "Clash rule: reb (Moussa Diabate) vs opp pts (Jalen Smith)",
+      "reason": "Clash rule: two pts same team: Pelle Larsson, Davion Mitchell",
       "players": [
         "Pelle Larsson",
         "Jaylen Brown",
+        "Davion Mitchell",
         "Moussa Diabate",
         "Jalen Smith",
         "Karl-Anthony Towns",
+        "Jalen Brunson",
         "Jared McCain",
         "LaMelo Ball",
+        "Shai Gilgeous-Alexander",
         "Rui Hachimura",
-        "Julius Randle",
+        "Darius Garland",
         "Egor Demin",
-        "Kevin Durant",
+        "Julius Randle",
+        "Danny Wolf",
         "Amen Thompson",
+        "Kevin Durant",
+        "Devin Booker",
         "Zach LaVine",
-        "Darius Acuff Jr."
+        "Darius Acuff Jr.",
+        "De'Andre Hunter"
       ]
     },
     {
