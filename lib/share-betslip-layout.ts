@@ -89,8 +89,10 @@ export function buildShareBetslipLayout(input: {
         : `${leg.team} vs ${leg.opponent}`;
     gameLabels.set(gid, gameLabel);
 
-    const price =
+    const quoted =
       bookie && legPriceAtBookieWithCatalog(leg, bookie, catalog ?? legs);
+    const price =
+      typeof quoted === "number" && Number.isFinite(quoted) ? quoted : undefined;
     const priceText =
       price != null && price > 1
         ? `$${price.toFixed(2)}`
@@ -120,8 +122,10 @@ export function buildShareBetslipLayout(input: {
             gameKey: "sgm",
             gameLabel: "",
             legs: legs.map((leg) => {
-              const price =
+              const quoted =
                 bookie && legPriceAtBookieWithCatalog(leg, bookie, catalog ?? legs);
+              const price =
+                typeof quoted === "number" && Number.isFinite(quoted) ? quoted : undefined;
               return {
                 key: leg.id,
                 playerLine: `${leg.playerName} — ${bookieMarketLabel(leg.market, leg.line)}`,
