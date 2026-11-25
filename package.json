@@ -18,6 +18,7 @@
     "odds-check": "tsx scripts/odds-check.ts",
     "typecheck": "tsc -p tsconfig.pipeline.json --noEmit",
     "typecheck:tests": "tsc -p tsconfig.tests.json --noEmit",
+    "pretest": "bash scripts/fetch-test-data.sh",
     "test": "vitest run",
     "screenshots:leg-sheet": "npm run build && tsx scripts/capture-leg-sheet-screenshots.ts",
     "screenshots:picks": "npm run build && tsx scripts/capture-picks-screenshots.ts",
