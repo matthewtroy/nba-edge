@@ -11,6 +11,7 @@ import { bestFeedMultiQuote } from "./card-bookie.js";
 import { multiBookieTotals } from "./bookie-totals.js";
 import { multiClashSummary } from "./clash.js";
 import { gateAllMultis } from "./multi-gate.js";
+import { logMultiBuildSummary } from "./multi-filter-log.js";
 import {
   combinedFairAndTakeAt,
   DEFAULT_MIN_EDGE,
@@ -232,6 +233,8 @@ export function buildMultis(
   };
   ensureQ1Variant("Safe", q1Attempt.safeNotBuiltReason);
   ensureQ1Variant("Value", q1Attempt.valueNotBuiltReason);
+
+  logMultiBuildSummary({ picks, pool, built: finalBets, notBuilt });
 
   return {
     bets: finalBets,

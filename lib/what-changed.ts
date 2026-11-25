@@ -78,6 +78,7 @@ function pickInjuryBoost(
 
 export interface WhatChangedOptions {
   slateGameIds?: Set<string>;
+  slateTeamIds?: Set<string>;
   playerLogsById?: Map<string, PlayerGameLog[]>;
   onSkip?: (injury: InjuryEntry, detail: string) => void;
 }
@@ -90,7 +91,9 @@ export function buildWhatChanged(
   opts: WhatChangedOptions = {}
 ): string[] {
   let outs = injuries.filter((i) => isOutOrDoubtful(i.status));
-  if (opts.slateGameIds?.size) {
+  if (opts.slateTeamIds?.size) {
+    outs = outs.filter((i) => opts.slateTeamIds!.has(i.teamId));
+  } else if (opts.slateGameIds?.size) {
     outs = outs.filter((i) => !i.gameId || opts.slateGameIds!.has(i.gameId));
   }
 

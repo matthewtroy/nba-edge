@@ -227,6 +227,9 @@ export function runModel(input: ModelRunInput): {
       : input.minEdge != null
         ? input.minEdge
         : 0.08;
+  console.log(
+    `picks filter: ${picks.length} legs priced → ${eligiblePicks.length} eligible (excluded ${picks.length - eligiblePicks.length})`
+  );
   const multiResult = buildMultis(eligiblePicks, input.slate.length, 300, edgeFraction);
   const injuryImpactLog: string[] = [];
   const whatChanged =
@@ -234,6 +237,9 @@ export function runModel(input: ModelRunInput): {
       ? input.whatChanged
       : buildWhatChanged(input.injuries, eligiblePicks, 3, {
           slateGameIds: new Set(input.slate.map((g) => g.id)),
+          slateTeamIds: new Set(
+            input.slate.flatMap((g) => [g.homeTeamId, g.awayTeamId])
+          ),
           playerLogsById: new Map(input.players.map((p) => [p.id, p.gameLogs])),
           onSkip: (inj, detail) => {
             injuryImpactLog.push(`${inj.playerName} (${inj.teamName}): ${detail}`);

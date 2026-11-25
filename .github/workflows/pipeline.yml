@@ -67,14 +67,21 @@ jobs:
         id: deploy_gate
         run: |
           if [ "${SLATE_PREVIEW}" = "true" ]; then
-            echo "skip_deploy=true" >> "$GITHUB_OUTPUT"
-            echo "Pages deploy skipped (preview run)"
+            echo "skip_deploy=false" >> "$GITHUB_OUTPUT"
+            echo "preview_deploy=true" >> "$GITHUB_OUTPUT"
+            echo "Pages deploy will run after build (preview at /nba-edge/preview/)"
           else
             echo "skip_deploy=false" >> "$GITHUB_OUTPUT"
+            echo "preview_deploy=false" >> "$GITHUB_OUTPUT"
             echo "Pages deploy will run after build"
           fi
 
-      - run: npm run build
+      - name: Build site
+        env:
+          PREVIEW_ONLY: ${{ steps.deploy_gate.outputs.preview_deploy }}
+        run: |
+          chmod +x scripts/prepare-pages-dist.sh
+          PREVIEW_ONLY="${PREVIEW_ONLY}" ./scripts/prepare-pages-dist.sh
 
       - name: Upload odds coverage
         uses: actions/upload-artifact@v4

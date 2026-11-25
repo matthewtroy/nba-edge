@@ -75,10 +75,14 @@ async function main() {
     return;
   }
   const preview = parsePreviewFlag(process.argv);
-  const useFromLive = fromLive && !(slateMode === "next");
-  if (fromLive && slateMode === "next") {
+  const useFromLive = fromLive;
+  if (!fromLive && slateMode === "next") {
     console.log(
       "pipeline: next slate — skipping Pages from-live; will pull odds API for preview events"
+    );
+  } else if (fromLive && slateMode === "next") {
+    console.log(
+      "pipeline: next slate from-live — using Pages odds cache (markets may be thin until closer to tip)"
     );
   }
   console.log(

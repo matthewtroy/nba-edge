@@ -65,6 +65,12 @@ import {
 } from "../lib/official-card.js";
 import { sydneyDateString } from "../lib/official-card-time.js";
 import { resolveOddsLastPulled } from "../lib/odds-pull-meta.js";
+import {
+  cacheLogsFromRaw,
+  getCachedLogs,
+  loadGameLogCache,
+  saveGameLogCache,
+} from "../lib/game-log-cache.js";
 
 const ET = "America/New_York";
 
@@ -151,9 +157,12 @@ export async function runLivePipeline(
   >();
 
   const teamIds = [...new Set(slate.flatMap((g) => [g.homeTeamId, g.awayTeamId]))];
+  const slateTeamSet = new Set(teamIds);
+  injuries = injuries.filter((i) => slateTeamSet.has(i.teamId));
 
+  const gameLogCache = loadGameLogCache(outDir);
   try {
-    const rosters = await mapPool(teamIds, 3, async (tid) => {
+    const rosters = await mapPool(teamIds, 4, async (tid) => {
       const raw = await fetchRoster(tid);
       return { tid, raw };
     });
@@ -235,11 +244,17 @@ export async function runLivePipeline(
     const gameForTeam = (tid: string) =>
       slate.find((g) => g.homeTeamId === tid || g.awayTeamId === tid);
 
-    await mapPool(tasks, 3, async (task) => {
+    let cacheHits = 0;
+    await mapPool(tasks, 8, async (task) => {
       try {
-        const logRaw = await fetchPlayerGameLog(task.athleteId);
         const headshot = task.meta.headshot?.href ?? "";
-        let logs = parseGameLogsFromEspn(logRaw, headshot);
+        let logs = getCachedLogs(gameLogCache, task.athleteId, now);
+        if (logs) {
+          cacheHits += 1;
+        } else {
+          const logRaw = await fetchPlayerGameLog(task.athleteId);
+          logs = cacheLogsFromRaw(gameLogCache, task.athleteId, logRaw, headshot, now);
+        }
         if (logs.length < 3) return;
 
         const avgMin = logs.reduce((s, g) => s + g.minutes, 0) / logs.length;
@@ -282,6 +297,10 @@ export async function runLivePipeline(
         /* skip player */
       }
     });
+    saveGameLogCache(outDir, gameLogCache);
+    console.log(
+      `espn logs: ${players.length} players, ${cacheHits} game-log cache hits`
+    );
   } catch {
     sources.espn = sources.espn === "failed" ? "failed" : "stale";
   }
