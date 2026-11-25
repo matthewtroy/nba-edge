@@ -1,36 +1,17 @@
 {
   "bets": [
     {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "legs": [
-        "4278073-pts-30",
-        "4433083-pts-10",
-        "4065733-3pm-4",
-        "4437244-reb-5"
-      ],
-      "combinedProbability": 0.07672642520399998,
-      "combinedFairPrice": 13.03,
-      "combinedTakeAt": 14.07,
-      "bestBookie": "Ladbrokes",
-      "bestBookieTotal": 22.59,
-      "bookieTotals": {
-        "Ladbrokes": 22.59
-      },
-      "summary": "2+ legs/game, fair 1.35–2.50 each"
-    },
-    {
       "type": "q1Multi",
       "label": "Q1 Multi",
       "variant": "Longshot",
       "legs": [
-        "3059318-q1reb-3",
-        "4433249-q1reb-3",
+        "5124612-q1reb-2",
+        "4711294-q1reb-2",
         "4065732-q1reb-2"
       ],
-      "combinedProbability": 0.08593128,
-      "combinedFairPrice": 11.64,
-      "combinedTakeAt": 12.57,
+      "combinedProbability": 0.088314708,
+      "combinedFairPrice": 11.32,
+      "combinedTakeAt": 12.23,
       "summary": "Q1 Multi (Longshot): fair 2.20–4.00, one leg/team"
     }
   ],
@@ -38,7 +19,7 @@
     {
       "type": "mainPlay",
       "label": "Main Play",
-      "reason": "No bookie with 3+ main legs at edge (best TAB=2)"
+      "reason": "Only 0 legs meet fair 1.40–2.50, p≥0.60 (need 3–5)"
     },
     {
       "type": "booster",
@@ -46,9 +27,14 @@
       "reason": "Needs a Main Play first"
     },
     {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "reason": "No cross-game combo @ edge (eligible 34, best edge-pool Ladbrokes=1, range-cands 0)"
+    },
+    {
       "type": "boostSgm",
       "label": "Best SGM",
-      "reason": "No same-game trio @ edge (eligible 190, best pool Ladbrokes=7, range-cands 0)"
+      "reason": "No same-game trio @ edge (eligible 54, best pool Ladbrokes=7, range-cands 0)"
     },
     {
       "type": "longshot",
@@ -59,7 +45,7 @@
       "type": "q1Multi",
       "label": "Q1 Multi",
       "variant": "Core",
-      "reason": "No Q1 Multi subset (p≥0.70, 3–6 teams, one leg/team) · 49 Q1 leg(s) dropped (last-10 hit rate ≥20pp below model)"
+      "reason": "No Q1 Multi subset (p≥0.70, 3–6 teams, one leg/team) · 40 Q1 leg(s) dropped (last-10 hit rate ≥20pp below model)"
     }
   ]
 }
