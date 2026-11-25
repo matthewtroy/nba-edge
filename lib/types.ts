@@ -15,7 +15,11 @@ export type Market =
   | "q1ast"
   | "dd"
   | "td"
-  | "combo";
+  | "combo"
+  | "ptsreb"
+  | "ptsast"
+  | "rebast"
+  | "pra";
 
 export interface SlateGame {
   id: string;

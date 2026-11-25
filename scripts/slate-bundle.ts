@@ -3,9 +3,9 @@ import path from "path";
 import type { InjuryEntry, MetaJson, MultiBet, MultiNotBuilt, SlateGame } from "../lib/types.js";
 import type { ModelPlayer } from "./model-engine.js";
 import { runModel } from "./model-engine.js";
-import { loadTrackingCache } from "../lib/player-tracking-cache.js";
-import { buildEspnTrackingCache } from "../lib/player-tracking-espn.js";
+import { ensureTrackingCacheLoaded } from "../lib/player-tracking-espn.js";
 import type { DefenseRatingsBundle } from "../lib/defense-ratings.js";
+import type { PlayerPositionRankMap } from "../lib/player-position-rank.js";
 import { computeSlateStatus } from "../lib/slate-publication.js";
 import type { DataIndexDateEntry } from "../lib/data-index.js";
 import { slateDataDir } from "../lib/data-index.js";
@@ -45,6 +45,7 @@ export interface SlateBundleInput {
   blockOfficialRepublish?: boolean;
   defense?: DefenseRatingsBundle;
   matchupSignalsEnabled?: boolean;
+  positionRanks?: PlayerPositionRankMap;
 }
 
 /** Drop players not on this slate and pin gameId / opponent to today's slate game (not stale IDs). */
@@ -108,6 +109,7 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     defense: input.defense,
     matchupSignalsEnabled: input.matchupSignalsEnabled,
     slateTipDate: tipDate,
+    positionRanks: input.positionRanks,
   });
 
   let { picks, multis, multisPayload, meta, whatChanged } = modelRun;

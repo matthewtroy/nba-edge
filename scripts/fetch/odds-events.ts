@@ -1,9 +1,9 @@
 import { normalizePlayerName } from "../../lib/player-names.js";
 import { isOverOutcome, oddsApiMarketToLeg, overLineToModelRung } from "../../lib/odds.js";
 import {
-  ODDS_COMBO_MARKETS,
   ODDS_CORE_MARKETS,
   ODDS_THREES_MARKETS,
+  oddsMarketsForEventPull,
 } from "../../lib/odds-coverage.js";
 import type { SlateGame } from "../../lib/types.js";
 
@@ -40,11 +40,7 @@ export async function fetchOddsForEvent(
   apiKey: string,
   eventId: string
 ): Promise<{ data: unknown; remaining?: number }> {
-  const markets = [
-    ...ODDS_CORE_MARKETS,
-    ...ODDS_THREES_MARKETS,
-    ...ODDS_COMBO_MARKETS,
-  ].join(",");
+  const markets = oddsMarketsForEventPull().join(",");
   const url = `https://api.the-odds-api.com/v4/sports/basketball_nba/events/${eventId}/odds?apiKey=${apiKey}&regions=au&oddsFormat=decimal&markets=${markets}`;
   const res = await fetch(url, { cache: "no-store" });
   const remaining = res.headers.get("x-requests-remaining");

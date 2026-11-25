@@ -285,7 +285,7 @@ function applyWithWithoutSplits(
       const cap = cur[key] * 0.25;
       const applied = Math.min(boost, cap);
       if (applied > 0.1 && key !== "threes") {
-        (cur as Record<string, number>)[key] += applied;
+        (cur as unknown as Record<string, number>)[key] += applied;
       } else if (applied > 0.05 && key === "threes") {
         cur.threes += Math.min(applied, cap);
       }

@@ -119,9 +119,13 @@ export function buildLegSignals(input: {
     const avg =
       input.leg.market === "3pm"
         ? vsOpp.reduce((s, g) => s + g.threes, 0) / vsOpp.length
-        : input.leg.market === "pts" || input.leg.market === "reb" || input.leg.market === "ast"
-          ? vsOpp.reduce((s, g) => s + g[input.leg.market], 0) / vsOpp.length
-          : 0;
+        : input.leg.market === "pts"
+          ? vsOpp.reduce((s, g) => s + g.pts, 0) / vsOpp.length
+          : input.leg.market === "reb"
+            ? vsOpp.reduce((s, g) => s + g.reb, 0) / vsOpp.length
+            : input.leg.market === "ast"
+              ? vsOpp.reduce((s, g) => s + g.ast, 0) / vsOpp.length
+              : 0;
     signals.context!.h2h = `Last 3 vs opp avg ${avg.toFixed(1)}`;
   } else unavailable.push("h2h");
 

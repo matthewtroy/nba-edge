@@ -1,6 +1,6 @@
 import { normalizePlayerName } from "./player-names.js";
 import type { SlateGame } from "./types.js";
-import type { OddsCacheFile } from "./odds-cache-file.js";
+import type { OddsCacheFile, SlateOddsSnapshot } from "./odds-cache-file.js";
 
 function oddsMapToRecord(
   map: Map<string, { price: number; bookie: string }>

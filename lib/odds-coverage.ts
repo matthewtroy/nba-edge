@@ -17,6 +17,33 @@ export const ODDS_COMBO_MARKETS = [
   "player_triple_double",
 ] as const;
 
+export const ODDS_COMBO_STAT_MARKETS = [
+  "player_points_rebounds",
+  "player_points_rebounds_alternate",
+  "player_points_assists",
+  "player_points_assists_alternate",
+  "player_rebounds_assists",
+  "player_rebounds_assists_alternate",
+  "player_points_rebounds_assists",
+  "player_points_rebounds_assists_alternate",
+] as const;
+
+/** Combo stat API markets on by default (set ODDS_COMBO_MARKETS=false to disable). */
+export function oddsComboStatMarketsEnabled(): boolean {
+  return process.env.ODDS_COMBO_MARKETS !== "false";
+}
+
+export function oddsMarketsForEventPull(): string[] {
+  const base = [...ODDS_CORE_MARKETS, ...ODDS_THREES_MARKETS, ...ODDS_COMBO_MARKETS];
+  if (oddsComboStatMarketsEnabled()) return [...base, ...ODDS_COMBO_STAT_MARKETS];
+  return base;
+}
+
+/** Extra Odds API markets per game when combo stats are enabled (for budget logging). */
+export function oddsComboStatMarketCount(): number {
+  return oddsComboStatMarketsEnabled() ? ODDS_COMBO_STAT_MARKETS.length : 0;
+}
+
 export interface OddsCoverageJson {
   pulledAt: string;
   eventsProbed: number;
@@ -36,6 +63,10 @@ function normMarket(key: string): string {
   if (m === "threes") return "3pm";
   if (m === "double_double") return "dd";
   if (m === "triple_double") return "td";
+  if (m === "points_rebounds") return "ptsreb";
+  if (m === "points_assists") return "ptsast";
+  if (m === "rebounds_assists") return "rebast";
+  if (m === "points_rebounds_assists") return "pra";
   if (m === "points") return "pts";
   if (m === "rebounds") return "reb";
   if (m === "assists") return "ast";
@@ -103,11 +134,7 @@ export function buildOddsCoverage(
   return {
     pulledAt,
     eventsProbed: events.filter(Boolean).length,
-    marketsRequested: [
-      ...ODDS_CORE_MARKETS,
-      ...ODDS_THREES_MARKETS,
-      ...ODDS_COMBO_MARKETS,
-    ],
+    marketsRequested: oddsMarketsForEventPull(),
     marketsPresent,
     uniquePlayersByCoreMarket,
     corePlayerLines: coreLines,

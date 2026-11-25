@@ -1,4 +1,5 @@
 import type { PickLeg } from "./types.js";
+import { comboContainedStats, isComboPickMarket, singleMarketTouchesStat } from "./combo-markets.js";
 
 function legGameTeam(leg: PickLeg) {
   return { gameId: leg.gameId, team: leg.team };
@@ -20,10 +21,20 @@ export function legsClash(a: PickLeg, b: PickLeg): boolean {
 
   // 6: same player except booster rungs and combo — handled by caller for booster
   if (a.playerId === b.playerId) {
-  const comboMarkets = new Set(["dd", "td", "combo"]);
-    if (!(comboMarkets.has(a.market) || comboMarkets.has(b.market))) {
-      return true;
+    const aCombo = isComboPickMarket(a.market);
+    const bCombo = isComboPickMarket(b.market);
+    if (aCombo && !bCombo) {
+      for (const stat of comboContainedStats(a.market)) {
+        if (singleMarketTouchesStat(b.market, stat)) return true;
+      }
     }
+    if (bCombo && !aCombo) {
+      for (const stat of comboContainedStats(b.market)) {
+        if (singleMarketTouchesStat(a.market, stat)) return true;
+      }
+    }
+    if (!aCombo && !bCombo) return true;
+    if (aCombo && bCombo && a.market !== b.market) return true;
   }
 
   if (a.gameId !== b.gameId) return false;

@@ -13,6 +13,6 @@ export function legReasonLineUi(reasonLine: string): {
       }
     : {
         className: "text-xs text-reason-matchup font-medium leading-snug break-words",
-        prefix: "",
+        prefix: "▸ ",
       };
 }

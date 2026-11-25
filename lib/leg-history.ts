@@ -16,6 +16,14 @@ export function statValue(log: PlayerGameLog, market: Market): number | null {
       return log.q1Reb ?? null;
     case "q1ast":
       return log.q1Ast ?? null;
+    case "ptsreb":
+      return log.pts + log.reb;
+    case "ptsast":
+      return log.pts + log.ast;
+    case "rebast":
+      return log.reb + log.ast;
+    case "pra":
+      return log.pts + log.reb + log.ast;
     default:
       return null;
   }

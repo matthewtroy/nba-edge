@@ -162,25 +162,21 @@ export function buildDefenseRatings(
   return { defense, pace, unavailable };
 }
 
-export function defenseRankFor(
+function defenseStatForMarket(market: string): "pts" | "reb" | "ast" | "3pm" {
+  if (market === "3pm") return "3pm";
+  if (market === "reb" || market === "q1reb" || market === "rebast") return "reb";
+  if (market === "ast" || market === "q1ast") return "ast";
+  return "pts";
+}
+
+export function defenseAllowRow(
   bundle: DefenseRatingsBundle,
   defendingTeamId: string,
   position: string | undefined,
   market: string,
   window: DefenseWindow = "last15"
-): number | undefined {
-  const stat =
-    market === "3pm"
-      ? "3pm"
-      : market === "reb"
-        ? "reb"
-        : market === "ast"
-          ? "ast"
-          : market.startsWith("q1")
-            ? "pts"
-            : market === "pts"
-              ? "pts"
-              : "pts";
+): DefenseRankRow | undefined {
+  const stat = defenseStatForMarket(market);
   const pos = positionBucket(position);
   return bundle.defense.find(
     (r) =>
@@ -188,7 +184,32 @@ export function defenseRankFor(
       r.positionBucket === pos &&
       r.window === window &&
       r.stat === stat
-  )?.rank;
+  );
+}
+
+export function leagueAvgAllowed(
+  bundle: DefenseRatingsBundle,
+  position: string | undefined,
+  stat: "pts" | "reb" | "ast" | "3pm",
+  window: DefenseWindow = "last15"
+): number | undefined {
+  const pos = positionBucket(position);
+  const rows = bundle.defense.filter(
+    (r) => r.positionBucket === pos && r.window === window && r.stat === stat
+  );
+  if (!rows.length) return undefined;
+  const avg = rows.reduce((s, r) => s + r.allowedPer48, 0) / rows.length;
+  return Math.round(avg * 10) / 10;
+}
+
+export function defenseRankFor(
+  bundle: DefenseRatingsBundle,
+  defendingTeamId: string,
+  position: string | undefined,
+  market: string,
+  window: DefenseWindow = "last15"
+): number | undefined {
+  return defenseAllowRow(bundle, defendingTeamId, position, market, window)?.rank;
 }
 
 export function paceRank(bundle: DefenseRatingsBundle, teamId: string): number | undefined {

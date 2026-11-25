@@ -1,4 +1,5 @@
 import type { Market, MultiBet, PickLeg, SlateGame } from "@lib/types";
+import { isComboPickMarket } from "@lib/combo-markets";
 import { hasValueAtBookie } from "@lib/value-at-bookie";
 import { legPriceAtBookie } from "@lib/single-bookie";
 import type {
@@ -55,7 +56,11 @@ export function filterAndSortPicks(input: {
     list = list.filter((l) => inMulti.has(l.id));
   }
   if (filters.market !== "all") {
-    list = list.filter((l) => l.market === filters.market);
+    if (filters.market === "combos") {
+      list = list.filter((l) => isComboPickMarket(l.market));
+    } else {
+      list = list.filter((l) => l.market === filters.market);
+    }
   }
   if (filters.show === "value") {
     list = list.filter((l) => hasValueAtBookie(l, myBookie));

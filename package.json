@@ -15,9 +15,11 @@
     "render-games-text": "tsx scripts/render-games-text.ts",
     "pipeline:from-live": "tsx scripts/pipeline.ts --from-live",
     "odds-check": "tsx scripts/odds-check.ts",
+    "typecheck": "tsc -p tsconfig.pipeline.json --noEmit",
     "test": "vitest run",
     "screenshots:leg-sheet": "npm run build && tsx scripts/capture-leg-sheet-screenshots.ts",
     "screenshots:picks": "npm run build && tsx scripts/capture-picks-screenshots.ts",
+    "screenshots:run44": "npm run build && tsx scripts/capture-run44-screenshots.ts",
     "test:watch": "vitest"
   },
   "dependencies": {

@@ -38,8 +38,9 @@ function injuryScoreForGame(
     for (const leg of gamePicks) {
       if (leg.team !== inj.teamName) continue;
       for (const r of leg.reasons) {
-        if (!r.toLowerCase().includes(inj.playerName.split(" ").pop()!.toLowerCase())) continue;
-        const m = r.match(BOOST_RE);
+        const text = typeof r === "string" ? r : r.text;
+        if (!text.toLowerCase().includes(inj.playerName.split(" ").pop()!.toLowerCase())) continue;
+        const m = text.match(BOOST_RE);
         if (!m) continue;
         const d = Number(m[1]);
         if (d > best) {

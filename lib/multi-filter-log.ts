@@ -20,9 +20,9 @@ export function countEligibleByType(picks: PickLeg[]): Record<string, number> {
       l.fairPrice >= 1.8 &&
       l.fairPrice <= 4
   );
-  const crossBoost = picks.filter(qualifiesCrossBoostLeg);
+  const crossBoost = picks.filter((l) => qualifiesCrossBoostLeg(l));
   return {
-    mainPlay: picks.filter(qualifiesMainPlayLeg).length,
+    mainPlay: picks.filter((l) => qualifiesMainPlayLeg(l)).length,
     crossBoost: crossBoost.length,
     q1Legs: q1.length,
     q1Teams: new Set(q1.map((l) => `${l.gameId}|${l.team}`)).size,

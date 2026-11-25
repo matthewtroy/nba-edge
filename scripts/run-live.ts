@@ -10,7 +10,7 @@ import {
 import { fetchLatestInjuryPdf, parsePdfInjuries } from "./fetch/nba-pdf.js";
 import { shouldPauseOdds } from "../lib/odds.js";
 import { oddsReserveCredits } from "../lib/odds-reserve.js";
-import { sydneyYmd } from "../lib/odds-budget.js";
+import { sydneyYmd, type OddsBudgetConfig } from "../lib/odds-budget.js";
 import { isPostTipOff, mergeBestOddsMaps } from "../lib/odds-cache-merge.js";
 import {
   formatYyyymmddInZone,
@@ -46,7 +46,7 @@ import {
 } from "./supabase-sync.js";
 import { ensurePlayerTracking } from "../lib/player-tracking-fetch.js";
 
-const DEFAULT_ODDS_BUDGET = {
+const DEFAULT_ODDS_BUDGET: OddsBudgetConfig = {
   monthlyLimit: 500,
   resetDay: 1,
   pretipPull: false,
@@ -68,6 +68,7 @@ export async function safeFinalizePipelineSupabaseSync(
 import { logsForModelRates } from "../lib/baseline.js";
 import { filterPlayersForSlate, writeSlateBundle } from "./slate-bundle.js";
 import { buildDefenseRatings, logDefenseSpotCheck } from "../lib/defense-ratings.js";
+import { buildPlayerPositionRanks } from "../lib/player-position-rank.js";
 import {
   pruneGameLogCacheBeforeSeason,
   runLeagueSeasonBackfill,
@@ -301,7 +302,10 @@ export async function runLivePipeline(
       return { tid, raw };
     });
 
-    const tasks: { athleteId: string; teamId: string; teamName: string; meta: (typeof rosterPlayers)[0]["raw"]["athletes"][0] }[] = [];
+    type AthleteMeta = NonNullable<
+      NonNullable<(typeof rosterPlayers)[0]["raw"]["athletes"]>[number]
+    >;
+    const tasks: { athleteId: string; teamId: string; teamName: string; meta: AthleteMeta }[] = [];
     for (const { tid, raw } of rosterPlayers) {
       const teamName = raw.team?.displayName ?? "";
       for (const a of raw.athletes ?? []) {
@@ -368,6 +372,7 @@ export async function runLivePipeline(
           age: task.meta.age,
           headshotUrl: headshot,
           gameLogs: logs,
+          seasonAvgMinutes: avgMin,
           gameId: game.id,
           opponent,
           opponentTeamId,
@@ -406,6 +411,10 @@ export async function runLivePipeline(
     pace: [],
     unavailable: ["defense: not computed"],
   };
+  let positionRanks = new Map<
+    string,
+    Partial<Record<"pts" | "reb" | "ast", import("../lib/player-position-rank.js").PlayerStatRankRow>>
+  >();
   try {
     const playerMeta = new Map(
       players.map((p) => [p.id, { teamId: p.teamId, position: p.position }])
@@ -419,6 +428,8 @@ export async function runLivePipeline(
     console.log(
       `defense ranks: ${defenseBundle.defense.length} rows, pace ${defenseBundle.pace.length}`
     );
+    positionRanks = buildPlayerPositionRanks(gameLogCache, playerMeta);
+    console.log(`position rank table: ${positionRanks.size} players with ranks`);
   } catch (e) {
     console.warn("defense ratings:", e instanceof Error ? e.message : e);
   }
@@ -464,7 +475,7 @@ export async function runLivePipeline(
 
   const monthKey = sydneyYmd(now).slice(0, 7);
   let supabaseClient: SupabaseUpsertClient | null = null;
-  let budgetFromDb = { ...DEFAULT_ODDS_BUDGET };
+  let budgetFromDb: OddsBudgetConfig = { ...DEFAULT_ODDS_BUDGET };
   try {
     const supabaseConn = await createSupabaseClient(rootDir);
     supabaseClient = supabaseConn.client;
@@ -687,6 +698,7 @@ export async function runLivePipeline(
       skipOfficialPublish,
       defense: defenseBundle,
       matchupSignalsEnabled,
+      positionRanks,
     });
     if (tip) {
       cacheSlateOddsSnapshot(

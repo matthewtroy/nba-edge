@@ -6,6 +6,7 @@ import {
   probDoubleDouble,
   probTripleDouble,
   probComboRebAst,
+  probStatSumOver,
 } from "./distributions.js";
 import { logsForModelRates, q1Share } from "./baseline.js";
 import type { ProjectedStats } from "./baseline.js";
@@ -31,6 +32,7 @@ import { normalizeLegReasons, topReasonLines } from "./leg-reason-types.js";
 import type { PlayerTrackingDay } from "./player-tracking-cache.js";
 import type { DefenseRatingsBundle } from "./defense-ratings.js";
 import { defenseRankFor } from "./defense-ratings.js";
+import type { PlayerPositionRankMap } from "./player-position-rank.js";
 
 export const Q1_HIT_RATE_GAP_PP = 0.2;
 
@@ -58,6 +60,10 @@ export const RUNGS: Record<string, number[]> = {
   q1pts: [3, 5, 7, 10],
   q1reb: [2, 3, 5],
   q1ast: [2, 3, 5],
+  ptsreb: [15, 20, 25, 30, 35, 40],
+  ptsast: [15, 20, 25, 30, 35],
+  rebast: [8, 10, 12, 14, 16],
+  pra: [25, 30, 35, 40, 45, 50],
 };
 
 export function fairAndTakeAt(p: number, minEdge = 1.08): { fair: number; takeAt: number; oneInX: number } {
@@ -97,6 +103,7 @@ export function buildLegsForPlayer(
     matchupSignalsEnabled?: boolean;
     matchupLog?: { name: string; market: string; line: number; deltaPp: number }[];
     tracking?: PlayerTrackingDay;
+    positionRanks?: PlayerPositionRankMap;
   }
 ): PickLeg[] {
   const legs: PickLeg[] = [];
@@ -269,7 +276,9 @@ export function buildLegsForPlayer(
       opponentName: ctx.opponent,
       tracking: ctx.tracking,
       seedReasons: injurySeeds,
-    }).slice(0, 6);
+      playerId: ctx.playerId,
+      positionRanks: ctx.positionRanks,
+    }).slice(0, 4);
     leg.reasonLine = topReasonLines(leg.reasons, 2);
     legs.push(leg);
   };
@@ -303,6 +312,13 @@ export function buildLegsForPlayer(
   if (pDd >= 0.03) addLeg("dd", 1, pDd);
   if (pTd >= 0.03) addLeg("td", 1, pTd);
   if (pCombo >= 0.03) addLeg("combo", 7, pCombo);
+
+  for (const market of ["ptsreb", "ptsast", "rebast", "pra"] as const) {
+    for (const line of RUNGS[market]) {
+      const p = probStatSumOver(market, comboMeans, line);
+      addLeg(market, line, p);
+    }
+  }
 
   return legs;
 }

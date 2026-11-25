@@ -349,6 +349,7 @@ export async function syncRunToSupabase(
       team_id: inj.teamId,
       full_name: inj.playerName,
       headshot_url: "",
+      position: "",
     });
   }
   const playerRows = [...playerById.values()];

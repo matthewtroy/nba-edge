@@ -1,8 +1,16 @@
 import type { Market, PickLeg, PlayerGameLog } from "./types.js";
 import type { DefenseRatingsBundle } from "./defense-ratings.js";
-import { defenseRankFor, paceRank } from "./defense-ratings.js";
+import {
+  defenseAllowRow,
+  defenseRankFor,
+  leagueAvgAllowed,
+  paceRank,
+} from "./defense-ratings.js";
 import { MATCHUP_REASONS_ENABLED } from "./pricing-config.js";
 import { ordinal, shortTeamName } from "./ordinal.js";
+import { positionBucketLabel } from "./combo-markets.js";
+import { positionBucket } from "./position-bucket.js";
+import type { PlayerStatRankRow } from "./player-position-rank.js";
 import { lastFiveVsLine } from "./leg-history.js";
 import {
   type LegReason,
@@ -48,16 +56,44 @@ function matchupPhrase(
   if (!MATCHUP_REASONS_ENABLED || !defense || !defendingTeamId) return undefined;
   const rank = defenseRankFor(defense, defendingTeamId, playerPosition, market);
   if (rank == null || rank > 8) return undefined;
+  const row = defenseAllowRow(defense, defendingTeamId, playerPosition, market);
+  if (!row) return undefined;
   const opp = shortTeamName(opponentName ?? defendingTeamId);
+  const bucket = positionBucket(playerPosition);
+  const posLabel = positionBucketLabel(bucket);
   const statWord =
-    market === "reb" || market === "q1reb"
-      ? "rebounds"
-      : market === "ast" || market === "q1ast"
-        ? "assists"
-        : market === "3pm"
+    row.stat === "reb"
+      ? "reb"
+      : row.stat === "ast"
+        ? "ast"
+        : row.stat === "3pm"
           ? "threes"
-          : "points";
-  return `${opp} D#${rank} vs ${statWord}`;
+          : "pts";
+  const leagueAvg = leagueAvgAllowed(defense, playerPosition, row.stat);
+  const rankPhrase = rank === 1 ? "the most" : `${ordinal(rank)} most`;
+  const avgSuffix = leagueAvg != null ? ` (avg ${leagueAvg.toFixed(1)})` : "";
+  return `${opp} allow ${row.allowedPer48.toFixed(1)} ${statWord} to ${posLabel}, ${rankPhrase}${avgSuffix}`;
+}
+
+function playerRankPhrase(
+  market: Market,
+  playerId: string | undefined,
+  positionRanks: Map<string, Partial<Record<"pts" | "reb" | "ast", PlayerStatRankRow>>> | undefined
+): string | undefined {
+  if (!playerId || !positionRanks) return undefined;
+  const stat =
+    market === "reb" || market === "rebast"
+      ? "reb"
+      : market === "ast" || market === "ptsast"
+        ? "ast"
+        : market === "3pm"
+          ? undefined
+          : "pts";
+  if (!stat) return undefined;
+  const row = positionRanks.get(playerId)?.[stat];
+  if (!row || row.rank > 15) return undefined;
+  const statWord = stat === "reb" ? "reb" : stat === "ast" ? "ast" : "pts";
+  return `Averages ${row.avg.toFixed(1)} ${statWord}, ${ordinal(row.rank)} of ${row.total} ${row.posLabel}`;
 }
 
 function pacePhrase(
@@ -131,6 +167,8 @@ export function buildLegReasons(input: {
   opponentName?: string;
   tracking?: PlayerTrackingDay;
   seedReasons?: LegReason[];
+  playerId?: string;
+  positionRanks?: Map<string, Partial<Record<"pts" | "reb" | "ast", PlayerStatRankRow>>>;
 }): LegReason[] {
   const byType = new Map<string, LegReason>();
 
@@ -174,7 +212,7 @@ export function buildLegReasons(input: {
       if (t) put("tracking", t);
     } else if (input.tracking.source === "espn") {
       const t = shotVolumeReason(input.tracking);
-      if (t && (m === "pts" || m === "ast" || m === "3pm")) put("tracking", t);
+      if (t && (m === "pts" || m === "3pm")) put("tracking", t);
     }
   }
 
@@ -186,6 +224,13 @@ export function buildLegReasons(input: {
     input.opponentName
   );
   if (matchup) put("matchup", matchup);
+
+  const rankLine = playerRankPhrase(
+    input.leg.market,
+    input.playerId ?? input.leg.playerId,
+    input.positionRanks
+  );
+  if (rankLine) put("rank", rankLine);
 
   const pace = pacePhrase(
     input.defense,

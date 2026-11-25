@@ -64,7 +64,7 @@ export function MultiLegRow({
         }}
       />
       <div className="min-w-0">
-        <p className={`${ui.legTitle} truncate`}>
+        <p className={`${ui.legTitle} break-words`}>
           {leg.playerName}{" "}
           {leg.feedLineNote
             ? leg.feedLineNote

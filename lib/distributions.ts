@@ -152,3 +152,18 @@ export function probTripleDouble(means: { pts: number; reb: number; ast: number 
 export function probComboRebAst(means: { pts: number; reb: number; ast: number }): number {
   return monteCarloCombo(means, (p) => p.reb >= 7 && p.ast >= 7);
 }
+
+export function probStatSumOver(
+  market: "ptsreb" | "ptsast" | "rebast" | "pra",
+  means: { pts: number; reb: number; ast: number },
+  line: number
+): number {
+  return monteCarloCombo(means, (p) => {
+    let sum = 0;
+    if (market === "ptsreb") sum = p.pts + p.reb;
+    else if (market === "ptsast") sum = p.pts + p.ast;
+    else if (market === "rebast") sum = p.reb + p.ast;
+    else sum = p.pts + p.reb + p.ast;
+    return sum >= line;
+  });
+}

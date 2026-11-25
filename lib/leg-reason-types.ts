@@ -1,12 +1,13 @@
 export type LegReasonType =
   | "injury"
   | "tracking"
+  | "angle"
   | "matchup"
+  | "rank"
   | "form"
   | "avg"
   | "pace"
   | "min"
-  | "angle"
   | "other";
 
 export interface LegReason {
@@ -19,6 +20,7 @@ export const REASON_TYPE_ORDER: LegReasonType[] = [
   "tracking",
   "angle",
   "matchup",
+  "rank",
   "form",
   "avg",
   "pace",
@@ -65,6 +67,8 @@ export function inferReasonType(text: string): LegReasonType {
   const t = text.toLowerCase();
   if (/out →|out:|only big|missing \d+ big|benefit|redistrib|teammate/i.test(t)) return "injury";
   if (/potential ast|shot volume|tracking/i.test(t)) return "tracking";
+  if (/allow [\d.]+\s+(pts|points|reb|rebounds|ast|assists|threes)/i.test(t)) return "matchup";
+  if (/averages [\d.]+\s+(pts|reb|ast)/i.test(t)) return "rank";
   if (/rank \d|worst defending|pace ·/i.test(t)) return "matchup";
   if (/\/10 hits|5\/5 hits/i.test(t)) return "form";
   if (/l10 avg/i.test(t)) return "avg";
@@ -100,12 +104,15 @@ function reasonMatchesMarket(r: LegReason, market: string, stat: string): boolea
     return true;
   }
   if (r.type === "form") return true;
-  if (r.type === "matchup" || r.type === "avg") {
+  if (r.type === "matchup" || r.type === "avg" || r.type === "rank") {
     const t = r.text.toLowerCase();
     if (stat === "3pm") return t.includes("three") || t.includes("3pm");
-    if (stat === "pts") return t.includes("point") || t.includes(" pts") || t.includes("pts ");
-    if (stat === "reb") return t.includes("reb");
-    if (stat === "ast") return t.includes("ast") || t.includes("assist");
+    if (stat === "pts" || stat === "ptsreb" || stat === "ptsast" || stat === "pra")
+      return t.includes("point") || t.includes(" pts") || t.includes("pts ");
+    if (stat === "reb" || stat === "rebast" || stat === "ptsreb")
+      return t.includes("reb");
+    if (stat === "ast" || stat === "ptsast" || stat === "rebast")
+      return t.includes("ast") || t.includes("assist");
     if (market.startsWith("q1")) return t.includes(stat) || t.includes("q1");
     return true;
   }

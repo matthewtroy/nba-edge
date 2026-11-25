@@ -28,6 +28,7 @@ import {
 import { buildWhatChanged } from "../lib/what-changed.js";
 import { qualifiesStarter } from "../lib/starter-eligibility.js";
 import type { DefenseRatingsBundle } from "../lib/defense-ratings.js";
+import type { PlayerPositionRankMap } from "../lib/player-position-rank.js";
 import { applyFormGuardExclusions, passesFormGuard } from "../lib/form-guard.js";
 import { loadTrackingCache } from "../lib/player-tracking-cache.js";
 import { blendRatesWithTracking } from "../lib/tracking-blend.js";
@@ -55,6 +56,7 @@ export interface ModelRunInput {
   defense?: DefenseRatingsBundle;
   matchupSignalsEnabled?: boolean;
   slateTipDate?: string;
+  positionRanks?: PlayerPositionRankMap;
 }
 
 export function runModel(input: ModelRunInput): {
@@ -254,6 +256,7 @@ export function runModel(input: ModelRunInput): {
           oddsPulledAt: input.oddsPulledAt,
           minEdge,
           tracking: trackingRow,
+          positionRanks: input.positionRanks,
         });
       picks.push(...newLegs);
       allQ1Exclusions.push(...q1Exclusions);

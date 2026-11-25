@@ -1,3 +1,4 @@
+/// <reference path="../pdf-parse.d.ts" />
 import pdf from "pdf-parse";
 
 const NBA_PDF_BASE =

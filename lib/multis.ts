@@ -148,7 +148,12 @@ function qualifiesAngleLongshotAt(
   bookie: string,
   minEdgeFraction: number
 ): boolean {
-  if (!qualifiesLongshotLeg(leg) && !["pts", "reb", "ast", "dd", "td", "combo"].includes(leg.market)) {
+  if (
+    !qualifiesLongshotLeg(leg) &&
+    !["pts", "reb", "ast", "dd", "td", "combo", "ptsreb", "ptsast", "rebast", "pra"].includes(
+      leg.market
+    )
+  ) {
     return false;
   }
   if (leg.market === "3pm") return false;
@@ -752,11 +757,13 @@ function q1MultiFromLegs(
     combinedProbability: p,
     combinedFairPrice: fair,
     combinedTakeAt: takeAt,
+    bookieTotals: (feed
+      ? multiBookieTotals(legs)
+      : {}) as Record<string, number>,
     ...(feed
       ? {
           bestBookie: feed.bookie,
           bestBookieTotal: feed.total,
-          bookieTotals: multiBookieTotals(legs) as Record<string, number>,
         }
       : {}),
     summary,

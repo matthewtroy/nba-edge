@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  },
+  "include": [
+    "scripts/pipeline.ts",
+    "scripts/run-live.ts",
+    "scripts/slate-bundle.ts",
+    "scripts/model-engine.ts",
+    "scripts/pdf-parse.d.ts",
+    "lib/**/*.ts"
+  ],
+  "exclude": ["tests", "src"]
+}

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildLegReasons } from "../lib/leg-reason-builder";
+import type { DefenseRatingsBundle } from "../lib/defense-ratings";
 import { normalizeLegReasons, sortLegReasons } from "../lib/leg-reason-types";
 import type { PickLeg } from "../lib/types";
 
@@ -54,6 +55,41 @@ describe("leg reasons structured", () => {
       ])
     );
     expect(ordered.map((r) => r.type)).toEqual(["injury", "tracking", "form"]);
+  });
+
+  it("formats matchup allow line with rank", () => {
+    const defense: DefenseRatingsBundle = {
+      defense: [
+        {
+          teamId: "14",
+          positionBucket: "G",
+          window: "last15",
+          stat: "pts",
+          allowedPer48: 72.7,
+          rank: 1,
+        },
+        {
+          teamId: "2",
+          positionBucket: "G",
+          window: "last15",
+          stat: "pts",
+          allowedPer48: 40,
+          rank: 15,
+        },
+      ],
+      pace: [],
+      unavailable: [],
+    };
+    const reasons = buildLegReasons({
+      leg: { ...baseLeg, market: "pts", line: 20 },
+      logs: [],
+      defense,
+      defendingTeamId: "14",
+      playerPosition: "G",
+      opponentName: "Miami Heat",
+    });
+    const matchup = reasons.find((r) => r.type === "matchup");
+    expect(matchup?.text).toMatch(/Heat allow 72\.7 pts to guards, the most/);
   });
 
   it("keeps separate reason lines for UI", () => {
