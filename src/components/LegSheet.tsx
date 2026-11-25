@@ -6,7 +6,9 @@ import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { siblingRungs } from "@lib/leg-rungs";
 import { marketLabel, verdict } from "../utils/format";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
-import { visibleLegReasons } from "@lib/leg-display";
+import { sortLegRowBadgeTags, visibleLegReasons } from "@lib/leg-display";
+import { displayLegRowTags } from "@lib/value-at-bookie";
+import { ui } from "../lib/card-type-scale";
 import { FEED_BOOKIES } from "@lib/card-bookie";
 import { legBookieQuoteView } from "@lib/leg-bookie-quote";
 import { InjuryStatusBadge, injuryStatusForPlayer } from "./InjuryStatusBadge";
@@ -188,7 +190,6 @@ export function LegSheet({
     leg.recentVsLine ??
     [];
   const last10Vals = modelLeg.lastTenStatValues ?? leg.lastTenStatValues;
-  const isQ1 = modelLeg.market.startsWith("q1");
   const feedPrice = bookieView.displayPrice;
 
   const savePrice = (v: string) => {
@@ -200,6 +201,11 @@ export function LegSheet({
   const v = Number.isFinite(num) && num > 1 ? verdict(num, modelLeg.takeAt) : null;
 
   const whyLines = visibleLegReasons(modelLeg.reasons).slice(0, 4);
+  const valuePills = sortLegRowBadgeTags(
+    displayLegRowTags(modelLeg, myBookie).filter(
+      (t) => t === "Value" || t === "High probability"
+    )
+  );
 
   const bookies = [...new Set([...FEED_BOOKIES, ...AU_BOOKMAKERS])];
 
@@ -251,26 +257,34 @@ export function LegSheet({
           <RungChips rungs={rungs} activeId={leg.id} onSelect={onSelectLeg} />
         )}
 
-        {(v || feedPrice != null) && (
-          <section className="mt-3 p-3 rounded-xl border border-white/[0.08] bg-white/[0.03]">
-            <p className="text-[11px] text-white/45 uppercase tracking-wide">Value verdict</p>
-            {v ? (
-              <p className="text-lg font-semibold text-white capitalize mt-1">{v}</p>
+        <section className="mt-3 grid grid-cols-3 gap-2 items-start border-b border-white/[0.06] pb-3">
+          <div className="min-w-0">
+            {feedPrice != null && feedPrice > 1 ? (
+              <>
+                <p className="text-lg font-bold text-price-green tabular-nums leading-tight">
+                  ${feedPrice.toFixed(2)}
+                </p>
+                <p className="text-[11px] text-white/50 mt-0.5">{myBookie}</p>
+              </>
             ) : (
-              <p className="text-sm text-white/55 mt-1">Enter your price below</p>
+              <p className="text-sm text-white/45">—</p>
             )}
-            {feedPrice != null && feedPrice > 1 && (
-              <p className="text-sm text-price-green tabular-nums mt-1">
-                ${feedPrice.toFixed(2)} · {myBookie}
-              </p>
+            {valuePills.length > 0 && (
+              <div className="flex flex-wrap gap-1 mt-1">
+                {valuePills.map((pill) => (
+                  <span key={pill} className={ui.badge}>
+                    {pill}
+                  </span>
+                ))}
+              </div>
             )}
             {!bookieView.offered && (
-              <p className="text-[11px] text-red-400/90 mt-1">
-                Not offered at {myBookie} for this line
-              </p>
+              <p className="text-[10px] text-red-400/90 mt-1">Not at {myBookie}</p>
             )}
-          </section>
-        )}
+          </div>
+          <StatCell label="Fair" value={`$${modelLeg.fairPrice.toFixed(2)}`} green />
+          <StatCell label="Take at" value={`$${modelLeg.takeAt.toFixed(2)}`} />
+        </section>
 
         {last10.length > 0 && (
           <section className="mt-4">
@@ -293,39 +307,6 @@ export function LegSheet({
             })}
           </section>
         )}
-
-        <section className="mt-3 grid grid-cols-3 gap-x-3 gap-y-2 text-[11px]">
-          <StatCell label="Fair" value={`$${modelLeg.fairPrice.toFixed(2)}`} green />
-          <StatCell label="Take at" value={`$${modelLeg.takeAt.toFixed(2)}`} />
-          <StatCell
-            label="Model p"
-            value={`${(modelLeg.probability * 100).toFixed(0)}%`}
-          />
-          {feedPrice != null && feedPrice > 1 && (
-            <StatCell label={`${myBookie}`} value={`$${feedPrice.toFixed(2)}`} green />
-          )}
-          {modelLeg.projectedMinutes != null && (
-            <StatCell label="Min" value={modelLeg.projectedMinutes.toFixed(0)} />
-          )}
-          {modelLeg.seasonAvg && (
-            <>
-              <StatCell label="Szn pts" value={modelLeg.seasonAvg.pts.toFixed(1)} />
-              <StatCell label="Szn reb" value={modelLeg.seasonAvg.reb.toFixed(1)} />
-            </>
-          )}
-          {isQ1 && modelLeg.q1SeasonHitAtLine && (
-            <StatCell
-              label="Q1 hit @ line"
-              value={`${modelLeg.q1SeasonHitAtLine.hits}/${modelLeg.q1SeasonHitAtLine.total}`}
-            />
-          )}
-          {isQ1 && modelLeg.q1Last10HitRate != null && (
-            <StatCell
-              label="Q1 L10"
-              value={`${(modelLeg.q1Last10HitRate * 100).toFixed(0)}%`}
-            />
-          )}
-        </section>
 
         <section className="mt-4">
           <p className="text-[11px] text-white/45 mb-2">Bookies</p>
