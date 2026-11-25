@@ -10,6 +10,7 @@ import { MultiCard } from "../components/MultiCard";
 import { DateSwitcher } from "../components/DateSwitcher";
 
 const PRESETS: { label: string; min: number; max: number }[] = [
+  { label: "7–15", min: 7, max: 15 },
   { label: "1.5–4", min: 1.5, max: 4 },
   { label: "3–6", min: 3, max: 6 },
   { label: "4–10", min: 4, max: 10 },
@@ -39,7 +40,7 @@ export function GamesScreen({
   onLegTap,
   onCopy,
 }: Props) {
-  const [preset, setPreset] = useState(PRESETS[2]);
+  const [preset, setPreset] = useState(PRESETS[0]);
   const activeSlate = useMemo(() => gamesForCards(data.slate), [data.slate]);
   const useOfficial =
     data.officialCard != null &&
@@ -142,6 +143,9 @@ export function GamesScreen({
               <>
                 <p className="text-xs text-white/50 px-1 mb-1">
                   {game.startTimeSydney} · Bookie total ${preset.label}
+                  {game.spread != null && Math.abs(game.spread) >= 14.5 && (
+                    <span className="text-accent-value ml-1">· Blowout risk</span>
+                  )}
                   {crossGameLegs.length > 0 &&
                     ` · Cross-Game (${crossGameLegs.length})`}
                   {boostLegs.length > 0 && " · Best SGM"}
@@ -150,6 +154,7 @@ export function GamesScreen({
                   multi={multi}
                   picksById={picksById}
                   injuries={data.injuries}
+                  slate={activeSlate}
                   lockedBookie={slateFairOnly ? undefined : card.bestBookie}
                   fairOnly={slateFairOnly}
                   oddsNote={oddsNote}

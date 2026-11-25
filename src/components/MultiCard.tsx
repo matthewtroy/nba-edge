@@ -8,6 +8,7 @@ import { bestFeedMultiQuote } from "@lib/card-bookie";
 import { legPriceAtBookieWithCatalog } from "@lib/single-bookie";
 import { useMultiLegEdits } from "../hooks/useMultiLegEdits";
 import { ErrorBoundary } from "./ErrorBoundary";
+import { useCrossGameSelection } from "../hooks/useCrossGameSelection";
 
 interface Props {
   multi: MultiBet;
@@ -66,20 +67,17 @@ export function MultiCard({
 }: Props) {
   const allPicks = Array.from(picksById.values());
   const { resolveLeg, swapLeg, resetLeg, isEdited } = useMultiLegEdits(multi, allPicks);
-  const legs = multi.legs
+  const legsAll = multi.legs
     .map((id) => resolveLeg(id))
     .filter(Boolean) as PickLeg[];
+  const crossSel = useCrossGameSelection(multi, legsAll, slate);
+  const legs =
+    multi.type === "crossGameSgm" ? crossSel.filteredLegs : legsAll;
 
   const titleOpts: MultiCardTitleOptions = {
     fairOnly: fairOnly || multi.type === "q1Multi",
     fairOnlyNote: oddsNote,
   };
-  const { headline, subline, cardBookie, fairOnly: titleFairOnly } = multiCardTitle(
-    multi,
-    legs,
-    titleOpts
-  );
-  const showFairOnly = titleFairOnly || hideBookieSelect;
 
   const { bookie, select, total } = useMultiBookieSelect(
     multi,
@@ -91,6 +89,13 @@ export function MultiCard({
   const rawBook = lockedBookie ?? bookie ?? multi.bestBookie;
   const displayBook = isFeedBookie(rawBook) ? rawBook : bookie ?? multi.bestBookie;
 
+  const { headline, subline, cardBookie, fairOnly: titleFairOnly } = multiCardTitle(
+    multi,
+    legs,
+    titleOpts
+  );
+  const showFairOnly = titleFairOnly || hideBookieSelect;
+
   const legBookie = showFairOnly ? "" : displayBook ?? cardBookie;
   const missingAtBookie =
     legBookie && !showFairOnly
@@ -101,8 +106,16 @@ export function MultiCard({
       : 0;
   const bestFeed = !lockedBookie && !showFairOnly ? bestFeedMultiQuote(legs) : undefined;
   const atIdx = headline.indexOf(" @ ");
-  const titleText = atIdx >= 0 ? headline.slice(0, atIdx) : headline;
-  const totalText = atIdx >= 0 ? headline.slice(atIdx + 3) : headline;
+  let titleText = atIdx >= 0 ? headline.slice(0, atIdx) : headline;
+  let totalText = atIdx >= 0 ? headline.slice(atIdx + 3) : headline;
+  if (
+    multi.type === "crossGameSgm" &&
+    !showFairOnly &&
+    total != null &&
+    legs.length < legsAll.length
+  ) {
+    totalText = `$${total.toFixed(2)}`;
+  }
 
   return (
     <section className="bg-card rounded-xl border border-white/10 overflow-hidden mb-3">
@@ -143,12 +156,38 @@ export function MultiCard({
         )}
       </header>
       <div className="px-2 divide-y divide-white/5">
+        {multi.type === "crossGameSgm" && (
+          <div className="px-2 pb-2 flex flex-wrap gap-1.5 border-b border-white/5">
+            {crossSel.chips.map((chip) => {
+              const on = crossSel.enabled.has(chip.id);
+              const empty = chip.legCount === 0;
+              return (
+                <button
+                  key={chip.id}
+                  type="button"
+                  disabled={empty}
+                  onClick={() => !empty && crossSel.toggle(chip.id)}
+                  className={`text-[10px] px-2 py-1 rounded-full border ${
+                    empty
+                      ? "border-white/10 text-white/30"
+                      : on
+                        ? "border-accent-high text-accent-high"
+                        : "border-white/20 text-white/45"
+                  }`}
+                >
+                  {chip.label}
+                  {!empty ? ` (${chip.legCount})` : ""}
+                </button>
+              );
+            })}
+          </div>
+        )}
         {multi.type === "crossGameSgm" ? (
           (() => {
             const byGame = new Map<string, { anchorId: string; leg: PickLeg }[]>();
             for (const anchorId of multi.legs) {
               const leg = resolveLeg(anchorId);
-              if (!leg) continue;
+              if (!leg || !crossSel.enabled.has(leg.gameId)) continue;
               const arr = byGame.get(leg.gameId) ?? [];
               arr.push({ anchorId, leg });
               byGame.set(leg.gameId, arr);
@@ -158,10 +197,17 @@ export function MultiCard({
               const header = game
                 ? `${game.awayTeam} @ ${game.homeTeam}`
                 : rows[0]?.leg.team ?? "Game";
+              const blowout =
+                game?.spread != null && Math.abs(game.spread) >= 14.5;
               return (
                 <div key={gameId}>
-                  <p className="text-[10px] uppercase tracking-wide text-white/40 px-2 pt-2">
-                    {header}
+                  <p className="text-[10px] uppercase tracking-wide text-white/40 px-2 pt-2 flex items-center gap-2">
+                    <span>{header}</span>
+                    {blowout ? (
+                      <span className="text-accent-value normal-case tracking-normal">
+                        Blowout risk
+                      </span>
+                    ) : null}
                   </p>
                   {rows.map(({ anchorId, leg }) => (
                     <ErrorBoundary key={anchorId} name={`leg-${anchorId}`}>

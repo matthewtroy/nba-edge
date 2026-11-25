@@ -110,8 +110,16 @@ function checkTypeRules(
     issues.push("Booster: invalid fair");
   }
   if (type === "boostSgm") {
-    if (legs.length !== 3) issues.push("Best SGM: need 3 legs");
-    if (combo < 7 || combo > 15) issues.push(`Best SGM: bookie total ${combo.toFixed(2)} not 7–15`);
+    if (legs.length < 3 || legs.length > 4) {
+      issues.push(`Best SGM: ${legs.length} legs (need 3–4)`);
+    }
+    const bookTotal =
+      multi.bestBookieTotal ?? bestFeedMultiQuote(legs)?.total ?? null;
+    if (bookTotal == null || bookTotal < 7 || bookTotal > 15) {
+      issues.push(
+        `Best SGM: bookie total ${bookTotal != null ? bookTotal.toFixed(2) : "?"} not $7–$15`
+      );
+    }
     if (!legs.every((l) => qualifiesCrossBoostLeg(l, multi.bestBookie))) {
       issues.push("Best SGM: leg fails starter main-line eligibility");
     }
@@ -134,7 +142,16 @@ function checkTypeRules(
     }
   }
   if (type === "crossGameSgm") {
-    if (combo < 10 || combo > 30) issues.push(`Cross-Game: take-at ${combo.toFixed(2)} not 10–30`);
+    const byGame = new Map<string, number>();
+    for (const l of legs) {
+      byGame.set(l.gameId, (byGame.get(l.gameId) ?? 0) + 1);
+    }
+    if (byGame.size < 2) issues.push("Cross-Game: need legs from 2+ games");
+    for (const [gid, n] of byGame) {
+      if (n < 2 || n > 3) {
+        issues.push(`Cross-Game: game ${gid} has ${n} legs (need 2–3)`);
+      }
+    }
   }
   return issues;
 }

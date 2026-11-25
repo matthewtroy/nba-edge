@@ -55,7 +55,15 @@ function matchupPhrase(
   const rank = defenseRankFor(defense, defendingTeamId, playerPosition, market);
   if (rank == null || rank > 8) return undefined;
   const opp = shortTeamName(opponentName ?? defendingTeamId);
-  return `${opp} ${statLabel(market)} ${ordinal(rank)} easiest`;
+  const statWord =
+    market === "reb" || market === "q1reb"
+      ? "rebounds"
+      : market === "ast" || market === "q1ast"
+        ? "assists"
+        : market === "3pm"
+          ? "threes"
+          : "points";
+  return `${opp} rank ${ordinal(rank)} worst defending ${statWord}`;
 }
 
 function pacePhrase(

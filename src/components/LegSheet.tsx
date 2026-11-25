@@ -5,6 +5,7 @@ import { siblingRungs } from "@lib/leg-rungs";
 import { marketLabel, verdict } from "../utils/format";
 import { LastFiveTicks } from "./LastFiveTicks";
 import { RungStepper } from "./RungStepper";
+import { legReasonLineUi } from "../lib/leg-reason-ui";
 
 interface Props {
   leg: PickLeg | null;
@@ -57,10 +58,16 @@ export function LegSheet({ leg, picks = [], slate, myBookie = "bet365", onClose,
         <div className="w-10 h-1 bg-white/20 rounded mx-auto mb-2" />
         <h2 className="text-base font-semibold break-words leading-tight">{leg.playerName}</h2>
         <p className="text-xs text-white/65">{marketLabel(leg.market, leg.line)}</p>
-        {subtitle && <p className="text-[11px] text-white/45 mt-0.5">{subtitle}</p>}
-        {leg.reasonLine && (
-          <p className="text-xs text-accent-high mt-1.5 leading-snug">{leg.reasonLine}</p>
-        )}
+        {subtitle && <p className="text-[11px] text-white/40 mt-0.5">{subtitle}</p>}
+        {leg.reasonLine && (() => {
+          const ui = legReasonLineUi(leg.reasonLine);
+          return (
+            <p className={`${ui.className} mt-2 leading-snug`}>
+              {ui.prefix}
+              {leg.reasonLine}
+            </p>
+          );
+        })()}
         {onSelectLeg && (
           <RungStepper rungs={rungs} activeId={leg.id} onSelect={onSelectLeg} compact />
         )}

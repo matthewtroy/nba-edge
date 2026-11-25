@@ -1,6 +1,14 @@
 import type { PickLeg, MultiBet, MultiType, MultiNotBuilt, PlayerGameLog } from "./types.js";
 import { q1MultiBlendP, passesQ1MultiHitGap } from "./q1-multi-probability.js";
 import { nearestPricedRung } from "./nearest-bookie-line.js";
+import {
+  pickBestSameGameSgmCombo,
+  pickBestCrossGameLegSubset,
+  SGM_BAND_MIN,
+  SGM_BAND_MAX,
+  legEdgeDecimal,
+  SGM_MIN_LEG_PRICE,
+} from "./same-game-sgm-search.js";
 import { legsClash, multiHasClash } from "./clash.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
 import {
@@ -853,18 +861,6 @@ function buildQ1Multi(
   return { bets, coreNotBuiltReason, longshotNotBuiltReason };
 }
 
-function crossComboValid(chosen: PickLeg[]): boolean {
-  const byGame = new Map<string, number>();
-  for (const l of chosen) {
-    byGame.set(l.gameId, (byGame.get(l.gameId) ?? 0) + 1);
-  }
-  if (byGame.size < 2) return false;
-  for (const n of byGame.values()) {
-    if (n < 2 || n > 3) return false;
-  }
-  return chosen.length >= 4;
-}
-
 function buildCrossGameSgm(
   picks: PickLeg[],
   minEdgeFraction: number,
@@ -924,47 +920,35 @@ function buildCrossGameSgm(
       arr.push(l);
       byGame.set(l.gameId, arr);
     }
-    if (byGame.size < 2) continue;
-
-    const gameIds = [...byGame.keys()];
-    let best: PickLeg[] | null = null;
-    let bestCombo = 0;
-    let rangeCands = 0;
-
-    function dfs(gi: number, chosen: PickLeg[], perGame: Map<string, number>) {
-      if (crossComboValid(chosen)) {
-        const combo = comboProduct(chosen, bookie);
-        if (combo >= 10 && combo <= 30 && !multiHasClash(chosen)) {
-          rangeCands += 1;
-          if (combo > bestCombo) {
-            bestCombo = combo;
-            best = [...chosen];
-          }
-        }
-      }
-      if (chosen.length >= 6) return;
-      for (let i = gi; i < gameIds.length; i++) {
-        const gid = gameIds[i];
-        const count = perGame.get(gid) ?? 0;
-        if (count >= 3) continue;
-        const legs = (byGame.get(gid) ?? []).sort(sortLegs);
-        for (const leg of legs.slice(0, 10)) {
-          const next = [...chosen, leg];
-          if (multiHasClash(next)) continue;
-          perGame.set(gid, count + 1);
-          dfs(i, next, perGame);
-          perGame.set(gid, count);
-        }
-      }
+    const gameIds = [...new Set(structural.map((l) => l.gameId))].sort();
+    const assembled: PickLeg[] = [];
+    let gamesWithLegs = 0;
+    for (const gid of gameIds) {
+      const legs = (byGame.get(gid) ?? [])
+        .filter((l) => (l.bestPrice ?? 0) >= SGM_MIN_LEG_PRICE)
+        .sort(sortLegs);
+      const subset = pickBestCrossGameLegSubset(legs.slice(0, 14));
+      if (!subset) continue;
+      gamesWithLegs += 1;
+      assembled.push(...subset);
     }
-    dfs(0, [], new Map());
-    maxRange = Math.max(maxRange, rangeCands);
-    if (!best || best.length < 4) continue;
-    const chosen = best;
-    const total = comboProduct(chosen, bookie);
-    const p = combinedProb(chosen);
-    if (betterBookiePick(bestAcross, p, total)) {
-      bestAcross = { legs: chosen, bookie, p, total };
+    if (gamesWithLegs < 2 || assembled.length < 4) continue;
+    maxRange += 1;
+    const total = comboProduct(assembled, bookie);
+    const p = combinedProb(assembled);
+    const edgeSum = assembled.reduce((s, l) => s + legEdgeDecimal(l), 0);
+    const prevEdge = bestAcross
+      ? bestAcross.legs.reduce((s, l) => s + legEdgeDecimal(l), 0)
+      : 0;
+    if (
+      !bestAcross ||
+      p > bestAcross.p ||
+      (Math.abs(p - bestAcross.p) < 1e-9 && edgeSum > prevEdge) ||
+      (Math.abs(p - bestAcross.p) < 1e-9 &&
+        Math.abs(edgeSum - prevEdge) < 1e-9 &&
+        betterBookiePick(bestAcross, p, total))
+    ) {
+      bestAcross = { legs: assembled, bookie, p, total };
     }
   }
 
@@ -1004,7 +988,7 @@ function buildCrossGameSgm(
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
       ...overlayForBookie(bestAcross.legs, bestAcross.bookie, catalog),
-      summary: "2+ games, 2–3 legs/game, $10–30 one bookie",
+      summary: "2+ games, 2–3 legs/game, one bookie (toggle games on card)",
     },
     reason: "",
   };
@@ -1051,46 +1035,58 @@ function buildBoostSgm(
       byGame.set(l.gameId, arr);
     }
 
-    let bestTrio: PickLeg[] | null = null;
-    let bestPick: { p: number; total: number } | null = null;
+    let bookieBest: {
+      legs: PickLeg[];
+      p: number;
+      total: number;
+      edge: number;
+    } | null = null;
     let rangeCands = 0;
 
     for (const legs of byGame.values()) {
       legs.sort(sortLegs);
-      const pool = legs.slice(0, 14);
-      function dfs(idx: number, chosen: PickLeg[]) {
-        if (chosen.length === 3) {
-          const combo = comboProduct(chosen, bookie);
-          if (combo >= 7 && combo <= 15 && !multiHasClash(chosen)) {
-            rangeCands += 1;
-            const p = combinedProb(chosen);
-            if (betterBookiePick(bestPick, p, combo)) {
-              bestPick = { p, total: combo };
-              bestTrio = [...chosen];
-            }
-          }
-          return;
-        }
-        for (let i = idx; i < pool.length; i++) {
-          const next = [...chosen, pool[i]];
-          if (multiHasClash(next)) continue;
-          dfs(i + 1, next);
-        }
+      const combo = pickBestSameGameSgmCombo(
+        legs.slice(0, 18),
+        bookie,
+        catalog,
+        SGM_BAND_MIN,
+        SGM_BAND_MAX
+      );
+      if (!combo) continue;
+      rangeCands += 1;
+      if (
+        !bookieBest ||
+        combo.p > bookieBest.p ||
+        (Math.abs(combo.p - bookieBest.p) < 1e-9 && combo.edge > bookieBest.edge)
+      ) {
+        bookieBest = combo;
       }
-      dfs(0, []);
     }
     maxRange = Math.max(maxRange, rangeCands);
-    if (!bestTrio) continue;
-    const trio = bestTrio;
-    const total = comboProduct(trio, bookie);
-    const p = combinedProb(trio);
-    if (betterBookiePick(bestAcross, p, total)) {
-      bestAcross = { legs: trio, bookie, p, total };
+    if (!bookieBest) continue;
+    const prevEdge = bestAcross
+      ? bestAcross.legs.reduce((s, l) => s + legEdgeDecimal(l), 0)
+      : 0;
+    if (
+      !bestAcross ||
+      bookieBest.p > bestAcross.p ||
+      (Math.abs(bookieBest.p - bestAcross.p) < 1e-9 &&
+        bookieBest.edge > prevEdge) ||
+      (Math.abs(bookieBest.p - bestAcross.p) < 1e-9 &&
+        Math.abs(bookieBest.edge - prevEdge) < 1e-9 &&
+        betterBookiePick(bestAcross, bookieBest.p, bookieBest.total))
+    ) {
+      bestAcross = {
+        legs: bookieBest.legs,
+        bookie,
+        p: bookieBest.p,
+        total: bookieBest.total,
+      };
     }
   }
 
   if (!bestAcross) {
-    const reason = `No same-game trio @ edge (eligible ${structural.length}, best pool ${maxEdgeBookie}=${maxEdge}, range-cands ${maxRange})`;
+    const reason = `No in-band same-game SGM @ edge (eligible ${structural.length}, best pool ${maxEdgeBookie}=${maxEdge}, in-band games ${maxRange})`;
     pushMultiBuildTrace({
       type: "boostSgm",
       eligible: structural.length,
@@ -1113,7 +1109,7 @@ function buildBoostSgm(
     clashCandidates: 0,
     rangeCandidates: maxRange,
     built: true,
-    detail: `3 legs @ ${bestAcross.bookie} $${bestAcross.total.toFixed(2)}`,
+    detail: `${bestAcross.legs.length} legs @ ${bestAcross.bookie} $${bestAcross.total.toFixed(2)}`,
   });
 
   return {
@@ -1125,7 +1121,7 @@ function buildBoostSgm(
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
       ...overlayForBookie(bestAcross.legs, bestAcross.bookie, catalog),
-      summary: "Best-value 3-leg same-game multi on the slate",
+      summary: "Best 3–4 leg same-game multi in $7–15",
     },
     reason: "",
   };

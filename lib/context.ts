@@ -21,11 +21,13 @@ export function applyContextAdjustments(
     out.threes *= 1 + capped;
   }
 
-  if (opts.spread !== undefined && Math.abs(opts.spread) >= 13) {
+  const spreadAbs = opts.spread !== undefined ? Math.abs(opts.spread) : 0;
+  if (opts.spread !== undefined && spreadAbs >= 13) {
     out.minutes *= 0.91;
-    blowoutRisk = true;
-  } else if (opts.spread !== undefined && Math.abs(opts.spread) >= 10) {
+  } else if (opts.spread !== undefined && spreadAbs >= 10) {
     out.minutes *= 0.94;
+  }
+  if (spreadAbs >= 14.5) {
     blowoutRisk = true;
   }
 

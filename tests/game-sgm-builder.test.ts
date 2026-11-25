@@ -52,18 +52,24 @@ describe("game SGM builder", () => {
       }),
       leg("d", {
         probability: 0.64,
-        team: "BBB",
-        market: "pts",
+        market: "reb",
+        line: 5,
         bookiePrices: { Sportsbet: 2.2 },
+      }),
+      leg("e", {
+        probability: 0.62,
+        market: "ast",
+        line: 5,
+        bookiePrices: { Sportsbet: 2.0 },
       }),
     ];
     const result = pickGameSgmLegsWithReason(picks, gameId, 3, 20);
-    expect(result.legs.length).toBeGreaterThanOrEqual(2);
+    expect(result.legs.length).toBeGreaterThanOrEqual(3);
     for (const l of result.legs) {
       const price = l.bookiePrices?.Sportsbet ?? l.bestPrice ?? 0;
       expect(price).toBeGreaterThanOrEqual(MIN_GAME_SGM_LEG_PRICE);
     }
-    expect(result.legs.map((l) => l.id).sort()).toEqual(["c", "d"]);
+    expect(result.legs.map((l) => l.id).sort()).toEqual(["c", "d", "e"]);
   });
 
   it("pickGameSgmLegs returns null when pool too thin", () => {

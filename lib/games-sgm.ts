@@ -23,8 +23,8 @@ export function gameSgmBlocks(
   picks: PickLeg[],
   multis: MultiBet[],
   picksById: Map<string, PickLeg>,
-  oddsMin = 4,
-  oddsMax = 10
+  oddsMin = 7,
+  oddsMax = 15
 ): GameSgmBlock[] {
   const cross = multis.find((m) => m.type === "crossGameSgm");
   const boost = multis.find((m) => m.type === "boostSgm");
@@ -41,7 +41,7 @@ export function gameSgmBlocks(
     const boostLegs = [...boostIds]
       .map((id) => picksById.get(id))
       .filter((l): l is PickLeg => l != null && l.gameId === game.id);
-    const built = buildGameSgmCard(game, picks, oddsMin, oddsMax);
+    const built = buildGameSgmCard(game, picks, oddsMin, oddsMax, undefined, picks);
     if (isGameSgmCard(built)) {
       return { game, sgmLegs, crossGameLegs, boostLegs, card: built };
     }

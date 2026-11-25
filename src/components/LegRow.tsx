@@ -2,6 +2,7 @@ import type { PickLeg, SlateGame } from "@lib/types";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { displayTagsForBookie } from "@lib/value-at-bookie";
 import { marketLabel } from "../utils/format";
+import { legReasonLineUi } from "../lib/leg-reason-ui";
 
 interface Props {
   leg: PickLeg;
@@ -18,6 +19,7 @@ export function LegRow({ leg, slate, myBookie = "bet365", onTap }: Props) {
       : undefined;
   const myNum = myFromApi;
   const tags = displayTagsForBookie(leg, myBookie);
+  const reasonUi = leg.reasonLine ? legReasonLineUi(leg.reasonLine) : null;
 
   return (
     <button
@@ -37,16 +39,19 @@ export function LegRow({ leg, slate, myBookie = "bet365", onTap }: Props) {
         <div className="font-medium break-words leading-snug">
           {leg.playerName} {marketLabel(leg.market, leg.line)}
         </div>
-        {subtitle && <p className="text-xs text-white/45 truncate">{subtitle}</p>}
-        {leg.reasonLine && (
-          <p className="text-xs text-white/45 mt-0.5 truncate">{leg.reasonLine}</p>
+        {subtitle && <p className="text-xs text-white/40 truncate">{subtitle}</p>}
+        {leg.reasonLine && reasonUi && (
+          <p className={`${reasonUi.className} mt-0.5 leading-snug`}>
+            {reasonUi.prefix}
+            {leg.reasonLine}
+          </p>
         )}
         <div className="flex flex-wrap gap-1 mt-1">
           {tags.map((t) => (
             <span
               key={t}
               className={`text-xs px-2 py-0.5 rounded-full ${
-                t === "Value"
+                t === "Value" || t === "Blowout risk"
                   ? "bg-accent-value/20 text-accent-value"
                   : t === "High probability"
                     ? "bg-accent-high/20 text-accent-high"

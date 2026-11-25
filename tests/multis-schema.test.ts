@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import type { MultiBet } from "../lib/types";
 import { loadPublishedMultis } from "./public-data-fixture";
 
-const multis = loadPublishedMultis("2026-11-25");
+const multis = loadPublishedMultis("2026-11-26");
 
 describe("multis.json schema", () => {
   it("has bestBookie fields and no stake/oneInX", () => {
