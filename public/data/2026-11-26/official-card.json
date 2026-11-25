@@ -1,9 +1,730 @@
 {
-  "lockedAt": "2026-11-25T10:54:55.151Z",
-  "publishedAt": "2026-11-25T10:54:55.151Z",
-  "republishedAt": "2026-11-25T10:54:55.151Z",
+  "lockedAt": "2026-11-25T11:08:41.132Z",
+  "publishedAt": "2026-11-25T11:08:41.132Z",
+  "republishedAt": "2026-11-25T11:08:41.132Z",
   "slateDate": "2026-11-26",
-  "bookie": "Sportsbet",
+  "bookie": "Ladbrokes",
+  "legSnapshots": {
+    "3136195-pts-20": {
+      "id": "3136195-pts-20",
+      "playerId": "3136195",
+      "playerName": "Karl-Anthony Towns",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3136195.png",
+      "gameId": "401909319",
+      "team": "New York Knicks",
+      "opponent": "Cleveland Cavaliers",
+      "market": "pts",
+      "line": 20,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.62,
+      "fairPrice": 1.35,
+      "takeAt": 1.46,
+      "probability": 0.742,
+      "reasons": [
+        "OG Anunoby out: +3.5 pts",
+        "Opponent missing 1 big(s): +1.2 reb",
+        "voids if out"
+      ],
+      "reasonLine": "Anunoby out → +3.5 pts · 7/10 hits at line",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "miss"
+      ],
+      "bookiePrices": {
+        "SportsBet": 1.61,
+        "Picklebet (AU)": 1.55,
+        "Betr": 1.54,
+        "Unibet": 1.68,
+        "TABtouch": 1.68,
+        "Neds": 1.62,
+        "Ladbrokes": 1.62,
+        "TAB": 1.42,
+        "PointsBet (AU)": 1.59,
+        "Bet Right": 1.55
+      },
+      "questionable": true,
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    "4903027-reb-7": {
+      "id": "4903027-reb-7",
+      "playerId": "4903027",
+      "playerName": "Cedric Coward",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4903027.png",
+      "gameId": "401909321",
+      "team": "Memphis Grizzlies",
+      "opponent": "LA Clippers",
+      "market": "reb",
+      "line": 7,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.72,
+      "fairPrice": 1.41,
+      "takeAt": 1.52,
+      "probability": 0.711,
+      "reasons": [
+        "Scotty Pippen Jr. out: +1.4 pts",
+        "Cameron Boozer out: +2.4 pts",
+        "boards shared"
+      ],
+      "reasonLine": "Clippers rank 7th worst defending rebounds · 7/10 hits at line",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit"
+      ],
+      "bookiePrices": {
+        "Betr": 1.61,
+        "Neds": 1.72,
+        "Ladbrokes": 1.72,
+        "Picklebet (AU)": 1.62,
+        "Bet Right": 1.62,
+        "SportsBet": 1.68
+      },
+      "questionable": false,
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    "4278073-ast-5": {
+      "id": "4278073-ast-5",
+      "playerId": "4278073",
+      "playerName": "Shai Gilgeous-Alexander",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278073.png",
+      "gameId": "401909320",
+      "team": "Oklahoma City Thunder",
+      "opponent": "Minnesota Timberwolves",
+      "market": "ast",
+      "line": 5,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.52,
+      "fairPrice": 1.43,
+      "takeAt": 1.54,
+      "probability": 0.7,
+      "reasons": [
+        "Chet Holmgren out: +7.2 pts",
+        "boards shared"
+      ],
+      "reasonLine": "Teammate Holmgren out → +7.2 pts · L10 avg 5.1 ast vs 5+ line",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "hit",
+        "miss",
+        "miss",
+        "hit",
+        "miss",
+        "hit"
+      ],
+      "bookiePrices": {
+        "Picklebet (AU)": 1.5,
+        "Betr": 1.5,
+        "TABtouch": 1.54,
+        "Unibet": 1.54,
+        "Neds": 1.52,
+        "Ladbrokes": 1.52,
+        "Bet Right": 1.5
+      },
+      "questionable": false,
+      "tags": [
+        "Value"
+      ]
+    },
+    "4601025-pts-10": {
+      "id": "4601025-pts-10",
+      "playerId": "4601025",
+      "playerName": "Pelle Larsson",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4601025.png",
+      "gameId": "401909317",
+      "team": "Miami Heat",
+      "opponent": "Philadelphia 76ers",
+      "market": "pts",
+      "line": 10,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.46,
+      "fairPrice": 1.31,
+      "takeAt": 1.41,
+      "probability": 0.76,
+      "reasons": [
+        "boards shared"
+      ],
+      "reasonLine": "76ers rank 8th worst defending points · L10 avg 11.3 pts vs 10+ line",
+      "recentVsLine": [
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "bookiePrices": {
+        "SportsBet": 1.43,
+        "Unibet": 1.43,
+        "TABtouch": 1.43,
+        "Neds": 1.46,
+        "Ladbrokes": 1.46,
+        "TAB": 1.45,
+        "PointsBet (AU)": 1.42
+      },
+      "questionable": false,
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    "4433249-reb-10": {
+      "id": "4433249-reb-10",
+      "playerId": "4433249",
+      "playerName": "Moussa Diabate",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4433249.png",
+      "gameId": "401909318",
+      "team": "Charlotte Hornets",
+      "opponent": "Chicago Bulls",
+      "market": "reb",
+      "line": 10,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.52,
+      "fairPrice": 1.4,
+      "takeAt": 1.51,
+      "probability": 0.713,
+      "reasons": [
+        "boards shared"
+      ],
+      "reasonLine": "5/5 hits at line · L10 avg 11.6 reb vs 10+ line",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "miss",
+        "hit",
+        "miss"
+      ],
+      "bookiePrices": {
+        "Neds": 1.52,
+        "Ladbrokes": 1.52,
+        "TAB": 1.42,
+        "SportsBet": 1.49,
+        "PointsBet (AU)": 1.5
+      },
+      "questionable": false,
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    "3136195-pts-30": {
+      "id": "3136195-pts-30",
+      "playerId": "3136195",
+      "playerName": "Karl-Anthony Towns",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3136195.png",
+      "gameId": "401909319",
+      "team": "New York Knicks",
+      "opponent": "Cleveland Cavaliers",
+      "market": "pts",
+      "line": 30,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 5.6,
+      "fairPrice": 3.77,
+      "takeAt": 4.07,
+      "probability": 0.265,
+      "reasons": [
+        "OG Anunoby out: +3.5 pts",
+        "Opponent missing 1 big(s): +1.2 reb",
+        "voids if out"
+      ],
+      "reasonLine": "Anunoby out → +3.5 pts · Teammate Opponent missing 1 big(s): +1.2 reb",
+      "recentVsLine": [
+        "hit",
+        "miss",
+        "miss",
+        "miss",
+        "miss"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "miss",
+        "miss",
+        "miss",
+        "miss",
+        "miss",
+        "miss",
+        "miss",
+        "miss",
+        "miss"
+      ],
+      "bookiePrices": {
+        "SportsBet": 6,
+        "Picklebet (AU)": 6.5,
+        "Betr": 6.5,
+        "Neds": 5.6,
+        "Ladbrokes": 5.6,
+        "TAB": 4.5,
+        "PointsBet (AU)": 5.75,
+        "Bet Right": 6.5
+      },
+      "questionable": true,
+      "tags": [
+        "Value"
+      ]
+    },
+    "4278073-ast-7": {
+      "id": "4278073-ast-7",
+      "playerId": "4278073",
+      "playerName": "Shai Gilgeous-Alexander",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278073.png",
+      "gameId": "401909320",
+      "team": "Oklahoma City Thunder",
+      "opponent": "Minnesota Timberwolves",
+      "market": "ast",
+      "line": 7,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 2.55,
+      "fairPrice": 2.49,
+      "takeAt": 2.69,
+      "probability": 0.402,
+      "reasons": [
+        "Chet Holmgren out: +7.2 pts",
+        "boards shared"
+      ],
+      "reasonLine": "Teammate Holmgren out → +7.2 pts · L10 avg 5.1 ast vs 7+ line",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "miss"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "miss",
+        "miss",
+        "miss",
+        "hit",
+        "miss",
+        "hit"
+      ],
+      "bookiePrices": {
+        "Picklebet (AU)": 2.8,
+        "Betr": 2.8,
+        "TABtouch": 2.95,
+        "Unibet": 2.95,
+        "Neds": 2.55,
+        "Ladbrokes": 2.55,
+        "Bet Right": 2.8
+      },
+      "questionable": false,
+      "tags": [
+        "Value"
+      ]
+    },
+    "4601025-pts-15": {
+      "id": "4601025-pts-15",
+      "playerId": "4601025",
+      "playerName": "Pelle Larsson",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4601025.png",
+      "gameId": "401909317",
+      "team": "Miami Heat",
+      "opponent": "Philadelphia 76ers",
+      "market": "pts",
+      "line": 15,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 2.75,
+      "fairPrice": 3.24,
+      "takeAt": 3.5,
+      "probability": 0.309,
+      "reasons": [
+        "boards shared"
+      ],
+      "reasonLine": "76ers rank 8th worst defending points · L10 avg 11.3 pts vs 15+ line",
+      "recentVsLine": [
+        "hit",
+        "miss",
+        "miss",
+        "miss",
+        "miss"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "miss",
+        "miss",
+        "miss",
+        "miss",
+        "miss",
+        "miss",
+        "hit",
+        "hit",
+        "miss"
+      ],
+      "bookiePrices": {
+        "SportsBet": 2.76,
+        "Neds": 2.75,
+        "Ladbrokes": 2.75,
+        "TAB": 2.4,
+        "PointsBet (AU)": 2.75
+      },
+      "questionable": false,
+      "tags": []
+    },
+    "5104157-q1reb-3": {
+      "id": "5104157-q1reb-3",
+      "playerId": "5104157",
+      "playerName": "Victor Wembanyama",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5104157.png",
+      "gameId": "401909325",
+      "team": "San Antonio Spurs",
+      "opponent": "Portland Trail Blazers",
+      "market": "q1reb",
+      "line": 3,
+      "publishedBookie": "",
+      "fairPrice": 1.31,
+      "takeAt": 1.41,
+      "probability": 0.764,
+      "reasons": [
+        "voids if out"
+      ],
+      "reasonLine": "7/10 hits at line · L10 avg 3.6 reb vs 3+ line",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "miss",
+        "hit",
+        "hit"
+      ],
+      "questionable": true,
+      "tags": [
+        "High probability"
+      ]
+    },
+    "4432194-q1reb-2": {
+      "id": "4432194-q1reb-2",
+      "playerId": "4432194",
+      "playerName": "Day'Ron Sharpe",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432194.png",
+      "gameId": "401909322",
+      "team": "Brooklyn Nets",
+      "opponent": "Milwaukee Bucks",
+      "market": "q1reb",
+      "line": 2,
+      "publishedBookie": "",
+      "fairPrice": 1.39,
+      "takeAt": 1.5,
+      "probability": 0.717,
+      "reasons": [],
+      "reasonLine": "Bucks rank 1st worst defending rebounds · 7/10 hits at line",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "miss",
+        "hit"
+      ],
+      "questionable": false,
+      "tags": []
+    },
+    "4066328-q1reb-2": {
+      "id": "4066328-q1reb-2",
+      "playerId": "4066328",
+      "playerName": "Jarrett Allen",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4066328.png",
+      "gameId": "401909319",
+      "team": "Cleveland Cavaliers",
+      "opponent": "New York Knicks",
+      "market": "q1reb",
+      "line": 2,
+      "publishedBookie": "",
+      "fairPrice": 1.31,
+      "takeAt": 1.41,
+      "probability": 0.765,
+      "reasons": [
+        "boards shared"
+      ],
+      "reasonLine": "7/10 hits at line · L10 avg 2.9 reb vs 2+ line",
+      "recentVsLine": [
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit"
+      ],
+      "questionable": false,
+      "tags": [
+        "High probability"
+      ]
+    },
+    "3448-q1reb-2": {
+      "id": "3448-q1reb-2",
+      "playerId": "3448",
+      "playerName": "Brook Lopez",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3448.png",
+      "gameId": "401909321",
+      "team": "LA Clippers",
+      "opponent": "Memphis Grizzlies",
+      "market": "q1reb",
+      "line": 2,
+      "publishedBookie": "",
+      "fairPrice": 1.48,
+      "takeAt": 1.6,
+      "probability": 0.674,
+      "reasons": [
+        "boards shared"
+      ],
+      "reasonLine": "7/10 hits at line · L10 avg 2.0 reb vs 2+ line",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "miss",
+        "miss"
+      ],
+      "questionable": false,
+      "tags": []
+    },
+    "3155942-q1reb-2": {
+      "id": "3155942-q1reb-2",
+      "playerId": "3155942",
+      "playerName": "Domantas Sabonis",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3155942.png",
+      "gameId": "401909324",
+      "team": "Sacramento Kings",
+      "opponent": "Golden State Warriors",
+      "market": "q1reb",
+      "line": 2,
+      "publishedBookie": "",
+      "fairPrice": 1.32,
+      "takeAt": 1.43,
+      "probability": 0.756,
+      "reasons": [
+        "boards shared"
+      ],
+      "reasonLine": "Warriors rank 3rd worst defending rebounds · 7/10 hits at line",
+      "recentVsLine": [
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "miss"
+      ],
+      "questionable": false,
+      "tags": [
+        "High probability"
+      ]
+    },
+    "4601023-q1reb-2": {
+      "id": "4601023-q1reb-2",
+      "playerId": "4601023",
+      "playerName": "Oso Ighodaro",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4601023.png",
+      "gameId": "401909323",
+      "team": "Phoenix Suns",
+      "opponent": "Houston Rockets",
+      "market": "q1reb",
+      "line": 2,
+      "publishedBookie": "",
+      "fairPrice": 1.4,
+      "takeAt": 1.51,
+      "probability": 0.713,
+      "reasons": [
+        "boards shared"
+      ],
+      "reasonLine": "7/10 hits at line · L10 avg 2.4 reb vs 2+ line",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "miss"
+      ],
+      "questionable": false,
+      "tags": []
+    },
+    "4066261-pts-30": {
+      "id": "4066261-pts-30",
+      "playerId": "4066261",
+      "playerName": "Bam Adebayo",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4066261.png",
+      "gameId": "401909317",
+      "team": "Miami Heat",
+      "opponent": "Philadelphia 76ers",
+      "market": "pts",
+      "line": 30,
+      "publishedBookie": "PointsBet",
+      "publishedPrice": 11,
+      "fairPrice": 7.83,
+      "takeAt": 8.46,
+      "probability": 0.128,
+      "reasons": [
+        "boards shared"
+      ],
+      "reasonLine": "L10 avg 20.9 pts vs 30+ line",
+      "recentVsLine": [
+        "miss",
+        "miss",
+        "miss",
+        "miss",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "miss",
+        "miss",
+        "miss",
+        "miss",
+        "hit",
+        "miss",
+        "miss",
+        "miss",
+        "hit",
+        "miss"
+      ],
+      "bookiePrices": {
+        "SportsBet": 9.5,
+        "Neds": 11,
+        "Ladbrokes": 11,
+        "TAB": 7.5,
+        "PointsBet (AU)": 11
+      },
+      "questionable": false,
+      "tags": [
+        "Value"
+      ]
+    }
+  },
   "multis": [
     {
       "type": "mainPlay",
@@ -11,13 +732,13 @@
       "legs": [
         "3136195-pts-20",
         "4903027-reb-7",
+        "4278073-ast-5",
         "4601025-pts-10",
-        "4433249-reb-10",
-        "4278073-ast-5"
+        "4433249-reb-10"
       ],
-      "combinedProbability": 0.19954980264799996,
-      "combinedFairPrice": 5.01,
-      "combinedTakeAt": 5.41,
+      "combinedProbability": 0.20011270759199995,
+      "combinedFairPrice": 5,
+      "combinedTakeAt": 5.4,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 9.4,
       "bookieTotals": {
@@ -31,13 +752,13 @@
       "legs": [
         "3136195-pts-30",
         "4903027-reb-7",
+        "4278073-ast-7",
         "4601025-pts-15",
-        "4433249-reb-10",
-        "4278073-ast-7"
+        "4433249-reb-10"
       ],
-      "combinedProbability": 0.01664049233709,
-      "combinedFairPrice": 60.09,
-      "combinedTakeAt": 64.9,
+      "combinedProbability": 0.01668743307711,
+      "combinedFairPrice": 59.93,
+      "combinedTakeAt": 64.72,
       "bestBookie": "Ladbrokes",
       "bestBookieTotal": 102.67,
       "bookieTotals": {
@@ -94,7 +815,7 @@
         "Moussa Diabate",
         "Jalen Smith",
         "Karl-Anthony Towns",
-        "Jalen Brunson",
+        "Peyton Watson",
         "Jared McCain",
         "LaMelo Ball",
         "Shai Gilgeous-Alexander",
@@ -130,7 +851,7 @@
   ],
   "whatChanged": [
     "Chet Holmgren out → Shai Gilgeous-Alexander +7.2 pts",
-    "OG Anunoby out → Jalen Brunson +4.7 pts",
+    "OG Anunoby out → Jalen Brunson +4.5 pts",
     "Cameron Boozer out → Ty Jerome +2.7 pts"
   ],
   "injuries": [
@@ -142,7 +863,7 @@
       "gameId": "401909322",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4576060",
@@ -152,7 +873,7 @@
       "gameId": "401909318",
       "status": "Doubtful",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "3032979",
@@ -162,7 +883,7 @@
       "gameId": "401909318",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4602025",
@@ -172,7 +893,7 @@
       "gameId": "401909318",
       "status": "Probable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "3135045",
@@ -182,7 +903,7 @@
       "gameId": "401909318",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5061575",
@@ -192,7 +913,7 @@
       "gameId": "401909318",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4397189",
@@ -202,7 +923,7 @@
       "gameId": "401909318",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "2595516",
@@ -212,7 +933,7 @@
       "gameId": "401909318",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5095151",
@@ -222,7 +943,7 @@
       "gameId": "401909318",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "nae'qwan tomlin",
@@ -232,7 +953,7 @@
       "gameId": "401909319",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4432158",
@@ -242,7 +963,7 @@
       "gameId": "401909319",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5175737",
@@ -252,7 +973,7 @@
       "gameId": "401909324",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4397040",
@@ -262,7 +983,7 @@
       "gameId": "401909324",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "3975",
@@ -272,7 +993,7 @@
       "gameId": "401909324",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "3102531",
@@ -282,7 +1003,7 @@
       "gameId": "401909324",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4432171",
@@ -292,7 +1013,7 @@
       "gameId": "401909324",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerName": "Jimmy Butler III",
@@ -320,7 +1041,7 @@
       "gameId": "401909321",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerName": "Scotty Pippen Jr.",
@@ -348,7 +1069,7 @@
       "gameId": "401909321",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5105550",
@@ -358,7 +1079,7 @@
       "gameId": "401909321",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5105462",
@@ -368,7 +1089,7 @@
       "gameId": "401909321",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerName": "Giannis Antetokounmpo",
@@ -387,7 +1108,7 @@
       "gameId": "401909320",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4432247",
@@ -397,7 +1118,7 @@
       "gameId": "401909320",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4594268",
@@ -407,7 +1128,7 @@
       "gameId": "401909320",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4431823",
@@ -417,7 +1138,7 @@
       "gameId": "401909319",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "2528426",
@@ -427,7 +1148,7 @@
       "gameId": "401909319",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "3062679",
@@ -437,7 +1158,7 @@
       "gameId": "401909319",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerName": "OG Anunoby",
@@ -456,7 +1177,7 @@
       "gameId": "401909319",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5159925",
@@ -466,7 +1187,7 @@
       "gameId": "401909320",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4432823",
@@ -476,7 +1197,7 @@
       "gameId": "401909320",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5174983",
@@ -486,7 +1207,7 @@
       "gameId": "401909320",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4593803",
@@ -496,7 +1217,7 @@
       "gameId": "401909320",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5061603",
@@ -506,7 +1227,7 @@
       "gameId": "401909320",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4683692",
@@ -516,7 +1237,7 @@
       "gameId": "401909320",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerName": "Chet Holmgren",
@@ -544,7 +1265,7 @@
       "gameId": "401909317",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerName": "Mark Williams",
@@ -563,7 +1284,7 @@
       "gameId": "401909325",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerName": "Vit Krejci",
@@ -582,7 +1303,7 @@
       "gameId": "401909325",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4914336",
@@ -592,7 +1313,7 @@
       "gameId": "401909325",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4898371",
@@ -602,7 +1323,7 @@
       "gameId": "401909324",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "3907387",
@@ -612,7 +1333,7 @@
       "gameId": "401909324",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerName": "De'Aaron Fox",
@@ -631,7 +1352,7 @@
       "gameId": "401909325",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5037871",
@@ -641,7 +1362,7 @@
       "gameId": "401909325",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "6440",
@@ -651,7 +1372,7 @@
       "gameId": "401909325",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5101845",
@@ -661,7 +1382,7 @@
       "gameId": "401909325",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4837356",
@@ -671,7 +1392,7 @@
       "gameId": "401909317",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4431772",
@@ -681,7 +1402,7 @@
       "gameId": "401909317",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4700818",
@@ -691,7 +1412,7 @@
       "gameId": "401909317",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4593049",
@@ -701,7 +1422,7 @@
       "gameId": "401909318",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4898010",
@@ -711,7 +1432,7 @@
       "gameId": "401909318",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4684269",
@@ -721,7 +1442,7 @@
       "gameId": "401909318",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4997530",
@@ -731,7 +1452,7 @@
       "gameId": "401909319",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5157587",
@@ -741,7 +1462,7 @@
       "gameId": "401909320",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "4870564",
@@ -751,7 +1472,7 @@
       "gameId": "401909322",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5174655",
@@ -761,7 +1482,7 @@
       "gameId": "401909322",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5037873",
@@ -771,7 +1492,7 @@
       "gameId": "401909322",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5242502",
@@ -781,7 +1502,7 @@
       "gameId": "401909322",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5105832",
@@ -791,7 +1512,7 @@
       "gameId": "401909321",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     },
     {
       "playerId": "5105553",
@@ -801,7 +1522,7 @@
       "gameId": "401909323",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-25T10:54:55.151Z"
+      "updatedAt": "2026-11-25T11:08:41.132Z"
     }
   ],
   "oddsLastPulled": "2026-11-25T10:29:00.533Z"
