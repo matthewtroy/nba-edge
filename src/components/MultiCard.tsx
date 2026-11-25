@@ -385,6 +385,7 @@ function CrossLegGroups({
   return (
     <>
       {order.map((gameId) => {
+        if (!gameId) return null;
         const rows = byGame.get(gameId);
         if (!rows?.length) return null;
         const game = slate?.find((g) => g.id === gameId);

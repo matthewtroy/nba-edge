@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode, type TouchEvent } from "react";
 import { createPortal } from "react-dom";
 import type { InjuryEntry, PickLeg, SlateGame } from "@lib/types";
 import { AU_BOOKMAKERS } from "@lib/types";
@@ -7,7 +7,6 @@ import { siblingRungs } from "@lib/leg-rungs";
 import { marketLabel, verdict } from "../utils/format";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
 import { visibleLegReasons } from "@lib/leg-display";
-import { isInjuryRedistributionReason, formatInjuryReasonLine } from "@lib/injury-reason";
 import { FEED_BOOKIES } from "@lib/card-bookie";
 import { legBookieQuoteView } from "@lib/leg-bookie-quote";
 import { InjuryStatusBadge, injuryStatusForPlayer } from "./InjuryStatusBadge";
@@ -51,7 +50,7 @@ function LastTenBarChart({
               }`}
             />
           ))}
-        </motion.div>
+        </div>
         <p className="text-[10px] text-white/45 mt-1.5">Stat values unavailable</p>
       </div>
     );
@@ -204,10 +203,10 @@ export function LegSheet({
 
   const bookies = [...new Set([...FEED_BOOKIES, ...AU_BOOKMAKERS])];
 
-  const onTouchStart = (e: { touches: { clientY: number }[] }) => {
+  const onTouchStart = (e: TouchEvent) => {
     setTouchStartY(e.touches[0].clientY);
   };
-  const onTouchMove = (e: { touches: { clientY: number }[] }) => {
+  const onTouchMove = (e: TouchEvent) => {
     if (touchStartY == null) return;
     const dy = e.touches[0].clientY - touchStartY;
     if (dy > 0) setDragY(dy);
@@ -218,10 +217,9 @@ export function LegSheet({
     setTouchStartY(null);
   };
 
+  if (typeof document === "undefined") return null;
   const portalTarget =
-    typeof document !== "undefined"
-      ? document.getElementById("leg-sheet-portal") ?? document.body
-      : document.body;
+    document.getElementById("leg-sheet-portal") ?? document.body;
 
   return createPortal(
     <MotionOverlay onClose={onClose}>

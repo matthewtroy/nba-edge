@@ -113,6 +113,9 @@ jobs:
       - name: Typecheck pipeline
         run: npm run typecheck
 
+      - name: Typecheck app
+        run: npm run typecheck:app
+
       - name: NBA.com tracking probe
         continue-on-error: true
         run: npx tsx scripts/nba-tracking-probe.ts

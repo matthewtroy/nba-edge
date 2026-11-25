@@ -37,10 +37,9 @@ export function BookieBottomSheet({
 
   if (!open) return null;
 
+  if (typeof document === "undefined") return null;
   const portalTarget =
-    typeof document !== "undefined"
-      ? document.getElementById("bookie-sheet-portal") ?? document.body
-      : document.body;
+    document.getElementById("bookie-sheet-portal") ?? document.body;
 
   return createPortal(
     <BookieSheetOverlay onClose={onClose}>

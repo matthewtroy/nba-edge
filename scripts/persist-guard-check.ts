@@ -9,6 +9,12 @@ import {
   persistDataBranchGuardReason,
   slateOddsSnapshotKeyCount,
 } from "../lib/odds-cache-guard.js";
+import {
+  historyEntryCount,
+  persistJsonShrinkReason,
+  recordKeyCount,
+} from "../lib/espn-cache-guard.js";
+import type { HistoryJson } from "../lib/types.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const staging = process.argv[2];
@@ -68,6 +74,56 @@ if (defaultDate) {
     priorSlateCacheKeys = slateOddsSnapshotKeyCount(prior, defaultDate);
   } catch {
     priorSlateCacheKeys = 0;
+  }
+}
+
+function readJsonFromDataBranch(relPath: string): unknown | null {
+  try {
+    const raw = execFileSync("git", ["show", `origin/data:${relPath}`], {
+      cwd: rootDir,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    });
+    return JSON.parse(raw) as unknown;
+  } catch {
+    return null;
+  }
+}
+
+function countPersistedFile(relPath: string, stagingPath: string): number {
+  if (!fs.existsSync(stagingPath)) return 0;
+  try {
+  const next = JSON.parse(fs.readFileSync(stagingPath, "utf8")) as unknown;
+  if (relPath.endsWith("history.json")) {
+    return historyEntryCount(next as HistoryJson);
+  }
+  return recordKeyCount(next as Record<string, unknown>);
+  } catch {
+    return 0;
+  }
+}
+
+const jsonShrinkChecks: { rel: string; label: string }[] = [
+  { rel: "public/data/game-log-cache.json", label: "game-log-cache.json" },
+  { rel: "public/data/h2h-season-cache.json", label: "h2h-season-cache.json" },
+  { rel: "public/data/history.json", label: "history.json" },
+];
+
+for (const { rel, label } of jsonShrinkChecks) {
+  const priorRaw = readJsonFromDataBranch(rel);
+  let priorCount = 0;
+  if (priorRaw != null) {
+    if (rel.endsWith("history.json")) {
+      priorCount = historyEntryCount(priorRaw as HistoryJson);
+    } else {
+      priorCount = recordKeyCount(priorRaw as Record<string, unknown>);
+    }
+  }
+  const nextCount = countPersistedFile(rel, path.join(staging, path.basename(rel)));
+  const shrinkReason = persistJsonShrinkReason(label, priorCount, nextCount);
+  if (shrinkReason) {
+    console.error(`persist data branch guard: blocked — ${shrinkReason}`);
+    process.exit(1);
   }
 }
 

@@ -127,6 +127,13 @@ import {
   oddsMapDowngradeBlocked,
   oddsMapKeyCount,
 } from "../lib/odds-cache-guard.js";
+import {
+  espnCacheShrinkBlocked,
+  historyEntryCount,
+  recordKeyCount,
+  warnEspnCacheShrinkBlocked,
+} from "../lib/espn-cache-guard.js";
+import { loadH2hSeasonCache, saveH2hSeasonCache } from "../lib/h2h-cache.js";
 
 const ET = "America/New_York";
 
@@ -182,10 +189,10 @@ export async function runLivePipeline(
     yesterdayPlayed = teamIdsFromFinalGames(boardYesterday);
     let merged = dedupeGames(parseScoreboard(boardToday, yesterdayPlayed));
     const todaySlate = filterSlateToTodaySydney(merged, now);
-    let tomorrowSlate = filterSlateToNextSydney(merged);
     const tomorrowYmd = tomorrowSydneyDateString(now);
+    let tomorrowSlate = filterOpenGamesOnSydneyDate(merged, tomorrowYmd);
     console.log(
-      `dual-slate: scoreboard ET ${todayEt} · merged=${merged.length} · today Sydney=${todaySlate.length} · tomorrow on board=${tomorrowSlate.length}`
+      `dual-slate: scoreboard ET ${todayEt} · merged=${merged.length} · today Sydney=${todaySlate.length} · tomorrow Sydney ${tomorrowYmd}=${tomorrowSlate.length}`
     );
     if (!tomorrowSlate.length) {
       const tomorrowBoard = await maybeTomorrowBoard(now, todaySlate, yesterdayPlayed);
@@ -233,6 +240,10 @@ export async function runLivePipeline(
   injuries = injuries.filter((i) => slateTeamSet.has(i.teamId));
 
   const gameLogCache = loadGameLogCache(outDir);
+  const baselineGameLogKeys = recordKeyCount(gameLogCache);
+  const baselineH2hSeasonCache = loadH2hSeasonCache(outDir);
+  const baselineH2hSeasonKeys = recordKeyCount(baselineH2hSeasonCache);
+  const espnDegraded = () => sources.espn !== "ok";
   let leagueBackfillReport: LeagueBackfillReport | undefined;
   try {
     const rosters = await mapPool(teamIds, 4, async (tid) => {
@@ -405,7 +416,12 @@ export async function runLivePipeline(
       concurrency: 2,
       until: now,
     });
-    saveGameLogCache(outDir, gameLogCache);
+    const nextGameLogKeys = recordKeyCount(gameLogCache);
+    if (espnDegraded() && espnCacheShrinkBlocked(baselineGameLogKeys, nextGameLogKeys)) {
+      warnEspnCacheShrinkBlocked("game-log-cache", baselineGameLogKeys, nextGameLogKeys);
+    } else {
+      saveGameLogCache(outDir, gameLogCache);
+    }
     console.log(
       `espn logs: ${players.length} players, ${cacheHits} game-log cache hits` +
         ` · backfill refreshed ${backfill.refreshed}`
@@ -682,6 +698,11 @@ export async function runLivePipeline(
       }
     });
     console.log(`h2h season logs: ${h2hReady}/${byId.size} players (${3} ESPN seasons)`);
+    const nextH2hKeys = recordKeyCount(loadH2hSeasonCache(outDir));
+    if (espnDegraded() && espnCacheShrinkBlocked(baselineH2hSeasonKeys, nextH2hKeys)) {
+      warnEspnCacheShrinkBlocked("h2h-season-cache", baselineH2hSeasonKeys, nextH2hKeys);
+      saveH2hSeasonCache(outDir, baselineH2hSeasonCache);
+    }
   } catch (e) {
     console.warn("h2h season logs:", e instanceof Error ? e.message : e);
   }
@@ -796,6 +817,8 @@ export async function runLivePipeline(
   }
 
   let history = loadHistory(rootDir);
+  const baselineHistory = history;
+  const baselineHistoryCount = historyEntryCount(history);
   const picksById = new Map(todayPicks.map((p) => [p.id, p]));
   const boxesByGame = await loadFinalBoxesForGrading(now, summaryCache);
   history = gradeOpenLegs(history, picksById, boxesByGame);
@@ -816,6 +839,11 @@ export async function runLivePipeline(
   }
 
   fs.mkdirSync(outDir, { recursive: true });
+  const nextHistoryCount = historyEntryCount(history);
+  if (espnDegraded() && espnCacheShrinkBlocked(baselineHistoryCount, nextHistoryCount)) {
+    warnEspnCacheShrinkBlocked("history.json", baselineHistoryCount, nextHistoryCount);
+    history = baselineHistory;
+  }
   fs.writeFileSync(path.join(outDir, "history.json"), JSON.stringify(history, null, 2));
   fs.writeFileSync(oddsCachePath, JSON.stringify(cache, null, 2));
   writeDataIndex(outDir, buildDataIndex(indexEntries, now));

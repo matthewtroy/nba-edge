@@ -37,6 +37,7 @@ function LegBadge({ label, danger }: { label: string; danger?: boolean }) {
 export function MultiLegRow({
   leg,
   injuries,
+  picks,
   slate,
   bookie,
   catalog,

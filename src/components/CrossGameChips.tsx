@@ -45,7 +45,7 @@ export function CrossGameChips({ chips, enabled, onToggle }: Props) {
               {!excluded && chip.legCount > 0 ? ` · ${chip.legCount}` : ""}
             </button>
             {excluded && popover === chip.id && chip.excludedReason && (
-              <motionPopover
+              <MotionPopover
                 message={chip.excludedReason}
                 onClose={() => setPopover(null)}
               />
@@ -57,7 +57,7 @@ export function CrossGameChips({ chips, enabled, onToggle }: Props) {
   );
 }
 
-function motionPopover({
+function MotionPopover({
   message,
   onClose,
 }: {

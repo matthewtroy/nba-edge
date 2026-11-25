@@ -1,13 +1,12 @@
 import { useMemo, useState } from "react";
 import type { DataBundle } from "../hooks/useData";
-import type { PickLeg } from "@lib/types";
+import type { MultiType, PickLeg } from "@lib/types";
 import { MultiCard } from "../components/MultiCard";
 import { NotBuiltSection } from "../components/NotBuiltSection";
 import { PersonalMultiBuilder } from "../components/PersonalMultiBuilder";
 import { usePersonalMultis } from "../hooks/usePersonalMultis";
 import { injuryAlertsForCard } from "@lib/injury-alerts-card";
 import { DateSwitcher } from "../components/DateSwitcher";
-import { sydneyDateString } from "@lib/official-card-time";
 import { sydneyTimeFromIso, viewerTimeFromIso } from "../utils/format";
 import { noGamesTodayMessage, viewerZoneLabel } from "@lib/viewer-slate";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
@@ -234,8 +233,9 @@ export function TodayScreen({
       )}
 
       {multis.map((m) => {
+        const multiType = m.type as MultiType | string;
         const cardFairOnly =
-          m.type === "q1Multi" || (slateFairOnly && m.type !== "q1Multi");
+          multiType === "q1Multi" || (slateFairOnly && multiType !== "q1Multi");
         return (
           <MultiCard
             key={`${m.type}-${m.variant ?? ""}-${m.legs.join()}`}
