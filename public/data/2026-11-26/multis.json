@@ -5,18 +5,18 @@
       "label": "Main Play",
       "legs": [
         "3136195-pts-20",
-        "4431671-reb-5",
         "4903027-reb-7",
+        "4278073-ast-5",
         "4601025-pts-10",
         "4433249-reb-10"
       ],
-      "combinedProbability": 0.20268558526103997,
-      "combinedFairPrice": 4.93,
-      "combinedTakeAt": 5.32,
+      "combinedProbability": 0.20011270759199995,
+      "combinedFairPrice": 5,
+      "combinedTakeAt": 5.4,
       "bestBookie": "Ladbrokes",
-      "bestBookieTotal": 8.26,
+      "bestBookieTotal": 9.4,
       "bookieTotals": {
-        "Ladbrokes": 8.26
+        "Ladbrokes": 9.4
       },
       "summary": "5 starter main lines"
     },
@@ -25,18 +25,18 @@
       "label": "Booster",
       "legs": [
         "3136195-pts-30",
-        "4431671-reb-7",
         "4903027-reb-7",
+        "4278073-ast-7",
         "4601025-pts-15",
         "4433249-reb-10"
       ],
-      "combinedProbability": 0.0182134741998,
-      "combinedFairPrice": 54.9,
-      "combinedTakeAt": 59.29,
+      "combinedProbability": 0.01668743307711,
+      "combinedFairPrice": 59.93,
+      "combinedTakeAt": 64.72,
       "bestBookie": "Ladbrokes",
-      "bestBookieTotal": 87.94,
+      "bestBookieTotal": 102.67,
       "bookieTotals": {
-        "Ladbrokes": 87.94
+        "Ladbrokes": 102.67
       },
       "summary": "Main Play +1 rung when Main leg ≤$4 at bookie, else same rung"
     },
@@ -70,7 +70,8 @@
       "bestBookieTotal": 63.25,
       "bookieTotals": {
         "Sportsbet": 57,
-        "Ladbrokes": 60.5,
+        "TAB": 33.75,
+        "Ladbrokes": 61.6,
         "PointsBet": 63.25
       },
       "summary": "One long leg per game"
@@ -89,8 +90,7 @@
         "Karl-Anthony Towns",
         "Jared McCain",
         "LaMelo Ball",
-        "Ty Jerome",
-        "Darius Garland",
+        "Rui Hachimura",
         "Julius Randle",
         "Egor Demin",
         "Kevin Durant",
