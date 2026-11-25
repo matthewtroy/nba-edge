@@ -1,9 +1,18 @@
 # NBA Edge — standing rules
 
-- Build for every slate, team and player. Never hardcode today's games, players, injuries or prices. Fixture data lives only in fixtures/ and is only used with --fixture.
-- No database, no Supabase, no accounts, no automatic Discord posting.
+## Hard isolation (Supabase & secrets)
+
+- **Only** Supabase project **NBA Edge**, ref `dzikozvlfrvsstkhzkzj`. Never other projects, orgs, or **Childcare Hub**.
+- **No** `supabase link`, `supabase login`, `supabase db push`, or any remote Supabase CLI/MCP from agents or CI in this repo. **No** Supabase MCP server config in the repo. Schema changes are **migration files only**; GitHub integration applies migrations on push to `main`.
+- Environment variables for the future hosted backend use the **`NBA_EDGE_*`** prefix only (e.g. `NBA_EDGE_SUPABASE_URL`, `NBA_EDGE_SUPABASE_ANON_KEY`). Never unprefixed `SUPABASE_*` in app, workflow, or docs examples.
+
+## Product & data
+
+- Build for every slate, team and player. Never hardcode today's games, players, injuries or prices. Fixture data lives only in `fixtures/` and is only used with `--fixture`.
+- **Backend (planned, not required for the static site today):** Supabase on the NBA Edge project for Auth, Stripe entitlements, Discord hooks, and pipeline persistence. The live site continues to run from JSON under `public/data/` until explicitly wired—**do not break that path** when adding migrations or docs.
+- No automatic Discord posting from the pipeline unless explicitly requested in a task.
 - The app never places bets and never claims to have bet365 prices.
-- API keys only come from .env.local or GitHub secrets. Never hardcode or log them.
+- API keys only come from `.env.local` or GitHub secrets. Never hardcode or log them.
 - Keep the UI simple. A number appears on a main screen only if it helps a betting decision.
-- If you find something wrong that contradicts the build prompt, fix it and cite the section of that prompt in the summary. Report improvements and refactors instead of doing them.
+- If you find something wrong that contradicts the build prompt or `docs/SYSTEM.md`, fix it only when the task allows code changes; otherwise report in summary. Report improvements and refactors instead of doing them.
 - Do not commit or push unless explicitly authorized.
