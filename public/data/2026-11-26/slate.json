@@ -91,8 +91,8 @@
     "awayTeam": "Phoenix Suns",
     "homeTeamId": "10",
     "awayTeamId": "21",
-    "spread": -9.5,
-    "total": 224.5,
+    "spread": -8.5,
+    "total": 223.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"
