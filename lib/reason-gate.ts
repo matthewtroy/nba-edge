@@ -26,6 +26,13 @@ function normalizeFactKey(text: string): string {
 
 /** Reject reason copy with impossible stat numbers (e.g. mis-parsed ESPN rows). */
 export function reasonPassesPlausibility(text: string): boolean {
+  const avgSeasonDup = text.match(/^avg ([\d.]+).* \(season ([\d.]+)\)/i);
+  if (
+    avgSeasonDup &&
+    Number(avgSeasonDup[1]).toFixed(1) === Number(avgSeasonDup[2]).toFixed(1)
+  ) {
+    return false;
+  }
   const t = text.toLowerCase();
   if (/allow [\d.]+\s+(pts|reb|ast|threes)/i.test(text) && /per game|to guards|to forwards|to centers/i.test(text)) {
     return true;

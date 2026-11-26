@@ -6,7 +6,6 @@ import fs from "fs";
 import path from "path";
 import type { PickLeg } from "../lib/types";
 import { legRowReasonLines } from "../lib/leg-row-reasons";
-import { REASON_TEXT_MAX } from "../lib/leg-reason-house";
 import { reasonCountHistogram, sampleLegsByMarket } from "../lib/reason-histogram";
 import { threesVolumeFromLogs } from "../lib/player-tracking-fetch";
 import { standaloneInjuryBlocks } from "../lib/injuries-standalone";
@@ -63,9 +62,6 @@ describe("item 1: leg reasons house style", () => {
       expect(leg).toBeTruthy();
       const lines = legRowReasonLines(leg);
       expect(lines.length).toBeGreaterThanOrEqual(2);
-      for (const row of lines) {
-        expect(row.text.length).toBeLessThanOrEqual(REASON_TEXT_MAX);
-      }
     });
   }
 

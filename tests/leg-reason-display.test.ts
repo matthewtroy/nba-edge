@@ -4,7 +4,7 @@ import path from "path";
 import type { PickLeg } from "../lib/types";
 import { legRowReasonLines } from "../lib/leg-row-reasons";
 import { threesVolumeFromLogs } from "../lib/player-tracking-fetch";
-import { REASON_TEXT_MAX } from "../lib/leg-reason-house";
+import { houseReasonText } from "../lib/leg-reason-house";
 
 const picks26 = JSON.parse(
   fs.readFileSync(path.join(process.cwd(), "tests/fixtures/2026-11-26/picks.json"), "utf8")
@@ -23,14 +23,16 @@ describe("leg reason display backfill", () => {
     expect(line).toMatch(/^3PA up:/);
   });
 
+  it("reason copy is never length-capped", () => {
+    const long = "Playing more: 38 last 5 (season 34) · Avg 31.2 pts last 10 (season 28.4)";
+    expect(houseReasonText(long)).toBe(long);
+  });
+
   for (const id of ["4683021-pts-30", "3136193-pts-25", "4066261-pts-25"]) {
     it(`fills frozen ${id} to at least two lines`, () => {
       const leg = picks26.find((p) => p.id === id)!;
       const lines = legRowReasonLines(leg);
       expect(lines.length).toBeGreaterThanOrEqual(2);
-      for (const row of lines) {
-        expect(row.text.length).toBeLessThanOrEqual(REASON_TEXT_MAX);
-      }
     });
   }
 });

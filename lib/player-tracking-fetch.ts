@@ -81,7 +81,7 @@ export function shotVolumeReason(tr: PlayerTrackingDay): string | undefined {
   const { fgaLast5PerGame: l5, fgaSeasonPerGame: season } = tr;
   if (l5 == null || season == null || season <= 0) return undefined;
   if (l5 < season * 1.05 && l5 < season + 1) return undefined;
-  return `Shot volume up: ${l5.toFixed(1)} FGA last 5 (season ${season.toFixed(1)})`;
+  return `FGA up: ${l5.toFixed(1)} last 5 (season ${season.toFixed(1)})`;
 }
 
 export function threesVolumeFromLogs(logs: PlayerGameLog[]): string | undefined {

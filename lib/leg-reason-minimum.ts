@@ -1,7 +1,7 @@
 import type { Market, PickLeg } from "./types.js";
 import type { LegReason } from "./leg-reason-types.js";
 import { gateLegReasons } from "./reason-gate.js";
-import { houseReasonLine, REASON_TEXT_MAX } from "./leg-reason-house.js";
+import { houseReasonLine } from "./leg-reason-house.js";
 
 function statKey(market: Market | string): "pts" | "reb" | "ast" | "threes" | "q1pts" | "q1reb" | "q1ast" {
   if (market === "3pm") return "threes";
@@ -51,22 +51,21 @@ export function avgReasonFromLeg(leg: PickLeg): string | undefined {
     const avg = values.slice(0, 10).reduce((s, v) => s + v, 0) / Math.min(10, values.length);
     const seasonVal = seasonStat(leg, stat);
     const suffix =
-      seasonVal != null ? ` (season ${seasonVal.toFixed(1)})` : "";
+      seasonVal != null && seasonVal.toFixed(1) !== avg.toFixed(1)
+        ? ` (season ${seasonVal.toFixed(1)})`
+        : "";
     return `Avg ${avg.toFixed(1)} ${word} last 10${suffix}`;
   }
   const lastFive = leg.lastFiveAvg;
   const season = leg.seasonAvg;
   const pick = pickStat(stat, lastFive, season);
-  if (pick == null && season) {
-    const s = pickStat(stat, undefined, season);
-    if (s != null) {
-      return `Avg ${s.toFixed(1)} ${word} (season ${s.toFixed(1)})`;
-    }
-  }
   if (pick == null) return undefined;
   const seasonVal = seasonStat(leg, stat);
-  const suffix = seasonVal != null ? ` (season ${seasonVal.toFixed(1)})` : "";
-  return `Avg ${pick.toFixed(1)} ${word} last 5${suffix}`;
+  const suffix =
+    seasonVal != null && seasonVal.toFixed(1) !== pick.toFixed(1)
+      ? ` (season ${seasonVal.toFixed(1)})`
+      : "";
+  return `Avg ${pick.toFixed(1)} ${word} last 10${suffix}`;
 }
 
 function seasonStat(
@@ -107,7 +106,7 @@ export function ensureLegReasonMinimum(
   if (out.length >= 2) {
     return out.slice(0, 3).map((r) => ({
       ...r,
-      text: houseReasonLine(r.text, REASON_TEXT_MAX),
+      text: houseReasonLine(r.text),
     }));
   }
   const formText = formReasonFromLeg(leg);
@@ -138,7 +137,7 @@ export function ensureLegReasonMinimum(
   }
   return out.slice(0, 3).map((r) => ({
     ...r,
-    text: houseReasonLine(r.text, REASON_TEXT_MAX),
+    text: houseReasonLine(r.text),
   }));
 }
 

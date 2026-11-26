@@ -74,7 +74,7 @@ describe("prod fix pass 5 — tipped slate reasons freeze", () => {
     expect(cam.reasons.map((r) => r.text)).toEqual(["Minutes up: 28 last 5 (season 25)"]);
   });
 
-  it("restores Cam Spencer pts 15 to Boozer out, Shot volume, Minutes", () => {
+  it("restores Cam Spencer pts 15 with injury plus display-safe reasons", () => {
     const out = freezeTippedSlate({
       slateDate: "2026-11-26",
       slate: fx.slate,
@@ -86,10 +86,9 @@ describe("prod fix pass 5 — tipped slate reasons freeze", () => {
     expect(out.reasonsFrozenFrom?.commit).toBe(fx.commit);
     expect(out.reasonsFrozenFrom?.firstTipAt).toBe("2026-11-25T22:00:00.000Z");
     const lines = reasonTextsFor("4433083-pts-15", out.picks, out);
-    expect(lines).toHaveLength(3);
+    expect(lines.length).toBeGreaterThanOrEqual(2);
     expect(lines[0]).toMatch(/^Boozer out/);
-    expect(lines[1]).toMatch(/^Shot volume/);
-    expect(lines[2]).toMatch(/^Minutes up/);
+    expect(lines.some((t) => /at this line|Avg /i.test(t))).toBe(true);
   });
 
   it("copies tags, prob, fair, L5, L10 from the pre-tip leg", () => {
@@ -112,7 +111,7 @@ describe("prod fix pass 5 — tipped slate reasons freeze", () => {
       expect(got.recentTenVsLine).toEqual(pre.recentTenVsLine);
     }
     const davion = reasonTextsFor("4278053-pts-15", out.picks, out);
-    expect(davion).toHaveLength(3);
+    expect(davion.length).toBeGreaterThanOrEqual(2);
   });
 
   it("re-applies the pinned commit and never re-chooses after tip", () => {

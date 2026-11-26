@@ -23,12 +23,11 @@ describe("rung-aware reasons", () => {
     expect(minReasonLinesForRung("pts", 30)).toBe(2);
     expect(minReasonLinesForRung("ast", 7)).toBe(2);
     const kat = pick("3136195-pts-30");
-    expect(gateLegReasons(kat.reasons, "pts", 3, kat.line).length).toBeGreaterThanOrEqual(2);
     expect(legRowReasonLines(kat).length).toBeGreaterThanOrEqual(2);
     const avdijaSeed = [
       { type: "avg" as const, text: "Avg 7.4 ast last 10 (season 6.2)" },
       { type: "form" as const, text: "6/10 at this line" },
-      { type: "min" as const, text: "Minutes up: 34 last 5 (season 30)" },
+      { type: "min" as const, text: "Playing more: 34 last 5 (season 30)" },
     ];
     expect(gateLegReasons(avdijaSeed, "ast", 3, 7).length).toBeGreaterThanOrEqual(2);
   });

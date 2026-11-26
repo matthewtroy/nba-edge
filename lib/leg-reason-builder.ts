@@ -1,11 +1,6 @@
 import type { Market, PickLeg, PlayerGameLog } from "./types.js";
 import type { DefenseRatingsBundle } from "./defense-ratings.js";
-import {
-  defenseAllowRow,
-  defenseRankFor,
-  leagueAvgAllowed,
-  paceRank,
-} from "./defense-ratings.js";
+import { defenseAllowRow, defenseRankFor, paceRank } from "./defense-ratings.js";
 import { MATCHUP_REASONS_ENABLED } from "./pricing-config.js";
 import { ordinal, shortTeamName } from "./ordinal.js";
 import { positionBucketLabel } from "./position-label.js";
@@ -25,14 +20,18 @@ import {
   shotVolumeReason,
   threesVolumeFromLogs,
 } from "./player-tracking-fetch.js";
-import { houseReasonLine } from "./leg-reason-house.js";
+import { houseReasonText } from "./leg-reason-house.js";
 import { q1HitRateLast10, q1SeasonHitFraction } from "./leg-history.js";
 import { ensureLegReasonMinimum } from "./leg-reason-minimum.js";
 import { h2hReasonPhrase } from "./h2h-reason.js";
 import { reasonTextHasBannedPhrase } from "./reason-ban.js";
 import { gateLegReasons, minReasonLinesForRung } from "./reason-gate.js";
 
-function hitCountL10(logs: PlayerGameLog[], market: Market, line: number): number | null {
+function hitCountL10(
+  logs: PlayerGameLog[],
+  market: Market,
+  line: number
+): { hits: number; total: number } | null {
   const sorted = [...logs].sort((a, b) => b.date.localeCompare(a.date));
   let hits = 0;
   let n = 0;
@@ -50,7 +49,7 @@ function hitCountL10(logs: PlayerGameLog[], market: Market, line: number): numbe
     if (v >= line) hits += 1;
   }
   if (n < 3) return null;
-  return hits;
+  return { hits, total: n };
 }
 
 function matchupPhrase(
@@ -62,7 +61,7 @@ function matchupPhrase(
 ): string | undefined {
   if (!MATCHUP_REASONS_ENABLED || !defense || !defendingTeamId) return undefined;
   const rank = defenseRankFor(defense, defendingTeamId, playerPosition, market);
-  if (rank == null || rank > 8) return undefined;
+  if (rank == null || rank > 10) return undefined;
   const row = defenseAllowRow(defense, defendingTeamId, playerPosition, market);
   if (!row) return undefined;
   const opp = shortTeamName(opponentName ?? defendingTeamId);
@@ -76,14 +75,8 @@ function matchupPhrase(
         : row.stat === "3pm"
           ? "threes"
           : "pts";
-  const leagueAvg = leagueAvgAllowed(defense, playerPosition, row.stat);
-  const rankPhrase = rank === 1 ? "the most" : `${ordinal(rank)} most`;
   const perGame = Math.round((row.allowedPer48 * 36) / 48 * 10) / 10;
-  const avgSuffix =
-    leagueAvg != null
-      ? ` (league avg ${((leagueAvg * 36) / 48).toFixed(1)} per game)`
-      : "";
-  return `${opp} allow ${perGame.toFixed(1)} ${statWord} per game to ${posLabel}, ${rankPhrase}${avgSuffix}`;
+  return `${opp} allow ${perGame.toFixed(1)} ${statWord} to ${posLabel}, ${ordinal(rank)}`;
 }
 
 function playerRankPhrase(
@@ -119,17 +112,17 @@ function pacePhrase(
   const p1 = paceRank(defense, teamId);
   const p2 = paceRank(defense, defendingTeamId);
   if (p1 == null || p2 == null) return undefined;
-  if (p1 <= 8 && p2 <= 8) {
-    const a = shortTeamName(teamName ?? teamId);
-    const b = shortTeamName(opponentName ?? defendingTeamId);
-    return `Pace ${a} #${p1} · ${b} #${p2}`;
+  if (p1 <= 10 && p2 <= 10) {
+    return "Fast game: both teams top-10 pace";
   }
   return undefined;
 }
 
 function formPhrase(logs: PlayerGameLog[], market: Market, line: number): string | undefined {
-  const hits = hitCountL10(logs, market, line);
-  if (hits != null && hits >= 7) return `${hits}/10 at this line`;
+  const hit = hitCountL10(logs, market, line);
+  if (hit != null && hit.hits >= 7) {
+    return `${hit.hits}/${hit.total} at this line`;
+  }
   const l5 = lastFiveVsLine(logs, market, line).filter((t) => t !== "na");
   if (l5.length === 5 && l5.every((t) => t === "hit")) return "5/5 at this line";
   return undefined;
@@ -161,18 +154,31 @@ function avgPhrase(
   if (n < 5) return undefined;
   const avg = sum / n;
   if (avg < line) return undefined;
-  const stat = market === "3pm" ? "3pm" : market.replace(/^q1/, "");
+  const statLabel =
+    market === "3pm"
+      ? "3pm"
+      : market === "q1pts"
+        ? "Q1 pts"
+        : market === "q1reb"
+          ? "Q1 reb"
+          : market === "q1ast"
+            ? "Q1 ast"
+            : market;
   const seasonStat =
-    stat === "reb"
-      ? seasonAvg?.reb
-      : stat === "ast"
-        ? seasonAvg?.ast
-        : stat === "3pm"
-          ? seasonAvg?.threes
-          : seasonAvg?.pts;
+    market === "3pm"
+      ? seasonAvg?.threes
+      : market.startsWith("q1")
+        ? undefined
+        : market === "reb"
+          ? seasonAvg?.reb
+          : market === "ast"
+            ? seasonAvg?.ast
+            : seasonAvg?.pts;
   const seasonSuffix =
-    seasonStat != null ? ` (season ${seasonStat.toFixed(1)})` : "";
-  return `Avg ${avg.toFixed(1)} ${stat} last 10${seasonSuffix}`;
+    seasonStat != null && seasonStat.toFixed(1) !== avg.toFixed(1)
+      ? ` (season ${seasonStat.toFixed(1)})`
+      : "";
+  return `Avg ${avg.toFixed(1)} ${statLabel} last 10${seasonSuffix}`;
 }
 
 function minutesPhrase(logs: PlayerGameLog[]): string | undefined {
@@ -181,8 +187,8 @@ function minutesPhrase(logs: PlayerGameLog[]): string | undefined {
   const l5 = sorted.slice(0, 5).reduce((s, g) => s + g.minutes, 0) / 5;
   const season =
     sorted.reduce((s, g) => s + g.minutes, 0) / Math.max(1, sorted.length);
-  if (l5 < season + 1.5) return undefined;
-  return `Minutes up: ${Math.round(l5)} last 5 (season ${Math.round(season)})`;
+  if (l5 < season + 3) return undefined;
+  return `Playing more: ${Math.round(l5)} last 5 (season ${Math.round(season)})`;
 }
 
 export function buildLegReasons(input: {
@@ -205,7 +211,7 @@ export function buildLegReasons(input: {
   const byType = new Map<string, LegReason>();
 
   const put = (type: LegReason["type"], text: string) => {
-    const t = houseReasonLine(text.trim());
+    const t = houseReasonText(text.trim());
     if (!t || byType.has(type) || reasonTextHasBannedPhrase(t)) return;
     byType.set(type, { type, text: t });
   };

@@ -68,7 +68,7 @@ export function normalizeLegReasons(input: unknown): LegReason[] {
 export function inferReasonType(text: string): LegReasonType {
   const t = text.toLowerCase();
   if (/out →|out:|only big|missing \d+ big|benefit|redistrib|teammate/i.test(t)) return "injury";
-  if (/potential ast|shot volume|tracking/i.test(t)) return "tracking";
+  if (/potential ast|fga up|3pa up|tracking/i.test(t)) return "tracking";
   if (/allow [\d.]+\s+(pts|points|reb|rebounds|ast|assists|threes)/i.test(t)) return "matchup";
   if (/vs .+ in \d+ meetings|\/\d+ .+ vs /i.test(t)) return "h2h";
   if (/averages [\d.]+\s+(pts|reb|ast)/i.test(t)) return "rank";
@@ -77,8 +77,8 @@ export function inferReasonType(text: string): LegReasonType {
   if (/hit .+ in all \d+ vs/i.test(t) || /\d+ of \d+ .+ vs /i.test(t)) return "h2h";
   if (/meeting avg [\d.]+ .+ vs /i.test(t)) return "h2h";
   if (/^avg /i.test(t)) return "avg";
-  if (/pace /i.test(t) && !/worst defending/i.test(t)) return "pace";
-  if (/minutes (up|down)/i.test(t)) return "min";
+  if (/fast game/i.test(t)) return "pace";
+  if (/playing more/i.test(t)) return "min";
   if (/angle|role|\+[\d.]+ min/i.test(t)) return "angle";
   return "other";
 }
@@ -110,17 +110,28 @@ export function reasonsForMarket(reasons: LegReason[], market: string): LegReaso
 }
 
 export function reasonMatchesMarket(r: LegReason, market: string, stat: string): boolean {
+  if (market.startsWith("q1")) {
+    const t = r.text.toLowerCase();
+    if (r.type === "avg" || r.type === "form") return t.includes("q1");
+    if (r.type === "injury") return true;
+    return false;
+  }
+  if (r.type === "tracking") {
+    if (stat === "3pm") return /3pa up/i.test(r.text) && !/fga/i.test(r.text);
+    if (stat === "pts") return /fga up/i.test(r.text);
+    if (stat === "ast") return /potential ast/i.test(r.text);
+    return false;
+  }
   if (
     r.type === "injury" ||
-    r.type === "tracking" ||
     r.type === "angle" ||
     r.type === "h2h" ||
     r.type === "pace" ||
-    r.type === "min"
+    r.type === "min" ||
+    r.type === "form"
   ) {
     return true;
   }
-  if (r.type === "form") return true;
   if (r.type === "matchup" || r.type === "avg" || r.type === "rank") {
     const t = r.text.toLowerCase();
     if (stat === "3pm") return t.includes("three") || t.includes("3pm");
