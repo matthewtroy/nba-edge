@@ -195,7 +195,10 @@ export function PicksScreen({
           </p>
         </div>
       ) : (
-        <section className={`${ui.card} px-2 py-0`}>
+        <section
+          className={`${ui.card} px-2 py-0 divide-y divide-white/[0.04]`}
+          data-testid="picks-leg-list"
+        >
           {legs.map((leg) => (
             <PickLegRow
               key={leg.id}

@@ -12,6 +12,11 @@ describe("leg row live CSS", () => {
     expect(css).toMatch(/400ms ease/);
   });
 
+  it("pick rows bleed tint to phone shell edge", () => {
+    expect(css).toMatch(/\.pick-leg-row-bleed[\s\S]*margin-inline:\s*-1\.5rem/);
+    expect(css).toMatch(/\.leg-row-live-active/);
+  });
+
   it("omits value-at-bookie track ring on progress bar", () => {
     expect(css).not.toMatch(/\.leg-progress-value-track/);
   });

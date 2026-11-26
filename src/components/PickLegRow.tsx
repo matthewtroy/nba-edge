@@ -38,13 +38,14 @@ export function PickLegRow({ leg, injuries, slate, myBookie, onTap, liveView }: 
   const injStatus = injuryStatusForPlayer(injuries, leg.playerId);
   const valueAtBookie = hasValueAtBookie(leg, myBookie);
   const rowLiveClass = legRowLiveTrackingClass(liveView);
+  const bleed = rowLiveClass ? "pick-leg-row-bleed" : "";
 
   return (
     <button
       type="button"
       data-testid="pick-leg-row"
       onClick={() => onTap(leg)}
-      className={`w-full grid grid-cols-[32px_1fr_76px] gap-2.5 py-2.5 text-left border-b border-white/[0.05] last:border-0 active:opacity-90 min-h-[44px] ${rowLiveClass}`}
+      className={`w-full grid grid-cols-[32px_1fr_76px] gap-2.5 py-2.5 text-left active:opacity-90 min-h-[44px] ${rowLiveClass} ${bleed}`}
     >
       <PlayerAvatar
         name={leg.playerName}

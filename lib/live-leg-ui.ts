@@ -45,7 +45,8 @@ export function legTitleShowsLiveDot(view: LiveLegView | undefined): boolean {
 }
 
 export function legRowLiveTrackingClass(view: LiveLegView | undefined): string {
-  if (!view || view.state === "pending" || view.state === "live") return "";
+  if (!view || view.state === "pending") return "";
+  if (view.state === "live") return "leg-row-live-active";
   switch (view.state) {
     case "won":
       return "leg-row-live-won leg-row-live-full-bleed";

@@ -3,6 +3,20 @@ import fs from "fs";
 import path from "path";
 
 describe("PicksScreen", () => {
+  it("picks list uses row dividers not per-row borders", () => {
+    const picks = fs.readFileSync(
+      path.join(process.cwd(), "src/screens/PicksScreen.tsx"),
+      "utf8"
+    );
+    const row = fs.readFileSync(
+      path.join(process.cwd(), "src/components/PickLegRow.tsx"),
+      "utf8"
+    );
+    expect(picks).toMatch(/divide-y divide-white\/\[0\.04\]/);
+    expect(row).not.toMatch(/border-b border-white/);
+    expect(row).toContain("pick-leg-row-bleed");
+  });
+
   it("wires LegProgress on each pick row", () => {
     const src = fs.readFileSync(
       path.join(process.cwd(), "src/screens/PicksScreen.tsx"),
