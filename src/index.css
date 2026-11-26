@@ -84,24 +84,33 @@ body,
 }
 
 .multi-card-live-won {
-  border-color: rgba(52, 211, 153, 0.38) !important;
+  border-color: rgba(52, 211, 153, 0.28) !important;
   box-shadow:
-    0 0 0 1px rgba(52, 211, 153, 0.12),
-    0 0 22px rgba(52, 211, 153, 0.1);
+    0 0 0 1px rgba(52, 211, 153, 0.08),
+    0 0 14px rgba(52, 211, 153, 0.05);
+  transition:
+    border-color 400ms ease,
+    box-shadow 400ms ease;
 }
 
 .multi-card-live-lost {
-  border-color: rgba(248, 113, 113, 0.38) !important;
+  border-color: rgba(248, 113, 113, 0.28) !important;
   box-shadow:
-    0 0 0 1px rgba(248, 113, 113, 0.12),
-    0 0 22px rgba(248, 113, 113, 0.1);
+    0 0 0 1px rgba(248, 113, 113, 0.08),
+    0 0 14px rgba(248, 113, 113, 0.05);
+  transition:
+    border-color 400ms ease,
+    box-shadow 400ms ease;
 }
 
 .multi-card-live-tracking {
-  border-color: rgba(56, 189, 248, 0.28) !important;
+  border-color: rgba(56, 189, 248, 0.22) !important;
   box-shadow:
-    0 0 0 1px rgba(56, 189, 248, 0.08),
-    0 0 18px rgba(56, 189, 248, 0.06);
+    0 0 0 1px rgba(56, 189, 248, 0.06),
+    0 0 12px rgba(56, 189, 248, 0.04);
+  transition:
+    border-color 400ms ease,
+    box-shadow 400ms ease;
 }
 
 .leg-progress-value-track {
@@ -111,21 +120,29 @@ body,
 }
 
 .leg-row-live-won {
+  border-left: 2px solid rgba(52, 211, 153, 0.42);
   background: linear-gradient(
     90deg,
-    rgba(52, 211, 153, 0.09) 0%,
-    rgba(52, 211, 153, 0.02) 42%,
-    transparent 72%
+    rgba(52, 211, 153, 0.05) 0%,
+    rgba(52, 211, 153, 0.015) 38%,
+    transparent 68%
   );
+  transition:
+    background 400ms ease,
+    border-color 400ms ease;
 }
 
 .leg-row-live-lost {
+  border-left: 2px solid rgba(248, 113, 113, 0.42);
   background: linear-gradient(
     90deg,
-    rgba(248, 113, 113, 0.09) 0%,
-    rgba(248, 113, 113, 0.02) 42%,
-    transparent 72%
+    rgba(248, 113, 113, 0.05) 0%,
+    rgba(248, 113, 113, 0.015) 38%,
+    transparent 68%
   );
+  transition:
+    background 400ms ease,
+    border-color 400ms ease;
 }
 
 @media (prefers-color-scheme: light) {
