@@ -34,6 +34,7 @@ import {
   recordOddsPull,
   resetOddsDayIfNeeded,
   injuryRefreshSkipsOdds,
+  sydneyTomorrowYmd,
   type OddsCacheFile,
   type OddsPullTrigger,
 } from "./odds-schedule.js";
@@ -86,6 +87,7 @@ import {
   resolveSlateOddsMaps,
   snapshotFromPricingMaps,
 } from "../lib/odds-slate-cache.js";
+import { oddsCreditsLogLine } from "../lib/odds-cache-file.js";
 import type { InjuryEntry, SlateGame } from "../lib/types.js";
 import { normalizePlayerName } from "../lib/player-names.js";
 import { loadAliasMap } from "../lib/player-names.js";
@@ -220,6 +222,19 @@ export async function runLivePipeline(
       );
       merged = dedupeGames([...merged, ...tomorrowBoard]);
       plan = planScoreboardSlates(merged, now);
+    }
+    if (!plan.tomorrow.length) {
+      const t2Et = formatYyyymmddInZone(new Date(now.getTime() + 2 * 86400000), ET);
+      try {
+        const parsed = parseScoreboard(await fetchScoreboard(dateFromYyyymmdd(t2Et)), yesterdayPlayed);
+        merged = dedupeGames([...merged, ...parsed]);
+        plan = planScoreboardSlates(merged, now);
+        console.log(
+          `dual-slate: scoreboard ET ${t2Et} probed · ${parsed.length} games parsed · next slate=${plan.tomorrow.length}`
+        );
+      } catch {
+        /* next slate stays empty */
+      }
     }
     plan = mergePlanWithPersisted(plan, outDir, now);
     if (!plan.today.length && !plan.tomorrow.length) {
@@ -550,6 +565,9 @@ export async function runLivePipeline(
   let lastCreditsUsed = 0;
   let lastCreditsPerGame = 10;
   let oddsPullSucceeded = false;
+  /** Slate whose prices came from this run's pull (or from-live); other slates keep only their own snapshot. */
+  let freshOddsTip: string | undefined;
+  const legacyOddsCache = !Object.keys(cache.bySlateDate ?? {}).length;
 
   const monthKey = sydneyYmd(now).slice(0, 7);
   let supabaseClient: SupabaseUpsertClient | null = null;
@@ -591,6 +609,8 @@ export async function runLivePipeline(
     const pulled = new Set(cache.pullSlotsToday ?? []);
     if (pullTrigger === "scheduled_9pm") {
       console.log("scheduled: acted");
+    } else if (nextSlateTip && nextSlateTip !== sydneyTomorrowYmd(now)) {
+      console.log(`scheduled: skipped — next slate ${nextSlateTip} is priced on its eve, not tonight`);
     } else if (pulled.has("scheduled_9pm")) {
       console.log("scheduled: already done");
     } else if (
@@ -618,6 +638,7 @@ export async function runLivePipeline(
         cache.pullSlotsToday = published.oddsCache.pullSlotsToday;
       }
       publishedPicksCount = published.picks.length;
+      freshOddsTip = todayTip;
       sources.odds = "ok (from-live pages)";
       usedLiveOddsPull = true;
       console.log(
@@ -679,6 +700,7 @@ export async function runLivePipeline(
         const pulledAnything = pull.pulledGameIds.size > 0 && pull.creditsUsed > 0;
         if (pulledAnything) {
           oddsPullSucceeded = true;
+          freshOddsTip = slateTipDateFromGames(targetSlate) ?? undefined;
           oddsPulledAt = now.toISOString();
           cache.lastPulled = oddsPulledAt;
           recordOddsPull(
@@ -771,9 +793,12 @@ export async function runLivePipeline(
           all: allOddsMap,
           lastPulled: oddsPulledAt,
         };
-    const slateBest = mergePricingMaps(slateMaps.best, pulledOddsExpanded);
+    const freshForSlate = legacyOddsCache || (tip != null && tip === freshOddsTip);
+    const slateBest = freshForSlate
+      ? mergePricingMaps(slateMaps.best, pulledOddsExpanded)
+      : slateMaps.best;
     const slateAll = new Map(slateMaps.all);
-    for (const [k, v] of allOddsMap) slateAll.set(k, v);
+    if (freshForSlate) for (const [k, v] of allOddsMap) slateAll.set(k, v);
     for (const [k, v] of slateAll) {
       const [name, market, line] = k.split("|");
       for (const p of players) {
@@ -785,7 +810,12 @@ export async function runLivePipeline(
     }
     const pricingOdds = expandOddsMapForPlayers(slateBest, playerNames);
     lastPricingMapSize = pricingOdds.size;
-    const slatePulledAt = oddsPulledAt ?? slateMaps.lastPulled;
+    const slatePulledAt = freshForSlate
+      ? oddsPulledAt ?? slateMaps.lastPulled
+      : slateMaps.lastPulled;
+    if (tip && !slateBest.size) {
+      console.log(`odds: slate ${tip} · no prices yet (model legs only, no odds credits spent)`);
+    }
     const entry = writeSlateBundle({
       rootDir,
       rootOutDir: outDir,
@@ -896,6 +926,7 @@ export async function runLivePipeline(
   }
   fs.writeFileSync(path.join(outDir, "history.json"), JSON.stringify(history, null, 2));
   fs.writeFileSync(oddsCachePath, JSON.stringify(cache, null, 2));
+  console.log(oddsCreditsLogLine(cache));
   const mergedIndexEntries = rebuildIndexEntriesFromDisk(indexEntries, outDir, now);
   const defaultSlate =
     slatesToPublish.find(

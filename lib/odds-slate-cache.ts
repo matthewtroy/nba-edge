@@ -66,9 +66,14 @@ export function resolveSlateOddsMaps(
 } {
   const players = slatePlayerNames(slate, playerNames, playerTeamIds);
   const merged = new Map<string, { price: number; bookie: string }>();
-  const globalMap = cache.oddsMap ?? {};
-  for (const [k, v] of Object.entries(filterOddsMapToPlayers(globalMap, players))) {
-    merged.set(k, v);
+  // The global map mixes every past pull keyed by player|market|line, not by game: a player
+  // priced for Wednesday would carry that price into Saturday. Only legacy caches (no
+  // per-slate snapshots yet) may fall back to it.
+  const legacyCache = !Object.keys(cache.bySlateDate ?? {}).length;
+  if (legacyCache) {
+    for (const [k, v] of Object.entries(filterOddsMapToPlayers(cache.oddsMap ?? {}, players))) {
+      merged.set(k, v);
+    }
   }
 
   const snap = cache.bySlateDate?.[slateDate];
@@ -88,7 +93,7 @@ export function resolveSlateOddsMaps(
     }
   }
 
-  const lastPulled = snap?.lastPulled ?? cache.lastPulled;
+  const lastPulled = snap?.lastPulled ?? (legacyCache ? cache.lastPulled : undefined);
   return { best: merged, all, lastPulled };
 }
 

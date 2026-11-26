@@ -19,14 +19,14 @@ export function forwardSlateMetadataFromGames(
 ): ForwardSlateMetadata | null {
   if (!merged.length) return null;
 
-  const { todayYmd, tomorrowYmd } = pipelineSydneyDates(now);
+  const { todayYmd } = pipelineSydneyDates(now);
   const plan = planScoreboardSlates(merged, now);
 
   let targetYmd: string | null = null;
   let targetGames: SlateGame[] = [];
 
   if (plan.tomorrow.length) {
-    targetYmd = tomorrowYmd;
+    targetYmd = sydneyTipDate(plan.tomorrow[0]!.startTime);
     targetGames = plan.tomorrow;
   } else {
     const bySydney = new Map<string, SlateGame[]>();

@@ -194,11 +194,14 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   const pricedLegCounts = countPricedLegsByMarket(picks);
   const oddsAttachWarnings = coverageAttachWarnings(oddsCoverage, pricedLegCounts);
 
-  const oddsLastDisplayed = resolveOddsLastPulled(
-    picks,
-    input.oddsPulledAt ?? input.cache.lastPulled,
-    meta.oddsLastPulled
-  );
+  const oddsLastDisplayed =
+    countPricedPickLegs(picks) === 0
+      ? undefined
+      : resolveOddsLastPulled(
+          picks,
+          input.oddsPulledAt ?? input.cache.lastPulled,
+          meta.oddsLastPulled
+        );
 
   const priorMeta = fs.existsSync(path.join(outDir, "meta.json"))
     ? (JSON.parse(fs.readFileSync(path.join(outDir, "meta.json"), "utf8")) as MetaJson)

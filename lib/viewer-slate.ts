@@ -73,8 +73,8 @@ export function resolveViewerSlateSegment(
   if (!tomorrowFolder && todayFolder) {
     tomorrowFolder = dated.find((d) => d.folder > todayFolder)?.folder ?? null;
   }
-  if (!tomorrowFolder && !todayFolder && dated.length > 0) {
-    tomorrowFolder = dated[0]!.folder;
+  if (!tomorrowFolder && !todayFolder) {
+    tomorrowFolder = dated.find((d) => d.localTip > viewerTodayYmd)?.folder ?? null;
   }
 
   return {

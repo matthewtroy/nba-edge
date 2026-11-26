@@ -14,6 +14,7 @@ import { reasonsAtTipByLegId } from "@lib/reasons-at-tip";
 import { legRowLiveTrackingClass, legTitleShowsLiveDot } from "@lib/live-leg-ui";
 import { hasValueAtBookie } from "@lib/value-at-bookie";
 import { ui } from "../lib/card-type-scale";
+import { PRICES_PENDING_LABEL } from "@lib/slate-odds-ui";
 import { PlayerAvatar } from "./PlayerAvatar";
 
 interface Props {
@@ -25,6 +26,8 @@ interface Props {
   liveView?: LiveLegView;
   trackPlaceholder?: boolean;
   reasonsAtTip?: ReasonAtTipSnapshot[];
+  /** Slate built before its odds pull: model fair/probability only. */
+  pricesPending?: boolean;
 }
 
 function LegBadge({ label, danger }: { label: string; danger?: boolean }) {
@@ -42,6 +45,7 @@ export function PickLegRow({
   liveView,
   trackPlaceholder = false,
   reasonsAtTip,
+  pricesPending = false,
 }: Props) {
   const badgeLabels = legRowBadgeLabels(leg, myBookie);
   const reasonLines = legRowReasonLines(leg, reasonsAtTipByLegId(reasonsAtTip));
@@ -111,7 +115,11 @@ export function PickLegRow({
         />
       </div>
       <div className="text-right w-[76px] shrink-0">
-        {price != null && price > 1 ? (
+        {pricesPending ? (
+          <p className="text-[11px] font-medium text-white/55 theme-adaptive-muted" data-testid="leg-prices-pending">
+            {PRICES_PENDING_LABEL}
+          </p>
+        ) : price != null && price > 1 ? (
           <p className={ui.legPrice}>${price.toFixed(2)}</p>
         ) : leg.bestPrice != null && leg.bestPrice > 1 ? (
           <p className={`${ui.legPrice} !text-white/55`}>
@@ -121,6 +129,11 @@ export function PickLegRow({
           <p className="text-[11px] text-white/40">—</p>
         )}
         <p className={ui.legFair}>Fair {leg.fairPrice.toFixed(2)}</p>
+        {pricesPending && (
+          <p className={ui.legFair} data-testid="leg-model-prob">
+            {Math.round(leg.probability * 100)}%
+          </p>
+        )}
       </div>
     </button>
   );

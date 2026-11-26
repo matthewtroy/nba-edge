@@ -14,6 +14,7 @@ import { filterAndSortPicks, marketsOnSlate } from "../lib/picks-list";
 import { ui } from "../lib/card-type-scale";
 import { injuriesForBadges } from "@lib/injury-display";
 import type { ReasonAtTipSnapshot } from "@lib/types";
+import { PRICES_PENDING_LABEL, slateAwaitingPrices } from "@lib/slate-odds-ui";
 
 interface Props {
   data: DataBundle;
@@ -92,6 +93,12 @@ export function PicksScreen({
   });
   const [filters, patch, toggleSortDir] = usePicksFilters();
   const markets = useMemo(() => marketsOnSlate(data.picks), [data.picks]);
+  const awaitingPrices = slateAwaitingPrices({
+    slateDate,
+    todayDate,
+    picks: data.picks,
+    officialSlateDate: data.officialCard?.slateDate,
+  });
 
   const legs = useMemo(
     () =>
@@ -101,8 +108,9 @@ export function PicksScreen({
         multis: data.multis,
         myBookie,
         filters,
+        pricesPending: awaitingPrices,
       }),
-    [data.picks, data.slate, data.multis, myBookie, filters]
+    [data.picks, data.slate, data.multis, myBookie, filters, awaitingPrices]
   );
 
   const { show, sort } = picksFilterSummaryLabels(filters);
@@ -126,6 +134,7 @@ export function PicksScreen({
         viewerTimeZone={viewerTimeZone}
         slateEmpty={!data.picks.length && !data.slate.length}
         slate={data.slate}
+        awaitingPrices={awaitingPrices}
         onIndexRefreshed={onIndexRefreshed}
       />
       <header className="mb-3">
@@ -163,7 +172,7 @@ export function PicksScreen({
         <FilterPill
           label="Show"
           testId="picks-filter-show"
-          value={filters.show}
+          value={awaitingPrices && filters.show === "value" ? "all" : filters.show}
           onChange={(v) =>
             patch({
               show:
@@ -180,7 +189,7 @@ export function PicksScreen({
         <FilterPill
           label="Sort"
           testId="picks-filter-sort"
-          value={filters.sort}
+          value={awaitingPrices && (filters.sort === "edge" || filters.sort === "price") ? "prob" : filters.sort}
           onChange={(v) => patch({ sort: v as PicksSortKey })}
         >
           <option value="edge">Edge</option>
@@ -201,7 +210,9 @@ export function PicksScreen({
       </div>
 
       <p className="text-[11px] text-white/45 mb-2">
-        {legs.length} picks · {show} · {sort}
+        {awaitingPrices
+          ? `${legs.length} model legs · ${PRICES_PENDING_LABEL}`
+          : `${legs.length} picks · ${show} · ${sort}`}
       </p>
 
       {legs.length === 0 ? (
@@ -232,6 +243,7 @@ export function PicksScreen({
                 liveView={liveView}
                 trackPlaceholder={trackPlaceholder}
                 reasonsAtTip={reasonsAtTip}
+                pricesPending={awaitingPrices}
               />
             );
           })}

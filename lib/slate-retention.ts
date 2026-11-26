@@ -35,7 +35,23 @@ export function gamesOnSydneyDate(games: SlateGame[], ymd: string): SlateGame[] 
   return games.filter((g) => sydneyTipDate(g.startTime) === ymd);
 }
 
-/** Sydney calendar today (incl. finals) + tomorrow open games — not US scoreboard day. */
+/** How far past Sydney today the "next slate" may sit (covers one empty calendar day, e.g. US Thanksgiving). */
+export const NEXT_SLATE_MAX_DAYS_AHEAD = 3;
+
+function addSydneyDays(ymd: string, days: number): string {
+  const anchor = new Date(`${ymd}T12:00:00.000Z`);
+  return new Date(anchor.getTime() + days * 86_400_000).toLocaleDateString("en-CA", {
+    timeZone: "Australia/Sydney",
+  });
+}
+
+/** Sydney dates after today, nearest first, that may hold the next slate. */
+export function nextSlateCandidateYmds(now: Date): string[] {
+  const { todayYmd } = pipelineSydneyDates(now);
+  return Array.from({ length: NEXT_SLATE_MAX_DAYS_AHEAD }, (_, i) => addSydneyDays(todayYmd, i + 1));
+}
+
+/** Sydney calendar today (incl. finals) + the next slate's open games (tomorrow, or the first later date within range) — not US scoreboard day. */
 export function planScoreboardSlates(
   merged: SlateGame[],
   now: Date
@@ -48,9 +64,12 @@ export function planScoreboardSlates(
       today = legacy;
     }
   }
-  let tomorrow = filterOpenGamesOnSydneyDate(merged, tomorrowYmd);
   const todayIds = new Set(today.map((g) => g.id));
-  tomorrow = tomorrow.filter((g) => !todayIds.has(g.id));
+  let tomorrow: SlateGame[] = [];
+  for (const ymd of [tomorrowYmd, ...nextSlateCandidateYmds(now).filter((d) => d !== tomorrowYmd)]) {
+    tomorrow = filterOpenGamesOnSydneyDate(merged, ymd).filter((g) => !todayIds.has(g.id));
+    if (tomorrow.length) break;
+  }
   return { today, tomorrow };
 }
 
@@ -90,11 +109,14 @@ export function mergePlanWithPersisted(
   dataRoot: string,
   now: Date
 ): { today: SlateGame[]; tomorrow: SlateGame[] } {
-  const { todayYmd, tomorrowYmd } = pipelineSydneyDates(now);
+  const { todayYmd } = pipelineSydneyDates(now);
   const today =
     plan.today.length > 0 ? plan.today : loadPersistedSlate(dataRoot, todayYmd);
-  const tomorrow =
-    plan.tomorrow.length > 0 ? plan.tomorrow : loadPersistedSlate(dataRoot, tomorrowYmd);
+  let tomorrow = plan.tomorrow;
+  for (const ymd of nextSlateCandidateYmds(now)) {
+    if (tomorrow.length) break;
+    tomorrow = loadPersistedSlate(dataRoot, ymd);
+  }
   return { today, tomorrow };
 }
 

@@ -1,14 +1,21 @@
 import { useMemo, useState } from "react";
 import type { DataBundle } from "../hooks/useData";
 import type { LiveTrackingState } from "../hooks/useLiveTracking";
-import type { PickLeg } from "@lib/types";
+import type { InjuryEntry, PickLeg, ReasonAtTipSnapshot, SlateGame } from "@lib/types";
 import { gameSgmBlocks } from "@lib/games-sgm";
 import { frozenGameSgmBlocks } from "@lib/games-sgm-freeze";
 import { gameSgmAsMulti, gameListRowLabel } from "@lib/games-sgm-ui";
 import { gamesForGamesTab } from "@lib/slate-game-ui";
-import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
+import {
+  PRICES_PENDING_LABEL,
+  slateAwaitingPrices,
+  slateHasFeedOdds,
+  slateOddsAvailabilityNote,
+} from "@lib/slate-odds-ui";
 import { picksByIdFromOfficialSnapshots } from "@lib/official-leg-snapshot";
 import { MultiCard } from "../components/MultiCard";
+import { PickLegRow } from "../components/PickLegRow";
+import { ui } from "../lib/card-type-scale";
 import { DateSwitcher } from "../components/DateSwitcher";
 import { TomorrowSlateTease } from "../components/TomorrowSlateTease";
 import { useGamesSgmPreset } from "../hooks/useGamesSgmPreset";
@@ -94,6 +101,12 @@ export function GamesScreen({
 
   const [emptyOpen, setEmptyOpen] = useState(false);
 
+  const awaitingPrices = slateAwaitingPrices({
+    slateDate,
+    todayDate,
+    picks: data.picks,
+    officialSlateDate: data.officialCard?.slateDate,
+  });
   const slateFairOnly = !slateHasFeedOdds(data.picks);
   const oddsNote = slateOddsAvailabilityNote(data.meta, data.picks);
   const bandLabel = formatOddsBand(preset.min, preset.max);
@@ -124,120 +137,189 @@ export function GamesScreen({
         viewerTimeZone={viewerTimeZone}
         slateEmpty={!data.slate.length}
         slate={data.slate}
+        awaitingPrices={awaitingPrices}
         onIndexRefreshed={onIndexRefreshed}
       />
       <header className="mb-4">
         <h1 className="text-xl font-bold text-white theme-adaptive-title">Games</h1>
       </header>
-      <div className="flex flex-wrap gap-2 mb-4 items-center">
-        {presets.map((p) => (
+      {awaitingPrices ? (
+        <PricesPendingGames
+          slate={activeSlate}
+          picks={data.picks}
+          injuries={badgeInjuries}
+          myBookie={myBookie}
+          onLegTap={onLegTap}
+          reasonsAtTip={data.meta.reasonsAtTip}
+        />
+      ) : (
+        <>
+        <div className="flex flex-wrap gap-2 mb-4 items-center">
+          {presets.map((p) => (
+            <button
+              key={p.label}
+              type="button"
+              onClick={() => setPreset(p)}
+              className={`text-[11px] px-3 py-1.5 rounded-full border ${
+                preset.label === p.label
+                  ? "border-white/30 text-white"
+                  : "border-white/20 text-white/55"
+              }`}
+            >
+              ${p.label}
+            </button>
+          ))}
           <button
-            key={p.label}
             type="button"
-            onClick={() => setPreset(p)}
+            onClick={() => setRoughiesOn(!roughiesOn)}
             className={`text-[11px] px-3 py-1.5 rounded-full border ${
-              preset.label === p.label
-                ? "border-white/30 text-white"
+              roughiesOn
+                ? "border-amber-400/50 text-amber-200"
                 : "border-white/20 text-white/55"
             }`}
           >
-            ${p.label}
+            Roughies {roughiesOn ? "on" : "off"}
           </button>
-        ))}
-        <button
-          type="button"
-          onClick={() => setRoughiesOn(!roughiesOn)}
-          className={`text-[11px] px-3 py-1.5 rounded-full border ${
-            roughiesOn
-              ? "border-amber-400/50 text-amber-200"
-              : "border-white/20 text-white/55"
-          }`}
-        >
-          Roughies {roughiesOn ? "on" : "off"}
-        </button>
-      </div>
+        </div>
 
-      {activeSlate.length === 0 && (
-        <p className="text-sm text-white/50">No games on this slate yet.</p>
+        {activeSlate.length === 0 && (
+          <p className="text-sm text-white/50">No games on this slate yet.</p>
+        )}
+
+        {built.map(({ game, card }) => {
+          if (!card) return null;
+          const multi = gameSgmAsMulti(card, game);
+          const gameLiveBetView = liveBetView(
+            legStatesForMulti(multi, liveTracking.legViews)
+          );
+          const board = liveBoardByGame.get(game.id);
+          const gameOddsAge = formatGameOddsAge(
+            data.picks,
+            game.id,
+            data.meta.oddsLastPulled
+          );
+
+          return (
+            <div key={game.id} className="mb-4">
+              <p className="text-[13px] font-semibold text-white theme-adaptive-title mb-2">
+                {gameListRowLabel(game)}
+                {board && board.phase !== "scheduled" ? (
+                  <span
+                    className="text-sky-400/90 font-normal text-[11px] ml-2 tabular-nums"
+                    data-testid="games-header-live-score"
+                  >
+                    {board.statusDetail}
+                  </span>
+                ) : null}
+                {card.roughie && (
+                  <span className="text-[10px] font-medium px-1.5 py-px rounded-full bg-amber-500/20 text-amber-200 ml-2 align-middle">
+                    Roughie
+                  </span>
+                )}
+                {gameOddsAge ? (
+                  <span className="text-white/40 font-normal text-[11px] ml-2">
+                    {gameOddsAge}
+                  </span>
+                ) : null}
+                {game.spread != null && Math.abs(game.spread) >= 14.5 && (
+                  <span className="text-red-400 font-normal text-xs ml-2">
+                    Blowout
+                  </span>
+                )}
+              </p>
+              <MultiCard
+                multi={multi}
+                picksById={picksById}
+                injuries={badgeInjuries}
+                slate={activeSlate}
+                preferredBookie={myBookie}
+                fairOnly={slateFairOnly}
+                oddsNote={oddsNote}
+                hideBookieSelect={slateFairOnly}
+                liveCatalog={data.picks}
+                bookieStorageScope="games"
+                compact
+                onLegTap={onLegTap}
+                onCopy={onCopy}
+                legViews={liveTracking.legViews}
+                liveBetView={gameLiveBetView}
+                reasonsAtTip={data.meta.reasonsAtTip}
+                liveSnapshot={liveTracking.snapshot}
+              />
+            </div>
+          );
+        })}
+
+        {empty.length > 0 && (
+          <MotionEmptyBlock
+            count={empty.length}
+            open={emptyOpen}
+            onToggle={() => setEmptyOpen((o) => !o)}
+            reasons={empty.map((b) => ({
+              id: b.game.id,
+              text:
+                b.notBuiltReason ??
+                `${gameListRowLabel(b.game)}: nothing fits ${bandLabel}.`,
+            }))}
+          />
+        )}
+        </>
       )}
+    </div>
+  );
+}
 
-      {built.map(({ game, card }) => {
-        if (!card) return null;
-        const multi = gameSgmAsMulti(card, game);
-        const gameLiveBetView = liveBetView(
-          legStatesForMulti(multi, liveTracking.legViews)
-        );
-        const board = liveBoardByGame.get(game.id);
-        const gameOddsAge = formatGameOddsAge(
-          data.picks,
-          game.id,
-          data.meta.oddsLastPulled
-        );
+const PENDING_LEGS_PER_GAME = 5;
 
+/** Before the 9pm odds pull there are no SGMs to build: show each game's strongest model legs. */
+function PricesPendingGames({
+  slate,
+  picks,
+  injuries,
+  myBookie,
+  onLegTap,
+  reasonsAtTip,
+}: {
+  slate: SlateGame[];
+  picks: PickLeg[];
+  injuries: InjuryEntry[];
+  myBookie?: string;
+  onLegTap: (leg: PickLeg) => void;
+  reasonsAtTip?: ReasonAtTipSnapshot[];
+}) {
+  return (
+    <div data-testid="games-prices-pending">
+      {slate.map((game) => {
+        const legs = picks
+          .filter((l) => l.gameId === game.id)
+          .sort((a, b) => b.probability - a.probability);
         return (
-          <div key={game.id} className="mb-4">
+          <div key={game.id} className="mb-4" data-testid="games-pending-game">
             <p className="text-[13px] font-semibold text-white theme-adaptive-title mb-2">
               {gameListRowLabel(game)}
-              {board && board.phase !== "scheduled" ? (
-                <span
-                  className="text-sky-400/90 font-normal text-[11px] ml-2 tabular-nums"
-                  data-testid="games-header-live-score"
-                >
-                  {board.statusDetail}
-                </span>
-              ) : null}
-              {card.roughie && (
-                <span className="text-[10px] font-medium px-1.5 py-px rounded-full bg-amber-500/20 text-amber-200 ml-2 align-middle">
-                  Roughie
-                </span>
-              )}
-              {gameOddsAge ? (
-                <span className="text-white/40 font-normal text-[11px] ml-2">
-                  {gameOddsAge}
-                </span>
-              ) : null}
-              {game.spread != null && Math.abs(game.spread) >= 14.5 && (
-                <span className="text-red-400 font-normal text-xs ml-2">
-                  Blowout
-                </span>
-              )}
+              <span className="text-white/40 font-normal text-[11px] ml-2">
+                {legs.length} model legs · {PRICES_PENDING_LABEL}
+              </span>
             </p>
-            <MultiCard
-              multi={multi}
-              picksById={picksById}
-              injuries={badgeInjuries}
-              slate={activeSlate}
-              preferredBookie={myBookie}
-              fairOnly={slateFairOnly}
-              oddsNote={oddsNote}
-              hideBookieSelect={slateFairOnly}
-              liveCatalog={data.picks}
-              bookieStorageScope="games"
-              compact
-              onLegTap={onLegTap}
-              onCopy={onCopy}
-              legViews={liveTracking.legViews}
-              liveBetView={gameLiveBetView}
-              reasonsAtTip={data.meta.reasonsAtTip}
-              liveSnapshot={liveTracking.snapshot}
-            />
+            {legs.length > 0 && (
+              <section className={`${ui.card} !p-0 overflow-hidden divide-y divide-white/[0.04]`}>
+                {legs.slice(0, PENDING_LEGS_PER_GAME).map((leg) => (
+                  <PickLegRow
+                    key={leg.id}
+                    leg={leg}
+                    injuries={injuries}
+                    slate={slate}
+                    myBookie={myBookie ?? ""}
+                    onTap={onLegTap}
+                    reasonsAtTip={reasonsAtTip}
+                    pricesPending
+                  />
+                ))}
+              </section>
+            )}
           </div>
         );
       })}
-
-      {empty.length > 0 && (
-        <MotionEmptyBlock
-          count={empty.length}
-          open={emptyOpen}
-          onToggle={() => setEmptyOpen((o) => !o)}
-          reasons={empty.map((b) => ({
-            id: b.game.id,
-            text:
-              b.notBuiltReason ??
-              `${gameListRowLabel(b.game)}: nothing fits ${bandLabel}.`,
-          }))}
-        />
-      )}
     </div>
   );
 }

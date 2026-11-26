@@ -16,6 +16,12 @@ function sydneyParts(d: Date): { h: number; m: number } {
   };
 }
 
+export function sydneyTomorrowYmd(now: Date): string {
+  return new Date(now.getTime() + 86_400_000).toLocaleDateString("en-CA", {
+    timeZone: "Australia/Sydney",
+  });
+}
+
 export type OddsPullTrigger = "scheduled_9pm" | "pretip" | "force";
 
 export interface ShouldPullOddsOpts {
@@ -57,6 +63,11 @@ export function detectOddsPullTrigger(
       return null;
     }
     if (opts.officialPublishedToday && pulled.has("scheduled_9pm")) {
+      return null;
+    }
+    // The 9pm pull prices the card that publishes tonight, i.e. a slate tipping Sydney tomorrow.
+    // A slate two days out gets its pull on its own eve, so pulling now would pay twice.
+    if (opts.nextSlateTipDate && opts.nextSlateTipDate !== sydneyTomorrowYmd(now)) {
       return null;
     }
     return "scheduled_9pm";

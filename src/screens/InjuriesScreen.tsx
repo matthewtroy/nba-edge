@@ -7,6 +7,7 @@ import { DateSwitcher } from "../components/DateSwitcher";
 import { TomorrowSlateTease } from "../components/TomorrowSlateTease";
 import { injuriesForInjuryPanel } from "@lib/injuries-at-tip";
 import { injuryRowKey } from "@lib/injury-tip-freeze";
+import { slateAwaitingPrices } from "@lib/slate-odds-ui";
 
 interface Props {
   data: DataBundle;
@@ -67,6 +68,12 @@ export function InjuriesScreen({
         viewerTimeZone={viewerTimeZone}
         slateEmpty={!data.slate.length}
         slate={data.slate}
+        awaitingPrices={slateAwaitingPrices({
+          slateDate,
+          todayDate,
+          picks: data.picks,
+          officialSlateDate: data.officialCard?.slateDate,
+        })}
         onIndexRefreshed={onIndexRefreshed}
       />
       <h1 className="text-xl font-bold mb-4">Injuries</h1>

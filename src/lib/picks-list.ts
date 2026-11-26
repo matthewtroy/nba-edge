@@ -46,8 +46,10 @@ export function filterAndSortPicks(input: {
   multis: MultiBet[];
   myBookie: string;
   filters: PicksFilterState;
+  /** No bookie prices yet: Value can't be judged, so every leg shows and Edge/Price sort by probability. */
+  pricesPending?: boolean;
 }): PickLeg[] {
-  const { picks, slate, multis, myBookie, filters } = input;
+  const { picks, slate, multis, myBookie, filters, pricesPending = false } = input;
   const inMulti = multiLegIdSet(multis);
   let list = [...picks];
 
@@ -57,14 +59,15 @@ export function filterAndSortPicks(input: {
   if (filters.market !== "all") {
     list = list.filter((l) => l.market === filters.market);
   }
-  if (filters.show === "value") {
+  if (filters.show === "value" && !pricesPending) {
     list = list.filter((l) => hasValueAtBookie(l, myBookie));
   } else if (filters.show === "high") {
     list = list.filter((l) => l.tags.includes("High probability"));
   }
 
   const dir = filters.sortAsc ? 1 : -1;
-  const sortKey: PicksSortKey = filters.sort;
+  const sortKey: PicksSortKey =
+    pricesPending && (filters.sort === "edge" || filters.sort === "price") ? "prob" : filters.sort;
   list.sort((a, b) => {
     switch (sortKey) {
       case "prob":

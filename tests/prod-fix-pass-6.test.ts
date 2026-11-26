@@ -33,6 +33,17 @@ import {
 import { valueSinglesForSlate } from "../lib/value-singles-source";
 import { clearRetiredStorage } from "../src/lib/retired-storage";
 import { TodayScreen } from "../src/screens/TodayScreen";
+import os from "os";
+import { planScoreboardSlates, mergePlanWithPersisted } from "../lib/slate-retention";
+import { forwardSlateMetadataFromGames } from "../lib/index-forward-scan";
+import { resolveSlateOddsMaps } from "../lib/odds-slate-cache";
+import { oddsCreditsLogLine, type OddsCacheFile } from "../lib/odds-cache-file";
+import { detectOddsPullTrigger } from "../scripts/odds-schedule";
+import { slateAwaitingPrices } from "../lib/slate-odds-ui";
+import { filterAndSortPicks } from "../src/lib/picks-list";
+import { PickLegRow } from "../src/components/PickLegRow";
+import { resolveViewerSlateSegment } from "../lib/viewer-slate";
+import type { DataIndexFile } from "../lib/data-index";
 import type { DataBundle } from "../src/hooks/useData";
 import { buildResultsSlice } from "../lib/results-aggregate";
 import type { GradedProjectionLeg } from "../lib/graded-leg";
@@ -553,5 +564,102 @@ describe("item 9: Home has nothing between the date tabs and the first card", ()
     expect(screen.querySelectorAll("section").length).toBeGreaterThan(1);
     root.unmount();
     host.remove();
+  });
+});
+
+describe("item 10: Saturday slate before odds", () => {
+  const fx = JSON.parse(
+    fs.readFileSync(path.join(import.meta.dirname, "fixtures/next-slate/2026-11-28-pre-odds.json"), "utf8")
+  ) as { slate: SlateGame[]; picks: PickLeg[]; legCount: number };
+  /** Thu 26/11 22:00 Sydney: Fri 27/11 has no NBA (US Thanksgiving), Sat 28/11 has 11 games. */
+  const thuNight = new Date("2026-11-26T11:00:00.000Z");
+  const finalThu = { ...fx.slate[0]!, id: "thu-final", startTime: "2026-11-25T22:00:00.000Z", status: "post" };
+
+  it("pipeline plans Sat 28/11 as the next slate when Fri 27/11 is empty", () => {
+    const plan = planScoreboardSlates([finalThu, ...fx.slate], thuNight);
+    expect(plan.today.map((g) => g.id)).toEqual(["thu-final"]);
+    expect(plan.tomorrow).toHaveLength(11);
+    const fwd = forwardSlateMetadataFromGames([finalThu, ...fx.slate], thuNight)!;
+    expect(fwd.nextSlateDate).toBe("2026-11-28");
+    expect(fwd.nextPublishAt).toBe("2026-11-27T10:00:00.000Z");
+  });
+
+  it("restores the persisted Sat folder when the scoreboard is unavailable", () => {
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "next-slate-"));
+    fs.mkdirSync(path.join(tmp, "2026-11-28"));
+    fs.writeFileSync(path.join(tmp, "2026-11-28", "slate.json"), JSON.stringify(fx.slate));
+    const plan = mergePlanWithPersisted({ today: [], tomorrow: [] }, tmp, thuNight);
+    expect(plan.tomorrow).toHaveLength(11);
+    fs.rmSync(tmp, { recursive: true, force: true });
+  });
+
+  it("Sat legs get no stale prices from another slate's pull", () => {
+    const brunson = fx.picks.find((p) => p.playerName === "Jalen Brunson")!;
+    const cache: OddsCacheFile = {
+      lastPulled: "2026-11-25T10:29:00.533Z",
+      oddsMap: { "jalen brunson|pts|25": { price: 1.9, bookie: "Neds" } },
+      bySlateDate: {
+        "2026-11-26": {
+          lastPulled: "2026-11-25T10:29:00.533Z",
+          oddsMap: { "jalen brunson|pts|25": { price: 1.9, bookie: "Neds" } },
+        },
+      },
+    };
+    const sat = resolveSlateOddsMaps(cache, "2026-11-28", fx.slate, [brunson.playerName], new Map([["jalen brunson", fx.slate[0]!.homeTeamId]]));
+    expect(sat.best.size).toBe(0);
+    expect(sat.lastPulled).toBeUndefined();
+  });
+
+  it("the 9pm pull runs on Fri for Sat, not on Thu (no extra credits)", () => {
+    const thu9pm = new Date("2026-11-26T10:15:00.000Z");
+    const fri9pm = new Date("2026-11-27T10:15:00.000Z");
+    expect(detectOddsPullTrigger(thu9pm, fx.slate, {}, { nextSlateTipDate: "2026-11-28" })).toBeNull();
+    expect(detectOddsPullTrigger(fri9pm, fx.slate, {}, { nextSlateTipDate: "2026-11-28" })).toBe("scheduled_9pm");
+  });
+
+  it("logs creditsRemaining read from the Odds API header", () => {
+    expect(oddsCreditsLogLine({ creditsRemaining: 124, creditsRemainingAt: "2026-11-27T10:00:41.000Z" })).toBe(
+      "odds credits: 124 remaining (Odds API x-requests-remaining, read 2026-11-27T10:00:41.000Z)"
+    );
+    expect(oddsCreditsLogLine({})).toMatch(/unknown/);
+  });
+
+  it(`Sat model legs without odds: ${fx.legCount} legs across 11 games, all shown with fair/prob/Past5`, () => {
+    expect(fx.picks).toHaveLength(fx.legCount);
+    expect(new Set(fx.picks.map((p) => p.gameId)).size).toBe(11);
+    expect(fx.picks.every((p) => p.fairPrice > 1 && p.probability > 0 && (p.recentVsLine ?? []).length > 0)).toBe(true);
+    expect(slateAwaitingPrices({ slateDate: "2026-11-28", todayDate: "2026-11-26", picks: fx.picks })).toBe(true);
+    const shown = filterAndSortPicks({
+      picks: fx.picks,
+      slate: fx.slate,
+      multis: [],
+      myBookie: "Sportsbet",
+      filters: { multi: "all", market: "all", show: "value", sort: "edge", sortAsc: false },
+      pricesPending: true,
+    });
+    expect(shown).toHaveLength(fx.legCount);
+    expect(shown[0]!.probability).toBeGreaterThanOrEqual(shown[shown.length - 1]!.probability);
+    const html = renderToStaticMarkup(
+      createElement(PickLegRow, { leg: shown[0]!, injuries: [], slate: fx.slate, myBookie: "Sportsbet", onTap: () => {}, pricesPending: true })
+    );
+    expect(html).toContain("Prices at 9pm");
+    expect(html).toContain(`${Math.round(shown[0]!.probability * 100)}%`);
+    expect(html).toContain(`Fair ${shown[0]!.fairPrice.toFixed(2)}`);
+  });
+
+  it("a UTC viewer's second tab is never a past slate", () => {
+    const index = {
+      updatedAt: thuNight.toISOString(),
+      todayDate: "2026-11-26",
+      tomorrowDate: null,
+      defaultDate: "2026-11-26",
+      dates: [
+        { date: "2026-11-25", status: "locked_at_tip", statusLabel: "", gameCount: 2, legCount: 1, multiCount: 1, lastUpdated: "", firstTipIso: "2026-11-25T01:00:00.000Z" },
+        { date: "2026-11-26", status: "locked_at_tip", statusLabel: "", gameCount: 9, legCount: 1, multiCount: 1, lastUpdated: "", firstTipIso: "2026-11-25T22:00:00.000Z" },
+        { date: "2026-11-28", status: "draft", statusLabel: "", gameCount: 11, legCount: 1, multiCount: 0, lastUpdated: "", firstTipIso: "2026-11-28T00:00:00.000Z" },
+      ],
+    } as DataIndexFile;
+    expect(resolveViewerSlateSegment(index, thuNight, "UTC").tomorrowFolder).toBe("2026-11-28");
+    expect(resolveViewerSlateSegment(index, thuNight, "Australia/Sydney").tomorrowFolder).toBe("2026-11-28");
   });
 });

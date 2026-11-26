@@ -117,6 +117,7 @@ export async function pullBudgetedOddsForSlate(opts: {
   }
 
   const { events, remaining: remAfterList } = await listOddsEvents(opts.apiKey);
+  let creditsHeaderRead = remAfterList != null;
   if (remAfterList != null) creditsRemaining = remAfterList;
 
   const payloads: unknown[] = [];
@@ -129,7 +130,10 @@ export async function pullBudgetedOddsForSlate(opts: {
     const oddsId = matchOddsEventId(g, events);
     if (!oddsId) continue;
     const { data, remaining: rem } = await fetchOddsForEvent(opts.apiKey, oddsId);
-    if (rem != null) creditsRemaining = rem;
+    if (rem != null) {
+      creditsRemaining = rem;
+      creditsHeaderRead = true;
+    }
     if (data) {
       payloads.push(data);
       pulledIds.add(g.id);
@@ -165,6 +169,7 @@ export async function pullBudgetedOddsForSlate(opts: {
 
   opts.cache.oddsMap = oddsMapToRecord(oddsMap);
   opts.cache.creditsRemaining = creditsRemaining;
+  if (creditsHeaderRead) opts.cache.creditsRemainingAt = opts.now.toISOString();
 
   const priceCount = payloads.reduce((n: number, p) => {
     const e = p as { bookmakers?: { markets?: { outcomes?: unknown[] }[] }[] };
