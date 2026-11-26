@@ -33,7 +33,7 @@ describe("prod fix pass 4 — row tint gradient", () => {
   it("won row uses left-strong fade with opaque stop at 0%", () => {
     const css = fs.readFileSync(path.join(process.cwd(), "src/index.css"), "utf8");
     const block = css.match(/\.leg-row-live-won\s*\{[\s\S]*?\}/)?.[0] ?? "";
-    expect(block).toMatch(/rgba\(52,\s*211,\s*153,\s*0\.2\)\s*0%/);
+    expect(block).toMatch(/rgba\(52,\s*211,\s*153,\s*0\.12\)\s*0%/);
     expect(block).not.toMatch(/transparent\s*0%/);
 
     const el = document.createElement("motion-div");
@@ -45,7 +45,7 @@ describe("prod fix pass 4 — row tint gradient", () => {
     );
     document.body.appendChild(el);
     const bg = getComputedStyle(el).backgroundImage;
-    expect(bg).toMatch(/rgba\(52,\s*211,\s*153,\s*0\.2\)/);
+    expect(bg).toMatch(/rgba\(52,\s*211,\s*153,\s*0\.12\)/);
     el.remove();
   });
 });

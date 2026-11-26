@@ -581,3 +581,28 @@ describe("prod fix pass 5 — Games tab SGMs freeze at publish", () => {
     host.remove();
   });
 });
+
+describe("prod fix pass 5 — softer row tint", () => {
+  const css = fs.readFileSync(path.join(process.cwd(), "src/index.css"), "utf8");
+  const block = (cls: string) => css.match(new RegExp(`\\.${cls}\\s*\\{[\\s\\S]*?\\}`))?.[0] ?? "";
+
+  it("won fades 0.12 → 0.05 → 0", () => {
+    const b = block("leg-row-live-won");
+    expect(b).toMatch(/rgba\(52, 211, 153, 0\.12\) 0%/);
+    expect(b).toMatch(/rgba\(52, 211, 153, 0\.05\) 40%/);
+    expect(b).toMatch(/rgba\(52, 211, 153, 0\) 85%/);
+  });
+
+  it("lost fades 0.10 → 0.04 → 0", () => {
+    const b = block("leg-row-live-lost");
+    expect(b).toMatch(/rgba\(248, 113, 113, 0\.1\) 0%/);
+    expect(b).toMatch(/rgba\(248, 113, 113, 0\.04\) 40%/);
+    expect(b).toMatch(/rgba\(248, 113, 113, 0\) 85%/);
+  });
+
+  it("Home/Games (MultiLegRow) and Picks (PickLegRow) share the tint classes", () => {
+    for (const f of ["src/components/MultiLegRow.tsx", "src/components/PickLegRow.tsx"]) {
+      expect(fs.readFileSync(path.join(process.cwd(), f), "utf8")).toMatch(/legRowLiveTrackingClass\(liveView\)/);
+    }
+  });
+});
