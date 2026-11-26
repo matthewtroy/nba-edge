@@ -160,11 +160,11 @@
         "4432194-q1reb-2",
         "4222252-q1reb-2",
         "3155942-q1reb-2",
-        "4601023-q1reb-2"
+        "4066383-q1reb-2"
       ],
-      "combinedProbability": 0.15390222957875807,
-      "combinedFairPrice": 6.5,
-      "combinedTakeAt": 7.02,
+      "combinedProbability": 0.1353389873013763,
+      "combinedFairPrice": 7.39,
+      "combinedTakeAt": 7.98,
       "bookieTotals": {},
       "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
     }
