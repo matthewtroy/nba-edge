@@ -37,12 +37,12 @@ describe("injury display badges", () => {
     expect(injuryStatusForPlayer([newer, older], "3136195")).toBe("Probable");
   });
 
-  it("shows badge only for Probable, Questionable, Doubtful", () => {
+  it("shows badge for Out, Probable, Questionable, Doubtful", () => {
+    expect(injuryStatusShowsBadge("Out")).toBe(true);
     expect(injuryStatusShowsBadge("Probable")).toBe(true);
     expect(injuryStatusShowsBadge("Questionable")).toBe(true);
     expect(injuryStatusShowsBadge("Doubtful")).toBe(true);
     expect(injuryStatusShowsBadge("Available")).toBe(false);
-    expect(injuryStatusShowsBadge("Out")).toBe(false);
     expect(injuryStatusShowsBadge(undefined)).toBe(false);
   });
 

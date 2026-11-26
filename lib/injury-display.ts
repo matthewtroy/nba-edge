@@ -57,12 +57,13 @@ export function injuryStatusForPlayer(
 }
 
 const BADGE_STATUSES: Set<InjuryStatus> = new Set([
+  "Out",
   "Probable",
   "Questionable",
   "Doubtful",
 ]);
 
-/** Injury statuses that render a row badge (not Available / Out / none). */
+/** Injury statuses that render a row badge (not Available / none). */
 export function injuryStatusShowsBadge(
   status?: InjuryStatus
 ): status is InjuryStatus {
