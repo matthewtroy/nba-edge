@@ -1,19 +1,9 @@
 {
-  "updatedAt": "2026-11-26T12:49:17.692Z",
-  "todayDate": "2026-11-26",
+  "updatedAt": "2026-11-26T22:00:23.041Z",
+  "todayDate": "2026-11-27",
   "tomorrowDate": "2026-11-28",
   "defaultDate": "2026-11-28",
   "dates": [
-    {
-      "date": "2026-11-25",
-      "status": "locked_at_tip",
-      "statusLabel": "Locked at tip",
-      "gameCount": 2,
-      "legCount": 446,
-      "multiCount": 2,
-      "lastUpdated": "2026-11-25T03:15:24.942Z",
-      "firstTipIso": "2026-11-25T01:00:00.000Z"
-    },
     {
       "date": "2026-11-26",
       "status": "locked_at_tip",
@@ -29,9 +19,9 @@
       "status": "draft",
       "statusLabel": "Draft · updates until 9pm",
       "gameCount": 11,
-      "legCount": 2638,
+      "legCount": 1739,
       "multiCount": 0,
-      "lastUpdated": "2026-11-26T12:50:26.156Z",
+      "lastUpdated": "2026-11-26T22:01:01.311Z",
       "firstTipIso": "2026-11-28T00:00:00.000Z"
     }
   ],
