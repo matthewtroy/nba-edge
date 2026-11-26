@@ -98,7 +98,6 @@ export function buildLegsForPlayer(
     defendingTeamId?: string;
     playerTeamId?: string;
     playerPosition?: string;
-    opponentOnB2B?: boolean;
     seasonMinutes?: number;
     injuryAngle?: boolean;
     matchupSignalsEnabled?: boolean;
@@ -299,7 +298,6 @@ export function buildLegsForPlayer(
       seedReasons: injurySeeds,
       playerId: ctx.playerId,
       positionRanks: ctx.positionRanks,
-      opponentOnB2B: ctx.opponentOnB2B,
     });
     leg.reasons = gateLegReasons(leg.reasons, leg.market, 3, leg.line);
     leg.reasonLine = topReasonLines(leg.reasons, 3);

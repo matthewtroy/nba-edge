@@ -14,8 +14,6 @@ import { sampleLegsByMarket } from "../lib/reason-histogram.js";
 import { normalizeLegReasons, reasonTexts } from "../lib/leg-reason-types.js";
 import { filterPicksWithSupportiveReasons } from "../lib/picks-supportive-filter.js";
 import { logSupportiveExclusionsByMarket } from "../lib/leg-reason-supportive.js";
-import { opponentOnB2BFromGame } from "../lib/schedule-b2b.js";
-
 const date = process.argv[2] ?? "2026-11-28";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -67,14 +65,11 @@ const rebuilt: PickLeg[] = [];
 for (const leg of picks) {
   const cacheRow = gameLogCache[leg.playerId];
   const logs = cacheRow?.logs ?? [];
-  const game = slate.find((g) => g.id === leg.gameId);
-  const opponentOnB2B = opponentOnB2BFromGame(game, leg.team);
   const { playerTeamId, defendingTeamId } = teamIdsForPick(leg.gameId, leg.team, slate);
   const injurySeeds = normalizeLegReasons(leg.reasons ?? []).filter((r) => r.type === "injury");
   const reasons = buildLegReasons({
     leg,
     logs,
-    opponentOnB2B,
     h2hLogs: logs,
     seasonAvg: leg.seasonAvg,
     defense,
@@ -123,7 +118,6 @@ console.log(
 );
 
 let oppInjury = 0;
-let oppB2b = 0;
 let ceiling = 0;
 let former = 0;
 let longShotForm = 0;
@@ -131,7 +125,6 @@ let longShot = 0;
 for (const leg of kept) {
   const lines = ensureLegReasonMinimum(leg, leg.reasons ?? []);
   if (lines.some((r) => /without .+ →/i.test(r.text))) oppInjury += 1;
-  if (lines.some((r) => /on a back-to-back/i.test(r.text))) oppB2b += 1;
   if (lines.some((r) => /^best this season:/i.test(r.text))) ceiling += 1;
   if (lines.some((r) => /^former team vs /i.test(r.text))) former += 1;
   if (leg.probability < 0.25) {
@@ -140,7 +133,7 @@ for (const leg of kept) {
   }
 }
 console.log(
-  `line-type counts — opp-injury: ${oppInjury} · opp-b2b: ${oppB2b} · ceiling: ${ceiling} · former: ${former} · long-shot form: ${longShotForm} · long-shot legs kept: ${longShot}`
+  `line-type counts — opp-injury: ${oppInjury} · ceiling: ${ceiling} · former: ${former} · long-shot form: ${longShotForm} · long-shot legs kept: ${longShot}`
 );
 
 const samples = sampleLegsByMarket(kept, 3);

@@ -45,25 +45,13 @@ describe("opponent B2B from ESPN schedule", () => {
     expect(opponentOnB2BFromGame(both, "Philadelphia 76ers")).toBe(false);
   });
 
-  it("builder uses opponent copy, not player team", () => {
+  it("never emits back-to-back opponent reason copy", () => {
     const reasons = buildLegReasons({
       leg: { ...baseLeg, b2b: true },
       logs: [],
       teamName: "Indiana Pacers",
       opponentName: "Philadelphia 76ers",
-      opponentOnB2B: true,
     });
-    expect(reasons.some((r) => /76ers on a back-to-back/i.test(r.text))).toBe(true);
-    expect(reasons.some((r) => /Pacers on a back-to-back/i.test(r.text))).toBe(false);
-  });
-
-  it("ignores leg.b2b without schedule flag", () => {
-    const reasons = buildLegReasons({
-      leg: { ...baseLeg, b2b: true },
-      logs: [],
-      teamName: "Indiana Pacers",
-      opponentOnB2B: false,
-    });
-    expect(reasons.some((r) => /on a back-to-back/i.test(r.text))).toBe(false);
+    expect(reasons.some((r) => /back-to-back/i.test(r.text))).toBe(false);
   });
 });
