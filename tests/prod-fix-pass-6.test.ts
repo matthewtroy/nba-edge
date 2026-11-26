@@ -353,3 +353,28 @@ describe("item 5: card headers — bet type, total, bookie, stake chip only", ()
     expect(t.takeAtTotal).toBe(4.32);
   });
 });
+
+describe("item 6: softer won/lost tint on Home, Games and Picks", () => {
+  const css = fs.readFileSync(path.join(process.cwd(), "src/index.css"), "utf8");
+  const block = (cls: string) => css.match(new RegExp(`\\.${cls}\\s*\\{[\\s\\S]*?\\}`))?.[0] ?? "";
+
+  it("won fades 0.07 → 0.03 → 0", () => {
+    const b = block("leg-row-live-won");
+    expect(b).toMatch(/rgba\(52, 211, 153, 0\.07\) 0%/);
+    expect(b).toMatch(/rgba\(52, 211, 153, 0\.03\) 40%/);
+    expect(b).toMatch(/rgba\(52, 211, 153, 0\) 85%/);
+  });
+
+  it("lost fades 0.06 → 0.025 → 0", () => {
+    const b = block("leg-row-live-lost");
+    expect(b).toMatch(/rgba\(248, 113, 113, 0\.06\) 0%/);
+    expect(b).toMatch(/rgba\(248, 113, 113, 0\.025\) 40%/);
+    expect(b).toMatch(/rgba\(248, 113, 113, 0\) 85%/);
+  });
+
+  it("Home/Games (MultiLegRow) and Picks (PickLegRow) share the tint classes", () => {
+    for (const f of ["src/components/MultiLegRow.tsx", "src/components/PickLegRow.tsx"]) {
+      expect(fs.readFileSync(path.join(process.cwd(), f), "utf8")).toMatch(/legRowLiveTrackingClass\(liveView\)/);
+    }
+  });
+});
