@@ -26,11 +26,15 @@ describe("persist-data-branch.sh", () => {
       fs.mkdirSync(path.join(work, "scripts"), { recursive: true });
       fs.mkdirSync(path.join(work, "public/data"), { recursive: true });
       fs.writeFileSync(path.join(work, "public/data/history.json"), "{}");
-      fs.copyFileSync(
-        path.join(repoRoot, "scripts", scriptName),
-        path.join(work, "scripts", scriptName)
-      );
+      for (const rel of ["persist-data-branch.sh", "persist-guard-check.ts"]) {
+        fs.copyFileSync(
+          path.join(repoRoot, "scripts", rel),
+          path.join(work, "scripts", rel)
+        );
+      }
+      fs.cpSync(path.join(repoRoot, "lib"), path.join(work, "lib"), { recursive: true });
       fs.chmodSync(path.join(work, "scripts", scriptName), 0o755);
+      fs.chmodSync(path.join(work, "scripts", "persist-guard-check.ts"), 0o644);
       git(work, "add", "scripts", "public/data/history.json");
       git(work, "-c", "user.email=t@t.com", "-c", "user.name=T", "commit", "-m", "init");
       const mainBranch = execFileSync("git", ["rev-parse", "--abbrev-ref", "HEAD"], {

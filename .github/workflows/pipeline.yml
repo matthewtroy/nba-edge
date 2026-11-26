@@ -151,7 +151,6 @@ jobs:
           if-no-files-found: ignore
 
       - name: Persist history to data branch
-        continue-on-error: true
         run: bash scripts/persist-data-branch.sh
 
       - name: Upload Pages artifact

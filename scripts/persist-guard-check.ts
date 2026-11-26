@@ -6,6 +6,7 @@ import type { PickLeg } from "../lib/types.js";
 import type { OddsCacheFile } from "../lib/odds-cache-file.js";
 import {
   countPricedPickLegs,
+  oddsMapDowngradeBlocked,
   persistDataBranchGuardReason,
   slateOddsSnapshotKeyCount,
 } from "../lib/odds-cache-guard.js";
@@ -14,7 +15,8 @@ import {
   persistJsonShrinkReason,
   recordKeyCount,
 } from "../lib/espn-cache-guard.js";
-import type { HistoryJson } from "../lib/types.js";
+import { isPostTipOff } from "../lib/odds-cache-merge.js";
+import type { HistoryJson, SlateGame } from "../lib/types.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const staging = process.argv[2];
@@ -24,6 +26,7 @@ if (!staging || !fs.existsSync(staging)) {
 }
 
 const forceOdds = process.env.PIPELINE_FORCE_ODDS === "1";
+const now = new Date();
 
 const indexPath = path.join(staging, "index.json");
 let defaultDate: string | null = null;
@@ -35,6 +38,19 @@ if (fs.existsSync(indexPath)) {
     /* ignore */
   }
 }
+
+let defaultSlate: SlateGame[] = [];
+if (defaultDate) {
+  const slatePath = path.join(staging, defaultDate, "slate.json");
+  if (fs.existsSync(slatePath)) {
+    try {
+      defaultSlate = JSON.parse(fs.readFileSync(slatePath, "utf8")) as SlateGame[];
+    } catch {
+      defaultSlate = [];
+    }
+  }
+}
+const postTipOff = isPostTipOff(now, defaultSlate);
 
 let pricedLegs = 0;
 if (defaultDate) {
@@ -120,21 +136,31 @@ for (const { rel, label } of jsonShrinkChecks) {
     }
   }
   const nextCount = countPersistedFile(rel, path.join(staging, path.basename(rel)));
-  const shrinkReason = persistJsonShrinkReason(label, priorCount, nextCount);
+  const shrinkReason = persistJsonShrinkReason(label, priorCount, nextCount, {
+    postTipOff,
+  });
   if (shrinkReason) {
     console.error(`persist data branch guard: blocked — ${shrinkReason}`);
     process.exit(1);
   }
 }
 
-const reason = persistDataBranchGuardReason({
-  defaultSlateDate: defaultDate,
-  pricedLegs,
-  priorPricedLegsOnSlate,
-  priorSlateCacheKeys,
-  nextSlateCacheKeys,
-  forceOdds,
-});
+const reason =
+  postTipOff && pricedLegs === 0 && priorPricedLegsOnSlate > 0
+    ? null
+    : persistDataBranchGuardReason({
+        defaultSlateDate: defaultDate,
+        pricedLegs,
+        priorPricedLegsOnSlate,
+        priorSlateCacheKeys,
+        nextSlateCacheKeys,
+        forceOdds:
+          forceOdds ||
+          (postTipOff &&
+            oddsMapDowngradeBlocked(priorSlateCacheKeys, nextSlateCacheKeys, {
+              forceOddsPullSucceeded: false,
+            })),
+      });
 
 if (reason) {
   console.error(`persist data branch guard: blocked — ${reason}`);

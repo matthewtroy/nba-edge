@@ -63,8 +63,8 @@ if git -C "$WT" diff --staged --quiet; then
 fi
 
 if ! npx tsx "$ROOT/scripts/persist-guard-check.ts" "$WT/public/data"; then
-  PERSIST_WARN "guard blocked persist (0 priced or odds-cache shrink without force_odds)"
-  exit 0
+  echo "::error::persist blocked: see persist data branch guard output above"
+  exit 1
 fi
 
 git -C "$WT" \

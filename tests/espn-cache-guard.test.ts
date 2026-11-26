@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   espnCacheShrinkBlocked,
   historyEntryCount,
+  persistJsonShrinkReason,
   recordKeyCount,
 } from "../lib/espn-cache-guard";
 import type { HistoryJson } from "../lib/types";
@@ -29,6 +30,12 @@ describe("recordKeyCount", () => {
   it("counts object keys", () => {
     expect(recordKeyCount({ a: 1, b: 2 })).toBe(2);
     expect(recordKeyCount(null)).toBe(0);
+  });
+});
+
+describe("persistJsonShrinkReason", () => {
+  it("allows partial shrink post-tip", () => {
+    expect(persistJsonShrinkReason("h2h", 100, 40, { postTipOff: true })).toBeNull();
   });
 });
 

@@ -30,8 +30,15 @@ export function warnEspnCacheShrinkBlocked(
 export function persistJsonShrinkReason(
   fileLabel: string,
   priorCount: number,
-  nextCount: number
+  nextCount: number,
+  opts?: { postTipOff?: boolean }
 ): string | null {
+  if (opts?.postTipOff) {
+    if (priorCount > 0 && nextCount === 0) {
+      return `${fileLabel} would shrink ${priorCount}→0 entries (post-tip empty wipe)`;
+    }
+    return null;
+  }
   if (espnCacheShrinkBlocked(priorCount, nextCount)) {
     return `${fileLabel} would shrink ${priorCount}→${nextCount} entries (>20% loss)`;
   }

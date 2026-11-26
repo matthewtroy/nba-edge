@@ -241,10 +241,13 @@ export async function runLivePipeline(
   injuries = injuries.filter((i) => slateTeamSet.has(i.teamId));
 
   const gameLogCache = loadGameLogCache(outDir);
+  const baselineGameLogCache = structuredClone(gameLogCache);
   const baselineGameLogKeys = recordKeyCount(gameLogCache);
   const baselineH2hSeasonCache = loadH2hSeasonCache(outDir);
   const baselineH2hSeasonKeys = recordKeyCount(baselineH2hSeasonCache);
   const espnDegraded = () => sources.espn !== "ok";
+  const postTipOff = () => isPostTipOff(now, unionSlate);
+  const blockEspnShrink = () => espnDegraded() || postTipOff();
   let leagueBackfillReport: LeagueBackfillReport | undefined;
   try {
     const rosters = await mapPool(teamIds, 4, async (tid) => {
@@ -421,8 +424,9 @@ export async function runLivePipeline(
       until: now,
     });
     const nextGameLogKeys = recordKeyCount(gameLogCache);
-    if (espnDegraded() && espnCacheShrinkBlocked(baselineGameLogKeys, nextGameLogKeys)) {
+    if (espnCacheShrinkBlocked(baselineGameLogKeys, nextGameLogKeys) && blockEspnShrink()) {
       warnEspnCacheShrinkBlocked("game-log-cache", baselineGameLogKeys, nextGameLogKeys);
+      saveGameLogCache(outDir, baselineGameLogCache);
     } else {
       saveGameLogCache(outDir, gameLogCache);
     }
@@ -703,7 +707,7 @@ export async function runLivePipeline(
     });
     console.log(`h2h season logs: ${h2hReady}/${byId.size} players (${3} ESPN seasons)`);
     const nextH2hKeys = recordKeyCount(loadH2hSeasonCache(outDir));
-    if (espnDegraded() && espnCacheShrinkBlocked(baselineH2hSeasonKeys, nextH2hKeys)) {
+    if (espnCacheShrinkBlocked(baselineH2hSeasonKeys, nextH2hKeys) && blockEspnShrink()) {
       warnEspnCacheShrinkBlocked("h2h-season-cache", baselineH2hSeasonKeys, nextH2hKeys);
       saveH2hSeasonCache(outDir, baselineH2hSeasonCache);
     }
@@ -844,7 +848,7 @@ export async function runLivePipeline(
 
   fs.mkdirSync(outDir, { recursive: true });
   const nextHistoryCount = historyEntryCount(history);
-  if (espnDegraded() && espnCacheShrinkBlocked(baselineHistoryCount, nextHistoryCount)) {
+  if (espnCacheShrinkBlocked(baselineHistoryCount, nextHistoryCount) && blockEspnShrink()) {
     warnEspnCacheShrinkBlocked("history.json", baselineHistoryCount, nextHistoryCount);
     history = baselineHistory;
   }
