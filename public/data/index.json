@@ -1,18 +1,18 @@
 {
-  "updatedAt": "2026-11-26T02:08:16.310Z",
+  "updatedAt": "2026-11-26T03:50:12.254Z",
   "todayDate": "2026-11-26",
   "tomorrowDate": null,
   "defaultDate": "2026-11-26",
   "dates": [
     {
       "date": "2026-11-26",
-      "status": "official",
-      "statusLabel": "Official · published 10:08pm",
-      "gameCount": 8,
-      "legCount": 1854,
-      "multiCount": 7,
-      "lastUpdated": "2026-11-26T02:09:06.103Z",
-      "firstTipIso": "2026-11-26T00:00:00.000Z"
+      "status": "locked_at_tip",
+      "statusLabel": "Locked at tip",
+      "gameCount": 9,
+      "legCount": 2188,
+      "multiCount": 5,
+      "lastUpdated": "2026-11-26T03:50:57.552Z",
+      "firstTipIso": "2026-11-25T22:00:00.000Z"
     }
   ]
 }

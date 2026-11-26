@@ -1,26 +1,27 @@
 {
   "1966": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/1966.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 35,
         "pts": 25,
         "reb": 10,
         "ast": 12,
         "threes": 4,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Miami Heat",
         "opponentTeamId": "14",
         "isHome": true,
         "fga": 15,
         "fta": 3,
         "turnovers": 3,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 3,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910037",
@@ -1649,6 +1650,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3448.png",
     "logs": [
       {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 18,
+        "pts": 6,
+        "reb": 3,
+        "ast": 1,
+        "threes": 1,
+        "teamId": "12",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 3,
+        "fta": 1,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910043",
         "minutes": 21,
         "pts": 3,
@@ -2492,6 +2512,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3992.png",
     "logs": [
+      {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 36,
+        "pts": 28,
+        "reb": 1,
+        "ast": 5,
+        "threes": 1,
+        "teamId": "5",
+        "opponentTeamId": "18",
+        "isHome": false,
+        "fga": 19,
+        "fta": 14,
+        "turnovers": 4,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910041",
         "minutes": 37,
@@ -3454,13 +3493,13 @@
     "logs": []
   },
   "6430": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/6430.png",
     "logs": [],
     "version": 2
   },
   "6440": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/6440.png",
     "logs": [],
     "version": 2
@@ -3820,27 +3859,28 @@
     ]
   },
   "6475": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/6475.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 31,
         "pts": 7,
         "reb": 0,
         "ast": 1,
         "threes": 1,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Philadelphia 76ers",
         "opponentTeamId": "20",
         "isHome": false,
         "fga": 12,
         "fta": 0,
         "turnovers": 0,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 0,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910030",
@@ -4778,7 +4818,7 @@
     "version": 2
   },
   "6580": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/6580.png",
     "logs": [],
     "version": 2
@@ -5116,6 +5156,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/6585.png",
     "logs": [
+      {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 9,
+        "pts": 3,
+        "reb": 2,
+        "ast": 0,
+        "threes": 1,
+        "teamId": "18",
+        "opponentTeamId": "5",
+        "isHome": true,
+        "fga": 1,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910034",
         "minutes": 19,
@@ -6431,7 +6490,7 @@
     "logs": []
   },
   "2488653": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/2488653.png",
     "logs": [
       {
@@ -6755,7 +6814,7 @@
     ]
   },
   "2528210": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/2528210.png",
     "logs": [
       {
@@ -8030,27 +8089,28 @@
     ]
   },
   "2581018": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/2581018.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 28,
         "pts": 5,
         "reb": 1,
         "ast": 3,
         "threes": 1,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Miami Heat",
         "opponentTeamId": "14",
         "isHome": true,
         "fga": 6,
         "fta": 0,
         "turnovers": 1,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 0,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910037",
@@ -8741,6 +8801,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/2583632.png",
     "logs": [
+      {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 23,
+        "pts": 0,
+        "reb": 6,
+        "ast": 2,
+        "threes": 0,
+        "teamId": "30",
+        "opponentTeamId": "4",
+        "isHome": true,
+        "fga": 3,
+        "fta": 0,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910036",
         "minutes": 13,
@@ -10199,6 +10278,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/2990984.png",
     "logs": [
       {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 27,
+        "pts": 9,
+        "reb": 4,
+        "ast": 4,
+        "threes": 3,
+        "teamId": "4",
+        "opponentTeamId": "30",
+        "isHome": false,
+        "fga": 7,
+        "fta": 0,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910041",
         "minutes": 27,
         "pts": 17,
@@ -10743,6 +10841,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/2991043.png",
     "logs": [
       {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 12,
+        "pts": 2,
+        "reb": 1,
+        "ast": 2,
+        "threes": 0,
+        "teamId": "15",
+        "opponentTeamId": "17",
+        "isHome": true,
+        "fga": 2,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910039",
         "minutes": 8,
         "pts": 0,
@@ -11130,6 +11247,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/2991139.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 22,
+        "pts": 12,
+        "reb": 6,
+        "ast": 4,
+        "threes": 0,
+        "teamId": "12",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 8,
+        "fta": 2,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 3,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910043",
         "minutes": 23,
@@ -11861,6 +11997,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/2991350.png",
     "logs": [
       {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 26,
+        "pts": 11,
+        "reb": 2,
+        "ast": 2,
+        "threes": 3,
+        "teamId": "25",
+        "opponentTeamId": "16",
+        "isHome": true,
+        "fga": 9,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910014",
         "minutes": 9,
         "pts": 5,
@@ -12414,6 +12569,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/2995706.png",
     "logs": [
       {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 10,
+        "pts": 0,
+        "reb": 3,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "5",
+        "opponentTeamId": "18",
+        "isHome": false,
+        "fga": 1,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910041",
         "minutes": 12,
         "pts": 4,
@@ -12780,6 +12954,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3032976.png",
     "logs": [
       {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 32,
+        "pts": 9,
+        "reb": 7,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "16",
+        "opponentTeamId": "25",
+        "isHome": false,
+        "fga": 6,
+        "fta": 6,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910040",
         "minutes": 27,
         "pts": 7,
@@ -13117,27 +13310,28 @@
     "version": 2
   },
   "3032977": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3032977.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 36,
         "pts": 32,
         "reb": 14,
         "ast": 4,
         "threes": 0,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Philadelphia 76ers",
         "opponentTeamId": "20",
         "isHome": false,
         "fga": 18,
         "fta": 13,
         "turnovers": 5,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 5,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910009",
@@ -13442,7 +13636,7 @@
     "logs": []
   },
   "3032979": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3032979.png",
     "logs": [
       {
@@ -13987,7 +14181,7 @@
     "logs": []
   },
   "3059318": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3059318.png",
     "logs": [
       {
@@ -14250,27 +14444,28 @@
     "version": 2
   },
   "3059319": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3059319.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 24,
         "pts": 8,
         "reb": 2,
         "ast": 2,
         "threes": 0,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Philadelphia 76ers",
         "opponentTeamId": "20",
         "isHome": false,
         "fga": 6,
         "fta": 0,
         "turnovers": 0,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 0,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910030",
@@ -14598,6 +14793,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3062679.png",
     "logs": [
+      {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 36,
+        "pts": 15,
+        "reb": 7,
+        "ast": 11,
+        "threes": 1,
+        "teamId": "18",
+        "opponentTeamId": "5",
+        "isHome": true,
+        "fga": 14,
+        "fta": 3,
+        "turnovers": 3,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910034",
         "minutes": 39,
@@ -15488,27 +15702,28 @@
     "version": 2
   },
   "3064482": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3064482.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 15,
         "pts": 5,
         "reb": 5,
         "ast": 1,
         "threes": 1,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Philadelphia 76ers",
         "opponentTeamId": "20",
         "isHome": false,
         "fga": 4,
         "fta": 0,
         "turnovers": 0,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 2,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910030",
@@ -15831,6 +16046,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3064514.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 39,
+        "pts": 28,
+        "reb": 9,
+        "ast": 3,
+        "threes": 2,
+        "teamId": "17",
+        "opponentTeamId": "15",
+        "isHome": false,
+        "fga": 16,
+        "fta": 8,
+        "turnovers": 4,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910040",
         "minutes": 35,
@@ -16958,7 +17192,7 @@
     "logs": []
   },
   "3102531": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3102531.png",
     "logs": [],
     "version": 2
@@ -17998,6 +18232,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3133626.png",
     "logs": [
       {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 25,
+        "pts": 13,
+        "reb": 5,
+        "ast": 1,
+        "threes": 3,
+        "teamId": "25",
+        "opponentTeamId": "16",
+        "isHome": true,
+        "fga": 8,
+        "fta": 2,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910038",
         "minutes": 26,
         "pts": 20,
@@ -18339,6 +18592,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3133628.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 26,
+        "pts": 3,
+        "reb": 6,
+        "ast": 2,
+        "threes": 1,
+        "teamId": "15",
+        "opponentTeamId": "17",
+        "isHome": true,
+        "fga": 2,
+        "fta": 0,
+        "turnovers": 3,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910039",
         "minutes": 28,
@@ -19290,6 +19562,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3134907.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 31,
+        "pts": 13,
+        "reb": 3,
+        "ast": 2,
+        "threes": 3,
+        "teamId": "15",
+        "opponentTeamId": "17",
+        "isHome": true,
+        "fga": 11,
+        "fta": 2,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910039",
         "minutes": 32,
@@ -21085,6 +21376,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3136195.png",
     "logs": [
       {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 33,
+        "pts": 12,
+        "reb": 10,
+        "ast": 7,
+        "threes": 1,
+        "teamId": "18",
+        "opponentTeamId": "5",
+        "isHome": true,
+        "fga": 8,
+        "fta": 4,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 3,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910034",
         "minutes": 29,
         "pts": 30,
@@ -21386,6 +21696,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3136196.png",
     "logs": [
+      {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 23,
+        "pts": 9,
+        "reb": 10,
+        "ast": 1,
+        "threes": 3,
+        "teamId": "16",
+        "opponentTeamId": "25",
+        "isHome": false,
+        "fga": 6,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910040",
         "minutes": 24,
@@ -21950,7 +22279,7 @@
     "version": 2
   },
   "3137259": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3137259.png",
     "logs": [
       {
@@ -22726,6 +23055,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3147657.png",
     "logs": [
       {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 37,
+        "pts": 19,
+        "reb": 8,
+        "ast": 2,
+        "threes": 1,
+        "teamId": "18",
+        "opponentTeamId": "5",
+        "isHome": true,
+        "fga": 15,
+        "fta": 0,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910034",
         "minutes": 31,
         "pts": 8,
@@ -23395,6 +23743,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3150844.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 4,
+        "pts": 2,
+        "reb": 0,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "17",
+        "opponentTeamId": "15",
+        "isHome": false,
+        "fga": 1,
+        "fta": 2,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910040",
         "minutes": 14,
@@ -24921,27 +25288,28 @@
     ]
   },
   "3899664": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3899664.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 6,
         "pts": 0,
         "reb": 1,
         "ast": 1,
         "threes": 0,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Philadelphia 76ers",
         "opponentTeamId": "20",
         "isHome": false,
         "fga": 2,
         "fta": 0,
         "turnovers": 0,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 0,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910030",
@@ -25144,7 +25512,7 @@
     "version": 2
   },
   "3904625": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3904625.png",
     "logs": [
       {
@@ -25236,7 +25604,7 @@
     "logs": []
   },
   "3907387": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3907387.png",
     "logs": [],
     "version": 2
@@ -25771,6 +26139,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3907823.png",
     "logs": [
       {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 2,
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "17",
+        "opponentTeamId": "15",
+        "isHome": false,
+        "fga": 1,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910040",
         "minutes": 3,
         "pts": 0,
@@ -25956,6 +26343,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3908809.png",
     "logs": [
+      {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 34,
+        "pts": 30,
+        "reb": 4,
+        "ast": 4,
+        "threes": 1,
+        "teamId": "5",
+        "opponentTeamId": "18",
+        "isHome": false,
+        "fga": 24,
+        "fta": 8,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910041",
         "minutes": 37,
@@ -26604,27 +27010,28 @@
     ]
   },
   "3912848": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3912848.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 26,
         "pts": 5,
         "reb": 4,
         "ast": 0,
         "threes": 1,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Miami Heat",
         "opponentTeamId": "14",
         "isHome": true,
         "fga": 6,
         "fta": 2,
         "turnovers": 0,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 1,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910037",
@@ -27209,9 +27616,29 @@
     "version": 2
   },
   "3913176": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3913176.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "minutes": 26,
+        "pts": 18,
+        "reb": 5,
+        "ast": 4,
+        "threes": 2,
+        "date": "2026-11-26T01:00:00.000+00:00",
+        "teamId": "12",
+        "opponent": "Memphis Grizzlies",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 19,
+        "fta": 4,
+        "turnovers": 4,
+        "source": "espn",
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0
+      },
       {
         "gameId": "401910043",
         "minutes": 27,
@@ -27244,6 +27671,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3914044.png",
     "logs": [
+      {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 30,
+        "pts": 11,
+        "reb": 2,
+        "ast": 0,
+        "threes": 3,
+        "teamId": "18",
+        "opponentTeamId": "5",
+        "isHome": true,
+        "fga": 3,
+        "fta": 2,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910034",
         "minutes": 32,
@@ -27568,27 +28014,28 @@
     "logs": []
   },
   "3917376": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3917376.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 17,
         "pts": 6,
         "reb": 1,
         "ast": 1,
         "threes": 0,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Miami Heat",
         "opponentTeamId": "14",
         "isHome": true,
         "fga": 8,
         "fta": 2,
         "turnovers": 0,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 0,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910037",
@@ -27877,6 +28324,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3934672.png",
     "logs": [
+      {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 36,
+        "pts": 19,
+        "reb": 3,
+        "ast": 5,
+        "threes": 2,
+        "teamId": "18",
+        "opponentTeamId": "5",
+        "isHome": true,
+        "fga": 22,
+        "fta": 6,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910034",
         "minutes": 32,
@@ -28196,7 +28662,7 @@
     "version": 2
   },
   "3934673": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3934673.png",
     "logs": [],
     "version": 2
@@ -28488,6 +28954,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3934723.png",
     "logs": [
       {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 16,
+        "pts": 5,
+        "reb": 8,
+        "ast": 1,
+        "threes": 1,
+        "teamId": "5",
+        "opponentTeamId": "18",
+        "isHome": false,
+        "fga": 2,
+        "fta": 2,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 5,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910041",
         "minutes": 8,
         "pts": 0,
@@ -28733,6 +29218,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3936099.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 23,
+        "pts": 4,
+        "reb": 2,
+        "ast": 1,
+        "threes": 0,
+        "teamId": "12",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 6,
+        "fta": 0,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910043",
         "minutes": 23,
@@ -31679,6 +32183,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4065733.png",
     "logs": [
       {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 25,
+        "pts": 17,
+        "reb": 5,
+        "ast": 7,
+        "threes": 1,
+        "teamId": "29",
+        "opponentTeamId": "12",
+        "isHome": true,
+        "fga": 16,
+        "fta": 2,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910036",
         "minutes": 29,
         "pts": 29,
@@ -31940,6 +32463,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4065778.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 21,
+        "pts": 0,
+        "reb": 6,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "12",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 5,
+        "fta": 0,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910043",
         "minutes": 26,
@@ -32994,6 +33536,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066218.png",
     "logs": [
       {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 15,
+        "pts": 0,
+        "reb": 1,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "30",
+        "opponentTeamId": "4",
+        "isHome": true,
+        "fga": 2,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910005",
         "minutes": 30,
         "pts": 12,
@@ -33359,27 +33920,28 @@
     "version": 2
   },
   "4066261": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066261.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 35,
         "pts": 17,
         "reb": 11,
         "ast": 3,
         "threes": 1,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Philadelphia 76ers",
         "opponentTeamId": "20",
         "isHome": false,
         "fga": 16,
         "fta": 5,
         "turnovers": 2,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 2,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910030",
@@ -34021,7 +34583,7 @@
     "version": 2
   },
   "4066268": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066268.png",
     "logs": [
       {
@@ -34463,6 +35025,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066328.png",
     "logs": [
+      {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 32,
+        "pts": 10,
+        "reb": 5,
+        "ast": 1,
+        "threes": 0,
+        "teamId": "5",
+        "opponentTeamId": "18",
+        "isHome": false,
+        "fga": 7,
+        "fta": 0,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910041",
         "minutes": 29,
@@ -36654,6 +37235,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066648.png",
     "logs": [
       {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 37,
+        "pts": 14,
+        "reb": 12,
+        "ast": 5,
+        "threes": 1,
+        "teamId": "12",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 13,
+        "fta": 5,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910043",
         "minutes": 29,
         "pts": 19,
@@ -36937,6 +37537,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066650.png",
     "logs": [
       {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 19,
+        "pts": 6,
+        "reb": 3,
+        "ast": 2,
+        "threes": 2,
+        "teamId": "4",
+        "opponentTeamId": "30",
+        "isHome": false,
+        "fga": 5,
+        "fta": 0,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910032",
         "minutes": 17,
         "pts": 5,
@@ -37159,6 +37778,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066757.png",
     "logs": [
+      {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 24,
+        "pts": 5,
+        "reb": 1,
+        "ast": 0,
+        "threes": 1,
+        "teamId": "5",
+        "opponentTeamId": "18",
+        "isHome": false,
+        "fga": 8,
+        "fta": 0,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910041",
         "minutes": 25,
@@ -37402,7 +38040,7 @@
     "logs": []
   },
   "4066993": {
-    "fetchedAt": "2026-11-25T23:35:28.937Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066993.png",
     "logs": [
       {
@@ -37558,6 +38196,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4222252.png",
     "logs": [
+      {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 31,
+        "pts": 8,
+        "reb": 16,
+        "ast": 6,
+        "threes": 0,
+        "teamId": "25",
+        "opponentTeamId": "16",
+        "isHome": true,
+        "fga": 7,
+        "fta": 0,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 3,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910038",
         "minutes": 30,
@@ -39420,6 +40077,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4277869.png",
     "logs": [
+      {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 19,
+        "pts": 21,
+        "reb": 1,
+        "ast": 3,
+        "threes": 5,
+        "teamId": "18",
+        "opponentTeamId": "5",
+        "isHome": true,
+        "fga": 10,
+        "fta": 0,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910034",
         "minutes": 22,
@@ -41970,27 +42646,28 @@
     ]
   },
   "4278053": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4278053.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 40,
         "pts": 20,
         "reb": 4,
         "ast": 10,
         "threes": 3,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Philadelphia 76ers",
         "opponentTeamId": "20",
         "isHome": false,
         "fga": 14,
         "fta": 6,
         "turnovers": 3,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 1,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910030",
@@ -42314,6 +42991,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4278067.png",
     "logs": [
       {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 29,
+        "pts": 10,
+        "reb": 2,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "4",
+        "opponentTeamId": "30",
+        "isHome": false,
+        "fga": 7,
+        "fta": 0,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910041",
         "minutes": 23,
         "pts": 6,
@@ -42460,6 +43156,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4278073.png",
     "logs": [
+      {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 37,
+        "pts": 32,
+        "reb": 3,
+        "ast": 5,
+        "threes": 1,
+        "teamId": "25",
+        "opponentTeamId": "16",
+        "isHome": true,
+        "fga": 26,
+        "fta": 7,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910038",
         "minutes": 38,
@@ -42779,7 +43494,7 @@
     "version": 2
   },
   "4278076": {
-    "fetchedAt": "2026-11-25T23:35:28.937Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4278076.png",
     "logs": [
       {
@@ -43584,6 +44299,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4278104.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 34,
+        "pts": 12,
+        "reb": 11,
+        "ast": 4,
+        "threes": 2,
+        "teamId": "17",
+        "opponentTeamId": "15",
+        "isHome": false,
+        "fga": 14,
+        "fta": 3,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 5,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910040",
         "minutes": 31,
@@ -47603,27 +48337,28 @@
     ]
   },
   "4351851": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4351851.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 15,
         "pts": 6,
         "reb": 1,
         "ast": 1,
         "threes": 2,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Miami Heat",
         "opponentTeamId": "14",
         "isHome": true,
         "fga": 6,
         "fta": 0,
         "turnovers": 0,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 0,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910037",
@@ -48501,6 +49236,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4395626.png",
     "logs": [
+      {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 20,
+        "pts": 10,
+        "reb": 4,
+        "ast": 8,
+        "threes": 0,
+        "teamId": "4",
+        "opponentTeamId": "30",
+        "isHome": false,
+        "fga": 8,
+        "fta": 5,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 3,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910041",
         "minutes": 27,
@@ -49738,6 +50492,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4395651.png",
     "logs": [
+      {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 25,
+        "pts": 11,
+        "reb": 5,
+        "ast": 6,
+        "threes": 0,
+        "teamId": "30",
+        "opponentTeamId": "4",
+        "isHome": true,
+        "fga": 13,
+        "fta": 5,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910036",
         "minutes": 28,
@@ -51008,6 +51781,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4395725.png",
     "logs": [
       {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 37,
+        "pts": 28,
+        "reb": 2,
+        "ast": 5,
+        "threes": 3,
+        "teamId": "15",
+        "opponentTeamId": "17",
+        "isHome": true,
+        "fga": 20,
+        "fta": 5,
+        "turnovers": 5,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910039",
         "minutes": 37,
         "pts": 32,
@@ -51345,7 +52137,7 @@
     "version": 2
   },
   "4396818": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4396818.png",
     "logs": [],
     "version": 2
@@ -51354,6 +52146,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4396907.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 29,
+        "pts": 12,
+        "reb": 3,
+        "ast": 4,
+        "threes": 2,
+        "teamId": "12",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 12,
+        "fta": 0,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910043",
         "minutes": 34,
@@ -52088,6 +52899,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4396971.png",
     "logs": [
       {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 35,
+        "pts": 18,
+        "reb": 8,
+        "ast": 2,
+        "threes": 2,
+        "teamId": "30",
+        "opponentTeamId": "4",
+        "isHome": true,
+        "fga": 16,
+        "fta": 6,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 4,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910036",
         "minutes": 38,
         "pts": 24,
@@ -52489,6 +53319,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4397002.png",
     "logs": [
+      {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 35,
+        "pts": 16,
+        "reb": 3,
+        "ast": 4,
+        "threes": 4,
+        "teamId": "16",
+        "opponentTeamId": "25",
+        "isHome": false,
+        "fga": 14,
+        "fta": 0,
+        "turnovers": 3,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910040",
         "minutes": 30,
@@ -54006,7 +54855,7 @@
     ]
   },
   "4397114": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4397114.png",
     "logs": [],
     "version": 2
@@ -55297,7 +56146,7 @@
     "logs": []
   },
   "4397233": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4397233.png",
     "logs": [
       {
@@ -56201,6 +57050,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4397475.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 5,
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "15",
+        "opponentTeamId": "17",
+        "isHome": true,
+        "fga": 3,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910023",
         "minutes": 12,
@@ -57850,7 +58718,7 @@
     "logs": []
   },
   "4398390": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4398390.png",
     "logs": [
       {
@@ -58098,6 +58966,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431671.png",
     "logs": [
+      {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 37,
+        "pts": 32,
+        "reb": 10,
+        "ast": 5,
+        "threes": 4,
+        "teamId": "16",
+        "opponentTeamId": "25",
+        "isHome": false,
+        "fga": 15,
+        "fta": 6,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 5,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910040",
         "minutes": 34,
@@ -58651,27 +59538,28 @@
     ]
   },
   "4431678": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431678.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 37,
         "pts": 30,
         "reb": 4,
         "ast": 6,
         "threes": 3,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Miami Heat",
         "opponentTeamId": "14",
         "isHome": true,
         "fga": 21,
         "fta": 4,
         "turnovers": 5,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 3,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910037",
@@ -59915,6 +60803,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431687.png",
     "logs": [
       {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 15,
+        "pts": 11,
+        "reb": 1,
+        "ast": 0,
+        "threes": 3,
+        "teamId": "4",
+        "opponentTeamId": "30",
+        "isHome": false,
+        "fga": 8,
+        "fta": 0,
+        "turnovers": 3,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910041",
         "minutes": 19,
         "pts": 7,
@@ -60428,7 +61335,7 @@
     ]
   },
   "4431695": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431695.png",
     "logs": [],
     "version": 2
@@ -61541,27 +62448,28 @@
     ]
   },
   "4431772": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431772.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 5,
         "pts": 0,
         "reb": 2,
         "ast": 0,
         "threes": 0,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Philadelphia 76ers",
         "opponentTeamId": "20",
         "isHome": false,
         "fga": 0,
         "fta": 0,
         "turnovers": 1,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 0,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910030",
@@ -61876,7 +62784,7 @@
     "version": 2
   },
   "4431786": {
-    "fetchedAt": "2026-11-25T23:35:28.937Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431786.png",
     "logs": [
       {
@@ -63764,6 +64672,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432170.png",
     "logs": [
       {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 7,
+        "pts": 4,
+        "reb": 1,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "12",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 2,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910043",
         "minutes": 18,
         "pts": 6,
@@ -64062,7 +64989,7 @@
     "version": 2
   },
   "4432171": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432171.png",
     "logs": [],
     "version": 2
@@ -64130,6 +65057,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432185.png",
     "logs": [
+      {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 25,
+        "pts": 2,
+        "reb": 7,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "25",
+        "opponentTeamId": "16",
+        "isHome": true,
+        "fga": 3,
+        "fta": 0,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910038",
         "minutes": 24,
@@ -64443,6 +65389,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432194.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 31,
+        "pts": 11,
+        "reb": 14,
+        "ast": 5,
+        "threes": 1,
+        "teamId": "17",
+        "opponentTeamId": "15",
+        "isHome": false,
+        "fga": 10,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 5,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910040",
         "minutes": 26,
@@ -65332,27 +66297,28 @@
     "version": 2
   },
   "4432446": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432446.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 17,
         "pts": 7,
         "reb": 2,
         "ast": 1,
         "threes": 1,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Miami Heat",
         "opponentTeamId": "14",
         "isHome": true,
         "fga": 3,
         "fta": 0,
         "turnovers": 0,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 1,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910037",
@@ -66624,6 +67590,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432808.png",
     "logs": [
       {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 6,
+        "pts": 6,
+        "reb": 7,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "18",
+        "opponentTeamId": "5",
+        "isHome": true,
+        "fga": 5,
+        "fta": 0,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910024",
         "minutes": 25,
         "pts": 5,
@@ -66772,6 +67757,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432810.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 14,
+        "pts": 10,
+        "reb": 3,
+        "ast": 1,
+        "threes": 2,
+        "teamId": "29",
+        "opponentTeamId": "12",
+        "isHome": true,
+        "fga": 6,
+        "fta": 0,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 3,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910036",
         "minutes": 21,
@@ -67406,6 +68410,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432816.png",
     "logs": [
+      {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 29,
+        "pts": 19,
+        "reb": 7,
+        "ast": 8,
+        "threes": 5,
+        "teamId": "16",
+        "opponentTeamId": "25",
+        "isHome": false,
+        "fga": 18,
+        "fta": 0,
+        "turnovers": 3,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910040",
         "minutes": 30,
@@ -68144,6 +69167,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432822.png",
     "logs": [
       {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 31,
+        "pts": 10,
+        "reb": 3,
+        "ast": 0,
+        "threes": 1,
+        "teamId": "4",
+        "opponentTeamId": "30",
+        "isHome": false,
+        "fga": 8,
+        "fta": 3,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910041",
         "minutes": 27,
         "pts": 12,
@@ -68871,6 +69913,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432847.png",
     "logs": [
       {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 20,
+        "pts": 8,
+        "reb": 2,
+        "ast": 3,
+        "threes": 0,
+        "teamId": "16",
+        "opponentTeamId": "25",
+        "isHome": false,
+        "fga": 10,
+        "fta": 4,
+        "turnovers": 3,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910040",
         "minutes": 24,
         "pts": 17,
@@ -69170,6 +70231,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432848.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 35,
+        "pts": 21,
+        "reb": 5,
+        "ast": 4,
+        "threes": 1,
+        "teamId": "15",
+        "opponentTeamId": "17",
+        "isHome": true,
+        "fga": 15,
+        "fta": 4,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910039",
         "minutes": 25,
@@ -69648,6 +70728,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433083.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 24,
+        "pts": 16,
+        "reb": 0,
+        "ast": 4,
+        "threes": 2,
+        "teamId": "29",
+        "opponentTeamId": "12",
+        "isHome": true,
+        "fga": 10,
+        "fta": 0,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910036",
         "minutes": 21,
@@ -70865,7 +71964,7 @@
     ]
   },
   "4433144": {
-    "fetchedAt": "2026-11-25T23:35:28.937Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433144.png",
     "logs": [
       {
@@ -71897,6 +72996,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433225.png",
     "logs": [
       {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 7,
+        "pts": 0,
+        "reb": 1,
+        "ast": 2,
+        "threes": 0,
+        "teamId": "18",
+        "opponentTeamId": "5",
+        "isHome": true,
+        "fga": 1,
+        "fta": 0,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910034",
         "minutes": 11,
         "pts": 8,
@@ -72199,6 +73317,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433247.png",
     "logs": [
+      {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 32,
+        "pts": 7,
+        "reb": 5,
+        "ast": 1,
+        "threes": 0,
+        "teamId": "16",
+        "opponentTeamId": "25",
+        "isHome": false,
+        "fga": 8,
+        "fta": 2,
+        "turnovers": 3,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910040",
         "minutes": 26,
@@ -72539,6 +73676,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433249.png",
     "logs": [
+      {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 38,
+        "pts": 14,
+        "reb": 14,
+        "ast": 2,
+        "threes": 0,
+        "teamId": "30",
+        "opponentTeamId": "4",
+        "isHome": true,
+        "fga": 9,
+        "fta": 4,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 3,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910036",
         "minutes": 35,
@@ -72896,6 +74052,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433287.png",
     "logs": [
+      {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 34,
+        "pts": 35,
+        "reb": 3,
+        "ast": 1,
+        "threes": 4,
+        "teamId": "30",
+        "opponentTeamId": "4",
+        "isHome": true,
+        "fga": 25,
+        "fta": 5,
+        "turnovers": 4,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910036",
         "minutes": 35,
@@ -75615,6 +76790,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4576087.png",
     "logs": [
       {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 27,
+        "pts": 8,
+        "reb": 5,
+        "ast": 2,
+        "threes": 2,
+        "teamId": "5",
+        "opponentTeamId": "18",
+        "isHome": false,
+        "fga": 4,
+        "fta": 4,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910041",
         "minutes": 29,
         "pts": 8,
@@ -75892,7 +77086,7 @@
     "version": 2
   },
   "4578893": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4578893.png",
     "logs": [
       {
@@ -76067,6 +77261,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4591725.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 19,
+        "pts": 2,
+        "reb": 3,
+        "ast": 3,
+        "threes": 0,
+        "teamId": "15",
+        "opponentTeamId": "17",
+        "isHome": true,
+        "fga": 7,
+        "fta": 2,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910039",
         "minutes": 22,
@@ -77168,6 +78381,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4592492.png",
     "logs": [
       {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 17,
+        "pts": 9,
+        "reb": 1,
+        "ast": 2,
+        "threes": 1,
+        "teamId": "16",
+        "opponentTeamId": "25",
+        "isHome": false,
+        "fga": 10,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910040",
         "minutes": 16,
         "pts": 14,
@@ -77858,7 +79090,7 @@
     ]
   },
   "4592714": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4592714.png",
     "logs": [
       {
@@ -78292,7 +79524,7 @@
     ]
   },
   "4592857": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4592857.png",
     "logs": [
       {
@@ -78514,7 +79746,7 @@
     "version": 2
   },
   "4592979": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4592979.png",
     "logs": [
       {
@@ -78602,6 +79834,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4593016.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 14,
+        "pts": 0,
+        "reb": 4,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "29",
+        "opponentTeamId": "12",
+        "isHome": true,
+        "fga": 3,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910036",
         "minutes": 3,
@@ -79256,7 +80507,7 @@
     "version": 2
   },
   "4593049": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4593049.png",
     "logs": [],
     "version": 2
@@ -79926,6 +81177,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4594326.png",
     "logs": [
       {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 32,
+        "pts": 8,
+        "reb": 4,
+        "ast": 3,
+        "threes": 0,
+        "teamId": "29",
+        "opponentTeamId": "12",
+        "isHome": true,
+        "fga": 8,
+        "fta": 1,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 3,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910036",
         "minutes": 32,
         "pts": 9,
@@ -80415,6 +81685,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4595400.png",
     "logs": [
       {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 19,
+        "pts": 9,
+        "reb": 4,
+        "ast": 2,
+        "threes": 1,
+        "teamId": "29",
+        "opponentTeamId": "12",
+        "isHome": true,
+        "fga": 5,
+        "fta": 4,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910036",
         "minutes": 19,
         "pts": 6,
@@ -80770,6 +82059,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4600663.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 9,
+        "pts": 7,
+        "reb": 4,
+        "ast": 2,
+        "threes": 0,
+        "teamId": "29",
+        "opponentTeamId": "12",
+        "isHome": true,
+        "fga": 4,
+        "fta": 1,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 3,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910036",
         "minutes": 23,
@@ -81334,27 +82642,28 @@
     "version": 2
   },
   "4601025": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4601025.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 28,
         "pts": 8,
         "reb": 4,
         "ast": 1,
         "threes": 1,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Philadelphia 76ers",
         "opponentTeamId": "20",
         "isHome": false,
         "fga": 7,
         "fta": 2,
         "turnovers": 0,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 1,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910030",
@@ -81617,6 +82926,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4602025.png",
     "logs": [
+      {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 26,
+        "pts": 5,
+        "reb": 5,
+        "ast": 2,
+        "threes": 1,
+        "teamId": "30",
+        "opponentTeamId": "4",
+        "isHome": true,
+        "fga": 6,
+        "fta": 0,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910036",
         "minutes": 28,
@@ -83228,7 +84556,7 @@
     "version": 2
   },
   "4683730": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4683730.png",
     "logs": [
       {
@@ -83670,6 +84998,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4683747.png",
     "logs": [
       {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 29,
+        "pts": 6,
+        "reb": 6,
+        "ast": 4,
+        "threes": 2,
+        "teamId": "5",
+        "opponentTeamId": "18",
+        "isHome": false,
+        "fga": 8,
+        "fta": 0,
+        "turnovers": 4,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910041",
         "minutes": 12,
         "pts": 0,
@@ -83851,6 +85198,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4683750.png",
     "logs": [
+      {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 21,
+        "pts": 10,
+        "reb": 3,
+        "ast": 2,
+        "threes": 3,
+        "teamId": "4",
+        "opponentTeamId": "30",
+        "isHome": false,
+        "fga": 6,
+        "fta": 1,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910041",
         "minutes": 18,
@@ -84986,6 +86352,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4683778.png",
     "logs": [
       {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 28,
+        "pts": 9,
+        "reb": 1,
+        "ast": 1,
+        "threes": 1,
+        "teamId": "25",
+        "opponentTeamId": "16",
+        "isHome": true,
+        "fga": 11,
+        "fta": 4,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910038",
         "minutes": 36,
         "pts": 13,
@@ -85329,7 +86714,7 @@
     "logs": []
   },
   "4683860": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4683860.png",
     "logs": [],
     "version": 2
@@ -85343,6 +86728,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4683934.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 4,
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "29",
+        "opponentTeamId": "12",
+        "isHome": true,
+        "fga": 0,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910026",
         "minutes": 22,
@@ -85503,7 +86907,7 @@
     "version": 2
   },
   "4683935": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4683935.png",
     "logs": [
       {
@@ -85752,7 +87156,7 @@
     "version": 2
   },
   "4684269": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4684269.png",
     "logs": [],
     "version": 2
@@ -87157,6 +88561,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4684806.png",
     "logs": [
       {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 25,
+        "pts": 5,
+        "reb": 0,
+        "ast": 1,
+        "threes": 0,
+        "teamId": "29",
+        "opponentTeamId": "12",
+        "isHome": true,
+        "fga": 4,
+        "fta": 1,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910036",
         "minutes": 24,
         "pts": 3,
@@ -87606,7 +89029,7 @@
     "logs": []
   },
   "4697268": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4697268.png",
     "logs": [],
     "version": 2
@@ -87922,7 +89345,7 @@
     ]
   },
   "4700818": {
-    "fetchedAt": "2026-11-25T23:35:28.937Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4700818.png",
     "logs": [],
     "version": 2
@@ -88548,7 +89971,7 @@
     ]
   },
   "4701225": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4701225.png",
     "logs": [
       {
@@ -88867,7 +90290,7 @@
     ]
   },
   "4701232": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4701232.png",
     "logs": [],
     "version": 2
@@ -89141,7 +90564,7 @@
     "logs": []
   },
   "4702099": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4702099.png",
     "logs": [],
     "version": 2
@@ -89297,6 +90720,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4702177.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 23,
+        "pts": 7,
+        "reb": 2,
+        "ast": 3,
+        "threes": 1,
+        "teamId": "17",
+        "opponentTeamId": "15",
+        "isHome": false,
+        "fga": 5,
+        "fta": 2,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910040",
         "minutes": 16,
@@ -89599,6 +91041,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4702352.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 5,
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "12",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 2,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910043",
         "minutes": 12,
@@ -90231,6 +91692,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4702384.png",
     "logs": [
+      {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 12,
+        "pts": 0,
+        "reb": 2,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "25",
+        "opponentTeamId": "16",
+        "isHome": true,
+        "fga": 5,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910038",
         "minutes": 6,
@@ -90901,9 +92381,29 @@
     ]
   },
   "4702670": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4702670.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "minutes": 13,
+        "pts": 1,
+        "reb": 6,
+        "ast": 0,
+        "threes": 0,
+        "date": "2026-11-26T01:00:00.000+00:00",
+        "teamId": "17",
+        "opponent": "Milwaukee Bucks",
+        "opponentTeamId": "15",
+        "isHome": false,
+        "fga": 1,
+        "fta": 2,
+        "turnovers": 1,
+        "source": "espn",
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
+      },
       {
         "gameId": "401910040",
         "minutes": 8,
@@ -91801,7 +93301,7 @@
     "version": 2
   },
   "4709131": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4709131.png",
     "logs": [],
     "version": 2
@@ -92417,6 +93917,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4711294.png",
     "logs": [
       {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 34,
+        "pts": 24,
+        "reb": 5,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "4",
+        "opponentTeamId": "30",
+        "isHome": false,
+        "fga": 15,
+        "fta": 9,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910041",
         "minutes": 27,
         "pts": 15,
@@ -92754,7 +94273,7 @@
     "version": 2
   },
   "4711297": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4711297.png",
     "logs": [
       {
@@ -93301,6 +94820,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4712896.png",
     "logs": [
       {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 27,
+        "pts": 17,
+        "reb": 5,
+        "ast": 1,
+        "threes": 3,
+        "teamId": "17",
+        "opponentTeamId": "15",
+        "isHome": false,
+        "fga": 13,
+        "fta": 0,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910040",
         "minutes": 26,
         "pts": 13,
@@ -93730,6 +95268,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4781746.png",
     "logs": [
       {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 17,
+        "pts": 8,
+        "reb": 2,
+        "ast": 1,
+        "threes": 2,
+        "teamId": "29",
+        "opponentTeamId": "12",
+        "isHome": true,
+        "fga": 9,
+        "fta": 2,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910036",
         "minutes": 19,
         "pts": 3,
@@ -93932,7 +95489,7 @@
     "version": 2
   },
   "4837356": {
-    "fetchedAt": "2026-11-25T23:35:28.937Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4837356.png",
     "logs": [
       {
@@ -93999,15 +95556,55 @@
     "version": 2
   },
   "4838721": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4838721.png",
-    "logs": [],
+    "logs": [
+      {
+        "gameId": "401909319",
+        "minutes": 9,
+        "pts": 5,
+        "reb": 0,
+        "ast": 0,
+        "threes": 1,
+        "date": "2026-11-26T00:30:00.000+00:00",
+        "teamId": "18",
+        "opponent": "Cleveland Cavaliers",
+        "opponentTeamId": "5",
+        "isHome": true,
+        "fga": 3,
+        "fta": 0,
+        "turnovers": 0,
+        "source": "espn",
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0
+      }
+    ],
     "version": 2
   },
   "4845363": {
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4845363.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 5,
+        "pts": 0,
+        "reb": 1,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "12",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 2,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910025",
         "minutes": 3,
@@ -96008,27 +97605,28 @@
     ]
   },
   "4870562": {
-    "fetchedAt": "2026-11-25T23:35:28.937Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4870562.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 16,
         "pts": 9,
         "reb": 8,
         "ast": 0,
         "threes": 0,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Miami Heat",
         "opponentTeamId": "14",
         "isHome": true,
         "fga": 8,
         "fta": 2,
         "turnovers": 0,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 2,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910037",
@@ -96074,7 +97672,7 @@
     "version": 2
   },
   "4870564": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4870564.png",
     "logs": [
       {
@@ -96101,7 +97699,7 @@
     "version": 2
   },
   "4871141": {
-    "fetchedAt": "2026-11-25T23:35:28.937Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4871141.png",
     "logs": [],
     "version": 2
@@ -96432,6 +98030,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4871145.png",
     "logs": [
+      {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 34,
+        "pts": 12,
+        "reb": 11,
+        "ast": 7,
+        "threes": 0,
+        "teamId": "4",
+        "opponentTeamId": "30",
+        "isHome": false,
+        "fga": 11,
+        "fta": 2,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 4,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910041",
         "minutes": 22,
@@ -96770,7 +98387,7 @@
     "version": 2
   },
   "4873090": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4873090.png",
     "logs": [
       {
@@ -99323,7 +100940,7 @@
     "version": 2
   },
   "4897943": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4897943.png",
     "logs": [
       {
@@ -99559,7 +101176,7 @@
     "logs": []
   },
   "4898371": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4898371.png",
     "logs": [],
     "version": 2
@@ -99568,6 +101185,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4900671.png",
     "logs": [
+      {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 31,
+        "pts": 25,
+        "reb": 3,
+        "ast": 3,
+        "threes": 2,
+        "teamId": "25",
+        "opponentTeamId": "16",
+        "isHome": true,
+        "fga": 19,
+        "fta": 3,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910038",
         "minutes": 35,
@@ -99870,6 +101506,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4903027.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 26,
+        "pts": 14,
+        "reb": 10,
+        "ast": 1,
+        "threes": 0,
+        "teamId": "29",
+        "opponentTeamId": "12",
+        "isHome": true,
+        "fga": 14,
+        "fta": 3,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 3,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910036",
         "minutes": 30,
@@ -100214,7 +101869,7 @@
     "logs": []
   },
   "4914336": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4914336.png",
     "logs": [],
     "version": 2
@@ -100585,7 +102240,7 @@
     "version": 2
   },
   "4997528": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4997528.png",
     "logs": [
       {
@@ -100787,7 +102442,7 @@
     "version": 2
   },
   "4997530": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4997530.png",
     "logs": [],
     "version": 2
@@ -101455,6 +103110,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5023693.png",
     "logs": [
+      {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 16,
+        "pts": 2,
+        "reb": 3,
+        "ast": 1,
+        "threes": 0,
+        "teamId": "5",
+        "opponentTeamId": "18",
+        "isHome": false,
+        "fga": 6,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910041",
         "minutes": 21,
@@ -102835,6 +104509,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5041951.png",
     "logs": [
       {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 16,
+        "pts": 8,
+        "reb": 3,
+        "ast": 1,
+        "threes": 2,
+        "teamId": "5",
+        "opponentTeamId": "18",
+        "isHome": false,
+        "fga": 6,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910041",
         "minutes": 21,
         "pts": 13,
@@ -104129,6 +105822,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5060701.png",
     "logs": [
       {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 28,
+        "pts": 15,
+        "reb": 1,
+        "ast": 4,
+        "threes": 3,
+        "teamId": "30",
+        "opponentTeamId": "4",
+        "isHome": true,
+        "fga": 9,
+        "fta": 2,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910036",
         "minutes": 25,
         "pts": 25,
@@ -104747,7 +106459,7 @@
     "version": 2
   },
   "5061575": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5061575.png",
     "logs": [
       {
@@ -104774,7 +106486,7 @@
     "version": 2
   },
   "5061585": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5061585.png",
     "logs": [
       {
@@ -105095,7 +106807,7 @@
     ]
   },
   "5061603": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5061603.png",
     "logs": [],
     "version": 2
@@ -105104,6 +106816,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5075626.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 5,
+        "pts": 9,
+        "reb": 1,
+        "ast": 1,
+        "threes": 0,
+        "teamId": "12",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 1,
+        "fta": 8,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910043",
         "minutes": 1,
@@ -105729,6 +107460,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5082206.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 22,
+        "pts": 3,
+        "reb": 3,
+        "ast": 3,
+        "threes": 0,
+        "teamId": "15",
+        "opponentTeamId": "17",
+        "isHome": true,
+        "fga": 6,
+        "fta": 2,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910039",
         "minutes": 29,
@@ -106598,7 +108348,7 @@
     "version": 2
   },
   "5099752": {
-    "fetchedAt": "2026-11-25T23:35:28.937Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5099752.png",
     "logs": [
       {
@@ -106648,6 +108398,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5101761.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 23,
+        "pts": 6,
+        "reb": 2,
+        "ast": 2,
+        "threes": 0,
+        "teamId": "17",
+        "opponentTeamId": "15",
+        "isHome": false,
+        "fga": 9,
+        "fta": 2,
+        "turnovers": 2,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910040",
         "minutes": 29,
@@ -106888,7 +108657,7 @@
     "version": 2
   },
   "5101845": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5101845.png",
     "logs": [],
     "version": 2
@@ -107564,7 +109333,7 @@
     "version": 2
   },
   "5105337": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105337.png",
     "logs": [
       {
@@ -107591,7 +109360,7 @@
     "version": 2
   },
   "5105462": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105462.png",
     "logs": [],
     "version": 2
@@ -107838,13 +109607,13 @@
     "version": 2
   },
   "5105553": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105553.png",
     "logs": [],
     "version": 2
   },
   "5105555": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105555.png",
     "logs": [
       {
@@ -108337,6 +110106,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105623.png",
     "logs": [
       {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 22,
+        "pts": 13,
+        "reb": 14,
+        "ast": 2,
+        "threes": 1,
+        "teamId": "15",
+        "opponentTeamId": "17",
+        "isHome": true,
+        "fga": 10,
+        "fta": 1,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 4,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910039",
         "minutes": 23,
         "pts": 9,
@@ -108694,33 +110482,34 @@
     "version": 2
   },
   "5105626": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105626.png",
     "logs": [],
     "version": 2
   },
   "5105637": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105637.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 13,
         "pts": 0,
         "reb": 6,
         "ast": 0,
         "threes": 0,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Miami Heat",
         "opponentTeamId": "14",
         "isHome": true,
         "fga": 3,
         "fta": 0,
         "turnovers": 0,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 0,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910037",
@@ -111894,6 +113683,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5106258.png",
     "logs": [
       {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 5,
+        "pts": 2,
+        "reb": 2,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "12",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 2,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910025",
         "minutes": 16,
         "pts": 6,
@@ -112192,7 +114000,7 @@
     "version": 2
   },
   "5106261": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5106261.png",
     "logs": [],
     "version": 2
@@ -112508,7 +114316,7 @@
     ]
   },
   "5106268": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5106268.png",
     "logs": [],
     "version": 2
@@ -112659,27 +114467,28 @@
     ]
   },
   "5107157": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5107157.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 18,
         "pts": 7,
         "reb": 1,
         "ast": 1,
         "threes": 1,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "14",
+        "opponent": "Philadelphia 76ers",
         "opponentTeamId": "20",
         "isHome": false,
         "fga": 7,
         "fta": 0,
         "turnovers": 2,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 1,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910030",
@@ -112964,6 +114773,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5107173.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 19,
+        "pts": 5,
+        "reb": 0,
+        "ast": 1,
+        "threes": 1,
+        "teamId": "17",
+        "opponentTeamId": "15",
+        "isHome": false,
+        "fga": 8,
+        "fta": 0,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910040",
         "minutes": 25,
@@ -113749,7 +115577,7 @@
     ]
   },
   "5107897": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5107897.png",
     "logs": [
       {
@@ -113852,7 +115680,7 @@
     "version": 2
   },
   "5107968": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5107968.png",
     "logs": [
       {
@@ -113901,6 +115729,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5108024.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 18,
+        "pts": 4,
+        "reb": 4,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "12",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 4,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910043",
         "minutes": 8,
@@ -113968,6 +115815,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5112087.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 27,
+        "pts": 19,
+        "reb": 6,
+        "ast": 1,
+        "threes": 3,
+        "teamId": "29",
+        "opponentTeamId": "12",
+        "isHome": true,
+        "fga": 12,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 4,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910036",
         "minutes": 20,
@@ -114585,27 +116451,28 @@
     ]
   },
   "5124612": {
-    "fetchedAt": "2026-11-25T19:41:08.691Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5124612.png",
     "logs": [
       {
         "gameId": "401909317",
-        "date": "2026-11-25",
         "minutes": 36,
         "pts": 18,
         "reb": 6,
         "ast": 5,
         "threes": 2,
+        "date": "2026-11-25T22:00:00.000+00:00",
         "teamId": "20",
+        "opponent": "Miami Heat",
         "opponentTeamId": "14",
         "isHome": true,
         "fga": 13,
         "fta": 4,
         "turnovers": 1,
+        "source": "espn",
         "q1Pts": 0,
         "q1Reb": 2,
-        "q1Ast": 0,
-        "source": "boxscore"
+        "q1Ast": 0
       },
       {
         "gameId": "401910037",
@@ -117251,7 +119118,7 @@
     "logs": []
   },
   "5157587": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5157587.png",
     "logs": [
       {
@@ -117696,6 +119563,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5164559.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 21,
+        "pts": 8,
+        "reb": 3,
+        "ast": 0,
+        "threes": 2,
+        "teamId": "15",
+        "opponentTeamId": "17",
+        "isHome": true,
+        "fga": 6,
+        "fta": 0,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910039",
         "minutes": 25,
@@ -119348,6 +121234,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5175643.png",
     "logs": [
       {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 25,
+        "pts": 15,
+        "reb": 3,
+        "ast": 4,
+        "threes": 0,
+        "teamId": "17",
+        "opponentTeamId": "15",
+        "isHome": false,
+        "fga": 11,
+        "fta": 7,
+        "turnovers": 3,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910040",
         "minutes": 25,
         "pts": 10,
@@ -120217,7 +122122,7 @@
     "version": 2
   },
   "5176517": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5176517.png",
     "logs": [],
     "version": 2
@@ -120984,6 +122889,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5211176.png",
     "logs": [
       {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 8,
+        "pts": 4,
+        "reb": 1,
+        "ast": 0,
+        "threes": 1,
+        "teamId": "30",
+        "opponentTeamId": "4",
+        "isHome": true,
+        "fga": 3,
+        "fta": 2,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910036",
         "minutes": 17,
         "pts": 0,
@@ -121285,6 +123209,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5211983.png",
     "logs": [
       {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 14,
+        "pts": 7,
+        "reb": 1,
+        "ast": 2,
+        "threes": 1,
+        "teamId": "18",
+        "opponentTeamId": "5",
+        "isHome": true,
+        "fga": 7,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910034",
         "minutes": 17,
         "pts": 5,
@@ -121415,6 +123358,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5214640.png",
     "logs": [
+      {
+        "gameId": "401909322",
+        "date": "2026-11-26",
+        "minutes": 12,
+        "pts": 4,
+        "reb": 4,
+        "ast": 3,
+        "threes": 0,
+        "teamId": "15",
+        "opponentTeamId": "17",
+        "isHome": true,
+        "fga": 7,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910039",
         "minutes": 7,
@@ -121753,7 +123715,7 @@
     "version": 2
   },
   "5214989": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5214989.png",
     "logs": [
       {
@@ -122026,6 +123988,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5231919.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 4,
+        "pts": 2,
+        "reb": 2,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "29",
+        "opponentTeamId": "12",
+        "isHome": true,
+        "fga": 3,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910019",
         "minutes": 4,
@@ -123033,6 +125014,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5241364.png",
     "logs": [
       {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 24,
+        "pts": 6,
+        "reb": 1,
+        "ast": 2,
+        "threes": 1,
+        "teamId": "25",
+        "opponentTeamId": "16",
+        "isHome": true,
+        "fga": 6,
+        "fta": 2,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910038",
         "minutes": 19,
         "pts": 5,
@@ -123375,6 +125375,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5242496.png",
     "logs": [
       {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 11,
+        "pts": 5,
+        "reb": 0,
+        "ast": 2,
+        "threes": 1,
+        "teamId": "4",
+        "opponentTeamId": "30",
+        "isHome": false,
+        "fga": 3,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910041",
         "minutes": 4,
         "pts": 6,
@@ -123693,7 +125712,7 @@
     "version": 2
   },
   "5242502": {
-    "fetchedAt": "2026-11-26T02:08:16.310Z",
+    "fetchedAt": "2026-11-26T03:50:12.254Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5242502.png",
     "logs": [
       {
@@ -123723,6 +125742,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5254165.png",
     "logs": [
+      {
+        "gameId": "401909321",
+        "date": "2026-11-26",
+        "minutes": 21,
+        "pts": 12,
+        "reb": 2,
+        "ast": 0,
+        "threes": 0,
+        "teamId": "12",
+        "opponentTeamId": "29",
+        "isHome": false,
+        "fga": 6,
+        "fta": 8,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910043",
         "minutes": 17,
@@ -124587,6 +126625,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5279133.png",
     "logs": [
       {
+        "gameId": "401909320",
+        "date": "2026-11-26",
+        "minutes": 16,
+        "pts": 4,
+        "reb": 5,
+        "ast": 1,
+        "threes": 0,
+        "teamId": "16",
+        "opponentTeamId": "25",
+        "isHome": false,
+        "fga": 1,
+        "fta": 6,
+        "turnovers": 1,
+        "q1Pts": 0,
+        "q1Reb": 1,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910040",
         "minutes": 19,
         "pts": 0,
@@ -124947,6 +127004,25 @@
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5281370.png",
     "logs": [
       {
+        "gameId": "401909318",
+        "date": "2026-11-26",
+        "minutes": 8,
+        "pts": 3,
+        "reb": 3,
+        "ast": 1,
+        "threes": 0,
+        "teamId": "30",
+        "opponentTeamId": "4",
+        "isHome": true,
+        "fga": 1,
+        "fta": 2,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 2,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
+      {
         "gameId": "401910036",
         "minutes": 4,
         "pts": 3,
@@ -125071,6 +127147,25 @@
     "fetchedAt": "2026-11-26T02:08:16.310Z",
     "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5289900.png",
     "logs": [
+      {
+        "gameId": "401909319",
+        "date": "2026-11-26",
+        "minutes": 4,
+        "pts": 3,
+        "reb": 1,
+        "ast": 1,
+        "threes": 1,
+        "teamId": "18",
+        "opponentTeamId": "5",
+        "isHome": true,
+        "fga": 1,
+        "fta": 0,
+        "turnovers": 0,
+        "q1Pts": 0,
+        "q1Reb": 0,
+        "q1Ast": 0,
+        "source": "boxscore"
+      },
       {
         "gameId": "401910034",
         "minutes": 8,

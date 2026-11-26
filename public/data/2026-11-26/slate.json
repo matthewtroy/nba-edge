@@ -1,5 +1,17 @@
 [
   {
+    "id": "401909317",
+    "startTime": "2026-11-25T22:00Z",
+    "startTimeSydney": "9:00 am",
+    "homeTeam": "Philadelphia 76ers",
+    "awayTeam": "Miami Heat",
+    "homeTeamId": "20",
+    "awayTeamId": "14",
+    "homeB2B": false,
+    "awayB2B": false,
+    "status": "final"
+  },
+  {
     "id": "401909318",
     "startTime": "2026-11-26T00:00Z",
     "startTimeSydney": "11:00 am",
@@ -9,7 +21,7 @@
     "awayTeamId": "4",
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_IN_PROGRESS"
+    "status": "final"
   },
   {
     "id": "401909319",
@@ -21,7 +33,7 @@
     "awayTeamId": "5",
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_IN_PROGRESS"
+    "status": "final"
   },
   {
     "id": "401909320",
@@ -33,7 +45,7 @@
     "awayTeamId": "16",
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_IN_PROGRESS"
+    "status": "final"
   },
   {
     "id": "401909321",
@@ -45,7 +57,7 @@
     "awayTeamId": "12",
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_HALFTIME"
+    "status": "final"
   },
   {
     "id": "401909322",
@@ -57,7 +69,7 @@
     "awayTeamId": "17",
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_HALFTIME"
+    "status": "final"
   },
   {
     "id": "401909323",
@@ -69,7 +81,7 @@
     "awayTeamId": "21",
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_IN_PROGRESS"
+    "status": "live"
   },
   {
     "id": "401909324",
@@ -79,11 +91,9 @@
     "awayTeam": "Sacramento Kings",
     "homeTeamId": "9",
     "awayTeamId": "23",
-    "spread": -8.5,
-    "total": 216.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_SCHEDULED"
+    "status": "live"
   },
   {
     "id": "401909325",
@@ -93,10 +103,8 @@
     "awayTeam": "San Antonio Spurs",
     "homeTeamId": "22",
     "awayTeamId": "24",
-    "spread": 3.5,
-    "total": 226.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_SCHEDULED"
+    "status": "live"
   }
 ]
