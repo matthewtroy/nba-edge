@@ -14,7 +14,7 @@ import type {
 import type { ResultsJson } from "@lib/results-types";
 import type { OfficialCardFile } from "@lib/official-card-time";
 import type { DataIndexFile } from "@lib/data-index";
-import { DataLoadError } from "@lib/data-load-error";
+import { DataLoadError, type DataLoadKind } from "@lib/data-load-error";
 
 export interface DataBundle {
   index: DataIndexFile | null;
@@ -30,7 +30,7 @@ export interface DataBundle {
   results: ResultsJson | null;
   loading: boolean;
   error?: string;
-  errorKind?: "network" | "missing" | "unknown";
+  errorKind?: DataLoadKind;
 }
 
 function parseMultisJson(raw: unknown): { bets: MultiBet[]; notBuilt: MultiNotBuilt[] } {
