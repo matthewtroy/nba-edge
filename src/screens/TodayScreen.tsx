@@ -88,10 +88,6 @@ export function TodayScreen({
   );
   const publishedAt = official?.publishedAt ?? official?.lockedAt;
   const republishedAt = official?.republishedAt;
-  const whatChanged = useOfficial
-    ? official?.whatChanged
-    : data.meta.whatChanged;
-
   const badgeInjuries = injuriesForBadges(data.injuries);
 
   const cardPlayerIds = new Set(
@@ -212,15 +208,6 @@ export function TodayScreen({
 
       {data.meta.smallSlate && (
         <p className="text-sm text-accent-warn mb-3">Small slate</p>
-      )}
-
-      {whatChanged && whatChanged.length > 0 && (
-        <div className="text-[11px] text-white/55 mb-3 space-y-0.5">
-          <p className="text-white/45 uppercase tracking-wide">What changed</p>
-          {whatChanged.slice(0, 4).map((line) => (
-            <p key={line}>• {line}</p>
-          ))}
-        </div>
       )}
 
       <NotBuiltSection items={notBuilt} />

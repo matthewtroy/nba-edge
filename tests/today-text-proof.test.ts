@@ -31,7 +31,7 @@ describe("Today proof text", () => {
       text.includes("Not built today");
     expect(builtMain || notBuiltMain).toBe(true);
     expect(text).not.toMatch(/cross-book|Best across books|Best mix/i);
-    expect(text).toContain("What changed");
+    expect(text).not.toContain("What changed");
     expect(text).toContain("Audit");
 
     const withResults: ResultsJson = {

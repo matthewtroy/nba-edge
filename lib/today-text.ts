@@ -40,7 +40,6 @@ export function renderTodayText(input: {
   const useOfficial = official != null;
   const multis = useOfficial ? official!.multis : input.multis;
   const notBuilt = useOfficial ? official!.notBuilt : input.notBuilt;
-  const whatChanged = useOfficial ? official!.whatChanged : input.meta.whatChanged;
   const cardBookie =
     (useOfficial ? official!.bookie : undefined) ??
     input.meta.officialCard?.bookie ??
@@ -78,15 +77,6 @@ export function renderTodayText(input: {
     lines.push("");
   }
 
-  const changed = whatChanged ?? [];
-  if (changed.length) {
-    lines.push("What changed");
-    for (const line of changed.slice(0, 3)) lines.push(`  ${line}`);
-  } else {
-    lines.push("What changed");
-    lines.push("  (none)");
-  }
-  lines.push("");
 
   if (notBuilt.length) {
     lines.push(`Not built today (${notBuilt.length})`);
