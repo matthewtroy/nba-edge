@@ -3,6 +3,7 @@ import type { SettledLegRow } from "./settle-core.js";
 import type { GradedProjectionLeg } from "./graded-leg.js";
 import type { OfficialBetRow } from "./official-bet-settle.js";
 import type { ValueLegRow } from "./value-leg-track.js";
+import type { GamesSgmBetRow } from "./games-sgm-freeze.js";
 
 export interface StatRow {
   won: number;
@@ -40,6 +41,8 @@ export interface ResultsSlice {
     tagHitRates: Record<string, { hits: number; total: number }>;
   };
   gradedLegs: GradedProjectionLeg[];
+  /** Games-tab SGMs frozen at publish, settled per price filter. */
+  gamesSgm?: { bets: GamesSgmBetRow[] };
 }
 
 /** Root aggregate written to public/data/results.json */

@@ -51,6 +51,8 @@ export interface OfficialCardFile {
   oddsLastPulled?: string;
   publishedAt?: string;
   republishedAt?: string;
+  /** Games-tab SGMs for every price filter, frozen at publish. */
+  gamesSgms?: import("./games-sgm-freeze.js").FrozenGamesSgms;
 }
 
 const EVENING_HOURS = new Set([21, 22, 23, 0, 1]);

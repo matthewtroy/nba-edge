@@ -3,6 +3,7 @@ import type { DataBundle } from "../hooks/useData";
 import type { LiveTrackingState } from "../hooks/useLiveTracking";
 import type { PickLeg } from "@lib/types";
 import { gameSgmBlocks } from "@lib/games-sgm";
+import { frozenGameSgmBlocks } from "@lib/games-sgm-freeze";
 import { gameSgmAsMulti, gameListRowLabel } from "@lib/games-sgm-ui";
 import { gamesForGamesTab } from "@lib/slate-game-ui";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
@@ -60,26 +61,32 @@ export function GamesScreen({
     data.officialCard != null &&
     data.officialCard.slateDate === data.meta.slateTipDate;
   const multis = useOfficial ? data.officialCard!.multis : data.multis;
+  const frozenGamesSgms = useOfficial ? data.officialCard!.gamesSgms : undefined;
   const picksById = useMemo(
     () =>
       useOfficial
-        ? picksByIdFromOfficialSnapshots(data.officialCard!.legSnapshots, data.picks)
+        ? picksByIdFromOfficialSnapshots(
+            { ...frozenGamesSgms?.legSnapshots, ...data.officialCard!.legSnapshots },
+            data.picks
+          )
         : new Map(data.picks.map((p) => [p.id, p])),
-    [data.picks, useOfficial, data.officialCard]
+    [data.picks, useOfficial, data.officialCard, frozenGamesSgms]
   );
 
   const blocks = useMemo(
     () =>
-      gameSgmBlocks(
-        activeSlate,
-        data.picks,
-        multis,
-        picksById,
-        preset.min,
-        preset.max,
-        roughiesOn
-      ),
-    [activeSlate, data.picks, multis, picksById, preset, roughiesOn]
+      frozenGamesSgms && !roughiesOn
+        ? frozenGameSgmBlocks(activeSlate, frozenGamesSgms, preset, picksById)
+        : gameSgmBlocks(
+            activeSlate,
+            data.picks,
+            multis,
+            picksById,
+            preset.min,
+            preset.max,
+            roughiesOn
+          ),
+    [activeSlate, data.picks, multis, picksById, preset, roughiesOn, frozenGamesSgms]
   );
 
   const built = useMemo(() => blocks.filter((b) => b.card), [blocks]);

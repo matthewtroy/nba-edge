@@ -2,6 +2,8 @@ import type { OfficialBetRow } from "./official-bet-settle.js";
 import type { ResultsSlice } from "./results-types.js";
 import type { MultiType } from "./types.js";
 import { marketLabel } from "./market-label.js";
+import type { GamesSgmBetRow } from "./games-sgm-freeze.js";
+import { GAMES_SGM_PRESETS } from "./games-sgm-presets.js";
 
 export type ResultsBetKind = MultiType | "gamesSgm";
 
@@ -34,14 +36,17 @@ function round(n: number, dp = 4): number {
   return Math.round(n * f) / f;
 }
 
-export function summarizeBets(
-  bets: OfficialBetRow[],
-  kind: ResultsBetKind,
-  label: string
-): BetTypeSummary {
-  const mine = bets
-    .filter((b) => b.betType === kind)
-    .sort((a, b) => b.slateDate.localeCompare(a.slateDate));
+interface SettledRow {
+  slateDate: string;
+  result: string;
+  profitUnits: number | null;
+  stakeUnits: number;
+  publishedCombinedPrice?: number;
+}
+
+type RowStats = Omit<BetTypeSummary, "kind" | "label" | "bets">;
+
+function rowStats(rows: SettledRow[]): RowStats {
   let won = 0;
   let lost = 0;
   let voided = 0;
@@ -49,7 +54,7 @@ export function summarizeBets(
   let profit = 0;
   let oddsSum = 0;
   let oddsN = 0;
-  for (const b of mine) {
+  for (const b of rows) {
     if (b.result === "pending") continue;
     if (b.result === "won") won += 1;
     else if (b.result === "lost") lost += 1;
@@ -67,8 +72,6 @@ export function summarizeBets(
   staked = round(staked);
   profit = round(profit);
   return {
-    kind,
-    label,
     won,
     lost,
     void: voided,
@@ -77,8 +80,33 @@ export function summarizeBets(
     staked,
     profit,
     roi: staked > 0 ? profit / staked : null,
-    bets: mine,
   };
+}
+
+function newestFirst<T extends { slateDate: string }>(rows: T[]): T[] {
+  return [...rows].sort((a, b) => b.slateDate.localeCompare(a.slateDate));
+}
+
+export function summarizeBets(
+  bets: OfficialBetRow[],
+  kind: ResultsBetKind,
+  label: string
+): BetTypeSummary {
+  const mine = newestFirst(bets.filter((b) => b.betType === kind));
+  return { kind, label, ...rowStats(mine), bets: mine };
+}
+
+export interface GamesSgmFilterSummary extends RowStats {
+  filter: string;
+  bets: GamesSgmBetRow[];
+}
+
+/** Games-tab SGM results per price filter, in filter order. */
+export function summarizeGamesSgms(bets: GamesSgmBetRow[]): GamesSgmFilterSummary[] {
+  return GAMES_SGM_PRESETS.map(({ label }) => {
+    const mine = newestFirst(bets.filter((b) => b.filter === label));
+    return { filter: label, ...rowStats(mine), bets: mine };
+  });
 }
 
 export interface ResultLegLine {
@@ -87,7 +115,10 @@ export interface ResultLegLine {
 }
 
 /** Human leg lines for an expanded bet row (catalog ids or stored descriptions). */
-export function betLegLines(bet: OfficialBetRow, results: ResultsSlice): ResultLegLine[] {
+export function betLegLines(
+  bet: Pick<OfficialBetRow, "legIds" | "legLabels">,
+  results: ResultsSlice
+): ResultLegLine[] {
   if (bet.legLabels?.length) return bet.legLabels.map((text) => ({ text }));
   const byId = new Map<string, { playerName: string; market: string; line: number; result: string }>();
   for (const g of results.gradedLegs) byId.set(g.id, g);

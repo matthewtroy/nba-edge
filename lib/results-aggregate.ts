@@ -6,6 +6,7 @@ import type { OfficialBetRow } from "./official-bet-settle.js";
 import { BET_LABELS as BET_LABEL_MAP } from "./official-bet-settle.js";
 import type { GradedProjectionLeg } from "./graded-leg.js";
 import type { ValueLegRow } from "./value-leg-track.js";
+import type { GamesSgmBetRow } from "./games-sgm-freeze.js";
 import { edgeBand } from "./value-leg-track.js";
 
 function emptyStat(): StatRow {
@@ -163,6 +164,7 @@ export function buildResultsSlice(input: {
   officialBets: OfficialBetRow[];
   valueLegRows: ValueLegRow[];
   gradedLegs: GradedProjectionLeg[];
+  gamesSgmBets?: GamesSgmBetRow[];
   now?: Date;
 }): ResultsSlice {
   const now = input.now ?? new Date();
@@ -204,5 +206,6 @@ export function buildResultsSlice(input: {
     valueLegs: aggregateValueStats(input.valueLegRows),
     model: modelBlock(input.gradedLegs),
     gradedLegs: input.gradedLegs,
+    ...(input.gamesSgmBets?.length ? { gamesSgm: { bets: input.gamesSgmBets } } : {}),
   };
 }

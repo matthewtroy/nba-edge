@@ -12,6 +12,7 @@ import {
 } from "./official-leg-snapshot.js";
 import type { PickLeg } from "./types.js";
 import { officialStakeUnits } from "./pricing-config.js";
+import { freezeGamesSgms } from "./games-sgm-freeze.js";
 
 export {
   OFFICIAL_CARD_BOOKIE,
@@ -64,6 +65,7 @@ export function writeOfficialCard(
     whatChanged: input.meta.whatChanged ?? [],
     injuries: input.injuries,
     oddsLastPulled: input.meta.oddsLastPulled,
+    gamesSgms: freezeGamesSgms(input.slate, input.picks),
   };
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(

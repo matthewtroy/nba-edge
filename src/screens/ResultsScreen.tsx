@@ -6,8 +6,26 @@ import {
   OTHER_BET_ROWS,
   betLegLines,
   summarizeBets,
+  summarizeGamesSgms,
   type BetTypeSummary,
 } from "@lib/results-view";
+
+type DisplayBet = Pick<
+  OfficialBetRow,
+  "slateDate" | "bookie" | "publishedCombinedPrice" | "stakeUnits" | "result" | "profitUnits" | "legIds" | "legLabels"
+> & { game?: string };
+
+interface TableRow {
+  key: string;
+  label: string;
+  won: number;
+  lost: number;
+  void: number;
+  staked: number;
+  profit: number;
+  roi: number | null;
+  bets: DisplayBet[];
+}
 
 interface Props {
   data: DataBundle;
@@ -58,7 +76,7 @@ function Stat({ label, value, className = "" }: { label: string; value: string; 
   );
 }
 
-function BetRow({ bet, results }: { bet: OfficialBetRow; results: ResultsSlice }) {
+function BetRow({ bet, results }: { bet: DisplayBet; results: ResultsSlice }) {
   const [open, setOpen] = useState(false);
   const legs = betLegLines(bet, results);
   const price = bet.publishedCombinedPrice;
@@ -71,6 +89,7 @@ function BetRow({ bet, results }: { bet: OfficialBetRow; results: ResultsSlice }
       >
         <span className="text-white/60 tabular-nums">{shortDate(bet.slateDate)}</span>
         <span className="truncate text-white/80">
+          {bet.game ? <span className="text-white/90">{bet.game} · </span> : null}
           {bet.bookie ?? ""}
           {price != null && price > 1 ? (
             <span className="text-white/50 tabular-nums"> · ${price.toFixed(2)}</span>
@@ -106,11 +125,11 @@ function BetRow({ bet, results }: { bet: OfficialBetRow; results: ResultsSlice }
   );
 }
 
-function BetList({ bets, results }: { bets: OfficialBetRow[]; results: ResultsSlice }) {
+function BetList({ bets, results }: { bets: DisplayBet[]; results: ResultsSlice }) {
   return (
     <ul className="mt-2">
       {bets.map((bet, i) => (
-        <BetRow key={`${bet.slateDate}-${bet.label}-${bet.bookie ?? ""}-${i}`} bet={bet} results={results} />
+        <BetRow key={`${bet.slateDate}-${bet.game ?? ""}-${bet.bookie ?? ""}-${i}`} bet={bet} results={results} />
       ))}
     </ul>
   );
@@ -148,13 +167,25 @@ function MainPlaySection({ summary, results }: { summary: BetTypeSummary; result
   );
 }
 
-function OtherBetsTable({ rows, results }: { rows: BetTypeSummary[]; results: ResultsSlice }) {
-  const [openKind, setOpenKind] = useState<string | null>(null);
+function BetsTable({
+  title,
+  testId,
+  firstColumn,
+  rows,
+  results,
+}: {
+  title: string;
+  testId: string;
+  firstColumn: string;
+  rows: TableRow[];
+  results: ResultsSlice;
+}) {
+  const [openKey, setOpenKey] = useState<string | null>(null);
   return (
-    <section className="bg-card rounded-xl p-4" data-results="other-bets">
-      <h2 className="text-sm font-semibold mb-2">Other bets</h2>
+    <section className="bg-card rounded-xl p-4" data-results={testId}>
+      <h2 className="text-sm font-semibold mb-2">{title}</h2>
       <div className="grid grid-cols-[1fr_3rem_3.5rem_4rem_3.5rem] gap-x-2 text-[10px] uppercase tracking-wide text-white/45 pb-1 border-b border-white/10">
-        <span>Bet</span>
+        <span>{firstColumn}</span>
         <span className="text-right">W–L</span>
         <span className="text-right">Staked</span>
         <span className="text-right">Profit</span>
@@ -162,12 +193,12 @@ function OtherBetsTable({ rows, results }: { rows: BetTypeSummary[]; results: Re
       </div>
       <ul>
         {rows.map((row) => {
-          const open = openKind === row.kind;
+          const open = openKey === row.key;
           return (
-            <li key={row.kind} className="border-b border-white/5 last:border-b-0">
+            <li key={row.key} className="border-b border-white/5 last:border-b-0">
               <button
                 type="button"
-                onClick={() => row.bets.length && setOpenKind(open ? null : row.kind)}
+                onClick={() => row.bets.length && setOpenKey(open ? null : row.key)}
                 className="w-full grid grid-cols-[1fr_3rem_3.5rem_4rem_3.5rem] gap-x-2 py-2 text-sm text-left tabular-nums"
               >
                 <span className="truncate">
@@ -235,13 +266,25 @@ export function ResultsScreen({ data }: Props) {
 
   const bets = results.official.bets;
   const mainPlay = summarizeBets(bets, "mainPlay", "Main Play");
-  const others = OTHER_BET_ROWS.map((r) => summarizeBets(bets, r.kind, r.label));
+  const others: TableRow[] = OTHER_BET_ROWS.map((r) => {
+    const sum = summarizeBets(bets, r.kind, r.label);
+    return { ...sum, key: r.kind };
+  });
+  const gamesSgmBets = results.gamesSgm?.bets ?? [];
+  const gamesSgms: TableRow[] = summarizeGamesSgms(gamesSgmBets).map((f) => ({
+    ...f,
+    key: f.filter,
+    label: `$${f.filter}`,
+  }));
 
   return (
     <div className="pb-24 space-y-4">
       <h1 className="text-xl font-bold">Results</h1>
       <MainPlaySection summary={mainPlay} results={results} />
-      <OtherBetsTable rows={others} results={results} />
+      <BetsTable title="Other bets" testId="other-bets" firstColumn="Bet" rows={others} results={results} />
+      {gamesSgmBets.length ? (
+        <BetsTable title="Games SGMs" testId="games-sgms" firstColumn="Price" rows={gamesSgms} results={results} />
+      ) : null}
       <ValueLegsSection valueLegs={results.valueLegs} />
     </div>
   );

@@ -18,6 +18,7 @@ import { gradePickCatalog } from "../lib/graded-leg.js";
 import { BET_LABELS, settleOfficialBets } from "../lib/official-bet-settle.js";
 import { extraOfficialBetRows, loadExtraOfficialBets } from "../lib/extra-official-bets.js";
 import { loadPreAppMainPlays, preAppMainPlayRows } from "../lib/pre-app-main-plays.js";
+import { settleGamesSgms, type GamesSgmBetRow } from "../lib/games-sgm-freeze.js";
 import { valueLegRowsFromGraded } from "../lib/value-leg-track.js";
 import { slateResultsFrozen } from "../lib/settle-slate-freeze.js";
 import { syncSettleToSupabase } from "./supabase-sync.js";
@@ -113,7 +114,8 @@ function sliceUnchanged(a: ResultsSlice | null, b: ResultsSlice): boolean {
   return (
     JSON.stringify(a.official.legs) === JSON.stringify(b.official.legs) &&
     JSON.stringify(a.official.bets) === JSON.stringify(b.official.bets) &&
-    JSON.stringify(a.gradedLegs) === JSON.stringify(b.gradedLegs)
+    JSON.stringify(a.gradedLegs) === JSON.stringify(b.gradedLegs) &&
+    JSON.stringify(a.gamesSgm ?? null) === JSON.stringify(b.gamesSgm ?? null)
   );
 }
 
@@ -142,6 +144,7 @@ async function main() {
   const allOfficialBets: ReturnType<typeof settleOfficialBets> = [];
   const allGraded: ReturnType<typeof gradePickCatalog> = [];
   const allValue: ReturnType<typeof valueLegRowsFromGraded> = [];
+  const allGamesSgmBets: GamesSgmBetRow[] = [];
 
   const extraBets = loadExtraOfficialBets(rootDir);
   for (const slateDate of slateDates) {
@@ -155,21 +158,21 @@ async function main() {
     const card = loadOfficialCard(slateDate);
     let officialLegs: ReturnType<typeof settleOfficialCard>["legs"] = [];
     let officialBets: ReturnType<typeof settleOfficialBets> = [];
+    let gamesSgmBets: GamesSgmBetRow[] = [];
     if (card) {
       officialLegs = frozen ? frozen.official.legs : settleOfficialCard(card, boxes).legs;
+      const legResults = new Map([
+        ...graded.map((g) => [g.id, g.result] as const),
+        ...officialLegs.map((l) => [l.id, l.result] as const),
+      ]);
       officialBets = [
         ...settleOfficialBets(card, officialLegs),
-        ...extraOfficialBetRows(
-          slateDate,
-          new Map([
-            ...graded.map((g) => [g.id, g.result] as const),
-            ...officialLegs.map((l) => [l.id, l.result] as const),
-          ]),
-          extraBets
-        ),
+        ...extraOfficialBetRows(slateDate, legResults, extraBets),
       ];
+      gamesSgmBets = settleGamesSgms(slateDate, card.gamesSgms, legResults);
       allOfficialLegs.push(...officialLegs);
       allOfficialBets.push(...officialBets);
+      allGamesSgmBets.push(...gamesSgmBets);
     } else if (frozen) {
       officialLegs = frozen.official.legs;
       officialBets = frozen.official.bets;
@@ -185,6 +188,7 @@ async function main() {
       officialBets,
       valueLegRows: valueRows,
       gradedLegs: graded,
+      gamesSgmBets,
       now,
     });
 
@@ -204,6 +208,7 @@ async function main() {
     officialBets: [...preAppBets, ...allOfficialBets],
     valueLegRows: allValue,
     gradedLegs: allGraded,
+    gamesSgmBets: allGamesSgmBets,
     now,
   });
 

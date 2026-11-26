@@ -23,6 +23,9 @@ import type { SettledLegRow } from "../lib/settle-core";
 import { extraOfficialBetRows, loadExtraOfficialBets } from "../lib/extra-official-bets";
 import { buildResultsSlice } from "../lib/results-aggregate";
 import { loadPreAppMainPlays, preAppMainPlayRows } from "../lib/pre-app-main-plays";
+import { freezeGamesSgms, frozenGameSgmBlocks, settleGamesSgms } from "../lib/games-sgm-freeze";
+import { writeOfficialCard } from "../lib/official-card";
+import { picksByIdFromOfficialSnapshots } from "../lib/official-leg-snapshot";
 import { ResultsScreen } from "../src/screens/ResultsScreen";
 import type { DataBundle } from "../src/hooks/useData";
 import { createElement } from "react";
@@ -475,5 +478,106 @@ describe("prod fix pass 5 — Results redesign", () => {
     await act(async () => oct30.click());
     expect(host.textContent).toMatch(/Sabonis 13\+ reb/);
     done();
+  });
+});
+
+describe("prod fix pass 5 — Games tab SGMs freeze at publish", () => {
+  const fxGames = JSON.parse(
+    fs.readFileSync(path.join(process.cwd(), "tests/fixtures/games-sgm-freeze/mia-phi-2026-11-26.json"), "utf8")
+  ) as { game: SlateGame; picks: PickLeg[] };
+  const frozen = freezeGamesSgms([fxGames.game], fxGames.picks);
+  const low = frozen.bets.find((b) => b.filter === "1.5–4")!;
+  const high = frozen.bets.find((b) => b.filter === "20–50")!;
+  const realResults = new Map<string, "won" | "lost">([
+    ["4431678-ast-5", "won"],
+    ["3917376-pts-20", "lost"],
+    ["4066261-pts-20", "lost"],
+    ["4278053-pts-15", "won"],
+    ["4351851-pts-10", "lost"],
+    ["4601025-3pm-2", "lost"],
+    ["4278053-3pm-3", "won"],
+  ]);
+
+  it("freezes every price filter for the game with band stakes", () => {
+    expect(frozen.bets.map((b) => b.filter)).toEqual(["1.5–4", "3–6", "4–10", "10–20", "20–50", "50+"]);
+    expect(low).toMatchObject({ game: "MIA @ PHI", bookie: "Unibet", total: 2.22, stakeUnits: 1 });
+    expect(low.legs).toEqual(["4431678-ast-5", "3917376-pts-20"]);
+    expect(high).toMatchObject({ bookie: "Ladbrokes", total: 23.81, stakeUnits: 0.5 });
+    for (const id of [...low.legs, ...high.legs]) expect(frozen.legSnapshots[id]).toBeDefined();
+  });
+
+  it("Games tab shows the frozen legs even after live picks change", () => {
+    const picksById = picksByIdFromOfficialSnapshots(frozen.legSnapshots, []);
+    for (const preset of [
+      { label: "1.5–4", min: 1.5, max: 4 },
+      { label: "20–50", min: 20, max: 50 },
+    ]) {
+      const [block] = frozenGameSgmBlocks([fxGames.game], frozen, preset, picksById);
+      const expected = frozen.bets.find((b) => b.filter === preset.label)!;
+      expect(block?.card?.legs.map((l) => l.id)).toEqual(expected.legs);
+      expect(block?.card?.bestBookie).toBe(expected.bookie);
+      expect(block?.card?.bestTotal).toBe(expected.total);
+    }
+  });
+
+  it("settles two filters with real 26 Nov leg results (both lost)", () => {
+    const rows = settleGamesSgms("2026-11-26", { ...frozen, bets: [low, high] }, realResults);
+    expect(rows.map((r) => [r.filter, r.result, r.stakeUnits, r.profitUnits])).toEqual([
+      ["1.5–4", "lost", 1, -1],
+      ["20–50", "lost", 0.5, -0.5],
+    ]);
+  });
+
+  it("settles a won filter at stake × (price − 1)", () => {
+    const allWon = new Map([...low.legs, ...high.legs].map((id) => [id, "won" as const]));
+    const rows = settleGamesSgms("2026-11-26", { ...frozen, bets: [low, high] }, allWon);
+    expect(rows[0]?.result).toBe("won");
+    expect(rows[0]?.profitUnits).toBeCloseTo(1.22, 6);
+    expect(rows[1]?.profitUnits).toBeCloseTo(0.5 * 22.81, 6);
+  });
+
+  it("publish writes gamesSgms into official-card.json", () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "games-sgm-card-"));
+    const card = writeOfficialCard(dir, {
+      now: new Date("2026-11-25T10:00:00Z"),
+      slate: [fxGames.game],
+      multis: [],
+      notBuilt: [],
+      injuries: [],
+      meta: { lastUpdated: "x", sources: {}, slateSize: 1, slateTipDate: "2026-11-26" } as MetaJson,
+      picks: fxGames.picks,
+    });
+    const onDisk = JSON.parse(fs.readFileSync(path.join(dir, "official-card.json"), "utf8")) as OfficialCardFile;
+    expect(onDisk.gamesSgms?.bets.length).toBe(6);
+    expect(onDisk.gamesSgms).toEqual(card.gamesSgms);
+    fs.rmSync(dir, { recursive: true, force: true });
+  });
+
+  it("Results shows a Games SGMs table by filter, expandable", async () => {
+    const rows = settleGamesSgms("2026-11-26", frozen, realResults);
+    const slice = buildResultsSlice({
+      officialLegs: [],
+      officialBets: preAppMainPlayRows(loadPreAppMainPlays(process.cwd())),
+      valueLegRows: [],
+      gradedLegs: [],
+      gamesSgmBets: rows,
+    });
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    const root = createRoot(host);
+    await act(async () => {
+      root.render(createElement(ResultsScreen, { data: { results: slice } as unknown as DataBundle }));
+    });
+    const table = host.querySelector("[data-results='games-sgms']")!;
+    const rowButtons = [...table.querySelectorAll("li > button")];
+    expect(
+      rowButtons.map((b) => (b.firstElementChild?.textContent ?? "").replace(/[▸▾]/g, "").trim())
+    ).toEqual([
+      "$1.5–4", "$3–6", "$4–10", "$10–20", "$20–50", "$50+",
+    ]);
+    await act(async () => (rowButtons[4] as HTMLButtonElement).click());
+    expect(table.textContent).toMatch(/MIA @ PHI · Ladbrokes · \$23\.81 · 0\.50u/);
+    root.unmount();
+    host.remove();
   });
 });
