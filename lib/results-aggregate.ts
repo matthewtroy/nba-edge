@@ -24,7 +24,13 @@ function addBetToStat(row: StatRow & { bets?: number }, bet: OfficialBetRow): vo
   }
 }
 
+function roundUnits(n: number): number {
+  return Math.round(n * 10000) / 10000;
+}
+
 function finishRoi(row: StatRow): void {
+  row.staked = roundUnits(row.staked);
+  row.profit = roundUnits(row.profit);
   row.roi = row.staked > 0 ? row.profit / row.staked : null;
 }
 

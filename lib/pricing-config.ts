@@ -113,18 +113,58 @@ export const STAKE_UNIT_STEP = 0.05;
 
 export function quantizeStakeUnits(units: number): number {
   if (units <= 0) return 0;
-  return Math.round(units / STAKE_UNIT_STEP) * STAKE_UNIT_STEP;
+  return Math.round(Math.round(units / STAKE_UNIT_STEP) * STAKE_UNIT_STEP * 100) / 100;
 }
 
-/** Stake units from published combined decimal, snapped to 0.05u. */
-export function officialStakeUnits(combinedPrice: number | undefined): number {
+/** Bet families that share a stake band table. Games-tab SGMs use the core table. */
+export type StakeBandKind =
+  | "mainPlay"
+  | "doubleUp"
+  | "boostSgm"
+  | "q1Multi"
+  | "gamesSgm"
+  | "crossGameSgm"
+  | "longshot"
+  | "booster";
+
+/** [max combined decimal (inclusive), units]; last row is the open-ended top band. */
+const CORE_STAKE_BANDS: [number, number][] = [
+  [20, 1],
+  [50, 0.5],
+  [100, 0.25],
+  [Infinity, 0.1],
+];
+const CROSS_STAKE_BANDS: [number, number][] = [
+  [20, 0.5],
+  [50, 0.25],
+  [100, 0.15],
+  [Infinity, 0.1],
+];
+const LONG_STAKE_BANDS: [number, number][] = [
+  [100, 0.1],
+  [Infinity, 0.05],
+];
+
+export const STAKE_BANDS: Record<StakeBandKind, [number, number][]> = {
+  mainPlay: CORE_STAKE_BANDS,
+  doubleUp: CORE_STAKE_BANDS,
+  boostSgm: CORE_STAKE_BANDS,
+  q1Multi: CORE_STAKE_BANDS,
+  gamesSgm: CORE_STAKE_BANDS,
+  crossGameSgm: CROSS_STAKE_BANDS,
+  longshot: LONG_STAKE_BANDS,
+  booster: LONG_STAKE_BANDS,
+};
+
+/** Stake units for a bet from its published combined decimal, snapped to 0.05u. */
+export function officialStakeUnits(
+  kind: StakeBandKind,
+  combinedPrice: number | undefined
+): number {
   if (combinedPrice == null || combinedPrice <= 1) return 0;
-  let raw = 1;
-  if (combinedPrice < 2.5) raw = 0.15;
-  else if (combinedPrice < 5) raw = 0.25;
-  else if (combinedPrice < 10) raw = 0.5;
-  else if (combinedPrice < 20) raw = 0.75;
-  return quantizeStakeUnits(raw);
+  const bands = STAKE_BANDS[kind];
+  const row = bands.find(([max]) => combinedPrice <= max) ?? bands[bands.length - 1]!;
+  return quantizeStakeUnits(row[1]);
 }
 
 /** P_final = MODEL_WEIGHT × P_model + (1 − MODEL_WEIGHT) × P_market */

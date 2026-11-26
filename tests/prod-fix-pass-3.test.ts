@@ -41,7 +41,7 @@ describe("prod fix pass 3 — edge rule", () => {
 describe("prod fix pass 3 — unit staking", () => {
   it("stake bands snap to 0.05u", () => {
     expect(STAKE_UNIT_STEP).toBe(0.05);
-    expect(officialStakeUnits(7.5)).toBe(0.5);
+    expect(officialStakeUnits("mainPlay", 7.5)).toBe(1);
   });
 });
 

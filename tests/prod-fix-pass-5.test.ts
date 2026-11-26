@@ -13,6 +13,10 @@ import {
 import { legRowReasonLines } from "../lib/leg-row-reasons";
 import { reasonsAtTipByLegId } from "../lib/reasons-at-tip";
 import type { MetaJson, PickLeg, SlateGame } from "../lib/types";
+import { officialStakeUnits } from "../lib/pricing-config";
+import { settleOfficialBets } from "../lib/official-bet-settle";
+import type { OfficialCardFile } from "../lib/official-card-time";
+import type { SettledLegRow } from "../lib/settle-core";
 
 interface ReasonsFixture {
   commit: string;
@@ -199,5 +203,56 @@ describe("prod fix pass 5 — settle keeps pipeline slate output", () => {
     expect(settle).toMatch(
       /if \(process\.env\.SETTLE_DATA_RESTORED !== "1"\) restorePersistedDataFromBranch\(rootDir\)/
     );
+  });
+});
+
+describe("prod fix pass 5 — official stake bands", () => {
+  it("26 Nov published prices map to the specified stakes", () => {
+    expect(officialStakeUnits("booster", 215.94)).toBe(0.05);
+    expect(officialStakeUnits("crossGameSgm", 6075.4)).toBe(0.1);
+    expect(officialStakeUnits("longshot", 63.25)).toBe(0.1);
+    expect(officialStakeUnits("mainPlay", 11.59)).toBe(1);
+    expect(officialStakeUnits("boostSgm", 7.36)).toBe(1);
+  });
+
+  it("core, cross and long band edges", () => {
+    for (const kind of ["mainPlay", "doubleUp", "boostSgm", "q1Multi", "gamesSgm"] as const) {
+      expect(officialStakeUnits(kind, 20)).toBe(1);
+      expect(officialStakeUnits(kind, 20.01)).toBe(0.5);
+      expect(officialStakeUnits(kind, 50)).toBe(0.5);
+      expect(officialStakeUnits(kind, 75)).toBe(0.25);
+      expect(officialStakeUnits(kind, 100.5)).toBe(0.1);
+    }
+    expect(officialStakeUnits("crossGameSgm", 12)).toBe(0.5);
+    expect(officialStakeUnits("crossGameSgm", 35)).toBe(0.25);
+    expect(officialStakeUnits("crossGameSgm", 80)).toBe(0.15);
+    expect(officialStakeUnits("crossGameSgm", 150)).toBe(0.1);
+    expect(officialStakeUnits("booster", 45)).toBe(0.1);
+    expect(officialStakeUnits("longshot", 100)).toBe(0.1);
+    expect(officialStakeUnits("longshot", 140)).toBe(0.05);
+    expect(officialStakeUnits("mainPlay", undefined)).toBe(0);
+  });
+
+  it("settle uses bands when the card has no frozen stake, frozen stake otherwise", () => {
+    const card = {
+      slateDate: "2026-11-26",
+      publishedAt: "2026-11-25T11:08:41.132Z",
+      lockedAt: "2026-11-25T11:08:41.132Z",
+      legSnapshots: {},
+      notBuilt: [],
+      whatChanged: [],
+      injuries: [],
+      multis: [
+        { type: "booster", label: "Booster", legs: ["a"], bestBookieTotal: 215.94 },
+        { type: "mainPlay", label: "Main Play", legs: ["a"], bestBookieTotal: 11.59, stakeUnits: 0.75 },
+      ],
+    } as unknown as OfficialCardFile;
+    const rows = settleOfficialBets(card, [{ id: "a", result: "lost" } as SettledLegRow]);
+    expect(rows.map((r) => r.stakeUnits)).toEqual([0.05, 0.75]);
+  });
+
+  it("publish freezes the band stake onto the card multis", () => {
+    const src = fs.readFileSync(path.join(process.cwd(), "lib/official-card.ts"), "utf8");
+    expect(src).toMatch(/stakeUnits: m\.stakeUnits \?\? officialStakeUnits\(m\.type,/);
   });
 });

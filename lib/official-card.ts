@@ -52,7 +52,7 @@ export function writeOfficialCard(
     tipYmd,
     input.multis.map((m) => ({
       ...m,
-      stakeUnits: officialStakeUnits(m.bestBookieTotal ?? m.combinedFairPrice),
+      stakeUnits: m.stakeUnits ?? officialStakeUnits(m.type, m.bestBookieTotal ?? m.combinedFairPrice),
     }))
   );
   const legSnapshots = freezeOfficialLegSnapshots(

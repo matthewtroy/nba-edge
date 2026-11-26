@@ -16,10 +16,7 @@ import { fetchScoreboard, fetchSummary } from "./fetch/espn.js";
 import { formatYyyymmddInZone, parseBoxscore } from "./espn-parse.js";
 import { gradePickCatalog } from "../lib/graded-leg.js";
 import { settleOfficialBets } from "../lib/official-bet-settle.js";
-import {
-  manualOfficialBetRows,
-  slateResultsMissingManualBets,
-} from "../lib/manual-official-bets.js";
+import { manualOfficialBetRows } from "../lib/manual-official-bets.js";
 import { valueLegRowsFromGraded } from "../lib/value-leg-track.js";
 import { slateResultsFrozen } from "../lib/settle-slate-freeze.js";
 import { syncSettleToSupabase } from "./supabase-sync.js";
@@ -147,35 +144,30 @@ async function main() {
 
   for (const slateDate of slateDates) {
     const prevSlate = loadPrevSlateSlice(slateDate);
-    if (
-      prevSlate &&
-      slateResultsFrozen(prevSlate) &&
-      !slateResultsMissingManualBets(slateDate, prevSlate.official.bets, rootDir)
-    ) {
-      allGraded.push(...prevSlate.gradedLegs);
-      allOfficialLegs.push(...prevSlate.official.legs);
-      allOfficialBets.push(...prevSlate.official.bets);
-      const picks = loadPicks(slateDate);
-      allValue.push(...valueLegRowsFromGraded(picks, prevSlate.gradedLegs));
-      continue;
-    }
+    const frozen = prevSlate && slateResultsFrozen(prevSlate) ? prevSlate : null;
 
     const picks = loadPicks(slateDate);
-    const graded = gradePickCatalog(picks, slateDate, boxes);
+    const graded = frozen ? frozen.gradedLegs : gradePickCatalog(picks, slateDate, boxes);
     allGraded.push(...graded);
 
     const card = loadOfficialCard(slateDate);
     let officialLegs: ReturnType<typeof settleOfficialCard>["legs"] = [];
     let officialBets: ReturnType<typeof settleOfficialBets> = [];
     if (card) {
-      const settled = settleOfficialCard(card, boxes);
-      officialLegs = settled.legs;
-      officialBets = settleOfficialBets(card, officialLegs);
-      const legResults = new Map(officialLegs.map((l) => [l.id, l.result]));
+      officialLegs = frozen ? frozen.official.legs : settleOfficialCard(card, boxes).legs;
       officialBets = [
-        ...officialBets,
-        ...manualOfficialBetRows(slateDate, legResults, rootDir),
+        ...settleOfficialBets(card, officialLegs),
+        ...manualOfficialBetRows(
+          slateDate,
+          new Map(officialLegs.map((l) => [l.id, l.result])),
+          rootDir
+        ),
       ];
+      allOfficialLegs.push(...officialLegs);
+      allOfficialBets.push(...officialBets);
+    } else if (frozen) {
+      officialLegs = frozen.official.legs;
+      officialBets = frozen.official.bets;
       allOfficialLegs.push(...officialLegs);
       allOfficialBets.push(...officialBets);
     }

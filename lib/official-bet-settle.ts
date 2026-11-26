@@ -96,7 +96,7 @@ export function settleOfficialBets(
     const combined = combinedPublishedPrice(multi, card, legResults);
     const stake =
       multi.stakeUnits ??
-      officialStakeUnits(combined ?? multi.bestBookieTotal ?? multi.combinedFairPrice);
+      officialStakeUnits(multi.type, combined ?? multi.bestBookieTotal ?? multi.combinedFairPrice);
     const trackUnits =
       result !== "pending" &&
       stake > 0 &&
