@@ -12,6 +12,8 @@ import { ui } from "../lib/card-type-scale";
 import { FEED_BOOKIES } from "@lib/card-bookie";
 import { legBookieQuoteView } from "@lib/leg-bookie-quote";
 import { InjuryStatusBadge, injuryStatusForPlayer } from "./InjuryStatusBadge";
+import type { LiveLegView } from "@lib/live-leg";
+import { LiveLegChip } from "./LiveLegChip";
 
 interface Props {
   leg: PickLeg | null;
@@ -21,6 +23,7 @@ interface Props {
   myBookie?: string;
   onClose: () => void;
   onSelectLeg?: (leg: PickLeg) => void;
+  liveView?: LiveLegView;
 }
 
 function LastTenBarChart({
@@ -144,6 +147,7 @@ export function LegSheet({
   myBookie = "bet365",
   onClose,
   onSelectLeg,
+  liveView,
 }: Props) {
   const [bookPrice, setBookPrice] = useState("");
   const [dragY, setDragY] = useState(0);
@@ -242,6 +246,7 @@ export function LegSheet({
             {leg.playerName}
           </h2>
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1">
+            <LiveLegChip view={liveView} />
             <InjuryStatusBadge status={injuryStatusForPlayer(injuries, leg.playerId)} />
           </div>
           <p className="text-sm text-white/55 mt-0.5">

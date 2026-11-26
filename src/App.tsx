@@ -16,6 +16,7 @@ import type { PickLeg } from "@lib/types";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { LoadingSkeleton } from "./components/LoadingSkeleton";
 import { injuriesForBadges } from "@lib/injury-display";
+import { useLiveTracking } from "./hooks/useLiveTracking";
 
 type Tab = "today" | "picks" | "games" | "injuries" | "results";
 
@@ -40,6 +41,18 @@ export default function App() {
     timeZone,
   } = useSlateDate(index);
   const data = useData(slateDate);
+  const multisForLive =
+    data.officialCard &&
+    data.officialCard.slateDate === (data.meta.slateTipDate ?? data.officialCard.slateDate)
+      ? data.officialCard.multis
+      : data.multis;
+  const liveTracking = useLiveTracking(
+    slateDate,
+    data.slate,
+    data.picks,
+    multisForLive,
+    !data.loading && !data.error
+  );
   const badgeInjuries = injuriesForBadges(data.injuries);
   const { settings, setSettings } = useSettings();
   useEffect(() => {
@@ -66,6 +79,9 @@ export default function App() {
   return (
     <PhoneShell className="px-4 pt-4">
       {data.error && <p className="text-sm text-red-400 mb-2">{data.error}</p>}
+      {liveTracking.error && (
+        <p className="text-sm text-amber-400/90 mb-2">{liveTracking.error}</p>
+      )}
       {tab === "today" && (
         <ErrorBoundary name="TodayScreen">
           <TodayScreen
@@ -82,6 +98,7 @@ export default function App() {
             showQ1={settings.showQ1Bets}
             showLongshots={settings.showLongshots}
             myBookie={settings.myBookie}
+            liveTracking={liveTracking}
           />
         </ErrorBoundary>
       )}
@@ -95,6 +112,7 @@ export default function App() {
             onSlateDateChange={setSlateDate}
             myBookie={settings.myBookie}
             onLegTap={setLeg}
+            liveTracking={liveTracking}
           />
         </ErrorBoundary>
       )}
@@ -109,6 +127,7 @@ export default function App() {
             myBookie={settings.myBookie}
             onLegTap={setLeg}
             onCopy={copy}
+            liveTracking={liveTracking}
           />
         </ErrorBoundary>
       )}
@@ -137,6 +156,7 @@ export default function App() {
         myBookie={settings.myBookie}
         onClose={() => setLeg(null)}
         onSelectLeg={setLeg}
+        liveView={leg ? liveTracking.legViews.get(leg.id) : undefined}
       />
       <SettingsSheet
         open={settingsOpen}

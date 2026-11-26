@@ -1,5 +1,8 @@
 import { useRef, useState } from "react";
 import type { InjuryEntry, MultiBet, PickLeg, SlateGame } from "@lib/types";
+import type { LiveLegView } from "@lib/live-leg";
+import type { LiveBetView } from "@lib/live-bet";
+import { liveBetHeaderLabel } from "@lib/live-leg-ui";
 import { FEED_BOOKIES, isFeedBookie } from "@lib/card-bookie";
 import { MultiLegRow } from "./MultiLegRow";
 import { renderMultiCardCopyText } from "@lib/multi-card-text";
@@ -53,6 +56,8 @@ interface Props {
   onShareError?: (message: string) => void;
   /** Off-screen PNG — hides Copy/Share/bookie chevron; keeps header bookie line */
   shareCapture?: boolean;
+  legViews?: Map<string, LiveLegView>;
+  liveBetView?: LiveBetView;
 }
 
 export const FORBIDDEN_MULTI_CARD_STRINGS = [
@@ -100,6 +105,8 @@ export function MultiCard({
   republishedAt,
   onShareError,
   shareCapture = false,
+  legViews,
+  liveBetView: liveBetViewProp,
 }: Props) {
   const cardRef = useRef<HTMLElement>(null);
   const [bookieSheetOpen, setBookieSheetOpen] = useState(false);
@@ -160,6 +167,8 @@ export function MultiCard({
   const headerTotal =
     showFairOnly || missingAtBookie > 0 ? undefined : total ?? undefined;
   const pricedAtBookie = legs.length - missingAtBookie;
+  const liveBetView = liveBetViewProp;
+  const liveBetLabel = liveBetView ? liveBetHeaderLabel(liveBetView) : null;
   const headerBookie = showFairOnly
     ? undefined
     : multiCardBookieHeaderLabel({
@@ -198,6 +207,8 @@ export function MultiCard({
         bookieStorageScope,
         republishedAt,
         shareLegs: legs,
+        legViews,
+        liveBetView,
       });
       const file = new File([blob], "nba-edge-multi.png", { type: "image/png" });
       if (navigator.share && navigator.canShare?.({ files: [file] })) {
@@ -242,6 +253,11 @@ export function MultiCard({
         fairNote={showFairOnly ? subline || oddsNote : undefined}
         onRemove={shareCapture ? undefined : onRemove}
       />
+      {liveBetLabel ? (
+        <p className="text-[11px] text-sky-400/90 mb-2" data-testid="live-bet-label">
+          {liveBetLabel}
+        </p>
+      ) : null}
 
       {multi.type === "crossGameSgm" && !shareCapture && (
         <CrossGameChips
@@ -268,6 +284,7 @@ export function MultiCard({
             resetLeg={resetLeg}
             compact={compact}
             oddsFallbackIso={oddsLastPulled}
+            legViews={legViews}
           />
         ) : (
           multi.legs.map((anchorId) => {
@@ -295,6 +312,7 @@ export function MultiCard({
                   onSwap={() => swapLeg(anchorId)}
                   onReset={() => resetLeg(anchorId)}
                   onTap={onLegTap}
+                  liveView={legViews?.get(anchorId)}
                 />
               </ErrorBoundary>
             );
@@ -373,6 +391,7 @@ function CrossLegGroups({
   resetLeg,
   compact,
   oddsFallbackIso,
+  legViews,
 }: {
   multi: MultiBet;
   slate?: SlateGame[];
@@ -388,6 +407,7 @@ function CrossLegGroups({
   resetLeg: (id: string) => void;
   compact: boolean;
   oddsFallbackIso?: string;
+  legViews?: Map<string, LiveLegView>;
 }) {
   const order = slate?.length
     ? slate.map((g) => g.id)
@@ -436,6 +456,7 @@ function CrossLegGroups({
             gameId={gameId}
             oddsFallbackIso={oddsFallbackIso}
             catalog={allPicks}
+            legViews={legViews}
           />
         );
         first = false;
@@ -465,6 +486,7 @@ function MotionBlock(props: {
   gameId: string;
   oddsFallbackIso?: string;
   catalog: PickLeg[];
+  legViews?: Map<string, LiveLegView>;
 }) {
   const oddsAge =
     props.gameId && props.catalog.length
@@ -497,6 +519,7 @@ function MotionBlock(props: {
             onSwap={() => props.swapLeg(anchorId)}
             onReset={() => props.resetLeg(anchorId)}
             onTap={props.onLegTap}
+            liveView={props.legViews?.get(anchorId)}
           />
         </ErrorBoundary>
       ))}

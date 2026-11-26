@@ -1,4 +1,6 @@
 import type { InjuryEntry, PickLeg, SlateGame } from "@lib/types";
+import type { LiveLegView } from "@lib/live-leg";
+import { LiveLegChip } from "./LiveLegChip";
 import { injuryStatusForPlayer } from "./InjuryStatusBadge";
 import { LegRowMeta } from "./LegRowMeta";
 import { bookieMarketLabel } from "@lib/market-label";
@@ -16,6 +18,7 @@ interface Props {
   slate?: SlateGame[];
   myBookie: string;
   onTap: (leg: PickLeg) => void;
+  liveView?: LiveLegView;
 }
 
 function LegBadge({ label, danger }: { label: string; danger?: boolean }) {
@@ -24,7 +27,7 @@ function LegBadge({ label, danger }: { label: string; danger?: boolean }) {
   );
 }
 
-export function PickLegRow({ leg, injuries, slate, myBookie, onTap }: Props) {
+export function PickLegRow({ leg, injuries, slate, myBookie, onTap, liveView }: Props) {
   const badgeLabels = legRowBadgeLabels(leg, myBookie);
   const reasonLines = legRowReasonLines(leg);
   const price = legPriceAtBookie(leg, myBookie);
@@ -70,6 +73,7 @@ export function PickLegRow({ leg, injuries, slate, myBookie, onTap }: Props) {
           </div>
         )}
         <LegRowMeta ticks={ticks} injuryStatus={injStatus}>
+          <LiveLegChip view={liveView} />
           {badgeLabels.map((t) => (
             <LegBadge key={t} label={t} danger={t === "Blowout risk"} />
           ))}

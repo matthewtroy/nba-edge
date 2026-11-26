@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
 import type { DataBundle } from "../hooks/useData";
+import type { LiveTrackingState } from "../hooks/useLiveTracking";
+import { liveMultiKey } from "@lib/live-tracking";
 import type { MultiType, PickLeg } from "@lib/types";
 import { MultiCard } from "../components/MultiCard";
 import { NotBuiltSection } from "../components/NotBuiltSection";
@@ -39,6 +41,7 @@ interface Props {
   showQ1: boolean;
   showLongshots: boolean;
   myBookie?: string;
+  liveTracking: LiveTrackingState;
 }
 
 export function TodayScreen({
@@ -55,6 +58,7 @@ export function TodayScreen({
   showQ1,
   showLongshots,
   myBookie,
+  liveTracking,
 }: Props) {
   const stale = Object.values(data.meta.sources).some(
     (s) => s === "stale" || s === "paused" || String(s).includes("paused")
@@ -258,6 +262,8 @@ export function TodayScreen({
             liveCatalog={data.picks}
             onLegTap={onLegTap}
             onCopy={onCopy}
+            legViews={liveTracking.legViews}
+            liveBetView={liveTracking.betViews.get(liveMultiKey(m))}
           />
         );
       })}
@@ -292,6 +298,8 @@ export function TodayScreen({
               onRemove={() => removeMulti(draftId)}
               onLegTap={onLegTap}
               onCopy={onCopy}
+              legViews={liveTracking.legViews}
+              liveBetView={liveTracking.betViews.get(liveMultiKey(multi))}
             />
           ))
         )}

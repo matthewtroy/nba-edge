@@ -1,5 +1,6 @@
 import { useMemo, type ReactNode } from "react";
 import type { DataBundle } from "../hooks/useData";
+import type { LiveTrackingState } from "../hooks/useLiveTracking";
 import type { PickLeg, Market } from "@lib/types";
 import { PickLegRow } from "../components/PickLegRow";
 import { DateSwitcher } from "../components/DateSwitcher";
@@ -21,6 +22,7 @@ interface Props {
   onSlateDateChange: (d: string) => void;
   myBookie?: string;
   onLegTap: (leg: PickLeg) => void;
+  liveTracking: LiveTrackingState;
 }
 
 const MARKET_LABEL: Record<string, string> = {
@@ -73,6 +75,7 @@ export function PicksScreen({
   onSlateDateChange,
   myBookie = "bet365",
   onLegTap,
+  liveTracking,
 }: Props) {
   const badgeInjuries = injuriesForBadges(data.injuries);
   const [filters, patch, toggleSortDir] = usePicksFilters();
@@ -201,6 +204,7 @@ export function PicksScreen({
               slate={data.slate}
               myBookie={myBookie}
               onTap={onLegTap}
+              liveView={liveTracking.legViews.get(leg.id)}
             />
           ))}
         </section>

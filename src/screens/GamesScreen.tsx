@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
 import type { DataBundle } from "../hooks/useData";
+import type { LiveTrackingState } from "../hooks/useLiveTracking";
+import { liveMultiKey } from "@lib/live-tracking";
 import type { PickLeg } from "@lib/types";
 import { gameSgmBlocks } from "@lib/games-sgm";
 import { gameSgmAsMulti, gameListRowLabel } from "@lib/games-sgm-ui";
@@ -23,6 +25,7 @@ interface Props {
   myBookie?: string;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (text: string) => void;
+  liveTracking: LiveTrackingState;
 }
 
 export function GamesScreen({
@@ -34,6 +37,7 @@ export function GamesScreen({
   onLegTap,
   onCopy,
   myBookie,
+  liveTracking,
 }: Props) {
   const badgeInjuries = injuriesForBadges(data.injuries);
   const { preset, setPreset, presets } = useGamesSgmPreset();
@@ -193,6 +197,8 @@ export function GamesScreen({
                   compact
                   onLegTap={onLegTap}
                   onCopy={onCopy}
+                  legViews={liveTracking.legViews}
+                  liveBetView={liveTracking.betViews.get(liveMultiKey(multi))}
                 />
               </>
             )}

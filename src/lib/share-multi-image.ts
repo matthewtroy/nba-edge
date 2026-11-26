@@ -10,6 +10,8 @@ import {
   shareCaptureFooterText,
 } from "@lib/share-multi-capture";
 import type { InjuryEntry, MultiBet, PickLeg, SlateGame } from "@lib/types";
+import type { LiveLegView } from "@lib/live-leg";
+import type { LiveBetView } from "@lib/live-bet";
 import type { MultiBookieStorageScope } from "../hooks/useMultiBookieSelect";
 import { MultiCard } from "../components/MultiCard";
 
@@ -33,6 +35,8 @@ export type CaptureMultiCardShareInput = {
   bookieStorageScope?: MultiBookieStorageScope;
   republishedAt?: string;
   shareLegs: PickLeg[];
+  legViews?: Map<string, LiveLegView>;
+  liveBetView?: LiveBetView;
 };
 
 export async function captureMultiCardSharePng(
@@ -95,6 +99,8 @@ export async function captureMultiCardSharePng(
             bookieStorageScope: input.bookieStorageScope,
             republishedAt: input.republishedAt,
             shareCapture: true,
+            legViews: input.legViews,
+            liveBetView: input.liveBetView,
             onLegTap: () => {},
             onCopy: () => {},
           }),
