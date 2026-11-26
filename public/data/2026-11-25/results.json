@@ -1,0 +1,6489 @@
+{
+  "updatedAt": "2026-11-26T09:06:41.088Z",
+  "official": {
+    "record": {
+      "won": 0,
+      "lost": 0,
+      "void": 0,
+      "staked": 0,
+      "profit": 0,
+      "roi": null,
+      "bets": 0
+    },
+    "byBetType": {},
+    "last14d": [],
+    "bets": [],
+    "legs": []
+  },
+  "valueLegs": {
+    "record": {
+      "won": 44,
+      "lost": 27,
+      "void": 0,
+      "staked": 71,
+      "profit": 47.67,
+      "roi": 0.6714084507042254,
+      "legs": 71,
+      "hitRate": 0.6197183098591549,
+      "avgPrice": 4.189436619718309,
+      "beatMarket": 0.19507784818097812
+    },
+    "byMarket": {
+      "reb": {
+        "won": 19,
+        "lost": 5,
+        "void": 0,
+        "staked": 24,
+        "profit": 24.88,
+        "roi": 1.0366666666666666,
+        "legs": 24
+      },
+      "ast": {
+        "won": 8,
+        "lost": 9,
+        "void": 0,
+        "staked": 17,
+        "profit": 5.89,
+        "roi": 0.3464705882352941,
+        "legs": 17
+      },
+      "3pm": {
+        "won": 17,
+        "lost": 9,
+        "void": 0,
+        "staked": 26,
+        "profit": 20.9,
+        "roi": 0.8038461538461538,
+        "legs": 26
+      },
+      "pts": {
+        "won": 0,
+        "lost": 4,
+        "void": 0,
+        "staked": 4,
+        "profit": -4,
+        "roi": -1,
+        "legs": 4
+      }
+    },
+    "byEdgeBand": {
+      "15%+": {
+        "won": 24,
+        "lost": 22,
+        "void": 0,
+        "staked": 46,
+        "profit": 30.44,
+        "roi": 0.6617391304347826,
+        "legs": 46
+      },
+      "5–10%": {
+        "won": 8,
+        "lost": 2,
+        "void": 0,
+        "staked": 10,
+        "profit": 1.5900000000000005,
+        "roi": 0.15900000000000006,
+        "legs": 10
+      },
+      "0–5%": {
+        "won": 7,
+        "lost": 1,
+        "void": 0,
+        "staked": 8,
+        "profit": 12.55,
+        "roi": 1.56875,
+        "legs": 8
+      },
+      "10–15%": {
+        "won": 5,
+        "lost": 2,
+        "void": 0,
+        "staked": 7,
+        "profit": 3.09,
+        "roi": 0.4414285714285714,
+        "legs": 7
+      }
+    },
+    "legs": [
+      {
+        "id": "5160992-reb-10",
+        "slateDate": "2026-11-25",
+        "playerName": "Alex Sarr",
+        "market": "reb",
+        "line": 10,
+        "result": "lost",
+        "price": 7,
+        "bookie": "TABtouch",
+        "fairPrice": 5.92,
+        "edgeVsFair": 0.18243243243243246,
+        "probability": 0.169
+      },
+      {
+        "id": "5160992-ast-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Alex Sarr",
+        "market": "ast",
+        "line": 3,
+        "result": "lost",
+        "price": 7.5,
+        "bookie": "TABtouch",
+        "fairPrice": 6.21,
+        "edgeVsFair": 0.20772946859903385,
+        "probability": 0.161
+      },
+      {
+        "id": "5160992-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "Alex Sarr",
+        "market": "3pm",
+        "line": 1,
+        "result": "won",
+        "price": 2.48,
+        "bookie": "TABtouch",
+        "fairPrice": 1.6,
+        "edgeVsFair": 0.5499999999999998,
+        "probability": 0.624
+      },
+      {
+        "id": "4277905-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Trae Young",
+        "market": "reb",
+        "line": 3,
+        "result": "lost",
+        "price": 4,
+        "bookie": "TABtouch",
+        "fairPrice": 3.05,
+        "edgeVsFair": 0.3114754098360657,
+        "probability": 0.328
+      },
+      {
+        "id": "4277905-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "Trae Young",
+        "market": "3pm",
+        "line": 1,
+        "result": "won",
+        "price": 1.64,
+        "bookie": "TABtouch",
+        "fairPrice": 1.32,
+        "edgeVsFair": 0.2424242424242422,
+        "probability": 0.758
+      },
+      {
+        "id": "4277905-3pm-2",
+        "slateDate": "2026-11-25",
+        "playerName": "Trae Young",
+        "market": "3pm",
+        "line": 2,
+        "result": "lost",
+        "price": 2.85,
+        "bookie": "TABtouch",
+        "fairPrice": 1.97,
+        "edgeVsFair": 0.4467005076142132,
+        "probability": 0.507
+      },
+      {
+        "id": "4277905-3pm-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Trae Young",
+        "market": "3pm",
+        "line": 3,
+        "result": "lost",
+        "price": 5.3,
+        "bookie": "TABtouch",
+        "fairPrice": 3.34,
+        "edgeVsFair": 0.5868263473053892,
+        "probability": 0.3
+      },
+      {
+        "id": "5104155-3pm-2",
+        "slateDate": "2026-11-25",
+        "playerName": "Bilal Coulibaly",
+        "market": "3pm",
+        "line": 2,
+        "result": "won",
+        "price": 9,
+        "bookie": "TABtouch",
+        "fairPrice": 6.09,
+        "edgeVsFair": 0.4778325123152709,
+        "probability": 0.164
+      },
+      {
+        "id": "6583-reb-7",
+        "slateDate": "2026-11-25",
+        "playerName": "Anthony Davis",
+        "market": "reb",
+        "line": 7,
+        "result": "won",
+        "price": 1.36,
+        "bookie": "TABtouch",
+        "fairPrice": 1.24,
+        "edgeVsFair": 0.09677419354838723,
+        "probability": 0.805
+      },
+      {
+        "id": "6583-reb-10",
+        "slateDate": "2026-11-25",
+        "playerName": "Anthony Davis",
+        "market": "reb",
+        "line": 10,
+        "result": "won",
+        "price": 2.38,
+        "bookie": "TABtouch",
+        "fairPrice": 2.02,
+        "edgeVsFair": 0.17821782178217815,
+        "probability": 0.496
+      },
+      {
+        "id": "6583-3pm-2",
+        "slateDate": "2026-11-25",
+        "playerName": "Anthony Davis",
+        "market": "3pm",
+        "line": 2,
+        "result": "lost",
+        "price": 8.5,
+        "bookie": "TAB",
+        "fairPrice": 6.53,
+        "edgeVsFair": 0.30168453292496156,
+        "probability": 0.153
+      },
+      {
+        "id": "5174563-pts-25",
+        "slateDate": "2026-11-25",
+        "playerName": "Kyshawn George",
+        "market": "pts",
+        "line": 25,
+        "result": "lost",
+        "price": 12.5,
+        "bookie": "Neds",
+        "fairPrice": 8.4,
+        "edgeVsFair": 0.48809523809523814,
+        "probability": 0.119
+      },
+      {
+        "id": "5174563-ast-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Kyshawn George",
+        "market": "ast",
+        "line": 3,
+        "result": "won",
+        "price": 1.7,
+        "bookie": "Neds",
+        "fairPrice": 1.42,
+        "edgeVsFair": 0.19718309859154926,
+        "probability": 0.704
+      },
+      {
+        "id": "5174563-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "Kyshawn George",
+        "market": "3pm",
+        "line": 1,
+        "result": "won",
+        "price": 1.47,
+        "bookie": "TABtouch",
+        "fairPrice": 1.2,
+        "edgeVsFair": 0.2250000000000001,
+        "probability": 0.835
+      },
+      {
+        "id": "5142718-reb-10",
+        "slateDate": "2026-11-25",
+        "playerName": "AJ Dybantsa",
+        "market": "reb",
+        "line": 10,
+        "result": "won",
+        "price": 6.5,
+        "bookie": "TABtouch",
+        "fairPrice": 4.89,
+        "edgeVsFair": 0.3292433537832311,
+        "probability": 0.204
+      },
+      {
+        "id": "5175647-pts-5",
+        "slateDate": "2026-11-25",
+        "playerName": "Hugo Gonzalez",
+        "market": "pts",
+        "line": 5,
+        "result": "lost",
+        "price": 1.96,
+        "bookie": "TABtouch",
+        "fairPrice": 1.62,
+        "edgeVsFair": 0.20987654320987637,
+        "probability": 0.619
+      },
+      {
+        "id": "5175647-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "Hugo Gonzalez",
+        "market": "3pm",
+        "line": 1,
+        "result": "lost",
+        "price": 3.85,
+        "bookie": "TABtouch",
+        "fairPrice": 2.29,
+        "edgeVsFair": 0.6812227074235808,
+        "probability": 0.436
+      },
+      {
+        "id": "3078576-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Derrick White",
+        "market": "reb",
+        "line": 3,
+        "result": "won",
+        "price": 2.18,
+        "bookie": "TABtouch",
+        "fairPrice": 2,
+        "edgeVsFair": 0.09000000000000008,
+        "probability": 0.499
+      },
+      {
+        "id": "3078576-reb-5",
+        "slateDate": "2026-11-25",
+        "playerName": "Derrick White",
+        "market": "reb",
+        "line": 5,
+        "result": "won",
+        "price": 5.5,
+        "bookie": "TAB",
+        "fairPrice": 5.48,
+        "edgeVsFair": 0.0036496350364962904,
+        "probability": 0.183
+      },
+      {
+        "id": "3078576-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "Derrick White",
+        "market": "3pm",
+        "line": 1,
+        "result": "won",
+        "price": 1.6,
+        "bookie": "Neds",
+        "fairPrice": 1.35,
+        "edgeVsFair": 0.18518518518518512,
+        "probability": 0.74
+      },
+      {
+        "id": "3078576-3pm-2",
+        "slateDate": "2026-11-25",
+        "playerName": "Derrick White",
+        "market": "3pm",
+        "line": 2,
+        "result": "won",
+        "price": 2.65,
+        "bookie": "Neds",
+        "fairPrice": 2.1,
+        "edgeVsFair": 0.26190476190476186,
+        "probability": 0.477
+      },
+      {
+        "id": "3078576-3pm-4",
+        "slateDate": "2026-11-25",
+        "playerName": "Derrick White",
+        "market": "3pm",
+        "line": 4,
+        "result": "lost",
+        "price": 11,
+        "bookie": "Neds",
+        "fairPrice": 7.75,
+        "edgeVsFair": 0.4193548387096775,
+        "probability": 0.129
+      },
+      {
+        "id": "4251-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Paul George",
+        "market": "reb",
+        "line": 3,
+        "result": "won",
+        "price": 1.28,
+        "bookie": "TAB",
+        "fairPrice": 1.17,
+        "edgeVsFair": 0.09401709401709413,
+        "probability": 0.851
+      },
+      {
+        "id": "4251-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "Paul George",
+        "market": "3pm",
+        "line": 1,
+        "result": "won",
+        "price": 1.26,
+        "bookie": "TABtouch",
+        "fairPrice": 1.13,
+        "edgeVsFair": 0.1150442477876108,
+        "probability": 0.885
+      },
+      {
+        "id": "4251-3pm-2",
+        "slateDate": "2026-11-25",
+        "playerName": "Paul George",
+        "market": "3pm",
+        "line": 2,
+        "result": "won",
+        "price": 1.76,
+        "bookie": "TABtouch",
+        "fairPrice": 1.41,
+        "edgeVsFair": 0.24822695035460995,
+        "probability": 0.711
+      },
+      {
+        "id": "4397424-ast-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Neemias Queta",
+        "market": "ast",
+        "line": 3,
+        "result": "lost",
+        "price": 5.5,
+        "bookie": "TABtouch",
+        "fairPrice": 2.63,
+        "edgeVsFair": 1.091254752851711,
+        "probability": 0.381
+      },
+      {
+        "id": "4065648-reb-5",
+        "slateDate": "2026-11-25",
+        "playerName": "Jayson Tatum",
+        "market": "reb",
+        "line": 5,
+        "result": "won",
+        "price": 1.29,
+        "bookie": "TABtouch",
+        "fairPrice": 1.2,
+        "edgeVsFair": 0.07500000000000018,
+        "probability": 0.83
+      },
+      {
+        "id": "4065648-ast-5",
+        "slateDate": "2026-11-25",
+        "playerName": "Jayson Tatum",
+        "market": "ast",
+        "line": 5,
+        "result": "won",
+        "price": 1.53,
+        "bookie": "TABtouch",
+        "fairPrice": 1.41,
+        "edgeVsFair": 0.08510638297872353,
+        "probability": 0.71
+      },
+      {
+        "id": "4065648-ast-10",
+        "slateDate": "2026-11-25",
+        "playerName": "Jayson Tatum",
+        "market": "ast",
+        "line": 10,
+        "result": "lost",
+        "price": 8.5,
+        "bookie": "TABtouch",
+        "fairPrice": 7.66,
+        "edgeVsFair": 0.10966057441253252,
+        "probability": 0.131
+      },
+      {
+        "id": "4431767-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Christian Braun",
+        "market": "reb",
+        "line": 3,
+        "result": "lost",
+        "price": 1.48,
+        "bookie": "TAB",
+        "fairPrice": 1.28,
+        "edgeVsFair": 0.15625,
+        "probability": 0.779
+      },
+      {
+        "id": "3064290-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Aaron Gordon",
+        "market": "reb",
+        "line": 3,
+        "result": "won",
+        "price": 1.3,
+        "bookie": "TAB",
+        "fairPrice": 1.24,
+        "edgeVsFair": 0.048387096774193505,
+        "probability": 0.804
+      },
+      {
+        "id": "3064290-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "Aaron Gordon",
+        "market": "3pm",
+        "line": 1,
+        "result": "lost",
+        "price": 2.3,
+        "bookie": "TABtouch",
+        "fairPrice": 2.01,
+        "edgeVsFair": 0.14427860696517425,
+        "probability": 0.498
+      },
+      {
+        "id": "3138196-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Cameron Johnson",
+        "market": "reb",
+        "line": 3,
+        "result": "won",
+        "price": 1.85,
+        "bookie": "TABtouch",
+        "fairPrice": 1.82,
+        "edgeVsFair": 0.016483516483516425,
+        "probability": 0.551
+      },
+      {
+        "id": "3138196-ast-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Cameron Johnson",
+        "market": "ast",
+        "line": 3,
+        "result": "won",
+        "price": 4.3,
+        "bookie": "TABtouch",
+        "fairPrice": 2.8,
+        "edgeVsFair": 0.5357142857142858,
+        "probability": 0.357
+      },
+      {
+        "id": "3138196-ast-5",
+        "slateDate": "2026-11-25",
+        "playerName": "Cameron Johnson",
+        "market": "ast",
+        "line": 5,
+        "result": "lost",
+        "price": 11.5,
+        "bookie": "Ladbrokes",
+        "fairPrice": 9.19,
+        "edgeVsFair": 0.25136017410228506,
+        "probability": 0.109
+      },
+      {
+        "id": "3138196-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "Cameron Johnson",
+        "market": "3pm",
+        "line": 1,
+        "result": "won",
+        "price": 1.57,
+        "bookie": "Ladbrokes",
+        "fairPrice": 1.36,
+        "edgeVsFair": 0.15441176470588225,
+        "probability": 0.737
+      },
+      {
+        "id": "4592427-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Spencer Jones",
+        "market": "reb",
+        "line": 3,
+        "result": "won",
+        "price": 3.3,
+        "bookie": "TAB",
+        "fairPrice": 2.68,
+        "edgeVsFair": 0.23134328358208944,
+        "probability": 0.373
+      },
+      {
+        "id": "4592427-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "Spencer Jones",
+        "market": "3pm",
+        "line": 1,
+        "result": "won",
+        "price": 4.25,
+        "bookie": "TAB",
+        "fairPrice": 2.73,
+        "edgeVsFair": 0.5567765567765568,
+        "probability": 0.367
+      },
+      {
+        "id": "3978-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "DeMar DeRozan",
+        "market": "reb",
+        "line": 3,
+        "result": "won",
+        "price": 5.75,
+        "bookie": "TABtouch",
+        "fairPrice": 4.67,
+        "edgeVsFair": 0.2312633832976445,
+        "probability": 0.214
+      },
+      {
+        "id": "3978-ast-3",
+        "slateDate": "2026-11-25",
+        "playerName": "DeMar DeRozan",
+        "market": "ast",
+        "line": 3,
+        "result": "lost",
+        "price": 4,
+        "bookie": "TABtouch",
+        "fairPrice": 3.05,
+        "edgeVsFair": 0.3114754098360657,
+        "probability": 0.327
+      },
+      {
+        "id": "3112335-reb-10",
+        "slateDate": "2026-11-25",
+        "playerName": "Nikola Jokic",
+        "market": "reb",
+        "line": 10,
+        "result": "won",
+        "price": 1.47,
+        "bookie": "TABtouch",
+        "fairPrice": 1.45,
+        "edgeVsFair": 0.01379310344827589,
+        "probability": 0.69
+      },
+      {
+        "id": "3112335-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "Nikola Jokic",
+        "market": "3pm",
+        "line": 1,
+        "result": "won",
+        "price": 2.33,
+        "bookie": "TABtouch",
+        "fairPrice": 1.63,
+        "edgeVsFair": 0.4294478527607364,
+        "probability": 0.612
+      },
+      {
+        "id": "3936299-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Jamal Murray",
+        "market": "reb",
+        "line": 3,
+        "result": "lost",
+        "price": 1.52,
+        "bookie": "TAB",
+        "fairPrice": 1.31,
+        "edgeVsFair": 0.16030534351145032,
+        "probability": 0.765
+      },
+      {
+        "id": "3936299-ast-5",
+        "slateDate": "2026-11-25",
+        "playerName": "Jamal Murray",
+        "market": "ast",
+        "line": 5,
+        "result": "lost",
+        "price": 1.54,
+        "bookie": "TABtouch",
+        "fairPrice": 1.46,
+        "edgeVsFair": 0.0547945205479452,
+        "probability": 0.685
+      },
+      {
+        "id": "3936299-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "Jamal Murray",
+        "market": "3pm",
+        "line": 1,
+        "result": "won",
+        "price": 1.33,
+        "bookie": "Ladbrokes",
+        "fairPrice": 1.19,
+        "edgeVsFair": 0.11764705882352944,
+        "probability": 0.843
+      },
+      {
+        "id": "3936299-3pm-2",
+        "slateDate": "2026-11-25",
+        "playerName": "Jamal Murray",
+        "market": "3pm",
+        "line": 2,
+        "result": "won",
+        "price": 1.98,
+        "bookie": "Ladbrokes",
+        "fairPrice": 1.6,
+        "edgeVsFair": 0.23749999999999982,
+        "probability": 0.625
+      },
+      {
+        "id": "4278594-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Naji Marshall",
+        "market": "reb",
+        "line": 3,
+        "result": "lost",
+        "price": 2.35,
+        "bookie": "Ladbrokes",
+        "fairPrice": 2.15,
+        "edgeVsFair": 0.09302325581395365,
+        "probability": 0.465
+      },
+      {
+        "id": "4278594-ast-7",
+        "slateDate": "2026-11-25",
+        "playerName": "Naji Marshall",
+        "market": "ast",
+        "line": 7,
+        "result": "lost",
+        "price": 23,
+        "bookie": "Ladbrokes",
+        "fairPrice": 13.34,
+        "edgeVsFair": 0.7241379310344829,
+        "probability": 0.075
+      },
+      {
+        "id": "4278594-3pm-2",
+        "slateDate": "2026-11-25",
+        "playerName": "Naji Marshall",
+        "market": "3pm",
+        "line": 2,
+        "result": "lost",
+        "price": 9.5,
+        "bookie": "TABtouch",
+        "fairPrice": 4.41,
+        "edgeVsFair": 1.1541950113378685,
+        "probability": 0.227
+      },
+      {
+        "id": "3138160-ast-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Caleb Martin",
+        "market": "ast",
+        "line": 3,
+        "result": "won",
+        "price": 3.4,
+        "bookie": "TABtouch",
+        "fairPrice": 1.9,
+        "edgeVsFair": 0.7894736842105263,
+        "probability": 0.526
+      },
+      {
+        "id": "3138160-ast-5",
+        "slateDate": "2026-11-25",
+        "playerName": "Caleb Martin",
+        "market": "ast",
+        "line": 5,
+        "result": "lost",
+        "price": 10,
+        "bookie": "Ladbrokes",
+        "fairPrice": 4.44,
+        "edgeVsFair": 1.252252252252252,
+        "probability": 0.225
+      },
+      {
+        "id": "3138160-3pm-2",
+        "slateDate": "2026-11-25",
+        "playerName": "Caleb Martin",
+        "market": "3pm",
+        "line": 2,
+        "result": "won",
+        "price": 9,
+        "bookie": "TABtouch",
+        "fairPrice": 3.42,
+        "edgeVsFair": 1.6315789473684212,
+        "probability": 0.292
+      },
+      {
+        "id": "5211175-pts-15",
+        "slateDate": "2026-11-25",
+        "playerName": "Zaccharie Risacher",
+        "market": "pts",
+        "line": 15,
+        "result": "lost",
+        "price": 12.5,
+        "bookie": "Ladbrokes",
+        "fairPrice": 9.3,
+        "edgeVsFair": 0.34408602150537626,
+        "probability": 0.107
+      },
+      {
+        "id": "5211175-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Zaccharie Risacher",
+        "market": "reb",
+        "line": 3,
+        "result": "won",
+        "price": 1.85,
+        "bookie": "Ladbrokes",
+        "fairPrice": 1.35,
+        "edgeVsFair": 0.37037037037037024,
+        "probability": 0.743
+      },
+      {
+        "id": "5211175-3pm-2",
+        "slateDate": "2026-11-25",
+        "playerName": "Zaccharie Risacher",
+        "market": "3pm",
+        "line": 2,
+        "result": "lost",
+        "price": 8.5,
+        "bookie": "Ladbrokes",
+        "fairPrice": 4.86,
+        "edgeVsFair": 0.7489711934156378,
+        "probability": 0.206
+      },
+      {
+        "id": "5041939-ast-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Cooper Flagg",
+        "market": "ast",
+        "line": 3,
+        "result": "won",
+        "price": 1.1,
+        "bookie": "TABtouch",
+        "fairPrice": 1.08,
+        "edgeVsFair": 0.0185185185185186,
+        "probability": 0.926
+      },
+      {
+        "id": "5041939-ast-5",
+        "slateDate": "2026-11-25",
+        "playerName": "Cooper Flagg",
+        "market": "ast",
+        "line": 5,
+        "result": "won",
+        "price": 1.53,
+        "bookie": "Ladbrokes",
+        "fairPrice": 1.42,
+        "edgeVsFair": 0.07746478873239449,
+        "probability": 0.702
+      },
+      {
+        "id": "5041939-ast-10",
+        "slateDate": "2026-11-25",
+        "playerName": "Cooper Flagg",
+        "market": "ast",
+        "line": 10,
+        "result": "won",
+        "price": 8,
+        "bookie": "TABtouch",
+        "fairPrice": 7.81,
+        "edgeVsFair": 0.02432778489116516,
+        "probability": 0.128
+      },
+      {
+        "id": "5041939-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "Cooper Flagg",
+        "market": "3pm",
+        "line": 1,
+        "result": "won",
+        "price": 1.78,
+        "bookie": "TABtouch",
+        "fairPrice": 1.4,
+        "edgeVsFair": 0.2714285714285716,
+        "probability": 0.714
+      },
+      {
+        "id": "5041939-3pm-2",
+        "slateDate": "2026-11-25",
+        "playerName": "Cooper Flagg",
+        "market": "3pm",
+        "line": 2,
+        "result": "lost",
+        "price": 3.2,
+        "bookie": "Betr",
+        "fairPrice": 2.22,
+        "edgeVsFair": 0.4414414414414414,
+        "probability": 0.45
+      },
+      {
+        "id": "4873153-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Morez Johnson Jr.",
+        "market": "reb",
+        "line": 3,
+        "result": "won",
+        "price": 1.4,
+        "bookie": "TAB",
+        "fairPrice": 1.24,
+        "edgeVsFair": 0.12903225806451601,
+        "probability": 0.81
+      },
+      {
+        "id": "4873153-reb-5",
+        "slateDate": "2026-11-25",
+        "playerName": "Morez Johnson Jr.",
+        "market": "reb",
+        "line": 5,
+        "result": "won",
+        "price": 2.25,
+        "bookie": "TAB",
+        "fairPrice": 1.88,
+        "edgeVsFair": 0.19680851063829796,
+        "probability": 0.533
+      },
+      {
+        "id": "4873153-reb-7",
+        "slateDate": "2026-11-25",
+        "playerName": "Morez Johnson Jr.",
+        "market": "reb",
+        "line": 7,
+        "result": "won",
+        "price": 4,
+        "bookie": "TAB",
+        "fairPrice": 3.59,
+        "edgeVsFair": 0.11420612813370479,
+        "probability": 0.279
+      },
+      {
+        "id": "4278078-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "P.J. Washington",
+        "market": "reb",
+        "line": 3,
+        "result": "won",
+        "price": 1.27,
+        "bookie": "TABtouch",
+        "fairPrice": 1.2,
+        "edgeVsFair": 0.05833333333333335,
+        "probability": 0.831
+      },
+      {
+        "id": "4278078-reb-5",
+        "slateDate": "2026-11-25",
+        "playerName": "P.J. Washington",
+        "market": "reb",
+        "line": 5,
+        "result": "won",
+        "price": 2.1,
+        "bookie": "Ladbrokes",
+        "fairPrice": 1.88,
+        "edgeVsFair": 0.1170212765957448,
+        "probability": 0.531
+      },
+      {
+        "id": "4278078-ast-3",
+        "slateDate": "2026-11-25",
+        "playerName": "P.J. Washington",
+        "market": "ast",
+        "line": 3,
+        "result": "lost",
+        "price": 7.75,
+        "bookie": "Ladbrokes",
+        "fairPrice": 6.39,
+        "edgeVsFair": 0.21283255086071984,
+        "probability": 0.157
+      },
+      {
+        "id": "4278078-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "P.J. Washington",
+        "market": "3pm",
+        "line": 1,
+        "result": "won",
+        "price": 1.65,
+        "bookie": "Ladbrokes",
+        "fairPrice": 1.31,
+        "edgeVsFair": 0.2595419847328244,
+        "probability": 0.762
+      },
+      {
+        "id": "6442-pts-15",
+        "slateDate": "2026-11-25",
+        "playerName": "Kyrie Irving",
+        "market": "pts",
+        "line": 15,
+        "result": "lost",
+        "price": 1.18,
+        "bookie": "TABtouch",
+        "fairPrice": 1.15,
+        "edgeVsFair": 0.026086956521739202,
+        "probability": 0.87
+      },
+      {
+        "id": "6442-reb-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Kyrie Irving",
+        "market": "reb",
+        "line": 3,
+        "result": "won",
+        "price": 1.85,
+        "bookie": "TAB",
+        "fairPrice": 1.59,
+        "edgeVsFair": 0.16352201257861632,
+        "probability": 0.628
+      },
+      {
+        "id": "6442-ast-3",
+        "slateDate": "2026-11-25",
+        "playerName": "Kyrie Irving",
+        "market": "ast",
+        "line": 3,
+        "result": "won",
+        "price": 1.33,
+        "bookie": "TAB",
+        "fairPrice": 1.28,
+        "edgeVsFair": 0.0390625,
+        "probability": 0.778
+      },
+      {
+        "id": "6442-3pm-1",
+        "slateDate": "2026-11-25",
+        "playerName": "Kyrie Irving",
+        "market": "3pm",
+        "line": 1,
+        "result": "won",
+        "price": 1.15,
+        "bookie": "TABtouch",
+        "fairPrice": 1.09,
+        "edgeVsFair": 0.05504587155963292,
+        "probability": 0.915
+      }
+    ]
+  },
+  "model": {
+    "calibration": [
+      {
+        "range": "50-60%",
+        "expected": 0.55,
+        "actual": 0.5925925925925926,
+        "count": 27
+      },
+      {
+        "range": "60-70%",
+        "expected": 0.6499999999999999,
+        "actual": 0.7368421052631579,
+        "count": 19
+      },
+      {
+        "range": "70-80%",
+        "expected": 0.75,
+        "actual": 0.7714285714285715,
+        "count": 35
+      },
+      {
+        "range": "80-90%",
+        "expected": 0.8500000000000001,
+        "actual": 0.8235294117647058,
+        "count": 17
+      }
+    ],
+    "brierLive": 0.2056258513513513,
+    "brierShadow": null,
+    "tagHitRates": {
+      "Check news": {
+        "hits": 29,
+        "total": 42
+      },
+      "Value": {
+        "hits": 84,
+        "total": 180
+      },
+      "boards shared": {
+        "hits": 35,
+        "total": 75
+      },
+      "Check prices": {
+        "hits": 21,
+        "total": 55
+      },
+      "High probability": {
+        "hits": 44,
+        "total": 54
+      }
+    }
+  },
+  "gradedLegs": [
+    {
+      "id": "5160992-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "5160992",
+      "playerName": "Alex Sarr",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 10,
+      "result": "lost",
+      "actualValue": 7,
+      "probability": 0.653,
+      "fairPrice": 1.53,
+      "bestPrice": 2.2,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "5160992-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "5160992",
+      "playerName": "Alex Sarr",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 15,
+      "result": "lost",
+      "actualValue": 7,
+      "probability": 0.207,
+      "fairPrice": 4.84,
+      "bestPrice": 5.8,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5160992-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "5160992",
+      "playerName": "Alex Sarr",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.704,
+      "fairPrice": 1.42,
+      "bestPrice": 1.74,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5160992-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "5160992",
+      "playerName": "Alex Sarr",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.448,
+      "fairPrice": 2.23,
+      "bestPrice": 3.03,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5160992-reb-10",
+      "slateDate": "2026-11-25",
+      "playerId": "5160992",
+      "playerName": "Alex Sarr",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 10,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.169,
+      "fairPrice": 5.92,
+      "bestPrice": 7,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5160992-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5160992",
+      "playerName": "Alex Sarr",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 0,
+      "probability": 0.161,
+      "fairPrice": 6.21,
+      "bestPrice": 7.5,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5160992-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "5160992",
+      "playerName": "Alex Sarr",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 1,
+      "probability": 0.624,
+      "fairPrice": 1.6,
+      "bestPrice": 2.48,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "5160992-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "5160992",
+      "playerName": "Alex Sarr",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 2,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.352,
+      "fairPrice": 2.84,
+      "bestPrice": 5.9,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "5160992-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5160992",
+      "playerName": "Alex Sarr",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.175,
+      "fairPrice": 5.73,
+      "bestPrice": 15,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4277905-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 10,
+      "result": "won",
+      "actualValue": 17,
+      "probability": 0.838,
+      "fairPrice": 1.19,
+      "bestPrice": 1.31,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "4277905-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 15,
+      "result": "won",
+      "actualValue": 17,
+      "probability": 0.455,
+      "fairPrice": 2.2,
+      "bestPrice": 2.25,
+      "bestBookie": "PointsBet (AU)",
+      "tags": []
+    },
+    {
+      "id": "4277905-pts-20",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 20,
+      "result": "lost",
+      "actualValue": 17,
+      "probability": 0.125,
+      "fairPrice": 7.99,
+      "bestPrice": 5.2,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "4277905-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 0,
+      "probability": 0.328,
+      "fairPrice": 3.05,
+      "bestPrice": 4,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4277905-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 0,
+      "probability": 0.099,
+      "fairPrice": 10.14,
+      "bestPrice": 10,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "4277905-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 5,
+      "result": "won",
+      "actualValue": 12,
+      "probability": 0.855,
+      "fairPrice": 1.17,
+      "bestPrice": 1.25,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "4277905-ast-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 7,
+      "result": "won",
+      "actualValue": 12,
+      "probability": 0.618,
+      "fairPrice": 1.62,
+      "bestPrice": 1.96,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4277905-ast-10",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 10,
+      "result": "won",
+      "actualValue": 12,
+      "probability": 0.272,
+      "fairPrice": 3.68,
+      "bestPrice": 5,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4277905-ast-13",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 13,
+      "result": "lost",
+      "actualValue": 12,
+      "probability": 0.087,
+      "fairPrice": 11.51,
+      "bestPrice": 13,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4277905-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 1,
+      "probability": 0.758,
+      "fairPrice": 1.32,
+      "bestPrice": 1.64,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "4277905-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 2,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.507,
+      "fairPrice": 1.97,
+      "bestPrice": 2.85,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "4277905-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.3,
+      "fairPrice": 3.34,
+      "bestPrice": 5.3,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4277905-3pm-4",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 4,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.155,
+      "fairPrice": 6.47,
+      "bestPrice": 12,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4277905-3pm-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4277905",
+      "playerName": "Trae Young",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.075,
+      "fairPrice": 13.36,
+      "bestPrice": 26,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "5104155-pts-5",
+      "slateDate": "2026-11-25",
+      "playerId": "5104155",
+      "playerName": "Bilal Coulibaly",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 5,
+      "result": "won",
+      "actualValue": 10,
+      "probability": 0.772,
+      "fairPrice": 1.3,
+      "bestPrice": 1.67,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Check news"
+      ]
+    },
+    {
+      "id": "5104155-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "5104155",
+      "playerName": "Bilal Coulibaly",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 10,
+      "result": "won",
+      "actualValue": 10,
+      "probability": 0.116,
+      "fairPrice": 8.65,
+      "bestPrice": 5,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "5104155-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5104155",
+      "playerName": "Bilal Coulibaly",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.692,
+      "fairPrice": 1.45,
+      "bestPrice": 2,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "boards shared",
+        "Check news"
+      ]
+    },
+    {
+      "id": "5104155-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "5104155",
+      "playerName": "Bilal Coulibaly",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 3,
+      "probability": 0.375,
+      "fairPrice": 2.67,
+      "bestPrice": 5.2,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "5104155-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "5104155",
+      "playerName": "Bilal Coulibaly",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 3,
+      "probability": 0.164,
+      "fairPrice": 6.09,
+      "bestPrice": 12,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "5104155-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5104155",
+      "playerName": "Bilal Coulibaly",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.081,
+      "fairPrice": 12.36,
+      "bestPrice": 8.5,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "5104155-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "5104155",
+      "playerName": "Bilal Coulibaly",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 2,
+      "probability": 0.399,
+      "fairPrice": 2.51,
+      "bestPrice": 4.2,
+      "bestBookie": "Picklebet (AU)",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "5104155-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "5104155",
+      "playerName": "Bilal Coulibaly",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 2,
+      "result": "won",
+      "actualValue": 2,
+      "probability": 0.164,
+      "fairPrice": 6.09,
+      "bestPrice": 9,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "6583-pts-20",
+      "slateDate": "2026-11-25",
+      "playerId": "6583",
+      "playerName": "Anthony Davis",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 20,
+      "result": "won",
+      "actualValue": 33,
+      "probability": 0.724,
+      "fairPrice": 1.38,
+      "bestPrice": 1.83,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "High probability",
+        "Check news"
+      ]
+    },
+    {
+      "id": "6583-pts-25",
+      "slateDate": "2026-11-25",
+      "playerId": "6583",
+      "playerName": "Anthony Davis",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 25,
+      "result": "won",
+      "actualValue": 33,
+      "probability": 0.498,
+      "fairPrice": 2.01,
+      "bestPrice": 3.2,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "6583-pts-30",
+      "slateDate": "2026-11-25",
+      "playerId": "6583",
+      "playerName": "Anthony Davis",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 30,
+      "result": "won",
+      "actualValue": 33,
+      "probability": 0.268,
+      "fairPrice": 3.74,
+      "bestPrice": 7,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "6583-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "6583",
+      "playerName": "Anthony Davis",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 7,
+      "result": "won",
+      "actualValue": 13,
+      "probability": 0.805,
+      "fairPrice": 1.24,
+      "bestPrice": 1.36,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "High probability",
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "6583-reb-10",
+      "slateDate": "2026-11-25",
+      "playerId": "6583",
+      "playerName": "Anthony Davis",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 10,
+      "result": "won",
+      "actualValue": 13,
+      "probability": 0.496,
+      "fairPrice": 2.02,
+      "bestPrice": 2.38,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "6583-reb-13",
+      "slateDate": "2026-11-25",
+      "playerId": "6583",
+      "playerName": "Anthony Davis",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 13,
+      "result": "won",
+      "actualValue": 13,
+      "probability": 0.219,
+      "fairPrice": 4.57,
+      "bestPrice": 5.5,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "6583-reb-15",
+      "slateDate": "2026-11-25",
+      "playerId": "6583",
+      "playerName": "Anthony Davis",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 15,
+      "result": "lost",
+      "actualValue": 13,
+      "probability": 0.108,
+      "fairPrice": 9.28,
+      "bestPrice": 10.5,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "6583-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "6583",
+      "playerName": "Anthony Davis",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.279,
+      "fairPrice": 3.58,
+      "bestPrice": 5.2,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "6583-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "6583",
+      "playerName": "Anthony Davis",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.068,
+      "fairPrice": 14.61,
+      "bestPrice": 17,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "6583-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "6583",
+      "playerName": "Anthony Davis",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 1,
+      "probability": 0.361,
+      "fairPrice": 2.77,
+      "bestPrice": 5.2,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "6583-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "6583",
+      "playerName": "Anthony Davis",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 2,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.153,
+      "fairPrice": 6.53,
+      "bestPrice": 8.5,
+      "bestBookie": "TAB",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5174563-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 15,
+      "result": "won",
+      "actualValue": 24,
+      "probability": 0.678,
+      "fairPrice": 1.48,
+      "bestPrice": 2.1,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "5174563-pts-20",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 20,
+      "result": "won",
+      "actualValue": 24,
+      "probability": 0.366,
+      "fairPrice": 2.73,
+      "bestPrice": 4.6,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "5174563-pts-25",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 25,
+      "result": "lost",
+      "actualValue": 24,
+      "probability": 0.119,
+      "fairPrice": 8.4,
+      "bestPrice": 12.5,
+      "bestBookie": "Neds",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5174563-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 9,
+      "probability": 0.715,
+      "fairPrice": 1.4,
+      "bestPrice": 1.63,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5174563-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 5,
+      "result": "won",
+      "actualValue": 9,
+      "probability": 0.376,
+      "fairPrice": 2.66,
+      "bestPrice": 3.6,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5174563-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 7,
+      "result": "won",
+      "actualValue": 9,
+      "probability": 0.151,
+      "fairPrice": 6.62,
+      "bestPrice": 9,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5174563-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 3,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.704,
+      "fairPrice": 1.42,
+      "bestPrice": 1.7,
+      "bestBookie": "Neds",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5174563-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 3,
+      "probability": 0.36,
+      "fairPrice": 2.78,
+      "bestPrice": 4,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5174563-ast-7",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 3,
+      "probability": 0.14,
+      "fairPrice": 7.12,
+      "bestPrice": 10,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5174563-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.835,
+      "fairPrice": 1.2,
+      "bestPrice": 1.47,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "High probability",
+        "Check news"
+      ]
+    },
+    {
+      "id": "5174563-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 2,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.647,
+      "fairPrice": 1.55,
+      "bestPrice": 2.3,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "5174563-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 3,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.445,
+      "fairPrice": 2.25,
+      "bestPrice": 4.25,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "5174563-3pm-4",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 4,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.279,
+      "fairPrice": 3.58,
+      "bestPrice": 8.75,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "5174563-3pm-5",
+      "slateDate": "2026-11-25",
+      "playerId": "5174563",
+      "playerName": "Kyshawn George",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 4,
+      "probability": 0.162,
+      "fairPrice": 6.19,
+      "bestPrice": 19,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "5142718-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "5142718",
+      "playerName": "AJ Dybantsa",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 10,
+      "result": "won",
+      "actualValue": 20,
+      "probability": 0.903,
+      "fairPrice": 1.11,
+      "bestPrice": 1.19,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "5142718-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "5142718",
+      "playerName": "AJ Dybantsa",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 15,
+      "result": "won",
+      "actualValue": 20,
+      "probability": 0.623,
+      "fairPrice": 1.61,
+      "bestPrice": 1.89,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5142718-pts-20",
+      "slateDate": "2026-11-25",
+      "playerId": "5142718",
+      "playerName": "AJ Dybantsa",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 20,
+      "result": "won",
+      "actualValue": 20,
+      "probability": 0.264,
+      "fairPrice": 3.79,
+      "bestPrice": 3.8,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "5142718-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "5142718",
+      "playerName": "AJ Dybantsa",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 5,
+      "result": "won",
+      "actualValue": 11,
+      "probability": 0.758,
+      "fairPrice": 1.32,
+      "bestPrice": 1.56,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "High probability",
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5142718-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "5142718",
+      "playerName": "AJ Dybantsa",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 7,
+      "result": "won",
+      "actualValue": 11,
+      "probability": 0.498,
+      "fairPrice": 2.01,
+      "bestPrice": 2.84,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5142718-reb-10",
+      "slateDate": "2026-11-25",
+      "playerId": "5142718",
+      "playerName": "AJ Dybantsa",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 10,
+      "result": "won",
+      "actualValue": 11,
+      "probability": 0.204,
+      "fairPrice": 4.89,
+      "bestPrice": 6.5,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5142718-reb-13",
+      "slateDate": "2026-11-25",
+      "playerId": "5142718",
+      "playerName": "AJ Dybantsa",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 13,
+      "result": "lost",
+      "actualValue": 11,
+      "probability": 0.05,
+      "fairPrice": 20,
+      "bestPrice": 34,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "5142718-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5142718",
+      "playerName": "AJ Dybantsa",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 3,
+      "result": "won",
+      "actualValue": 7,
+      "probability": 0.488,
+      "fairPrice": 2.05,
+      "bestPrice": 2.75,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5142718-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "5142718",
+      "playerName": "AJ Dybantsa",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 5,
+      "result": "won",
+      "actualValue": 7,
+      "probability": 0.173,
+      "fairPrice": 5.77,
+      "bestPrice": 8.5,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5142718-ast-7",
+      "slateDate": "2026-11-25",
+      "playerId": "5142718",
+      "playerName": "AJ Dybantsa",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 7,
+      "result": "won",
+      "actualValue": 7,
+      "probability": 0.052,
+      "fairPrice": 19.07,
+      "bestPrice": 19,
+      "bestBookie": "Neds",
+      "tags": []
+    },
+    {
+      "id": "5142718-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "5142718",
+      "playerName": "AJ Dybantsa",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 2,
+      "probability": 0.477,
+      "fairPrice": 2.09,
+      "bestPrice": 2.55,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5142718-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "5142718",
+      "playerName": "AJ Dybantsa",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 2,
+      "result": "won",
+      "actualValue": 2,
+      "probability": 0.199,
+      "fairPrice": 5.02,
+      "bestPrice": 6,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5142718-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5142718",
+      "playerName": "AJ Dybantsa",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.071,
+      "fairPrice": 14,
+      "bestPrice": 17,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "6609-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "6609",
+      "playerName": "Khris Middleton",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 1,
+      "result": "lost",
+      "actualValue": 0,
+      "probability": 0.542,
+      "fairPrice": 1.84,
+      "bestPrice": 3.75,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "4066354-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "4066354",
+      "playerName": "Payton Pritchard",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 10,
+      "result": "won",
+      "actualValue": 14,
+      "probability": 0.776,
+      "fairPrice": 1.29,
+      "bestPrice": 1.44,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "4066354-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "4066354",
+      "playerName": "Payton Pritchard",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 15,
+      "result": "lost",
+      "actualValue": 14,
+      "probability": 0.333,
+      "fairPrice": 3.01,
+      "bestPrice": 2.75,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "4066354-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4066354",
+      "playerName": "Payton Pritchard",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.537,
+      "fairPrice": 1.86,
+      "bestPrice": 2.61,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Check news"
+      ]
+    },
+    {
+      "id": "4066354-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4066354",
+      "playerName": "Payton Pritchard",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 4,
+      "probability": 0.222,
+      "fairPrice": 4.5,
+      "bestPrice": 7,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4066354-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4066354",
+      "playerName": "Payton Pritchard",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 4,
+      "probability": 0.078,
+      "fairPrice": 12.8,
+      "bestPrice": 14,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4066354-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4066354",
+      "playerName": "Payton Pritchard",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.751,
+      "fairPrice": 1.33,
+      "bestPrice": 1.58,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "4066354-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4066354",
+      "playerName": "Payton Pritchard",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.424,
+      "fairPrice": 2.36,
+      "bestPrice": 3.32,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4066354-ast-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4066354",
+      "playerName": "Payton Pritchard",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.179,
+      "fairPrice": 5.6,
+      "bestPrice": 8.5,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4066354-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "4066354",
+      "playerName": "Payton Pritchard",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.773,
+      "fairPrice": 1.29,
+      "bestPrice": 1.57,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "4066354-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "4066354",
+      "playerName": "Payton Pritchard",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 2,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.53,
+      "fairPrice": 1.89,
+      "bestPrice": 2.6,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4066354-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4066354",
+      "playerName": "Payton Pritchard",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 3,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.31,
+      "fairPrice": 3.23,
+      "bestPrice": 5.25,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4066354-3pm-4",
+      "slateDate": "2026-11-25",
+      "playerId": "4066354",
+      "playerName": "Payton Pritchard",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 4,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.165,
+      "fairPrice": 6.07,
+      "bestPrice": 11,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4066354-3pm-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4066354",
+      "playerName": "Payton Pritchard",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 4,
+      "probability": 0.081,
+      "fairPrice": 12.29,
+      "bestPrice": 23,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4065804-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "4065804",
+      "playerName": "Sam Hauser",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 10,
+      "result": "lost",
+      "actualValue": 4,
+      "probability": 0.373,
+      "fairPrice": 2.68,
+      "bestPrice": 3.4,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4065804-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4065804",
+      "playerName": "Sam Hauser",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.502,
+      "fairPrice": 1.99,
+      "bestPrice": 2.31,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4065804-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4065804",
+      "playerName": "Sam Hauser",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 3,
+      "probability": 0.186,
+      "fairPrice": 5.38,
+      "bestPrice": 6,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4065804-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4065804",
+      "playerName": "Sam Hauser",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 3,
+      "probability": 0.061,
+      "fairPrice": 16.44,
+      "bestPrice": 13,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "4065804-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "4065804",
+      "playerName": "Sam Hauser",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 1,
+      "probability": 0.795,
+      "fairPrice": 1.26,
+      "bestPrice": 1.57,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Check news"
+      ]
+    },
+    {
+      "id": "4065804-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "4065804",
+      "playerName": "Sam Hauser",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 2,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.572,
+      "fairPrice": 1.75,
+      "bestPrice": 2.6,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "4065804-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4065804",
+      "playerName": "Sam Hauser",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.358,
+      "fairPrice": 2.79,
+      "bestPrice": 5.2,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "4065804-3pm-4",
+      "slateDate": "2026-11-25",
+      "playerId": "4065804",
+      "playerName": "Sam Hauser",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 4,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.208,
+      "fairPrice": 4.81,
+      "bestPrice": 10,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4065804-3pm-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4065804",
+      "playerName": "Sam Hauser",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.108,
+      "fairPrice": 9.26,
+      "bestPrice": 23,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "5175647-pts-5",
+      "slateDate": "2026-11-25",
+      "playerId": "5175647",
+      "playerName": "Hugo Gonzalez",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 0,
+      "probability": 0.619,
+      "fairPrice": 1.62,
+      "bestPrice": 1.96,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5175647-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5175647",
+      "playerName": "Hugo Gonzalez",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 5,
+      "probability": 0.579,
+      "fairPrice": 1.73,
+      "bestPrice": 1.87,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5175647-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "5175647",
+      "playerName": "Hugo Gonzalez",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 5,
+      "result": "won",
+      "actualValue": 5,
+      "probability": 0.235,
+      "fairPrice": 4.26,
+      "bestPrice": 4.65,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5175647-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "5175647",
+      "playerName": "Hugo Gonzalez",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 5,
+      "probability": 0.079,
+      "fairPrice": 12.74,
+      "bestPrice": 11,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "5175647-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "5175647",
+      "playerName": "Hugo Gonzalez",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 1,
+      "result": "lost",
+      "actualValue": 0,
+      "probability": 0.436,
+      "fairPrice": 2.29,
+      "bestPrice": 3.85,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "3078576-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "3078576",
+      "playerName": "Derrick White",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 10,
+      "result": "lost",
+      "actualValue": 6,
+      "probability": 0.813,
+      "fairPrice": 1.23,
+      "bestPrice": 1.42,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "3078576-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "3078576",
+      "playerName": "Derrick White",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 15,
+      "result": "lost",
+      "actualValue": 6,
+      "probability": 0.426,
+      "fairPrice": 2.35,
+      "bestPrice": 2.6,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3078576-pts-20",
+      "slateDate": "2026-11-25",
+      "playerId": "3078576",
+      "playerName": "Derrick White",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 20,
+      "result": "lost",
+      "actualValue": 6,
+      "probability": 0.115,
+      "fairPrice": 8.68,
+      "bestPrice": 5.75,
+      "bestBookie": "PointsBet (AU)",
+      "tags": []
+    },
+    {
+      "id": "3078576-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3078576",
+      "playerName": "Derrick White",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 7,
+      "probability": 0.499,
+      "fairPrice": 2,
+      "bestPrice": 2.18,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "3078576-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3078576",
+      "playerName": "Derrick White",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 5,
+      "result": "won",
+      "actualValue": 7,
+      "probability": 0.183,
+      "fairPrice": 5.48,
+      "bestPrice": 5.5,
+      "bestBookie": "TAB",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "3078576-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3078576",
+      "playerName": "Derrick White",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 3,
+      "result": "won",
+      "actualValue": 5,
+      "probability": 0.789,
+      "fairPrice": 1.27,
+      "bestPrice": 1.42,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "3078576-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3078576",
+      "playerName": "Derrick White",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 5,
+      "result": "won",
+      "actualValue": 5,
+      "probability": 0.466,
+      "fairPrice": 2.15,
+      "bestPrice": 2.75,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3078576-ast-7",
+      "slateDate": "2026-11-25",
+      "playerId": "3078576",
+      "playerName": "Derrick White",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 5,
+      "probability": 0.203,
+      "fairPrice": 4.93,
+      "bestPrice": 7,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3078576-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "3078576",
+      "playerName": "Derrick White",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 2,
+      "probability": 0.74,
+      "fairPrice": 1.35,
+      "bestPrice": 1.6,
+      "bestBookie": "Neds",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "3078576-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "3078576",
+      "playerName": "Derrick White",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 2,
+      "result": "won",
+      "actualValue": 2,
+      "probability": 0.477,
+      "fairPrice": 2.1,
+      "bestPrice": 2.65,
+      "bestBookie": "Neds",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3078576-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3078576",
+      "playerName": "Derrick White",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.262,
+      "fairPrice": 3.82,
+      "bestPrice": 5.2,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3078576-3pm-4",
+      "slateDate": "2026-11-25",
+      "playerId": "3078576",
+      "playerName": "Derrick White",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 4,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.129,
+      "fairPrice": 7.75,
+      "bestPrice": 11,
+      "bestBookie": "Neds",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3078576-3pm-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3078576",
+      "playerName": "Derrick White",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.061,
+      "fairPrice": 16.31,
+      "bestPrice": 21,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4251-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 15,
+      "result": "won",
+      "actualValue": 28,
+      "probability": 0.776,
+      "fairPrice": 1.29,
+      "bestPrice": 1.42,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "4251-pts-20",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 20,
+      "result": "won",
+      "actualValue": 28,
+      "probability": 0.471,
+      "fairPrice": 2.12,
+      "bestPrice": 2.25,
+      "bestBookie": "PointsBet (AU)",
+      "tags": []
+    },
+    {
+      "id": "4251-pts-25",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 25,
+      "result": "won",
+      "actualValue": 28,
+      "probability": 0.184,
+      "fairPrice": 5.43,
+      "bestPrice": 4.6,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "4251-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.851,
+      "fairPrice": 1.17,
+      "bestPrice": 1.28,
+      "bestBookie": "TAB",
+      "tags": [
+        "High probability",
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4251-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 4,
+      "probability": 0.582,
+      "fairPrice": 1.72,
+      "bestPrice": 2.05,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4251-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 4,
+      "probability": 0.309,
+      "fairPrice": 3.23,
+      "bestPrice": 4,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4251-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 3,
+      "result": "won",
+      "actualValue": 9,
+      "probability": 0.585,
+      "fairPrice": 1.71,
+      "bestPrice": 2,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4251-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 5,
+      "result": "won",
+      "actualValue": 9,
+      "probability": 0.239,
+      "fairPrice": 4.18,
+      "bestPrice": 5.2,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4251-ast-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 7,
+      "result": "won",
+      "actualValue": 9,
+      "probability": 0.08,
+      "fairPrice": 12.54,
+      "bestPrice": 12,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "4251-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.885,
+      "fairPrice": 1.13,
+      "bestPrice": 1.26,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "4251-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 2,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.711,
+      "fairPrice": 1.41,
+      "bestPrice": 1.76,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4251-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 3,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.513,
+      "fairPrice": 1.95,
+      "bestPrice": 2.75,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4251-3pm-4",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 4,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.33,
+      "fairPrice": 3.03,
+      "bestPrice": 5,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4251-3pm-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4251",
+      "playerName": "Paul George",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 5,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.197,
+      "fairPrice": 5.09,
+      "bestPrice": 9.5,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4397424-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "4397424",
+      "playerName": "Neemias Queta",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 10,
+      "result": "won",
+      "actualValue": 21,
+      "probability": 0.687,
+      "fairPrice": 1.46,
+      "bestPrice": 1.83,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4397424-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "4397424",
+      "playerName": "Neemias Queta",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 15,
+      "result": "won",
+      "actualValue": 21,
+      "probability": 0.219,
+      "fairPrice": 4.56,
+      "bestPrice": 4.6,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "4397424-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4397424",
+      "playerName": "Neemias Queta",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 5,
+      "result": "won",
+      "actualValue": 5,
+      "probability": 0.904,
+      "fairPrice": 1.11,
+      "bestPrice": 1.18,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "4397424-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4397424",
+      "playerName": "Neemias Queta",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 5,
+      "probability": 0.752,
+      "fairPrice": 1.33,
+      "bestPrice": 1.48,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "4397424-reb-10",
+      "slateDate": "2026-11-25",
+      "playerId": "4397424",
+      "playerName": "Neemias Queta",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 10,
+      "result": "lost",
+      "actualValue": 5,
+      "probability": 0.42,
+      "fairPrice": 2.38,
+      "bestPrice": 2.9,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4397424-reb-13",
+      "slateDate": "2026-11-25",
+      "playerId": "4397424",
+      "playerName": "Neemias Queta",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 13,
+      "result": "lost",
+      "actualValue": 5,
+      "probability": 0.163,
+      "fairPrice": 6.15,
+      "bestPrice": 7.75,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4397424-reb-15",
+      "slateDate": "2026-11-25",
+      "playerId": "4397424",
+      "playerName": "Neemias Queta",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 15,
+      "result": "lost",
+      "actualValue": 5,
+      "probability": 0.079,
+      "fairPrice": 12.58,
+      "bestPrice": 13,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "4397424-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4397424",
+      "playerName": "Neemias Queta",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.381,
+      "fairPrice": 2.63,
+      "bestPrice": 5.5,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "4065648-pts-20",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 20,
+      "result": "won",
+      "actualValue": 41,
+      "probability": 0.836,
+      "fairPrice": 1.2,
+      "bestPrice": 1.27,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "4065648-pts-25",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 25,
+      "result": "won",
+      "actualValue": 41,
+      "probability": 0.625,
+      "fairPrice": 1.6,
+      "bestPrice": 1.83,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4065648-pts-30",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 30,
+      "result": "won",
+      "actualValue": 41,
+      "probability": 0.376,
+      "fairPrice": 2.66,
+      "bestPrice": 3.2,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4065648-pts-35",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 35,
+      "result": "won",
+      "actualValue": 41,
+      "probability": 0.177,
+      "fairPrice": 5.64,
+      "bestPrice": 6.5,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4065648-pts-40",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "pts",
+      "line": 40,
+      "result": "won",
+      "actualValue": 41,
+      "probability": 0.071,
+      "fairPrice": 14.04,
+      "bestPrice": 12,
+      "bestBookie": "PointsBet (AU)",
+      "tags": []
+    },
+    {
+      "id": "4065648-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 5,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.83,
+      "fairPrice": 1.2,
+      "bestPrice": 1.29,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "High probability",
+        "boards shared"
+      ]
+    },
+    {
+      "id": "4065648-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 6,
+      "probability": 0.597,
+      "fairPrice": 1.67,
+      "bestPrice": 1.92,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4065648-reb-10",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 10,
+      "result": "lost",
+      "actualValue": 6,
+      "probability": 0.258,
+      "fairPrice": 3.88,
+      "bestPrice": 4.6,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4065648-reb-13",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "reb",
+      "line": 13,
+      "result": "lost",
+      "actualValue": 6,
+      "probability": 0.079,
+      "fairPrice": 12.63,
+      "bestPrice": 13,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "4065648-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 3,
+      "result": "won",
+      "actualValue": 8,
+      "probability": 0.928,
+      "fairPrice": 1.08,
+      "bestPrice": 1.1,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "4065648-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 5,
+      "result": "won",
+      "actualValue": 8,
+      "probability": 0.71,
+      "fairPrice": 1.41,
+      "bestPrice": 1.53,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4065648-ast-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 7,
+      "result": "won",
+      "actualValue": 8,
+      "probability": 0.418,
+      "fairPrice": 2.39,
+      "bestPrice": 2.84,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4065648-ast-10",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "ast",
+      "line": 10,
+      "result": "lost",
+      "actualValue": 8,
+      "probability": 0.131,
+      "fairPrice": 7.66,
+      "bestPrice": 8.5,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4065648-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 2,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.733,
+      "fairPrice": 1.36,
+      "bestPrice": 1.69,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "4065648-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 3,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.536,
+      "fairPrice": 1.86,
+      "bestPrice": 2.65,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "4065648-3pm-4",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 4,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.353,
+      "fairPrice": 2.84,
+      "bestPrice": 4.8,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4065648-3pm-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909315",
+      "market": "3pm",
+      "line": 5,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.213,
+      "fairPrice": 4.7,
+      "bestPrice": 9.5,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4431767-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "4431767",
+      "playerName": "Christian Braun",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 10,
+      "result": "won",
+      "actualValue": 15,
+      "probability": 0.81,
+      "fairPrice": 1.24,
+      "bestPrice": 1.42,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "4431767-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "4431767",
+      "playerName": "Christian Braun",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 15,
+      "result": "won",
+      "actualValue": 15,
+      "probability": 0.401,
+      "fairPrice": 2.5,
+      "bestPrice": 2.9,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4431767-pts-20",
+      "slateDate": "2026-11-25",
+      "playerId": "4431767",
+      "playerName": "Christian Braun",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 20,
+      "result": "lost",
+      "actualValue": 15,
+      "probability": 0.098,
+      "fairPrice": 10.19,
+      "bestPrice": 7,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "4431767-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4431767",
+      "playerName": "Christian Braun",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.779,
+      "fairPrice": 1.28,
+      "bestPrice": 1.48,
+      "bestBookie": "TAB",
+      "tags": [
+        "High probability",
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4431767-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4431767",
+      "playerName": "Christian Braun",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.472,
+      "fairPrice": 2.12,
+      "bestPrice": 2.75,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4431767-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4431767",
+      "playerName": "Christian Braun",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.215,
+      "fairPrice": 4.65,
+      "bestPrice": 6.5,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4431767-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4431767",
+      "playerName": "Christian Braun",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 3,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.398,
+      "fairPrice": 2.52,
+      "bestPrice": 3.96,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4431767-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4431767",
+      "playerName": "Christian Braun",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 4,
+      "probability": 0.127,
+      "fairPrice": 7.88,
+      "bestPrice": 12,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4431767-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "4431767",
+      "playerName": "Christian Braun",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.636,
+      "fairPrice": 1.57,
+      "bestPrice": 2.1,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "4431767-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "4431767",
+      "playerName": "Christian Braun",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 2,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.349,
+      "fairPrice": 2.87,
+      "bestPrice": 4.6,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4431767-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4431767",
+      "playerName": "Christian Braun",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 3,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.167,
+      "fairPrice": 6,
+      "bestPrice": 11,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "3064290-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "3064290",
+      "playerName": "Aaron Gordon",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 10,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.795,
+      "fairPrice": 1.26,
+      "bestPrice": 1.36,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "3064290-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "3064290",
+      "playerName": "Aaron Gordon",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 15,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.353,
+      "fairPrice": 2.84,
+      "bestPrice": 2.5,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "3064290-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3064290",
+      "playerName": "Aaron Gordon",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.804,
+      "fairPrice": 1.24,
+      "bestPrice": 1.3,
+      "bestBookie": "TAB",
+      "tags": [
+        "High probability",
+        "boards shared"
+      ]
+    },
+    {
+      "id": "3064290-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3064290",
+      "playerName": "Aaron Gordon",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 3,
+      "probability": 0.501,
+      "fairPrice": 2,
+      "bestPrice": 2.05,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "3064290-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "3064290",
+      "playerName": "Aaron Gordon",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 3,
+      "probability": 0.232,
+      "fairPrice": 4.31,
+      "bestPrice": 4.2,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "3064290-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3064290",
+      "playerName": "Aaron Gordon",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 3,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.263,
+      "fairPrice": 3.8,
+      "bestPrice": 4.6,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3064290-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3064290",
+      "playerName": "Aaron Gordon",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 3,
+      "probability": 0.066,
+      "fairPrice": 15.25,
+      "bestPrice": 13,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "3064290-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "3064290",
+      "playerName": "Aaron Gordon",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 1,
+      "result": "lost",
+      "actualValue": 0,
+      "probability": 0.498,
+      "fairPrice": 2.01,
+      "bestPrice": 2.3,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3064290-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "3064290",
+      "playerName": "Aaron Gordon",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 2,
+      "result": "lost",
+      "actualValue": 0,
+      "probability": 0.211,
+      "fairPrice": 4.73,
+      "bestPrice": 5.25,
+      "bestBookie": "Picklebet (AU)",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3064290-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3064290",
+      "playerName": "Aaron Gordon",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 0,
+      "probability": 0.08,
+      "fairPrice": 12.5,
+      "bestPrice": 13,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "3138196-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 10,
+      "result": "won",
+      "actualValue": 17,
+      "probability": 0.775,
+      "fairPrice": 1.29,
+      "bestPrice": 1.48,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "3138196-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 15,
+      "result": "won",
+      "actualValue": 17,
+      "probability": 0.34,
+      "fairPrice": 2.94,
+      "bestPrice": 2.9,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "3138196-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 5,
+      "probability": 0.551,
+      "fairPrice": 1.82,
+      "bestPrice": 1.85,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "3138196-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 5,
+      "result": "won",
+      "actualValue": 5,
+      "probability": 0.21,
+      "fairPrice": 4.77,
+      "bestPrice": 4.65,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "3138196-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 5,
+      "probability": 0.072,
+      "fairPrice": 13.94,
+      "bestPrice": 10,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "3138196-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 3,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.357,
+      "fairPrice": 2.8,
+      "bestPrice": 4.3,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3138196-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 3,
+      "probability": 0.109,
+      "fairPrice": 9.19,
+      "bestPrice": 11.5,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3138196-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.737,
+      "fairPrice": 1.36,
+      "bestPrice": 1.57,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "3138196-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 2,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.465,
+      "fairPrice": 2.15,
+      "bestPrice": 2.65,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3138196-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 3,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.248,
+      "fairPrice": 4.04,
+      "bestPrice": 5.4,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3138196-3pm-4",
+      "slateDate": "2026-11-25",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 4,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.117,
+      "fairPrice": 8.54,
+      "bestPrice": 12.5,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3138196-3pm-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 4,
+      "probability": 0.053,
+      "fairPrice": 18.75,
+      "bestPrice": 26,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4592427-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4592427",
+      "playerName": "Spencer Jones",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.373,
+      "fairPrice": 2.68,
+      "bestPrice": 3.3,
+      "bestBookie": "TAB",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4592427-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "4592427",
+      "playerName": "Spencer Jones",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 1,
+      "probability": 0.367,
+      "fairPrice": 2.73,
+      "bestPrice": 4.25,
+      "bestBookie": "TAB",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3978-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "3978",
+      "playerName": "DeMar DeRozan",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 10,
+      "result": "lost",
+      "actualValue": 9,
+      "probability": 0.547,
+      "fairPrice": 1.83,
+      "bestPrice": 1.95,
+      "bestBookie": "PointsBet (AU)",
+      "tags": []
+    },
+    {
+      "id": "3978-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3978",
+      "playerName": "DeMar DeRozan",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 5,
+      "probability": 0.214,
+      "fairPrice": 4.67,
+      "bestPrice": 5.75,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3978-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3978",
+      "playerName": "DeMar DeRozan",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.327,
+      "fairPrice": 3.05,
+      "bestPrice": 4,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3978-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3978",
+      "playerName": "DeMar DeRozan",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.096,
+      "fairPrice": 10.44,
+      "bestPrice": 10,
+      "bestBookie": "Ladbrokes",
+      "tags": []
+    },
+    {
+      "id": "3112335-pts-20",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 20,
+      "result": "lost",
+      "actualValue": 18,
+      "probability": 0.831,
+      "fairPrice": 1.2,
+      "bestPrice": 1.29,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "3112335-pts-25",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 25,
+      "result": "lost",
+      "actualValue": 18,
+      "probability": 0.618,
+      "fairPrice": 1.62,
+      "bestPrice": 1.89,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3112335-pts-30",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 30,
+      "result": "lost",
+      "actualValue": 18,
+      "probability": 0.369,
+      "fairPrice": 2.71,
+      "bestPrice": 3.4,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3112335-pts-35",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 35,
+      "result": "lost",
+      "actualValue": 18,
+      "probability": 0.169,
+      "fairPrice": 5.91,
+      "bestPrice": 7.5,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3112335-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 7,
+      "result": "won",
+      "actualValue": 11,
+      "probability": 0.917,
+      "fairPrice": 1.09,
+      "bestPrice": 1.1,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "boards shared"
+      ]
+    },
+    {
+      "id": "3112335-reb-10",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 10,
+      "result": "won",
+      "actualValue": 11,
+      "probability": 0.69,
+      "fairPrice": 1.45,
+      "bestPrice": 1.47,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "3112335-reb-13",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 13,
+      "result": "lost",
+      "actualValue": 11,
+      "probability": 0.389,
+      "fairPrice": 2.57,
+      "bestPrice": 2.55,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "3112335-reb-15",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 15,
+      "result": "lost",
+      "actualValue": 11,
+      "probability": 0.216,
+      "fairPrice": 4.62,
+      "bestPrice": 4.65,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "3112335-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 5,
+      "result": "won",
+      "actualValue": 5,
+      "probability": 0.94,
+      "fairPrice": 1.06,
+      "bestPrice": 1.07,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "3112335-ast-7",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 5,
+      "probability": 0.795,
+      "fairPrice": 1.26,
+      "bestPrice": 1.28,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "3112335-ast-10",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 10,
+      "result": "lost",
+      "actualValue": 5,
+      "probability": 0.452,
+      "fairPrice": 2.21,
+      "bestPrice": 2.3,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "3112335-ast-13",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 13,
+      "result": "lost",
+      "actualValue": 5,
+      "probability": 0.168,
+      "fairPrice": 5.97,
+      "bestPrice": 6.5,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3112335-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 1,
+      "probability": 0.612,
+      "fairPrice": 1.63,
+      "bestPrice": 2.33,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "3112335-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 2,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.335,
+      "fairPrice": 2.99,
+      "bestPrice": 5,
+      "bestBookie": "Picklebet (AU)",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "3112335-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3112335",
+      "playerName": "Nikola Jokic",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.157,
+      "fairPrice": 6.36,
+      "bestPrice": 12.5,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "3936299-pts-20",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 20,
+      "result": "won",
+      "actualValue": 20,
+      "probability": 0.776,
+      "fairPrice": 1.29,
+      "bestPrice": 1.53,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "3936299-pts-25",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 25,
+      "result": "lost",
+      "actualValue": 20,
+      "probability": 0.552,
+      "fairPrice": 1.81,
+      "bestPrice": 2.5,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "3936299-pts-30",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 30,
+      "result": "lost",
+      "actualValue": 20,
+      "probability": 0.311,
+      "fairPrice": 3.22,
+      "bestPrice": 5.2,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "3936299-pts-35",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 35,
+      "result": "lost",
+      "actualValue": 20,
+      "probability": 0.14,
+      "fairPrice": 7.14,
+      "bestPrice": 10.5,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3936299-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.765,
+      "fairPrice": 1.31,
+      "bestPrice": 1.52,
+      "bestBookie": "TAB",
+      "tags": [
+        "High probability",
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "3936299-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.449,
+      "fairPrice": 2.23,
+      "bestPrice": 2.97,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "3936299-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.197,
+      "fairPrice": 5.07,
+      "bestPrice": 7.5,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "3936299-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 3,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.91,
+      "fairPrice": 1.1,
+      "bestPrice": 1.13,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "3936299-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 3,
+      "probability": 0.685,
+      "fairPrice": 1.46,
+      "bestPrice": 1.54,
+      "bestBookie": "TABtouch",
+      "tags": []
+    },
+    {
+      "id": "3936299-ast-7",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 3,
+      "probability": 0.389,
+      "fairPrice": 2.57,
+      "bestPrice": 2.84,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3936299-ast-10",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 10,
+      "result": "lost",
+      "actualValue": 3,
+      "probability": 0.115,
+      "fairPrice": 8.71,
+      "bestPrice": 8.5,
+      "bestBookie": "TABtouch",
+      "tags": []
+    },
+    {
+      "id": "3936299-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 2,
+      "probability": 0.843,
+      "fairPrice": 1.19,
+      "bestPrice": 1.33,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "3936299-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 2,
+      "result": "won",
+      "actualValue": 2,
+      "probability": 0.625,
+      "fairPrice": 1.6,
+      "bestPrice": 1.98,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3936299-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.404,
+      "fairPrice": 2.48,
+      "bestPrice": 3.4,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "3936299-3pm-4",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 4,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.229,
+      "fairPrice": 4.36,
+      "bestPrice": 7,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "3936299-3pm-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3936299",
+      "playerName": "Jamal Murray",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.122,
+      "fairPrice": 8.18,
+      "bestPrice": 14,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4278594-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "4278594",
+      "playerName": "Naji Marshall",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 10,
+      "result": "won",
+      "actualValue": 14,
+      "probability": 0.578,
+      "fairPrice": 1.73,
+      "bestPrice": 2.08,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4278594-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "4278594",
+      "playerName": "Naji Marshall",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 15,
+      "result": "lost",
+      "actualValue": 14,
+      "probability": 0.129,
+      "fairPrice": 7.73,
+      "bestPrice": 5,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "4278594-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4278594",
+      "playerName": "Naji Marshall",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.465,
+      "fairPrice": 2.15,
+      "bestPrice": 2.35,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4278594-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4278594",
+      "playerName": "Naji Marshall",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.16,
+      "fairPrice": 6.26,
+      "bestPrice": 6.25,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "4278594-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4278594",
+      "playerName": "Naji Marshall",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.561,
+      "fairPrice": 1.78,
+      "bestPrice": 2.63,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "4278594-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4278594",
+      "playerName": "Naji Marshall",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.236,
+      "fairPrice": 4.24,
+      "bestPrice": 8,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4278594-ast-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4278594",
+      "playerName": "Naji Marshall",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 2,
+      "probability": 0.075,
+      "fairPrice": 13.34,
+      "bestPrice": 23,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4278594-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "4278594",
+      "playerName": "Naji Marshall",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 1,
+      "probability": 0.474,
+      "fairPrice": 2.11,
+      "bestPrice": 4.2,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "4278594-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "4278594",
+      "playerName": "Naji Marshall",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 2,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.227,
+      "fairPrice": 4.41,
+      "bestPrice": 9.5,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "3138160-pts-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3138160",
+      "playerName": "Caleb Martin",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 5,
+      "result": "won",
+      "actualValue": 13,
+      "probability": 0.768,
+      "fairPrice": 1.3,
+      "bestPrice": 1.91,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "High probability",
+        "Check news"
+      ]
+    },
+    {
+      "id": "3138160-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "3138160",
+      "playerName": "Caleb Martin",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 10,
+      "result": "won",
+      "actualValue": 13,
+      "probability": 0.165,
+      "fairPrice": 6.04,
+      "bestPrice": 5.8,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "3138160-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3138160",
+      "playerName": "Caleb Martin",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.699,
+      "fairPrice": 1.43,
+      "bestPrice": 2.05,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Check news"
+      ]
+    },
+    {
+      "id": "3138160-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3138160",
+      "playerName": "Caleb Martin",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 4,
+      "probability": 0.395,
+      "fairPrice": 2.53,
+      "bestPrice": 5.2,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "3138160-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "3138160",
+      "playerName": "Caleb Martin",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 4,
+      "probability": 0.18,
+      "fairPrice": 5.57,
+      "bestPrice": 12,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "3138160-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "3138160",
+      "playerName": "Caleb Martin",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 3,
+      "result": "won",
+      "actualValue": 4,
+      "probability": 0.526,
+      "fairPrice": 1.9,
+      "bestPrice": 3.4,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "3138160-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "3138160",
+      "playerName": "Caleb Martin",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 4,
+      "probability": 0.225,
+      "fairPrice": 4.44,
+      "bestPrice": 10,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "3138160-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "3138160",
+      "playerName": "Caleb Martin",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.517,
+      "fairPrice": 1.93,
+      "bestPrice": 4.9,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "3138160-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "3138160",
+      "playerName": "Caleb Martin",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 2,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.292,
+      "fairPrice": 3.42,
+      "bestPrice": 9,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "5211175-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "5211175",
+      "playerName": "Zaccharie Risacher",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 10,
+      "result": "won",
+      "actualValue": 12,
+      "probability": 0.545,
+      "fairPrice": 1.83,
+      "bestPrice": 3.2,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "5211175-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "5211175",
+      "playerName": "Zaccharie Risacher",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 15,
+      "result": "lost",
+      "actualValue": 12,
+      "probability": 0.107,
+      "fairPrice": 9.3,
+      "bestPrice": 12.5,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5211175-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5211175",
+      "playerName": "Zaccharie Risacher",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.743,
+      "fairPrice": 1.35,
+      "bestPrice": 1.85,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "High probability",
+        "boards shared",
+        "Check news"
+      ]
+    },
+    {
+      "id": "5211175-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "5211175",
+      "playerName": "Zaccharie Risacher",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 5,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.461,
+      "fairPrice": 2.17,
+      "bestPrice": 4,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Check prices",
+        "Check news"
+      ]
+    },
+    {
+      "id": "5211175-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "5211175",
+      "playerName": "Zaccharie Risacher",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 6,
+      "probability": 0.224,
+      "fairPrice": 4.46,
+      "bestPrice": 10,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "boards shared",
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "5211175-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "5211175",
+      "playerName": "Zaccharie Risacher",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 1,
+      "probability": 0.471,
+      "fairPrice": 2.12,
+      "bestPrice": 3.35,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "5211175-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "5211175",
+      "playerName": "Zaccharie Risacher",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 2,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.206,
+      "fairPrice": 4.86,
+      "bestPrice": 8.5,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "5211175-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5211175",
+      "playerName": "Zaccharie Risacher",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.081,
+      "fairPrice": 12.35,
+      "bestPrice": 21,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "5041939-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 15,
+      "result": "won",
+      "actualValue": 24,
+      "probability": 0.922,
+      "fairPrice": 1.08,
+      "bestPrice": 1.1,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "5041939-pts-20",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 20,
+      "result": "won",
+      "actualValue": 24,
+      "probability": 0.753,
+      "fairPrice": 1.33,
+      "bestPrice": 1.36,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "5041939-pts-25",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 25,
+      "result": "lost",
+      "actualValue": 24,
+      "probability": 0.481,
+      "fairPrice": 2.08,
+      "bestPrice": 2.08,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "5041939-pts-30",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 30,
+      "result": "lost",
+      "actualValue": 24,
+      "probability": 0.233,
+      "fairPrice": 4.29,
+      "bestPrice": 3.7,
+      "bestBookie": "PointsBet (AU)",
+      "tags": []
+    },
+    {
+      "id": "5041939-pts-35",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 35,
+      "result": "lost",
+      "actualValue": 24,
+      "probability": 0.082,
+      "fairPrice": 12.26,
+      "bestPrice": 8.5,
+      "bestBookie": "PointsBet (AU)",
+      "tags": []
+    },
+    {
+      "id": "5041939-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.919,
+      "fairPrice": 1.09,
+      "bestPrice": 1.13,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "boards shared"
+      ]
+    },
+    {
+      "id": "5041939-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 5,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.709,
+      "fairPrice": 1.41,
+      "bestPrice": 1.56,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5041939-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 6,
+      "probability": 0.432,
+      "fairPrice": 2.32,
+      "bestPrice": 2.75,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5041939-reb-10",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 10,
+      "result": "lost",
+      "actualValue": 6,
+      "probability": 0.145,
+      "fairPrice": 6.87,
+      "bestPrice": 7.5,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "5041939-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 3,
+      "result": "won",
+      "actualValue": 12,
+      "probability": 0.926,
+      "fairPrice": 1.08,
+      "bestPrice": 1.1,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "5041939-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 5,
+      "result": "won",
+      "actualValue": 12,
+      "probability": 0.702,
+      "fairPrice": 1.42,
+      "bestPrice": 1.53,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5041939-ast-7",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 7,
+      "result": "won",
+      "actualValue": 12,
+      "probability": 0.418,
+      "fairPrice": 2.39,
+      "bestPrice": 2.66,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5041939-ast-10",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 10,
+      "result": "won",
+      "actualValue": 12,
+      "probability": 0.128,
+      "fairPrice": 7.81,
+      "bestPrice": 8,
+      "bestBookie": "TABtouch",
+      "tags": []
+    },
+    {
+      "id": "5041939-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 1,
+      "probability": 0.714,
+      "fairPrice": 1.4,
+      "bestPrice": 1.78,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "5041939-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 2,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.45,
+      "fairPrice": 2.22,
+      "bestPrice": 3.2,
+      "bestBookie": "Betr",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "5041939-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.243,
+      "fairPrice": 4.11,
+      "bestPrice": 6.75,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "5041939-3pm-4",
+      "slateDate": "2026-11-25",
+      "playerId": "5041939",
+      "playerName": "Cooper Flagg",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 4,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.115,
+      "fairPrice": 8.66,
+      "bestPrice": 17,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4873153-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4873153",
+      "playerName": "Morez Johnson Jr.",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 10,
+      "probability": 0.81,
+      "fairPrice": 1.24,
+      "bestPrice": 1.4,
+      "bestBookie": "TAB",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "4873153-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4873153",
+      "playerName": "Morez Johnson Jr.",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 5,
+      "result": "won",
+      "actualValue": 10,
+      "probability": 0.533,
+      "fairPrice": 1.88,
+      "bestPrice": 2.25,
+      "bestBookie": "TAB",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4873153-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4873153",
+      "playerName": "Morez Johnson Jr.",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 7,
+      "result": "won",
+      "actualValue": 10,
+      "probability": 0.279,
+      "fairPrice": 3.59,
+      "bestPrice": 4,
+      "bestBookie": "TAB",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4278078-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "4278078",
+      "playerName": "P.J. Washington",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 10,
+      "result": "won",
+      "actualValue": 14,
+      "probability": 0.765,
+      "fairPrice": 1.31,
+      "bestPrice": 1.53,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "4278078-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "4278078",
+      "playerName": "P.J. Washington",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 15,
+      "result": "lost",
+      "actualValue": 14,
+      "probability": 0.333,
+      "fairPrice": 3,
+      "bestPrice": 3,
+      "bestBookie": "PointsBet (AU)",
+      "tags": []
+    },
+    {
+      "id": "4278078-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4278078",
+      "playerName": "P.J. Washington",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.831,
+      "fairPrice": 1.2,
+      "bestPrice": 1.27,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "High probability",
+        "boards shared"
+      ]
+    },
+    {
+      "id": "4278078-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4278078",
+      "playerName": "P.J. Washington",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 5,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.531,
+      "fairPrice": 1.88,
+      "bestPrice": 2.1,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "4278078-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4278078",
+      "playerName": "P.J. Washington",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 6,
+      "probability": 0.265,
+      "fairPrice": 3.77,
+      "bestPrice": 4,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "4278078-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4278078",
+      "playerName": "P.J. Washington",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 0,
+      "probability": 0.157,
+      "fairPrice": 6.39,
+      "bestPrice": 7.75,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4278078-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "4278078",
+      "playerName": "P.J. Washington",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 1,
+      "probability": 0.762,
+      "fairPrice": 1.31,
+      "bestPrice": 1.65,
+      "bestBookie": "Ladbrokes",
+      "tags": [
+        "High probability",
+        "Check news"
+      ]
+    },
+    {
+      "id": "4278078-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "4278078",
+      "playerName": "P.J. Washington",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 2,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.516,
+      "fairPrice": 1.94,
+      "bestPrice": 2.9,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check news"
+      ]
+    },
+    {
+      "id": "4278078-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4278078",
+      "playerName": "P.J. Washington",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.305,
+      "fairPrice": 3.28,
+      "bestPrice": 5.8,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4278078-3pm-4",
+      "slateDate": "2026-11-25",
+      "playerId": "4278078",
+      "playerName": "P.J. Washington",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 4,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.161,
+      "fairPrice": 6.22,
+      "bestPrice": 13,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "4278078-3pm-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4278078",
+      "playerName": "P.J. Washington",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.08,
+      "fairPrice": 12.42,
+      "bestPrice": 26,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    },
+    {
+      "id": "6442-pts-15",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 15,
+      "result": "lost",
+      "actualValue": 11,
+      "probability": 0.87,
+      "fairPrice": 1.15,
+      "bestPrice": 1.18,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "6442-pts-20",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 20,
+      "result": "lost",
+      "actualValue": 11,
+      "probability": 0.636,
+      "fairPrice": 1.57,
+      "bestPrice": 1.56,
+      "bestBookie": "PointsBet (AU)",
+      "tags": []
+    },
+    {
+      "id": "6442-pts-25",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 25,
+      "result": "lost",
+      "actualValue": 11,
+      "probability": 0.334,
+      "fairPrice": 2.99,
+      "bestPrice": 2.6,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "6442-pts-30",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 30,
+      "result": "lost",
+      "actualValue": 11,
+      "probability": 0.13,
+      "fairPrice": 7.71,
+      "bestPrice": 5,
+      "bestBookie": "SportsBet",
+      "tags": []
+    },
+    {
+      "id": "6442-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 5,
+      "probability": 0.628,
+      "fairPrice": 1.59,
+      "bestPrice": 1.85,
+      "bestBookie": "TAB",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "6442-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 5,
+      "result": "won",
+      "actualValue": 5,
+      "probability": 0.291,
+      "fairPrice": 3.44,
+      "bestPrice": 4.1,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "6442-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 5,
+      "probability": 0.097,
+      "fairPrice": 10.33,
+      "bestPrice": 12,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "boards shared",
+        "Value"
+      ]
+    },
+    {
+      "id": "6442-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 3,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.778,
+      "fairPrice": 1.28,
+      "bestPrice": 1.33,
+      "bestBookie": "TAB",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "6442-ast-5",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 5,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.446,
+      "fairPrice": 2.24,
+      "bestPrice": 2.3,
+      "bestBookie": "PointsBet (AU)",
+      "tags": []
+    },
+    {
+      "id": "6442-ast-7",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 6,
+      "probability": 0.182,
+      "fairPrice": 5.51,
+      "bestPrice": 5.5,
+      "bestBookie": "TAB",
+      "tags": []
+    },
+    {
+      "id": "6442-3pm-1",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 1,
+      "result": "won",
+      "actualValue": 1,
+      "probability": 0.915,
+      "fairPrice": 1.09,
+      "bestPrice": 1.15,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "High probability"
+      ]
+    },
+    {
+      "id": "6442-3pm-2",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 2,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.752,
+      "fairPrice": 1.33,
+      "bestPrice": 1.48,
+      "bestBookie": "Picklebet (AU)",
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    {
+      "id": "6442-3pm-3",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 3,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.551,
+      "fairPrice": 1.82,
+      "bestPrice": 2.15,
+      "bestBookie": "Picklebet (AU)",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "6442-3pm-4",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 4,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.361,
+      "fairPrice": 2.77,
+      "bestPrice": 3.5,
+      "bestBookie": "Picklebet (AU)",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "6442-3pm-5",
+      "slateDate": "2026-11-25",
+      "playerId": "6442",
+      "playerName": "Kyrie Irving",
+      "gameId": "401909316",
+      "market": "3pm",
+      "line": 5,
+      "result": "lost",
+      "actualValue": 1,
+      "probability": 0.221,
+      "fairPrice": 4.52,
+      "bestPrice": 5.75,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4278049-pts-10",
+      "slateDate": "2026-11-25",
+      "playerId": "4278049",
+      "playerName": "Daniel Gafford",
+      "gameId": "401909316",
+      "market": "pts",
+      "line": 10,
+      "result": "won",
+      "actualValue": 13,
+      "probability": 0.519,
+      "fairPrice": 1.93,
+      "bestPrice": 2.3,
+      "bestBookie": "PointsBet (AU)",
+      "tags": [
+        "Value"
+      ]
+    },
+    {
+      "id": "4278049-reb-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4278049",
+      "playerName": "Daniel Gafford",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 3,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.853,
+      "fairPrice": 1.17,
+      "bestPrice": 1.14,
+      "bestBookie": "TAB",
+      "tags": [
+        "High probability",
+        "boards shared"
+      ]
+    },
+    {
+      "id": "4278049-reb-5",
+      "slateDate": "2026-11-25",
+      "playerId": "4278049",
+      "playerName": "Daniel Gafford",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 5,
+      "result": "won",
+      "actualValue": 6,
+      "probability": 0.586,
+      "fairPrice": 1.71,
+      "bestPrice": 1.48,
+      "bestBookie": "TABtouch",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "4278049-reb-7",
+      "slateDate": "2026-11-25",
+      "playerId": "4278049",
+      "playerName": "Daniel Gafford",
+      "gameId": "401909316",
+      "market": "reb",
+      "line": 7,
+      "result": "lost",
+      "actualValue": 6,
+      "probability": 0.308,
+      "fairPrice": 3.25,
+      "bestPrice": 2.45,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "boards shared"
+      ]
+    },
+    {
+      "id": "4278049-ast-3",
+      "slateDate": "2026-11-25",
+      "playerId": "4278049",
+      "playerName": "Daniel Gafford",
+      "gameId": "401909316",
+      "market": "ast",
+      "line": 3,
+      "result": "won",
+      "actualValue": 3,
+      "probability": 0.281,
+      "fairPrice": 3.56,
+      "bestPrice": 6,
+      "bestBookie": "SportsBet",
+      "tags": [
+        "Check prices",
+        "Value"
+      ]
+    }
+  ]
+}
