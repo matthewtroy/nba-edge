@@ -2,6 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
+import { clearRetiredStorage } from "./lib/retired-storage";
+
+try {
+  clearRetiredStorage(window.localStorage);
+} catch {
+  /* localStorage blocked */
+}
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

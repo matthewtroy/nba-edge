@@ -53,7 +53,6 @@ interface Props {
   slateDate?: string;
   bookieStorageScope?: MultiBookieStorageScope;
   republishedAt?: string;
-  onRemove?: () => void;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (text: string) => void;
   onShareError?: (message: string) => void;
@@ -100,7 +99,6 @@ export function MultiCard({
   officialDisplayOnly = false,
   liveCatalog,
   compact = true,
-  onRemove,
   onLegTap,
   onCopy,
   slate,
@@ -252,7 +250,6 @@ export function MultiCard({
         total={headerTotal}
         bookie={headerBookie}
         stakeUnits={stakeUnits}
-        onRemove={shareCapture ? undefined : onRemove}
       />
       <BetProgress
         legStates={betLegStates}

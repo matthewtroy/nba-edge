@@ -7,7 +7,7 @@ import {
 } from "@lib/single-bookie";
 import { pickDefaultBookie } from "@lib/multi-display";
 
-export type MultiBookieStorageScope = "today" | "games" | "personal";
+export type MultiBookieStorageScope = "today" | "games";
 
 export function multiBookieStorageKey(
   multi: MultiBet,

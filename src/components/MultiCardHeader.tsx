@@ -8,13 +8,11 @@ export function MultiCardHeader({
   total,
   bookie,
   stakeUnits,
-  onRemove,
 }: {
   title: string;
   total?: number;
   bookie?: string;
   stakeUnits?: number;
-  onRemove?: () => void;
 }) {
   const amount =
     total != null && Number.isFinite(total) ? `$${total.toFixed(2)}` : undefined;
@@ -44,12 +42,6 @@ export function MultiCardHeader({
           </span>
         ) : null}
       </p>
-
-      {onRemove && (
-        <button type="button" className="text-[11px] text-white/40 mt-1" onClick={onRemove}>
-          Remove
-        </button>
-      )}
     </header>
   );
 }

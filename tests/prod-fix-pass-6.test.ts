@@ -31,6 +31,7 @@ import {
   valueLegRowsFromSingles,
 } from "../lib/value-leg-track";
 import { valueSinglesForSlate } from "../lib/value-singles-source";
+import { clearRetiredStorage } from "../src/lib/retired-storage";
 import { buildResultsSlice } from "../lib/results-aggregate";
 import type { GradedProjectionLeg } from "../lib/graded-leg";
 
@@ -468,5 +469,35 @@ describe("item 7: Cross SGM tint spans the card inner width like Main Play", () 
     });
     expect(commits).toBe(afterMount);
     root.unmount();
+  });
+});
+
+describe("item 8: Personal multis removed", () => {
+  it("no UI or code path remains", () => {
+    const files = ["src", "lib"].flatMap((d) =>
+      (fs.readdirSync(d, { recursive: true }) as string[]).map((f) => path.join(d, f))
+    );
+    expect(files.filter((f) => /personal-?multi/i.test(f))).toEqual([]);
+    const hits = files
+      .filter((f) => /\.(ts|tsx)$/.test(f) && f !== "src/lib/retired-storage.ts" && fs.existsSync(f))
+      .filter((f) => /Personal multis|usePersonalMultis|PersonalMultiBuilder|personal-multi|"personal"/.test(fs.readFileSync(f, "utf8")));
+    expect(hits).toEqual([]);
+  });
+
+  it("clears the saved personal multis key on load and keeps everything else", () => {
+    localStorage.clear();
+    localStorage.setItem("nba-edge-personal-multis-v1", JSON.stringify([{ id: "p-1", legIds: ["a", "b"] }]));
+    localStorage.setItem("multi-bookie:personal:mainPlay:Personal:a,b", "Neds");
+    localStorage.setItem("multi-bookie:today:mainPlay::a,b", "Sportsbet");
+    localStorage.setItem("nba-edge-admin", "1");
+    expect(clearRetiredStorage(localStorage).sort()).toEqual([
+      "multi-bookie:personal:mainPlay:Personal:a,b",
+      "nba-edge-personal-multis-v1",
+    ]);
+    expect(localStorage.getItem("nba-edge-personal-multis-v1")).toBeNull();
+    expect(localStorage.getItem("multi-bookie:today:mainPlay::a,b")).toBe("Sportsbet");
+    expect(localStorage.getItem("nba-edge-admin")).toBe("1");
+    expect(fs.readFileSync("src/main.tsx", "utf8")).toMatch(/clearRetiredStorage\(window\.localStorage\)/);
+    localStorage.clear();
   });
 });

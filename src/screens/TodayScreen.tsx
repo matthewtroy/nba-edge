@@ -1,11 +1,9 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import type { DataBundle } from "../hooks/useData";
 import type { LiveTrackingState } from "../hooks/useLiveTracking";
 import { liveMultiKey } from "@lib/live-tracking";
 import type { MultiType, PickLeg } from "@lib/types";
 import { MultiCard } from "../components/MultiCard";
-import { PersonalMultiBuilder } from "../components/PersonalMultiBuilder";
-import { usePersonalMultis } from "../hooks/usePersonalMultis";
 import { DateSwitcher } from "../components/DateSwitcher";
 import { TomorrowSlateTease } from "../components/TomorrowSlateTease";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
@@ -81,8 +79,6 @@ export function TodayScreen({
     previous: data.meta.injuriesAtTip,
   });
 
-  const { multis: personalMultis, addMulti, removeMulti } = usePersonalMultis(data.picks);
-  const [builderOpen, setBuilderOpen] = useState(false);
   const slateFairOnly = !slateHasFeedOdds(data.picks);
   const slateOddsNote = slateOddsAvailabilityNote(data.meta, data.picks);
 
@@ -172,52 +168,6 @@ export function TodayScreen({
         );
       })}
 
-      {!building && (
-      <section className="mt-6">
-        <div className="flex items-center justify-between mb-2">
-          <h2 className="text-sm font-semibold text-white/80">Personal multis</h2>
-          <button
-            type="button"
-            className="text-xs px-3 py-1.5 rounded-lg border border-white/20"
-            onClick={() => setBuilderOpen(true)}
-          >
-            Generate new multi
-          </button>
-        </div>
-        {personalMultis.length === 0 ? (
-          <p className="text-sm text-white/50">None saved on this device.</p>
-        ) : (
-          personalMultis.map(({ multi, draftId }) => (
-            <MultiCard
-              key={draftId}
-              multi={multi}
-              picksById={picksById}
-              injuries={badgeInjuries}
-              slate={data.slate}
-              preferredBookie={myBookie}
-              oddsLastPulled={data.meta.oddsLastPulled}
-              fairOnly={slateFairOnly || multi.type === "q1Multi"}
-              oddsNote={slateOddsNote}
-              hideBookieSelect={slateFairOnly || multi.type === "q1Multi"}
-              discordCopy={false}
-              onRemove={() => removeMulti(draftId)}
-              onLegTap={onLegTap}
-              onCopy={onCopy}
-              legViews={liveTracking.legViews}
-              liveBetView={liveTracking.betViews.get(liveMultiKey(multi))}
-              liveSnapshot={liveTracking.snapshot}
-            />
-          ))
-        )}
-      </section>
-      )}
-
-      <PersonalMultiBuilder
-        open={builderOpen}
-        picks={data.picks}
-        onClose={() => setBuilderOpen(false)}
-        onSave={addMulti}
-      />
     </div>
   );
 }
