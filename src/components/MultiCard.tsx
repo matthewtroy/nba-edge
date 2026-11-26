@@ -272,9 +272,10 @@ export function MultiCard({
       <div
         className={
           multi.type === "crossGameSgm"
-            ? ""
-            : "-mx-4 divide-y divide-white/[0.04] overflow-hidden"
+            ? ui.legRowsBleed
+            : `${ui.legRowsBleed} divide-y divide-white/[0.04]`
         }
+        data-testid="multi-card-leg-rows"
       >
         {multi.type === "crossGameSgm" ? (
           <CrossLegGroups
@@ -512,6 +513,7 @@ function MotionBlock(props: {
     <div
       className={`${props.spacingTop ? "mt-4 pt-4 border-t border-white/[0.05]" : ""}`}
     >
+      <div className="px-4">
       <MotionGroupHeader
         matchup={props.matchup}
         time={props.time}
@@ -520,6 +522,7 @@ function MotionBlock(props: {
         oddsAge={oddsAge}
         liveStatus={props.liveStatus}
       />
+      </div>
       {props.rows.map(({ anchorId, leg }) => (
         <ErrorBoundary key={anchorId} name={`leg-${anchorId}`}>
           <MultiLegRow

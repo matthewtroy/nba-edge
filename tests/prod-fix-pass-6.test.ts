@@ -6,6 +6,9 @@ import fs from "fs";
 import path from "path";
 import type { InjuryEntry, MultiBet, PickLeg, SlateGame } from "../lib/types";
 import { MultiCardHeader } from "../src/components/MultiCardHeader";
+import { MultiCard } from "../src/components/MultiCard";
+import { fixtureSlateDir, loadPublishedSlate } from "./public-data-fixture";
+import { picksByIdFromOfficialSnapshots } from "../lib/official-leg-snapshot";
 import { multiCardTitle } from "../lib/multi-combined";
 import { renderToStaticMarkup } from "react-dom/server";
 import { injuriesForInjuryPanel, seedInjuriesAtTipFromPreTip } from "../lib/injuries-at-tip";
@@ -19,7 +22,7 @@ import { loadPreAppMainPlays, preAppMainPlayRows } from "../lib/pre-app-main-pla
 import { ResultsScreen } from "../src/screens/ResultsScreen";
 import { ADMIN_STORAGE_KEY, readAdminMode } from "../src/hooks/useAdminMode";
 import type { DataBundle } from "../src/hooks/useData";
-import { createElement, act } from "react";
+import { createElement, act, Profiler } from "react";
 import { createRoot } from "react-dom/client";
 import {
   VALUE_SINGLE_MIN_EDGE,
@@ -376,5 +379,94 @@ describe("item 6: softer won/lost tint on Home, Games and Picks", () => {
     for (const f of ["src/components/MultiLegRow.tsx", "src/components/PickLegRow.tsx"]) {
       expect(fs.readFileSync(path.join(process.cwd(), f), "utf8")).toMatch(/legRowLiveTrackingClass\(liveView\)/);
     }
+  });
+});
+
+describe("item 7: Cross SGM tint spans the card inner width like Main Play", () => {
+  const dir = fixtureSlateDir("2026-11-26");
+  const { slate, picks } = loadPublishedSlate("2026-11-26");
+  const official = JSON.parse(fs.readFileSync(path.join(dir, "official-card.json"), "utf8")) as OfficialCardFile;
+  const picksById = picksByIdFromOfficialSnapshots(official.legSnapshots, picks);
+
+  async function renderCard(type: MultiBet["type"]) {
+    const multi = official.multis.find((m) => m.type === type)!;
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    const root = createRoot(host);
+    await act(async () => {
+      root.render(
+        createElement(MultiCard, {
+          multi,
+          picksById,
+          injuries: official.injuries,
+          slate,
+          officialDisplayOnly: true,
+          lockedBookie: multi.bestBookie,
+          liveCatalog: picks,
+          slateDate: "2026-11-26",
+          onLegTap: () => {},
+          onCopy: () => {},
+        })
+      );
+    });
+    return { host, done: () => (root.unmount(), host.remove()) };
+  }
+
+  /** Horizontal px offset of an element from the card's inner (padding) edge, from Tailwind spacing classes. */
+  function insetPx(classes: string[]): number {
+    let px = 0;
+    for (const c of classes) {
+      const m = c.match(/^(-?)(mx|px|p)-(\d+(?:\.5)?)$/);
+      if (!m) continue;
+      const v = Number(m[3]) * 4;
+      px += m[2] === "mx" ? (m[1] ? -v : v) : v;
+    }
+    return px;
+  }
+
+  it("Cross leg rows use the same bleed as Main Play, cancelling the card padding exactly", async () => {
+    const widths: Record<string, number> = {};
+    for (const type of ["mainPlay", "crossGameSgm"] as const) {
+      const { host, done } = await renderCard(type);
+      const card = host.querySelector("section")!;
+      const rows = card.querySelector("[data-testid='multi-card-leg-rows']")!;
+      const cardPad = insetPx(card.className.split(/\s+/));
+      const rowsInset = cardPad + insetPx(rows.className.split(/\s+/));
+      expect(rows.querySelectorAll("button.grid").length).toBeGreaterThan(0);
+      for (const row of rows.querySelectorAll("button.grid")) {
+        let el = row.parentElement;
+        let extra = 0;
+        while (el && el !== rows) {
+          extra += insetPx(el.className.split(/\s+/));
+          el = el.parentElement;
+        }
+        widths[type] = rowsInset + extra;
+      }
+      done();
+    }
+    expect(widths.mainPlay).toBe(0);
+    expect(widths.crossGameSgm).toBe(0);
+  });
+
+  it("a mounted card settles after one commit (no render loop)", async () => {
+    let commits = 0;
+    const multi = official.multis.find((m) => m.type === "crossGameSgm")!;
+    const host = document.createElement("div");
+    const root = createRoot(host);
+    await act(async () => {
+      root.render(
+        createElement(
+          Profiler,
+          { id: "card", onRender: () => void commits++ },
+          createElement(MultiCard, { multi, picksById, injuries: [], slate, slateDate: "2026-11-26", onLegTap: () => {}, onCopy: () => {} })
+        )
+      );
+    });
+    const afterMount = commits;
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 50));
+    });
+    expect(commits).toBe(afterMount);
+    root.unmount();
   });
 });

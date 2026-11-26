@@ -25,10 +25,10 @@ export function useCrossGameSelection(
     return m;
   }, [multi.crossGameGroups]);
 
-  const gameIds = useMemo(() => {
-    if (slate?.length) return slate.map((g) => g.id);
-    return [...new Set(legs.map((l) => l.gameId))];
-  }, [slate, legs]);
+  const gameIdsKey = slate?.length
+    ? slate.map((g) => g.id).join(",")
+    : [...new Set(legs.map((l) => l.gameId))].join(",");
+  const gameIds = useMemo(() => (gameIdsKey ? gameIdsKey.split(",") : []), [gameIdsKey]);
 
   const [enabled, setEnabled] = useState<Set<string>>(() => {
     try {
@@ -50,8 +50,10 @@ export function useCrossGameSelection(
         if (prev.has(id)) next.add(id);
         else if (!prev.size) next.add(id);
       }
-      if (!next.size) return new Set(gameIds);
-      return next;
+      const resolved = next.size ? next : new Set(gameIds);
+      // A fresh Set on every pass would re-render forever.
+      if (resolved.size === prev.size && [...resolved].every((id) => prev.has(id))) return prev;
+      return resolved;
     });
   }, [gameIds, multi.legs.join(",")]);
 

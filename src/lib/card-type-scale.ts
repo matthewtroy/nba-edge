@@ -1,6 +1,8 @@
 /** Premium calm card tokens (390px-first). */
 export const ui = {
   card: "theme-adaptive-card bg-card rounded-card border border-white/[0.06] p-4 mb-3",
+  /** Cancels the card's p-4 so every leg row (and its won/lost tint) spans the card inner width. */
+  legRowsBleed: "-mx-4 overflow-hidden",
   divider: "border-white/[0.05]",
   headerTitle: "text-base font-semibold text-white theme-adaptive-title leading-snug",
   headerTotal: "text-[22px] font-bold text-price-green tabular-nums leading-none",
