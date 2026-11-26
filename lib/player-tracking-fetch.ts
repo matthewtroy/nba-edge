@@ -84,6 +84,18 @@ export function shotVolumeReason(tr: PlayerTrackingDay): string | undefined {
   return `Shot volume up: ${l5.toFixed(1)} FGA last 5 (season ${season.toFixed(1)})`;
 }
 
+export function threesVolumeFromLogs(logs: PlayerGameLog[]): string | undefined {
+  const sorted = [...logs].sort((a, b) => b.date.localeCompare(a.date));
+  const l5Games = sorted.slice(0, 5).filter((g) => (g.fg3a ?? 0) > 0 || g.threes > 0);
+  const l10 = sorted.slice(0, 10).filter((g) => (g.fg3a ?? 0) > 0 || g.threes > 0);
+  if (l5Games.length < 3 || l10.length < 5) return undefined;
+  const l5 = l5Games.reduce((s, g) => s + (g.fg3a ?? g.threes), 0) / l5Games.length;
+  const season =
+    l10.reduce((s, g) => s + (g.fg3a ?? g.threes), 0) / l10.length;
+  if (season <= 0 || (l5 < season * 1.05 && l5 < season + 0.5)) return undefined;
+  return `3PA up: ${l5.toFixed(1)} last 5 (season ${season.toFixed(1)})`;
+}
+
 export function potentialAstReason(tr: PlayerTrackingDay): string | undefined {
   if (tr.potentialAst == null) return undefined;
   return `${tr.potentialAst.toFixed(1)} potential ast (L10)`;

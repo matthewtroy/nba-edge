@@ -220,6 +220,8 @@ export function parseGameLogsFromEspn(
     const stats = ev.stats ?? [];
     const mins = parseMinutes(ix ? stats[ix.min] : stats[0]);
     const threes = parseMade(ix ? stats[ix.threes] : stats[3]);
+    const fg3a =
+      ix && ix.threes >= 0 ? parseAttempted(stats[ix.threes]) : parseAttempted(stats[3]);
     const reb = num(ix ? stats[ix.reb] : stats[7]);
     const ast = num(ix ? stats[ix.ast] : stats[8]);
     const pts = num(ix ? stats[ix.pts] : stats[13]);
@@ -267,6 +269,7 @@ export function parseGameLogsFromEspn(
       opponentTeamId,
       isHome,
       fga,
+      fg3a,
       fta,
       turnovers,
       source: "espn",

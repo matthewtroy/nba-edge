@@ -108,6 +108,7 @@ describe("ESPN gamelog parse", () => {
       ast: 5,
       threes: 4,
       fga: 14,
+      fg3a: 4,
       fta: 12,
       turnovers: 1,
     });

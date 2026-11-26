@@ -23,7 +23,10 @@ import type { PlayerTrackingDay } from "./player-tracking-cache.js";
 import {
   potentialAstReason,
   shotVolumeReason,
+  threesVolumeFromLogs,
 } from "./player-tracking-fetch.js";
+import { houseReasonLine } from "./leg-reason-house.js";
+import { q1HitRateLast10, q1SeasonHitFraction } from "./leg-history.js";
 import { h2hReasonPhrase } from "./h2h-reason.js";
 import { reasonTextHasBannedPhrase } from "./reason-ban.js";
 import { gateLegReasons, minReasonLinesForRung } from "./reason-gate.js";
@@ -201,7 +204,7 @@ export function buildLegReasons(input: {
   const byType = new Map<string, LegReason>();
 
   const put = (type: LegReason["type"], text: string) => {
-    const t = text.trim();
+    const t = houseReasonLine(text.trim());
     if (!t || byType.has(type) || reasonTextHasBannedPhrase(t)) return;
     byType.set(type, { type, text: t });
   };
@@ -226,55 +229,75 @@ export function buildLegReasons(input: {
     }
   }
 
-  if (input.tracking) {
-    const m = input.leg.market;
-    if (m === "ast" || m === "q1ast") {
+  const m = input.leg.market;
+  const q1Market = m.startsWith("q1");
+  if (!q1Market && input.tracking) {
+    if (m === "ast") {
       const t = potentialAstReason(input.tracking);
       if (t) put("tracking", t);
-    } else if (m === "pts" || m === "3pm") {
+    } else if (m === "pts") {
       const t = shotVolumeReason(input.tracking);
       if (t) put("tracking", t);
+    } else if (m === "3pm") {
+      const t = threesVolumeFromLogs(input.logs);
+      if (t) put("tracking", t);
+    }
+  } else if (m === "3pm") {
+    const t = threesVolumeFromLogs(input.logs);
+    if (t) put("tracking", t);
+  }
+
+  if (!q1Market) {
+    const matchup = matchupPhrase(
+      input.defense,
+      input.defendingTeamId,
+      input.playerPosition,
+      input.leg.market,
+      input.opponentName
+    );
+    if (matchup) put("matchup", matchup);
+
+    const h2h = h2hReasonPhrase({
+      logs: input.h2hLogs ?? input.logs,
+      playerId: input.playerId ?? input.leg.playerId,
+      defendingTeamId: input.defendingTeamId,
+      market: input.leg.market,
+      line: input.leg.line,
+      opponentName: input.opponentName,
+      seasonAvg: input.seasonAvg,
+    });
+    if (h2h) put("h2h", h2h);
+
+    const rankLine = playerRankPhrase(
+      input.leg.market,
+      input.playerId ?? input.leg.playerId,
+      input.positionRanks,
+      input.leg.line
+    );
+    if (rankLine) put("rank", rankLine);
+
+    const pace = pacePhrase(
+      input.defense,
+      input.playerTeamId,
+      input.defendingTeamId,
+      input.teamName,
+      input.opponentName
+    );
+    if (pace) put("pace", pace);
+  } else {
+    const q1m = input.leg.market as "q1pts" | "q1reb" | "q1ast";
+    const season = q1SeasonHitFraction(input.logs, q1m, input.leg.line);
+    if (season && season.hits / season.total >= 0.65) {
+      put("form", `${season.hits}/${season.total} Q1 at line`);
+    } else {
+      const rate = q1HitRateLast10(input.logs, q1m, input.leg.line);
+      if (rate != null && rate >= 0.7) {
+        put("form", `${Math.round(rate * 10)}/10 Q1 at line`);
+      }
     }
   }
 
-  const matchup = matchupPhrase(
-    input.defense,
-    input.defendingTeamId,
-    input.playerPosition,
-    input.leg.market,
-    input.opponentName
-  );
-  if (matchup) put("matchup", matchup);
-
-  const h2h = h2hReasonPhrase({
-    logs: input.h2hLogs ?? input.logs,
-    playerId: input.playerId ?? input.leg.playerId,
-    defendingTeamId: input.defendingTeamId,
-    market: input.leg.market,
-    line: input.leg.line,
-    opponentName: input.opponentName,
-    seasonAvg: input.seasonAvg,
-  });
-  if (h2h) put("h2h", h2h);
-
-  const rankLine = playerRankPhrase(
-    input.leg.market,
-    input.playerId ?? input.leg.playerId,
-    input.positionRanks,
-    input.leg.line
-  );
-  if (rankLine) put("rank", rankLine);
-
-  const pace = pacePhrase(
-    input.defense,
-    input.playerTeamId,
-    input.defendingTeamId,
-    input.teamName,
-    input.opponentName
-  );
-  if (pace) put("pace", pace);
-
-  const form = formPhrase(input.logs, input.leg.market, input.leg.line);
+  const form = q1Market ? undefined : formPhrase(input.logs, input.leg.market, input.leg.line);
   if (form) put("form", form);
 
   const avg = avgPhrase(
@@ -285,7 +308,7 @@ export function buildLegReasons(input: {
   );
   if (avg) put("avg", avg);
 
-  const mins = minutesPhrase(input.logs);
+  const mins = q1Market ? undefined : minutesPhrase(input.logs);
   if (mins) put("min", mins);
 
   const sorted = sortLegReasons([...byType.values()]);
@@ -294,6 +317,22 @@ export function buildLegReasons(input: {
   const minLines = minReasonLinesForRung(input.leg.market, input.leg.line);
   if (reasons.length < minLines) {
     reasons = gateLegReasons(filtered, input.leg.market, 3);
+  }
+  const hasFormOrAvg = reasons.some((r) => r.type === "form" || r.type === "avg");
+  if (!hasFormOrAvg) {
+    const retryForm = formPhrase(input.logs, input.leg.market, input.leg.line);
+    if (retryForm) {
+      reasons = gateLegReasons([...reasons, { type: "form", text: retryForm }], input.leg.market, 3, input.leg.line);
+    } else {
+      const retryAvg = avgPhrase(input.logs, input.leg.market, input.leg.line, input.seasonAvg);
+      if (retryAvg) {
+        reasons = gateLegReasons([...reasons, { type: "avg", text: retryAvg }], input.leg.market, 3, input.leg.line);
+      }
+    }
+  }
+  if (reasons.length > 3) reasons = reasons.slice(0, 3);
+  if (reasons.length >= 2 && reasons.length < 3 && minLines <= 2) {
+    return reasons.slice(0, 2);
   }
   return reasons;
 }

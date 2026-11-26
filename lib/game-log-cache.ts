@@ -11,7 +11,7 @@ import {
 export { modelRatesLogCount, normalizeLogsForPlayer, stampLegacyLogSources } from "./game-log-normalize.js";
 
 /** Bump when ESPN parse mapping changes (invalidates stale cached rows). */
-export const GAME_LOG_CACHE_VERSION = 2;
+export const GAME_LOG_CACHE_VERSION = 3;
 
 export interface CachedGameLog {
   fetchedAt: string;

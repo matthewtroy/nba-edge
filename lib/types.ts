@@ -272,6 +272,7 @@ export interface PlayerGameLog {
   opponent?: string;
   isHome?: boolean;
   fga?: number;
+  fg3a?: number;
   fta?: number;
   turnovers?: number;
   /** ESPN player endpoint vs league boxscore backfill */
