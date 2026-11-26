@@ -12,7 +12,15 @@ export function officialLiveTrackingInputs(
   if (!official?.legSnapshots || official.slateDate !== slateDate) {
     return { slate, legs: picks };
   }
-  const legs = Object.values(official.legSnapshots).map((snap) => pickLegFromSnapshot(snap));
+  const fromOfficial = Object.values(official.legSnapshots).map((snap) =>
+    pickLegFromSnapshot(snap)
+  );
+  const legsById = new Map<string, PickLeg>();
+  for (const leg of picks) legsById.set(leg.id, leg);
+  for (const leg of fromOfficial) {
+    if (!legsById.has(leg.id)) legsById.set(leg.id, leg);
+  }
+  const legs = [...legsById.values()];
   const byGame = new Map(slate.map((g) => [g.id, g]));
   const mergedSlate = [...slate];
   for (const leg of legs) {

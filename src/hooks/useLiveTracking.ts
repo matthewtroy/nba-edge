@@ -3,6 +3,7 @@ import type { MultiBet, PickLeg, SlateGame } from "@lib/types";
 import {
   LIVE_POLL_MS,
   createEspnDirectProvider,
+  stableSnapshotKey,
   subscribeLiveSource,
   type LiveSourceSnapshot,
 } from "@lib/live-source";
@@ -50,9 +51,10 @@ export function useLiveTracking(
     return unsub;
   }, [enabled, slateDate, gameIds.join("|")]);
 
+  const snapshotKey = snapshot ? stableSnapshotKey(snapshot) : "";
   const legViews = useMemo(
     () => liveViewsForLegs(legs, slate, snapshot),
-    [legs, slate, snapshot]
+    [legs, slate, snapshotKey, snapshot]
   );
   const betViews = useMemo(
     () => liveBetViewsForMultis(multis, legViews),

@@ -36,6 +36,7 @@ describe("official live tracking", () => {
       official
     );
     expect(legs.some((l) => l.id === cardLegId)).toBe(true);
+    expect(legs.length).toBeGreaterThan(trimmedPicks.length);
     expect(new Set(pollSlate.map((g) => g.id)).size).toBeGreaterThanOrEqual(
       new Set(legs.map((l) => l.gameId)).size
     );
