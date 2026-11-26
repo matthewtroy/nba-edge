@@ -60,7 +60,10 @@ export default function App() {
     multisForLive,
     !data.loading && !data.error
   );
-  const badgeInjuries = injuriesForBadges(data.injuries);
+  const badgeInjuries = injuriesForBadges(data.injuries, {
+    slate: data.slate,
+    now: new Date(),
+  });
   const { settings, setSettings } = useSettings();
   useEffect(() => {
     if (data.loading || !data.picks.length) return;

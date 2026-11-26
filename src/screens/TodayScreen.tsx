@@ -88,7 +88,10 @@ export function TodayScreen({
   );
   const publishedAt = official?.publishedAt ?? official?.lockedAt;
   const republishedAt = official?.republishedAt;
-  const badgeInjuries = injuriesForBadges(data.injuries);
+  const badgeInjuries = injuriesForBadges(data.injuries, {
+    slate: data.slate,
+    now: new Date(),
+  });
 
   const cardPlayerIds = new Set(
     displayMultis.flatMap((m) =>

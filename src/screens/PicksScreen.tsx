@@ -77,7 +77,10 @@ export function PicksScreen({
   onLegTap,
   liveTracking,
 }: Props) {
-  const badgeInjuries = injuriesForBadges(data.injuries);
+  const badgeInjuries = injuriesForBadges(data.injuries, {
+    slate: data.slate,
+    now: new Date(),
+  });
   const [filters, patch, toggleSortDir] = usePicksFilters();
   const markets = useMemo(() => marketsOnSlate(data.picks), [data.picks]);
 

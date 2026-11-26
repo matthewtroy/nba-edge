@@ -40,7 +40,10 @@ export function GamesScreen({
   myBookie,
   liveTracking,
 }: Props) {
-  const badgeInjuries = injuriesForBadges(data.injuries);
+  const badgeInjuries = injuriesForBadges(data.injuries, {
+    slate: data.slate,
+    now: new Date(),
+  });
   const { preset, setPreset, presets } = useGamesSgmPreset();
   const { roughiesOn, setRoughiesOn } = useGamesRoughies();
   const activeSlate = useMemo(() => gamesForGamesTab(data.slate), [data.slate]);

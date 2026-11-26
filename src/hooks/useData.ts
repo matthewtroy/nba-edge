@@ -141,13 +141,17 @@ export function useData(selectedDate: string): DataBundle {
             slateOut = merged.slate;
             picksOut = merged.picks;
             multisOut = merged.multis;
-            injuriesOut = freezeInjuriesAtTip(
-              prev.injuries,
-              injuriesOut,
-              slateOut,
-              new Date()
-            );
           }
+          const injuryHistory =
+            prev && prev.date === date
+              ? [...prev.injuries, ...injuries]
+              : [...(officialCard?.injuries ?? []), ...injuries];
+          injuriesOut = freezeInjuriesAtTip(
+            injuryHistory,
+            injuriesOut,
+            slateOut,
+            new Date()
+          );
           lastBundleRef.current = {
             date,
             slate: slateOut,
