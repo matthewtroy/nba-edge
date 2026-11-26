@@ -29,5 +29,7 @@ describe("PicksScreen", () => {
     expect(bar.match(/leg-progress-right/g)?.length).toBe(1);
     expect(bar).toContain('data-testid="leg-progress-target-tick"');
     expect(bar).not.toContain("leg-progress-target-label");
+    expect(bar).not.toMatch(/min-w-\[2\.5rem\]/);
+    expect(bar).toMatch(/gap-1 min-w-0/);
   });
 });

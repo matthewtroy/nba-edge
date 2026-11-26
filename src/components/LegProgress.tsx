@@ -31,7 +31,7 @@ export function LegProgress({
 
   return (
     <div
-      className={`flex items-center gap-1.5 min-w-0 ${className}`}
+      className={`flex items-center gap-1 min-w-0 ${className}`}
       data-testid="leg-progress"
       data-state={view.state}
       data-value={valueAtBookie ? "true" : undefined}
@@ -68,7 +68,7 @@ export function LegProgress({
         )}
       </div>
       <span
-        className={`shrink-0 text-[10px] font-semibold tabular-nums min-w-[2.5rem] text-right ${legProgressRightClass(view)} ${
+        className={`shrink-0 text-[10px] font-semibold tabular-nums text-right ${legProgressRightClass(view)} ${
           settled ? "leg-progress-settled-right" : ""
         }`}
         data-testid="leg-progress-right"
