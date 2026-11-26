@@ -1,4 +1,5 @@
 import type { InjuryEntry, InjuryStatus, PlayerGameLog, SlateGame } from "../lib/types.js";
+import { normalizeEspnGameStatus, slateStatusLabel } from "../lib/slate-espn-status.js";
 import { toSydney } from "../lib/sydney.js";
 
 const STATUS_MAP: Record<string, InjuryStatus> = {
@@ -49,9 +50,7 @@ export function parseScoreboard(
     const comp = event.competitions?.[0];
     if (!comp) continue;
     const state = event.status?.type?.state ?? "";
-    if (state === "post" && (event.status?.type?.name ?? "").toLowerCase().includes("final")) {
-      continue;
-    }
+    const statusName = event.status?.type?.name ?? state;
     const home = comp.competitors?.find((c) => c.homeAway === "home");
     const away = comp.competitors?.find((c) => c.homeAway === "away");
     if (!home?.team || !away?.team) continue;
@@ -77,7 +76,9 @@ export function parseScoreboard(
       total,
       homeB2B: teamIdsPlayedYesterday.has(homeId),
       awayB2B: teamIdsPlayedYesterday.has(awayId),
-      status: event.status?.type?.name ?? state,
+      status: slateStatusLabel(
+        normalizeEspnGameStatus(state, statusName)
+      ),
     });
   }
   return games;

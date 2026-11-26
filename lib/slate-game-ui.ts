@@ -1,10 +1,11 @@
 export function isGameFinal(status: string): boolean {
   const s = status.toLowerCase();
-  return s.includes("final") || s === "post" || s.includes("final/ot");
+  return s === "final" || s.includes("final") || s === "post" || s.includes("final/ot");
 }
 
 export function isGameLive(status: string): boolean {
   const s = status.toLowerCase();
+  if (s === "live") return true;
   return (
     s.includes("progress") ||
     s.includes("halftime") ||

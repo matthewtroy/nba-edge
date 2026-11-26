@@ -23,6 +23,7 @@ import { gameOddsLabelsForUnpulled, gameOddsPriceAge } from "../lib/unpulled-odd
 import { evaluateOfficialPublishGate } from "../lib/official-card-gate.js";
 import { logOfficialCard } from "../lib/official-card-log.js";
 import { hasAuPropPrices, isEveningSydney } from "../lib/official-card-time.js";
+import { applySlateTipFreeze } from "../lib/slate-tip-freeze.js";
 
 export interface SlateBundleInput {
   rootDir: string;
@@ -243,12 +244,51 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   metaOut.slatePublicationStatus = status;
   metaOut.slateStatusLabel = statusLabel;
 
-  fs.writeFileSync(path.join(outDir, "slate.json"), JSON.stringify(input.slate, null, 2));
+  let slateOut = input.slate;
+  let picksOut = picks;
+  let multisOut = multis;
+  const prevSlatePath = path.join(outDir, "slate.json");
+  const prevPicksPath = path.join(outDir, "picks.json");
+  const prevMultisPath = path.join(outDir, "multis.json");
+  if (
+    fs.existsSync(prevSlatePath) &&
+    fs.existsSync(prevPicksPath) &&
+    fs.existsSync(prevMultisPath)
+  ) {
+    try {
+      const previousSlate = JSON.parse(
+        fs.readFileSync(prevSlatePath, "utf8")
+      ) as SlateGame[];
+      const previousPicks = JSON.parse(
+        fs.readFileSync(prevPicksPath, "utf8")
+      ) as import("../lib/types.js").PickLeg[];
+      const previousMultisRaw = JSON.parse(
+        fs.readFileSync(prevMultisPath, "utf8")
+      ) as { bets?: MultiBet[] };
+      const previousMultis = previousMultisRaw.bets ?? [];
+      const frozen = applySlateTipFreeze({
+        previousSlate,
+        incomingSlate: input.slate,
+        previousPicks,
+        incomingPicks: picks,
+        previousMultis,
+        incomingMultis: multis,
+        now: input.now,
+      });
+      slateOut = frozen.slate;
+      picksOut = frozen.picks;
+      multisOut = frozen.multis;
+    } catch {
+      /* first publish */
+    }
+  }
+
+  fs.writeFileSync(path.join(outDir, "slate.json"), JSON.stringify(slateOut, null, 2));
   fs.writeFileSync(path.join(outDir, "injuries.json"), JSON.stringify(injuries, null, 2));
-  fs.writeFileSync(path.join(outDir, "picks.json"), JSON.stringify(picks, null, 2));
+  fs.writeFileSync(path.join(outDir, "picks.json"), JSON.stringify(picksOut, null, 2));
   fs.writeFileSync(
     path.join(outDir, "multis.json"),
-    JSON.stringify({ bets: multis, notBuilt: multisPayload.notBuilt }, null, 2)
+    JSON.stringify({ bets: multisOut, notBuilt: multisPayload.notBuilt }, null, 2)
   );
   fs.writeFileSync(
     path.join(outDir, "odds-coverage.json"),
@@ -256,13 +296,13 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   );
   fs.writeFileSync(path.join(outDir, "meta.json"), JSON.stringify(metaOut, null, 2));
 
-  const priced = picks.filter(
+  const priced = picksOut.filter(
     (p) =>
       (p.bestPrice != null && p.bestPrice > 1) ||
       (p.bookiePrices && Object.values(p.bookiePrices).some((v) => v > 1))
   ).length;
   console.log(
-    `slate ${tipDate}: ${input.slate.length} games, ${picks.length} legs, ${multis.length} multis, ${priced} priced`
+    `slate ${tipDate}: ${slateOut.length} games, ${picksOut.length} legs, ${multisOut.length} multis, ${priced} priced`
   );
 
   const firstTipMs = Math.min(
@@ -276,9 +316,9 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     date: tipDate,
     status,
     statusLabel,
-    gameCount: input.slate.length,
-    legCount: picks.length,
-    multiCount: multis.length,
+    gameCount: slateOut.length,
+    legCount: picksOut.length,
+    multiCount: multisOut.length,
     lastUpdated: metaOut.lastUpdated,
     firstTipIso,
   };

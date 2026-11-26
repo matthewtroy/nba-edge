@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { mergeViewerBundleOnRefresh } from "@lib/viewer-bundle-freeze";
 import type {
   SlateGame,
   InjuryEntry,
@@ -49,6 +50,12 @@ async function fetchDataJson<T>(file: string, version: string): Promise<T> {
 }
 
 export function useData(selectedDate: string): DataBundle {
+  const lastBundleRef = useRef<{
+    date: string;
+    slate: SlateGame[];
+    picks: PickLeg[];
+    multis: MultiBet[];
+  } | null>(null);
   const [state, setState] = useState<DataBundle>({
     index: null,
     selectedDate,
@@ -108,13 +115,42 @@ export function useData(selectedDate: string): DataBundle {
           /* no lock yet */
         }
         if (!cancelled) {
+          const date = dateKey ?? "";
+          const prev = lastBundleRef.current;
+          let slateOut = slate;
+          let picksOut = picks;
+          let multisOut = bets;
+          if (
+            prev &&
+            prev.date === date &&
+            prev.slate.length &&
+            (prev.picks.length || picks.length)
+          ) {
+            const merged = mergeViewerBundleOnRefresh({
+              previous: {
+                slate: prev.slate,
+                picks: prev.picks,
+                multis: prev.multis,
+              },
+              incoming: { slate, picks, multis: bets },
+            });
+            slateOut = merged.slate;
+            picksOut = merged.picks;
+            multisOut = merged.multis;
+          }
+          lastBundleRef.current = {
+            date,
+            slate: slateOut,
+            picks: picksOut,
+            multis: multisOut,
+          };
           setState({
             index,
-            selectedDate: dateKey ?? "",
-            slate,
+            selectedDate: date,
+            slate: slateOut,
             injuries,
-            picks,
-            multis: bets,
+            picks: picksOut,
+            multis: multisOut,
             multisNotBuilt: notBuilt,
             officialCard,
             meta,
