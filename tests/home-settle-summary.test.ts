@@ -46,7 +46,7 @@ function stubResults(overrides: Partial<ResultsJson["official"]["record"]> = {})
 describe("home settle summary", () => {
   it("formats official W-L row", () => {
     expect(formatHomeSettleSummary(stubResults())).toMatch(
-      /Official 3–2 · \+1\.50u net · strike 60% · ROI 30%/
+      /Official 3–2 · \+1\.50u net · strike 60%$/
     );
   });
 

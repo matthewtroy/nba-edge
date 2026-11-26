@@ -244,8 +244,7 @@ async function main() {
     const { record } = aggregate.official;
     console.log(
       `settle: bets ${record.bets} · W-${record.won} L-${record.lost} V-${record.void} · ` +
-        `staked ${record.staked}u profit ${record.profit.toFixed(2)}u` +
-        (record.roi != null ? ` ROI ${(record.roi * 100).toFixed(1)}%` : "")
+        `staked ${record.staked}u profit ${record.profit.toFixed(2)}u`
     );
   } else {
     console.log("settle: idempotent — no changes");
@@ -254,8 +253,7 @@ async function main() {
   if (mainPlay) {
     console.log(
       `settle: Main Play ${mainPlay.won}-${mainPlay.lost} · staked ${mainPlay.staked}u · ` +
-        `profit ${mainPlay.profit >= 0 ? "+" : ""}${mainPlay.profit.toFixed(2)}u` +
-        (mainPlay.roi != null ? ` · ROI ${(mainPlay.roi * 100).toFixed(1)}%` : "")
+        `profit ${mainPlay.profit >= 0 ? "+" : ""}${mainPlay.profit.toFixed(2)}u`
     );
   }
 

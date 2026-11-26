@@ -12,6 +12,5 @@ export function formatHomeSettleSummary(results: ResultsJson | null | undefined)
   const decided = rec.won + rec.lost;
   const strike =
     decided > 0 ? `${Math.round((rec.won / decided) * 1000) / 10}%` : "—";
-  const roi = rec.roi != null ? `${Math.round(rec.roi * 1000) / 10}%` : "—";
-  return `Official ${wl}${voidSuffix} · ${net} net · strike ${strike} · ROI ${roi}`;
+  return `Official ${wl}${voidSuffix} · ${net} net · strike ${strike}`;
 }

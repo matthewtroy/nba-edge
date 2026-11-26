@@ -425,7 +425,7 @@ describe("prod fix pass 5 — Results redesign", () => {
     return { host, done: () => (root.unmount(), host.remove()) };
   }
 
-  it("Main Play is first with W-L, Hit, Avg odds, Staked, Profit, ROI incl pre-app", async () => {
+  it("Main Play is first with W-L, Hit, Avg odds, Staked, Profit incl pre-app", async () => {
     const { host, done } = await render();
     const sections = [...host.querySelectorAll("section")];
     expect(sections[0]?.getAttribute("data-results")).toBe("main-play");
@@ -436,7 +436,7 @@ describe("prod fix pass 5 — Results redesign", () => {
     expect(mp).toMatch(/Avg odds\$10\.78/);
     expect(mp).toMatch(/Staked17\.00u/);
     expect(mp).toMatch(/Profit\+45\.49u/);
-    expect(mp).toMatch(/ROI267\.6%/);
+    expect(mp).not.toMatch(/ROI/);
     done();
   });
 
@@ -461,7 +461,7 @@ describe("prod fix pass 5 — Results redesign", () => {
     const text = host.textContent ?? "";
     expect(text).not.toMatch(/Model check|Last 14 days|Beat the market|AU price|9pm freeze|excludes Q1/i);
     expect(text).not.toMatch(/manual|pre-app|estimated/i);
-    expect(text).toMatch(/Value legs/);
+    expect(text).toMatch(/Singles/);
     done();
   });
 

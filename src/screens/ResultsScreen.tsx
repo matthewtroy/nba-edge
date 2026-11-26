@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { DataBundle } from "../hooks/useData";
+import { useAdminMode } from "../hooks/useAdminMode";
 import type { OfficialBetRow } from "@lib/official-bet-settle";
 import type { ResultsSlice } from "@lib/results-types";
 import {
@@ -24,7 +25,6 @@ interface TableRow {
   void: number;
   staked: number;
   profit: number;
-  roi: number | null;
   bets: DisplayBet[];
   children?: TableRow[];
 }
@@ -148,12 +148,11 @@ function MainPlaySection({ summary, results }: { summary: BetTypeSummary; result
         <h2 className="text-sm font-semibold">Main Play</h2>
         <p className="text-2xl font-bold tabular-nums">{wl(summary)}</p>
       </div>
-      <div className="mt-3 grid grid-cols-5 gap-2">
+      <div className="mt-3 grid grid-cols-4 gap-2">
         <Stat label="Hit" value={pct(summary.hitRate)} />
         <Stat label="Avg odds" value={summary.avgOdds != null ? `$${summary.avgOdds.toFixed(2)}` : "—"} />
         <Stat label="Staked" value={units(summary.staked)} />
         <Stat label="Profit" value={units(summary.profit, true)} className={profitClass(summary.profit)} />
-        <Stat label="ROI" value={pct(summary.roi)} className={profitClass(summary.profit)} />
       </div>
       {summary.bets.length ? (
         <>
@@ -188,16 +187,14 @@ function TableRowItem({
       <button
         type="button"
         onClick={() => expandable && setOpen(!open)}
-        className="w-full grid grid-cols-[1fr_3rem_3.5rem_4rem_3.5rem] gap-x-2 py-2 text-sm text-left tabular-nums"
+        className="w-full grid grid-cols-[1fr_3rem_3.5rem_4rem] gap-x-2 py-2 text-sm text-left tabular-nums"
       >
         <span className="truncate" style={depth ? { paddingLeft: `${depth * 0.75}rem` } : undefined}>
-          <span className="text-white/40 mr-1">{expandable ? (open ? "▾" : "▸") : " "}</span>
           {row.label}
         </span>
         <span className="text-right">{wl(row)}</span>
         <span className="text-right text-white/70">{units(row.staked)}</span>
         <span className={`text-right ${profitClass(row.profit)}`}>{units(row.profit, true)}</span>
-        <span className={`text-right ${profitClass(row.profit)}`}>{pct(row.roi)}</span>
       </button>
       {open && row.children?.length ? (
         <ul className="border-t border-white/5">
@@ -227,12 +224,11 @@ function BetsTable({
   return (
     <section className="bg-card rounded-xl p-4" data-results={testId}>
       <h2 className="text-sm font-semibold mb-2">{title}</h2>
-      <div className="grid grid-cols-[1fr_3rem_3.5rem_4rem_3.5rem] gap-x-2 text-[10px] uppercase tracking-wide text-white/45 pb-1 border-b border-white/10">
+      <div className="grid grid-cols-[1fr_3rem_3.5rem_4rem] gap-x-2 text-[10px] uppercase tracking-wide text-white/45 pb-1 border-b border-white/10">
         <span>{firstColumn}</span>
         <span className="text-right">W–L</span>
         <span className="text-right">Staked</span>
         <span className="text-right">Profit</span>
-        <span className="text-right">ROI</span>
       </div>
       <ul>
         {rows.map((row) => (
@@ -243,39 +239,48 @@ function BetsTable({
   );
 }
 
-function ValueLegsSection({ valueLegs }: { valueLegs: ResultsSlice["valueLegs"] }) {
+function SinglesSection({ valueLegs }: { valueLegs: ResultsSlice["valueLegs"] }) {
   const rec = valueLegs.record;
   return (
-    <section className="bg-card rounded-xl p-4" data-results="value-legs">
+    <section className="bg-card rounded-xl p-4" data-results="singles">
       <div className="flex items-baseline justify-between">
-        <h2 className="text-sm font-semibold">Value legs</h2>
+        <h2 className="text-sm font-semibold">Singles</h2>
         <p className="text-lg font-semibold tabular-nums">{wl(rec)}</p>
       </div>
-      <div className="mt-3 grid grid-cols-5 gap-2">
+      <div className="mt-3 grid grid-cols-4 gap-2">
         <Stat label="Hit" value={pct(rec.hitRate)} />
         <Stat label="Avg odds" value={rec.avgPrice != null ? `$${rec.avgPrice.toFixed(2)}` : "—"} />
         <Stat label="Staked" value={units(rec.staked)} />
         <Stat label="Profit" value={units(rec.profit, true)} className={profitClass(rec.profit)} />
-        <Stat label="ROI" value={pct(rec.roi)} className={profitClass(rec.profit)} />
       </div>
-      {Object.keys(valueLegs.byMarket).length ? (
-        <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-0.5 text-xs text-white/65 tabular-nums">
-          {Object.entries(valueLegs.byMarket).map(([m, row]) => (
-            <li key={m} className="flex justify-between">
-              <span>{m}</span>
-              <span>
-                {wl(row)} · {pct(row.roi)}
-              </span>
-            </li>
-          ))}
-        </ul>
-      ) : null}
+    </section>
+  );
+}
+
+function AdminSection({ valueLegs }: { valueLegs: ResultsSlice["valueLegs"] }) {
+  const markets = Object.entries(valueLegs.byMarket);
+  if (!markets.length) return null;
+  return (
+    <section className="bg-card rounded-xl p-4" data-results="admin">
+      <h2 className="text-sm font-semibold mb-2">Admin</h2>
+      <p className="text-[10px] uppercase tracking-wide text-white/45 mb-1">Singles by market</p>
+      <ul className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-xs text-white/65 tabular-nums">
+        {markets.map(([m, row]) => (
+          <li key={m} className="flex justify-between">
+            <span>{m}</span>
+            <span>
+              {wl(row)} · {units(row.profit, true)}
+            </span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
 
 export function ResultsScreen({ data }: Props) {
   const results = data.results;
+  const admin = useAdminMode();
 
   if (!results || !results.official.bets.length) {
     return (
@@ -312,7 +317,8 @@ export function ResultsScreen({ data }: Props) {
       <h1 className="text-xl font-bold">Results</h1>
       <MainPlaySection summary={mainPlay} results={results} />
       <BetsTable title="Other bets" testId="other-bets" firstColumn="Bet" rows={others} results={results} />
-      <ValueLegsSection valueLegs={results.valueLegs} />
+      <SinglesSection valueLegs={results.valueLegs} />
+      {admin ? <AdminSection valueLegs={results.valueLegs} /> : null}
     </div>
   );
 }

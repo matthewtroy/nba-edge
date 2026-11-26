@@ -14,6 +14,7 @@ import { finalPlayerBox, voidAdjustedPrice } from "../lib/settle-core";
 import { gradePickCatalog } from "../lib/graded-leg";
 import { loadPreAppMainPlays, preAppMainPlayRows } from "../lib/pre-app-main-plays";
 import { ResultsScreen } from "../src/screens/ResultsScreen";
+import { ADMIN_STORAGE_KEY, readAdminMode } from "../src/hooks/useAdminMode";
 import type { DataBundle } from "../src/hooks/useData";
 import { createElement, act } from "react";
 import { createRoot } from "react-dom/client";
@@ -253,5 +254,62 @@ describe("item 3: Injuries tab shows today's teams after tip", () => {
     const b = { ...a, playerName: "B" };
     expect(mergeInjuriesReportTime([a, b])).toHaveLength(2);
     expect(injuryRowKey(a)).toBe("1:A");
+  });
+});
+
+describe("item 4: Results display — no ROI, Singles, no row dots, admin by-market", () => {
+  function slice() {
+    const singles = freezeValueSingles([
+      leg({ id: "a", playerId: "a", market: "pts", bookiePrices: { TAB: 2.5 } }),
+      leg({ id: "b", playerId: "b", market: "reb", bookiePrices: { TAB: 3 } }),
+    ]);
+    return buildResultsSlice({
+      officialLegs: [],
+      officialBets: preAppMainPlayRows(loadPreAppMainPlays(process.cwd())),
+      valueLegRows: valueLegRowsFromSingles("2026-11-26", singles, [graded("a", "won"), graded("b", "lost")]),
+      gradedLegs: [],
+    });
+  }
+  async function render() {
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    const root = createRoot(host);
+    await act(async () => {
+      root.render(createElement(ResultsScreen, { data: { results: slice() } as unknown as DataBundle }));
+    });
+    return { host, done: () => (root.unmount(), host.remove()) };
+  }
+
+  it("?admin=1 stores the flag on the device, ?admin=0 clears it", () => {
+    localStorage.clear();
+    expect(readAdminMode("", localStorage)).toBe(false);
+    expect(readAdminMode("?admin=1", localStorage)).toBe(true);
+    expect(readAdminMode("", localStorage)).toBe(true);
+    expect(readAdminMode("?admin=0", localStorage)).toBe(false);
+    expect(localStorage.getItem(ADMIN_STORAGE_KEY)).toBeNull();
+  });
+
+  it("no ROI, Singles not Value legs, no ▸ dots, no by-market rows for viewers", async () => {
+    localStorage.clear();
+    const { host, done } = await render();
+    for (const b of host.querySelectorAll("button")) await act(async () => (b as HTMLButtonElement).click());
+    const text = host.textContent ?? "";
+    expect(text).not.toMatch(/ROI/);
+    expect(text).not.toMatch(/Value legs/);
+    expect(host.querySelector("[data-results='singles'] h2")?.textContent).toBe("Singles");
+    expect(host.querySelector("[data-results='other-bets']")?.textContent).not.toMatch(/[▸▾]/);
+    expect(host.querySelector("[data-results='admin']")).toBeNull();
+    done();
+  });
+
+  it("admin flag shows by-market rows in an Admin section at the bottom", async () => {
+    localStorage.setItem(ADMIN_STORAGE_KEY, "1");
+    const { host, done } = await render();
+    const sections = [...host.querySelectorAll("section")];
+    expect(sections.at(-1)?.getAttribute("data-results")).toBe("admin");
+    expect(sections.at(-1)?.textContent).toMatch(/Singles by market/);
+    expect(sections.at(-1)?.textContent).toMatch(/pts1–0/);
+    localStorage.clear();
+    done();
   });
 });
