@@ -23,17 +23,20 @@
       "type": "doubleUp",
       "label": "Best Double Up",
       "legs": [
-        "4683021-ast-5",
-        "4433249-reb-10"
+        "2991350-3pm-1",
+        "4432816-pts-15"
       ],
-      "combinedProbability": 0.562499,
-      "combinedFairPrice": 1.78,
-      "combinedTakeAt": 1.92,
-      "bestBookie": "Neds",
-      "bestBookieTotal": 2.2,
+      "combinedProbability": 0.579117,
+      "combinedFairPrice": 1.73,
+      "combinedTakeAt": 1.87,
+      "bestBookie": "Sportsbet",
+      "bestBookieTotal": 1.82,
       "bookieTotals": {
-        "Ladbrokes": 2.2,
-        "Neds": 2.2
+        "Sportsbet": 1.82,
+        "TAB": 1.76,
+        "Ladbrokes": 1.8,
+        "Neds": 1.8,
+        "PointsBet": 1.81
       },
       "summary": "2 legs · aim ~$2 @ one bookie"
     },
@@ -161,6 +164,41 @@
         "Bet Right": 2.24
       },
       "summary": "Best 2–5 leg same-game multi · min $2 · edge curve"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "legs": [
+        "5104157-q1reb-3",
+        "4432194-q1reb-2",
+        "4222252-q1reb-2",
+        "4066383-q1reb-2",
+        "3155942-q1reb-3",
+        "4396971-q1reb-2"
+      ],
+      "combinedProbability": 0.12306059153815332,
+      "combinedFairPrice": 8.13,
+      "combinedTakeAt": 8.78,
+      "bookieTotals": {},
+      "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
+    },
+    {
+      "type": "doubleUp",
+      "label": "Best Double Up",
+      "legs": [
+        "4683021-ast-5",
+        "4433249-reb-10"
+      ],
+      "combinedProbability": 0.562499,
+      "combinedFairPrice": 1.78,
+      "combinedTakeAt": 1.92,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 2.2,
+      "bookieTotals": {
+        "Ladbrokes": 2.2,
+        "Neds": 2.2
+      },
+      "summary": "2 legs · aim ~$2 @ one bookie"
     },
     {
       "type": "q1Multi",
