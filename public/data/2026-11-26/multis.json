@@ -4,20 +4,18 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
-        "3136195-reb-13",
         "4433083-ast-5",
+        "5107173-pts-10",
         "4065732-pts-15"
       ],
-      "combinedProbability": 0.322234416,
-      "combinedFairPrice": 3.1,
-      "combinedTakeAt": 3.35,
+      "combinedProbability": 0.30655044,
+      "combinedFairPrice": 3.26,
+      "combinedTakeAt": 3.52,
       "bestBookie": "Sportsbet",
-      "bestBookieTotal": 6.02,
+      "bestBookieTotal": 6.4,
       "bookieTotals": {
-        "Sportsbet": 6.02,
-        "Ladbrokes": 4.84,
-        "Neds": 4.84,
-        "PointsBet": 5.76
+        "Sportsbet": 6.4,
+        "PointsBet": 6.19
       },
       "summary": "3 starter main lines"
     },
@@ -28,7 +26,7 @@
         "3992-3pm-2",
         "4683021-ast-5"
       ],
-      "combinedProbability": 0.568416,
+      "combinedProbability": 0.56918,
       "combinedFairPrice": 1.76,
       "combinedTakeAt": 1.9,
       "bestBookie": "Neds",
@@ -162,11 +160,32 @@
         "4066383-q1reb-2",
         "3059318-q1reb-2"
       ],
-      "combinedProbability": 0.13372780888112182,
-      "combinedFairPrice": 7.48,
-      "combinedTakeAt": 8.08,
+      "combinedProbability": 0.12900182610652722,
+      "combinedFairPrice": 7.75,
+      "combinedTakeAt": 8.37,
       "bookieTotals": {},
       "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
+    },
+    {
+      "type": "mainPlay",
+      "label": "Main Play",
+      "legs": [
+        "3136195-reb-13",
+        "4433083-ast-5",
+        "4065732-pts-15"
+      ],
+      "combinedProbability": 0.322234416,
+      "combinedFairPrice": 3.1,
+      "combinedTakeAt": 3.35,
+      "bestBookie": "Sportsbet",
+      "bestBookieTotal": 6.02,
+      "bookieTotals": {
+        "Sportsbet": 6.02,
+        "Ladbrokes": 4.84,
+        "Neds": 4.84,
+        "PointsBet": 5.76
+      },
+      "summary": "3 starter main lines"
     },
     {
       "type": "q1Multi",
@@ -190,7 +209,7 @@
     {
       "type": "booster",
       "label": "Booster",
-      "reason": "Booster: Karl-Anthony Towns 15+ reb: no Sportsbet line"
+      "reason": "Booster: Cam Spencer 7+ ast: no Sportsbet line"
     },
     {
       "type": "longshot",

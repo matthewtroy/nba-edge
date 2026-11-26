@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T05:46:14.839Z",
+  "updatedAt": "2026-11-26T07:14:27.361Z",
   "todayDate": "2026-11-26",
   "tomorrowDate": null,
   "defaultDate": "2026-11-26",
@@ -19,14 +19,14 @@
       "status": "locked_at_tip",
       "statusLabel": "Locked at tip",
       "gameCount": 9,
-      "legCount": 2211,
-      "multiCount": 6,
-      "lastUpdated": "2026-11-26T05:47:04.076Z",
+      "legCount": 2426,
+      "multiCount": 7,
+      "lastUpdated": "2026-11-26T07:15:14.533Z",
       "firstTipIso": "2026-11-25T22:00:00.000Z"
     }
   ],
-  "nextPublishAt": "2026-11-25T10:00:00.000Z",
-  "nextSlateDate": "2026-11-26",
+  "nextPublishAt": "2026-11-26T10:00:27.361Z",
+  "nextSlateDate": null,
   "firstTipAt": "2026-11-25T22:00:00.000Z",
   "games": [
     {

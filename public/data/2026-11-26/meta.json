@@ -1,68 +1,16 @@
 {
-  "lastUpdated": "2026-11-26T05:47:04.076Z",
+  "lastUpdated": "2026-11-26T07:15:14.533Z",
   "oddsLastPulled": "2026-11-25T10:29:00.533Z",
   "sources": {
     "espn": "ok",
-    "nbaOfficial": "ok",
+    "nbaOfficial": "stale",
     "odds": "ok"
   },
   "slateSize": 9,
   "smallSlate": false,
-  "injuryImpactLog": [
-    "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Grayson Allen (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Dennis Schroder (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Kon Knueppel (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Norman Powell (Chicago Bulls): no redistribution reasons on slate legs",
-    "Caleb Wilson (Chicago Bulls): no redistribution reasons on slate legs",
-    "Nae'Qwan Tomlin (Cleveland Cavaliers): no redistribution reasons on slate legs",
-    "Evan Mobley (Cleveland Cavaliers): no redistribution reasons on slate legs",
-    "Stephen Curry (Golden State Warriors): no redistribution reasons on slate legs",
-    "Kristaps Porzingis (Golden State Warriors): no redistribution reasons on slate legs",
-    "Moses Moody (Golden State Warriors): no redistribution reasons on slate legs",
-    "Jordan Miller (LA Clippers): no redistribution reasons on slate legs",
-    "Jerami Grant (Memphis Grizzlies): no redistribution reasons on slate legs",
-    "GG Jackson (Memphis Grizzlies): no redistribution reasons on slate legs",
-    "Richie Saunders (Memphis Grizzlies): no redistribution reasons on slate legs",
-    "Donte DiVincenzo (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Jaylen Clark (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Anthony Edwards (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Jordan Clarkson (New York Knicks): no redistribution reasons on slate legs",
-    "Nikola Topic (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Jaylin Williams (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Aday Mara (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Jalen Williams (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Thomas Sorber (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Cason Wallace (Oklahoma City Thunder): no redistribution reasons on slate legs",
-    "Ariel Hukporti (Philadelphia 76ers): no redistribution reasons on slate legs",
-    "Mark Williams (Phoenix Suns): no redistribution reasons on slate legs",
-    "Chris Youngblood (Portland Trail Blazers): no redistribution reasons on slate legs",
-    "Ja Morant (Portland Trail Blazers): no redistribution reasons on slate legs",
-    "Shaedon Sharpe (Portland Trail Blazers): no redistribution reasons on slate legs",
-    "Maxime Raynaud (Sacramento Kings): no redistribution reasons on slate legs",
-    "Ben Simmons (Sacramento Kings): no redistribution reasons on slate legs",
-    "Dylan Harper (San Antonio Spurs): no redistribution reasons on slate legs",
-    "Tobias Harris (San Antonio Spurs): no redistribution reasons on slate legs",
-    "Jayden Quaintance (San Antonio Spurs): no redistribution reasons on slate legs",
-    "Tre Donaldson (Miami Heat): no redistribution reasons on slate legs",
-    "Vladislav Goldin (Miami Heat): no redistribution reasons on slate legs",
-    "Jaylin Sellers (Chicago Bulls): no redistribution reasons on slate legs",
-    "Kylan Boswell (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Khalifa Diop (Cleveland Cavaliers): no redistribution reasons on slate legs",
-    "Rocco Zikarsky (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Joshua Jefferson (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Chaney Johnson (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Drake Powell (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Ben Saraf (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Nick Martinelli (LA Clippers): no redistribution reasons on slate legs",
-    "Jalen Pickett (LA Clippers): no redistribution reasons on slate legs",
-    "Drew Timme (Phoenix Suns): no redistribution reasons on slate legs",
-    "Julian Phillips (Houston Rockets): no redistribution reasons on slate legs",
-    "Jonathan Mogbo (Sacramento Kings): no redistribution reasons on slate legs"
-  ],
-  "modelSanityChecked": 183,
+  "modelSanityChecked": 195,
   "modelSanityFailures": 1,
-  "formGuardExcludedCount": 512,
+  "formGuardExcludedCount": 553,
   "gameOddsPriceAge": {
     "401909317": "Prices from 9:29 pm",
     "401909318": "Prices from 9:29 pm",
@@ -76,26 +24,26 @@
   },
   "slateTipDate": "2026-11-26",
   "whatChanged": [],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_11_45PM.pdf",
+  "nbaOfficialLastTriedUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-26_12_15AM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 395,
-      "priced": 299
+      "total": 441,
+      "priced": 302
     },
     "reb": {
-      "total": 557,
-      "priced": 233
+      "total": 606,
+      "priced": 235
     },
     "3pm": {
-      "total": 672,
-      "priced": 426
+      "total": 736,
+      "priced": 431
     },
     "ast": {
-      "total": 386,
+      "total": 421,
       "priced": 172
     },
     "q1reb": {
-      "total": 201,
+      "total": 221,
       "priced": 0
     }
   },
@@ -106,5 +54,6 @@
     "bookie": "Ladbrokes"
   },
   "slatePublicationStatus": "locked_at_tip",
-  "slateStatusLabel": "Locked at tip"
+  "slateStatusLabel": "Locked at tip",
+  "injuriesAtTip": []
 }
