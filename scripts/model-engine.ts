@@ -16,6 +16,8 @@ import { logSlatePickReport } from "../lib/slate-pick-report.js";
 import { applyContextAdjustments } from "../lib/context.js";
 import { buildLegsForPlayer } from "../lib/pricing.js";
 import { buildMultis, type MultiBuildResult } from "../lib/multis.js";
+import { filterPicksWithSupportiveReasons } from "../lib/picks-supportive-filter.js";
+import { logSupportiveExclusionsByMarket } from "../lib/leg-reason-supportive.js";
 import { logMarketBlendSample } from "../lib/market-blend.js";
 import { loadAliasMap, normalizePlayerName } from "../lib/player-names.js";
 import { legOddsLookupKey } from "../lib/odds.js";
@@ -168,10 +170,10 @@ export function runModel(input: ModelRunInput): {
           gameLogs: p.gameLogs,
         }))
       : undefined;
-    const opponentOutBigCount = countOpponentOutBigs(
-      oppProfiles,
-      oppTeamId ? injuriesByTeam.get(oppTeamId) ?? [] : []
-    );
+    const oppInjuries = oppTeamId ? injuriesByTeam.get(oppTeamId) ?? [] : [];
+    const opponentOutBigCount = countOpponentOutBigs(oppProfiles, oppInjuries);
+    const oppTeamName =
+      teamGame?.homeTeamId === teamId ? teamGame.awayTeam : teamGame?.homeTeam;
 
     const { adjusted, reasons, boardsShared } = applyInjuryRedistribution(
       {
@@ -179,6 +181,9 @@ export function runModel(input: ModelRunInput): {
         injuries: teamInjuries,
         gameLogsByPlayer,
         opponentOutBigCount,
+        opponentPlayers: oppProfiles,
+        opponentInjuries: oppInjuries,
+        opponentTeamName: oppTeamName,
       },
       base,
       rates as Map<string, NonNullable<ReturnType<typeof perMinuteRates>>>
@@ -291,7 +296,7 @@ export function runModel(input: ModelRunInput): {
   const slateGameIds = new Set(input.slate.map((g) => g.id));
   const slatePicks = picks.filter((leg) => slateGameIds.has(leg.gameId));
 
-  const eligiblePicks = slatePicks.filter((leg) => {
+  let eligiblePicks = slatePicks.filter((leg) => {
     const p = input.players.find((x) => x.id === leg.playerId);
     if (!p) return false;
     return !isPlayerExcluded({
@@ -304,6 +309,8 @@ export function runModel(input: ModelRunInput): {
       returningPlayerIds: returning,
     });
   });
+  logSupportiveExclusionsByMarket(eligiblePicks, filterPicksWithSupportiveReasons(eligiblePicks));
+  eligiblePicks = filterPicksWithSupportiveReasons(eligiblePicks);
 
   const edgeFraction =
     input.minEdge != null && input.minEdge > 1

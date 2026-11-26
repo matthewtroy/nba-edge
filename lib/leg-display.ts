@@ -7,6 +7,7 @@ import {
 } from "./leg-reason-builder.js";
 import type { PlayerTrackingDay } from "./player-tracking-cache.js";
 import { normalizeLegReasons, reasonTexts } from "./leg-reason-types.js";
+import { legHasSupportiveReason } from "./picks-supportive-filter.js";
 
 const INTERNAL_LEG_TAGS = new Set([
   "boards shared",
@@ -56,16 +57,7 @@ export function visibleLegReasons(reasons: PickLeg["reasons"]): string[] {
 export { buildLegReasonLine, buildLegReasons };
 
 export function mainPlayReasonBeyondRankAvg(leg: PickLeg): boolean {
-  const reasons = normalizeLegReasons(leg.reasons ?? []);
-  if (reasons.length) {
-    return reasons.some((r) => r.type !== "rank" && r.type !== "avg");
-  }
-  const line = (leg.reasonLine ?? "").trim();
-  if (!line) return false;
-  const lower = line.toLowerCase();
-  if (/^averages?\b/i.test(line) && !line.includes("·")) return false;
-  if (lower.includes("averages") && !/[·/]|\d+\/\d+/.test(line)) return false;
-  return line.length > 0;
+  return legHasSupportiveReason(leg);
 }
 
 /** @deprecated use mainPlayReasonBeyondRankAvg */

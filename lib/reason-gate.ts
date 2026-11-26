@@ -67,7 +67,11 @@ export function gateLegReason(
   if (reasonTextHasBannedPhrase(reason.text)) return false;
   if (!reasonPassesPlausibility(reason.text)) return false;
   const stat = market.replace(/^q1/, "");
-  if (reason.type === "rank" || reason.type === "form") return true;
+  if (reason.type === "rank") return true;
+  if (reason.type === "form") {
+    if (market.startsWith("q1")) return reason.text.toLowerCase().includes("q1");
+    return true;
+  }
   return reasonMatchesMarket(reason, market, stat);
 }
 

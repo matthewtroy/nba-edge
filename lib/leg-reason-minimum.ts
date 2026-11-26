@@ -2,6 +2,10 @@ import type { Market, PickLeg } from "./types.js";
 import type { LegReason } from "./leg-reason-types.js";
 import { gateLegReasons } from "./reason-gate.js";
 import { houseReasonLine } from "./leg-reason-house.js";
+import {
+  supportiveBackfillFromLeg,
+  supportiveReasons,
+} from "./leg-reason-supportive.js";
 
 function statKey(market: Market | string): "pts" | "reb" | "ast" | "threes" | "q1pts" | "q1reb" | "q1ast" {
   if (market === "3pm") return "threes";
@@ -67,8 +71,9 @@ export function avgReasonFromLeg(leg: PickLeg): string | undefined {
     seasonVal != null && seasonVal.toFixed(1) !== pick.toFixed(1)
       ? ` (season ${seasonVal.toFixed(1)})`
       : "";
-  const n = Math.min(10, (leg.lastTenStatValues ?? []).filter((v) => v != null && Number.isFinite(v)).length);
-  const lastLabel = n === 10 ? "last 10" : n >= 3 ? `last ${n}` : "last 10";
+  const n = values.length;
+  if (n < 3) return undefined;
+  const lastLabel = n === 10 ? "last 10" : `last ${n}`;
   return `Avg ${pick.toFixed(1)} ${word} ${lastLabel}${suffix}`;
 }
 
@@ -97,49 +102,15 @@ function pickStat(
   return undefined;
 }
 
-function hasType(reasons: LegReason[], type: LegReason["type"]): boolean {
-  return reasons.some((r) => r.type === type);
-}
-
-/** Every leg row: ≥2 reasons; pad with form/avg from snapshot when fewer than two. */
+/** Display path: 0–3 supportive lines only (backfill may add supportive form/avg). */
 export function ensureLegReasonMinimum(
   leg: PickLeg,
   reasons: LegReason[]
 ): LegReason[] {
-  let out = gateLegReasons(reasons, leg.market, 3);
-  if (out.length >= 2) {
-    return out.slice(0, 3).map((r) => ({
-      ...r,
-      text: houseReasonLine(r.text),
-    }));
-  }
-  const formText = formReasonFromLeg(leg);
-  const avgText = avgReasonFromLeg(leg);
-  if (formText && !hasType(out, "form")) {
-    out.push({ type: "form", text: houseReasonLine(formText) });
-  }
-  if (avgText && !hasType(out, "avg")) {
-    out.push({ type: "avg", text: houseReasonLine(avgText) });
-  }
-  out = gateLegReasons(out, leg.market, 3);
-  if (out.length < 2) {
-    const forced: LegReason[] = [];
-    if (formText) forced.push({ type: "form", text: houseReasonLine(formText) });
-    if (avgText) forced.push({ type: "avg", text: houseReasonLine(avgText) });
-    for (const r of forced) {
-      if (!hasType(out, r.type)) out.push(r);
-    }
-    out = gateLegReasons(out, leg.market, 3);
-  }
-  if (out.length < 2) {
-    for (const r of [
-      formText ? ({ type: "form" as const, text: houseReasonLine(formText) }) : null,
-      avgText ? ({ type: "avg" as const, text: houseReasonLine(avgText) }) : null,
-    ]) {
-      if (r && !out.some((x) => x.type === r.type)) out.push(r);
-    }
-  }
-  return out.slice(0, 3).map((r) => ({
+  const gated = gateLegReasons(reasons, leg.market, 3, leg.line);
+  const withBackfill = supportiveBackfillFromLeg(leg, gated);
+  const display = supportiveReasons(withBackfill, leg).slice(0, 3);
+  return display.map((r) => ({
     ...r,
     text: houseReasonLine(r.text),
   }));
@@ -149,5 +120,5 @@ export function legRowReasonCountShouldBeAtLeast2(
   reasons: LegReason[],
   leg: PickLeg
 ): boolean {
-  return ensureLegReasonMinimum(leg, reasons).length >= 2;
+  return ensureLegReasonMinimum(leg, reasons).length >= 1;
 }

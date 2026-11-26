@@ -25,7 +25,7 @@ import { q1HitRateLast10, q1SeasonHitFraction } from "./leg-history.js";
 import { ensureLegReasonMinimum } from "./leg-reason-minimum.js";
 import { h2hReasonPhrase } from "./h2h-reason.js";
 import { reasonTextHasBannedPhrase } from "./reason-ban.js";
-import { gateLegReasons, minReasonLinesForRung } from "./reason-gate.js";
+import { gateLegReasons } from "./reason-gate.js";
 
 function hitCountL10(
   logs: PlayerGameLog[],
@@ -217,12 +217,12 @@ export function buildLegReasons(input: {
         const stat = input.leg.market.replace(/^q1/, "");
         if (
           (stat === "ast" && /\+[\d.]+\s*ast\b/i.test(inj)) ||
-          (stat === "reb" && /\+[\d.]+\s*reb|only big|missing \d+ big/i.test(inj)) ||
+          (stat === "reb" && /\+[\d.]+\s*reb|only big|without/i.test(inj)) ||
           (stat === "pts" && /\+[\d.]+\s*pts\b/i.test(inj))
         ) {
           put("injury", inj);
         }
-      } else if (inj && /only big|missing \d+ big/i.test(inj)) {
+      } else if (inj && /only big|without/i.test(inj)) {
         put("injury", inj);
       }
     } else {
@@ -312,18 +312,16 @@ export function buildLegReasons(input: {
   const mins = q1Market ? undefined : minutesPhrase(input.logs);
   if (mins) put("min", mins);
 
+  if (input.leg.b2b) {
+    const teamShort = shortTeamName(input.teamName ?? input.leg.team);
+    put("context", `${teamShort} on a back-to-back`);
+  }
+
   const sorted = sortLegReasons([...byType.values()]);
   const filtered = reasonsForMarket(sorted, input.leg.market);
   let reasons = gateLegReasons(filtered, input.leg.market, 3, input.leg.line);
-  const minLines = minReasonLinesForRung(input.leg.market, input.leg.line);
-  if (reasons.length < minLines) {
-    reasons = gateLegReasons(filtered, input.leg.market, 3);
-  }
   reasons = ensureLegReasonMinimum(input.leg, reasons);
-  if (reasons.length >= 2 && reasons.length < 3 && minLines <= 2) {
-    return reasons.slice(0, 2);
-  }
-  return reasons;
+  return reasons.slice(0, 3);
 }
 
 export function buildLegReasonLine(input: Parameters<typeof buildLegReasons>[0]): string | undefined {

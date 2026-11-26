@@ -1,4 +1,5 @@
 import type { PickLeg } from "./types.js";
+import { legHasSupportiveReason } from "./picks-supportive-filter.js";
 import { AU_BOOKMAKERS } from "./types.js";
 import type { CardLegResult } from "./settle-core.js";
 import type { GradedProjectionLeg } from "./graded-leg.js";
@@ -53,12 +54,22 @@ export function isValueSingle(leg: PickLeg): boolean {
   return best != null && best.price >= leg.fairPrice * VALUE_SINGLE_MIN_EDGE;
 }
 
+function singlesSupportiveOk(leg: PickLeg): boolean {
+  const hasReasonContext =
+    (leg.reasons?.length ?? 0) > 0 ||
+    Boolean(leg.reasonLine?.trim()) ||
+    (leg.recentTenVsLine?.length ?? 0) > 0 ||
+    (leg.lastTenStatValues?.length ?? 0) > 0;
+  if (!hasReasonContext) return true;
+  return legHasSupportiveReason(leg);
+}
+
 /** Value singles from a frozen picks copy; one per player/market/line. */
 export function freezeValueSingles(picks: PickLeg[]): FrozenValueSingle[] {
   const seen = new Set<string>();
   const out: FrozenValueSingle[] = [];
   for (const leg of picks) {
-    if (!isValueSingle(leg)) continue;
+    if (!isValueSingle(leg) || !singlesSupportiveOk(leg)) continue;
     const key = `${leg.playerId}:${leg.market}:${leg.line}`;
     if (seen.has(key)) continue;
     seen.add(key);

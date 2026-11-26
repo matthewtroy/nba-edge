@@ -45,6 +45,7 @@ import { gateAllMultis } from "./multi-gate.js";
 import { slateMatchupAbbrev } from "./team-abbrev.js";
 import { bookieMarketLabel } from "./market-label.js";
 import { isInjuryRedistributionReason } from "./injury-reason.js";
+import { legHasSupportiveReason } from "./picks-supportive-filter.js";
 import { logMultiBuildSummary } from "./multi-filter-log.js";
 import {
   combinedFairAndTakeAt,
@@ -256,11 +257,7 @@ export function buildMultis(
   multiMinEdge = minEdgeFraction;
   resetMultiBuildTraces();
   const pool = picks.filter(
-    (p) =>
-      meetsFloor(p) &&
-      ((p.reasons?.length ?? 0) > 0 ||
-        Boolean(p.reasonLine?.trim()) ||
-        p.market.startsWith("q1"))
+    (p) => meetsFloor(p) && (p.market.startsWith("q1") || legHasSupportiveReason(p))
   );
   const catalog = pool;
   const byP = [...pool].sort(sortLegs);

@@ -1,4 +1,5 @@
 import type { MultiBet, PickLeg, SlateGame } from "./types.js";
+import { filterPicksWithSupportiveReasons } from "./picks-supportive-filter.js";
 import {
   buildGameSgmCard,
   formatOddsBand,
@@ -28,6 +29,7 @@ export function gameSgmBlocks(
   oddsMax = 4,
   roughiesEnabled = false
 ): GameSgmBlock[] {
+  picks = filterPicksWithSupportiveReasons(picks);
   const rules = roughiesEnabled ? ROUGHIE_SGM_RULES : GAMES_TAB_SGM_RULES;
   const cross = multis.find((m) => m.type === "crossGameSgm");
   const boost = multis.find((m) => m.type === "boostSgm");

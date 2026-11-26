@@ -20,6 +20,7 @@ import {
   ROUGHIE_NORMAL_MIN,
   bookieHighProbMeetsFair,
 } from "./pricing-config.js";
+import { legHasSupportiveReason } from "./picks-supportive-filter.js";
 
 export const GAMES_TAB_MIN_LEG_PRICE = 1.3;
 export const GAMES_TAB_MIN_LEGS = 2;
@@ -61,7 +62,7 @@ function totalInBand(total: number, min: number, max: number): boolean {
 }
 
 function legHasRealReasons(leg: PickLeg): boolean {
-  return (leg.reasons?.length ?? 0) > 0;
+  return leg.market.startsWith("q1") || legHasSupportiveReason(leg);
 }
 
 function legBookiePrice(

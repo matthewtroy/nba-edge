@@ -1,4 +1,5 @@
 import type { Market, MultiBet, PickLeg, SlateGame } from "@lib/types";
+import { filterPicksWithSupportiveReasons } from "@lib/picks-supportive-filter";
 import { hasValueAtBookie } from "@lib/value-at-bookie";
 import { legPriceAtBookie } from "@lib/single-bookie";
 import type {
@@ -51,7 +52,7 @@ export function filterAndSortPicks(input: {
 }): PickLeg[] {
   const { picks, slate, multis, myBookie, filters, pricesPending = false } = input;
   const inMulti = multiLegIdSet(multis);
-  let list = [...picks];
+  let list = [...filterPicksWithSupportiveReasons(picks)];
 
   if (filters.multi === "inMulti") {
     list = list.filter((l) => inMulti.has(l.id));
