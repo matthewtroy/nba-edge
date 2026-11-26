@@ -2,7 +2,10 @@ import { useRef, useState } from "react";
 import type { InjuryEntry, MultiBet, PickLeg, SlateGame } from "@lib/types";
 import type { LiveLegView } from "@lib/live-leg";
 import type { LiveBetView } from "@lib/live-bet";
-import { liveBetHeaderLabel } from "@lib/live-leg-ui";
+import type { LiveSourceSnapshot } from "@lib/live-source";
+import { multiCardLiveBorderClass } from "@lib/live-leg-ui";
+import { legStatesForMulti } from "@lib/live-tracking";
+import { BetProgress } from "./BetProgress";
 import { FEED_BOOKIES, isFeedBookie } from "@lib/card-bookie";
 import { MultiLegRow } from "./MultiLegRow";
 import { renderMultiCardCopyText } from "@lib/multi-card-text";
@@ -58,6 +61,7 @@ interface Props {
   shareCapture?: boolean;
   legViews?: Map<string, LiveLegView>;
   liveBetView?: LiveBetView;
+  liveSnapshot?: LiveSourceSnapshot | null;
 }
 
 export const FORBIDDEN_MULTI_CARD_STRINGS = [
@@ -107,6 +111,7 @@ export function MultiCard({
   shareCapture = false,
   legViews,
   liveBetView: liveBetViewProp,
+  liveSnapshot,
 }: Props) {
   const cardRef = useRef<HTMLElement>(null);
   const [bookieSheetOpen, setBookieSheetOpen] = useState(false);
@@ -168,7 +173,11 @@ export function MultiCard({
     showFairOnly || missingAtBookie > 0 ? undefined : total ?? undefined;
   const pricedAtBookie = legs.length - missingAtBookie;
   const liveBetView = liveBetViewProp;
-  const liveBetLabel = liveBetView ? liveBetHeaderLabel(liveBetView) : null;
+  const betLegStates = legStatesForMulti(multi, legViews);
+  const liveBorder = multiCardLiveBorderClass(liveBetView);
+  const liveBoardByGame = new Map(
+    (liveSnapshot?.games ?? []).map((g) => [g.gameId, g] as const)
+  );
   const headerBookie = showFairOnly
     ? undefined
     : multiCardBookieHeaderLabel({
@@ -209,6 +218,7 @@ export function MultiCard({
         shareLegs: legs,
         legViews,
         liveBetView,
+        liveSnapshot,
       });
       const file = new File([blob], "nba-edge-multi.png", { type: "image/png" });
       if (navigator.share && navigator.canShare?.({ files: [file] })) {
@@ -227,7 +237,11 @@ export function MultiCard({
   }
 
   return (
-    <section ref={cardRef} className={`${ui.card} ${compact ? "" : ""}`}>
+    <section
+      ref={cardRef}
+      className={`${ui.card} ${compact ? "" : ""} ${liveBorder}`}
+      data-live-bet-state={liveBetView?.state}
+    >
       <MultiCardHeader
         title={displayTitle}
         total={headerTotal}
@@ -253,11 +267,7 @@ export function MultiCard({
         fairNote={showFairOnly ? subline || oddsNote : undefined}
         onRemove={shareCapture ? undefined : onRemove}
       />
-      {liveBetLabel ? (
-        <p className="text-[11px] text-sky-400/90 mb-2" data-testid="live-bet-label">
-          {liveBetLabel}
-        </p>
-      ) : null}
+      <BetProgress legStates={betLegStates} betView={liveBetView} />
 
       {multi.type === "crossGameSgm" && !shareCapture && (
         <CrossGameChips
@@ -285,6 +295,7 @@ export function MultiCard({
             compact={compact}
             oddsFallbackIso={oddsLastPulled}
             legViews={legViews}
+            liveBoardByGame={liveBoardByGame}
           />
         ) : (
           multi.legs.map((anchorId) => {
@@ -392,6 +403,7 @@ function CrossLegGroups({
   compact,
   oddsFallbackIso,
   legViews,
+  liveBoardByGame,
 }: {
   multi: MultiBet;
   slate?: SlateGame[];
@@ -408,6 +420,7 @@ function CrossLegGroups({
   compact: boolean;
   oddsFallbackIso?: string;
   legViews?: Map<string, LiveLegView>;
+  liveBoardByGame: Map<string, { statusDetail: string; phase: string }>;
 }) {
   const order = slate?.length
     ? slate.map((g) => g.id)
@@ -434,6 +447,7 @@ function CrossLegGroups({
           : rows[0]?.leg.team ?? "Game";
         const time = game ? gameStartTimeSydney(game) : "";
         const blowout = game?.spread != null && Math.abs(game.spread) >= 14.5;
+        const board = gameId ? liveBoardByGame.get(gameId) : undefined;
         const block = (
           <MotionBlock
             key={gameId}
@@ -442,6 +456,7 @@ function CrossLegGroups({
             time={time}
             legCount={rows.length}
             blowout={blowout}
+            liveStatus={board && board.phase !== "scheduled" ? board.statusDetail : undefined}
             rows={rows}
             injuries={injuries}
             allPicks={allPicks}
@@ -472,6 +487,7 @@ function MotionBlock(props: {
   time: string;
   legCount: number;
   blowout: boolean;
+  liveStatus?: string;
   rows: { anchorId: string; leg: PickLeg }[];
   injuries: InjuryEntry[];
   allPicks: PickLeg[];
@@ -502,6 +518,7 @@ function MotionBlock(props: {
         legCount={props.legCount}
         blowout={props.blowout}
         oddsAge={oddsAge}
+        liveStatus={props.liveStatus}
       />
       {props.rows.map(({ anchorId, leg }) => (
         <ErrorBoundary key={anchorId} name={`leg-${anchorId}`}>
@@ -533,17 +550,27 @@ function MotionGroupHeader({
   legCount,
   blowout,
   oddsAge,
+  liveStatus,
 }: {
   matchup: string;
   time: string;
   legCount: number;
   blowout: boolean;
   oddsAge?: string;
+  liveStatus?: string;
 }) {
   return (
     <div className="flex items-baseline justify-between gap-2 mb-1 px-0">
       <p className="text-[13px] font-semibold text-white theme-adaptive-title truncate">
         {matchup}
+        {liveStatus ? (
+          <span
+            className="text-sky-400/90 font-normal text-[11px] ml-1.5 tabular-nums"
+            data-testid="sgm-group-live-score"
+          >
+            {liveStatus}
+          </span>
+        ) : null}
         {oddsAge ? (
           <span className="text-white/40 font-normal text-[11px] ml-1.5">
             {oddsAge}

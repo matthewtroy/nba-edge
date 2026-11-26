@@ -1,5 +1,5 @@
 import type { LiveBetView } from "./live-bet.js";
-import type { LiveLegView } from "./live-leg.js";
+import type { LiveLegState, LiveLegView } from "./live-leg.js";
 
 export function liveLegStateLabel(view: LiveLegView): string | null {
   switch (view.state) {
@@ -103,4 +103,56 @@ export function liveBetHeaderLabel(view: LiveBetView): string | null {
     default:
       return null;
   }
+}
+
+export function liveBetLandedLabel(view: LiveBetView): string | null {
+  if (view.state === "pending" || view.total === 0) return null;
+  return `${view.won} of ${view.total} landed`;
+}
+
+export function liveBetOutcomePill(
+  view: LiveBetView
+): { label: string; className: string } | null {
+  switch (view.state) {
+    case "won":
+      return { label: "Won", className: "text-emerald-400 bg-emerald-400/12" };
+    case "lost":
+      return { label: "Lost", className: "text-red-400 bg-red-400/12" };
+    default:
+      return null;
+  }
+}
+
+export function betProgressSegmentClass(state: LiveLegState): string {
+  switch (state) {
+    case "won":
+      return "bg-emerald-400/90";
+    case "lost":
+      return "bg-red-400/80";
+    case "live":
+      return "bg-sky-400/85 bet-progress-segment-live";
+    case "void":
+      return "bg-white/18";
+    case "pending":
+    default:
+      return "bg-white/10";
+  }
+}
+
+export function multiCardLiveBorderClass(view: LiveBetView | undefined): string {
+  if (!view || view.state === "pending") return "";
+  switch (view.state) {
+    case "won":
+      return "multi-card-live-won";
+    case "lost":
+      return "multi-card-live-lost";
+    case "live":
+      return "multi-card-live-tracking";
+    default:
+      return "";
+  }
+}
+
+export function betProgressShouldShow(view: LiveBetView | undefined): boolean {
+  return view != null && view.state !== "pending" && view.total > 0;
 }

@@ -15,6 +15,7 @@ import { useGamesRoughies } from "../hooks/useGamesRoughies";
 import { formatOddsBand } from "@lib/game-sgm-builder";
 import { formatGameOddsAge, formatOddsFreshnessSummary } from "@lib/odds-freshness-ui";
 import { injuriesForBadges } from "@lib/injury-display";
+import type { LiveGameBoard } from "@lib/live-source";
 
 interface Props {
   data: DataBundle;
@@ -90,6 +91,14 @@ export function GamesScreen({
     data.meta.oddsLastPulled
   );
 
+  const liveBoardByGame = useMemo(() => {
+    const m = new Map<string, LiveGameBoard>();
+    for (const g of liveTracking.snapshot?.games ?? []) {
+      m.set(g.gameId, g);
+    }
+    return m;
+  }, [liveTracking.snapshot]);
+
   return (
     <div className="pb-24">
       <DateSwitcher
@@ -144,6 +153,7 @@ export function GamesScreen({
         const multi = gameSgmAsMulti(card, game);
         const isCollapsed = collapsed[game.id] ?? false;
         const live = isGameLive(game.status);
+        const board = liveBoardByGame.get(game.id);
         const gameOddsAge = formatGameOddsAge(
           data.picks,
           game.id,
@@ -167,6 +177,14 @@ export function GamesScreen({
               <>
                 <p className="text-[13px] font-semibold text-white theme-adaptive-title mb-2">
                   {gameListRowLabel(game)}
+                  {board && board.phase !== "scheduled" ? (
+                    <span
+                      className="text-sky-400/90 font-normal text-[11px] ml-2 tabular-nums"
+                      data-testid="games-header-live-score"
+                    >
+                      {board.statusDetail}
+                    </span>
+                  ) : null}
                   {card.roughie && (
                     <span className="text-[10px] font-medium px-1.5 py-px rounded-full bg-amber-500/20 text-amber-200 ml-2 align-middle">
                       Roughie
@@ -199,6 +217,7 @@ export function GamesScreen({
                   onCopy={onCopy}
                   legViews={liveTracking.legViews}
                   liveBetView={liveTracking.betViews.get(liveMultiKey(multi))}
+                  liveSnapshot={liveTracking.snapshot}
                 />
               </>
             )}

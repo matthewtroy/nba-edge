@@ -1,6 +1,6 @@
 import type { MultiBet, PickLeg, SlateGame } from "./types.js";
 import type { LiveSourceSnapshot } from "./live-source.js";
-import { liveLegView, type LiveLegView } from "./live-leg.js";
+import { liveLegView, type LiveLegState, type LiveLegView } from "./live-leg.js";
 import { liveBetView, type LiveBetView } from "./live-bet.js";
 import {
   normalizeEspnGameStatus,
@@ -82,6 +82,13 @@ export function liveViewsForLegs(
 
 export function liveMultiKey(multi: MultiBet): string {
   return `${multi.type}:${multi.legs.join(",")}`;
+}
+
+export function legStatesForMulti(
+  multi: MultiBet,
+  legViews: Map<string, LiveLegView> | undefined
+): LiveLegState[] {
+  return multi.legs.map((id) => legViews?.get(id)?.state ?? "pending");
 }
 
 export function liveBetViewsForMultis(

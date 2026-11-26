@@ -251,6 +251,7 @@ export function TodayScreen({
             onCopy={onCopy}
             legViews={liveTracking.legViews}
             liveBetView={liveTracking.betViews.get(liveMultiKey(m))}
+            liveSnapshot={liveTracking.snapshot}
           />
         );
       })}
@@ -287,6 +288,7 @@ export function TodayScreen({
               onCopy={onCopy}
               legViews={liveTracking.legViews}
               liveBetView={liveTracking.betViews.get(liveMultiKey(multi))}
+              liveSnapshot={liveTracking.snapshot}
             />
           ))
         )}
