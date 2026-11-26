@@ -188,3 +188,16 @@ describe("prod fix pass 5 — data branch commit selection", () => {
     fs.rmSync(root, { recursive: true, force: true });
   });
 });
+
+describe("prod fix pass 5 — settle keeps pipeline slate output", () => {
+  it("pipeline settle step does not re-restore the data branch over fresh output", () => {
+    const pipeline = fs.readFileSync(path.join(process.cwd(), "scripts/pipeline.ts"), "utf8");
+    const settle = fs.readFileSync(path.join(process.cwd(), "scripts/settle.ts"), "utf8");
+    const step = pipeline.match(/function runSettleStep\(\)[\s\S]*?\n\}/)?.[0] ?? "";
+    expect(step).toMatch(/runFreezeTippedReasons\(rootDir\)/);
+    expect(step).toMatch(/SETTLE_DATA_RESTORED: "1"/);
+    expect(settle).toMatch(
+      /if \(process\.env\.SETTLE_DATA_RESTORED !== "1"\) restorePersistedDataFromBranch\(rootDir\)/
+    );
+  });
+});

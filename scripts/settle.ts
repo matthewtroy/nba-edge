@@ -126,7 +126,7 @@ function loadPrevSlateSlice(slateDate: string): ResultsSlice | null {
 }
 
 async function main() {
-  restorePersistedDataFromBranch(rootDir);
+  if (process.env.SETTLE_DATA_RESTORED !== "1") restorePersistedDataFromBranch(rootDir);
   const now = new Date();
   const slateDates = listSlateDates();
 

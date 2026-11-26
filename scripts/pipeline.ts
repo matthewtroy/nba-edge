@@ -59,6 +59,7 @@ function runSettleStep(): void {
   execFileSync("npx", ["tsx", "scripts/settle.ts"], {
     cwd: rootDir,
     stdio: "inherit",
+    env: { ...process.env, SETTLE_DATA_RESTORED: "1" },
   });
 }
 
