@@ -27,7 +27,6 @@ export const LEG_ROW_BADGE_WHITELIST = new Set([
   "Roughie",
   "Blowout risk",
   "Edited",
-  "Check prices",
 ]);
 
 const LEG_ROW_BADGE_ORDER = [
@@ -37,7 +36,6 @@ const LEG_ROW_BADGE_ORDER = [
   "Roughie",
   "Blowout risk",
   "Edited",
-  "Check prices",
 ] as const;
 
 /** Badge order after injury: Value → High prob → Former team → Roughie → rest. */

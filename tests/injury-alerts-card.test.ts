@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import fs from "fs";
+import path from "path";
 import { injuryAlertsForCard } from "../lib/injury-alerts-card";
 import type { InjuryEntry } from "../lib/types";
 
@@ -14,6 +16,15 @@ const base = (id: string, status: InjuryEntry["status"]): InjuryEntry => ({
 });
 
 describe("injuryAlertsForCard", () => {
+  it("Today wires official card leg ids only", () => {
+    const src = fs.readFileSync(
+      path.join(process.cwd(), "src/screens/TodayScreen.tsx"),
+      "utf8"
+    );
+    expect(src).toContain("injuryAlertsForCard");
+    expect(src).toContain("cardPlayerIds");
+  });
+
   it("only alerts for players on the card", () => {
     const locked = [base("on-card", "Probable")];
     const current = [

@@ -10,4 +10,13 @@ describe("GamesScreen", () => {
     );
     expect(src).not.toMatch(/filter\(\(m\) => m\.type === "crossGameSgm"\)/);
   });
+
+  it("does not collapse live SGMs behind Show live SGM", () => {
+    const src = fs.readFileSync(
+      path.join(process.cwd(), "src/screens/GamesScreen.tsx"),
+      "utf8"
+    );
+    expect(src).not.toMatch(/Show live SGM/);
+    expect(src).toContain("gamesForGamesTab");
+  });
 });

@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { gamesForCards, isGameFinal, isGameLive } from "../lib/slate-game-ui";
+import {
+  gamesForCards,
+  gamesForGamesTab,
+  isGameFinal,
+  isGameLive,
+} from "../lib/slate-game-ui";
 import type { SlateGame } from "../lib/types";
 
 const g = (status: string): SlateGame => ({
@@ -24,5 +29,12 @@ describe("slate game UI", () => {
       "Scheduled",
       "In Progress",
     ]);
+  });
+
+  it("games tab keeps all nine sections when six are final", () => {
+    const slate = Array.from({ length: 9 }, (_, i) =>
+      g(i < 6 ? "Final" : "Scheduled")
+    );
+    expect(gamesForGamesTab(slate)).toHaveLength(9);
   });
 });

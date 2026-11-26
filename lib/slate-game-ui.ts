@@ -17,3 +17,10 @@ export function isGameLive(status: string): boolean {
 export function gamesForCards(slate: import("./types.js").SlateGame[]): import("./types.js").SlateGame[] {
   return slate.filter((g) => !isGameFinal(g.status));
 }
+
+/** Games tab — one section per slate game (finals stay visible for live tracking). */
+export function gamesForGamesTab(
+  slate: import("./types.js").SlateGame[]
+): import("./types.js").SlateGame[] {
+  return slate;
+}

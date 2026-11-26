@@ -5,7 +5,7 @@ import { liveMultiKey } from "@lib/live-tracking";
 import type { PickLeg } from "@lib/types";
 import { gameSgmBlocks } from "@lib/games-sgm";
 import { gameSgmAsMulti, gameListRowLabel } from "@lib/games-sgm-ui";
-import { gamesForCards, isGameLive } from "@lib/slate-game-ui";
+import { gamesForGamesTab } from "@lib/slate-game-ui";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
 import { picksByIdFromOfficialSnapshots } from "@lib/official-leg-snapshot";
 import { MultiCard } from "../components/MultiCard";
@@ -43,7 +43,7 @@ export function GamesScreen({
   const badgeInjuries = injuriesForBadges(data.injuries);
   const { preset, setPreset, presets } = useGamesSgmPreset();
   const { roughiesOn, setRoughiesOn } = useGamesRoughies();
-  const activeSlate = useMemo(() => gamesForCards(data.slate), [data.slate]);
+  const activeSlate = useMemo(() => gamesForGamesTab(data.slate), [data.slate]);
   const useOfficial =
     data.officialCard != null &&
     data.officialCard.slateDate === data.meta.slateTipDate;
@@ -73,13 +73,6 @@ export function GamesScreen({
   const built = useMemo(() => blocks.filter((b) => b.card), [blocks]);
   const empty = useMemo(() => blocks.filter((b) => !b.card), [blocks]);
 
-  const [collapsed, setCollapsed] = useState<Record<string, boolean>>(() => {
-    const init: Record<string, boolean> = {};
-    for (const g of activeSlate) {
-      if (isGameLive(g.status)) init[g.id] = true;
-    }
-    return init;
-  });
   const [emptyOpen, setEmptyOpen] = useState(false);
 
   const slateFairOnly = !slateHasFeedOdds(data.picks);
@@ -151,8 +144,6 @@ export function GamesScreen({
       {built.map(({ game, card }) => {
         if (!card) return null;
         const multi = gameSgmAsMulti(card, game);
-        const isCollapsed = collapsed[game.id] ?? false;
-        const live = isGameLive(game.status);
         const board = liveBoardByGame.get(game.id);
         const gameOddsAge = formatGameOddsAge(
           data.picks,
@@ -162,65 +153,50 @@ export function GamesScreen({
 
         return (
           <div key={game.id} className="mb-4">
-            {live && (
-              <button
-                type="button"
-                className="text-xs text-white/50 mb-1"
-                onClick={() =>
-                  setCollapsed((c) => ({ ...c, [game.id]: !isCollapsed }))
-                }
-              >
-                {isCollapsed ? "Show live SGM" : "Hide live SGM"}
-              </button>
-            )}
-            {(!live || !isCollapsed) && (
-              <>
-                <p className="text-[13px] font-semibold text-white theme-adaptive-title mb-2">
-                  {gameListRowLabel(game)}
-                  {board && board.phase !== "scheduled" ? (
-                    <span
-                      className="text-sky-400/90 font-normal text-[11px] ml-2 tabular-nums"
-                      data-testid="games-header-live-score"
-                    >
-                      {board.statusDetail}
-                    </span>
-                  ) : null}
-                  {card.roughie && (
-                    <span className="text-[10px] font-medium px-1.5 py-px rounded-full bg-amber-500/20 text-amber-200 ml-2 align-middle">
-                      Roughie
-                    </span>
-                  )}
-                  {gameOddsAge ? (
-                    <span className="text-white/40 font-normal text-[11px] ml-2">
-                      {gameOddsAge}
-                    </span>
-                  ) : null}
-                  {game.spread != null && Math.abs(game.spread) >= 14.5 && (
-                    <span className="text-red-400 font-normal text-xs ml-2">
-                      Blowout
-                    </span>
-                  )}
-                </p>
-                <MultiCard
-                  multi={multi}
-                  picksById={picksById}
-                  injuries={badgeInjuries}
-                  slate={activeSlate}
-                  preferredBookie={myBookie}
-                  fairOnly={slateFairOnly}
-                  oddsNote={oddsNote}
-                  hideBookieSelect={slateFairOnly}
-                  liveCatalog={data.picks}
-                  bookieStorageScope="games"
-                  compact
-                  onLegTap={onLegTap}
-                  onCopy={onCopy}
-                  legViews={liveTracking.legViews}
-                  liveBetView={liveTracking.betViews.get(liveMultiKey(multi))}
-                  liveSnapshot={liveTracking.snapshot}
-                />
-              </>
-            )}
+            <p className="text-[13px] font-semibold text-white theme-adaptive-title mb-2">
+              {gameListRowLabel(game)}
+              {board && board.phase !== "scheduled" ? (
+                <span
+                  className="text-sky-400/90 font-normal text-[11px] ml-2 tabular-nums"
+                  data-testid="games-header-live-score"
+                >
+                  {board.statusDetail}
+                </span>
+              ) : null}
+              {card.roughie && (
+                <span className="text-[10px] font-medium px-1.5 py-px rounded-full bg-amber-500/20 text-amber-200 ml-2 align-middle">
+                  Roughie
+                </span>
+              )}
+              {gameOddsAge ? (
+                <span className="text-white/40 font-normal text-[11px] ml-2">
+                  {gameOddsAge}
+                </span>
+              ) : null}
+              {game.spread != null && Math.abs(game.spread) >= 14.5 && (
+                <span className="text-red-400 font-normal text-xs ml-2">
+                  Blowout
+                </span>
+              )}
+            </p>
+            <MultiCard
+              multi={multi}
+              picksById={picksById}
+              injuries={badgeInjuries}
+              slate={activeSlate}
+              preferredBookie={myBookie}
+              fairOnly={slateFairOnly}
+              oddsNote={oddsNote}
+              hideBookieSelect={slateFairOnly}
+              liveCatalog={data.picks}
+              bookieStorageScope="games"
+              compact
+              onLegTap={onLegTap}
+              onCopy={onCopy}
+              legViews={liveTracking.legViews}
+              liveBetView={liveTracking.betViews.get(liveMultiKey(multi))}
+              liveSnapshot={liveTracking.snapshot}
+            />
           </div>
         );
       })}

@@ -51,6 +51,21 @@ describe("legRowBadgeLabels", () => {
     expect(pills).not.toContain("boards shared");
     expect(pills).not.toContain("former_team");
   });
+
+  it("never surfaces Check prices on leg row badges", () => {
+    const leg = {
+      ...base,
+      tags: ["Check prices", "Value"],
+      fairPrice: 1.5,
+      takeAt: 1.4,
+      bookiePrices: { Sportsbet: 3.5 },
+      bestBookie: "Sportsbet",
+      bestPrice: 3.5,
+    };
+    const pills = legRowBadgeLabels(leg, "Sportsbet");
+    expect(pills).not.toContain("Check prices");
+    expect(pills).toContain("Value");
+  });
 });
 
 describe("sortLegRowBadgeTags", () => {
