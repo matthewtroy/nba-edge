@@ -34,6 +34,7 @@ export function reasonPassesPlausibility(text: string): boolean {
     return false;
   }
   const t = text.toLowerCase();
+  if (/rank #\d+ in allowing/i.test(text)) return true;
   if (/allow [\d.]+\s+(pts|reb|ast|threes)/i.test(text) && /per game|to guards|to forwards|to centers/i.test(text)) {
     return true;
   }

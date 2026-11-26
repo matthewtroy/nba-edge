@@ -68,7 +68,8 @@ export function normalizeLegReasons(input: unknown): LegReason[] {
 export function inferReasonType(text: string): LegReasonType {
   const t = text.toLowerCase();
   if (/out →|out:|only big|missing \d+ big|benefit|redistrib|teammate/i.test(t)) return "injury";
-  if (/potential ast|fga up|3pa up|tracking/i.test(t)) return "tracking";
+  if (/potential ast|more shots|more 3s|fga up|3pa up|tracking/i.test(t)) return "tracking";
+  if (/rank #\d+ in allowing/i.test(t)) return "matchup";
   if (/allow [\d.]+\s+(pts|points|reb|rebounds|ast|assists|threes)/i.test(t)) return "matchup";
   if (/vs .+ in \d+ meetings|\/\d+ .+ vs /i.test(t)) return "h2h";
   if (/averages [\d.]+\s+(pts|reb|ast)/i.test(t)) return "rank";
@@ -117,8 +118,8 @@ export function reasonMatchesMarket(r: LegReason, market: string, stat: string):
     return false;
   }
   if (r.type === "tracking") {
-    if (stat === "3pm") return /3pa up/i.test(r.text) && !/fga/i.test(r.text);
-    if (stat === "pts") return /fga up/i.test(r.text);
+    if (stat === "3pm") return /more 3s|3pa up/i.test(r.text) && !/fga/i.test(r.text);
+    if (stat === "pts") return /more shots|fga up/i.test(r.text);
     if (stat === "ast") return /potential ast/i.test(r.text);
     return false;
   }
@@ -134,7 +135,7 @@ export function reasonMatchesMarket(r: LegReason, market: string, stat: string):
   }
   if (r.type === "matchup" || r.type === "avg" || r.type === "rank") {
     const t = r.text.toLowerCase();
-    if (stat === "3pm") return t.includes("three") || t.includes("3pm");
+    if (stat === "3pm") return t.includes("three") || t.includes("3pm") || t.includes("3s");
     if (stat === "pts")
       return t.includes("point") || t.includes(" pts") || t.includes("pts ");
     if (stat === "reb") return t.includes("reb");

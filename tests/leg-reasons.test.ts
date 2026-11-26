@@ -89,7 +89,7 @@ describe("leg reasons structured", () => {
       opponentName: "Miami Heat",
     });
     const matchup = reasons.find((r) => r.type === "matchup");
-    expect(matchup?.text).toMatch(/Heat allow [\d.]+ pts to guards/);
+    expect(matchup?.text).toMatch(/Heat rank #1 in allowing pts to guards \(avg\. [\d.]+\)/);
     expect(matchup?.text.toLowerCase()).not.toContain("per 48");
     expect(matchup?.text.toLowerCase()).not.toContain("league avg");
   });

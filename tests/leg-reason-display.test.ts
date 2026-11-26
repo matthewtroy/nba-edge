@@ -13,18 +13,32 @@ const picks26 = JSON.parse(
 describe("leg reason display backfill", () => {
   it("3pm tracking copy uses 3PA", () => {
     const line = threesVolumeFromLogs([
-      { gameId: "1", date: "2026-11-20", minutes: 30, pts: 20, reb: 5, ast: 4, threes: 3, fg3a: 8 },
-      { gameId: "2", date: "2026-11-19", minutes: 32, pts: 18, reb: 4, ast: 5, threes: 2, fg3a: 7 },
-      { gameId: "3", date: "2026-11-18", minutes: 34, pts: 22, reb: 6, ast: 3, threes: 4, fg3a: 9 },
-      { gameId: "4", date: "2026-11-17", minutes: 31, pts: 15, reb: 3, ast: 6, threes: 1, fg3a: 5 },
-      { gameId: "5", date: "2026-11-16", minutes: 33, pts: 19, reb: 4, ast: 5, threes: 3, fg3a: 8 },
-      { gameId: "6", date: "2026-11-01", minutes: 30, pts: 14, reb: 4, ast: 4, threes: 2, fg3a: 5 },
+      ...Array.from({ length: 5 }, (_, i) => ({
+        gameId: `l5-${i}`,
+        date: `2026-11-${String(20 - i).padStart(2, "0")}`,
+        minutes: 30,
+        pts: 18,
+        reb: 4,
+        ast: 3,
+        threes: 3,
+        fg3a: 10,
+      })),
+      ...Array.from({ length: 8 }, (_, i) => ({
+        gameId: `s-${i}`,
+        date: `2026-10-${String(28 - i).padStart(2, "0")}`,
+        minutes: 28,
+        pts: 12,
+        reb: 3,
+        ast: 2,
+        threes: 1,
+        fg3a: 4,
+      })),
     ]);
-    expect(line).toMatch(/^3PA up:/);
+    expect(line).toMatch(/^More 3s:/);
   });
 
   it("reason copy is never length-capped", () => {
-    const long = "Playing more: 38 last 5 (season 34) · Avg 31.2 pts last 10 (season 28.4)";
+    const long = "Playing more: 38 min last 5 (34 season) · Avg 31.2 pts last 10 (season 28.4)";
     expect(houseReasonText(long)).toBe(long);
   });
 

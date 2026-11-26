@@ -15,6 +15,8 @@ export const BANNED_REASON_PHRASES = [
   "voids if out",
   "per 48",
   "shot volume up",
+  "fga up:",
+  "3pa up:",
   "minutes up",
   "league avg",
   "per game to",

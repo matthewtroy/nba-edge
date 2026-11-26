@@ -67,16 +67,9 @@ function matchupPhrase(
   const opp = shortTeamName(opponentName ?? defendingTeamId);
   const bucket = positionBucket(playerPosition);
   const posLabel = positionBucketLabel(bucket);
-  const statWord =
-    row.stat === "reb"
-      ? "reb"
-      : row.stat === "ast"
-        ? "ast"
-        : row.stat === "3pm"
-          ? "threes"
-          : "pts";
   const perGame = Math.round((row.allowedPer48 * 36) / 48 * 10) / 10;
-  return `${opp} allow ${perGame.toFixed(1)} ${statWord} to ${posLabel}, ${ordinal(rank)}`;
+  const statLabel = row.stat === "3pm" ? "3s" : row.stat;
+  return `${opp} rank #${rank} in allowing ${statLabel} to ${posLabel} (avg. ${perGame.toFixed(1)})`;
 }
 
 function playerRankPhrase(
@@ -174,11 +167,12 @@ function avgPhrase(
           : market === "ast"
             ? seasonAvg?.ast
             : seasonAvg?.pts;
+  const lastLabel = n === 10 ? "last 10" : `last ${n}`;
   const seasonSuffix =
     seasonStat != null && seasonStat.toFixed(1) !== avg.toFixed(1)
       ? ` (season ${seasonStat.toFixed(1)})`
       : "";
-  return `Avg ${avg.toFixed(1)} ${statLabel} last 10${seasonSuffix}`;
+  return `Avg ${avg.toFixed(1)} ${statLabel} ${lastLabel}${seasonSuffix}`;
 }
 
 function minutesPhrase(logs: PlayerGameLog[]): string | undefined {
@@ -188,7 +182,7 @@ function minutesPhrase(logs: PlayerGameLog[]): string | undefined {
   const season =
     sorted.reduce((s, g) => s + g.minutes, 0) / Math.max(1, sorted.length);
   if (l5 < season + 3) return undefined;
-  return `Playing more: ${Math.round(l5)} last 5 (season ${Math.round(season)})`;
+  return `Playing more: ${Math.round(l5)} min last 5 (${Math.round(season)} season)`;
 }
 
 export function buildLegReasons(input: {

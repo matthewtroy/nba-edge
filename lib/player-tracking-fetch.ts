@@ -80,20 +80,20 @@ function espnStandInFromLogs(playerId: string, name: string, logs: PlayerGameLog
 export function shotVolumeReason(tr: PlayerTrackingDay): string | undefined {
   const { fgaLast5PerGame: l5, fgaSeasonPerGame: season } = tr;
   if (l5 == null || season == null || season <= 0) return undefined;
-  if (l5 < season * 1.05 && l5 < season + 1) return undefined;
-  return `FGA up: ${l5.toFixed(1)} last 5 (season ${season.toFixed(1)})`;
+  if (l5 < season * 1.15) return undefined;
+  return `More shots: ${l5.toFixed(1)} FGA last 5 (${season.toFixed(1)} season)`;
 }
 
 export function threesVolumeFromLogs(logs: PlayerGameLog[]): string | undefined {
   const sorted = [...logs].sort((a, b) => b.date.localeCompare(a.date));
-  const l5Games = sorted.slice(0, 5).filter((g) => (g.fg3a ?? 0) > 0 || g.threes > 0);
-  const l10 = sorted.slice(0, 10).filter((g) => (g.fg3a ?? 0) > 0 || g.threes > 0);
-  if (l5Games.length < 3 || l10.length < 5) return undefined;
-  const l5 = l5Games.reduce((s, g) => s + (g.fg3a ?? g.threes), 0) / l5Games.length;
-  const season =
-    l10.reduce((s, g) => s + (g.fg3a ?? g.threes), 0) / l10.length;
-  if (season <= 0 || (l5 < season * 1.05 && l5 < season + 0.5)) return undefined;
-  return `3PA up: ${l5.toFixed(1)} last 5 (season ${season.toFixed(1)})`;
+  const withFg3a = sorted.filter((g) => g.fg3a != null);
+  if (withFg3a.length < 5) return undefined;
+  const l5Games = withFg3a.slice(0, 5);
+  if (l5Games.length < 5) return undefined;
+  const l5 = l5Games.reduce((s, g) => s + (g.fg3a ?? 0), 0) / 5;
+  const season = withFg3a.reduce((s, g) => s + (g.fg3a ?? 0), 0) / withFg3a.length;
+  if (season <= 0 || l5 < season * 1.15) return undefined;
+  return `More 3s: ${l5.toFixed(1)} 3PA last 5 (${season.toFixed(1)} season)`;
 }
 
 export function potentialAstReason(tr: PlayerTrackingDay): string | undefined {

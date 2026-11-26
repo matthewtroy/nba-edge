@@ -48,13 +48,15 @@ export function avgReasonFromLeg(leg: PickLeg): string | undefined {
     (v): v is number => v != null && Number.isFinite(v)
   );
   if (values.length >= 3) {
-    const avg = values.slice(0, 10).reduce((s, v) => s + v, 0) / Math.min(10, values.length);
+    const n = Math.min(10, values.length);
+    const avg = values.slice(0, n).reduce((s, v) => s + v, 0) / n;
     const seasonVal = seasonStat(leg, stat);
+    const lastLabel = n === 10 ? "last 10" : `last ${n}`;
     const suffix =
       seasonVal != null && seasonVal.toFixed(1) !== avg.toFixed(1)
         ? ` (season ${seasonVal.toFixed(1)})`
         : "";
-    return `Avg ${avg.toFixed(1)} ${word} last 10${suffix}`;
+    return `Avg ${avg.toFixed(1)} ${word} ${lastLabel}${suffix}`;
   }
   const lastFive = leg.lastFiveAvg;
   const season = leg.seasonAvg;
@@ -65,7 +67,9 @@ export function avgReasonFromLeg(leg: PickLeg): string | undefined {
     seasonVal != null && seasonVal.toFixed(1) !== pick.toFixed(1)
       ? ` (season ${seasonVal.toFixed(1)})`
       : "";
-  return `Avg ${pick.toFixed(1)} ${word} last 10${suffix}`;
+  const n = Math.min(10, (leg.lastTenStatValues ?? []).filter((v) => v != null && Number.isFinite(v)).length);
+  const lastLabel = n === 10 ? "last 10" : n >= 3 ? `last ${n}` : "last 10";
+  return `Avg ${pick.toFixed(1)} ${word} ${lastLabel}${suffix}`;
 }
 
 function seasonStat(

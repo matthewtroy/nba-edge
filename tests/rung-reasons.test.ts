@@ -27,7 +27,7 @@ describe("rung-aware reasons", () => {
     const avdijaSeed = [
       { type: "avg" as const, text: "Avg 7.4 ast last 10 (season 6.2)" },
       { type: "form" as const, text: "6/10 at this line" },
-      { type: "min" as const, text: "Playing more: 34 last 5 (season 30)" },
+      { type: "min" as const, text: "Playing more: 34 min last 5 (30 season)" },
     ];
     expect(gateLegReasons(avdijaSeed, "ast", 3, 7).length).toBeGreaterThanOrEqual(2);
   });
