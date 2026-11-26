@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26T04:59:34.702Z",
+  "lastUpdated": "2026-11-26T05:47:04.076Z",
   "oddsLastPulled": "2026-11-25T10:29:00.533Z",
   "sources": {
     "espn": "ok",
@@ -10,11 +10,9 @@
   "smallSlate": false,
   "injuryImpactLog": [
     "Nolan Traore (Brooklyn Nets): no redistribution reasons on slate legs",
-    "Ryan Kalkbrenner (Charlotte Hornets): no redistribution reasons on slate legs",
     "Grayson Allen (Charlotte Hornets): no redistribution reasons on slate legs",
     "Dennis Schroder (Charlotte Hornets): no redistribution reasons on slate legs",
     "Kon Knueppel (Charlotte Hornets): no redistribution reasons on slate legs",
-    "Jalen Smith (Chicago Bulls): no redistribution reasons on slate legs",
     "Norman Powell (Chicago Bulls): no redistribution reasons on slate legs",
     "Caleb Wilson (Chicago Bulls): no redistribution reasons on slate legs",
     "Nae'Qwan Tomlin (Cleveland Cavaliers): no redistribution reasons on slate legs",
@@ -29,7 +27,6 @@
     "Donte DiVincenzo (Minnesota Timberwolves): no redistribution reasons on slate legs",
     "Jaylen Clark (Minnesota Timberwolves): no redistribution reasons on slate legs",
     "Anthony Edwards (Minnesota Timberwolves): no redistribution reasons on slate legs",
-    "Miles McBride (New York Knicks): no redistribution reasons on slate legs",
     "Jordan Clarkson (New York Knicks): no redistribution reasons on slate legs",
     "Nikola Topic (Oklahoma City Thunder): no redistribution reasons on slate legs",
     "Jaylin Williams (Oklahoma City Thunder): no redistribution reasons on slate legs",
@@ -63,9 +60,9 @@
     "Julian Phillips (Houston Rockets): no redistribution reasons on slate legs",
     "Jonathan Mogbo (Sacramento Kings): no redistribution reasons on slate legs"
   ],
-  "modelSanityChecked": 180,
+  "modelSanityChecked": 183,
   "modelSanityFailures": 1,
-  "formGuardExcludedCount": 505,
+  "formGuardExcludedCount": 512,
   "gameOddsPriceAge": {
     "401909317": "Prices from 9:29 pm",
     "401909318": "Prices from 9:29 pm",
@@ -82,23 +79,23 @@
   "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-25_11_45PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 390,
-      "priced": 296
+      "total": 395,
+      "priced": 299
     },
     "reb": {
-      "total": 549,
-      "priced": 230
+      "total": 557,
+      "priced": 233
     },
     "3pm": {
-      "total": 663,
-      "priced": 421
+      "total": 672,
+      "priced": 426
     },
     "ast": {
-      "total": 382,
-      "priced": 170
+      "total": 386,
+      "priced": 172
     },
     "q1reb": {
-      "total": 198,
+      "total": 201,
       "priced": 0
     }
   },

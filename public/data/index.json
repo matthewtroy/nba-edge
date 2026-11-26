@@ -1,10 +1,96 @@
 {
-  "updatedAt": "2026-11-26T05:29:33.323Z",
+  "updatedAt": "2026-11-26T05:46:14.839Z",
   "todayDate": "2026-11-26",
   "tomorrowDate": null,
   "defaultDate": "2026-11-26",
-  "dates": [],
-  "nextPublishAt": "2026-11-26T10:00:33.323Z",
-  "nextSlateDate": null,
-  "firstTipAt": null
+  "dates": [
+    {
+      "date": "2026-11-25",
+      "status": "locked_at_tip",
+      "statusLabel": "Locked at tip",
+      "gameCount": 2,
+      "legCount": 446,
+      "multiCount": 2,
+      "lastUpdated": "2026-11-25T03:15:24.942Z",
+      "firstTipIso": "2026-11-25T01:00:00.000Z"
+    },
+    {
+      "date": "2026-11-26",
+      "status": "locked_at_tip",
+      "statusLabel": "Locked at tip",
+      "gameCount": 9,
+      "legCount": 2211,
+      "multiCount": 6,
+      "lastUpdated": "2026-11-26T05:47:04.076Z",
+      "firstTipIso": "2026-11-25T22:00:00.000Z"
+    }
+  ],
+  "nextPublishAt": "2026-11-25T10:00:00.000Z",
+  "nextSlateDate": "2026-11-26",
+  "firstTipAt": "2026-11-25T22:00:00.000Z",
+  "games": [
+    {
+      "id": "401909317",
+      "away": "Miami Heat",
+      "home": "Philadelphia 76ers",
+      "tipIso": "2026-11-25T22:00Z",
+      "status": "final"
+    },
+    {
+      "id": "401909318",
+      "away": "Chicago Bulls",
+      "home": "Charlotte Hornets",
+      "tipIso": "2026-11-26T00:00Z",
+      "status": "final"
+    },
+    {
+      "id": "401909319",
+      "away": "Cleveland Cavaliers",
+      "home": "New York Knicks",
+      "tipIso": "2026-11-26T00:30Z",
+      "status": "final"
+    },
+    {
+      "id": "401909320",
+      "away": "Minnesota Timberwolves",
+      "home": "Oklahoma City Thunder",
+      "tipIso": "2026-11-26T00:30Z",
+      "status": "final"
+    },
+    {
+      "id": "401909321",
+      "away": "LA Clippers",
+      "home": "Memphis Grizzlies",
+      "tipIso": "2026-11-26T01:00Z",
+      "status": "final"
+    },
+    {
+      "id": "401909322",
+      "away": "Brooklyn Nets",
+      "home": "Milwaukee Bucks",
+      "tipIso": "2026-11-26T01:00Z",
+      "status": "final"
+    },
+    {
+      "id": "401909323",
+      "away": "Phoenix Suns",
+      "home": "Houston Rockets",
+      "tipIso": "2026-11-26T01:30Z",
+      "status": "final"
+    },
+    {
+      "id": "401909324",
+      "away": "Sacramento Kings",
+      "home": "Golden State Warriors",
+      "tipIso": "2026-11-26T03:00Z",
+      "status": "live"
+    },
+    {
+      "id": "401909325",
+      "away": "San Antonio Spurs",
+      "home": "Portland Trail Blazers",
+      "tipIso": "2026-11-26T03:00Z",
+      "status": "scheduled"
+    }
+  ]
 }

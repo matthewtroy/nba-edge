@@ -1,9 +1,9 @@
 [
   {
-    "playerName": "Zach Edey",
-    "teamId": "29",
-    "teamName": "Memphis Grizzlies",
-    "gameId": "401909321",
+    "playerName": "Miles McBride",
+    "teamId": "18",
+    "teamName": "New York Knicks",
+    "gameId": "401909319",
     "status": "Questionable",
     "source": "ESPN",
     "updatedAt": "2026-11-26T03:43Z"
@@ -14,17 +14,6 @@
     "teamId": "17",
     "teamName": "Brooklyn Nets",
     "gameId": "401909322",
-    "status": "Out",
-    "source": "NBA Official",
-    "updatedAt": "2026-11-26T04:45:00.000Z",
-    "reportTime": "2026-11-26T04:45:00.000Z"
-  },
-  {
-    "playerId": "4576060",
-    "playerName": "Ryan Kalkbrenner",
-    "teamId": "30",
-    "teamName": "Charlotte Hornets",
-    "gameId": "401909318",
     "status": "Out",
     "source": "NBA Official",
     "updatedAt": "2026-11-26T04:45:00.000Z",
@@ -57,17 +46,6 @@
     "playerName": "Kon Knueppel",
     "teamId": "30",
     "teamName": "Charlotte Hornets",
-    "gameId": "401909318",
-    "status": "Out",
-    "source": "NBA Official",
-    "updatedAt": "2026-11-26T04:45:00.000Z",
-    "reportTime": "2026-11-26T04:45:00.000Z"
-  },
-  {
-    "playerId": "4397189",
-    "playerName": "Jalen Smith",
-    "teamId": "4",
-    "teamName": "Chicago Bulls",
     "gameId": "401909318",
     "status": "Out",
     "source": "NBA Official",
@@ -223,17 +201,6 @@
     "teamId": "16",
     "teamName": "Minnesota Timberwolves",
     "gameId": "401909320",
-    "status": "Out",
-    "source": "NBA Official",
-    "updatedAt": "2026-11-26T04:45:00.000Z",
-    "reportTime": "2026-11-26T04:45:00.000Z"
-  },
-  {
-    "playerId": "4431823",
-    "playerName": "Miles McBride",
-    "teamId": "18",
-    "teamName": "New York Knicks",
-    "gameId": "401909319",
     "status": "Out",
     "source": "NBA Official",
     "updatedAt": "2026-11-26T04:45:00.000Z",
@@ -675,6 +642,39 @@
     "teamName": "San Antonio Spurs",
     "gameId": "401909325",
     "status": "Questionable",
+    "source": "NBA Official",
+    "updatedAt": "2026-11-26T04:45:00.000Z",
+    "reportTime": "2026-11-26T04:45:00.000Z"
+  },
+  {
+    "playerId": "4576060",
+    "playerName": "Ryan Kalkbrenner",
+    "teamId": "30",
+    "teamName": "Charlotte Hornets",
+    "gameId": "401909318",
+    "status": "Out",
+    "source": "NBA Official",
+    "updatedAt": "2026-11-26T04:45:00.000Z",
+    "reportTime": "2026-11-26T04:45:00.000Z"
+  },
+  {
+    "playerId": "4397189",
+    "playerName": "Jalen Smith",
+    "teamId": "4",
+    "teamName": "Chicago Bulls",
+    "gameId": "401909318",
+    "status": "Out",
+    "source": "NBA Official",
+    "updatedAt": "2026-11-26T04:45:00.000Z",
+    "reportTime": "2026-11-26T04:45:00.000Z"
+  },
+  {
+    "playerId": "4431823",
+    "playerName": "Miles McBride",
+    "teamId": "18",
+    "teamName": "New York Knicks",
+    "gameId": "401909319",
+    "status": "Out",
     "source": "NBA Official",
     "updatedAt": "2026-11-26T04:45:00.000Z",
     "reportTime": "2026-11-26T04:45:00.000Z"
