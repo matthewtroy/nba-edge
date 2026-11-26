@@ -4,6 +4,177 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
+        "4433249-reb-10",
+        "4431671-reb-5",
+        "4683021-3pm-2",
+        "4903027-reb-7"
+      ],
+      "combinedProbability": 0.31265965242,
+      "combinedFairPrice": 3.2,
+      "combinedTakeAt": 3.46,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 6.35,
+      "bookieTotals": {
+        "Ladbrokes": 6.35,
+        "Neds": 6.35
+      },
+      "summary": "4 starter main lines"
+    },
+    {
+      "type": "doubleUp",
+      "label": "Best Double Up",
+      "legs": [
+        "4576087-3pm-1",
+        "4065733-ast-5"
+      ],
+      "combinedProbability": 0.592128,
+      "combinedFairPrice": 1.69,
+      "combinedTakeAt": 1.83,
+      "bestBookie": "Unibet",
+      "bestBookieTotal": 1.83,
+      "bookieTotals": {
+        "TABtouch": 1.83,
+        "Ladbrokes": 1.89,
+        "Neds": 1.89,
+        "Unibet": 1.83,
+        "Betr": 1.8,
+        "Picklebet": 1.81,
+        "Bet Right": 1.81
+      },
+      "summary": "2 legs · aim ~$2 @ one bookie"
+    },
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "legs": [
+        "3992-3pm-2",
+        "3136195-pts-20",
+        "4900671-3pm-1",
+        "4397002-3pm-2",
+        "4065733-ast-5",
+        "4433083-ast-5",
+        "3202-pts-20",
+        "4871144-3pm-1"
+      ],
+      "combinedProbability": 0.056493325729452384,
+      "combinedFairPrice": 17.7,
+      "combinedTakeAt": 19.12,
+      "bestBookie": "TABtouch",
+      "bestBookieTotal": 47.27,
+      "bookieTotals": {
+        "TABtouch": 47.27,
+        "Ladbrokes": 38.76,
+        "Neds": 38.76,
+        "Unibet": 47.88
+      },
+      "crossGameGroups": [
+        {
+          "gameId": "401909317",
+          "status": "excluded",
+          "legs": [],
+          "excludedReason": "MIA @ PHI: need 2+ legs @ TABtouch (found 0)."
+        },
+        {
+          "gameId": "401909318",
+          "status": "excluded",
+          "legs": [],
+          "excludedReason": "CHI @ CHA: need 2+ legs @ TABtouch (found 0)."
+        },
+        {
+          "gameId": "401909319",
+          "status": "included",
+          "legs": [
+            "3992-3pm-2",
+            "3136195-pts-20"
+          ]
+        },
+        {
+          "gameId": "401909320",
+          "status": "included",
+          "legs": [
+            "4900671-3pm-1",
+            "4397002-3pm-2"
+          ]
+        },
+        {
+          "gameId": "401909321",
+          "status": "included",
+          "legs": [
+            "4065733-ast-5",
+            "4433083-ast-5"
+          ]
+        },
+        {
+          "gameId": "401909322",
+          "status": "excluded",
+          "legs": [],
+          "excludedReason": "BKN @ MIL: need 2+ legs @ TABtouch (found 0)."
+        },
+        {
+          "gameId": "401909323",
+          "status": "included",
+          "legs": [
+            "3202-pts-20",
+            "4871144-3pm-1"
+          ]
+        },
+        {
+          "gameId": "401909324",
+          "status": "excluded",
+          "legs": [],
+          "excludedReason": "SAC @ GSW: need 2+ legs @ TABtouch (found 0)."
+        },
+        {
+          "gameId": "401909325",
+          "status": "excluded",
+          "legs": [],
+          "excludedReason": "SAS @ POR: need 2+ legs @ TABtouch (found 0)."
+        }
+      ],
+      "summary": "2–5 games, 1–2 legs/game, $15–50 @ one bookie (toggle games on card)"
+    },
+    {
+      "type": "boostSgm",
+      "label": "Best SGM",
+      "legs": [
+        "4433249-reb-10",
+        "2990984-3pm-3"
+      ],
+      "combinedProbability": 0.546924,
+      "combinedFairPrice": 1.83,
+      "combinedTakeAt": 1.98,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 2.58,
+      "bookieTotals": {
+        "Sportsbet": 2.47,
+        "TAB": 2.24,
+        "Ladbrokes": 2.58,
+        "Neds": 2.58,
+        "PointsBet": 2.44
+      },
+      "summary": "Best 2–5 leg same-game multi · min $2 · edge curve"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "legs": [
+        "5104157-q1reb-3",
+        "4432194-q1reb-2",
+        "4222252-q1reb-2",
+        "4066383-q1reb-2",
+        "3155942-q1reb-3",
+        "4396971-q1reb-2"
+      ],
+      "combinedProbability": 0.13227546246931357,
+      "combinedFairPrice": 7.56,
+      "combinedTakeAt": 8.16,
+      "bookieTotals": {},
+      "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
+    },
+    {
+      "type": "mainPlay",
+      "label": "Main Play",
+      "legs": [
         "4711294-pts-15",
         "4431671-reb-5",
         "3995-ast-5",
@@ -263,23 +434,6 @@
       "summary": "Best 2–5 leg same-game multi · min $2 · edge curve"
     },
     {
-      "type": "q1Multi",
-      "label": "Q1 Multi",
-      "legs": [
-        "5104157-q1reb-3",
-        "4432194-q1reb-2",
-        "4222252-q1reb-2",
-        "4066383-q1reb-2",
-        "3155942-q1reb-3",
-        "4396971-q1reb-2"
-      ],
-      "combinedProbability": 0.12306059153815332,
-      "combinedFairPrice": 8.13,
-      "combinedTakeAt": 8.78,
-      "bookieTotals": {},
-      "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
-    },
-    {
       "type": "doubleUp",
       "label": "Best Double Up",
       "legs": [
@@ -500,18 +654,17 @@
   ],
   "notBuilt": [
     {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "reason": "No cross-game combo @ edge (eligible 225, best edge-pool Neds=59, range-cands 0)"
+      "type": "booster",
+      "label": "Booster",
+      "reason": "Booster: Moussa Diabate 13+ reb: no Neds line"
     },
     {
       "type": "longshot",
       "label": "Longshot",
-      "reason": "Gate: Longshot: Victor Wembanyama has Check news (legs: Victor Wembanyama Over 39.5 pts, Donovan Mitchell Over 34.5 pts, Julius Randle Over 29.5 pts)",
+      "reason": "Gate: Longshot: Jaden McDaniels has Check news; Longshot: take-at 17.92 not 30–150 (legs: Donovan Mitchell Over 34.5 pts, Jaden McDaniels Over 29.5 pts)",
       "players": [
-        "Victor Wembanyama",
         "Donovan Mitchell",
-        "Julius Randle"
+        "Jaden McDaniels"
       ]
     }
   ]

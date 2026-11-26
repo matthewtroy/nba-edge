@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26T11:25:57.551Z",
+  "lastUpdated": "2026-11-26T12:50:20.646Z",
   "oddsLastPulled": "2026-11-25T10:29:00.533Z",
   "sources": {
     "espn": "ok",
@@ -9,11 +9,11 @@
   "slateSize": 9,
   "smallSlate": false,
   "injuryImpactLog": [
-    "Nolan Traore (Brooklyn Nets): top modeled delta +1 pts on Keon Ellis (below display threshold)"
+    "Nolan Traore (Brooklyn Nets): top modeled delta +0.5 pts on Keon Ellis (below display threshold)"
   ],
   "modelSanityChecked": 184,
-  "modelSanityFailures": 43,
-  "formGuardExcludedCount": 404,
+  "modelSanityFailures": 29,
+  "formGuardExcludedCount": 668,
   "gameOddsPriceAge": {
     "401909317": "Prices from 9:29 pm",
     "401909318": "Prices from 9:29 pm",
@@ -27,35 +27,36 @@
   },
   "slateTipDate": "2026-11-26",
   "whatChanged": [
-    "Cason Wallace out → Shai Gilgeous-Alexander +7.1 pts",
-    "Anthony Edwards out → Ayo Dosunmu +3.4 pts",
-    "Evan Mobley out → Donovan Mitchell +3.2 pts"
+    "Dylan Harper out → Victor Wembanyama +5.3 pts",
+    "Grayson Allen out → Brandon Miller +4.8 pts",
+    "Jaylin Williams out → Ajay Mitchell +4.4 pts"
   ],
-  "nbaOfficialLastTriedUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-26_04_30AM.pdf",
+  "nbaOfficialLastTriedUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-26_06_00AM.pdf",
   "pricedLegCounts": {
-    "reb": {
-      "total": 348,
-      "priced": 154
-    },
     "pts": {
-      "total": 347,
-      "priced": 255
+      "total": 412,
+      "priced": 309
     },
-    "ast": {
-      "total": 249,
-      "priced": 118
+    "reb": {
+      "total": 555,
+      "priced": 229
     },
     "3pm": {
-      "total": 381,
-      "priced": 269
+      "total": 655,
+      "priced": 416
+    },
+    "ast": {
+      "total": 406,
+      "priced": 179
     },
     "q1reb": {
-      "total": 133,
+      "total": 193,
       "priced": 0
     }
   },
   "gateViolations": [
-    "Longshot: Victor Wembanyama has Check news"
+    "Longshot: Jaden McDaniels has Check news",
+    "Longshot: take-at 17.92 not 30–150"
   ],
   "officialCard": {
     "lockedAt": "2026-11-25T13:39:22.578Z",
