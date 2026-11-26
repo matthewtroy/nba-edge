@@ -133,7 +133,50 @@ describe("restorePersistedDataFromBranch", () => {
     );
   });
 
-  it("restores slate folders from index dates on data branch", () => {
+  it("restores slate folders via ls-tree when index dates is empty", () => {
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "nba-restore-slate-"));
+    const repo = path.join(tmp, "repo");
+    try {
+      git(tmp, "init", repo);
+      const ymd = "2026-11-26";
+      const slateDir = path.join(repo, "public/data", ymd);
+      fs.mkdirSync(slateDir, { recursive: true });
+      fs.writeFileSync(path.join(slateDir, "slate.json"), "[]");
+      fs.writeFileSync(path.join(slateDir, "meta.json"), "{}");
+      git(repo, "add", `public/data/${ymd}`);
+      const emptyIndex = {
+        dates: [],
+        defaultDate: "2026-11-26",
+        todayDate: "2026-11-26",
+        tomorrowDate: null,
+        updatedAt: new Date().toISOString(),
+      };
+      fs.writeFileSync(
+        path.join(repo, "public/data/index.json"),
+        JSON.stringify(emptyIndex)
+      );
+      for (const root of [
+        "history.json",
+        "odds-cache.json",
+        "game-log-cache.json",
+      ]) {
+        fs.writeFileSync(path.join(repo, "public/data", root), "{}");
+        git(repo, "add", `public/data/${root}`);
+      }
+      git(repo, "add", "public/data/index.json");
+      git(repo, "-c", "user.email=t@t.com", "-c", "user.name=T", "commit", "-m", "data");
+      git(repo, "branch", "-M", "data");
+
+      fs.rmSync(slateDir, { recursive: true, force: true });
+      const { restored } = restorePersistedDataFromBranch(repo);
+      expect(restored).toContain(`public/data/${ymd}/slate.json`);
+      expect(fs.existsSync(path.join(repo, "public/data", ymd, "meta.json"))).toBe(true);
+    } finally {
+      fs.rmSync(tmp, { recursive: true, force: true });
+    }
+  });
+
+  it("restores slate folders from retained YYYY-MM-DD dirs on data branch", () => {
     const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "nba-restore-slate-"));
     const repo = path.join(tmp, "repo");
     try {

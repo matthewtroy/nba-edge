@@ -1,8 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { execFileSync } from "child_process";
-import type { DataIndexFile } from "./data-index.js";
-import { retentionMinYmd } from "./slate-retention.js";
+import { retentionMinYmd, SLATE_FOLDER_PATTERN } from "./slate-retention.js";
 
 /** Files at `public/data/` root persisted on the data branch. */
 export const DATA_BRANCH_ROOT_FILES = [
@@ -88,6 +87,30 @@ function restoreOne(
 
 export class DataBranchRestoreError extends Error {}
 
+/** Slate folder dates on the data branch within the Sydney retention window (not index.json). */
+export function listSlateFoldersOnDataRef(
+  rootDir: string,
+  dataRef: string,
+  now: Date
+): string[] {
+  const min = retentionMinYmd(now);
+  try {
+    const raw = execFileSync(
+      "git",
+      ["ls-tree", "-d", "--name-only", `${dataRef}:public/data`],
+      { cwd: rootDir, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }
+    );
+    return raw
+      .split("\n")
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0)
+      .filter((name) => SLATE_FOLDER_PATTERN.test(name) && name >= min)
+      .sort();
+  } catch {
+    return [];
+  }
+}
+
 function dataBranchExists(rootDir: string): boolean {
   return resolveDataGitRef(rootDir) != null;
 }
@@ -139,21 +162,18 @@ export function restorePersistedDataFromBranch(
     }
   }
 
-  const indexPath = path.join(dataRoot, "index.json");
-  if (fs.existsSync(indexPath)) {
-    try {
-      const index = JSON.parse(fs.readFileSync(indexPath, "utf8")) as DataIndexFile;
-      const min = retentionMinYmd(new Date());
-      for (const entry of index.dates ?? []) {
-        if (entry.date < min) continue;
-        for (const name of DATA_BRANCH_SLATE_DIR_FILES) {
-          const rel = `public/data/${entry.date}/${name}`;
-          const out = path.join(dataRoot, entry.date, name);
-          if (restoreOne(rootDir, dataRef, rel, out)) restored.push(rel);
-        }
-      }
-    } catch {
-      /* index parse failed — fall back to ls-tree official cards */
+  const restoreNow = new Date();
+  const retainedFolders = listSlateFoldersOnDataRef(rootDir, dataRef, restoreNow);
+  if (retainedFolders.length) {
+    console.log(
+      `restore: slate folders on data branch (${retainedFolders.join(", ")})`
+    );
+  }
+  for (const ymd of retainedFolders) {
+    for (const name of DATA_BRANCH_SLATE_DIR_FILES) {
+      const rel = `public/data/${ymd}/${name}`;
+      const out = path.join(dataRoot, ymd, name);
+      if (restoreOne(rootDir, dataRef, rel, out)) restored.push(rel);
     }
   }
 
