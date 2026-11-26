@@ -60,7 +60,7 @@ describe("leg-progress ui", () => {
       "leg-row-live-lost leg-row-live-full-bleed"
     );
     expect(legRowLiveTrackingClass(view({ state: "live" }))).toBe("");
-    expect(legProgressValueTrackClass(true)).toBe("leg-progress-value-track");
+    expect(legProgressValueTrackClass(true)).toBe("");
     expect(legProgressValueTrackClass(false)).toBe("");
   });
 

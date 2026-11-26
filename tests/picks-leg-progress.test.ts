@@ -31,5 +31,6 @@ describe("PicksScreen", () => {
     expect(bar).not.toContain("leg-progress-target-label");
     expect(bar).not.toMatch(/min-w-\[2\.5rem\]/);
     expect(bar).toMatch(/gap-1 min-w-0/);
+    expect(bar).not.toContain("leg-progress-value-track");
   });
 });

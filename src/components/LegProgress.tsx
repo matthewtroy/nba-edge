@@ -6,12 +6,11 @@ import {
   legProgressRightClass,
   legProgressRightLabel,
   legProgressTargetPercent,
-  legProgressValueTrackClass,
 } from "@lib/live-leg-ui";
 
 export function LegProgress({
   view,
-  valueAtBookie,
+  valueAtBookie: _valueAtBookie,
   className = "",
 }: {
   view?: LiveLegView;
@@ -34,12 +33,10 @@ export function LegProgress({
       className={`flex items-center gap-1 min-w-0 ${className}`}
       data-testid="leg-progress"
       data-state={view.state}
-      data-value={valueAtBookie ? "true" : undefined}
+      data-value={_valueAtBookie ? "true" : undefined}
     >
       <div
-        className={`relative flex-1 min-w-[72px] h-1.5 rounded-full bg-white/[0.08] ${legProgressValueTrackClass(
-          valueAtBookie
-        )}`}
+        className="relative flex-1 min-w-[72px] h-1.5 rounded-full bg-white/[0.08]"
         aria-hidden
       >
         <span

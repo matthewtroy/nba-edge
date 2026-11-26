@@ -12,6 +12,10 @@ describe("leg row live CSS", () => {
     expect(css).toMatch(/400ms ease/);
   });
 
+  it("omits value-at-bookie track ring on progress bar", () => {
+    expect(css).not.toMatch(/\.leg-progress-value-track/);
+  });
+
   it("softens multi card live glow", () => {
     expect(css).toMatch(/\.multi-card-live-won[\s\S]*0\.05\)/);
     expect(css).toMatch(/\.multi-card-live-tracking[\s\S]*0\.04\)/);

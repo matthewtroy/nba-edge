@@ -36,8 +36,8 @@ export function legProgressPillSymbol(view: LiveLegView): string {
   }
 }
 
-export function legProgressValueTrackClass(valueAtBookie?: boolean): string {
-  return valueAtBookie ? "leg-progress-value-track" : "";
+export function legProgressValueTrackClass(_valueAtBookie?: boolean): string {
+  return "";
 }
 
 export function legTitleShowsLiveDot(view: LiveLegView | undefined): boolean {
