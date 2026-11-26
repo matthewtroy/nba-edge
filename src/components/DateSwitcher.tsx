@@ -1,17 +1,25 @@
 import { weekdayShort } from "../hooks/useSlateDate";
+import { viewerTimeZone } from "@lib/viewer-slate";
 
 interface Props {
   todayDate: string;
   tomorrowDate: string | null;
   selected: string;
   onSelect: (date: string) => void;
+  viewerTimeZone?: string;
 }
 
-export function DateSwitcher({ todayDate, tomorrowDate, selected, onSelect }: Props) {
+export function DateSwitcher({
+  todayDate,
+  tomorrowDate,
+  selected,
+  onSelect,
+  viewerTimeZone: tz = viewerTimeZone(),
+}: Props) {
   if (!tomorrowDate || tomorrowDate === todayDate) return null;
   const opts = [
-    { date: todayDate, label: "Today" },
-    { date: tomorrowDate, label: `Tomorrow (${weekdayShort(tomorrowDate)})` },
+    { date: todayDate, label: `Today (${weekdayShort(todayDate, tz)})` },
+    { date: tomorrowDate, label: `Tomorrow (${weekdayShort(tomorrowDate, tz)})` },
   ];
   return (
     <div

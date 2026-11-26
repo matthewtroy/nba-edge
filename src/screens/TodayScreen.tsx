@@ -9,6 +9,7 @@ import { PersonalMultiBuilder } from "../components/PersonalMultiBuilder";
 import { usePersonalMultis } from "../hooks/usePersonalMultis";
 import { injuryAlertsForCard } from "@lib/injury-alerts-card";
 import { DateSwitcher } from "../components/DateSwitcher";
+import { OfficialDropCountdown } from "../components/OfficialDropCountdown";
 import { sydneyTimeFromIso, viewerTimeFromIso } from "../utils/format";
 import { noGamesTodayMessage, viewerZoneLabel } from "@lib/viewer-slate";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
@@ -149,6 +150,11 @@ export function TodayScreen({
         tomorrowDate={tomorrowDate}
         selected={slateDate}
         onSelect={onSlateDateChange}
+        viewerTimeZone={viewerTimeZone}
+      />
+      <OfficialDropCountdown
+        index={data.index}
+        show={!useOfficial && !slateFairOnly}
       />
       <header className="mb-4 flex justify-between items-start">
         <div>
