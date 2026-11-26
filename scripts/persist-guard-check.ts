@@ -17,6 +17,8 @@ import {
 } from "../lib/espn-cache-guard.js";
 import { isPostTipOff } from "../lib/odds-cache-merge.js";
 import type { HistoryJson, SlateGame } from "../lib/types.js";
+import type { DataIndexFile } from "../lib/data-index.js";
+import { indexRetentionDropReason } from "../lib/index-guard.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const staging = process.argv[2];
@@ -30,12 +32,33 @@ const now = new Date();
 
 const indexPath = path.join(staging, "index.json");
 let defaultDate: string | null = null;
+let stagingIndex: DataIndexFile | null = null;
 if (fs.existsSync(indexPath)) {
   try {
-    const index = JSON.parse(fs.readFileSync(indexPath, "utf8")) as { defaultDate?: string };
-    defaultDate = index.defaultDate ?? null;
+    stagingIndex = JSON.parse(fs.readFileSync(indexPath, "utf8")) as DataIndexFile;
+    defaultDate = stagingIndex.defaultDate ?? null;
   } catch {
     /* ignore */
+  }
+}
+
+let priorIndex: DataIndexFile | null = null;
+try {
+  const raw = execFileSync("git", ["show", "origin/data:public/data/index.json"], {
+    cwd: rootDir,
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "ignore"],
+  });
+  priorIndex = JSON.parse(raw) as DataIndexFile;
+} catch {
+  priorIndex = null;
+}
+
+if (stagingIndex && priorIndex) {
+  const indexDrop = indexRetentionDropReason(priorIndex, stagingIndex, now);
+  if (indexDrop) {
+    console.error(`persist data branch guard: blocked — ${indexDrop}`);
+    process.exit(1);
   }
 }
 
