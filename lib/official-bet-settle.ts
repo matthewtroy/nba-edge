@@ -2,6 +2,7 @@ import type { MultiBet, MultiType } from "./types.js";
 import type { OfficialCardFile, OfficialLegSnapshot } from "./official-card-time.js";
 import {
   settleMultiLegs,
+  voidAdjustedPrice,
   type CardBetResult,
   type CardLegResult,
   type SettledLegRow,
@@ -104,7 +105,14 @@ export function settleOfficialBets(
       result !== "pending" &&
       stake > 0 &&
       !(multi.type === "q1Multi" && combined == null);
-    const profit = trackUnits ? profitUnitsForBet(result, stake, combined) : null;
+    const snaps = card.legSnapshots ?? {};
+    const settledPrice =
+      combined != null
+        ? voidAdjustedPrice(combined, multi.legs, legResults, (id) =>
+            snaps[id] ? publishedLegPrice(snaps[id]) : undefined
+          )
+        : undefined;
+    const profit = trackUnits ? profitUnitsForBet(result, stake, settledPrice) : null;
 
     rows.push({
       slateDate: card.slateDate,

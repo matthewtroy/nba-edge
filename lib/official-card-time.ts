@@ -55,6 +55,8 @@ export interface OfficialCardFile {
   gamesSgms?: import("./games-sgm-freeze.js").FrozenGamesSgms;
   /** Value singles (1u each), frozen at publish. */
   valueSingles?: import("./value-leg-track.js").FrozenValueSingle[];
+  /** Freezes rebuilt after the fact from the pinned pre-tip picks commit. */
+  freezeBackfill?: { commit: string; committedAt: string; fields: string[] };
 }
 
 const EVENING_HOURS = new Set([21, 22, 23, 0, 1]);

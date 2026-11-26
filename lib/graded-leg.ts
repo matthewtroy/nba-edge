@@ -1,6 +1,6 @@
 import type { PickLeg } from "./types.js";
 import { gradeLegFromBox } from "./grading.js";
-import { boxStatForMarket, type CardLegResult } from "./settle-core.js";
+import { boxStatForMarket, finalPlayerBox, type CardLegResult } from "./settle-core.js";
 import type { BoxLine } from "../scripts/espn-parse.js";
 
 export interface GradedProjectionLeg {
@@ -86,7 +86,7 @@ export function gradePickCatalog(
 ): GradedProjectionLeg[] {
   const out: GradedProjectionLeg[] = [];
   for (const leg of picks) {
-    const box = boxesByGame.get(leg.gameId)?.get(leg.playerId);
+    const box = finalPlayerBox(boxesByGame, leg.gameId, leg.playerId);
     const row = gradePickLeg(leg, slateDate, box);
     if (row) out.push(row);
   }

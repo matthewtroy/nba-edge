@@ -3,7 +3,7 @@ import type { OfficialCardFile } from "./official-card-time.js";
 import { freezeValueSingles, type FrozenValueSingle } from "./value-leg-track.js";
 
 export type ValueSinglesSource =
-  | { kind: "card" }
+  | { kind: "card"; backfilledFrom?: string }
   | { kind: "preTip"; commit: string }
   | { kind: "currentPicks" };
 
@@ -12,13 +12,19 @@ export type ValueSinglesSource =
  * freeze existed fall back to the pinned pre-tip picks commit, then to picks on disk.
  */
 export function valueSinglesForSlate(input: {
-  card: Pick<OfficialCardFile, "valueSingles"> | null;
+  card: Pick<OfficialCardFile, "valueSingles" | "freezeBackfill"> | null;
   meta: Pick<MetaJson, "reasonsFrozenFrom"> | null;
   currentPicks: PickLeg[];
   loadPicksAtCommit: (commit: string) => PickLeg[] | null;
 }): { singles: FrozenValueSingle[]; source: ValueSinglesSource } {
   if (input.card?.valueSingles) {
-    return { singles: input.card.valueSingles, source: { kind: "card" } };
+    const backfilledFrom = input.card.freezeBackfill?.fields.includes("valueSingles")
+      ? input.card.freezeBackfill.commit
+      : undefined;
+    return {
+      singles: input.card.valueSingles,
+      source: { kind: "card", ...(backfilledFrom ? { backfilledFrom } : {}) },
+    };
   }
   const commit = input.meta?.reasonsFrozenFrom?.commit;
   if (commit) {
@@ -31,7 +37,11 @@ export function valueSinglesForSlate(input: {
 }
 
 export function valueSinglesSourceLabel(source: ValueSinglesSource): string {
-  if (source.kind === "card") return "card publish freeze";
+  if (source.kind === "card") {
+    return source.backfilledFrom
+      ? `card, backfilled from pre-tip ${source.backfilledFrom.slice(0, 7)}`
+      : "card publish freeze";
+  }
   if (source.kind === "preTip") return `pre-tip ${source.commit.slice(0, 7)}`;
   return "picks on disk";
 }

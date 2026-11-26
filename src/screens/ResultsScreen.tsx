@@ -7,13 +7,14 @@ import {
   betLegLines,
   summarizeBets,
   summarizeGamesSgms,
+  summarizeGamesSgmTotal,
   type BetTypeSummary,
 } from "@lib/results-view";
 
 type DisplayBet = Pick<
   OfficialBetRow,
   "slateDate" | "bookie" | "publishedCombinedPrice" | "stakeUnits" | "result" | "profitUnits" | "legIds" | "legLabels"
-> & { game?: string };
+> & { game?: string; settledPrice?: number };
 
 interface TableRow {
   key: string;
@@ -25,6 +26,7 @@ interface TableRow {
   profit: number;
   roi: number | null;
   bets: DisplayBet[];
+  children?: TableRow[];
 }
 
 interface Props {
@@ -92,7 +94,10 @@ function BetRow({ bet, results }: { bet: DisplayBet; results: ResultsSlice }) {
           {bet.game ? <span className="text-white/90">{bet.game} · </span> : null}
           {bet.bookie ?? ""}
           {price != null && price > 1 ? (
-            <span className="text-white/50 tabular-nums"> · ${price.toFixed(2)}</span>
+            <span className="text-white/50 tabular-nums">
+              {" "}· ${price.toFixed(2)}
+              {bet.settledPrice != null ? ` → $${bet.settledPrice.toFixed(2)}` : ""}
+            </span>
           ) : null}
           {bet.stakeUnits > 0 ? (
             <span className="text-white/50 tabular-nums"> · {units(bet.stakeUnits)}</span>
@@ -167,6 +172,45 @@ function MainPlaySection({ summary, results }: { summary: BetTypeSummary; result
   );
 }
 
+function TableRowItem({
+  row,
+  results,
+  depth = 0,
+}: {
+  row: TableRow;
+  results: ResultsSlice;
+  depth?: number;
+}) {
+  const [open, setOpen] = useState(false);
+  const expandable = row.children?.length ? true : row.bets.length > 0;
+  return (
+    <li className="border-b border-white/5 last:border-b-0" data-results-row={row.key}>
+      <button
+        type="button"
+        onClick={() => expandable && setOpen(!open)}
+        className="w-full grid grid-cols-[1fr_3rem_3.5rem_4rem_3.5rem] gap-x-2 py-2 text-sm text-left tabular-nums"
+      >
+        <span className="truncate" style={depth ? { paddingLeft: `${depth * 0.75}rem` } : undefined}>
+          <span className="text-white/40 mr-1">{expandable ? (open ? "▾" : "▸") : " "}</span>
+          {row.label}
+        </span>
+        <span className="text-right">{wl(row)}</span>
+        <span className="text-right text-white/70">{units(row.staked)}</span>
+        <span className={`text-right ${profitClass(row.profit)}`}>{units(row.profit, true)}</span>
+        <span className={`text-right ${profitClass(row.profit)}`}>{pct(row.roi)}</span>
+      </button>
+      {open && row.children?.length ? (
+        <ul className="border-t border-white/5">
+          {row.children.map((child) => (
+            <TableRowItem key={child.key} row={child} results={results} depth={depth + 1} />
+          ))}
+        </ul>
+      ) : null}
+      {open && !row.children?.length ? <BetList bets={row.bets} results={results} /> : null}
+    </li>
+  );
+}
+
 function BetsTable({
   title,
   testId,
@@ -180,7 +224,6 @@ function BetsTable({
   rows: TableRow[];
   results: ResultsSlice;
 }) {
-  const [openKey, setOpenKey] = useState<string | null>(null);
   return (
     <section className="bg-card rounded-xl p-4" data-results={testId}>
       <h2 className="text-sm font-semibold mb-2">{title}</h2>
@@ -192,28 +235,9 @@ function BetsTable({
         <span className="text-right">ROI</span>
       </div>
       <ul>
-        {rows.map((row) => {
-          const open = openKey === row.key;
-          return (
-            <li key={row.key} className="border-b border-white/5 last:border-b-0">
-              <button
-                type="button"
-                onClick={() => row.bets.length && setOpenKey(open ? null : row.key)}
-                className="w-full grid grid-cols-[1fr_3rem_3.5rem_4rem_3.5rem] gap-x-2 py-2 text-sm text-left tabular-nums"
-              >
-                <span className="truncate">
-                  <span className="text-white/40 mr-1">{row.bets.length ? (open ? "▾" : "▸") : " "}</span>
-                  {row.label}
-                </span>
-                <span className="text-right">{wl(row)}</span>
-                <span className="text-right text-white/70">{units(row.staked)}</span>
-                <span className={`text-right ${profitClass(row.profit)}`}>{units(row.profit, true)}</span>
-                <span className={`text-right ${profitClass(row.profit)}`}>{pct(row.roi)}</span>
-              </button>
-              {open ? <BetList bets={row.bets} results={results} /> : null}
-            </li>
-          );
-        })}
+        {rows.map((row) => (
+          <TableRowItem key={row.key} row={row} results={results} />
+        ))}
       </ul>
     </section>
   );
@@ -271,20 +295,23 @@ export function ResultsScreen({ data }: Props) {
     return { ...sum, key: r.kind };
   });
   const gamesSgmBets = results.gamesSgm?.bets ?? [];
-  const gamesSgms: TableRow[] = summarizeGamesSgms(gamesSgmBets).map((f) => ({
-    ...f,
-    key: f.filter,
-    label: `$${f.filter}`,
-  }));
+  if (gamesSgmBets.length) {
+    const total = summarizeGamesSgmTotal(gamesSgmBets);
+    others.push({
+      ...total,
+      key: "gamesSgm",
+      label: "Games tab SGMs",
+      children: summarizeGamesSgms(gamesSgmBets)
+        .filter((f) => f.bets.length)
+        .map((f) => ({ ...f, key: `gamesSgm-${f.filter}`, label: `$${f.filter}` })),
+    });
+  }
 
   return (
     <div className="pb-24 space-y-4">
       <h1 className="text-xl font-bold">Results</h1>
       <MainPlaySection summary={mainPlay} results={results} />
       <BetsTable title="Other bets" testId="other-bets" firstColumn="Bet" rows={others} results={results} />
-      {gamesSgmBets.length ? (
-        <BetsTable title="Games SGMs" testId="games-sgms" firstColumn="Price" rows={gamesSgms} results={results} />
-      ) : null}
       <ValueLegsSection valueLegs={results.valueLegs} />
     </div>
   );

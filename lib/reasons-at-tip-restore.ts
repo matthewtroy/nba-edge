@@ -102,6 +102,21 @@ export function loadPicksAtCommit(
   }
 }
 
+export function loadSlateAtCommit(
+  rootDir: string,
+  slateDate: string,
+  commit: string
+): SlateGame[] | null {
+  const raw = gitOk(rootDir, ["show", `${commit}:public/data/${slateDate}/slate.json`]);
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    return Array.isArray(parsed) ? (parsed as SlateGame[]) : null;
+  } catch {
+    return null;
+  }
+}
+
 /** Overlay pre-tip fields on started-game legs; re-add pre-tip legs the rebuild dropped. */
 export function applyPreTipPicks(
   current: PickLeg[],

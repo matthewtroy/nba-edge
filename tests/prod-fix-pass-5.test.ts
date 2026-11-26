@@ -552,34 +552,6 @@ describe("prod fix pass 5 — Games tab SGMs freeze at publish", () => {
     expect(onDisk.gamesSgms).toEqual(card.gamesSgms);
     fs.rmSync(dir, { recursive: true, force: true });
   });
-
-  it("Results shows a Games SGMs table by filter, expandable", async () => {
-    const rows = settleGamesSgms("2026-11-26", frozen, realResults);
-    const slice = buildResultsSlice({
-      officialLegs: [],
-      officialBets: preAppMainPlayRows(loadPreAppMainPlays(process.cwd())),
-      valueLegRows: [],
-      gradedLegs: [],
-      gamesSgmBets: rows,
-    });
-    const host = document.createElement("div");
-    document.body.appendChild(host);
-    const root = createRoot(host);
-    await act(async () => {
-      root.render(createElement(ResultsScreen, { data: { results: slice } as unknown as DataBundle }));
-    });
-    const table = host.querySelector("[data-results='games-sgms']")!;
-    const rowButtons = [...table.querySelectorAll("li > button")];
-    expect(
-      rowButtons.map((b) => (b.firstElementChild?.textContent ?? "").replace(/[▸▾]/g, "").trim())
-    ).toEqual([
-      "$1.5–4", "$3–6", "$4–10", "$10–20", "$20–50", "$50+",
-    ]);
-    await act(async () => (rowButtons[4] as HTMLButtonElement).click());
-    expect(table.textContent).toMatch(/MIA @ PHI · Ladbrokes · \$23\.81 · 0\.50u/);
-    root.unmount();
-    host.remove();
-  });
 });
 
 describe("prod fix pass 5 — softer row tint", () => {

@@ -31,6 +31,37 @@ export function boxStatForMarket(
   }
 }
 
+/**
+ * Settle boxes hold final games only, so a player missing from a final box did not play:
+ * a zero-minute line grades the leg void, as bookies do.
+ */
+export function finalPlayerBox(
+  boxesByGame: Map<string, Map<string, BoxLine>>,
+  gameId: string,
+  playerId: string
+): BoxLine | undefined {
+  const game = boxesByGame.get(gameId);
+  if (!game) return undefined;
+  return game.get(playerId) ?? { playerId, minutes: 0, pts: 0, reb: 0, ast: 0, threes: 0 };
+}
+
+/** Multi price with void legs divided out; undefined when a void leg has no known price. */
+export function voidAdjustedPrice(
+  total: number,
+  legIds: string[],
+  legResults: Map<string, CardLegResult>,
+  legPrice: (id: string) => number | undefined
+): number | undefined {
+  let price = total;
+  for (const id of legIds) {
+    if (legResults.get(id) !== "void") continue;
+    const p = legPrice(id);
+    if (p == null || p <= 1) return undefined;
+    price /= p;
+  }
+  return Math.round(price * 100) / 100;
+}
+
 export function gradeOfficialLeg(
   snap: OfficialLegSnapshot,
   box: BoxLine | undefined
@@ -95,7 +126,7 @@ export function settleOfficialCard(
   const legs: SettledLegRow[] = [];
 
   for (const snap of Object.values(snaps)) {
-    const box = boxesByGame.get(snap.gameId)?.get(snap.playerId);
+    const box = finalPlayerBox(boxesByGame, snap.gameId, snap.playerId);
     const graded = gradeOfficialLeg(snap, box);
     legResults.set(snap.id, graded);
     const best = snap.bookiePrices

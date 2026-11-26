@@ -101,6 +101,12 @@ export interface GamesSgmFilterSummary extends RowStats {
   bets: GamesSgmBetRow[];
 }
 
+/** All Games-tab SGMs as one Other bets row. */
+export function summarizeGamesSgmTotal(bets: GamesSgmBetRow[]): RowStats & { bets: GamesSgmBetRow[] } {
+  const mine = newestFirst(bets);
+  return { ...rowStats(mine), bets: mine };
+}
+
 /** Games-tab SGM results per price filter, in filter order. */
 export function summarizeGamesSgms(bets: GamesSgmBetRow[]): GamesSgmFilterSummary[] {
   return GAMES_SGM_PRESETS.map(({ label }) => {

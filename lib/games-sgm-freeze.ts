@@ -4,9 +4,15 @@ import { buildGameSgmCard, isGameSgmCard, type GameSgmCard } from "./game-sgm-bu
 import { GAMES_TAB_SGM_RULES } from "./games-tab-sgm.js";
 import { GAMES_SGM_PRESETS } from "./games-sgm-presets.js";
 import { gameSgmAsMulti, gameShortLabel } from "./games-sgm-ui.js";
-import { freezeOfficialLegSnapshots } from "./official-leg-snapshot.js";
 import { officialStakeUnits } from "./pricing-config.js";
-import { settleMultiLegs, type CardBetResult, type CardLegResult } from "./settle-core.js";
+import {
+  settleMultiLegs,
+  voidAdjustedPrice,
+  type CardBetResult,
+  type CardLegResult,
+} from "./settle-core.js";
+import { legPriceAtBookie } from "./single-bookie.js";
+import { freezeOfficialLegSnapshots, pickLegFromSnapshot } from "./official-leg-snapshot.js";
 import { profitUnitsForBet } from "./official-bet-settle.js";
 
 /** One Games-tab SGM frozen at publish for a game and price filter (Roughies off). */
@@ -115,6 +121,8 @@ export interface GamesSgmBetRow {
   profitUnits: number | null;
   stakeUnits: number;
   publishedCombinedPrice: number;
+  /** Price after void legs are divided out (only when a leg was void). */
+  settledPrice?: number;
 }
 
 export function settleGamesSgms(
@@ -122,8 +130,12 @@ export function settleGamesSgms(
   frozen: FrozenGamesSgms | undefined,
   legResults: Map<string, CardLegResult>
 ): GamesSgmBetRow[] {
+  const snaps = frozen?.legSnapshots ?? {};
   return (frozen?.bets ?? []).map((b) => {
     const result = settleMultiLegs(b.legs.map((id) => legResults.get(id) ?? "pending"));
+    const price = voidAdjustedPrice(b.total, b.legs, legResults, (id) =>
+      snaps[id] ? legPriceAtBookie(pickLegFromSnapshot(snaps[id]), b.bookie) : undefined
+    );
     return {
       slateDate,
       gameId: b.gameId,
@@ -132,9 +144,10 @@ export function settleGamesSgms(
       bookie: b.bookie,
       legIds: b.legs,
       result,
-      profitUnits: profitUnitsForBet(result, b.stakeUnits, b.total),
+      profitUnits: profitUnitsForBet(result, b.stakeUnits, price),
       stakeUnits: result === "pending" ? 0 : b.stakeUnits,
       publishedCombinedPrice: b.total,
+      ...(price != null && price !== b.total ? { settledPrice: price } : {}),
     };
   });
 }
