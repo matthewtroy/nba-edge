@@ -14,6 +14,11 @@ function gameHasStarted(game: SlateGame, now: Date): boolean {
 }
 
 /** True when every slate game has tipped (live, final, or past scheduled start). */
+export function allSlateGamesFinal(slate: SlateGame[]): boolean {
+  if (!slate.length) return false;
+  return slate.every((g) => isGameFinal(g.status));
+}
+
 export function allGamesStartedForSlate(slate: SlateGame[], now: Date): boolean {
   if (!slate.length) return false;
   return slate.every((g) => gameHasStarted(g, now));

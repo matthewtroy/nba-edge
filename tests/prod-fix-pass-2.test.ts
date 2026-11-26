@@ -77,7 +77,7 @@ describe("prod fix pass 2 — tailwind + picks", () => {
     expect(css).toMatch(/bg-green-400/);
   });
 
-  it("picks list has no outer card border and rows avoid negative margins", () => {
+  it("picks list uses card container and rows avoid negative margins", () => {
     const picks = fs.readFileSync(
       path.join(process.cwd(), "src/screens/PicksScreen.tsx"),
       "utf8"
@@ -88,7 +88,7 @@ describe("prod fix pass 2 — tailwind + picks", () => {
     );
     const css = fs.readFileSync(path.join(process.cwd(), "src/index.css"), "utf8");
     expect(picks).toMatch(/data-testid="picks-leg-list"/);
-    expect(picks).not.toMatch(/picks-leg-list[\s\S]*ui\.card/);
+    expect(picks).toMatch(/ui\.card[\s\S]*picks-leg-list/);
     expect(row).not.toContain("pick-leg-row-bleed");
     expect(row).not.toMatch(/margin-inline:\s*-/);
     expect(css).not.toMatch(/\.pick-leg-row-bleed/);

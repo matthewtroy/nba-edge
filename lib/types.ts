@@ -163,6 +163,8 @@ export interface MultiBet {
   summary: string;
   variant?: string;
   smallSlateNote?: boolean;
+  /** Frozen at official publish; 0.05u bands from combined price. */
+  stakeUnits?: number;
 }
 
 export type SourceHealth = "ok" | "stale" | "failed" | "paused";
@@ -199,6 +201,15 @@ export interface MetaJson {
   formGuardExcludedCount?: number;
   /** Pre-tip injury rows captured when games start (badge freeze seed). */
   injuriesAtTip?: InjuryEntry[];
+  /** Pre-tip reason lines captured when games start (display freeze). */
+  reasonsAtTip?: ReasonAtTipSnapshot[];
+}
+
+export interface ReasonAtTipSnapshot {
+  id: string;
+  gameId: string;
+  reasons: import("./leg-reason-types.js").LegReason[];
+  reasonLine?: string;
 }
 
 export interface HistoryLeg {

@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import type { InjuryEntry, MultiBet, PickLeg, SlateGame } from "@lib/types";
+import type { InjuryEntry, MultiBet, PickLeg, ReasonAtTipSnapshot, SlateGame } from "@lib/types";
 import type { LiveLegView } from "@lib/live-leg";
 import type { LiveBetView } from "@lib/live-bet";
 import type { LiveSourceSnapshot } from "@lib/live-source";
@@ -62,6 +62,7 @@ interface Props {
   legViews?: Map<string, LiveLegView>;
   liveBetView?: LiveBetView;
   liveSnapshot?: LiveSourceSnapshot | null;
+  reasonsAtTip?: ReasonAtTipSnapshot[];
 }
 
 export const FORBIDDEN_MULTI_CARD_STRINGS = [
@@ -112,6 +113,7 @@ export function MultiCard({
   legViews,
   liveBetView: liveBetViewProp,
   liveSnapshot,
+  reasonsAtTip,
 }: Props) {
   const cardRef = useRef<HTMLElement>(null);
   const [bookieSheetOpen, setBookieSheetOpen] = useState(false);
@@ -267,7 +269,12 @@ export function MultiCard({
         fairNote={showFairOnly ? subline || oddsNote : undefined}
         onRemove={shareCapture ? undefined : onRemove}
       />
-      <BetProgress legStates={betLegStates} betView={liveBetView} />
+      <BetProgress
+        legStates={betLegStates}
+        betView={liveBetView}
+        compact={compact}
+        className="mt-0.5"
+      />
 
       {multi.type === "crossGameSgm" && !shareCapture && (
         <CrossGameChips
@@ -277,7 +284,13 @@ export function MultiCard({
         />
       )}
 
-      <div className={multi.type === "crossGameSgm" ? "" : ""}>
+      <div
+        className={
+          multi.type === "crossGameSgm"
+            ? ""
+            : "-mx-4 divide-y divide-white/[0.04] overflow-hidden"
+        }
+      >
         {multi.type === "crossGameSgm" ? (
           <CrossLegGroups
             multi={multi}
@@ -324,6 +337,7 @@ export function MultiCard({
                   onReset={() => resetLeg(anchorId)}
                   onTap={onLegTap}
                   liveView={legViews?.get(anchorId)}
+                  reasonsAtTip={reasonsAtTip}
                 />
               </ErrorBoundary>
             );

@@ -1,12 +1,10 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { bookieWithMostCoverage } from "@lib/card-bookie";
 import { loadDataIndex, useData } from "./hooks/useData";
 import { useSlateDate } from "./hooks/useSlateDate";
 import type { DataIndexFile } from "@lib/data-index";
-import { useSettings } from "./hooks/useSettings";
 import { TabBar } from "./components/TabBar";
 import { LegSheet } from "./components/LegSheet";
-import { SettingsSheet } from "./components/SettingsSheet";
 import { TodayScreen } from "./screens/TodayScreen";
 import { PicksScreen } from "./screens/PicksScreen";
 import { InjuriesScreen } from "./screens/InjuriesScreen";
@@ -67,16 +65,12 @@ export default function App() {
     now: new Date(),
     previous: data.meta.injuriesAtTip,
   });
-  const { settings, setSettings } = useSettings();
-  useEffect(() => {
-    if (data.loading || !data.picks.length) return;
-    if (settings.myBookie === "bet365") {
-      setSettings({ ...settings, myBookie: bookieWithMostCoverage(data.picks) });
-    }
-  }, [data.loading, data.picks, settings, setSettings]);
+  const myBookie = useMemo(
+    () => (data.picks.length ? bookieWithMostCoverage(data.picks) : "Sportsbet"),
+    [data.picks]
+  );
   const [tab, setTab] = useState<Tab>("today");
   const [leg, setLeg] = useState<PickLeg | null>(null);
-  const [settingsOpen, setSettingsOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
   const refreshIndex = (next: DataIndexFile) => {
@@ -141,10 +135,9 @@ export default function App() {
             onSlateDateChange={setSlateDate}
             onLegTap={setLeg}
             onCopy={copy}
-            onOpenSettings={() => setSettingsOpen(true)}
-            showQ1={settings.showQ1Bets}
-            showLongshots={settings.showLongshots}
-            myBookie={settings.myBookie}
+            showQ1
+            showLongshots
+            myBookie={myBookie}
             liveTracking={liveTracking}
           />
         </ErrorBoundary>
@@ -160,7 +153,7 @@ export default function App() {
             viewerTimeZone={timeZone}
             onIndexRefreshed={refreshIndex}
             onSlateDateChange={setSlateDate}
-            myBookie={settings.myBookie}
+            myBookie={myBookie}
             onLegTap={setLeg}
             liveTracking={liveTracking}
           />
@@ -177,7 +170,7 @@ export default function App() {
             viewerTimeZone={timeZone}
             onIndexRefreshed={refreshIndex}
             onSlateDateChange={setSlateDate}
-            myBookie={settings.myBookie}
+            myBookie={myBookie}
             onLegTap={setLeg}
             onCopy={copy}
             liveTracking={liveTracking}
@@ -209,16 +202,10 @@ export default function App() {
         picks={data.picks}
         slate={data.slate}
         injuries={badgeInjuries}
-        myBookie={settings.myBookie}
+        myBookie={myBookie}
         onClose={() => setLeg(null)}
         onSelectLeg={setLeg}
         liveView={leg ? liveTracking.legViews.get(leg.id) : undefined}
-      />
-      <SettingsSheet
-        open={settingsOpen}
-        settings={settings}
-        onChange={setSettings}
-        onClose={() => setSettingsOpen(false)}
       />
       {toast && (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 bg-card px-4 py-2 rounded-lg text-sm z-50">

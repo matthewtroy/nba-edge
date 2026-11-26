@@ -9,6 +9,8 @@ import { legPriceAtBookie } from "@lib/single-bookie";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
 import { legRowReasonLines } from "@lib/leg-row-reasons";
+import type { ReasonAtTipSnapshot } from "@lib/types";
+import { reasonsAtTipByLegId } from "@lib/reasons-at-tip";
 import { legRowLiveTrackingClass, legTitleShowsLiveDot } from "@lib/live-leg-ui";
 import { hasValueAtBookie } from "@lib/value-at-bookie";
 import { ui } from "../lib/card-type-scale";
@@ -22,6 +24,7 @@ interface Props {
   onTap: (leg: PickLeg) => void;
   liveView?: LiveLegView;
   trackPlaceholder?: boolean;
+  reasonsAtTip?: ReasonAtTipSnapshot[];
 }
 
 function LegBadge({ label, danger }: { label: string; danger?: boolean }) {
@@ -38,9 +41,10 @@ export function PickLegRow({
   onTap,
   liveView,
   trackPlaceholder = false,
+  reasonsAtTip,
 }: Props) {
   const badgeLabels = legRowBadgeLabels(leg, myBookie);
-  const reasonLines = legRowReasonLines(leg);
+  const reasonLines = legRowReasonLines(leg, reasonsAtTipByLegId(reasonsAtTip));
   const price = legPriceAtBookie(leg, myBookie);
   const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
   const ticks = leg.recentVsLine ?? [];

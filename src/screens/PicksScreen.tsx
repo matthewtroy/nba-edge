@@ -13,6 +13,7 @@ import {
 import { filterAndSortPicks, marketsOnSlate } from "../lib/picks-list";
 import { ui } from "../lib/card-type-scale";
 import { injuriesForBadges } from "@lib/injury-display";
+import type { ReasonAtTipSnapshot } from "@lib/types";
 
 interface Props {
   data: DataBundle;
@@ -83,6 +84,7 @@ export function PicksScreen({
   onLegTap,
   liveTracking,
 }: Props) {
+  const reasonsAtTip: ReasonAtTipSnapshot[] | undefined = data.meta.reasonsAtTip;
   const badgeInjuries = injuriesForBadges(data.injuries, {
     slate: data.slate,
     now: new Date(),
@@ -211,7 +213,7 @@ export function PicksScreen({
         </div>
       ) : (
         <section
-          className="-mx-4 py-0 divide-y divide-white/[0.04] border-0 bg-transparent"
+          className={`${ui.card} !p-0 overflow-hidden divide-y divide-white/[0.04]`}
           data-testid="picks-leg-list"
         >
           {legs.map((leg) => {
@@ -229,6 +231,7 @@ export function PicksScreen({
                 onTap={onLegTap}
                 liveView={liveView}
                 trackPlaceholder={trackPlaceholder}
+                reasonsAtTip={reasonsAtTip}
               />
             );
           })}

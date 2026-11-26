@@ -207,6 +207,7 @@ export function GamesScreen({
               onCopy={onCopy}
               legViews={liveTracking.legViews}
               liveBetView={liveTracking.betViews.get(liveMultiKey(multi))}
+              reasonsAtTip={data.meta.reasonsAtTip}
               liveSnapshot={liveTracking.snapshot}
             />
           </div>

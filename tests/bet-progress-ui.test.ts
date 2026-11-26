@@ -28,6 +28,8 @@ describe("bet-progress ui", () => {
       "utf8"
     );
     expect(src).toMatch(/flex items-center gap-2/);
+    expect(src).toMatch(/compact/);
+    expect(src).toMatch(/h-1/);
     expect(src).toMatch(/flex flex-1 min-w-0[\s\S]*bet-progress-segments/);
     expect(src).not.toMatch(/mt-1\.5[\s\S]*bet-progress-landed/);
   });

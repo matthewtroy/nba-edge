@@ -7,7 +7,11 @@ export function formatHomeSettleSummary(results: ResultsJson | null | undefined)
   if ((rec.bets ?? 0) === 0) return null;
   const wl = `${rec.won}–${rec.lost}`;
   const voidSuffix = rec.void ? ` (${rec.void} void)` : "";
-  const profit =
-    rec.profit >= 0 ? `+${rec.profit.toFixed(1)}u` : `${rec.profit.toFixed(1)}u`;
-  return `Official ${wl}${voidSuffix} · ${rec.bets} settled · ${profit}`;
+  const net =
+    rec.profit >= 0 ? `+${rec.profit.toFixed(2)}u` : `${rec.profit.toFixed(2)}u`;
+  const decided = rec.won + rec.lost;
+  const strike =
+    decided > 0 ? `${Math.round((rec.won / decided) * 1000) / 10}%` : "—";
+  const roi = rec.roi != null ? `${Math.round(rec.roi * 1000) / 10}%` : "—";
+  return `Official ${wl}${voidSuffix} · ${net} net · strike ${strike} · ROI ${roi}`;
 }

@@ -1,0 +1,12 @@
+{
+  "slates": {
+    "2026-11-26": {
+      "boostSgm": {
+        "bestBookie": "bet365",
+        "bestBookieTotal": 7.2,
+        "legs": ["3136195-pts-20", "3908809-ast-5", "3992-pts-20"],
+        "label": "Best SGM"
+      }
+    }
+  }
+}

@@ -116,9 +116,8 @@ body,
 .leg-row-live-won {
   background: linear-gradient(
     90deg,
-    rgba(52, 211, 153, 0.055) 0%,
-    rgba(52, 211, 153, 0.02) 42%,
-    rgba(52, 211, 153, 0.006) 78%,
+    transparent 0%,
+    rgba(52, 211, 153, 0.055) 50%,
     transparent 100%
   );
   transition: background 400ms ease;
@@ -127,9 +126,8 @@ body,
 .leg-row-live-lost {
   background: linear-gradient(
     90deg,
-    rgba(248, 113, 113, 0.055) 0%,
-    rgba(248, 113, 113, 0.02) 42%,
-    rgba(248, 113, 113, 0.006) 78%,
+    transparent 0%,
+    rgba(248, 113, 113, 0.055) 50%,
     transparent 100%
   );
   transition: background 400ms ease;
@@ -143,8 +141,8 @@ body,
 .leg-row-live-active {
   background: linear-gradient(
     90deg,
-    rgba(56, 189, 248, 0.04) 0%,
-    rgba(56, 189, 248, 0.015) 48%,
+    transparent 0%,
+    rgba(56, 189, 248, 0.04) 50%,
     transparent 100%
   );
   transition: background 400ms ease;

@@ -28,6 +28,7 @@ import { pickLegFromSnapshot } from "../lib/official-leg-snapshot.js";
 import { countPricedPickLegs } from "../lib/odds-cache-guard.js";
 import { freezeInjuriesAtTip, mergeInjuriesReportTime } from "../lib/injury-tip-freeze.js";
 import { refreshInjuriesAtTip } from "../lib/injuries-at-tip.js";
+import { refreshReasonsAtTip } from "../lib/reasons-at-tip.js";
 
 export interface SlateBundleInput {
   rootDir: string;
@@ -323,6 +324,12 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   metaOut.injuriesAtTip = refreshInjuriesAtTip(
     priorMeta?.injuriesAtTip,
     injuryHistory,
+    slateOut,
+    input.now
+  );
+  metaOut.reasonsAtTip = refreshReasonsAtTip(
+    priorMeta?.reasonsAtTip,
+    picksOut,
     slateOut,
     input.now
   );

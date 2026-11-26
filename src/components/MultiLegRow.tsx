@@ -9,6 +9,8 @@ import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { LegRowMeta } from "./LegRowMeta";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
 import { legRowReasonLines } from "@lib/leg-row-reasons";
+import type { ReasonAtTipSnapshot } from "@lib/types";
+import { reasonsAtTipByLegId } from "@lib/reasons-at-tip";
 import { ui } from "../lib/card-type-scale";
 import { PlayerAvatar } from "./PlayerAvatar";
 import { injuryStatusForPlayer } from "./InjuryStatusBadge";
@@ -31,6 +33,7 @@ interface Props {
   onReset?: () => void;
   onTap: (leg: PickLeg) => void;
   liveView?: LiveLegView;
+  reasonsAtTip?: ReasonAtTipSnapshot[];
 }
 
 function LegBadge({ label, danger }: { label: string; danger?: boolean }) {
@@ -53,10 +56,11 @@ export function MultiLegRow({
   compact = false,
   onTap,
   liveView,
+  reasonsAtTip,
 }: Props) {
   const pool = catalog ?? picks;
   const badgeLabels = legRowBadgeLabels(leg, bookie, edited ? ["Edited"] : []);
-  const reasonLines = legRowReasonLines(leg);
+  const reasonLines = legRowReasonLines(leg, reasonsAtTipByLegId(reasonsAtTip));
   const quoteView =
     bookie && !fairPriceInSlot
       ? legBookieQuoteView(leg, bookie, pool, priceOpts)
@@ -74,7 +78,7 @@ export function MultiLegRow({
       type="button"
       data-testid="leg-row"
       onClick={() => onTap(leg)}
-      className={`w-full grid grid-cols-[32px_1fr_76px] gap-2.5 py-2.5 text-left border-b border-white/[0.05] last:border-0 active:opacity-90 min-h-[44px] ${rowLiveClass}`}
+      className={`w-full grid grid-cols-[32px_1fr_76px] gap-2.5 px-4 py-2.5 text-left active:opacity-90 min-h-[44px] ${rowLiveClass}`}
     >
       <PlayerAvatar
         name={leg.playerName}

@@ -8,6 +8,7 @@ import {
 } from "./settle-core.js";
 import { legPriceAtBookie } from "./single-bookie.js";
 import { pickLegFromSnapshot } from "./official-leg-snapshot.js";
+import { officialStakeUnits } from "./pricing-config.js";
 
 export const BET_LABELS: Record<MultiType, string> = {
   mainPlay: "Main Play",
@@ -87,15 +88,19 @@ export function settleOfficialBets(
   for (const leg of settledLegs) {
     legResults.set(leg.id, leg.result);
   }
-  const stake = 1;
   const rows: OfficialBetRow[] = [];
 
   for (const multi of card.multis) {
     const legRes = multi.legs.map((id) => legResults.get(id) ?? "pending");
     const result = settleMultiLegs(legRes);
     const combined = combinedPublishedPrice(multi, card, legResults);
+    const stake =
+      multi.stakeUnits ??
+      officialStakeUnits(combined ?? multi.bestBookieTotal ?? multi.combinedFairPrice);
     const trackUnits =
-      result !== "pending" && !(multi.type === "q1Multi" && combined == null);
+      result !== "pending" &&
+      stake > 0 &&
+      !(multi.type === "q1Multi" && combined == null);
     const profit = trackUnits ? profitUnitsForBet(result, stake, combined) : null;
 
     rows.push({

@@ -77,6 +77,56 @@ export const MAIN_PLAY_L10_GAP_PP = 0.1;
 /** Same p threshold as `High probability` tag in `lib/pricing.ts`. */
 export const MAIN_PLAY_HIGH_PROB_P = 0.72;
 
+/** Games-tab high-probability leg bypass when price meets fair (not take-at). */
+export const GAMES_TAB_HIGH_PROB_P = 0.7;
+
+/** Flat minimum bookie edge vs fair for legs (8%). */
+export const LEG_BOOK_MIN_EDGE = 0.08;
+
+export function legMinEdgeMultiplier(): number {
+  return 1 + LEG_BOOK_MIN_EDGE;
+}
+
+export function minBookiePriceForFair(fairPrice: number): number {
+  return Math.round(fairPrice * legMinEdgeMultiplier() * 100) / 100;
+}
+
+/** Single helper: bookie decimal meets flat 8% edge vs fair. */
+export function bookiePriceMeetsMinEdge(price: number, fairPrice: number): boolean {
+  if (!Number.isFinite(price) || price <= 1 || fairPrice <= 0) return false;
+  return price >= minBookiePriceForFair(fairPrice);
+}
+
+/** High-probability bypass: p at threshold and price at or above fair (not 97% of fair). */
+export function bookieHighProbMeetsFair(
+  price: number,
+  fairPrice: number,
+  probability: number,
+  threshold = GAMES_TAB_HIGH_PROB_P
+): boolean {
+  if (probability < threshold) return false;
+  return price >= fairPrice;
+}
+
+/** Official bet stake quantum and bands (freeze at publish). */
+export const STAKE_UNIT_STEP = 0.05;
+
+export function quantizeStakeUnits(units: number): number {
+  if (units <= 0) return 0;
+  return Math.round(units / STAKE_UNIT_STEP) * STAKE_UNIT_STEP;
+}
+
+/** Stake units from published combined decimal, snapped to 0.05u. */
+export function officialStakeUnits(combinedPrice: number | undefined): number {
+  if (combinedPrice == null || combinedPrice <= 1) return 0;
+  let raw = 1;
+  if (combinedPrice < 2.5) raw = 0.15;
+  else if (combinedPrice < 5) raw = 0.25;
+  else if (combinedPrice < 10) raw = 0.5;
+  else if (combinedPrice < 20) raw = 0.75;
+  return quantizeStakeUnits(raw);
+}
+
 /** P_final = MODEL_WEIGHT × P_model + (1 − MODEL_WEIGHT) × P_market */
 export const MODEL_WEIGHT = 0.6;
 export const MARKET_WEIGHT = 1 - MODEL_WEIGHT;

@@ -332,5 +332,7 @@ export function buildLegsForPlayer(
   if (pDd >= 0.03) addLeg("dd", 1, pDd);
   if (pTd >= 0.03) addLeg("td", 1, pTd);
 
-  return legs;
+  return legs.filter(
+    (l) => (l.reasons?.length ?? 0) > 0 || Boolean(l.reasonLine?.trim())
+  );
 }

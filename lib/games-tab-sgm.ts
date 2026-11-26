@@ -18,6 +18,7 @@ import {
   ROUGHIE_MIN_LEGS,
   ROUGHIE_NORMAL_MAX,
   ROUGHIE_NORMAL_MIN,
+  bookieHighProbMeetsFair,
 } from "./pricing-config.js";
 
 export const GAMES_TAB_MIN_LEG_PRICE = 1.3;
@@ -50,9 +51,6 @@ export const ROUGHIE_SGM_RULES: GamesTabSgmLegRules = {
   normalMax: ROUGHIE_NORMAL_MAX,
   roughie: true,
 };
-const HIGH_PROB_FAIR_RATIO = 0.97;
-const HIGH_PROB_P = 0.7;
-
 function combinedProb(legs: PickLeg[]): number {
   return legs.reduce((acc, l) => acc * l.probability, 1);
 }
@@ -149,13 +147,7 @@ export function qualifiesGamesTabSgmLeg(
   if (price < rules.minLegPrice) return false;
   if (rules.maxLegPrice != null && price > rules.maxLegPrice) return false;
   if (legMeetsBookieEdge(leg, bookie, minEdgeFraction)) return true;
-  if (
-    leg.probability >= HIGH_PROB_P &&
-    price >= leg.fairPrice * HIGH_PROB_FAIR_RATIO
-  ) {
-    return true;
-  }
-  return false;
+  return bookieHighProbMeetsFair(price, leg.fairPrice, leg.probability);
 }
 
 export function pickBestGamesTabSgmCombo(

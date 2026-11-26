@@ -35,7 +35,6 @@ interface Props {
   onSlateDateChange: (d: string) => void;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (t: string) => void;
-  onOpenSettings: () => void;
   showQ1: boolean;
   showLongshots: boolean;
   myBookie?: string;
@@ -54,7 +53,6 @@ export function TodayScreen({
   onSlateDateChange,
   onLegTap,
   onCopy,
-  onOpenSettings,
   showQ1,
   showLongshots,
   myBookie,
@@ -113,25 +111,15 @@ export function TodayScreen({
 
   return (
     <div className="pb-24">
-      <div className="flex items-start gap-2 mb-3">
-        <div className="flex-1 min-w-0">
-          <DateSwitcher
-            todayDate={todayDate}
-            viewerTodayYmd={viewerTodayYmd}
-            nextSlateDate={tomorrowDate}
-            selected={slateDate}
-            onSelect={onSlateDateChange}
-            viewerTimeZone={viewerTimeZone}
-          />
-        </div>
-        <button
-          type="button"
-          onClick={onOpenSettings}
-          className="p-2 text-white/70 shrink-0"
-          aria-label="Settings"
-        >
-          ⚙
-        </button>
+      <div className="mb-3">
+        <DateSwitcher
+          todayDate={todayDate}
+          viewerTodayYmd={viewerTodayYmd}
+          nextSlateDate={tomorrowDate}
+          selected={slateDate}
+          onSelect={onSlateDateChange}
+          viewerTimeZone={viewerTimeZone}
+        />
       </div>
 
       <TomorrowSlateTease
@@ -179,6 +167,7 @@ export function TodayScreen({
             legViews={liveTracking.legViews}
             liveBetView={liveTracking.betViews.get(liveMultiKey(m))}
             liveSnapshot={liveTracking.snapshot}
+            reasonsAtTip={data.meta.reasonsAtTip}
           />
         );
       })}

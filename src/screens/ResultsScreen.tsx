@@ -16,7 +16,12 @@ function fmtRoi(roi: number | null): string {
 
 function wl(record: { won: number; lost: number; void: number }): string {
   const base = `${record.won}–${record.lost}`;
-  return record.void ? `${base} (${record.void} void)` : base;
+  return record.void ? `${base}–${record.void}` : base;
+}
+
+function strikePct(won: number, lost: number): string {
+  const d = won + lost;
+  return d > 0 ? pct(won / d) : "—";
 }
 
 function BetLegList({ bet }: { bet: OfficialBetRow }) {
@@ -29,7 +34,7 @@ function BetLegList({ bet }: { bet: OfficialBetRow }) {
         className="w-full text-left text-sm"
       >
         {bet.slateDate} · {bet.label} · {bet.result.toUpperCase()}
-        {bet.profitUnits != null ? ` · ${bet.profitUnits >= 0 ? "+" : ""}${bet.profitUnits.toFixed(2)}u` : ""}
+        {bet.stakeUnits > 0 ? ` · ${bet.stakeUnits.toFixed(2)}u staked` : ""}
       </button>
       {open ? (
         <ul className="mt-1 text-xs text-white/60 pl-2 space-y-0.5">
@@ -68,11 +73,13 @@ export function ResultsScreen({ data }: Props) {
       <section className="bg-card rounded-xl p-4">
         <h2 className="text-sm font-semibold mb-2">Official record (bets)</h2>
         <p className="text-lg tabular-nums">{wl(rec)}</p>
-        <p className="text-sm text-white/70 mt-1">
-          Staked {rec.staked}u · Profit {rec.profit >= 0 ? "+" : ""}
-          {rec.profit.toFixed(2)}u · ROI {fmtRoi(rec.roi)}
+        <p className="text-sm text-white/70 mt-1 tabular-nums">
+          {rec.staked.toFixed(2)}u staked ·{" "}
+          {rec.profit >= 0 ? "+" : ""}
+          {rec.profit.toFixed(2)}u net · strike {strikePct(rec.won, rec.lost)} · ROI{" "}
+          {fmtRoi(rec.roi)}
         </p>
-        <p className="text-xs text-white/50 mt-1">{rec.bets} settled bets</p>
+        <p className="text-xs text-white/50 mt-1">{rec.bets} graded bets</p>
       </section>
 
       <section className="bg-card rounded-xl p-4">
@@ -80,9 +87,10 @@ export function ResultsScreen({ data }: Props) {
         <ul className="text-sm space-y-1">
           {Object.entries(official.byBetType).map(([type, row]) => (
             <li key={type} className="tabular-nums">
-              {type}: {wl(row)} · {row.bets} bets · {row.staked}u staked ·{" "}
+              {type}: {wl(row)} · {row.bets} bets · {row.staked.toFixed(2)}u · net{" "}
               {row.profit >= 0 ? "+" : ""}
-              {row.profit.toFixed(2)}u · ROI {fmtRoi(row.roi)}
+              {row.profit.toFixed(2)}u · strike {strikePct(row.won, row.lost)} · ROI{" "}
+              {fmtRoi(row.roi)}
             </li>
           ))}
         </ul>

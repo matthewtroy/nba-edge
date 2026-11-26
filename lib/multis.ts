@@ -255,7 +255,13 @@ export function buildMultis(
 ): MultiBuildResult {
   multiMinEdge = minEdgeFraction;
   resetMultiBuildTraces();
-  const pool = picks.filter(meetsFloor);
+  const pool = picks.filter(
+    (p) =>
+      meetsFloor(p) &&
+      ((p.reasons?.length ?? 0) > 0 ||
+        Boolean(p.reasonLine?.trim()) ||
+        p.market.startsWith("q1"))
+  );
   const catalog = pool;
   const byP = [...pool].sort(sortLegs);
   const notBuilt: MultiNotBuilt[] = [];

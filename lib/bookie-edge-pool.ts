@@ -3,20 +3,20 @@ import { FEED_BOOKIES } from "./card-bookie.js";
 import { legPriceAtBookie } from "./single-bookie.js";
 import { nearestPricedRung } from "./nearest-bookie-line.js";
 import { multiBookieTotals } from "./bookie-totals.js";
-import { edgeMultiplier } from "./multi-combined.js";
-
-export function fairEdgeMultiplier(leg: PickLeg, minEdgeFraction: number): number {
-  return leg.probability >= 0.7 ? 1.06 : edgeMultiplier(minEdgeFraction);
-}
+import {
+  bookieHighProbMeetsFair,
+  bookiePriceMeetsMinEdge,
+} from "./pricing-config.js";
 
 export function legMeetsBookieEdge(
   leg: PickLeg,
   bookie: string,
-  minEdgeFraction: number
+  _minEdgeFraction?: number
 ): boolean {
   const price = legPriceAtBookie(leg, bookie);
   if (price == null || price <= 1) return false;
-  return price >= leg.fairPrice * fairEdgeMultiplier(leg, minEdgeFraction);
+  if (bookiePriceMeetsMinEdge(price, leg.fairPrice)) return true;
+  return bookieHighProbMeetsFair(price, leg.fairPrice, leg.probability);
 }
 
 export function bookiesByCoverage(

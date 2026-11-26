@@ -54,14 +54,10 @@ function runFixturePipeline(): void {
 }
 
 function runSettleStep(): void {
-  try {
-    execFileSync("npx", ["tsx", "scripts/settle.ts"], {
-      cwd: rootDir,
-      stdio: "inherit",
-    });
-  } catch (e) {
-    console.warn("settle step failed:", e instanceof Error ? e.message : e);
-  }
+  execFileSync("npx", ["tsx", "scripts/settle.ts"], {
+    cwd: rootDir,
+    stdio: "inherit",
+  });
 }
 
 async function main() {
@@ -107,6 +103,9 @@ async function main() {
       fromLive: useFromLive,
     }),
   });
+  if (process.env.SETTLE_AFTER_PIPELINE !== "0") {
+    runSettleStep();
+  }
 }
 
 main().catch((e) => {
