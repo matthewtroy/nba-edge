@@ -82,8 +82,19 @@ export function legProgressFillPercent(view: LiveLegView): number {
   return 0;
 }
 
-export function legProgressMarkerPercent(line: number): number {
+/** Value handle position: min(actual÷line, 1) × 100 — same cap as fill. */
+export function legProgressHandlePercent(view: LiveLegView): number {
+  return legProgressFillPercent(view);
+}
+
+/** Target tick always at the right edge when line > 0. */
+export function legProgressTargetPercent(line: number): number {
   return line > 0 ? 100 : 0;
+}
+
+/** @deprecated Use legProgressHandlePercent — marker follows value, not target. */
+export function legProgressMarkerPercent(line: number): number {
+  return legProgressTargetPercent(line);
 }
 
 export function legProgressPillClass(view: LiveLegView): string {

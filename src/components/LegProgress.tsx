@@ -2,9 +2,10 @@ import type { LiveLegView } from "@lib/live-leg";
 import {
   legProgressFillClass,
   legProgressFillPercent,
-  legProgressMarkerPercent,
+  legProgressHandlePercent,
   legProgressRightClass,
   legProgressRightLabel,
+  legProgressTargetPercent,
   legProgressValueTrackClass,
 } from "@lib/live-leg-ui";
 
@@ -23,7 +24,8 @@ export function LegProgress({
   if (!right) return null;
 
   const fillPct = legProgressFillPercent(view);
-  const markerPct = legProgressMarkerPercent(view.line);
+  const handlePct = legProgressHandlePercent(view);
+  const targetPct = legProgressTargetPercent(view.line);
   const live = view.state === "live";
   const settled = view.state === "won" || view.state === "lost" || view.state === "void";
 
@@ -47,12 +49,32 @@ export function LegProgress({
           style={{ width: `${fillPct}%` }}
         />
         <span
-          className="absolute top-1/2 w-px h-3.5 bg-white/45 pointer-events-none leg-progress-line-marker"
+          className="absolute top-1/2 w-0.5 h-3.5 rounded-full bg-white/70 pointer-events-none leg-progress-value-handle"
           style={{
-            left: `${markerPct}%`,
+            left: `${handlePct}%`,
             transform: "translate(-50%, -50%)",
           }}
+          data-testid="leg-progress-value-handle"
         />
+        {view.line > 0 && (
+          <>
+            <span
+              className="absolute top-1/2 w-px h-2.5 bg-white/22 pointer-events-none leg-progress-target-tick"
+              style={{
+                left: `${targetPct}%`,
+                transform: "translate(-50%, -50%)",
+              }}
+              data-testid="leg-progress-target-tick"
+            />
+            <span
+              className="absolute -top-3.5 text-[8px] font-medium tabular-nums text-white/30 pointer-events-none leg-progress-target-label translate-x-1/2"
+              style={{ left: `${targetPct}%` }}
+              data-testid="leg-progress-target-label"
+            >
+              {view.line}
+            </span>
+          </>
+        )}
       </div>
       <span
         className={`shrink-0 text-[10px] font-semibold tabular-nums min-w-[2.5rem] text-right ${legProgressRightClass(view)} ${

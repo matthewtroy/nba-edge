@@ -3,7 +3,9 @@ import type { LiveLegView } from "../lib/live-leg";
 import {
   legProgressFillClass,
   legProgressFillPercent,
+  legProgressHandlePercent,
   legProgressMarkerPercent,
+  legProgressTargetPercent,
   legProgressPillClass,
   legProgressPillSymbol,
   legProgressRightClass,
@@ -58,9 +60,12 @@ describe("leg-progress ui", () => {
     expect(legProgressValueTrackClass(false)).toBe("");
   });
 
-  it("marker sits at the line (end of track)", () => {
+  it("value handle at value÷target; target tick at 100% only", () => {
+    expect(legProgressHandlePercent(view({ state: "live", actual: 12, line: 20 }))).toBe(60);
+    expect(legProgressHandlePercent(view({ state: "won", actual: 28, line: 20 }))).toBe(100);
+    expect(legProgressTargetPercent(20)).toBe(100);
+    expect(legProgressTargetPercent(0)).toBe(0);
     expect(legProgressMarkerPercent(20)).toBe(100);
-    expect(legProgressMarkerPercent(0)).toBe(0);
   });
 
   it("fill is value÷target — 12/20=60%, 28/20=100% when won, 0, live", () => {
