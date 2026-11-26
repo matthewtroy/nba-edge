@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { buildDataIndex, type DataIndexDateEntry } from "../lib/data-index";
 import { indexRetentionDropReason } from "../lib/index-guard";
-import { nextSydneyPublishIso } from "../lib/index-schedule";
+import { nextSydneyPublishIso, publishAtForNextSlate } from "../lib/index-schedule";
 import fs from "fs";
 import path from "path";
 
@@ -41,6 +41,12 @@ describe("index guard", () => {
 });
 
 describe("index schedule metadata", () => {
+  it("publishAtForNextSlate never returns a past instant", () => {
+    const now = new Date("2026-11-28T12:00:00.000Z");
+    const iso = publishAtForNextSlate("2026-11-28", now);
+    expect(new Date(iso).getTime()).toBeGreaterThan(now.getTime());
+  });
+
   it("nextPublishAt lands on 21:00 Sydney", () => {
     const now = new Date("2026-11-26T05:15:00.000Z");
     const iso = nextSydneyPublishIso(now);

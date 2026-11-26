@@ -5,7 +5,7 @@ import {
 } from "./data-index.js";
 import { planScoreboardSlates, pipelineSydneyDates } from "./slate-retention.js";
 import { sydneyTipDate } from "./slate-today.js";
-import { nextSydneyPublishIsoBeforeSlate } from "./index-schedule.js";
+import { publishAtForNextSlate } from "./index-schedule.js";
 
 export type ForwardSlateMetadata = Pick<
   DataIndexFile,
@@ -25,17 +25,14 @@ export function forwardSlateMetadataFromGames(
   let targetYmd: string | null = null;
   let targetGames: SlateGame[] = [];
 
-  if (plan.today.length) {
-    targetYmd = todayYmd;
-    targetGames = plan.today;
-  } else if (plan.tomorrow.length) {
+  if (plan.tomorrow.length) {
     targetYmd = tomorrowYmd;
     targetGames = plan.tomorrow;
   } else {
     const bySydney = new Map<string, SlateGame[]>();
     for (const g of merged) {
       const y = sydneyTipDate(g.startTime);
-      if (y < todayYmd) continue;
+      if (y <= todayYmd) continue;
       const list = bySydney.get(y) ?? [];
       list.push(g);
       bySydney.set(y, list);
@@ -59,7 +56,7 @@ export function forwardSlateMetadataFromGames(
     nextSlateDate: targetYmd,
     firstTipAt,
     games: gamePreviewsFromSlate(targetGames),
-    nextPublishAt: nextSydneyPublishIsoBeforeSlate(targetYmd),
+    nextPublishAt: publishAtForNextSlate(targetYmd, now),
   };
 }
 

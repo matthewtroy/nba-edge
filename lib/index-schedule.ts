@@ -24,6 +24,18 @@ export function nextSydneyPublishIsoBeforeSlate(slateYmd: string): string {
   return new Date(eveStart + 10 * 3_600_000).toISOString();
 }
 
+/**
+ * Publish countdown for a future slate folder: 21:00 Sydney on the eve before `slateYmd`,
+ * or the next future 21:00 Sydney when that eve is already past.
+ */
+export function publishAtForNextSlate(slateYmd: string, now = new Date()): string {
+  const eve = nextSydneyPublishIsoBeforeSlate(slateYmd);
+  if (new Date(eve).getTime() > now.getTime()) return eve;
+  const upcoming = nextSydneyPublishIso(now);
+  if (new Date(upcoming).getTime() > now.getTime()) return upcoming;
+  return eve;
+}
+
 /** Next 21:00 Australia/Sydney as UTC ISO (pipeline official-card window). */
 export function nextSydneyPublishIso(now = new Date()): string {
   const stepMs = 60_000;

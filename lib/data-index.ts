@@ -3,7 +3,7 @@ import path from "path";
 import type { SlatePublicationStatus } from "./slate-publication.js";
 import type { SlateGame } from "./types.js";
 import { sydneyDateString } from "./official-card-time.js";
-import { nextSydneyPublishIso } from "./index-schedule.js";
+import { nextSydneyPublishIso, publishAtForNextSlate } from "./index-schedule.js";
 
 export interface DataIndexDateEntry {
   date: string;
@@ -108,7 +108,9 @@ export function buildDataIndex(
     tomorrowDate: hasTomorrow ? tomorrowDate : null,
     defaultDate,
     dates: sorted,
-    nextPublishAt: nextSydneyPublishIso(now),
+    nextPublishAt: hasTomorrow
+      ? publishAtForNextSlate(tomorrowDate, now)
+      : nextSydneyPublishIso(now),
     nextSlateDate: hasTomorrow ? tomorrowDate : null,
     firstTipAt,
     games:

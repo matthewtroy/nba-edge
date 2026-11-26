@@ -26,4 +26,33 @@ describe("forwardSlateMetadataFromGames", () => {
     expect(meta?.games?.length).toBe(1);
     expect(meta?.firstTipAt).toBe("2026-11-27T23:00:00.000Z");
   });
+
+  it("2026-11-26T05:46Z Sydney today slate + Thanksgiving → next slate strictly after today", () => {
+    const now = new Date("2026-11-26T05:46:00.000Z");
+    const merged = [
+      game("2026-11-26T09:00:00.000Z", "today-1"),
+      game("2026-11-27T23:00:00.000Z", "fut-1"),
+    ];
+    const meta = forwardSlateMetadataFromGames(merged, now);
+    expect(meta?.nextSlateDate).toBe("2026-11-28");
+    expect(meta?.nextPublishAt).toBe("2026-11-27T10:00:00.000Z");
+  });
+
+  it("2026-11-26T07:00Z prefers tomorrow Sydney slate when on board", () => {
+    const now = new Date("2026-11-26T07:00:00.000Z");
+    const merged = [
+      game("2026-11-26T09:00:00.000Z", "today-1"),
+      game("2026-11-27T09:00:00.000Z", "tmr-1"),
+    ];
+    const meta = forwardSlateMetadataFromGames(merged, now);
+    expect(meta?.nextSlateDate).toBe("2026-11-27");
+    expect(meta?.nextPublishAt).toBe("2026-11-26T10:00:00.000Z");
+  });
+
+  it("never returns Sydney today as nextSlateDate when today has games", () => {
+    const now = new Date("2026-11-26T05:46:00.000Z");
+    const merged = [game("2026-11-26T11:00:00.000Z", "only-today")];
+    const meta = forwardSlateMetadataFromGames(merged, now);
+    expect(meta).toBeNull();
+  });
 });
