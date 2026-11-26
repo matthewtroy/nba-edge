@@ -13,7 +13,8 @@ import {
 import { computeSlateStatus } from "./slate-publication.js";
 import type { OfficialCardFile } from "./official-card-time.js";
 
-const SLATE_FOLDER_RE = /^\d{4}-\d{2}-\d{2}$/;
+export const SLATE_FOLDER_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+const SLATE_FOLDER_RE = SLATE_FOLDER_PATTERN;
 
 /** Retain slates through Sydney yesterday (today − 1). */
 export function retentionMinYmd(now: Date): string {
@@ -153,6 +154,9 @@ export function indexEntryFromSlateDir(
     return null;
   }
 }
+
+/** Rebuild `index.json` date rows from on-disk slate folders still inside retention. */
+export const rebuildIndexEntriesFromDisk = mergeRetainedIndexEntries;
 
 export function mergeRetainedIndexEntries(
   built: DataIndexDateEntry[],
