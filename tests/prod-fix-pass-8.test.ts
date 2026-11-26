@@ -44,10 +44,16 @@ describe("pass 8 item 1 — supportive reasons", () => {
     expect(formTextIsSupportive("5/10 at this line", 0.2)).toBe(true);
   });
 
-  it("rank alone is not supportive at fair odds", () => {
-    const leg = { ...baseLeg, probability: 0.55 };
+  it("rank is supportive when season avg clears line", () => {
+    const leg = { ...baseLeg, probability: 0.55, line: 8 };
     expect(
       isSupportiveReason({ type: "rank", text: "Averages 10.0 reb, 3rd of 20 centers" }, leg)
+    ).toBe(true);
+    expect(
+      isSupportiveReason(
+        { type: "rank", text: "Averages 10.0 reb, 3rd of 20 centers" },
+        { ...leg, line: 12 }
+      )
     ).toBe(false);
   });
 

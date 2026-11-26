@@ -18,6 +18,22 @@ function parseAvgLine(text: string): number | null {
   return Number.isFinite(v) ? v : null;
 }
 
+function parsePositionRank(text: string): { avg: number; rank: number } | null {
+  const m = text.match(/^averages ([\d.]+).+?\b(\d+)(?:st|nd|rd|th) of \d+/i);
+  if (!m) return null;
+  const avg = Number(m[1]);
+  const rank = Number(m[2]);
+  if (!Number.isFinite(avg) || !Number.isFinite(rank)) return null;
+  return { avg, rank };
+}
+
+export function rankTextIsSupportive(text: string, leg: PickLeg): boolean {
+  const parsed = parsePositionRank(text);
+  if (!parsed) return false;
+  if (parsed.rank > 15) return false;
+  return parsed.avg >= leg.line;
+}
+
 /** Vague opponent copy stays out of supportive set (named lines only). */
 function injurySupportive(text: string): boolean {
   if (/^opponent missing/i.test(text)) return false;
@@ -63,7 +79,7 @@ export function isSupportiveReason(reason: LegReason, leg: PickLeg): boolean {
     case "avg":
       return avgTextIsSupportive(reason.text, leg);
     case "rank":
-      return p < LONG_SHOT_P;
+      return rankTextIsSupportive(reason.text, leg);
     default:
       return false;
   }
