@@ -183,7 +183,7 @@ describe("prod fix pass 5 — data branch commit selection", () => {
     git(root, ["commit", "-q", "--allow-empty", "-m", "noop"], "2026-11-25T23:00:00+00:00");
 
     const pre = preTipPicksCommit(root, "2026-11-26", "2026-11-25T22:00:00.000Z");
-    expect(pre?.committedAt).toBe("2026-11-25T19:46:44+00:00");
+    expect(Date.parse(pre?.committedAt ?? "")).toBe(Date.parse("2026-11-25T19:46:44Z"));
 
     const outDir = path.join(root, "public/data");
     const dir = path.join(outDir, "2026-11-26");
