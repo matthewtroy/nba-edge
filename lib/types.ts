@@ -40,6 +40,8 @@ export interface InjuryEntry {
   status: InjuryStatus;
   source: string;
   updatedAt: string;
+  /** Official NBA report release time (from PDF URL); wins over ESPN updatedAt when newer. */
+  reportTime?: string;
 }
 
 export type SignalKey = "PRICE" | "MATCHUP" | "FORM" | "ANGLE";

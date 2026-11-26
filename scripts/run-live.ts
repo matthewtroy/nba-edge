@@ -8,6 +8,7 @@ import {
   fetchPlayerGameLog,
 } from "./fetch/espn.js";
 import { fetchLatestInjuryPdf, parsePdfInjuries } from "./fetch/nba-pdf.js";
+import { injuryReportTimeFromPdfUrl } from "../lib/injury-report-time.js";
 import { shouldPauseOdds } from "../lib/odds.js";
 import { oddsReserveCredits } from "../lib/odds-reserve.js";
 import { sydneyYmd, type OddsBudgetConfig } from "../lib/odds-budget.js";
@@ -275,9 +276,12 @@ export async function runLivePipeline(
       const pdf = pdfOutcome.result;
       nbaOfficialUrl = pdf.url;
       sources.nbaOfficial = "ok";
+      const reportTime =
+        injuryReportTimeFromPdfUrl(pdf.url) ?? now.toISOString();
       const parsed = parsePdfInjuries(pdf.text).map((p) => ({
         ...p,
-        updatedAt: now.toISOString(),
+        updatedAt: reportTime,
+        reportTime,
       }));
       injuries = mergeOfficialInjuries(injuries, parsed, slateByTeam, playerTeamLookup);
     } else {

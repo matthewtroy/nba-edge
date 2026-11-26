@@ -1,9 +1,18 @@
-import type { InjuryEntry, InjuryStatus } from "./types.js";
+import type { InjuryEntry, InjuryStatus, SlateGame } from "./types.js";
 import { injuriesByPlayerId } from "./player-eligibility.js";
+import { freezeInjuriesAtTip, mergeInjuriesReportTime } from "./injury-tip-freeze.js";
+import { injuryEntryRecencyMs } from "./injury-report-time.js";
 
-/** Live injuries for UI badges: newest row per player by `updatedAt` (never lock-time snapshot lists). */
-export function injuriesForBadges(live: InjuryEntry[]): InjuryEntry[] {
-  return [...injuriesByPlayerId(live).values()];
+/** Live injuries for UI badges: newest `reportTime`/`updatedAt` per player; frozen after tip. */
+export function injuriesForBadges(
+  live: InjuryEntry[],
+  opts?: { slate?: SlateGame[]; now?: Date; previous?: InjuryEntry[] }
+): InjuryEntry[] {
+  let rows = mergeInjuriesReportTime(live);
+  if (opts?.slate?.length && opts.previous?.length) {
+    rows = freezeInjuriesAtTip(opts.previous, rows, opts.slate, opts.now ?? new Date());
+  }
+  return [...injuriesByPlayerId(rows).values()];
 }
 
 /**
@@ -17,7 +26,7 @@ export function mergeInjuriesNewestFirst(
   const map = injuriesByPlayerId(locked ?? []);
   for (const entry of live) {
     const prev = map.get(entry.playerId);
-    if (!prev || new Date(entry.updatedAt) >= new Date(prev.updatedAt)) {
+    if (!prev || injuryEntryRecencyMs(entry) >= injuryEntryRecencyMs(prev)) {
       map.set(entry.playerId, entry);
     }
   }

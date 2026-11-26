@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { mergeViewerBundleOnRefresh } from "@lib/viewer-bundle-freeze";
+import { freezeInjuriesAtTip } from "@lib/injury-tip-freeze";
+import { mergeInjuriesReportTime } from "@lib/injury-tip-freeze";
 import type {
   SlateGame,
   InjuryEntry,
@@ -55,6 +57,7 @@ export function useData(selectedDate: string): DataBundle {
     slate: SlateGame[];
     picks: PickLeg[];
     multis: MultiBet[];
+    injuries: InjuryEntry[];
   } | null>(null);
   const [state, setState] = useState<DataBundle>({
     index: null,
@@ -120,6 +123,7 @@ export function useData(selectedDate: string): DataBundle {
           let slateOut = slate;
           let picksOut = picks;
           let multisOut = bets;
+          let injuriesOut = mergeInjuriesReportTime(injuries);
           if (
             prev &&
             prev.date === date &&
@@ -137,18 +141,25 @@ export function useData(selectedDate: string): DataBundle {
             slateOut = merged.slate;
             picksOut = merged.picks;
             multisOut = merged.multis;
+            injuriesOut = freezeInjuriesAtTip(
+              prev.injuries,
+              injuriesOut,
+              slateOut,
+              new Date()
+            );
           }
           lastBundleRef.current = {
             date,
             slate: slateOut,
             picks: picksOut,
             multis: multisOut,
+            injuries: injuriesOut,
           };
           setState({
             index,
             selectedDate: date,
             slate: slateOut,
-            injuries,
+            injuries: injuriesOut,
             picks: picksOut,
             multis: multisOut,
             multisNotBuilt: notBuilt,

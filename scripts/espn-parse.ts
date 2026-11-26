@@ -143,7 +143,12 @@ function mapStatus(s: string): InjuryStatus {
 
 export function mergeOfficialInjuries(
   espn: InjuryEntry[],
-  official: { name: string; status: string; updatedAt: string }[],
+  official: {
+    name: string;
+    status: string;
+    updatedAt: string;
+    reportTime?: string;
+  }[],
   slateByTeam: Map<string, string>,
   playerTeamLookup: Map<string, { teamId: string; teamName: string; playerId?: string }>
 ): InjuryEntry[] {
@@ -164,8 +169,11 @@ export function mergeOfficialInjuries(
       status,
       source: "NBA Official",
       updatedAt: o.updatedAt,
+      reportTime: o.reportTime,
     };
-    if (!existing || new Date(entry.updatedAt) >= new Date(existing.updatedAt)) {
+    const entryMs = Date.parse(o.reportTime ?? o.updatedAt);
+    const existingMs = Date.parse(existing?.reportTime ?? existing?.updatedAt ?? "");
+    if (!existing || entryMs >= existingMs) {
       byPlayer.set(key, entry);
     }
   }

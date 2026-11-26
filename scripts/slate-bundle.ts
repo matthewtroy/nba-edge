@@ -24,6 +24,7 @@ import { evaluateOfficialPublishGate } from "../lib/official-card-gate.js";
 import { logOfficialCard } from "../lib/official-card-log.js";
 import { hasAuPropPrices, isEveningSydney } from "../lib/official-card-time.js";
 import { applySlateTipFreeze } from "../lib/slate-tip-freeze.js";
+import { freezeInjuriesAtTip, mergeInjuriesReportTime } from "../lib/injury-tip-freeze.js";
 
 export interface SlateBundleInput {
   rootDir: string;
@@ -91,7 +92,9 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   fs.mkdirSync(outDir, { recursive: true });
 
   const teams = slateTeamIds(input.slate);
-  const injuries = input.injuriesAll.filter((i) => teams.has(i.teamId));
+  let injuries = mergeInjuriesReportTime(
+    input.injuriesAll.filter((i) => teams.has(i.teamId))
+  );
   const players = filterPlayersForSlate(input.playersAll, input.slate);
   const rosterIds = new Set([...input.rosterIds].filter((id) => players.some((p) => p.id === id)));
 
@@ -278,6 +281,15 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
       slateOut = frozen.slate;
       picksOut = frozen.picks;
       multisOut = frozen.multis;
+      const prevInjuries = JSON.parse(
+        fs.readFileSync(path.join(outDir, "injuries.json"), "utf8")
+      ) as InjuryEntry[];
+      injuries = freezeInjuriesAtTip(
+        prevInjuries,
+        injuries,
+        slateOut,
+        input.now
+      );
     } catch {
       /* first publish */
     }

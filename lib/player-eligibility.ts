@@ -1,4 +1,5 @@
 import type { InjuryEntry } from "./types.js";
+import { injuryEntryRecencyMs } from "./injury-report-time.js";
 import type { PlayerGameLog } from "./types.js";
 import { isOutOrDoubtful } from "./injury-match.js";
 import { normalizePlayerName } from "./player-names.js";
@@ -38,7 +39,7 @@ export function injuriesByPlayerId(injuries: InjuryEntry[]): Map<string, InjuryE
   const map = new Map<string, InjuryEntry>();
   for (const i of injuries) {
     const prev = map.get(i.playerId);
-    if (!prev || new Date(i.updatedAt) >= new Date(prev.updatedAt)) {
+    if (!prev || injuryEntryRecencyMs(i) >= injuryEntryRecencyMs(prev)) {
       map.set(i.playerId, i);
     }
   }
