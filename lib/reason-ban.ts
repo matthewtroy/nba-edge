@@ -21,6 +21,7 @@ export const BANNED_REASON_PHRASES = [
   "league avg",
   "per game to",
   "pace ·",
+  "opponent missing",
 ] as const;
 
 export function reasonTextHasBannedPhrase(text: string): string | null {

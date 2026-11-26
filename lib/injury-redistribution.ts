@@ -1,4 +1,5 @@
 import type { PlayerProfile, InjuryEntry, PlayerGameLog } from "./types.js";
+import { shortTeamName } from "./ordinal.js";
 import type { PerMinuteRates, ProjectedStats } from "./baseline.js";
 import { perMinuteRates, projectedMinutes } from "./baseline.js";
 import { isMeaningfulRotation } from "./rotation.js";
@@ -20,6 +21,9 @@ export interface TeamContext {
   gameLogsByPlayer: Map<string, PlayerGameLog[]>;
   /** Opponent bigs (C / PF) ruled out — lifts our bigs' rebound projection */
   opponentOutBigCount?: number;
+  opponentPlayers?: PlayerProfile[];
+  opponentInjuries?: InjuryEntry[];
+  opponentTeamName?: string;
 }
 
 function isRotationBig(position: string | undefined, minutes: number): boolean {
@@ -131,18 +135,45 @@ function applyExplicitReboundRedistribution(
     }
   }
 
-  const opp = team.opponentOutBigCount ?? 0;
-  if (opp > 0) {
-    const ourBigs = countAvailableBigs(team.players, team.injuries, adjusted);
-    const bumpEach = Math.min(1.2 * opp, 2.5);
-    for (const b of ourBigs) {
-      const cur = adjusted.get(b.id);
-      if (!cur) continue;
-      cur.reb += bumpEach;
-      adjusted.set(b.id, cur);
-      addReason(reasons, b.id, `Opponent missing ${opp} big(s): +${bumpEach.toFixed(1)} reb`);
+  const oppPlayers = team.opponentPlayers ?? [];
+  const oppInj = team.opponentInjuries ?? [];
+  if (oppPlayers.length && oppInj.length) {
+    const out = new Set(
+      oppInj
+        .filter((i) => i.status === "Out" || i.status === "Doubtful")
+        .map((i) => i.playerId)
+    );
+    const outBigs = oppPlayers.filter(
+      (p) => out.has(p.id) && isRotationBig(p.position, 20)
+    );
+    if (outBigs.length) {
+      const oppLabel = shortTeamName(team.opponentTeamName ?? outBigs[0].teamName ?? "Opponent");
+      const ourBigs = countAvailableBigs(team.players, team.injuries, adjusted);
+      const bumpEach = Math.min(1.2 * outBigs.length, 2.5);
+      for (const b of ourBigs) {
+        const cur = adjusted.get(b.id);
+        if (!cur) continue;
+        cur.reb += bumpEach;
+        adjusted.set(b.id, cur);
+        const named = outBigs[0];
+        const last = named.name.split(/\s+/).pop() ?? named.name;
+        const pos = positionTag(named.position);
+        addReason(
+          reasons,
+          b.id,
+          `${oppLabel} without ${last} (${pos}) → +${bumpEach.toFixed(1)} reb`
+        );
+      }
     }
   }
+}
+
+function positionTag(position: string | undefined): string {
+  const p = (position ?? "F").toUpperCase();
+  if (p.includes("C")) return "C";
+  if (p.startsWith("PG") || p.startsWith("SG") || p === "G") return "G";
+  if (p.startsWith("SF") || p.startsWith("PF") || p.includes("F")) return "F";
+  return p.charAt(0);
 }
 
 export function countOpponentOutBigs(

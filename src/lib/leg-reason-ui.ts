@@ -3,7 +3,7 @@ export function legReasonLineUi(reasonLine: string): {
   className: string;
   prefix: string;
 } {
-  const injury = /out →|only big left|opponent missing|missing \d+ big/i.test(
+  const injury = /out →|only big left|without .+ →|missing \d+ big/i.test(
     reasonLine
   );
   return injury

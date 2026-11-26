@@ -9,7 +9,7 @@ function asTexts(reasons: LegReason[] | string[]): string[] {
 
 /** Matches rotation redistribution strings on legs (not matchup/form copy). */
 export function isInjuryRedistributionReason(text: string): boolean {
-  return /out\s*(?:→|:)|only big left|missing \d+ big|opponent missing/i.test(text);
+  return /out\s*(?:→|:)|only big left|missing \d+ big|without .+ →/i.test(text);
 }
 
 function reasonStatMatchesMarket(reason: string, market: Market): boolean {
@@ -37,6 +37,11 @@ export function formatInjuryReasonLine(reason: string): string {
       const last = String(name).trim().split(/\s+/).pop();
       return `${last} out → +${val} ${stat}`;
     }
+  );
+  r = r.replace(
+    /^(.+?)\s+without\s+(.+?)\s*\(([^)]+)\)\s*→\s*\+([\d.]+)\s*(pts|reb|ast)\b/i,
+    (_, team, player, pos, val, stat) =>
+      `${team.trim()} without ${player.trim()} (${pos.trim()}) → +${val} ${stat}`
   );
   return r.replace(/\s+/g, " ").trim();
 }

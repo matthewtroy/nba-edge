@@ -1,5 +1,6 @@
 export type LegReasonType =
   | "injury"
+  | "context"
   | "tracking"
   | "angle"
   | "matchup"
@@ -18,14 +19,15 @@ export interface LegReason {
 
 export const REASON_TYPE_ORDER: LegReasonType[] = [
   "injury",
+  "context",
   "matchup",
-  "h2h",
-  "rank",
-  "form",
   "tracking",
-  "min",
+  "h2h",
+  "form",
   "avg",
+  "rank",
   "pace",
+  "min",
   "angle",
   "other",
 ];
@@ -67,7 +69,9 @@ export function normalizeLegReasons(input: unknown): LegReason[] {
 
 export function inferReasonType(text: string): LegReasonType {
   const t = text.toLowerCase();
-  if (/out →|out:|only big|missing \d+ big|benefit|redistrib|teammate/i.test(t)) return "injury";
+  if (/out →|out:|only big|missing \d+ big|without .+ →|benefit|redistrib|teammate/i.test(t))
+    return "injury";
+  if (/on a back-to-back/i.test(t)) return "context";
   if (/potential ast|more shots|more 3s|fga up|3pa up|tracking/i.test(t)) return "tracking";
   if (/rank #\d+ in allowing/i.test(t)) return "matchup";
   if (/allow [\d.]+\s+(pts|points|reb|rebounds|ast|assists|threes)/i.test(t)) return "matchup";
@@ -125,6 +129,7 @@ export function reasonMatchesMarket(r: LegReason, market: string, stat: string):
   }
   if (
     r.type === "injury" ||
+    r.type === "context" ||
     r.type === "angle" ||
     r.type === "h2h" ||
     r.type === "pace" ||
