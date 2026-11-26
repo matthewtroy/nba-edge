@@ -25,6 +25,14 @@ export function todayTabLabel(viewerTodayYmd: string, timeZone: string): string 
   return `Today (${slateTabDateChip(viewerTodayYmd, timeZone)})`;
 }
 
+/** Settled slate tab when viewer local day has no games, e.g. `Thu (26/11)`. */
+export function settledSlateTabLabel(folderYmd: string, timeZone: string): string {
+  const chip = slateTabDateChip(folderYmd, timeZone);
+  const space = chip.indexOf(" ");
+  if (space === -1) return chip;
+  return `${chip.slice(0, space)} (${chip.slice(space + 1)})`;
+}
+
 export function nextSlateTabLabel(nextFolderYmd: string, timeZone: string): string {
   return slateTabDateChip(nextFolderYmd, timeZone);
 }

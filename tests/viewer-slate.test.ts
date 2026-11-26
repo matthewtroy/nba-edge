@@ -2,8 +2,12 @@ import { describe, expect, it } from "vitest";
 import { buildDataIndex, type DataIndexDateEntry } from "../lib/data-index";
 import {
   noGamesTodayMessage,
+  mostRecentSlateFolderBeforeViewerToday,
+  nextSlateFolderAfterViewerToday,
   resolveViewerSlateSegment,
 } from "../lib/viewer-slate";
+import { settledSlateTabLabel } from "../lib/slate-tab-labels";
+import { shouldShowSlateBuildingScreen } from "../lib/slate-building-mode";
 
 function entry(
   date: string,
@@ -58,6 +62,50 @@ describe("resolveViewerSlateSegment", () => {
     );
     expect(seg.todayFolder).toBe("2026-11-26");
     expect(seg.tomorrowFolder).toBe("2026-11-27");
+  });
+});
+
+describe("no games on viewer local day", () => {
+  it("falls back to previous slate folder and next game day", () => {
+    const index = buildDataIndex(
+      [
+        entry("2026-11-26", "2026-11-26T09:00:00Z"),
+        entry("2026-11-28", "2026-11-28T09:00:00Z"),
+      ],
+      new Date("2026-11-27T08:00:00.000Z")
+    );
+    const tz = "Australia/Sydney";
+    const now = new Date("2026-11-27T08:00:00.000Z");
+    const seg = resolveViewerSlateSegment(index, now, tz);
+    expect(seg.todayFolder).toBe(null);
+    expect(seg.previousFolder).toBe("2026-11-26");
+    expect(seg.nextAfterViewerToday).toBe("2026-11-28");
+    expect(mostRecentSlateFolderBeforeViewerToday(index, seg.viewerTodayYmd, tz)).toBe(
+      "2026-11-26"
+    );
+    expect(nextSlateFolderAfterViewerToday(index, seg.viewerTodayYmd, tz)).toBe(
+      "2026-11-28"
+    );
+    expect(settledSlateTabLabel("2026-11-26", tz)).toMatch(/\(26\/11\)/);
+    expect(
+      shouldShowSlateBuildingScreen({
+        index,
+        slateDate: "2026-11-26",
+        todayDate: "2026-11-26",
+        slateEmpty: false,
+        officialCard: {
+          lockedAt: "x",
+          slateDate: "2026-11-26",
+          bookie: "Ladbrokes",
+          multis: [],
+          notBuilt: [],
+          whatChanged: [],
+          injuries: [],
+        },
+        officialInUse: true,
+        noGamesToday: true,
+      })
+    ).toBe(false);
   });
 });
 

@@ -2,6 +2,8 @@
  * @vitest-environment jsdom
  */
 import { describe, expect, it } from "vitest";
+import fs from "fs";
+import path from "path";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { InjuryStatusBadge } from "../src/components/InjuryStatusBadge";
@@ -68,6 +70,16 @@ describe("prod fix injuries tabs — item 1 Out badge", () => {
     );
     expect(html).toContain("Out");
     expect(html).toMatch(/red/);
+  });
+});
+
+describe("prod fix injuries tabs — item 3 no games today", () => {
+  it("DateSwitcher accepts settled first tab label", () => {
+    const src = fs.readFileSync(
+      path.join(process.cwd(), "src/components/DateSwitcher.tsx"),
+      "utf8"
+    );
+    expect(src).toContain("firstTabLabel");
   });
 });
 

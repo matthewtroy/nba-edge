@@ -1,6 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { DataIndexFile } from "@lib/data-index";
-import { nextSlateFolderDate } from "@lib/slate-tab-labels";
+import {
+  nextSlateFolderDate,
+  settledSlateTabLabel,
+} from "@lib/slate-tab-labels";
 import {
   localDateFromIso,
   localDateString,
@@ -50,21 +53,28 @@ export function useSlateDate(index: DataIndexFile | null) {
         tomorrow: null as string | null,
         viewerTodayYmd: "",
         noGamesToday: false,
+        settledTabLabel: null as string | null,
       };
     }
     const v = resolveViewerSlateSegment(index, new Date(), timeZone);
-    const today = v.todayFolder ?? index.todayDate;
     const tomorrowFromSegment = v.tomorrowFolder ?? index.tomorrowDate;
-    const tomorrow =
-      tomorrowFromSegment ??
-      nextSlateFolderDate(index, today) ??
-      null;
     const noGamesToday = v.todayFolder == null && index.dates.length > 0;
+    const previousFolder = noGamesToday ? v.previousFolder : null;
+    const todayResolved = v.todayFolder ?? previousFolder ?? index.todayDate;
+    const tomorrowResolved =
+      (noGamesToday ? v.nextAfterViewerToday : null) ??
+      tomorrowFromSegment ??
+      nextSlateFolderDate(index, todayResolved) ??
+      null;
     return {
-      today,
-      tomorrow,
+      today: todayResolved,
+      tomorrow: tomorrowResolved,
       viewerTodayYmd: v.viewerTodayYmd,
       noGamesToday,
+      settledTabLabel:
+        noGamesToday && previousFolder
+          ? settledSlateTabLabel(previousFolder, timeZone)
+          : null,
     };
   }, [index, timeZone, clock]);
 
@@ -96,6 +106,7 @@ export function useSlateDate(index: DataIndexFile | null) {
       viewerTodayYmd: viewerSegment.viewerTodayYmd,
     },
     noGamesToday: viewerSegment.noGamesToday,
+    settledTabLabel: viewerSegment.settledTabLabel ?? null,
     timeZone,
     defaultDate: index?.defaultDate ?? "",
     slateLocalLabel: (folderDate: string) => {

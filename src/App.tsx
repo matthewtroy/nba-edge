@@ -39,6 +39,7 @@ export default function App() {
     setDate: setSlateDate,
     segment,
     noGamesToday,
+    settledTabLabel,
     timeZone,
   } = useSlateDate(index);
   const data = useData(slateDate);
@@ -113,7 +114,9 @@ export default function App() {
 
   return (
     <PhoneShell className="px-4 pt-4">
-      {data.errorKind && !data.previewSlate && (
+      {data.errorKind &&
+        !data.previewSlate &&
+        !(noGamesToday && data.slate.length > 0) && (
         <BrandedLoadState kind={data.errorKind} title="Couldn’t load this slate" />
       )}
       {liveTracking.error && (
@@ -130,6 +133,7 @@ export default function App() {
             tomorrowDate={segment.tomorrow}
             viewerTodayYmd={segment.viewerTodayYmd}
             noGamesToday={noGamesToday}
+            settledTabLabel={settledTabLabel}
             viewerTimeZone={timeZone}
             onIndexRefreshed={refreshIndex}
             onSlateDateChange={setSlateDate}
@@ -150,6 +154,7 @@ export default function App() {
             todayDate={segment.today}
             tomorrowDate={segment.tomorrow}
             viewerTodayYmd={segment.viewerTodayYmd}
+            settledTabLabel={settledTabLabel}
             viewerTimeZone={timeZone}
             onIndexRefreshed={refreshIndex}
             onSlateDateChange={setSlateDate}
@@ -167,6 +172,7 @@ export default function App() {
             todayDate={segment.today}
             tomorrowDate={segment.tomorrow}
             viewerTodayYmd={segment.viewerTodayYmd}
+            settledTabLabel={settledTabLabel}
             viewerTimeZone={timeZone}
             onIndexRefreshed={refreshIndex}
             onSlateDateChange={setSlateDate}

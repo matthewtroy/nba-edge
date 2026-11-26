@@ -33,6 +33,7 @@ interface Props {
   todayDate: string;
   tomorrowDate: string | null;
   viewerTodayYmd: string;
+  settledTabLabel?: string | null;
   viewerTimeZone?: string;
   onIndexRefreshed?: (index: import("@lib/data-index").DataIndexFile) => void;
   onSlateDateChange: (d: string) => void;
@@ -48,6 +49,7 @@ export function GamesScreen({
   todayDate,
   tomorrowDate,
   viewerTodayYmd,
+  settledTabLabel,
   viewerTimeZone,
   onIndexRefreshed,
   onSlateDateChange,
@@ -127,6 +129,7 @@ export function GamesScreen({
         selected={slateDate}
         onSelect={onSlateDateChange}
         viewerTimeZone={viewerTimeZone}
+        firstTabLabel={settledTabLabel}
         className="mb-3"
       />
       <TomorrowSlateTease

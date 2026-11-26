@@ -42,6 +42,48 @@ export interface ViewerSlateSegment {
   tomorrowFolder: string | null;
   viewerTodayYmd: string;
   zoneLabel: string | null;
+  /** Most recent slate folder whose local tip day is before viewer today. */
+  previousFolder: string | null;
+  /** Next slate folder whose local tip day is after viewer today. */
+  nextAfterViewerToday: string | null;
+}
+
+export function mostRecentSlateFolderBeforeViewerToday(
+  index: DataIndexFile,
+  viewerTodayYmd: string,
+  timeZone: string
+): string | null {
+  const dated = [...index.dates]
+    .map((d) => ({
+      folder: d.date,
+      localTip:
+        d.firstTipIso != null
+          ? localDateFromIso(d.firstTipIso, timeZone)
+          : d.date,
+    }))
+    .sort((a, b) => a.folder.localeCompare(b.folder));
+  let best: string | null = null;
+  for (const d of dated) {
+    if (d.localTip < viewerTodayYmd) best = d.folder;
+  }
+  return best;
+}
+
+export function nextSlateFolderAfterViewerToday(
+  index: DataIndexFile,
+  viewerTodayYmd: string,
+  timeZone: string
+): string | null {
+  const dated = [...index.dates]
+    .map((d) => ({
+      folder: d.date,
+      localTip:
+        d.firstTipIso != null
+          ? localDateFromIso(d.firstTipIso, timeZone)
+          : d.date,
+    }))
+    .sort((a, b) => a.folder.localeCompare(b.folder));
+  return dated.find((d) => d.localTip > viewerTodayYmd)?.folder ?? null;
 }
 
 /**
@@ -77,11 +119,24 @@ export function resolveViewerSlateSegment(
     tomorrowFolder = dated.find((d) => d.localTip > viewerTodayYmd)?.folder ?? null;
   }
 
+  const previousFolder = mostRecentSlateFolderBeforeViewerToday(
+    index,
+    viewerTodayYmd,
+    timeZone
+  );
+  const nextAfterViewerToday = nextSlateFolderAfterViewerToday(
+    index,
+    viewerTodayYmd,
+    timeZone
+  );
+
   return {
     todayFolder,
     tomorrowFolder: tomorrowFolder === todayFolder ? null : tomorrowFolder,
     viewerTodayYmd,
     zoneLabel: viewerZoneLabel(timeZone),
+    previousFolder,
+    nextAfterViewerToday,
   };
 }
 

@@ -24,6 +24,10 @@ export function shouldShowSlateBuildingScreen(opts: {
   } = opts;
   if (!index) return false;
 
+  if (noGamesToday && slateDate === todayDate && officialInUse) {
+    return false;
+  }
+
   if (previewSlate && !officialInUse) return true;
 
   if (isForwardPreviewSlate(index, slateDate, slateEmpty)) return true;
@@ -31,6 +35,7 @@ export function shouldShowSlateBuildingScreen(opts: {
   if (slateDate !== todayDate && !officialInUse) return true;
 
   if (noGamesToday && slateDate === todayDate && !officialInUse) {
+    if (index.dates.some((d) => d.date === todayDate)) return false;
     return Boolean(index.nextPublishAt || index.games?.length);
   }
 

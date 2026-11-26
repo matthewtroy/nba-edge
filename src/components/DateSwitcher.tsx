@@ -11,6 +11,8 @@ interface Props {
   selected: string;
   onSelect: (date: string) => void;
   viewerTimeZone?: string;
+  /** When viewer local day has no slate (settled fallback tab). */
+  firstTabLabel?: string | null;
   className?: string;
 }
 
@@ -21,6 +23,7 @@ export function DateSwitcher({
   selected,
   onSelect,
   viewerTimeZone: tz = viewerTimeZone(),
+  firstTabLabel,
   className = "",
 }: Props) {
   if (!todayDate) return null;
@@ -29,7 +32,7 @@ export function DateSwitcher({
   const opts = [
     {
       date: todayDate,
-      label: todayTabLabel(viewerTodayYmd, tz),
+      label: firstTabLabel ?? todayTabLabel(viewerTodayYmd, tz),
     },
     {
       date: nextSlateDate,

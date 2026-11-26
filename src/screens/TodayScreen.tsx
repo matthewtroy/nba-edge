@@ -28,6 +28,7 @@ interface Props {
   tomorrowDate: string | null;
   viewerTodayYmd: string;
   noGamesToday?: boolean;
+  settledTabLabel?: string | null;
   viewerTimeZone?: string;
   onIndexRefreshed?: (index: import("@lib/data-index").DataIndexFile) => void;
   onSlateDateChange: (d: string) => void;
@@ -47,6 +48,7 @@ export function TodayScreen({
   viewerTodayYmd,
   viewerTimeZone,
   noGamesToday,
+  settledTabLabel,
   onIndexRefreshed,
   onSlateDateChange,
   onLegTap,
@@ -115,6 +117,7 @@ export function TodayScreen({
           selected={slateDate}
           onSelect={onSlateDateChange}
           viewerTimeZone={viewerTimeZone}
+          firstTabLabel={settledTabLabel}
         />
       </div>
 
