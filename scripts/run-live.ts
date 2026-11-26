@@ -15,8 +15,8 @@ import { sydneyYmd, type OddsBudgetConfig } from "../lib/odds-budget.js";
 import { isPostTipOff, mergeBestOddsMaps } from "../lib/odds-cache-merge.js";
 import {
   formatYyyymmddInZone,
-  parseScoreboard,
-  teamIdsFromFinalGames,
+  createB2bScoreboardParser,
+  previousEtYyyymmdd,
   parseEspnLeagueInjuries,
   mergeOfficialInjuries,
   parseGameLogsFromEspn,
@@ -195,27 +195,25 @@ export async function runLivePipeline(
   let unionSlate: SlateGame[] = [];
   /** Full ESPN merge (incl. forward ET scan) for index forward metadata — not just publish slates. */
   let scoreboardMerged: SlateGame[] = [];
-  let yesterdayPlayed = new Set<string>();
-
   try {
+    const b2b = createB2bScoreboardParser(fetchScoreboard);
     const todayEt = formatYyyymmddInZone(now, ET);
-    const yd = new Date(now.getTime() - 86400000);
-    const yEt = formatYyyymmddInZone(yd, ET);
+    const yEt = previousEtYyyymmdd(todayEt);
 
     const [boardToday, boardYesterday] = await Promise.all([
       fetchScoreboard(dateFromYyyymmdd(todayEt)),
       fetchScoreboard(dateFromYyyymmdd(yEt)),
     ]);
 
-    yesterdayPlayed = teamIdsFromFinalGames(boardYesterday);
-    let merged = dedupeGames(parseScoreboard(boardToday, yesterdayPlayed));
+    b2b.seedEtDay(yEt, boardYesterday);
+    let merged = dedupeGames(await b2b.parseScoreboardForEtDay(todayEt, boardToday));
     let plan = planScoreboardSlates(merged, now);
     const { tomorrowYmd } = pipelineSydneyDates(now);
     console.log(
       `dual-slate: scoreboard ET ${todayEt} · merged=${merged.length} · today Sydney=${plan.today.length} · tomorrow Sydney ${tomorrowYmd}=${plan.tomorrow.length}`
     );
     if (!plan.tomorrow.length) {
-      const tomorrowBoard = await maybeTomorrowBoard(now, plan.today, yesterdayPlayed);
+      const tomorrowBoard = await maybeTomorrowBoard(now, b2b);
       const tEt = formatYyyymmddInZone(new Date(now.getTime() + 86400000), ET);
       console.log(
         `dual-slate: scoreboard ET ${tEt} probed · ${tomorrowBoard.length} games parsed · filter Sydney ${tomorrowYmd}`
@@ -226,7 +224,8 @@ export async function runLivePipeline(
     if (!plan.tomorrow.length) {
       const t2Et = formatYyyymmddInZone(new Date(now.getTime() + 2 * 86400000), ET);
       try {
-        const parsed = parseScoreboard(await fetchScoreboard(dateFromYyyymmdd(t2Et)), yesterdayPlayed);
+        const boardT2 = await fetchScoreboard(dateFromYyyymmdd(t2Et));
+        const parsed = await b2b.parseScoreboardForEtDay(t2Et, boardT2);
         merged = dedupeGames([...merged, ...parsed]);
         plan = planScoreboardSlates(merged, now);
         console.log(
@@ -243,7 +242,7 @@ export async function runLivePipeline(
         const et = formatYyyymmddInZone(d, ET);
         try {
           const board = await fetchScoreboard(dateFromYyyymmdd(et));
-          const parsed = parseScoreboard(board, yesterdayPlayed);
+          const parsed = await b2b.parseScoreboardForEtDay(et, board);
           if (!parsed.length) continue;
           merged = dedupeGames([...merged, ...parsed]);
           plan = planScoreboardSlates(merged, now);
@@ -1103,14 +1102,13 @@ function dateFromYyyymmdd(s: string): Date {
 
 async function maybeTomorrowBoard(
   now: Date,
-  _today: SlateGame[],
-  yesterdayPlayed: Set<string>
+  b2b: ReturnType<typeof createB2bScoreboardParser>
 ): Promise<SlateGame[]> {
   const tomorrow = new Date(now.getTime() + 86400000);
   const tEt = formatYyyymmddInZone(tomorrow, ET);
   try {
     const board = await fetchScoreboard(dateFromYyyymmdd(tEt));
-    return parseScoreboard(board, yesterdayPlayed);
+    return await b2b.parseScoreboardForEtDay(tEt, board);
   } catch {
     return [];
   }

@@ -84,8 +84,24 @@ export function parseScoreboard(
   return games;
 }
 
-/** Team ids that played on a completed scoreboard day */
-export function teamIdsFromFinalGames(raw: unknown): Set<string> {
+const ET = "America/New_York";
+
+export function dateFromYyyymmddEt(s: string): Date {
+  const y = Number(s.slice(0, 4));
+  const m = Number(s.slice(4, 6)) - 1;
+  const d = Number(s.slice(6, 8));
+  return new Date(Date.UTC(y, m, d, 12, 0, 0));
+}
+
+/** Previous ET calendar day for a scoreboard day label (YYYYMMDD). */
+export function previousEtYyyymmdd(etYmd: string): string {
+  const d = dateFromYyyymmddEt(etYmd);
+  d.setUTCDate(d.getUTCDate() - 1);
+  return formatYyyymmddInZone(d, ET);
+}
+
+/** Team ids with any game on an ET scoreboard day (scheduled or completed). */
+export function teamIdsFromScoreboardDay(raw: unknown): Set<string> {
   const data = raw as { events?: { competitions?: { competitors?: { id: string; team?: { id: string } }[] }[] }[] };
   const ids = new Set<string>();
   for (const event of data.events ?? []) {
@@ -95,6 +111,45 @@ export function teamIdsFromFinalGames(raw: unknown): Set<string> {
     }
   }
   return ids;
+}
+
+/** @deprecated Use teamIdsFromScoreboardDay — includes scheduled and completed games. */
+export function teamIdsFromFinalGames(raw: unknown): Set<string> {
+  return teamIdsFromScoreboardDay(raw);
+}
+
+export type FetchScoreboardByDate = (d: Date) => Promise<unknown>;
+
+/** Per-board ET date B2B: board day D uses teams that played on ET day D−1. */
+export function createB2bScoreboardParser(fetchScoreboard: FetchScoreboardByDate) {
+  const teamsByEtYmd = new Map<string, Set<string>>();
+  const boardFetch = new Map<string, Promise<unknown>>();
+
+  async function teamsOnEtDay(etYmd: string): Promise<Set<string>> {
+    if (teamsByEtYmd.has(etYmd)) return teamsByEtYmd.get(etYmd)!;
+    let fetchP = boardFetch.get(etYmd);
+    if (!fetchP) {
+      fetchP = fetchScoreboard(dateFromYyyymmddEt(etYmd));
+      boardFetch.set(etYmd, fetchP);
+    }
+    const raw = await fetchP;
+    const ids = teamIdsFromScoreboardDay(raw);
+    teamsByEtYmd.set(etYmd, ids);
+    return ids;
+  }
+
+  function seedEtDay(etYmd: string, raw: unknown) {
+    teamsByEtYmd.set(etYmd, teamIdsFromScoreboardDay(raw));
+    boardFetch.set(etYmd, Promise.resolve(raw));
+  }
+
+  async function parseScoreboardForEtDay(etYmd: string, raw: unknown): Promise<SlateGame[]> {
+    const prev = previousEtYyyymmdd(etYmd);
+    const prevTeams = await teamsOnEtDay(prev);
+    return parseScoreboard(raw, prevTeams);
+  }
+
+  return { parseScoreboardForEtDay, seedEtDay, teamsOnEtDay };
 }
 
 export function parseEspnLeagueInjuries(
