@@ -16,6 +16,7 @@ describe("PicksScreen", () => {
     expect(row).toContain("LegProgress");
     expect(row).toContain("liveView");
     expect(row).toContain("leg-title-live-dot");
+    expect(row).toMatch(/flex items-start[\s\S]*leg-title-live-dot/);
   });
 
   it("LegProgress uses one right stat+glyph column only", () => {

@@ -243,15 +243,15 @@ export function LegSheet({
         <MotionHandleRow onClose={onClose} />
 
         <header className="min-h-[56px] pr-8 flex flex-col justify-center">
-          <h2 className="text-base font-semibold text-white theme-adaptive-title leading-tight">
+          <h2 className="text-base font-semibold text-white theme-adaptive-title leading-tight flex items-start gap-1.5">
+            <span className="min-w-0 flex-1">{leg.playerName}</span>
             {legTitleShowsLiveDot(liveView) && (
               <span
-                className="leg-title-live-dot inline-block w-1.5 h-1.5 rounded-full bg-sky-400 mr-1.5 align-middle shrink-0"
+                className="leg-title-live-dot inline-block w-1.5 h-1.5 rounded-full bg-sky-400 mt-1 shrink-0"
                 data-testid="leg-title-live-dot"
                 aria-hidden
               />
             )}
-            {leg.playerName}
           </h2>
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1">
             <LegProgress

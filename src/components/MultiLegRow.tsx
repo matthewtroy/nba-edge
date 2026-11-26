@@ -82,16 +82,18 @@ export function MultiLegRow({
         className="w-8 h-8 rounded-full bg-page object-cover shrink-0 mt-0.5"
       />
       <div className="min-w-0">
-        <p className={`${ui.legTitle} break-words`}>
+        <p className={`${ui.legTitle} break-words flex items-start gap-1.5`}>
+          <span className="min-w-0 flex-1">
+            {leg.playerName}{" "}
+            {lineShift ?? leg.feedLineNote ?? bookieMarketLabel(leg.market, leg.line)}
+          </span>
           {legTitleShowsLiveDot(liveView) && (
             <span
-              className="leg-title-live-dot inline-block w-1.5 h-1.5 rounded-full bg-sky-400 mr-1 align-middle shrink-0"
+              className="leg-title-live-dot inline-block w-1.5 h-1.5 rounded-full bg-sky-400 mt-1 shrink-0"
               data-testid="leg-title-live-dot"
               aria-hidden
             />
           )}
-          {leg.playerName}{" "}
-          {lineShift ?? leg.feedLineNote ?? bookieMarketLabel(leg.market, leg.line)}
         </p>
         {subtitle && (
           <p className="text-[11px] text-white/40 theme-adaptive-muted truncate">
