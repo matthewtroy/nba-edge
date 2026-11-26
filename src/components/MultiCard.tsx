@@ -8,8 +8,8 @@ import {
   type MultiBookieStorageScope,
 } from "../hooks/useMultiBookieSelect";
 import { BookieBottomSheet } from "./BookieBottomSheet";
-import { buildShareBetslipLayout } from "@lib/share-betslip-layout";
-import { captureShareBetslipPng } from "../lib/share-multi-image";
+import { captureMultiCardSharePng } from "../lib/share-multi-image";
+import { gameStartTimeSydney } from "@lib/sydney";
 import { multiCardTitle, type MultiCardTitleOptions } from "@lib/multi-combined";
 import { bestFeedMultiQuote } from "@lib/card-bookie";
 import { legPriceAtBookieWithCatalog } from "@lib/single-bookie";
@@ -51,6 +51,8 @@ interface Props {
   onLegTap: (leg: PickLeg) => void;
   onCopy: (text: string) => void;
   onShareError?: (message: string) => void;
+  /** Off-screen PNG — hides Copy/Share/bookie chevron; keeps header bookie line */
+  shareCapture?: boolean;
 }
 
 export const FORBIDDEN_MULTI_CARD_STRINGS = [
@@ -97,6 +99,7 @@ export function MultiCard({
   bookieStorageScope = "today",
   republishedAt,
   onShareError,
+  shareCapture = false,
 }: Props) {
   const cardRef = useRef<HTMLElement>(null);
   const [bookieSheetOpen, setBookieSheetOpen] = useState(false);
@@ -175,16 +178,27 @@ export function MultiCard({
 
   async function shareImage() {
     try {
-      const layout = buildShareBetslipLayout({
+      const blob = await captureMultiCardSharePng({
         multi,
-        legs,
-        slate,
-        bookie: legBookie || displayBook,
-        total: headerTotal ?? publishedTotal ?? multi.bestBookieTotal,
-        catalog: priceCatalog,
+        picksById,
         injuries,
+        slate,
+        preferredBookie,
+        lockedBookie,
+        publishedAt,
+        oddsLastPulled,
+        discordCopy,
+        fairOnly,
+        oddsNote,
+        hideBookieSelect: hideBookieSelect || showFairOnly,
+        officialDisplayOnly,
+        liveCatalog,
+        compact,
+        slateDate,
+        bookieStorageScope,
+        republishedAt,
+        shareLegs: legs,
       });
-      const blob = await captureShareBetslipPng(layout);
       const file = new File([blob], "nba-edge-multi.png", { type: "image/png" });
       if (navigator.share && navigator.canShare?.({ files: [file] })) {
         await navigator.share({ files: [file], title: multi.label });
@@ -226,10 +240,10 @@ export function MultiCard({
         republishedAt={officialDisplayOnly ? republishedAt : undefined}
         fairOnly={showFairOnly}
         fairNote={showFairOnly ? subline || oddsNote : undefined}
-        onRemove={onRemove}
+        onRemove={shareCapture ? undefined : onRemove}
       />
 
-      {multi.type === "crossGameSgm" && (
+      {multi.type === "crossGameSgm" && !shareCapture && (
         <CrossGameChips
           chips={crossSel.chips}
           enabled={crossSel.enabled}
@@ -288,53 +302,58 @@ export function MultiCard({
         )}
       </div>
 
-      {!showFairOnly && !hideBookieSelect && (!lockedBookie || officialDisplayOnly) && (
-        <>
+      {!shareCapture &&
+        !showFairOnly &&
+        !hideBookieSelect &&
+        (!lockedBookie || officialDisplayOnly) && (
+          <>
+            <button
+              type="button"
+              className="w-full mb-2 py-2 text-xs text-left text-white/70 border-b border-white/[0.05]"
+              onClick={() => setBookieSheetOpen(true)}
+              aria-label={officialDisplayOnly ? "Preview bookie prices" : "Bookie"}
+            >
+              {displayBook
+                ? formatFeedBookieOptionLabel(
+                    feedOptions.find((r) => r.bookie === displayBook) ?? {
+                      bookie: displayBook,
+                      missing: missingAtBookie,
+                      complete: missingAtBookie === 0,
+                      total,
+                    }
+                  )
+                : "Select bookie"}
+              <span className="float-right text-white/35">▾</span>
+            </button>
+            <BookieBottomSheet
+              open={bookieSheetOpen}
+              title={officialDisplayOnly ? "Preview bookie" : "Bookie"}
+              options={bookieOptions}
+              value={displayBook ?? ""}
+              onSelect={select}
+              onClose={() => setBookieSheetOpen(false)}
+            />
+          </>
+        )}
+
+      {!shareCapture && (
+        <div className="flex gap-2" data-share-ui="actions">
           <button
             type="button"
-            className="w-full mb-2 py-2 text-xs text-left text-white/70 border-b border-white/[0.05]"
-            onClick={() => setBookieSheetOpen(true)}
-            aria-label={officialDisplayOnly ? "Preview bookie prices" : "Bookie"}
+            className={`${ui.copyBtn} flex-1`}
+            onClick={() =>
+              onCopy(
+                renderMultiCardCopyText(multi, legs, legBookie || undefined, titleOpts)
+              )
+            }
           >
-            {displayBook
-              ? formatFeedBookieOptionLabel(
-                  feedOptions.find((r) => r.bookie === displayBook) ?? {
-                    bookie: displayBook,
-                    missing: missingAtBookie,
-                    complete: missingAtBookie === 0,
-                    total,
-                  }
-                )
-              : "Select bookie"}
-            <span className="float-right text-white/35">▾</span>
+            {discordCopy ? "Copy for Discord" : "Copy"}
           </button>
-          <BookieBottomSheet
-            open={bookieSheetOpen}
-            title={officialDisplayOnly ? "Preview bookie" : "Bookie"}
-            options={bookieOptions}
-            value={displayBook ?? ""}
-            onSelect={select}
-            onClose={() => setBookieSheetOpen(false)}
-          />
-        </>
+          <button type="button" className={`${ui.copyBtn} flex-1`} onClick={() => void shareImage()}>
+            Share
+          </button>
+        </div>
       )}
-
-      <div className="flex gap-2">
-        <button
-          type="button"
-          className={`${ui.copyBtn} flex-1`}
-          onClick={() =>
-            onCopy(
-              renderMultiCardCopyText(multi, legs, legBookie || undefined, titleOpts)
-            )
-          }
-        >
-          {discordCopy ? "Copy for Discord" : "Copy"}
-        </button>
-        <button type="button" className={`${ui.copyBtn} flex-1`} onClick={() => void shareImage()}>
-          Share
-        </button>
-      </div>
     </section>
   );
 }
@@ -393,7 +412,7 @@ function CrossLegGroups({
         const matchup = game
           ? slateMatchupAbbrev(game)
           : rows[0]?.leg.team ?? "Game";
-        const time = game?.startTimeSydney ?? "";
+        const time = game ? gameStartTimeSydney(game) : "";
         const blowout = game?.spread != null && Math.abs(game.spread) >= 14.5;
         const block = (
           <MotionBlock

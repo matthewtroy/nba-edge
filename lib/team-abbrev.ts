@@ -1,4 +1,5 @@
 import type { SlateGame } from "./types.js";
+import { gameStartTimeSydney } from "./sydney.js";
 
 /** Full ESPN displayName → NBA tricode (stable for matchup subtitles). */
 const NAME_TO_TRICODE: Record<string, string> = {
@@ -48,9 +49,9 @@ export function slateMatchupAbbrev(game: Pick<SlateGame, "awayTeam" | "homeTeam"
 }
 
 export function slateMatchupWithTip(
-  game: Pick<SlateGame, "awayTeam" | "homeTeam" | "startTimeSydney">
+  game: Pick<SlateGame, "awayTeam" | "homeTeam" | "startTime" | "startTimeSydney">
 ): string {
   const matchup = slateMatchupAbbrev(game);
-  const tip = game.startTimeSydney?.trim();
+  const tip = gameStartTimeSydney(game);
   return tip ? `${matchup} · ${tip}` : matchup;
 }

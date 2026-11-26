@@ -1,9 +1,10 @@
 import type { PickLeg, SlateGame } from "./types.js";
+import { gameStartTimeSydney } from "./sydney.js";
 
 export function tipLabelForLeg(leg: PickLeg, slate: SlateGame[]): string | null {
   const g = slate.find((x) => x.id === leg.gameId);
   if (!g) return null;
-  const label = g.startTimeSydney?.trim();
+  const label = gameStartTimeSydney(g);
   if (label) return `Tip ${label}`;
   return null;
 }
