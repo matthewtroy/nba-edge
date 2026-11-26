@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26T07:57:39.120Z",
+  "lastUpdated": "2026-11-26T08:29:55.389Z",
   "oddsLastPulled": "2026-11-25T10:29:00.533Z",
   "sources": {
     "espn": "ok",
@@ -8,9 +8,9 @@
   },
   "slateSize": 9,
   "smallSlate": false,
-  "modelSanityChecked": 195,
+  "modelSanityChecked": 199,
   "modelSanityFailures": 1,
-  "formGuardExcludedCount": 553,
+  "formGuardExcludedCount": 557,
   "gameOddsPriceAge": {
     "401909317": "Prices from 9:29 pm",
     "401909318": "Prices from 9:29 pm",
@@ -24,26 +24,26 @@
   },
   "slateTipDate": "2026-11-26",
   "whatChanged": [],
-  "nbaOfficialLastTriedUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-26_01_00AM.pdf",
+  "nbaOfficialLastTriedUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-26_01_30AM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 441,
-      "priced": 302
+      "total": 443,
+      "priced": 300
     },
     "reb": {
-      "total": 606,
-      "priced": 235
+      "total": 602,
+      "priced": 232
     },
     "3pm": {
-      "total": 736,
-      "priced": 431
+      "total": 726,
+      "priced": 428
     },
     "ast": {
-      "total": 421,
-      "priced": 172
+      "total": 423,
+      "priced": 175
     },
     "q1reb": {
-      "total": 221,
+      "total": 212,
       "priced": 0
     }
   },
