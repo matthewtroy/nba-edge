@@ -34,7 +34,7 @@ function leg(
     line: 20,
     takeAt: Math.round(fairPrice * 1.08 * 100) / 100,
     tags: ["High probability"],
-    reasons: [{ type: "form", text: "8/10 hits at line" }],
+    reasons: [{ type: "form", text: "8/10 at this line" }],
     reasonLine: "8/10 hits at line · Soft defence rank 8",
     starterEligible: true,
     recentTenVsLine: [

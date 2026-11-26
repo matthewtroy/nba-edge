@@ -18,12 +18,13 @@ import {
 } from "../lib/games-tab-sgm";
 import { buildGameSgmCard, isGameSgmCard } from "../lib/game-sgm-builder";
 import type { PickLeg, SlateGame } from "../lib/types";
+import { ensureSupportivePicks } from "./helpers/supportive-picks";
 
 const leg = (
   id: string,
   price: number,
   p = 0.65,
-  reasons: PickLeg["reasons"] = [{ text: "Form", weight: 1 }]
+  reasons: PickLeg["reasons"] = [{ type: "form", text: "7/10 at this line" }]
 ): PickLeg =>
   ({
     id,
@@ -52,6 +53,7 @@ const heatPhiFixture = JSON.parse(
     "utf8"
   )
 ) as { games: SlateGame[]; picks: PickLeg[] };
+const heatPhiPicks = ensureSupportivePicks(heatPhiFixture.picks);
 
 describe("Games tab Roughie rules", () => {
   it("ROUGHIE_* constants", () => {
@@ -83,9 +85,9 @@ describe("Games tab Roughie rules", () => {
   });
 
   it("roughie mode is value-only (no high-probability bypass)", () => {
-    const valueLeg = leg("val", 3, 0.65, [{ text: "Hot", weight: 1 }]);
+    const valueLeg = leg("val", 3, 0.65, [{ type: "form", text: "7/10 at this line" }]);
     valueLeg.takeAt = 2.9;
-    const noValue = leg("nv", 3, 0.9, [{ text: "Hot", weight: 1 }]);
+    const noValue = leg("nv", 3, 0.9, [{ type: "form", text: "7/10 at this line" }]);
     noValue.takeAt = 3.2;
     expect(
       qualifiesGamesTabSgmLeg(valueLeg, "Sportsbet", 0.08, [valueLeg], ROUGHIE_SGM_RULES)
@@ -135,11 +137,11 @@ describe("Games tab Roughie rules", () => {
     expect(game.id).toBe("401909317");
     const built = buildGameSgmCard(
       game,
-      heatPhiFixture.picks,
+      heatPhiPicks,
       10,
       20,
       0.08,
-      heatPhiFixture.picks,
+      heatPhiPicks,
       ROUGHIE_SGM_RULES
     );
     expect(isGameSgmCard(built)).toBe(true);

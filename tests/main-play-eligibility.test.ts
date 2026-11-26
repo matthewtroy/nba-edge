@@ -29,7 +29,10 @@ function synth(overrides: Partial<PickLeg> & Pick<PickLeg, "id">): PickLeg {
     fairPrice: 1.45,
     takeAt: 1.57,
     tags: ["High probability"],
-    reasons: [{ type: "form", text: "7/10 hits at line" }],
+    reasons: [
+      { type: "form", text: "7/10 at this line" },
+      { type: "matchup", text: "Heat rank #4 in allowing pts to guards (avg. 18.0)" },
+    ],
     starterEligible: true,
     recentTenVsLine: [
       "hit",
@@ -101,10 +104,14 @@ describe("main play leg eligibility", () => {
         "hit",
         "hit",
         "hit",
+        "hit",
         "miss",
         "miss",
         "miss",
-        "miss",
+      ],
+      reasons: [
+        { type: "form", text: "7/10 at this line" },
+        { type: "matchup", text: "Heat rank #4 in allowing pts to guards (avg. 18.0)" },
       ],
       bookiePrices: { Ladbrokes: 1.62 },
       bestPrice: 1.62,

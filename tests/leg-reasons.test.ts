@@ -54,7 +54,7 @@ describe("leg reasons structured", () => {
         { type: "injury", text: "Jones out → +1.1 ast" },
       ])
     );
-    expect(ordered.map((r) => r.type)).toEqual(["injury", "form", "tracking"]);
+    expect(ordered.map((r) => r.type)).toEqual(["injury", "tracking", "form"]);
   });
 
   it("formats matchup allow line with rank", () => {

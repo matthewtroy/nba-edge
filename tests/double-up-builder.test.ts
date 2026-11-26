@@ -8,6 +8,7 @@ import {
   DOUBLE_UP_MIN,
 } from "../lib/pricing-config";
 import type { PickLeg } from "../lib/types";
+import { ensureSupportivePicks } from "./helpers/supportive-picks";
 
 const FIXTURE = path.join(process.cwd(), "tests/fixtures/tonight-double-up.json");
 
@@ -22,7 +23,7 @@ describe("Best Double Up builder", () => {
     const raw = JSON.parse(fs.readFileSync(FIXTURE, "utf8")) as {
       picks: PickLeg[];
     };
-    const { bets, notBuilt } = buildMultis(raw.picks, 4);
+    const { bets, notBuilt } = buildMultis(ensureSupportivePicks(raw.picks), 4);
     const du = bets.find((b) => b.type === "doubleUp");
     expect(du, JSON.stringify(notBuilt.filter((n) => n.type === "doubleUp"))).toBeTruthy();
     expect(du!.label).toBe("Best Double Up");

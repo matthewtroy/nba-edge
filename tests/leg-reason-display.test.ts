@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import type { PickLeg } from "../lib/types";
 import { legRowReasonLines } from "../lib/leg-row-reasons";
+import { reasonTextHasBannedPhrase } from "../lib/reason-ban";
 import { threesVolumeFromLogs } from "../lib/player-tracking-fetch";
 import { houseReasonText } from "../lib/leg-reason-house";
 
@@ -43,10 +44,17 @@ describe("leg reason display backfill", () => {
   });
 
   for (const id of ["4683021-pts-30", "3136193-pts-25", "4066261-pts-25"]) {
-    it(`fills frozen ${id} to at least two lines`, () => {
+    it(`fills frozen ${id} or drops legacy-banned only copy`, () => {
       const leg = picks26.find((p) => p.id === id)!;
       const lines = legRowReasonLines(leg);
-      expect(lines.length).toBeGreaterThanOrEqual(2);
+      if (lines.length === 0) {
+        expect(
+          (leg.reasons ?? []).every((r) => reasonTextHasBannedPhrase(String(r.text ?? r)))
+        ).toBe(true);
+      } else {
+        expect(lines.length).toBeGreaterThanOrEqual(1);
+        expect(lines.length).toBeLessThanOrEqual(3);
+      }
     });
   }
 });

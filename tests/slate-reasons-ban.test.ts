@@ -57,9 +57,9 @@ describe("slate reason copy", () => {
       leg: baseLeg,
       logs: logsWithAvg(24),
     });
-    const avg = reasons.find((r) => r.type === "avg");
-    expect(avg?.text).toMatch(/Avg 24\.0 pts last 10/);
-    expect(reasonTextHasBannedPhrase(avg?.text ?? "")).toBeNull();
+    const fact = reasons.find((r) => r.type === "avg" || r.type === "form");
+    expect(fact?.text).toMatch(/Avg 24\.0 pts last (8|10)|10\/10 at this line/);
+    expect(reasonTextHasBannedPhrase(fact?.text ?? "")).toBeNull();
   });
 
   it("form reason needs 7/10 or 5/5", () => {

@@ -31,7 +31,7 @@ const leg = (id: string, overrides: Partial<PickLeg> = {}): PickLeg =>
     team: "BOS",
     opponent: "BKN",
     playerId: id,
-    reasons: [],
+    reasons: [{ type: "form", text: "7/10 at this line" }],
     ...overrides,
   }) as PickLeg;
 

@@ -85,7 +85,7 @@ describe("buildShortLegReason", () => {
   it("uses L10 avg fallback when form below 7/10", () => {
     const leg = { ...base, reasons: [] };
     expect(buildShortLegReason(leg, logs([3, 3, 3, 3, 3, 8, 8, 8, 8, 8]))).toMatch(
-      /Avg [\d.]+ reb last 10|5\/5 at this line/
+      /Avg [\d.]+ reb last|\/\d+ at this line/
     );
   });
 

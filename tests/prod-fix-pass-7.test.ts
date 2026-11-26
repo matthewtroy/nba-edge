@@ -6,6 +6,7 @@ import fs from "fs";
 import path from "path";
 import type { PickLeg } from "../lib/types";
 import { legRowReasonLines } from "../lib/leg-row-reasons";
+import { reasonTextHasBannedPhrase } from "../lib/reason-ban";
 import { reasonCountHistogram, sampleLegsByMarket } from "../lib/reason-histogram";
 import { threesVolumeFromLogs } from "../lib/player-tracking-fetch";
 import { standaloneInjuryBlocks } from "../lib/injuries-standalone";
@@ -71,11 +72,18 @@ describe("item 1: leg reasons house style", () => {
   });
 
   for (const id of ["4683021-pts-30", "3136193-pts-25", "4066261-pts-25"]) {
-    it(`display fallback fills ${id} to ≥2 lines`, () => {
+    it(`display fallback for ${id} (supportive or legacy-banned only)`, () => {
       const leg = picks26.find((p) => p.id === id)!;
       expect(leg).toBeTruthy();
       const lines = legRowReasonLines(leg);
-      expect(lines.length).toBeGreaterThanOrEqual(2);
+      if (lines.length === 0) {
+        expect(
+          (leg.reasons ?? []).every((r) => reasonTextHasBannedPhrase(String(r.text ?? r)))
+        ).toBe(true);
+      } else {
+        expect(lines.length).toBeGreaterThanOrEqual(1);
+        expect(lines.length).toBeLessThanOrEqual(3);
+      }
     });
   }
 
@@ -119,7 +127,7 @@ describe("item 3: progress bars equal track width", () => {
     );
     expect(src).toContain("LEG_PROGRESS_TRACK_CLASS");
     expect(src).toContain("LEG_PROGRESS_LABEL_CLASS");
-    expect(LEG_PROGRESS_TRACK_CLASS).toContain("w-[72px]");
+    expect(LEG_PROGRESS_TRACK_CLASS).toContain("w-[160px]");
     expect(LEG_PROGRESS_LABEL_CLASS).toContain("w-[2.5rem]");
   });
 

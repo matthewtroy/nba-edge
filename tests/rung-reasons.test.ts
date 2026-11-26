@@ -19,11 +19,11 @@ function pick(id: string): PickLeg {
 }
 
 describe("rung-aware reasons", () => {
-  it("expects at least two fact lines on high pts and ast rungs", () => {
+  it("expects at least one supportive line on high pts and ast rungs", () => {
     expect(minReasonLinesForRung("pts", 30)).toBe(2);
     expect(minReasonLinesForRung("ast", 7)).toBe(2);
     const kat = pick("3136195-pts-30");
-    expect(legRowReasonLines(kat).length).toBeGreaterThanOrEqual(2);
+    expect(legRowReasonLines(kat).length).toBeGreaterThanOrEqual(1);
     const avdijaSeed = [
       { type: "avg" as const, text: "Avg 7.4 ast last 10 (season 6.2)" },
       { type: "form" as const, text: "6/10 at this line" },

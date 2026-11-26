@@ -24,7 +24,7 @@ function synthLeg(
     fairPrice: fair,
     takeAt,
     tags: ["Value"],
-    reasons: [],
+    reasons: [{ type: "form", text: "7/10 at this line" }],
     starterEligible: true,
     confluence: 2,
     signals: { PRICE: { active: true }, FORM: { active: true, label: "L10 65%" } },
