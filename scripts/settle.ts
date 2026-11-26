@@ -15,8 +15,9 @@ import type { ResultsSlice } from "../lib/results-types.js";
 import { fetchScoreboard, fetchSummary } from "./fetch/espn.js";
 import { formatYyyymmddInZone, parseBoxscore } from "./espn-parse.js";
 import { gradePickCatalog } from "../lib/graded-leg.js";
-import { settleOfficialBets } from "../lib/official-bet-settle.js";
+import { BET_LABELS, settleOfficialBets } from "../lib/official-bet-settle.js";
 import { extraOfficialBetRows, loadExtraOfficialBets } from "../lib/extra-official-bets.js";
+import { loadPreAppMainPlays, preAppMainPlayRows } from "../lib/pre-app-main-plays.js";
 import { valueLegRowsFromGraded } from "../lib/value-leg-track.js";
 import { slateResultsFrozen } from "../lib/settle-slate-freeze.js";
 import { syncSettleToSupabase } from "./supabase-sync.js";
@@ -195,9 +196,12 @@ async function main() {
     }
   }
 
+  const cardDates = new Set(slateDates.filter((d) => loadOfficialCard(d) != null));
+  const preAppBets = preAppMainPlayRows(loadPreAppMainPlays(rootDir), cardDates);
+
   const aggregate = buildResultsSlice({
     officialLegs: allOfficialLegs,
-    officialBets: allOfficialBets,
+    officialBets: [...preAppBets, ...allOfficialBets],
     valueLegRows: allValue,
     gradedLegs: allGraded,
     now,
@@ -221,6 +225,14 @@ async function main() {
     );
   } else {
     console.log("settle: idempotent — no changes");
+  }
+  const mainPlay = aggregate.official.byBetType[BET_LABELS.mainPlay];
+  if (mainPlay) {
+    console.log(
+      `settle: Main Play ${mainPlay.won}-${mainPlay.lost} · staked ${mainPlay.staked}u · ` +
+        `profit ${mainPlay.profit >= 0 ? "+" : ""}${mainPlay.profit.toFixed(2)}u` +
+        (mainPlay.roi != null ? ` · ROI ${(mainPlay.roi * 100).toFixed(1)}%` : "")
+    );
   }
 
   await syncSettleToSupabase(rootDir, {

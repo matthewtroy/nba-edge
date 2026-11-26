@@ -22,6 +22,7 @@ import type { OfficialCardFile } from "../lib/official-card-time";
 import type { SettledLegRow } from "../lib/settle-core";
 import { extraOfficialBetRows, loadExtraOfficialBets } from "../lib/extra-official-bets";
 import { buildResultsSlice } from "../lib/results-aggregate";
+import { loadPreAppMainPlays, preAppMainPlayRows } from "../lib/pre-app-main-plays";
 import { ResultsScreen } from "../src/screens/ResultsScreen";
 import type { DataBundle } from "../src/hooks/useData";
 import { createElement } from "react";
@@ -342,5 +343,48 @@ describe("prod fix pass 5 — extra Best SGM", () => {
     for (const f of walk(srcDir).filter((f) => /\.(tsx?|css)$/.test(f))) {
       expect(fs.readFileSync(f, "utf8"), f).not.toMatch(/\(manual\)|variant === "manual"/i);
     }
+  });
+});
+
+describe("prod fix pass 5 — pre-app Main Plays", () => {
+  const file = loadPreAppMainPlays(process.cwd());
+  const rows = preAppMainPlayRows(file);
+
+  it("seeds exactly the 16 listed Main Plays at 1u on bet365", () => {
+    expect(rows).toHaveLength(16);
+    expect(rows.map((r) => r.slateDate)).toEqual([
+      "2026-10-30", "2026-10-31", "2026-11-06", "2026-11-07", "2026-11-09", "2026-11-12",
+      "2026-11-13", "2026-11-14", "2026-11-15", "2026-11-16", "2026-11-17", "2026-11-18",
+      "2026-11-19", "2026-11-20", "2026-11-21", "2026-11-22",
+    ]);
+    expect(rows.map((r) => r.publishedCombinedPrice)).toEqual([
+      8.98, 10, 12.19, 18.17, 22, 3.57, 6.77, 8.14, 10, 10, 10, 10, 11.8, 10, 10, 10,
+    ]);
+    expect(rows.map((r) => r.result).join(",")).toBe(
+      "won,won,lost,lost,lost,won,lost,won,won,lost,lost,lost,won,lost,won,lost"
+    );
+    expect(rows.every((r) => r.betType === "mainPlay" && r.label === "Main Play")).toBe(true);
+    expect(rows.every((r) => r.stakeUnits === 1 && r.bookie === "bet365")).toBe(true);
+    expect(file.mainPlays?.filter((p) => p.oddsEstimated).map((p) => p.date)).toEqual([
+      "2026-10-31", "2026-11-15", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-20", "2026-11-22",
+    ]);
+  });
+
+  it("oddsEstimated never reaches bet rows", () => {
+    expect(JSON.stringify(rows)).not.toMatch(/estimated/i);
+  });
+
+  it("Main Play record with 26 Nov: 7-10, 17u staked, +45.49u", () => {
+    const nov26 = { slateDate: "2026-11-26", betType: "mainPlay", label: "Main Play", legIds: ["x"], result: "lost", profitUnits: -1, stakeUnits: 1, publishedCombinedPrice: 11.59 } as const;
+    const slice = buildResultsSlice({ officialLegs: [], officialBets: [...rows, nov26], valueLegRows: [], gradedLegs: [] });
+    const mp = slice.official.byBetType["Main Play"]!;
+    expect([mp.won, mp.lost, mp.bets]).toEqual([7, 10, 17]);
+    expect(mp.staked).toBe(17);
+    expect(mp.profit).toBeCloseTo(45.49, 6);
+    expect(mp.roi).toBeCloseTo(45.49 / 17, 6);
+  });
+
+  it("skips a pre-app date once an official card exists for it", () => {
+    expect(preAppMainPlayRows(file, new Set(["2026-11-22"]))).toHaveLength(15);
   });
 });

@@ -27,6 +27,8 @@ export interface OfficialBetRow {
   variant?: string;
   bookie?: string;
   legIds: string[];
+  /** Leg descriptions when there are no catalog leg ids. */
+  legLabels?: string[];
   result: CardBetResult;
   /** null when Q1 (or similar) has no published combined price — W-L only */
   profitUnits: number | null;

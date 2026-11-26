@@ -1,0 +1,72 @@
+{
+  "stakeUnits": 1,
+  "mainPlays": [
+    {
+      "date": "2026-10-30",
+      "bookie": "bet365",
+      "price": 8.98,
+      "result": "won",
+      "legs": ["Sabonis 13+ reb", "LaVine 20+ pts", "Boozer 7+ reb", "Jalen Johnson 7+ ast", "Avdija 5+ ast"]
+    },
+    { "date": "2026-10-31", "bookie": "bet365", "price": 10.0, "oddsEstimated": true, "result": "won", "legs": [] },
+    { "date": "2026-11-06", "bookie": "bet365", "price": 12.19, "result": "lost", "legs": [] },
+    {
+      "date": "2026-11-07",
+      "bookie": "bet365",
+      "price": 18.17,
+      "result": "lost",
+      "legs": ["Embiid 10+ reb", "Edey 10+ reb", "Luka 40+ pts"]
+    },
+    {
+      "date": "2026-11-09",
+      "bookie": "bet365",
+      "price": 22.0,
+      "result": "lost",
+      "legs": ["Kessler double-double", "Gobert 13+ reb", "Giannis 13+ reb", "Tatum double-double"]
+    },
+    {
+      "date": "2026-11-12",
+      "bookie": "bet365",
+      "price": 3.57,
+      "result": "won",
+      "legs": ["Nembhard 7+ ast", "SGM: Jamal Murray 20+ pts & Jerome 20+ pts"]
+    },
+    {
+      "date": "2026-11-13",
+      "bookie": "bet365",
+      "price": 6.77,
+      "result": "lost",
+      "legs": [
+        "Gobert 10+ reb",
+        "Flagg 20+ pts",
+        "PJ Washington 5+ reb",
+        "Booker 20+ pts",
+        "Bridges 5+ reb",
+        "Naz Reid 15+ pts",
+        "Maxey 20+ pts"
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "bookie": "bet365",
+      "price": 8.14,
+      "result": "won",
+      "legs": ["KAT 13+ reb", "Boozer 10+ reb", "Sengun 10+ reb"]
+    },
+    {
+      "date": "2026-11-15",
+      "bookie": "bet365",
+      "price": 10.0,
+      "oddsEstimated": true,
+      "result": "won",
+      "legs": ["Coward", "Meleek", "Robinson", "Giddey"]
+    },
+    { "date": "2026-11-16", "bookie": "bet365", "price": 10.0, "oddsEstimated": true, "result": "lost", "legs": [] },
+    { "date": "2026-11-17", "bookie": "bet365", "price": 10.0, "oddsEstimated": true, "result": "lost", "legs": [] },
+    { "date": "2026-11-18", "bookie": "bet365", "price": 10.0, "oddsEstimated": true, "result": "lost", "legs": [] },
+    { "date": "2026-11-19", "bookie": "bet365", "price": 11.8, "result": "won", "legs": [] },
+    { "date": "2026-11-20", "bookie": "bet365", "price": 10.0, "oddsEstimated": true, "result": "lost", "legs": [] },
+    { "date": "2026-11-21", "bookie": "bet365", "price": 10.0, "result": "won", "legs": [] },
+    { "date": "2026-11-22", "bookie": "bet365", "price": 10.0, "oddsEstimated": true, "result": "lost", "legs": [] }
+  ]
+}
