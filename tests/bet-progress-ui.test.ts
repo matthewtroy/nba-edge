@@ -67,8 +67,8 @@ describe("bet-progress ui", () => {
   });
 
   it("won/lost outcome pills and card border classes", () => {
-    expect(liveBetOutcomePill(liveBetView(["won", "won"]))?.label).toBe("Won");
-    expect(liveBetOutcomePill(liveBetView(["lost", "won"]))?.label).toBe("Lost");
+    expect(liveBetOutcomePill(liveBetView(["won", "won"]))?.label).toBe("✓");
+    expect(liveBetOutcomePill(liveBetView(["lost", "won"]))?.label).toBe("✗");
     expect(liveBetOutcomePill(liveBetView(["won", "live"]))).toBeNull();
 
     expect(multiCardLiveBorderClass(liveBetView(["won", "won"]))).toBe(

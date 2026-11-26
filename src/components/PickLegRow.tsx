@@ -9,6 +9,8 @@ import { legPriceAtBookie } from "@lib/single-bookie";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
 import { legRowReasonLines } from "@lib/leg-row-reasons";
+import { legRowLiveTrackingClass } from "@lib/live-leg-ui";
+import { hasValueAtBookie } from "@lib/value-at-bookie";
 import { ui } from "../lib/card-type-scale";
 import { PlayerAvatar } from "./PlayerAvatar";
 
@@ -34,13 +36,15 @@ export function PickLegRow({ leg, injuries, slate, myBookie, onTap, liveView }: 
   const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;
   const ticks = leg.recentVsLine ?? [];
   const injStatus = injuryStatusForPlayer(injuries, leg.playerId);
+  const valueAtBookie = hasValueAtBookie(leg, myBookie);
+  const rowLiveClass = legRowLiveTrackingClass(liveView);
 
   return (
     <button
       type="button"
       data-testid="pick-leg-row"
       onClick={() => onTap(leg)}
-      className="w-full grid grid-cols-[32px_1fr_76px] gap-2.5 py-2.5 text-left border-b border-white/[0.05] last:border-0 active:opacity-90 min-h-[44px]"
+      className={`w-full grid grid-cols-[32px_1fr_76px] gap-2.5 py-2.5 text-left border-b border-white/[0.05] last:border-0 active:opacity-90 min-h-[44px] ${rowLiveClass}`}
     >
       <PlayerAvatar
         name={leg.playerName}
@@ -77,7 +81,11 @@ export function PickLegRow({ leg, injuries, slate, myBookie, onTap, liveView }: 
             <LegBadge key={t} label={t} danger={t === "Blowout risk"} />
           ))}
         </LegRowMeta>
-        <LegProgress view={liveView} className="mt-1.5 w-full" />
+        <LegProgress
+          view={liveView}
+          valueAtBookie={valueAtBookie}
+          className="mt-1.5 w-full"
+        />
       </div>
       <div className="text-right w-[76px] shrink-0">
         {price != null && price > 1 ? (

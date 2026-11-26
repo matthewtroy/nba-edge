@@ -1,21 +1,63 @@
 import type { LiveBetView } from "./live-bet.js";
 import type { LiveLegState, LiveLegView } from "./live-leg.js";
 
-export function liveLegStateLabel(view: LiveLegView): string | null {
+/** Right-side stat copy: `N ✓` / `N ✗` / live `N` — never Won/Lost/Hit words. */
+export function legProgressRightLabel(view: LiveLegView): string | null {
+  switch (view.state) {
+    case "pending":
+      return null;
+    case "void":
+      return "—";
+    case "live":
+      return view.actual != null ? String(view.actual) : "0";
+    default:
+      break;
+  }
+  if (view.actual == null) return "—";
+  const n = view.actual;
+  if (view.state === "won") return `${n} ✓`;
+  if (view.state === "lost") return `${n} ✗`;
+  return String(n);
+}
+
+/** Compact state glyph for the progress pill (no Won/Lost/Hit copy). */
+export function legProgressPillSymbol(view: LiveLegView): string {
   switch (view.state) {
     case "won":
-      return "Won";
+      return "✓";
     case "lost":
-      return "Lost";
+      return "✗";
     case "void":
-      return "Void";
+      return "—";
     case "live":
-      return view.actual != null ? `Live ${view.actual}/${view.line}` : "Live";
-    case "pending":
-      return "Pending";
+      return "•";
     default:
-      return null;
+      return "";
   }
+}
+
+export function legProgressValueTrackClass(valueAtBookie?: boolean): string {
+  return valueAtBookie ? "leg-progress-value-track" : "";
+}
+
+export function legRowLiveTrackingClass(view: LiveLegView | undefined): string {
+  if (!view || view.state === "pending" || view.state === "live") return "";
+  switch (view.state) {
+    case "won":
+      return "leg-row-live-won";
+    case "lost":
+      return "leg-row-live-lost";
+    default:
+      return "";
+  }
+}
+
+export function liveLegStateLabel(view: LiveLegView): string | null {
+  const right = legProgressRightLabel(view);
+  if (view.state === "live" && view.actual != null) {
+    return `${view.actual}/${view.line}`;
+  }
+  return right;
 }
 
 /** @deprecated Use liveLegStateLabel — kept for share capture code paths. */
@@ -75,6 +117,21 @@ export function legProgressFillClass(view: LiveLegView): string {
   }
 }
 
+export function legProgressRightClass(view: LiveLegView): string {
+  switch (view.state) {
+    case "won":
+      return "text-emerald-400";
+    case "lost":
+      return "text-red-400";
+    case "live":
+      return "text-sky-300";
+    case "void":
+      return "text-white/40";
+    default:
+      return "text-white/55";
+  }
+}
+
 export function liveLegChipClass(view: LiveLegView): string {
   switch (view.state) {
     case "won":
@@ -115,9 +172,9 @@ export function liveBetOutcomePill(
 ): { label: string; className: string } | null {
   switch (view.state) {
     case "won":
-      return { label: "Won", className: "text-emerald-400 bg-emerald-400/12" };
+      return { label: "✓", className: "text-emerald-400 bg-emerald-400/12" };
     case "lost":
-      return { label: "Lost", className: "text-red-400 bg-red-400/12" };
+      return { label: "✗", className: "text-red-400 bg-red-400/12" };
     default:
       return null;
   }

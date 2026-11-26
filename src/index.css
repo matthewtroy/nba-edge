@@ -108,6 +108,30 @@ body,
     0 0 18px rgba(56, 189, 248, 0.06);
 }
 
+.leg-progress-value-track {
+  box-shadow:
+    0 0 0 1px rgba(52, 211, 153, 0.22),
+    inset 0 0 6px rgba(52, 211, 153, 0.08);
+}
+
+.leg-row-live-won {
+  background: linear-gradient(
+    90deg,
+    rgba(52, 211, 153, 0.09) 0%,
+    rgba(52, 211, 153, 0.02) 42%,
+    transparent 72%
+  );
+}
+
+.leg-row-live-lost {
+  background: linear-gradient(
+    90deg,
+    rgba(248, 113, 113, 0.09) 0%,
+    rgba(248, 113, 113, 0.02) 42%,
+    transparent 72%
+  );
+}
+
 @media (prefers-color-scheme: light) {
   html,
   body,

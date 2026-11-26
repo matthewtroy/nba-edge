@@ -7,7 +7,7 @@ import { siblingRungs } from "@lib/leg-rungs";
 import { marketLabel, verdict } from "../utils/format";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
 import { sortLegRowBadgeTags, visibleLegReasons } from "@lib/leg-display";
-import { displayLegRowTags } from "@lib/value-at-bookie";
+import { displayLegRowTags, hasValueAtBookie } from "@lib/value-at-bookie";
 import { ui } from "../lib/card-type-scale";
 import { FEED_BOOKIES } from "@lib/card-bookie";
 import { legBookieQuoteView } from "@lib/leg-bookie-quote";
@@ -246,7 +246,11 @@ export function LegSheet({
             {leg.playerName}
           </h2>
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1">
-            <LegProgress view={liveView} className="w-full max-w-[220px]" />
+            <LegProgress
+              view={liveView}
+              valueAtBookie={hasValueAtBookie(leg, myBookie)}
+              className="w-full max-w-[220px]"
+            />
             <InjuryStatusBadge status={injuryStatusForPlayer(injuries, leg.playerId)} />
           </div>
           <p className="text-sm text-white/55 mt-0.5">

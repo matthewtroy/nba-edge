@@ -5,6 +5,11 @@ import {
   legProgressFillPercent,
   legProgressMarkerPercent,
   legProgressPillClass,
+  legProgressPillSymbol,
+  legProgressRightClass,
+  legProgressRightLabel,
+  legProgressValueTrackClass,
+  legRowLiveTrackingClass,
   liveLegStateLabel,
 } from "../lib/live-leg-ui";
 
@@ -16,18 +21,34 @@ const view = (partial: Partial<LiveLegView> & Pick<LiveLegView, "state">): LiveL
 });
 
 describe("leg-progress ui", () => {
-  it("state labels use won/lost/void not hit/miss", () => {
-    expect(liveLegStateLabel(view({ state: "won", actual: 22 }))).toBe("Won");
-    expect(liveLegStateLabel(view({ state: "lost", actual: 14 }))).toBe("Lost");
-    expect(liveLegStateLabel(view({ state: "void" }))).toBe("Void");
-    expect(liveLegStateLabel(view({ state: "live", actual: 12 }))).toBe("Live 12/20");
+  it("right labels use N ✓/✗ — not Won/Lost/Hit words", () => {
+    expect(legProgressRightLabel(view({ state: "won", actual: 22 }))).toBe("22 ✓");
+    expect(legProgressRightLabel(view({ state: "lost", actual: 14 }))).toBe("14 ✗");
+    expect(legProgressRightLabel(view({ state: "void" }))).toBe("—");
+    expect(legProgressRightLabel(view({ state: "live", actual: 12 }))).toBe("12");
+    expect(liveLegStateLabel(view({ state: "won", actual: 22 }))).toBe("22 ✓");
+    expect(liveLegStateLabel(view({ state: "lost", actual: 14 }))).toBe("14 ✗");
+    expect(liveLegStateLabel(view({ state: "live", actual: 12 }))).toBe("12/20");
   });
 
-  it("maps state to pill and fill classes", () => {
+  it("pill symbols are glyphs only", () => {
+    expect(legProgressPillSymbol(view({ state: "won" }))).toBe("✓");
+    expect(legProgressPillSymbol(view({ state: "lost" }))).toBe("✗");
+    expect(legProgressPillSymbol(view({ state: "live" }))).toBe("•");
+    expect(legProgressPillSymbol(view({ state: "void" }))).toBe("—");
+  });
+
+  it("maps state to pill, fill, right, and row gradient classes", () => {
     expect(legProgressPillClass(view({ state: "won" }))).toMatch(/emerald/);
     expect(legProgressPillClass(view({ state: "lost" }))).toMatch(/red/);
     expect(legProgressPillClass(view({ state: "live" }))).toMatch(/sky/);
     expect(legProgressFillClass(view({ state: "void" }))).toMatch(/white/);
+    expect(legProgressRightClass(view({ state: "won" }))).toMatch(/emerald/);
+    expect(legRowLiveTrackingClass(view({ state: "won" }))).toBe("leg-row-live-won");
+    expect(legRowLiveTrackingClass(view({ state: "lost" }))).toBe("leg-row-live-lost");
+    expect(legRowLiveTrackingClass(view({ state: "live" }))).toBe("");
+    expect(legProgressValueTrackClass(true)).toBe("leg-progress-value-track");
+    expect(legProgressValueTrackClass(false)).toBe("");
   });
 
   it("marker sits at the line (end of track)", () => {

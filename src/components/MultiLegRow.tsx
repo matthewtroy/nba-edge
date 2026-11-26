@@ -12,6 +12,8 @@ import { legRowReasonLines } from "@lib/leg-row-reasons";
 import { ui } from "../lib/card-type-scale";
 import { PlayerAvatar } from "./PlayerAvatar";
 import { injuryStatusForPlayer } from "./InjuryStatusBadge";
+import { legRowLiveTrackingClass } from "@lib/live-leg-ui";
+import { hasValueAtBookie } from "@lib/value-at-bookie";
 
 interface Props {
   leg: PickLeg;
@@ -65,12 +67,14 @@ export function MultiLegRow({
   const subtitle = !hideGameLine && slate ? legGameTipSubtitle(leg, slate) : null;
   const ticks = leg.recentVsLine ?? [];
   const injStatus = injuryStatusForPlayer(injuries, leg.playerId);
+  const valueAtBookie = bookie ? hasValueAtBookie(leg, bookie) : false;
+  const rowLiveClass = legRowLiveTrackingClass(liveView);
   return (
     <button
       type="button"
       data-testid="leg-row"
       onClick={() => onTap(leg)}
-      className="w-full grid grid-cols-[32px_1fr_76px] gap-2.5 py-2.5 text-left border-b border-white/[0.05] last:border-0 active:opacity-90 min-h-[44px]"
+      className={`w-full grid grid-cols-[32px_1fr_76px] gap-2.5 py-2.5 text-left border-b border-white/[0.05] last:border-0 active:opacity-90 min-h-[44px] ${rowLiveClass}`}
     >
       <PlayerAvatar
         name={leg.playerName}
@@ -109,7 +113,11 @@ export function MultiLegRow({
             />
           ))}
         </LegRowMeta>
-        <LegProgress view={liveView} className="mt-1.5 w-full" />
+        <LegProgress
+          view={liveView}
+          valueAtBookie={valueAtBookie}
+          className="mt-1.5 w-full"
+        />
         {compact && null}
       </div>
       <div className="text-right w-[76px] shrink-0">
