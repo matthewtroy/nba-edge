@@ -9,7 +9,7 @@ import { legPriceAtBookie } from "@lib/single-bookie";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
 import { legRowReasonLines } from "@lib/leg-row-reasons";
-import { legRowLiveTrackingClass } from "@lib/live-leg-ui";
+import { legRowLiveTrackingClass, legTitleShowsLiveDot } from "@lib/live-leg-ui";
 import { hasValueAtBookie } from "@lib/value-at-bookie";
 import { ui } from "../lib/card-type-scale";
 import { PlayerAvatar } from "./PlayerAvatar";
@@ -53,6 +53,13 @@ export function PickLegRow({ leg, injuries, slate, myBookie, onTap, liveView }: 
       />
       <div className="min-w-0">
         <p className={`${ui.legTitle} break-words`}>
+          {legTitleShowsLiveDot(liveView) && (
+            <span
+              className="leg-title-live-dot inline-block w-1.5 h-1.5 rounded-full bg-sky-400 mr-1 align-middle shrink-0"
+              data-testid="leg-title-live-dot"
+              aria-hidden
+            />
+          )}
           {leg.playerName}{" "}
           {leg.feedLineNote
             ? leg.feedLineNote

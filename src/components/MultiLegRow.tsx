@@ -12,7 +12,7 @@ import { legRowReasonLines } from "@lib/leg-row-reasons";
 import { ui } from "../lib/card-type-scale";
 import { PlayerAvatar } from "./PlayerAvatar";
 import { injuryStatusForPlayer } from "./InjuryStatusBadge";
-import { legRowLiveTrackingClass } from "@lib/live-leg-ui";
+import { legRowLiveTrackingClass, legTitleShowsLiveDot } from "@lib/live-leg-ui";
 import { hasValueAtBookie } from "@lib/value-at-bookie";
 
 interface Props {
@@ -83,6 +83,13 @@ export function MultiLegRow({
       />
       <div className="min-w-0">
         <p className={`${ui.legTitle} break-words`}>
+          {legTitleShowsLiveDot(liveView) && (
+            <span
+              className="leg-title-live-dot inline-block w-1.5 h-1.5 rounded-full bg-sky-400 mr-1 align-middle shrink-0"
+              data-testid="leg-title-live-dot"
+              aria-hidden
+            />
+          )}
           {leg.playerName}{" "}
           {lineShift ?? leg.feedLineNote ?? bookieMarketLabel(leg.market, leg.line)}
         </p>

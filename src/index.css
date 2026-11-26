@@ -59,11 +59,7 @@ body,
   }
 }
 
-.leg-progress-live-fill {
-  animation: leg-progress-live-pulse 1.35s ease-in-out infinite;
-}
-
-.leg-progress-live-pill {
+.leg-title-live-dot {
   animation: leg-progress-live-pulse 1.35s ease-in-out infinite;
 }
 

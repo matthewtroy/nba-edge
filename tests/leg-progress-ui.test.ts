@@ -10,6 +10,7 @@ import {
   legProgressRightLabel,
   legProgressValueTrackClass,
   legRowLiveTrackingClass,
+  legTitleShowsLiveDot,
   liveLegStateLabel,
 } from "../lib/live-leg-ui";
 
@@ -29,6 +30,12 @@ describe("leg-progress ui", () => {
     expect(liveLegStateLabel(view({ state: "won", actual: 22 }))).toBe("22 ✓");
     expect(liveLegStateLabel(view({ state: "lost", actual: 14 }))).toBe("14 ✗");
     expect(liveLegStateLabel(view({ state: "live", actual: 12 }))).toBe("12/20");
+  });
+
+  it("live dot only while leg is live", () => {
+    expect(legTitleShowsLiveDot(view({ state: "live", actual: 5 }))).toBe(true);
+    expect(legTitleShowsLiveDot(view({ state: "won", actual: 22 }))).toBe(false);
+    expect(legTitleShowsLiveDot(undefined)).toBe(false);
   });
 
   it("settled legs use one right label with final stat + glyph", () => {

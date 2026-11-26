@@ -15,5 +15,6 @@ describe("PicksScreen", () => {
     );
     expect(row).toContain("LegProgress");
     expect(row).toContain("liveView");
+    expect(row).toContain("leg-title-live-dot");
   });
 });

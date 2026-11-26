@@ -40,6 +40,10 @@ export function legProgressValueTrackClass(valueAtBookie?: boolean): string {
   return valueAtBookie ? "leg-progress-value-track" : "";
 }
 
+export function legTitleShowsLiveDot(view: LiveLegView | undefined): boolean {
+  return view?.state === "live";
+}
+
 export function legRowLiveTrackingClass(view: LiveLegView | undefined): string {
   if (!view || view.state === "pending" || view.state === "live") return "";
   switch (view.state) {
