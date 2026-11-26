@@ -66,18 +66,15 @@ export function liveLegChipLabel(view: LiveLegView): string | null {
   return view.state === "pending" ? null : label;
 }
 
+/** bet365-style track: 0 at left, target tick at right; fill = value ÷ target (capped at 100%). */
 export function legProgressFillPercent(view: LiveLegView): number {
+  if (view.state === "void" || view.line <= 0) return 0;
   if (view.state === "won") return 100;
-  if (view.line <= 0) return 0;
-  if (view.state === "void") return 0;
-  const ratio =
-    view.progress != null
-      ? view.progress
-      : view.actual != null
-        ? view.actual / view.line
-        : 0;
-  if (view.state === "live") return Math.min(99, Math.max(0, ratio * 100));
-  if (view.state === "lost") return Math.min(100, Math.max(0, ratio * 100));
+  const value = view.actual ?? 0;
+  const pct = (value / view.line) * 100;
+  if (view.state === "live" || view.state === "lost") {
+    return Math.min(100, Math.max(0, pct));
+  }
   return 0;
 }
 

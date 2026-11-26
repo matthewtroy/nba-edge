@@ -56,16 +56,14 @@ describe("leg-progress ui", () => {
     expect(legProgressMarkerPercent(0)).toBe(0);
   });
 
-  it("fill percent reflects progress and caps live below line", () => {
-    expect(legProgressFillPercent(view({ state: "won", actual: 24 }))).toBe(100);
+  it("fill is value÷target — 12/20=60%, 28/20=100% when won, 0, live", () => {
+    expect(legProgressFillPercent(view({ state: "lost", actual: 12, line: 20 }))).toBe(60);
+    expect(legProgressFillPercent(view({ state: "won", actual: 28, line: 20 }))).toBe(100);
+    expect(legProgressFillPercent(view({ state: "live", actual: 0, line: 20 }))).toBe(0);
+    expect(legProgressFillPercent(view({ state: "live", actual: 12, line: 20 }))).toBe(60);
     expect(
-      legProgressFillPercent(view({ state: "live", actual: 10, progress: 0.5 }))
+      legProgressFillPercent(view({ state: "live", actual: 10, progress: 0.5, line: 20 }))
     ).toBe(50);
-    expect(
-      legProgressFillPercent(view({ state: "live", actual: 10, progress: null }))
-    ).toBe(50);
-    expect(
-      legProgressFillPercent(view({ state: "lost", actual: 14, progress: null }))
-    ).toBe(70);
+    expect(legProgressFillPercent(view({ state: "lost", actual: 14, line: 20 }))).toBe(70);
   });
 });
