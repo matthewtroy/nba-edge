@@ -4,6 +4,7 @@ import type { LiveTrackingState } from "../hooks/useLiveTracking";
 import type { PickLeg, Market } from "@lib/types";
 import { PickLegRow } from "../components/PickLegRow";
 import { DateSwitcher } from "../components/DateSwitcher";
+import { TomorrowSlateTease } from "../components/TomorrowSlateTease";
 import {
   usePicksFilters,
   picksFilterSummaryLabels,
@@ -80,6 +81,7 @@ export function PicksScreen({
   const badgeInjuries = injuriesForBadges(data.injuries, {
     slate: data.slate,
     now: new Date(),
+    previous: data.meta.injuriesAtTip,
   });
   const [filters, patch, toggleSortDir] = usePicksFilters();
   const markets = useMemo(() => marketsOnSlate(data.picks), [data.picks]);
@@ -110,6 +112,12 @@ export function PicksScreen({
         tomorrowDate={tomorrowDate}
         selected={slateDate}
         onSelect={onSlateDateChange}
+      />
+      <TomorrowSlateTease
+        index={data.index}
+        slateDate={slateDate}
+        todayDate={todayDate}
+        slateEmpty={!data.slate.length}
       />
       <header className="mb-3">
         <h1 className="text-xl font-bold text-white theme-adaptive-title">Picks</h1>

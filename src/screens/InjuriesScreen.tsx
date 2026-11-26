@@ -4,6 +4,8 @@ import { topBeneficiaryLastNames } from "@lib/injury-beneficiaries";
 import { sydneyTimeFromIso } from "../utils/format";
 import { useQuestionableSwaps } from "../hooks/useQuestionableSwaps";
 import { DateSwitcher } from "../components/DateSwitcher";
+import { TomorrowSlateTease } from "../components/TomorrowSlateTease";
+import { injuriesForInjuryPanel } from "@lib/injuries-at-tip";
 
 interface Props {
   data: DataBundle;
@@ -26,8 +28,14 @@ export function InjuriesScreen({
   onSlateDateChange,
 }: Props) {
   const { swapAsOut, reset, isCountedOut } = useQuestionableSwaps();
+  const panelInjuries = injuriesForInjuryPanel(
+    data.injuries,
+    data.meta.injuriesAtTip,
+    data.slate,
+    new Date()
+  );
   const byGame = new Map<string, InjuryEntry[]>();
-  for (const inj of data.injuries) {
+  for (const inj of panelInjuries) {
     const arr = byGame.get(inj.gameId) ?? [];
     arr.push(inj);
     byGame.set(inj.gameId, arr);
@@ -40,6 +48,12 @@ export function InjuriesScreen({
         tomorrowDate={tomorrowDate}
         selected={slateDate}
         onSelect={onSlateDateChange}
+      />
+      <TomorrowSlateTease
+        index={data.index}
+        slateDate={slateDate}
+        todayDate={todayDate}
+        slateEmpty={!data.slate.length}
       />
       <h1 className="text-xl font-bold mb-4">Injuries</h1>
       {[...byGame.entries()].map(([gameId, list]) => {

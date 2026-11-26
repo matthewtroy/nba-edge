@@ -46,7 +46,15 @@ export function useSlateDate(index: DataIndexFile | null) {
     }
     const v = resolveViewerSlateSegment(index, new Date(), timeZone);
     const today = v.todayFolder ?? index.todayDate;
-    const tomorrow = v.tomorrowFolder ?? index.tomorrowDate;
+    const tomorrowFromSegment = v.tomorrowFolder ?? index.tomorrowDate;
+    const tomorrow =
+      tomorrowFromSegment ??
+      (today
+        ? [...index.dates]
+            .map((d) => d.date)
+            .sort()
+            .find((d) => d > today) ?? null
+        : null);
     const noGamesToday = v.todayFolder == null && index.dates.length > 0;
     return { today, tomorrow, noGamesToday };
   }, [index, timeZone, clock]);

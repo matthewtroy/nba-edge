@@ -10,7 +10,7 @@ import { usePersonalMultis } from "../hooks/usePersonalMultis";
 import { injuryAlertsForCard } from "@lib/injury-alerts-card";
 import { DateSwitcher } from "../components/DateSwitcher";
 import { OfficialDropCountdown } from "../components/OfficialDropCountdown";
-import { tomorrowNoNbaTease } from "@lib/premium-drop-countdown";
+import { TomorrowSlateTease } from "../components/TomorrowSlateTease";
 import { sydneyTimeFromIso, viewerTimeFromIso } from "../utils/format";
 import { noGamesTodayMessage, viewerZoneLabel } from "@lib/viewer-slate";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
@@ -93,6 +93,7 @@ export function TodayScreen({
   const badgeInjuries = injuriesForBadges(data.injuries, {
     slate: data.slate,
     now: new Date(),
+    previous: data.meta.injuriesAtTip,
   });
 
   const cardPlayerIds = new Set(
@@ -160,11 +161,12 @@ export function TodayScreen({
           (slateDate !== todayDate && !data.slate.length)
         }
       />
-      {slateDate !== todayDate && !data.slate.length && (
-        <p className="text-sm text-white/60 mb-2" role="status">
-          {tomorrowNoNbaTease()}
-        </p>
-      )}
+      <TomorrowSlateTease
+        index={data.index}
+        slateDate={slateDate}
+        todayDate={todayDate}
+        slateEmpty={!data.slate.length}
+      />
       <header className="mb-4 flex justify-between items-start">
         <div>
           <h1 className="text-xl font-bold">{slateDate === todayDate ? "Home" : "Tomorrow"}</h1>

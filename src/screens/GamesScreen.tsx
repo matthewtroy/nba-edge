@@ -10,6 +10,7 @@ import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui"
 import { picksByIdFromOfficialSnapshots } from "@lib/official-leg-snapshot";
 import { MultiCard } from "../components/MultiCard";
 import { DateSwitcher } from "../components/DateSwitcher";
+import { TomorrowSlateTease } from "../components/TomorrowSlateTease";
 import { useGamesSgmPreset } from "../hooks/useGamesSgmPreset";
 import { useGamesRoughies } from "../hooks/useGamesRoughies";
 import { formatOddsBand } from "@lib/game-sgm-builder";
@@ -43,6 +44,7 @@ export function GamesScreen({
   const badgeInjuries = injuriesForBadges(data.injuries, {
     slate: data.slate,
     now: new Date(),
+    previous: data.meta.injuriesAtTip,
   });
   const { preset, setPreset, presets } = useGamesSgmPreset();
   const { roughiesOn, setRoughiesOn } = useGamesRoughies();
@@ -102,6 +104,12 @@ export function GamesScreen({
         tomorrowDate={tomorrowDate}
         selected={slateDate}
         onSelect={onSlateDateChange}
+      />
+      <TomorrowSlateTease
+        index={data.index}
+        slateDate={slateDate}
+        todayDate={todayDate}
+        slateEmpty={!data.slate.length}
       />
       <header className="mb-4">
         <h1 className="text-xl font-bold text-white theme-adaptive-title">Games</h1>
