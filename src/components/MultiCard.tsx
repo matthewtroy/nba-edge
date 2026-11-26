@@ -331,57 +331,58 @@ export function MultiCard({
         )}
       </div>
 
-      {!shareCapture &&
-        !showFairOnly &&
-        !hideBookieSelect &&
-        (!lockedBookie || officialDisplayOnly) && (
-          <>
+      {!shareCapture && (
+        <footer className="mt-2 space-y-2" data-testid="multi-card-footer">
+          {!showFairOnly &&
+            !hideBookieSelect &&
+            (!lockedBookie || officialDisplayOnly) && (
+              <>
+                <button
+                  type="button"
+                  className="w-full py-2 px-2.5 text-xs text-left text-white/70 bg-white/[0.04] rounded-lg hover:bg-white/[0.06] transition-colors"
+                  data-testid="multi-card-bookie-row"
+                  onClick={() => setBookieSheetOpen(true)}
+                  aria-label={officialDisplayOnly ? "Preview bookie prices" : "Bookie"}
+                >
+                  {displayBook
+                    ? formatFeedBookieOptionLabel(
+                        feedOptions.find((r) => r.bookie === displayBook) ?? {
+                          bookie: displayBook,
+                          missing: missingAtBookie,
+                          complete: missingAtBookie === 0,
+                          total,
+                        }
+                      )
+                    : "Select bookie"}
+                  <span className="float-right text-white/35">▾</span>
+                </button>
+                <BookieBottomSheet
+                  open={bookieSheetOpen}
+                  title={officialDisplayOnly ? "Preview bookie" : "Bookie"}
+                  options={bookieOptions}
+                  value={displayBook ?? ""}
+                  onSelect={select}
+                  onClose={() => setBookieSheetOpen(false)}
+                />
+              </>
+            )}
+          <div className="flex gap-2" data-share-ui="actions">
             <button
               type="button"
-              className="w-full mb-2 py-2 text-xs text-left text-white/70 border-b border-white/[0.05]"
-              onClick={() => setBookieSheetOpen(true)}
-              aria-label={officialDisplayOnly ? "Preview bookie prices" : "Bookie"}
+              className={ui.copyBtn}
+              onClick={() =>
+                onCopy(
+                  renderMultiCardCopyText(multi, legs, legBookie || undefined, titleOpts)
+                )
+              }
             >
-              {displayBook
-                ? formatFeedBookieOptionLabel(
-                    feedOptions.find((r) => r.bookie === displayBook) ?? {
-                      bookie: displayBook,
-                      missing: missingAtBookie,
-                      complete: missingAtBookie === 0,
-                      total,
-                    }
-                  )
-                : "Select bookie"}
-              <span className="float-right text-white/35">▾</span>
+              {discordCopy ? "Copy for Discord" : "Copy"}
             </button>
-            <BookieBottomSheet
-              open={bookieSheetOpen}
-              title={officialDisplayOnly ? "Preview bookie" : "Bookie"}
-              options={bookieOptions}
-              value={displayBook ?? ""}
-              onSelect={select}
-              onClose={() => setBookieSheetOpen(false)}
-            />
-          </>
-        )}
-
-      {!shareCapture && (
-        <div className="flex gap-2" data-share-ui="actions">
-          <button
-            type="button"
-            className={`${ui.copyBtn} flex-1`}
-            onClick={() =>
-              onCopy(
-                renderMultiCardCopyText(multi, legs, legBookie || undefined, titleOpts)
-              )
-            }
-          >
-            {discordCopy ? "Copy for Discord" : "Copy"}
-          </button>
-          <button type="button" className={`${ui.copyBtn} flex-1`} onClick={() => void shareImage()}>
-            Share
-          </button>
-        </div>
+            <button type="button" className={ui.copyBtn} onClick={() => void shareImage()}>
+              Share
+            </button>
+          </div>
+        </footer>
       )}
     </section>
   );

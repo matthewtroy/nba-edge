@@ -13,7 +13,7 @@ export const ui = {
   badgeDanger:
     "text-[10px] px-1 py-px rounded-full bg-white/[0.08] text-red-400 leading-tight",
   copyBtn:
-    "w-full py-3 text-sm text-white/70 border-t border-white/[0.05] hover:bg-white/[0.03] transition-colors",
+    "flex-1 py-3 text-sm text-white/70 bg-white/[0.04] hover:bg-white/[0.07] transition-colors rounded-lg",
   chip:
     "text-[10px] px-2.5 py-1 rounded-full bg-white/[0.08] text-white/70 border-0",
   chipOn: "ring-1 ring-white/20 bg-white/[0.12] text-white",
