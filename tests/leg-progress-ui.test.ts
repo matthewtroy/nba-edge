@@ -51,6 +51,9 @@ describe("leg-progress ui", () => {
     expect(legProgressPillClass(view({ state: "won" }))).toMatch(/emerald/);
     expect(legProgressPillClass(view({ state: "lost" }))).toMatch(/red/);
     expect(legProgressPillClass(view({ state: "live" }))).toMatch(/sky/);
+    expect(legProgressFillClass(view({ state: "live" }))).toMatch(/green-500\/85/);
+    expect(legProgressFillClass(view({ state: "won" }))).toMatch(/green-400\/60/);
+    expect(legProgressFillClass(view({ state: "lost" }))).toMatch(/red-400\/55/);
     expect(legProgressFillClass(view({ state: "void" }))).toMatch(/white/);
     expect(legProgressRightClass(view({ state: "won" }))).toMatch(/emerald/);
     expect(legRowLiveTrackingClass(view({ state: "won" }))).toBe(

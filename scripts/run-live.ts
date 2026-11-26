@@ -191,6 +191,8 @@ export async function runLivePipeline(
 
   let slatesToPublish: SlateGame[][] = [];
   let unionSlate: SlateGame[] = [];
+  /** Full ESPN merge (incl. forward ET scan) for index forward metadata — not just publish slates. */
+  let scoreboardMerged: SlateGame[] = [];
   let yesterdayPlayed = new Set<string>();
 
   try {
@@ -240,6 +242,7 @@ export async function runLivePipeline(
       }
       plan = mergePlanWithPersisted(plan, outDir, now);
     }
+    scoreboardMerged = merged;
     slatesToPublish = slatesToPublishFromPlan(plan.today, plan.tomorrow);
     unionSlate = dedupeGames(slatesToPublish.flat());
   } catch (e) {
@@ -901,12 +904,27 @@ export async function runLivePipeline(
   let nextIndex = buildDataIndex(mergedIndexEntries, now, {
     defaultSlate,
   });
-  const forwardMeta = forwardSlateMetadataFromGames(unionSlate, now);
+  const forwardGames =
+    scoreboardMerged.length > 0 ? scoreboardMerged : unionSlate;
+  const forwardMeta = forwardSlateMetadataFromGames(forwardGames, now);
   if (forwardMeta) {
     nextIndex = applyForwardMetadata(nextIndex, forwardMeta);
     console.log(
-      `index forward: next slate ${forwardMeta.nextSlateDate} · publish ${forwardMeta.nextPublishAt}`
+      `index forward: ${JSON.stringify({
+        nextSlateDate: forwardMeta.nextSlateDate,
+        nextPublishAt: forwardMeta.nextPublishAt,
+        firstTipAt: forwardMeta.firstTipAt,
+        games: forwardMeta.games,
+      })}`
     );
+  } else {
+    nextIndex = {
+      ...nextIndex,
+      nextSlateDate: null,
+      nextPublishAt: undefined,
+      games: undefined,
+    };
+    console.log("index forward: null (no upcoming slate on scoreboard)");
   }
   const branchFolders = listDataBranchRetainedFolders(rootDir, now);
   const dropReason = indexRetentionDropReason(priorIndex, nextIndex, now, {

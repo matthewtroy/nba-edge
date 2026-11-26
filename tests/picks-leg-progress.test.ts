@@ -48,5 +48,7 @@ describe("PicksScreen", () => {
     expect(bar).not.toContain("leg-progress-value-track");
     expect(bar).toContain("showTrackPlaceholder");
     expect(bar).toContain("leg-progress-track-placeholder");
+    expect(bar).toMatch(/h-\[6px\]/);
+    expect(bar).toMatch(/maxWidth.*handlePct/);
   });
 });

@@ -33,7 +33,7 @@ export function LegProgress({
         data-state="placeholder"
       >
         <div
-          className="relative flex-1 min-w-[72px] h-1.5 rounded-full bg-white/[0.06] leg-progress-track-placeholder"
+          className="relative flex-1 min-w-[72px] h-[6px] rounded-full bg-white/[0.12] leg-progress-track-placeholder"
           aria-hidden
         />
         <span className="shrink-0 text-[10px] font-semibold tabular-nums text-white/35">—</span>
@@ -57,14 +57,14 @@ export function LegProgress({
       data-value={_valueAtBookie ? "true" : undefined}
     >
       <div
-        className="relative flex-1 min-w-[72px] h-1.5 rounded-full bg-white/[0.08]"
+        className="relative flex-1 min-w-[72px] h-[6px] rounded-full bg-white/[0.12]"
         aria-hidden
       >
         <span
-          className={`absolute inset-y-0 left-0 rounded-full transition-[width] duration-500 ease-out ${legProgressFillClass(view)} ${
+          className={`absolute inset-y-0 left-0 rounded-l-full transition-[width] duration-500 ease-out ${legProgressFillClass(view)} ${
             live ? "leg-progress-live-fill" : ""
           } ${settled ? "leg-progress-settled" : ""}`}
-          style={{ width: `${fillPct}%` }}
+          style={{ width: `${fillPct}%`, maxWidth: `${handlePct}%` }}
         />
         <span
           className="absolute top-1/2 w-0.5 h-3.5 rounded-full bg-white/70 pointer-events-none leg-progress-value-handle"

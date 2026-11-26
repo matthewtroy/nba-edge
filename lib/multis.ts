@@ -324,6 +324,7 @@ export function buildMultis(
   filtered = kept;
 
   const pushDrop = (multi: MultiBet, reason: string, players?: string[]) => {
+    if (multi.type === "longshot" && notBuilt.some((n) => n.type === "longshot")) return;
     if (notBuilt.some((n) => n.type === multi.type && n.variant === multi.variant)) return;
     notBuilt.push({
       type: multi.type,

@@ -16,13 +16,13 @@ const base = (id: string, status: InjuryEntry["status"]): InjuryEntry => ({
 });
 
 describe("injuryAlertsForCard", () => {
-  it("Today wires official card leg ids only", () => {
+  it("Today no longer renders injury-alerts-since-lock panel", () => {
     const src = fs.readFileSync(
       path.join(process.cwd(), "src/screens/TodayScreen.tsx"),
       "utf8"
     );
-    expect(src).toContain("injuryAlertsForCard");
-    expect(src).toContain("cardPlayerIds");
+    expect(src).not.toContain("injuryAlertsForCard");
+    expect(src).not.toMatch(/Injury alerts since lock/);
   });
 
   it("no Brunson alert when status unchanged on official legs", () => {

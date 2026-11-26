@@ -48,6 +48,7 @@ export function InjuriesScreen({
         tomorrowDate={tomorrowDate}
         selected={slateDate}
         onSelect={onSlateDateChange}
+        className="mb-3"
       />
       <TomorrowSlateTease
         index={data.index}

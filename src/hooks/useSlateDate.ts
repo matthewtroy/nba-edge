@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { DataIndexFile } from "@lib/data-index";
 import {
+  calendarTomorrowYmd,
   localDateFromIso,
   resolveViewerSlateSegment,
   viewerTimeZone,
@@ -54,7 +55,8 @@ export function useSlateDate(index: DataIndexFile | null) {
             .map((d) => d.date)
             .sort()
             .find((d) => d > today) ?? null
-        : null);
+        : null) ??
+      (today ? calendarTomorrowYmd(today, timeZone) : null);
     const noGamesToday = v.todayFolder == null && index.dates.length > 0;
     return { today, tomorrow, noGamesToday };
   }, [index, timeZone, clock]);

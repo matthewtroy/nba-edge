@@ -18,7 +18,18 @@ export function OfficialDropCountdown({ index, show }: Props) {
     return () => window.clearInterval(id);
   }, []);
 
-  if (!show || !index?.nextPublishAt) return null;
+  if (!show) return null;
+
+  if (!index?.nextPublishAt) {
+    return (
+      <section
+        className="rounded-card border border-white/[0.08] bg-gradient-to-b from-white/[0.06] to-transparent px-3 py-2.5 mb-3"
+        aria-label="Official card publish countdown"
+      >
+        <p className="text-sm text-white/70">Next card time TBC</p>
+      </section>
+    );
+  }
 
   const reduced =
     typeof window !== "undefined" &&

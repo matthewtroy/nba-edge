@@ -18,6 +18,12 @@ export function localDateFromIso(iso: string, timeZone: string): string {
   return new Date(iso).toLocaleDateString("en-CA", { timeZone });
 }
 
+/** Viewer-local calendar day after `todayYmd` (always defined for a valid folder date). */
+export function calendarTomorrowYmd(todayYmd: string, timeZone: string): string {
+  const anchor = new Date(`${todayYmd}T12:00:00.000Z`);
+  return localDateString(new Date(anchor.getTime() + 86_400_000), timeZone);
+}
+
 export function viewerZoneLabel(timeZone: string): string | null {
   if (timeZone === SYDNEY_TZ) return null;
   try {

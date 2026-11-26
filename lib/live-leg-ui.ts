@@ -118,13 +118,13 @@ export function legProgressPillClass(view: LiveLegView): string {
 export function legProgressFillClass(view: LiveLegView): string {
   switch (view.state) {
     case "won":
-      return "bg-emerald-400/85";
+      return "bg-green-400/60";
     case "lost":
-      return "bg-red-400/70";
+      return "bg-red-400/55";
     case "live":
-      return "bg-sky-400/80";
+      return "bg-green-500/85";
     case "void":
-      return "bg-white/20";
+      return "bg-white/25";
     default:
       return "bg-white/15";
   }

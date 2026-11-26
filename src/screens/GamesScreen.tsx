@@ -14,7 +14,7 @@ import { TomorrowSlateTease } from "../components/TomorrowSlateTease";
 import { useGamesSgmPreset } from "../hooks/useGamesSgmPreset";
 import { useGamesRoughies } from "../hooks/useGamesRoughies";
 import { formatOddsBand } from "@lib/game-sgm-builder";
-import { formatGameOddsAge, formatOddsFreshnessSummary } from "@lib/odds-freshness-ui";
+import { formatGameOddsAge } from "@lib/odds-freshness-ui";
 import { injuriesForBadges } from "@lib/injury-display";
 import type { LiveGameBoard } from "@lib/live-source";
 
@@ -83,12 +83,6 @@ export function GamesScreen({
   const slateFairOnly = !slateHasFeedOdds(data.picks);
   const oddsNote = slateOddsAvailabilityNote(data.meta, data.picks);
   const bandLabel = formatOddsBand(preset.min, preset.max);
-  const oddsFreshness = formatOddsFreshnessSummary(
-    data.picks,
-    data.slate,
-    data.meta.oddsLastPulled
-  );
-
   const liveBoardByGame = useMemo(() => {
     const m = new Map<string, LiveGameBoard>();
     for (const g of liveTracking.snapshot?.games ?? []) {
@@ -104,6 +98,7 @@ export function GamesScreen({
         tomorrowDate={tomorrowDate}
         selected={slateDate}
         onSelect={onSlateDateChange}
+        className="mb-3"
       />
       <TomorrowSlateTease
         index={data.index}
@@ -113,12 +108,6 @@ export function GamesScreen({
       />
       <header className="mb-4">
         <h1 className="text-xl font-bold text-white theme-adaptive-title">Games</h1>
-        <p className="text-sm text-white/45 theme-adaptive-muted mt-0.5">
-          SGMs by bookie total · {bandLabel}
-        </p>
-        {oddsFreshness && (
-          <p className="text-[11px] text-white/45 mt-1">{oddsFreshness}</p>
-        )}
       </header>
       <div className="flex flex-wrap gap-2 mb-4 items-center">
         {presets.map((p) => (

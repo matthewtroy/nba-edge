@@ -1,5 +1,5 @@
 import { weekdayShort } from "../hooks/useSlateDate";
-import { viewerTimeZone } from "@lib/viewer-slate";
+import { calendarTomorrowYmd, viewerTimeZone } from "@lib/viewer-slate";
 
 interface Props {
   todayDate: string;
@@ -7,6 +7,7 @@ interface Props {
   selected: string;
   onSelect: (date: string) => void;
   viewerTimeZone?: string;
+  className?: string;
 }
 
 export function DateSwitcher({
@@ -15,15 +16,21 @@ export function DateSwitcher({
   selected,
   onSelect,
   viewerTimeZone: tz = viewerTimeZone(),
+  className = "",
 }: Props) {
-  if (!todayDate || !tomorrowDate || tomorrowDate === todayDate) return null;
+  if (!todayDate) return null;
+  const tomorrow =
+    tomorrowDate && tomorrowDate !== todayDate
+      ? tomorrowDate
+      : calendarTomorrowYmd(todayDate, tz);
   const opts = [
     { date: todayDate, label: `Today (${weekdayShort(todayDate, tz)})` },
-    { date: tomorrowDate, label: `Tomorrow (${weekdayShort(tomorrowDate, tz)})` },
+    { date: tomorrow, label: `Tomorrow (${weekdayShort(tomorrow, tz)})` },
   ];
   return (
     <div
-      className="flex rounded-lg border border-white/15 overflow-hidden mb-3"
+      className={`flex rounded-lg border border-white/15 overflow-hidden ${className}`.trim()}
+      data-testid="date-switcher"
       role="tablist"
       aria-label="Slate date"
     >

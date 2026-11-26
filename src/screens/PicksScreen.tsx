@@ -12,7 +12,6 @@ import {
 } from "../hooks/usePicksFilters";
 import { filterAndSortPicks, marketsOnSlate } from "../lib/picks-list";
 import { ui } from "../lib/card-type-scale";
-import { formatOddsFreshnessSummary } from "@lib/odds-freshness-ui";
 import { injuriesForBadges } from "@lib/injury-display";
 
 interface Props {
@@ -99,11 +98,6 @@ export function PicksScreen({
   );
 
   const { show, sort } = picksFilterSummaryLabels(filters);
-  const oddsSummary = formatOddsFreshnessSummary(
-    data.picks,
-    data.slate,
-    data.meta.oddsLastPulled
-  );
 
   return (
     <div className="pb-24">
@@ -112,6 +106,7 @@ export function PicksScreen({
         tomorrowDate={tomorrowDate}
         selected={slateDate}
         onSelect={onSlateDateChange}
+        className="mb-3"
       />
       <TomorrowSlateTease
         index={data.index}
@@ -121,9 +116,6 @@ export function PicksScreen({
       />
       <header className="mb-3">
         <h1 className="text-xl font-bold text-white theme-adaptive-title">Picks</h1>
-        {oddsSummary && (
-          <p className="text-[11px] text-white/45 mt-1">{oddsSummary}</p>
-        )}
       </header>
 
       <div

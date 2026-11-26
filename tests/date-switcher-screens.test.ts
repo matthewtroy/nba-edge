@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import fs from "fs";
 import path from "path";
 import { buildDataIndex, type DataIndexDateEntry } from "../lib/data-index";
-import { resolveViewerSlateSegment } from "../lib/viewer-slate";
+import { calendarTomorrowYmd, resolveViewerSlateSegment } from "../lib/viewer-slate";
 
 const screens = [
   "TodayScreen.tsx",
@@ -10,6 +10,18 @@ const screens = [
   "GamesScreen.tsx",
   "InjuriesScreen.tsx",
 ];
+
+describe("DateSwitcher", () => {
+  it("still resolves Tomorrow when tomorrowDate is null", () => {
+    const src = fs.readFileSync(
+      path.join(process.cwd(), "src/components/DateSwitcher.tsx"),
+      "utf8"
+    );
+    expect(src).toContain("calendarTomorrowYmd");
+    expect(src).not.toMatch(/!tomorrowDate.*return null/);
+    expect(calendarTomorrowYmd("2026-11-26", "Australia/Sydney")).toBe("2026-11-27");
+  });
+});
 
 describe("DateSwitcher on main tabs", () => {
   it("Today/Picks/Games/Injuries render DateSwitcher", () => {
