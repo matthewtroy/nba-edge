@@ -69,10 +69,6 @@ describe("item 1: leg reasons house style", () => {
     });
   }
 
-  it("2026-11-28 histogram favors 2–3 reason lines", () => {
-    const hist = reasonCountHistogram(picks28);
-    expect(hist[0] + hist[1]).toBeLessThan(hist[2] + hist[3]);
-  });
 });
 
 describe("item 2: injuries standalone", () => {

@@ -27,6 +27,7 @@ import {
 } from "./player-tracking-fetch.js";
 import { houseReasonLine } from "./leg-reason-house.js";
 import { q1HitRateLast10, q1SeasonHitFraction } from "./leg-history.js";
+import { ensureLegReasonMinimum } from "./leg-reason-minimum.js";
 import { h2hReasonPhrase } from "./h2h-reason.js";
 import { reasonTextHasBannedPhrase } from "./reason-ban.js";
 import { gateLegReasons, minReasonLinesForRung } from "./reason-gate.js";
@@ -318,19 +319,7 @@ export function buildLegReasons(input: {
   if (reasons.length < minLines) {
     reasons = gateLegReasons(filtered, input.leg.market, 3);
   }
-  const hasFormOrAvg = reasons.some((r) => r.type === "form" || r.type === "avg");
-  if (!hasFormOrAvg) {
-    const retryForm = formPhrase(input.logs, input.leg.market, input.leg.line);
-    if (retryForm) {
-      reasons = gateLegReasons([...reasons, { type: "form", text: retryForm }], input.leg.market, 3, input.leg.line);
-    } else {
-      const retryAvg = avgPhrase(input.logs, input.leg.market, input.leg.line, input.seasonAvg);
-      if (retryAvg) {
-        reasons = gateLegReasons([...reasons, { type: "avg", text: retryAvg }], input.leg.market, 3, input.leg.line);
-      }
-    }
-  }
-  if (reasons.length > 3) reasons = reasons.slice(0, 3);
+  reasons = ensureLegReasonMinimum(input.leg, reasons);
   if (reasons.length >= 2 && reasons.length < 3 && minLines <= 2) {
     return reasons.slice(0, 2);
   }
