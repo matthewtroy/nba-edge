@@ -14,7 +14,8 @@ describe("PicksScreen", () => {
     );
     expect(picks).toMatch(/divide-y divide-white\/\[0\.04\]/);
     expect(row).not.toMatch(/border-b border-white/);
-    expect(row).toContain("pick-leg-row-bleed");
+    expect(row).not.toContain("pick-leg-row-bleed");
+    expect(row).toMatch(/px-4/);
   });
 
   it("wires LegProgress on each pick row", () => {

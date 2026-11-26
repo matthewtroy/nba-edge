@@ -14,6 +14,7 @@ import type {
 import type { ResultsJson } from "@lib/results-types";
 import type { OfficialCardFile } from "@lib/official-card-time";
 import type { DataIndexFile } from "@lib/data-index";
+import { isForwardPreviewSlate, slateGamesFromIndexPreviews } from "@lib/slate-preview";
 import { DataLoadError, type DataLoadKind } from "@lib/data-load-error";
 
 export interface DataBundle {
@@ -31,6 +32,8 @@ export interface DataBundle {
   loading: boolean;
   error?: string;
   errorKind?: DataLoadKind;
+  /** Index forward games only — slate folder not on disk yet. */
+  previewSlate?: boolean;
 }
 
 function parseMultisJson(raw: unknown): { bets: MultiBet[]; notBuilt: MultiNotBuilt[] } {
@@ -83,8 +86,8 @@ export function useData(selectedDate: string): DataBundle {
     let cancelled = false;
     async function load() {
       setState((s) => ({ ...s, loading: true, selectedDate, error: undefined }));
+      let index: DataIndexFile | null = null;
       try {
-        let index: DataIndexFile | null = null;
         try {
           index = await fetchDataJson<DataIndexFile>("index.json", "idx");
         } catch {
@@ -190,6 +193,34 @@ export function useData(selectedDate: string): DataBundle {
               : e instanceof TypeError
                 ? "network"
                 : "unknown";
+          const dateKey = selectedDate || index?.defaultDate || "";
+          if (
+            index &&
+            dateKey &&
+            isForwardPreviewSlate(index, dateKey, true)
+          ) {
+            const previewGames = slateGamesFromIndexPreviews(index.games);
+            setState({
+              index,
+              selectedDate: dateKey,
+              slate: previewGames,
+              injuries: [],
+              picks: [],
+              multis: [],
+              multisNotBuilt: [],
+              officialCard: null,
+              meta: {
+                lastUpdated: index.updatedAt,
+                sources: {},
+                slateSize: previewGames.length,
+              },
+              history: { legs: [], multis: [], calibration: [] },
+              results: null,
+              loading: false,
+              previewSlate: true,
+            });
+            return;
+          }
           setState((s) => ({
             ...s,
             loading: false,

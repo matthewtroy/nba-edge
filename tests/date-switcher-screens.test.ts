@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import fs from "fs";
 import path from "path";
 import { buildDataIndex, type DataIndexDateEntry } from "../lib/data-index";
-import { calendarTomorrowYmd, resolveViewerSlateSegment } from "../lib/viewer-slate";
+import { resolveViewerSlateSegment } from "../lib/viewer-slate";
+import { todayTabLabel, slateTabDateChip } from "../lib/slate-tab-labels";
 
 const screens = [
   "TodayScreen.tsx",
@@ -12,14 +13,14 @@ const screens = [
 ];
 
 describe("DateSwitcher", () => {
-  it("still resolves Tomorrow when tomorrowDate is null", () => {
+  it("labels Today + next slate with weekday and calendar date", () => {
     const src = fs.readFileSync(
       path.join(process.cwd(), "src/components/DateSwitcher.tsx"),
       "utf8"
     );
-    expect(src).toContain("calendarTomorrowYmd");
-    expect(src).not.toMatch(/!tomorrowDate.*return null/);
-    expect(calendarTomorrowYmd("2026-11-26", "Australia/Sydney")).toBe("2026-11-27");
+    expect(src).toContain("todayTabLabel");
+    expect(src).toContain("nextSlateTabLabel");
+    expect(src).not.toContain("Tomorrow (");
   });
 });
 
@@ -31,6 +32,7 @@ describe("DateSwitcher on main tabs", () => {
         "utf8"
       );
       expect(src).toContain("<DateSwitcher");
+      expect(src).toContain("nextSlateDate=");
     }
   });
 
@@ -69,5 +71,7 @@ describe("viewer slate 2-day gap", () => {
     const seg = resolveViewerSlateSegment(index, now, "Australia/Sydney");
     expect(seg.todayFolder).toBe("2026-11-26");
     expect(seg.tomorrowFolder).toBe("2026-11-28");
+    expect(todayTabLabel(seg.viewerTodayYmd, "Australia/Sydney")).toContain("Today");
+    expect(slateTabDateChip("2026-11-28", "Australia/Sydney")).toMatch(/Sat/);
   });
 });

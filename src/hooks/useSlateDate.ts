@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { DataIndexFile } from "@lib/data-index";
+import { nextSlateFolderDate } from "@lib/slate-tab-labels";
 import {
-  calendarTomorrowYmd,
   localDateFromIso,
+  localDateString,
   resolveViewerSlateSegment,
   viewerTimeZone,
 } from "@lib/viewer-slate";
@@ -15,6 +16,11 @@ export function weekdayShort(ymd: string, timeZone = viewerTimeZone()): string {
       ? new Date(`${ymd}T12:00:00Z`)
       : new Date();
   return noon.toLocaleDateString("en-AU", { timeZone, weekday: "short" });
+}
+
+function storageAllowedDate(index: DataIndexFile, date: string): boolean {
+  if (index.dates.some((d) => d.date === date)) return true;
+  return date === index.nextSlateDate;
 }
 
 export function useSlateDate(index: DataIndexFile | null) {
@@ -42,6 +48,7 @@ export function useSlateDate(index: DataIndexFile | null) {
       return {
         today: "",
         tomorrow: null as string | null,
+        viewerTodayYmd: "",
         noGamesToday: false,
       };
     }
@@ -50,15 +57,15 @@ export function useSlateDate(index: DataIndexFile | null) {
     const tomorrowFromSegment = v.tomorrowFolder ?? index.tomorrowDate;
     const tomorrow =
       tomorrowFromSegment ??
-      (today
-        ? [...index.dates]
-            .map((d) => d.date)
-            .sort()
-            .find((d) => d > today) ?? null
-        : null) ??
-      (today ? calendarTomorrowYmd(today, timeZone) : null);
+      nextSlateFolderDate(index, today) ??
+      null;
     const noGamesToday = v.todayFolder == null && index.dates.length > 0;
-    return { today, tomorrow, noGamesToday };
+    return {
+      today,
+      tomorrow,
+      viewerTodayYmd: v.viewerTodayYmd,
+      noGamesToday,
+    };
   }, [index, timeZone, clock]);
 
   const defaultPick = viewerSegment.today || index?.defaultDate || "";
@@ -66,22 +73,19 @@ export function useSlateDate(index: DataIndexFile | null) {
   const [date, setDateState] = useState(defaultPick);
 
   useEffect(() => {
-    if (!index?.dates.length) return;
+    if (!index?.dates.length && !index?.nextSlateDate) return;
     const stored = sessionStorage.getItem(STORAGE_KEY);
-    if (stored && index.dates.some((d) => d.date === stored)) {
+    if (stored && storageAllowedDate(index, stored)) {
       setDateState(stored);
       return;
     }
     setDateState(defaultPick);
-  }, [index?.updatedAt, index?.defaultDate, index?.dates, defaultPick]);
+  }, [index?.updatedAt, index?.defaultDate, index?.dates, index?.nextSlateDate, defaultPick]);
 
-  const setDate = useCallback(
-    (d: string) => {
-      setDateState(d);
-      sessionStorage.setItem(STORAGE_KEY, d);
-    },
-    []
-  );
+  const setDate = useCallback((d: string) => {
+    setDateState(d);
+    sessionStorage.setItem(STORAGE_KEY, d);
+  }, []);
 
   return {
     date,
@@ -89,6 +93,7 @@ export function useSlateDate(index: DataIndexFile | null) {
     segment: {
       today: viewerSegment.today,
       tomorrow: viewerSegment.tomorrow,
+      viewerTodayYmd: viewerSegment.viewerTodayYmd,
     },
     noGamesToday: viewerSegment.noGamesToday,
     timeZone,

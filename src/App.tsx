@@ -79,6 +79,13 @@ export default function App() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
+  const refreshIndex = (next: DataIndexFile) => {
+    setIndex(next);
+    if (next.nextSlateDate && !next.dates.some((d) => d.date === slateDate)) {
+      setSlateDate(next.nextSlateDate);
+    }
+  };
+
   const copy = async (text: string) => {
     await navigator.clipboard.writeText(text);
     setToast("Copied");
@@ -112,7 +119,7 @@ export default function App() {
 
   return (
     <PhoneShell className="px-4 pt-4">
-      {data.errorKind && (
+      {data.errorKind && !data.previewSlate && (
         <BrandedLoadState kind={data.errorKind} title="Couldn’t load this slate" />
       )}
       {liveTracking.error && (
@@ -127,8 +134,10 @@ export default function App() {
             slateDate={slateDate}
             todayDate={segment.today}
             tomorrowDate={segment.tomorrow}
+            viewerTodayYmd={segment.viewerTodayYmd}
             noGamesToday={noGamesToday}
             viewerTimeZone={timeZone}
+            onIndexRefreshed={refreshIndex}
             onSlateDateChange={setSlateDate}
             onLegTap={setLeg}
             onCopy={copy}
@@ -147,6 +156,9 @@ export default function App() {
             slateDate={slateDate}
             todayDate={segment.today}
             tomorrowDate={segment.tomorrow}
+            viewerTodayYmd={segment.viewerTodayYmd}
+            viewerTimeZone={timeZone}
+            onIndexRefreshed={refreshIndex}
             onSlateDateChange={setSlateDate}
             myBookie={settings.myBookie}
             onLegTap={setLeg}
@@ -161,6 +173,9 @@ export default function App() {
             slateDate={slateDate}
             todayDate={segment.today}
             tomorrowDate={segment.tomorrow}
+            viewerTodayYmd={segment.viewerTodayYmd}
+            viewerTimeZone={timeZone}
+            onIndexRefreshed={refreshIndex}
             onSlateDateChange={setSlateDate}
             myBookie={settings.myBookie}
             onLegTap={setLeg}
@@ -176,6 +191,9 @@ export default function App() {
             slateDate={slateDate}
             todayDate={segment.today}
             tomorrowDate={segment.tomorrow}
+            viewerTodayYmd={segment.viewerTodayYmd}
+            viewerTimeZone={timeZone}
+            onIndexRefreshed={refreshIndex}
             onSlateDateChange={setSlateDate}
           />
         </ErrorBoundary>

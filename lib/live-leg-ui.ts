@@ -107,7 +107,7 @@ export function legProgressPillClass(view: LiveLegView): string {
     case "live":
       return "text-sky-400 bg-sky-400/12";
     case "void":
-      return "text-white/40 bg-white/8";
+      return "text-white/40 bg-white/[0.08]";
     case "pending":
       return "text-white/35 bg-white/5";
     default:
@@ -202,7 +202,7 @@ export function betProgressSegmentClass(state: LiveLegState): string {
     case "live":
       return "bg-sky-400/85 bet-progress-segment-live";
     case "void":
-      return "bg-white/18";
+      return "bg-white/[0.18]";
     case "pending":
     default:
       return "bg-white/10";

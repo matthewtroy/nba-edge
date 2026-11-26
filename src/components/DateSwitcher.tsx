@@ -1,9 +1,13 @@
-import { weekdayShort } from "../hooks/useSlateDate";
-import { calendarTomorrowYmd, viewerTimeZone } from "@lib/viewer-slate";
+import {
+  nextSlateTabLabel,
+  todayTabLabel,
+} from "@lib/slate-tab-labels";
+import { viewerTimeZone } from "@lib/viewer-slate";
 
 interface Props {
   todayDate: string;
-  tomorrowDate: string | null;
+  viewerTodayYmd: string;
+  nextSlateDate: string | null;
   selected: string;
   onSelect: (date: string) => void;
   viewerTimeZone?: string;
@@ -12,21 +16,27 @@ interface Props {
 
 export function DateSwitcher({
   todayDate,
-  tomorrowDate,
+  viewerTodayYmd,
+  nextSlateDate,
   selected,
   onSelect,
   viewerTimeZone: tz = viewerTimeZone(),
   className = "",
 }: Props) {
   if (!todayDate) return null;
-  const tomorrow =
-    tomorrowDate && tomorrowDate !== todayDate
-      ? tomorrowDate
-      : calendarTomorrowYmd(todayDate, tz);
+  if (!nextSlateDate || nextSlateDate === todayDate) return null;
+
   const opts = [
-    { date: todayDate, label: `Today (${weekdayShort(todayDate, tz)})` },
-    { date: tomorrow, label: `Tomorrow (${weekdayShort(tomorrow, tz)})` },
+    {
+      date: todayDate,
+      label: todayTabLabel(viewerTodayYmd, tz),
+    },
+    {
+      date: nextSlateDate,
+      label: nextSlateTabLabel(nextSlateDate, tz),
+    },
   ];
+
   return (
     <div
       className={`flex rounded-lg border border-white/15 overflow-hidden ${className}`.trim()}
@@ -40,6 +50,7 @@ export function DateSwitcher({
           type="button"
           role="tab"
           aria-selected={selected === o.date}
+          data-date={o.date}
           onClick={() => onSelect(o.date)}
           className={`flex-1 py-2 text-xs sm:text-sm font-medium ${
             selected === o.date

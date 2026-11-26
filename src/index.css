@@ -136,10 +136,8 @@ body,
 }
 
 .leg-row-live-full-bleed {
-  margin-inline: -1rem;
-  padding-inline: 1rem;
-  width: calc(100% + 2rem);
-  max-width: calc(100% + 2rem);
+  width: 100%;
+  max-width: 100%;
 }
 
 .leg-row-live-active {
@@ -150,13 +148,6 @@ body,
     transparent 100%
   );
   transition: background 400ms ease;
-}
-
-.pick-leg-row-bleed {
-  margin-inline: -1.5rem;
-  padding-inline: 1.5rem;
-  width: calc(100% + 3rem);
-  max-width: calc(100% + 3rem);
 }
 
 @media (prefers-color-scheme: light) {

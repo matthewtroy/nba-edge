@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", "./lib/**/*.{js,ts,tsx}"],
   theme: {
     extend: {
       maxWidth: {
@@ -42,6 +42,7 @@ export default {
       animation: {
         "slide-up": "slide-up 0.28s ease-out",
         shimmer: "shimmer 1.2s ease-in-out infinite",
+        spin: "spin 8s linear infinite",
       },
     },
   },

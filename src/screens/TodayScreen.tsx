@@ -11,6 +11,7 @@ import { TomorrowSlateTease } from "../components/TomorrowSlateTease";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
 import { picksByIdFromOfficialSnapshots } from "@lib/official-leg-snapshot";
 import { injuriesForBadges } from "@lib/injury-display";
+import { shouldShowSlateBuildingScreen } from "@lib/slate-building-mode";
 
 const ORDER = [
   "mainPlay",
@@ -27,8 +28,10 @@ interface Props {
   slateDate: string;
   todayDate: string;
   tomorrowDate: string | null;
+  viewerTodayYmd: string;
   noGamesToday?: boolean;
   viewerTimeZone?: string;
+  onIndexRefreshed?: (index: import("@lib/data-index").DataIndexFile) => void;
   onSlateDateChange: (d: string) => void;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (t: string) => void;
@@ -44,7 +47,10 @@ export function TodayScreen({
   slateDate,
   todayDate,
   tomorrowDate,
+  viewerTodayYmd,
   viewerTimeZone,
+  noGamesToday,
+  onIndexRefreshed,
   onSlateDateChange,
   onLegTap,
   onCopy,
@@ -94,13 +100,25 @@ export function TodayScreen({
     [displayMultis, showLongshots, showQ1]
   );
 
+  const building = shouldShowSlateBuildingScreen({
+    index: data.index,
+    slateDate,
+    todayDate,
+    slateEmpty: !data.slate.length,
+    officialCard: official,
+    officialInUse: useOfficial,
+    noGamesToday,
+    previewSlate: data.previewSlate,
+  });
+
   return (
     <div className="pb-24">
       <div className="flex items-start gap-2 mb-3">
         <div className="flex-1 min-w-0">
           <DateSwitcher
             todayDate={todayDate}
-            tomorrowDate={tomorrowDate}
+            viewerTodayYmd={viewerTodayYmd}
+            nextSlateDate={tomorrowDate}
             selected={slateDate}
             onSelect={onSlateDateChange}
             viewerTimeZone={viewerTimeZone}
@@ -120,14 +138,19 @@ export function TodayScreen({
         index={data.index}
         slateDate={slateDate}
         todayDate={todayDate}
+        viewerTodayYmd={viewerTodayYmd}
+        viewerTimeZone={viewerTimeZone}
         slateEmpty={!data.slate.length}
+        slate={data.slate}
+        officialCard={official}
+        officialInUse={useOfficial}
+        noGamesToday={noGamesToday}
+        previewSlate={data.previewSlate}
+        onIndexRefreshed={onIndexRefreshed}
       />
 
-      {data.slate.length === 0 && slateDate === todayDate && (
-        <p className="text-white/70 mb-3">No NBA today: check back for the next slate.</p>
-      )}
-
-      {multis.map((m) => {
+      {!building &&
+        multis.map((m) => {
         const multiType = m.type as MultiType | string;
         const cardFairOnly =
           multiType === "q1Multi" || (slateFairOnly && multiType !== "q1Multi");
@@ -160,6 +183,7 @@ export function TodayScreen({
         );
       })}
 
+      {!building && (
       <section className="mt-6">
         <div className="flex items-center justify-between mb-2">
           <h2 className="text-sm font-semibold text-white/80">Personal multis</h2>
@@ -197,6 +221,7 @@ export function TodayScreen({
           ))
         )}
       </section>
+      )}
 
       <PersonalMultiBuilder
         open={builderOpen}

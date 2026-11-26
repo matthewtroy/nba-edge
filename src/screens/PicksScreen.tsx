@@ -19,6 +19,9 @@ interface Props {
   slateDate: string;
   todayDate: string;
   tomorrowDate: string | null;
+  viewerTodayYmd: string;
+  viewerTimeZone?: string;
+  onIndexRefreshed?: (index: import("@lib/data-index").DataIndexFile) => void;
   onSlateDateChange: (d: string) => void;
   myBookie?: string;
   onLegTap: (leg: PickLeg) => void;
@@ -72,6 +75,9 @@ export function PicksScreen({
   slateDate,
   todayDate,
   tomorrowDate,
+  viewerTodayYmd,
+  viewerTimeZone,
+  onIndexRefreshed,
   onSlateDateChange,
   myBookie = "bet365",
   onLegTap,
@@ -103,16 +109,22 @@ export function PicksScreen({
     <div className="pb-24">
       <DateSwitcher
         todayDate={todayDate}
-        tomorrowDate={tomorrowDate}
+        viewerTodayYmd={viewerTodayYmd}
+        nextSlateDate={tomorrowDate}
         selected={slateDate}
         onSelect={onSlateDateChange}
+        viewerTimeZone={viewerTimeZone}
         className="mb-3"
       />
       <TomorrowSlateTease
         index={data.index}
         slateDate={slateDate}
         todayDate={todayDate}
-        slateEmpty={!data.slate.length}
+        viewerTodayYmd={viewerTodayYmd}
+        viewerTimeZone={viewerTimeZone}
+        slateEmpty={!data.picks.length && !data.slate.length}
+        slate={data.slate}
+        onIndexRefreshed={onIndexRefreshed}
       />
       <header className="mb-3">
         <h1 className="text-xl font-bold text-white theme-adaptive-title">Picks</h1>
@@ -199,7 +211,7 @@ export function PicksScreen({
         </div>
       ) : (
         <section
-          className={`${ui.card} px-2 py-0 divide-y divide-white/[0.04]`}
+          className="-mx-4 py-0 divide-y divide-white/[0.04] border-0 bg-transparent"
           data-testid="picks-leg-list"
         >
           {legs.map((leg) => {

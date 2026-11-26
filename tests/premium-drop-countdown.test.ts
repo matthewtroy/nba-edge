@@ -11,7 +11,8 @@ describe("premium drop countdown", () => {
     const parts = dropCountdownParts(next, now, "Australia/Sydney");
     expect(parts.done).toBe(false);
     expect(formatCountdownClock(parts)).toMatch(/^\d{2}:\d{2}:\d{2}$/);
-    expect(parts.tease).toMatch(/9pm Sydney/i);
+    expect(parts.dropLine).toMatch(/Drops /);
+    expect(parts.tease).toMatch(/Official card/i);
   });
 
   it("marks done at publish time", () => {

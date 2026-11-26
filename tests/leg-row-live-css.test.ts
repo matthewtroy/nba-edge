@@ -5,15 +5,15 @@ import path from "path";
 describe("leg row live CSS", () => {
   const css = fs.readFileSync(path.join(process.cwd(), "src/index.css"), "utf8");
 
-  it("uses full-bleed row tint without left accent bar and 400ms fade", () => {
-    expect(css).toMatch(/\.leg-row-live-full-bleed[\s\S]*margin-inline:\s*-1rem/);
+  it("uses full-width row tint without left accent bar and 400ms fade", () => {
+    expect(css).not.toMatch(/\.leg-row-live-full-bleed[\s\S]*margin-inline:\s*-/);
     expect(css).not.toMatch(/\.leg-row-live-won[\s\S]*border-left:/);
     expect(css).not.toMatch(/\.leg-row-live-lost[\s\S]*border-left:/);
     expect(css).toMatch(/400ms ease/);
   });
 
-  it("pick rows bleed tint to phone shell edge", () => {
-    expect(css).toMatch(/\.pick-leg-row-bleed[\s\S]*margin-inline:\s*-1\.5rem/);
+  it("omits pick-leg-row negative margin bleed helper", () => {
+    expect(css).not.toMatch(/\.pick-leg-row-bleed/);
     expect(css).toMatch(/\.leg-row-live-active/);
   });
 

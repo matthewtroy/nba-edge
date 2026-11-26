@@ -76,7 +76,7 @@ export function LegProgress({
         />
         {view.line > 0 && (
           <span
-            className="absolute top-1/2 w-px h-2.5 bg-white/18 pointer-events-none leg-progress-target-tick"
+            className="absolute top-1/2 w-px h-2.5 bg-white/[0.18] pointer-events-none leg-progress-target-tick"
             style={{
               left: `${targetPct}%`,
               transform: "translate(-50%, -50%)",

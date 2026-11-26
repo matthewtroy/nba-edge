@@ -12,6 +12,9 @@ interface Props {
   slateDate: string;
   todayDate: string;
   tomorrowDate: string | null;
+  viewerTodayYmd: string;
+  viewerTimeZone?: string;
+  onIndexRefreshed?: (index: import("@lib/data-index").DataIndexFile) => void;
   onSlateDateChange: (d: string) => void;
 }
 
@@ -25,6 +28,9 @@ export function InjuriesScreen({
   slateDate,
   todayDate,
   tomorrowDate,
+  viewerTodayYmd,
+  viewerTimeZone,
+  onIndexRefreshed,
   onSlateDateChange,
 }: Props) {
   const { swapAsOut, reset, isCountedOut } = useQuestionableSwaps();
@@ -45,16 +51,22 @@ export function InjuriesScreen({
     <div className="pb-24">
       <DateSwitcher
         todayDate={todayDate}
-        tomorrowDate={tomorrowDate}
+        viewerTodayYmd={viewerTodayYmd}
+        nextSlateDate={tomorrowDate}
         selected={slateDate}
         onSelect={onSlateDateChange}
+        viewerTimeZone={viewerTimeZone}
         className="mb-3"
       />
       <TomorrowSlateTease
         index={data.index}
         slateDate={slateDate}
         todayDate={todayDate}
+        viewerTodayYmd={viewerTodayYmd}
+        viewerTimeZone={viewerTimeZone}
         slateEmpty={!data.slate.length}
+        slate={data.slate}
+        onIndexRefreshed={onIndexRefreshed}
       />
       <h1 className="text-xl font-bold mb-4">Injuries</h1>
       {[...byGame.entries()].map(([gameId, list]) => {
