@@ -148,16 +148,25 @@ export async function buildLiveSnapshot(
     })
   );
 
+  const summaries = new Map<string, unknown>();
+  async function loadSummary(gameId: string): Promise<unknown | null> {
+    if (summaries.has(gameId)) return summaries.get(gameId)!;
+    try {
+      const summary = await provider.fetchSummary(gameId, signal);
+      summaries.set(gameId, summary);
+      return summary;
+    } catch {
+      return null;
+    }
+  }
+
   const missing = [...want].filter((id) => !byId.has(id));
   await Promise.all(
     missing.map(async (gameId) => {
-      try {
-        const summary = await provider.fetchSummary(gameId, signal);
-        const row = parseLiveGameFromSummary(gameId, summary);
-        if (row) byId.set(gameId, row);
-      } catch {
-        /* unscheduled or ESPN gap */
-      }
+      const summary = await loadSummary(gameId);
+      if (!summary) return;
+      const row = parseLiveGameFromSummary(gameId, summary);
+      if (row) byId.set(gameId, row);
     })
   );
 
@@ -166,12 +175,9 @@ export async function buildLiveSnapshot(
   const needBox = games.filter((g) => g.phase !== "scheduled");
   await Promise.all(
     needBox.map(async (g) => {
-      try {
-        const summary = await provider.fetchSummary(g.gameId, signal);
-        boxesByGame.set(g.gameId, boxesFromSummary(summary));
-      } catch {
-        /* keep status without box */
-      }
+      const summary = await loadSummary(g.gameId);
+      if (!summary) return;
+      boxesByGame.set(g.gameId, boxesFromSummary(summary));
     })
   );
 

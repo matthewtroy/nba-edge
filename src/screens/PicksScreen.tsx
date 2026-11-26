@@ -199,17 +199,24 @@ export function PicksScreen({
           className={`${ui.card} px-2 py-0 divide-y divide-white/[0.04]`}
           data-testid="picks-leg-list"
         >
-          {legs.map((leg) => (
-            <PickLegRow
-              key={leg.id}
-              leg={leg}
-              injuries={badgeInjuries}
-              slate={data.slate}
-              myBookie={myBookie}
-              onTap={onLegTap}
-              liveView={liveTracking.legViews.get(leg.id)}
-            />
-          ))}
+          {legs.map((leg) => {
+            const liveView = liveTracking.legViews.get(leg.id);
+            const board = liveTracking.snapshot?.games.find((g) => g.gameId === leg.gameId);
+            const trackPlaceholder =
+              !liveView && board != null && board.phase !== "scheduled";
+            return (
+              <PickLegRow
+                key={leg.id}
+                leg={leg}
+                injuries={badgeInjuries}
+                slate={data.slate}
+                myBookie={myBookie}
+                onTap={onLegTap}
+                liveView={liveView}
+                trackPlaceholder={trackPlaceholder}
+              />
+            );
+          })}
         </section>
       )}
     </div>

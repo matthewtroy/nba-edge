@@ -11,16 +11,37 @@ import {
 export function LegProgress({
   view,
   valueAtBookie: _valueAtBookie,
+  showTrackPlaceholder = false,
   className = "",
 }: {
   view?: LiveLegView;
   valueAtBookie?: boolean;
+  /** Muted bar while ESPN snapshot is still loading for a live game */
+  showTrackPlaceholder?: boolean;
   className?: string;
 }) {
-  if (!view || view.state === "pending") return null;
+  if ((!view || view.state === "pending") && !showTrackPlaceholder) return null;
 
-  const right = legProgressRightLabel(view);
-  if (!right) return null;
+  const right = view ? legProgressRightLabel(view) : null;
+  if (!right && !showTrackPlaceholder) return null;
+
+  if (showTrackPlaceholder && (!view || view.state === "pending")) {
+    return (
+      <div
+        className={`flex items-center gap-1 min-w-0 ${className}`}
+        data-testid="leg-progress"
+        data-state="placeholder"
+      >
+        <div
+          className="relative flex-1 min-w-[72px] h-1.5 rounded-full bg-white/[0.06] leg-progress-track-placeholder"
+          aria-hidden
+        />
+        <span className="shrink-0 text-[10px] font-semibold tabular-nums text-white/35">—</span>
+      </div>
+    );
+  }
+
+  if (!view || !right) return null;
 
   const fillPct = legProgressFillPercent(view);
   const handlePct = legProgressHandlePercent(view);

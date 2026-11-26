@@ -21,6 +21,7 @@ interface Props {
   myBookie: string;
   onTap: (leg: PickLeg) => void;
   liveView?: LiveLegView;
+  trackPlaceholder?: boolean;
 }
 
 function LegBadge({ label, danger }: { label: string; danger?: boolean }) {
@@ -29,7 +30,15 @@ function LegBadge({ label, danger }: { label: string; danger?: boolean }) {
   );
 }
 
-export function PickLegRow({ leg, injuries, slate, myBookie, onTap, liveView }: Props) {
+export function PickLegRow({
+  leg,
+  injuries,
+  slate,
+  myBookie,
+  onTap,
+  liveView,
+  trackPlaceholder = false,
+}: Props) {
   const badgeLabels = legRowBadgeLabels(leg, myBookie);
   const reasonLines = legRowReasonLines(leg);
   const price = legPriceAtBookie(leg, myBookie);
@@ -38,7 +47,7 @@ export function PickLegRow({ leg, injuries, slate, myBookie, onTap, liveView }: 
   const injStatus = injuryStatusForPlayer(injuries, leg.playerId);
   const valueAtBookie = hasValueAtBookie(leg, myBookie);
   const rowLiveClass = legRowLiveTrackingClass(liveView);
-  const bleed = rowLiveClass ? "pick-leg-row-bleed" : "";
+  const bleed = rowLiveClass || trackPlaceholder ? "pick-leg-row-bleed" : "";
 
   return (
     <button
@@ -94,6 +103,7 @@ export function PickLegRow({ leg, injuries, slate, myBookie, onTap, liveView }: 
         <LegProgress
           view={liveView}
           valueAtBookie={valueAtBookie}
+          showTrackPlaceholder={trackPlaceholder}
           className="mt-1.5 w-full"
         />
       </div>

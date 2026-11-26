@@ -107,6 +107,28 @@ describe("live-source", () => {
     expect(row?.statusDetail).toBe("Final");
   });
 
+  it("reuses one summary fetch per game when header and box both need ESPN", async () => {
+    let summaryCalls = 0;
+    const provider: LiveSourceProvider = {
+      id: "mock",
+      async fetchScoreboard() {
+        return { events: [] };
+      },
+      async fetchSummary(gameId) {
+        summaryCalls += 1;
+        if (gameId === "401909320") return summaryMiss;
+        throw new Error(`unexpected ${gameId}`);
+      },
+    };
+    const snap = await buildLiveSnapshot(
+      provider,
+      [{ id: "401909320", startTime: "2026-11-26T05:30:00Z" }],
+      ["401909320"]
+    );
+    expect(summaryCalls).toBe(1);
+    expect(snap.games.find((g) => g.gameId === "401909320")?.phase).toBe("final");
+  });
+
   it("mock provider builds snapshot with final box after game ends", async () => {
     const provider = createMockLiveProvider({
       scoreboards: { "20261126": scoreboard },
