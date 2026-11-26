@@ -17,6 +17,7 @@ import { ErrorBoundary } from "./components/ErrorBoundary";
 import { LoadingSkeleton } from "./components/LoadingSkeleton";
 import { injuriesForBadges } from "@lib/injury-display";
 import { useLiveTracking } from "./hooks/useLiveTracking";
+import { officialLiveTrackingInputs } from "@lib/official-live-tracking";
 
 type Tab = "today" | "picks" | "games" | "injuries" | "results";
 
@@ -46,10 +47,16 @@ export default function App() {
     data.officialCard.slateDate === (data.meta.slateTipDate ?? data.officialCard.slateDate)
       ? data.officialCard.multis
       : data.multis;
-  const liveTracking = useLiveTracking(
+  const liveInputs = officialLiveTrackingInputs(
     slateDate,
     data.slate,
     data.picks,
+    data.officialCard
+  );
+  const liveTracking = useLiveTracking(
+    slateDate,
+    liveInputs.slate,
+    liveInputs.legs,
     multisForLive,
     !data.loading && !data.error
   );
