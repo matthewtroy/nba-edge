@@ -24,6 +24,8 @@ import { evaluateOfficialPublishGate } from "../lib/official-card-gate.js";
 import { logOfficialCard } from "../lib/official-card-log.js";
 import { hasAuPropPrices, isEveningSydney } from "../lib/official-card-time.js";
 import { applySlateTipFreeze } from "../lib/slate-tip-freeze.js";
+import { pickLegFromSnapshot } from "../lib/official-leg-snapshot.js";
+import { countPricedPickLegs } from "../lib/odds-cache-guard.js";
 import { freezeInjuriesAtTip, mergeInjuriesReportTime } from "../lib/injury-tip-freeze.js";
 
 export interface SlateBundleInput {
@@ -117,6 +119,23 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   });
 
   let { picks, multis, multisPayload, meta, whatChanged } = modelRun;
+  const preFreezeOfficial = loadOfficialCard(outDir);
+  if (preFreezeOfficial?.legSnapshots && countPricedPickLegs(picks) === 0) {
+    const snapLegs = Object.values(preFreezeOfficial.legSnapshots).map(pickLegFromSnapshot);
+    const pricedSnaps = snapLegs.filter(
+      (p) =>
+        (p.bestPrice != null && p.bestPrice > 1) ||
+        (p.bookiePrices && Object.values(p.bookiePrices).some((v) => v != null && v > 1))
+    );
+    if (pricedSnaps.length) {
+      console.log(
+        `slate bundle: rebuilt ${pricedSnaps.length} priced legs from official snapshots (no live prices)`
+      );
+      const byId = new Map(picks.map((p) => [p.id, p]));
+      for (const leg of pricedSnaps) byId.set(leg.id, leg);
+      picks = [...byId.values(), ...picks.filter((p) => !byId.has(p.id))];
+    }
+  }
   const publishGate = evaluateOfficialPublishGate({
     slateGameCount: input.slate.length,
     pickCount: picks.length,

@@ -38,4 +38,15 @@ describe("slate today/next", () => {
     const tip = filterOpenGamesOnSydneyDate(games, "2026-11-26");
     expect(tip).toHaveLength(1);
   });
+
+  it("keeps all games on today's Sydney date when six of nine are final", () => {
+    const games = Array.from({ length: 9 }, (_, i) =>
+      game(
+        `g${i + 1}`,
+        "2026-11-25T22:00:00Z",
+        i < 6 ? "Final" : "pre"
+      )
+    );
+    expect(filterSlateToTodaySydney(games)).toHaveLength(9);
+  });
 });

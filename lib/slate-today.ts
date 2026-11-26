@@ -11,15 +11,16 @@ function isFinalStatus(status: string): boolean {
   return s.includes("final") || s === "post";
 }
 
-/** Earliest Sydney tip date that still has unfinished games; exclude later dates */
+/** Earliest Sydney tip date that still has unfinished games; all games on that date (including final). */
 export function filterSlateToTodaySydney(games: SlateGame[], _now = new Date()): SlateGame[] {
   const open = games.filter((g) => !isFinalStatus(g.status));
-  if (open.length === 0) return [];
+  const dateKeys = open.length
+    ? [...new Set(open.map((g) => sydneyTipDate(g.startTime)))].sort()
+  : [...new Set(games.map((g) => sydneyTipDate(g.startTime)))].sort();
+  const activeDate = dateKeys[0];
+  if (!activeDate) return [];
 
-  const unfinishedDates = [...new Set(open.map((g) => sydneyTipDate(g.startTime)))].sort();
-  const activeDate = unfinishedDates[0];
-
-  return open.filter((g) => sydneyTipDate(g.startTime) === activeDate);
+  return games.filter((g) => sydneyTipDate(g.startTime) === activeDate);
 }
 
 /**
