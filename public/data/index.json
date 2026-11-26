@@ -1,7 +1,10 @@
 {
-  "updatedAt": "2026-11-26T05:15:48.026Z",
+  "updatedAt": "2026-11-26T05:29:33.323Z",
   "todayDate": "2026-11-26",
   "tomorrowDate": null,
   "defaultDate": "2026-11-26",
-  "dates": []
+  "dates": [],
+  "nextPublishAt": "2026-11-26T10:00:33.323Z",
+  "nextSlateDate": null,
+  "firstTipAt": null
 }
