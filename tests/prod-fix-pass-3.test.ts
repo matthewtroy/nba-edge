@@ -117,6 +117,6 @@ describe("prod fix pass 3 — UI wiring", () => {
   it("reasonsAtTip refresh in slate bundle", () => {
     const src = fs.readFileSync(path.join(process.cwd(), "scripts/slate-bundle.ts"), "utf8");
     expect(src).toMatch(/reasonsAtTip/);
-    expect(src).toMatch(/restorePicksAndReasonsAtTip/);
+    expect(src).toMatch(/freezeTippedSlate/);
   });
 });

@@ -203,6 +203,14 @@ export interface MetaJson {
   injuriesAtTip?: InjuryEntry[];
   /** Pre-tip reason lines captured when games start (display freeze). */
   reasonsAtTip?: ReasonAtTipSnapshot[];
+  /** Data-branch commit (before first tip) that started-game legs are frozen to. */
+  reasonsFrozenFrom?: ReasonsFrozenFrom;
+}
+
+export interface ReasonsFrozenFrom {
+  commit: string;
+  committedAt: string;
+  firstTipAt: string;
 }
 
 export interface ReasonAtTipSnapshot {

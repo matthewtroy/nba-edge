@@ -10,6 +10,7 @@ import {
   restorePersistedDataFromBranch,
 } from "../lib/restore-data-branch.js";
 import { computeCalibration } from "../lib/grading.js";
+import { runFreezeTippedReasons } from "./freeze-tipped-reasons.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -54,6 +55,7 @@ function runFixturePipeline(): void {
 }
 
 function runSettleStep(): void {
+  runFreezeTippedReasons(rootDir);
   execFileSync("npx", ["tsx", "scripts/settle.ts"], {
     cwd: rootDir,
     stdio: "inherit",
@@ -105,6 +107,8 @@ async function main() {
   });
   if (process.env.SETTLE_AFTER_PIPELINE !== "0") {
     runSettleStep();
+  } else {
+    runFreezeTippedReasons(rootDir);
   }
 }
 

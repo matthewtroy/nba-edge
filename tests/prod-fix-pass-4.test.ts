@@ -14,11 +14,6 @@ import {
   mergeIntoFinalCache,
   subscribeLiveSource,
 } from "../lib/live-source";
-import {
-  loadPreTipPicksFromDataBranch,
-  restorePicksAndReasonsAtTip,
-} from "../lib/reasons-at-tip-restore";
-import { legRowReasonLines } from "../lib/leg-row-reasons";
 import { manualOfficialBetRows } from "../lib/manual-official-bets";
 import { buildResultsSlice } from "../lib/results-aggregate";
 import { settleOfficialBets } from "../lib/official-bet-settle";
@@ -29,7 +24,6 @@ import { liveBetView } from "../lib/live-bet";
 import { multiCardLiveBorderClass } from "../lib/live-leg-ui";
 import { fixtureSlateDir, loadPublishedSlate } from "./public-data-fixture";
 import { picksByIdFromOfficialSnapshots } from "../lib/official-leg-snapshot";
-import type { PickLeg, SlateGame } from "../lib/types";
 
 const fixtureDir = path.join(process.cwd(), "tests/fixtures/espn");
 const scoreboard = JSON.parse(
@@ -132,39 +126,6 @@ describe("prod fix pass 4 — ESPN polling finals", () => {
     expect(scoreboardCalls).toBe(before);
     unsub();
     vi.useRealTimers();
-  });
-});
-
-describe("prod fix pass 4 — reasonsAtTip data branch restore", () => {
-  it("Cam Spencer pts 15 has three reasons after restore", () => {
-    const root = process.cwd();
-    const tipIso = "2026-11-25T22:10:00.000Z";
-    const preTip = loadPreTipPicksFromDataBranch(root, "2026-11-26", tipIso);
-    expect(preTip?.find((p) => p.id === "4433083-pts-15")?.reasons?.length).toBe(3);
-
-    const slate = JSON.parse(
-      fs.readFileSync(path.join(fixtureSlateDir("2026-11-26"), "slate.json"), "utf8")
-    ) as SlateGame[];
-    const postTip = JSON.parse(
-      fs.readFileSync(path.join(fixtureSlateDir("2026-11-26"), "picks.json"), "utf8")
-    ) as PickLeg[];
-    const stripped = postTip.map((p) =>
-      p.id === "4433083-pts-15" ? { ...p, reasons: [], tags: [], reasonLine: undefined } : p
-    );
-    const now = new Date("2026-11-26T12:00:00.000Z");
-    const liveSlate = slate.map((g) =>
-      g.id === "401909321" ? { ...g, status: "live" } : g
-    );
-    const { picks } = restorePicksAndReasonsAtTip({
-      rootDir: root,
-      slateDate: "2026-11-26",
-      slate: liveSlate,
-      picks: stripped,
-      now,
-    });
-    const spencer = picks.find((p) => p.id === "4433083-pts-15");
-    const lines = legRowReasonLines(spencer!, new Map());
-    expect(lines.length).toBe(3);
   });
 });
 

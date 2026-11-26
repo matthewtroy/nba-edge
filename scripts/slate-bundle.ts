@@ -35,7 +35,7 @@ import { pickLegFromSnapshot } from "../lib/official-leg-snapshot.js";
 import { countPricedPickLegs } from "../lib/odds-cache-guard.js";
 import { freezeInjuriesAtTip, mergeInjuriesReportTime } from "../lib/injury-tip-freeze.js";
 import { refreshInjuriesAtTip } from "../lib/injuries-at-tip.js";
-import { restorePicksAndReasonsAtTip } from "../lib/reasons-at-tip-restore.js";
+import { freezeTippedSlate, gitPreTipLoader } from "../lib/reasons-at-tip-restore.js";
 
 export interface SlateBundleInput {
   rootDir: string;
@@ -282,7 +282,6 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   let slateOut = input.slate;
   let picksOut = picks;
   let multisOut = multis;
-  let previousPicksForRestore: PickLeg[] | undefined;
   const prevSlatePath = path.join(outDir, "slate.json");
   const prevPicksPath = path.join(outDir, "picks.json");
   const prevMultisPath = path.join(outDir, "multis.json");
@@ -298,7 +297,6 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
       const previousPicks = JSON.parse(
         fs.readFileSync(prevPicksPath, "utf8")
       ) as PickLeg[];
-      previousPicksForRestore = previousPicks;
       const previousMultisRaw = JSON.parse(
         fs.readFileSync(prevMultisPath, "utf8")
       ) as { bets?: MultiBet[] };
@@ -336,17 +334,17 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     slateOut,
     input.now
   );
-  const restored = restorePicksAndReasonsAtTip({
-    rootDir: input.rootDir,
+  const restored = freezeTippedSlate({
     slateDate: tipDate,
     slate: slateOut,
     picks: picksOut,
-    priorPicks: previousPicksForRestore,
-    meta: priorMeta ?? metaOut,
+    meta: priorMeta,
     now: input.now,
+    loadPreTip: gitPreTipLoader(input.rootDir),
   });
   picksOut = restored.picks;
   metaOut.reasonsAtTip = restored.reasonsAtTip;
+  if (restored.reasonsFrozenFrom) metaOut.reasonsFrozenFrom = restored.reasonsFrozenFrom;
 
   fs.writeFileSync(path.join(outDir, "slate.json"), JSON.stringify(slateOut, null, 2));
   fs.writeFileSync(path.join(outDir, "injuries.json"), JSON.stringify(injuries, null, 2));

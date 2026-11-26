@@ -1,0 +1,500 @@
+{
+  "commit": "81fb4421a940ef7f14fc6de1d2b663e0085486a7",
+  "committedAt": "2026-11-25T19:46:44+00:00",
+  "slate": [
+    {
+      "id": "401909317",
+      "startTime": "2026-11-25T22:00Z",
+      "startTimeSydney": "9:00 am",
+      "homeTeam": "Philadelphia 76ers",
+      "awayTeam": "Miami Heat",
+      "homeTeamId": "20",
+      "awayTeamId": "14",
+      "homeB2B": false,
+      "awayB2B": false,
+      "status": "final"
+    },
+    {
+      "id": "401909321",
+      "startTime": "2026-11-26T01:00Z",
+      "startTimeSydney": "12:00 pm",
+      "homeTeam": "Memphis Grizzlies",
+      "awayTeam": "LA Clippers",
+      "homeTeamId": "29",
+      "awayTeamId": "12",
+      "homeB2B": false,
+      "awayB2B": false,
+      "status": "final"
+    }
+  ],
+  "preTip": [
+    {
+      "id": "4278053-pts-15",
+      "gameId": "401909317",
+      "team": "Miami Heat",
+      "opponent": "Philadelphia 76ers",
+      "playerId": "4278053",
+      "playerName": "Davion Mitchell",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278053.png",
+      "market": "pts",
+      "line": 15,
+      "probability": 0.654,
+      "modelProbability": 0.73,
+      "preBlendModelProbability": 0.73,
+      "probabilityMatchupShadow": 0.73,
+      "marketProbability": 0.541,
+      "fairPrice": 1.53,
+      "takeAt": 1.65,
+      "bestPrice": 1.85,
+      "bestBookie": "Neds",
+      "bookiePrices": {
+        "SportsBet": 1.83,
+        "Unibet": 1.83,
+        "Neds": 1.85,
+        "Ladbrokes": 1.85,
+        "TAB": 1.85,
+        "PointsBet (AU)": 1.8
+      },
+      "oddsPulledAt": "2026-11-25T10:29:00.533Z",
+      "tags": [
+        "Value"
+      ],
+      "reasons": [
+        {
+          "type": "matchup",
+          "text": "76ers allow 18.8 pts per game to guards, 8th most (league avg 18.1 per game)"
+        },
+        {
+          "type": "form",
+          "text": "8/10 at this line"
+        },
+        {
+          "type": "avg",
+          "text": "Avg 17.5 pts last 10 (season 17.5)"
+        }
+      ],
+      "recentVsLine": [
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit"
+      ],
+      "lastTenStatValues": [
+        14,
+        24,
+        16,
+        15,
+        22,
+        19,
+        17,
+        22,
+        11,
+        15
+      ],
+      "questionable": false,
+      "boardsShared": true,
+      "b2b": false,
+      "blowoutRisk": false,
+      "ageB2B": false,
+      "projectedMinutes": 34.66,
+      "starterEligible": true,
+      "seasonAvg": {
+        "pts": 17.5,
+        "reb": 3,
+        "ast": 8.9,
+        "threes": 2.7
+      },
+      "lastFiveAvg": {
+        "pts": 18.2,
+        "reb": 3.6,
+        "ast": 9,
+        "threes": 2.8
+      },
+      "reasonLine": "76ers allow 18.8 pts per game to guards, 8th most (league avg 18.1 per game) \u00b7 8/10 at this line \u00b7 Avg 17.5 pts last 10 (season 17.5)"
+    },
+    {
+      "id": "4433083-pts-15",
+      "gameId": "401909321",
+      "team": "Memphis Grizzlies",
+      "opponent": "LA Clippers",
+      "playerId": "4433083",
+      "playerName": "Cam Spencer",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4433083.png",
+      "market": "pts",
+      "line": 15,
+      "probability": 0.572,
+      "modelProbability": 0.795,
+      "preBlendModelProbability": 0.795,
+      "probabilityMatchupShadow": 0.795,
+      "marketProbability": 0.238,
+      "fairPrice": 1.75,
+      "takeAt": 1.89,
+      "bestPrice": 4.2,
+      "bestBookie": "Neds",
+      "bookiePrices": {
+        "Neds": 4.1,
+        "TAB": 3.2,
+        "Ladbrokes": 4.1,
+        "SportsBet": 4.5,
+        "PointsBet (AU)": 3.9
+      },
+      "oddsPulledAt": "2026-11-25T10:29:00.533Z",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ],
+      "reasons": [
+        {
+          "type": "injury",
+          "text": "Boozer out \u2192 +2.0 pts"
+        },
+        {
+          "type": "tracking",
+          "text": "Shot volume up: 8.8 FGA last 5 (season 7.1)"
+        },
+        {
+          "type": "min",
+          "text": "Minutes up: 28 last 5 (season 25)"
+        }
+      ],
+      "recentVsLine": [
+        "hit",
+        "miss",
+        "miss",
+        "hit",
+        "miss"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "miss",
+        "miss",
+        "hit",
+        "miss",
+        "hit",
+        "miss",
+        "hit",
+        "miss",
+        "miss"
+      ],
+      "lastTenStatValues": [
+        24,
+        9,
+        9,
+        26,
+        12,
+        17,
+        14,
+        15,
+        7,
+        7
+      ],
+      "questionable": false,
+      "boardsShared": true,
+      "b2b": false,
+      "blowoutRisk": false,
+      "ageB2B": false,
+      "projectedMinutes": 28.104393693020892,
+      "starterEligible": true,
+      "seasonAvg": {
+        "pts": 13.333333333333334,
+        "reb": 2.5833333333333335,
+        "ast": 6.083333333333333,
+        "threes": 2
+      },
+      "lastFiveAvg": {
+        "pts": 16,
+        "reb": 3,
+        "ast": 7.4,
+        "threes": 2
+      },
+      "reasonLine": "Boozer out \u2192 +2.0 pts \u00b7 Shot volume up: 8.8 FGA last 5 (season 7.1) \u00b7 Minutes up: 28 last 5 (season 25)"
+    }
+  ],
+  "postTip": [
+    {
+      "id": "4278053-pts-15",
+      "gameId": "401909317",
+      "team": "Miami Heat",
+      "opponent": "Philadelphia 76ers",
+      "playerId": "4278053",
+      "playerName": "Davion Mitchell",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4278053.png",
+      "market": "pts",
+      "line": 15,
+      "probability": 0.653,
+      "modelProbability": 0.728,
+      "preBlendModelProbability": 0.728,
+      "probabilityMatchupShadow": 0.728,
+      "marketProbability": 0.541,
+      "fairPrice": 1.53,
+      "takeAt": 1.65,
+      "bestPrice": 1.85,
+      "bestBookie": "Neds",
+      "bookiePrices": {
+        "Neds": 1.85
+      },
+      "oddsPulledAt": "2026-11-25T10:29:00.533Z",
+      "tags": [
+        "Value"
+      ],
+      "reasons": [
+        {
+          "type": "form",
+          "text": "8/10 at this line"
+        },
+        {
+          "type": "avg",
+          "text": "Avg 18.0 pts last 10 (season 17.7)"
+        }
+      ],
+      "recentVsLine": [
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss"
+      ],
+      "lastTenStatValues": [
+        20,
+        14,
+        24,
+        16,
+        15,
+        22,
+        19,
+        17,
+        22,
+        11
+      ],
+      "questionable": false,
+      "boardsShared": true,
+      "b2b": false,
+      "blowoutRisk": false,
+      "ageB2B": false,
+      "projectedMinutes": 34.76363636363636,
+      "starterEligible": true,
+      "seasonAvg": {
+        "pts": 17.727272727272727,
+        "reb": 3.090909090909091,
+        "ast": 9,
+        "threes": 2.727272727272727
+      },
+      "lastFiveAvg": {
+        "pts": 17.8,
+        "reb": 3.4,
+        "ast": 7.6,
+        "threes": 2.8
+      },
+      "reasonLine": "8/10 at this line \u00b7 Avg 18.0 pts last 10 (season 17.7)"
+    },
+    {
+      "id": "4433083-pts-10",
+      "gameId": "401909321",
+      "team": "Memphis Grizzlies",
+      "opponent": "LA Clippers",
+      "playerId": "4433083",
+      "playerName": "Cam Spencer",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4433083.png",
+      "market": "pts",
+      "line": 10,
+      "probability": 0.78,
+      "modelProbability": 0.926,
+      "preBlendModelProbability": 0.926,
+      "probabilityMatchupShadow": 0.926,
+      "marketProbability": 0.562,
+      "fairPrice": 1.28,
+      "takeAt": 1.38,
+      "bestPrice": 1.78,
+      "bestBookie": "Neds",
+      "bookiePrices": {
+        "Neds": 1.75,
+        "TAB": 1.68,
+        "Ladbrokes": 1.75,
+        "SportsBet": 1.84,
+        "TABtouch": 1.83,
+        "Unibet": 1.83,
+        "PointsBet (AU)": 1.83
+      },
+      "oddsPulledAt": "2026-11-25T10:29:00.533Z",
+      "tags": [
+        "High probability",
+        "Check news"
+      ],
+      "reasons": [
+        {
+          "type": "min",
+          "text": "Minutes up: 28 last 5 (season 25)"
+        },
+        {
+          "type": "avg",
+          "text": "Avg 14.0 pts last 10 (season 13.3)"
+        }
+      ],
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss"
+      ],
+      "lastTenStatValues": [
+        16,
+        24,
+        9,
+        9,
+        26,
+        12,
+        17,
+        14,
+        15,
+        7
+      ],
+      "questionable": false,
+      "boardsShared": true,
+      "b2b": false,
+      "blowoutRisk": false,
+      "ageB2B": false,
+      "projectedMinutes": 27.699999999999996,
+      "starterEligible": true,
+      "seasonAvg": {
+        "pts": 13.333333333333334,
+        "reb": 2.5833333333333335,
+        "ast": 6.083333333333333,
+        "threes": 2
+      },
+      "lastFiveAvg": {
+        "pts": 16,
+        "reb": 3,
+        "ast": 7.4,
+        "threes": 2
+      },
+      "reasonLine": "Minutes up: 28 last 5 (season 25) \u00b7 Avg 14.0 pts last 10 (season 13.3)"
+    },
+    {
+      "id": "4433083-pts-15",
+      "gameId": "401909321",
+      "team": "Memphis Grizzlies",
+      "opponent": "LA Clippers",
+      "playerId": "4433083",
+      "playerName": "Cam Spencer",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4433083.png",
+      "market": "pts",
+      "line": 15,
+      "probability": 0.456,
+      "modelProbability": 0.601,
+      "preBlendModelProbability": 0.601,
+      "probabilityMatchupShadow": 0.601,
+      "marketProbability": 0.238,
+      "fairPrice": 2.19,
+      "takeAt": 2.37,
+      "bestPrice": 4.2,
+      "bestBookie": "Neds",
+      "bookiePrices": {
+        "Neds": 4.1,
+        "TAB": 3.2,
+        "Ladbrokes": 4.1,
+        "SportsBet": 4.5,
+        "PointsBet (AU)": 3.9
+      },
+      "oddsPulledAt": "2026-11-25T10:29:00.533Z",
+      "tags": [
+        "Check prices",
+        "Check news"
+      ],
+      "reasons": [
+        {
+          "type": "min",
+          "text": "Minutes up: 28 last 5 (season 25)"
+        }
+      ],
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "hit",
+        "miss",
+        "hit",
+        "miss",
+        "hit",
+        "miss"
+      ],
+      "lastTenStatValues": [
+        16,
+        24,
+        9,
+        9,
+        26,
+        12,
+        17,
+        14,
+        15,
+        7
+      ],
+      "questionable": false,
+      "boardsShared": true,
+      "b2b": false,
+      "blowoutRisk": false,
+      "ageB2B": false,
+      "projectedMinutes": 27.699999999999996,
+      "starterEligible": true,
+      "seasonAvg": {
+        "pts": 13.333333333333334,
+        "reb": 2.5833333333333335,
+        "ast": 6.083333333333333,
+        "threes": 2
+      },
+      "lastFiveAvg": {
+        "pts": 16,
+        "reb": 3,
+        "ast": 7.4,
+        "threes": 2
+      },
+      "reasonLine": "Minutes up: 28 last 5 (season 25)"
+    }
+  ]
+}
