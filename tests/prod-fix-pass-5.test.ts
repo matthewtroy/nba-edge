@@ -322,11 +322,15 @@ describe("prod fix pass 5 — extra Best SGM", () => {
     await act(async () => {
       root.render(createElement(ResultsScreen, { data: { results: slice } as unknown as DataBundle }));
     });
+    const sgmRow = [...host.querySelectorAll("[data-results='other-bets'] button")].find((b) =>
+      /Best SGM/.test(b.textContent ?? "")
+    ) as HTMLButtonElement;
+    expect(sgmRow.textContent).toMatch(/1–1/);
+    await act(async () => sgmRow.click());
     const text = host.textContent ?? "";
     expect(text).not.toMatch(/manual/i);
-    expect(text.match(/Best SGM/g)?.length ?? 0).toBeGreaterThanOrEqual(2);
-    expect(text).toMatch(/bet365/);
-    expect(text).toMatch(/Picklebet/);
+    expect(text).toMatch(/bet365 · \$7\.88/);
+    expect(text).toMatch(/Picklebet · \$7\.36/);
     root.unmount();
     host.remove();
   });
@@ -386,5 +390,90 @@ describe("prod fix pass 5 — pre-app Main Plays", () => {
 
   it("skips a pre-app date once an official card exists for it", () => {
     expect(preAppMainPlayRows(file, new Set(["2026-11-22"]))).toHaveLength(15);
+  });
+});
+
+describe("prod fix pass 5 — Results redesign", () => {
+  const card = JSON.parse(
+    fs.readFileSync(path.join(process.cwd(), "tests/fixtures/2026-11-26/official-card.json"), "utf8")
+  ) as OfficialCardFile;
+  const cardLegs = [...new Set(card.multis.flatMap((m) => m.legs))].map(
+    (id) =>
+      ({ id, slateDate: "2026-11-26", playerName: `P ${id}`, market: "pts", line: 20, result: "lost" }) as SettledLegRow
+  );
+  const bets = [
+    ...preAppMainPlayRows(loadPreAppMainPlays(process.cwd())),
+    ...settleOfficialBets(card, cardLegs),
+    ...extraOfficialBetRows(
+      "2026-11-26",
+      new Map(["5104157-pts-30", "5104157-reb-13", "4683021-pts-25"].map((id) => [id, "won" as const])),
+      loadExtraOfficialBets(process.cwd())
+    ),
+  ];
+  const slice = buildResultsSlice({ officialLegs: cardLegs, officialBets: bets, valueLegRows: [], gradedLegs: [] });
+
+  async function render() {
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    const root = createRoot(host);
+    await act(async () => {
+      root.render(createElement(ResultsScreen, { data: { results: slice } as unknown as DataBundle }));
+    });
+    return { host, done: () => (root.unmount(), host.remove()) };
+  }
+
+  it("Main Play is first with W-L, Hit, Avg odds, Staked, Profit, ROI incl pre-app", async () => {
+    const { host, done } = await render();
+    const sections = [...host.querySelectorAll("section")];
+    expect(sections[0]?.getAttribute("data-results")).toBe("main-play");
+    const mp = sections[0]!.textContent ?? "";
+    expect(mp).toMatch(/Main Play/);
+    expect(mp).toMatch(/7–10/);
+    expect(mp).toMatch(/Hit41\.2%/);
+    expect(mp).toMatch(/Avg odds\$10\.78/);
+    expect(mp).toMatch(/Staked17\.00u/);
+    expect(mp).toMatch(/Profit\+45\.49u/);
+    expect(mp).toMatch(/ROI267\.6%/);
+    done();
+  });
+
+  it("other bets compact table rows in order and expandable", async () => {
+    const { host, done } = await render();
+    const rows = [...host.querySelectorAll("[data-results='other-bets'] li > button")].map(
+      (b) => (b.textContent ?? "").replace(/[▸▾]/g, "").trim()
+    );
+    expect(rows.map((r) => r.split(/\d/)[0]!.trim())).toEqual([
+      "Double Up", "Best SGM", "Cross", "Booster", "Longshot", "Q",
+    ]);
+    const booster = [...host.querySelectorAll("[data-results='other-bets'] li > button")][3] as HTMLButtonElement;
+    expect(booster.textContent).toMatch(/0\.05u/);
+    await act(async () => booster.click());
+    expect(host.querySelector("[data-results='other-bets']")?.textContent).toMatch(/Ladbrokes · \$215\.94/);
+    done();
+  });
+
+  it("removes Model check, Last 14 days, beat-market and AU-price lines; no tags", async () => {
+    const { host, done } = await render();
+    for (const b of host.querySelectorAll("button")) await act(async () => (b as HTMLButtonElement).click());
+    const text = host.textContent ?? "";
+    expect(text).not.toMatch(/Model check|Last 14 days|Beat the market|AU price|9pm freeze|excludes Q1/i);
+    expect(text).not.toMatch(/manual|pre-app|estimated/i);
+    expect(text).toMatch(/Value legs/);
+    done();
+  });
+
+  it("Main Play expands to pre-app bets with leg descriptions", async () => {
+    const { host, done } = await render();
+    const toggle = [...host.querySelectorAll("[data-results='main-play'] button")].find((b) =>
+      /17 bets/.test(b.textContent ?? "")
+    ) as HTMLButtonElement;
+    await act(async () => toggle.click());
+    const oct30 = [...host.querySelectorAll("[data-results='main-play'] li > button")].find((b) =>
+      /30 Oct/.test(b.textContent ?? "")
+    ) as HTMLButtonElement;
+    expect(oct30.textContent).toMatch(/bet365 · \$8\.98/);
+    await act(async () => oct30.click());
+    expect(host.textContent).toMatch(/Sabonis 13\+ reb/);
+    done();
   });
 });
