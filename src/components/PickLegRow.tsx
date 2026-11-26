@@ -2,8 +2,7 @@ import type { InjuryEntry, PickLeg, SlateGame } from "@lib/types";
 import { injuryStatusForPlayer } from "./InjuryStatusBadge";
 import { LegRowMeta } from "./LegRowMeta";
 import { bookieMarketLabel } from "@lib/market-label";
-import { sortLegRowBadgeTags } from "@lib/leg-display";
-import { displayLegRowTags } from "@lib/value-at-bookie";
+import { legRowBadgeLabels } from "@lib/value-at-bookie";
 import { legPriceAtBookie } from "@lib/single-bookie";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
 import { legReasonLineUi } from "../lib/leg-reason-ui";
@@ -26,10 +25,7 @@ function LegBadge({ label, danger }: { label: string; danger?: boolean }) {
 }
 
 export function PickLegRow({ leg, injuries, slate, myBookie, onTap }: Props) {
-  const badgeLabels = sortLegRowBadgeTags([
-    ...(leg.tags?.includes("former_team") ? ["Former team"] : []),
-    ...displayLegRowTags(leg, myBookie),
-  ]);
+  const badgeLabels = legRowBadgeLabels(leg, myBookie);
   const reasonLines = legRowReasonLines(leg);
   const price = legPriceAtBookie(leg, myBookie);
   const subtitle = slate ? legGameTipSubtitle(leg, slate) : null;

@@ -8,10 +8,27 @@ import {
 import type { PlayerTrackingDay } from "./player-tracking-cache.js";
 import { normalizeLegReasons, reasonTexts } from "./leg-reason-types.js";
 
+const INTERNAL_LEG_TAGS = new Set([
+  "boards shared",
+  "Check news",
+  "voids if out",
+  "former_team",
+]);
+
 /** Tags shown on leg rows / sheets (model-only tags stay internal). */
 export function visibleLegTags(tags: string[]): string[] {
-  return tags.filter((t) => t !== "boards shared");
+  return tags.filter((t) => !INTERNAL_LEG_TAGS.has(t));
 }
+
+export const LEG_ROW_BADGE_WHITELIST = new Set([
+  "Value",
+  "High probability",
+  "Former team",
+  "Roughie",
+  "Blowout risk",
+  "Edited",
+  "Check prices",
+]);
 
 const LEG_ROW_BADGE_ORDER = [
   "Value",

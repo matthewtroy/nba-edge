@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { buildShortLegReason, sortLegRowBadgeTags } from "../lib/leg-display";
+import { buildShortLegReason, sortLegRowBadgeTags, visibleLegTags } from "../lib/leg-display";
+import { legRowBadgeLabels } from "../lib/value-at-bookie";
 import type { PickLeg, PlayerGameLog } from "../lib/types";
 
 const base: PickLeg = {
@@ -31,6 +32,26 @@ function logs(reb: number[]): PlayerGameLog[] {
     source: "espn" as const,
   }));
 }
+
+describe("legRowBadgeLabels", () => {
+  it("dedupes former_team + Former Team + boards shared to one Former Team pill", () => {
+    const leg = {
+      ...base,
+      tags: ["former_team", "Former Team", "boards shared", "Value"],
+      blowoutRisk: false,
+      fairPrice: 1.5,
+      takeAt: 1.4,
+      bookiePrices: { Sportsbet: 2.0 },
+      bestBookie: "Sportsbet",
+      bestPrice: 2.0,
+    };
+    expect(visibleLegTags(leg.tags)).not.toContain("boards shared");
+    const pills = legRowBadgeLabels(leg, "Sportsbet");
+    expect(pills.filter((p) => p.toLowerCase() === "former team")).toHaveLength(1);
+    expect(pills).not.toContain("boards shared");
+    expect(pills).not.toContain("former_team");
+  });
+});
 
 describe("sortLegRowBadgeTags", () => {
   it("orders Value before High probability before Former team", () => {

@@ -1,7 +1,6 @@
 import type { InjuryEntry, PickLeg, SlateGame } from "@lib/types";
 import { bookieMarketLabel } from "@lib/market-label";
-import { sortLegRowBadgeTags } from "@lib/leg-display";
-import { displayLegRowTags } from "@lib/value-at-bookie";
+import { legRowBadgeLabels } from "@lib/value-at-bookie";
 import { legBookieQuoteView } from "@lib/leg-bookie-quote";
 import type { BookiePriceOpts } from "@lib/single-bookie";
 import { legGameTipSubtitle } from "@lib/leg-game-label";
@@ -50,11 +49,7 @@ export function MultiLegRow({
   onTap,
 }: Props) {
   const pool = catalog ?? picks;
-  const badgeLabels = sortLegRowBadgeTags([
-    ...(leg.tags?.includes("former_team") ? ["Former team"] : []),
-    ...(edited ? ["Edited"] : []),
-    ...displayLegRowTags(leg, bookie),
-  ]);
+  const badgeLabels = legRowBadgeLabels(leg, bookie, edited ? ["Edited"] : []);
   const reasonLines = legRowReasonLines(leg);
   const quoteView =
     bookie && !fairPriceInSlot
