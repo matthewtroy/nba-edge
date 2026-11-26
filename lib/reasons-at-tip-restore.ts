@@ -2,6 +2,7 @@ import { execFileSync } from "child_process";
 import fs from "fs";
 import path from "path";
 import type {
+  InjuryEntry,
   MetaJson,
   PickLeg,
   ReasonAtTipSnapshot,
@@ -12,6 +13,17 @@ import { gameStarted } from "./slate-tip-freeze.js";
 import { resolveDataGitRef } from "./restore-data-branch.js";
 import { refreshReasonsAtTip } from "./reasons-at-tip.js";
 import { SLATE_FOLDER_PATTERN } from "./slate-retention.js";
+import { seedInjuriesAtTipFromPreTip } from "./injuries-at-tip.js";
+
+export type PreTipInjuriesLoader = (slateDate: string, tipIso: string) => InjuryEntry[] | null;
+
+export function gitPreTipInjuriesLoader(rootDir: string): PreTipInjuriesLoader {
+  return (slateDate, tipIso) => {
+    const relPath = `public/data/${slateDate}/injuries.json`;
+    const ref = preTipFileCommit(rootDir, relPath, tipIso);
+    return ref ? loadJsonArrayAtCommit<InjuryEntry>(rootDir, ref.commit, relPath) : null;
+  };
+}
 
 /** Pick fields copied verbatim from the last pre-tip data commit (reasons/tags/prob/fair/L5/L10). */
 export const PRE_TIP_FROZEN_FIELDS = [
@@ -59,10 +71,10 @@ export interface PreTipCommit {
   committedAt: string;
 }
 
-/** Latest data-branch commit touching the slate's picks.json with commit time strictly before `beforeIso`. */
-export function preTipPicksCommit(
+/** Latest data-branch commit touching `relPath` with commit time strictly before `beforeIso`. */
+export function preTipFileCommit(
   rootDir: string,
-  slateDate: string,
+  relPath: string,
   beforeIso: string
 ): PreTipCommit | null {
   const dataRef = resolveDataGitRef(rootDir);
@@ -76,7 +88,7 @@ export function preTipPicksCommit(
     "--format=%H %cI",
     dataRef,
     "--",
-    picksRelPath(slateDate),
+    relPath,
   ]);
   if (!out) return null;
   for (const line of out.split("\n")) {
@@ -87,19 +99,32 @@ export function preTipPicksCommit(
   return null;
 }
 
+/** Latest data-branch commit touching the slate's picks.json with commit time strictly before `beforeIso`. */
+export function preTipPicksCommit(
+  rootDir: string,
+  slateDate: string,
+  beforeIso: string
+): PreTipCommit | null {
+  return preTipFileCommit(rootDir, picksRelPath(slateDate), beforeIso);
+}
+
+export function loadJsonArrayAtCommit<T>(rootDir: string, commit: string, relPath: string): T[] | null {
+  const raw = gitOk(rootDir, ["show", `${commit}:${relPath}`]);
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    return Array.isArray(parsed) ? (parsed as T[]) : null;
+  } catch {
+    return null;
+  }
+}
+
 export function loadPicksAtCommit(
   rootDir: string,
   slateDate: string,
   commit: string
 ): PickLeg[] | null {
-  const raw = gitOk(rootDir, ["show", `${commit}:${picksRelPath(slateDate)}`]);
-  if (!raw) return null;
-  try {
-    const parsed = JSON.parse(raw) as unknown;
-    return Array.isArray(parsed) ? (parsed as PickLeg[]) : null;
-  } catch {
-    return null;
-  }
+  return loadJsonArrayAtCommit<PickLeg>(rootDir, commit, picksRelPath(slateDate));
 }
 
 export function loadSlateAtCommit(
@@ -107,14 +132,7 @@ export function loadSlateAtCommit(
   slateDate: string,
   commit: string
 ): SlateGame[] | null {
-  const raw = gitOk(rootDir, ["show", `${commit}:public/data/${slateDate}/slate.json`]);
-  if (!raw) return null;
-  try {
-    const parsed = JSON.parse(raw) as unknown;
-    return Array.isArray(parsed) ? (parsed as SlateGame[]) : null;
-  } catch {
-    return null;
-  }
+  return loadJsonArrayAtCommit<SlateGame>(rootDir, commit, `public/data/${slateDate}/slate.json`);
 }
 
 /** Overlay pre-tip fields on started-game legs; re-add pre-tip legs the rebuild dropped. */
@@ -241,6 +259,8 @@ export interface TippedFolderSummary {
   legs: number;
   zeroReasonBefore: number;
   zeroReasonAfter: number;
+  injuriesAtTip: number;
+  injuriesSeededGames: number;
 }
 
 function zeroReasonCount(picks: PickLeg[]): number {
@@ -261,8 +281,10 @@ export function freezeTippedSlateFolders(input: {
   outDir: string;
   now: Date;
   loadPreTip?: PreTipLoader;
+  loadPreTipInjuries?: PreTipInjuriesLoader;
 }): TippedFolderSummary[] {
   const loader = input.loadPreTip ?? gitPreTipLoader(input.rootDir);
+  const injuriesLoader = input.loadPreTipInjuries ?? gitPreTipInjuriesLoader(input.rootDir);
   if (!fs.existsSync(input.outDir)) return [];
   const summaries: TippedFolderSummary[] = [];
   const dates = fs
@@ -287,7 +309,14 @@ export function freezeTippedSlateFolders(input: {
     if (result.status !== "no_pre_tip_commit") {
       fs.writeFileSync(path.join(dir, "picks.json"), JSON.stringify(result.picks, null, 2));
     }
-    const metaOut: MetaJson = { ...meta, reasonsAtTip: result.reasonsAtTip };
+    const injuries = seedInjuriesAtTipFromPreTip(meta.injuriesAtTip, slate, input.now, (tipIso) =>
+      injuriesLoader(slateDate, tipIso)
+    );
+    const metaOut: MetaJson = {
+      ...meta,
+      reasonsAtTip: result.reasonsAtTip,
+      injuriesAtTip: injuries.rows,
+    };
     if (result.reasonsFrozenFrom) metaOut.reasonsFrozenFrom = result.reasonsFrozenFrom;
     fs.writeFileSync(path.join(dir, "meta.json"), JSON.stringify(metaOut, null, 2));
     summaries.push({
@@ -297,6 +326,8 @@ export function freezeTippedSlateFolders(input: {
       legs: result.picks.length,
       zeroReasonBefore: zeroReasonCount(picks),
       zeroReasonAfter: zeroReasonCount(result.picks),
+      injuriesAtTip: injuries.rows.length,
+      injuriesSeededGames: injuries.seededGameIds.length,
     });
   }
   return summaries;

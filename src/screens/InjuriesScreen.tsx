@@ -6,6 +6,7 @@ import { useQuestionableSwaps } from "../hooks/useQuestionableSwaps";
 import { DateSwitcher } from "../components/DateSwitcher";
 import { TomorrowSlateTease } from "../components/TomorrowSlateTease";
 import { injuriesForInjuryPanel } from "@lib/injuries-at-tip";
+import { injuryRowKey } from "@lib/injury-tip-freeze";
 
 interface Props {
   data: DataBundle;
@@ -95,7 +96,7 @@ export function InjuriesScreen({
                 </h3>
                 {teamList.map((inj) => (
                   <InjuryRow
-                    key={inj.playerId}
+                    key={injuryRowKey(inj)}
                     inj={inj}
                     picks={data.picks}
                     countedOut={

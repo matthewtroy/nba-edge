@@ -4,7 +4,9 @@
 import { describe, expect, it } from "vitest";
 import fs from "fs";
 import path from "path";
-import type { PickLeg, SlateGame } from "../lib/types";
+import type { InjuryEntry, PickLeg, SlateGame } from "../lib/types";
+import { injuriesForInjuryPanel, seedInjuriesAtTipFromPreTip } from "../lib/injuries-at-tip";
+import { injuryRowKey, mergeInjuriesReportTime } from "../lib/injury-tip-freeze";
 import type { OfficialCardFile } from "../lib/official-card-time";
 import { backfillCardFreezes } from "../lib/card-freeze-backfill";
 import { freezeGamesSgms, settleGamesSgms } from "../lib/games-sgm-freeze";
@@ -208,5 +210,48 @@ describe("item 2: Games tab SGMs backfilled from pre-tip, settled, in Other bets
     expect(other.textContent).toMatch(/SAS @ POR · Neds · \$69\.15 · 0\.25u/);
     root.unmount();
     host.remove();
+  });
+});
+
+describe("item 3: Injuries tab shows today's teams after tip", () => {
+  const inj = JSON.parse(
+    fs.readFileSync(path.join(process.cwd(), "tests/fixtures/injuries/2026-11-26-a199542.json"), "utf8")
+  ) as { slate: SlateGame[]; injuries: InjuryEntry[]; injuriesAtTip: InjuryEntry[] };
+  const afterTips = new Date("2026-11-26T10:00:00Z");
+
+  it("26 Nov (a199542): 62 feed rows, empty injuriesAtTip → panel shows all 62 across 9 games", () => {
+    expect(inj.injuriesAtTip).toEqual([]);
+    const panel = injuriesForInjuryPanel(inj.injuries, inj.injuriesAtTip, inj.slate, afterTips);
+    expect(panel).toHaveLength(62);
+    expect(new Set(panel.map((r) => r.gameId)).size).toBe(9);
+  });
+
+  it("started games prefer frozen at-tip rows when they exist", () => {
+    const game = inj.slate[0]!;
+    const frozen = { ...inj.injuries.find((r) => r.gameId === game.id)!, status: "Out" as const, playerName: "Frozen Row" };
+    const panel = injuriesForInjuryPanel(inj.injuries, [frozen], inj.slate, afterTips);
+    expect(panel.filter((r) => r.gameId === game.id).map((r) => r.playerName)).toEqual(["Frozen Row"]);
+  });
+
+  it("seeds at-tip rows per started game from that game's pre-tip copy", () => {
+    const tips: string[] = [];
+    const { rows, seededGameIds } = seedInjuriesAtTipFromPreTip([], inj.slate, afterTips, (tipIso) => {
+      tips.push(tipIso);
+      return inj.injuries;
+    });
+    expect(seededGameIds).toHaveLength(9);
+    expect(new Set(tips)).toEqual(new Set(inj.slate.map((g) => g.startTime)));
+    expect(rows).toHaveLength(62);
+    const again = seedInjuriesAtTipFromPreTip(rows, inj.slate, afterTips, () => {
+      throw new Error("not reloaded");
+    });
+    expect(again.seededGameIds).toEqual([]);
+  });
+
+  it("rows without playerId are not collapsed into one", () => {
+    const a = { playerName: "A", teamId: "1", teamName: "T", gameId: "g", status: "Out", source: "ESPN", updatedAt: "2026-11-25T00:00Z" } as InjuryEntry;
+    const b = { ...a, playerName: "B" };
+    expect(mergeInjuriesReportTime([a, b])).toHaveLength(2);
+    expect(injuryRowKey(a)).toBe("1:A");
   });
 });

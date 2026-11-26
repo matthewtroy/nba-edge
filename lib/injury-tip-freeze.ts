@@ -1,6 +1,5 @@
 import type { InjuryEntry, SlateGame } from "./types.js";
 import { gameStarted } from "./slate-tip-freeze.js";
-import { injuriesByPlayerId } from "./player-eligibility.js";
 import {
   injuryEntryRecencyMs,
   newerInjuryEntry,
@@ -30,7 +29,12 @@ export function freezeInjuriesAtTip(
   slate: SlateGame[],
   now: Date
 ): InjuryEntry[] {
-  const prevByPlayer = injuriesByPlayerId(previous);
+  const prevByPlayer = new Map<string, InjuryEntry>();
+  for (const e of previous) {
+    const key = injuryRowKey(e);
+    const cur = prevByPlayer.get(key);
+    if (!cur || injuryEntryRecencyMs(e) >= injuryEntryRecencyMs(cur)) prevByPlayer.set(key, e);
+  }
   const tipMsByGame = new Map(
     slate.map((g) => [g.id, tipMsForGame(slate, g.id)] as const)
   );
@@ -42,11 +46,12 @@ export function freezeInjuriesAtTip(
   const seen = new Set<string>();
   for (const entry of incoming) {
     const started = startedByGame.get(entry.gameId) === true;
-    const prev = prevByPlayer.get(entry.playerId);
+    const key = injuryRowKey(entry);
+    const prev = prevByPlayer.get(key);
     const tipMs = tipMsByGame.get(entry.gameId) ?? null;
     if (started) {
       const history = [...previous, ...incoming].filter(
-        (e) => e.playerId === entry.playerId
+        (e) => injuryRowKey(e) === key
       );
       const snap =
         tipMs != null
@@ -62,14 +67,21 @@ export function freezeInjuriesAtTip(
     } else {
       out.push(entry);
     }
-    seen.add(entry.playerId);
+    seen.add(key);
   }
   for (const entry of previous) {
-    if (seen.has(entry.playerId)) continue;
+    const key = injuryRowKey(entry);
+    if (seen.has(key)) continue;
+    seen.add(key);
     const started = startedByGame.get(entry.gameId) === true;
     if (started) out.push(entry);
   }
   return out;
+}
+
+/** Dedupe key for injury rows; some feed rows have no playerId. */
+export function injuryRowKey(entry: InjuryEntry): string {
+  return entry.playerId || `${entry.teamId}:${entry.playerName}`;
 }
 
 export function mergeInjuriesReportTime(
@@ -77,8 +89,9 @@ export function mergeInjuriesReportTime(
 ): InjuryEntry[] {
   const map = new Map<string, InjuryEntry>();
   for (const entry of rows) {
-    const prev = map.get(entry.playerId);
-    map.set(entry.playerId, prev ? newerInjuryEntry(entry, prev) : entry);
+    const key = injuryRowKey(entry);
+    const prev = map.get(key);
+    map.set(key, prev ? newerInjuryEntry(entry, prev) : entry);
   }
   return [...map.values()];
 }

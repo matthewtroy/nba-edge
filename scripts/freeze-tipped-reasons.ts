@@ -49,7 +49,8 @@ export function runFreezeTippedReasons(rootDir: string, now = new Date()): void 
       ? `${s.frozenFrom.commit.slice(0, 7)} @ ${s.frozenFrom.committedAt} (first tip ${s.frozenFrom.firstTipAt})`
       : "none";
     console.log(
-      `freeze-tipped ${s.slateDate}: ${s.status} · frozenFrom ${from} · legs ${s.legs} · zero-reason ${s.zeroReasonBefore} → ${s.zeroReasonAfter}`
+      `freeze-tipped ${s.slateDate}: ${s.status} · frozenFrom ${from} · legs ${s.legs} · zero-reason ${s.zeroReasonBefore} → ${s.zeroReasonAfter} · ` +
+        `injuriesAtTip ${s.injuriesAtTip} (seeded ${s.injuriesSeededGames} games from pre-tip)`
     );
     if (s.frozenFrom) {
       backfillTippedCard(rootDir, outDir, s.slateDate, s.frozenFrom);
