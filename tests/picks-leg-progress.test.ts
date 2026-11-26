@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import fs from "fs";
 import path from "path";
+import { LEG_PROGRESS_TRACK_CLASS } from "../lib/leg-progress-layout";
 
 describe("PicksScreen", () => {
   it("picks list uses row dividers not per-row borders", () => {
@@ -44,12 +45,13 @@ describe("PicksScreen", () => {
     expect(bar.match(/leg-progress-right/g)?.length).toBe(1);
     expect(bar).toContain('data-testid="leg-progress-target-tick"');
     expect(bar).not.toContain("leg-progress-target-label");
-    expect(bar).not.toMatch(/min-w-\[2\.5rem\]/);
-    expect(bar).toMatch(/gap-1 min-w-0/);
+    expect(bar).toMatch(/LEG_PROGRESS_LABEL_CLASS/);
+    expect(bar).toMatch(/LEG_PROGRESS_TRACK_CLASS/);
+    expect(bar).toMatch(/gap-1 min-w-0|LEG_PROGRESS_TRACK_CLASS/);
     expect(bar).not.toContain("leg-progress-value-track");
     expect(bar).toContain("showTrackPlaceholder");
     expect(bar).toContain("leg-progress-track-placeholder");
-    expect(bar).toMatch(/h-\[6px\]/);
+    expect(LEG_PROGRESS_TRACK_CLASS).toMatch(/h-\[6px\]/);
     expect(bar).toMatch(/maxWidth.*handlePct/);
   });
 });

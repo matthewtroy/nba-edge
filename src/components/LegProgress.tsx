@@ -8,6 +8,10 @@ import {
   legProgressRightLabel,
   legProgressTargetPercent,
 } from "@lib/live-leg-ui";
+import {
+  LEG_PROGRESS_LABEL_CLASS,
+  LEG_PROGRESS_TRACK_CLASS,
+} from "@lib/leg-progress-layout";
 
 export function LegProgress({
   view,
@@ -35,11 +39,8 @@ export function LegProgress({
         data-testid="leg-progress"
         data-state="placeholder"
       >
-        <div
-          className="relative flex-1 min-w-[72px] h-[6px] rounded-full bg-white/[0.12] leg-progress-track-placeholder"
-          aria-hidden
-        />
-        <span className="shrink-0 text-[10px] font-semibold tabular-nums text-white/35">—</span>
+        <div className={`${LEG_PROGRESS_TRACK_CLASS} leg-progress-track-placeholder`} aria-hidden />
+        <span className={`${LEG_PROGRESS_LABEL_CLASS} text-white/35`}>—</span>
       </div>
     );
   }
@@ -61,10 +62,7 @@ export function LegProgress({
       data-state={view.state}
       data-value={_valueAtBookie ? "true" : undefined}
     >
-      <div
-        className="relative flex-1 min-w-[72px] h-[6px] rounded-full bg-white/[0.12]"
-        aria-hidden
-      >
+      <div className={LEG_PROGRESS_TRACK_CLASS} aria-hidden data-testid="leg-progress-track">
         <span
           className={`absolute inset-y-0 left-0 rounded-l-full ${
             widthTransition ? "transition-[width] duration-500 ease-out" : ""
@@ -93,7 +91,7 @@ export function LegProgress({
         )}
       </div>
       <span
-        className={`shrink-0 text-[10px] font-semibold tabular-nums text-right ${legProgressRightClass(view)} ${
+        className={`${LEG_PROGRESS_LABEL_CLASS} ${legProgressRightClass(view)} ${
           settled ? "leg-progress-settled-right" : ""
         }`}
         data-testid="leg-progress-right"
