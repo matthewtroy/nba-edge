@@ -1,9 +1,11 @@
 import { parseBoxscore, type BoxLine } from "../scripts/espn-parse.js";
-import { yyyymmdd } from "../scripts/fetch/espn.js";
+import { formatYyyymmddInZone } from "../scripts/espn-parse.js";
 import { normalizeEspnGameStatus, slateStatusLabel } from "./slate-espn-status.js";
+import type { SlateGame } from "./types.js";
 
 export const LIVE_POLL_MS = 5000;
 export const LIVE_SOURCE = "espn-direct" as const;
+export const ESPN_SCOREBOARD_ET = "America/New_York";
 
 const ESPN_SCOREBOARD =
   "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard";
@@ -25,10 +27,21 @@ export interface LiveSourceSnapshot {
   boxesByGame: Map<string, Map<string, BoxLine>>;
 }
 
+export type SlateGameTip = Pick<SlateGame, "id" | "startTime">;
+
 export interface LiveSourceProvider {
   readonly id: typeof LIVE_SOURCE | "mock";
-  fetchScoreboard(date: Date, signal?: AbortSignal): Promise<unknown>;
+  /** `dates` query value: ESPN ET calendar day as YYYYMMDD (never Sydney slate date). */
+  fetchScoreboard(etYyyymmdd: string, signal?: AbortSignal): Promise<unknown>;
   fetchSummary(gameId: string, signal?: AbortSignal): Promise<unknown>;
+}
+
+export function distinctEtScoreboardDates(slateGames: SlateGameTip[]): string[] {
+  const seen = new Set<string>();
+  for (const g of slateGames) {
+    seen.add(formatYyyymmddInZone(new Date(g.startTime), ESPN_SCOREBOARD_ET));
+  }
+  return [...seen].sort();
 }
 
 export function parseLiveScoreboard(raw: unknown): LiveGameBoard[] {
@@ -57,6 +70,33 @@ export function parseLiveScoreboard(raw: unknown): LiveGameBoard[] {
   return out;
 }
 
+export function parseLiveGameFromSummary(gameId: string, summary: unknown): LiveGameBoard | null {
+  const data = summary as {
+    header?: {
+      id?: string;
+      competitions?: {
+        id?: string;
+        status?: {
+          period?: number;
+          type?: { state?: string; name?: string; shortDetail?: string; detail?: string };
+        };
+      }[];
+    };
+  };
+  const comp = data.header?.competitions?.[0];
+  if (!comp?.status?.type) return null;
+  const st = comp.status.type;
+  const phase = normalizeEspnGameStatus(st.state ?? "", st.name);
+  const detail = st.shortDetail ?? st.detail ?? st.name ?? "";
+  return {
+    gameId,
+    phase,
+    status: slateStatusLabel(phase),
+    period: comp.status.period ?? null,
+    statusDetail: detail,
+  };
+}
+
 export function stableSnapshotKey(snapshot: LiveSourceSnapshot): string {
   const parts: string[] = [];
   for (const g of snapshot.games) {
@@ -75,20 +115,57 @@ export function boxesFromSummary(summary: unknown): Map<string, BoxLine> {
   return parseBoxscore(summary);
 }
 
+export function evaluateEspnCorsResponse(res: {
+  ok: boolean;
+  status: number;
+  headers: { get(name: string): string | null };
+}): { ok: boolean; allowOrigin: string | null; status: number } {
+  const allowOrigin = res.headers.get("access-control-allow-origin");
+  const ok =
+    res.ok &&
+    (allowOrigin === "*" || allowOrigin === PAGES_ORIGIN || allowOrigin != null);
+  return { ok, allowOrigin, status: res.status };
+}
+
 export async function buildLiveSnapshot(
   provider: LiveSourceProvider,
-  date: Date,
+  slateGames: SlateGameTip[],
   gameIds: string[],
   signal?: AbortSignal
 ): Promise<LiveSourceSnapshot> {
-  const raw = await provider.fetchScoreboard(date, signal);
-  const games = parseLiveScoreboard(raw).filter((g) =>
-    gameIds.length ? gameIds.includes(g.gameId) : true
-  );
-  const boxesByGame = new Map<string, Map<string, BoxLine>>();
-  const liveOrFinal = games.filter((g) => g.phase !== "scheduled");
+  const want = new Set(gameIds.length ? gameIds : slateGames.map((g) => g.id));
+  const byId = new Map<string, LiveGameBoard>();
+
+  const dated = slateGames.filter((g) => want.has(g.id));
+  const etDates = distinctEtScoreboardDates(dated.length ? dated : slateGames);
+
   await Promise.all(
-    liveOrFinal.map(async (g) => {
+    etDates.map(async (etDay) => {
+      const raw = await provider.fetchScoreboard(etDay, signal);
+      for (const row of parseLiveScoreboard(raw)) {
+        if (want.has(row.gameId)) byId.set(row.gameId, row);
+      }
+    })
+  );
+
+  const missing = [...want].filter((id) => !byId.has(id));
+  await Promise.all(
+    missing.map(async (gameId) => {
+      try {
+        const summary = await provider.fetchSummary(gameId, signal);
+        const row = parseLiveGameFromSummary(gameId, summary);
+        if (row) byId.set(gameId, row);
+      } catch {
+        /* unscheduled or ESPN gap */
+      }
+    })
+  );
+
+  const games = [...byId.values()].sort((a, b) => a.gameId.localeCompare(b.gameId));
+  const boxesByGame = new Map<string, Map<string, BoxLine>>();
+  const needBox = games.filter((g) => g.phase !== "scheduled");
+  await Promise.all(
+    needBox.map(async (g) => {
       try {
         const summary = await provider.fetchSummary(g.gameId, signal);
         boxesByGame.set(g.gameId, boxesFromSummary(summary));
@@ -97,6 +174,7 @@ export async function buildLiveSnapshot(
       }
     })
   );
+
   return {
     fetchedAt: new Date().toISOString(),
     games,
@@ -106,7 +184,7 @@ export async function buildLiveSnapshot(
 
 export interface LiveSubscribeOptions {
   provider: LiveSourceProvider;
-  date: Date;
+  slateGames: SlateGameTip[];
   gameIds: string[];
   pollMs?: number;
   onSnapshot: (snap: LiveSourceSnapshot) => void;
@@ -130,7 +208,7 @@ export function subscribeLiveSource(opts: LiveSubscribeOptions): () => void {
     try {
       const snap = await buildLiveSnapshot(
         opts.provider,
-        opts.date,
+        opts.slateGames,
         opts.gameIds,
         ctrl.signal
       );
@@ -165,8 +243,8 @@ export function subscribeLiveSource(opts: LiveSubscribeOptions): () => void {
 export function createEspnDirectProvider(): LiveSourceProvider {
   return {
     id: LIVE_SOURCE,
-    async fetchScoreboard(date, signal) {
-      const url = `${ESPN_SCOREBOARD}?dates=${yyyymmdd(date)}`;
+    async fetchScoreboard(etYyyymmdd, signal) {
+      const url = `${ESPN_SCOREBOARD}?dates=${etYyyymmdd}`;
       const res = await fetch(url, { signal, cache: "no-store" });
       if (!res.ok) throw new Error(`ESPN scoreboard ${res.status}`);
       return res.json();
@@ -181,15 +259,20 @@ export function createEspnDirectProvider(): LiveSourceProvider {
 }
 
 export interface MockLiveProviderData {
-  scoreboard: unknown;
+  /** Per-ET-day scoreboards (`YYYYMMDD`); falls back to `scoreboard` when missing. */
+  scoreboards?: Record<string, unknown>;
+  scoreboard?: unknown;
   summaries: Record<string, unknown>;
 }
 
 export function createMockLiveProvider(data: MockLiveProviderData): LiveSourceProvider {
   return {
     id: "mock",
-    async fetchScoreboard() {
-      return data.scoreboard;
+    async fetchScoreboard(etYyyymmdd) {
+      const row = data.scoreboards?.[etYyyymmdd];
+      if (row !== undefined) return row;
+      if (data.scoreboard !== undefined) return data.scoreboard;
+      return { events: [] };
     },
     async fetchSummary(gameId) {
       const row = data.summaries[gameId];
@@ -209,9 +292,5 @@ export async function verifyEspnCorsForPages(
     headers: { Origin: pagesOrigin },
     cache: "no-store",
   });
-  const allowOrigin = res.headers.get("access-control-allow-origin");
-  const ok =
-    res.ok &&
-    (allowOrigin === "*" || allowOrigin === pagesOrigin || allowOrigin != null);
-  return { ok, allowOrigin, status: res.status };
+  return evaluateEspnCorsResponse(res);
 }

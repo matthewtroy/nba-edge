@@ -1,0 +1,15 @@
+{
+  "events": [
+    {
+      "id": "401909317",
+      "status": {
+        "period": 4,
+        "type": {
+          "state": "post",
+          "name": "STATUS_FINAL",
+          "shortDetail": "Final"
+        }
+      }
+    }
+  ]
+}

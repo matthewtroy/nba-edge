@@ -25,13 +25,23 @@ export function liveViewsForLegs(
   const games = slateGameMap(slate);
   const boards = liveBoardByGame(snapshot);
   const out = new Map<string, LiveLegView>();
+  const phaseByGame = new Map(
+    (snapshot?.games ?? []).map((g) => [g.gameId, g.phase] as const)
+  );
   for (const leg of legs) {
     const game = games.get(leg.gameId);
+    const phase = phaseByGame.get(leg.gameId);
+    const gameForView =
+      game && phase === "final"
+        ? { ...game, status: "final" }
+        : game && phase === "live"
+          ? { ...game, status: "live" }
+          : game;
     const box = snapshot?.boxesByGame.get(leg.gameId)?.get(leg.playerId);
     const board = boards.get(leg.gameId);
     out.set(
       leg.id,
-      liveLegView(leg, game, box, {
+      liveLegView(leg, gameForView, box, {
         period: board?.period,
         statusDetail: board?.statusDetail,
       })

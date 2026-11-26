@@ -71,12 +71,14 @@ const finalGame: SlateGame = {
 describe("live settle consistency", () => {
   it("final fixture legs match settle-core", async () => {
     const provider = createMockLiveProvider({
-      scoreboard,
+      scoreboards: { "20261126": scoreboard },
       summaries: { "fixture-game-won": summaryFinal },
     });
-    const liveSnap = await buildLiveSnapshot(provider, new Date("2026-11-26"), [
-      "fixture-game-won",
-    ]);
+    const liveSnap = await buildLiveSnapshot(
+      provider,
+      [{ id: finalGame.id, startTime: finalGame.startTime }],
+      ["fixture-game-won"]
+    );
     const cases = [
       snap({ id: "w", playerId: "p-won", gameId: "fixture-game-won", market: "pts", line: 20 }),
       snap({ id: "l", playerId: "p-lost", gameId: "fixture-game-won", market: "pts", line: 20 }),

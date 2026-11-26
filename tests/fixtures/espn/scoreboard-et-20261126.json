@@ -1,0 +1,26 @@
+{
+  "events": [
+    {
+      "id": "401909318",
+      "status": {
+        "period": 2,
+        "type": {
+          "state": "in",
+          "name": "STATUS_IN_PROGRESS",
+          "shortDetail": "Q2 5:00"
+        }
+      }
+    },
+    {
+      "id": "401909319",
+      "status": {
+        "period": 0,
+        "type": {
+          "state": "pre",
+          "name": "STATUS_SCHEDULED",
+          "shortDetail": "11:00 AM"
+        }
+      }
+    }
+  ]
+}

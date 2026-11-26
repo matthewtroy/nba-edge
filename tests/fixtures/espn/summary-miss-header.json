@@ -1,0 +1,37 @@
+{
+  "header": {
+    "id": "401909317",
+    "competitions": [
+      {
+        "id": "401909317",
+        "status": {
+          "period": 4,
+          "type": {
+            "state": "post",
+            "name": "STATUS_FINAL",
+            "shortDetail": "Final"
+          }
+        }
+      }
+    ]
+  },
+  "boxscore": {
+    "players": [
+      {
+        "team": { "id": "h1" },
+        "statistics": [
+          {
+            "keys": ["minutes", "points", "rebounds", "assists"],
+            "athletes": [
+              {
+                "athlete": { "id": "p-final", "displayName": "Final Star" },
+                "didNotPlay": false,
+                "stats": ["38", "28", "9", "4"]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

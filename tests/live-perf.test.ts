@@ -28,10 +28,14 @@ const multis = JSON.parse(
 describe("live perf", () => {
   it("poll+render compute under 100ms on official fixture", async () => {
     const provider = createMockLiveProvider({
-      scoreboard,
+      scoreboards: { "20261126": scoreboard },
       summaries: { "fixture-game-won": summaryFinal },
     });
-    const snap = await buildLiveSnapshot(provider, new Date("2026-11-26"), []);
+    const snap = await buildLiveSnapshot(
+      provider,
+      [{ id: "fixture-game-won", startTime: "2026-11-26T15:00:00Z" }],
+      []
+    );
     const legIds = new Set(Object.keys(official.legSnapshots));
     const legs = picks.filter((p) => legIds.has(p.id));
     let max = 0;

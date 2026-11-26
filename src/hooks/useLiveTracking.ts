@@ -19,11 +19,6 @@ export interface LiveTrackingState {
 
 export type LiveTrackingMaps = Pick<LiveTrackingState, "legViews" | "betViews">;
 
-function yyyymmddFromIso(dateKey: string): Date {
-  const [y, m, d] = dateKey.split("-").map(Number);
-  return new Date(Date.UTC(y, m - 1, d, 12, 0, 0));
-}
-
 export function useLiveTracking(
   slateDate: string,
   slate: SlateGame[],
@@ -41,7 +36,7 @@ export function useLiveTracking(
     const provider = createEspnDirectProvider();
   const unsub = subscribeLiveSource({
       provider,
-      date: yyyymmddFromIso(slateDate),
+      slateGames: slate,
       gameIds,
       pollMs: LIVE_POLL_MS,
       onSnapshot: (snap) => {

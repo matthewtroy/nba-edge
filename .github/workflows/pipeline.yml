@@ -120,6 +120,10 @@ jobs:
         continue-on-error: true
         run: npx tsx scripts/nba-tracking-probe.ts
 
+      - name: ESPN health check
+        continue-on-error: true
+        run: npx tsx scripts/espn-health-check.ts
+
       - name: Run pipeline
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
