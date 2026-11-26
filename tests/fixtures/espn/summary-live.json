@@ -1,0 +1,30 @@
+{
+  "boxscore": {
+    "players": [
+      {
+        "team": { "id": "h1" },
+        "statistics": [
+          {
+            "keys": [
+              "minutes",
+              "points",
+              "fieldGoalsMade-fieldGoalsAttempted",
+              "threePointFieldGoalsMade-threePointFieldGoalsAttempted",
+              "freeThrowsMade-freeThrowsAttempted",
+              "rebounds",
+              "assists",
+              "turnovers"
+            ],
+            "athletes": [
+              {
+                "athlete": { "id": "p-live", "displayName": "Live Guy" },
+                "didNotPlay": false,
+                "stats": ["18", "11", "4-9", "1-3", "2-2", "5", "2", "1"]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

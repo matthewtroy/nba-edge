@@ -1,0 +1,48 @@
+{
+  "events": [
+    {
+      "id": "fixture-game-won",
+      "status": {
+        "period": 4,
+        "type": {
+          "state": "post",
+          "name": "STATUS_FINAL",
+          "shortDetail": "Final"
+        }
+      }
+    },
+    {
+      "id": "fixture-game-live",
+      "status": {
+        "period": 2,
+        "type": {
+          "state": "in",
+          "name": "STATUS_IN_PROGRESS",
+          "shortDetail": "Q2 8:42"
+        }
+      }
+    },
+    {
+      "id": "fixture-game-q1",
+      "status": {
+        "period": 1,
+        "type": {
+          "state": "in",
+          "name": "STATUS_IN_PROGRESS",
+          "shortDetail": "Q1 3:12"
+        }
+      }
+    },
+    {
+      "id": "fixture-game-scheduled",
+      "status": {
+        "period": 0,
+        "type": {
+          "state": "pre",
+          "name": "STATUS_SCHEDULED",
+          "shortDetail": "7:30 PM"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "boxscore": {
+    "players": [
+      {
+        "team": { "id": "h1" },
+        "statistics": [
+          {
+            "keys": [
+              "minutes",
+              "points",
+              "fieldGoalsMade-fieldGoalsAttempted",
+              "threePointFieldGoalsMade-threePointFieldGoalsAttempted",
+              "freeThrowsMade-freeThrowsAttempted",
+              "rebounds",
+              "assists",
+              "turnovers"
+            ],
+            "athletes": [
+              {
+                "athlete": { "id": "p-won", "displayName": "Winner" },
+                "didNotPlay": false,
+                "stats": ["34", "24", "9-14", "2-5", "4-4", "8", "6", "2"]
+              },
+              {
+                "athlete": { "id": "p-lost", "displayName": "Loser" },
+                "didNotPlay": false,
+                "stats": ["32", "14", "5-12", "1-4", "3-3", "4", "3", "1"]
+              },
+              {
+                "athlete": { "id": "p-void", "displayName": "DNP" },
+                "didNotPlay": true,
+                "stats": []
+              },
+              {
+                "athlete": { "id": "p-q1", "displayName": "Q1 Star" },
+                "didNotPlay": false,
+                "stats": ["36", "22", "8-15", "2-6", "4-4", "7", "5", "0"]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "plays": [
+    {
+      "period": { "number": 1 },
+      "participants": [{ "athlete": { "id": "p-q1" } }],
+      "type": { "text": "Made Layup Shot" },
+      "scoreValue": 2
+    },
+    {
+      "period": { "number": 1 },
+      "participants": [{ "athlete": { "id": "p-q1" } }],
+      "type": { "text": "Made Three Point Shot" },
+      "scoreValue": 3
+    },
+    {
+      "period": { "number": 1 },
+      "participants": [{ "athlete": { "id": "p-q1" } }],
+      "type": { "text": "Offensive Rebound" }
+    },
+    {
+      "period": { "number": 1 },
+      "participants": [{ "athlete": { "id": "p-q1" } }],
+      "type": { "text": "Made Layup Shot" },
+      "scoreValue": 2
+    },
+    {
+      "period": { "number": 1 },
+      "participants": [{ "athlete": { "id": "p-q1" } }],
+      "type": { "text": "Made Free Throw" },
+      "scoreValue": 1
+    }
+  ]
+}
