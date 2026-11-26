@@ -53,6 +53,8 @@ export interface OfficialCardFile {
   republishedAt?: string;
   /** Games-tab SGMs for every price filter, frozen at publish. */
   gamesSgms?: import("./games-sgm-freeze.js").FrozenGamesSgms;
+  /** Value singles (1u each), frozen at publish. */
+  valueSingles?: import("./value-leg-track.js").FrozenValueSingle[];
 }
 
 const EVENING_HOURS = new Set([21, 22, 23, 0, 1]);

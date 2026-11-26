@@ -5,8 +5,12 @@ import type { GradedProjectionLeg } from "./graded-leg.js";
 
 const Q1_MARKETS = new Set(["q1pts", "q1reb", "q1ast"]);
 
+/** Singles rule: best AU price (ex bet365) at least fair × 1.08. */
+export const VALUE_SINGLE_MIN_EDGE = 1.08;
+export const VALUE_SINGLE_STAKE_UNITS = 1;
+
 export function bestAuPriceExBet365(
-  leg: PickLeg
+  leg: Pick<PickLeg, "bookiePrices" | "bestBookie" | "bestPrice">
 ): { price: number; bookie: string } | null {
   let best: { price: number; bookie: string } | null = null;
   const au = new Set<string>(AU_BOOKMAKERS);
@@ -28,18 +32,49 @@ export function bestAuPriceExBet365(
   return best;
 }
 
-/** Value at build freeze: best AU price strictly above fair; one row per player/market/line. */
-export function selectValueLegsAtFreeze(picks: PickLeg[]): PickLeg[] {
+/** One Value single frozen at the 9pm publish (1u at the best AU price, ex bet365). */
+export interface FrozenValueSingle {
+  id: string;
+  playerId: string;
+  playerName: string;
+  gameId: string;
+  market: string;
+  line: number;
+  price: number;
+  bookie: string;
+  fairPrice: number;
+  probability: number;
+}
+
+export function isValueSingle(leg: PickLeg): boolean {
+  if (Q1_MARKETS.has(leg.market)) return false;
+  if (!(leg.fairPrice > 1)) return false;
+  const best = bestAuPriceExBet365(leg);
+  return best != null && best.price >= leg.fairPrice * VALUE_SINGLE_MIN_EDGE;
+}
+
+/** Value singles from a frozen picks copy; one per player/market/line. */
+export function freezeValueSingles(picks: PickLeg[]): FrozenValueSingle[] {
   const seen = new Set<string>();
-  const out: PickLeg[] = [];
+  const out: FrozenValueSingle[] = [];
   for (const leg of picks) {
-    if (Q1_MARKETS.has(leg.market)) continue;
-    const best = bestAuPriceExBet365(leg);
-    if (!best || best.price <= leg.fairPrice) continue;
+    if (!isValueSingle(leg)) continue;
     const key = `${leg.playerId}:${leg.market}:${leg.line}`;
     if (seen.has(key)) continue;
     seen.add(key);
-    out.push(leg);
+    const best = bestAuPriceExBet365(leg)!;
+    out.push({
+      id: leg.id,
+      playerId: leg.playerId,
+      playerName: leg.playerName,
+      gameId: leg.gameId,
+      market: leg.market,
+      line: leg.line,
+      price: best.price,
+      bookie: best.bookie,
+      fairPrice: leg.fairPrice,
+      probability: leg.probability,
+    });
   }
   return out;
 }
@@ -58,30 +93,28 @@ export interface ValueLegRow {
   probability: number;
 }
 
-export function valueLegRowsFromGraded(
-  freezePicks: PickLeg[],
+export function valueLegRowsFromSingles(
+  slateDate: string,
+  singles: FrozenValueSingle[],
   graded: GradedProjectionLeg[]
 ): ValueLegRow[] {
-  const valuePicks = selectValueLegsAtFreeze(freezePicks);
   const byId = new Map(graded.map((g) => [g.id, g]));
   const rows: ValueLegRow[] = [];
-  for (const leg of valuePicks) {
-    const g = byId.get(leg.id);
+  for (const s of singles) {
+    const g = byId.get(s.id);
     if (!g || g.result === "void" || g.result === "pending") continue;
-    const best = bestAuPriceExBet365(leg);
-    if (!best) continue;
     rows.push({
-      id: leg.id,
-      slateDate: g.slateDate,
-      playerName: leg.playerName,
-      market: leg.market,
-      line: leg.line,
+      id: s.id,
+      slateDate,
+      playerName: s.playerName,
+      market: s.market,
+      line: s.line,
       result: g.result,
-      price: best.price,
-      bookie: best.bookie,
-      fairPrice: leg.fairPrice,
-      edgeVsFair: best.price / leg.fairPrice - 1,
-      probability: leg.probability,
+      price: s.price,
+      bookie: s.bookie,
+      fairPrice: s.fairPrice,
+      edgeVsFair: s.price / s.fairPrice - 1,
+      probability: s.probability,
     });
   }
   return rows;

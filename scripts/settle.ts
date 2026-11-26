@@ -19,7 +19,10 @@ import { BET_LABELS, settleOfficialBets } from "../lib/official-bet-settle.js";
 import { extraOfficialBetRows, loadExtraOfficialBets } from "../lib/extra-official-bets.js";
 import { loadPreAppMainPlays, preAppMainPlayRows } from "../lib/pre-app-main-plays.js";
 import { settleGamesSgms, type GamesSgmBetRow } from "../lib/games-sgm-freeze.js";
-import { valueLegRowsFromGraded } from "../lib/value-leg-track.js";
+import { valueLegRowsFromSingles } from "../lib/value-leg-track.js";
+import { valueSinglesForSlate, valueSinglesSourceLabel } from "../lib/value-singles-source.js";
+import { loadPicksAtCommit } from "../lib/reasons-at-tip-restore.js";
+import type { MetaJson } from "../lib/types.js";
 import { slateResultsFrozen } from "../lib/settle-slate-freeze.js";
 import { syncSettleToSupabase } from "./supabase-sync.js";
 
@@ -109,12 +112,19 @@ function loadOfficialCard(slateDate: string): OfficialCardFile | null {
   return JSON.parse(fs.readFileSync(cardPath, "utf8")) as OfficialCardFile;
 }
 
+function loadMeta(slateDate: string): MetaJson | null {
+  const p = path.join(outDir, slateDate, "meta.json");
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, "utf8")) as MetaJson;
+}
+
 function sliceUnchanged(a: ResultsSlice | null, b: ResultsSlice): boolean {
   if (!a) return false;
   return (
     JSON.stringify(a.official.legs) === JSON.stringify(b.official.legs) &&
     JSON.stringify(a.official.bets) === JSON.stringify(b.official.bets) &&
     JSON.stringify(a.gradedLegs) === JSON.stringify(b.gradedLegs) &&
+    JSON.stringify(a.valueLegs.legs) === JSON.stringify(b.valueLegs.legs) &&
     JSON.stringify(a.gamesSgm ?? null) === JSON.stringify(b.gamesSgm ?? null)
   );
 }
@@ -143,7 +153,7 @@ async function main() {
   const allOfficialLegs: ReturnType<typeof settleOfficialCard>["legs"] = [];
   const allOfficialBets: ReturnType<typeof settleOfficialBets> = [];
   const allGraded: ReturnType<typeof gradePickCatalog> = [];
-  const allValue: ReturnType<typeof valueLegRowsFromGraded> = [];
+  const allValue: ReturnType<typeof valueLegRowsFromSingles> = [];
   const allGamesSgmBets: GamesSgmBetRow[] = [];
 
   const extraBets = loadExtraOfficialBets(rootDir);
@@ -180,7 +190,16 @@ async function main() {
       allOfficialBets.push(...officialBets);
     }
 
-    const valueRows = valueLegRowsFromGraded(picks, graded);
+    const { singles, source } = valueSinglesForSlate({
+      card,
+      meta: loadMeta(slateDate),
+      currentPicks: picks,
+      loadPicksAtCommit: (commit) => loadPicksAtCommit(rootDir, slateDate, commit),
+    });
+    const valueRows = valueLegRowsFromSingles(slateDate, singles, graded);
+    console.log(
+      `settle: singles ${slateDate} · ${singles.length} frozen (${valueSinglesSourceLabel(source)}) · ${valueRows.length} settled`
+    );
     allValue.push(...valueRows);
 
     const slateSlice = buildResultsSlice({

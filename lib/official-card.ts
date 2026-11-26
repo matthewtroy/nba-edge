@@ -13,6 +13,7 @@ import {
 import type { PickLeg } from "./types.js";
 import { officialStakeUnits } from "./pricing-config.js";
 import { freezeGamesSgms } from "./games-sgm-freeze.js";
+import { freezeValueSingles } from "./value-leg-track.js";
 
 export {
   OFFICIAL_CARD_BOOKIE,
@@ -66,6 +67,7 @@ export function writeOfficialCard(
     injuries: input.injuries,
     oddsLastPulled: input.meta.oddsLastPulled,
     gamesSgms: freezeGamesSgms(input.slate, input.picks),
+    valueSingles: freezeValueSingles(input.picks),
   };
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(
