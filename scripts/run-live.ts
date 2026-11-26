@@ -92,12 +92,19 @@ import { loadAliasMap } from "../lib/player-names.js";
 import {
   filterOpenGamesOnSydneyDate,
   filterSlateToNextSydney,
-  filterSlateToTodaySydney,
   slateTeamIds,
   slateTipDateFromGames,
   tomorrowSydneyDateString,
 } from "../lib/slate-today.js";
 import { buildDataIndex, writeDataIndex } from "../lib/data-index.js";
+import {
+  mergePlanWithPersisted,
+  mergeRetainedIndexEntries,
+  planScoreboardSlates,
+  pipelineSydneyDates,
+  slatesToPublishFromPlan,
+} from "../lib/slate-retention.js";
+import { indexRetentionDropReason, loadDataIndexFile } from "../lib/index-guard.js";
 import { buildOddsCoverage } from "../lib/odds-coverage.js";
 import {
   countPricedLegsByMarket,
@@ -167,6 +174,7 @@ export async function runLivePipeline(
   const republishCard = opts.republishCard === true;
   loadAliasMap(rootDir);
   const now = new Date();
+  const priorIndex = loadDataIndexFile(outDir);
   const sources: Record<string, string> = {
     espn: "ok",
     nbaOfficial: "ok",
@@ -189,31 +197,34 @@ export async function runLivePipeline(
 
     yesterdayPlayed = teamIdsFromFinalGames(boardYesterday);
     let merged = dedupeGames(parseScoreboard(boardToday, yesterdayPlayed));
-    const todaySlate = filterSlateToTodaySydney(merged, now);
-    const tomorrowYmd = tomorrowSydneyDateString(now);
-    let tomorrowSlate = filterOpenGamesOnSydneyDate(merged, tomorrowYmd);
+    let plan = planScoreboardSlates(merged, now);
+    const { tomorrowYmd } = pipelineSydneyDates(now);
     console.log(
-      `dual-slate: scoreboard ET ${todayEt} · merged=${merged.length} · today Sydney=${todaySlate.length} · tomorrow Sydney ${tomorrowYmd}=${tomorrowSlate.length}`
+      `dual-slate: scoreboard ET ${todayEt} · merged=${merged.length} · today Sydney=${plan.today.length} · tomorrow Sydney ${tomorrowYmd}=${plan.tomorrow.length}`
     );
-    if (!tomorrowSlate.length) {
-      const tomorrowBoard = await maybeTomorrowBoard(now, todaySlate, yesterdayPlayed);
+    if (!plan.tomorrow.length) {
+      const tomorrowBoard = await maybeTomorrowBoard(now, plan.today, yesterdayPlayed);
       const tEt = formatYyyymmddInZone(new Date(now.getTime() + 86400000), ET);
       console.log(
         `dual-slate: scoreboard ET ${tEt} probed · ${tomorrowBoard.length} games parsed · filter Sydney ${tomorrowYmd}`
       );
       merged = dedupeGames([...merged, ...tomorrowBoard]);
-      tomorrowSlate = filterOpenGamesOnSydneyDate(merged, tomorrowYmd);
+      plan = planScoreboardSlates(merged, now);
     }
-    if (todaySlate.length) slatesToPublish.push(todaySlate);
-    if (tomorrowSlate.length) {
-      const todayIds = new Set(todaySlate.map((g) => g.id));
-      const tomOnly = tomorrowSlate.filter((g) => !todayIds.has(g.id));
-      if (tomOnly.length) slatesToPublish.push(tomOnly);
-    }
+    plan = mergePlanWithPersisted(plan, outDir, now);
+    slatesToPublish = slatesToPublishFromPlan(plan.today, plan.tomorrow);
     unionSlate = dedupeGames(slatesToPublish.flat());
   } catch (e) {
     console.error("ESPN scoreboard error:", e);
     sources.espn = "failed";
+  }
+  if (!slatesToPublish.length) {
+    const plan = mergePlanWithPersisted({ today: [], tomorrow: [] }, outDir, now);
+    slatesToPublish = slatesToPublishFromPlan(plan.today, plan.tomorrow);
+    unionSlate = dedupeGames(slatesToPublish.flat());
+    console.log(
+      `dual-slate: scoreboard empty · restored from disk today=${plan.today.length} tomorrow=${plan.tomorrow.length}`
+    );
   }
   const slate = unionSlate;
 
@@ -854,7 +865,20 @@ export async function runLivePipeline(
   }
   fs.writeFileSync(path.join(outDir, "history.json"), JSON.stringify(history, null, 2));
   fs.writeFileSync(oddsCachePath, JSON.stringify(cache, null, 2));
-  writeDataIndex(outDir, buildDataIndex(indexEntries, now));
+  const mergedIndexEntries = mergeRetainedIndexEntries(indexEntries, outDir, now);
+  const defaultSlate =
+    slatesToPublish.find(
+      (s) => slateTipDateFromGames(s) === pipelineSydneyDates(now).todayYmd
+    ) ?? slatesToPublish[0] ?? [];
+  const nextIndex = buildDataIndex(mergedIndexEntries, now, {
+    defaultSlate,
+  });
+  const dropReason = indexRetentionDropReason(priorIndex, nextIndex, now);
+  if (dropReason) {
+    console.error(`index guard: blocked — ${dropReason}`);
+    process.exit(1);
+  }
+  writeDataIndex(outDir, nextIndex);
 
   for (const legacy of [
     "slate.json",
