@@ -1,17 +1,5 @@
 [
   {
-    "id": "401909317",
-    "startTime": "2026-11-25T22:00Z",
-    "startTimeSydney": "9:00 am",
-    "homeTeam": "Philadelphia 76ers",
-    "awayTeam": "Miami Heat",
-    "homeTeamId": "20",
-    "awayTeamId": "14",
-    "homeB2B": false,
-    "awayB2B": false,
-    "status": "STATUS_IN_PROGRESS"
-  },
-  {
     "id": "401909318",
     "startTime": "2026-11-26T00:00Z",
     "startTimeSydney": "11:00 am",
@@ -19,11 +7,9 @@
     "awayTeam": "Chicago Bulls",
     "homeTeamId": "30",
     "awayTeamId": "4",
-    "spread": -4.5,
-    "total": 217.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_SCHEDULED"
+    "status": "STATUS_IN_PROGRESS"
   },
   {
     "id": "401909319",
@@ -33,11 +19,9 @@
     "awayTeam": "Cleveland Cavaliers",
     "homeTeamId": "18",
     "awayTeamId": "5",
-    "spread": -4.5,
-    "total": 220.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_SCHEDULED"
+    "status": "STATUS_IN_PROGRESS"
   },
   {
     "id": "401909320",
@@ -47,11 +31,9 @@
     "awayTeam": "Minnesota Timberwolves",
     "homeTeamId": "25",
     "awayTeamId": "16",
-    "spread": -2.5,
-    "total": 223.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_SCHEDULED"
+    "status": "STATUS_IN_PROGRESS"
   },
   {
     "id": "401909321",
@@ -76,7 +58,7 @@
     "homeTeamId": "15",
     "awayTeamId": "17",
     "spread": -1.5,
-    "total": 234.5,
+    "total": 233.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"
@@ -103,7 +85,7 @@
     "awayTeam": "Sacramento Kings",
     "homeTeamId": "9",
     "awayTeamId": "23",
-    "spread": -7.5,
+    "spread": -8.5,
     "total": 215.5,
     "homeB2B": false,
     "awayB2B": false,
@@ -118,7 +100,7 @@
     "homeTeamId": "22",
     "awayTeamId": "24",
     "spread": 3.5,
-    "total": 225.5,
+    "total": 227.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"
