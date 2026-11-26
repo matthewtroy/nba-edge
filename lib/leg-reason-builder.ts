@@ -26,6 +26,10 @@ import { ensureLegReasonMinimum } from "./leg-reason-minimum.js";
 import { h2hReasonPhrase } from "./h2h-reason.js";
 import { reasonTextHasBannedPhrase } from "./reason-ban.js";
 import { gateLegReasons } from "./reason-gate.js";
+import {
+  formerTeamReasonPhrase,
+  seasonCeilingVsOpponentPhrase,
+} from "./long-shot-reason.js";
 
 function hitCountL10(
   logs: PlayerGameLog[],
@@ -203,6 +207,8 @@ export function buildLegReasons(input: {
   h2hLogs?: PlayerGameLog[];
   /** ESPN schedule: opponent B2B, player team rested (not leg.b2b). */
   opponentOnB2B?: boolean;
+  /** Slate date (YYYY-MM-DD) for season ceiling copy. */
+  slateDate?: string;
 }): LegReason[] {
   const byType = new Map<string, LegReason>();
 
@@ -317,6 +323,24 @@ export function buildLegReasons(input: {
   if (input.opponentOnB2B) {
     const oppShort = shortTeamName(input.opponentName ?? input.leg.opponent);
     put("context", `${oppShort} on a back-to-back`);
+  }
+
+  const pLong = (input.leg.probability ?? 1) < 0.25;
+  if (pLong) {
+    const ceiling = seasonCeilingVsOpponentPhrase({
+      logs: input.h2hLogs ?? input.logs,
+      defendingTeamId: input.defendingTeamId,
+      opponentName: input.opponentName,
+      market: input.leg.market,
+      line: input.leg.line,
+      slateDate: input.slateDate,
+    });
+    if (ceiling) put("h2h", ceiling);
+    const former = formerTeamReasonPhrase(
+      input.leg.tags,
+      input.opponentName ?? input.leg.opponent
+    );
+    if (former) put("angle", former);
   }
 
   const sorted = sortLegReasons([...byType.values()]);

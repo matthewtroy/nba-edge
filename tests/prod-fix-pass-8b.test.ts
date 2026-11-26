@@ -4,7 +4,9 @@ import {
   isSupportiveReason,
   rankTextIsSupportive,
 } from "../lib/leg-reason-supportive";
-import type { PickLeg } from "../lib/types";
+import { buildLegReasons } from "../lib/leg-reason-builder";
+import { formerTeamReasonPhrase, seasonCeilingVsOpponentPhrase } from "../lib/long-shot-reason";
+import type { PickLeg, PlayerGameLog } from "../lib/types";
 
 const baseLeg = {
   id: "1",
@@ -52,5 +54,79 @@ describe("pass 8b item 3 — form hit-rate gates", () => {
     expect(formTextIsSupportive("3/10 at this line", 0.09)).toBe(true);
     expect(formTextIsSupportive("1/10 at this line", 0.09)).toBe(false);
     expect(formTextIsSupportive("2/10 at this line", 0.22)).toBe(false);
+  });
+});
+
+describe("pass 8b item 4 — long-shot extras", () => {
+  const vsOpp: PlayerGameLog[] = [
+    {
+      gameId: "1",
+      date: "2026-11-05",
+      minutes: 30,
+      pts: 32,
+      reb: 4,
+      ast: 3,
+      threes: 2,
+      opponentTeamId: "14",
+    },
+    {
+      gameId: "2",
+      date: "2026-10-20",
+      minutes: 28,
+      pts: 18,
+      reb: 3,
+      ast: 2,
+      threes: 1,
+      opponentTeamId: "14",
+    },
+  ];
+
+  it("ceiling phrase when season best vs opp clears line", () => {
+    const line = seasonCeilingVsOpponentPhrase({
+      logs: vsOpp,
+      defendingTeamId: "14",
+      opponentName: "Miami Heat",
+      market: "pts",
+      line: 25,
+      slateDate: "2026-11-28",
+    });
+    expect(line).toBe("Best this season: 32 vs Heat");
+  });
+
+  it("former team line from badge tag", () => {
+    expect(formerTeamReasonPhrase(["former_team", "Roughie"], "Boston Celtics")).toBe(
+      "Former team vs Celtics"
+    );
+  });
+
+  it("builder attaches long-shot extras under 25%", () => {
+    const reasons = buildLegReasons({
+      leg: {
+        ...baseLeg,
+        market: "pts",
+        line: 25,
+        probability: 0.12,
+        tags: ["former_team"],
+      },
+      logs: vsOpp,
+      h2hLogs: vsOpp,
+      defendingTeamId: "14",
+      opponentName: "Miami Heat",
+      slateDate: "2026-11-28",
+    });
+    expect(reasons.some((r) => /^Best this season:/i.test(r.text))).toBe(true);
+    expect(reasons.some((r) => /^Former team vs /i.test(r.text))).toBe(true);
+    expect(
+      isSupportiveReason(
+        { type: "h2h", text: "Best this season: 32 vs Heat" },
+        { ...baseLeg, probability: 0.12, line: 25 }
+      )
+    ).toBe(true);
+    expect(
+      isSupportiveReason(
+        { type: "h2h", text: "Best this season: 32 vs Heat" },
+        { ...baseLeg, probability: 0.5, line: 25 }
+      )
+    ).toBe(false);
   });
 });

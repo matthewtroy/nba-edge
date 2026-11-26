@@ -75,6 +75,8 @@ export function inferReasonType(text: string): LegReasonType {
   if (/potential ast|more shots|more 3s|fga up|3pa up|tracking/i.test(t)) return "tracking";
   if (/rank #\d+ in allowing/i.test(t)) return "matchup";
   if (/allow [\d.]+\s+(pts|points|reb|rebounds|ast|assists|threes)/i.test(t)) return "matchup";
+  if (/^best this season:/i.test(t)) return "h2h";
+  if (/^former team vs /i.test(t)) return "angle";
   if (/vs .+ in \d+ meetings|\/\d+ .+ vs /i.test(t)) return "h2h";
   if (/averages [\d.]+\s+(pts|reb|ast)/i.test(t)) return "rank";
   if (/rank \d|worst defending|pace ·/i.test(t)) return "matchup";

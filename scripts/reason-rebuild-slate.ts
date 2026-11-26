@@ -86,6 +86,7 @@ for (const leg of picks) {
     tracking: tracking.players[leg.playerId],
     seedReasons: injurySeeds,
     playerId: leg.playerId,
+    slateDate: date,
   });
   const gated = gateLegReasons(reasons, leg.market, 3, leg.line);
   const display = ensureLegReasonMinimum(leg, gated);
@@ -94,6 +95,22 @@ for (const leg of picks) {
 
 const kept = filterPicksWithSupportiveReasons(rebuilt);
 logSupportiveExclusionsByMarket(rebuilt, kept);
+
+const keptIds = new Set(kept.map((p) => p.id));
+const excludedByMarket: Record<string, number> = {};
+for (const leg of rebuilt) {
+  if (keptIds.has(leg.id)) continue;
+  excludedByMarket[leg.market] = (excludedByMarket[leg.market] ?? 0) + 1;
+}
+const keptByMarket: Record<string, number> = {};
+for (const leg of kept) {
+  keptByMarket[leg.market] = (keptByMarket[leg.market] ?? 0) + 1;
+}
+for (const market of ["pts", "reb", "ast", "3pm"] as const) {
+  console.log(
+    `market ${market}: excluded ${excludedByMarket[market] ?? 0} · kept ${keptByMarket[market] ?? 0}`
+  );
+}
 
 const hist: Record<number, number> = { 0: 0, 1: 0, 2: 0, 3: 0 };
 for (const leg of kept) {
@@ -105,16 +122,26 @@ console.log(
   `Rebuilt ${rebuilt.length} legs for ${date} · kept ${kept.length} with supportive · reason counts ${JSON.stringify(hist)}`
 );
 
-let opponentInjury = 0;
-let restB2b = 0;
+let oppInjury = 0;
+let oppB2b = 0;
+let ceiling = 0;
+let former = 0;
+let longShotForm = 0;
 let longShot = 0;
 for (const leg of kept) {
   const lines = ensureLegReasonMinimum(leg, leg.reasons ?? []);
-  if (lines.some((r) => /without .+ →/i.test(r.text))) opponentInjury += 1;
-  if (lines.some((r) => /on a back-to-back/i.test(r.text))) restB2b += 1;
-  if (leg.probability < 0.25) longShot += 1;
+  if (lines.some((r) => /without .+ →/i.test(r.text))) oppInjury += 1;
+  if (lines.some((r) => /on a back-to-back/i.test(r.text))) oppB2b += 1;
+  if (lines.some((r) => /^best this season:/i.test(r.text))) ceiling += 1;
+  if (lines.some((r) => /^former team vs /i.test(r.text))) former += 1;
+  if (leg.probability < 0.25) {
+    longShot += 1;
+    if (lines.some((r) => r.type === "form")) longShotForm += 1;
+  }
 }
-console.log(`opponent-injury lines: ${opponentInjury} · b2b context: ${restB2b} · long-shot legs kept: ${longShot}`);
+console.log(
+  `line-type counts — opp-injury: ${oppInjury} · opp-b2b: ${oppB2b} · ceiling: ${ceiling} · former: ${former} · long-shot form: ${longShotForm} · long-shot legs kept: ${longShot}`
+);
 
 const samples = sampleLegsByMarket(kept, 3);
 for (const market of ["pts", "reb", "ast", "3pm"] as const) {

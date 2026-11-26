@@ -71,9 +71,14 @@ export function isSupportiveReason(reason: LegReason, leg: PickLeg): boolean {
     case "tracking":
     case "matchup":
     case "h2h":
+      if (/^best this season:/i.test(reason.text)) return p < LONG_SHOT_P;
+      return true;
     case "pace":
     case "min":
+      return true;
     case "angle":
+      if (/^former team vs /i.test(reason.text)) return p < LONG_SHOT_P;
+      return false;
     case "context":
       return true;
     case "form":
