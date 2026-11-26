@@ -35,13 +35,15 @@ const baseLeg = {
 } as PickLeg;
 
 describe("pass 8 item 1 — supportive reasons", () => {
-  it("form needs 7/10 when p≥25%", () => {
-    expect(formTextIsSupportive("6/10 at this line", 0.5)).toBe(false);
-    expect(formTextIsSupportive("7/10 at this line", 0.5)).toBe(true);
+  it("form needs 60% hit rate when p≥25%", () => {
+    expect(formTextIsSupportive("5/10 at this line", 0.5)).toBe(false);
+    expect(formTextIsSupportive("6/10 at this line", 0.5)).toBe(true);
   });
 
-  it("long-shot allows 5/10 form", () => {
-    expect(formTextIsSupportive("5/10 at this line", 0.2)).toBe(true);
+  it("long-shot form needs rate > p and hits≥2", () => {
+    expect(formTextIsSupportive("3/10 at this line", 0.09)).toBe(true);
+    expect(formTextIsSupportive("1/10 at this line", 0.09)).toBe(false);
+    expect(formTextIsSupportive("2/10 at this line", 0.22)).toBe(false);
   });
 
   it("rank is supportive when season avg clears line", () => {

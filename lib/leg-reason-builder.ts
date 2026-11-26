@@ -113,7 +113,7 @@ function pacePhrase(
 
 function formPhrase(logs: PlayerGameLog[], market: Market, line: number): string | undefined {
   const hit = hitCountL10(logs, market, line);
-  if (hit != null && hit.hits >= 7) {
+  if (hit != null && hit.hits / hit.total >= 0.6) {
     return `${hit.hits}/${hit.total} at this line`;
   }
   const l5 = lastFiveVsLine(logs, market, line).filter((t) => t !== "na");

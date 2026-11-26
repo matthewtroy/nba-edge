@@ -44,8 +44,10 @@ export function formTextIsSupportive(text: string, probability: number): boolean
   const parsed = parseFormHits(text);
   if (!parsed || parsed.total < 1) return false;
   const rate = parsed.hits / parsed.total;
-  if (probability < LONG_SHOT_P) return rate >= 0.5 && parsed.hits >= 3;
-  return parsed.hits >= 7 || (parsed.total === 5 && parsed.hits === 5);
+  if (probability < LONG_SHOT_P) {
+    return parsed.hits >= 2 && rate > probability;
+  }
+  return rate >= 0.6 || (parsed.total === 5 && parsed.hits === 5);
 }
 
 export function avgTextIsSupportive(text: string, leg: PickLeg): boolean {
