@@ -1,23 +1,18 @@
+import { useEffect, useMemo } from "react";
 import type { DataBundle } from "../hooks/useData";
-import type { InjuryEntry } from "@lib/types";
+import { useData } from "../hooks/useData";
 import { topBeneficiaryLastNames } from "@lib/injury-beneficiaries";
 import { sydneyTimeFromIso } from "../utils/format";
-import { useQuestionableSwaps } from "../hooks/useQuestionableSwaps";
-import { DateSwitcher } from "../components/DateSwitcher";
-import { TomorrowSlateTease } from "../components/TomorrowSlateTease";
-import { injuriesForInjuryPanel } from "@lib/injuries-at-tip";
-import { injuryRowKey } from "@lib/injury-tip-freeze";
-import { slateAwaitingPrices } from "@lib/slate-odds-ui";
+import {
+  clearQuestionableAsOutStorage,
+  standaloneInjuryBlocks,
+} from "@lib/injuries-standalone";
+import { InjuryStatusBadge } from "../components/InjuryStatusBadge";
 
 interface Props {
   data: DataBundle;
-  slateDate: string;
   todayDate: string;
   tomorrowDate: string | null;
-  viewerTodayYmd: string;
-  viewerTimeZone?: string;
-  onIndexRefreshed?: (index: import("@lib/data-index").DataIndexFile) => void;
-  onSlateDateChange: (d: string) => void;
 }
 
 function teamAbbr(name: string): string {
@@ -27,173 +22,80 @@ function teamAbbr(name: string): string {
 
 export function InjuriesScreen({
   data,
-  slateDate,
   todayDate,
   tomorrowDate,
-  viewerTodayYmd,
-  viewerTimeZone,
-  onIndexRefreshed,
-  onSlateDateChange,
 }: Props) {
-  const { swapAsOut, reset, isCountedOut } = useQuestionableSwaps();
-  const panelInjuries = injuriesForInjuryPanel(
-    data.injuries,
-    data.meta.injuriesAtTip,
-    data.slate,
-    new Date()
+  useEffect(() => {
+    clearQuestionableAsOutStorage();
+  }, []);
+
+  const nextBundle = useData(tomorrowDate ?? todayDate);
+  const now = useMemo(() => new Date(), []);
+  const blocks = useMemo(
+    () =>
+      standaloneInjuryBlocks({
+        today: {
+          slate: data.slate,
+          injuries: data.injuries,
+          injuriesAtTip: data.meta.injuriesAtTip,
+        },
+        next:
+          tomorrowDate && tomorrowDate !== todayDate && !nextBundle.loading
+            ? {
+                slate: nextBundle.slate,
+                injuries: nextBundle.injuries,
+                injuriesAtTip: nextBundle.meta.injuriesAtTip,
+              }
+            : null,
+        now,
+      }),
+    [data, nextBundle, tomorrowDate, todayDate, now]
   );
-  const byGame = new Map<string, InjuryEntry[]>();
-  for (const inj of panelInjuries) {
-    const arr = byGame.get(inj.gameId) ?? [];
-    arr.push(inj);
-    byGame.set(inj.gameId, arr);
-  }
 
   return (
     <div className="pb-24">
-      <DateSwitcher
-        todayDate={todayDate}
-        viewerTodayYmd={viewerTodayYmd}
-        nextSlateDate={tomorrowDate}
-        selected={slateDate}
-        onSelect={onSlateDateChange}
-        viewerTimeZone={viewerTimeZone}
-        className="mb-3"
-      />
-      <TomorrowSlateTease
-        index={data.index}
-        slateDate={slateDate}
-        todayDate={todayDate}
-        viewerTodayYmd={viewerTodayYmd}
-        viewerTimeZone={viewerTimeZone}
-        slateEmpty={!data.slate.length}
-        slate={data.slate}
-        awaitingPrices={slateAwaitingPrices({
-          slateDate,
-          todayDate,
-          picks: data.picks,
-          officialSlateDate: data.officialCard?.slateDate,
-        })}
-        onIndexRefreshed={onIndexRefreshed}
-      />
-      <h1 className="text-xl font-bold mb-4">Injuries</h1>
-      {[...byGame.entries()].map(([gameId, list]) => {
-        const game = data.slate.find((g) => g.id === gameId);
-        const byTeam = new Map<string, InjuryEntry[]>();
-        for (const inj of list) {
-          const key = inj.teamId || inj.teamName;
-          const arr = byTeam.get(key) ?? [];
-          arr.push(inj);
-          byTeam.set(key, arr);
-        }
-        const teamBlocks = [...byTeam.entries()].sort((a, b) =>
-          a[1][0]!.teamName.localeCompare(b[1][0]!.teamName)
-        );
-        return (
-          <section key={gameId} className="mb-4 bg-card rounded-xl p-4">
-            <h2 className="text-sm font-semibold text-white/80 mb-3">
-              {game
-                ? `${teamAbbr(game.awayTeam)} @ ${teamAbbr(game.homeTeam)}`
-                : gameId}
-            </h2>
-            {teamBlocks.map(([teamKey, teamList]) => (
-              <div key={teamKey} className="mb-4 last:mb-0">
-                <h3 className="text-xs font-semibold text-white/55 mb-2 uppercase tracking-wide">
-                  {teamList[0]?.teamName ?? teamKey}
-                </h3>
-                {teamList.map((inj) => (
-                  <InjuryRow
-                    key={injuryRowKey(inj)}
-                    inj={inj}
-                    picks={data.picks}
-                    countedOut={
-                      inj.status === "Questionable" && isCountedOut(inj.playerId)
-                    }
-                    onSwap={
-                      inj.status === "Questionable"
-                        ? () => swapAsOut(inj.playerId)
-                        : undefined
-                    }
-                    onReset={
-                      inj.status === "Questionable"
-                        ? () => reset(inj.playerId)
-                        : undefined
-                    }
-                  />
-                ))}
-              </div>
-            ))}
-          </section>
-        );
-      })}
-    </div>
-  );
-}
-
-function InjuryRow({
-  inj,
-  picks,
-  countedOut,
-  onSwap,
-  onReset,
-}: {
-  inj: InjuryEntry;
-  picks: DataBundle["picks"];
-  countedOut: boolean;
-  onSwap?: () => void;
-  onReset?: () => void;
-}) {
-  const chip =
-    inj.status === "Out"
-      ? "bg-red-500/20 text-red-300"
-      : inj.status === "Doubtful"
-        ? "bg-orange-500/20 text-orange-300"
-        : "bg-accent-warn/20 text-accent-warn";
-
-  const showBenefits =
-    inj.status === "Out" ||
-    inj.status === "Doubtful" ||
-    (inj.status === "Questionable" && countedOut);
-
-  const benefits = showBenefits
-    ? topBeneficiaryLastNames(inj, picks).join(", ")
-    : null;
-
-  return (
-    <div className="mb-3 pb-3 border-b border-white/5 last:border-0">
-      <div className="flex justify-between items-center gap-2">
-        <span className="font-medium">{inj.playerName}</span>
-        <span className={`text-xs px-2 py-0.5 rounded-full shrink-0 ${chip}`}>
-          {countedOut ? "Counted as out" : inj.status}
-        </span>
-      </div>
-      <p className="text-xs text-white/50 mt-1">
-        {inj.source} · {sydneyTimeFromIso(inj.updatedAt)}
+      <h1 className="text-xl font-bold mb-1">Injuries</h1>
+      <p className="text-xs text-white/45 mb-4">
+        Live list · today{tomorrowDate ? " + next slate" : ""} teams · tip order
       </p>
-      {benefits && (
-        <p className="text-xs text-white/70 mt-1">Who benefits: {benefits || "—"}</p>
-      )}
-      {inj.status === "Questionable" && (
-        <div className="flex gap-2 mt-2">
-          {!countedOut && onSwap && (
-            <button
-              type="button"
-              className="text-xs px-3 py-1.5 rounded-lg bg-white/10"
-              onClick={onSwap}
-            >
-              Swap — count as out
-            </button>
-          )}
-          {countedOut && onReset && (
-            <button
-              type="button"
-              className="text-xs px-3 py-1.5 rounded-lg bg-white/10"
-              onClick={onReset}
-            >
-              Reset
-            </button>
-          )}
-        </div>
+      {blocks.length === 0 ? (
+        <p className="text-sm text-white/50">No injury rows for this window.</p>
+      ) : (
+        blocks.map((block) => {
+          const game = [...data.slate, ...nextBundle.slate].find((g) => g.id === block.gameId);
+          const matchup = game
+            ? `${teamAbbr(game.awayTeam)} @ ${teamAbbr(game.homeTeam)}`
+            : block.gameId;
+          return (
+            <section key={`${block.gameId}:${block.teamId}`} className="mb-3 bg-card rounded-xl px-3 py-3">
+              <div className="flex items-baseline justify-between gap-2 mb-2">
+                <h2 className="text-sm font-semibold text-white/85 truncate">{block.teamName}</h2>
+                <span className="text-[11px] text-white/45 shrink-0 tabular-nums">
+                  {sydneyTimeFromIso(block.tipIso)} · {matchup}
+                </span>
+              </div>
+              <ul className="divide-y divide-white/[0.06]">
+                {block.injuries.map((inj) => (
+                  <li key={`${inj.playerId ?? inj.playerName}:${inj.status}`} className="py-2 first:pt-0 last:pb-0">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-sm font-medium truncate">{inj.playerName}</span>
+                      <InjuryStatusBadge status={inj.status} />
+                    </div>
+                    <p className="text-[11px] text-white/45 mt-0.5">
+                      {inj.source} · {sydneyTimeFromIso(inj.updatedAt)}
+                    </p>
+                    {(inj.status === "Out" || inj.status === "Doubtful") && (
+                      <p className="text-[11px] text-white/65 mt-1">
+                        Who benefits:{" "}
+                        {topBeneficiaryLastNames(inj, data.picks).join(", ") || "—"}
+                      </p>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          );
+        })
       )}
     </div>
   );

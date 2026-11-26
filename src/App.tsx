@@ -181,13 +181,8 @@ export default function App() {
         <ErrorBoundary name="InjuriesScreen">
           <InjuriesScreen
             data={data}
-            slateDate={slateDate}
             todayDate={segment.today}
             tomorrowDate={segment.tomorrow}
-            viewerTodayYmd={segment.viewerTodayYmd}
-            viewerTimeZone={timeZone}
-            onIndexRefreshed={refreshIndex}
-            onSlateDateChange={setSlateDate}
           />
         </ErrorBoundary>
       )}

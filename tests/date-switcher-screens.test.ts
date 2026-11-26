@@ -5,11 +5,10 @@ import { buildDataIndex, type DataIndexDateEntry } from "../lib/data-index";
 import { resolveViewerSlateSegment } from "../lib/viewer-slate";
 import { todayTabLabel, slateTabDateChip } from "../lib/slate-tab-labels";
 
-const screens = [
+const screensWithSwitcher = [
   "TodayScreen.tsx",
   "PicksScreen.tsx",
   "GamesScreen.tsx",
-  "InjuriesScreen.tsx",
 ];
 
 describe("DateSwitcher", () => {
@@ -25,8 +24,13 @@ describe("DateSwitcher", () => {
 });
 
 describe("DateSwitcher on main tabs", () => {
-  it("Today/Picks/Games/Injuries render DateSwitcher", () => {
-    for (const file of screens) {
+  it("Today/Picks/Games render DateSwitcher; Injuries is standalone", () => {
+    const inj = fs.readFileSync(
+      path.join(process.cwd(), "src/screens/InjuriesScreen.tsx"),
+      "utf8"
+    );
+    expect(inj).not.toContain("<DateSwitcher");
+    for (const file of screensWithSwitcher) {
       const src = fs.readFileSync(
         path.join(process.cwd(), "src/screens", file),
         "utf8"
@@ -36,8 +40,8 @@ describe("DateSwitcher on main tabs", () => {
     }
   });
 
-  it("Tomorrow tease on main tabs when tomorrow folder empty", () => {
-    for (const file of screens) {
+  it("Tomorrow tease on dated tabs when tomorrow folder empty", () => {
+    for (const file of screensWithSwitcher) {
       const src = fs.readFileSync(
         path.join(process.cwd(), "src/screens", file),
         "utf8"
