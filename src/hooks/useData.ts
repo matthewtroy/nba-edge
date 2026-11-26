@@ -147,10 +147,13 @@ export function useData(selectedDate: string): DataBundle {
             picksOut = merged.picks;
             multisOut = merged.multis;
           }
+          const atTipSeed = meta.injuriesAtTip?.length
+            ? meta.injuriesAtTip
+            : officialCard?.injuries;
           const injuryHistory =
             prev && prev.date === date
               ? [...prev.injuries, ...injuries]
-              : [...(officialCard?.injuries ?? []), ...injuries];
+              : [...(atTipSeed ?? []), ...injuries];
           injuriesOut = freezeInjuriesAtTip(
             injuryHistory,
             injuriesOut,

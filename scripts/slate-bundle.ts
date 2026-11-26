@@ -27,6 +27,7 @@ import { applySlateTipFreeze } from "../lib/slate-tip-freeze.js";
 import { pickLegFromSnapshot } from "../lib/official-leg-snapshot.js";
 import { countPricedPickLegs } from "../lib/odds-cache-guard.js";
 import { freezeInjuriesAtTip, mergeInjuriesReportTime } from "../lib/injury-tip-freeze.js";
+import { refreshInjuriesAtTip } from "../lib/injuries-at-tip.js";
 
 export interface SlateBundleInput {
   rootDir: string;
@@ -191,6 +192,10 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     meta.oddsLastPulled
   );
 
+  const priorMeta = fs.existsSync(path.join(outDir, "meta.json"))
+    ? (JSON.parse(fs.readFileSync(path.join(outDir, "meta.json"), "utf8")) as MetaJson)
+    : undefined;
+
   const metaOut: MetaJson = {
     ...meta,
     slateTipDate: tipDate,
@@ -313,6 +318,14 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
       /* first publish */
     }
   }
+
+  const injuryHistory = [...(priorMeta?.injuriesAtTip ?? []), ...injuries];
+  metaOut.injuriesAtTip = refreshInjuriesAtTip(
+    priorMeta?.injuriesAtTip,
+    injuryHistory,
+    slateOut,
+    input.now
+  );
 
   fs.writeFileSync(path.join(outDir, "slate.json"), JSON.stringify(slateOut, null, 2));
   fs.writeFileSync(path.join(outDir, "injuries.json"), JSON.stringify(injuries, null, 2));

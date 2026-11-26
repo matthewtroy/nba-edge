@@ -65,6 +65,7 @@ export default function App() {
   const badgeInjuries = injuriesForBadges(data.injuries, {
     slate: data.slate,
     now: new Date(),
+    previous: data.meta.injuriesAtTip,
   });
   const { settings, setSettings } = useSettings();
   useEffect(() => {

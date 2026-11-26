@@ -25,6 +25,13 @@ describe("injuryAlertsForCard", () => {
     expect(src).toContain("cardPlayerIds");
   });
 
+  it("no Brunson alert when status unchanged on official legs", () => {
+    const locked = [base("3934672", "Questionable")];
+    const current = [base("3934672", "Questionable")];
+    const alerts = injuryAlertsForCard(locked, current, new Set(["3934672"]));
+    expect(alerts).toHaveLength(0);
+  });
+
   it("only alerts for players on the card", () => {
     const locked = [base("on-card", "Probable")];
     const current = [

@@ -197,6 +197,8 @@ export interface MetaJson {
   modelSanityFailures?: number;
   modelSanityChecked?: number;
   formGuardExcludedCount?: number;
+  /** Pre-tip injury rows captured when games start (badge freeze seed). */
+  injuriesAtTip?: InjuryEntry[];
 }
 
 export interface HistoryLeg {

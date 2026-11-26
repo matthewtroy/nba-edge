@@ -36,6 +36,7 @@ describe("injury badge pipeline", () => {
       path.join(process.cwd(), "src/hooks/useData.ts"),
       "utf8"
     );
+    expect(src).toMatch(/injuriesAtTip/);
     expect(src).toMatch(/officialCard\?\.injuries/);
     expect(src).toMatch(/freezeInjuriesAtTip\([\s\S]*injuryHistory/);
   });
