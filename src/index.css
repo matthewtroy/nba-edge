@@ -49,6 +49,40 @@ body,
   border-radius: 8px;
 }
 
+@keyframes leg-progress-live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.leg-progress-live-fill {
+  animation: leg-progress-live-pulse 1.35s ease-in-out infinite;
+}
+
+.leg-progress-live-pill {
+  animation: leg-progress-live-pulse 1.35s ease-in-out infinite;
+}
+
+@keyframes leg-progress-settled-pop {
+  from {
+    transform: scaleX(0.92);
+    opacity: 0.85;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.leg-progress-settled {
+  transform-origin: left center;
+  animation: leg-progress-settled-pop 0.45s ease-out;
+}
+
 @media (prefers-color-scheme: light) {
   html,
   body,

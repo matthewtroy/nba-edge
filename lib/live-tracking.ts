@@ -2,6 +2,41 @@ import type { MultiBet, PickLeg, SlateGame } from "./types.js";
 import type { LiveSourceSnapshot } from "./live-source.js";
 import { liveLegView, type LiveLegView } from "./live-leg.js";
 import { liveBetView, type LiveBetView } from "./live-bet.js";
+import {
+  normalizeEspnGameStatus,
+  slateStatusLabel,
+  type SlateGamePhase,
+} from "./slate-espn-status.js";
+
+const PHASE_RANK: Record<SlateGamePhase, number> = {
+  scheduled: 0,
+  live: 1,
+  final: 2,
+};
+
+function slatePhaseFromGame(game: SlateGame): SlateGamePhase {
+  return normalizeEspnGameStatus(game.status, game.status);
+}
+
+/** Prefer the most advanced phase between persisted slate and ESPN poll. */
+export function mergeGamePhase(
+  slatePhase: SlateGamePhase,
+  espnPhase?: SlateGamePhase
+): SlateGamePhase {
+  const e = espnPhase ?? "scheduled";
+  return PHASE_RANK[slatePhase] >= PHASE_RANK[e] ? slatePhase : e;
+}
+
+export function gameForLiveLeg(
+  game: SlateGame | undefined,
+  espnPhase?: SlateGamePhase
+): SlateGame | undefined {
+  if (!game) return undefined;
+  const slatePhase = slatePhaseFromGame(game);
+  const phase = mergeGamePhase(slatePhase, espnPhase);
+  if (phase === slatePhase) return game;
+  return { ...game, status: slateStatusLabel(phase) };
+}
 
 export function slateGameMap(slate: SlateGame[]): Map<string, SlateGame> {
   return new Map(slate.map((g) => [g.id, g]));
@@ -31,12 +66,7 @@ export function liveViewsForLegs(
   for (const leg of legs) {
     const game = games.get(leg.gameId);
     const phase = phaseByGame.get(leg.gameId);
-    const gameForView =
-      game && phase === "final"
-        ? { ...game, status: "final" }
-        : game && phase === "live"
-          ? { ...game, status: "live" }
-          : game;
+    const gameForView = gameForLiveLeg(game, phase);
     const box = snapshot?.boxesByGame.get(leg.gameId)?.get(leg.playerId);
     const board = boards.get(leg.gameId);
     out.set(

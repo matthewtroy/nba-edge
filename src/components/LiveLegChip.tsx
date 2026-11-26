@@ -1,9 +1,9 @@
 import type { LiveLegView } from "@lib/live-leg";
-import { liveLegChipClass, liveLegChipLabel } from "@lib/live-leg-ui";
+import { liveLegChipClass, liveLegStateLabel } from "@lib/live-leg-ui";
 
 export function LiveLegChip({ view }: { view?: LiveLegView }) {
-  if (!view) return null;
-  const label = liveLegChipLabel(view);
+  if (!view || view.state === "pending") return null;
+  const label = liveLegStateLabel(view);
   if (!label) return null;
   return (
     <span

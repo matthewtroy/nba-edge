@@ -1,6 +1,6 @@
 import type { InjuryEntry, PickLeg, SlateGame } from "@lib/types";
 import type { LiveLegView } from "@lib/live-leg";
-import { LiveLegChip } from "./LiveLegChip";
+import { LegProgress } from "./LegProgress";
 import { bookieMarketLabel } from "@lib/market-label";
 import { legRowBadgeLabels } from "@lib/value-at-bookie";
 import { legBookieQuoteView } from "@lib/leg-bookie-quote";
@@ -101,7 +101,6 @@ export function MultiLegRow({
           </div>
         )}
         <LegRowMeta ticks={ticks} injuryStatus={injStatus}>
-          <LiveLegChip view={liveView} />
           {badgeLabels.map((t) => (
             <LegBadge
               key={t}
@@ -110,6 +109,7 @@ export function MultiLegRow({
             />
           ))}
         </LegRowMeta>
+        <LegProgress view={liveView} className="mt-1.5 w-full" />
         {compact && null}
       </div>
       <div className="text-right w-[76px] shrink-0">

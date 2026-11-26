@@ -43,7 +43,7 @@ describe("official live tracking", () => {
       scoreboard,
       summaries: { "fixture-game-won": summaryFinal },
     });
-    const snap = await buildLiveSnapshot(provider, new Date("2026-11-26"), pollSlate.map((g) => g.id));
+    const snap = await buildLiveSnapshot(provider, pollSlate, pollSlate.map((g) => g.id));
     const views = liveViewsForLegs(legs, pollSlate, snap);
     const cardView = views.get(cardLegId);
     expect(cardView?.state).toMatch(/won|lost|live|pending|void/);
