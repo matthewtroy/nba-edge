@@ -118,22 +118,22 @@ export function TodayScreen({
         />
       </div>
 
-      <TomorrowSlateTease
-        index={data.index}
-        slateDate={slateDate}
-        todayDate={todayDate}
-        viewerTodayYmd={viewerTodayYmd}
-        viewerTimeZone={viewerTimeZone}
-        slateEmpty={!data.slate.length}
-        slate={data.slate}
-        officialCard={official}
-        officialInUse={useOfficial}
-        noGamesToday={noGamesToday}
-        previewSlate={data.previewSlate}
-        onIndexRefreshed={onIndexRefreshed}
-      />
-
-      {!building &&
+      {building ? (
+        <TomorrowSlateTease
+          index={data.index}
+          slateDate={slateDate}
+          todayDate={todayDate}
+          viewerTodayYmd={viewerTodayYmd}
+          viewerTimeZone={viewerTimeZone}
+          slateEmpty={!data.slate.length}
+          slate={data.slate}
+          officialCard={official}
+          officialInUse={useOfficial}
+          noGamesToday={noGamesToday}
+          previewSlate={data.previewSlate}
+          onIndexRefreshed={onIndexRefreshed}
+        />
+      ) : (
         multis.map((m) => {
         const multiType = m.type as MultiType | string;
         const cardFairOnly =
@@ -166,8 +166,8 @@ export function TodayScreen({
             reasonsAtTip={data.meta.reasonsAtTip}
           />
         );
-      })}
-
+      })
+      )}
     </div>
   );
 }

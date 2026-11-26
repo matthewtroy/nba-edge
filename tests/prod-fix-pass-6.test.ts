@@ -32,6 +32,8 @@ import {
 } from "../lib/value-leg-track";
 import { valueSinglesForSlate } from "../lib/value-singles-source";
 import { clearRetiredStorage } from "../src/lib/retired-storage";
+import { TodayScreen } from "../src/screens/TodayScreen";
+import type { DataBundle } from "../src/hooks/useData";
 import { buildResultsSlice } from "../lib/results-aggregate";
 import type { GradedProjectionLeg } from "../lib/graded-leg";
 
@@ -499,5 +501,57 @@ describe("item 8: Personal multis removed", () => {
     expect(localStorage.getItem("nba-edge-admin")).toBe("1");
     expect(fs.readFileSync("src/main.tsx", "utf8")).toMatch(/clearRetiredStorage\(window\.localStorage\)/);
     localStorage.clear();
+  });
+});
+
+describe("item 9: Home has nothing between the date tabs and the first card", () => {
+  it("the first card follows the date tabs directly (26 Nov official card)", async () => {
+    const dir = fixtureSlateDir("2026-11-26");
+    const { slate, picks, meta, multisRaw } = loadPublishedSlate("2026-11-26");
+    const official = JSON.parse(fs.readFileSync(path.join(dir, "official-card.json"), "utf8")) as OfficialCardFile;
+    const index = JSON.parse(fs.readFileSync(path.join(dir, "..", "data-index.json"), "utf8"));
+    const data = {
+      index: { ...index, todayDate: "2026-11-26", nextSlateDate: "2026-11-28", dates: ["2026-11-26"] },
+      selectedDate: "2026-11-26",
+      slate,
+      injuries: [],
+      picks,
+      multis: Array.isArray(multisRaw) ? multisRaw : multisRaw.bets ?? [],
+      multisNotBuilt: [],
+      officialCard: official,
+      meta,
+      history: { entries: [] },
+      results: null,
+      loading: false,
+    } as unknown as DataBundle;
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    const root = createRoot(host);
+    await act(async () => {
+      root.render(
+        createElement(TodayScreen, {
+          data,
+          slateDate: "2026-11-26",
+          todayDate: "2026-11-26",
+          tomorrowDate: "2026-11-28",
+          viewerTodayYmd: "2026-11-26",
+          viewerTimeZone: "Australia/Sydney",
+          onSlateDateChange: () => {},
+          onLegTap: () => {},
+          onCopy: () => {},
+          showQ1: true,
+          showLongshots: true,
+          liveTracking: { snapshot: null, legViews: new Map(), betViews: new Map() },
+        })
+      );
+    });
+    const screen = host.firstElementChild!;
+    const [tabs, next] = Array.from(screen.children);
+    expect(tabs.querySelectorAll("button").length).toBe(2);
+    expect(next.tagName).toBe("SECTION");
+    expect(next.querySelector("[data-testid='multi-card-header']")?.textContent).toMatch(/^Main Play@\$11\.59/);
+    expect(screen.querySelectorAll("section").length).toBeGreaterThan(1);
+    root.unmount();
+    host.remove();
   });
 });
