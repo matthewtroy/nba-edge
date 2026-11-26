@@ -31,11 +31,11 @@ describe("leg-progress ui", () => {
     expect(liveLegStateLabel(view({ state: "live", actual: 12 }))).toBe("12/20");
   });
 
-  it("pill symbols are glyphs only", () => {
+  it("settled legs use one right label with final stat + glyph", () => {
+    expect(legProgressRightLabel(view({ state: "won", actual: 22 }))).toBe("22 ✓");
+    expect(legProgressRightLabel(view({ state: "lost", actual: 14 }))).toBe("14 ✗");
     expect(legProgressPillSymbol(view({ state: "won" }))).toBe("✓");
     expect(legProgressPillSymbol(view({ state: "lost" }))).toBe("✗");
-    expect(legProgressPillSymbol(view({ state: "live" }))).toBe("•");
-    expect(legProgressPillSymbol(view({ state: "void" }))).toBe("—");
   });
 
   it("maps state to pill, fill, right, and row gradient classes", () => {

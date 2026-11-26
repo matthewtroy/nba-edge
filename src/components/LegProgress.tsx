@@ -3,8 +3,6 @@ import {
   legProgressFillClass,
   legProgressFillPercent,
   legProgressMarkerPercent,
-  legProgressPillClass,
-  legProgressPillSymbol,
   legProgressRightClass,
   legProgressRightLabel,
   legProgressValueTrackClass,
@@ -22,7 +20,6 @@ export function LegProgress({
   if (!view || view.state === "pending") return null;
 
   const right = legProgressRightLabel(view);
-  const pill = legProgressPillSymbol(view);
   if (!right) return null;
 
   const fillPct = legProgressFillPercent(view);
@@ -58,15 +55,9 @@ export function LegProgress({
         />
       </div>
       <span
-        className={`shrink-0 text-[10px] font-semibold w-4 text-center tabular-nums ${legProgressPillClass(view)} ${
-          live ? "leg-progress-live-pill" : ""
+        className={`shrink-0 text-[10px] font-semibold tabular-nums min-w-[2.5rem] text-right ${legProgressRightClass(view)} ${
+          settled ? "leg-progress-settled-right" : ""
         }`}
-        aria-hidden
-      >
-        {pill}
-      </span>
-      <span
-        className={`shrink-0 text-[10px] font-medium tabular-nums min-w-[2.25rem] text-right ${legProgressRightClass(view)}`}
         data-testid="leg-progress-right"
       >
         {right}

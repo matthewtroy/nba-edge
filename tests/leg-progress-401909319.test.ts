@@ -6,11 +6,7 @@ import type { OfficialCardFile } from "../lib/official-card-time";
 import type { SlateGame } from "../lib/types";
 import { pickLegFromSnapshot } from "../lib/official-leg-snapshot";
 import { liveLegView } from "../lib/live-leg";
-import {
-  legProgressPillSymbol,
-  legProgressRightLabel,
-  legRowLiveTrackingClass,
-} from "../lib/live-leg-ui";
+import { legProgressRightLabel, legRowLiveTrackingClass } from "../lib/live-leg-ui";
 
 const fixtureDir = path.join(process.cwd(), "tests/fixtures");
 const summary = JSON.parse(
@@ -46,7 +42,6 @@ describe("ESPN 401909319 final box — KAT / Harden / Mitchell", () => {
     expect(v30.state).toBe("lost");
     expect(v20.actual).toBe(12);
     expect(legProgressRightLabel(v20)).toBe("12 ✗");
-    expect(legProgressPillSymbol(v20)).toBe("✗");
     expect(legRowLiveTrackingClass(v20)).toBe("leg-row-live-lost");
   });
 
@@ -55,7 +50,6 @@ describe("ESPN 401909319 final box — KAT / Harden / Mitchell", () => {
     expect(v.state).toBe("won");
     expect(v.actual).toBe(28);
     expect(legProgressRightLabel(v)).toBe("28 ✓");
-    expect(legProgressPillSymbol(v)).toBe("✓");
     expect(legRowLiveTrackingClass(v)).toBe("leg-row-live-won");
   });
 
