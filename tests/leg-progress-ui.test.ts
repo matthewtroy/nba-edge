@@ -53,8 +53,12 @@ describe("leg-progress ui", () => {
     expect(legProgressPillClass(view({ state: "live" }))).toMatch(/sky/);
     expect(legProgressFillClass(view({ state: "void" }))).toMatch(/white/);
     expect(legProgressRightClass(view({ state: "won" }))).toMatch(/emerald/);
-    expect(legRowLiveTrackingClass(view({ state: "won" }))).toBe("leg-row-live-won");
-    expect(legRowLiveTrackingClass(view({ state: "lost" }))).toBe("leg-row-live-lost");
+    expect(legRowLiveTrackingClass(view({ state: "won" }))).toBe(
+      "leg-row-live-won leg-row-live-full-bleed"
+    );
+    expect(legRowLiveTrackingClass(view({ state: "lost" }))).toBe(
+      "leg-row-live-lost leg-row-live-full-bleed"
+    );
     expect(legRowLiveTrackingClass(view({ state: "live" }))).toBe("");
     expect(legProgressValueTrackClass(true)).toBe("leg-progress-value-track");
     expect(legProgressValueTrackClass(false)).toBe("");

@@ -42,7 +42,7 @@ describe("ESPN 401909319 final box — KAT / Harden / Mitchell", () => {
     expect(v30.state).toBe("lost");
     expect(v20.actual).toBe(12);
     expect(legProgressRightLabel(v20)).toBe("12 ✗");
-    expect(legRowLiveTrackingClass(v20)).toBe("leg-row-live-lost");
+    expect(legRowLiveTrackingClass(v20)).toBe("leg-row-live-lost leg-row-live-full-bleed");
   });
 
   it("James Harden 20+ pts wins at 28", () => {
@@ -50,7 +50,7 @@ describe("ESPN 401909319 final box — KAT / Harden / Mitchell", () => {
     expect(v.state).toBe("won");
     expect(v.actual).toBe(28);
     expect(legProgressRightLabel(v)).toBe("28 ✓");
-    expect(legRowLiveTrackingClass(v)).toBe("leg-row-live-won");
+    expect(legRowLiveTrackingClass(v)).toBe("leg-row-live-won leg-row-live-full-bleed");
   });
 
   it("Donovan Mitchell 25+ pts wins; 5+ ast loses at 4", () => {

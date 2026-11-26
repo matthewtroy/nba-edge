@@ -48,9 +48,9 @@ export function legRowLiveTrackingClass(view: LiveLegView | undefined): string {
   if (!view || view.state === "pending" || view.state === "live") return "";
   switch (view.state) {
     case "won":
-      return "leg-row-live-won";
+      return "leg-row-live-won leg-row-live-full-bleed";
     case "lost":
-      return "leg-row-live-lost";
+      return "leg-row-live-lost leg-row-live-full-bleed";
     default:
       return "";
   }
