@@ -11,7 +11,9 @@ interface State {
 }
 
 const DEFAULT_FALLBACK = (
-  <p className="text-sm text-white/60 px-2 py-3">This bet couldn&apos;t be displayed.</p>
+  <p className="text-sm text-white/60 px-2 py-3">
+    This section is unavailable right now. Try another tab or refresh.
+  </p>
 );
 
 export class ErrorBoundary extends Component<Props, State> {

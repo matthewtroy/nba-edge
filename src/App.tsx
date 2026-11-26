@@ -15,6 +15,7 @@ import { GamesScreen } from "./screens/GamesScreen";
 import type { PickLeg } from "@lib/types";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { LoadingSkeleton } from "./components/LoadingSkeleton";
+import { BrandedLoadState } from "./components/BrandedLoadState";
 import { injuriesForBadges } from "@lib/injury-display";
 import { useLiveTracking } from "./hooks/useLiveTracking";
 import { officialLiveTrackingInputs } from "@lib/official-live-tracking";
@@ -82,15 +83,31 @@ export default function App() {
     setTimeout(() => setToast(null), 1500);
   };
 
-  if (!index || data.loading) {
+  if (!index && data.loading) {
+    return <LoadingSkeleton />;
+  }
+
+  if (!index) {
+    return (
+      <PhoneShell className="px-4 pt-4">
+        <BrandedLoadState kind={data.errorKind ?? "missing"} />
+      </PhoneShell>
+    );
+  }
+
+  if (data.loading) {
     return <LoadingSkeleton />;
   }
 
   return (
     <PhoneShell className="px-4 pt-4">
-      {data.error && <p className="text-sm text-red-400 mb-2">{data.error}</p>}
+      {data.errorKind && (
+        <BrandedLoadState kind={data.errorKind} title="Couldn’t load this slate" />
+      )}
       {liveTracking.error && (
-        <p className="text-sm text-amber-400/90 mb-2">{liveTracking.error}</p>
+        <p className="text-sm text-white/60 mb-2" role="status">
+          Live scores are delayed — picks still show last known lines.
+        </p>
       )}
       {tab === "today" && (
         <ErrorBoundary name="TodayScreen">

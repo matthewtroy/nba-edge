@@ -14,6 +14,7 @@ import type {
 import type { ResultsJson } from "@lib/results-types";
 import type { OfficialCardFile } from "@lib/official-card-time";
 import type { DataIndexFile } from "@lib/data-index";
+import { DataLoadError } from "@lib/data-load-error";
 
 export interface DataBundle {
   index: DataIndexFile | null;
@@ -29,6 +30,7 @@ export interface DataBundle {
   results: ResultsJson | null;
   loading: boolean;
   error?: string;
+  errorKind?: "network" | "missing" | "unknown";
 }
 
 function parseMultisJson(raw: unknown): { bets: MultiBet[]; notBuilt: MultiNotBuilt[] } {
@@ -47,7 +49,10 @@ const dataBase = `${import.meta.env.BASE_URL}data/`;
 async function fetchDataJson<T>(file: string, version: string): Promise<T> {
   const url = `${dataBase}${file}?v=${encodeURIComponent(version)}`;
   const res = await fetch(url, { cache: "no-store" });
-  if (!res.ok) throw new Error(`Failed to load ${file}: ${res.status}`);
+  if (!res.ok) {
+    const kind = res.status === 404 ? "missing" : "network";
+    throw new DataLoadError(kind);
+  }
   return res.json() as Promise<T>;
 }
 
@@ -176,10 +181,17 @@ export function useData(selectedDate: string): DataBundle {
         }
       } catch (e) {
         if (!cancelled) {
+          const kind =
+            e instanceof DataLoadError
+              ? e.kind
+              : e instanceof TypeError
+                ? "network"
+                : "unknown";
           setState((s) => ({
             ...s,
             loading: false,
-            error: e instanceof Error ? e.message : "Failed to load data",
+            errorKind: kind,
+            error: kind,
           }));
         }
       }
