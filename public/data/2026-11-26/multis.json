@@ -4,6 +4,103 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
+        "4711294-pts-15",
+        "4431671-reb-5",
+        "3995-ast-5",
+        "4903027-reb-7"
+      ],
+      "combinedProbability": 0.27858006143999997,
+      "combinedFairPrice": 3.59,
+      "combinedTakeAt": 3.88,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 6.46,
+      "bookieTotals": {
+        "Ladbrokes": 6.46,
+        "Neds": 6.46
+      },
+      "summary": "4 starter main lines"
+    },
+    {
+      "type": "doubleUp",
+      "label": "Best Double Up",
+      "legs": [
+        "4432816-pts-15",
+        "5104157-3pm-2"
+      ],
+      "combinedProbability": 0.589036,
+      "combinedFairPrice": 1.7,
+      "combinedTakeAt": 1.84,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 1.84,
+      "bookieTotals": {
+        "TAB": 1.66,
+        "Ladbrokes": 1.84,
+        "Neds": 1.84
+      },
+      "summary": "2 legs · aim ~$2 @ one bookie"
+    },
+    {
+      "type": "booster",
+      "label": "Booster",
+      "legs": [
+        "4711294-pts-20",
+        "4431671-reb-7",
+        "3995-ast-7",
+        "4903027-reb-10"
+      ],
+      "combinedProbability": 0.032226282,
+      "combinedFairPrice": 31.03,
+      "combinedTakeAt": 33.51,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 63.75,
+      "bookieTotals": {
+        "Ladbrokes": 63.75,
+        "Neds": 63.75
+      },
+      "summary": "Main Play +1 rung when Main leg ≤$4 at bookie, else same rung"
+    },
+    {
+      "type": "boostSgm",
+      "label": "Best SGM",
+      "legs": [
+        "4711294-pts-15",
+        "2990984-3pm-3"
+      ],
+      "combinedProbability": 0.5684670000000001,
+      "combinedFairPrice": 1.76,
+      "combinedTakeAt": 1.9,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 2.55,
+      "bookieTotals": {
+        "Sportsbet": 2.42,
+        "TAB": 2.24,
+        "Ladbrokes": 2.55,
+        "Neds": 2.55,
+        "PointsBet": 2.35
+      },
+      "summary": "Best 2–5 leg same-game multi · min $2 · edge curve"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "legs": [
+        "5104157-q1reb-3",
+        "4432194-q1reb-2",
+        "4066383-q1reb-2",
+        "3155942-q1reb-3",
+        "3059318-q1reb-2",
+        "4396971-q1reb-2"
+      ],
+      "combinedProbability": 0.13025032868649603,
+      "combinedFairPrice": 7.68,
+      "combinedTakeAt": 8.29,
+      "bookieTotals": {},
+      "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
+    },
+    {
+      "type": "mainPlay",
+      "label": "Main Play",
+      "legs": [
         "4397002-3pm-2",
         "5104157-pts-30",
         "4065732-pts-15"
@@ -403,9 +500,19 @@
   ],
   "notBuilt": [
     {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "reason": "No cross-game combo @ edge (eligible 225, best edge-pool Neds=59, range-cands 0)"
+    },
+    {
       "type": "longshot",
       "label": "Longshot",
-      "reason": "No angle longshot @ one bookie ($30–150, 2–4 legs, edge or narrative)"
+      "reason": "Gate: Longshot: Victor Wembanyama has Check news (legs: Victor Wembanyama Over 39.5 pts, Donovan Mitchell Over 34.5 pts, Julius Randle Over 29.5 pts)",
+      "players": [
+        "Victor Wembanyama",
+        "Donovan Mitchell",
+        "Julius Randle"
+      ]
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T10:21:17.505Z",
+  "updatedAt": "2026-11-26T11:26:29.404Z",
   "official": {
     "record": {
       "won": 0,
@@ -17,53 +17,53 @@
   },
   "valueLegs": {
     "record": {
-      "won": 44,
-      "lost": 27,
+      "won": 33,
+      "lost": 25,
       "void": 0,
-      "staked": 71,
-      "profit": 47.67,
-      "roi": 0.6714084507042254,
-      "legs": 71,
-      "hitRate": 0.6197183098591549,
-      "avgPrice": 4.189436619718309,
-      "beatMarket": 0.19507784818097812
+      "staked": 58,
+      "profit": 34.88,
+      "roi": 0.6013793103448276,
+      "legs": 58,
+      "hitRate": 0.5689655172413793,
+      "avgPrice": 4.6368965517241385,
+      "beatMarket": 0.19639522530994313
     },
     "byMarket": {
       "reb": {
-        "won": 19,
+        "won": 13,
         "lost": 5,
         "void": 0,
-        "staked": 24,
-        "profit": 24.88,
-        "roi": 1.0366666666666666,
-        "legs": 24
+        "staked": 18,
+        "profit": 18.2,
+        "roi": 1.011111111111111,
+        "legs": 18
       },
       "ast": {
-        "won": 8,
-        "lost": 9,
+        "won": 4,
+        "lost": 8,
         "void": 0,
-        "staked": 17,
-        "profit": 5.89,
-        "roi": 0.3464705882352941,
-        "legs": 17
+        "staked": 12,
+        "profit": -1.07,
+        "roi": -0.08916666666666667,
+        "legs": 12
       },
       "3pm": {
-        "won": 17,
+        "won": 16,
         "lost": 9,
         "void": 0,
-        "staked": 26,
-        "profit": 20.9,
-        "roi": 0.8038461538461538,
-        "legs": 26
+        "staked": 25,
+        "profit": 20.75,
+        "roi": 0.83,
+        "legs": 25
       },
       "pts": {
         "won": 0,
-        "lost": 4,
+        "lost": 3,
         "void": 0,
-        "staked": 4,
-        "profit": -4,
+        "staked": 3,
+        "profit": -3,
         "roi": -1,
-        "legs": 4
+        "legs": 3
       }
     },
     "byEdgeBand": {
@@ -77,22 +77,13 @@
         "legs": 46
       },
       "5–10%": {
-        "won": 8,
-        "lost": 2,
-        "void": 0,
-        "staked": 10,
-        "profit": 1.59,
-        "roi": 0.159,
-        "legs": 10
-      },
-      "0–5%": {
-        "won": 7,
+        "won": 4,
         "lost": 1,
         "void": 0,
-        "staked": 8,
-        "profit": 12.55,
-        "roi": 1.56875,
-        "legs": 8
+        "staked": 5,
+        "profit": 1.35,
+        "roi": 0.27,
+        "legs": 5
       },
       "10–15%": {
         "won": 5,
@@ -340,19 +331,6 @@
         "probability": 0.499
       },
       {
-        "id": "3078576-reb-5",
-        "slateDate": "2026-11-25",
-        "playerName": "Derrick White",
-        "market": "reb",
-        "line": 5,
-        "result": "won",
-        "price": 5.5,
-        "bookie": "TAB",
-        "fairPrice": 5.48,
-        "edgeVsFair": 0.0036496350364962904,
-        "probability": 0.183
-      },
-      {
         "id": "3078576-3pm-1",
         "slateDate": "2026-11-25",
         "playerName": "Derrick White",
@@ -444,19 +422,6 @@
         "probability": 0.381
       },
       {
-        "id": "4065648-reb-5",
-        "slateDate": "2026-11-25",
-        "playerName": "Jayson Tatum",
-        "market": "reb",
-        "line": 5,
-        "result": "won",
-        "price": 1.29,
-        "bookie": "TABtouch",
-        "fairPrice": 1.2,
-        "edgeVsFair": 0.07500000000000018,
-        "probability": 0.83
-      },
-      {
         "id": "4065648-ast-5",
         "slateDate": "2026-11-25",
         "playerName": "Jayson Tatum",
@@ -496,19 +461,6 @@
         "probability": 0.779
       },
       {
-        "id": "3064290-reb-3",
-        "slateDate": "2026-11-25",
-        "playerName": "Aaron Gordon",
-        "market": "reb",
-        "line": 3,
-        "result": "won",
-        "price": 1.3,
-        "bookie": "TAB",
-        "fairPrice": 1.24,
-        "edgeVsFair": 0.048387096774193505,
-        "probability": 0.804
-      },
-      {
         "id": "3064290-3pm-1",
         "slateDate": "2026-11-25",
         "playerName": "Aaron Gordon",
@@ -520,19 +472,6 @@
         "fairPrice": 2.01,
         "edgeVsFair": 0.14427860696517425,
         "probability": 0.498
-      },
-      {
-        "id": "3138196-reb-3",
-        "slateDate": "2026-11-25",
-        "playerName": "Cameron Johnson",
-        "market": "reb",
-        "line": 3,
-        "result": "won",
-        "price": 1.85,
-        "bookie": "TABtouch",
-        "fairPrice": 1.82,
-        "edgeVsFair": 0.016483516483516425,
-        "probability": 0.551
       },
       {
         "id": "3138196-ast-3",
@@ -626,19 +565,6 @@
         "probability": 0.327
       },
       {
-        "id": "3112335-reb-10",
-        "slateDate": "2026-11-25",
-        "playerName": "Nikola Jokic",
-        "market": "reb",
-        "line": 10,
-        "result": "won",
-        "price": 1.47,
-        "bookie": "TABtouch",
-        "fairPrice": 1.45,
-        "edgeVsFair": 0.01379310344827589,
-        "probability": 0.69
-      },
-      {
         "id": "3112335-3pm-1",
         "slateDate": "2026-11-25",
         "playerName": "Nikola Jokic",
@@ -663,19 +589,6 @@
         "fairPrice": 1.31,
         "edgeVsFair": 0.16030534351145032,
         "probability": 0.765
-      },
-      {
-        "id": "3936299-ast-5",
-        "slateDate": "2026-11-25",
-        "playerName": "Jamal Murray",
-        "market": "ast",
-        "line": 5,
-        "result": "lost",
-        "price": 1.54,
-        "bookie": "TABtouch",
-        "fairPrice": 1.46,
-        "edgeVsFair": 0.0547945205479452,
-        "probability": 0.685
       },
       {
         "id": "3936299-3pm-1",
@@ -821,45 +734,6 @@
         "probability": 0.206
       },
       {
-        "id": "5041939-ast-3",
-        "slateDate": "2026-11-25",
-        "playerName": "Cooper Flagg",
-        "market": "ast",
-        "line": 3,
-        "result": "won",
-        "price": 1.1,
-        "bookie": "TABtouch",
-        "fairPrice": 1.08,
-        "edgeVsFair": 0.0185185185185186,
-        "probability": 0.926
-      },
-      {
-        "id": "5041939-ast-5",
-        "slateDate": "2026-11-25",
-        "playerName": "Cooper Flagg",
-        "market": "ast",
-        "line": 5,
-        "result": "won",
-        "price": 1.53,
-        "bookie": "Ladbrokes",
-        "fairPrice": 1.42,
-        "edgeVsFair": 0.07746478873239449,
-        "probability": 0.702
-      },
-      {
-        "id": "5041939-ast-10",
-        "slateDate": "2026-11-25",
-        "playerName": "Cooper Flagg",
-        "market": "ast",
-        "line": 10,
-        "result": "won",
-        "price": 8,
-        "bookie": "TABtouch",
-        "fairPrice": 7.81,
-        "edgeVsFair": 0.02432778489116516,
-        "probability": 0.128
-      },
-      {
         "id": "5041939-3pm-1",
         "slateDate": "2026-11-25",
         "playerName": "Cooper Flagg",
@@ -925,19 +799,6 @@
         "probability": 0.279
       },
       {
-        "id": "4278078-reb-3",
-        "slateDate": "2026-11-25",
-        "playerName": "P.J. Washington",
-        "market": "reb",
-        "line": 3,
-        "result": "won",
-        "price": 1.27,
-        "bookie": "TABtouch",
-        "fairPrice": 1.2,
-        "edgeVsFair": 0.05833333333333335,
-        "probability": 0.831
-      },
-      {
         "id": "4278078-reb-5",
         "slateDate": "2026-11-25",
         "playerName": "P.J. Washington",
@@ -977,19 +838,6 @@
         "probability": 0.762
       },
       {
-        "id": "6442-pts-15",
-        "slateDate": "2026-11-25",
-        "playerName": "Kyrie Irving",
-        "market": "pts",
-        "line": 15,
-        "result": "lost",
-        "price": 1.18,
-        "bookie": "TABtouch",
-        "fairPrice": 1.15,
-        "edgeVsFair": 0.026086956521739202,
-        "probability": 0.87
-      },
-      {
         "id": "6442-reb-3",
         "slateDate": "2026-11-25",
         "playerName": "Kyrie Irving",
@@ -1001,32 +849,6 @@
         "fairPrice": 1.59,
         "edgeVsFair": 0.16352201257861632,
         "probability": 0.628
-      },
-      {
-        "id": "6442-ast-3",
-        "slateDate": "2026-11-25",
-        "playerName": "Kyrie Irving",
-        "market": "ast",
-        "line": 3,
-        "result": "won",
-        "price": 1.33,
-        "bookie": "TAB",
-        "fairPrice": 1.28,
-        "edgeVsFair": 0.0390625,
-        "probability": 0.778
-      },
-      {
-        "id": "6442-3pm-1",
-        "slateDate": "2026-11-25",
-        "playerName": "Kyrie Irving",
-        "market": "3pm",
-        "line": 1,
-        "result": "won",
-        "price": 1.15,
-        "bookie": "TABtouch",
-        "fairPrice": 1.09,
-        "edgeVsFair": 0.05504587155963292,
-        "probability": 0.915
       }
     ]
   },

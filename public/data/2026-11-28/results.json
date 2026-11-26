@@ -1,0 +1,67 @@
+{
+  "updatedAt": "2026-11-26T11:26:29.404Z",
+  "official": {
+    "record": {
+      "won": 0,
+      "lost": 0,
+      "void": 0,
+      "staked": 0,
+      "profit": 0,
+      "roi": null,
+      "bets": 0
+    },
+    "byBetType": {},
+    "last14d": [],
+    "bets": [],
+    "legs": []
+  },
+  "valueLegs": {
+    "record": {
+      "won": 0,
+      "lost": 0,
+      "void": 0,
+      "staked": 0,
+      "profit": 0,
+      "roi": null,
+      "legs": 0,
+      "hitRate": null,
+      "avgPrice": null,
+      "beatMarket": null
+    },
+    "byMarket": {},
+    "byEdgeBand": {},
+    "legs": []
+  },
+  "model": {
+    "calibration": [
+      {
+        "range": "50-60%",
+        "expected": 0.55,
+        "actual": 0,
+        "count": 0
+      },
+      {
+        "range": "60-70%",
+        "expected": 0.6499999999999999,
+        "actual": 0,
+        "count": 0
+      },
+      {
+        "range": "70-80%",
+        "expected": 0.75,
+        "actual": 0,
+        "count": 0
+      },
+      {
+        "range": "80-90%",
+        "expected": 0.8500000000000001,
+        "actual": 0,
+        "count": 0
+      }
+    ],
+    "brierLive": null,
+    "brierShadow": null,
+    "tagHitRates": {}
+  },
+  "gradedLegs": []
+}

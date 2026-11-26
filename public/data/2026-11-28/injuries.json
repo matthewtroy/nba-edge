@@ -1,0 +1,596 @@
+[
+  {
+    "playerName": "Jock Landale",
+    "teamId": "1",
+    "teamName": "Atlanta Hawks",
+    "gameId": "401909330",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-21T22:12Z"
+  },
+  {
+    "playerName": "Asa Newell",
+    "teamId": "1",
+    "teamName": "Atlanta Hawks",
+    "gameId": "401909330",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-17T21:16Z"
+  },
+  {
+    "playerName": "CJ McCollum",
+    "teamId": "1",
+    "teamName": "Atlanta Hawks",
+    "gameId": "401909330",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-17T21:08Z"
+  },
+  {
+    "playerName": "Mouhamed Gueye",
+    "teamId": "1",
+    "teamName": "Atlanta Hawks",
+    "gameId": "401909330",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-13T00:06Z"
+  },
+  {
+    "playerName": "Henri Veesaar",
+    "teamId": "1",
+    "teamName": "Atlanta Hawks",
+    "gameId": "401909330",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-09-21T19:50Z"
+  },
+  {
+    "playerName": "Mitchell Robinson",
+    "teamId": "2",
+    "teamName": "Boston Celtics",
+    "gameId": "401909330",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-23T21:09Z"
+  },
+  {
+    "playerName": "Moritz Wagner",
+    "teamId": "17",
+    "teamName": "Brooklyn Nets",
+    "gameId": "401909329",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-26T02:48Z"
+  },
+  {
+    "playerName": "Nolan Traore",
+    "teamId": "17",
+    "teamName": "Brooklyn Nets",
+    "gameId": "401909329",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-23T15:22Z"
+  },
+  {
+    "playerName": "Tobi Lawal",
+    "teamId": "6",
+    "teamName": "Dallas Mavericks",
+    "gameId": "401909332",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-23T23:25Z"
+  },
+  {
+    "playerName": "Dereck Lively II",
+    "teamId": "6",
+    "teamName": "Dallas Mavericks",
+    "gameId": "401909332",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-20T19:31Z"
+  },
+  {
+    "playerName": "Sergio de Larrea",
+    "teamId": "6",
+    "teamName": "Dallas Mavericks",
+    "gameId": "401909332",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-17T22:53Z"
+  },
+  {
+    "playerName": "Tarik Biberovic",
+    "teamId": "6",
+    "teamName": "Dallas Mavericks",
+    "gameId": "401909332",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-17T22:42Z"
+  },
+  {
+    "playerName": "Cade Cunningham",
+    "teamId": "8",
+    "teamName": "Detroit Pistons",
+    "gameId": "401909327",
+    "status": "Questionable",
+    "source": "ESPN",
+    "updatedAt": "2026-11-25T19:00Z"
+  },
+  {
+    "playerName": "Ebuka Okorie",
+    "teamId": "8",
+    "teamName": "Detroit Pistons",
+    "gameId": "401909327",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-24T18:37Z"
+  },
+  {
+    "playerName": "Taurean Prince",
+    "teamId": "8",
+    "teamName": "Detroit Pistons",
+    "gameId": "401909327",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-24T18:33Z"
+  },
+  {
+    "playerName": "Duncan Robinson",
+    "teamId": "8",
+    "teamName": "Detroit Pistons",
+    "gameId": "401909327",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-24T18:30Z"
+  },
+  {
+    "playerName": "Jalen Duren",
+    "teamId": "8",
+    "teamName": "Detroit Pistons",
+    "gameId": "401909327",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-24T18:27Z"
+  },
+  {
+    "playerName": "Stephen Curry",
+    "teamId": "9",
+    "teamName": "Golden State Warriors",
+    "gameId": "401909336",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-26T01:36Z"
+  },
+  {
+    "playerName": "Kristaps Porzingis",
+    "teamId": "9",
+    "teamName": "Golden State Warriors",
+    "gameId": "401909336",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-06T21:26Z"
+  },
+  {
+    "playerName": "Moses Moody",
+    "teamId": "9",
+    "teamName": "Golden State Warriors",
+    "gameId": "401909336",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-10-16T16:14Z"
+  },
+  {
+    "playerName": "Jimmy Butler III",
+    "teamId": "9",
+    "teamName": "Golden State Warriors",
+    "gameId": "401909336",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-10-16T16:11Z"
+  },
+  {
+    "playerName": "T.J. McConnell",
+    "teamId": "11",
+    "teamName": "Indiana Pacers",
+    "gameId": "401909328",
+    "status": "Questionable",
+    "source": "ESPN",
+    "updatedAt": "2026-11-24T19:43Z"
+  },
+  {
+    "playerName": "Tyrese Haliburton",
+    "teamId": "11",
+    "teamName": "Indiana Pacers",
+    "gameId": "401909328",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-24T19:41Z"
+  },
+  {
+    "playerName": "Aaron Nesmith",
+    "teamId": "11",
+    "teamName": "Indiana Pacers",
+    "gameId": "401909328",
+    "status": "Questionable",
+    "source": "ESPN",
+    "updatedAt": "2026-11-24T04:40Z"
+  },
+  {
+    "playerName": "Larry Nance Jr.",
+    "teamId": "11",
+    "teamName": "Indiana Pacers",
+    "gameId": "401909328",
+    "status": "Questionable",
+    "source": "ESPN",
+    "updatedAt": "2026-11-24T02:00Z"
+  },
+  {
+    "playerName": "Ben Sheppard",
+    "teamId": "11",
+    "teamName": "Indiana Pacers",
+    "gameId": "401909328",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-10-28T21:41Z"
+  },
+  {
+    "playerName": "Bradley Beal",
+    "teamId": "12",
+    "teamName": "LA Clippers",
+    "gameId": "401909335",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-10-15T01:03Z"
+  },
+  {
+    "playerName": "Jordan Miller",
+    "teamId": "12",
+    "teamName": "LA Clippers",
+    "gameId": "401909335",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-08-26T20:04Z"
+  },
+  {
+    "playerName": "Austin Reaves",
+    "teamId": "13",
+    "teamName": "Los Angeles Lakers",
+    "gameId": "401909333",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-25T20:33Z"
+  },
+  {
+    "playerName": "Zach Edey",
+    "teamId": "29",
+    "teamName": "Memphis Grizzlies",
+    "gameId": "401909331",
+    "status": "Questionable",
+    "source": "ESPN",
+    "updatedAt": "2026-11-26T03:43Z"
+  },
+  {
+    "playerName": "Scotty Pippen Jr.",
+    "teamId": "29",
+    "teamName": "Memphis Grizzlies",
+    "gameId": "401909331",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-24T23:04Z"
+  },
+  {
+    "playerName": "Cameron Boozer",
+    "teamId": "29",
+    "teamName": "Memphis Grizzlies",
+    "gameId": "401909331",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-23T23:07Z"
+  },
+  {
+    "playerName": "Jerami Grant",
+    "teamId": "29",
+    "teamName": "Memphis Grizzlies",
+    "gameId": "401909331",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-23T04:04Z"
+  },
+  {
+    "playerName": "GG Jackson",
+    "teamId": "29",
+    "teamName": "Memphis Grizzlies",
+    "gameId": "401909331",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-17T23:18Z"
+  },
+  {
+    "playerName": "Richie Saunders",
+    "teamId": "29",
+    "teamName": "Memphis Grizzlies",
+    "gameId": "401909331",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-07T17:24Z"
+  },
+  {
+    "playerName": "LaMelo Ball",
+    "teamId": "16",
+    "teamName": "Minnesota Timberwolves",
+    "gameId": "401909331",
+    "status": "Questionable",
+    "source": "ESPN",
+    "updatedAt": "2026-11-26T03:37Z"
+  },
+  {
+    "playerName": "Donte DiVincenzo",
+    "teamId": "16",
+    "teamName": "Minnesota Timberwolves",
+    "gameId": "401909331",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-24T17:10Z"
+  },
+  {
+    "playerName": "Jaylen Clark",
+    "teamId": "16",
+    "teamName": "Minnesota Timberwolves",
+    "gameId": "401909331",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-15T22:40Z"
+  },
+  {
+    "playerName": "Anthony Edwards",
+    "teamId": "16",
+    "teamName": "Minnesota Timberwolves",
+    "gameId": "401909331",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-10-29T18:33Z"
+  },
+  {
+    "playerName": "Julian Reese",
+    "teamId": "3",
+    "teamName": "New Orleans Pelicans",
+    "gameId": "401909335",
+    "status": "Questionable",
+    "source": "ESPN",
+    "updatedAt": "2026-11-25T16:11Z"
+  },
+  {
+    "playerName": "Trendon Watford",
+    "teamId": "3",
+    "teamName": "New Orleans Pelicans",
+    "gameId": "401909335",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-21T18:21Z"
+  },
+  {
+    "playerName": "Bennedict Mathurin",
+    "teamId": "3",
+    "teamName": "New Orleans Pelicans",
+    "gameId": "401909335",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-19T21:07Z"
+  },
+  {
+    "playerName": "Dejounte Murray",
+    "teamId": "3",
+    "teamName": "New Orleans Pelicans",
+    "gameId": "401909335",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-13T20:19Z"
+  },
+  {
+    "playerName": "Miles McBride",
+    "teamId": "18",
+    "teamName": "New York Knicks",
+    "gameId": "401909326",
+    "status": "Questionable",
+    "source": "ESPN",
+    "updatedAt": "2026-11-26T05:31Z"
+  },
+  {
+    "playerName": "Andre Drummond",
+    "teamId": "18",
+    "teamName": "New York Knicks",
+    "gameId": "401909326",
+    "status": "Questionable",
+    "source": "ESPN",
+    "updatedAt": "2026-11-26T03:40Z"
+  },
+  {
+    "playerName": "OG Anunoby",
+    "teamId": "18",
+    "teamName": "New York Knicks",
+    "gameId": "401909326",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-25T23:19Z"
+  },
+  {
+    "playerName": "Jordan Clarkson",
+    "teamId": "18",
+    "teamName": "New York Knicks",
+    "gameId": "401909326",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-24T21:56Z"
+  },
+  {
+    "playerName": "Joel Embiid",
+    "teamId": "20",
+    "teamName": "Philadelphia 76ers",
+    "gameId": "401909328",
+    "status": "Questionable",
+    "source": "ESPN",
+    "updatedAt": "2026-11-26T01:06Z"
+  },
+  {
+    "playerName": "Jaylen Brown",
+    "teamId": "20",
+    "teamName": "Philadelphia 76ers",
+    "gameId": "401909328",
+    "status": "Questionable",
+    "source": "ESPN",
+    "updatedAt": "2026-11-26T01:06Z"
+  },
+  {
+    "playerName": "Ariel Hukporti",
+    "teamId": "20",
+    "teamName": "Philadelphia 76ers",
+    "gameId": "401909328",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-10-06T19:17Z"
+  },
+  {
+    "playerName": "Mark Williams",
+    "teamId": "21",
+    "teamName": "Phoenix Suns",
+    "gameId": "401909332",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-09-11T16:03Z"
+  },
+  {
+    "playerName": "Chris Youngblood",
+    "teamId": "22",
+    "teamName": "Portland Trail Blazers",
+    "gameId": "401909336",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-20T22:18Z"
+  },
+  {
+    "playerName": "Vit Krejci",
+    "teamId": "22",
+    "teamName": "Portland Trail Blazers",
+    "gameId": "401909336",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-11T19:56Z"
+  },
+  {
+    "playerName": "Ja Morant",
+    "teamId": "22",
+    "teamName": "Portland Trail Blazers",
+    "gameId": "401909336",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-08T02:18Z"
+  },
+  {
+    "playerName": "Shaedon Sharpe",
+    "teamId": "22",
+    "teamName": "Portland Trail Blazers",
+    "gameId": "401909336",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-08-24T20:23Z"
+  },
+  {
+    "playerName": "De'Aaron Fox",
+    "teamId": "24",
+    "teamName": "San Antonio Spurs",
+    "gameId": "401909333",
+    "status": "Questionable",
+    "source": "ESPN",
+    "updatedAt": "2026-11-26T06:01Z"
+  },
+  {
+    "playerName": "Dylan Harper",
+    "teamId": "24",
+    "teamName": "San Antonio Spurs",
+    "gameId": "401909333",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-19T20:07Z"
+  },
+  {
+    "playerName": "Tobias Harris",
+    "teamId": "24",
+    "teamName": "San Antonio Spurs",
+    "gameId": "401909333",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-16T19:26Z"
+  },
+  {
+    "playerName": "Jayden Quaintance",
+    "teamId": "24",
+    "teamName": "San Antonio Spurs",
+    "gameId": "401909333",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-10-05T21:43Z"
+  },
+  {
+    "playerName": "Kawhi Leonard",
+    "teamId": "28",
+    "teamName": "Toronto Raptors",
+    "gameId": "401909329",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-24T21:15Z"
+  },
+  {
+    "playerName": "Nate Bittle",
+    "teamId": "28",
+    "teamName": "Toronto Raptors",
+    "gameId": "401909329",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-22T21:13Z"
+  },
+  {
+    "playerName": "RJ Barrett",
+    "teamId": "28",
+    "teamName": "Toronto Raptors",
+    "gameId": "401909329",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-19T21:13Z"
+  },
+  {
+    "playerName": "Jaxson Hayes",
+    "teamId": "26",
+    "teamName": "Utah Jazz",
+    "gameId": "401909334",
+    "status": "Questionable",
+    "source": "ESPN",
+    "updatedAt": "2026-11-24T06:07Z"
+  },
+  {
+    "playerName": "Jusuf Nurkic",
+    "teamId": "26",
+    "teamName": "Utah Jazz",
+    "gameId": "401909334",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-20T22:40Z"
+  },
+  {
+    "playerName": "Lauri Markkanen",
+    "teamId": "26",
+    "teamName": "Utah Jazz",
+    "gameId": "401909334",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-11-11T18:22Z"
+  },
+  {
+    "playerName": "Jaren Jackson Jr.",
+    "teamId": "26",
+    "teamName": "Utah Jazz",
+    "gameId": "401909334",
+    "status": "Out",
+    "source": "ESPN",
+    "updatedAt": "2026-10-27T19:25Z"
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "bets": [],
+  "notBuilt": [
+    {
+      "type": "mainPlay",
+      "label": "Main Play",
+      "reason": "No bookie with 3+ main legs at edge (best =0)"
+    },
+    {
+      "type": "doubleUp",
+      "label": "Best Double Up",
+      "reason": "No bookie with 2+ Double Up legs at edge (best =0)"
+    },
+    {
+      "type": "booster",
+      "label": "Booster",
+      "reason": "Needs a Main Play first"
+    },
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "reason": "No cross-game combo @ edge (eligible 243, best edge-pool =0, range-cands 0)"
+    },
+    {
+      "type": "boostSgm",
+      "label": "Best SGM",
+      "reason": "No same-game SGM @ ≥$2 + edge curve (eligible 604, best pool =0, games 0)"
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot",
+      "reason": "No angle longshot @ one bookie ($30–150, 2–4 legs, edge or narrative)"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "reason": "No Q1 Multi (blend p rank, 1/team, 3–6 legs)"
+    }
+  ]
+}

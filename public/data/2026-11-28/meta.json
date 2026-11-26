@@ -1,0 +1,61 @@
+{
+  "lastUpdated": "2026-11-26T11:26:00.897Z",
+  "sources": {
+    "espn": "ok",
+    "nbaOfficial": "stale",
+    "odds": "ok"
+  },
+  "slateSize": 11,
+  "smallSlate": false,
+  "injuryImpactLog": [
+    "Jock Landale (Atlanta Hawks): no redistribution reasons on slate legs"
+  ],
+  "modelSanityChecked": 216,
+  "modelSanityFailures": 42,
+  "formGuardExcludedCount": 530,
+  "gameOddsPriceAge": {
+    "401909326": "Prices from 9:29 pm",
+    "401909327": "Prices from 9:29 pm",
+    "401909328": "Prices from 9:29 pm",
+    "401909329": "Prices from 9:29 pm",
+    "401909330": "Prices from 9:29 pm",
+    "401909331": "Prices from 9:29 pm",
+    "401909332": "Prices from 9:29 pm",
+    "401909333": "Prices from 9:29 pm",
+    "401909334": "Prices from 9:29 pm",
+    "401909335": "Prices from 9:29 pm",
+    "401909336": "Prices from 9:29 pm"
+  },
+  "slateTipDate": "2026-11-28",
+  "whatChanged": [
+    "Duncan Robinson out → Paul Reed +2.1 pts",
+    "RJ Barrett out → Scottie Barnes +5.2 pts",
+    "Bennedict Mathurin out → Jordan Poole +4.5 pts"
+  ],
+  "nbaOfficialLastTriedUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-26_04_30AM.pdf",
+  "pricedLegCounts": {
+    "3pm": {
+      "total": 581,
+      "priced": 0
+    },
+    "pts": {
+      "total": 422,
+      "priced": 0
+    },
+    "reb": {
+      "total": 446,
+      "priced": 0
+    },
+    "ast": {
+      "total": 291,
+      "priced": 0
+    },
+    "q1reb": {
+      "total": 179,
+      "priced": 0
+    }
+  },
+  "slatePublicationStatus": "draft",
+  "slateStatusLabel": "Draft · updates until 9pm",
+  "injuriesAtTip": []
+}
