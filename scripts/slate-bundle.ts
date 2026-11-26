@@ -1,6 +1,13 @@
 import fs from "fs";
 import path from "path";
-import type { InjuryEntry, MetaJson, MultiBet, MultiNotBuilt, SlateGame } from "../lib/types.js";
+import type {
+  InjuryEntry,
+  MetaJson,
+  MultiBet,
+  MultiNotBuilt,
+  PickLeg,
+  SlateGame,
+} from "../lib/types.js";
 import type { ModelPlayer } from "./model-engine.js";
 import { runModel } from "./model-engine.js";
 import { ensureTrackingCacheLoaded } from "../lib/player-tracking-espn.js";
@@ -28,7 +35,7 @@ import { pickLegFromSnapshot } from "../lib/official-leg-snapshot.js";
 import { countPricedPickLegs } from "../lib/odds-cache-guard.js";
 import { freezeInjuriesAtTip, mergeInjuriesReportTime } from "../lib/injury-tip-freeze.js";
 import { refreshInjuriesAtTip } from "../lib/injuries-at-tip.js";
-import { refreshReasonsAtTip } from "../lib/reasons-at-tip.js";
+import { restorePicksAndReasonsAtTip } from "../lib/reasons-at-tip-restore.js";
 
 export interface SlateBundleInput {
   rootDir: string;
@@ -275,6 +282,7 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   let slateOut = input.slate;
   let picksOut = picks;
   let multisOut = multis;
+  let previousPicksForRestore: PickLeg[] | undefined;
   const prevSlatePath = path.join(outDir, "slate.json");
   const prevPicksPath = path.join(outDir, "picks.json");
   const prevMultisPath = path.join(outDir, "multis.json");
@@ -289,7 +297,8 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
       ) as SlateGame[];
       const previousPicks = JSON.parse(
         fs.readFileSync(prevPicksPath, "utf8")
-      ) as import("../lib/types.js").PickLeg[];
+      ) as PickLeg[];
+      previousPicksForRestore = previousPicks;
       const previousMultisRaw = JSON.parse(
         fs.readFileSync(prevMultisPath, "utf8")
       ) as { bets?: MultiBet[] };
@@ -327,12 +336,17 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     slateOut,
     input.now
   );
-  metaOut.reasonsAtTip = refreshReasonsAtTip(
-    priorMeta?.reasonsAtTip,
-    picksOut,
-    slateOut,
-    input.now
-  );
+  const restored = restorePicksAndReasonsAtTip({
+    rootDir: input.rootDir,
+    slateDate: tipDate,
+    slate: slateOut,
+    picks: picksOut,
+    priorPicks: previousPicksForRestore,
+    meta: priorMeta ?? metaOut,
+    now: input.now,
+  });
+  picksOut = restored.picks;
+  metaOut.reasonsAtTip = restored.reasonsAtTip;
 
   fs.writeFileSync(path.join(outDir, "slate.json"), JSON.stringify(slateOut, null, 2));
   fs.writeFileSync(path.join(outDir, "injuries.json"), JSON.stringify(injuries, null, 2));

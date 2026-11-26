@@ -127,26 +127,46 @@ export function evaluateEspnCorsResponse(res: {
   return { ok, allowOrigin, status: res.status };
 }
 
+export interface FinalLiveCache {
+  games: Map<string, LiveGameBoard>;
+  boxesByGame: Map<string, Map<string, BoxLine>>;
+}
+
+export interface BuildLiveSnapshotOpts {
+  /** Finals merged from prior ticks — no ESPN poll for these ids. */
+  finalCache?: FinalLiveCache;
+}
+
 export async function buildLiveSnapshot(
   provider: LiveSourceProvider,
   slateGames: SlateGameTip[],
   gameIds: string[],
-  signal?: AbortSignal
+  signal?: AbortSignal,
+  opts?: BuildLiveSnapshotOpts
 ): Promise<LiveSourceSnapshot> {
-  const want = new Set(gameIds.length ? gameIds : slateGames.map((g) => g.id));
+  const finalCache = opts?.finalCache;
+  const cachedFinalIds = new Set(finalCache?.games.keys() ?? []);
+  const wantAll = gameIds.length ? gameIds : slateGames.map((g) => g.id);
+  const want = new Set(wantAll.filter((id) => !cachedFinalIds.has(id)));
   const byId = new Map<string, LiveGameBoard>();
+  for (const [id, row] of finalCache?.games ?? []) {
+    byId.set(id, row);
+  }
 
   const dated = slateGames.filter((g) => want.has(g.id));
-  const etDates = distinctEtScoreboardDates(dated.length ? dated : slateGames);
+  const pollSlate = dated.length ? dated : slateGames.filter((g) => !cachedFinalIds.has(g.id));
+  const etDates = pollSlate.length ? distinctEtScoreboardDates(pollSlate) : [];
 
-  await Promise.all(
-    etDates.map(async (etDay) => {
-      const raw = await provider.fetchScoreboard(etDay, signal);
-      for (const row of parseLiveScoreboard(raw)) {
-        if (want.has(row.gameId)) byId.set(row.gameId, row);
-      }
-    })
-  );
+  if (want.size > 0) {
+    await Promise.all(
+      etDates.map(async (etDay) => {
+        const raw = await provider.fetchScoreboard(etDay, signal);
+        for (const row of parseLiveScoreboard(raw)) {
+          if (want.has(row.gameId)) byId.set(row.gameId, row);
+        }
+      })
+    );
+  }
 
   const summaries = new Map<string, unknown>();
   async function loadSummary(gameId: string): Promise<unknown | null> {
@@ -172,7 +192,12 @@ export async function buildLiveSnapshot(
 
   const games = [...byId.values()].sort((a, b) => a.gameId.localeCompare(b.gameId));
   const boxesByGame = new Map<string, Map<string, BoxLine>>();
-  const needBox = games.filter((g) => g.phase !== "scheduled");
+  for (const [id, box] of finalCache?.boxesByGame ?? []) {
+    boxesByGame.set(id, box);
+  }
+  const needBox = games.filter(
+    (g) => g.phase !== "scheduled" && !boxesByGame.has(g.gameId)
+  );
   await Promise.all(
     needBox.map(async (g) => {
       const summary = await loadSummary(g.gameId);
@@ -186,6 +211,28 @@ export async function buildLiveSnapshot(
     games,
     boxesByGame,
   };
+}
+
+export function mergeIntoFinalCache(
+  snap: LiveSourceSnapshot,
+  cache: FinalLiveCache
+): FinalLiveCache {
+  for (const g of snap.games) {
+    if (g.phase !== "final") continue;
+    cache.games.set(g.gameId, g);
+    const box = snap.boxesByGame.get(g.gameId);
+    if (box) cache.boxesByGame.set(g.gameId, box);
+  }
+  return cache;
+}
+
+export function activeLiveGameIds(
+  slateGames: SlateGameTip[],
+  gameIds: string[],
+  cache: FinalLiveCache
+): string[] {
+  const all = gameIds.length ? gameIds : slateGames.map((g) => g.id);
+  return all.filter((id) => !cache.games.has(id));
 }
 
 export interface LiveSubscribeOptions {
@@ -205,9 +252,31 @@ export function subscribeLiveSource(opts: LiveSubscribeOptions): () => void {
   let lastKey = "";
   let backoffMs = pollMs;
   const maxBackoff = pollMs * 8;
+  const finalCache: FinalLiveCache = {
+    games: new Map(),
+    boxesByGame: new Map(),
+  };
 
   const tick = async () => {
     if (stopped) return;
+    const activeIds = activeLiveGameIds(opts.slateGames, opts.gameIds, finalCache);
+    if (!activeIds.length) {
+      if (finalCache.games.size > 0) {
+        const snap: LiveSourceSnapshot = {
+          fetchedAt: new Date().toISOString(),
+          games: [...finalCache.games.values()].sort((a, b) =>
+            a.gameId.localeCompare(b.gameId)
+          ),
+          boxesByGame: finalCache.boxesByGame,
+        };
+        const key = stableSnapshotKey(snap);
+        if (key !== lastKey) {
+          lastKey = key;
+          opts.onSnapshot(snap);
+        }
+      }
+      return;
+    }
     inFlight?.abort();
     const ctrl = new AbortController();
     inFlight = ctrl;
@@ -215,10 +284,12 @@ export function subscribeLiveSource(opts: LiveSubscribeOptions): () => void {
       const snap = await buildLiveSnapshot(
         opts.provider,
         opts.slateGames,
-        opts.gameIds,
-        ctrl.signal
+        activeIds,
+        ctrl.signal,
+        { finalCache }
       );
       if (stopped || ctrl.signal.aborted) return;
+      mergeIntoFinalCache(snap, finalCache);
       const key = stableSnapshotKey(snap);
       if (key !== lastKey) {
         lastKey = key;
@@ -232,7 +303,10 @@ export function subscribeLiveSource(opts: LiveSubscribeOptions): () => void {
       }
     } finally {
       if (!stopped) {
-        timer = setTimeout(tick, backoffMs);
+        const stillActive = activeLiveGameIds(opts.slateGames, opts.gameIds, finalCache);
+        if (stillActive.length > 0) {
+          timer = setTimeout(tick, backoffMs);
+        }
       }
     }
   };

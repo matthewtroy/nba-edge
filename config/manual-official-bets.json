@@ -6,7 +6,17 @@
         "bestBookieTotal": 7.2,
         "legs": ["3136195-pts-20", "3908809-ast-5", "3992-pts-20"],
         "label": "Best SGM"
-      }
+      },
+      "manualBets": [
+        {
+          "betType": "boostSgm",
+          "label": "Best SGM (manual)",
+          "variant": "manual",
+          "legIds": ["3136195-pts-20", "3908809-ast-5", "3992-pts-20"],
+          "stakeUnits": 1,
+          "publishedCombinedPrice": 7.875
+        }
+      ]
     }
   }
 }

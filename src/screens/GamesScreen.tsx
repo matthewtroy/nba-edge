@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import type { DataBundle } from "../hooks/useData";
 import type { LiveTrackingState } from "../hooks/useLiveTracking";
-import { liveMultiKey } from "@lib/live-tracking";
 import type { PickLeg } from "@lib/types";
 import { gameSgmBlocks } from "@lib/games-sgm";
 import { gameSgmAsMulti, gameListRowLabel } from "@lib/games-sgm-ui";
@@ -17,6 +16,8 @@ import { formatOddsBand } from "@lib/game-sgm-builder";
 import { formatGameOddsAge } from "@lib/odds-freshness-ui";
 import { injuriesForBadges } from "@lib/injury-display";
 import type { LiveGameBoard } from "@lib/live-source";
+import { liveBetView } from "@lib/live-bet";
+import { legStatesForMulti } from "@lib/live-tracking";
 
 interface Props {
   data: DataBundle;
@@ -156,6 +157,9 @@ export function GamesScreen({
       {built.map(({ game, card }) => {
         if (!card) return null;
         const multi = gameSgmAsMulti(card, game);
+        const gameLiveBetView = liveBetView(
+          legStatesForMulti(multi, liveTracking.legViews)
+        );
         const board = liveBoardByGame.get(game.id);
         const gameOddsAge = formatGameOddsAge(
           data.picks,
@@ -206,7 +210,7 @@ export function GamesScreen({
               onLegTap={onLegTap}
               onCopy={onCopy}
               legViews={liveTracking.legViews}
-              liveBetView={liveTracking.betViews.get(liveMultiKey(multi))}
+              liveBetView={gameLiveBetView}
               reasonsAtTip={data.meta.reasonsAtTip}
               liveSnapshot={liveTracking.snapshot}
             />

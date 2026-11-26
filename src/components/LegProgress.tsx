@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import type { LiveLegView } from "@lib/live-leg";
 import {
   legProgressFillClass,
@@ -20,6 +21,8 @@ export function LegProgress({
   showTrackPlaceholder?: boolean;
   className?: string;
 }) {
+  const prevFill = useRef<number | null>(null);
+
   if ((!view || view.state === "pending") && !showTrackPlaceholder) return null;
 
   const right = view ? legProgressRightLabel(view) : null;
@@ -48,6 +51,8 @@ export function LegProgress({
   const targetPct = legProgressTargetPercent(view.line);
   const live = view.state === "live";
   const settled = view.state === "won" || view.state === "lost" || view.state === "void";
+  const widthTransition = prevFill.current !== null && prevFill.current !== fillPct;
+  prevFill.current = fillPct;
 
   return (
     <div
@@ -61,9 +66,11 @@ export function LegProgress({
         aria-hidden
       >
         <span
-          className={`absolute inset-y-0 left-0 rounded-l-full transition-[width] duration-500 ease-out ${legProgressFillClass(view)} ${
-            live ? "leg-progress-live-fill" : ""
-          } ${settled ? "leg-progress-settled" : ""}`}
+          className={`absolute inset-y-0 left-0 rounded-l-full ${
+            widthTransition ? "transition-[width] duration-500 ease-out" : ""
+          } ${legProgressFillClass(view)} ${live ? "leg-progress-live-fill" : ""} ${
+            settled && widthTransition ? "leg-progress-settled" : ""
+          }`}
           style={{ width: `${fillPct}%`, maxWidth: `${handlePct}%` }}
         />
         <span

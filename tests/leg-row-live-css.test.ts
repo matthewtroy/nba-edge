@@ -10,6 +10,7 @@ describe("leg row live CSS", () => {
     expect(css).not.toMatch(/\.leg-row-live-won[\s\S]*border-left:/);
     expect(css).not.toMatch(/\.leg-row-live-lost[\s\S]*border-left:/);
     expect(css).toMatch(/400ms ease/);
+    expect(css).toMatch(/\.leg-row-live-won[\s\S]*rgba\(52,\s*211,\s*153,\s*0\.2\)\s*0%/);
   });
 
   it("omits pick-leg-row negative margin bleed helper", () => {

@@ -153,7 +153,7 @@ export function MultiCard({
     legs,
     titleOpts
   );
-  const showFairOnly = titleFairOnly || hideBookieSelect;
+  const showFairOnly = titleFairOnly || (hideBookieSelect && !shareCapture);
 
   const legBookie = showFairOnly ? "" : displayBook ?? cardBookie;
   const bestFeed = !showFairOnly
