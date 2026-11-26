@@ -4,7 +4,7 @@ import { playerInitials } from "@lib/player-headshot";
 export function PlayerAvatar({
   name,
   headshotUrl,
-  className = "w-8 h-8 rounded-full bg-page object-cover shrink-0",
+  className = "w-8 h-8 rounded-full bg-white/10 object-cover shrink-0",
 }: {
   name: string;
   headshotUrl?: string;
@@ -26,7 +26,7 @@ export function PlayerAvatar({
     <img
       src={headshotUrl}
       alt=""
-      className={className}
+      className={className.replace(/\bbg-page\b/, "bg-white/10")}
       onError={() => setFailed(true)}
     />
   );

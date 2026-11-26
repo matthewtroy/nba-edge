@@ -43,9 +43,11 @@ export async function captureMultiCardSharePng(
     globalThis.fetch.bind(globalThis)
   );
   const picksById = new Map(input.picksById);
-  for (const [id, leg] of picksById) {
+  for (const leg of input.shareLegs) {
+    const row = picksById.get(leg.id);
+    if (!row) continue;
     const url = headshotOverrides[leg.playerId];
-    if (url) picksById.set(id, { ...leg, headshotUrl: url });
+    picksById.set(leg.id, { ...row, headshotUrl: url ?? "" });
   }
   const host = document.createElement("div");
   host.setAttribute("data-testid", "share-multi-capture-host");

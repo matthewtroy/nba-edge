@@ -15,7 +15,9 @@ import {
 } from "../lib/share-multi-capture";
 import { MultiCard } from "../src/components/MultiCard";
 import { playerInitials } from "../lib/player-headshot";
-import { fixtureSlateDir } from "./public-data-fixture";
+import { fixtureSlateDir, loadPublishedSlate } from "./public-data-fixture";
+import type { OfficialCardFile } from "../lib/official-card-time";
+import { picksByIdFromOfficialSnapshots } from "../lib/official-leg-snapshot";
 
 const DATA = fixtureSlateDir("2026-11-26");
 
@@ -203,6 +205,53 @@ describe("share multi capture", () => {
     expect(host.textContent).toMatch(/MIA @ PHI|@\s/);
     root.unmount();
     host.remove();
+  });
+
+  it("Main Play shareCapture shows Ladbrokes $11.59 total and published prices", async () => {
+    const dir = fixtureSlateDir("2026-11-26");
+    const { slate, picks } = loadPublishedSlate("2026-11-26");
+    const official = JSON.parse(
+      fs.readFileSync(path.join(dir, "official-card.json"), "utf8")
+    ) as OfficialCardFile;
+    const multi = official.multis.find((m) => m.type === "mainPlay");
+    expect(multi?.bestBookieTotal).toBe(11.59);
+    const picksById = picksByIdFromOfficialSnapshots(official.legSnapshots, picks);
+    const shareLegs = multi!.legs
+      .map((id) => picksById.get(id))
+      .filter(Boolean) as PickLeg[];
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    const root = createRoot(host);
+    await new Promise<void>((resolve) => {
+      root.render(
+        createElement(MultiCard, {
+          multi: multi!,
+          picksById,
+          injuries: official.injuries,
+          slate,
+          shareCapture: true,
+          officialDisplayOnly: true,
+          lockedBookie: "Ladbrokes",
+          liveCatalog: picks,
+          publishedAt: official.publishedAt,
+          onLegTap: () => {},
+          onCopy: () => {},
+        })
+      );
+      requestAnimationFrame(() => resolve());
+    });
+    expect(host.textContent).toMatch(/\$11\.59/);
+    expect(host.textContent).toMatch(/Ladbrokes/);
+    expect(host.textContent).toMatch(/Published @ \$11\.59/);
+    const avatars = host.querySelectorAll("img");
+    for (const img of avatars) {
+      expect(img.className).not.toContain("bg-page");
+    }
+    const initials = host.querySelectorAll("span[aria-hidden]");
+    expect(initials.length + avatars.length).toBeGreaterThan(0);
+    root.unmount();
+    host.remove();
+    expect(shareLegs.length).toBe(multi!.legs.length);
   });
 
   it("headshot prefetch falls back to initials when fetch fails", async () => {
