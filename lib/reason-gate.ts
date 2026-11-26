@@ -95,12 +95,23 @@ export function dropRedundantAvgReasons(
   });
 }
 
+/** Priced legs on high rungs should show at least two fact lines in UI. */
+export function minReasonLinesForRung(market: Market | string, line: number): number {
+  const stat = market.replace(/^q1/, "");
+  if (stat === "pts" && line >= 25) return 2;
+  if (stat === "ast" && line >= 7) return 2;
+  if (stat === "reb" && line >= 12) return 2;
+  if (stat === "3pm" && line >= 4) return 2;
+  return 1;
+}
+
 export function gateLegReasons(
   reasons: unknown,
   market: Market | string,
   maxLines = 3,
   line?: number
 ): LegReason[] {
+  const minLines = line != null ? minReasonLinesForRung(market, line) : 1;
   let sorted = sortLegReasons(normalizeLegReasons(reasons));
   if (line != null) {
     sorted = dropRedundantAvgReasons(sorted, line);
@@ -114,6 +125,19 @@ export function gateLegReasons(
     seen.add(key);
     out.push(r);
     if (out.length >= maxLines) break;
+  }
+  if (out.length < minLines) {
+    const retry = sortLegReasons(normalizeLegReasons(reasons));
+    seen.clear();
+    out.length = 0;
+    for (const r of retry) {
+      if (!gateLegReason(r, market)) continue;
+      const key = normalizeFactKey(r.text);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push(r);
+      if (out.length >= maxLines) break;
+    }
   }
   return out;
 }

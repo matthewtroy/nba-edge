@@ -1,10 +1,20 @@
 import type { PickLeg } from "./types.js";
 import { reasonTexts } from "./leg-reason-types.js";
-import { gateLegReasons } from "./reason-gate.js";
+import { gateLegReasons, minReasonLinesForRung } from "./reason-gate.js";
+
+function legIsPriced(leg: PickLeg): boolean {
+  return (
+    (leg.bestPrice != null && leg.bestPrice > 1) ||
+    (leg.bookiePrices != null &&
+      Object.values(leg.bookiePrices).some((v) => v != null && v > 1))
+  );
+}
 
 /** Up to three short reason lines for leg rows (structured reasons only). */
 export function legRowReasonLines(leg: PickLeg): { text: string; injury: boolean }[] {
-  const texts = reasonTexts(gateLegReasons(leg.reasons ?? [], leg.market, 3, leg.line));
+  const maxLines =
+    legIsPriced(leg) && minReasonLinesForRung(leg.market, leg.line) >= 2 ? 3 : 3;
+  const texts = reasonTexts(gateLegReasons(leg.reasons ?? [], leg.market, maxLines, leg.line));
   const seen = new Set<string>();
   const out: string[] = [];
   for (const t of texts) {

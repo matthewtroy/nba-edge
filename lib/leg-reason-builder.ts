@@ -26,7 +26,7 @@ import {
 } from "./player-tracking-fetch.js";
 import { h2hReasonPhrase } from "./h2h-reason.js";
 import { reasonTextHasBannedPhrase } from "./reason-ban.js";
-import { gateLegReasons } from "./reason-gate.js";
+import { gateLegReasons, minReasonLinesForRung } from "./reason-gate.js";
 
 function hitCountL10(logs: PlayerGameLog[], market: Market, line: number): number | null {
   const sorted = [...logs].sort((a, b) => b.date.localeCompare(a.date));
@@ -290,7 +290,12 @@ export function buildLegReasons(input: {
 
   const sorted = sortLegReasons([...byType.values()]);
   const filtered = reasonsForMarket(sorted, input.leg.market);
-  return gateLegReasons(filtered, input.leg.market, 3, input.leg.line);
+  let reasons = gateLegReasons(filtered, input.leg.market, 3, input.leg.line);
+  const minLines = minReasonLinesForRung(input.leg.market, input.leg.line);
+  if (reasons.length < minLines) {
+    reasons = gateLegReasons(filtered, input.leg.market, 3);
+  }
+  return reasons;
 }
 
 export function buildLegReasonLine(input: Parameters<typeof buildLegReasons>[0]): string | undefined {
