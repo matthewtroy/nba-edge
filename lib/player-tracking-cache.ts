@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { atomicWriteJsonSync, readJsonFile } from "./atomic-json.js";
 
 export interface PlayerTrackingDay {
   playerId: string;
@@ -30,7 +31,11 @@ export function loadTrackingCache(
 ): TrackingCacheFile | null {
   const p = trackingCachePath(rootDir, slateDate);
   if (!fs.existsSync(p)) return null;
-  return JSON.parse(fs.readFileSync(p, "utf8")) as TrackingCacheFile;
+  try {
+    return readJsonFile<TrackingCacheFile>(p, { slateDate, nbaStatus: "blocked", players: {} });
+  } catch {
+    throw new Error(`corrupt tracking cache at ${p}`);
+  }
 }
 
 export function writeTrackingCache(
@@ -38,7 +43,6 @@ export function writeTrackingCache(
   file: TrackingCacheFile
 ): string {
   const p = trackingCachePath(rootDir, file.slateDate);
-  fs.mkdirSync(path.dirname(p), { recursive: true });
-  fs.writeFileSync(p, JSON.stringify(file, null, 2));
+  atomicWriteJsonSync(p, file);
   return p;
 }

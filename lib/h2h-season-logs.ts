@@ -43,10 +43,15 @@ export async function ensureH2hSeasonLogs(opts: {
   playerId: string;
   asOf: Date;
   fetchMissing?: boolean;
+  /** Shared in-memory cache (no per-call load/save; caller persists once). */
+  cache?: H2hSeasonLogCacheFile;
+  persist?: boolean;
 }): Promise<PlayerGameLog[]> {
   const { rootDir, playerId, asOf, fetchMissing = true } = opts;
+  const ownsCache = opts.cache === undefined;
+  const cache = opts.cache ?? loadH2hSeasonCache(rootDir);
+  const shouldPersist = opts.persist ?? ownsCache;
   const seasons = espnSeasonYearsForH2h(asOf);
-  const cache = loadH2hSeasonCache(rootDir);
   const chunks: PlayerGameLog[][] = [];
   let dirty = false;
 
@@ -68,7 +73,7 @@ export async function ensureH2hSeasonLogs(opts: {
     if (row?.logs?.length) chunks.push(row.logs);
   }
 
-  if (dirty) saveH2hSeasonCache(rootDir, cache);
+  if (dirty && shouldPersist) saveH2hSeasonCache(rootDir, cache);
   return mergeLogsByGameId(chunks);
 }
 

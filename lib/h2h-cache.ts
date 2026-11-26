@@ -1,5 +1,5 @@
-import fs from "fs";
 import path from "path";
+import { atomicWriteJsonSync, readJsonFile } from "./atomic-json.js";
 
 export interface H2hMeetingSummary {
   playerId: string;
@@ -25,19 +25,11 @@ export function h2hCachePath(rootDir: string): string {
 }
 
 export function loadH2hCache(rootDir: string): H2hCacheFile {
-  const p = h2hCachePath(rootDir);
-  if (!fs.existsSync(p)) return {};
-  try {
-    return JSON.parse(fs.readFileSync(p, "utf8")) as H2hCacheFile;
-  } catch {
-    return {};
-  }
+  return readJsonFile(h2hCachePath(rootDir), {});
 }
 
 export function saveH2hCache(rootDir: string, file: H2hCacheFile): void {
-  const p = h2hCachePath(rootDir);
-  fs.mkdirSync(path.dirname(p), { recursive: true });
-  fs.writeFileSync(p, JSON.stringify(file, null, 2));
+  atomicWriteJsonSync(h2hCachePath(rootDir), file);
 }
 
 export function getH2hCached(
@@ -73,20 +65,20 @@ export function h2hSeasonCachePath(dataDir: string): string {
   return path.join(dataDir, "h2h-season-cache.json");
 }
 
-export function loadH2hSeasonCache(rootDir: string): H2hSeasonLogCacheFile {
-  const p = h2hSeasonCachePath(rootDir);
-  if (!fs.existsSync(p)) return {};
+export function loadH2hSeasonCache(
+  rootDir: string,
+  opts?: { baseline?: H2hSeasonLogCacheFile }
+): H2hSeasonLogCacheFile {
   try {
-    return JSON.parse(fs.readFileSync(p, "utf8")) as H2hSeasonLogCacheFile;
+    return readJsonFile(h2hSeasonCachePath(rootDir), {});
   } catch {
-    return {};
+    if (opts?.baseline) return opts.baseline;
+    throw new Error(`corrupt h2h-season-cache at ${h2hSeasonCachePath(rootDir)}`);
   }
 }
 
 export function saveH2hSeasonCache(rootDir: string, file: H2hSeasonLogCacheFile): void {
-  const p = h2hSeasonCachePath(rootDir);
-  fs.mkdirSync(path.dirname(p), { recursive: true });
-  fs.writeFileSync(p, JSON.stringify(file, null, 2));
+  atomicWriteJsonSync(h2hSeasonCachePath(rootDir), file);
 }
 
 export function getH2hSeasonCached(

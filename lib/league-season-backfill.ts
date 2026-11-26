@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { atomicWriteJsonSync, readJsonFile } from "./atomic-json.js";
 import { fetchScoreboard, fetchSummary, yyyymmdd } from "../scripts/fetch/espn.js";
 import { parseBoxscorePlayerLogs } from "../scripts/espn-parse.js";
 import type { PlayerGameLog } from "./types.js";
@@ -47,11 +48,12 @@ export interface LeagueBackfillReport {
 }
 
 function loadGameCache(p: string): LeagueGameCacheFile {
-  if (!fs.existsSync(p)) return { processedGameIds: [] };
+  const empty: LeagueGameCacheFile = { processedGameIds: [] };
+  if (!fs.existsSync(p)) return empty;
   try {
-    return JSON.parse(fs.readFileSync(p, "utf8")) as LeagueGameCacheFile;
+    return readJsonFile(p, empty);
   } catch {
-    return { processedGameIds: [] };
+    throw new Error(`corrupt league-game-cache at ${p}`);
   }
 }
 
@@ -178,7 +180,7 @@ export async function runLeagueSeasonBackfill(
 
   gameCache.processedGameIds = [...processed];
   gameCache.lastDate = until.toISOString().slice(0, 10);
-  fs.writeFileSync(gameCachePath, JSON.stringify(gameCache, null, 2));
+  atomicWriteJsonSync(gameCachePath, gameCache);
 
   const teams = new Set<string>();
   let nullOpp = 0;

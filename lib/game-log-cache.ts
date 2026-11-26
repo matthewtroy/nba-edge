@@ -1,5 +1,5 @@
-import fs from "fs";
 import path from "path";
+import { atomicWriteJsonSync, readJsonFile } from "./atomic-json.js";
 import type { PlayerGameLog } from "./types.js";
 import { parseGameLogsFromEspn } from "../scripts/espn-parse.js";
 import {
@@ -28,23 +28,24 @@ export function gameLogCachePath(outDir: string): string {
   return path.join(outDir, "game-log-cache.json");
 }
 
-export function loadGameLogCache(outDir: string): GameLogCacheFile {
-  const p = gameLogCachePath(outDir);
-  if (!fs.existsSync(p)) return {};
+export function loadGameLogCache(
+  outDir: string,
+  opts?: { baseline?: GameLogCacheFile }
+): GameLogCacheFile {
   try {
-    const raw = JSON.parse(fs.readFileSync(p, "utf8")) as GameLogCacheFile;
+    const raw = readJsonFile<GameLogCacheFile>(gameLogCachePath(outDir), {});
     for (const row of Object.values(raw)) {
       row.logs = stampLegacyLogSources(row.logs);
     }
     return raw;
   } catch {
-    return {};
+    if (opts?.baseline) return opts.baseline;
+    throw new Error(`corrupt game-log-cache at ${gameLogCachePath(outDir)}`);
   }
 }
 
 export function saveGameLogCache(outDir: string, cache: GameLogCacheFile): void {
-  fs.mkdirSync(outDir, { recursive: true });
-  fs.writeFileSync(gameLogCachePath(outDir), JSON.stringify(cache, null, 2));
+  atomicWriteJsonSync(gameLogCachePath(outDir), cache);
 }
 
 export function getCachedLogs(

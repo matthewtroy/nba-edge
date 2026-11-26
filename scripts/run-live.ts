@@ -152,6 +152,11 @@ import {
   warnEspnCacheShrinkBlocked,
 } from "../lib/espn-cache-guard.js";
 import { loadH2hSeasonCache, saveH2hSeasonCache } from "../lib/h2h-cache.js";
+import {
+  mergeH2hSeasonCaches,
+  pruneH2hSeasonCacheBeyondModelWindow,
+} from "../lib/h2h-season-cache-merge.js";
+import { atomicWriteJsonSync } from "../lib/atomic-json.js";
 
 const ET = "America/New_York";
 
@@ -757,11 +762,13 @@ export async function runLivePipeline(
   try {
     const byId = new Map(players.map((p) => [p.id, p]));
     let h2hReady = 0;
+    const h2hSeasonCache = structuredClone(baselineH2hSeasonCache);
     await mapPool([...byId.values()], 4, async (p) => {
       const merged = await ensureH2hSeasonLogs({
         rootDir: outDir,
         playerId: p.id,
         asOf: now,
+        cache: h2hSeasonCache,
       });
       if (merged.length) {
         p.h2hLogs = merged;
@@ -769,10 +776,14 @@ export async function runLivePipeline(
       }
     });
     console.log(`h2h season logs: ${h2hReady}/${byId.size} players (${3} ESPN seasons)`);
-    const nextH2hKeys = recordKeyCount(loadH2hSeasonCache(outDir));
+    const prunedH2h = pruneH2hSeasonCacheBeyondModelWindow(h2hSeasonCache, now);
+    const mergedH2h = mergeH2hSeasonCaches(baselineH2hSeasonCache, prunedH2h);
+    const nextH2hKeys = recordKeyCount(mergedH2h);
     if (espnCacheShrinkBlocked(baselineH2hSeasonKeys, nextH2hKeys) && blockEspnShrink()) {
       warnEspnCacheShrinkBlocked("h2h-season-cache", baselineH2hSeasonKeys, nextH2hKeys);
       saveH2hSeasonCache(outDir, baselineH2hSeasonCache);
+    } else {
+      saveH2hSeasonCache(outDir, mergedH2h);
     }
   } catch (e) {
     console.warn("h2h season logs:", e instanceof Error ? e.message : e);
@@ -923,8 +934,8 @@ export async function runLivePipeline(
     warnEspnCacheShrinkBlocked("history.json", baselineHistoryCount, nextHistoryCount);
     history = baselineHistory;
   }
-  fs.writeFileSync(path.join(outDir, "history.json"), JSON.stringify(history, null, 2));
-  fs.writeFileSync(oddsCachePath, JSON.stringify(cache, null, 2));
+  atomicWriteJsonSync(path.join(outDir, "history.json"), history);
+  atomicWriteJsonSync(oddsCachePath, cache);
   console.log(oddsCreditsLogLine(cache));
   const mergedIndexEntries = rebuildIndexEntriesFromDisk(indexEntries, outDir, now);
   const defaultSlate =
@@ -1123,9 +1134,9 @@ function dedupeGames(games: SlateGame[]): SlateGame[] {
 function loadOddsCache(p: string): OddsCacheFile {
   if (!fs.existsSync(p)) return {};
   try {
-    return JSON.parse(fs.readFileSync(p, "utf8"));
+    return JSON.parse(fs.readFileSync(p, "utf8")) as OddsCacheFile;
   } catch {
-    return {};
+    throw new Error(`corrupt odds-cache at ${p}`);
   }
 }
 
