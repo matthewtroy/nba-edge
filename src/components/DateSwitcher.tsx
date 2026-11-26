@@ -16,7 +16,7 @@ export function DateSwitcher({
   onSelect,
   viewerTimeZone: tz = viewerTimeZone(),
 }: Props) {
-  if (!tomorrowDate || tomorrowDate === todayDate) return null;
+  if (!todayDate || !tomorrowDate || tomorrowDate === todayDate) return null;
   const opts = [
     { date: todayDate, label: `Today (${weekdayShort(todayDate, tz)})` },
     { date: tomorrowDate, label: `Tomorrow (${weekdayShort(tomorrowDate, tz)})` },

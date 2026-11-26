@@ -1,4 +1,4 @@
-export type DataLoadKind = "network" | "missing" | "unknown";
+export type DataLoadKind = "network" | "missing" | "unknown" | "updating";
 
 export class DataLoadError extends Error {
   readonly kind: DataLoadKind;
@@ -16,6 +16,8 @@ export function userFacingLoadMessage(kind: DataLoadKind): string {
       return "Feed temporarily unavailable. Pull to refresh in a moment.";
     case "missing":
       return "Slate data is not available yet.";
+    case "updating":
+      return "Updating slate and picks — hang tight.";
     default:
       return "Something went wrong loading picks.";
   }

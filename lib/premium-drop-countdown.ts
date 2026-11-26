@@ -29,6 +29,10 @@ export function dropCountdownParts(
   };
 }
 
+export function tomorrowNoNbaTease(): string {
+  return "No NBA tomorrow · next slate below";
+}
+
 function formatViewerPublishTime(iso: string, timeZone: string): string {
   const z = viewerZoneLabel(timeZone);
   const core = new Date(iso).toLocaleString("en-AU", {

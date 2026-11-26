@@ -10,6 +10,7 @@ import { usePersonalMultis } from "../hooks/usePersonalMultis";
 import { injuryAlertsForCard } from "@lib/injury-alerts-card";
 import { DateSwitcher } from "../components/DateSwitcher";
 import { OfficialDropCountdown } from "../components/OfficialDropCountdown";
+import { tomorrowNoNbaTease } from "@lib/premium-drop-countdown";
 import { sydneyTimeFromIso, viewerTimeFromIso } from "../utils/format";
 import { noGamesTodayMessage, viewerZoneLabel } from "@lib/viewer-slate";
 import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui";
@@ -154,8 +155,16 @@ export function TodayScreen({
       />
       <OfficialDropCountdown
         index={data.index}
-        show={!useOfficial && !slateFairOnly}
+        show={
+          (!useOfficial && !slateFairOnly) ||
+          (slateDate !== todayDate && !data.slate.length)
+        }
       />
+      {slateDate !== todayDate && !data.slate.length && (
+        <p className="text-sm text-white/60 mb-2" role="status">
+          {tomorrowNoNbaTease()}
+        </p>
+      )}
       <header className="mb-4 flex justify-between items-start">
         <div>
           <h1 className="text-xl font-bold">{slateDate === todayDate ? "Home" : "Tomorrow"}</h1>

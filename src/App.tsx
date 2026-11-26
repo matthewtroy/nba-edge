@@ -16,6 +16,7 @@ import type { PickLeg } from "@lib/types";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { LoadingSkeleton } from "./components/LoadingSkeleton";
 import { BrandedLoadState } from "./components/BrandedLoadState";
+import { OfficialDropCountdown } from "./components/OfficialDropCountdown";
 import { injuriesForBadges } from "@lib/injury-display";
 import { useLiveTracking } from "./hooks/useLiveTracking";
 import { officialLiveTrackingInputs } from "@lib/official-live-tracking";
@@ -91,6 +92,15 @@ export default function App() {
     return (
       <PhoneShell className="px-4 pt-4">
         <BrandedLoadState kind={data.errorKind ?? "missing"} />
+      </PhoneShell>
+    );
+  }
+
+  if (!index.dates.length && index.nextPublishAt) {
+    return (
+      <PhoneShell className="px-4 pt-4">
+        <BrandedLoadState kind="updating" title="Updating" />
+        <OfficialDropCountdown index={index} show />
       </PhoneShell>
     );
   }
