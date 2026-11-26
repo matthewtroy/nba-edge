@@ -17,4 +17,14 @@ describe("PicksScreen", () => {
     expect(row).toContain("liveView");
     expect(row).toContain("leg-title-live-dot");
   });
+
+  it("LegProgress uses one right stat+glyph column only", () => {
+    const bar = fs.readFileSync(
+      path.join(process.cwd(), "src/components/LegProgress.tsx"),
+      "utf8"
+    );
+    expect(bar).toContain('data-testid="leg-progress-right"');
+    expect(bar).not.toContain("legProgressPillSymbol");
+    expect(bar.match(/leg-progress-right/g)?.length).toBe(1);
+  });
 });
