@@ -36,6 +36,7 @@ import { countPricedPickLegs } from "../lib/odds-cache-guard.js";
 import { freezeInjuriesAtTip, mergeInjuriesReportTime } from "../lib/injury-tip-freeze.js";
 import { refreshInjuriesAtTip } from "../lib/injuries-at-tip.js";
 import { freezeTippedSlate, gitPreTipLoader } from "../lib/reasons-at-tip-restore.js";
+import { attachTeammateEffectsToInjuries } from "../lib/injury-teammate-effects.js";
 
 export interface SlateBundleInput {
   rootDir: string;
@@ -128,6 +129,7 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   });
 
   let { picks, multis, multisPayload, meta, whatChanged } = modelRun;
+  injuries = attachTeammateEffectsToInjuries(injuries, players);
   const preFreezeOfficial = loadOfficialCard(outDir);
   if (preFreezeOfficial?.legSnapshots && countPricedPickLegs(picks) === 0) {
     const snapLegs = Object.values(preFreezeOfficial.legSnapshots).map(pickLegFromSnapshot);

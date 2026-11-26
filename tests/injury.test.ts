@@ -64,4 +64,72 @@ describe("injury redistribution", () => {
     expect(adjusted.get("wing")!.pts).toBeGreaterThan(before);
     expect(adjusted.has("star")).toBe(false);
   });
+
+  it("lowers teammate projection on negative with/without split", () => {
+    const star: PlayerProfile = {
+      id: "star",
+      name: "Star",
+      teamId: "1",
+      teamName: "Team",
+      position: "PG",
+      headshotUrl: "",
+      seasonAvgMinutes: 34,
+      gameLogs: [
+        { gameId: "a", minutes: 34, pts: 26, reb: 4, ast: 8, threes: 2, date: "2026-11-01" },
+        { gameId: "b", minutes: 35, pts: 28, reb: 3, ast: 9, threes: 3, date: "2026-11-02" },
+        { gameId: "c", minutes: 33, pts: 24, reb: 5, ast: 7, threes: 1, date: "2026-11-03" },
+        { gameId: "d", minutes: 34, pts: 27, reb: 4, ast: 8, threes: 2, date: "2026-11-04" },
+      ],
+    };
+    const other: PlayerProfile = {
+      id: "other",
+      name: "Other",
+      teamId: "1",
+      teamName: "Team",
+      position: "SG",
+      headshotUrl: "",
+      seasonAvgMinutes: 30,
+      gameLogs: [
+        { gameId: "a", minutes: 30, pts: 18, reb: 3, ast: 4, threes: 1, date: "2026-11-01" },
+        { gameId: "b", minutes: 29, pts: 17, reb: 2, ast: 3, threes: 0, date: "2026-11-02" },
+        { gameId: "c", minutes: 31, pts: 19, reb: 3, ast: 4, threes: 1, date: "2026-11-03" },
+        { gameId: "d", minutes: 32, pts: 18, reb: 3, ast: 3, threes: 1, date: "2026-11-04" },
+        { gameId: "e", minutes: 30, pts: 8, reb: 2, ast: 2, threes: 0, date: "2026-11-05" },
+        { gameId: "f", minutes: 31, pts: 7, reb: 2, ast: 2, threes: 0, date: "2026-11-06" },
+        { gameId: "g", minutes: 32, pts: 9, reb: 3, ast: 3, threes: 0, date: "2026-11-07" },
+      ],
+    };
+    const logs = new Map([
+      [star.id, star.gameLogs],
+      [other.id, other.gameLogs],
+    ]);
+    const rates = new Map();
+    const base = new Map();
+    for (const p of [star, other]) {
+      const r = perMinuteRates(p.gameLogs)!;
+      rates.set(p.id, r);
+      base.set(p.id, projectBaseline(r, projectedMinutes(p.gameLogs)));
+    }
+    const before = base.get("other")!.pts;
+    const injury: InjuryEntry = {
+      playerId: "star",
+      playerName: "Star",
+      teamId: "1",
+      teamName: "Team",
+      gameId: "g",
+      status: "Out",
+      source: "test",
+      updatedAt: "",
+    };
+    const { adjusted, reasons } = applyInjuryRedistribution(
+      { players: [star, other], injuries: [injury], gameLogsByPlayer: logs },
+      base,
+      rates
+    );
+    expect(adjusted.get("other")!.pts).toBeLessThan(before);
+    const legReasons = reasons.get("other") ?? [];
+    expect(legReasons.some((t) => /out:\s*-\d/i.test(t) || /out:\s*−/i.test(t))).toBe(
+      false
+    );
+  });
 });

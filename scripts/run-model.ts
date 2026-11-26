@@ -11,6 +11,7 @@ import type {
 import { toSydney } from "../lib/sydney.js";
 import { parseOddsKey } from "../lib/odds.js";
 import { loadAliasMap } from "../lib/player-names.js";
+import { attachTeammateEffectsToInjuries } from "../lib/injury-teammate-effects.js";
 import { runModel, type ModelPlayer } from "./model-engine.js";
 import type { MultiBuildResult } from "../lib/multis.js";
 
@@ -70,9 +71,14 @@ export function runModelFromFixture(rootDir: string, minEdge = 1.08): {
     },
   });
 
+  const injuriesWithEffects = attachTeammateEffectsToInjuries(
+    raw.injuries,
+    raw.players
+  );
+
   return {
     slate,
-    injuries: raw.injuries,
+    injuries: injuriesWithEffects,
     picks: modelOut.picks,
     multis: modelOut.multis,
     multisPayload: modelOut.multisPayload,

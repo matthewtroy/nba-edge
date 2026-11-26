@@ -1,7 +1,8 @@
 import { useEffect, useMemo } from "react";
+import type { InjuryEntry } from "@lib/types";
 import type { DataBundle } from "../hooks/useData";
 import { useData } from "../hooks/useData";
-import { topBeneficiaryLastNames } from "@lib/injury-beneficiaries";
+import { topTeammateInjuryEffects } from "@lib/injury-beneficiaries";
 import { sydneyTimeFromIso } from "../utils/format";
 import {
   clearQuestionableAsOutStorage,
@@ -18,6 +19,33 @@ interface Props {
 function teamAbbr(name: string): string {
   const parts = name.trim().split(/\s+/);
   return parts.length > 1 ? parts[parts.length - 1]! : name;
+}
+
+function statLabel(stat: "pts" | "reb" | "ast" | "threes"): string {
+  return stat === "threes" ? "3pm" : stat;
+}
+
+function TeammateInjuryEffects({ inj }: { inj: InjuryEntry }) {
+  const effects = topTeammateInjuryEffects(inj);
+  if (!effects.length) return null;
+  return (
+    <p className="text-[11px] mt-1">
+      {effects.map((e, i) => {
+        const last = e.playerName.split(/\s+/).pop() ?? e.playerName;
+        const sign = e.delta >= 0 ? "+" : "−";
+        const tone = e.delta >= 0 ? "text-emerald-400/85" : "text-red-400/70";
+        return (
+          <span key={`${e.playerId}:${e.stat}`}>
+            {i > 0 ? <span className="text-white/45"> · </span> : null}
+            <span className={tone}>
+              {last} {sign}
+              {Math.abs(e.delta).toFixed(1)} {statLabel(e.stat)}
+            </span>
+          </span>
+        );
+      })}
+    </p>
+  );
 }
 
 export function InjuriesScreen({
@@ -85,10 +113,7 @@ export function InjuriesScreen({
                       {inj.source} · {sydneyTimeFromIso(inj.updatedAt)}
                     </p>
                     {(inj.status === "Out" || inj.status === "Doubtful") && (
-                      <p className="text-[11px] text-white/65 mt-1">
-                        Who benefits:{" "}
-                        {topBeneficiaryLastNames(inj, data.picks).join(", ") || "—"}
-                      </p>
+                      <TeammateInjuryEffects inj={inj} />
                     )}
                   </li>
                 ))}

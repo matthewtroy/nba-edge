@@ -312,13 +312,17 @@ function applyWithWithoutSplits(
         Math.max(1, withoutGames.reduce((s, g) => s + g.minutes, 0));
       const diff = rateWithout - rateWith;
       const shrink = (diff * n) / (n + 5);
-      const boost = shrink * cur.minutes;
+      const raw = shrink * cur.minutes;
       const cap = cur[key] * 0.25;
-      const applied = Math.min(boost, cap);
-      if (applied > 0.1 && key !== "threes") {
-        (cur as unknown as Record<string, number>)[key] += applied;
-      } else if (applied > 0.05 && key === "threes") {
-        cur.threes += Math.min(applied, cap);
+      const applied =
+        raw >= 0 ? Math.min(raw, cap) : Math.max(raw, cap > 0 ? -cap : raw);
+      const minMove = key === "threes" ? 0.05 : 0.1;
+      if (Math.abs(applied) >= minMove) {
+        if (key === "threes") {
+          cur.threes += applied;
+        } else {
+          (cur as unknown as Record<string, number>)[key] += applied;
+        }
       }
     }
 

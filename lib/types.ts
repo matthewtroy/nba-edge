@@ -31,6 +31,14 @@ export interface SlateGame {
   status: string;
 }
 
+export interface InjuryTeammateEffect {
+  playerId: string;
+  playerName: string;
+  stat: "pts" | "reb" | "ast" | "threes";
+  /** Signed modeled delta vs baseline (same shrinkage as redistribution). */
+  delta: number;
+}
+
 export interface InjuryEntry {
   playerId: string;
   playerName: string;
@@ -42,6 +50,8 @@ export interface InjuryEntry {
   updatedAt: string;
   /** Official NBA report release time (from PDF URL); wins over ESPN updatedAt when newer. */
   reportTime?: string;
+  /** Teammate stat shifts when this player is Out/Doubtful (pipeline-published). */
+  teammateEffects?: InjuryTeammateEffect[];
 }
 
 export type SignalKey = "PRICE" | "MATCHUP" | "FORM" | "ANGLE";
