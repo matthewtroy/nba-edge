@@ -57,23 +57,14 @@ export function LegProgress({
           data-testid="leg-progress-value-handle"
         />
         {view.line > 0 && (
-          <>
-            <span
-              className="absolute top-1/2 w-px h-2.5 bg-white/22 pointer-events-none leg-progress-target-tick"
-              style={{
-                left: `${targetPct}%`,
-                transform: "translate(-50%, -50%)",
-              }}
-              data-testid="leg-progress-target-tick"
-            />
-            <span
-              className="absolute -top-3.5 text-[8px] font-medium tabular-nums text-white/30 pointer-events-none leg-progress-target-label translate-x-1/2"
-              style={{ left: `${targetPct}%` }}
-              data-testid="leg-progress-target-label"
-            >
-              {view.line}
-            </span>
-          </>
+          <span
+            className="absolute top-1/2 w-px h-2.5 bg-white/18 pointer-events-none leg-progress-target-tick"
+            style={{
+              left: `${targetPct}%`,
+              transform: "translate(-50%, -50%)",
+            }}
+            data-testid="leg-progress-target-tick"
+          />
         )}
       </div>
       <span
