@@ -23,12 +23,12 @@ export function BetProgress({
 
   return (
     <div
-      className={`mb-2 ${className}`}
+      className={`mb-2 flex items-center gap-2 min-h-[18px] ${className}`}
       data-testid="bet-progress"
       data-bet-state={betView.state}
     >
       <div
-        className="flex gap-0.5 h-2 w-full"
+        className="flex flex-1 min-w-0 gap-0.5 h-2"
         data-testid="bet-progress-segments"
         data-segment-count={legStates.length}
         aria-hidden
@@ -44,10 +44,10 @@ export function BetProgress({
           />
         ))}
       </div>
-      <div className="flex items-center gap-2 mt-1.5 min-h-[18px]">
+      <div className="flex items-center gap-2 shrink-0">
         {landed ? (
           <span
-            className="text-[11px] text-white/55 tabular-nums"
+            className="text-[11px] text-white/55 tabular-nums whitespace-nowrap"
             data-testid="bet-progress-landed"
           >
             {landed}

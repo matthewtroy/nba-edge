@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import fs from "fs";
+import path from "path";
 import { liveBetView } from "../lib/live-bet";
 import type { LiveLegState } from "../lib/live-leg";
 import type { LiveLegView } from "../lib/live-leg";
@@ -20,6 +22,15 @@ const legView = (state: LiveLegState): LiveLegView => ({
 });
 
 describe("bet-progress ui", () => {
+  it("lays segments on one row beside landed copy and pill", () => {
+    const src = fs.readFileSync(
+      path.join(process.cwd(), "src/components/BetProgress.tsx"),
+      "utf8"
+    );
+    expect(src).toMatch(/flex items-center gap-2/);
+    expect(src).toMatch(/flex flex-1 min-w-0[\s\S]*bet-progress-segments/);
+    expect(src).not.toMatch(/mt-1\.5[\s\S]*bet-progress-landed/);
+  });
   it("landed copy counts won vs active legs (void excluded from total)", () => {
     const view = liveBetView(["won", "won", "live", "void", "pending"]);
     expect(view.total).toBe(4);
