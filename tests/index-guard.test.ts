@@ -29,6 +29,15 @@ describe("index guard", () => {
     const next = buildDataIndex([entry("2026-11-27")], now);
     expect(indexRetentionDropReason(prior, next, now)).toMatch(/2026-11-26/);
   });
+
+  it("blocks drop when data branch has folder but prior index dates is empty", () => {
+    const prior = buildDataIndex([], now);
+    const next = buildDataIndex([], now);
+    const reason = indexRetentionDropReason(prior, next, now, {
+      dataBranchFolders: ["2026-11-26"],
+    });
+    expect(reason).toMatch(/2026-11-26/);
+  });
 });
 
 describe("index schedule metadata", () => {

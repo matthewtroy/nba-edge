@@ -18,7 +18,10 @@ import {
 import { isPostTipOff } from "../lib/odds-cache-merge.js";
 import type { HistoryJson, SlateGame } from "../lib/types.js";
 import type { DataIndexFile } from "../lib/data-index.js";
-import { indexRetentionDropReason } from "../lib/index-guard.js";
+import {
+  indexRetentionDropReason,
+  listDataBranchRetainedFolders,
+} from "../lib/index-guard.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const staging = process.argv[2];
@@ -54,8 +57,11 @@ try {
   priorIndex = null;
 }
 
-if (stagingIndex && priorIndex) {
-  const indexDrop = indexRetentionDropReason(priorIndex, stagingIndex, now);
+if (stagingIndex) {
+  const branchFolders = listDataBranchRetainedFolders(rootDir, now);
+  const indexDrop = indexRetentionDropReason(priorIndex, stagingIndex, now, {
+    dataBranchFolders: branchFolders,
+  });
   if (indexDrop) {
     console.error(`persist data branch guard: blocked — ${indexDrop}`);
     process.exit(1);
