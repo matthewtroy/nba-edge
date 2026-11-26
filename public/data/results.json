@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-11-26T09:06:41.088Z",
+  "updatedAt": "2026-11-26T09:30:45.977Z",
   "official": {
     "record": {
       "won": 0,
-      "lost": 6,
+      "lost": 7,
       "void": 0,
-      "staked": 4.25,
-      "profit": -4.25,
+      "staked": 5.25,
+      "profit": -5.25,
       "roi": -1,
-      "bets": 6
+      "bets": 7
     },
     "byBetType": {
       "Main Play": {
@@ -40,12 +40,12 @@
       },
       "Boost SGM": {
         "won": 0,
-        "lost": 1,
+        "lost": 2,
         "void": 0,
-        "staked": 0.5,
-        "profit": -0.5,
+        "staked": 1.5,
+        "profit": -1.5,
         "roi": -1,
-        "bets": 1
+        "bets": 2
       },
       "Q1 Multi": {
         "won": 0,
@@ -172,6 +172,21 @@
             "profitUnits": -1,
             "stakeUnits": 1,
             "publishedCombinedPrice": 63.25
+          },
+          {
+            "slateDate": "2026-11-26",
+            "betType": "boostSgm",
+            "label": "Best SGM (manual)",
+            "variant": "manual",
+            "legIds": [
+              "3136195-pts-20",
+              "3908809-ast-5",
+              "3992-pts-20"
+            ],
+            "result": "lost",
+            "profitUnits": -1,
+            "stakeUnits": 1,
+            "publishedCombinedPrice": 7.875
           }
         ]
       }
@@ -279,6 +294,21 @@
         "profitUnits": -1,
         "stakeUnits": 1,
         "publishedCombinedPrice": 63.25
+      },
+      {
+        "slateDate": "2026-11-26",
+        "betType": "boostSgm",
+        "label": "Best SGM (manual)",
+        "variant": "manual",
+        "legIds": [
+          "3136195-pts-20",
+          "3908809-ast-5",
+          "3992-pts-20"
+        ],
+        "result": "lost",
+        "profitUnits": -1,
+        "stakeUnits": 1,
+        "publishedCombinedPrice": 7.875
       }
     ],
     "legs": [
