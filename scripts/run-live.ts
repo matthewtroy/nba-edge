@@ -99,12 +99,20 @@ import {
 import { buildDataIndex, writeDataIndex } from "../lib/data-index.js";
 import {
   mergePlanWithPersisted,
-  mergeRetainedIndexEntries,
+  rebuildIndexEntriesFromDisk,
   planScoreboardSlates,
   pipelineSydneyDates,
   slatesToPublishFromPlan,
 } from "../lib/slate-retention.js";
-import { indexRetentionDropReason, loadDataIndexFile } from "../lib/index-guard.js";
+import {
+  indexRetentionDropReason,
+  listDataBranchRetainedFolders,
+  loadDataIndexFile,
+} from "../lib/index-guard.js";
+import {
+  applyForwardMetadata,
+  forwardSlateMetadataFromGames,
+} from "../lib/index-forward-scan.js";
 import { buildOddsCoverage } from "../lib/odds-coverage.js";
 import {
   countPricedLegsByMarket,
@@ -212,6 +220,26 @@ export async function runLivePipeline(
       plan = planScoreboardSlates(merged, now);
     }
     plan = mergePlanWithPersisted(plan, outDir, now);
+    if (!plan.today.length && !plan.tomorrow.length) {
+      for (let i = 2; i < 7; i++) {
+        const d = new Date(now.getTime() + i * 86400000);
+        const et = formatYyyymmddInZone(d, ET);
+        try {
+          const board = await fetchScoreboard(dateFromYyyymmdd(et));
+          const parsed = parseScoreboard(board, yesterdayPlayed);
+          if (!parsed.length) continue;
+          merged = dedupeGames([...merged, ...parsed]);
+          plan = planScoreboardSlates(merged, now);
+          console.log(
+            `dual-slate: forward ET ${et} · +${parsed.length} games · today Sydney=${plan.today.length} · tomorrow=${plan.tomorrow.length}`
+          );
+          if (plan.today.length || plan.tomorrow.length) break;
+        } catch {
+          /* keep scanning */
+        }
+      }
+      plan = mergePlanWithPersisted(plan, outDir, now);
+    }
     slatesToPublish = slatesToPublishFromPlan(plan.today, plan.tomorrow);
     unionSlate = dedupeGames(slatesToPublish.flat());
   } catch (e) {
@@ -865,15 +893,25 @@ export async function runLivePipeline(
   }
   fs.writeFileSync(path.join(outDir, "history.json"), JSON.stringify(history, null, 2));
   fs.writeFileSync(oddsCachePath, JSON.stringify(cache, null, 2));
-  const mergedIndexEntries = mergeRetainedIndexEntries(indexEntries, outDir, now);
+  const mergedIndexEntries = rebuildIndexEntriesFromDisk(indexEntries, outDir, now);
   const defaultSlate =
     slatesToPublish.find(
       (s) => slateTipDateFromGames(s) === pipelineSydneyDates(now).todayYmd
     ) ?? slatesToPublish[0] ?? [];
-  const nextIndex = buildDataIndex(mergedIndexEntries, now, {
+  let nextIndex = buildDataIndex(mergedIndexEntries, now, {
     defaultSlate,
   });
-  const dropReason = indexRetentionDropReason(priorIndex, nextIndex, now);
+  const forwardMeta = forwardSlateMetadataFromGames(unionSlate, now);
+  if (forwardMeta) {
+    nextIndex = applyForwardMetadata(nextIndex, forwardMeta);
+    console.log(
+      `index forward: next slate ${forwardMeta.nextSlateDate} · publish ${forwardMeta.nextPublishAt}`
+    );
+  }
+  const branchFolders = listDataBranchRetainedFolders(rootDir, now);
+  const dropReason = indexRetentionDropReason(priorIndex, nextIndex, now, {
+    dataBranchFolders: branchFolders,
+  });
   if (dropReason) {
     console.error(`index guard: blocked — ${dropReason}`);
     process.exit(1);
