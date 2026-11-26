@@ -201,6 +201,8 @@ export function buildLegReasons(input: {
   seasonAvg?: { pts: number; reb: number; ast: number; threes: number };
   /** Full ESPN logs (incl. prior seasons) for H2H context. */
   h2hLogs?: PlayerGameLog[];
+  /** ESPN schedule: opponent B2B, player team rested (not leg.b2b). */
+  opponentOnB2B?: boolean;
 }): LegReason[] {
   const byType = new Map<string, LegReason>();
 
@@ -312,9 +314,9 @@ export function buildLegReasons(input: {
   const mins = q1Market ? undefined : minutesPhrase(input.logs);
   if (mins) put("min", mins);
 
-  if (input.leg.b2b) {
-    const teamShort = shortTeamName(input.teamName ?? input.leg.team);
-    put("context", `${teamShort} on a back-to-back`);
+  if (input.opponentOnB2B) {
+    const oppShort = shortTeamName(input.opponentName ?? input.leg.opponent);
+    put("context", `${oppShort} on a back-to-back`);
   }
 
   const sorted = sortLegReasons([...byType.values()]);

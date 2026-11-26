@@ -113,13 +113,16 @@ describe("pass 8 item 2 — opponent injury + team context", () => {
     expect(line).toBe("Young out → +2.4 pts");
   });
 
-  it("builder adds back-to-back team context", () => {
+  it("builder adds opponent back-to-back from schedule", () => {
     const reasons = buildLegReasons({
       leg: { ...baseLeg, market: "pts", line: 15, b2b: true },
       logs: [] as PlayerGameLog[],
       teamName: "Indiana Pacers",
+      opponentName: "Philadelphia 76ers",
+      opponentOnB2B: true,
     });
-    expect(reasons.some((r) => /Pacers on a back-to-back/i.test(r.text))).toBe(true);
+    expect(reasons.some((r) => /76ers on a back-to-back/i.test(r.text))).toBe(true);
+    expect(reasons.some((r) => /Pacers on a back-to-back/i.test(r.text))).toBe(false);
   });
 
   it("opponent out big yields named reb reason", () => {

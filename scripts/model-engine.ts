@@ -211,6 +211,9 @@ export function runModel(input: ModelRunInput): {
       const spread = game?.spread;
       const home = game?.homeTeamId === teamId;
       const b2b = home ? game?.homeB2B : game?.awayB2B;
+      const opponentOnB2B = home
+        ? Boolean(game?.awayB2B && !game?.homeB2B)
+        : Boolean(game?.homeB2B && !game?.awayB2B);
       const inj = teamInjuries.find((i) => i.playerId === p.id);
 
       const ctxAdj = applyContextAdjustments(adj, {
@@ -263,6 +266,7 @@ export function runModel(input: ModelRunInput): {
           minEdge,
           tracking: trackingRow,
           positionRanks: input.positionRanks,
+          opponentOnB2B,
         });
       picks.push(...newLegs);
       allQ1Exclusions.push(...q1Exclusions);

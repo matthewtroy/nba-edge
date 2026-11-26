@@ -14,6 +14,7 @@ import { sampleLegsByMarket } from "../lib/reason-histogram.js";
 import { normalizeLegReasons, reasonTexts } from "../lib/leg-reason-types.js";
 import { filterPicksWithSupportiveReasons } from "../lib/picks-supportive-filter.js";
 import { logSupportiveExclusionsByMarket } from "../lib/leg-reason-supportive.js";
+import { opponentOnB2BFromGame } from "../lib/schedule-b2b.js";
 
 const date = process.argv[2] ?? "2026-11-28";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -67,13 +68,13 @@ for (const leg of picks) {
   const cacheRow = gameLogCache[leg.playerId];
   const logs = cacheRow?.logs ?? [];
   const game = slate.find((g) => g.id === leg.gameId);
-  const home = game?.homeTeam === leg.team;
-  const b2b = home ? game?.homeB2B : game?.awayB2B;
+  const opponentOnB2B = opponentOnB2BFromGame(game, leg.team);
   const { playerTeamId, defendingTeamId } = teamIdsForPick(leg.gameId, leg.team, slate);
   const injurySeeds = normalizeLegReasons(leg.reasons ?? []).filter((r) => r.type === "injury");
   const reasons = buildLegReasons({
-    leg: { ...leg, b2b: b2b === true ? true : leg.b2b },
+    leg,
     logs,
+    opponentOnB2B,
     h2hLogs: logs,
     seasonAvg: leg.seasonAvg,
     defense,
