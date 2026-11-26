@@ -4,7 +4,10 @@
 import { describe, expect, it } from "vitest";
 import fs from "fs";
 import path from "path";
-import type { InjuryEntry, PickLeg, SlateGame } from "../lib/types";
+import type { InjuryEntry, MultiBet, PickLeg, SlateGame } from "../lib/types";
+import { MultiCardHeader } from "../src/components/MultiCardHeader";
+import { multiCardTitle } from "../lib/multi-combined";
+import { renderToStaticMarkup } from "react-dom/server";
 import { injuriesForInjuryPanel, seedInjuriesAtTipFromPreTip } from "../lib/injuries-at-tip";
 import { injuryRowKey, mergeInjuriesReportTime } from "../lib/injury-tip-freeze";
 import type { OfficialCardFile } from "../lib/official-card-time";
@@ -311,5 +314,42 @@ describe("item 4: Results display — no ROI, Singles, no row dots, admin by-mar
     expect(sections.at(-1)?.textContent).toMatch(/pts1–0/);
     localStorage.clear();
     done();
+  });
+});
+
+describe("item 5: card headers — bet type, total, bookie, stake chip only", () => {
+  const header = (props: Parameters<typeof MultiCardHeader>[0]) => {
+    const host = document.createElement("div");
+    host.innerHTML = renderToStaticMarkup(createElement(MultiCardHeader, props));
+    return host;
+  };
+
+  it("renders title @ total · bookie and a units chip, nothing else", () => {
+    const host = header({ title: "Main Play", total: 11.59, bookie: "Ladbrokes", stakeUnits: 1 });
+    expect(host.textContent).toBe("Main Play@$11.59·Ladbrokes1u");
+    expect(host.querySelector("[data-testid='multi-card-stake']")?.textContent).toBe("1u");
+    expect(header({ title: "Booster", total: 215.94, bookie: "Ladbrokes", stakeUnits: 0.05 }).textContent).toMatch(/0\.05u$/);
+  });
+
+  it("no Published @, Take/fair×1.08 or Q1 bookie-feed lines in the header source", () => {
+    const src = fs.readFileSync(path.join(process.cwd(), "src/components/MultiCardHeader.tsx"), "utf8");
+    expect(src).not.toMatch(/Published|Republished|fair×1\.08|No bookie feed|Best:/);
+    const card = fs.readFileSync(path.join(process.cwd(), "src/components/MultiCard.tsx"), "utf8");
+    expect(card).not.toMatch(/fairNote|publishedAt=\{/);
+  });
+
+  it("Q1 header shows its take total and stake with no explanatory line", () => {
+    const q1: MultiBet = {
+      type: "q1Multi",
+      label: "Q1 Multi",
+      legs: ["a", "b"],
+      combinedProbability: 0.25,
+      combinedFairPrice: 4,
+      combinedTakeAt: 4.32,
+      summary: "",
+    };
+    const legs = [leg({ id: "a", probability: 0.5, fairPrice: 2 }), leg({ id: "b", playerId: "b", probability: 0.5, fairPrice: 2 })];
+    const t = multiCardTitle(q1, legs);
+    expect(t.takeAtTotal).toBe(4.32);
   });
 });

@@ -207,7 +207,7 @@ describe("share multi capture", () => {
     host.remove();
   });
 
-  it("Main Play shareCapture shows Ladbrokes $11.59 total and published prices", async () => {
+  it("Main Play shareCapture header is bet type, Ladbrokes $11.59 and stake only", async () => {
     const dir = fixtureSlateDir("2026-11-26");
     const { slate, picks } = loadPublishedSlate("2026-11-26");
     const official = JSON.parse(
@@ -242,7 +242,10 @@ describe("share multi capture", () => {
     });
     expect(host.textContent).toMatch(/\$11\.59/);
     expect(host.textContent).toMatch(/Ladbrokes/);
-    expect(host.textContent).toMatch(/Published @ \$11\.59/);
+    expect(host.querySelector("[data-testid='multi-card-header']")?.textContent).toBe(
+      "Main Play@$11.59·Ladbrokes1u"
+    );
+    expect(host.textContent).not.toMatch(/Published/);
     const avatars = host.querySelectorAll("img");
     for (const img of avatars) {
       expect(img.className).not.toContain("bg-page");

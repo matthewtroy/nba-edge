@@ -1,3 +1,4 @@
+import { officialStakeUnits } from "./pricing-config.js";
 import type { MultiBet, PickLeg, SlateGame } from "./types.js";
 import type { GameSgmCard } from "./game-sgm-builder.js";
 import { slateMatchupAbbrev, slateMatchupWithTip } from "./team-abbrev.js";
@@ -23,6 +24,7 @@ export function gameSgmAsMulti(card: GameSgmCard, game: SlateGame): MultiBet {
     bestBookie: card.bestBookie,
     bestBookieTotal: card.bestTotal,
     bookieTotals: { [card.bestBookie]: card.bestTotal },
+    stakeUnits: officialStakeUnits("gamesSgm", card.bestTotal),
     summary: `Game SGM · bookie total $${card.oddsMin}–${card.oddsMax}`,
   };
 }

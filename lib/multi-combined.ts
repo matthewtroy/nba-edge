@@ -51,7 +51,7 @@ export function multiCardTitle(
   multi: MultiBet,
   legs: PickLeg[],
   minEdgeOrOpts: number | MultiCardTitleOptions = DEFAULT_MIN_EDGE
-): { headline: string; subline: string; cardBookie: string; fairOnly: boolean } {
+): { headline: string; subline: string; cardBookie: string; fairOnly: boolean; takeAtTotal?: number } {
   const opts = resolveTitleOpts(minEdgeOrOpts);
   const minEdge = opts.minEdgeFraction ?? DEFAULT_MIN_EDGE;
   const { fair } = combinedFairAndTakeAt(legs, minEdge);
@@ -69,6 +69,7 @@ export function multiCardTitle(
       subline,
       cardBookie: "",
       fairOnly: true,
+      ...(multi.type === "q1Multi" ? { takeAtTotal: takeAt } : {}),
     };
   }
 

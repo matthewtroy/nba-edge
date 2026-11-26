@@ -17,7 +17,6 @@ import { BookieBottomSheet } from "./BookieBottomSheet";
 import { captureMultiCardSharePng } from "../lib/share-multi-image";
 import { gameStartTimeSydney } from "@lib/sydney";
 import { multiCardTitle, type MultiCardTitleOptions } from "@lib/multi-combined";
-import { bestFeedMultiQuote } from "@lib/card-bookie";
 import { legPriceAtBookieWithCatalog } from "@lib/single-bookie";
 import { useMultiLegEdits } from "../hooks/useMultiLegEdits";
 import { ErrorBoundary } from "./ErrorBoundary";
@@ -33,6 +32,7 @@ import {
 import type { BookiePriceOpts } from "@lib/single-bookie";
 import { multiCardBookieHeaderLabel } from "@lib/multi-card-bookie-header";
 import { slateMatchupAbbrev } from "@lib/team-abbrev";
+import { officialStakeUnits } from "@lib/pricing-config";
 
 interface Props {
   multi: MultiBet;
@@ -134,7 +134,7 @@ export function MultiCard({
   const priceCatalog = officialDisplayOnly && liveCatalog?.length ? liveCatalog : allPicks;
   const priceOpts: BookiePriceOpts | undefined =
     multi.type === "longshot" ? { allowNearest: false } : undefined;
-  const { bookie, select, total, publishedBookie, publishedTotal } = useMultiBookieSelect(
+  const { bookie, select, total } = useMultiBookieSelect(
     multi,
     legs,
     preferredBookie,
@@ -148,7 +148,7 @@ export function MultiCard({
   const rawBook = bookie ?? lockedBookie ?? multi.bestBookie;
   const displayBook = isFeedBookie(rawBook) ? rawBook : bookie ?? multi.bestBookie;
 
-  const { headline, subline, cardBookie, fairOnly: titleFairOnly } = multiCardTitle(
+  const { headline, subline, cardBookie, fairOnly: titleFairOnly, takeAtTotal } = multiCardTitle(
     multi,
     legs,
     titleOpts
@@ -156,9 +156,6 @@ export function MultiCard({
   const showFairOnly = titleFairOnly || (hideBookieSelect && !shareCapture);
 
   const legBookie = showFairOnly ? "" : displayBook ?? cardBookie;
-  const bestFeed = !showFairOnly
-    ? bestFeedMultiQuote(legs, priceCatalog)
-    : undefined;
 
   const displayTitle = headline.includes(" @ ")
     ? headline.slice(0, headline.indexOf(" @ "))
@@ -171,8 +168,14 @@ export function MultiCard({
             null
         ).length
       : 0;
-  const headerTotal =
-    showFairOnly || missingAtBookie > 0 ? undefined : total ?? undefined;
+  const headerTotal = showFairOnly
+    ? takeAtTotal
+    : missingAtBookie > 0
+      ? undefined
+      : total ?? undefined;
+  const stakeUnits =
+    multi.stakeUnits ??
+    officialStakeUnits(multi.type, headerTotal ?? multi.bestBookieTotal ?? multi.combinedTakeAt);
   const pricedAtBookie = legs.length - missingAtBookie;
   const liveBetView = liveBetViewProp;
   const betLegStates = legStatesForMulti(multi, legViews);
@@ -248,25 +251,7 @@ export function MultiCard({
         title={displayTitle}
         total={headerTotal}
         bookie={headerBookie}
-        bestBookie={!officialDisplayOnly ? bestFeed?.bookie : undefined}
-        bestTotal={!officialDisplayOnly ? bestFeed?.total : undefined}
-        onSelectBest={
-          bestFeed && bookie
-            ? () => select(bestFeed.bookie)
-            : undefined
-        }
-        publishedBookie={
-          officialDisplayOnly && (publishedBookie ?? lockedBookie)
-            ? publishedBookie ?? lockedBookie
-            : undefined
-        }
-        publishedTotal={
-          officialDisplayOnly ? publishedTotal ?? multi.bestBookieTotal : undefined
-        }
-        publishedAt={officialDisplayOnly ? publishedAt : undefined}
-        republishedAt={officialDisplayOnly ? republishedAt : undefined}
-        fairOnly={showFairOnly}
-        fairNote={showFairOnly ? subline || oddsNote : undefined}
+        stakeUnits={stakeUnits}
         onRemove={shareCapture ? undefined : onRemove}
       />
       <BetProgress
