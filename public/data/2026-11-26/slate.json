@@ -43,11 +43,9 @@
     "awayTeam": "LA Clippers",
     "homeTeamId": "29",
     "awayTeamId": "12",
-    "spread": -7.5,
-    "total": 227.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_SCHEDULED"
+    "status": "STATUS_HALFTIME"
   },
   {
     "id": "401909322",
@@ -57,11 +55,9 @@
     "awayTeam": "Brooklyn Nets",
     "homeTeamId": "15",
     "awayTeamId": "17",
-    "spread": -1.5,
-    "total": 233.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_SCHEDULED"
+    "status": "STATUS_HALFTIME"
   },
   {
     "id": "401909323",
@@ -71,11 +67,9 @@
     "awayTeam": "Phoenix Suns",
     "homeTeamId": "10",
     "awayTeamId": "21",
-    "spread": -9.5,
-    "total": 222.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "STATUS_SCHEDULED"
+    "status": "STATUS_IN_PROGRESS"
   },
   {
     "id": "401909324",
@@ -86,7 +80,7 @@
     "homeTeamId": "9",
     "awayTeamId": "23",
     "spread": -8.5,
-    "total": 215.5,
+    "total": 216.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"
@@ -100,7 +94,7 @@
     "homeTeamId": "22",
     "awayTeamId": "24",
     "spread": 3.5,
-    "total": 227.5,
+    "total": 226.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "STATUS_SCHEDULED"
