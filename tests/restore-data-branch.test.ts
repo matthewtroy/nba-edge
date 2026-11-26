@@ -5,6 +5,7 @@ import path from "path";
 import { execFileSync } from "child_process";
 import {
   DataBranchRestoreError,
+  DATA_BRANCH_SLATE_DIR_FILES,
   resolveDataGitRef,
   restorePersistedDataFromBranch,
 } from "../lib/restore-data-branch";
@@ -125,6 +126,63 @@ describe("restorePersistedDataFromBranch", () => {
       return false;
     }
   }
+
+  it("restores all slate dir files listed for retained dates", () => {
+    expect(DATA_BRANCH_SLATE_DIR_FILES).toEqual(
+      expect.arrayContaining(["slate.json", "meta.json", "picks.json", "multis.json"])
+    );
+  });
+
+  it("restores slate folders from index dates on data branch", () => {
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "nba-restore-slate-"));
+    const repo = path.join(tmp, "repo");
+    try {
+      git(tmp, "init", repo);
+      const ymd = "2026-11-26";
+      const slateDir = path.join(repo, "public/data", ymd);
+      fs.mkdirSync(slateDir, { recursive: true });
+      for (const name of [
+        "slate.json",
+        "meta.json",
+        "picks.json",
+        "multis.json",
+        "injuries.json",
+      ]) {
+        fs.writeFileSync(path.join(slateDir, name), name === "slate.json" ? "[]" : "{}");
+        git(repo, "add", `public/data/${ymd}/${name}`);
+      }
+      const index = {
+        dates: [{ date: ymd }],
+        defaultDate: ymd,
+        todayDate: ymd,
+        tomorrowDate: null,
+        updatedAt: new Date().toISOString(),
+      };
+      fs.writeFileSync(
+        path.join(repo, "public/data/index.json"),
+        JSON.stringify(index)
+      );
+      for (const root of [
+        "history.json",
+        "odds-cache.json",
+        "game-log-cache.json",
+      ]) {
+        fs.writeFileSync(path.join(repo, "public/data", root), "{}");
+        git(repo, "add", `public/data/${root}`);
+      }
+      git(repo, "add", "public/data/index.json");
+      git(repo, "-c", "user.email=t@t.com", "-c", "user.name=T", "commit", "-m", "data");
+      git(repo, "branch", "-M", "data");
+
+      fs.rmSync(slateDir, { recursive: true, force: true });
+      const { restored } = restorePersistedDataFromBranch(repo);
+      expect(restored).toContain(`public/data/${ymd}/slate.json`);
+      expect(restored).toContain(`public/data/${ymd}/picks.json`);
+      expect(fs.existsSync(path.join(repo, "public/data", ymd, "meta.json"))).toBe(true);
+    } finally {
+      fs.rmSync(tmp, { recursive: true, force: true });
+    }
+  });
 
   it("logs oddsMap key count after restore", () => {
     const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "nba-restore-"));

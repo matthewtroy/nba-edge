@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 import { execFileSync } from "child_process";
+import type { DataIndexFile } from "./data-index.js";
+import { retentionMinYmd } from "./slate-retention.js";
 
 /** Files at `public/data/` root persisted on the data branch. */
 export const DATA_BRANCH_ROOT_FILES = [
@@ -19,7 +21,18 @@ export const DATA_BRANCH_REQUIRED_ROOT_FILES = [
   "game-log-cache.json",
 ] as const;
 
-/** Per-slate files restored before each pipeline run (never dropped on normal builds). */
+/** Per-slate artifacts restored for each retained folder on the data branch. */
+export const DATA_BRANCH_SLATE_DIR_FILES = [
+  "slate.json",
+  "meta.json",
+  "picks.json",
+  "multis.json",
+  "injuries.json",
+  "odds-coverage.json",
+  "official-card.json",
+] as const;
+
+/** @deprecated use DATA_BRANCH_SLATE_DIR_FILES */
 export const DATA_BRANCH_SLATE_FILES = ["official-card.json"] as const;
 
 const DATA_REF_CANDIDATES = [
@@ -126,22 +139,41 @@ export function restorePersistedDataFromBranch(
     }
   }
 
-  let tree: { path: string }[] | null = null;
-  try {
-    const raw = execFileSync(
-      "git",
-      ["ls-tree", "-r", "--name-only", dataRef, "public/data"],
-      { cwd: rootDir, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }
-    );
-    const slateOfficial = raw
-      .split("\n")
-      .filter((p) => /\/official-card\.json$/.test(p));
-    for (const rel of slateOfficial) {
-      const out = path.join(rootDir, rel);
-      if (restoreOne(rootDir, dataRef, rel, out)) restored.push(rel);
+  const indexPath = path.join(dataRoot, "index.json");
+  if (fs.existsSync(indexPath)) {
+    try {
+      const index = JSON.parse(fs.readFileSync(indexPath, "utf8")) as DataIndexFile;
+      const min = retentionMinYmd(new Date());
+      for (const entry of index.dates ?? []) {
+        if (entry.date < min) continue;
+        for (const name of DATA_BRANCH_SLATE_DIR_FILES) {
+          const rel = `public/data/${entry.date}/${name}`;
+          const out = path.join(dataRoot, entry.date, name);
+          if (restoreOne(rootDir, dataRef, rel, out)) restored.push(rel);
+        }
+      }
+    } catch {
+      /* index parse failed — fall back to ls-tree official cards */
     }
-  } catch {
-    /* ls-tree failed */
+  }
+
+  if (!restored.some((r) => r.includes("/slate.json"))) {
+    try {
+      const raw = execFileSync(
+        "git",
+        ["ls-tree", "-r", "--name-only", dataRef, "public/data"],
+        { cwd: rootDir, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }
+      );
+      const slateOfficial = raw
+        .split("\n")
+        .filter((p) => /\/official-card\.json$/.test(p));
+      for (const rel of slateOfficial) {
+        const out = path.join(rootDir, rel);
+        if (restoreOne(rootDir, dataRef, rel, out)) restored.push(rel);
+      }
+    } catch {
+      /* ls-tree failed */
+    }
   }
 
   let oddsMapKeys = 0;
