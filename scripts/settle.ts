@@ -16,7 +16,7 @@ import { fetchScoreboard, fetchSummary } from "./fetch/espn.js";
 import { formatYyyymmddInZone, parseBoxscore } from "./espn-parse.js";
 import { gradePickCatalog } from "../lib/graded-leg.js";
 import { settleOfficialBets } from "../lib/official-bet-settle.js";
-import { manualOfficialBetRows } from "../lib/manual-official-bets.js";
+import { extraOfficialBetRows, loadExtraOfficialBets } from "../lib/extra-official-bets.js";
 import { valueLegRowsFromGraded } from "../lib/value-leg-track.js";
 import { slateResultsFrozen } from "../lib/settle-slate-freeze.js";
 import { syncSettleToSupabase } from "./supabase-sync.js";
@@ -142,6 +142,7 @@ async function main() {
   const allGraded: ReturnType<typeof gradePickCatalog> = [];
   const allValue: ReturnType<typeof valueLegRowsFromGraded> = [];
 
+  const extraBets = loadExtraOfficialBets(rootDir);
   for (const slateDate of slateDates) {
     const prevSlate = loadPrevSlateSlice(slateDate);
     const frozen = prevSlate && slateResultsFrozen(prevSlate) ? prevSlate : null;
@@ -157,10 +158,13 @@ async function main() {
       officialLegs = frozen ? frozen.official.legs : settleOfficialCard(card, boxes).legs;
       officialBets = [
         ...settleOfficialBets(card, officialLegs),
-        ...manualOfficialBetRows(
+        ...extraOfficialBetRows(
           slateDate,
-          new Map(officialLegs.map((l) => [l.id, l.result])),
-          rootDir
+          new Map([
+            ...graded.map((g) => [g.id, g.result] as const),
+            ...officialLegs.map((l) => [l.id, l.result] as const),
+          ]),
+          extraBets
         ),
       ];
       allOfficialLegs.push(...officialLegs);

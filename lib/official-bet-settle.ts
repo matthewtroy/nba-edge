@@ -16,7 +16,7 @@ export const BET_LABELS: Record<MultiType, string> = {
   booster: "Booster",
   q1Multi: "Q1 Multi",
   crossGameSgm: "Cross-Game SGM Multi",
-  boostSgm: "Boost SGM",
+  boostSgm: "Best SGM",
   longshot: "Longshot",
 };
 
@@ -25,6 +25,7 @@ export interface OfficialBetRow {
   betType: MultiType;
   label: string;
   variant?: string;
+  bookie?: string;
   legIds: string[];
   result: CardBetResult;
   /** null when Q1 (or similar) has no published combined price — W-L only */
@@ -108,6 +109,7 @@ export function settleOfficialBets(
       betType: multi.type,
       label: multi.label,
       variant: multi.variant,
+      ...(multi.bestBookie ? { bookie: multi.bestBookie } : {}),
       legIds: multi.legs,
       result,
       profitUnits: profit,

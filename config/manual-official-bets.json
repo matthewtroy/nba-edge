@@ -1,20 +1,14 @@
 {
   "slates": {
     "2026-11-26": {
-      "boostSgm": {
-        "bestBookie": "bet365",
-        "bestBookieTotal": 7.2,
-        "legs": ["3136195-pts-20", "3908809-ast-5", "3992-pts-20"],
-        "label": "Best SGM"
-      },
-      "manualBets": [
+      "extraBets": [
         {
           "betType": "boostSgm",
-          "label": "Best SGM (manual)",
-          "variant": "manual",
-          "legIds": ["3136195-pts-20", "3908809-ast-5", "3992-pts-20"],
-          "stakeUnits": 1,
-          "publishedCombinedPrice": 7.875
+          "bookie": "bet365",
+          "legIds": ["5104157-pts-30", "5104157-reb-13", "4683021-pts-25"],
+          "price": 6.5,
+          "boostPct": 25,
+          "stakeUnits": 1
         }
       ]
     }

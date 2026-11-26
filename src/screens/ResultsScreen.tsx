@@ -33,7 +33,8 @@ function BetLegList({ bet }: { bet: OfficialBetRow }) {
         onClick={() => setOpen(!open)}
         className="w-full text-left text-sm"
       >
-        {bet.slateDate} · {bet.label} · {bet.result.toUpperCase()}
+        {bet.slateDate} · {bet.label}
+        {bet.bookie ? ` · ${bet.bookie}` : ""} · {bet.result.toUpperCase()}
         {bet.stakeUnits > 0 ? ` · ${bet.stakeUnits.toFixed(2)}u staked` : ""}
       </button>
       {open ? (

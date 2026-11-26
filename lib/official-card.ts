@@ -12,7 +12,6 @@ import {
 } from "./official-leg-snapshot.js";
 import type { PickLeg } from "./types.js";
 import { officialStakeUnits } from "./pricing-config.js";
-import { applyManualOfficialBets } from "./manual-official-bets.js";
 
 export {
   OFFICIAL_CARD_BOOKIE,
@@ -44,17 +43,10 @@ export function writeOfficialCard(
   const nowIso = input.now.toISOString();
   const publishedAt = input.preservePublishedAt ?? nowIso;
   const picksById = new Map(input.picks.map((p) => [p.id, p]));
-  const tipYmd =
-    input.meta.slateTipDate ??
-    slateTipDateFromGames(input.slate) ??
-    sydneyDateString(input.now);
-  const multisWithStake = applyManualOfficialBets(
-    tipYmd,
-    input.multis.map((m) => ({
-      ...m,
-      stakeUnits: m.stakeUnits ?? officialStakeUnits(m.type, m.bestBookieTotal ?? m.combinedFairPrice),
-    }))
-  );
+  const multisWithStake = input.multis.map((m) => ({
+    ...m,
+    stakeUnits: m.stakeUnits ?? officialStakeUnits(m.type, m.bestBookieTotal ?? m.combinedFairPrice),
+  }));
   const legSnapshots = freezeOfficialLegSnapshots(
     multisWithStake,
     picksById,

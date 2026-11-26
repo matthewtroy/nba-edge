@@ -14,10 +14,6 @@ import {
   mergeIntoFinalCache,
   subscribeLiveSource,
 } from "../lib/live-source";
-import { manualOfficialBetRows } from "../lib/manual-official-bets";
-import { buildResultsSlice } from "../lib/results-aggregate";
-import { settleOfficialBets } from "../lib/official-bet-settle";
-import { settleOfficialCard } from "../lib/settle-core";
 import type { OfficialCardFile } from "../lib/official-card-time";
 import { MultiCard } from "../src/components/MultiCard";
 import { liveBetView } from "../lib/live-bet";
@@ -126,52 +122,6 @@ describe("prod fix pass 4 — ESPN polling finals", () => {
     expect(scoreboardCalls).toBe(before);
     unsub();
     vi.useRealTimers();
-  });
-});
-
-describe("prod fix pass 4 — manual official bet in settle", () => {
-  it("includes manual Best SGM row with 1u stake and +6.875u when won", () => {
-    const legResults = new Map<string, import("../lib/settle-core.js").CardLegResult>([
-      ["3136195-pts-20", "won"],
-      ["3908809-ast-5", "won"],
-      ["3992-pts-20", "won"],
-    ]);
-    const manualRows = manualOfficialBetRows("2026-11-26", legResults);
-    const manual = manualRows.find((b) => b.variant === "manual");
-    expect(manual?.label).toBe("Best SGM (manual)");
-    expect(manual?.stakeUnits).toBe(1);
-    expect(manual?.result).toBe("won");
-    expect(manual?.profitUnits).toBeCloseTo(6.875, 3);
-
-    const dir = fixtureSlateDir("2026-11-26");
-    const card = JSON.parse(
-      fs.readFileSync(path.join(dir, "official-card.json"), "utf8")
-    ) as OfficialCardFile;
-    const fixtureBoxes = JSON.parse(
-      fs.readFileSync(path.join(process.cwd(), "fixtures/settle-boxes.json"), "utf8")
-    ) as Record<string, Record<string, { pts: number; reb: number; ast: number; minutes: string }>>;
-    const boxes = new Map<string, Map<string, (typeof fixtureBoxes)[string][string]>>();
-    for (const [gid, players] of Object.entries(fixtureBoxes)) {
-      boxes.set(gid, new Map(Object.entries(players)));
-    }
-    const settled = settleOfficialCard(card, boxes as never);
-    const published = settleOfficialBets(card, settled.legs);
-    const fromLegs = new Map(settled.legs.map((l) => [l.id, l.result]));
-    for (const id of ["3136195-pts-20", "3908809-ast-5", "3992-pts-20"]) {
-      fromLegs.set(id, "won");
-    }
-    const bets = [...published, ...manualOfficialBetRows("2026-11-26", fromLegs)];
-    const slice = buildResultsSlice({
-      officialLegs: settled.legs,
-      officialBets: bets,
-      valueLegRows: [],
-      gradedLegs: [],
-    });
-    const manualInSlice = slice.official.bets.find((b) => b.variant === "manual");
-    expect(manualInSlice?.label).toBe("Best SGM (manual)");
-    expect(manualInSlice?.result).toBe("won");
-    expect(manualInSlice?.profitUnits).toBeCloseTo(6.875, 3);
-    expect(slice.official.bets.some((b) => b.betType === "boostSgm")).toBe(true);
   });
 });
 

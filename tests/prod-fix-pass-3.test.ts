@@ -8,7 +8,6 @@ import {
   STAKE_UNIT_STEP,
 } from "../lib/pricing-config";
 import { legMeetsBookieEdge } from "../lib/bookie-edge-pool";
-import { applyManualOfficialBets, loadManualOfficialBets } from "../lib/manual-official-bets";
 import { buildMultis } from "../lib/multis";
 import type { PickLeg } from "../lib/types";
 
@@ -42,27 +41,6 @@ describe("prod fix pass 3 — unit staking", () => {
   it("stake bands snap to 0.05u", () => {
     expect(STAKE_UNIT_STEP).toBe(0.05);
     expect(officialStakeUnits("mainPlay", 7.5)).toBe(1);
-  });
-});
-
-describe("prod fix pass 3 — manual Best SGM bet365", () => {
-  it("config overrides boostSgm bookie for 2026-11-26", () => {
-    const file = loadManualOfficialBets(process.cwd());
-    expect(file.slates?.["2026-11-26"]?.boostSgm?.bestBookie).toBe("bet365");
-    const multis = applyManualOfficialBets("2026-11-26", [
-      {
-        type: "boostSgm",
-        label: "Best SGM",
-        legs: ["a"],
-        combinedProbability: 0.2,
-        combinedFairPrice: 5,
-        combinedTakeAt: 5.4,
-        bestBookie: "Picklebet",
-        bestBookieTotal: 7.2,
-        summary: "x",
-      },
-    ]);
-    expect(multis[0].bestBookie).toBe("bet365");
   });
 });
 

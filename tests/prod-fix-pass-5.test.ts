@@ -1,3 +1,6 @@
+/**
+ * @vitest-environment jsdom
+ */
 import { describe, expect, it } from "vitest";
 import { execFileSync } from "child_process";
 import fs from "fs";
@@ -17,6 +20,13 @@ import { officialStakeUnits } from "../lib/pricing-config";
 import { settleOfficialBets } from "../lib/official-bet-settle";
 import type { OfficialCardFile } from "../lib/official-card-time";
 import type { SettledLegRow } from "../lib/settle-core";
+import { extraOfficialBetRows, loadExtraOfficialBets } from "../lib/extra-official-bets";
+import { buildResultsSlice } from "../lib/results-aggregate";
+import { ResultsScreen } from "../src/screens/ResultsScreen";
+import type { DataBundle } from "../src/hooks/useData";
+import { createElement } from "react";
+import { createRoot } from "react-dom/client";
+import { act } from "react";
 
 interface ReasonsFixture {
   commit: string;
@@ -254,5 +264,83 @@ describe("prod fix pass 5 — official stake bands", () => {
   it("publish freezes the band stake onto the card multis", () => {
     const src = fs.readFileSync(path.join(process.cwd(), "lib/official-card.ts"), "utf8");
     expect(src).toMatch(/stakeUnits: m\.stakeUnits \?\? officialStakeUnits\(m\.type,/);
+  });
+});
+
+describe("prod fix pass 5 — extra Best SGM", () => {
+  const card = JSON.parse(
+    fs.readFileSync(path.join(process.cwd(), "tests/fixtures/2026-11-26/official-card.json"), "utf8")
+  ) as OfficialCardFile;
+  const extraLegs = ["5104157-pts-30", "5104157-reb-13", "4683021-pts-25"];
+  const cardLegs = [...new Set(card.multis.flatMap((m) => m.legs))].map(
+    (id) => ({ id, slateDate: "2026-11-26", result: "lost" }) as SettledLegRow
+  );
+  const legResults = new Map<string, "won" | "lost">([
+    ...cardLegs.map((l) => [l.id, "lost"] as const),
+    ...extraLegs.map((id) => [id, "won"] as const),
+  ]);
+  const extras = extraOfficialBetRows("2026-11-26", legResults, loadExtraOfficialBets(process.cwd()));
+  const bets = [...settleOfficialBets(card, cardLegs), ...extras];
+  const slice = buildResultsSlice({
+    officialLegs: cardLegs,
+    officialBets: bets,
+    valueLegRows: [],
+    gradedLegs: [],
+    now: new Date("2026-11-26T10:00:00Z"),
+  });
+
+  it("config bet is a normal bet365 Best SGM: $6.50 +25% boost, 1u, +6.875u", () => {
+    expect(extras).toHaveLength(1);
+    const sgm = extras[0]!;
+    expect(sgm.betType).toBe("boostSgm");
+    expect(sgm.label).toBe("Best SGM");
+    expect(sgm.bookie).toBe("bet365");
+    expect(sgm.legIds).toEqual(extraLegs);
+    expect(sgm.publishedCombinedPrice).toBe(7.875);
+    expect(sgm.result).toBe("won");
+    expect(sgm.stakeUnits).toBe(1);
+    expect(sgm.profitUnits).toBeCloseTo(6.875, 6);
+    expect(sgm.variant).toBeUndefined();
+  });
+
+  it("published Picklebet Best SGM stays and both count under Best SGM", () => {
+    const sgms = slice.official.bets.filter((b) => b.betType === "boostSgm");
+    expect(sgms.map((b) => b.bookie)).toEqual(["Picklebet", "bet365"]);
+    expect(sgms.every((b) => b.label === "Best SGM")).toBe(true);
+    const row = slice.official.byBetType["Best SGM"]!;
+    expect(row.bets).toBe(2);
+    expect(row.won).toBe(1);
+    expect(row.lost).toBe(1);
+    expect(row.profit).toBeCloseTo(5.875, 6);
+  });
+
+  it("Results UI shows both Best SGMs and never the word manual", async () => {
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    const root = createRoot(host);
+    await act(async () => {
+      root.render(createElement(ResultsScreen, { data: { results: slice } as unknown as DataBundle }));
+    });
+    const text = host.textContent ?? "";
+    expect(text).not.toMatch(/manual/i);
+    expect(text.match(/Best SGM/g)?.length ?? 0).toBeGreaterThanOrEqual(2);
+    expect(text).toMatch(/bet365/);
+    expect(text).toMatch(/Picklebet/);
+    root.unmount();
+    host.remove();
+  });
+
+  it("no manual wording in config labels, bet rows, or app source", () => {
+    expect(JSON.stringify(extras)).not.toMatch(/manual/i);
+    const cfg = fs.readFileSync(path.join(process.cwd(), "config/manual-official-bets.json"), "utf8");
+    expect(cfg).not.toMatch(/manual/i);
+    const srcDir = path.join(process.cwd(), "src");
+    const walk = (dir: string): string[] =>
+      fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+        e.isDirectory() ? walk(path.join(dir, e.name)) : [path.join(dir, e.name)]
+      );
+    for (const f of walk(srcDir).filter((f) => /\.(tsx?|css)$/.test(f))) {
+      expect(fs.readFileSync(f, "utf8"), f).not.toMatch(/\(manual\)|variant === "manual"/i);
+    }
   });
 });
