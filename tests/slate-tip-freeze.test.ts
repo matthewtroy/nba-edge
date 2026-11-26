@@ -46,6 +46,22 @@ const leg = (
 });
 
 describe("slate tip freeze", () => {
+  it("merge refreshes startTimeSydney from startTime ISO (Heat @ PHI 9:10 am)", () => {
+    const prev = [
+      game("401909317", "2026-11-25T22:00:00Z", "scheduled"),
+    ];
+    const incoming: SlateGame[] = [
+      {
+        ...prev[0],
+        startTime: "2026-11-25T22:10:00Z",
+        startTimeSydney: "9:00 am",
+        status: "scheduled",
+      },
+    ];
+    const merged = mergeSlateGamesOnRefresh(prev, incoming, new Date());
+    expect(merged[0].startTimeSydney).toBe("9:10 am");
+  });
+
   it("merge keeps started/final games when refresh omits them", () => {
     const prev = [
       game("g1", "2026-11-26T10:00:00Z", "scheduled"),

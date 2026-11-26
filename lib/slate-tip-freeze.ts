@@ -1,5 +1,6 @@
 import type { MultiBet, PickLeg, SlateGame } from "./types.js";
 import { normalizeEspnGameStatus, slateStatusLabel } from "./slate-espn-status.js";
+import { gameStartTimeSydney } from "./sydney.js";
 
 export function gameStarted(game: SlateGame, now: Date): boolean {
   const phase = normalizeEspnGameStatus(game.status);
@@ -25,12 +26,17 @@ export function mergeSlateGamesOnRefresh(
   for (const g of incoming) {
     const prev = byId.get(g.id);
   const phase = normalizeEspnGameStatus(g.status);
+    const startTime = g.startTime || prev?.startTime || g.startTime;
     const merged: SlateGame = {
       ...(prev ?? g),
       ...g,
       status: slateStatusLabel(phase),
-      startTime: g.startTime || prev?.startTime || g.startTime,
-      startTimeSydney: g.startTimeSydney || prev?.startTimeSydney || g.startTimeSydney,
+      startTime,
+      startTimeSydney:
+        gameStartTimeSydney({
+          startTime,
+          startTimeSydney: g.startTimeSydney || prev?.startTimeSydney,
+        }) || g.startTimeSydney || prev?.startTimeSydney || "",
     };
     byId.set(g.id, merged);
   }
