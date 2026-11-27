@@ -1,6 +1,10 @@
-import type { PickLeg } from "./types.js";
+import type { Market, PickLeg } from "./types.js";
 import { AU_BOOKMAKERS } from "./types.js";
 import { canonBookiePrices, resolveCanonBookie } from "./bookie-totals.js";
+import {
+  bookiePriceFromOfferedMap,
+  offeredBookiePrices,
+} from "./offered-bookie-lines.js";
 import {
   combinedPriceForBookieNearest,
   legPriceAtBookieNearest,
@@ -20,8 +24,13 @@ export function legPriceAtBookie(leg: PickLeg, bookie: string): number | undefin
   const canon = canonBookiePrices(leg.bookiePrices);
   const key = resolveCanonBookie(bookie) ?? bookie;
   const p = canon[key as keyof typeof canon];
-  if (p == null || p <= 1) return undefined;
-  return p;
+  if (p != null && p > 1) return p;
+  const offered = offeredBookiePrices(
+    leg.playerName,
+    leg.market as Market,
+    leg.line
+  );
+  return bookiePriceFromOfferedMap(offered, bookie);
 }
 
 /** Product of leg prices at one bookie; undefined if any leg missing. */

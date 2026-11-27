@@ -1,7 +1,11 @@
 import type { PickLeg, MultiBet, MultiType, MultiNotBuilt, PlayerGameLog } from "./types.js";
 import { q1MultiBlendP, passesQ1MultiHitGap } from "./q1-multi-probability.js";
 import { nearestPricedRung } from "./nearest-bookie-line.js";
-import { offeredBookiePrices, synthesizeOfferedRung } from "./offered-bookie-lines.js";
+import {
+  bookiePriceFromOfferedMap,
+  offeredBookiePrices,
+  synthesizeOfferedRung,
+} from "./offered-bookie-lines.js";
 import {
   pickBestSameGameSgmCombo,
   pickCrossGameLegsForGame,
@@ -829,8 +833,8 @@ function rankedBoostCandidatesForLeg(
       : mainLeg.line + 15;
   for (let line = mainLeg.line + 1; line < maxLine; line++) {
     if (pricedAbove.some((p) => p.line === line)) continue;
-  const prices = offeredBookiePrices(mainLeg.playerName, mainLeg.market, line);
-    if (!prices?.[bookie]) continue;
+    const prices = offeredBookiePrices(mainLeg.playerName, mainLeg.market, line);
+    if (bookiePriceFromOfferedMap(prices, bookie) == null) continue;
     const synth = synthesizeOfferedRung(mainLeg, line, bookie, pool);
     if (synth && meetsFloor(synth)) pricedAbove.push(synth);
   }
