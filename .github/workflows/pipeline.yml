@@ -144,6 +144,7 @@ jobs:
 
       - name: Run pipeline
         env:
+          NODE_OPTIONS: --max-old-space-size=4096
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
           NBA_EDGE_SUPABASE_URL: ${{ secrets.NBA_EDGE_SUPABASE_URL }}
           NBA_EDGE_SUPABASE_SECRET_KEY: ${{ secrets.NBA_EDGE_SUPABASE_SECRET_KEY }}

@@ -1,4 +1,5 @@
 import type { PickLeg } from "./types.js";
+import type { CatalogMarketIndex } from "./catalog-index.js";
 import { FEED_BOOKIES } from "./card-bookie.js";
 import { legPriceAtBookie } from "./single-bookie.js";
 import { nearestPricedRung } from "./nearest-bookie-line.js";
@@ -34,11 +35,20 @@ export function bookiesByCoverage(
 export function asBookieLeg(
   leg: PickLeg,
   bookie: string,
-  catalog?: PickLeg[]
+  catalog?: PickLeg[],
+  index?: CatalogMarketIndex
 ): PickLeg | null {
   const pool = catalog ?? [leg];
-  const near = nearestPricedRung(leg, bookie, pool);
+  const near = nearestPricedRung(leg, bookie, pool, { index });
   if (!near) return null;
+  if (near.leg === leg && near.price === (leg.bestPrice ?? legPriceAtBookie(leg, bookie))) {
+    return {
+      ...leg,
+      bestPrice: near.price,
+      bestBookie: bookie,
+      ...(near.lineShift ? { feedLineNote: near.lineShift } : {}),
+    };
+  }
   return {
     ...near.leg,
     bestPrice: near.price,
@@ -47,10 +57,24 @@ export function asBookieLeg(
   };
 }
 
+/** Booster offered lines: price on feed odds only — no catalog nearest scan. */
+export function asBookieLegOnDemand(
+  leg: PickLeg,
+  bookie: string,
+  price: number
+): PickLeg {
+  return {
+    ...leg,
+    bestPrice: price,
+    bestBookie: bookie,
+  };
+}
+
 export function overlayForBookie(
   legs: PickLeg[],
   bookie: string,
-  catalog?: PickLeg[]
+  catalog?: PickLeg[],
+  index?: CatalogMarketIndex
 ): {
   bestBookie: string;
   bestBookieTotal: number;
@@ -58,7 +82,7 @@ export function overlayForBookie(
 } {
   const pool = catalog ?? legs;
   const priced = legs
-    .map((l) => asBookieLeg(l, bookie, pool))
+    .map((l) => asBookieLeg(l, bookie, pool, index))
     .filter(Boolean) as PickLeg[];
   const total = priced.reduce((acc, l) => acc * (l.bestPrice ?? 1), 1);
   return {

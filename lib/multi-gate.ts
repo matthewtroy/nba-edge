@@ -53,11 +53,34 @@ function checkLegEligibility(type: MultiType, leg: PickLeg, multiLabel: string):
   return issues;
 }
 
-function marketRungs(leg: PickLeg, picksById: Map<string, PickLeg>): PickLeg[] {
+type MarketRungCache = Map<string, PickLeg[]>;
+
+function buildMarketRungCache(picksById: Map<string, PickLeg>): MarketRungCache {
+  const cache: MarketRungCache = new Map();
+  for (const p of picksById.values()) {
+    const key = `${p.playerId}|${p.market}`;
+    const arr = cache.get(key) ?? [];
+    arr.push(p);
+    cache.set(key, arr);
+  }
+  for (const arr of cache.values()) {
+    arr.sort((a, b) => a.line - b.line);
+  }
+  return cache;
+}
+
+function marketRungs(
+  leg: PickLeg,
+  picksById: Map<string, PickLeg>,
+  cache?: MarketRungCache
+): PickLeg[] {
+  const key = `${leg.playerId}|${leg.market}`;
+  if (cache?.has(key)) return cache.get(key)!;
   const same = [...picksById.values()].filter(
     (p) => p.playerId === leg.playerId && p.market === leg.market
   );
   same.sort((a, b) => a.line - b.line);
+  cache?.set(key, same);
   return same;
 }
 
@@ -68,7 +91,8 @@ function rungIndex(leg: PickLeg, picksById: Map<string, PickLeg>): number {
 function checkBoosterSteps(
   main: MultiBet | undefined,
   legs: PickLeg[],
-  picksById: Map<string, PickLeg>
+  picksById: Map<string, PickLeg>,
+  rungCache?: MarketRungCache
 ): string[] {
   const issues: string[] = [];
   if (!main) {
@@ -87,7 +111,7 @@ function checkBoosterSteps(
       issues.push(`Booster: missing leg for ${mainLeg.playerName} ${mainLeg.market}`);
       continue;
     }
-    const rungs = marketRungs(mainLeg, picksById);
+    const rungs = marketRungs(mainLeg, picksById, rungCache);
     const mainIdx = rungs.findIndex((p) => p.line === mainLeg.line);
     const boostIdx = rungs.findIndex((p) => p.line === boostLeg.line);
     if (boostIdx < mainIdx) {
@@ -232,7 +256,8 @@ export function gateMulti(
   multi: MultiBet,
   legs: PickLeg[],
   mainPlay?: MultiBet,
-  picksById?: Map<string, PickLeg>
+  picksById?: Map<string, PickLeg>,
+  rungCache?: MarketRungCache
 ): GateResult {
   const violations: string[] = [];
   const label = multi.variant ? `${multi.label} (${multi.variant})` : multi.label;
@@ -282,7 +307,7 @@ export function gateMulti(
   violations.push(...checkTypeRules(multi.type, legs, label, multi, catalog));
 
   if (multi.type === "booster" && mainPlay && picksById) {
-    violations.push(...checkBoosterSteps(mainPlay, legs, picksById));
+    violations.push(...checkBoosterSteps(mainPlay, legs, picksById, rungCache));
   }
 
   const mixedLabel =
@@ -337,10 +362,11 @@ export function gateAllMultis(
   void pool;
 
   const mainPlay = multis.find((m) => m.type === "mainPlay");
+  const rungCache = buildMarketRungCache(picksById);
 
   for (const multi of multis) {
     const legs = multi.legs.map((id) => picksById.get(id)).filter(Boolean) as PickLeg[];
-    const result = gateMulti(multi, legs, mainPlay, picksById);
+    const result = gateMulti(multi, legs, mainPlay, picksById, rungCache);
     violations.push(...result.violations);
     if (result.ok) kept.push(multi);
     else {

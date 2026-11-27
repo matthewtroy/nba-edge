@@ -24,6 +24,7 @@ import { logSlatePickReport } from "../lib/slate-pick-report.js";
 import { applyContextAdjustments } from "../lib/context.js";
 import { buildLegsForPlayer } from "../lib/pricing.js";
 import { buildMultis, type MultiBuildResult } from "../lib/multis.js";
+import { logHeap } from "../lib/process-heap.js";
 import { filterPicksWithSupportiveReasons } from "../lib/picks-supportive-filter.js";
 import { logSupportiveExclusionsByMarket } from "../lib/leg-reason-supportive.js";
 import { logMarketBlendSample } from "../lib/market-blend.js";
@@ -374,6 +375,8 @@ export function runModel(input: ModelRunInput): {
   const logsByPlayer = new Map(input.players.map((p) => [p.id, p.gameLogs]));
   const formGuardExcludedCount = applyFormGuardExclusions(eligiblePicks, logsByPlayer);
   const multisPicks = eligiblePicks.filter(passesFormGuard);
+
+  logHeap("after model pricing");
 
   const multiResult = buildMultis(
     multisPicks,

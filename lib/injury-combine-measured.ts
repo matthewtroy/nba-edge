@@ -137,6 +137,20 @@ export function applyMeasuredOutCombines(input: {
 
   const injuredIds = resolvedOuts.map((o) => o.profile.id);
   const multiOut = resolvedOuts.length >= 2;
+  const jointByTeammate = new Map<
+    string,
+    { jointN: number; withoutGames: PlayerGameLog[]; withGames: PlayerGameLog[] }
+  >();
+  if (multiOut) {
+    for (const tm of input.teammates) {
+      const tmLogs = input.gameLogs.get(tm.id) ?? [];
+      jointByTeammate.set(tm.id, {
+        jointN: jointWithoutGames(tmLogs, injuredIds, input.gameLogs).length,
+        withoutGames: jointWithoutGames(tmLogs, injuredIds, input.gameLogs),
+        withGames: jointWithGames(tmLogs, injuredIds, input.gameLogs),
+      });
+    }
+  }
 
   for (const tm of input.teammates) {
     const cur = input.adjusted.get(tm.id);
@@ -190,16 +204,14 @@ export function applyMeasuredOutCombines(input: {
 
       if (!splits.length) continue;
 
-      const jointN = multiOut
-        ? jointWithoutGames(tmLogs, injuredIds, input.gameLogs).length
-        : 0;
+      const jointSplit = jointByTeammate.get(tm.id);
+      const jointN = jointSplit?.jointN ?? 0;
       let method: "joint" | "sum" = "sum";
       let combined = splits.reduce((s, p) => s + p.individualEffect, 0);
       let applied = Math.min(combined, baseline[stat] * 0.25);
 
-      if (multiOut && jointN >= 2) {
-        const withoutGames = jointWithoutGames(tmLogs, injuredIds, input.gameLogs);
-        const withGames = jointWithGames(tmLogs, injuredIds, input.gameLogs);
+      if (multiOut && jointN >= 2 && jointSplit) {
+        const { withoutGames, withGames } = jointSplit;
         const rateWith =
           withGames.length > 0 ? perMinuteAvg(withGames, stat) : r[stat];
         const rateWithout = perMinuteAvg(withoutGames, stat);

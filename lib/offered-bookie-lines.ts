@@ -1,6 +1,10 @@
 import fs from "fs";
 import path from "path";
 import type { Market, PickLeg } from "./types.js";
+import {
+  type CatalogMarketIndex,
+  ladderForPlayerMarket,
+} from "./catalog-index.js";
 import { normalizePlayerName } from "./player-names.js";
 import { legOddsLookupKey } from "./odds.js";
 import { canonBookiePrices, resolveCanonBookie } from "./bookie-totals.js";
@@ -121,33 +125,59 @@ export function offeredBookiePrices(
   return undefined;
 }
 
+function ladderBounds(
+  mainLeg: PickLeg,
+  line: number,
+  catalog: PickLeg[],
+  index?: CatalogMarketIndex
+): { lower: PickLeg; upper: PickLeg } | null {
+  const ladder =
+    index != null
+      ? ladderForPlayerMarket(index, mainLeg.playerId, mainLeg.market)
+      : catalog.filter(
+          (p) => p.playerId === mainLeg.playerId && p.market === mainLeg.market
+        );
+  if (!ladder.length) return null;
+  const lower = ladder.find((p) => p.line === mainLeg.line) ?? mainLeg;
+  const upper = ladder.find((p) => p.line > mainLeg.line);
+  if (!upper) return null;
+  if (line <= lower.line || line >= upper.line) return null;
+  return { lower, upper };
+}
+
 /** Model fair between two priced ladder legs at an intermediate bookie line. */
 export function synthesizeOfferedRung(
   mainLeg: PickLeg,
   line: number,
   bookie: string,
-  catalog: PickLeg[]
+  catalog: PickLeg[],
+  index?: CatalogMarketIndex
 ): PickLeg | null {
   if (line <= mainLeg.line) return null;
   const prices = offeredBookiePrices(mainLeg.playerName, mainLeg.market, line);
   const price = bookiePriceFromOfferedMap(prices, bookie);
   if (price == null) return null;
 
-  const existing = catalog.find(
-    (p) =>
-      p.playerId === mainLeg.playerId &&
-      p.market === mainLeg.market &&
-      p.line === line
+  const ladder =
+    index != null
+      ? ladderForPlayerMarket(index, mainLeg.playerId, mainLeg.market)
+      : catalog;
+  const existing = ladder.find(
+    (p) => p.playerId === mainLeg.playerId && p.market === mainLeg.market && p.line === line
   );
   if (existing) {
     if (bookiePriceFromOfferedMap(existing.bookiePrices, bookie) != null) {
-      return existing;
+      return {
+        ...existing,
+        bestPrice: bookiePriceFromOfferedMap(existing.bookiePrices, bookie),
+        bestBookie: resolveCanonBookie(bookie) ?? bookie,
+      };
     }
     const merged = {
       ...canonBookiePrices(existing.bookiePrices),
       ...canonBookiePrices(prices),
     } as Record<string, number>;
-  if (bookiePriceFromOfferedMap(merged, bookie) == null) return existing;
+    if (bookiePriceFromOfferedMap(merged, bookie) == null) return existing;
     return {
       ...existing,
       bookiePrices: merged,
@@ -156,22 +186,9 @@ export function synthesizeOfferedRung(
     };
   }
 
-  const lower =
-    catalog.find(
-      (p) =>
-        p.playerId === mainLeg.playerId &&
-        p.market === mainLeg.market &&
-        p.line === mainLeg.line
-    ) ?? mainLeg;
-  const upper = catalog
-    .filter(
-      (p) =>
-        p.playerId === mainLeg.playerId &&
-        p.market === mainLeg.market &&
-        p.line > mainLeg.line
-    )
-    .sort((a, b) => a.line - b.line)[0];
-  if (!upper) return null;
+  const bounds = ladderBounds(mainLeg, line, catalog, index);
+  if (!bounds) return null;
+  const { lower, upper } = bounds;
 
   const span = upper.line - lower.line;
   if (span <= 0) return null;

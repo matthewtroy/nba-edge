@@ -1,6 +1,10 @@
 import type { Market, PickLeg } from "./types.js";
 import { legPriceAtBookie } from "./single-bookie.js";
 import { marketLabel } from "./market-label.js";
+import {
+  type CatalogMarketIndex,
+  ladderForPlayerMarket,
+} from "./catalog-index.js";
 
 const MIN_NEAREST_P = 0.55;
 
@@ -12,7 +16,7 @@ function maxLineStep(market: Market): number {
   return 1;
 }
 
-function withinNearestLineStep(target: PickLeg, candidate: PickLeg): boolean {
+export function withinNearestLineStep(target: PickLeg, candidate: PickLeg): boolean {
   if (target.market !== candidate.market) return false;
   return Math.abs(candidate.line - target.line) <= maxLineStep(target.market);
 }
@@ -33,7 +37,7 @@ export function nearestPricedRung(
   leg: PickLeg,
   bookie: string,
   catalog: PickLeg[],
-  opts?: { allowNearest?: boolean }
+  opts?: { allowNearest?: boolean; index?: CatalogMarketIndex }
 ): NearestBookieQuote | undefined {
   if (opts?.allowNearest === false) {
     const exact = legPriceAtBookie(leg, bookie);
@@ -45,10 +49,14 @@ export function nearestPricedRung(
     return { leg, price: exact };
   }
 
-  const siblings = catalog.filter(
+  const ladder =
+    opts?.index != null
+      ? ladderForPlayerMarket(opts.index, leg.playerId, leg.market)
+      : catalog.filter(
+          (p) => p.playerId === leg.playerId && sameMarket(p.market, leg.market)
+        );
+  const siblings = ladder.filter(
     (p) =>
-      p.playerId === leg.playerId &&
-      sameMarket(p.market, leg.market) &&
       withinNearestLineStep(leg, p) &&
       legPriceAtBookie(p, bookie) != null &&
       p.probability >= MIN_NEAREST_P
