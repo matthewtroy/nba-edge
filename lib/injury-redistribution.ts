@@ -331,13 +331,25 @@ function applyWithWithoutSplits(
     const rebBoost = cur.reb - beforeReb;
     const astBoost = cur.ast - beforeAst;
     if (ptsBoost >= 0.5) {
-      addReason(reasons, tm.id, `${injName} out: +${ptsBoost.toFixed(1)} pts`);
+      addReason(
+        reasons,
+        tm.id,
+        `${playerLastName(injName)} out: +${ptsBoost.toFixed(1)} pts`
+      );
     }
     if (rebBoost >= 1) {
-      addReason(reasons, tm.id, `${injName} out: +${rebBoost.toFixed(1)} reb`);
+      addReason(
+        reasons,
+        tm.id,
+        `${playerLastName(injName)} out: +${rebBoost.toFixed(1)} reb`
+      );
     }
     if (astBoost >= 1) {
-      addReason(reasons, tm.id, `${injName} out: +${astBoost.toFixed(1)} ast`);
+      addReason(
+        reasons,
+        tm.id,
+        `${playerLastName(injName)} out: +${astBoost.toFixed(1)} ast`
+      );
     }
     adjusted.set(tm.id, cur);
   }
@@ -387,11 +399,23 @@ function applyGenericRedistribution(
     const rebBoost = cur.reb - beforeReb;
     const astBoost = cur.ast - beforeAst;
     if (ptsBoost >= 0.5) {
-      addReason(reasons, tm.id, `${injName} out: +${ptsBoost.toFixed(1)} pts`);
+      addReason(
+        reasons,
+        tm.id,
+        `${playerLastName(injName)} out: +${ptsBoost.toFixed(1)} pts`
+      );
     } else if (rebBoost >= 1) {
-      addReason(reasons, tm.id, `${injName} out: +${rebBoost.toFixed(1)} reb`);
+      addReason(
+        reasons,
+        tm.id,
+        `${playerLastName(injName)} out: +${rebBoost.toFixed(1)} reb`
+      );
     } else if (astBoost >= 1) {
-      addReason(reasons, tm.id, `${injName} out: +${astBoost.toFixed(1)} ast`);
+      addReason(
+        reasons,
+        tm.id,
+        `${playerLastName(injName)} out: +${astBoost.toFixed(1)} ast`
+      );
     }
     adjusted.set(tm.id, cur);
   }

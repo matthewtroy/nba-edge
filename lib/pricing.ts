@@ -337,6 +337,8 @@ export function buildLegsForPlayer(
   if (ctx.allOdds?.size) {
     const playerNorm = normalizePlayerName(ctx.playerName);
     for (const [key] of ctx.allOdds) {
+      const books = ctx.allOdds.get(key);
+      if (!books || !Object.values(books).some((p) => p > 1)) continue;
       const parts = key.split("|");
       if (parts.length < 3) continue;
       const [namePart, rawMkt, lineStr] = parts;
@@ -353,7 +355,10 @@ export function buildLegsForPlayer(
       const line = Number(lineStr);
       if (!Number.isFinite(line) || line <= 0) continue;
       const rungKey = market === "3pm" ? "3pm" : market;
-      if (RUNGS[rungKey]?.includes(line)) continue;
+      const ladder = RUNGS[rungKey] ?? [];
+      if (ladder.includes(line)) continue;
+      const nearLadder = ladder.some((r) => Math.abs(r - line) <= 2);
+      if (!nearLadder) continue;
       const sig = `${market}|${line}`;
       if (builtLineKeys.has(sig)) continue;
       builtLineKeys.add(sig);
