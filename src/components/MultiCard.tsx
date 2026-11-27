@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import type { InjuryEntry, MultiBet, PickLeg, ReasonAtTipSnapshot, SlateGame } from "@lib/types";
 import type { LiveLegView } from "@lib/live-leg";
 import type { LiveBetView } from "@lib/live-bet";
@@ -14,7 +14,12 @@ import {
   type MultiBookieStorageScope,
 } from "../hooks/useMultiBookieSelect";
 import { BookieBottomSheet } from "./BookieBottomSheet";
-import { captureMultiCardSharePng } from "../lib/share-multi-image";
+import type { CaptureMultiCardShareInput } from "../lib/share-multi-image";
+import { useShareMultiPngCache } from "../hooks/useShareMultiPngCache";
+import {
+  ShareMultiFallbackSheet,
+  sharePngFile,
+} from "./ShareMultiFallbackSheet";
 import { gameStartTimeSydney } from "@lib/sydney";
 import { multiCardTitle, type MultiCardTitleOptions } from "@lib/multi-combined";
 import { legPriceAtBookieWithCatalog } from "@lib/single-bookie";
@@ -197,47 +202,107 @@ export function MultiCard({
     label: formatFeedBookieOptionLabel(row),
   }));
 
-  async function shareImage() {
-    try {
-      const blob = await captureMultiCardSharePng({
-        multi,
-        picksById,
-        injuries,
-        slate,
-        preferredBookie,
-        lockedBookie,
-        publishedAt,
-        oddsLastPulled,
-        discordCopy,
-        fairOnly,
-        oddsNote,
-        hideBookieSelect: hideBookieSelect || showFairOnly,
-        officialDisplayOnly,
-        liveCatalog,
-        compact,
-        slateDate,
-        bookieStorageScope,
-        republishedAt,
-        shareLegs: legs,
-        legViews,
-        liveBetView,
-        liveSnapshot,
-      });
-      const file = new File([blob], "nba-edge-multi.png", { type: "image/png" });
-      if (navigator.share && navigator.canShare?.({ files: [file] })) {
-        await navigator.share({ files: [file], title: multi.label });
-        return;
-      }
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "nba-edge-multi.png";
-      a.click();
-      URL.revokeObjectURL(url);
-    } catch (err) {
-      onShareError?.(err instanceof Error ? err.message : "Share failed");
+  const reportShareError = useCallback(
+    (message: string) => {
+      onShareError?.(message);
+    },
+    [onShareError]
+  );
+
+  const captureInput = useMemo((): CaptureMultiCardShareInput | null => {
+    if (shareCapture || !legs.length) return null;
+    return {
+      multi,
+      picksById,
+      injuries,
+      slate,
+      preferredBookie: legBookie || preferredBookie,
+      lockedBookie,
+      publishedAt,
+      oddsLastPulled,
+      discordCopy,
+      fairOnly,
+      oddsNote,
+      hideBookieSelect: hideBookieSelect || showFairOnly,
+      officialDisplayOnly,
+      liveCatalog,
+      compact,
+      slateDate,
+      bookieStorageScope,
+      republishedAt,
+      shareLegs: legs,
+      legViews,
+      liveBetView,
+      liveSnapshot,
+    };
+  }, [
+    shareCapture,
+    legs,
+    multi,
+    picksById,
+    injuries,
+    slate,
+    legBookie,
+    preferredBookie,
+    lockedBookie,
+    publishedAt,
+    oddsLastPulled,
+    discordCopy,
+    fairOnly,
+    oddsNote,
+    hideBookieSelect,
+    showFairOnly,
+    officialDisplayOnly,
+    liveCatalog,
+    compact,
+    slateDate,
+    bookieStorageScope,
+    republishedAt,
+    legViews,
+    liveBetView,
+    liveSnapshot,
+  ]);
+
+  const liveRefresh = Boolean(liveBetView || (legViews && legViews.size > 0));
+  const { blob: shareBlob, preparing: sharePreparing, runCapture } =
+    useShareMultiPngCache(
+      captureInput,
+      !shareCapture,
+      liveRefresh,
+      reportShareError
+    );
+
+  const [fallbackBlob, setFallbackBlob] = useState<Blob | null>(null);
+  const [fallbackOpen, setFallbackOpen] = useState(false);
+
+  const openFallback = useCallback((b: Blob) => {
+    setFallbackBlob(b);
+    setFallbackOpen(true);
+  }, []);
+
+  const dispatchShare = useCallback(
+    (b: Blob) => {
+      void sharePngFile(b, multi.label)
+        .then((outcome) => {
+          if (outcome === "fallback") openFallback(b);
+        })
+        .catch((err: unknown) => {
+          reportShareError(err instanceof Error ? err.message : "Share failed");
+        });
+    },
+    [multi.label, openFallback, reportShareError]
+  );
+
+  const shareImage = useCallback(() => {
+    if (shareBlob) {
+      dispatchShare(shareBlob);
+      return;
     }
-  }
+    void runCapture(false).then((b) => {
+      if (!b) return;
+      dispatchShare(b);
+    });
+  }, [shareBlob, dispatchShare, runCapture]);
 
   return (
     <section
@@ -371,12 +436,47 @@ export function MultiCard({
             >
               {discordCopy ? "Copy for Discord" : "Copy"}
             </button>
-            <button type="button" className={ui.copyBtn} onClick={() => void shareImage()}>
-              Share
+            <button
+              type="button"
+              className={ui.copyBtn}
+              data-testid="multi-card-share-btn"
+              disabled={sharePreparing && !shareBlob}
+              onClick={shareImage}
+            >
+              {sharePreparing && !shareBlob ? (
+                <span className="inline-flex items-center gap-1.5" data-testid="multi-card-share-spinner">
+                  <span
+                    className="inline-block w-3 h-3 border-2 border-white/25 border-t-white/80 rounded-full animate-spin"
+                    aria-hidden
+                  />
+                  Preparing…
+                </span>
+              ) : (
+                "Share"
+              )}
             </button>
           </div>
         </footer>
       )}
+      <ShareMultiFallbackSheet
+        open={fallbackOpen}
+        blob={fallbackBlob}
+        title={multi.label}
+        onClose={() => setFallbackOpen(false)}
+        onShareAgain={() => {
+          if (!fallbackBlob) return;
+          void sharePngFile(fallbackBlob, multi.label)
+            .then((outcome) => {
+              if (outcome === "shared") setFallbackOpen(false);
+              if (outcome === "fallback") {
+                reportShareError("Share not available — long-press the image to save");
+              }
+            })
+            .catch((err: unknown) => {
+              reportShareError(err instanceof Error ? err.message : "Share failed");
+            });
+        }}
+      />
     </section>
   );
 }
