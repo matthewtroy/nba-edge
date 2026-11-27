@@ -136,6 +136,7 @@ import {
 } from "../lib/official-card.js";
 import { sydneyDateString, sydneyHour } from "../lib/official-card-time.js";
 import { slateFirstTipStarted } from "../lib/slate-started.js";
+import { republishCardIsLocked } from "../lib/republish-card-lock.js";
 import { resolveOddsLastPulled } from "../lib/odds-pull-meta.js";
 import { logOfficialCard } from "../lib/official-card-log.js";
 import {
@@ -185,6 +186,7 @@ export async function runLivePipeline(
     fromLive?: boolean;
     skipOfficialPublish?: boolean;
     republishCard?: boolean;
+    forceRepublish?: boolean;
     publishNow?: boolean;
   } = {}
 ): Promise<void> {
@@ -201,6 +203,8 @@ export async function runLivePipeline(
   })();
   const skipOfficialPublish = opts.skipOfficialPublish === true;
   const republishCard = opts.republishCard === true;
+  const forceRepublish =
+    opts.forceRepublish === true || process.env.PIPELINE_FORCE_REPUBLISH === "1";
   loadAliasMap(rootDir);
   const now = new Date();
   const priorIndex = loadDataIndexFile(outDir);
@@ -1100,6 +1104,7 @@ export async function runLivePipeline(
       defense: defenseBundle,
     });
   }
+  let republishApplied = false;
   if (republishCard) {
     const nextSlate = filterSlateToNextSydney(unionSlate);
     const nextTip = slateTipDateFromGames(nextSlate);
@@ -1130,6 +1135,12 @@ export async function runLivePipeline(
           fs.readFileSync(picksPath, "utf8")
         ) as import("../lib/types.js").PickLeg[];
         const existing = loadOfficialCard(slateDir);
+        if (republishCardIsLocked(existing, now, forceRepublish)) {
+          logOfficialCard(
+            "blocked",
+            "card locked — official card published less than 30m ago (use force_republish)"
+          );
+        } else {
         const republishedAt = now.toISOString();
         const official = writeOfficialCard(slateDir, {
           now,
@@ -1154,6 +1165,7 @@ export async function runLivePipeline(
           existing ? "republished" : "published",
           `${nextTip}, ${official.bookie}`
         );
+        republishApplied = true;
         const bundle = syncBundles.find((b) => b.slateDate === nextTip);
         if (bundle) bundle.officialCard = official;
         else {
@@ -1166,13 +1178,14 @@ export async function runLivePipeline(
             officialCard: official,
           });
         }
+        }
       } else {
         logOfficialCard("blocked", `missing JSON under ${nextTip}`);
       }
     }
   }
 
-  if (republishCard) {
+  if (republishCard && republishApplied) {
     const indexPath = path.join(outDir, "index.json");
     if (fs.existsSync(indexPath)) {
       const current = JSON.parse(fs.readFileSync(indexPath, "utf8")) as import("../lib/data-index.js").DataIndexFile;

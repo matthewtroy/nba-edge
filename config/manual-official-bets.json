@@ -5,10 +5,171 @@
         {
           "betType": "boostSgm",
           "bookie": "bet365",
-          "legIds": ["5104157-pts-30", "5104157-reb-13", "4683021-pts-25"],
+          "legIds": [
+            "5104157-pts-30",
+            "5104157-reb-13",
+            "4683021-pts-25"
+          ],
           "price": 6.5,
           "boostPct": 25,
           "stakeUnits": 1
+        }
+      ]
+    },
+    "2026-11-28": {
+      "extraBets": [
+        {
+          "betType": "mainPlay",
+          "bookie": "Sportsbet",
+          "legIds": [
+            "4433083-ast-5",
+            "4683021-3pm-2",
+            "4278053-pts-15"
+          ],
+          "price": 6.0,
+          "boostPct": 10,
+          "stakeUnits": 1
+        },
+        {
+          "betType": "booster",
+          "bookie": "Sportsbet",
+          "legIds": [
+            "4433083-ast-8",
+            "4683021-3pm-3",
+            "4278053-pts-20"
+          ],
+          "price": 77.49,
+          "stakeUnits": 0.1
+        },
+        {
+          "betType": "doubleUp",
+          "bookie": "bet365",
+          "legIds": [
+            "4869342-reb-7",
+            "3134907-pts-10"
+          ],
+          "price": 2.08,
+          "stakeUnits": 1
+        },
+        {
+          "betType": "crossGameSgm",
+          "bookie": "Dabble",
+          "legIds": [
+            "3149673-pts-15",
+            "4395712-pts-10",
+            "3032977-pts-20",
+            "4278053-3pm-1",
+            "3134907-pts-10",
+            "5082206-pts-10",
+            "3134908-reb-6",
+            "4433134-pts-20",
+            "4431680-reb-6",
+            "4701230-pts-15",
+            "4903027-pts-10",
+            "4065733-pts-15",
+            "4066383-reb-6",
+            "4278078-pts-10",
+            "3945274-ast-6",
+            "5104157-reb-10",
+            "4433627-ast-4",
+            "4431767-pts-10",
+            "4395628-pts-15",
+            "5061589-reb-6",
+            "4683021-3pm-2",
+            "5105565-reb-8"
+          ],
+          "price": 184.45,
+          "stakeUnits": 0.1
+        },
+        {
+          "betType": "q1Multi",
+          "bookie": "bet365",
+          "legIds": [
+            "5104157-q1reb-3",
+            "4432194-q1reb-3",
+            "4065648-q1reb-3",
+            "4397688-q1reb-1",
+            "3147657-q1reb-3",
+            "3059318-q1reb-3"
+          ],
+          "price": 61.2,
+          "stakeUnits": 0.25
+        }
+      ],
+      "extraGamesSgms": [
+        {
+          "game": "GSW@POR",
+          "gameId": "401909336",
+          "bookie": "Sportsbet",
+          "price": 36.5,
+          "legIds": [
+            "3995-pts-15",
+            "3995-3pm-2",
+            "3995-ast-5",
+            "4683021-3pm-2",
+            "6606-pts-20",
+            "5081727-pts-10"
+          ],
+          "stakeUnits": 0.5
+        },
+        {
+          "game": "LAL@SAS",
+          "gameId": "401909333",
+          "bookie": "Sportsbet",
+          "price": 21.75,
+          "legIds": [
+            "4845367-3pm-2",
+            "4845367-ast-7",
+            "4066457-pts-20",
+            "5104157-pts-30",
+            "5104157-reb-12",
+            "4592691-reb-4"
+          ],
+          "stakeUnits": 0.5
+        },
+        {
+          "game": "PHI@IND",
+          "gameId": "401909328",
+          "bookie": "Sportsbet",
+          "price": 25.75,
+          "legIds": [
+            "4017837-pts-10",
+            "5124612-pts-15",
+            "5124612-ast-4",
+            "1966-pts-20",
+            "1966-reb-7",
+            "4431678-ast-6"
+          ],
+          "stakeUnits": 0.5
+        },
+        {
+          "game": "MIL@DET",
+          "gameId": "401909327",
+          "bookie": "Sportsbet",
+          "price": 26.5,
+          "legIds": [
+            "4395725-ast-5",
+            "3134907-3pm-2",
+            "3133628-reb-6",
+            "4684742-reb-10",
+            "5107199-pts-20"
+          ],
+          "stakeUnits": 0.5
+        },
+        {
+          "game": "MIA@NYK",
+          "gameId": "401909326",
+          "bookie": "Sportsbet",
+          "price": 43.25,
+          "legIds": [
+            "3032977-pts-25",
+            "4278053-pts-15",
+            "4278053-3pm-2",
+            "4066261-pts-20",
+            "6475-pts-15",
+            "3136195-ast-5"
+          ],
+          "stakeUnits": 0.5
         }
       ]
     }

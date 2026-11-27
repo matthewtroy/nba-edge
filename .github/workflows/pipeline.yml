@@ -27,6 +27,10 @@ on:
         description: Rebuild official-card.json for next slate (pre-tip); no odds unless force_odds
         type: boolean
         default: false
+      force_republish:
+        description: Bypass the 30-minute republish lock on official-card.json
+        type: boolean
+        default: false
       odds_games:
         description: When force_odds, pull exactly this many top games (0 = budget allowance)
         type: number
@@ -68,6 +72,7 @@ jobs:
             echo "force_odds=0" >> "$GITHUB_OUTPUT"
             echo "skip_odds=1" >> "$GITHUB_OUTPUT"
             echo "republish_card=0" >> "$GITHUB_OUTPUT"
+            echo "force_republish=0" >> "$GITHUB_OUTPUT"
             echo "publish_now=0" >> "$GITHUB_OUTPUT"
             echo "settle_first=0" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.publish_now }}" = "true" ]; then
@@ -94,6 +99,11 @@ jobs:
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.republish_card }}" = "true" ]; then
             echo "republish_card=1" >> "$GITHUB_OUTPUT"
             echo "publish_now=0" >> "$GITHUB_OUTPUT"
+            if [ "${{ inputs.force_republish }}" = "true" ]; then
+              echo "force_republish=1" >> "$GITHUB_OUTPUT"
+            else
+              echo "force_republish=0" >> "$GITHUB_OUTPUT"
+            fi
             if [ "${{ inputs.force_odds }}" = "true" ]; then
               echo "force_odds=1" >> "$GITHUB_OUTPUT"
               echo "skip_odds=0" >> "$GITHUB_OUTPUT"
@@ -151,6 +161,7 @@ jobs:
           PIPELINE_FORCE_ODDS: ${{ steps.mode.outputs.force_odds }}
           SKIP_ODDS_PULL: ${{ steps.mode.outputs.skip_odds }}
           PIPELINE_REPUBLISH_CARD: ${{ steps.mode.outputs.republish_card }}
+          PIPELINE_FORCE_REPUBLISH: ${{ steps.mode.outputs.force_republish }}
           PIPELINE_ODDS_GAMES: ${{ github.event_name == 'workflow_dispatch' && inputs.odds_games || 0 }}
           ODDS_RESERVE_CREDITS: "20"
           SETTLE_ONLY: ${{ steps.mode.outputs.settle_only }}

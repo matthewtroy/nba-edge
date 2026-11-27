@@ -16,7 +16,12 @@ import { fetchScoreboard, fetchSummary } from "./fetch/espn.js";
 import { formatYyyymmddInZone, parseBoxscore } from "./espn-parse.js";
 import { gradePickCatalog } from "../lib/graded-leg.js";
 import { BET_LABELS, settleOfficialBets } from "../lib/official-bet-settle.js";
-import { extraOfficialBetRows, loadExtraOfficialBets } from "../lib/extra-official-bets.js";
+import {
+  extraGamesSgmRows,
+  extraOfficialBetRows,
+  gradeExtraBetLegs,
+  loadExtraOfficialBets,
+} from "../lib/extra-official-bets.js";
 import { loadPreAppMainPlays, preAppMainPlayRows } from "../lib/pre-app-main-plays.js";
 import { settleGamesSgms, type GamesSgmBetRow } from "../lib/games-sgm-freeze.js";
 import { valueLegRowsFromSingles } from "../lib/value-leg-track.js";
@@ -215,15 +220,30 @@ async function main() {
     let gamesSgmBets: GamesSgmBetRow[] = [];
     if (card) {
       officialLegs = frozen ? frozen.official.legs : settleOfficialCard(card, boxes).legs;
+      const slateExtras = extraBets.slates?.[slateDate];
+      const extraLegIds = [
+        ...(slateExtras?.extraBets ?? []).flatMap((b) => b.legIds),
+        ...(slateExtras?.extraGamesSgms ?? []).flatMap((b) => b.legIds),
+      ];
+      const resolveErrors: string[] = [];
+      const extraLegResults = gradeExtraBetLegs(extraLegIds, picks, boxes, resolveErrors);
+      for (const msg of resolveErrors) {
+        console.error(`\x1b[31msettle: ${msg}\x1b[0m`);
+      }
       const legResults = new Map([
         ...graded.map((g) => [g.id, g.result] as const),
         ...officialLegs.map((l) => [l.id, l.result] as const),
+        ...extraLegResults,
       ]);
+      const publishedBets = settleOfficialBets(card, officialLegs);
       officialBets = [
-        ...settleOfficialBets(card, officialLegs),
-        ...extraOfficialBetRows(slateDate, legResults, extraBets),
+        ...publishedBets,
+        ...extraOfficialBetRows(slateDate, legResults, extraBets, publishedBets),
       ];
-      gamesSgmBets = settleGamesSgms(slateDate, card.gamesSgms, legResults);
+      gamesSgmBets = [
+        ...settleGamesSgms(slateDate, card.gamesSgms, legResults),
+        ...extraGamesSgmRows(slateDate, legResults, extraBets),
+      ];
       allOfficialLegs.push(...officialLegs);
       allOfficialBets.push(...officialBets);
       allGamesSgmBets.push(...gamesSgmBets);

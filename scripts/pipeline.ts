@@ -23,6 +23,9 @@ const forceOdds =
 const republishCard =
   process.argv.includes("--republish-card") ||
   process.env.PIPELINE_REPUBLISH_CARD === "1";
+const forceRepublish =
+  process.argv.includes("--force-republish") ||
+  process.env.PIPELINE_FORCE_REPUBLISH === "1";
 const publishNow =
   process.argv.includes("--publish-now") ||
   process.env.PIPELINE_PUBLISH_NOW === "1";
@@ -115,6 +118,7 @@ async function main() {
     forceOdds: forceOdds || useFromLive,
     fromLive: useFromLive,
     republishCard,
+    forceRepublish,
     publishNow,
     skipOfficialPublish: skipOfficialPublishOnRun({
       forceOdds,
