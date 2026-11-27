@@ -11,6 +11,8 @@ import {
   CROSS_LEGS_PER_GAME,
 } from "../lib/same-game-sgm-search";
 import { buildMultis } from "../lib/multis";
+import { gateAllMultis } from "../lib/multi-gate";
+import { isSgmMainLine } from "../lib/main-play-eligibility";
 import {
   crossGameMultiHasClash,
   legsClash,
@@ -69,6 +71,25 @@ describe("crossGameSgm leg gate", () => {
       bestPrice: 1.9,
     });
     expect(qualifiesCrossGameSgmLeg(l, "Sportsbet", [l])).toBe(false);
+  });
+
+  it("excludes sub-ladder rungs (isSgmMainLine only in cross gate)", () => {
+    const subReb = leg({
+      id: "sub",
+      gameId: "g1",
+      playerId: "psub",
+      market: "reb",
+      line: 3,
+    });
+    expect(qualifiesCrossGameSgmLeg(subReb, "Sportsbet", [subReb])).toBe(false);
+    const mainReb = leg({
+      id: "main",
+      gameId: "g1",
+      playerId: "pmain",
+      market: "reb",
+      line: 5,
+    });
+    expect(qualifiesCrossGameSgmLeg(mainReb, "Sportsbet", [mainReb])).toBe(true);
   });
 
   it("excludes Check news", () => {
@@ -150,6 +171,27 @@ describe("pickCrossGameLegsForGame", () => {
   it("falls back to one leg when no pair exists", () => {
     const only = leg({ id: "solo", gameId: "g", playerId: "x", probability: 0.8 });
     expect(pickCrossGameLegsForGame([only])).toEqual([only]);
+  });
+});
+
+describe("2026-11-28 cross gate (public data)", () => {
+  const DATA = path.join(process.cwd(), "public/data/2026-11-28");
+
+  it("built cross passes gate with no sub-ladder legs", () => {
+    if (!fs.existsSync(path.join(DATA, "picks.json"))) return;
+    const picks = JSON.parse(
+      fs.readFileSync(path.join(DATA, "picks.json"), "utf8")
+    ) as PickLeg[];
+    const multis = JSON.parse(
+      fs.readFileSync(path.join(DATA, "multis.json"), "utf8")
+    ) as { bets: import("../lib/types.js").MultiBet[] };
+    const pmap = new Map(picks.map((p) => [p.id, p]));
+    const cross = multis.bets.find((b) => b.type === "crossGameSgm");
+    if (!cross) return;
+    const legs = cross.legs.map((id) => pmap.get(id)!).filter(Boolean);
+    expect(legs.every((l) => isSgmMainLine(l.market, l.line))).toBe(true);
+    const g = gateAllMultis(multis.bets, pmap, picks);
+    expect(g.dropped.some((m) => m.type === "crossGameSgm")).toBe(false);
   });
 });
 

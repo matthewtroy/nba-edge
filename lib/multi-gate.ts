@@ -7,6 +7,7 @@ import {
   qualifiesMainPlayLeg,
   qualifiesCrossBoostLeg,
 } from "./main-play-eligibility.js";
+import { qualifiesCrossGameSgmLeg } from "./cross-game-sgm-leg.js";
 import { CROSS_SGM_MIN_GAMES, CROSS_LEGS_PER_GAME } from "./same-game-sgm-search.js";
 import {
   MAIN_PLAY_COMBINED_MIN,
@@ -38,6 +39,9 @@ function takeAtProduct(legs: PickLeg[]): number {
 }
 
 function checkLegEligibility(type: MultiType, leg: PickLeg, multiLabel: string): string[] {
+  if (type === "crossGameSgm") {
+    return [];
+  }
   const allowQ1 = type === "q1Multi";
   const issues: string[] = [];
   const lineIssue = gateLineViolation(leg, allowQ1, {
@@ -93,7 +97,8 @@ function checkTypeRules(
   type: MultiType,
   legs: PickLeg[],
   label: string,
-  multi: MultiBet
+  multi: MultiBet,
+  catalog?: PickLeg[]
 ): string[] {
   const issues: string[] = [];
   const combo = takeAtProduct(legs);
@@ -196,6 +201,14 @@ function checkTypeRules(
         );
       }
     }
+    const bookie = multi.bestBookie ?? "";
+    const pool = catalog ?? legs;
+    if (
+      bookie &&
+      !legs.every((l) => qualifiesCrossGameSgmLeg(l, bookie, pool))
+    ) {
+      issues.push("Cross-Game: leg fails cross SGM eligibility");
+    }
   }
   return issues;
 }
@@ -236,7 +249,8 @@ export function gateMulti(
     violations.push(`${label}: combinedTakeAt ${multi.combinedTakeAt} ≠ fair×edge ${takeAt}`);
   }
 
-  violations.push(...checkTypeRules(multi.type, legs, label, multi));
+  const catalog = picksById ? [...picksById.values()] : legs;
+  violations.push(...checkTypeRules(multi.type, legs, label, multi, catalog));
 
   if (multi.type === "booster" && mainPlay && picksById) {
     violations.push(...checkBoosterSteps(mainPlay, legs, picksById));
