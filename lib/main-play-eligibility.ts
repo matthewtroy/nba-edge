@@ -40,7 +40,14 @@ export function gateLineViolation(
   allowQ1: boolean,
   opts?: { mainPlay?: boolean }
 ): string | null {
-  if (!leg.starterEligible) {
+  if (opts?.mainPlay) {
+    if (leg.starter !== true || leg.starterEligible !== true) {
+      if (leg.starter === undefined || leg.starterEligible === undefined) {
+        return `${leg.playerName}: starter unknown (fail closed)`;
+      }
+      return `${leg.playerName}: not a starter (24+ min, 4/5 ESPN starts)`;
+    }
+  } else if (!leg.starterEligible) {
     return `${leg.playerName}: not a starter (24+ min, 4/5 ESPN starts)`;
   }
   if (allowQ1) {
@@ -69,6 +76,7 @@ export function gateLineViolation(
 
 export function mainPlayStructuralOk(leg: PickLeg): boolean {
   return (
+    leg.starter === true &&
     leg.starterEligible === true &&
     isMainPlayStatLine(leg.market, leg.line) &&
     isMainPlayCoreMarket(leg.market) &&

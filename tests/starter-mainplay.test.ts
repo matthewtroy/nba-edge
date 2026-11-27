@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { qualifiesStarter, startsInLastFive, isMainPlayStatLine } from "../lib/starter-eligibility";
+import { gateLineViolation, mainPlayStructuralOk } from "../lib/main-play-eligibility";
 import { qualifiesMainPlayLeg } from "../lib/multis";
 import type { PickLeg, PlayerGameLog } from "../lib/types";
 
@@ -65,6 +66,32 @@ describe("starter main lines", () => {
     expect(qualifiesStarter(three, 28)).toBe(false);
   });
 
+  it("Main Play fails closed when starter is undefined", () => {
+    const leg: PickLeg = {
+      id: "1",
+      gameId: "g",
+      team: "T",
+      opponent: "O",
+      playerId: "p",
+      playerName: "P",
+      headshotUrl: "",
+      market: "pts",
+      line: 15,
+      probability: 0.7,
+      fairPrice: 1.45,
+      takeAt: 1.57,
+      tags: ["High probability"],
+      reasons: [{ type: "form", text: "8/10 at line" }],
+      recentTenVsLine: Array(10).fill("hit") as PickLeg["recentTenVsLine"],
+      starterEligible: true,
+    };
+    expect(mainPlayStructuralOk(leg)).toBe(false);
+    expect(
+      gateLineViolation(leg, false, { mainPlay: true })
+    ).toMatch(/starter unknown \(fail closed\)/);
+    expect(qualifiesMainPlayLeg(leg)).toBe(false);
+  });
+
   it("rejects 3+ reb for Main Play", () => {
     expect(isMainPlayStatLine("reb", 3)).toBe(false);
     expect(isMainPlayStatLine("reb", 5)).toBe(true);
@@ -83,6 +110,7 @@ describe("starter main lines", () => {
       takeAt: 1.57,
       tags: [],
       reasons: [],
+      starter: true,
       starterEligible: true,
     };
     expect(qualifiesMainPlayLeg(leg)).toBe(false);

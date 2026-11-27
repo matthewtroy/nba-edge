@@ -27,6 +27,7 @@ describe("3pm line mins removed (1+ everywhere)", () => {
       takeAt: 1.8,
       tags: [],
       reasons: [],
+      starter: true,
       starterEligible: true,
     };
     expect(gateLineViolation(leg, false)).toBeNull();

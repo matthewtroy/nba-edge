@@ -104,6 +104,8 @@ export interface PickLeg {
   blowoutRisk?: boolean;
   ageB2B?: boolean;
   projectedMinutes?: number;
+  /** ESPN boxscore 4/5 starts + 24+ projected min (same as starterEligible). */
+  starter?: boolean;
   starterEligible?: boolean;
   /** Step 4b: PRICE+MATCHUP+FORM+ANGLE count (0–4). */
   confluence?: number;

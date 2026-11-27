@@ -582,7 +582,8 @@ export function parseBoxscorePlayerLogs(
           q1Reb: q1?.reb,
           q1Ast: q1?.ast,
           source: "boxscore",
-          started: row.starter === true,
+          started:
+            row.starter === true ? true : row.starter === false ? false : undefined,
         },
       });
     }

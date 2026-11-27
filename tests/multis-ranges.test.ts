@@ -25,6 +25,7 @@ function leg(
     takeAt,
     tags: ["Value"],
     reasons: [{ type: "form", text: "7/10 at this line" }],
+    starter: true,
     starterEligible: true,
     confluence: 2,
     signals: { PRICE: { active: true }, MATCHUP: { active: true, label: "D#3" } },

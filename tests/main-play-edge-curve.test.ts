@@ -36,6 +36,7 @@ function leg(
     tags: ["High probability"],
     reasons: [{ type: "form", text: "8/10 at this line" }],
     reasonLine: "8/10 hits at line · Soft defence rank 8",
+    starter: true,
     starterEligible: true,
     recentTenVsLine: [
       "hit",

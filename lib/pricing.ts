@@ -87,6 +87,7 @@ export function buildLegsForPlayer(
     tags: string[];
     flags: Partial<PickLeg> & {
       projectedMinutes?: number;
+      starter?: boolean;
       starterEligible?: boolean;
     };
     bestOdds?: Map<string, { price: number; bookie: string }>;
