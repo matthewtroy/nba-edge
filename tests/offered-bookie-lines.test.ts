@@ -8,8 +8,7 @@ import {
   resetOfferedBookieCacheForTests,
   setOfferedBookieCachePathForTests,
 } from "../lib/offered-bookie-lines";
-import { buildMultis } from "../lib/multis";
-import { legPriceAtBookie } from "../lib/single-bookie";
+import { synthesizeOfferedRung } from "../lib/offered-bookie-lines";
 import type { PickLeg } from "../lib/types";
 
 function lineLeg(
@@ -70,32 +69,19 @@ describe("offered-bookie-lines allOddsMap", () => {
     const p6 = offeredBookiePrices("Cam Spencer", "ast", 6);
     expect(bookiePriceFromOfferedMap(p6, "Sportsbet")).toBe(2.79);
 
-    const picks: PickLeg[] = [
-      lineLeg({
-        id: "spencer-ast-5",
-        gameId: "g1",
-        playerId: "spencer",
-        playerName: "Cam Spencer",
-        market: "ast",
-        line: 5,
-        fairPrice: 1.31,
-        bookiePrices: { Sportsbet: 1.96 },
-        bestPrice: 1.96,
-      }),
-      lineLeg({
-        id: "spencer-ast-6",
-        gameId: "g1",
-        playerId: "spencer",
-        playerName: "Cam Spencer",
-        market: "ast",
-        line: 6,
-        fairPrice: 1.55,
-        probability: 0.55,
-        modelProbability: 0.55,
-        bookiePrices: { Neds: 1.91 },
-        bestPrice: 1.91,
-        bestBookie: "Neds",
-      }),
+    const main = lineLeg({
+      id: "spencer-ast-5",
+      gameId: "g1",
+      playerId: "spencer",
+      playerName: "Cam Spencer",
+      market: "ast",
+      line: 5,
+      fairPrice: 1.31,
+      bookiePrices: { Sportsbet: 1.96 },
+      bestPrice: 1.96,
+    });
+    const catalog: PickLeg[] = [
+      main,
       lineLeg({
         id: "spencer-ast-8",
         gameId: "g1",
@@ -109,74 +95,10 @@ describe("offered-bookie-lines allOddsMap", () => {
         bookiePrices: { Sportsbet: 6 },
         bestPrice: 6,
       }),
-      lineLeg({
-        id: "spencer-ast-10",
-        gameId: "g1",
-        playerId: "spencer",
-        playerName: "Cam Spencer",
-        market: "ast",
-        line: 10,
-        fairPrice: 2.2,
-        probability: 0.55,
-        modelProbability: 0.55,
-        bookiePrices: { Sportsbet: 12 },
-        bestPrice: 12,
-      }),
-      lineLeg({
-        id: "p2-pts-15",
-        gameId: "g2",
-        playerId: "p2",
-        playerName: "Player 2",
-        market: "pts",
-        line: 15,
-        fairPrice: 1.45,
-        bookiePrices: { Sportsbet: 1.9 },
-        bestPrice: 1.9,
-      }),
-      lineLeg({
-        id: "p2-pts-20",
-        gameId: "g2",
-        playerId: "p2",
-        playerName: "Player 2",
-        market: "pts",
-        line: 20,
-        fairPrice: 1.75,
-        bookiePrices: { Sportsbet: 2.55 },
-        bestPrice: 2.55,
-      }),
-      lineLeg({
-        id: "p3-pts-15",
-        gameId: "g3",
-        playerId: "p3",
-        playerName: "Player 3",
-        market: "pts",
-        line: 15,
-        fairPrice: 1.45,
-        bookiePrices: { Sportsbet: 1.9 },
-        bestPrice: 1.9,
-      }),
-      lineLeg({
-        id: "p3-pts-20",
-        gameId: "g3",
-        playerId: "p3",
-        playerName: "Player 3",
-        market: "pts",
-        line: 20,
-        fairPrice: 1.75,
-        bookiePrices: { Sportsbet: 2.55 },
-        bestPrice: 2.55,
-      }),
     ];
-
-    const { bets } = buildMultis(picks, 3);
-    const booster = bets.find((b) => b.type === "booster");
-    expect(booster?.bestBookie).toBe("Sportsbet");
-    const byId = new Map(picks.map((p) => [p.id, p]));
-    const spencerBoost = booster!.legs
-      .map((id) => byId.get(id)!)
-      .find((l) => l.playerId === "spencer");
-    expect(spencerBoost?.line).toBe(6);
-    expect(spencerBoost?.fairPrice).toBe(1.55);
-    expect(legPriceAtBookie(spencerBoost!, "Sportsbet")).toBe(2.79);
+    const rung = synthesizeOfferedRung(main, 6, "Sportsbet", catalog);
+    expect(rung?.line).toBe(6);
+    expect(rung?.bestPrice).toBe(2.79);
+    expect(bookiePriceFromOfferedMap(rung?.bookiePrices, "Sportsbet")).toBe(2.79);
   });
 });

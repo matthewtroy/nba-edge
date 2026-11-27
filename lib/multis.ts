@@ -289,8 +289,10 @@ export function buildMultis(
   if (doubleUp.bet) multis.push(doubleUp.bet);
   else notBuilt.push({ type: "doubleUp", label: LABELS.doubleUp, reason: doubleUp.reason });
 
+  let boosterBoostedLegs: PickLeg[] | undefined;
   if (main.bet) {
     const booster = buildBooster(main.bet, pool, catalog, minEdgeFraction);
+    boosterBoostedLegs = booster.boostedLegs;
     if (booster.bet) multis.push(booster.bet);
     else notBuilt.push({ type: "booster", label: LABELS.booster, reason: booster.reason });
   } else {
@@ -313,6 +315,9 @@ export function buildMultis(
   else notBuilt.push({ type: "longshot", label: LABELS.longshot, reason: longshot.reason });
 
   const picksById = new Map(picks.map((p) => [p.id, p]));
+  if (boosterBoostedLegs?.length) {
+    for (const leg of boosterBoostedLegs) picksById.set(leg.id, leg);
+  }
   const clashDropped: { multi: MultiBet; reason: string }[] = [];
   let filtered: MultiBet[] = [];
   for (const m of multis) {
@@ -864,7 +869,7 @@ function buildBooster(
   picks: PickLeg[],
   catalog: PickLeg[],
   minEdgeFraction = DEFAULT_MIN_EDGE
-): { bet: MultiBet | null; reason: string } {
+): { bet: MultiBet | null; reason: string; boostedLegs?: PickLeg[] } {
   if (!main.bestBookie) {
     return { bet: null, reason: "Booster: Main Play missing bookie" };
   }
@@ -975,6 +980,7 @@ function buildBooster(
       summary: `Main Play +1 rung when Main leg ≤$4 at bookie, else same rung${trixieNote}`,
     },
     reason: "",
+    boostedLegs: boosted,
   };
 }
 
