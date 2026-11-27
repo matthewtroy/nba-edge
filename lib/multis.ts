@@ -752,8 +752,10 @@ function findMainPlaySubset(
     actual: number;
     req: number;
   };
-  let bestPassing: Ranked | null = null;
-  let worstShort: Ranked | null = null;
+  const ranked: { bestPassing: Ranked | null; worstShort: Ranked | null } = {
+    bestPassing: null,
+    worstShort: null,
+  };
 
   const consider = (chosen: PickLeg[]) => {
     const depth = chosen.length;
@@ -776,17 +778,18 @@ function findMainPlaySubset(
     const row: Ranked = { legs: chosen, total, p, surplus, actual, req };
     if (actual + 1e-12 >= req) {
       if (
-        !bestPassing ||
-        compareMainPlayCandidates(row, bestPassing) < 0
+        !ranked.bestPassing ||
+        compareMainPlayCandidates(row, ranked.bestPassing) < 0
       ) {
-        bestPassing = row;
+        ranked.bestPassing = row;
       }
     } else if (
-      !worstShort ||
-      actual > worstShort.actual + 1e-12 ||
-      (Math.abs(actual - worstShort.actual) < 1e-12 && total > worstShort.total)
+      !ranked.worstShort ||
+      actual > ranked.worstShort.actual + 1e-12 ||
+      (Math.abs(actual - ranked.worstShort.actual) < 1e-12 &&
+        total > ranked.worstShort.total)
     ) {
-      worstShort = row;
+      ranked.worstShort = row;
     }
   };
 
@@ -805,9 +808,13 @@ function findMainPlaySubset(
   }
   dfs(0, []);
 
-  if (!bestPassing) {
-    const shortfall = worstShort
-      ? formatEdgeShortfall(worstShort.total, worstShort.actual, worstShort.req)
+  if (!ranked.bestPassing) {
+    const shortfall = ranked.worstShort
+      ? formatEdgeShortfall(
+          ranked.worstShort.total,
+          ranked.worstShort.actual,
+          ranked.worstShort.req
+        )
       : undefined;
     return {
       legs: null,
@@ -818,7 +825,7 @@ function findMainPlaySubset(
   }
 
   return {
-    legs: bestPassing.legs,
+    legs: ranked.bestPassing.legs,
     rangeCandidates,
     clashCandidates: clashSkipped,
   };
