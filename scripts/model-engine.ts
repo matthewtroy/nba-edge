@@ -33,9 +33,13 @@ import { legOddsLookupKey } from "../lib/odds.js";
 import type { PlayerGameLog } from "../lib/types.js";
 import {
   isPlayerExcluded,
-  injuriesByPlayerId,
   detectReturningFromNotes,
 } from "../lib/player-eligibility.js";
+import { buildRosterIndex } from "../lib/injury-match.js";
+import {
+  applyInjuryStatusLegTags,
+  indexInjuriesForRoster,
+} from "../lib/injury-leg-tags.js";
 import { buildWhatChanged } from "../lib/what-changed.js";
 import { qualifiesStarter } from "../lib/starter-eligibility.js";
 import type { DefenseRatingsBundle } from "../lib/defense-ratings.js";
@@ -86,7 +90,18 @@ export function runModel(input: ModelRunInput): {
       ? loadTrackingCache(input.rootDir, input.slateTipDate)
       : null;
 
-  const injMap = injuriesByPlayerId(input.injuries);
+  const rosterByTeam = new Map<string, { id: string; name: string }[]>();
+  for (const p of input.players) {
+    const arr = rosterByTeam.get(p.teamId) ?? [];
+    arr.push({ id: p.id, name: p.name });
+    rosterByTeam.set(p.teamId, arr);
+  }
+  const rosterIndex = buildRosterIndex(
+    [...rosterByTeam.entries()].map(([teamId, athletes]) => ({ teamId, athletes }))
+  );
+  const unmatchedInjury: string[] = [];
+  const injMap = indexInjuriesForRoster(input.injuries, rosterIndex, unmatchedInjury);
+  for (const line of unmatchedInjury) console.warn(line);
   const returning = detectReturningFromNotes(input.injuries);
 
   const injuriesByTeam = new Map<string, InjuryEntry[]>();
@@ -321,6 +336,8 @@ export function runModel(input: ModelRunInput): {
       }
     }
   }
+
+  applyInjuryStatusLegTags(picks, input.injuries, rosterIndex);
 
   const slateGameIds = new Set(input.slate.map((g) => g.id));
   const slatePicks = picks.filter((leg) => slateGameIds.has(leg.gameId));

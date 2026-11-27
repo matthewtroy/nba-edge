@@ -4,6 +4,7 @@ import { normalizePlayerName } from "./player-names.js";
 export interface RosterIndex {
   byId: Set<string>;
   idByName: Map<string, string>;
+  idByTeamName: Map<string, string>;
 }
 
 export function buildRosterIndex(
@@ -11,21 +12,28 @@ export function buildRosterIndex(
 ): RosterIndex {
   const byId = new Set<string>();
   const idByName = new Map<string, string>();
+  const idByTeamName = new Map<string, string>();
   for (const team of rosters) {
     for (const a of team.athletes) {
       byId.add(a.id);
-      idByName.set(normalizePlayerName(a.name), a.id);
+      const norm = normalizePlayerName(a.name);
+      idByName.set(norm, a.id);
+      idByTeamName.set(`${team.teamId}|${norm}`, a.id);
     }
   }
-  return { byId, idByName };
+  return { byId, idByName, idByTeamName };
 }
 
 export function resolveInjuryPlayerId(
-  inj: { playerId?: string; playerName: string },
+  inj: { playerId?: string; playerName: string; teamId?: string },
   roster: RosterIndex
 ): string | undefined {
   if (inj.playerId && roster.byId.has(inj.playerId)) return inj.playerId;
   const norm = normalizePlayerName(inj.playerName);
+  if (inj.teamId) {
+    const scoped = roster.idByTeamName.get(`${inj.teamId}|${norm}`);
+    if (scoped) return scoped;
+  }
   return roster.idByName.get(norm);
 }
 
