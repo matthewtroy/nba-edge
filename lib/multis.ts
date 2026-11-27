@@ -4,7 +4,6 @@ import { nearestPricedRung } from "./nearest-bookie-line.js";
 import {
   bookiePriceFromOfferedMap,
   offeredBookiePrices,
-  synthesizeOfferedRung,
 } from "./offered-bookie-lines.js";
 import {
   pickBestSameGameSgmCombo,
@@ -848,31 +847,17 @@ function rankedBoostCandidatesForLeg(
   const pricedAbove: PickLeg[] = [];
   for (const p of ladder) {
     if (p.line <= mainLeg.line || !meetsFloor(p)) continue;
-    const raw = legPriceAtBookie(p, bookie) ?? bookiePriceFromOfferedMap(p.bookiePrices, bookie);
+    let raw = legPriceAtBookie(p, bookie) ?? bookiePriceFromOfferedMap(p.bookiePrices, bookie);
+    if (raw == null) {
+      const prices = offeredBookiePrices(mainLeg.playerName, mainLeg.market, p.line);
+      raw = bookiePriceFromOfferedMap(prices, bookie);
+    }
     if (raw == null) continue;
     pricedAbove.push(asBookieLegOnDemand(p, bookie, raw));
   }
-  const maxLine =
-    ladder.length > 0 ? ladder[ladder.length - 1]!.line : mainLeg.line + 15;
-  for (let line = mainLeg.line + 1; line < maxLine; line++) {
-    if (pricedAbove.some((p) => p.line === line)) continue;
-    const prices = offeredBookiePrices(mainLeg.playerName, mainLeg.market, line);
-    const raw = bookiePriceFromOfferedMap(prices, bookie);
-    if (raw == null) continue;
-    const synth = synthesizeOfferedRung(mainLeg, line, bookie, catalog, index);
-    if (!synth || !meetsFloor(synth)) continue;
-    pricedAbove.push(asBookieLegOnDemand(synth, bookie, raw));
-  }
   pricedAbove.sort((a, b) => a.line - b.line);
-  const out: PickLeg[] = [];
-  const seen = new Set<string>();
-  for (const row of pricedAbove) {
-    if (!seen.has(row.id)) {
-      seen.add(row.id);
-      out.push(row);
-    }
-  }
-  return out;
+  if (!pricedAbove.length) return [];
+  return [pricedAbove[0]!];
 }
 
 function boosterLegsMeetEdge(
