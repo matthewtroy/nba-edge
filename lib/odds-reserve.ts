@@ -8,3 +8,8 @@ export function oddsReserveCredits(): number {
   const n = Number(raw);
   return Number.isFinite(n) && n >= 0 ? n : DEFAULT_ODDS_RESERVE_CREDITS;
 }
+
+/** `publish_now` spends to full-slate cost only; scheduled pulls keep `ODDS_RESERVE_CREDITS`. */
+export function oddsPullReserveCredits(publishNow: boolean): number {
+  return publishNow ? 0 : oddsReserveCredits();
+}

@@ -10,7 +10,7 @@ import {
 import { fetchLatestInjuryPdf, parsePdfInjuries } from "./fetch/nba-pdf.js";
 import { injuryReportTimeFromPdfUrl } from "../lib/injury-report-time.js";
 import { shouldPauseOdds } from "../lib/odds.js";
-import { oddsReserveCredits } from "../lib/odds-reserve.js";
+import { oddsPullReserveCredits, oddsReserveCredits } from "../lib/odds-reserve.js";
 import { sydneyYmd, type OddsBudgetConfig } from "../lib/odds-budget.js";
 import { isPostTipOff, mergeBestOddsMaps } from "../lib/odds-cache-merge.js";
 import {
@@ -191,6 +191,7 @@ export async function runLivePipeline(
   const fromLive = opts.fromLive === true;
   const publishNow = opts.publishNow === true || process.env.PIPELINE_PUBLISH_NOW === "1";
   const reserveCredits = oddsReserveCredits();
+  const pullReserveCredits = oddsPullReserveCredits(publishNow);
   const fixedOddsGames = (() => {
     const raw = process.env.PIPELINE_ODDS_GAMES;
     if (raw == null || raw.trim() === "") return 0;
@@ -700,7 +701,7 @@ export async function runLivePipeline(
     sources.odds = "stale";
   } else if (
     cache.creditsRemaining != null &&
-    shouldPauseOdds(cache.creditsRemaining, budgetFromDb?.monthlyLimit ?? 500, reserveCredits)
+    shouldPauseOdds(cache.creditsRemaining, budgetFromDb?.monthlyLimit ?? 500, pullReserveCredits)
   ) {
     sources.odds = "paused (credit limit)";
   } else if (pullTrigger) {
@@ -735,7 +736,7 @@ export async function runLivePipeline(
           creditsRemaining:
             budgetFromDb?.creditsRemaining ?? cache.creditsRemaining,
           creditsPerGame: budgetFromDb?.creditsPerGame ?? 10,
-          reserveCredits,
+          reserveCredits: pullReserveCredits,
         },
         trigger: pullTrigger,
         targetSlateDate: slateTipDateFromGames(targetSlate) ?? undefined,

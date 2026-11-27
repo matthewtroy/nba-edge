@@ -13,7 +13,7 @@ import {
   shouldPauseForReserve,
   type OddsBudgetConfig,
 } from "../lib/odds-budget.js";
-import { oddsReserveCredits } from "../lib/odds-reserve.js";
+import { oddsPullReserveCredits, oddsReserveCredits } from "../lib/odds-reserve.js";
 import {
   listOddsEvents,
   matchOddsEventId,
@@ -77,7 +77,10 @@ export async function pullBudgetedOddsForSlate(opts: {
   let creditsRemaining = opts.budget.creditsRemaining ?? opts.cache.creditsRemaining;
   const remainingBefore = creditsRemaining;
 
-  const reserve = opts.budget.reserveCredits ?? oddsReserveCredits();
+  const reserve = oddsPullReserveCredits(opts.publishNow === true);
+  if (fullSlate && opts.publishNow) {
+    console.log(`odds pull: publish_now reserve ${reserve} (scheduled uses ${oddsReserveCredits()})`);
+  }
   if (shouldPauseForReserve(creditsRemaining, reserve)) {
     console.log(`odds pull: paused — below ${reserve} credit reserve`);
     return null;

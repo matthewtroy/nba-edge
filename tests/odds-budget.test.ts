@@ -67,6 +67,9 @@ describe("odds budget", () => {
     expect(ok).toEqual({ ok: true, need: 89, have: 103 });
     const short = officialPublishAffordable(107, 11, 8, 20);
     expect(short).toEqual({ ok: false, need: 89, have: 87 });
+    const publishNow107 = officialPublishAffordable(107, 11, 8, 0);
+    expect(publishNow107).toEqual({ ok: true, need: 89, have: 107 });
+    expect(107 - publishNow107.need).toBe(18);
   });
 
   it("154 remaining, flat reserve, ~10 credits per game", () => {
