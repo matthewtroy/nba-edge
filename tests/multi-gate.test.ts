@@ -41,7 +41,12 @@ describe("multi gate", () => {
       id: "t1",
       market: "3pm",
       line: 1,
-      starterEligible: true,
+      starterEligible: false,
+      tags: ["High probability"],
+      reasons: [{ type: "form", text: "7/10 at this line" }],
+      bookiePrices: { Sportsbet: 1.55 },
+      bestPrice: 1.55,
+      probability: 0.75,
     };
     const r = gateMulti(
       multi({

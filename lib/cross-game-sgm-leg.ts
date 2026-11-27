@@ -3,6 +3,7 @@ import { passesFormGuard } from "./form-guard.js";
 import { legHasSupportiveReason } from "./picks-supportive-filter.js";
 import { MAIN_PLAY_HIGH_PROB_P } from "./pricing-config.js";
 import { asBookieLeg } from "./bookie-edge-pool.js";
+import { isSgmMainLine } from "./main-play-eligibility.js";
 
 export function crossGameLegIsHighProb(leg: PickLeg): boolean {
   return leg.probability >= MAIN_PLAY_HIGH_PROB_P || leg.tags.includes("High probability");
@@ -15,6 +16,7 @@ export function qualifiesCrossGameSgmLeg(
   catalog: PickLeg[]
 ): boolean {
   if (!passesFormGuard(leg)) return false;
+  if (!isSgmMainLine(leg.market, leg.line)) return false;
   if (leg.tags.includes("Check news")) return false;
   if (!legHasSupportiveReason(leg)) return false;
   if (!crossGameLegIsHighProb(leg)) return false;
