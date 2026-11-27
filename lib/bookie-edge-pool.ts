@@ -4,6 +4,7 @@ import { FEED_BOOKIES } from "./card-bookie.js";
 import { legPriceAtBookie } from "./single-bookie.js";
 import { nearestPricedRung } from "./nearest-bookie-line.js";
 import { multiBookieTotals } from "./bookie-totals.js";
+import { bestEdgeMultiQuote } from "./best-multi-bookie.js";
 import {
   bookieHighProbMeetsFair,
   bookiePriceMeetsMinEdge,
@@ -74,7 +75,8 @@ export function overlayForBookie(
   legs: PickLeg[],
   bookie: string,
   catalog?: PickLeg[],
-  index?: CatalogMarketIndex
+  index?: CatalogMarketIndex,
+  legQualifies?: (leg: PickLeg, candidate: string) => boolean
 ): {
   bestBookie: string;
   bestBookieTotal: number;
@@ -84,10 +86,17 @@ export function overlayForBookie(
   const priced = legs
     .map((l) => asBookieLeg(l, bookie, pool, index))
     .filter(Boolean) as PickLeg[];
-  const total = priced.reduce((acc, l) => acc * (l.bestPrice ?? 1), 1);
+  const buildTotal = priced.reduce((acc, l) => acc * (l.bestPrice ?? 1), 1);
+  const bookieTotals = multiBookieTotals(legs) as Record<string, number>;
+  const best = bestEdgeMultiQuote(legs, {
+    buildBookie: bookie,
+    catalog: pool,
+    legQualifies,
+  });
   return {
-    bestBookie: bookie,
-    bestBookieTotal: Math.round(total * 100) / 100,
-    bookieTotals: multiBookieTotals(priced) as Record<string, number>,
+    bestBookie: best?.bookie ?? bookie,
+    bestBookieTotal:
+      best?.total ?? Math.round(buildTotal * 100) / 100,
+    bookieTotals,
   };
 }
