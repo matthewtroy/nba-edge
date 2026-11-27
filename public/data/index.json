@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T22:37:32.931Z",
+  "updatedAt": "2026-11-27T02:07:08.930Z",
   "todayDate": "2026-11-27",
   "tomorrowDate": "2026-11-28",
   "defaultDate": "2026-11-28",
@@ -19,9 +19,9 @@
       "status": "draft",
       "statusLabel": "Draft · updates until 9pm",
       "gameCount": 11,
-      "legCount": 1791,
+      "legCount": 1753,
       "multiCount": 0,
-      "lastUpdated": "2026-11-26T22:38:18.433Z",
+      "lastUpdated": "2026-11-27T02:07:58.644Z",
       "firstTipIso": "2026-11-28T00:00:00.000Z"
     }
   ],

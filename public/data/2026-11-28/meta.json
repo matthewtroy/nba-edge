@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26T22:38:18.433Z",
+  "lastUpdated": "2026-11-27T02:07:58.644Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
@@ -12,9 +12,9 @@
     "Duncan Robinson (Detroit Pistons): no redistribution reasons on slate legs",
     "Jock Landale (Atlanta Hawks): no redistribution reasons on slate legs"
   ],
-  "modelSanityChecked": 215,
-  "modelSanityFailures": 40,
-  "formGuardExcludedCount": 474,
+  "modelSanityChecked": 217,
+  "modelSanityFailures": 15,
+  "formGuardExcludedCount": 396,
   "gameOddsPriceAge": {
     "401909326": "Prices from 9:29 pm",
     "401909327": "Prices from 9:29 pm",
@@ -31,29 +31,29 @@
   "slateTipDate": "2026-11-28",
   "whatChanged": [
     "Duncan Robinson out → Daniss Jenkins +2.6 pts",
-    "Austin Reaves out → Quentin Grimes +4.2 pts",
+    "Cade Cunningham out → Daniss Jenkins +4.1 pts",
     "Jaylen Brown out → Tyrese Maxey +4.1 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-26_05_30PM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-26_09_00PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 415,
+      "total": 381,
       "priced": 0
     },
     "reb": {
-      "total": 471,
+      "total": 467,
       "priced": 0
     },
     "ast": {
-      "total": 276,
+      "total": 274,
       "priced": 0
     },
     "3pm": {
-      "total": 536,
+      "total": 545,
       "priced": 0
     },
     "q1reb": {
-      "total": 93,
+      "total": 86,
       "priced": 0
     }
   },
