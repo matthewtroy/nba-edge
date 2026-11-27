@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T07:57:21.094Z",
+  "lastUpdated": "2026-11-27T08:11:49.498Z",
   "oddsLastPulled": "2026-11-27T07:00:36.694Z",
   "sources": {
     "espn": "ok",
@@ -15,7 +15,7 @@
   ],
   "modelSanityChecked": 217,
   "modelSanityFailures": 11,
-  "formGuardExcludedCount": 365,
+  "formGuardExcludedCount": 366,
   "gameOddsPriceAge": {
     "401909326": "Prices from 6:00 pm",
     "401909327": "Prices from 6:00 pm",
@@ -33,13 +33,13 @@
   "whatChanged": [
     "Duncan Robinson out → Daniss Jenkins +2.6 pts",
     "RJ Barrett out → Scottie Barnes +5.2 pts",
-    "Jaylen Brown out → Tyrese Maxey +4.3 pts"
+    "Cade Cunningham out → Daniss Jenkins +4.1 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_02_45AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_03_00AM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 398,
-      "priced": 322
+      "total": 399,
+      "priced": 323
     },
     "reb": {
       "total": 472,
@@ -58,20 +58,10 @@
       "priced": 0
     }
   },
-  "gateViolations": [
-    "Cross-Game SGM Multi: Bam Adebayo: forbidden 3+ ast (need 5+)",
-    "Cross-Game SGM Multi: Aaron Nesmith: forbidden 3+ reb (need 5+)",
-    "Cross-Game SGM Multi: Immanuel Quickley: forbidden 3+ reb (need 5+)",
-    "Cross-Game SGM Multi: Ty Jerome: forbidden 3+ reb (need 5+)",
-    "Cross-Game SGM Multi: Jalen Green: forbidden 3+ reb (need 5+)",
-    "Cross-Game SGM Multi: Josh Green: not a starter (24+ min, 4/5 ESPN starts)",
-    "Cross-Game SGM Multi: Derik Queen: not a starter (24+ min, 4/5 ESPN starts)",
-    "Cross-Game SGM Multi: Yves Missi: not a starter (24+ min, 4/5 ESPN starts)"
-  ],
   "officialCard": {
-    "lockedAt": "2026-11-27T07:55:55.439Z",
+    "lockedAt": "2026-11-27T08:10:33.449Z",
     "publishedAt": "2026-11-27T07:00:36.694Z",
-    "republishedAt": "2026-11-27T07:55:55.439Z",
+    "republishedAt": "2026-11-27T08:10:33.449Z",
     "slateDate": "2026-11-28",
     "bookie": "Sportsbet"
   },

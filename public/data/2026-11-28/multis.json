@@ -46,6 +46,128 @@
       "summary": "2 legs · aim ~$2 @ one bookie"
     },
     {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "legs": [
+        "3032977-reb-10",
+        "4066261-reb-7",
+        "3133628-reb-5",
+        "5082206-3pm-1",
+        "3149673-pts-20",
+        "4431678-ast-5",
+        "4432241-3pm-1",
+        "4433134-ast-5",
+        "4431680-reb-7",
+        "4903027-pts-15",
+        "4433083-ast-5",
+        "5104157-3pm-2",
+        "4592479-pts-10",
+        "5041955-pts-15",
+        "3138196-pts-10",
+        "4869780-reb-5",
+        "5061589-reb-7",
+        "4683021-ast-5",
+        "3995-3pm-2"
+      ],
+      "combinedProbability": 0.004531752785945468,
+      "combinedFairPrice": 220.67,
+      "combinedTakeAt": 238.32,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 1275.07,
+      "bookieTotals": {
+        "Ladbrokes": 1275.07,
+        "Neds": 1275.07
+      },
+      "crossGameGroups": [
+        {
+          "gameId": "401909326",
+          "status": "included",
+          "legs": [
+            "3032977-reb-10",
+            "4066261-reb-7"
+          ]
+        },
+        {
+          "gameId": "401909327",
+          "status": "included",
+          "legs": [
+            "3133628-reb-5",
+            "5082206-3pm-1"
+          ]
+        },
+        {
+          "gameId": "401909328",
+          "status": "included",
+          "legs": [
+            "3149673-pts-20",
+            "4431678-ast-5"
+          ]
+        },
+        {
+          "gameId": "401909329",
+          "status": "included",
+          "legs": [
+            "4432241-3pm-1",
+            "4433134-ast-5"
+          ]
+        },
+        {
+          "gameId": "401909330",
+          "status": "included",
+          "legs": [
+            "4431680-reb-7"
+          ]
+        },
+        {
+          "gameId": "401909331",
+          "status": "included",
+          "legs": [
+            "4903027-pts-15",
+            "4433083-ast-5"
+          ]
+        },
+        {
+          "gameId": "401909332",
+          "status": "excluded",
+          "legs": [],
+          "excludedReason": "DAL @ PHX: no high-prob legs @ Ladbrokes priced ≥ fair."
+        },
+        {
+          "gameId": "401909333",
+          "status": "included",
+          "legs": [
+            "5104157-3pm-2",
+            "4592479-pts-10"
+          ]
+        },
+        {
+          "gameId": "401909334",
+          "status": "included",
+          "legs": [
+            "5041955-pts-15",
+            "3138196-pts-10"
+          ]
+        },
+        {
+          "gameId": "401909335",
+          "status": "included",
+          "legs": [
+            "4869780-reb-5",
+            "5061589-reb-7"
+          ]
+        },
+        {
+          "gameId": "401909336",
+          "status": "included",
+          "legs": [
+            "4683021-ast-5",
+            "3995-3pm-2"
+          ]
+        }
+      ],
+      "summary": "10 games @ Ladbrokes (1 game @ 1 leg — no clash-free pair)"
+    },
+    {
       "type": "boostSgm",
       "label": "Best SGM",
       "legs": [
@@ -115,33 +237,6 @@
       "type": "booster",
       "label": "Booster",
       "reason": "Booster: Cam Spencer 7+ ast: no Sportsbet line"
-    },
-    {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "reason": "Gate: Cross-Game SGM Multi: Bam Adebayo: forbidden 3+ ast (need 5+); Cross-Game SGM Multi: Aaron Nesmith: forbidden 3+ reb (need 5+); Cross-Game SGM Multi: Immanuel Quickley: forbidden 3+ reb (need 5+) (legs: Giannis Antetokounmpo Over 9.5 reb, Bam Adebayo Over 2.5 ast, Myles Turner Over 4.5 reb, Brayden Burries Over 0.5 3PM, Tyrese Maxey Over 4.5 ast, Aaron Nesmith Over 2.5 reb, Immanuel Quickley Over 2.5 reb, Scottie Barnes Over 4.5 ast, Onyeka Okongwu Over 6.5 reb, Cedric Coward Over 14.5 pts, Ty Jerome Over 2.5 reb, Jalen Green Over 2.5 reb, Victor Wembanyama Over 1.5 3PM, Julian Champagnie Over 9.5 pts, Cameron Johnson Over 9.5 pts, Josh Green Over 4.5 pts, Derik Queen Over 4.5 reb, Yves Missi Over 6.5 reb, Deni Avdija Over 4.5 ast, Jrue Holiday Over 1.5 3PM)",
-      "players": [
-        "Giannis Antetokounmpo",
-        "Bam Adebayo",
-        "Myles Turner",
-        "Brayden Burries",
-        "Tyrese Maxey",
-        "Aaron Nesmith",
-        "Immanuel Quickley",
-        "Scottie Barnes",
-        "Onyeka Okongwu",
-        "Cedric Coward",
-        "Ty Jerome",
-        "Jalen Green",
-        "Victor Wembanyama",
-        "Julian Champagnie",
-        "Cameron Johnson",
-        "Josh Green",
-        "Derik Queen",
-        "Yves Missi",
-        "Deni Avdija",
-        "Jrue Holiday"
-      ]
     }
   ]
 }

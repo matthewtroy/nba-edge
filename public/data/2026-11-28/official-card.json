@@ -1,7 +1,7 @@
 {
-  "lockedAt": "2026-11-27T07:55:55.439Z",
+  "lockedAt": "2026-11-27T08:10:33.449Z",
   "publishedAt": "2026-11-27T07:00:36.694Z",
-  "republishedAt": "2026-11-27T07:55:55.439Z",
+  "republishedAt": "2026-11-27T08:10:33.449Z",
   "slateDate": "2026-11-28",
   "bookie": "Sportsbet",
   "legSnapshots": {
@@ -383,6 +383,655 @@
         "Value"
       ]
     },
+    "3032977-reb-10": {
+      "id": "3032977-reb-10",
+      "playerId": "3032977",
+      "playerName": "Giannis Antetokounmpo",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3032977.png",
+      "gameId": "401909326",
+      "team": "Miami Heat",
+      "opponent": "New York Knicks",
+      "market": "reb",
+      "line": 10,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.33,
+      "fairPrice": 1.32,
+      "takeAt": 1.43,
+      "probability": 0.76,
+      "reasons": [
+        {
+          "type": "form",
+          "text": "9/10 at this line"
+        },
+        {
+          "type": "rank",
+          "text": "Averages 12.9 reb, 1st of 90 forwards"
+        }
+      ],
+      "reasonLine": "9/10 at this line · Averages 12.9 reb, 1st of 90 forwards",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "lastTenStatValues": [
+        14,
+        14,
+        13,
+        14,
+        9,
+        11,
+        14,
+        14,
+        14,
+        12
+      ],
+      "bookiePrices": {
+        "SportsBet": 1.28,
+        "Picklebet (AU)": 1.3,
+        "Betr": 1.31,
+        "Bet Right": 1.3,
+        "TABtouch": 1.43,
+        "Unibet": 1.42,
+        "TAB": 1.28,
+        "Ladbrokes": 1.33,
+        "Neds": 1.33,
+        "PointsBet (AU)": 1.29
+      },
+      "questionable": false,
+      "tags": [
+        "High probability"
+      ]
+    },
+    "4066261-reb-7": {
+      "id": "4066261-reb-7",
+      "playerId": "4066261",
+      "playerName": "Bam Adebayo",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4066261.png",
+      "gameId": "401909326",
+      "team": "Miami Heat",
+      "opponent": "New York Knicks",
+      "market": "reb",
+      "line": 7,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.46,
+      "fairPrice": 1.33,
+      "takeAt": 1.44,
+      "probability": 0.754,
+      "reasons": [
+        {
+          "type": "rank",
+          "text": "Averages 8.6 reb, 9th of 31 centers"
+        }
+      ],
+      "reasonLine": "Averages 8.6 reb, 9th of 31 centers",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "miss"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "lastTenStatValues": [
+        11,
+        15,
+        4,
+        1,
+        5,
+        14,
+        8,
+        8,
+        10,
+        10
+      ],
+      "bookiePrices": {
+        "Picklebet (AU)": 1.38,
+        "Betr": 1.38,
+        "Bet Right": 1.38,
+        "Ladbrokes": 1.46,
+        "Neds": 1.46
+      },
+      "questionable": false,
+      "tags": [
+        "High probability",
+        "boards shared"
+      ]
+    },
+    "3133628-reb-5": {
+      "id": "3133628-reb-5",
+      "playerId": "3133628",
+      "playerName": "Myles Turner",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3133628.png",
+      "gameId": "401909327",
+      "team": "Milwaukee Bucks",
+      "opponent": "Detroit Pistons",
+      "market": "reb",
+      "line": 5,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.44,
+      "fairPrice": 1.32,
+      "takeAt": 1.43,
+      "probability": 0.757,
+      "reasons": [
+        {
+          "type": "matchup",
+          "text": "Pistons rank #5 in allowing reb to centers (avg. 12.8)"
+        },
+        {
+          "type": "form",
+          "text": "9/10 at this line"
+        },
+        {
+          "type": "rank",
+          "text": "Averages 7.1 reb, 14th of 31 centers"
+        }
+      ],
+      "reasonLine": "Pistons rank #5 in allowing reb to centers (avg. 12.8) · 9/10 at this line · Averages 7.1 reb, 14th of 31 centers",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "lastTenStatValues": [
+        6,
+        11,
+        6,
+        5,
+        7,
+        11,
+        3,
+        6,
+        7,
+        9
+      ],
+      "bookiePrices": {
+        "Picklebet (AU)": 1.4,
+        "Betr": 1.4,
+        "Bet Right": 1.4,
+        "Neds": 1.44,
+        "Ladbrokes": 1.44
+      },
+      "questionable": false,
+      "tags": [
+        "High probability",
+        "boards shared",
+        "Value"
+      ]
+    },
+    "5082206-3pm-1": {
+      "id": "5082206-3pm-1",
+      "playerId": "5082206",
+      "playerName": "Brayden Burries",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5082206.png",
+      "gameId": "401909327",
+      "team": "Milwaukee Bucks",
+      "opponent": "Detroit Pistons",
+      "market": "3pm",
+      "line": 1,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.4,
+      "fairPrice": 1.35,
+      "takeAt": 1.46,
+      "probability": 0.742,
+      "reasons": [
+        {
+          "type": "form",
+          "text": "9/10 at this line"
+        },
+        {
+          "type": "avg",
+          "text": "Avg 1.4 3pm last 10 (season 1.2)"
+        }
+      ],
+      "reasonLine": "9/10 at this line · Avg 1.4 3pm last 10 (season 1.2)",
+      "recentVsLine": [
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "lastTenStatValues": [
+        0,
+        1,
+        2,
+        2,
+        3,
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "bookiePrices": {
+        "SportsBet": 1.37,
+        "PointsBet (AU)": 1.4,
+        "TABtouch": 1.38,
+        "Unibet": 1.36,
+        "TAB": 1.3,
+        "Neds": 1.4,
+        "Ladbrokes": 1.4
+      },
+      "questionable": false,
+      "tags": [
+        "High probability"
+      ]
+    },
+    "3149673-pts-20": {
+      "id": "3149673-pts-20",
+      "playerId": "3149673",
+      "playerName": "Pascal Siakam",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3149673.png",
+      "gameId": "401909328",
+      "team": "Indiana Pacers",
+      "opponent": "Philadelphia 76ers",
+      "market": "pts",
+      "line": 20,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.38,
+      "fairPrice": 1.34,
+      "takeAt": 1.45,
+      "probability": 0.746,
+      "reasons": [
+        {
+          "type": "matchup",
+          "text": "76ers rank #2 in allowing pts to forwards (avg. 19.8)"
+        },
+        {
+          "type": "form",
+          "text": "9/10 at this line"
+        },
+        {
+          "type": "rank",
+          "text": "Averages 24.0 pts, 7th of 90 forwards"
+        }
+      ],
+      "reasonLine": "76ers rank #2 in allowing pts to forwards (avg. 19.8) · 9/10 at this line · Averages 24.0 pts, 7th of 90 forwards",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "lastTenStatValues": [
+        20,
+        25,
+        21,
+        24,
+        31,
+        19,
+        28,
+        29,
+        23,
+        20
+      ],
+      "bookiePrices": {
+        "SportsBet": 1.33,
+        "Picklebet (AU)": 1.33,
+        "Betr": 1.31,
+        "Bet Right": 1.33,
+        "TAB": 1.32,
+        "Ladbrokes": 1.38,
+        "Neds": 1.38,
+        "PointsBet (AU)": 1.4
+      },
+      "questionable": false,
+      "tags": [
+        "High probability"
+      ]
+    },
+    "4431678-ast-5": {
+      "id": "4431678-ast-5",
+      "playerId": "4431678",
+      "playerName": "Tyrese Maxey",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4431678.png",
+      "gameId": "401909328",
+      "team": "Philadelphia 76ers",
+      "opponent": "Indiana Pacers",
+      "market": "ast",
+      "line": 5,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.46,
+      "fairPrice": 1.3,
+      "takeAt": 1.4,
+      "probability": 0.771,
+      "reasons": [
+        {
+          "type": "matchup",
+          "text": "Pacers rank #10 in allowing ast to guards (avg. 5.0)"
+        },
+        {
+          "type": "form",
+          "text": "7/10 at this line"
+        },
+        {
+          "type": "avg",
+          "text": "Avg 6.0 ast last 10 (season 6.5)"
+        }
+      ],
+      "reasonLine": "Pacers rank #10 in allowing ast to guards (avg. 5.0) · 7/10 at this line · Avg 6.0 ast last 10 (season 6.5)",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "miss",
+        "hit"
+      ],
+      "lastTenStatValues": [
+        6,
+        5,
+        4,
+        9,
+        6,
+        8,
+        4,
+        7,
+        4,
+        7
+      ],
+      "bookiePrices": {
+        "Picklebet (AU)": 1.53,
+        "Betr": 1.5,
+        "Bet Right": 1.53,
+        "Ladbrokes": 1.46,
+        "Neds": 1.46
+      },
+      "questionable": false,
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    "4432241-3pm-1": {
+      "id": "4432241-3pm-1",
+      "playerId": "4432241",
+      "playerName": "Jamal Shead",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4432241.png",
+      "gameId": "401909329",
+      "team": "Toronto Raptors",
+      "opponent": "Brooklyn Nets",
+      "market": "3pm",
+      "line": 1,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.36,
+      "fairPrice": 1.36,
+      "takeAt": 1.47,
+      "probability": 0.736,
+      "reasons": [
+        {
+          "type": "matchup",
+          "text": "Nets rank #9 in allowing 3s to guards (avg. 2.6)"
+        },
+        {
+          "type": "form",
+          "text": "8/10 at this line"
+        },
+        {
+          "type": "avg",
+          "text": "Avg 1.5 3pm last 10 (season 1.4)"
+        }
+      ],
+      "reasonLine": "Nets rank #9 in allowing 3s to guards (avg. 2.6) · 8/10 at this line · Avg 1.5 3pm last 10 (season 1.4)",
+      "recentVsLine": [
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "lastTenStatValues": [
+        3,
+        0,
+        1,
+        1,
+        3,
+        1,
+        0,
+        4,
+        1,
+        1
+      ],
+      "bookiePrices": {
+        "Ladbrokes": 1.36,
+        "Neds": 1.36
+      },
+      "questionable": false,
+      "tags": [
+        "High probability"
+      ]
+    },
+    "4433134-ast-5": {
+      "id": "4433134-ast-5",
+      "playerId": "4433134",
+      "playerName": "Scottie Barnes",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4433134.png",
+      "gameId": "401909329",
+      "team": "Toronto Raptors",
+      "opponent": "Brooklyn Nets",
+      "market": "ast",
+      "line": 5,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.42,
+      "fairPrice": 1.32,
+      "takeAt": 1.43,
+      "probability": 0.759,
+      "reasons": [
+        {
+          "type": "form",
+          "text": "5/7 at this line"
+        },
+        {
+          "type": "rank",
+          "text": "Averages 5.4 ast, 7th of 90 forwards"
+        }
+      ],
+      "reasonLine": "5/7 at this line · Averages 5.4 ast, 7th of 90 forwards",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "miss"
+      ],
+      "lastTenStatValues": [
+        8,
+        5,
+        2,
+        4,
+        6,
+        8,
+        5,
+        5,
+        4,
+        3
+      ],
+      "bookiePrices": {
+        "Betr": 1.38,
+        "Bet Right": 1.38,
+        "Picklebet (AU)": 1.38,
+        "TABtouch": 1.43,
+        "Unibet": 1.42,
+        "Ladbrokes": 1.42,
+        "Neds": 1.42
+      },
+      "questionable": false,
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    "4431680-reb-7": {
+      "id": "4431680-reb-7",
+      "playerId": "4431680",
+      "playerName": "Onyeka Okongwu",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4431680.png",
+      "gameId": "401909330",
+      "team": "Atlanta Hawks",
+      "opponent": "Boston Celtics",
+      "market": "reb",
+      "line": 7,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.46,
+      "fairPrice": 1.34,
+      "takeAt": 1.45,
+      "probability": 0.745,
+      "reasons": [
+        {
+          "type": "form",
+          "text": "8/10 at this line"
+        },
+        {
+          "type": "rank",
+          "text": "Averages 8.9 reb, 4th of 90 forwards"
+        }
+      ],
+      "reasonLine": "8/10 at this line · Averages 8.9 reb, 4th of 90 forwards",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "lastTenStatValues": [
+        9,
+        7,
+        9,
+        11,
+        6,
+        9,
+        2,
+        10,
+        16,
+        10
+      ],
+      "bookiePrices": {
+        "Picklebet (AU)": 1.4,
+        "Betr": 1.4,
+        "Bet Right": 1.4,
+        "Ladbrokes": 1.46,
+        "Neds": 1.46
+      },
+      "questionable": false,
+      "tags": [
+        "High probability",
+        "boards shared",
+        "Value"
+      ]
+    },
     "5104157-3pm-2": {
       "id": "5104157-3pm-2",
       "playerId": "5104157",
@@ -393,7 +1042,7 @@
       "opponent": "Los Angeles Lakers",
       "market": "3pm",
       "line": 2,
-      "publishedBookie": "Neds",
+      "publishedBookie": "Ladbrokes",
       "publishedPrice": 1.55,
       "fairPrice": 1.38,
       "takeAt": 1.49,
@@ -455,6 +1104,355 @@
         "Neds": 1.55,
         "Ladbrokes": 1.55,
         "PointsBet (AU)": 1.48
+      },
+      "questionable": false,
+      "tags": [
+        "High probability"
+      ]
+    },
+    "5041955-pts-15": {
+      "id": "5041955-pts-15",
+      "playerId": "5041955",
+      "playerName": "Darryn Peterson",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5041955.png",
+      "gameId": "401909334",
+      "team": "Utah Jazz",
+      "opponent": "Denver Nuggets",
+      "market": "pts",
+      "line": 15,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.5,
+      "fairPrice": 1.32,
+      "takeAt": 1.43,
+      "probability": 0.757,
+      "reasons": [
+        {
+          "type": "injury",
+          "text": "Jr. out → +3.7 pts"
+        },
+        {
+          "type": "avg",
+          "text": "Avg 18.1 pts last 10 (season 17.2)"
+        }
+      ],
+      "reasonLine": "Jr. out → +3.7 pts · Avg 18.1 pts last 10 (season 17.2)",
+      "recentVsLine": [
+        "miss",
+        "miss",
+        "hit",
+        "miss",
+        "miss"
+      ],
+      "recentTenVsLine": [
+        "miss",
+        "miss",
+        "hit",
+        "miss",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "lastTenStatValues": [
+        13,
+        6,
+        20,
+        11,
+        13,
+        17,
+        28,
+        22,
+        25,
+        26
+      ],
+      "bookiePrices": {
+        "SportsBet": 1.49,
+        "Picklebet (AU)": 1.48,
+        "Bet Right": 1.48,
+        "Betr": 1.45,
+        "Neds": 1.5,
+        "Ladbrokes": 1.5,
+        "TAB": 1.32,
+        "PointsBet (AU)": 1.5
+      },
+      "questionable": false,
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    "4869780-reb-5": {
+      "id": "4869780-reb-5",
+      "playerId": "4869780",
+      "playerName": "Derik Queen",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4869780.png",
+      "gameId": "401909335",
+      "team": "New Orleans Pelicans",
+      "opponent": "LA Clippers",
+      "market": "reb",
+      "line": 5,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.4,
+      "fairPrice": 1.32,
+      "takeAt": 1.43,
+      "probability": 0.76,
+      "reasons": [
+        {
+          "type": "form",
+          "text": "8/10 at this line"
+        },
+        {
+          "type": "avg",
+          "text": "Avg 6.6 reb last 10"
+        },
+        {
+          "type": "pace",
+          "text": "Fast game: both teams top-10 pace"
+        }
+      ],
+      "reasonLine": "8/10 at this line · Avg 6.6 reb last 10 · Fast game: both teams top-10 pace",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "hit"
+      ],
+      "lastTenStatValues": [
+        9,
+        15,
+        7,
+        5,
+        10,
+        5,
+        6,
+        0,
+        4,
+        5
+      ],
+      "bookiePrices": {
+        "Neds": 1.4,
+        "Ladbrokes": 1.4
+      },
+      "questionable": false,
+      "tags": [
+        "High probability",
+        "boards shared"
+      ]
+    },
+    "5061589-reb-7": {
+      "id": "5061589-reb-7",
+      "playerId": "5061589",
+      "playerName": "Yves Missi",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/5061589.png",
+      "gameId": "401909335",
+      "team": "New Orleans Pelicans",
+      "opponent": "LA Clippers",
+      "market": "reb",
+      "line": 7,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.45,
+      "fairPrice": 1.32,
+      "takeAt": 1.43,
+      "probability": 0.756,
+      "reasons": [
+        {
+          "type": "form",
+          "text": "5/6 at this line"
+        },
+        {
+          "type": "rank",
+          "text": "Averages 9.5 reb, 5th of 31 centers"
+        },
+        {
+          "type": "pace",
+          "text": "Fast game: both teams top-10 pace"
+        }
+      ],
+      "reasonLine": "5/6 at this line · Averages 9.5 reb, 5th of 31 centers · Fast game: both teams top-10 pace",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "miss",
+        "hit"
+      ],
+      "lastTenStatValues": [
+        8,
+        14,
+        8,
+        5,
+        14,
+        8,
+        1,
+        14
+      ],
+      "bookiePrices": {
+        "Picklebet (AU)": 1.4,
+        "Betr": 1.4,
+        "Bet Right": 1.4,
+        "Neds": 1.45,
+        "Ladbrokes": 1.45
+      },
+      "questionable": false,
+      "tags": [
+        "High probability",
+        "boards shared",
+        "Value"
+      ]
+    },
+    "4683021-ast-5": {
+      "id": "4683021-ast-5",
+      "playerId": "4683021",
+      "playerName": "Deni Avdija",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/4683021.png",
+      "gameId": "401909336",
+      "team": "Portland Trail Blazers",
+      "opponent": "Golden State Warriors",
+      "market": "ast",
+      "line": 5,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.33,
+      "fairPrice": 1.33,
+      "takeAt": 1.44,
+      "probability": 0.751,
+      "reasons": [
+        {
+          "type": "form",
+          "text": "7/10 at this line"
+        },
+        {
+          "type": "rank",
+          "text": "Averages 6.5 ast, 3rd of 90 forwards"
+        }
+      ],
+      "reasonLine": "7/10 at this line · Averages 6.5 ast, 3rd of 90 forwards",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "miss"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "miss",
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit"
+      ],
+      "lastTenStatValues": [
+        7,
+        7,
+        5,
+        4,
+        4,
+        6,
+        8,
+        1,
+        11,
+        12
+      ],
+      "bookiePrices": {
+        "Picklebet (AU)": 1.33,
+        "Betr": 1.33,
+        "Bet Right": 1.33,
+        "Neds": 1.33,
+        "Ladbrokes": 1.33
+      },
+      "questionable": false,
+      "tags": [
+        "High probability",
+        "Value"
+      ]
+    },
+    "3995-3pm-2": {
+      "id": "3995-3pm-2",
+      "playerId": "3995",
+      "playerName": "Jrue Holiday",
+      "headshotUrl": "https://a.espncdn.com/i/headshots/nba/players/full/3995.png",
+      "gameId": "401909336",
+      "team": "Portland Trail Blazers",
+      "opponent": "Golden State Warriors",
+      "market": "3pm",
+      "line": 2,
+      "publishedBookie": "Ladbrokes",
+      "publishedPrice": 1.58,
+      "fairPrice": 1.36,
+      "takeAt": 1.47,
+      "probability": 0.735,
+      "reasons": [
+        {
+          "type": "avg",
+          "text": "Avg 2.5 3pm last 10 (season 2.8)"
+        }
+      ],
+      "reasonLine": "Avg 2.5 3pm last 10 (season 2.8)",
+      "recentVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit"
+      ],
+      "recentTenVsLine": [
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "hit",
+        "miss",
+        "hit",
+        "hit",
+        "miss"
+      ],
+      "lastTenStatValues": [
+        3,
+        4,
+        1,
+        2,
+        5,
+        2,
+        0,
+        5,
+        2,
+        1
+      ],
+      "bookiePrices": {
+        "SportsBet": 1.51,
+        "PointsBet (AU)": 1.5,
+        "Neds": 1.58,
+        "Ladbrokes": 1.58
       },
       "questionable": false,
       "tags": [
@@ -1077,6 +2075,129 @@
       "stakeUnits": 1
     },
     {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "legs": [
+        "3032977-reb-10",
+        "4066261-reb-7",
+        "3133628-reb-5",
+        "5082206-3pm-1",
+        "3149673-pts-20",
+        "4431678-ast-5",
+        "4432241-3pm-1",
+        "4433134-ast-5",
+        "4431680-reb-7",
+        "4903027-pts-15",
+        "4433083-ast-5",
+        "5104157-3pm-2",
+        "4592479-pts-10",
+        "5041955-pts-15",
+        "3138196-pts-10",
+        "4869780-reb-5",
+        "5061589-reb-7",
+        "4683021-ast-5",
+        "3995-3pm-2"
+      ],
+      "combinedProbability": 0.004531752785945468,
+      "combinedFairPrice": 220.67,
+      "combinedTakeAt": 238.32,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 1275.07,
+      "bookieTotals": {
+        "Ladbrokes": 1275.07,
+        "Neds": 1275.07
+      },
+      "crossGameGroups": [
+        {
+          "gameId": "401909326",
+          "status": "included",
+          "legs": [
+            "3032977-reb-10",
+            "4066261-reb-7"
+          ]
+        },
+        {
+          "gameId": "401909327",
+          "status": "included",
+          "legs": [
+            "3133628-reb-5",
+            "5082206-3pm-1"
+          ]
+        },
+        {
+          "gameId": "401909328",
+          "status": "included",
+          "legs": [
+            "3149673-pts-20",
+            "4431678-ast-5"
+          ]
+        },
+        {
+          "gameId": "401909329",
+          "status": "included",
+          "legs": [
+            "4432241-3pm-1",
+            "4433134-ast-5"
+          ]
+        },
+        {
+          "gameId": "401909330",
+          "status": "included",
+          "legs": [
+            "4431680-reb-7"
+          ]
+        },
+        {
+          "gameId": "401909331",
+          "status": "included",
+          "legs": [
+            "4903027-pts-15",
+            "4433083-ast-5"
+          ]
+        },
+        {
+          "gameId": "401909332",
+          "status": "excluded",
+          "legs": [],
+          "excludedReason": "DAL @ PHX: no high-prob legs @ Ladbrokes priced ≥ fair."
+        },
+        {
+          "gameId": "401909333",
+          "status": "included",
+          "legs": [
+            "5104157-3pm-2",
+            "4592479-pts-10"
+          ]
+        },
+        {
+          "gameId": "401909334",
+          "status": "included",
+          "legs": [
+            "5041955-pts-15",
+            "3138196-pts-10"
+          ]
+        },
+        {
+          "gameId": "401909335",
+          "status": "included",
+          "legs": [
+            "4869780-reb-5",
+            "5061589-reb-7"
+          ]
+        },
+        {
+          "gameId": "401909336",
+          "status": "included",
+          "legs": [
+            "4683021-ast-5",
+            "3995-3pm-2"
+          ]
+        }
+      ],
+      "summary": "10 games @ Ladbrokes (1 game @ 1 leg — no clash-free pair)",
+      "stakeUnits": 0.1
+    },
+    {
       "type": "boostSgm",
       "label": "Best SGM",
       "legs": [
@@ -1149,39 +2270,12 @@
       "type": "booster",
       "label": "Booster",
       "reason": "Booster: Cam Spencer 7+ ast: no Sportsbet line"
-    },
-    {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "reason": "Gate: Cross-Game SGM Multi: Bam Adebayo: forbidden 3+ ast (need 5+); Cross-Game SGM Multi: Aaron Nesmith: forbidden 3+ reb (need 5+); Cross-Game SGM Multi: Immanuel Quickley: forbidden 3+ reb (need 5+) (legs: Giannis Antetokounmpo Over 9.5 reb, Bam Adebayo Over 2.5 ast, Myles Turner Over 4.5 reb, Brayden Burries Over 0.5 3PM, Tyrese Maxey Over 4.5 ast, Aaron Nesmith Over 2.5 reb, Immanuel Quickley Over 2.5 reb, Scottie Barnes Over 4.5 ast, Onyeka Okongwu Over 6.5 reb, Cedric Coward Over 14.5 pts, Ty Jerome Over 2.5 reb, Jalen Green Over 2.5 reb, Victor Wembanyama Over 1.5 3PM, Julian Champagnie Over 9.5 pts, Cameron Johnson Over 9.5 pts, Josh Green Over 4.5 pts, Derik Queen Over 4.5 reb, Yves Missi Over 6.5 reb, Deni Avdija Over 4.5 ast, Jrue Holiday Over 1.5 3PM)",
-      "players": [
-        "Giannis Antetokounmpo",
-        "Bam Adebayo",
-        "Myles Turner",
-        "Brayden Burries",
-        "Tyrese Maxey",
-        "Aaron Nesmith",
-        "Immanuel Quickley",
-        "Scottie Barnes",
-        "Onyeka Okongwu",
-        "Cedric Coward",
-        "Ty Jerome",
-        "Jalen Green",
-        "Victor Wembanyama",
-        "Julian Champagnie",
-        "Cameron Johnson",
-        "Josh Green",
-        "Derik Queen",
-        "Yves Missi",
-        "Deni Avdija",
-        "Jrue Holiday"
-      ]
     }
   ],
   "whatChanged": [
     "Duncan Robinson out → Daniss Jenkins +2.6 pts",
     "RJ Barrett out → Scottie Barnes +5.2 pts",
-    "Jaylen Brown out → Tyrese Maxey +4.3 pts"
+    "Cade Cunningham out → Daniss Jenkins +4.1 pts"
   ],
   "injuries": [
     {
@@ -1192,8 +2286,8 @@
       "gameId": "401909330",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4873201",
@@ -1203,8 +2297,8 @@
       "gameId": "401909330",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "2490149",
@@ -1214,8 +2308,8 @@
       "gameId": "401909330",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "4280151",
@@ -1242,16 +2336,16 @@
           "delta": 0.6
         },
         {
-          "playerId": "4701230",
-          "playerName": "Jalen Johnson",
-          "stat": "ast",
-          "delta": -0.5
-        },
-        {
           "playerId": "4431680",
           "playerName": "Onyeka Okongwu",
           "stat": "pts",
           "delta": 0.5
+        },
+        {
+          "playerId": "4701230",
+          "playerName": "Jalen Johnson",
+          "stat": "ast",
+          "delta": -0.5
         }
       ]
     },
@@ -1263,8 +2357,8 @@
       "gameId": "401909330",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "5105571",
@@ -1274,8 +2368,8 @@
       "gameId": "401909330",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4351852",
@@ -1285,8 +2379,8 @@
       "gameId": "401909330",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "3150844",
@@ -1296,8 +2390,8 @@
       "gameId": "401909329",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "3064514",
@@ -1312,14 +2406,14 @@
           "delta": 1.1
         },
         {
-          "playerId": "5175643",
-          "playerName": "Egor Demin",
+          "playerId": "5101761",
+          "playerName": "Mikel Brown Jr.",
           "stat": "pts",
           "delta": 0.8
         },
         {
-          "playerId": "5101761",
-          "playerName": "Mikel Brown Jr.",
+          "playerId": "5175643",
+          "playerName": "Egor Demin",
           "stat": "pts",
           "delta": 0.8
         },
@@ -1363,8 +2457,8 @@
       "gameId": "401909329",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "4712896",
@@ -1391,14 +2485,14 @@
           "delta": -1.5
         },
         {
-          "playerId": "3064514",
-          "playerName": "Julius Randle",
+          "playerId": "4702177",
+          "playerName": "Keon Ellis",
           "stat": "pts",
           "delta": 1
         },
         {
-          "playerId": "4702177",
-          "playerName": "Keon Ellis",
+          "playerId": "3064514",
+          "playerName": "Julius Randle",
           "stat": "pts",
           "delta": 1
         },
@@ -1421,6 +2515,12 @@
           "delta": 0.6
         },
         {
+          "playerId": "5101761",
+          "playerName": "Mikel Brown Jr.",
+          "stat": "pts",
+          "delta": -0.6
+        },
+        {
           "playerId": "3150844",
           "playerName": "Moritz Wagner",
           "stat": "reb",
@@ -1431,12 +2531,6 @@
           "playerName": "Michael Porter Jr.",
           "stat": "ast",
           "delta": 0.6
-        },
-        {
-          "playerId": "5101761",
-          "playerName": "Mikel Brown Jr.",
-          "stat": "pts",
-          "delta": -0.6
         },
         {
           "playerId": "4712896",
@@ -1454,8 +2548,8 @@
       "gameId": "401909332",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerName": "Sergio de Larrea",
@@ -1492,74 +2586,74 @@
       "gameId": "401909327",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "4432166",
           "playerName": "Cade Cunningham",
           "stat": "pts",
-          "delta": 3.9
-        },
-        {
-          "playerId": "5107199",
-          "playerName": "Daniss Jenkins",
-          "stat": "pts",
-          "delta": 2.4
+          "delta": -3.2
         },
         {
           "playerId": "4066372",
           "playerName": "Kevin Huerter",
           "stat": "pts",
-          "delta": 2
-        },
-        {
-          "playerId": "4395702",
-          "playerName": "Isaiah Joe",
-          "stat": "pts",
-          "delta": 2
-        },
-        {
-          "playerId": "4684742",
-          "playerName": "Ausar Thompson",
-          "stat": "pts",
-          "delta": 1.7
+          "delta": -1.7
         },
         {
           "playerId": "3908845",
           "playerName": "John Collins",
           "stat": "pts",
-          "delta": 1.6
-        },
-        {
-          "playerId": "4278562",
-          "playerName": "Paul Reed",
-          "stat": "pts",
-          "delta": 1.5
-        },
-        {
-          "playerId": "2596112",
-          "playerName": "Javonte Green",
-          "stat": "pts",
-          "delta": 1.2
+          "delta": 1.4
         },
         {
           "playerId": "4683771",
           "playerName": "Ronald Holland II",
           "stat": "pts",
-          "delta": 0.8
-        },
-        {
-          "playerId": "4432166",
-          "playerName": "Cade Cunningham",
-          "stat": "ast",
-          "delta": 0.6
+          "delta": 1.1
         },
         {
           "playerId": "4700852",
           "playerName": "Chaz Lanier",
           "stat": "pts",
-          "delta": 0.6
+          "delta": -1.1
+        },
+        {
+          "playerId": "2596112",
+          "playerName": "Javonte Green",
+          "stat": "pts",
+          "delta": 1
+        },
+        {
+          "playerId": "4278562",
+          "playerName": "Paul Reed",
+          "stat": "pts",
+          "delta": 0.9
+        },
+        {
+          "playerId": "5107199",
+          "playerName": "Daniss Jenkins",
+          "stat": "pts",
+          "delta": -0.8
+        },
+        {
+          "playerId": "4432166",
+          "playerName": "Cade Cunningham",
+          "stat": "ast",
+          "delta": 0.7
+        },
+        {
+          "playerId": "4684742",
+          "playerName": "Ausar Thompson",
+          "stat": "reb",
+          "delta": -0.7
+        },
+        {
+          "playerId": "4395702",
+          "playerName": "Isaiah Joe",
+          "stat": "threes",
+          "delta": 0.7
         }
       ]
     },
@@ -1580,8 +2674,8 @@
       "gameId": "401909327",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "5258459",
@@ -1591,8 +2685,8 @@
       "gameId": "401909327",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "2990962",
@@ -1602,8 +2696,8 @@
       "gameId": "401909327",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "3975",
@@ -1613,8 +2707,8 @@
       "gameId": "401909336",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "4433149",
@@ -1746,8 +2840,8 @@
       "gameId": "401909336",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4432171",
@@ -1757,8 +2851,8 @@
       "gameId": "401909336",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerName": "Jimmy Butler III",
@@ -1795,8 +2889,8 @@
       "gameId": "401909328",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4396993",
@@ -1806,8 +2900,8 @@
       "gameId": "401909328",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "3133603",
@@ -1852,6 +2946,12 @@
           "delta": 1.1
         },
         {
+          "playerId": "3133603",
+          "playerName": "Kelly Oubre Jr.",
+          "stat": "reb",
+          "delta": 1
+        },
+        {
           "playerId": "3149673",
           "playerName": "Pascal Siakam",
           "stat": "pts",
@@ -1864,14 +2964,14 @@
           "delta": -1
         },
         {
-          "playerId": "3133603",
-          "playerName": "Kelly Oubre Jr.",
-          "stat": "reb",
-          "delta": 1
-        },
-        {
           "playerId": "4398207",
           "playerName": "Jalen Slawson",
+          "stat": "pts",
+          "delta": 0.9
+        },
+        {
+          "playerId": "5106060",
+          "playerName": "Jarace Walker",
           "stat": "pts",
           "delta": 0.9
         },
@@ -1879,12 +2979,6 @@
           "playerId": "4396909",
           "playerName": "Aaron Nesmith",
           "stat": "reb",
-          "delta": 0.9
-        },
-        {
-          "playerId": "5106060",
-          "playerName": "Jarace Walker",
-          "stat": "pts",
           "delta": 0.9
         },
         {
@@ -1927,8 +3021,8 @@
       "gameId": "401909328",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerName": "Bradley Beal",
@@ -1947,8 +3041,8 @@
       "gameId": "401909335",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4066457",
@@ -1958,8 +3052,8 @@
       "gameId": "401909333",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4432810",
@@ -1969,8 +3063,8 @@
       "gameId": "401909331",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4600663",
@@ -1980,8 +3074,8 @@
       "gameId": "401909331",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerName": "Scotty Pippen Jr.",
@@ -2009,8 +3103,8 @@
       "gameId": "401909331",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "4684806",
@@ -2100,8 +3194,8 @@
       "gameId": "401909331",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "4684806",
@@ -2152,16 +3246,16 @@
           "delta": 1
         },
         {
-          "playerId": "4600663",
-          "playerName": "Zach Edey",
-          "stat": "reb",
-          "delta": -0.9
-        },
-        {
           "playerId": "4594326",
           "playerName": "Kris Murray",
           "stat": "pts",
           "delta": 0.9
+        },
+        {
+          "playerId": "4600663",
+          "playerName": "Zach Edey",
+          "stat": "reb",
+          "delta": -0.9
         },
         {
           "playerId": "4781746",
@@ -2182,14 +3276,14 @@
           "delta": -0.7
         },
         {
-          "playerId": "4065733",
-          "playerName": "Ty Jerome",
+          "playerId": "2991070",
+          "playerName": "Jerami Grant",
           "stat": "pts",
           "delta": -0.7
         },
         {
-          "playerId": "2991070",
-          "playerName": "Jerami Grant",
+          "playerId": "4065733",
+          "playerName": "Ty Jerome",
           "stat": "pts",
           "delta": -0.7
         },
@@ -2221,8 +3315,8 @@
       "gameId": "401909331",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerName": "Giannis Antetokounmpo",
@@ -2241,8 +3335,8 @@
       "gameId": "401909326",
       "status": "Probable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerName": "LaMelo Ball",
@@ -2261,8 +3355,8 @@
       "gameId": "401909331",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4432247",
@@ -2272,8 +3366,8 @@
       "gameId": "401909331",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "4432816",
@@ -2381,8 +3475,8 @@
       "gameId": "401909331",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "4397002",
@@ -2451,16 +3545,16 @@
           "delta": 0.8
         },
         {
-          "playerId": "4431671",
-          "playerName": "Jaden McDaniels",
-          "stat": "ast",
-          "delta": 0.8
-        },
-        {
           "playerId": "5279133",
           "playerName": "Joan Beringer",
           "stat": "pts",
           "delta": -0.8
+        },
+        {
+          "playerId": "4431671",
+          "playerName": "Jaden McDaniels",
+          "stat": "ast",
+          "delta": 0.8
         },
         {
           "playerId": "4432247",
@@ -2475,12 +3569,6 @@
           "delta": 0.7
         },
         {
-          "playerId": "4397002",
-          "playerName": "Ayo Dosunmu",
-          "stat": "reb",
-          "delta": -0.6
-        },
-        {
           "playerId": "3136196",
           "playerName": "Trey Lyles",
           "stat": "reb",
@@ -2489,6 +3577,12 @@
         {
           "playerId": "4431671",
           "playerName": "Jaden McDaniels",
+          "stat": "reb",
+          "delta": -0.6
+        },
+        {
+          "playerId": "4397002",
+          "playerName": "Ayo Dosunmu",
           "stat": "reb",
           "delta": -0.6
         },
@@ -2520,8 +3614,8 @@
       "gameId": "401909335",
       "status": "Probable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4683634",
@@ -2531,8 +3625,8 @@
       "gameId": "401909335",
       "status": "Doubtful",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "4277956",
@@ -2595,6 +3689,12 @@
           "delta": -0.7
         },
         {
+          "playerId": "4277956",
+          "playerName": "Jordan Poole",
+          "stat": "ast",
+          "delta": -0.6
+        },
+        {
           "playerId": "4277813",
           "playerName": "Herbert Jones",
           "stat": "reb",
@@ -2605,12 +3705,6 @@
           "playerName": "Herbert Jones",
           "stat": "ast",
           "delta": 0.6
-        },
-        {
-          "playerId": "4277956",
-          "playerName": "Jordan Poole",
-          "stat": "ast",
-          "delta": -0.6
         },
         {
           "playerId": "4397688",
@@ -2634,8 +3728,8 @@
       "gameId": "401909335",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "3907497",
@@ -2645,8 +3739,8 @@
       "gameId": "401909335",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "4277956",
@@ -2685,14 +3779,14 @@
           "delta": 1.3
         },
         {
-          "playerId": "5061589",
-          "playerName": "Yves Missi",
+          "playerId": "4397136",
+          "playerName": "Saddiq Bey",
           "stat": "pts",
           "delta": -1.2
         },
         {
-          "playerId": "4397136",
-          "playerName": "Saddiq Bey",
+          "playerId": "5061589",
+          "playerName": "Yves Missi",
           "stat": "pts",
           "delta": -1.2
         },
@@ -2715,6 +3809,12 @@
           "delta": 0.7
         },
         {
+          "playerId": "5144091",
+          "playerName": "Jeremiah Fears",
+          "stat": "reb",
+          "delta": 0.6
+        },
+        {
           "playerId": "4277813",
           "playerName": "Herbert Jones",
           "stat": "reb",
@@ -2724,12 +3824,6 @@
           "playerId": "4277813",
           "playerName": "Herbert Jones",
           "stat": "ast",
-          "delta": 0.6
-        },
-        {
-          "playerId": "5144091",
-          "playerName": "Jeremiah Fears",
-          "stat": "reb",
           "delta": 0.6
         },
         {
@@ -2748,8 +3842,8 @@
       "gameId": "401909326",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "2528426",
@@ -2759,8 +3853,8 @@
       "gameId": "401909326",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerName": "OG Anunoby",
@@ -2779,8 +3873,8 @@
       "gameId": "401909326",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "3059318",
@@ -2790,8 +3884,8 @@
       "gameId": "401909328",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerName": "Jaylen Brown",
@@ -2810,8 +3904,8 @@
       "gameId": "401909328",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerName": "Mark Williams",
@@ -2830,8 +3924,8 @@
       "gameId": "401909336",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "4683021",
@@ -2918,8 +4012,8 @@
       "gameId": "401909336",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "4431736",
@@ -3051,8 +4145,8 @@
       "gameId": "401909336",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "5037871",
@@ -3062,8 +4156,8 @@
       "gameId": "401909333",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "de'aaron fox",
@@ -3073,8 +4167,8 @@
       "gameId": "401909333",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "6440",
@@ -3084,8 +4178,8 @@
       "gameId": "401909333",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "5101845",
@@ -3095,8 +4189,8 @@
       "gameId": "401909333",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4702656",
@@ -3106,8 +4200,8 @@
       "gameId": "401909329",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "6450",
@@ -3117,8 +4211,8 @@
       "gameId": "401909329",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4432586",
@@ -3128,8 +4222,8 @@
       "gameId": "401909329",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerName": "RJ Barrett",
@@ -3148,8 +4242,8 @@
       "gameId": "401909334",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "3102530",
@@ -3159,8 +4253,8 @@
       "gameId": "401909334",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4066336",
@@ -3170,8 +4264,8 @@
       "gameId": "401909334",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z",
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z",
       "teammateEffects": [
         {
           "playerId": "5041955",
@@ -3234,16 +4328,16 @@
           "delta": 0.8
         },
         {
-          "playerId": "4433627",
-          "playerName": "Keyonte George",
-          "stat": "pts",
-          "delta": -0.7
-        },
-        {
           "playerId": "3133602",
           "playerName": "Svi Mykhailiuk",
           "stat": "threes",
           "delta": 0.7
+        },
+        {
+          "playerId": "4433627",
+          "playerName": "Keyonte George",
+          "stat": "pts",
+          "delta": -0.7
         },
         {
           "playerId": "4397077",
@@ -3288,8 +4382,8 @@
       "gameId": "401909326",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4700818",
@@ -3299,8 +4393,8 @@
       "gameId": "401909326",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4870564",
@@ -3310,8 +4404,8 @@
       "gameId": "401909329",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "5037873",
@@ -3321,8 +4415,8 @@
       "gameId": "401909329",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4397784",
@@ -3332,8 +4426,8 @@
       "gameId": "401909329",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "5214989",
@@ -3343,8 +4437,8 @@
       "gameId": "401909327",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4397114",
@@ -3354,8 +4448,8 @@
       "gameId": "401909327",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "5037878",
@@ -3365,8 +4459,8 @@
       "gameId": "401909327",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4431714",
@@ -3376,8 +4470,8 @@
       "gameId": "401909330",
       "status": "Doubtful",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "5106283",
@@ -3387,8 +4481,8 @@
       "gameId": "401909330",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4702745",
@@ -3398,8 +4492,8 @@
       "gameId": "401909330",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "5231919",
@@ -3409,8 +4503,8 @@
       "gameId": "401909331",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "5279133",
@@ -3420,8 +4514,8 @@
       "gameId": "401909331",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "5157587",
@@ -3431,8 +4525,8 @@
       "gameId": "401909331",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "3138160",
@@ -3442,8 +4536,8 @@
       "gameId": "401909332",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4565698",
@@ -3453,8 +4547,8 @@
       "gameId": "401909334",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "5105592",
@@ -3464,8 +4558,8 @@
       "gameId": "401909334",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4683736",
@@ -3475,8 +4569,8 @@
       "gameId": "401909334",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4433618",
@@ -3486,8 +4580,8 @@
       "gameId": "401909334",
       "status": "Out",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4845363",
@@ -3497,8 +4591,8 @@
       "gameId": "401909335",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "5105832",
@@ -3508,8 +4602,8 @@
       "gameId": "401909335",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     },
     {
       "playerId": "4398390",
@@ -3519,8 +4613,8 @@
       "gameId": "401909335",
       "status": "Questionable",
       "source": "NBA Official",
-      "updatedAt": "2026-11-27T07:45:00.000Z",
-      "reportTime": "2026-11-27T07:45:00.000Z"
+      "updatedAt": "2026-11-27T08:00:00.000Z",
+      "reportTime": "2026-11-27T08:00:00.000Z"
     }
   ],
   "oddsLastPulled": "2026-11-27T07:00:36.694Z",
@@ -3627,8 +4721,8 @@
         ],
         "bookie": "TABtouch",
         "total": 2.08,
-        "fair": 1.83,
-        "takeAt": 1.98,
+        "fair": 1.82,
+        "takeAt": 1.97,
         "stakeUnits": 1
       },
       {
@@ -3688,8 +4782,8 @@
         ],
         "bookie": "Ladbrokes",
         "total": 20.02,
-        "fair": 10.6,
-        "takeAt": 11.45,
+        "fair": 10.58,
+        "takeAt": 11.43,
         "stakeUnits": 0.5
       },
       {
@@ -3705,8 +4799,8 @@
         ],
         "bookie": "Picklebet",
         "total": 52.54,
-        "fair": 26.16,
-        "takeAt": 28.25,
+        "fair": 25.99,
+        "takeAt": 28.07,
         "stakeUnits": 0.25
       },
       {
@@ -3733,8 +4827,8 @@
         ],
         "bookie": "Sportsbet",
         "total": 3.14,
-        "fair": 2.28,
-        "takeAt": 2.46,
+        "fair": 2.29,
+        "takeAt": 2.47,
         "stakeUnits": 1
       },
       {
@@ -3747,8 +4841,8 @@
         ],
         "bookie": "Picklebet",
         "total": 4.09,
-        "fair": 2.74,
-        "takeAt": 2.96,
+        "fair": 2.75,
+        "takeAt": 2.97,
         "stakeUnits": 1
       },
       {
@@ -3763,8 +4857,8 @@
         ],
         "bookie": "Sportsbet",
         "total": 10.21,
-        "fair": 5.78,
-        "takeAt": 6.24,
+        "fair": 5.83,
+        "takeAt": 6.3,
         "stakeUnits": 1
       },
       {
@@ -3779,8 +4873,8 @@
         ],
         "bookie": "Ladbrokes",
         "total": 20.85,
-        "fair": 10.45,
-        "takeAt": 11.29,
+        "fair": 10.56,
+        "takeAt": 11.4,
         "stakeUnits": 0.5
       },
       {
@@ -3797,8 +4891,8 @@
         ],
         "bookie": "Ladbrokes",
         "total": 51.75,
-        "fair": 21.14,
-        "takeAt": 22.83,
+        "fair": 21.4,
+        "takeAt": 23.11,
         "stakeUnits": 0.25
       },
       {
@@ -3825,8 +4919,8 @@
         ],
         "bookie": "TABtouch",
         "total": 3.08,
-        "fair": 2.29,
-        "takeAt": 2.47,
+        "fair": 2.31,
+        "takeAt": 2.49,
         "stakeUnits": 1
       },
       {
@@ -3855,8 +4949,8 @@
         ],
         "bookie": "Unibet",
         "total": 10.18,
-        "fair": 5.77,
-        "takeAt": 6.23,
+        "fair": 5.78,
+        "takeAt": 6.24,
         "stakeUnits": 1
       },
       {
@@ -3872,8 +4966,8 @@
         ],
         "bookie": "Unibet",
         "total": 20.35,
-        "fair": 10.49,
-        "takeAt": 11.33,
+        "fair": 10.51,
+        "takeAt": 11.35,
         "stakeUnits": 0.5
       },
       {
@@ -5058,13 +6152,13 @@
         "line": 10,
         "publishedBookie": "TABtouch",
         "publishedPrice": 1.51,
-        "fairPrice": 1.36,
-        "takeAt": 1.47,
-        "probability": 0.738,
+        "fairPrice": 1.35,
+        "takeAt": 1.46,
+        "probability": 0.739,
         "reasons": [
           {
             "type": "injury",
-            "text": "Cunningham out → +2.6 pts"
+            "text": "Cunningham out → +2.7 pts"
           },
           {
             "type": "matchup",
@@ -5075,7 +6169,7 @@
             "text": "7/10 at this line"
           }
         ],
-        "reasonLine": "Cunningham out → +2.6 pts · Bucks rank #4 in allowing pts to forwards (avg. 19.0) · 7/10 at this line",
+        "reasonLine": "Cunningham out → +2.7 pts · Bucks rank #4 in allowing pts to forwards (avg. 19.0) · 7/10 at this line",
         "recentVsLine": [
           "hit",
           "hit",
@@ -5425,9 +6519,9 @@
         "line": 10,
         "publishedBookie": "Picklebet",
         "publishedPrice": 2.38,
-        "fairPrice": 2.12,
-        "takeAt": 2.29,
-        "probability": 0.473,
+        "fairPrice": 2.11,
+        "takeAt": 2.28,
+        "probability": 0.474,
         "reasons": [
           {
             "type": "matchup",
@@ -5501,13 +6595,13 @@
         "line": 20,
         "publishedBookie": "Picklebet",
         "publishedPrice": 2.3,
-        "fairPrice": 2.13,
-        "takeAt": 2.3,
-        "probability": 0.469,
+        "fairPrice": 2.12,
+        "takeAt": 2.29,
+        "probability": 0.471,
         "reasons": [
           {
             "type": "injury",
-            "text": "Cunningham out → +4.0 pts"
+            "text": "Cunningham out → +4.1 pts"
           },
           {
             "type": "tracking",
@@ -5518,7 +6612,7 @@
             "text": "Playing more: 37 min last 5 (34 season)"
           }
         ],
-        "reasonLine": "Cunningham out → +4.0 pts · More shots: 15.8 FGA last 5 (12.1 season) · Playing more: 37 min last 5 (34 season)",
+        "reasonLine": "Cunningham out → +4.1 pts · More shots: 15.8 FGA last 5 (12.1 season) · Playing more: 37 min last 5 (34 season)",
         "recentVsLine": [
           "miss",
           "miss",
@@ -5723,20 +6817,20 @@
         "line": 20,
         "publishedBookie": "Sportsbet",
         "publishedPrice": 2.18,
-        "fairPrice": 1.68,
-        "takeAt": 1.81,
-        "probability": 0.594,
+        "fairPrice": 1.69,
+        "takeAt": 1.83,
+        "probability": 0.591,
         "reasons": [
           {
             "type": "injury",
-            "text": "Brown out → +3.4 pts"
+            "text": "Brown out → +3.3 pts"
           },
           {
             "type": "form",
             "text": "5/10 at this line"
           }
         ],
-        "reasonLine": "Brown out → +3.4 pts · 5/10 at this line",
+        "reasonLine": "Brown out → +3.3 pts · 5/10 at this line",
         "recentVsLine": [
           "hit",
           "hit",
@@ -5797,7 +6891,7 @@
         "publishedPrice": 1.78,
         "fairPrice": 1.5,
         "takeAt": 1.62,
-        "probability": 0.668,
+        "probability": 0.667,
         "reasons": [
           {
             "type": "injury",
@@ -5943,7 +7037,7 @@
         "publishedPrice": 1.88,
         "fairPrice": 1.7,
         "takeAt": 1.84,
-        "probability": 0.589,
+        "probability": 0.588,
         "reasons": [
           {
             "type": "form",
@@ -6011,7 +7105,7 @@
         "publishedPrice": 2.4,
         "fairPrice": 2,
         "takeAt": 2.16,
-        "probability": 0.501,
+        "probability": 0.499,
         "reasons": [
           {
             "type": "matchup",
@@ -6063,7 +7157,7 @@
         },
         "questionable": false,
         "tags": [
-          "Check news"
+          "Value"
         ]
       },
       "4432241-3pm-1": {
@@ -6219,9 +7313,9 @@
         "line": 7,
         "publishedBookie": "TABtouch",
         "publishedPrice": 1.91,
-        "fairPrice": 1.69,
-        "takeAt": 1.83,
-        "probability": 0.593,
+        "fairPrice": 1.7,
+        "takeAt": 1.84,
+        "probability": 0.589,
         "reasons": [
           {
             "type": "matchup",
@@ -6428,20 +7522,20 @@
         "line": 15,
         "publishedBookie": "Unibet",
         "publishedPrice": 1.89,
-        "fairPrice": 1.73,
-        "takeAt": 1.87,
-        "probability": 0.578,
+        "fairPrice": 1.72,
+        "takeAt": 1.86,
+        "probability": 0.581,
         "reasons": [
           {
             "type": "injury",
-            "text": "Barrett out → +2.4 pts"
+            "text": "Barrett out → +2.5 pts"
           },
           {
             "type": "tracking",
             "text": "More shots: 12.4 FGA last 5 (10.2 season)"
           }
         ],
-        "reasonLine": "Barrett out → +2.4 pts · More shots: 12.4 FGA last 5 (10.2 season)",
+        "reasonLine": "Barrett out → +2.5 pts · More shots: 12.4 FGA last 5 (10.2 season)",
         "recentVsLine": [
           "hit",
           "miss",
@@ -9393,6 +10487,30 @@
       "probability": 0.18
     },
     {
+      "id": "3147657-reb-5",
+      "playerId": "3147657",
+      "playerName": "Mikal Bridges",
+      "gameId": "401909326",
+      "market": "reb",
+      "line": 5,
+      "price": 3.5,
+      "bookie": "Betr",
+      "fairPrice": 2.4,
+      "probability": 0.416
+    },
+    {
+      "id": "3147657-reb-7",
+      "playerId": "3147657",
+      "playerName": "Mikal Bridges",
+      "gameId": "401909326",
+      "market": "reb",
+      "line": 7,
+      "price": 7.25,
+      "bookie": "Ladbrokes",
+      "fairPrice": 5.9,
+      "probability": 0.17
+    },
+    {
       "id": "3934672-reb-3",
       "playerId": "3934672",
       "playerName": "Jalen Brunson",
@@ -9451,30 +10569,6 @@
       "bookie": "Unibet",
       "fairPrice": 2.64,
       "probability": 0.378
-    },
-    {
-      "id": "3147657-reb-5",
-      "playerId": "3147657",
-      "playerName": "Mikal Bridges",
-      "gameId": "401909326",
-      "market": "reb",
-      "line": 5,
-      "price": 3.5,
-      "bookie": "Betr",
-      "fairPrice": 2.4,
-      "probability": 0.416
-    },
-    {
-      "id": "3147657-reb-7",
-      "playerId": "3147657",
-      "playerName": "Mikal Bridges",
-      "gameId": "401909326",
-      "market": "reb",
-      "line": 7,
-      "price": 7.25,
-      "bookie": "Ladbrokes",
-      "fairPrice": 5.9,
-      "probability": 0.17
     },
     {
       "id": "3914044-pts-10",
@@ -9585,210 +10679,6 @@
       "probability": 0.102
     },
     {
-      "id": "4601025-pts-10",
-      "playerId": "4601025",
-      "playerName": "Pelle Larsson",
-      "gameId": "401909326",
-      "market": "pts",
-      "line": 10,
-      "price": 1.92,
-      "bookie": "Bet Right",
-      "fairPrice": 1.38,
-      "probability": 0.723
-    },
-    {
-      "id": "4601025-reb-3",
-      "playerId": "4601025",
-      "playerName": "Pelle Larsson",
-      "gameId": "401909326",
-      "market": "reb",
-      "line": 3,
-      "price": 1.64,
-      "bookie": "Ladbrokes",
-      "fairPrice": 1.46,
-      "probability": 0.686
-    },
-    {
-      "id": "4601025-3pm-1",
-      "playerId": "4601025",
-      "playerName": "Pelle Larsson",
-      "gameId": "401909326",
-      "market": "3pm",
-      "line": 1,
-      "price": 1.5,
-      "bookie": "Ladbrokes",
-      "fairPrice": 1.26,
-      "probability": 0.794
-    },
-    {
-      "id": "4601025-3pm-2",
-      "playerId": "4601025",
-      "playerName": "Pelle Larsson",
-      "gameId": "401909326",
-      "market": "3pm",
-      "line": 2,
-      "price": 3.15,
-      "bookie": "Ladbrokes",
-      "fairPrice": 2.03,
-      "probability": 0.493
-    },
-    {
-      "id": "4601025-3pm-3",
-      "playerId": "4601025",
-      "playerName": "Pelle Larsson",
-      "gameId": "401909326",
-      "market": "3pm",
-      "line": 3,
-      "price": 8.25,
-      "bookie": "Ladbrokes",
-      "fairPrice": 3.87,
-      "probability": 0.258
-    },
-    {
-      "id": "5107157-pts-10",
-      "playerId": "5107157",
-      "playerName": "Ryan Conwell",
-      "gameId": "401909326",
-      "market": "pts",
-      "line": 10,
-      "price": 2.8,
-      "bookie": "TAB",
-      "fairPrice": 1.98,
-      "probability": 0.505
-    },
-    {
-      "id": "5107157-3pm-3",
-      "playerId": "5107157",
-      "playerName": "Ryan Conwell",
-      "gameId": "401909326",
-      "market": "3pm",
-      "line": 3,
-      "price": 3.75,
-      "bookie": "TAB",
-      "fairPrice": 3.42,
-      "probability": 0.292
-    },
-    {
-      "id": "3064482-pts-5",
-      "playerId": "3064482",
-      "playerName": "Bobby Portis",
-      "gameId": "401909326",
-      "market": "pts",
-      "line": 5,
-      "price": 1.42,
-      "bookie": "Ladbrokes",
-      "fairPrice": 1.22,
-      "probability": 0.821
-    },
-    {
-      "id": "3032977-reb-10",
-      "playerId": "3032977",
-      "playerName": "Giannis Antetokounmpo",
-      "gameId": "401909326",
-      "market": "reb",
-      "line": 10,
-      "price": 1.43,
-      "bookie": "TABtouch",
-      "fairPrice": 1.32,
-      "probability": 0.76
-    },
-    {
-      "id": "3032977-ast-5",
-      "playerId": "3032977",
-      "playerName": "Giannis Antetokounmpo",
-      "gameId": "401909326",
-      "market": "ast",
-      "line": 5,
-      "price": 1.6,
-      "bookie": "TABtouch",
-      "fairPrice": 1.48,
-      "probability": 0.674
-    },
-    {
-      "id": "6475-pts-10",
-      "playerId": "6475",
-      "playerName": "Klay Thompson",
-      "gameId": "401909326",
-      "market": "pts",
-      "line": 10,
-      "price": 1.5,
-      "bookie": "TAB",
-      "fairPrice": 1.2,
-      "probability": 0.833
-    },
-    {
-      "id": "6475-pts-15",
-      "playerId": "6475",
-      "playerName": "Klay Thompson",
-      "gameId": "401909326",
-      "market": "pts",
-      "line": 15,
-      "price": 2.65,
-      "bookie": "Betr",
-      "fairPrice": 1.93,
-      "probability": 0.517
-    },
-    {
-      "id": "6475-pts-20",
-      "playerId": "6475",
-      "playerName": "Klay Thompson",
-      "gameId": "401909326",
-      "market": "pts",
-      "line": 20,
-      "price": 6.25,
-      "bookie": "Ladbrokes",
-      "fairPrice": 5.74,
-      "probability": 0.174
-    },
-    {
-      "id": "6475-ast-3",
-      "playerId": "6475",
-      "playerName": "Klay Thompson",
-      "gameId": "401909326",
-      "market": "ast",
-      "line": 3,
-      "price": 3.25,
-      "bookie": "TABtouch",
-      "fairPrice": 2.47,
-      "probability": 0.404
-    },
-    {
-      "id": "6475-3pm-3",
-      "playerId": "6475",
-      "playerName": "Klay Thompson",
-      "gameId": "401909326",
-      "market": "3pm",
-      "line": 3,
-      "price": 1.63,
-      "bookie": "TABtouch",
-      "fairPrice": 1.43,
-      "probability": 0.701
-    },
-    {
-      "id": "6475-3pm-4",
-      "playerId": "6475",
-      "playerName": "Klay Thompson",
-      "gameId": "401909326",
-      "market": "3pm",
-      "line": 4,
-      "price": 2.48,
-      "bookie": "TABtouch",
-      "fairPrice": 1.96,
-      "probability": 0.511
-    },
-    {
-      "id": "6475-3pm-5",
-      "playerId": "6475",
-      "playerName": "Klay Thompson",
-      "gameId": "401909326",
-      "market": "3pm",
-      "line": 5,
-      "price": 4,
-      "bookie": "TABtouch",
-      "fairPrice": 2.95,
-      "probability": 0.339
-    },
-    {
       "id": "4278053-pts-15",
       "playerId": "4278053",
       "playerName": "Davion Mitchell",
@@ -9847,6 +10737,18 @@
       "bookie": "Betr",
       "fairPrice": 2.25,
       "probability": 0.445
+    },
+    {
+      "id": "3064482-pts-5",
+      "playerId": "3064482",
+      "playerName": "Bobby Portis",
+      "gameId": "401909326",
+      "market": "pts",
+      "line": 5,
+      "price": 1.42,
+      "bookie": "Ladbrokes",
+      "fairPrice": 1.22,
+      "probability": 0.821
     },
     {
       "id": "4066261-pts-15",
@@ -9933,52 +10835,256 @@
       "probability": 0.756
     },
     {
-      "id": "2596112-reb-3",
-      "playerId": "2596112",
-      "playerName": "Javonte Green",
-      "gameId": "401909327",
+      "id": "6475-pts-10",
+      "playerId": "6475",
+      "playerName": "Klay Thompson",
+      "gameId": "401909326",
+      "market": "pts",
+      "line": 10,
+      "price": 1.5,
+      "bookie": "TAB",
+      "fairPrice": 1.2,
+      "probability": 0.833
+    },
+    {
+      "id": "6475-pts-15",
+      "playerId": "6475",
+      "playerName": "Klay Thompson",
+      "gameId": "401909326",
+      "market": "pts",
+      "line": 15,
+      "price": 2.65,
+      "bookie": "Betr",
+      "fairPrice": 1.93,
+      "probability": 0.517
+    },
+    {
+      "id": "6475-pts-20",
+      "playerId": "6475",
+      "playerName": "Klay Thompson",
+      "gameId": "401909326",
+      "market": "pts",
+      "line": 20,
+      "price": 6.25,
+      "bookie": "Ladbrokes",
+      "fairPrice": 5.74,
+      "probability": 0.174
+    },
+    {
+      "id": "6475-ast-3",
+      "playerId": "6475",
+      "playerName": "Klay Thompson",
+      "gameId": "401909326",
+      "market": "ast",
+      "line": 3,
+      "price": 3.25,
+      "bookie": "TABtouch",
+      "fairPrice": 2.47,
+      "probability": 0.404
+    },
+    {
+      "id": "6475-3pm-3",
+      "playerId": "6475",
+      "playerName": "Klay Thompson",
+      "gameId": "401909326",
+      "market": "3pm",
+      "line": 3,
+      "price": 1.63,
+      "bookie": "TABtouch",
+      "fairPrice": 1.43,
+      "probability": 0.701
+    },
+    {
+      "id": "6475-3pm-4",
+      "playerId": "6475",
+      "playerName": "Klay Thompson",
+      "gameId": "401909326",
+      "market": "3pm",
+      "line": 4,
+      "price": 2.48,
+      "bookie": "TABtouch",
+      "fairPrice": 1.96,
+      "probability": 0.511
+    },
+    {
+      "id": "6475-3pm-5",
+      "playerId": "6475",
+      "playerName": "Klay Thompson",
+      "gameId": "401909326",
+      "market": "3pm",
+      "line": 5,
+      "price": 4,
+      "bookie": "TABtouch",
+      "fairPrice": 2.95,
+      "probability": 0.339
+    },
+    {
+      "id": "3032977-reb-10",
+      "playerId": "3032977",
+      "playerName": "Giannis Antetokounmpo",
+      "gameId": "401909326",
+      "market": "reb",
+      "line": 10,
+      "price": 1.43,
+      "bookie": "TABtouch",
+      "fairPrice": 1.32,
+      "probability": 0.76
+    },
+    {
+      "id": "3032977-ast-5",
+      "playerId": "3032977",
+      "playerName": "Giannis Antetokounmpo",
+      "gameId": "401909326",
+      "market": "ast",
+      "line": 5,
+      "price": 1.6,
+      "bookie": "TABtouch",
+      "fairPrice": 1.48,
+      "probability": 0.674
+    },
+    {
+      "id": "4601025-pts-10",
+      "playerId": "4601025",
+      "playerName": "Pelle Larsson",
+      "gameId": "401909326",
+      "market": "pts",
+      "line": 10,
+      "price": 1.92,
+      "bookie": "Bet Right",
+      "fairPrice": 1.38,
+      "probability": 0.723
+    },
+    {
+      "id": "4601025-reb-3",
+      "playerId": "4601025",
+      "playerName": "Pelle Larsson",
+      "gameId": "401909326",
       "market": "reb",
       "line": 3,
-      "price": 2.25,
-      "bookie": "TAB",
-      "fairPrice": 1.78,
-      "probability": 0.56
+      "price": 1.64,
+      "bookie": "Ladbrokes",
+      "fairPrice": 1.46,
+      "probability": 0.686
     },
     {
-      "id": "2596112-reb-5",
-      "playerId": "2596112",
-      "playerName": "Javonte Green",
-      "gameId": "401909327",
-      "market": "reb",
-      "line": 5,
-      "price": 5.5,
-      "bookie": "TAB",
-      "fairPrice": 4.22,
-      "probability": 0.237
-    },
-    {
-      "id": "2596112-3pm-1",
-      "playerId": "2596112",
-      "playerName": "Javonte Green",
-      "gameId": "401909327",
+      "id": "4601025-3pm-1",
+      "playerId": "4601025",
+      "playerName": "Pelle Larsson",
+      "gameId": "401909326",
       "market": "3pm",
       "line": 1,
-      "price": 2.5,
-      "bookie": "TAB",
-      "fairPrice": 1.69,
-      "probability": 0.59
+      "price": 1.5,
+      "bookie": "Ladbrokes",
+      "fairPrice": 1.26,
+      "probability": 0.794
     },
     {
-      "id": "2596112-3pm-2",
-      "playerId": "2596112",
-      "playerName": "Javonte Green",
-      "gameId": "401909327",
+      "id": "4601025-3pm-2",
+      "playerId": "4601025",
+      "playerName": "Pelle Larsson",
+      "gameId": "401909326",
       "market": "3pm",
       "line": 2,
-      "price": 4.75,
+      "price": 3.15,
+      "bookie": "Ladbrokes",
+      "fairPrice": 2.03,
+      "probability": 0.493
+    },
+    {
+      "id": "4601025-3pm-3",
+      "playerId": "4601025",
+      "playerName": "Pelle Larsson",
+      "gameId": "401909326",
+      "market": "3pm",
+      "line": 3,
+      "price": 8.25,
+      "bookie": "Ladbrokes",
+      "fairPrice": 3.87,
+      "probability": 0.258
+    },
+    {
+      "id": "5107157-pts-10",
+      "playerId": "5107157",
+      "playerName": "Ryan Conwell",
+      "gameId": "401909326",
+      "market": "pts",
+      "line": 10,
+      "price": 2.8,
       "bookie": "TAB",
-      "fairPrice": 3.07,
-      "probability": 0.326
+      "fairPrice": 1.98,
+      "probability": 0.505
+    },
+    {
+      "id": "5107157-3pm-3",
+      "playerId": "5107157",
+      "playerName": "Ryan Conwell",
+      "gameId": "401909326",
+      "market": "3pm",
+      "line": 3,
+      "price": 3.75,
+      "bookie": "TAB",
+      "fairPrice": 3.42,
+      "probability": 0.292
+    },
+    {
+      "id": "4278562-ast-3",
+      "playerId": "4278562",
+      "playerName": "Paul Reed",
+      "gameId": "401909327",
+      "market": "ast",
+      "line": 3,
+      "price": 4.5,
+      "bookie": "TAB",
+      "fairPrice": 2.25,
+      "probability": 0.444
+    },
+    {
+      "id": "4684742-pts-10",
+      "playerId": "4684742",
+      "playerName": "Ausar Thompson",
+      "gameId": "401909327",
+      "market": "pts",
+      "line": 10,
+      "price": 1.94,
+      "bookie": "Unibet",
+      "fairPrice": 1.32,
+      "probability": 0.759
+    },
+    {
+      "id": "4684742-pts-15",
+      "playerId": "4684742",
+      "playerName": "Ausar Thompson",
+      "gameId": "401909327",
+      "market": "pts",
+      "line": 15,
+      "price": 2.7,
+      "bookie": "Betr",
+      "fairPrice": 2.29,
+      "probability": 0.437
+    },
+    {
+      "id": "4684742-reb-7",
+      "playerId": "4684742",
+      "playerName": "Ausar Thompson",
+      "gameId": "401909327",
+      "market": "reb",
+      "line": 7,
+      "price": 1.77,
+      "bookie": "Neds",
+      "fairPrice": 1.32,
+      "probability": 0.758
+    },
+    {
+      "id": "4684742-reb-10",
+      "playerId": "4684742",
+      "playerName": "Ausar Thompson",
+      "gameId": "401909327",
+      "market": "reb",
+      "line": 10,
+      "price": 2.38,
+      "bookie": "Bet Right",
+      "fairPrice": 2.11,
+      "probability": 0.474
     },
     {
       "id": "4066372-pts-15",
@@ -9989,8 +11095,8 @@
       "line": 15,
       "price": 2.1,
       "bookie": "Betr",
-      "fairPrice": 1.84,
-      "probability": 0.542
+      "fairPrice": 1.85,
+      "probability": 0.54
     },
     {
       "id": "4066372-ast-7",
@@ -10017,64 +11123,16 @@
       "probability": 0.701
     },
     {
-      "id": "4278562-ast-3",
-      "playerId": "4278562",
-      "playerName": "Paul Reed",
-      "gameId": "401909327",
-      "market": "ast",
-      "line": 3,
-      "price": 4.5,
-      "bookie": "TAB",
-      "fairPrice": 2.25,
-      "probability": 0.444
-    },
-    {
-      "id": "4684742-pts-10",
-      "playerId": "4684742",
-      "playerName": "Ausar Thompson",
+      "id": "5107199-pts-20",
+      "playerId": "5107199",
+      "playerName": "Daniss Jenkins",
       "gameId": "401909327",
       "market": "pts",
-      "line": 10,
-      "price": 1.94,
-      "bookie": "Unibet",
-      "fairPrice": 1.32,
-      "probability": 0.757
-    },
-    {
-      "id": "4684742-pts-15",
-      "playerId": "4684742",
-      "playerName": "Ausar Thompson",
-      "gameId": "401909327",
-      "market": "pts",
-      "line": 15,
-      "price": 2.7,
+      "line": 20,
+      "price": 2.3,
       "bookie": "Betr",
-      "fairPrice": 2.33,
-      "probability": 0.43
-    },
-    {
-      "id": "4684742-reb-7",
-      "playerId": "4684742",
-      "playerName": "Ausar Thompson",
-      "gameId": "401909327",
-      "market": "reb",
-      "line": 7,
-      "price": 1.77,
-      "bookie": "Neds",
-      "fairPrice": 1.32,
-      "probability": 0.757
-    },
-    {
-      "id": "4684742-reb-10",
-      "playerId": "4684742",
-      "playerName": "Ausar Thompson",
-      "gameId": "401909327",
-      "market": "reb",
-      "line": 10,
-      "price": 2.38,
-      "bookie": "Bet Right",
       "fairPrice": 2.12,
-      "probability": 0.473
+      "probability": 0.471
     },
     {
       "id": "5107199-pts-25",
@@ -10085,8 +11143,8 @@
       "line": 25,
       "price": 12.5,
       "bookie": "Neds",
-      "fairPrice": 4.66,
-      "probability": 0.215
+      "fairPrice": 4.59,
+      "probability": 0.218
     },
     {
       "id": "5107199-3pm-1",
@@ -10101,40 +11159,52 @@
       "probability": 0.785
     },
     {
-      "id": "4395702-pts-15",
-      "playerId": "4395702",
-      "playerName": "Isaiah Joe",
-      "gameId": "401909327",
-      "market": "pts",
-      "line": 15,
-      "price": 3.9,
-      "bookie": "Neds",
-      "fairPrice": 1.74,
-      "probability": 0.574
-    },
-    {
-      "id": "4395702-reb-3",
-      "playerId": "4395702",
-      "playerName": "Isaiah Joe",
+      "id": "2596112-reb-3",
+      "playerId": "2596112",
+      "playerName": "Javonte Green",
       "gameId": "401909327",
       "market": "reb",
       "line": 3,
-      "price": 2.7,
+      "price": 2.25,
       "bookie": "TAB",
-      "fairPrice": 2.44,
-      "probability": 0.411
+      "fairPrice": 1.79,
+      "probability": 0.558
     },
     {
-      "id": "4395702-3pm-1",
-      "playerId": "4395702",
-      "playerName": "Isaiah Joe",
+      "id": "2596112-reb-5",
+      "playerId": "2596112",
+      "playerName": "Javonte Green",
+      "gameId": "401909327",
+      "market": "reb",
+      "line": 5,
+      "price": 5.5,
+      "bookie": "TAB",
+      "fairPrice": 4.26,
+      "probability": 0.235
+    },
+    {
+      "id": "2596112-3pm-1",
+      "playerId": "2596112",
+      "playerName": "Javonte Green",
       "gameId": "401909327",
       "market": "3pm",
       "line": 1,
-      "price": 1.43,
-      "bookie": "TABtouch",
-      "fairPrice": 1.2,
-      "probability": 0.837
+      "price": 2.5,
+      "bookie": "TAB",
+      "fairPrice": 1.69,
+      "probability": 0.59
+    },
+    {
+      "id": "2596112-3pm-2",
+      "playerId": "2596112",
+      "playerName": "Javonte Green",
+      "gameId": "401909327",
+      "market": "3pm",
+      "line": 2,
+      "price": 4.75,
+      "bookie": "TAB",
+      "fairPrice": 3.07,
+      "probability": 0.326
     },
     {
       "id": "3908845-pts-10",
@@ -10145,8 +11215,8 @@
       "line": 10,
       "price": 1.51,
       "bookie": "TABtouch",
-      "fairPrice": 1.36,
-      "probability": 0.738
+      "fairPrice": 1.35,
+      "probability": 0.739
     },
     {
       "id": "3908845-pts-15",
@@ -10157,8 +11227,8 @@
       "line": 15,
       "price": 3.1,
       "bookie": "Betr",
-      "fairPrice": 2.6,
-      "probability": 0.384
+      "fairPrice": 2.57,
+      "probability": 0.389
     },
     {
       "id": "3908845-3pm-1",
@@ -10185,64 +11255,40 @@
       "probability": 0.342
     },
     {
-      "id": "3134907-pts-10",
-      "playerId": "3134907",
-      "playerName": "Kyle Kuzma",
-      "gameId": "401909327",
-      "market": "pts",
-      "line": 10,
-      "price": 1.43,
-      "bookie": "TABtouch",
-      "fairPrice": 1.15,
-      "probability": 0.869
-    },
-    {
-      "id": "3134907-pts-15",
-      "playerId": "3134907",
-      "playerName": "Kyle Kuzma",
+      "id": "4395702-pts-15",
+      "playerId": "4395702",
+      "playerName": "Isaiah Joe",
       "gameId": "401909327",
       "market": "pts",
       "line": 15,
-      "price": 2.63,
-      "bookie": "Bet Right",
-      "fairPrice": 1.82,
-      "probability": 0.551
-    },
-    {
-      "id": "3134907-pts-20",
-      "playerId": "3134907",
-      "playerName": "Kyle Kuzma",
-      "gameId": "401909327",
-      "market": "pts",
-      "line": 20,
-      "price": 6.2,
+      "price": 3.9,
       "bookie": "Neds",
-      "fairPrice": 5.34,
-      "probability": 0.187
+      "fairPrice": 1.75,
+      "probability": 0.572
     },
     {
-      "id": "3134907-3pm-2",
-      "playerId": "3134907",
-      "playerName": "Kyle Kuzma",
+      "id": "4395702-reb-3",
+      "playerId": "4395702",
+      "playerName": "Isaiah Joe",
       "gameId": "401909327",
-      "market": "3pm",
-      "line": 2,
-      "price": 2,
-      "bookie": "Neds",
-      "fairPrice": 1.68,
-      "probability": 0.595
-    },
-    {
-      "id": "3134907-3pm-3",
-      "playerId": "3134907",
-      "playerName": "Kyle Kuzma",
-      "gameId": "401909327",
-      "market": "3pm",
+      "market": "reb",
       "line": 3,
-      "price": 3.8,
-      "bookie": "Neds",
-      "fairPrice": 2.89,
-      "probability": 0.346
+      "price": 2.7,
+      "bookie": "TAB",
+      "fairPrice": 2.44,
+      "probability": 0.41
+    },
+    {
+      "id": "4395702-3pm-1",
+      "playerId": "4395702",
+      "playerName": "Isaiah Joe",
+      "gameId": "401909327",
+      "market": "3pm",
+      "line": 1,
+      "price": 1.43,
+      "bookie": "TABtouch",
+      "fairPrice": 1.2,
+      "probability": 0.837
     },
     {
       "id": "4591725-reb-5",
@@ -10267,18 +11313,6 @@
       "bookie": "Neds",
       "fairPrice": 5.19,
       "probability": 0.193
-    },
-    {
-      "id": "5164559-pts-5",
-      "playerId": "5164559",
-      "playerName": "Nate Ament",
-      "gameId": "401909327",
-      "market": "pts",
-      "line": 5,
-      "price": 1.35,
-      "bookie": "TAB",
-      "fairPrice": 1.15,
-      "probability": 0.869
     },
     {
       "id": "3133628-reb-5",
@@ -10341,40 +11375,76 @@
       "probability": 0.124
     },
     {
-      "id": "4395725-pts-20",
-      "playerId": "4395725",
-      "playerName": "Tyler Herro",
+      "id": "3134907-pts-10",
+      "playerId": "3134907",
+      "playerName": "Kyle Kuzma",
+      "gameId": "401909327",
+      "market": "pts",
+      "line": 10,
+      "price": 1.43,
+      "bookie": "TABtouch",
+      "fairPrice": 1.15,
+      "probability": 0.869
+    },
+    {
+      "id": "3134907-pts-15",
+      "playerId": "3134907",
+      "playerName": "Kyle Kuzma",
+      "gameId": "401909327",
+      "market": "pts",
+      "line": 15,
+      "price": 2.63,
+      "bookie": "Bet Right",
+      "fairPrice": 1.82,
+      "probability": 0.551
+    },
+    {
+      "id": "3134907-pts-20",
+      "playerId": "3134907",
+      "playerName": "Kyle Kuzma",
       "gameId": "401909327",
       "market": "pts",
       "line": 20,
-      "price": 1.64,
+      "price": 6.2,
       "bookie": "Neds",
-      "fairPrice": 1.25,
-      "probability": 0.801
+      "fairPrice": 5.34,
+      "probability": 0.187
     },
     {
-      "id": "4395725-ast-5",
-      "playerId": "4395725",
-      "playerName": "Tyler Herro",
+      "id": "3134907-3pm-2",
+      "playerId": "3134907",
+      "playerName": "Kyle Kuzma",
       "gameId": "401909327",
-      "market": "ast",
-      "line": 5,
-      "price": 2.15,
-      "bookie": "Betr",
+      "market": "3pm",
+      "line": 2,
+      "price": 2,
+      "bookie": "Neds",
       "fairPrice": 1.68,
-      "probability": 0.596
+      "probability": 0.595
     },
     {
-      "id": "4395725-ast-7",
-      "playerId": "4395725",
-      "playerName": "Tyler Herro",
+      "id": "3134907-3pm-3",
+      "playerId": "3134907",
+      "playerName": "Kyle Kuzma",
       "gameId": "401909327",
-      "market": "ast",
-      "line": 7,
-      "price": 5.6,
-      "bookie": "Betr",
-      "fairPrice": 3.31,
-      "probability": 0.302
+      "market": "3pm",
+      "line": 3,
+      "price": 3.8,
+      "bookie": "Neds",
+      "fairPrice": 2.89,
+      "probability": 0.346
+    },
+    {
+      "id": "5164559-pts-5",
+      "playerId": "5164559",
+      "playerName": "Nate Ament",
+      "gameId": "401909327",
+      "market": "pts",
+      "line": 5,
+      "price": 1.35,
+      "bookie": "TAB",
+      "fairPrice": 1.15,
+      "probability": 0.869
     },
     {
       "id": "5082206-pts-10",
@@ -10437,6 +11507,42 @@
       "probability": 0.62
     },
     {
+      "id": "4395725-pts-20",
+      "playerId": "4395725",
+      "playerName": "Tyler Herro",
+      "gameId": "401909327",
+      "market": "pts",
+      "line": 20,
+      "price": 1.64,
+      "bookie": "Neds",
+      "fairPrice": 1.25,
+      "probability": 0.801
+    },
+    {
+      "id": "4395725-ast-5",
+      "playerId": "4395725",
+      "playerName": "Tyler Herro",
+      "gameId": "401909327",
+      "market": "ast",
+      "line": 5,
+      "price": 2.15,
+      "bookie": "Betr",
+      "fairPrice": 1.68,
+      "probability": 0.596
+    },
+    {
+      "id": "4395725-ast-7",
+      "playerId": "4395725",
+      "playerName": "Tyler Herro",
+      "gameId": "401909327",
+      "market": "ast",
+      "line": 7,
+      "price": 5.6,
+      "bookie": "Betr",
+      "fairPrice": 3.31,
+      "probability": 0.302
+    },
+    {
       "id": "4395712-3pm-3",
       "playerId": "4395712",
       "playerName": "Andrew Nembhard",
@@ -10459,90 +11565,6 @@
       "bookie": "Ladbrokes",
       "fairPrice": 5.14,
       "probability": 0.195
-    },
-    {
-      "id": "3149673-ast-5",
-      "playerId": "3149673",
-      "playerName": "Pascal Siakam",
-      "gameId": "401909328",
-      "market": "ast",
-      "line": 5,
-      "price": 4.1,
-      "bookie": "Bet Right",
-      "fairPrice": 3.2,
-      "probability": 0.313
-    },
-    {
-      "id": "3149673-3pm-2",
-      "playerId": "3149673",
-      "playerName": "Pascal Siakam",
-      "gameId": "401909328",
-      "market": "3pm",
-      "line": 2,
-      "price": 1.98,
-      "bookie": "Ladbrokes",
-      "fairPrice": 1.83,
-      "probability": 0.548
-    },
-    {
-      "id": "3149673-3pm-3",
-      "playerId": "3149673",
-      "playerName": "Pascal Siakam",
-      "gameId": "401909328",
-      "market": "3pm",
-      "line": 3,
-      "price": 3.9,
-      "bookie": "Bet Right",
-      "fairPrice": 3.27,
-      "probability": 0.306
-    },
-    {
-      "id": "3149673-3pm-4",
-      "playerId": "3149673",
-      "playerName": "Pascal Siakam",
-      "gameId": "401909328",
-      "market": "3pm",
-      "line": 4,
-      "price": 8,
-      "bookie": "Ladbrokes",
-      "fairPrice": 6.67,
-      "probability": 0.15
-    },
-    {
-      "id": "4396909-reb-5",
-      "playerId": "4396909",
-      "playerName": "Aaron Nesmith",
-      "gameId": "401909328",
-      "market": "reb",
-      "line": 5,
-      "price": 2.85,
-      "bookie": "Betr",
-      "fairPrice": 2.58,
-      "probability": 0.387
-    },
-    {
-      "id": "4396909-ast-3",
-      "playerId": "4396909",
-      "playerName": "Aaron Nesmith",
-      "gameId": "401909328",
-      "market": "ast",
-      "line": 3,
-      "price": 2.55,
-      "bookie": "Ladbrokes",
-      "fairPrice": 1.96,
-      "probability": 0.509
-    },
-    {
-      "id": "4017837-pts-10",
-      "playerId": "4017837",
-      "playerName": "Ivica Zubac",
-      "gameId": "401909328",
-      "market": "pts",
-      "line": 10,
-      "price": 1.46,
-      "bookie": "Ladbrokes",
-      "fairPrice": 1.35,
-      "probability": 0.74
     },
     {
       "id": "3133603-pts-10",
@@ -10617,6 +11639,90 @@
       "probability": 0.107
     },
     {
+      "id": "3149673-ast-5",
+      "playerId": "3149673",
+      "playerName": "Pascal Siakam",
+      "gameId": "401909328",
+      "market": "ast",
+      "line": 5,
+      "price": 4.1,
+      "bookie": "Bet Right",
+      "fairPrice": 3.2,
+      "probability": 0.313
+    },
+    {
+      "id": "3149673-3pm-2",
+      "playerId": "3149673",
+      "playerName": "Pascal Siakam",
+      "gameId": "401909328",
+      "market": "3pm",
+      "line": 2,
+      "price": 1.98,
+      "bookie": "Ladbrokes",
+      "fairPrice": 1.83,
+      "probability": 0.548
+    },
+    {
+      "id": "3149673-3pm-3",
+      "playerId": "3149673",
+      "playerName": "Pascal Siakam",
+      "gameId": "401909328",
+      "market": "3pm",
+      "line": 3,
+      "price": 3.9,
+      "bookie": "Bet Right",
+      "fairPrice": 3.27,
+      "probability": 0.306
+    },
+    {
+      "id": "3149673-3pm-4",
+      "playerId": "3149673",
+      "playerName": "Pascal Siakam",
+      "gameId": "401909328",
+      "market": "3pm",
+      "line": 4,
+      "price": 8,
+      "bookie": "Ladbrokes",
+      "fairPrice": 6.67,
+      "probability": 0.15
+    },
+    {
+      "id": "4017837-pts-10",
+      "playerId": "4017837",
+      "playerName": "Ivica Zubac",
+      "gameId": "401909328",
+      "market": "pts",
+      "line": 10,
+      "price": 1.46,
+      "bookie": "Ladbrokes",
+      "fairPrice": 1.35,
+      "probability": 0.74
+    },
+    {
+      "id": "4396909-reb-5",
+      "playerId": "4396909",
+      "playerName": "Aaron Nesmith",
+      "gameId": "401909328",
+      "market": "reb",
+      "line": 5,
+      "price": 2.85,
+      "bookie": "Betr",
+      "fairPrice": 2.58,
+      "probability": 0.387
+    },
+    {
+      "id": "4396909-ast-3",
+      "playerId": "4396909",
+      "playerName": "Aaron Nesmith",
+      "gameId": "401909328",
+      "market": "ast",
+      "line": 3,
+      "price": 2.55,
+      "bookie": "Ladbrokes",
+      "fairPrice": 1.96,
+      "probability": 0.509
+    },
+    {
       "id": "4870562-pts-10",
       "playerId": "4870562",
       "playerName": "Dominick Barlow",
@@ -10629,6 +11735,30 @@
       "probability": 0.606
     },
     {
+      "id": "4351851-pts-10",
+      "playerId": "4351851",
+      "playerName": "Anfernee Simons",
+      "gameId": "401909328",
+      "market": "pts",
+      "line": 10,
+      "price": 1.82,
+      "bookie": "Neds",
+      "fairPrice": 1.34,
+      "probability": 0.747
+    },
+    {
+      "id": "4351851-pts-15",
+      "playerId": "4351851",
+      "playerName": "Anfernee Simons",
+      "gameId": "401909328",
+      "market": "pts",
+      "line": 15,
+      "price": 4.4,
+      "bookie": "Neds",
+      "fairPrice": 2.84,
+      "probability": 0.353
+    },
+    {
       "id": "1966-pts-15",
       "playerId": "1966",
       "playerName": "LeBron James",
@@ -10638,7 +11768,7 @@
       "price": 1.33,
       "bookie": "Ladbrokes",
       "fairPrice": 1.19,
-      "probability": 0.842
+      "probability": 0.841
     },
     {
       "id": "1966-pts-20",
@@ -10649,8 +11779,8 @@
       "line": 20,
       "price": 2.05,
       "bookie": "Betr",
-      "fairPrice": 1.68,
-      "probability": 0.594
+      "fairPrice": 1.69,
+      "probability": 0.591
     },
     {
       "id": "1966-pts-25",
@@ -10661,8 +11791,8 @@
       "line": 25,
       "price": 4.6,
       "bookie": "Betr",
-      "fairPrice": 3.23,
-      "probability": 0.31
+      "fairPrice": 3.26,
+      "probability": 0.306
     },
     {
       "id": "1966-pts-30",
@@ -10673,8 +11803,8 @@
       "line": 30,
       "price": 10.5,
       "bookie": "Neds",
-      "fairPrice": 9.28,
-      "probability": 0.108
+      "fairPrice": 9.48,
+      "probability": 0.106
     },
     {
       "id": "1966-reb-7",
@@ -10686,91 +11816,19 @@
       "price": 1.96,
       "bookie": "Neds",
       "fairPrice": 1.7,
-      "probability": 0.589
+      "probability": 0.588
     },
     {
-      "id": "4431678-pts-25",
-      "playerId": "4431678",
-      "playerName": "Tyrese Maxey",
+      "id": "4432446-pts-10",
+      "playerId": "4432446",
+      "playerName": "Jabari Walker",
       "gameId": "401909328",
       "market": "pts",
-      "line": 25,
-      "price": 1.68,
-      "bookie": "Bet Right",
-      "fairPrice": 1.52,
-      "probability": 0.658
-    },
-    {
-      "id": "4431678-pts-30",
-      "playerId": "4431678",
-      "playerName": "Tyrese Maxey",
-      "gameId": "401909328",
-      "market": "pts",
-      "line": 30,
-      "price": 2.9,
-      "bookie": "Betr",
-      "fairPrice": 2.39,
-      "probability": 0.418
-    },
-    {
-      "id": "4431678-pts-35",
-      "playerId": "4431678",
-      "playerName": "Tyrese Maxey",
-      "gameId": "401909328",
-      "market": "pts",
-      "line": 35,
-      "price": 6.25,
-      "bookie": "Betr",
-      "fairPrice": 4.62,
-      "probability": 0.216
-    },
-    {
-      "id": "4431678-pts-40",
-      "playerId": "4431678",
-      "playerName": "Tyrese Maxey",
-      "gameId": "401909328",
-      "market": "pts",
-      "line": 40,
-      "price": 14,
-      "bookie": "Ladbrokes",
-      "fairPrice": 12.52,
-      "probability": 0.08
-    },
-    {
-      "id": "4431678-ast-5",
-      "playerId": "4431678",
-      "playerName": "Tyrese Maxey",
-      "gameId": "401909328",
-      "market": "ast",
-      "line": 5,
-      "price": 1.53,
-      "bookie": "Bet Right",
-      "fairPrice": 1.3,
-      "probability": 0.772
-    },
-    {
-      "id": "4431678-ast-7",
-      "playerId": "4431678",
-      "playerName": "Tyrese Maxey",
-      "gameId": "401909328",
-      "market": "ast",
-      "line": 7,
-      "price": 2.9,
-      "bookie": "Bet Right",
-      "fairPrice": 2,
-      "probability": 0.501
-    },
-    {
-      "id": "4431678-ast-10",
-      "playerId": "4431678",
-      "playerName": "Tyrese Maxey",
-      "gameId": "401909328",
-      "market": "ast",
       "line": 10,
-      "price": 6.8,
-      "bookie": "Ladbrokes",
-      "fairPrice": 5.61,
-      "probability": 0.178
+      "price": 2.4,
+      "bookie": "TAB",
+      "fairPrice": 2.14,
+      "probability": 0.468
     },
     {
       "id": "5124612-pts-15",
@@ -10782,7 +11840,7 @@
       "price": 1.78,
       "bookie": "Bet Right",
       "fairPrice": 1.5,
-      "probability": 0.668
+      "probability": 0.667
     },
     {
       "id": "5124612-pts-20",
@@ -10805,7 +11863,7 @@
       "line": 25,
       "price": 14,
       "bookie": "Neds",
-      "fairPrice": 9.89,
+      "fairPrice": 9.91,
       "probability": 0.101
     },
     {
@@ -10853,44 +11911,80 @@
       "line": 10,
       "price": 26,
       "bookie": "Ladbrokes",
-      "fairPrice": 12.08,
+      "fairPrice": 12.06,
       "probability": 0.083
     },
     {
-      "id": "4351851-pts-10",
-      "playerId": "4351851",
-      "playerName": "Anfernee Simons",
+      "id": "4431678-pts-25",
+      "playerId": "4431678",
+      "playerName": "Tyrese Maxey",
       "gameId": "401909328",
       "market": "pts",
-      "line": 10,
-      "price": 1.82,
-      "bookie": "Neds",
-      "fairPrice": 1.34,
-      "probability": 0.744
+      "line": 25,
+      "price": 1.68,
+      "bookie": "Bet Right",
+      "fairPrice": 1.53,
+      "probability": 0.653
     },
     {
-      "id": "4351851-pts-15",
-      "playerId": "4351851",
-      "playerName": "Anfernee Simons",
+      "id": "4431678-pts-30",
+      "playerId": "4431678",
+      "playerName": "Tyrese Maxey",
       "gameId": "401909328",
       "market": "pts",
-      "line": 15,
-      "price": 4.4,
-      "bookie": "Neds",
-      "fairPrice": 2.92,
-      "probability": 0.343
+      "line": 30,
+      "price": 2.9,
+      "bookie": "Betr",
+      "fairPrice": 2.44,
+      "probability": 0.41
     },
     {
-      "id": "4432446-pts-10",
-      "playerId": "4432446",
-      "playerName": "Jabari Walker",
+      "id": "4431678-pts-35",
+      "playerId": "4431678",
+      "playerName": "Tyrese Maxey",
       "gameId": "401909328",
       "market": "pts",
+      "line": 35,
+      "price": 6.25,
+      "bookie": "Betr",
+      "fairPrice": 4.77,
+      "probability": 0.21
+    },
+    {
+      "id": "4431678-ast-5",
+      "playerId": "4431678",
+      "playerName": "Tyrese Maxey",
+      "gameId": "401909328",
+      "market": "ast",
+      "line": 5,
+      "price": 1.53,
+      "bookie": "Bet Right",
+      "fairPrice": 1.3,
+      "probability": 0.771
+    },
+    {
+      "id": "4431678-ast-7",
+      "playerId": "4431678",
+      "playerName": "Tyrese Maxey",
+      "gameId": "401909328",
+      "market": "ast",
+      "line": 7,
+      "price": 2.9,
+      "bookie": "Bet Right",
+      "fairPrice": 2,
+      "probability": 0.499
+    },
+    {
+      "id": "4431678-ast-10",
+      "playerId": "4431678",
+      "playerName": "Tyrese Maxey",
+      "gameId": "401909328",
+      "market": "ast",
       "line": 10,
-      "price": 2.4,
-      "bookie": "TAB",
-      "fairPrice": 2.17,
-      "probability": 0.462
+      "price": 6.8,
+      "bookie": "Ladbrokes",
+      "fairPrice": 5.66,
+      "probability": 0.177
     },
     {
       "id": "3912848-pts-5",
@@ -11025,90 +12119,6 @@
       "probability": 0.759
     },
     {
-      "id": "5149115-pts-10",
-      "playerId": "5149115",
-      "playerName": "Allen Graves",
-      "gameId": "401909329",
-      "market": "pts",
-      "line": 10,
-      "price": 1.75,
-      "bookie": "Bet Right",
-      "fairPrice": 1.62,
-      "probability": 0.617
-    },
-    {
-      "id": "5149115-reb-5",
-      "playerId": "5149115",
-      "playerName": "Allen Graves",
-      "gameId": "401909329",
-      "market": "reb",
-      "line": 5,
-      "price": 1.87,
-      "bookie": "Ladbrokes",
-      "fairPrice": 1.68,
-      "probability": 0.597
-    },
-    {
-      "id": "4395724-pts-15",
-      "playerId": "4395724",
-      "playerName": "Immanuel Quickley",
-      "gameId": "401909329",
-      "market": "pts",
-      "line": 15,
-      "price": 1.33,
-      "bookie": "Ladbrokes",
-      "fairPrice": 1.2,
-      "probability": 0.832
-    },
-    {
-      "id": "4395724-pts-20",
-      "playerId": "4395724",
-      "playerName": "Immanuel Quickley",
-      "gameId": "401909329",
-      "market": "pts",
-      "line": 20,
-      "price": 2,
-      "bookie": "Ladbrokes",
-      "fairPrice": 1.72,
-      "probability": 0.58
-    },
-    {
-      "id": "4395724-pts-25",
-      "playerId": "4395724",
-      "playerName": "Immanuel Quickley",
-      "gameId": "401909329",
-      "market": "pts",
-      "line": 25,
-      "price": 4,
-      "bookie": "Betr",
-      "fairPrice": 3.58,
-      "probability": 0.279
-    },
-    {
-      "id": "4395724-ast-7",
-      "playerId": "4395724",
-      "playerName": "Immanuel Quickley",
-      "gameId": "401909329",
-      "market": "ast",
-      "line": 7,
-      "price": 1.91,
-      "bookie": "TABtouch",
-      "fairPrice": 1.69,
-      "probability": 0.593
-    },
-    {
-      "id": "4395724-ast-10",
-      "playerId": "4395724",
-      "playerName": "Immanuel Quickley",
-      "gameId": "401909329",
-      "market": "ast",
-      "line": 10,
-      "price": 5.4,
-      "bookie": "TABtouch",
-      "fairPrice": 4.23,
-      "probability": 0.236
-    },
-    {
       "id": "4432241-pts-10",
       "playerId": "4432241",
       "playerName": "Jamal Shead",
@@ -11117,8 +12127,8 @@
       "line": 10,
       "price": 2.75,
       "bookie": "TABtouch",
-      "fairPrice": 1.73,
-      "probability": 0.579
+      "fairPrice": 1.72,
+      "probability": 0.582
     },
     {
       "id": "4432241-pts-15",
@@ -11129,8 +12139,8 @@
       "line": 15,
       "price": 10.5,
       "bookie": "Ladbrokes",
-      "fairPrice": 7.41,
-      "probability": 0.135
+      "fairPrice": 7.23,
+      "probability": 0.138
     },
     {
       "id": "4432241-ast-5",
@@ -11142,7 +12152,7 @@
       "price": 1.43,
       "bookie": "TABtouch",
       "fairPrice": 1.24,
-      "probability": 0.807
+      "probability": 0.808
     },
     {
       "id": "4432241-ast-7",
@@ -11153,8 +12163,8 @@
       "line": 7,
       "price": 2.45,
       "bookie": "TABtouch",
-      "fairPrice": 1.78,
-      "probability": 0.562
+      "fairPrice": 1.77,
+      "probability": 0.565
     },
     {
       "id": "4432241-ast-10",
@@ -11165,8 +12175,8 @@
       "line": 10,
       "price": 5.75,
       "bookie": "Ladbrokes",
-      "fairPrice": 4.21,
-      "probability": 0.238
+      "fairPrice": 4.15,
+      "probability": 0.241
     },
     {
       "id": "4432241-3pm-3",
@@ -11189,8 +12199,8 @@
       "line": 15,
       "price": 1.96,
       "bookie": "Bet Right",
-      "fairPrice": 1.73,
-      "probability": 0.578
+      "fairPrice": 1.72,
+      "probability": 0.581
     },
     {
       "id": "4684272-ast-3",
@@ -11202,7 +12212,7 @@
       "price": 2.3,
       "bookie": "Betr",
       "fairPrice": 1.96,
-      "probability": 0.509
+      "probability": 0.511
     },
     {
       "id": "4684272-ast-5",
@@ -11213,8 +12223,80 @@
       "line": 5,
       "price": 8,
       "bookie": "Betr",
-      "fairPrice": 5.78,
-      "probability": 0.173
+      "fairPrice": 5.73,
+      "probability": 0.175
+    },
+    {
+      "id": "5149115-reb-5",
+      "playerId": "5149115",
+      "playerName": "Allen Graves",
+      "gameId": "401909329",
+      "market": "reb",
+      "line": 5,
+      "price": 1.87,
+      "bookie": "Ladbrokes",
+      "fairPrice": 1.68,
+      "probability": 0.594
+    },
+    {
+      "id": "4395724-pts-15",
+      "playerId": "4395724",
+      "playerName": "Immanuel Quickley",
+      "gameId": "401909329",
+      "market": "pts",
+      "line": 15,
+      "price": 1.33,
+      "bookie": "Ladbrokes",
+      "fairPrice": 1.21,
+      "probability": 0.83
+    },
+    {
+      "id": "4395724-pts-20",
+      "playerId": "4395724",
+      "playerName": "Immanuel Quickley",
+      "gameId": "401909329",
+      "market": "pts",
+      "line": 20,
+      "price": 2,
+      "bookie": "Ladbrokes",
+      "fairPrice": 1.74,
+      "probability": 0.573
+    },
+    {
+      "id": "4395724-pts-25",
+      "playerId": "4395724",
+      "playerName": "Immanuel Quickley",
+      "gameId": "401909329",
+      "market": "pts",
+      "line": 25,
+      "price": 4,
+      "bookie": "Betr",
+      "fairPrice": 3.68,
+      "probability": 0.272
+    },
+    {
+      "id": "4395724-ast-7",
+      "playerId": "4395724",
+      "playerName": "Immanuel Quickley",
+      "gameId": "401909329",
+      "market": "ast",
+      "line": 7,
+      "price": 1.91,
+      "bookie": "TABtouch",
+      "fairPrice": 1.7,
+      "probability": 0.589
+    },
+    {
+      "id": "4395724-ast-10",
+      "playerId": "4395724",
+      "playerName": "Immanuel Quickley",
+      "gameId": "401909329",
+      "market": "ast",
+      "line": 10,
+      "price": 5.4,
+      "bookie": "TABtouch",
+      "fairPrice": 4.3,
+      "probability": 0.232
     },
     {
       "id": "5093267-pts-10",
@@ -11313,18 +12395,6 @@
       "probability": 0.484
     },
     {
-      "id": "3064514-pts-20",
-      "playerId": "3064514",
-      "playerName": "Julius Randle",
-      "gameId": "401909329",
-      "market": "pts",
-      "line": 20,
-      "price": 1.61,
-      "bookie": "TABtouch",
-      "fairPrice": 1.36,
-      "probability": 0.735
-    },
-    {
       "id": "4432194-ast-5",
       "playerId": "4432194",
       "playerName": "Day'Ron Sharpe",
@@ -11347,6 +12417,18 @@
       "bookie": "Betr",
       "fairPrice": 3.84,
       "probability": 0.261
+    },
+    {
+      "id": "5101761-pts-10",
+      "playerId": "5101761",
+      "playerName": "Mikel Brown Jr.",
+      "gameId": "401909329",
+      "market": "pts",
+      "line": 10,
+      "price": 1.29,
+      "bookie": "TABtouch",
+      "fairPrice": 1.17,
+      "probability": 0.853
     },
     {
       "id": "5107173-pts-10",
@@ -11433,40 +12515,16 @@
       "probability": 0.338
     },
     {
-      "id": "5101761-pts-10",
-      "playerId": "5101761",
-      "playerName": "Mikel Brown Jr.",
+      "id": "3064514-pts-20",
+      "playerId": "3064514",
+      "playerName": "Julius Randle",
       "gameId": "401909329",
       "market": "pts",
-      "line": 10,
-      "price": 1.29,
+      "line": 20,
+      "price": 1.61,
       "bookie": "TABtouch",
-      "fairPrice": 1.17,
-      "probability": 0.853
-    },
-    {
-      "id": "5175647-3pm-1",
-      "playerId": "5175647",
-      "playerName": "Hugo Gonzalez",
-      "gameId": "401909330",
-      "market": "3pm",
-      "line": 1,
-      "price": 3.85,
-      "bookie": "TABtouch",
-      "fairPrice": 2.46,
-      "probability": 0.406
-    },
-    {
-      "id": "4065648-ast-5",
-      "playerId": "4065648",
-      "playerName": "Jayson Tatum",
-      "gameId": "401909330",
-      "market": "ast",
-      "line": 5,
-      "price": 1.53,
-      "bookie": "TABtouch",
-      "fairPrice": 1.34,
-      "probability": 0.748
+      "fairPrice": 1.36,
+      "probability": 0.735
     },
     {
       "id": "4397424-ast-3",
@@ -11503,6 +12561,18 @@
       "bookie": "TAB",
       "fairPrice": 4.54,
       "probability": 0.22
+    },
+    {
+      "id": "4065648-ast-5",
+      "playerId": "4065648",
+      "playerName": "Jayson Tatum",
+      "gameId": "401909330",
+      "market": "ast",
+      "line": 5,
+      "price": 1.53,
+      "bookie": "TABtouch",
+      "fairPrice": 1.34,
+      "probability": 0.748
     },
     {
       "id": "3078576-reb-3",
@@ -11551,6 +12621,18 @@
       "bookie": "Neds",
       "fairPrice": 7.64,
       "probability": 0.131
+    },
+    {
+      "id": "5175647-3pm-1",
+      "playerId": "5175647",
+      "playerName": "Hugo Gonzalez",
+      "gameId": "401909330",
+      "market": "3pm",
+      "line": 1,
+      "price": 3.85,
+      "bookie": "TABtouch",
+      "fairPrice": 2.46,
+      "probability": 0.406
     },
     {
       "id": "4251-pts-20",
@@ -11817,78 +12899,6 @@
       "probability": 0.617
     },
     {
-      "id": "4397002-pts-15",
-      "playerId": "4397002",
-      "playerName": "Ayo Dosunmu",
-      "gameId": "401909331",
-      "market": "pts",
-      "line": 15,
-      "price": 1.4,
-      "bookie": "Neds",
-      "fairPrice": 1.26,
-      "probability": 0.796
-    },
-    {
-      "id": "4397002-pts-20",
-      "playerId": "4397002",
-      "playerName": "Ayo Dosunmu",
-      "gameId": "401909331",
-      "market": "pts",
-      "line": 20,
-      "price": 2.33,
-      "bookie": "TABtouch",
-      "fairPrice": 2,
-      "probability": 0.5
-    },
-    {
-      "id": "4397002-3pm-2",
-      "playerId": "4397002",
-      "playerName": "Ayo Dosunmu",
-      "gameId": "401909331",
-      "market": "3pm",
-      "line": 2,
-      "price": 1.72,
-      "bookie": "Unibet",
-      "fairPrice": 1.45,
-      "probability": 0.689
-    },
-    {
-      "id": "4397002-3pm-3",
-      "playerId": "4397002",
-      "playerName": "Ayo Dosunmu",
-      "gameId": "401909331",
-      "market": "3pm",
-      "line": 3,
-      "price": 2.4,
-      "bookie": "Bet Right",
-      "fairPrice": 2.19,
-      "probability": 0.457
-    },
-    {
-      "id": "4397002-3pm-4",
-      "playerId": "4397002",
-      "playerName": "Ayo Dosunmu",
-      "gameId": "401909331",
-      "market": "3pm",
-      "line": 4,
-      "price": 4.5,
-      "bookie": "Bet Right",
-      "fairPrice": 3.72,
-      "probability": 0.269
-    },
-    {
-      "id": "4397002-3pm-5",
-      "playerId": "4397002",
-      "playerName": "Ayo Dosunmu",
-      "gameId": "401909331",
-      "market": "3pm",
-      "line": 5,
-      "price": 8.75,
-      "bookie": "Neds",
-      "fairPrice": 6.66,
-      "probability": 0.15
-    },
-    {
       "id": "3136196-reb-3",
       "playerId": "3136196",
       "playerName": "Trey Lyles",
@@ -12019,6 +13029,78 @@
       "bookie": "Neds",
       "fairPrice": 1.73,
       "probability": 0.58
+    },
+    {
+      "id": "4397002-pts-15",
+      "playerId": "4397002",
+      "playerName": "Ayo Dosunmu",
+      "gameId": "401909331",
+      "market": "pts",
+      "line": 15,
+      "price": 1.4,
+      "bookie": "Neds",
+      "fairPrice": 1.26,
+      "probability": 0.796
+    },
+    {
+      "id": "4397002-pts-20",
+      "playerId": "4397002",
+      "playerName": "Ayo Dosunmu",
+      "gameId": "401909331",
+      "market": "pts",
+      "line": 20,
+      "price": 2.33,
+      "bookie": "TABtouch",
+      "fairPrice": 2,
+      "probability": 0.5
+    },
+    {
+      "id": "4397002-3pm-2",
+      "playerId": "4397002",
+      "playerName": "Ayo Dosunmu",
+      "gameId": "401909331",
+      "market": "3pm",
+      "line": 2,
+      "price": 1.72,
+      "bookie": "Unibet",
+      "fairPrice": 1.45,
+      "probability": 0.689
+    },
+    {
+      "id": "4397002-3pm-3",
+      "playerId": "4397002",
+      "playerName": "Ayo Dosunmu",
+      "gameId": "401909331",
+      "market": "3pm",
+      "line": 3,
+      "price": 2.4,
+      "bookie": "Bet Right",
+      "fairPrice": 2.19,
+      "probability": 0.457
+    },
+    {
+      "id": "4397002-3pm-4",
+      "playerId": "4397002",
+      "playerName": "Ayo Dosunmu",
+      "gameId": "401909331",
+      "market": "3pm",
+      "line": 4,
+      "price": 4.5,
+      "bookie": "Bet Right",
+      "fairPrice": 3.72,
+      "probability": 0.269
+    },
+    {
+      "id": "4397002-3pm-5",
+      "playerId": "4397002",
+      "playerName": "Ayo Dosunmu",
+      "gameId": "401909331",
+      "market": "3pm",
+      "line": 5,
+      "price": 8.75,
+      "bookie": "Neds",
+      "fairPrice": 6.66,
+      "probability": 0.15
     },
     {
       "id": "4432847-ast-5",
@@ -12309,114 +13391,6 @@
       "probability": 0.318
     },
     {
-      "id": "3136193-pts-20",
-      "playerId": "3136193",
-      "playerName": "Devin Booker",
-      "gameId": "401909332",
-      "market": "pts",
-      "line": 20,
-      "price": 1.4,
-      "bookie": "Unibet",
-      "fairPrice": 1.29,
-      "probability": 0.778
-    },
-    {
-      "id": "3136193-ast-7",
-      "playerId": "3136193",
-      "playerName": "Devin Booker",
-      "gameId": "401909332",
-      "market": "ast",
-      "line": 7,
-      "price": 3.05,
-      "bookie": "Unibet",
-      "fairPrice": 2.55,
-      "probability": 0.392
-    },
-    {
-      "id": "4437244-pts-10",
-      "playerId": "4437244",
-      "playerName": "Jalen Green",
-      "gameId": "401909332",
-      "market": "pts",
-      "line": 10,
-      "price": 1.3,
-      "bookie": "Unibet",
-      "fairPrice": 1.16,
-      "probability": 0.865
-    },
-    {
-      "id": "4437244-reb-5",
-      "playerId": "4437244",
-      "playerName": "Jalen Green",
-      "gameId": "401909332",
-      "market": "reb",
-      "line": 5,
-      "price": 2.65,
-      "bookie": "Betr",
-      "fairPrice": 2.43,
-      "probability": 0.411
-    },
-    {
-      "id": "4437244-ast-5",
-      "playerId": "4437244",
-      "playerName": "Jalen Green",
-      "gameId": "401909332",
-      "market": "ast",
-      "line": 5,
-      "price": 5.2,
-      "bookie": "Unibet",
-      "fairPrice": 3.65,
-      "probability": 0.274
-    },
-    {
-      "id": "4601023-pts-5",
-      "playerId": "4601023",
-      "playerName": "Oso Ighodaro",
-      "gameId": "401909332",
-      "market": "pts",
-      "line": 5,
-      "price": 1.5,
-      "bookie": "Ladbrokes",
-      "fairPrice": 1.22,
-      "probability": 0.818
-    },
-    {
-      "id": "3913174-pts-5",
-      "playerId": "3913174",
-      "playerName": "Luke Kennard",
-      "gameId": "401909332",
-      "market": "pts",
-      "line": 5,
-      "price": 1.45,
-      "bookie": "TAB",
-      "fairPrice": 1.19,
-      "probability": 0.843
-    },
-    {
-      "id": "4278585-pts-10",
-      "playerId": "4278585",
-      "playerName": "Collin Gillespie",
-      "gameId": "401909332",
-      "market": "pts",
-      "line": 10,
-      "price": 1.8,
-      "bookie": "TAB",
-      "fairPrice": 1.46,
-      "probability": 0.685
-    },
-    {
-      "id": "4278402-pts-5",
-      "playerId": "4278402",
-      "playerName": "Jordan Goodwin",
-      "gameId": "401909332",
-      "market": "pts",
-      "line": 5,
-      "price": 1.36,
-      "bookie": "TAB",
-      "fairPrice": 1.16,
-      "probability": 0.86
-    },
-    {
       "id": "3155526-pts-10",
       "playerId": "3155526",
       "playerName": "Dillon Brooks",
@@ -12513,6 +13487,90 @@
       "probability": 0.165
     },
     {
+      "id": "4437244-pts-10",
+      "playerId": "4437244",
+      "playerName": "Jalen Green",
+      "gameId": "401909332",
+      "market": "pts",
+      "line": 10,
+      "price": 1.3,
+      "bookie": "Unibet",
+      "fairPrice": 1.16,
+      "probability": 0.865
+    },
+    {
+      "id": "4437244-reb-5",
+      "playerId": "4437244",
+      "playerName": "Jalen Green",
+      "gameId": "401909332",
+      "market": "reb",
+      "line": 5,
+      "price": 2.65,
+      "bookie": "Betr",
+      "fairPrice": 2.43,
+      "probability": 0.411
+    },
+    {
+      "id": "4437244-ast-5",
+      "playerId": "4437244",
+      "playerName": "Jalen Green",
+      "gameId": "401909332",
+      "market": "ast",
+      "line": 5,
+      "price": 5.2,
+      "bookie": "Unibet",
+      "fairPrice": 3.65,
+      "probability": 0.274
+    },
+    {
+      "id": "4601023-pts-5",
+      "playerId": "4601023",
+      "playerName": "Oso Ighodaro",
+      "gameId": "401909332",
+      "market": "pts",
+      "line": 5,
+      "price": 1.5,
+      "bookie": "Ladbrokes",
+      "fairPrice": 1.22,
+      "probability": 0.818
+    },
+    {
+      "id": "3913174-pts-5",
+      "playerId": "3913174",
+      "playerName": "Luke Kennard",
+      "gameId": "401909332",
+      "market": "pts",
+      "line": 5,
+      "price": 1.45,
+      "bookie": "TAB",
+      "fairPrice": 1.19,
+      "probability": 0.843
+    },
+    {
+      "id": "3136193-pts-20",
+      "playerId": "3136193",
+      "playerName": "Devin Booker",
+      "gameId": "401909332",
+      "market": "pts",
+      "line": 20,
+      "price": 1.4,
+      "bookie": "Unibet",
+      "fairPrice": 1.29,
+      "probability": 0.778
+    },
+    {
+      "id": "3136193-ast-7",
+      "playerId": "3136193",
+      "playerName": "Devin Booker",
+      "gameId": "401909332",
+      "market": "ast",
+      "line": 7,
+      "price": 3.05,
+      "bookie": "Unibet",
+      "fairPrice": 2.55,
+      "probability": 0.392
+    },
+    {
       "id": "4066383-pts-10",
       "playerId": "4066383",
       "playerName": "Miles Bridges",
@@ -12595,6 +13653,30 @@
       "bookie": "Ladbrokes",
       "fairPrice": 9,
       "probability": 0.111
+    },
+    {
+      "id": "4278585-pts-10",
+      "playerId": "4278585",
+      "playerName": "Collin Gillespie",
+      "gameId": "401909332",
+      "market": "pts",
+      "line": 10,
+      "price": 1.8,
+      "bookie": "TAB",
+      "fairPrice": 1.46,
+      "probability": 0.685
+    },
+    {
+      "id": "4278402-pts-5",
+      "playerId": "4278402",
+      "playerName": "Jordan Goodwin",
+      "gameId": "401909332",
+      "market": "pts",
+      "line": 5,
+      "price": 1.36,
+      "bookie": "TAB",
+      "fairPrice": 1.16,
+      "probability": 0.86
     },
     {
       "id": "5041939-ast-5",
@@ -12909,78 +13991,6 @@
       "probability": 0.556
     },
     {
-      "id": "4845367-pts-15",
-      "playerId": "4845367",
-      "playerName": "Stephon Castle",
-      "gameId": "401909333",
-      "market": "pts",
-      "line": 15,
-      "price": 1.45,
-      "bookie": "Betr",
-      "fairPrice": 1.21,
-      "probability": 0.826
-    },
-    {
-      "id": "4845367-ast-5",
-      "playerId": "4845367",
-      "playerName": "Stephon Castle",
-      "gameId": "401909333",
-      "market": "ast",
-      "line": 5,
-      "price": 1.18,
-      "bookie": "TABtouch",
-      "fairPrice": 1.09,
-      "probability": 0.915
-    },
-    {
-      "id": "4845367-ast-7",
-      "playerId": "4845367",
-      "playerName": "Stephon Castle",
-      "gameId": "401909333",
-      "market": "ast",
-      "line": 7,
-      "price": 1.73,
-      "bookie": "Neds",
-      "fairPrice": 1.41,
-      "probability": 0.708
-    },
-    {
-      "id": "4845367-3pm-3",
-      "playerId": "4845367",
-      "playerName": "Stephon Castle",
-      "gameId": "401909333",
-      "market": "3pm",
-      "line": 3,
-      "price": 2.9,
-      "bookie": "Betr",
-      "fairPrice": 2.41,
-      "probability": 0.415
-    },
-    {
-      "id": "4845367-3pm-4",
-      "playerId": "4845367",
-      "playerName": "Stephon Castle",
-      "gameId": "401909333",
-      "market": "3pm",
-      "line": 4,
-      "price": 5.5,
-      "bookie": "TAB",
-      "fairPrice": 4.29,
-      "probability": 0.233
-    },
-    {
-      "id": "4845367-3pm-5",
-      "playerId": "4845367",
-      "playerName": "Stephon Castle",
-      "gameId": "401909333",
-      "market": "3pm",
-      "line": 5,
-      "price": 11.5,
-      "bookie": "Neds",
-      "fairPrice": 8.45,
-      "probability": 0.118
-    },
-    {
       "id": "4592479-pts-10",
       "playerId": "4592479",
       "playerName": "Julian Champagnie",
@@ -13209,6 +14219,186 @@
       "probability": 0.158
     },
     {
+      "id": "4845367-pts-15",
+      "playerId": "4845367",
+      "playerName": "Stephon Castle",
+      "gameId": "401909333",
+      "market": "pts",
+      "line": 15,
+      "price": 1.45,
+      "bookie": "Betr",
+      "fairPrice": 1.21,
+      "probability": 0.826
+    },
+    {
+      "id": "4845367-ast-5",
+      "playerId": "4845367",
+      "playerName": "Stephon Castle",
+      "gameId": "401909333",
+      "market": "ast",
+      "line": 5,
+      "price": 1.18,
+      "bookie": "TABtouch",
+      "fairPrice": 1.09,
+      "probability": 0.915
+    },
+    {
+      "id": "4845367-ast-7",
+      "playerId": "4845367",
+      "playerName": "Stephon Castle",
+      "gameId": "401909333",
+      "market": "ast",
+      "line": 7,
+      "price": 1.73,
+      "bookie": "Neds",
+      "fairPrice": 1.41,
+      "probability": 0.708
+    },
+    {
+      "id": "4845367-3pm-3",
+      "playerId": "4845367",
+      "playerName": "Stephon Castle",
+      "gameId": "401909333",
+      "market": "3pm",
+      "line": 3,
+      "price": 2.9,
+      "bookie": "Betr",
+      "fairPrice": 2.41,
+      "probability": 0.415
+    },
+    {
+      "id": "4845367-3pm-4",
+      "playerId": "4845367",
+      "playerName": "Stephon Castle",
+      "gameId": "401909333",
+      "market": "3pm",
+      "line": 4,
+      "price": 5.5,
+      "bookie": "TAB",
+      "fairPrice": 4.29,
+      "probability": 0.233
+    },
+    {
+      "id": "4845367-3pm-5",
+      "playerId": "4845367",
+      "playerName": "Stephon Castle",
+      "gameId": "401909333",
+      "market": "3pm",
+      "line": 5,
+      "price": 11.5,
+      "bookie": "Neds",
+      "fairPrice": 8.45,
+      "probability": 0.118
+    },
+    {
+      "id": "4066457-pts-20",
+      "playerId": "4066457",
+      "playerName": "Austin Reaves",
+      "gameId": "401909333",
+      "market": "pts",
+      "line": 20,
+      "price": 2.75,
+      "bookie": "TABtouch",
+      "fairPrice": 1.51,
+      "probability": 0.661
+    },
+    {
+      "id": "4066457-pts-25",
+      "playerId": "4066457",
+      "playerName": "Austin Reaves",
+      "gameId": "401909333",
+      "market": "pts",
+      "line": 25,
+      "price": 5,
+      "bookie": "Neds",
+      "fairPrice": 2.11,
+      "probability": 0.473
+    },
+    {
+      "id": "4066457-pts-30",
+      "playerId": "4066457",
+      "playerName": "Austin Reaves",
+      "gameId": "401909333",
+      "market": "pts",
+      "line": 30,
+      "price": 15,
+      "bookie": "Neds",
+      "fairPrice": 3.82,
+      "probability": 0.262
+    },
+    {
+      "id": "4066457-reb-5",
+      "playerId": "4066457",
+      "playerName": "Austin Reaves",
+      "gameId": "401909333",
+      "market": "reb",
+      "line": 5,
+      "price": 4.6,
+      "bookie": "Betr",
+      "fairPrice": 4.13,
+      "probability": 0.242
+    },
+    {
+      "id": "4066457-ast-3",
+      "playerId": "4066457",
+      "playerName": "Austin Reaves",
+      "gameId": "401909333",
+      "market": "ast",
+      "line": 3,
+      "price": 1.4,
+      "bookie": "Betr",
+      "fairPrice": 1.29,
+      "probability": 0.778
+    },
+    {
+      "id": "4066457-ast-5",
+      "playerId": "4066457",
+      "playerName": "Austin Reaves",
+      "gameId": "401909333",
+      "market": "ast",
+      "line": 5,
+      "price": 3,
+      "bookie": "Betr",
+      "fairPrice": 2.34,
+      "probability": 0.427
+    },
+    {
+      "id": "4066457-3pm-2",
+      "playerId": "4066457",
+      "playerName": "Austin Reaves",
+      "gameId": "401909333",
+      "market": "3pm",
+      "line": 2,
+      "price": 1.98,
+      "bookie": "Neds",
+      "fairPrice": 1.72,
+      "probability": 0.582
+    },
+    {
+      "id": "4066457-3pm-3",
+      "playerId": "4066457",
+      "playerName": "Austin Reaves",
+      "gameId": "401909333",
+      "market": "3pm",
+      "line": 3,
+      "price": 3.75,
+      "bookie": "Bet Right",
+      "fairPrice": 2.9,
+      "probability": 0.345
+    },
+    {
+      "id": "4066457-3pm-4",
+      "playerId": "4066457",
+      "playerName": "Austin Reaves",
+      "gameId": "401909333",
+      "market": "3pm",
+      "line": 4,
+      "price": 8,
+      "bookie": "Neds",
+      "fairPrice": 5.5,
+      "probability": 0.182
+    },
+    {
       "id": "4433136-pts-10",
       "playerId": "4433136",
       "playerName": "Walker Kessler",
@@ -13245,42 +14435,6 @@
       "probability": 0.344
     },
     {
-      "id": "3907498-pts-5",
-      "playerId": "3907498",
-      "playerName": "Matisse Thybulle",
-      "gameId": "401909333",
-      "market": "pts",
-      "line": 5,
-      "price": 1.38,
-      "bookie": "Neds",
-      "fairPrice": 1.16,
-      "probability": 0.86
-    },
-    {
-      "id": "3907498-reb-3",
-      "playerId": "3907498",
-      "playerName": "Matisse Thybulle",
-      "gameId": "401909333",
-      "market": "reb",
-      "line": 3,
-      "price": 2.15,
-      "bookie": "Neds",
-      "fairPrice": 1.88,
-      "probability": 0.531
-    },
-    {
-      "id": "3907498-reb-5",
-      "playerId": "3907498",
-      "playerName": "Matisse Thybulle",
-      "gameId": "401909333",
-      "market": "reb",
-      "line": 5,
-      "price": 7,
-      "bookie": "Betr",
-      "fairPrice": 5.3,
-      "probability": 0.189
-    },
-    {
       "id": "4277811-pts-10",
       "playerId": "4277811",
       "playerName": "Collin Sexton",
@@ -13315,6 +14469,90 @@
       "bookie": "TABtouch",
       "fairPrice": 1.68,
       "probability": 0.595
+    },
+    {
+      "id": "4592691-pts-5",
+      "playerId": "4592691",
+      "playerName": "Jake LaRavia",
+      "gameId": "401909333",
+      "market": "pts",
+      "line": 5,
+      "price": 1.5,
+      "bookie": "Neds",
+      "fairPrice": 1.21,
+      "probability": 0.826
+    },
+    {
+      "id": "4592691-reb-5",
+      "playerId": "4592691",
+      "playerName": "Jake LaRavia",
+      "gameId": "401909333",
+      "market": "reb",
+      "line": 5,
+      "price": 2.5,
+      "bookie": "Betr",
+      "fairPrice": 1.98,
+      "probability": 0.506
+    },
+    {
+      "id": "4592691-reb-7",
+      "playerId": "4592691",
+      "playerName": "Jake LaRavia",
+      "gameId": "401909333",
+      "market": "reb",
+      "line": 7,
+      "price": 5.2,
+      "bookie": "Neds",
+      "fairPrice": 4.04,
+      "probability": 0.247
+    },
+    {
+      "id": "4592691-ast-3",
+      "playerId": "4592691",
+      "playerName": "Jake LaRavia",
+      "gameId": "401909333",
+      "market": "ast",
+      "line": 3,
+      "price": 3.6,
+      "bookie": "TABtouch",
+      "fairPrice": 2.55,
+      "probability": 0.393
+    },
+    {
+      "id": "3907498-pts-5",
+      "playerId": "3907498",
+      "playerName": "Matisse Thybulle",
+      "gameId": "401909333",
+      "market": "pts",
+      "line": 5,
+      "price": 1.38,
+      "bookie": "Neds",
+      "fairPrice": 1.16,
+      "probability": 0.86
+    },
+    {
+      "id": "3907498-reb-3",
+      "playerId": "3907498",
+      "playerName": "Matisse Thybulle",
+      "gameId": "401909333",
+      "market": "reb",
+      "line": 3,
+      "price": 2.15,
+      "bookie": "Neds",
+      "fairPrice": 1.88,
+      "probability": 0.531
+    },
+    {
+      "id": "3907498-reb-5",
+      "playerId": "3907498",
+      "playerName": "Matisse Thybulle",
+      "gameId": "401909333",
+      "market": "reb",
+      "line": 5,
+      "price": 7,
+      "bookie": "Betr",
+      "fairPrice": 5.3,
+      "probability": 0.189
     },
     {
       "id": "4397014-pts-15",
@@ -13437,54 +14675,6 @@
       "probability": 0.252
     },
     {
-      "id": "4592691-pts-5",
-      "playerId": "4592691",
-      "playerName": "Jake LaRavia",
-      "gameId": "401909333",
-      "market": "pts",
-      "line": 5,
-      "price": 1.5,
-      "bookie": "Neds",
-      "fairPrice": 1.21,
-      "probability": 0.826
-    },
-    {
-      "id": "4592691-reb-5",
-      "playerId": "4592691",
-      "playerName": "Jake LaRavia",
-      "gameId": "401909333",
-      "market": "reb",
-      "line": 5,
-      "price": 2.5,
-      "bookie": "Betr",
-      "fairPrice": 1.98,
-      "probability": 0.506
-    },
-    {
-      "id": "4592691-reb-7",
-      "playerId": "4592691",
-      "playerName": "Jake LaRavia",
-      "gameId": "401909333",
-      "market": "reb",
-      "line": 7,
-      "price": 5.2,
-      "bookie": "Neds",
-      "fairPrice": 4.04,
-      "probability": 0.247
-    },
-    {
-      "id": "4592691-ast-3",
-      "playerId": "4592691",
-      "playerName": "Jake LaRavia",
-      "gameId": "401909333",
-      "market": "ast",
-      "line": 3,
-      "price": 3.6,
-      "bookie": "TABtouch",
-      "fairPrice": 2.55,
-      "probability": 0.393
-    },
-    {
       "id": "3945274-pts-40",
       "playerId": "3945274",
       "playerName": "Luka Doncic",
@@ -13507,126 +14697,6 @@
       "bookie": "TABtouch",
       "fairPrice": 1.49,
       "probability": 0.673
-    },
-    {
-      "id": "4066457-pts-20",
-      "playerId": "4066457",
-      "playerName": "Austin Reaves",
-      "gameId": "401909333",
-      "market": "pts",
-      "line": 20,
-      "price": 2.75,
-      "bookie": "TABtouch",
-      "fairPrice": 1.51,
-      "probability": 0.661
-    },
-    {
-      "id": "4066457-pts-25",
-      "playerId": "4066457",
-      "playerName": "Austin Reaves",
-      "gameId": "401909333",
-      "market": "pts",
-      "line": 25,
-      "price": 5,
-      "bookie": "Neds",
-      "fairPrice": 2.11,
-      "probability": 0.473
-    },
-    {
-      "id": "4066457-pts-30",
-      "playerId": "4066457",
-      "playerName": "Austin Reaves",
-      "gameId": "401909333",
-      "market": "pts",
-      "line": 30,
-      "price": 15,
-      "bookie": "Neds",
-      "fairPrice": 3.82,
-      "probability": 0.262
-    },
-    {
-      "id": "4066457-reb-5",
-      "playerId": "4066457",
-      "playerName": "Austin Reaves",
-      "gameId": "401909333",
-      "market": "reb",
-      "line": 5,
-      "price": 4.6,
-      "bookie": "Betr",
-      "fairPrice": 4.13,
-      "probability": 0.242
-    },
-    {
-      "id": "4066457-ast-3",
-      "playerId": "4066457",
-      "playerName": "Austin Reaves",
-      "gameId": "401909333",
-      "market": "ast",
-      "line": 3,
-      "price": 1.4,
-      "bookie": "Betr",
-      "fairPrice": 1.29,
-      "probability": 0.778
-    },
-    {
-      "id": "4066457-ast-5",
-      "playerId": "4066457",
-      "playerName": "Austin Reaves",
-      "gameId": "401909333",
-      "market": "ast",
-      "line": 5,
-      "price": 3,
-      "bookie": "Betr",
-      "fairPrice": 2.34,
-      "probability": 0.427
-    },
-    {
-      "id": "4066457-3pm-2",
-      "playerId": "4066457",
-      "playerName": "Austin Reaves",
-      "gameId": "401909333",
-      "market": "3pm",
-      "line": 2,
-      "price": 1.98,
-      "bookie": "Neds",
-      "fairPrice": 1.72,
-      "probability": 0.582
-    },
-    {
-      "id": "4066457-3pm-3",
-      "playerId": "4066457",
-      "playerName": "Austin Reaves",
-      "gameId": "401909333",
-      "market": "3pm",
-      "line": 3,
-      "price": 3.75,
-      "bookie": "Bet Right",
-      "fairPrice": 2.9,
-      "probability": 0.345
-    },
-    {
-      "id": "4066457-3pm-4",
-      "playerId": "4066457",
-      "playerName": "Austin Reaves",
-      "gameId": "401909333",
-      "market": "3pm",
-      "line": 4,
-      "price": 8,
-      "bookie": "Neds",
-      "fairPrice": 5.5,
-      "probability": 0.182
-    },
-    {
-      "id": "4432811-pts-5",
-      "playerId": "4432811",
-      "playerName": "Josh Green",
-      "gameId": "401909334",
-      "market": "pts",
-      "line": 5,
-      "price": 1.58,
-      "bookie": "Neds",
-      "fairPrice": 1.32,
-      "probability": 0.759
     },
     {
       "id": "3133602-pts-10",
@@ -13749,6 +14819,18 @@
       "probability": 0.071
     },
     {
+      "id": "4432811-pts-5",
+      "playerId": "4432811",
+      "playerName": "Josh Green",
+      "gameId": "401909334",
+      "market": "pts",
+      "line": 5,
+      "price": 1.58,
+      "bookie": "Neds",
+      "fairPrice": 1.32,
+      "probability": 0.759
+    },
+    {
       "id": "4397077-reb-5",
       "playerId": "4397077",
       "playerName": "Jaxson Hayes",
@@ -13785,40 +14867,16 @@
       "probability": 0.237
     },
     {
-      "id": "3138196-ast-3",
-      "playerId": "3138196",
-      "playerName": "Cameron Johnson",
+      "id": "3978-reb-3",
+      "playerId": "3978",
+      "playerName": "DeMar DeRozan",
       "gameId": "401909334",
-      "market": "ast",
+      "market": "reb",
       "line": 3,
-      "price": 4.3,
+      "price": 5.75,
       "bookie": "TABtouch",
-      "fairPrice": 2.63,
-      "probability": 0.381
-    },
-    {
-      "id": "3138196-ast-5",
-      "playerId": "3138196",
-      "playerName": "Cameron Johnson",
-      "gameId": "401909334",
-      "market": "ast",
-      "line": 5,
-      "price": 11.5,
-      "bookie": "Ladbrokes",
-      "fairPrice": 8.14,
-      "probability": 0.123
-    },
-    {
-      "id": "3138196-3pm-1",
-      "playerId": "3138196",
-      "playerName": "Cameron Johnson",
-      "gameId": "401909334",
-      "market": "3pm",
-      "line": 1,
-      "price": 1.57,
-      "bookie": "Ladbrokes",
-      "fairPrice": 1.33,
-      "probability": 0.752
+      "fairPrice": 4.54,
+      "probability": 0.22
     },
     {
       "id": "4592427-reb-3",
@@ -13869,18 +14927,6 @@
       "probability": 0.594
     },
     {
-      "id": "3978-reb-3",
-      "playerId": "3978",
-      "playerName": "DeMar DeRozan",
-      "gameId": "401909334",
-      "market": "reb",
-      "line": 3,
-      "price": 5.75,
-      "bookie": "TABtouch",
-      "fairPrice": 4.54,
-      "probability": 0.22
-    },
-    {
       "id": "4431767-pts-10",
       "playerId": "4431767",
       "playerName": "Christian Braun",
@@ -13903,6 +14949,42 @@
       "bookie": "TAB",
       "fairPrice": 1.35,
       "probability": 0.741
+    },
+    {
+      "id": "3138196-ast-3",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909334",
+      "market": "ast",
+      "line": 3,
+      "price": 4.3,
+      "bookie": "TABtouch",
+      "fairPrice": 2.63,
+      "probability": 0.381
+    },
+    {
+      "id": "3138196-ast-5",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909334",
+      "market": "ast",
+      "line": 5,
+      "price": 11.5,
+      "bookie": "Ladbrokes",
+      "fairPrice": 8.14,
+      "probability": 0.123
+    },
+    {
+      "id": "3138196-3pm-1",
+      "playerId": "3138196",
+      "playerName": "Cameron Johnson",
+      "gameId": "401909334",
+      "market": "3pm",
+      "line": 1,
+      "price": 1.57,
+      "bookie": "Ladbrokes",
+      "fairPrice": 1.33,
+      "probability": 0.752
     },
     {
       "id": "3112335-3pm-1",
@@ -14169,30 +15251,6 @@
       "probability": 0.137
     },
     {
-      "id": "5061589-reb-7",
-      "playerId": "5061589",
-      "playerName": "Yves Missi",
-      "gameId": "401909335",
-      "market": "reb",
-      "line": 7,
-      "price": 1.45,
-      "bookie": "Neds",
-      "fairPrice": 1.32,
-      "probability": 0.756
-    },
-    {
-      "id": "5061589-reb-10",
-      "playerId": "5061589",
-      "playerName": "Yves Missi",
-      "gameId": "401909335",
-      "market": "reb",
-      "line": 10,
-      "price": 2.9,
-      "bookie": "Betr",
-      "fairPrice": 2.4,
-      "probability": 0.416
-    },
-    {
       "id": "4397136-pts-15",
       "playerId": "4397136",
       "playerName": "Saddiq Bey",
@@ -14299,6 +15357,30 @@
       "bookie": "Neds",
       "fairPrice": 7.21,
       "probability": 0.139
+    },
+    {
+      "id": "5061589-reb-7",
+      "playerId": "5061589",
+      "playerName": "Yves Missi",
+      "gameId": "401909335",
+      "market": "reb",
+      "line": 7,
+      "price": 1.45,
+      "bookie": "Neds",
+      "fairPrice": 1.32,
+      "probability": 0.756
+    },
+    {
+      "id": "5061589-reb-10",
+      "playerId": "5061589",
+      "playerName": "Yves Missi",
+      "gameId": "401909335",
+      "market": "reb",
+      "line": 10,
+      "price": 2.9,
+      "bookie": "Betr",
+      "fairPrice": 2.4,
+      "probability": 0.416
     },
     {
       "id": "5144091-ast-7",
@@ -14457,18 +15539,6 @@
       "probability": 0.399
     },
     {
-      "id": "4395628-3pm-1",
-      "playerId": "4395628",
-      "playerName": "Zion Williamson",
-      "gameId": "401909335",
-      "market": "3pm",
-      "line": 1,
-      "price": 5.25,
-      "bookie": "TAB",
-      "fairPrice": 4.62,
-      "probability": 0.216
-    },
-    {
       "id": "4397688-reb-5",
       "playerId": "4397688",
       "playerName": "Trey Murphy III",
@@ -14503,6 +15573,18 @@
       "bookie": "Betr",
       "fairPrice": 3.8,
       "probability": 0.263
+    },
+    {
+      "id": "4395628-3pm-1",
+      "playerId": "4395628",
+      "playerName": "Zion Williamson",
+      "gameId": "401909335",
+      "market": "3pm",
+      "line": 1,
+      "price": 5.25,
+      "bookie": "TAB",
+      "fairPrice": 4.62,
+      "probability": 0.216
     },
     {
       "id": "5081727-pts-10",
