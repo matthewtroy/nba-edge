@@ -19,12 +19,12 @@
     {
       "type": "crossGameSgm",
       "label": "Cross-Game SGM Multi",
-      "reason": "No cross-game combo @ edge (eligible 243, best edge-pool =0, range-cands 0)"
+      "reason": "No cross-game combo @ edge (eligible 252, best edge-pool =0, range-cands 0)"
     },
     {
       "type": "boostSgm",
       "label": "Best SGM",
-      "reason": "No same-game SGM @ ≥$2 + edge curve (eligible 621, best pool =0, games 0)"
+      "reason": "No same-game SGM @ ≥$2 + edge curve (eligible 641, best pool =0, games 0)"
     },
     {
       "type": "longshot",

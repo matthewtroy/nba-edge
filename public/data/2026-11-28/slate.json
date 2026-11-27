@@ -24,8 +24,8 @@
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled",
-    "spread": -9.5,
-    "total": 219.5
+    "spread": -8.5,
+    "total": 218.5
   },
   {
     "id": "401909328",
@@ -81,7 +81,7 @@
     "awayB2B": false,
     "status": "scheduled",
     "spread": -3.5,
-    "total": 221.5
+    "total": 220.5
   },
   {
     "id": "401909332",
@@ -119,8 +119,8 @@
     "awayTeam": "Denver Nuggets",
     "homeTeamId": "26",
     "awayTeamId": "7",
-    "spread": 9.5,
-    "total": 228.5,
+    "spread": 10.5,
+    "total": 229.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled"
