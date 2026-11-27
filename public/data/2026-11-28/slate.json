@@ -8,7 +8,7 @@
     "homeTeamId": "18",
     "awayTeamId": "14",
     "spread": -3.5,
-    "total": 223.5,
+    "total": 222.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled"
@@ -81,7 +81,7 @@
     "awayB2B": false,
     "status": "scheduled",
     "spread": -3.5,
-    "total": 220.5
+    "total": 221.5
   },
   {
     "id": "401909332",
