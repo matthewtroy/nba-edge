@@ -1,6 +1,6 @@
 {
-  "pulledAt": "2026-11-27T06:47:41.348Z",
-  "eventsProbed": 2,
+  "pulledAt": "2026-11-27T07:00:36.694Z",
+  "eventsProbed": 11,
   "marketsRequested": [
     "player_points",
     "player_rebounds",
@@ -12,22 +12,22 @@
     "player_threes_alternate"
   ],
   "marketsPresent": {
-    "player_assists_alternate": 18,
-    "player_points_alternate": 18,
-    "player_rebounds_alternate": 18,
-    "player_threes_alternate": 18,
-    "player_assists": 9,
-    "player_points": 9,
-    "player_rebounds": 9,
-    "player_threes": 9
+    "player_assists_alternate": 97,
+    "player_points_alternate": 97,
+    "player_rebounds_alternate": 97,
+    "player_threes_alternate": 97,
+    "player_assists": 49,
+    "player_points": 49,
+    "player_rebounds": 49,
+    "player_threes": 49
   },
   "uniquePlayersByCoreMarket": {
-    "pts": 25,
-    "reb": 25,
-    "ast": 24
+    "pts": 144,
+    "reb": 144,
+    "ast": 138
   },
-  "corePlayerLines": 808,
-  "threesPlayerLines": 219,
+  "corePlayerLines": 4455,
+  "threesPlayerLines": 1284,
   "onlyThreesOffered": false,
   "slateTipDate": "2026-11-28",
   "slateGameCount": 11

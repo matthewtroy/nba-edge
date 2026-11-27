@@ -118767,6 +118767,33 @@
       "gameId": "401909336",
       "market": "3pm",
       "line": 5
+    },
+    {
+      "id": "4869342-ast-10",
+      "date": "2026-11-28",
+      "probability": 0.188,
+      "playerId": "4869342",
+      "gameId": "401909330",
+      "market": "ast",
+      "line": 10
+    },
+    {
+      "id": "4592691-reb-7",
+      "date": "2026-11-28",
+      "probability": 0.247,
+      "playerId": "4592691",
+      "gameId": "401909333",
+      "market": "reb",
+      "line": 7
+    },
+    {
+      "id": "5105565-ast-5",
+      "date": "2026-11-28",
+      "probability": 0.161,
+      "playerId": "5105565",
+      "gameId": "401909336",
+      "market": "ast",
+      "line": 5
     }
   ],
   "multis": [
@@ -120910,6 +120937,59 @@
       "legIds": [
         "4278078-3pm-1",
         "5041939-ast-5"
+      ]
+    },
+    {
+      "id": "mainPlay-2026-11-28",
+      "type": "mainPlay",
+      "date": "2026-11-28",
+      "legIds": [
+        "4433083-ast-5",
+        "4592479-pts-10",
+        "4431680-pts-15"
+      ]
+    },
+    {
+      "id": "doubleUp-2026-11-28",
+      "type": "doubleUp",
+      "date": "2026-11-28",
+      "legIds": [
+        "4903027-pts-15",
+        "3138196-pts-10"
+      ]
+    },
+    {
+      "id": "crossGameSgm-2026-11-28",
+      "type": "crossGameSgm",
+      "date": "2026-11-28",
+      "legIds": [
+        "3032977-reb-10",
+        "4278053-ast-7",
+        "4684742-pts-10",
+        "5082206-3pm-1",
+        "4433134-ast-5",
+        "5175643-pts-10",
+        "4278039-pts-20",
+        "4592479-pts-10",
+        "5104157-3pm-2"
+      ]
+    },
+    {
+      "id": "boostSgm-2026-11-28",
+      "type": "boostSgm",
+      "date": "2026-11-28",
+      "legIds": [
+        "5104157-3pm-2",
+        "4592479-pts-10"
+      ]
+    },
+    {
+      "id": "longshot-2026-11-28",
+      "type": "longshot",
+      "date": "2026-11-28",
+      "legIds": [
+        "3059318-pts-35",
+        "5104157-pts-40"
       ]
     }
   ],

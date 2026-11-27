@@ -5,34 +5,43 @@
       "label": "Main Play",
       "legs": [
         "4433083-ast-5",
-        "3078576-3pm-1",
-        "4431678-ast-5",
-        "5104157-pts-30"
+        "4592479-pts-10",
+        "4431680-pts-15"
       ],
-      "combinedProbability": 0.28546569475200007,
-      "combinedFairPrice": 3.5,
-      "combinedTakeAt": 3.78,
-      "bestBookie": "Neds",
-      "bestBookieTotal": 6.73,
+      "combinedProbability": 0.36470158199999997,
+      "combinedFairPrice": 2.74,
+      "combinedTakeAt": 2.96,
+      "bestBookie": "Sportsbet",
+      "bestBookieTotal": 6.1,
       "bookieTotals": {
-        "Neds": 6.73
+        "Sportsbet": 6.1,
+        "Ladbrokes": 5.38,
+        "Neds": 5.38,
+        "PointsBet": 5.83
       },
-      "summary": "4 starter main lines"
+      "summary": "3 starter main lines"
     },
     {
       "type": "doubleUp",
       "label": "Best Double Up",
       "legs": [
-        "4433083-ast-5",
-        "4431678-ast-5"
+        "4903027-pts-15",
+        "3138196-pts-10"
       ],
-      "combinedProbability": 0.588264,
-      "combinedFairPrice": 1.7,
-      "combinedTakeAt": 1.84,
-      "bestBookie": "Neds",
-      "bestBookieTotal": 2.19,
+      "combinedProbability": 0.592896,
+      "combinedFairPrice": 1.69,
+      "combinedTakeAt": 1.83,
+      "bestBookie": "Picklebet",
+      "bestBookieTotal": 2.18,
       "bookieTotals": {
-        "Neds": 2.19
+        "Sportsbet": 2.11,
+        "TAB": 1.73,
+        "Ladbrokes": 2.11,
+        "Neds": 2.11,
+        "PointsBet": 2.14,
+        "Betr": 2.16,
+        "Picklebet": 2.18,
+        "Bet Right": 2.18
       },
       "summary": "2 legs · aim ~$2 @ one bookie"
     },
@@ -40,95 +49,102 @@
       "type": "crossGameSgm",
       "label": "Cross-Game SGM Multi",
       "legs": [
-        "4278562-reb-7",
-        "3149673-pts-20",
-        "5124612-pts-15",
+        "3032977-reb-10",
+        "4278053-ast-7",
+        "4684742-pts-10",
+        "5082206-3pm-1",
+        "4433134-ast-5",
         "5175643-pts-10",
-        "4433134-pts-25",
-        "4065648-3pm-2",
-        "4432816-pts-15"
+        "4278039-pts-20",
+        "4592479-pts-10",
+        "5104157-3pm-2"
       ],
-      "combinedProbability": 0.08564332819996799,
-      "combinedFairPrice": 11.68,
-      "combinedTakeAt": 12.61,
-      "bestBookie": "PointsBet",
-      "bestBookieTotal": 40.94,
+      "combinedProbability": 0.06125868242550343,
+      "combinedFairPrice": 16.32,
+      "combinedTakeAt": 17.63,
+      "bestBookie": "TABtouch",
+      "bestBookieTotal": 40.98,
       "bookieTotals": {
-        "PointsBet": 40.94
+        "TABtouch": 40.98,
+        "Ladbrokes": 32.77,
+        "Neds": 32.77,
+        "Unibet": 37.1
       },
       "crossGameGroups": [
         {
           "gameId": "401909326",
-          "status": "excluded",
-          "legs": [],
-          "excludedReason": "MIA @ NYK: need 2+ legs @ PointsBet (found 0)."
+          "status": "included",
+          "legs": [
+            "3032977-reb-10",
+            "4278053-ast-7"
+          ]
         },
         {
           "gameId": "401909327",
           "status": "included",
           "legs": [
-            "4278562-reb-7"
+            "4684742-pts-10",
+            "5082206-3pm-1"
           ]
         },
         {
           "gameId": "401909328",
-          "status": "included",
-          "legs": [
-            "3149673-pts-20",
-            "5124612-pts-15"
-          ]
+          "status": "excluded",
+          "legs": [],
+          "excludedReason": "PHI @ IND: need 2+ legs @ TABtouch (found 0)."
         },
         {
           "gameId": "401909329",
           "status": "included",
           "legs": [
-            "5175643-pts-10",
-            "4433134-pts-25"
+            "4433134-ast-5",
+            "5175643-pts-10"
           ]
         },
         {
           "gameId": "401909330",
           "status": "included",
           "legs": [
-            "4065648-3pm-2"
+            "4278039-pts-20"
           ]
         },
         {
           "gameId": "401909331",
-          "status": "included",
-          "legs": [
-            "4432816-pts-15"
-          ]
+          "status": "excluded",
+          "legs": [],
+          "excludedReason": "MEM @ MIN: need 2+ legs @ TABtouch (found 0)."
         },
         {
           "gameId": "401909332",
           "status": "excluded",
           "legs": [],
-          "excludedReason": "DAL @ PHX: cross capped at 5 games"
+          "excludedReason": "DAL @ PHX: need 2+ legs @ TABtouch (found 0)."
         },
         {
           "gameId": "401909333",
-          "status": "excluded",
-          "legs": [],
-          "excludedReason": "LAL @ SAS: need 2+ legs @ PointsBet (found 0)."
+          "status": "included",
+          "legs": [
+            "4592479-pts-10",
+            "5104157-3pm-2"
+          ]
         },
         {
           "gameId": "401909334",
           "status": "excluded",
           "legs": [],
-          "excludedReason": "DEN @ UTA: cross capped at 5 games"
+          "excludedReason": "DEN @ UTA: need 2+ legs @ TABtouch (found 0)."
         },
         {
           "gameId": "401909335",
           "status": "excluded",
           "legs": [],
-          "excludedReason": "NOP @ LAC: cross capped at 5 games"
+          "excludedReason": "NOP @ LAC: need 2+ legs @ TABtouch (found 0)."
         },
         {
           "gameId": "401909336",
           "status": "excluded",
           "legs": [],
-          "excludedReason": "GSW @ POR: need 2+ legs @ PointsBet (found 0)."
+          "excludedReason": "GSW @ POR: need 2+ legs @ TABtouch (found 0)."
         }
       ],
       "summary": "2–5 games, 1–2 legs/game, $15–50 @ one bookie (toggle games on card)"
@@ -137,36 +153,55 @@
       "type": "boostSgm",
       "label": "Best SGM",
       "legs": [
-        "4278078-3pm-1",
-        "5041939-ast-5"
+        "5104157-3pm-2",
+        "4592479-pts-10"
       ],
-      "combinedProbability": 0.567008,
-      "combinedFairPrice": 1.76,
-      "combinedTakeAt": 1.9,
-      "bestBookie": "Ladbrokes",
-      "bestBookieTotal": 2.52,
+      "combinedProbability": 0.542276,
+      "combinedFairPrice": 1.84,
+      "combinedTakeAt": 1.99,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 2.33,
       "bookieTotals": {
-        "Ladbrokes": 2.52
+        "Sportsbet": 2.29,
+        "TABtouch": 2.42,
+        "Ladbrokes": 2.33,
+        "Neds": 2.33,
+        "PointsBet": 2.31,
+        "Unibet": 2.36,
+        "Betr": 2.43,
+        "Picklebet": 2.4,
+        "Bet Right": 2.4
       },
       "summary": "Best 2–5 leg same-game multi · min $2 · edge curve"
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot",
+      "legs": [
+        "3059318-pts-35",
+        "5104157-pts-40"
+      ],
+      "combinedProbability": 0.031855,
+      "combinedFairPrice": 31.39,
+      "combinedTakeAt": 33.9,
+      "bestBookie": "Betr",
+      "bestBookieTotal": 50,
+      "bookieTotals": {
+        "Sportsbet": 38.75,
+        "TAB": 23.63,
+        "PointsBet": 40.38,
+        "Betr": 50,
+        "Picklebet": 50,
+        "Bet Right": 50
+      },
+      "summary": "2 legs angle-ranked @ Betr"
     }
   ],
   "notBuilt": [
     {
-      "type": "longshot",
-      "label": "Longshot",
-      "reason": "No angle longshot @ one bookie ($30–150, 2–4 legs, edge or narrative)"
-    },
-    {
       "type": "booster",
       "label": "Booster",
-      "reason": "Gate: Booster: Tyrese Maxey has Check news (legs: Cam Spencer Over 6.5 ast, Derrick White Over 1.5 3PM, Tyrese Maxey Over 6.5 ast, Victor Wembanyama Over 34.5 pts)",
-      "players": [
-        "Cam Spencer",
-        "Derrick White",
-        "Tyrese Maxey",
-        "Victor Wembanyama"
-      ]
+      "reason": "Booster: Cam Spencer 7+ ast: no Sportsbet line"
     },
     {
       "type": "q1Multi",
