@@ -13,7 +13,11 @@ export function recordKeyCount(record: Record<string, unknown> | null | undefine
   return Object.keys(record ?? {}).length;
 }
 
-export function historyEntryCount(history: HistoryJson): number {
+export function historyEntryCount(history: HistoryJson | null | undefined): number {
+  if (!history || !Array.isArray(history.legs) || !Array.isArray(history.multis)) {
+    console.warn("historyEntryCount: unexpected shape — treating as 0 entries");
+    return 0;
+  }
   return history.legs.length + history.multis.length;
 }
 

@@ -10,13 +10,13 @@ import {
   persistDataBranchGuardReason,
   slateOddsSnapshotKeyCount,
 } from "../lib/odds-cache-guard.js";
+import { persistJsonShrinkReason } from "../lib/espn-cache-guard.js";
 import {
-  historyEntryCount,
-  persistJsonShrinkReason,
-  recordKeyCount,
-} from "../lib/espn-cache-guard.js";
+  PERSIST_JSON_SHRINK_CHECKS,
+  persistJsonEntryCount,
+} from "../lib/persist-guard-json-count.js";
 import { isPostTipOff } from "../lib/odds-cache-merge.js";
-import type { HistoryJson, SlateGame } from "../lib/types.js";
+import type { SlateGame } from "../lib/types.js";
 import type { DataIndexFile } from "../lib/data-index.js";
 import {
   indexRetentionDropReason,
@@ -24,12 +24,6 @@ import {
 } from "../lib/index-guard.js";
 import type { ResultsSlice } from "../lib/results-types.js";
 import { resultsPersistShrinkReason } from "../lib/results-persist-guard.js";
-import { injuryStatusHistoryEntryCount } from "../lib/injury-status-history.js";
-import type { InjuryStatusHistoryFile } from "../lib/injury-status-history-ui.js";
-import {
-  injuryCombineEntryCount,
-  type InjuryCombineLogFile,
-} from "../lib/injury-combine-log.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const staging = process.argv[2];
@@ -164,44 +158,16 @@ function readJsonFromDataBranch(relPath: string): unknown | null {
 function countPersistedFile(relPath: string, stagingPath: string): number {
   if (!fs.existsSync(stagingPath)) return 0;
   try {
-  const next = JSON.parse(fs.readFileSync(stagingPath, "utf8")) as unknown;
-  if (relPath.endsWith("history.json")) {
-    return historyEntryCount(next as HistoryJson);
-  }
-  if (relPath.endsWith("injury-status-history.json")) {
-    return injuryStatusHistoryEntryCount(next as InjuryStatusHistoryFile);
-  }
-  if (relPath.endsWith("injury-combine-log.json")) {
-    return injuryCombineEntryCount(next as InjuryCombineLogFile);
-  }
-  return recordKeyCount(next as Record<string, unknown>);
+    const next = JSON.parse(fs.readFileSync(stagingPath, "utf8")) as unknown;
+    return persistJsonEntryCount(relPath, next);
   } catch {
     return 0;
   }
 }
 
-const jsonShrinkChecks: { rel: string; label: string }[] = [
-  { rel: "public/data/game-log-cache.json", label: "game-log-cache.json" },
-  { rel: "public/data/h2h-season-cache.json", label: "h2h-season-cache.json" },
-  { rel: "public/data/history.json", label: "history.json" },
-  { rel: "public/data/injury-status-history.json", label: "injury-status-history.json" },
-  { rel: "public/data/injury-combine-log.json", label: "injury-combine-log.json" },
-];
-
-for (const { rel, label } of jsonShrinkChecks) {
+for (const { rel, label } of PERSIST_JSON_SHRINK_CHECKS) {
   const priorRaw = readJsonFromDataBranch(rel);
-  let priorCount = 0;
-  if (priorRaw != null) {
-    if (rel.endsWith("history.json")) {
-      priorCount = historyEntryCount(priorRaw as HistoryJson);
-    } else if (rel.endsWith("injury-status-history.json")) {
-      priorCount = injuryStatusHistoryEntryCount(priorRaw as InjuryStatusHistoryFile);
-    } else if (rel.endsWith("injury-combine-log.json")) {
-      priorCount = injuryCombineEntryCount(priorRaw as InjuryCombineLogFile);
-    } else {
-      priorCount = recordKeyCount(priorRaw as Record<string, unknown>);
-    }
-  }
+  const priorCount = priorRaw != null ? persistJsonEntryCount(rel, priorRaw) : 0;
   const nextCount = countPersistedFile(rel, path.join(staging, path.basename(rel)));
   const shrinkReason = persistJsonShrinkReason(label, priorCount, nextCount, {
     postTipOff,

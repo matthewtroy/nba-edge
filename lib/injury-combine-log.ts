@@ -48,8 +48,12 @@ export function mergeInjuryCombineEntries(
   return { version: 1, entries: [...byKey.values()] };
 }
 
-export function injuryCombineEntryCount(file: InjuryCombineLogFile | null): number {
-  return file?.entries?.length ?? 0;
+export function injuryCombineEntryCount(file: InjuryCombineLogFile | null | undefined): number {
+  if (!file || !Array.isArray(file.entries)) {
+    console.warn("injuryCombineEntryCount: unexpected shape — treating as 0 entries");
+    return 0;
+  }
+  return file.entries.length;
 }
 
 /** Settle: attach box-score actual for the beneficiary stat. */

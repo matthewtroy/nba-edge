@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
   espnCacheShrinkBlocked,
   historyEntryCount,
@@ -47,5 +47,12 @@ describe("historyEntryCount", () => {
       calibration: [],
     };
     expect(historyEntryCount(h)).toBe(1);
+  });
+
+  it("returns 0 and warns on wrong shape", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    expect(historyEntryCount({ version: 1, changes: [] } as unknown as HistoryJson)).toBe(0);
+    expect(warn).toHaveBeenCalled();
+    warn.mockRestore();
   });
 });

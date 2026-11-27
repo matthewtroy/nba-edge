@@ -46,8 +46,14 @@ export function writeInjuryStatusHistoryFile(
   fs.writeFileSync(filePath, `${JSON.stringify(file, null, 2)}\n`);
 }
 
-export function injuryStatusHistoryEntryCount(file: InjuryStatusHistoryFile | null): number {
-  return file?.changes?.length ?? 0;
+export function injuryStatusHistoryEntryCount(
+  file: InjuryStatusHistoryFile | null | undefined
+): number {
+  if (!file || !Array.isArray(file.changes)) {
+    console.warn("injuryStatusHistoryEntryCount: unexpected shape — treating as 0 entries");
+    return 0;
+  }
+  return file.changes.length;
 }
 
 function changeKey(c: InjuryStatusChange): string {
