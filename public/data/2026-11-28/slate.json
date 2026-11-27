@@ -36,7 +36,7 @@
     "homeTeamId": "11",
     "awayTeamId": "20",
     "spread": 3.5,
-    "total": 230.5,
+    "total": 229.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled"
@@ -63,7 +63,7 @@
     "awayTeam": "Atlanta Hawks",
     "homeTeamId": "2",
     "awayTeamId": "1",
-    "spread": -8.5,
+    "spread": -9.5,
     "total": 223.5,
     "homeB2B": false,
     "awayB2B": false,

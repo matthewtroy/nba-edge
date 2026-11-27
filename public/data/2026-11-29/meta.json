@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T19:37:01.634Z",
+  "lastUpdated": "2026-11-27T19:47:59.667Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
@@ -26,10 +26,14 @@
     "Norman Powell out → Buddy Hield +3.7 pts",
     "Caleb Wilson out → Buddy Hield +3.7 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_02_30PM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_02_45PM.pdf",
   "pricedLegCounts": {
     "pts": {
       "total": 192,
+      "priced": 0
+    },
+    "3pm": {
+      "total": 285,
       "priced": 0
     },
     "reb": {
@@ -38,10 +42,6 @@
     },
     "ast": {
       "total": 156,
-      "priced": 0
-    },
-    "3pm": {
-      "total": 285,
       "priced": 0
     },
     "q1reb": {

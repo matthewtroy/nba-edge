@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T19:35:58.516Z",
+  "updatedAt": "2026-11-27T19:46:37.406Z",
   "todayDate": "2026-11-28",
   "tomorrowDate": "2026-11-29",
   "defaultDate": "2026-11-28",
@@ -11,7 +11,7 @@
       "gameCount": 11,
       "legCount": 1855,
       "multiCount": 5,
-      "lastUpdated": "2026-11-27T19:37:00.148Z",
+      "lastUpdated": "2026-11-27T19:47:56.907Z",
       "firstTipIso": "2026-11-28T00:00:00.000Z"
     },
     {
@@ -21,7 +21,7 @@
       "gameCount": 5,
       "legCount": 916,
       "multiCount": 1,
-      "lastUpdated": "2026-11-27T19:37:01.634Z",
+      "lastUpdated": "2026-11-27T19:47:59.667Z",
       "firstTipIso": "2026-11-28T22:00:00.000Z"
     }
   ],
