@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import { execSync } from "child_process";
 import fs from "fs";
 import path from "path";
 import { buildLegReasons } from "../lib/leg-reason-builder";
@@ -31,6 +30,13 @@ const baseLeg = {
   reasons: [],
   starterEligible: true,
 } as PickLeg;
+
+const picks28 = JSON.parse(
+  fs.readFileSync(
+    path.join(process.cwd(), "tests/fixtures/next-slate/2026-11-28-pre-odds.json"),
+    "utf8"
+  )
+).picks as PickLeg[];
 
 function logsWithAvg(avg: number, n = 10): PlayerGameLog[] {
   return Array.from({ length: n }, (_, i) => ({
@@ -171,15 +177,9 @@ describe("pass 7b reason copy", () => {
     expect(gated.some((r) => /fga/i.test(r.text))).toBe(false);
   });
 
-  it("data branch 2026-11-28 display: no banned phrases", () => {
-    const picks = JSON.parse(
-      execSync("git show origin/data:public/data/2026-11-28/picks.json", {
-        encoding: "utf8",
-        maxBuffer: 50_000_000,
-      })
-    ) as PickLeg[];
+  it("fixture 2026-11-28 display: no banned phrases", () => {
     let hits = 0;
-    for (const leg of picks) {
+    for (const leg of picks28) {
       for (const row of legRowReasonLines(leg)) {
         if (reasonTextHasBannedPhrase(row.text)) hits += 1;
       }
