@@ -125,6 +125,20 @@ export function sameGameSgmHasClash(legs: PickLeg[]): boolean {
   return false;
 }
 
+/** Cross-Game SGM: Best SGM clash rules within each game only. */
+export function crossGameMultiHasClash(legs: PickLeg[]): boolean {
+  const byGame = new Map<string, PickLeg[]>();
+  for (const leg of legs) {
+    const arr = byGame.get(leg.gameId) ?? [];
+    arr.push(leg);
+    byGame.set(leg.gameId, arr);
+  }
+  for (const gameLegs of byGame.values()) {
+    if (sameGameSgmHasClash(gameLegs)) return true;
+  }
+  return false;
+}
+
 export function multiClashSummary(legs: PickLeg[]): string {
   for (let i = 0; i < legs.length; i++) {
     for (let j = i + 1; j < legs.length; j++) {

@@ -1,6 +1,6 @@
 import type { PickLeg } from "./types.js";
 import { AU_BOOKMAKERS } from "./types.js";
-import { canonBookiePrices } from "./bookie-totals.js";
+import { canonBookiePrices, resolveCanonBookie } from "./bookie-totals.js";
 import {
   combinedPriceForBookieNearest,
   legPriceAtBookieNearest,
@@ -18,7 +18,8 @@ function legsWithCanonPrices(legs: PickLeg[]): PickLeg[] {
 
 export function legPriceAtBookie(leg: PickLeg, bookie: string): number | undefined {
   const canon = canonBookiePrices(leg.bookiePrices);
-  const p = canon[bookie as keyof typeof canon];
+  const key = resolveCanonBookie(bookie) ?? bookie;
+  const p = canon[key as keyof typeof canon];
   if (p == null || p <= 1) return undefined;
   return p;
 }

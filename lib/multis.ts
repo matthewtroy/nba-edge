@@ -3,7 +3,7 @@ import { q1MultiBlendP, passesQ1MultiHitGap } from "./q1-multi-probability.js";
 import { nearestPricedRung } from "./nearest-bookie-line.js";
 import {
   pickBestSameGameSgmCombo,
-  pickBestCrossGameLegPair,
+  pickCrossGameLegsForGame,
   SGM_NO_ODDS_MIN,
   SGM_NO_ODDS_MAX,
   CROSS_SGM_MIN_GAMES,
@@ -16,7 +16,7 @@ import {
   crossGameExcludedReason,
 } from "./games-tab-sgm.js";
 import type { CrossGameSgmGroup, SlateGame } from "./types.js";
-import { legsClash, multiHasClash } from "./clash.js";
+import { crossGameMultiHasClash, legsClash, multiHasClash } from "./clash.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
 import {
   qualifiesCrossBoostLeg,
@@ -310,7 +310,9 @@ export function buildMultis(
       });
       continue;
     }
-    if (multiHasClash(legs)) {
+    const clashes =
+      m.type === "crossGameSgm" ? crossGameMultiHasClash(legs) : multiHasClash(legs);
+    if (clashes) {
       clashDropped.push({
         multi: m,
         reason: `Clash rule: ${multiClashSummary(legs)}`,
@@ -1124,20 +1126,6 @@ function buildCrossGameSgm(
             }) as SlateGame
         );
 
-  if (slate.length < CROSS_SGM_MIN_GAMES) {
-    const reason = `Cross-Game SGM needs ${CROSS_SGM_MIN_GAMES}+ games on slate (have ${slate.length})`;
-    pushMultiBuildTrace({
-      type: "crossGameSgm",
-      eligible: eligibleUnique.length,
-      bestEdgePool: 0,
-      clashCandidates: 0,
-      rangeCandidates: 0,
-      built: false,
-      detail: reason,
-    });
-    return { bet: null, reason };
-  }
-
   let bestAcross: {
     legs: PickLeg[];
     bookie: string;
@@ -1173,8 +1161,8 @@ function buildCrossGameSgm(
       const gid = game.id;
       const pool = (byGame.get(gid) ?? []).sort(sortLegs);
       const label = gameCrossLabel(game);
-      const subset = pickBestCrossGameLegPair(pool.slice(0, 24));
-      if (!subset?.length || subset.length !== CROSS_LEGS_PER_GAME) {
+      const subset = pickCrossGameLegsForGame(pool.slice(0, 24));
+      if (!subset?.length) {
         groups.push({
           gameId: gid,
           status: "excluded",
@@ -1208,7 +1196,7 @@ function buildCrossGameSgm(
   }
 
   if (!bestAcross) {
-    const reason = `No cross-game SGM (${CROSS_SGM_MIN_GAMES}+ games @ 2 legs/game, high prob ≥ fair; pool ${maxPoolBookie}=${maxPool})`;
+    const reason = `No cross-game SGM (${CROSS_SGM_MIN_GAMES}+ games, high prob ≥ fair; pool ${maxPoolBookie}=${maxPool})`;
     pushMultiBuildTrace({
       type: "crossGameSgm",
       eligible: eligibleUnique.length,
@@ -1223,14 +1211,13 @@ function buildCrossGameSgm(
   }
 
   const { p, fair, takeAt } = combinedPrice(bestAcross.legs);
-  const excludedLabels = bestAcross.groups
-    .filter((g) => g.status === "excluded")
-    .map((g) => {
-      const game = slate.find((s) => s.id === g.gameId);
-      return game ? gameCrossLabel(game) : g.gameId;
-    });
-  const notIncluded =
-    excludedLabels.length > 0 ? ` Not included: ${excludedLabels.join(", ")}.` : "";
+  const oneLegGames = bestAcross.groups.filter(
+    (g) => g.status === "included" && g.legs.length === 1
+  ).length;
+  const oneLegNote =
+    oneLegGames > 0
+      ? ` (${oneLegGames} game${oneLegGames > 1 ? "s" : ""} @ 1 leg — no clash-free pair)`
+      : "";
 
   pushMultiBuildTrace({
     type: "crossGameSgm",
@@ -1253,7 +1240,7 @@ function buildCrossGameSgm(
       combinedTakeAt: takeAt,
       ...overlayForBookie(bestAcross.legs, bestAcross.bookie, catalog),
       crossGameGroups: bestAcross.groups,
-      summary: `${bestAcross.gamesIncluded} games × 2 legs @ ${bestAcross.bookie}.${notIncluded}`,
+      summary: `${bestAcross.gamesIncluded} games @ ${bestAcross.bookie}${oneLegNote}`,
     },
     reason: "",
   };

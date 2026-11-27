@@ -21,7 +21,18 @@ const ALIASES: Record<string, (typeof AU_BOOKMAKERS)[number]> = {
 
 function canonBookie(raw: string): (typeof AU_BOOKMAKERS)[number] | undefined {
   const key = raw.trim().toLowerCase();
-  return ALIASES[key];
+  if (ALIASES[key]) return ALIASES[key];
+  for (const name of AU_BOOKMAKERS) {
+    if (name.toLowerCase() === key) return name;
+  }
+  return undefined;
+}
+
+/** Map feed/API bookie string to canonical AU_BOOKMAKERS name. */
+export function resolveCanonBookie(
+  raw: string
+): (typeof AU_BOOKMAKERS)[number] | undefined {
+  return canonBookie(raw);
 }
 
 /** Merge raw API bookie names onto canonical AU book keys (max price per canon). */

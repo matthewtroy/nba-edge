@@ -416,9 +416,6 @@ function CrossLegGroups({
   legViews?: Map<string, LiveLegView>;
   liveBoardByGame: Map<string, { statusDetail: string; phase: string }>;
 }) {
-  const groupByGame = new Map(
-    (multi.crossGameGroups ?? []).map((g) => [g.gameId, g])
-  );
   const order = slate?.length
     ? slate.map((g) => g.id)
     : [...new Set(multi.legs.map((id) => resolveLeg(id)?.gameId).filter(Boolean))];
@@ -437,22 +434,6 @@ function CrossLegGroups({
       {order.map((gameId) => {
         if (!gameId) return null;
         const rows = byGame.get(gameId);
-        const group = groupByGame.get(gameId);
-        if (!rows?.length && group?.status === "excluded") {
-          const game = slate?.find((g) => g.id === gameId);
-          const matchup = game
-            ? slateMatchupAbbrev(game)
-            : gameId;
-          return (
-            <p
-              key={gameId}
-              className="px-4 py-1.5 text-[11px] text-white/45"
-              data-testid="cross-sgm-excluded"
-            >
-              Not included: {matchup}
-            </p>
-          );
-        }
         if (!rows?.length) return null;
         const game = slate?.find((g) => g.id === gameId);
         const matchup = game
@@ -593,6 +574,11 @@ function MotionGroupHeader({
       <p className="text-[11px] text-white/45 theme-adaptive-muted shrink-0 text-right">
         {time ? `${time} · ` : ""}
         SGM · {legCount}
+        {legCount === 1 ? (
+          <span className="text-amber-400/80 ml-1" data-testid="cross-sgm-one-leg">
+            · no 2nd leg
+          </span>
+        ) : null}
         {blowout ? (
           <span className="text-red-400 ml-1">Blowout</span>
         ) : null}

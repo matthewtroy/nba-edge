@@ -1,5 +1,5 @@
 import type { PickLeg } from "./types.js";
-import { legsClash, multiHasClash } from "./clash.js";
+import { legsClash, multiHasClash, sameGameSgmLegsClash } from "./clash.js";
 import { pickMultiLegSubsetResolved } from "./same-game-leg-resolve.js";
 import { combinedPriceForBookieWithCatalog } from "./single-bookie.js";
 import { legMeetsBookieEdge } from "./bookie-edge-pool.js";
@@ -13,8 +13,8 @@ import {
 
 export const SGM_BAND_MIN = 7;
 export const SGM_BAND_MAX = 15;
-/** Minimum slate games with a valid 2-leg pair @ one bookie, or not built. */
-export const CROSS_SGM_MIN_GAMES = 6;
+/** Minimum games with at least one cross leg @ one bookie, or not built. */
+export const CROSS_SGM_MIN_GAMES = 2;
 export const CROSS_LEGS_PER_GAME = 2;
 export const SGM_MIN_LEGS = 2;
 export const SGM_MAX_LEGS = 5;
@@ -117,7 +117,7 @@ export function sameGameSgmEdgeShortfall(
   return formatEdgeShortfall(total, actual, req);
 }
 
-/** Best 2-leg same-game pair for cross-game multis — max joint p, different players, no clash. */
+/** Best 2-leg same-game pair for cross-game multis — max joint p, different players, Best SGM clash rules only. */
 export function pickBestCrossGameLegPair(pool: PickLeg[]): PickLeg[] | null {
   let best: { legs: PickLeg[]; p: number } | null = null;
   for (let i = 0; i < pool.length; i++) {
@@ -126,18 +126,33 @@ export function pickBestCrossGameLegPair(pool: PickLeg[]): PickLeg[] | null {
       const b = pool[j];
       if (a.playerId === b.playerId) continue;
       const pair = [a, b];
-      if (legsClash(a, b)) continue;
+      if (sameGameSgmLegsClash(a, b)) continue;
       const p = a.probability * b.probability;
       if (
         !best ||
         p > best.p + 1e-12 ||
-        (Math.abs(p - best.p) < 1e-12 && (a.bestPrice ?? 0) * (b.bestPrice ?? 0) > (best.legs[0].bestPrice ?? 0) * (best.legs[1].bestPrice ?? 0))
+        (Math.abs(p - best.p) < 1e-12 &&
+          (a.bestPrice ?? 0) * (b.bestPrice ?? 0) >
+            (best.legs[0].bestPrice ?? 0) * (best.legs[1].bestPrice ?? 0))
       ) {
         best = { legs: pair, p };
       }
     }
   }
   return best?.legs ?? null;
+}
+
+/** Prefer a 2-leg pair; otherwise highest-probability single leg. */
+export function pickCrossGameLegsForGame(pool: PickLeg[]): PickLeg[] | null {
+  const pair = pickBestCrossGameLegPair(pool);
+  if (pair?.length === CROSS_LEGS_PER_GAME) return pair;
+  if (!pool.length) return null;
+  const sorted = [...pool].sort((a, b) => {
+    const dp = b.probability - a.probability;
+    if (Math.abs(dp) > 1e-12) return dp;
+    return legEdgeDecimal(b) - legEdgeDecimal(a);
+  });
+  return [sorted[0]!];
 }
 
 /** @deprecated use pickBestCrossGameLegPair */

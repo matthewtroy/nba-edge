@@ -1,5 +1,5 @@
 import type { MultiBet, MultiType, PickLeg } from "./types.js";
-import { multiHasClash } from "./clash.js";
+import { crossGameMultiHasClash, multiHasClash } from "./clash.js";
 import { bestFeedMultiQuote } from "./card-bookie.js";
 import { combinedPriceForBookieWithCatalog } from "./single-bookie.js";
 import {
@@ -190,8 +190,10 @@ function checkTypeRules(
       issues.push(`Cross-Game: ${byGame.size} games (need ${CROSS_SGM_MIN_GAMES}+)`);
     }
     for (const [gid, n] of byGame) {
-      if (n !== CROSS_LEGS_PER_GAME) {
-        issues.push(`Cross-Game: game ${gid} has ${n} legs (need ${CROSS_LEGS_PER_GAME})`);
+      if (n < 1 || n > CROSS_LEGS_PER_GAME) {
+        issues.push(
+          `Cross-Game: game ${gid} has ${n} legs (need 1–${CROSS_LEGS_PER_GAME})`
+        );
       }
     }
   }
@@ -212,7 +214,11 @@ export function gateMulti(
     return { ok: false, violations };
   }
 
-  if (multiHasClash(legs)) violations.push(`${label}: leg clash`);
+  const clashes =
+    multi.type === "crossGameSgm"
+      ? crossGameMultiHasClash(legs)
+      : multiHasClash(legs);
+  if (clashes) violations.push(`${label}: leg clash`);
 
   for (const leg of legs) {
     if (leg.fairPrice < MIN_LEG_FAIR) {

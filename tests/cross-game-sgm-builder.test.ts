@@ -6,11 +6,18 @@ import {
 } from "../lib/cross-game-sgm-leg";
 import {
   pickBestCrossGameLegPair,
+  pickCrossGameLegsForGame,
   CROSS_SGM_MIN_GAMES,
   CROSS_LEGS_PER_GAME,
 } from "../lib/same-game-sgm-search";
 import { buildMultis } from "../lib/multis";
-import { multiHasClash } from "../lib/clash";
+import {
+  crossGameMultiHasClash,
+  legsClash,
+  multiHasClash,
+  sameGameSgmLegsClash,
+} from "../lib/clash";
+import { legPriceAtBookie } from "../lib/single-bookie";
 import { DEFAULT_MIN_EDGE } from "../lib/multi-combined";
 import { fixtureSlateDir } from "./public-data-fixture";
 import fs from "fs";
@@ -87,6 +94,17 @@ describe("crossGameSgm leg gate", () => {
     });
     expect(qualifiesCrossGameSgmLeg(l, "Sportsbet", [l])).toBe(true);
   });
+
+  it("resolves bookie prices case-insensitively", () => {
+    const l = leg({
+      id: "e",
+      gameId: "g1",
+      playerId: "pe",
+      bookiePrices: { ladbrokes: 1.7 },
+    });
+    expect(legPriceAtBookie(l, "Ladbrokes")).toBe(1.7);
+    expect(legPriceAtBookie(l, "ladbrokes")).toBe(1.7);
+  });
 });
 
 describe("pickBestCrossGameLegPair", () => {
@@ -101,19 +119,51 @@ describe("pickBestCrossGameLegPair", () => {
     expect(pair!.map((l) => l.id).sort()).toEqual(["1", "2"]);
     expect(multiHasClash(pair!)).toBe(false);
   });
+
+  it("uses relaxed Best SGM clash (not full multi clash)", () => {
+    const a = leg({
+      id: "rb1",
+      gameId: "g",
+      playerId: "a",
+      team: "HOM",
+      market: "reb",
+      line: 5,
+      probability: 0.76,
+    });
+    const b = leg({
+      id: "rb2",
+      gameId: "g",
+      playerId: "b",
+      team: "AWY",
+      market: "reb",
+      line: 5,
+      probability: 0.74,
+    });
+    expect(legsClash(a, b)).toBe(true);
+    expect(sameGameSgmLegsClash(a, b)).toBe(false);
+    const pair = pickBestCrossGameLegPair([a, b]);
+    expect(pair).toHaveLength(2);
+  });
+});
+
+describe("pickCrossGameLegsForGame", () => {
+  it("falls back to one leg when no pair exists", () => {
+    const only = leg({ id: "solo", gameId: "g", playerId: "x", probability: 0.8 });
+    expect(pickCrossGameLegsForGame([only])).toEqual([only]);
+  });
 });
 
 describe("crossGameSgm builder", () => {
   const DATA = fixtureSlateDir("2026-11-26");
 
-  it("notBuilt when slate has fewer than 6 games", () => {
+  it("notBuilt when fewer than 2 games qualify", () => {
     const picks = JSON.parse(
       fs.readFileSync(path.join(DATA, "picks.json"), "utf8")
     ) as PickLeg[];
     const games = JSON.parse(
       fs.readFileSync(path.join(DATA, "slate.json"), "utf8")
     ) as SlateGame[];
-    const small = games.slice(0, 5);
+    const small = games.slice(0, 1);
     const { bets, notBuilt } = buildMultis(
       picks,
       small.length,
@@ -131,7 +181,7 @@ describe("crossGameSgm builder", () => {
     ).toBe(true);
   });
 
-  it(`built cross has 2 legs per included game and lists excluded games`, () => {
+  it("built cross allows 1–2 legs per game and omits Not included summary", () => {
     const picks = JSON.parse(
       fs.readFileSync(path.join(DATA, "picks.json"), "utf8")
     ) as PickLeg[];
@@ -156,14 +206,13 @@ describe("crossGameSgm builder", () => {
       byGame.set(legRow.gameId, (byGame.get(legRow.gameId) ?? 0) + 1);
     }
     for (const n of byGame.values()) {
-      expect(n).toBe(CROSS_LEGS_PER_GAME);
+      expect(n).toBeGreaterThanOrEqual(1);
+      expect(n).toBeLessThanOrEqual(CROSS_LEGS_PER_GAME);
     }
-    expect(cross.crossGameGroups?.some((g) => g.status === "excluded")).toBe(
-      Boolean(cross.summary?.includes("Not included"))
-    );
+    expect(cross.summary?.includes("Not included")).toBe(false);
     const resolved = cross.legs
       .map((id) => picks.find((p) => p.id === id))
       .filter(Boolean) as PickLeg[];
-    expect(multiHasClash(resolved)).toBe(false);
+    expect(crossGameMultiHasClash(resolved)).toBe(false);
   });
 });
