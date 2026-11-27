@@ -10,6 +10,7 @@ import { slateHasFeedOdds, slateOddsAvailabilityNote } from "@lib/slate-odds-ui"
 import { picksByIdFromOfficialSnapshots } from "@lib/official-leg-snapshot";
 import { injuriesForBadges } from "@lib/injury-display";
 import { shouldShowSlateBuildingScreen } from "@lib/slate-building-mode";
+import { viewerUsesOfficialCard } from "@lib/slate-viewer-official";
 
 const ORDER = [
   "mainPlay",
@@ -59,15 +60,18 @@ export function TodayScreen({
   liveTracking,
 }: Props) {
   const official = data.officialCard;
-  const useOfficial =
-    official != null &&
-    official.slateDate === (data.meta.slateTipDate ?? official.slateDate);
+  const useOfficial = viewerUsesOfficialCard({
+    index: data.index,
+    officialCard: official,
+    slateDate,
+    slateTipDate: data.meta.slateTipDate ?? official?.slateDate,
+  });
 
   const picksById = useOfficial
     ? picksByIdFromOfficialSnapshots(official!.legSnapshots, data.picks)
     : new Map(data.picks.map((p) => [p.id, p]));
 
-  const displayMultis = useOfficial ? official.multis : data.multis;
+  const displayMultis = useOfficial && official ? official.multis : data.multis;
   const headerOddsPull =
     official?.oddsLastPulled && useOfficial
       ? official.oddsLastPulled

@@ -15,6 +15,7 @@ import { ui } from "../lib/card-type-scale";
 import { injuriesForBadges } from "@lib/injury-display";
 import type { ReasonAtTipSnapshot } from "@lib/types";
 import { PRICES_PENDING_LABEL, slateAwaitingPrices } from "@lib/slate-odds-ui";
+import { viewerUsesOfficialCard } from "@lib/slate-viewer-official";
 
 interface Props {
   data: DataBundle;
@@ -95,6 +96,12 @@ export function PicksScreen({
   });
   const [filters, patch, toggleSortDir] = usePicksFilters();
   const markets = useMemo(() => marketsOnSlate(data.picks), [data.picks]);
+  const useOfficial = viewerUsesOfficialCard({
+    index: data.index,
+    officialCard: data.officialCard,
+    slateDate,
+    slateTipDate: data.meta.slateTipDate,
+  });
   const awaitingPrices = slateAwaitingPrices({
     slateDate,
     todayDate,
@@ -137,6 +144,8 @@ export function PicksScreen({
         viewerTimeZone={viewerTimeZone}
         slateEmpty={!data.picks.length && !data.slate.length}
         slate={data.slate}
+        officialCard={data.officialCard}
+        officialInUse={useOfficial}
         awaitingPrices={awaitingPrices}
         onIndexRefreshed={onIndexRefreshed}
       />

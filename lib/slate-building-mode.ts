@@ -1,6 +1,7 @@
 import type { DataIndexFile } from "./data-index.js";
 import type { OfficialCardFile } from "./official-card-time.js";
 import { isForwardPreviewSlate } from "./slate-preview.js";
+import { indexSlatePublished } from "./slate-viewer-official.js";
 
 export function shouldShowSlateBuildingScreen(opts: {
   index: DataIndexFile | null;
@@ -23,6 +24,10 @@ export function shouldShowSlateBuildingScreen(opts: {
     previewSlate,
   } = opts;
   if (!index) return false;
+
+  if (indexSlatePublished(index, slateDate)) {
+    return false;
+  }
 
   if (
     officialCard?.publishedAt &&

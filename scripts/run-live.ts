@@ -120,6 +120,7 @@ import {
   applyForwardMetadata,
   forwardSlateMetadataFromGames,
 } from "../lib/index-forward-scan.js";
+import { nextPublishAtAfterOfficialRun } from "../lib/index-publish-at.js";
 import { buildOddsCoverage } from "../lib/odds-coverage.js";
 import {
   countPricedLegsByMarket,
@@ -1044,6 +1045,11 @@ export async function runLivePipeline(
     console.error(`index guard: blocked — ${dropReason}`);
     process.exit(1);
   }
+  nextIndex = nextPublishAtAfterOfficialRun(nextIndex, now, {
+    publishNow,
+    republishCard,
+    entries: mergedIndexEntries,
+  });
   writeDataIndex(outDir, nextIndex);
 
   for (const legacy of [
@@ -1162,6 +1168,20 @@ export async function runLivePipeline(
         }
       } else {
         logOfficialCard("blocked", `missing JSON under ${nextTip}`);
+      }
+    }
+  }
+
+  if (republishCard) {
+    const indexPath = path.join(outDir, "index.json");
+    if (fs.existsSync(indexPath)) {
+      const current = JSON.parse(fs.readFileSync(indexPath, "utf8")) as import("../lib/data-index.js").DataIndexFile;
+      const published = current.dates.some((d) => d.status === "official");
+      if (published) {
+        writeDataIndex(outDir, {
+          ...current,
+          nextPublishAt: now.toISOString(),
+        });
       }
     }
   }

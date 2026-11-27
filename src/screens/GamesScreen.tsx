@@ -13,6 +13,7 @@ import {
   slateOddsAvailabilityNote,
 } from "@lib/slate-odds-ui";
 import { picksByIdFromOfficialSnapshots } from "@lib/official-leg-snapshot";
+import { viewerUsesOfficialCard } from "@lib/slate-viewer-official";
 import { MultiCard } from "../components/MultiCard";
 import { PickLegRow } from "../components/PickLegRow";
 import { ui } from "../lib/card-type-scale";
@@ -66,9 +67,12 @@ export function GamesScreen({
   const { preset, setPreset, presets } = useGamesSgmPreset();
   const { roughiesOn, setRoughiesOn } = useGamesRoughies();
   const activeSlate = useMemo(() => gamesForGamesTab(data.slate), [data.slate]);
-  const useOfficial =
-    data.officialCard != null &&
-    data.officialCard.slateDate === data.meta.slateTipDate;
+  const useOfficial = viewerUsesOfficialCard({
+    index: data.index,
+    officialCard: data.officialCard,
+    slateDate,
+    slateTipDate: data.meta.slateTipDate,
+  });
   const multis = useOfficial ? data.officialCard!.multis : data.multis;
   const frozenGamesSgms = useOfficial ? data.officialCard!.gamesSgms : undefined;
   const picksById = useMemo(
