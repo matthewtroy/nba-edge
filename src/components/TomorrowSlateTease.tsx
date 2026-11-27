@@ -61,7 +61,6 @@ export function TomorrowSlateTease({
       viewerTodayYmd={viewerTodayYmd}
       viewerTimeZone={viewerTimeZone}
       slate={slate}
-      showNoNbaTomorrow={noGamesToday || slateDate !== todayDate}
       onIndexRefreshed={onIndexRefreshed}
     />
   );

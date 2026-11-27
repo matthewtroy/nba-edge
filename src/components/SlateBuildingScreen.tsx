@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import type { DataIndexFile } from "@lib/data-index";
 import type { SlateGame } from "@lib/types";
+import { buildingCardHeadline } from "@lib/slate-tab-labels";
 import {
-  buildingCardHeadline,
-  noNbaOnCalendarTomorrow,
-} from "@lib/slate-tab-labels";
-import { viewerTimeZone } from "@lib/viewer-slate";
+  NO_NBA_TODAY_BUILDING_TEASE,
+  viewerLocalDayHasNoSlate,
+  viewerTimeZone,
+} from "@lib/viewer-slate";
 import {
   dropCountdownParts,
   formatCountdownClock,
-  tomorrowNoNbaTease,
 } from "@lib/premium-drop-countdown";
 import { slateGamesFromIndexPreviews } from "@lib/slate-preview";
 import { loadDataIndex } from "../hooks/useData";
@@ -22,7 +22,6 @@ interface Props {
   viewerTodayYmd: string;
   viewerTimeZone?: string;
   slate?: SlateGame[];
-  showNoNbaTomorrow?: boolean;
   onIndexRefreshed?: (index: DataIndexFile) => void;
   className?: string;
 }
@@ -54,7 +53,6 @@ export function SlateBuildingScreen({
   viewerTodayYmd,
   viewerTimeZone: tz = viewerTimeZone(),
   slate,
-  showNoNbaTomorrow,
   onIndexRefreshed,
   className = "",
 }: Props) {
@@ -71,11 +69,7 @@ export function SlateBuildingScreen({
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const headline = buildingCardHeadline(slateDate, tz);
-  const noNbaTomorrow =
-    showNoNbaTomorrow ??
-    (index
-      ? noNbaOnCalendarTomorrow(index, viewerTodayYmd, tz) && slateDate !== todayDate
-      : false);
+  const noNbaToday = index ? viewerLocalDayHasNoSlate(index, now, tz) : false;
 
   const games =
     slate && slate.length > 0
@@ -129,8 +123,8 @@ export function SlateBuildingScreen({
         </svg>
       </div>
       <h2 className="text-lg font-semibold text-white text-center">{headline}</h2>
-      {noNbaTomorrow && (
-        <p className="text-sm text-white/55 text-center mt-1">{tomorrowNoNbaTease()}</p>
+      {noNbaToday && (
+        <p className="text-sm text-white/55 text-center mt-1">{NO_NBA_TODAY_BUILDING_TEASE}</p>
       )}
       {!index?.nextPublishAt ? (
         <p className="text-sm text-white/65 text-center mt-3">Card time TBC</p>

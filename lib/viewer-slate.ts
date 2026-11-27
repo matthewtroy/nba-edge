@@ -174,3 +174,14 @@ export function nextSydneyEveningPublishLabel(
 export function noGamesTodayMessage(now = new Date(), viewerTz = viewerTimeZone()): string {
   return `No NBA slate for your local day · next card ~9pm Sydney (${nextSydneyEveningPublishLabel(now, viewerTz)})`;
 }
+
+export const NO_NBA_TODAY_BUILDING_TEASE = "No NBA today";
+
+/** True when the index has no slate whose local tip day is viewer today (same rule as date tabs). */
+export function viewerLocalDayHasNoSlate(
+  index: DataIndexFile,
+  now = new Date(),
+  timeZone = viewerTimeZone()
+): boolean {
+  return resolveViewerSlateSegment(index, now, timeZone).todayFolder === null;
+}

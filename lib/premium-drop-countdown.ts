@@ -39,10 +39,6 @@ export function dropCountdownParts(
   };
 }
 
-export function tomorrowNoNbaTease(): string {
-  return "No NBA tomorrow";
-}
-
 function formatDropLine(iso: string, timeZone: string): string {
   const d = new Date(iso);
   const locale = intlLocaleForTimeZone(timeZone);

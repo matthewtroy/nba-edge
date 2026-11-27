@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { buildDataIndex, type DataIndexDateEntry } from "../lib/data-index";
 import {
+  NO_NBA_TODAY_BUILDING_TEASE,
   noGamesTodayMessage,
   mostRecentSlateFolderBeforeViewerToday,
   nextSlateFolderAfterViewerToday,
   resolveViewerSlateSegment,
+  viewerLocalDayHasNoSlate,
 } from "../lib/viewer-slate";
 import { settledSlateTabLabel } from "../lib/slate-tab-labels";
 import { shouldShowSlateBuildingScreen } from "../lib/slate-building-mode";
@@ -114,5 +116,40 @@ describe("noGamesTodayMessage", () => {
     expect(noGamesTodayMessage(new Date("2026-11-26T10:00:00Z"))).toMatch(
       /9pm Sydney/i
     );
+  });
+});
+
+describe("building card No NBA today tease", () => {
+  const gapIndex = () =>
+    buildDataIndex(
+      [
+        entry("2026-11-26", "2026-11-26T09:00:00Z"),
+        entry("2026-11-28", "2026-11-28T09:00:00Z"),
+      ],
+      new Date("2026-11-27T08:00:00.000Z")
+    );
+
+  it("viewer 2026-11-27 with no local slate → tease copy and flag", () => {
+    const tz = "Australia/Sydney";
+    const now = new Date("2026-11-27T08:00:00.000Z");
+    const index = gapIndex();
+    expect(resolveViewerSlateSegment(index, now, tz).viewerTodayYmd).toBe(
+      "2026-11-27"
+    );
+    expect(resolveViewerSlateSegment(index, now, tz).nextAfterViewerToday).toBe(
+      "2026-11-28"
+    );
+    expect(viewerLocalDayHasNoSlate(index, now, tz)).toBe(true);
+    expect(NO_NBA_TODAY_BUILDING_TEASE).toBe("No NBA today");
+  });
+
+  it("viewer local day with games → no tease flag", () => {
+    const tz = "Australia/Sydney";
+    const now = new Date("2026-11-26T12:00:00.000Z");
+    const index = buildDataIndex(
+      [entry("2026-11-26", "2026-11-26T09:00:00Z")],
+      now
+    );
+    expect(viewerLocalDayHasNoSlate(index, now, tz)).toBe(false);
   });
 });

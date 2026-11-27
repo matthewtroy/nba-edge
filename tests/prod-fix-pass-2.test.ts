@@ -111,6 +111,9 @@ describe("prod fix pass 2 — building screen", () => {
     expect(src).toContain("Best Double Up");
     expect(src).toContain("Best SGM");
     expect(src).toContain("Card time TBC");
+    expect(src).toContain("NO_NBA_TODAY_BUILDING_TEASE");
+    expect(src).not.toMatch(/No NBA tomorrow/i);
+    expect(src).not.toContain("tomorrowNoNbaTease");
   });
 });
 
