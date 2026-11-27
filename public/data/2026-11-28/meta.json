@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T08:11:49.498Z",
+  "lastUpdated": "2026-11-27T08:53:47.963Z",
   "oddsLastPulled": "2026-11-27T07:00:36.694Z",
   "sources": {
     "espn": "ok",
@@ -14,8 +14,8 @@
     "Jock Landale (Atlanta Hawks): no redistribution reasons on slate legs"
   ],
   "modelSanityChecked": 217,
-  "modelSanityFailures": 11,
-  "formGuardExcludedCount": 366,
+  "modelSanityFailures": 24,
+  "formGuardExcludedCount": 382,
   "gameOddsPriceAge": {
     "401909326": "Prices from 6:00 pm",
     "401909327": "Prices from 6:00 pm",
@@ -32,36 +32,39 @@
   "slateTipDate": "2026-11-28",
   "whatChanged": [
     "Duncan Robinson out → Daniss Jenkins +2.6 pts",
-    "RJ Barrett out → Scottie Barnes +5.2 pts",
-    "Cade Cunningham out → Daniss Jenkins +4.1 pts"
+    "Bennedict Mathurin out → Jordan Poole +4.3 pts",
+    "Cade Cunningham out → Daniss Jenkins +4.2 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_03_00AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_03_45AM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 399,
-      "priced": 323
+      "total": 424,
+      "priced": 340
     },
     "reb": {
-      "total": 472,
+      "total": 479,
       "priced": 318
     },
     "ast": {
-      "total": 307,
-      "priced": 220
+      "total": 301,
+      "priced": 216
     },
     "3pm": {
       "total": 581,
       "priced": 440
     },
     "q1reb": {
-      "total": 79,
+      "total": 88,
       "priced": 0
     }
   },
+  "gateViolations": [
+    "Longshot: Victor Wembanyama has Check news"
+  ],
   "officialCard": {
-    "lockedAt": "2026-11-27T08:10:33.449Z",
+    "lockedAt": "2026-11-27T08:52:49.922Z",
     "publishedAt": "2026-11-27T07:00:36.694Z",
-    "republishedAt": "2026-11-27T08:10:33.449Z",
+    "republishedAt": "2026-11-27T08:52:49.922Z",
     "slateDate": "2026-11-28",
     "bookie": "Sportsbet"
   },

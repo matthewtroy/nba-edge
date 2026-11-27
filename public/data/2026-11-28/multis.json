@@ -5,19 +5,19 @@
       "label": "Main Play",
       "legs": [
         "4433083-ast-5",
-        "4592479-pts-10",
-        "4431680-pts-15"
+        "4683021-3pm-2",
+        "4278053-pts-15"
       ],
-      "combinedProbability": 0.36470158199999997,
-      "combinedFairPrice": 2.74,
-      "combinedTakeAt": 2.96,
+      "combinedProbability": 0.341865,
+      "combinedFairPrice": 2.93,
+      "combinedTakeAt": 3.16,
       "bestBookie": "Sportsbet",
-      "bestBookieTotal": 6.1,
+      "bestBookieTotal": 6.29,
       "bookieTotals": {
-        "Sportsbet": 6.1,
-        "Ladbrokes": 5.38,
-        "Neds": 5.38,
-        "PointsBet": 5.83
+        "Sportsbet": 6.29,
+        "Ladbrokes": 6.02,
+        "Neds": 6.02,
+        "PointsBet": 6.18
       },
       "summary": "3 starter main lines"
     },
@@ -25,170 +25,57 @@
       "type": "doubleUp",
       "label": "Best Double Up",
       "legs": [
-        "4903027-pts-15",
-        "3138196-pts-10"
+        "3032977-reb-10",
+        "4432241-ast-5"
       ],
-      "combinedProbability": 0.592896,
-      "combinedFairPrice": 1.69,
-      "combinedTakeAt": 1.83,
-      "bestBookie": "Picklebet",
-      "bestBookieTotal": 2.18,
+      "combinedProbability": 0.56848,
+      "combinedFairPrice": 1.76,
+      "combinedTakeAt": 1.9,
+      "bestBookie": "TABtouch",
+      "bestBookieTotal": 2.04,
       "bookieTotals": {
-        "Sportsbet": 2.11,
-        "TAB": 1.73,
-        "Ladbrokes": 2.11,
-        "Neds": 2.11,
-        "PointsBet": 2.14,
-        "Betr": 2.16,
-        "Picklebet": 2.18,
-        "Bet Right": 2.18
+        "TABtouch": 2.04,
+        "Ladbrokes": 1.84,
+        "Neds": 1.84,
+        "Unibet": 2.02
       },
       "summary": "2 legs · aim ~$2 @ one bookie"
     },
     {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
+      "type": "booster",
+      "label": "Booster",
       "legs": [
-        "3032977-reb-10",
-        "4066261-reb-7",
-        "3133628-reb-5",
-        "5082206-3pm-1",
-        "3149673-pts-20",
-        "4431678-ast-5",
-        "4432241-3pm-1",
-        "4433134-ast-5",
-        "4431680-reb-7",
-        "4903027-pts-15",
-        "4433083-ast-5",
-        "5104157-3pm-2",
-        "4592479-pts-10",
-        "5041955-pts-15",
-        "3138196-pts-10",
-        "4869780-reb-5",
-        "5061589-reb-7",
-        "4683021-ast-5",
-        "3995-3pm-2"
+        "4433083-ast-10",
+        "4683021-3pm-3",
+        "4278053-pts-20"
       ],
-      "combinedProbability": 0.004531752785945468,
-      "combinedFairPrice": 220.67,
-      "combinedTakeAt": 238.32,
-      "bestBookie": "Ladbrokes",
-      "bestBookieTotal": 1275.07,
+      "combinedProbability": 0.022779792,
+      "combinedFairPrice": 43.9,
+      "combinedTakeAt": 47.41,
+      "bestBookie": "Sportsbet",
+      "bestBookieTotal": 154.98,
       "bookieTotals": {
-        "Ladbrokes": 1275.07,
-        "Neds": 1275.07
+        "Sportsbet": 154.98,
+        "Ladbrokes": 143.81,
+        "Neds": 143.81
       },
-      "crossGameGroups": [
-        {
-          "gameId": "401909326",
-          "status": "included",
-          "legs": [
-            "3032977-reb-10",
-            "4066261-reb-7"
-          ]
-        },
-        {
-          "gameId": "401909327",
-          "status": "included",
-          "legs": [
-            "3133628-reb-5",
-            "5082206-3pm-1"
-          ]
-        },
-        {
-          "gameId": "401909328",
-          "status": "included",
-          "legs": [
-            "3149673-pts-20",
-            "4431678-ast-5"
-          ]
-        },
-        {
-          "gameId": "401909329",
-          "status": "included",
-          "legs": [
-            "4432241-3pm-1",
-            "4433134-ast-5"
-          ]
-        },
-        {
-          "gameId": "401909330",
-          "status": "included",
-          "legs": [
-            "4431680-reb-7"
-          ]
-        },
-        {
-          "gameId": "401909331",
-          "status": "included",
-          "legs": [
-            "4903027-pts-15",
-            "4433083-ast-5"
-          ]
-        },
-        {
-          "gameId": "401909332",
-          "status": "excluded",
-          "legs": [],
-          "excludedReason": "DAL @ PHX: no high-prob legs @ Ladbrokes priced ≥ fair."
-        },
-        {
-          "gameId": "401909333",
-          "status": "included",
-          "legs": [
-            "5104157-3pm-2",
-            "4592479-pts-10"
-          ]
-        },
-        {
-          "gameId": "401909334",
-          "status": "included",
-          "legs": [
-            "5041955-pts-15",
-            "3138196-pts-10"
-          ]
-        },
-        {
-          "gameId": "401909335",
-          "status": "included",
-          "legs": [
-            "4869780-reb-5",
-            "5061589-reb-7"
-          ]
-        },
-        {
-          "gameId": "401909336",
-          "status": "included",
-          "legs": [
-            "4683021-ast-5",
-            "3995-3pm-2"
-          ]
-        }
-      ],
-      "summary": "10 games @ Ladbrokes (1 game @ 1 leg — no clash-free pair)"
+      "summary": "Main Play +1 rung when Main leg ≤$4 at bookie, else same rung · Trixie if treble ≥60"
     },
     {
       "type": "boostSgm",
       "label": "Best SGM",
       "legs": [
-        "5104157-3pm-2",
-        "4592479-pts-10"
+        "4395723-reb-5",
+        "5104157-pts-30"
       ],
-      "combinedProbability": 0.542276,
-      "combinedFairPrice": 1.84,
-      "combinedTakeAt": 1.99,
+      "combinedProbability": 0.49692499999999995,
+      "combinedFairPrice": 2.01,
+      "combinedTakeAt": 2.17,
       "bestBookie": "Neds",
-      "bestBookieTotal": 2.33,
+      "bestBookieTotal": 2.62,
       "bookieTotals": {
-        "Sportsbet": 2.29,
-        "TABtouch": 2.42,
-        "Ladbrokes": 2.33,
-        "Neds": 2.33,
-        "PointsBet": 2.31,
-        "Unibet": 2.36,
-        "Betr": 2.43,
-        "Picklebet": 2.4,
-        "Bet Right": 2.4
+        "Ladbrokes": 2.62,
+        "Neds": 2.62
       },
       "summary": "Best 2–5 leg same-game multi · min $2 · edge curve"
     },
@@ -201,42 +88,30 @@
         "4065648-q1reb-3",
         "3059318-q1reb-2",
         "4066383-q1reb-2",
-        "3032977-q1reb-3"
+        "5061589-q1reb-2"
       ],
-      "combinedProbability": 0.12676414869444463,
-      "combinedFairPrice": 7.89,
-      "combinedTakeAt": 8.52,
+      "combinedProbability": 0.13652482889624848,
+      "combinedFairPrice": 7.32,
+      "combinedTakeAt": 7.91,
       "bookieTotals": {},
       "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
-    },
-    {
-      "type": "longshot",
-      "label": "Longshot",
-      "legs": [
-        "3059318-pts-30",
-        "4683021-pts-30",
-        "5104157-pts-40"
-      ],
-      "combinedProbability": 0.027231870000000002,
-      "combinedFairPrice": 36.72,
-      "combinedTakeAt": 39.66,
-      "bestBookie": "Picklebet",
-      "bestBookieTotal": 81.9,
-      "bookieTotals": {
-        "Sportsbet": 79.2,
-        "PointsBet": 66.69,
-        "Betr": 77.9,
-        "Picklebet": 81.9,
-        "Bet Right": 81.9
-      },
-      "summary": "3 legs angle-ranked @ Picklebet"
     }
   ],
   "notBuilt": [
     {
-      "type": "booster",
-      "label": "Booster",
-      "reason": "Booster: Cam Spencer 7+ ast: no Sportsbet line"
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "reason": "No cross-game SGM (no bookie covers all 11 games; pool Ladbrokes=19)"
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot",
+      "reason": "Gate: Longshot: Victor Wembanyama has Check news (legs: Scottie Barnes Over 29.5 pts, Victor Wembanyama Over 39.5 pts, Jayson Tatum Over 39.5 pts)",
+      "players": [
+        "Scottie Barnes",
+        "Victor Wembanyama",
+        "Jayson Tatum"
+      ]
     }
   ]
 }
