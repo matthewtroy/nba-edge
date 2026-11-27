@@ -885,6 +885,9 @@ function buildBooster(
   if (mainLegs.length !== main.legs.length) {
     return { bet: null, reason: "Booster leg missing" };
   }
+  if (mainLegs.some(hasCheckNews)) {
+    return { bet: null, reason: "Booster: Main Play leg has Check news" };
+  }
 
   const bookie = main.bestBookie;
   const legCandidates = mainLegs.map((leg) =>
@@ -1509,16 +1512,17 @@ function buildLongshot(
   catalog: PickLeg[],
   index: CatalogMarketIndex
 ): { bets: MultiBet[]; reason: string } {
+  const pool = picks.filter((l) => !hasCheckNews(l));
   const candidates: {
     legs: PickLeg[];
     bookie: string;
     total: number;
     score: number;
   }[] = [];
-  const bookies = bookiesByCoverage(picks);
+  const bookies = bookiesByCoverage(pool);
 
   for (const bookie of bookies) {
-    const priced = picks
+    const priced = pool
       .filter((l) => qualifiesAngleLongshotAt(l, bookie, minEdgeFraction))
       .map((l) => asBookieLeg(l, bookie, catalog, index))
       .filter(Boolean) as PickLeg[];
@@ -1609,7 +1613,7 @@ function buildLongshot(
       "No angle longshot @ one bookie ($30–150, 2–4 legs, edge or narrative)";
     pushMultiBuildTrace({
       type: "longshot",
-      eligible: picks.length,
+      eligible: pool.length,
       bestEdgePool: 0,
       clashCandidates: 0,
       rangeCandidates: 0,
