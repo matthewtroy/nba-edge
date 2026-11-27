@@ -8,6 +8,13 @@ type MeasuredStat = "pts" | "reb" | "ast";
 
 const STAT_THRESH: Record<MeasuredStat, number> = { pts: 0.5, reb: 1, ast: 1 };
 
+function sharedGamesWithInjured(
+  tmLogs: PlayerGameLog[],
+  injuredGameIds: Set<string>
+): number {
+  return tmLogs.filter((g) => injuredGameIds.has(g.gameId)).length;
+}
+
 function gamesWithoutInjured(
   injuredId: string,
   teammates: PlayerProfile[],
@@ -164,6 +171,7 @@ export function applyMeasuredOutCombines(input: {
       const splits: InjuryCombineOutSplit[] = [];
 
       for (const out of resolvedOuts) {
+        const shared = sharedGamesWithInjured(tmLogs, out.injuredGameIds);
         let effect = 0;
         let n = 0;
         if (out.gamesWithout >= 3) {
@@ -191,7 +199,8 @@ export function applyMeasuredOutCombines(input: {
             n = out.gamesWithout;
           }
         }
-        if (effect > 0) {
+        if (effect <= 0) continue;
+        if (shared >= 3) {
           splits.push({
             playerId: out.profile.id,
             playerName: out.inj.playerName ?? out.profile.name,

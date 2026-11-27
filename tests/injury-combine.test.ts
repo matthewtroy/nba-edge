@@ -166,6 +166,70 @@ describe("injury combine measured", () => {
     expect(combineTeammateInjuryReasonForMarket(reasons, "ast")).not.toMatch(/questionable|doubtful/i);
   });
 
+  it("0 shared season games → teammate not named in combine", () => {
+    const grant: PlayerProfile = profile("grant", "Jerami Grant", [
+      { gameId: "a", minutes: 30, pts: 18, reb: 5, ast: 2, threes: 1, date: "2026-10-22" },
+      { gameId: "b", minutes: 30, pts: 18, reb: 5, ast: 2, threes: 1, date: "2026-10-23" },
+      { gameId: "c", minutes: 30, pts: 18, reb: 5, ast: 2, threes: 1, date: "2026-10-24" },
+      { gameId: "d", minutes: 30, pts: 18, reb: 5, ast: 2, threes: 1, date: "2026-10-25" },
+    ]);
+    const jackson: PlayerProfile = profile("gg", "GG Jackson", [
+      { gameId: "e", minutes: 28, pts: 12, reb: 4, ast: 1, threes: 0, date: "2026-10-26" },
+      { gameId: "f", minutes: 28, pts: 12, reb: 4, ast: 1, threes: 0, date: "2026-10-27" },
+      { gameId: "g", minutes: 28, pts: 12, reb: 4, ast: 1, threes: 0, date: "2026-10-28" },
+      { gameId: "h", minutes: 28, pts: 12, reb: 4, ast: 1, threes: 0, date: "2026-10-29" },
+    ]);
+    const coward: PlayerProfile = profile("coward", "Cedric Coward", [
+      { gameId: "x1", minutes: 32, pts: 14, reb: 4, ast: 3, threes: 1, date: "2026-11-01" },
+      { gameId: "x2", minutes: 32, pts: 14, reb: 4, ast: 3, threes: 1, date: "2026-11-02" },
+      { gameId: "x3", minutes: 32, pts: 14, reb: 4, ast: 3, threes: 1, date: "2026-11-03" },
+      { gameId: "x4", minutes: 32, pts: 16, reb: 4, ast: 5, threes: 1, date: "2026-11-04" },
+    ]);
+    const logs = new Map([
+      [grant.id, grant.gameLogs],
+      [jackson.id, jackson.gameLogs],
+      [coward.id, coward.gameLogs],
+    ]);
+    const rates = new Map();
+    const base = new Map();
+    for (const p of [grant, jackson, coward]) {
+      const r = perMinuteRates(p.gameLogs)!;
+      rates.set(p.id, r);
+      base.set(p.id, projectBaseline(r, projectedMinutes(p.gameLogs)));
+    }
+    const injuries: InjuryEntry[] = [
+      {
+        playerId: "grant",
+        playerName: "Jerami Grant",
+        teamId: "1",
+        teamName: "Team",
+        gameId: "g",
+        status: "Out",
+        source: "t",
+        updatedAt: "",
+      },
+      {
+        playerId: "gg",
+        playerName: "GG Jackson",
+        teamId: "1",
+        teamName: "Team",
+        gameId: "g",
+        status: "Out",
+        source: "t",
+        updatedAt: "",
+      },
+    ];
+    const { reasons } = applyInjuryRedistribution(
+      { players: [grant, jackson, coward], injuries, gameLogsByPlayer: logs },
+      base,
+      rates
+    );
+    const cowardReasons = reasons.get("coward") ?? [];
+    expect(cowardReasons.join(" ")).not.toMatch(/Grant|Jackson/i);
+    expect(combineTeammateInjuryReasonForMarket(cowardReasons, "pts")).toBeUndefined();
+    expect(combineTeammateInjuryReasonForMarket(cowardReasons, "ast")).toBeUndefined();
+  });
+
   it("persist log and settle actual stat", () => {
     const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "inj-combine-"));
     const filePath = path.join(tmp, "injury-combine-log.json");
