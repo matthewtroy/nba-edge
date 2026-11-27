@@ -1120,11 +1120,12 @@ function buildQ1Multi(
   bets: MultiBet[];
   coreNotBuiltReason: string;
 } {
+  const q1Pool = picks.filter((p) => !p.market.startsWith("q1") || !hasCheckNews(p));
   console.log(
-    `multis filter [q1Multi]: ${formatQ1MultiFilterCounts(countQ1MultiFilters(picks, MIN_LEG_FAIR))}`
+    `multis filter [q1Multi]: ${formatQ1MultiFilterCounts(countQ1MultiFilters(q1Pool, MIN_LEG_FAIR))}`
   );
   const exSuffix = q1ExclusionSuffix(q1ExclusionNotes);
-  const coreRanked = bestQ1LegPerGame(picks, MIN_LEG_FAIR, logsByPlayer);
+  const coreRanked = bestQ1LegPerGame(q1Pool, MIN_LEG_FAIR, logsByPlayer);
   const thinPool = `Only ${coreRanked.length} games with Q1 fair ≥${MIN_LEG_FAIR.toFixed(2)} (24+ min, −20pp, need 3–6)`;
   if (coreRanked.length < 3) {
     return {
