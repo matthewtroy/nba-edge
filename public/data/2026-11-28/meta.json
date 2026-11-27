@@ -1,5 +1,6 @@
 {
-  "lastUpdated": "2026-11-27T06:06:36.231Z",
+  "lastUpdated": "2026-11-27T06:48:44.155Z",
+  "oddsLastPulled": "2026-11-27T06:47:41.348Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
@@ -13,50 +14,53 @@
     "Jock Landale (Atlanta Hawks): no redistribution reasons on slate legs"
   ],
   "modelSanityChecked": 217,
-  "modelSanityFailures": 15,
-  "formGuardExcludedCount": 390,
+  "modelSanityFailures": 11,
+  "formGuardExcludedCount": 376,
   "gameOddsPriceAge": {
-    "401909326": "Prices from 9:29 pm",
-    "401909327": "Prices from 9:29 pm",
-    "401909328": "Prices from 9:29 pm",
-    "401909329": "Prices from 9:29 pm",
-    "401909330": "Prices from 9:29 pm",
-    "401909331": "Prices from 9:29 pm",
-    "401909332": "Prices from 9:29 pm",
-    "401909333": "Prices from 9:29 pm",
-    "401909334": "Prices from 9:29 pm",
-    "401909335": "Prices from 9:29 pm",
-    "401909336": "Prices from 9:29 pm"
+    "401909326": "Prices from 5:47 pm",
+    "401909327": "Prices from 5:47 pm",
+    "401909328": "Prices from 5:47 pm",
+    "401909329": "Prices from 5:47 pm",
+    "401909330": "Prices from 5:47 pm",
+    "401909331": "Prices from 5:47 pm",
+    "401909332": "Prices from 5:47 pm",
+    "401909333": "Prices from 5:47 pm",
+    "401909334": "Prices from 5:47 pm",
+    "401909335": "Prices from 5:47 pm",
+    "401909336": "Prices from 5:47 pm"
   },
   "slateTipDate": "2026-11-28",
   "whatChanged": [
     "Duncan Robinson out → Daniss Jenkins +2.6 pts",
-    "Cade Cunningham out → Daniss Jenkins +4.3 pts",
+    "RJ Barrett out → Scottie Barnes +5.2 pts",
     "Jaylen Brown out → Tyrese Maxey +4.3 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_01_00AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_01_45AM.pdf",
   "pricedLegCounts": {
     "pts": {
       "total": 382,
-      "priced": 0
+      "priced": 227
     },
     "reb": {
-      "total": 467,
-      "priced": 0
+      "total": 460,
+      "priced": 198
     },
     "ast": {
-      "total": 273,
-      "priced": 0
+      "total": 277,
+      "priced": 120
     },
     "3pm": {
-      "total": 544,
-      "priced": 0
+      "total": 546,
+      "priced": 301
     },
     "q1reb": {
-      "total": 84,
+      "total": 82,
       "priced": 0
     }
   },
+  "gateViolations": [
+    "Booster: Tyrese Maxey has Check news"
+  ],
   "slatePublicationStatus": "draft",
   "slateStatusLabel": "Draft · updates until 9pm",
   "injuriesAtTip": []

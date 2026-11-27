@@ -118650,6 +118650,123 @@
       "gameId": "401909334",
       "market": "pts",
       "line": 15
+    },
+    {
+      "id": "3133603-3pm-3",
+      "date": "2026-11-28",
+      "probability": 0.239,
+      "playerId": "3133603",
+      "gameId": "401909328",
+      "market": "3pm",
+      "line": 3
+    },
+    {
+      "id": "4395712-3pm-4",
+      "date": "2026-11-28",
+      "probability": 0.195,
+      "playerId": "4395712",
+      "gameId": "401909328",
+      "market": "3pm",
+      "line": 4
+    },
+    {
+      "id": "4066354-reb-5",
+      "date": "2026-11-28",
+      "probability": 0.239,
+      "playerId": "4066354",
+      "gameId": "401909330",
+      "market": "reb",
+      "line": 5
+    },
+    {
+      "id": "4251-pts-25",
+      "date": "2026-11-28",
+      "probability": 0.246,
+      "playerId": "4251",
+      "gameId": "401909330",
+      "market": "pts",
+      "line": 25
+    },
+    {
+      "id": "4251-ast-7",
+      "date": "2026-11-28",
+      "probability": 0.171,
+      "playerId": "4251",
+      "gameId": "401909330",
+      "market": "ast",
+      "line": 7
+    },
+    {
+      "id": "4251-3pm-5",
+      "date": "2026-11-28",
+      "probability": 0.24,
+      "playerId": "4251",
+      "gameId": "401909330",
+      "market": "3pm",
+      "line": 5
+    },
+    {
+      "id": "3136196-reb-7",
+      "date": "2026-11-28",
+      "probability": 0.245,
+      "playerId": "3136196",
+      "gameId": "401909331",
+      "market": "reb",
+      "line": 7
+    },
+    {
+      "id": "6442-3pm-5",
+      "date": "2026-11-28",
+      "probability": 0.23,
+      "playerId": "6442",
+      "gameId": "401909332",
+      "market": "3pm",
+      "line": 5
+    },
+    {
+      "id": "4278594-ast-5",
+      "date": "2026-11-28",
+      "probability": 0.188,
+      "playerId": "4278594",
+      "gameId": "401909332",
+      "market": "ast",
+      "line": 5
+    },
+    {
+      "id": "4278078-ast-3",
+      "date": "2026-11-28",
+      "probability": 0.177,
+      "playerId": "4278078",
+      "gameId": "401909332",
+      "market": "ast",
+      "line": 3
+    },
+    {
+      "id": "5041939-ast-10",
+      "date": "2026-11-28",
+      "probability": 0.173,
+      "playerId": "5041939",
+      "gameId": "401909332",
+      "market": "ast",
+      "line": 10
+    },
+    {
+      "id": "3978-reb-3",
+      "date": "2026-11-28",
+      "probability": 0.22,
+      "playerId": "3978",
+      "gameId": "401909334",
+      "market": "reb",
+      "line": 3
+    },
+    {
+      "id": "6606-3pm-5",
+      "date": "2026-11-28",
+      "probability": 0.239,
+      "playerId": "6606",
+      "gameId": "401909336",
+      "market": "3pm",
+      "line": 5
     }
   ],
   "multis": [
@@ -120751,6 +120868,49 @@
       ],
       "result": "hit",
       "gradedAt": "2026-11-26T22:01:01.772Z"
+    },
+    {
+      "id": "mainPlay-2026-11-28",
+      "type": "mainPlay",
+      "date": "2026-11-28",
+      "legIds": [
+        "4433083-ast-5",
+        "3078576-3pm-1",
+        "4431678-ast-5",
+        "5104157-pts-30"
+      ]
+    },
+    {
+      "id": "doubleUp-2026-11-28",
+      "type": "doubleUp",
+      "date": "2026-11-28",
+      "legIds": [
+        "4433083-ast-5",
+        "4431678-ast-5"
+      ]
+    },
+    {
+      "id": "crossGameSgm-2026-11-28",
+      "type": "crossGameSgm",
+      "date": "2026-11-28",
+      "legIds": [
+        "4278562-reb-7",
+        "3149673-pts-20",
+        "5124612-pts-15",
+        "5175643-pts-10",
+        "4433134-pts-25",
+        "4065648-3pm-2",
+        "4432816-pts-15"
+      ]
+    },
+    {
+      "id": "boostSgm-2026-11-28",
+      "type": "boostSgm",
+      "date": "2026-11-28",
+      "legIds": [
+        "4278078-3pm-1",
+        "5041939-ast-5"
+      ]
     }
   ],
   "calibration": [
