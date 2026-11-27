@@ -40,7 +40,7 @@ export function gateLineViolation(
   opts?: { mainPlay?: boolean }
 ): string | null {
   if (!leg.starterEligible) {
-    return `${leg.playerName}: not a starter (24+ min, 3/5 starts)`;
+    return `${leg.playerName}: not a starter (24+ min, 4/5 ESPN starts)`;
   }
   if (allowQ1) {
     if (!isQ1Market(leg.market)) return `${leg.playerName}: Q1 Multi requires Q1 market`;

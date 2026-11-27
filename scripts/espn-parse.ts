@@ -488,7 +488,12 @@ export function parseBoxscore(summary: unknown, plays?: unknown): Map<string, Bo
         team?: { id: string };
         statistics?: {
           keys?: string[];
-          athletes?: { athlete?: { id: string }; stats?: string[]; didNotPlay?: boolean }[];
+          athletes?: {
+            athlete?: { id: string };
+            stats?: string[];
+            didNotPlay?: boolean;
+            starter?: boolean;
+          }[];
         }[];
       }[];
     };
@@ -529,7 +534,12 @@ export function parseBoxscorePlayerLogs(
         team?: { id: string };
         statistics?: {
           keys?: string[];
-          athletes?: { athlete?: { id: string }; stats?: string[]; didNotPlay?: boolean }[];
+          athletes?: {
+            athlete?: { id: string };
+            stats?: string[];
+            didNotPlay?: boolean;
+            starter?: boolean;
+          }[];
         }[];
       }[];
     };
@@ -572,6 +582,7 @@ export function parseBoxscorePlayerLogs(
           q1Reb: q1?.reb,
           q1Ast: q1?.ast,
           source: "boxscore",
+          started: row.starter === true,
         },
       });
     }

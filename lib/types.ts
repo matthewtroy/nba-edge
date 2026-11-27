@@ -287,6 +287,8 @@ export interface PlayerGameLog {
   turnovers?: number;
   /** ESPN player endpoint vs league boxscore backfill */
   source?: GameLogSource;
+  /** ESPN game-summary boxscore `starter` flag when known. */
+  started?: boolean;
 }
 
 export interface PlayerProfile {
