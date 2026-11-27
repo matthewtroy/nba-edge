@@ -53,7 +53,7 @@
     "awayB2B": false,
     "status": "scheduled",
     "spread": -9.5,
-    "total": 220.5
+    "total": 219.5
   },
   {
     "id": "401909330",
@@ -95,7 +95,7 @@
     "awayB2B": false,
     "status": "scheduled",
     "spread": -3.5,
-    "total": 226.5
+    "total": 225.5
   },
   {
     "id": "401909333",
@@ -105,7 +105,7 @@
     "awayTeam": "Los Angeles Lakers",
     "homeTeamId": "24",
     "awayTeamId": "13",
-    "spread": -6.5,
+    "spread": -5.5,
     "total": 226.5,
     "homeB2B": false,
     "awayB2B": false,
@@ -151,6 +151,6 @@
     "awayB2B": false,
     "status": "scheduled",
     "spread": -7.5,
-    "total": 218.5
+    "total": 217.5
   }
 ]

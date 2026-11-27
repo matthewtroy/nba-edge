@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T19:21:55.185Z",
+  "lastUpdated": "2026-11-27T19:31:12.707Z",
   "oddsLastPulled": "2026-11-27T07:00:36.694Z",
   "sources": {
     "espn": "ok",
@@ -13,7 +13,7 @@
   ],
   "modelSanityChecked": 211,
   "modelSanityFailures": 23,
-  "formGuardExcludedCount": 380,
+  "formGuardExcludedCount": 381,
   "gameOddsPriceAge": {
     "401909326": "Prices from 6:00 pm",
     "401909327": "Prices from 6:00 pm",
@@ -33,15 +33,15 @@
     "Lauri Markkanen out → Darryn Peterson +7.4 pts",
     "Jaylen Clark out → Jaden McDaniels +5.2 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_02_15PM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_02_30PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 414,
+      "total": 415,
       "priced": 336
     },
     "reb": {
       "total": 480,
-      "priced": 323
+      "priced": 324
     },
     "ast": {
       "total": 308,
@@ -52,7 +52,7 @@
       "priced": 429
     },
     "q1reb": {
-      "total": 97,
+      "total": 96,
       "priced": 0
     }
   },
