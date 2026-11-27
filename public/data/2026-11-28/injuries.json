@@ -33,28 +33,40 @@
     "reportTime": "2026-11-27T04:30:00.000Z",
     "teammateEffects": [
       {
-        "playerId": "5106262",
-        "playerName": "Zuby Ejiofor",
-        "stat": "pts",
-        "delta": -0.9
-      },
-      {
         "playerId": "4280151",
         "playerName": "Corey Kispert",
         "stat": "pts",
-        "delta": -0.7
+        "delta": -1.1
       },
       {
-        "playerId": "4701230",
-        "playerName": "Jalen Johnson",
+        "playerId": "4869342",
+        "playerName": "Dyson Daniels",
+        "stat": "pts",
+        "delta": -1
+      },
+      {
+        "playerId": "5106262",
+        "playerName": "Zuby Ejiofor",
+        "stat": "pts",
+        "delta": -0.8
+      },
+      {
+        "playerId": "4869342",
+        "playerName": "Dyson Daniels",
         "stat": "reb",
         "delta": 0.6
       },
       {
-        "playerId": "4397183",
-        "playerName": "Aaron Wiggins",
+        "playerId": "4431680",
+        "playerName": "Onyeka Okongwu",
+        "stat": "pts",
+        "delta": 0.5
+      },
+      {
+        "playerId": "4701230",
+        "playerName": "Jalen Johnson",
         "stat": "ast",
-        "delta": -0.6
+        "delta": -0.5
       }
     ]
   },
@@ -115,14 +127,14 @@
         "delta": 1.1
       },
       {
-        "playerId": "5101761",
-        "playerName": "Mikel Brown Jr.",
+        "playerId": "5175643",
+        "playerName": "Egor Demin",
         "stat": "pts",
         "delta": 0.8
       },
       {
-        "playerId": "5175643",
-        "playerName": "Egor Demin",
+        "playerId": "5101761",
+        "playerName": "Mikel Brown Jr.",
         "stat": "pts",
         "delta": 0.8
       },
@@ -179,49 +191,61 @@
         "playerId": "5175643",
         "playerName": "Egor Demin",
         "stat": "pts",
-        "delta": 1.8
+        "delta": 2.2
       },
       {
         "playerId": "3150844",
         "playerName": "Moritz Wagner",
         "stat": "pts",
-        "delta": 1.8
+        "delta": 1.5
       },
       {
         "playerId": "4278104",
         "playerName": "Michael Porter Jr.",
         "stat": "pts",
-        "delta": -1.1
+        "delta": -1.5
       },
       {
         "playerId": "4702177",
         "playerName": "Keon Ellis",
         "stat": "pts",
-        "delta": 1.1
+        "delta": 1
       },
       {
         "playerId": "3064514",
         "playerName": "Julius Randle",
         "stat": "pts",
-        "delta": 0.9
-      },
-      {
-        "playerId": "5101761",
-        "playerName": "Mikel Brown Jr.",
-        "stat": "pts",
-        "delta": -0.8
+        "delta": 1
       },
       {
         "playerId": "5107173",
         "playerName": "Danny Wolf",
         "stat": "pts",
-        "delta": -0.8
+        "delta": -0.9
       },
       {
-        "playerId": "4278104",
-        "playerName": "Michael Porter Jr.",
-        "stat": "reb",
+        "playerId": "4432194",
+        "playerName": "Day'Ron Sharpe",
+        "stat": "pts",
         "delta": 0.6
+      },
+      {
+        "playerId": "4432194",
+        "playerName": "Day'Ron Sharpe",
+        "stat": "ast",
+        "delta": 0.6
+      },
+      {
+        "playerId": "5101761",
+        "playerName": "Mikel Brown Jr.",
+        "stat": "pts",
+        "delta": -0.6
+      },
+      {
+        "playerId": "3150844",
+        "playerName": "Moritz Wagner",
+        "stat": "reb",
+        "delta": -0.6
       },
       {
         "playerId": "4278104",
@@ -230,10 +254,10 @@
         "delta": 0.6
       },
       {
-        "playerId": "3150844",
-        "playerName": "Moritz Wagner",
+        "playerId": "4712896",
+        "playerName": "Noah Clowney",
         "stat": "reb",
-        "delta": -0.6
+        "delta": -0.5
       }
     ]
   },
@@ -290,31 +314,25 @@
         "playerId": "4432166",
         "playerName": "Cade Cunningham",
         "stat": "pts",
-        "delta": -4
+        "delta": -3.2
       },
       {
         "playerId": "4066372",
         "playerName": "Kevin Huerter",
         "stat": "pts",
-        "delta": -2.9
+        "delta": -1.7
       },
       {
-        "playerId": "4278562",
-        "playerName": "Paul Reed",
+        "playerId": "3908845",
+        "playerName": "John Collins",
         "stat": "pts",
-        "delta": 2.1
+        "delta": 1.4
       },
       {
         "playerId": "4683771",
         "playerName": "Ronald Holland II",
         "stat": "pts",
-        "delta": 1.2
-      },
-      {
-        "playerId": "4684742",
-        "playerName": "Ausar Thompson",
-        "stat": "reb",
-        "delta": -1.1
+        "delta": 1.1
       },
       {
         "playerId": "4700852",
@@ -323,40 +341,40 @@
         "delta": -1.1
       },
       {
-        "playerId": "3908845",
-        "playerName": "John Collins",
+        "playerId": "2596112",
+        "playerName": "Javonte Green",
         "stat": "pts",
-        "delta": 0.9
+        "delta": 1
       },
       {
         "playerId": "4278562",
         "playerName": "Paul Reed",
-        "stat": "reb",
-        "delta": -0.9
+        "stat": "pts",
+        "delta": 0.9
       },
       {
         "playerId": "5107199",
         "playerName": "Daniss Jenkins",
         "stat": "pts",
-        "delta": -0.7
-      },
-      {
-        "playerId": "4066372",
-        "playerName": "Kevin Huerter",
-        "stat": "reb",
-        "delta": 0.6
-      },
-      {
-        "playerId": "2596112",
-        "playerName": "Javonte Green",
-        "stat": "pts",
-        "delta": 0.5
+        "delta": -0.8
       },
       {
         "playerId": "4432166",
         "playerName": "Cade Cunningham",
         "stat": "ast",
-        "delta": 0.5
+        "delta": 0.7
+      },
+      {
+        "playerId": "4684742",
+        "playerName": "Ausar Thompson",
+        "stat": "reb",
+        "delta": -0.7
+      },
+      {
+        "playerId": "4395702",
+        "playerName": "Isaiah Joe",
+        "stat": "threes",
+        "delta": 0.7
       }
     ]
   },
@@ -414,10 +432,10 @@
     "reportTime": "2026-11-27T04:30:00.000Z",
     "teammateEffects": [
       {
-        "playerId": "4397886",
-        "playerName": "Charles Bassey",
+        "playerId": "4433149",
+        "playerName": "LJ Cryer",
         "stat": "pts",
-        "delta": -2.7
+        "delta": -2.6
       },
       {
         "playerId": "4997536",
@@ -426,8 +444,14 @@
         "delta": 2.5
       },
       {
-        "playerId": "5175737",
-        "playerName": "Yaxel Lendeborg",
+        "playerId": "4066436",
+        "playerName": "De'Anthony Melton",
+        "stat": "pts",
+        "delta": 2.3
+      },
+      {
+        "playerId": "4397886",
+        "playerName": "Charles Bassey",
         "stat": "pts",
         "delta": -2.1
       },
@@ -435,19 +459,13 @@
         "playerId": "4709138",
         "playerName": "Brandin Podziemski",
         "stat": "pts",
-        "delta": -2
+        "delta": -1.6
       },
       {
-        "playerId": "4066436",
-        "playerName": "De'Anthony Melton",
+        "playerId": "4397040",
+        "playerName": "Brandon Williams",
         "stat": "pts",
         "delta": 1.4
-      },
-      {
-        "playerId": "6589",
-        "playerName": "Draymond Green",
-        "stat": "ast",
-        "delta": -1.3
       },
       {
         "playerId": "2990969",
@@ -456,34 +474,58 @@
         "delta": -1.3
       },
       {
-        "playerId": "4397886",
-        "playerName": "Charles Bassey",
-        "stat": "reb",
-        "delta": -1.2
+        "playerId": "5175737",
+        "playerName": "Yaxel Lendeborg",
+        "stat": "pts",
+        "delta": -1.1
       },
       {
-        "playerId": "4397040",
-        "playerName": "Brandon Williams",
+        "playerId": "3134903",
+        "playerName": "Gary Payton II",
         "stat": "pts",
-        "delta": 1.1
+        "delta": -1.1
       },
       {
         "playerId": "6589",
         "playerName": "Draymond Green",
         "stat": "pts",
-        "delta": 0.9
+        "delta": 1.1
+      },
+      {
+        "playerId": "4397886",
+        "playerName": "Charles Bassey",
+        "stat": "reb",
+        "delta": -1
       },
       {
         "playerId": "4066436",
         "playerName": "De'Anthony Melton",
-        "stat": "reb",
+        "stat": "ast",
+        "delta": 1
+      },
+      {
+        "playerId": "6589",
+        "playerName": "Draymond Green",
+        "stat": "ast",
         "delta": -0.9
       },
       {
         "playerId": "4066436",
         "playerName": "De'Anthony Melton",
-        "stat": "ast",
-        "delta": 0.9
+        "stat": "reb",
+        "delta": -0.7
+      },
+      {
+        "playerId": "4897262",
+        "playerName": "Will Richard",
+        "stat": "reb",
+        "delta": -0.7
+      },
+      {
+        "playerId": "4433149",
+        "playerName": "LJ Cryer",
+        "stat": "threes",
+        "delta": -0.6
       },
       {
         "playerId": "4066436",
@@ -492,45 +534,21 @@
         "delta": 0.6
       },
       {
-        "playerId": "4709138",
-        "playerName": "Brandin Podziemski",
-        "stat": "ast",
+        "playerId": "4897262",
+        "playerName": "Will Richard",
+        "stat": "pts",
         "delta": 0.6
       },
       {
         "playerId": "4709138",
         "playerName": "Brandin Podziemski",
         "stat": "threes",
-        "delta": -0.6
-      },
-      {
-        "playerId": "4897262",
-        "playerName": "Will Richard",
-        "stat": "reb",
-        "delta": -0.6
-      },
-      {
-        "playerId": "4433149",
-        "playerName": "LJ Cryer",
-        "stat": "pts",
         "delta": -0.5
       },
       {
-        "playerId": "4433149",
-        "playerName": "LJ Cryer",
+        "playerId": "4997536",
+        "playerName": "Gui Santos",
         "stat": "ast",
-        "delta": 0.5
-      },
-      {
-        "playerId": "3213",
-        "playerName": "Al Horford",
-        "stat": "ast",
-        "delta": -0.5
-      },
-      {
-        "playerId": "3134903",
-        "playerName": "Gary Payton II",
-        "stat": "reb",
         "delta": 0.5
       }
     ]
@@ -604,7 +622,117 @@
     "status": "Out",
     "source": "NBA Official",
     "updatedAt": "2026-11-27T04:30:00.000Z",
-    "reportTime": "2026-11-27T04:30:00.000Z"
+    "reportTime": "2026-11-27T04:30:00.000Z",
+    "teammateEffects": [
+      {
+        "playerId": "3133603",
+        "playerName": "Kelly Oubre Jr.",
+        "stat": "pts",
+        "delta": 3.8
+      },
+      {
+        "playerId": "4396909",
+        "playerName": "Aaron Nesmith",
+        "stat": "pts",
+        "delta": -2.5
+      },
+      {
+        "playerId": "4278355",
+        "playerName": "Obi Toppin",
+        "stat": "pts",
+        "delta": -2.2
+      },
+      {
+        "playerId": "4592829",
+        "playerName": "Quenton Jackson",
+        "stat": "pts",
+        "delta": 2.1
+      },
+      {
+        "playerId": "4395712",
+        "playerName": "Andrew Nembhard",
+        "stat": "ast",
+        "delta": 1.5
+      },
+      {
+        "playerId": "3149673",
+        "playerName": "Pascal Siakam",
+        "stat": "reb",
+        "delta": -1.4
+      },
+      {
+        "playerId": "4431752",
+        "playerName": "Kobe Brown",
+        "stat": "pts",
+        "delta": 1.1
+      },
+      {
+        "playerId": "3149673",
+        "playerName": "Pascal Siakam",
+        "stat": "pts",
+        "delta": -1
+      },
+      {
+        "playerId": "4017837",
+        "playerName": "Ivica Zubac",
+        "stat": "reb",
+        "delta": -1
+      },
+      {
+        "playerId": "3133603",
+        "playerName": "Kelly Oubre Jr.",
+        "stat": "reb",
+        "delta": 1
+      },
+      {
+        "playerId": "4396909",
+        "playerName": "Aaron Nesmith",
+        "stat": "reb",
+        "delta": 0.9
+      },
+      {
+        "playerId": "4398207",
+        "playerName": "Jalen Slawson",
+        "stat": "pts",
+        "delta": 0.9
+      },
+      {
+        "playerId": "4592829",
+        "playerName": "Quenton Jackson",
+        "stat": "reb",
+        "delta": 0.9
+      },
+      {
+        "playerId": "5106060",
+        "playerName": "Jarace Walker",
+        "stat": "pts",
+        "delta": 0.9
+      },
+      {
+        "playerId": "4017837",
+        "playerName": "Ivica Zubac",
+        "stat": "pts",
+        "delta": 0.7
+      },
+      {
+        "playerId": "4395712",
+        "playerName": "Andrew Nembhard",
+        "stat": "reb",
+        "delta": 0.5
+      },
+      {
+        "playerId": "4395712",
+        "playerName": "Andrew Nembhard",
+        "stat": "threes",
+        "delta": 0.5
+      },
+      {
+        "playerId": "5105854",
+        "playerName": "Braden Smith",
+        "stat": "pts",
+        "delta": -0.5
+      }
+    ]
   },
   {
     "playerId": "4433076",
@@ -709,17 +837,23 @@
         "playerId": "4903027",
         "playerName": "Cedric Coward",
         "stat": "pts",
-        "delta": 1.6
+        "delta": 1.8
       },
       {
         "playerId": "4595400",
         "playerName": "Olivier-Maxence Prosper",
         "stat": "pts",
-        "delta": -1.4
+        "delta": -1.6
       },
       {
         "playerId": "5105550",
         "playerName": "GG Jackson",
+        "stat": "pts",
+        "delta": 1.2
+      },
+      {
+        "playerId": "4433083",
+        "playerName": "Cam Spencer",
         "stat": "pts",
         "delta": 1.2
       },
@@ -730,21 +864,9 @@
         "delta": -1.1
       },
       {
-        "playerId": "4432810",
-        "playerName": "Isaiah Stewart",
+        "playerId": "4594326",
+        "playerName": "Kris Murray",
         "stat": "pts",
-        "delta": 1.1
-      },
-      {
-        "playerId": "4433083",
-        "playerName": "Cam Spencer",
-        "stat": "pts",
-        "delta": 1
-      },
-      {
-        "playerId": "4903027",
-        "playerName": "Cedric Coward",
-        "stat": "reb",
         "delta": 0.8
       },
       {
@@ -754,27 +876,27 @@
         "delta": -0.8
       },
       {
-        "playerId": "4903027",
-        "playerName": "Cedric Coward",
-        "stat": "ast",
-        "delta": -0.7
-      },
-      {
-        "playerId": "4600663",
-        "playerName": "Zach Edey",
-        "stat": "pts",
-        "delta": -0.7
-      },
-      {
         "playerId": "4433083",
         "playerName": "Cam Spencer",
         "stat": "ast",
         "delta": -0.7
       },
       {
-        "playerId": "4594326",
-        "playerName": "Kris Murray",
-        "stat": "pts",
+        "playerId": "4903027",
+        "playerName": "Cedric Coward",
+        "stat": "reb",
+        "delta": 0.6
+      },
+      {
+        "playerId": "4065733",
+        "playerName": "Ty Jerome",
+        "stat": "reb",
+        "delta": 0.6
+      },
+      {
+        "playerId": "4065733",
+        "playerName": "Ty Jerome",
+        "stat": "threes",
         "delta": 0.6
       },
       {
@@ -782,12 +904,6 @@
         "playerName": "Cam Spencer",
         "stat": "reb",
         "delta": -0.6
-      },
-      {
-        "playerId": "4065733",
-        "playerName": "Ty Jerome",
-        "stat": "reb",
-        "delta": 0.5
       }
     ]
   },
@@ -818,7 +934,7 @@
         "playerId": "4903027",
         "playerName": "Cedric Coward",
         "stat": "pts",
-        "delta": 2.3
+        "delta": 2.4
       },
       {
         "playerId": "4595400",
@@ -827,28 +943,10 @@
         "delta": -2.2
       },
       {
-        "playerId": "2991070",
-        "playerName": "Jerami Grant",
-        "stat": "pts",
-        "delta": -2.1
-      },
-      {
         "playerId": "5041935",
         "playerName": "Cameron Boozer",
         "stat": "pts",
-        "delta": 1.9
-      },
-      {
-        "playerId": "4781746",
-        "playerName": "Javon Small",
-        "stat": "pts",
-        "delta": -1.4
-      },
-      {
-        "playerId": "4600663",
-        "playerName": "Zach Edey",
-        "stat": "reb",
-        "delta": -1.3
+        "delta": 1.3
       },
       {
         "playerId": "4684806",
@@ -857,10 +955,28 @@
         "delta": -1.1
       },
       {
+        "playerId": "4781746",
+        "playerName": "Javon Small",
+        "stat": "pts",
+        "delta": -1
+      },
+      {
+        "playerId": "4433083",
+        "playerName": "Cam Spencer",
+        "stat": "pts",
+        "delta": 1
+      },
+      {
         "playerId": "4594326",
         "playerName": "Kris Murray",
         "stat": "pts",
         "delta": 0.9
+      },
+      {
+        "playerId": "4600663",
+        "playerName": "Zach Edey",
+        "stat": "reb",
+        "delta": -0.9
       },
       {
         "playerId": "4781746",
@@ -875,40 +991,40 @@
         "delta": -0.7
       },
       {
-        "playerId": "5112087",
-        "playerName": "Jaylen Wells",
-        "stat": "reb",
-        "delta": 0.7
+        "playerId": "2991070",
+        "playerName": "Jerami Grant",
+        "stat": "pts",
+        "delta": -0.7
       },
       {
         "playerId": "4595400",
         "playerName": "Olivier-Maxence Prosper",
         "stat": "reb",
+        "delta": -0.7
+      },
+      {
+        "playerId": "4065733",
+        "playerName": "Ty Jerome",
+        "stat": "pts",
+        "delta": -0.7
+      },
+      {
+        "playerId": "4433083",
+        "playerName": "Cam Spencer",
+        "stat": "reb",
+        "delta": -0.6
+      },
+      {
+        "playerId": "4432810",
+        "playerName": "Isaiah Stewart",
+        "stat": "pts",
         "delta": -0.6
       },
       {
         "playerId": "4433083",
         "playerName": "Cam Spencer",
-        "stat": "pts",
-        "delta": 0.6
-      },
-      {
-        "playerId": "4903027",
-        "playerName": "Cedric Coward",
         "stat": "ast",
         "delta": -0.5
-      },
-      {
-        "playerId": "4433083",
-        "playerName": "Cam Spencer",
-        "stat": "ast",
-        "delta": -0.5
-      },
-      {
-        "playerId": "4065733",
-        "playerName": "Ty Jerome",
-        "stat": "ast",
-        "delta": 0.5
       }
     ]
   },
@@ -978,55 +1094,55 @@
         "playerId": "4432816",
         "playerName": "LaMelo Ball",
         "stat": "pts",
-        "delta": -4.5
-      },
-      {
-        "playerId": "4431671",
-        "playerName": "Jaden McDaniels",
-        "stat": "pts",
-        "delta": 3.4
-      },
-      {
-        "playerId": "4432847",
-        "playerName": "Terrence Shannon Jr.",
-        "stat": "pts",
-        "delta": 3
+        "delta": -4.3
       },
       {
         "playerId": "4397002",
         "playerName": "Ayo Dosunmu",
         "stat": "pts",
-        "delta": -2.9
+        "delta": -2.4
+      },
+      {
+        "playerId": "4431671",
+        "playerName": "Jaden McDaniels",
+        "stat": "pts",
+        "delta": 2.2
       },
       {
         "playerId": "4592492",
         "playerName": "Bones Hyland",
         "stat": "pts",
-        "delta": -2.5
+        "delta": -1.9
       },
       {
-        "playerId": "3032976",
-        "playerName": "Rudy Gobert",
-        "stat": "reb",
-        "delta": -1.6
+        "playerId": "4432847",
+        "playerName": "Terrence Shannon Jr.",
+        "stat": "pts",
+        "delta": 1.9
       },
       {
-        "playerId": "4433247",
-        "playerName": "Jonathan Kuminga",
+        "playerId": "4594268",
+        "playerName": "Anthony Edwards",
         "stat": "pts",
         "delta": 1.3
       },
       {
         "playerId": "4432816",
         "playerName": "LaMelo Ball",
-        "stat": "reb",
-        "delta": 1.2
+        "stat": "ast",
+        "delta": -1.2
       },
       {
-        "playerId": "4432816",
-        "playerName": "LaMelo Ball",
-        "stat": "ast",
-        "delta": -0.8
+        "playerId": "4397002",
+        "playerName": "Ayo Dosunmu",
+        "stat": "reb",
+        "delta": -0.9
+      },
+      {
+        "playerId": "3032976",
+        "playerName": "Rudy Gobert",
+        "stat": "reb",
+        "delta": -0.9
       },
       {
         "playerId": "4432816",
@@ -1035,22 +1151,16 @@
         "delta": -0.8
       },
       {
-        "playerId": "5279133",
-        "playerName": "Joan Beringer",
-        "stat": "pts",
-        "delta": -0.8
-      },
-      {
-        "playerId": "5279133",
-        "playerName": "Joan Beringer",
-        "stat": "reb",
-        "delta": -0.8
-      },
-      {
-        "playerId": "3136196",
-        "playerName": "Trey Lyles",
-        "stat": "pts",
+        "playerId": "4432847",
+        "playerName": "Terrence Shannon Jr.",
+        "stat": "ast",
         "delta": 0.8
+      },
+      {
+        "playerId": "5279133",
+        "playerName": "Joan Beringer",
+        "stat": "pts",
+        "delta": -0.8
       },
       {
         "playerId": "4397002",
@@ -1065,34 +1175,16 @@
         "delta": -0.7
       },
       {
+        "playerId": "4433247",
+        "playerName": "Jonathan Kuminga",
+        "stat": "ast",
+        "delta": -0.7
+      },
+      {
         "playerId": "4431671",
         "playerName": "Jaden McDaniels",
         "stat": "threes",
         "delta": 0.6
-      },
-      {
-        "playerId": "4433247",
-        "playerName": "Jonathan Kuminga",
-        "stat": "reb",
-        "delta": -0.6
-      },
-      {
-        "playerId": "4433247",
-        "playerName": "Jonathan Kuminga",
-        "stat": "ast",
-        "delta": -0.6
-      },
-      {
-        "playerId": "4592492",
-        "playerName": "Bones Hyland",
-        "stat": "threes",
-        "delta": -0.5
-      },
-      {
-        "playerId": "4432847",
-        "playerName": "Terrence Shannon Jr.",
-        "stat": "ast",
-        "delta": 0.5
       }
     ]
   },
@@ -1108,16 +1200,130 @@
     "reportTime": "2026-11-27T04:30:00.000Z",
     "teammateEffects": [
       {
+        "playerId": "4397002",
+        "playerName": "Ayo Dosunmu",
+        "stat": "pts",
+        "delta": 3.4
+      },
+      {
         "playerId": "4431671",
         "playerName": "Jaden McDaniels",
         "stat": "pts",
-        "delta": -0.9
+        "delta": 3
+      },
+      {
+        "playerId": "4592492",
+        "playerName": "Bones Hyland",
+        "stat": "pts",
+        "delta": 2.7
+      },
+      {
+        "playerId": "3032976",
+        "playerName": "Rudy Gobert",
+        "stat": "reb",
+        "delta": -2.4
       },
       {
         "playerId": "4432816",
         "playerName": "LaMelo Ball",
+        "stat": "ast",
+        "delta": -1.4
+      },
+      {
+        "playerId": "4432816",
+        "playerName": "LaMelo Ball",
+        "stat": "reb",
+        "delta": 1.3
+      },
+      {
+        "playerId": "5279133",
+        "playerName": "Joan Beringer",
+        "stat": "reb",
+        "delta": -1.3
+      },
+      {
+        "playerId": "3136196",
+        "playerName": "Trey Lyles",
         "stat": "pts",
+        "delta": 1.1
+      },
+      {
+        "playerId": "4433247",
+        "playerName": "Jonathan Kuminga",
+        "stat": "pts",
+        "delta": 1
+      },
+      {
+        "playerId": "4397002",
+        "playerName": "Ayo Dosunmu",
+        "stat": "ast",
+        "delta": -0.9
+      },
+      {
+        "playerId": "4592492",
+        "playerName": "Bones Hyland",
+        "stat": "ast",
         "delta": 0.8
+      },
+      {
+        "playerId": "4431671",
+        "playerName": "Jaden McDaniels",
+        "stat": "ast",
+        "delta": 0.8
+      },
+      {
+        "playerId": "5279133",
+        "playerName": "Joan Beringer",
+        "stat": "pts",
+        "delta": -0.8
+      },
+      {
+        "playerId": "4432247",
+        "playerName": "Jaylen Clark",
+        "stat": "reb",
+        "delta": -0.8
+      },
+      {
+        "playerId": "4397002",
+        "playerName": "Ayo Dosunmu",
+        "stat": "threes",
+        "delta": 0.7
+      },
+      {
+        "playerId": "4397002",
+        "playerName": "Ayo Dosunmu",
+        "stat": "reb",
+        "delta": -0.6
+      },
+      {
+        "playerId": "3136196",
+        "playerName": "Trey Lyles",
+        "stat": "reb",
+        "delta": -0.6
+      },
+      {
+        "playerId": "4431671",
+        "playerName": "Jaden McDaniels",
+        "stat": "reb",
+        "delta": -0.6
+      },
+      {
+        "playerId": "4433247",
+        "playerName": "Jonathan Kuminga",
+        "stat": "reb",
+        "delta": -0.6
+      },
+      {
+        "playerId": "4592492",
+        "playerName": "Bones Hyland",
+        "stat": "threes",
+        "delta": 0.5
+      },
+      {
+        "playerId": "4432847",
+        "playerName": "Terrence Shannon Jr.",
+        "stat": "pts",
+        "delta": -0.5
       }
     ]
   },
@@ -1144,10 +1350,94 @@
     "reportTime": "2026-11-27T04:30:00.000Z",
     "teammateEffects": [
       {
+        "playerId": "4277956",
+        "playerName": "Jordan Poole",
+        "stat": "pts",
+        "delta": 4.5
+      },
+      {
+        "playerId": "4397136",
+        "playerName": "Saddiq Bey",
+        "stat": "pts",
+        "delta": -3.9
+      },
+      {
+        "playerId": "4703115",
+        "playerName": "Jaron Pierre Jr.",
+        "stat": "pts",
+        "delta": 2
+      },
+      {
         "playerId": "4395628",
         "playerName": "Zion Williamson",
         "stat": "pts",
-        "delta": 0.5
+        "delta": 1.4
+      },
+      {
+        "playerId": "3907497",
+        "playerName": "Dejounte Murray",
+        "stat": "pts",
+        "delta": -1.3
+      },
+      {
+        "playerId": "5061589",
+        "playerName": "Yves Missi",
+        "stat": "pts",
+        "delta": -1.2
+      },
+      {
+        "playerId": "4997538",
+        "playerName": "Karlo Matkovic",
+        "stat": "pts",
+        "delta": -0.9
+      },
+      {
+        "playerId": "4703115",
+        "playerName": "Jaron Pierre Jr.",
+        "stat": "reb",
+        "delta": 0.8
+      },
+      {
+        "playerId": "4277956",
+        "playerName": "Jordan Poole",
+        "stat": "threes",
+        "delta": 0.7
+      },
+      {
+        "playerId": "4397688",
+        "playerName": "Trey Murphy III",
+        "stat": "pts",
+        "delta": -0.7
+      },
+      {
+        "playerId": "4277813",
+        "playerName": "Herbert Jones",
+        "stat": "reb",
+        "delta": -0.6
+      },
+      {
+        "playerId": "4277813",
+        "playerName": "Herbert Jones",
+        "stat": "ast",
+        "delta": 0.6
+      },
+      {
+        "playerId": "4277956",
+        "playerName": "Jordan Poole",
+        "stat": "ast",
+        "delta": -0.6
+      },
+      {
+        "playerId": "4397688",
+        "playerName": "Trey Murphy III",
+        "stat": "reb",
+        "delta": 0.6
+      },
+      {
+        "playerId": "4397688",
+        "playerName": "Trey Murphy III",
+        "stat": "ast",
+        "delta": -0.6
       }
     ]
   },
@@ -1174,58 +1464,94 @@
     "reportTime": "2026-11-27T04:30:00.000Z",
     "teammateEffects": [
       {
-        "playerId": "4395628",
-        "playerName": "Zion Williamson",
-        "stat": "pts",
-        "delta": 1.3
-      },
-      {
-        "playerId": "5144091",
-        "playerName": "Jeremiah Fears",
-        "stat": "pts",
-        "delta": 1.2
-      },
-      {
-        "playerId": "4397136",
-        "playerName": "Saddiq Bey",
-        "stat": "pts",
-        "delta": 1.1
-      },
-      {
         "playerId": "4277956",
         "playerName": "Jordan Poole",
         "stat": "pts",
-        "delta": 1.1
+        "delta": 4.5
       },
       {
-        "playerId": "4397688",
-        "playerName": "Trey Murphy III",
+        "playerId": "4277813",
+        "playerName": "Herbert Jones",
         "stat": "pts",
-        "delta": 1
+        "delta": 1.7
       },
       {
         "playerId": "5144091",
         "playerName": "Jeremiah Fears",
         "stat": "ast",
-        "delta": 0.7
-      },
-      {
-        "playerId": "4869780",
-        "playerName": "Derik Queen",
-        "stat": "pts",
-        "delta": 0.7
-      },
-      {
-        "playerId": "5061589",
-        "playerName": "Yves Missi",
-        "stat": "reb",
-        "delta": 0.5
+        "delta": 1.6
       },
       {
         "playerId": "4703115",
         "playerName": "Jaron Pierre Jr.",
         "stat": "pts",
-        "delta": 0.5
+        "delta": -1.5
+      },
+      {
+        "playerId": "4395628",
+        "playerName": "Zion Williamson",
+        "stat": "reb",
+        "delta": 1.4
+      },
+      {
+        "playerId": "4397136",
+        "playerName": "Saddiq Bey",
+        "stat": "reb",
+        "delta": 1.3
+      },
+      {
+        "playerId": "4397136",
+        "playerName": "Saddiq Bey",
+        "stat": "pts",
+        "delta": -1.2
+      },
+      {
+        "playerId": "5061589",
+        "playerName": "Yves Missi",
+        "stat": "pts",
+        "delta": -1.2
+      },
+      {
+        "playerId": "4869780",
+        "playerName": "Derik Queen",
+        "stat": "pts",
+        "delta": -0.8
+      },
+      {
+        "playerId": "4703115",
+        "playerName": "Jaron Pierre Jr.",
+        "stat": "reb",
+        "delta": -0.8
+      },
+      {
+        "playerId": "4277956",
+        "playerName": "Jordan Poole",
+        "stat": "threes",
+        "delta": 0.7
+      },
+      {
+        "playerId": "4277813",
+        "playerName": "Herbert Jones",
+        "stat": "reb",
+        "delta": -0.6
+      },
+      {
+        "playerId": "4277813",
+        "playerName": "Herbert Jones",
+        "stat": "ast",
+        "delta": 0.6
+      },
+      {
+        "playerId": "5144091",
+        "playerName": "Jeremiah Fears",
+        "stat": "reb",
+        "delta": 0.6
+      },
+      {
+        "playerId": "4397136",
+        "playerName": "Saddiq Bey",
+        "stat": "ast",
+        "delta": -0.5
       }
     ]
   },
@@ -1326,55 +1652,55 @@
         "playerId": "4683021",
         "playerName": "Deni Avdija",
         "stat": "pts",
-        "delta": 3.7
+        "delta": 2.9
       },
       {
         "playerId": "5105565",
         "playerName": "Donovan Clingan",
         "stat": "pts",
-        "delta": -1.9
+        "delta": -1.8
       },
       {
-        "playerId": "4431736",
-        "playerName": "Toumani Camara",
+        "playerId": "6606",
+        "playerName": "Damian Lillard",
         "stat": "pts",
-        "delta": -1.6
+        "delta": -1.3
       },
       {
         "playerId": "4683678",
         "playerName": "Scoot Henderson",
         "stat": "pts",
-        "delta": 1.6
-      },
-      {
-        "playerId": "4066211",
-        "playerName": "Robert Williams III",
-        "stat": "pts",
-        "delta": -1.3
-      },
-      {
-        "playerId": "4683021",
-        "playerName": "Deni Avdija",
-        "stat": "ast",
-        "delta": -1.1
-      },
-      {
-        "playerId": "3995",
-        "playerName": "Jrue Holiday",
-        "stat": "reb",
-        "delta": 0.9
-      },
-      {
-        "playerId": "3995",
-        "playerName": "Jrue Holiday",
-        "stat": "ast",
-        "delta": 0.9
+        "delta": 1.2
       },
       {
         "playerId": "6606",
         "playerName": "Damian Lillard",
         "stat": "ast",
+        "delta": -1
+      },
+      {
+        "playerId": "4683021",
+        "playerName": "Deni Avdija",
+        "stat": "reb",
+        "delta": 1
+      },
+      {
+        "playerId": "3995",
+        "playerName": "Jrue Holiday",
+        "stat": "ast",
+        "delta": 0.9
+      },
+      {
+        "playerId": "4431736",
+        "playerName": "Toumani Camara",
+        "stat": "reb",
         "delta": -0.8
+      },
+      {
+        "playerId": "3995",
+        "playerName": "Jrue Holiday",
+        "stat": "reb",
+        "delta": 0.8
       },
       {
         "playerId": "4683021",
@@ -1387,18 +1713,6 @@
         "playerName": "Donovan Clingan",
         "stat": "ast",
         "delta": 0.7
-      },
-      {
-        "playerId": "3995",
-        "playerName": "Jrue Holiday",
-        "stat": "pts",
-        "delta": 0.6
-      },
-      {
-        "playerId": "4683021",
-        "playerName": "Deni Avdija",
-        "stat": "reb",
-        "delta": 0.6
       }
     ]
   },
@@ -1423,10 +1737,124 @@
     "reportTime": "2026-11-27T04:30:00.000Z",
     "teammateEffects": [
       {
+        "playerId": "4431736",
+        "playerName": "Toumani Camara",
+        "stat": "pts",
+        "delta": -2.5
+      },
+      {
+        "playerId": "6606",
+        "playerName": "Damian Lillard",
+        "stat": "pts",
+        "delta": 2.1
+      },
+      {
+        "playerId": "5105565",
+        "playerName": "Donovan Clingan",
+        "stat": "reb",
+        "delta": 1.5
+      },
+      {
+        "playerId": "4066211",
+        "playerName": "Robert Williams III",
+        "stat": "pts",
+        "delta": -1.3
+      },
+      {
+        "playerId": "4066211",
+        "playerName": "Robert Williams III",
+        "stat": "reb",
+        "delta": -1.3
+      },
+      {
+        "playerId": "4431736",
+        "playerName": "Toumani Camara",
+        "stat": "reb",
+        "delta": 1.2
+      },
+      {
+        "playerId": "4683021",
+        "playerName": "Deni Avdija",
+        "stat": "pts",
+        "delta": 1.2
+      },
+      {
+        "playerId": "4683021",
+        "playerName": "Deni Avdija",
+        "stat": "reb",
+        "delta": -1.2
+      },
+      {
+        "playerId": "4703889",
+        "playerName": "Jayson Kent",
+        "stat": "pts",
+        "delta": 1.1
+      },
+      {
+        "playerId": "5081727",
+        "playerName": "Sidy Cissoko",
+        "stat": "reb",
+        "delta": -1
+      },
+      {
+        "playerId": "5105565",
+        "playerName": "Donovan Clingan",
+        "stat": "pts",
+        "delta": 0.9
+      },
+      {
+        "playerId": "3995",
+        "playerName": "Jrue Holiday",
+        "stat": "pts",
+        "delta": 0.9
+      },
+      {
+        "playerId": "5081727",
+        "playerName": "Sidy Cissoko",
+        "stat": "pts",
+        "delta": 0.7
+      },
+      {
         "playerId": "4683678",
         "playerName": "Scoot Henderson",
         "stat": "pts",
-        "delta": -0.5
+        "delta": 0.7
+      },
+      {
+        "playerId": "6606",
+        "playerName": "Damian Lillard",
+        "stat": "reb",
+        "delta": -0.7
+      },
+      {
+        "playerId": "6606",
+        "playerName": "Damian Lillard",
+        "stat": "ast",
+        "delta": 0.7
+      },
+      {
+        "playerId": "3995",
+        "playerName": "Jrue Holiday",
+        "stat": "threes",
+        "delta": 0.6
+      },
+      {
+        "playerId": "4683021",
+        "playerName": "Deni Avdija",
+        "stat": "ast",
+        "delta": -0.6
+      },
+      {
+        "playerId": "4683021",
+        "playerName": "Deni Avdija",
+        "stat": "threes",
+        "delta": 0.6
+      },
+      {
+        "playerId": "5081727",
+        "playerName": "Sidy Cissoko",
+        "stat": "threes",
+        "delta": 0.5
       }
     ]
   },
@@ -1561,123 +1989,99 @@
     "reportTime": "2026-11-27T04:30:00.000Z",
     "teammateEffects": [
       {
+        "playerId": "5041955",
+        "playerName": "Darryn Peterson",
+        "stat": "pts",
+        "delta": 3.7
+      },
+      {
         "playerId": "3133602",
         "playerName": "Svi Mykhailiuk",
         "stat": "pts",
         "delta": 3
       },
       {
-        "playerId": "5041955",
-        "playerName": "Darryn Peterson",
+        "playerId": "4277919",
+        "playerName": "Mo Bamba",
         "stat": "pts",
-        "delta": 2.9
+        "delta": -1.7
+      },
+      {
+        "playerId": "4277919",
+        "playerName": "Mo Bamba",
+        "stat": "reb",
+        "delta": -1.6
       },
       {
         "playerId": "5105839",
         "playerName": "Brice Sensabaugh",
         "stat": "pts",
-        "delta": 2.7
-      },
-      {
-        "playerId": "4397077",
-        "playerName": "Jaxson Hayes",
-        "stat": "pts",
-        "delta": 2.7
+        "delta": 1.5
       },
       {
         "playerId": "4873138",
         "playerName": "Ace Bailey",
         "stat": "pts",
-        "delta": 1.9
+        "delta": 1.3
       },
       {
-        "playerId": "4277919",
-        "playerName": "Mo Bamba",
+        "playerId": "4873138",
+        "playerName": "Ace Bailey",
         "stat": "reb",
-        "delta": -1.9
-      },
-      {
-        "playerId": "4277919",
-        "playerName": "Mo Bamba",
-        "stat": "pts",
-        "delta": -1.4
-      },
-      {
-        "playerId": "4433627",
-        "playerName": "Keyonte George",
-        "stat": "pts",
         "delta": -1.3
       },
       {
-        "playerId": "4065663",
-        "playerName": "Josh Okogie",
+        "playerId": "5041955",
+        "playerName": "Darryn Peterson",
+        "stat": "reb",
+        "delta": 1.1
+      },
+      {
+        "playerId": "4397077",
+        "playerName": "Jaxson Hayes",
         "stat": "pts",
-        "delta": -1.2
-      },
-      {
-        "playerId": "5041955",
-        "playerName": "Darryn Peterson",
-        "stat": "reb",
-        "delta": 1.2
-      },
-      {
-        "playerId": "4433627",
-        "playerName": "Keyonte George",
-        "stat": "reb",
-        "delta": -0.9
-      },
-      {
-        "playerId": "5041955",
-        "playerName": "Darryn Peterson",
-        "stat": "ast",
-        "delta": -0.9
+        "delta": 1.1
       },
       {
         "playerId": "3133602",
         "playerName": "Svi Mykhailiuk",
         "stat": "ast",
         "delta": 0.8
+      },
+      {
+        "playerId": "3133602",
+        "playerName": "Svi Mykhailiuk",
+        "stat": "threes",
+        "delta": 0.7
+      },
+      {
+        "playerId": "4433627",
+        "playerName": "Keyonte George",
+        "stat": "pts",
+        "delta": -0.7
+      },
+      {
+        "playerId": "4397077",
+        "playerName": "Jaxson Hayes",
+        "stat": "reb",
+        "delta": 0.7
       },
       {
         "playerId": "4432811",
         "playerName": "Josh Green",
         "stat": "pts",
-        "delta": 0.8
-      },
-      {
-        "playerId": "4433627",
-        "playerName": "Keyonte George",
-        "stat": "ast",
-        "delta": 0.7
-      },
-      {
-        "playerId": "3133602",
-        "playerName": "Svi Mykhailiuk",
-        "stat": "threes",
-        "delta": 0.7
-      },
-      {
-        "playerId": "4433627",
-        "playerName": "Keyonte George",
-        "stat": "threes",
         "delta": 0.6
       },
       {
-        "playerId": "4065663",
-        "playerName": "Josh Okogie",
+        "playerId": "4433627",
+        "playerName": "Keyonte George",
         "stat": "reb",
-        "delta": -0.6
+        "delta": -0.5
       },
       {
-        "playerId": "4873138",
-        "playerName": "Ace Bailey",
-        "stat": "ast",
-        "delta": 0.5
-      },
-      {
-        "playerId": "4397077",
-        "playerName": "Jaxson Hayes",
-        "stat": "reb",
+        "playerId": "4433627",
+        "playerName": "Keyonte George",
+        "stat": "threes",
         "delta": 0.5
       }
     ]

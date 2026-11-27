@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T04:36:36.116Z",
+  "lastUpdated": "2026-11-27T04:43:56.988Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
@@ -13,8 +13,8 @@
     "Jock Landale (Atlanta Hawks): no redistribution reasons on slate legs"
   ],
   "modelSanityChecked": 217,
-  "modelSanityFailures": 5,
-  "formGuardExcludedCount": 382,
+  "modelSanityFailures": 11,
+  "formGuardExcludedCount": 414,
   "gameOddsPriceAge": {
     "401909326": "Prices from 9:29 pm",
     "401909327": "Prices from 9:29 pm",
@@ -32,28 +32,28 @@
   "whatChanged": [
     "Duncan Robinson out → Daniss Jenkins +2.6 pts",
     "RJ Barrett out → Scottie Barnes +5.2 pts",
-    "Jaylen Brown out → Tyrese Maxey +4.3 pts"
+    "Cade Cunningham out → Daniss Jenkins +4.3 pts"
   ],
   "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-26_11_30PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 370,
+      "total": 389,
       "priced": 0
     },
     "reb": {
-      "total": 456,
+      "total": 463,
       "priced": 0
     },
     "ast": {
-      "total": 271,
+      "total": 274,
       "priced": 0
     },
     "3pm": {
-      "total": 543,
+      "total": 545,
       "priced": 0
     },
     "q1reb": {
-      "total": 65,
+      "total": 84,
       "priced": 0
     }
   },

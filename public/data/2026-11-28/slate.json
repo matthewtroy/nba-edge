@@ -35,8 +35,8 @@
     "awayTeam": "Philadelphia 76ers",
     "homeTeamId": "11",
     "awayTeamId": "20",
-    "spread": 2.5,
-    "total": 232.5,
+    "spread": 3.5,
+    "total": 231.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled"
