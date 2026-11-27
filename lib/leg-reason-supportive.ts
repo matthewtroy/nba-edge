@@ -37,7 +37,11 @@ export function rankTextIsSupportive(text: string, leg: PickLeg): boolean {
 /** Vague opponent copy stays out of supportive set (named lines only). */
 function injurySupportive(text: string): boolean {
   if (/^opponent missing/i.test(text)) return false;
-  return /out\s*(?:→|:)|without .+ →|only big left/i.test(text);
+  if (/^role risk:/i.test(text)) return false;
+  return (
+    /out\s*(?:→|:)|without .+ →|only big left/i.test(text) ||
+    /(?:questionable|doubtful|probable)\s*→/i.test(text)
+  );
 }
 
 export function formImpliedMinHitRate(decimalPrice?: number | null): number | null {

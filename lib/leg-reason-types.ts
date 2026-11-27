@@ -72,7 +72,10 @@ export function normalizeLegReasons(input: unknown): LegReason[] {
 export function inferReasonType(text: string): LegReasonType {
   const t = text.toLowerCase();
   if (/^role risk:/i.test(t)) return "roleRisk";
-  if (/out →|out:|only big|missing \d+ big|without .+ →|benefit|redistrib|teammate/i.test(t))
+  if (
+    /out →|out:|only big|missing \d+ big|without .+ →|benefit|redistrib|teammate/i.test(t) ||
+    /(?:questionable|doubtful|probable)\s*→/i.test(t)
+  )
     return "injury";
   if (/on a back-to-back/i.test(t)) return "context";
   if (/potential ast|more shots|more 3s|fga up|3pa up|tracking/i.test(t)) return "tracking";

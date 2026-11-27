@@ -70,6 +70,7 @@ import {
   edgeSurplus,
   formatEdgeShortfall,
 } from "./pricing-config.js";
+import { legHasNegativeRoleRisk } from "./role-risk.js";
 
 export interface MultiBuildResult {
   bets: MultiBet[];
@@ -436,7 +437,8 @@ function qualifiesDoubleUpStructural(leg: PickLeg): boolean {
     isMainPlayStatLine(leg.market, leg.line) &&
     !leg.market.startsWith("q1") &&
     passesFormGuard(leg) &&
-    !leg.tags.includes("Check news")
+    !leg.tags.includes("Check news") &&
+    !legHasNegativeRoleRisk(leg)
   );
 }
 

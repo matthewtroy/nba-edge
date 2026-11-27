@@ -9,7 +9,10 @@ function asTexts(reasons: LegReason[] | string[]): string[] {
 
 /** Matches rotation redistribution strings on legs (not matchup/form copy). */
 export function isInjuryRedistributionReason(text: string): boolean {
-  return /out\s*(?:→|:)|only big left|missing \d+ big|without .+ →/i.test(text);
+  return (
+    /out\s*(?:→|:)|only big left|missing \d+ big|without .+ →/i.test(text) ||
+    /(?:questionable|doubtful|probable)\s*→/i.test(text)
+  );
 }
 
 function reasonStatMatchesMarket(reason: string, market: Market): boolean {

@@ -1,44 +1,122 @@
 import { describe, expect, it } from "vitest";
 import {
-  blendProjectedWithTeammateReturn,
+  applyTeammateReturnRoleRisk,
+  legHasNegativeRoleRisk,
+  sharePlayedLast5,
   teammateReturnProbability,
 } from "../lib/role-risk";
-import {
-  isSupportiveReason,
-} from "../lib/leg-reason-supportive";
+import { isSupportiveReason } from "../lib/leg-reason-supportive";
 import { inferReasonType } from "../lib/leg-reason-types";
 import { legReasonLineUi } from "../src/lib/leg-reason-ui";
-import type { PickLeg } from "../lib/types";
-import type { ProjectedStats } from "../lib/baseline";
+import type { PickLeg, PlayerGameLog, PlayerProfile, InjuryEntry } from "../lib/types";
+import type { TeamContext } from "../lib/injury-redistribution";
+import { perMinuteRates, projectBaseline, projectedMinutes } from "../lib/baseline";
 
-const base: ProjectedStats = {
-  pts: 12,
+const base: PlayerGameLog = {
+  gameId: "g0",
+  minutes: 30,
+  pts: 15,
   reb: 5,
-  ast: 2,
-  threes: 1.5,
-  minutes: 28,
+  ast: 4,
+  threes: 1,
+  date: "2026-11-01",
 };
 
-describe("role risk blend", () => {
+function log(id: string, pts: number, withoutStar: boolean): PlayerGameLog {
+  return { ...base, gameId: id, pts, minutes: withoutStar ? 32 : 28 };
+}
+
+describe("role risk EV", () => {
   it("uses Q/D/P return probabilities 50/25/75%", () => {
     expect(teammateReturnProbability("Questionable")).toBe(0.5);
     expect(teammateReturnProbability("Doubtful")).toBe(0.25);
     expect(teammateReturnProbability("Probable")).toBe(0.75);
   });
 
-  it("blends baseline with out scenario by return weight", () => {
-    const out: ProjectedStats = { ...base, pts: 20, reb: 8 };
-    const q = blendProjectedWithTeammateReturn(base, out, 0.5);
-    expect(q.pts).toBeCloseTo(16, 5);
-    expect(q.reb).toBeCloseTo(6.5, 5);
-    const d = blendProjectedWithTeammateReturn(base, out, 0.25);
-    expect(d.pts).toBeCloseTo(18, 5);
-    const p = blendProjectedWithTeammateReturn(base, out, 0.75);
-    expect(p.pts).toBeCloseTo(14, 5);
+  it("sharePlayedLast5 counts minutes in last five", () => {
+    const logs = [
+      { ...base, gameId: "1", minutes: 30 },
+      { ...base, gameId: "2", minutes: 0 },
+      { ...base, gameId: "3", minutes: 28 },
+      { ...base, gameId: "4", minutes: 31 },
+      { ...base, gameId: "5", minutes: 29 },
+    ];
+    expect(sharePlayedLast5(logs)).toBeCloseTo(0.8, 5);
   });
 
-  it("role risk note is not supportive", () => {
-    const leg: PickLeg = {
+  it("negative EV adj adds Role risk note; positive adds supportive injury line", () => {
+    const star: PlayerProfile = {
+      id: "star",
+      name: "Dylan Harper",
+      teamId: "1",
+      teamName: "Team",
+      position: "G",
+      headshotUrl: "",
+      seasonAvgMinutes: 32,
+      gameLogs: [
+        log("a", 18, false),
+        log("b", 20, false),
+        log("c", 19, false),
+        log("d", 21, false),
+        log("e", 22, false),
+      ],
+    };
+    const wing: PlayerProfile = {
+      id: "wing",
+      name: "Julian Champagnie",
+      teamId: "1",
+      teamName: "Team",
+      position: "F",
+      headshotUrl: "",
+      seasonAvgMinutes: 28,
+      gameLogs: [
+        log("a", 18, false),
+        log("b", 19, false),
+        log("c", 20, false),
+        log("d", 21, false),
+        log("e", 8, true),
+        log("f", 9, true),
+        log("g", 10, true),
+      ],
+    };
+    const logs = new Map([
+      [star.id, star.gameLogs],
+      [wing.id, wing.gameLogs],
+    ]);
+    const rates = new Map();
+    const adjusted = new Map();
+    const baseStats = new Map();
+    for (const p of [star, wing]) {
+      const r = perMinuteRates(p.gameLogs)!;
+      rates.set(p.id, r);
+      const b = projectBaseline(r, projectedMinutes(p.gameLogs));
+      baseStats.set(p.id, b);
+      adjusted.set(p.id, { ...b });
+    }
+    const injury: InjuryEntry = {
+      playerId: star.id,
+      playerName: star.name,
+      teamId: "1",
+      teamName: "Team",
+      gameId: "g",
+      status: "Doubtful",
+      source: "test",
+      updatedAt: "",
+    };
+    const team: TeamContext = {
+      players: [star, wing],
+      injuries: [injury],
+      gameLogsByPlayer: logs,
+    };
+    const reasons = new Map<string, string[]>();
+    applyTeammateReturnRoleRisk(team, baseStats, rates, adjusted, reasons);
+    const wingReasons = reasons.get("wing") ?? [];
+    expect(wingReasons.some((r) => /^Role risk: Harper doubtful$/i.test(r))).toBe(true);
+    expect(wingReasons.some((r) => /→ \+/i.test(r))).toBe(false);
+  });
+
+  it("role risk note is not supportive; positive questionable is supportive", () => {
+    const legNeg: PickLeg = {
       id: "1",
       gameId: "g",
       team: "T",
@@ -53,15 +131,19 @@ describe("role risk blend", () => {
       takeAt: 1.5,
       starterEligible: true,
       tags: [],
-      reasons: [{ type: "roleRisk", text: "Role risk: Wemby questionable → +1.1 pts" }],
+      reasons: [{ type: "roleRisk", text: "Role risk: Harper questionable" }],
     };
-    expect(isSupportiveReason(leg.reasons[0], leg)).toBe(false);
-    expect(
-      leg.reasons.every((r) => !isSupportiveReason(r, leg))
-    ).toBe(true);
-    expect(inferReasonType("Role risk: Wemby questionable → +1.1 pts")).toBe("roleRisk");
-    expect(legReasonLineUi("Role risk: Wemby questionable → +1.1 pts").className).toMatch(
-      /amber/
-    );
+    expect(isSupportiveReason(legNeg.reasons[0], legNeg)).toBe(false);
+    expect(legHasNegativeRoleRisk(legNeg)).toBe(true);
+    expect(inferReasonType("Role risk: Harper questionable")).toBe("roleRisk");
+    expect(legReasonLineUi("Role risk: Harper questionable").className).toMatch(/amber/);
+
+    const legPos: PickLeg = {
+      ...legNeg,
+      reasons: [{ type: "injury", text: "Harper questionable → +1.2 pts" }],
+    };
+    expect(isSupportiveReason(legPos.reasons[0], legPos)).toBe(true);
+    expect(legHasNegativeRoleRisk(legPos)).toBe(false);
+    expect(inferReasonType("Harper questionable → +1.2 pts")).toBe("injury");
   });
 });
