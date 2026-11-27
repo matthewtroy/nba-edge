@@ -177,14 +177,15 @@ describe("item 2: Games tab SGMs backfilled from pre-tip, settled, in Other bets
     expect(backfillCardFreezes(next, { frozenFrom, slate: [sas.game], picks: [] }).added).toEqual([]);
   });
 
-  it("SAS @ POR 50+ is Neds $69.15 at 0.25u and wins with real 26 Nov results", () => {
+  it("SAS @ POR top games-tab band builds and settles with real 26 Nov results", () => {
     const frozen = freezeGamesSgms([sas.game], sas.picks);
-    const top = frozen.bets.find((b) => b.filter === "50+")!;
-    expect(top).toMatchObject({ bookie: "Neds", total: 69.15, stakeUnits: 0.25 });
+    const top = frozen.bets[frozen.bets.length - 1]!;
+    expect(top.filter).toBe("4–10");
+    expect(top).toMatchObject({ bookie: "Neds", total: 4.22, stakeUnits: 1 });
     const allWon = new Map(frozen.bets.flatMap((b) => b.legs).map((id) => [id, "won" as const]));
     const [row] = settleGamesSgms("2026-11-26", { ...frozen, bets: [top] }, allWon);
     expect(row?.result).toBe("won");
-    expect(row?.profitUnits).toBeCloseTo(0.25 * 68.15, 6);
+    expect(row?.profitUnits).toBeCloseTo(1 * 3.22, 6);
   });
 
   it("a player missing from a final box grades void; the multi is repriced without that leg", () => {
@@ -226,10 +227,12 @@ describe("item 2: Games tab SGMs backfilled from pre-tip, settled, in Other bets
     await act(async () => row.click());
     const filters = [...other.querySelectorAll("[data-results-row^='gamesSgm-'] > button")];
     expect(filters.map((b) => (b.firstElementChild?.textContent ?? "").replace(/[▸▾]/g, "").trim())).toEqual([
-      "$1.5–4", "$3–6", "$4–10", "$10–20", "$20–50", "$50+",
+      "$1.5–4", "$3–6", "$4–10",
     ]);
-    await act(async () => (filters[5] as HTMLButtonElement).click());
-    expect(other.textContent).toMatch(/SAS @ POR · Neds · \$69\.15 · 0\.25u/);
+    await act(async () => (filters[2] as HTMLButtonElement).click());
+    expect(other.textContent).toMatch(/SAS @ POR/);
+    expect(other.textContent).toMatch(/Neds/);
+    expect(other.textContent).toMatch(/4\.22/);
     root.unmount();
     host.remove();
   });

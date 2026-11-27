@@ -3,7 +3,7 @@ import type { InjuryEntry } from "@lib/types";
 import type { DataBundle } from "../hooks/useData";
 import { useData } from "../hooks/useData";
 import { topTeammateInjuryEffects } from "@lib/injury-beneficiaries";
-import { sydneyTimeFromIso } from "../utils/format";
+import { sydneyTimeFromIso, viewerTimeFromIso } from "../utils/format";
 import {
   clearQuestionableAsOutStorage,
   standaloneInjuryBlocks,
@@ -115,7 +115,9 @@ export function InjuriesScreen({
                       />
                     </div>
                     <p className="text-[11px] text-white/45 mt-0.5">
-                      {inj.source} · {sydneyTimeFromIso(inj.updatedAt)}
+                      Latest update:{" "}
+                      {viewerTimeFromIso(inj.reportTime ?? inj.updatedAt)} (
+                      {inj.source})
                     </p>
                     {(inj.status === "Out" || inj.status === "Doubtful") && (
                       <TeammateInjuryEffects inj={inj} />

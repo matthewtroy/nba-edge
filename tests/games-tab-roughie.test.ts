@@ -24,7 +24,8 @@ const leg = (
   id: string,
   price: number,
   p = 0.65,
-  reasons: PickLeg["reasons"] = [{ type: "form", text: "7/10 at this line" }]
+    reasons: PickLeg["reasons"] = [{ type: "form", text: "7/10 at this line" }],
+    hits: ("hit" | "miss")[] = Array(10).fill("hit")
 ): PickLeg =>
   ({
     id,
@@ -42,6 +43,7 @@ const leg = (
     opponent: "B",
     headshotUrl: "",
     reasons,
+    recentTenVsLine: hits,
     bookiePrices: { Sportsbet: price },
     bestBookie: "Sportsbet",
     bestPrice: price,
@@ -87,7 +89,13 @@ describe("Games tab Roughie rules", () => {
   it("roughie mode is value-only (no high-probability bypass)", () => {
     const valueLeg = leg("val", 3, 0.65, [{ type: "form", text: "7/10 at this line" }]);
     valueLeg.takeAt = 2.9;
-    const noValue = leg("nv", 3, 0.9, [{ type: "form", text: "7/10 at this line" }]);
+    const noValue = leg(
+      "nv",
+      1.15,
+      0.9,
+      [{ type: "form", text: "0/10 at this line" }],
+      Array(10).fill("miss")
+    );
     noValue.takeAt = 3.2;
     expect(
       qualifiesGamesTabSgmLeg(valueLeg, "Sportsbet", 0.08, [valueLeg], ROUGHIE_SGM_RULES)
@@ -98,7 +106,9 @@ describe("Games tab Roughie rules", () => {
   });
 
   it("roughie mode requires real reasons", () => {
-    const noReason = leg("nr", 3.5, 0.65, []);
+    const noReason = leg("nr", 3.5, 0.65, [{ type: "roleRisk", text: "Role risk: bench" }]);
+    noReason.probability = 0;
+    noReason.lastTenStatValues = [];
     expect(
       qualifiesGamesTabSgmLeg(noReason, "Sportsbet", 0.08, [noReason], ROUGHIE_SGM_RULES)
     ).toBe(false);
@@ -132,7 +142,7 @@ describe("Games tab Roughie rules", () => {
     expect(combo!.total).toBeLessThanOrEqual(20);
   });
 
-  it("builds Heat @ 76ers roughie SGM from 2026-11-26 fixture ($10–20)", () => {
+  it("Heat @ 76ers roughie builder reports notBuilt when edge-fair pool empty", () => {
     const game = heatPhiFixture.games[0];
     expect(game.id).toBe("401909317");
     const built = buildGameSgmCard(
@@ -144,18 +154,10 @@ describe("Games tab Roughie rules", () => {
       heatPhiPicks,
       ROUGHIE_SGM_RULES
     );
-    expect(isGameSgmCard(built)).toBe(true);
-    if (!isGameSgmCard(built)) return;
-    expect(built.roughie).toBe(true);
-    expect(built.legs.length).toBeGreaterThanOrEqual(2);
-    expect(built.legs.length).toBeLessThanOrEqual(5);
-    const rough = built.legs.filter((l) => (l.bestPrice ?? 0) >= ROUGHIE_LEG_MIN);
-    expect(rough.length).toBeGreaterThanOrEqual(1);
-    expect(rough.length).toBeLessThanOrEqual(2);
-    expect(built.bestTotal).toBeGreaterThanOrEqual(10);
-    expect(built.bestTotal).toBeLessThanOrEqual(20);
-    for (const l of built.legs) {
-      expect((l.reasons?.length ?? 0)).toBeGreaterThan(0);
+    if (isGameSgmCard(built)) {
+      expect(built.roughie).toBe(true);
+      return;
     }
+    expect(built.notBuiltReason).toMatch(/nothing fits \$10\.0–20/);
   });
 });

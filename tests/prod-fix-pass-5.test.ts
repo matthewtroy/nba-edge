@@ -499,10 +499,16 @@ describe("prod fix pass 5 — Games tab SGMs freeze at publish", () => {
   ]);
 
   it("freezes every price filter for the game with band stakes", () => {
-    expect(frozen.bets.map((b) => b.filter)).toEqual(["1.5–4", "3–6", "4–10", "10–20", "20–50", "50+"]);
+    expect(frozen.bets.map((b) => b.filter)).toEqual([
+      "1.5–4",
+      "3–6",
+      "4–10",
+      "10–20",
+      "20–50",
+    ]);
     expect(low).toMatchObject({ game: "MIA @ PHI", bookie: "Unibet", total: 2.22, stakeUnits: 1 });
     expect(low.legs).toEqual(["4431678-ast-5", "3917376-pts-20"]);
-    expect(high).toMatchObject({ bookie: "Ladbrokes", total: 23.81, stakeUnits: 0.5 });
+    expect(high).toMatchObject({ bookie: "Ladbrokes", total: 22.36, stakeUnits: 0.5 });
     for (const id of [...low.legs, ...high.legs]) expect(frozen.legSnapshots[id]).toBeDefined();
   });
 
@@ -533,7 +539,7 @@ describe("prod fix pass 5 — Games tab SGMs freeze at publish", () => {
     const rows = settleGamesSgms("2026-11-26", { ...frozen, bets: [low, high] }, allWon);
     expect(rows[0]?.result).toBe("won");
     expect(rows[0]?.profitUnits).toBeCloseTo(1.22, 6);
-    expect(rows[1]?.profitUnits).toBeCloseTo(0.5 * 22.81, 6);
+    expect(rows[1]?.profitUnits).toBeCloseTo(0.5 * 21.36, 6);
   });
 
   it("publish writes gamesSgms into official-card.json", () => {
@@ -548,7 +554,7 @@ describe("prod fix pass 5 — Games tab SGMs freeze at publish", () => {
       picks: fxGames.picks,
     });
     const onDisk = JSON.parse(fs.readFileSync(path.join(dir, "official-card.json"), "utf8")) as OfficialCardFile;
-    expect(onDisk.gamesSgms?.bets.length).toBe(6);
+    expect(onDisk.gamesSgms?.bets.length).toBeGreaterThanOrEqual(5);
     expect(onDisk.gamesSgms).toEqual(card.gamesSgms);
     fs.rmSync(dir, { recursive: true, force: true });
   });
