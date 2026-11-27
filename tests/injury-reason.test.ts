@@ -27,10 +27,10 @@ describe("injuryReasonForMarket", () => {
   it("keeps opponent-big reb line separate from teammate ast", () => {
     const reasons = [
       "Pacers without Turner (C) → +1.2 reb",
-      "Boozer out: +0.5 ast",
+      "Boozer out: +0.4 ast",
     ];
     expect(combineTeammateInjuryReasonForMarket(reasons, "ast")).toBe(
-      "Boozer out → +0.5 ast"
+      "Boozer out → +0.4 ast"
     );
     expect(combineTeammateInjuryReasonForMarket(reasons, "reb")).toBe(
       "Pacers without Turner (C) → +1.2 reb"

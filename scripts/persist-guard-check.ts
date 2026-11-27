@@ -26,6 +26,10 @@ import type { ResultsSlice } from "../lib/results-types.js";
 import { resultsPersistShrinkReason } from "../lib/results-persist-guard.js";
 import { injuryStatusHistoryEntryCount } from "../lib/injury-status-history.js";
 import type { InjuryStatusHistoryFile } from "../lib/injury-status-history-ui.js";
+import {
+  injuryCombineEntryCount,
+  type InjuryCombineLogFile,
+} from "../lib/injury-combine-log.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const staging = process.argv[2];
@@ -167,6 +171,9 @@ function countPersistedFile(relPath: string, stagingPath: string): number {
   if (relPath.endsWith("injury-status-history.json")) {
     return injuryStatusHistoryEntryCount(next as InjuryStatusHistoryFile);
   }
+  if (relPath.endsWith("injury-combine-log.json")) {
+    return injuryCombineEntryCount(next as InjuryCombineLogFile);
+  }
   return recordKeyCount(next as Record<string, unknown>);
   } catch {
     return 0;
@@ -178,6 +185,7 @@ const jsonShrinkChecks: { rel: string; label: string }[] = [
   { rel: "public/data/h2h-season-cache.json", label: "h2h-season-cache.json" },
   { rel: "public/data/history.json", label: "history.json" },
   { rel: "public/data/injury-status-history.json", label: "injury-status-history.json" },
+  { rel: "public/data/injury-combine-log.json", label: "injury-combine-log.json" },
 ];
 
 for (const { rel, label } of jsonShrinkChecks) {
@@ -188,6 +196,8 @@ for (const { rel, label } of jsonShrinkChecks) {
       priorCount = historyEntryCount(priorRaw as HistoryJson);
     } else if (rel.endsWith("injury-status-history.json")) {
       priorCount = injuryStatusHistoryEntryCount(priorRaw as InjuryStatusHistoryFile);
+    } else if (rel.endsWith("injury-combine-log.json")) {
+      priorCount = injuryCombineEntryCount(priorRaw as InjuryCombineLogFile);
     } else {
       priorCount = recordKeyCount(priorRaw as Record<string, unknown>);
     }

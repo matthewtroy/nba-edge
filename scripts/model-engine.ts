@@ -1,3 +1,4 @@
+import path from "path";
 import type {
   InjuryEntry,
   PickLeg,
@@ -6,6 +7,12 @@ import type {
   MultiBet,
   MetaJson,
 } from "../lib/types.js";
+import {
+  INJURY_COMBINE_LOG_FILE,
+  loadInjuryCombineLog,
+  mergeInjuryCombineEntries,
+  writeInjuryCombineLog,
+} from "../lib/injury-combine-log.js";
 import { perMinuteRates, projectedMinutes, projectBaseline } from "../lib/baseline.js";
 import {
   applyInjuryRedistribution,
@@ -89,6 +96,8 @@ export function runModel(input: ModelRunInput): {
   }
 
   const picks: PickLeg[] = [];
+  const allCombineLog: import("../lib/injury-combine-log-ui.js").InjuryCombineLogEntry[] =
+    [];
   let slatePlayerCount = 0;
   let starterFlagCount = 0;
   const allQ1Exclusions: string[] = [];
@@ -187,11 +196,13 @@ export function runModel(input: ModelRunInput): {
       opponentInjuries: oppInjuries,
       opponentTeamName: oppTeamName,
     };
-    const { adjusted, reasons, boardsShared } = applyInjuryRedistribution(
+    const { adjusted, reasons, boardsShared, combineLog } = applyInjuryRedistribution(
       teamCtx,
       base,
-      rates as Map<string, NonNullable<ReturnType<typeof perMinuteRates>>>
+      rates as Map<string, NonNullable<ReturnType<typeof perMinuteRates>>>,
+      { slateDate: input.slateTipDate }
     );
+    if (combineLog.length) allCombineLog.push(...combineLog);
     applyTeammateReturnRoleRisk(
       teamCtx,
       base,
@@ -403,6 +414,19 @@ export function runModel(input: ModelRunInput): {
     modelSanityFailures: modelSanity.failed,
     formGuardExcludedCount,
   };
+
+  if (input.slateTipDate && allCombineLog.length) {
+    const logPath = path.join(input.rootDir, "public/data", INJURY_COMBINE_LOG_FILE);
+    try {
+      const merged = mergeInjuryCombineEntries(
+        loadInjuryCombineLog(logPath),
+        allCombineLog
+      );
+      writeInjuryCombineLog(logPath, merged);
+    } catch (err) {
+      console.warn("injury-combine-log: write skipped", err);
+    }
+  }
 
   return {
     picks: eligiblePicks,

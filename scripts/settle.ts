@@ -30,6 +30,7 @@ import {
 } from "../lib/settle-slate-list.js";
 import { retentionMinYmd } from "../lib/slate-retention.js";
 import { syncSettleToSupabase } from "./supabase-sync.js";
+import { settleInjuryCombineForSlate } from "../lib/injury-combine-log.js";
 
 const ET = "America/New_York";
 
@@ -203,6 +204,9 @@ async function main() {
 
     const picks = loadPicks(slateDate);
     const graded = frozen ? frozen.gradedLegs : gradePickCatalog(picks, slateDate, boxes);
+    if (!frozen && boxes.size) {
+      settleInjuryCombineForSlate(rootDir, slateDate, boxes);
+    }
     allGraded.push(...graded);
 
     const card = loadOfficialCard(slateDate);

@@ -126,7 +126,7 @@ describe("injury redistribution", () => {
       base,
       rates
     );
-    expect(adjusted.get("other")!.pts).toBeLessThan(before);
+    expect(adjusted.get("other")!.pts).toBeCloseTo(before, 1);
     const legReasons = reasons.get("other") ?? [];
     expect(legReasons.some((t) => /out:\s*-\d/i.test(t) || /out:\s*−/i.test(t))).toBe(
       false

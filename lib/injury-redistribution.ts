@@ -4,6 +4,11 @@ import { playerLastName } from "./player-last-name.js";
 import type { PerMinuteRates, ProjectedStats } from "./baseline.js";
 import { perMinuteRates, projectedMinutes } from "./baseline.js";
 import { isMeaningfulRotation } from "./rotation.js";
+import type { InjuryCombineLogEntry } from "./injury-combine-log-ui.js";
+import {
+  applyMeasuredOutCombines,
+  resolveOutInjuries,
+} from "./injury-combine-measured.js";
 
 export interface AdjustmentReason {
   text: string;
@@ -195,70 +200,51 @@ export function applyInjuryRedistribution(
   team: TeamContext,
   base: Map<string, ProjectedStats>,
   rates: Map<string, PerMinuteRates>,
-  opts?: { skipWithWithoutSplits?: boolean }
-): { adjusted: Map<string, ProjectedStats>; reasons: Map<string, string[]>; boardsShared: Set<string> } {
+  opts?: { skipWithWithoutSplits?: boolean; slateDate?: string }
+): {
+  adjusted: Map<string, ProjectedStats>;
+  reasons: Map<string, string[]>;
+  boardsShared: Set<string>;
+  combineLog: InjuryCombineLogEntry[];
+} {
   const adjusted = new Map(base);
   const reasons = new Map<string, string[]>();
   const boardsShared = new Set<string>();
 
   const outPlayers = team.injuries.filter((i) => i.status === "Out");
+  const rosterMates = team.players.filter((p) => p.teamId === team.players[0]?.teamId);
 
-  for (const inj of outPlayers) {
-    let injured = team.players.find((p) => p.id === inj.playerId);
-    if (!injured && inj.playerName) {
-      const norm = inj.playerName.toLowerCase();
-      injured = team.players.find((p) => p.name.toLowerCase() === norm);
-    }
-    if (!injured) {
-      continue;
-    }
-    const injLogs = team.gameLogsByPlayer.get(injured.id) ?? [];
-    if (!isMeaningfulRotation(injLogs)) continue;
+  let combineLog: InjuryCombineLogEntry[] = [];
 
-    const injuredRates = rates.get(injured.id);
-    const injuredMins = base.get(injured.id)?.minutes ?? 0;
-    if (!injuredRates || injuredMins <= 0) continue;
-
-    const teammates = team.players.filter(
-      (p) => p.teamId === injured.teamId && p.id !== injured.id
+  if (!opts?.skipWithWithoutSplits && outPlayers.length) {
+    const resolvedOuts = resolveOutInjuries(
+      outPlayers,
+      team.players,
+      team.gameLogsByPlayer,
+      rosterMates
     );
-
-    const gamesWithout = countGamesWithout(
-      injured.id,
-      teammates,
-      team.gameLogsByPlayer
+    const teamMatesByInjury = team.players.filter(
+      (p) => !resolvedOuts.some((o) => o.profile.id === p.id)
     );
-
-    if (!opts?.skipWithWithoutSplits && gamesWithout >= 3) {
-      applyWithWithoutSplits(
-        injured,
-        teammates,
-        team.gameLogsByPlayer,
-        adjusted,
-        rates,
-        reasons,
-        inj.playerName
-      );
-    } else {
-      applyGenericRedistribution(
-        injured,
-        injuredRates,
-        injuredMins,
-        teammates,
-        adjusted,
-        reasons,
-        inj.playerName
-      );
+    combineLog = applyMeasuredOutCombines({
+      teammates: teamMatesByInjury,
+      resolvedOuts,
+      gameLogs: team.gameLogsByPlayer,
+      base,
+      adjusted,
+      rates,
+      reasons,
+      slateDate: opts?.slateDate,
+    });
+    for (const out of resolvedOuts) {
+      adjusted.delete(out.profile.id);
     }
-
-    adjusted.delete(injured.id);
-
   }
 
   applyExplicitReboundRedistribution(team, adjusted, rates, reasons);
   tagSharedRebounds(team, adjusted, boardsShared, reasons);
 
-  return { adjusted, reasons, boardsShared };
+  return { adjusted, reasons, boardsShared, combineLog };
 }
 
 function countGamesWithout(

@@ -75,8 +75,10 @@ export function combineTeammateInjuryReasonForMarket(
 
   const teammateBoosts = texts
     .filter((r) => !isOpponentBigInjuryLine(r))
+    .filter((r) => !/(?:questionable|doubtful|probable)\s*→/i.test(r))
+    .filter((r) => !/^role risk:/i.test(r))
     .map(parseTeammateOutBoost)
-    .filter((p): p is InjuryBoostPart => p != null && p.stat === stat);
+    .filter((p): p is InjuryBoostPart => p != null && p.stat === stat && p.val > 0);
 
   if (teammateBoosts.length) {
     teammateBoosts.sort((a, b) => b.val - a.val);
