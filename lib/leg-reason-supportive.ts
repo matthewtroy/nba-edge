@@ -77,6 +77,8 @@ export function isSupportiveReason(reason: LegReason, leg: PickLeg): boolean {
   const p = leg.probability ?? 0;
 
   switch (reason.type) {
+    case "roleRisk":
+      return false;
     case "injury":
       return injurySupportive(reason.text);
     case "tracking":

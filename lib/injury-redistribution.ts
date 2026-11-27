@@ -192,15 +192,14 @@ export function countOpponentOutBigs(
 export function applyInjuryRedistribution(
   team: TeamContext,
   base: Map<string, ProjectedStats>,
-  rates: Map<string, PerMinuteRates>
+  rates: Map<string, PerMinuteRates>,
+  opts?: { skipWithWithoutSplits?: boolean }
 ): { adjusted: Map<string, ProjectedStats>; reasons: Map<string, string[]>; boardsShared: Set<string> } {
   const adjusted = new Map(base);
   const reasons = new Map<string, string[]>();
   const boardsShared = new Set<string>();
 
-  const outPlayers = team.injuries.filter(
-    (i) => i.status === "Out" || i.status === "Doubtful"
-  );
+  const outPlayers = team.injuries.filter((i) => i.status === "Out");
 
   for (const inj of outPlayers) {
     let injured = team.players.find((p) => p.id === inj.playerId);
@@ -228,7 +227,7 @@ export function applyInjuryRedistribution(
       team.gameLogsByPlayer
     );
 
-    if (gamesWithout >= 3) {
+    if (!opts?.skipWithWithoutSplits && gamesWithout >= 3) {
       applyWithWithoutSplits(
         injured,
         teammates,

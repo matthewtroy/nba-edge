@@ -11,6 +11,7 @@ import {
   applyInjuryRedistribution,
   countOpponentOutBigs,
 } from "../lib/injury-redistribution.js";
+import { applyTeammateReturnRoleRisk } from "../lib/role-risk.js";
 import { logInjuryAngleLegs } from "../lib/injury-angle-log.js";
 import { logSlatePickReport } from "../lib/slate-pick-report.js";
 import { applyContextAdjustments } from "../lib/context.js";
@@ -177,18 +178,26 @@ export function runModel(input: ModelRunInput): {
     const oppTeamName =
       teamGame?.homeTeamId === teamId ? teamGame.awayTeam : teamGame?.homeTeam;
 
+    const teamCtx = {
+      players: profiles,
+      injuries: teamInjuries,
+      gameLogsByPlayer,
+      opponentOutBigCount,
+      opponentPlayers: oppProfiles,
+      opponentInjuries: oppInjuries,
+      opponentTeamName: oppTeamName,
+    };
     const { adjusted, reasons, boardsShared } = applyInjuryRedistribution(
-      {
-        players: profiles,
-        injuries: teamInjuries,
-        gameLogsByPlayer,
-        opponentOutBigCount,
-        opponentPlayers: oppProfiles,
-        opponentInjuries: oppInjuries,
-        opponentTeamName: oppTeamName,
-      },
+      teamCtx,
       base,
       rates as Map<string, NonNullable<ReturnType<typeof perMinuteRates>>>
+    );
+    applyTeammateReturnRoleRisk(
+      teamCtx,
+      base,
+      rates as Map<string, NonNullable<ReturnType<typeof perMinuteRates>>>,
+      adjusted,
+      reasons
     );
 
     for (const p of players) {

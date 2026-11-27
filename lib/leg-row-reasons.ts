@@ -24,5 +24,6 @@ export function legRowReasonLines(
   return out.map((text) => ({
     text,
     injury: /out →|only big|Teammate/i.test(text),
+    roleRisk: /^role risk:/i.test(text),
   }));
 }

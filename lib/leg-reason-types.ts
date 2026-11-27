@@ -1,5 +1,6 @@
 export type LegReasonType =
   | "injury"
+  | "roleRisk"
   | "context"
   | "tracking"
   | "angle"
@@ -19,6 +20,7 @@ export interface LegReason {
 
 export const REASON_TYPE_ORDER: LegReasonType[] = [
   "injury",
+  "roleRisk",
   "context",
   "matchup",
   "tracking",
@@ -69,6 +71,7 @@ export function normalizeLegReasons(input: unknown): LegReason[] {
 
 export function inferReasonType(text: string): LegReasonType {
   const t = text.toLowerCase();
+  if (/^role risk:/i.test(t)) return "roleRisk";
   if (/out →|out:|only big|missing \d+ big|without .+ →|benefit|redistrib|teammate/i.test(t))
     return "injury";
   if (/on a back-to-back/i.test(t)) return "context";
