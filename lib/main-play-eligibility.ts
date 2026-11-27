@@ -2,6 +2,7 @@ import type { Market, PickLeg } from "./types.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
 import { passesFormGuard } from "./form-guard.js";
 import { legBookiePriceInBand } from "./leg-bookie-band.js";
+import { legPriceAtBookie } from "./single-bookie.js";
 import { mainPlayReasonBeyondRankAvg } from "./leg-display.js";
 import { hasValueAtBookie } from "./value-at-bookie.js";
 import {
@@ -101,10 +102,16 @@ export function mainPlayL10Within10pp(leg: PickLeg): boolean {
 
 /** Shared Value / High probability thresholds with picks tags & display. */
 export function mainPlayHasValueOrHighProb(leg: PickLeg, bookie?: string): boolean {
-  if (leg.probability >= MAIN_PLAY_HIGH_PROB_P) return true;
-  if (leg.tags.includes("High probability")) return true;
-  if (bookie) return hasValueAtBookie(leg, bookie);
-  return leg.tags.includes("Value");
+  if (bookie && hasValueAtBookie(leg, bookie)) return true;
+  const price = bookie != null ? legPriceAtBookie(leg, bookie) : leg.bestPrice;
+  const high =
+    leg.probability >= MAIN_PLAY_HIGH_PROB_P || leg.tags.includes("High probability");
+  if (high && price != null && price >= leg.fairPrice - 1e-9) return true;
+  if (!bookie) {
+    if (leg.tags.includes("Value")) return true;
+    if (high && leg.bestPrice != null && leg.bestPrice >= leg.fairPrice - 1e-9) return true;
+  }
+  return false;
 }
 
 export function mainPlayQualifiersOk(leg: PickLeg, bookie?: string): boolean {

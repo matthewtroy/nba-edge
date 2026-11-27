@@ -40,13 +40,24 @@ function injurySupportive(text: string): boolean {
   return /out\s*(?:→|:)|without .+ →|only big left/i.test(text);
 }
 
-export function formTextIsSupportive(text: string, probability: number): boolean {
+export function formImpliedMinHitRate(decimalPrice?: number | null): number | null {
+  if (decimalPrice == null || decimalPrice <= 1) return null;
+  return 1 / decimalPrice;
+}
+
+export function formTextIsSupportive(
+  text: string,
+  probability: number,
+  minHitRate?: number | null
+): boolean {
   const parsed = parseFormHits(text);
   if (!parsed || parsed.total < 1) return false;
   const rate = parsed.hits / parsed.total;
+  if (minHitRate != null && rate + 1e-9 < minHitRate) return false;
   if (probability < LONG_SHOT_P) {
     return parsed.hits >= 2 && rate > probability;
   }
+  if (minHitRate != null) return true;
   return rate >= 0.6 || (parsed.total === 5 && parsed.hits === 5);
 }
 
@@ -82,7 +93,11 @@ export function isSupportiveReason(reason: LegReason, leg: PickLeg): boolean {
     case "context":
       return true;
     case "form":
-      return formTextIsSupportive(reason.text, p);
+      return formTextIsSupportive(
+        reason.text,
+        p,
+        formImpliedMinHitRate(leg.bestPrice)
+      );
     case "avg":
       return avgTextIsSupportive(reason.text, leg);
     case "rank":
@@ -104,7 +119,11 @@ export function supportiveBackfillFromLeg(
   const has = new Set(reasons.map((r) => r.type));
   const out = [...reasons];
   const formText = formReasonFromLeg(leg);
-  if (formText && !has.has("form") && formTextIsSupportive(formText, leg.probability)) {
+  if (
+    formText &&
+    !has.has("form") &&
+    formTextIsSupportive(formText, leg.probability, formImpliedMinHitRate(leg.bestPrice))
+  ) {
     out.push({ type: "form", text: formText });
     has.add("form");
   }
