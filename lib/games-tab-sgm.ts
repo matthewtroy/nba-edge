@@ -259,7 +259,7 @@ export function crossGameExcludedReason(
   eligible: number
 ): string {
   if (eligible < 2) {
-    return `${gameLabel}: need 2+ legs @ ${bookie} (found ${eligible}).`;
+    return `${gameLabel}: need 2 high-prob legs @ ${bookie} priced ≥ fair (found ${eligible}).`;
   }
-  return `${gameLabel}: no clash-free 2–3 leg combo @ ${bookie}.`;
+  return `${gameLabel}: no clash-free 2-leg pair @ ${bookie}.`;
 }

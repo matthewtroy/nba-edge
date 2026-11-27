@@ -79,7 +79,7 @@ Blend 0.3 model + 0.4 L10 Q1 + 0.3 L5 Q1; 24+ min; fair ≥ 1.30; 1/team; 3–6 
 
 ### Cross-Game SGM (`crossGameSgm`)
 
-Label **Cross-Game SGM Multi** (restored — never “Best Double Up”). Up to 5 games, 1–2 legs/game, combined **$15–$50** at one bookie.
+Label **Cross-Game SGM Multi**. **2 legs/game** (different players, Best SGM clash rules, max joint-p pair), **one AU bookie** for the whole multi (prefer the bookie with the most valid pairs; tie-break higher combined price). Legs: **high probability** and **bookie price ≥ fair** (Value tag allowed only with high prob; no value-only; no below fair), **≥1 supportive reason**, **no Check news**. Need **6+ games** included on the slate or not built; missing games listed on the card. Stake bands: `CROSS_STAKE_BANDS` in `lib/pricing-config.ts`.
 
 ### Best SGM (`boostSgm`)
 

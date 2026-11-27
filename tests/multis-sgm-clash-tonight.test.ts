@@ -98,12 +98,11 @@ describe("2026-11-26 cross / best SGM clash resolve", () => {
     ).toBe(false);
     const cross = bets.find((m) => m.type === "crossGameSgm");
     const best = bets.find((m) => m.type === "boostSgm");
-    expect(cross).toBeDefined();
+    if (cross) {
+      expect(cross.legs.length % 2).toBe(0);
+      expect(cross.legs.length).toBeGreaterThanOrEqual(12);
+    }
     expect(best).toBeDefined();
-    expect(cross!.legs.length).toBeGreaterThanOrEqual(2);
-    const crossTotal = cross!.bestBookieTotal ?? 0;
-    expect(crossTotal).toBeGreaterThanOrEqual(15);
-    expect(crossTotal).toBeLessThanOrEqual(50);
     expect(best!.legs.length).toBeGreaterThanOrEqual(2);
     expect(best!.legs.length).toBeLessThanOrEqual(5);
     expect(best!.bestBookieTotal ?? 0).toBeGreaterThanOrEqual(2);

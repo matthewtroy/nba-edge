@@ -7,7 +7,7 @@ import {
   qualifiesMainPlayLeg,
   qualifiesCrossBoostLeg,
 } from "./main-play-eligibility.js";
-import { CROSS_SGM_BAND_MIN, CROSS_SGM_BAND_MAX } from "./same-game-sgm-search.js";
+import { CROSS_SGM_MIN_GAMES, CROSS_LEGS_PER_GAME } from "./same-game-sgm-search.js";
 import {
   MAIN_PLAY_COMBINED_MIN,
   MAIN_PLAY_COMBINED_MAX,
@@ -186,19 +186,13 @@ function checkTypeRules(
     for (const l of legs) {
       byGame.set(l.gameId, (byGame.get(l.gameId) ?? 0) + 1);
     }
-    if (byGame.size < 2) issues.push("Cross-Game: need legs from 2+ games");
-    if (byGame.size > 5) issues.push("Cross-Game: more than 5 games");
-    for (const [gid, n] of byGame) {
-      if (n < 1 || n > 2) {
-        issues.push(`Cross-Game: game ${gid} has ${n} legs (need 1–2)`);
-      }
+    if (byGame.size < CROSS_SGM_MIN_GAMES) {
+      issues.push(`Cross-Game: ${byGame.size} games (need ${CROSS_SGM_MIN_GAMES}+)`);
     }
-    const bookTotal =
-      multi.bestBookieTotal ?? bestFeedMultiQuote(legs)?.total ?? null;
-    if (bookTotal == null || bookTotal < CROSS_SGM_BAND_MIN || bookTotal > CROSS_SGM_BAND_MAX) {
-      issues.push(
-        `Cross-Game: bookie total ${bookTotal != null ? bookTotal.toFixed(2) : "?"} not $${CROSS_SGM_BAND_MIN}–$${CROSS_SGM_BAND_MAX}`
-      );
+    for (const [gid, n] of byGame) {
+      if (n !== CROSS_LEGS_PER_GAME) {
+        issues.push(`Cross-Game: game ${gid} has ${n} legs (need ${CROSS_LEGS_PER_GAME})`);
+      }
     }
   }
   return issues;
@@ -224,11 +218,7 @@ export function gateMulti(
     if (leg.fairPrice < MIN_LEG_FAIR) {
       violations.push(`${label}: ${leg.playerName} fair ${leg.fairPrice.toFixed(2)} < ${MIN_LEG_FAIR}`);
     }
-    if (
-      leg.tags.includes("Check news") &&
-      multi.type !== "crossGameSgm" &&
-      multi.type !== "boostSgm"
-    ) {
+    if (leg.tags.includes("Check news") && multi.type !== "boostSgm") {
       violations.push(`${label}: ${leg.playerName} has Check news`);
     }
   }

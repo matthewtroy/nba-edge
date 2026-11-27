@@ -1,5 +1,5 @@
 import type { PickLeg } from "./types.js";
-import { multiHasClash } from "./clash.js";
+import { legsClash, multiHasClash } from "./clash.js";
 import { pickMultiLegSubsetResolved } from "./same-game-leg-resolve.js";
 import { combinedPriceForBookieWithCatalog } from "./single-bookie.js";
 import { legMeetsBookieEdge } from "./bookie-edge-pool.js";
@@ -13,9 +13,9 @@ import {
 
 export const SGM_BAND_MIN = 7;
 export const SGM_BAND_MAX = 15;
-export const CROSS_SGM_BAND_MIN = 15;
-export const CROSS_SGM_BAND_MAX = 50;
-export const CROSS_SGM_MAX_GAMES = 5;
+/** Minimum slate games with a valid 2-leg pair @ one bookie, or not built. */
+export const CROSS_SGM_MIN_GAMES = 6;
+export const CROSS_LEGS_PER_GAME = 2;
 export const SGM_MIN_LEGS = 2;
 export const SGM_MAX_LEGS = 5;
 export const SGM_MIN_LEG_PRICE = 1.3;
@@ -117,17 +117,32 @@ export function sameGameSgmEdgeShortfall(
   return formatEdgeShortfall(total, actual, req);
 }
 
-const CROSS_MIN_LEGS = 1;
-const CROSS_MAX_LEGS = 2;
+/** Best 2-leg same-game pair for cross-game multis — max joint p, different players, no clash. */
+export function pickBestCrossGameLegPair(pool: PickLeg[]): PickLeg[] | null {
+  let best: { legs: PickLeg[]; p: number } | null = null;
+  for (let i = 0; i < pool.length; i++) {
+    for (let j = i + 1; j < pool.length; j++) {
+      const a = pool[i];
+      const b = pool[j];
+      if (a.playerId === b.playerId) continue;
+      const pair = [a, b];
+      if (legsClash(a, b)) continue;
+      const p = a.probability * b.probability;
+      if (
+        !best ||
+        p > best.p + 1e-12 ||
+        (Math.abs(p - best.p) < 1e-12 && (a.bestPrice ?? 0) * (b.bestPrice ?? 0) > (best.legs[0].bestPrice ?? 0) * (best.legs[1].bestPrice ?? 0))
+      ) {
+        best = { legs: pair, p };
+      }
+    }
+  }
+  return best?.legs ?? null;
+}
 
-/** Best 1–2 leg same-game subset for cross-game multis (clash resolve: keep higher p). */
+/** @deprecated use pickBestCrossGameLegPair */
 export function pickBestCrossGameLegSubset(pool: PickLeg[]): PickLeg[] | null {
-  return pickMultiLegSubsetResolved(
-    pool,
-    CROSS_MIN_LEGS,
-    CROSS_MAX_LEGS,
-    SGM_MIN_LEG_PRICE
-  );
+  return pickBestCrossGameLegPair(pool);
 }
 
 export function gameSgmEligibleAtBookie(
