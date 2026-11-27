@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T19:18:04.132Z",
+  "lastUpdated": "2026-11-27T19:21:55.185Z",
   "oddsLastPulled": "2026-11-27T07:00:36.694Z",
   "sources": {
     "espn": "ok",
@@ -12,8 +12,8 @@
     "Jock Landale (Atlanta Hawks): no redistribution reasons on slate legs"
   ],
   "modelSanityChecked": 211,
-  "modelSanityFailures": 22,
-  "formGuardExcludedCount": 379,
+  "modelSanityFailures": 23,
+  "formGuardExcludedCount": 380,
   "gameOddsPriceAge": {
     "401909326": "Prices from 6:00 pm",
     "401909327": "Prices from 6:00 pm",
@@ -36,12 +36,12 @@
   "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_02_15PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 409,
-      "priced": 331
+      "total": 414,
+      "priced": 336
     },
     "reb": {
       "total": 480,
-      "priced": 324
+      "priced": 323
     },
     "ast": {
       "total": 308,
@@ -52,7 +52,7 @@
       "priced": 429
     },
     "q1reb": {
-      "total": 96,
+      "total": 97,
       "priced": 0
     }
   },

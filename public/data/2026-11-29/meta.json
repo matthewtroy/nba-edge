@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T19:18:06.336Z",
+  "lastUpdated": "2026-11-27T19:21:57.417Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
@@ -11,8 +11,8 @@
     "Moritz Wagner (Brooklyn Nets): no redistribution reasons on slate legs"
   ],
   "modelSanityChecked": 104,
-  "modelSanityFailures": 5,
-  "formGuardExcludedCount": 210,
+  "modelSanityFailures": 6,
+  "formGuardExcludedCount": 214,
   "gameOddsPriceAge": {
     "401910046": "Prices from 6:00 pm",
     "401910047": "Prices from 6:00 pm",
@@ -29,7 +29,7 @@
   "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_02_15PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 185,
+      "total": 192,
       "priced": 0
     },
     "reb": {

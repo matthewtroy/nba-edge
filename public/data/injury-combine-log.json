@@ -3,46 +3,6 @@
   "entries": [
     {
       "slateDate": "2026-11-28",
-      "playerId": "4433225",
-      "playerName": "Tyler Kolek",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "3934719",
-          "playerName": "OG Anunoby",
-          "stat": "pts",
-          "n": 3,
-          "individualEffect": 1
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 1,
-      "appliedBoost": 1,
-      "loggedAt": "2026-11-27T19:17:54.770Z",
-      "actualStat": 8
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "3062679",
-      "playerName": "Josh Hart",
-      "stat": "ast",
-      "outSplits": [
-        {
-          "playerId": "3934719",
-          "playerName": "OG Anunoby",
-          "stat": "ast",
-          "n": 3,
-          "individualEffect": 1.5
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 1.5,
-      "appliedBoost": 1.5,
-      "loggedAt": "2026-11-27T19:17:54.771Z",
-      "actualStat": 10
-    },
-    {
-      "slateDate": "2026-11-28",
       "playerId": "3147657",
       "playerName": "Mikal Bridges",
       "stat": "pts",
@@ -58,7 +18,7 @@
       "method": "sum",
       "combinedBoost": 1.1,
       "appliedBoost": 1.1,
-      "loggedAt": "2026-11-27T19:17:54.771Z",
+      "loggedAt": "2026-11-27T19:21:45.574Z",
       "actualStat": 8
     },
     {
@@ -78,8 +38,48 @@
       "method": "sum",
       "combinedBoost": 0.8,
       "appliedBoost": 0.8,
-      "loggedAt": "2026-11-27T19:17:54.771Z",
+      "loggedAt": "2026-11-27T19:21:45.574Z",
       "actualStat": 17
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "3062679",
+      "playerName": "Josh Hart",
+      "stat": "ast",
+      "outSplits": [
+        {
+          "playerId": "3934719",
+          "playerName": "OG Anunoby",
+          "stat": "ast",
+          "n": 3,
+          "individualEffect": 1.5
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1.5,
+      "appliedBoost": 1.5,
+      "loggedAt": "2026-11-27T19:21:45.574Z",
+      "actualStat": 10
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4433225",
+      "playerName": "Tyler Kolek",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "3934719",
+          "playerName": "OG Anunoby",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 1
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1,
+      "appliedBoost": 1,
+      "loggedAt": "2026-11-27T19:21:45.574Z",
+      "actualStat": 8
     },
     {
       "slateDate": "2026-11-28",
@@ -99,7 +99,7 @@
       "jointN": 2,
       "combinedBoost": 1,
       "appliedBoost": 1,
-      "loggedAt": "2026-11-27T19:17:55.446Z",
+      "loggedAt": "2026-11-27T19:21:46.259Z",
       "actualStat": 18
     },
     {
@@ -120,7 +120,7 @@
       "jointN": 2,
       "combinedBoost": 1.4,
       "appliedBoost": 1.4,
-      "loggedAt": "2026-11-27T19:17:55.446Z",
+      "loggedAt": "2026-11-27T19:21:46.259Z",
       "actualStat": 16
     },
     {
@@ -140,8 +140,148 @@
       "method": "sum",
       "combinedBoost": 1.1,
       "appliedBoost": 1.1,
-      "loggedAt": "2026-11-27T19:17:55.446Z",
+      "loggedAt": "2026-11-27T19:21:46.259Z",
       "actualStat": 2
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4712896",
+      "playerName": "Noah Clowney",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 2.3
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 2.3,
+      "appliedBoost": 2.3,
+      "loggedAt": "2026-11-27T19:21:48.174Z",
+      "actualStat": 13
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "3064514",
+      "playerName": "Julius Randle",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 1
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1,
+      "appliedBoost": 1,
+      "loggedAt": "2026-11-27T19:21:48.174Z",
+      "actualStat": 29
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "5175643",
+      "playerName": "Egor Demin",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 2.2
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 2.2,
+      "appliedBoost": 2.2,
+      "loggedAt": "2026-11-27T19:21:48.174Z",
+      "actualStat": 10
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4432194",
+      "playerName": "Day'Ron Sharpe",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 0.6
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 0.6,
+      "appliedBoost": 0.6,
+      "loggedAt": "2026-11-27T19:21:48.174Z",
+      "actualStat": 6
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4702177",
+      "playerName": "Keon Ellis",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 1
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1,
+      "appliedBoost": 1,
+      "loggedAt": "2026-11-27T19:21:48.174Z",
+      "actualStat": 6
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4397002",
+      "playerName": "Ayo Dosunmu",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "4594268",
+          "playerName": "Anthony Edwards",
+          "stat": "pts",
+          "n": 15,
+          "individualEffect": 3.4
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 3.4,
+      "appliedBoost": 3.4,
+      "loggedAt": "2026-11-27T19:21:49.200Z",
+      "actualStat": 23
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4592492",
+      "playerName": "Bones Hyland",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "4594268",
+          "playerName": "Anthony Edwards",
+          "stat": "pts",
+          "n": 15,
+          "individualEffect": 2.7
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 2.7,
+      "appliedBoost": 2.7,
+      "loggedAt": "2026-11-27T19:21:49.200Z",
+      "actualStat": 14
     },
     {
       "slateDate": "2026-11-28",
@@ -160,7 +300,7 @@
       "method": "sum",
       "combinedBoost": 1.1,
       "appliedBoost": 1.1,
-      "loggedAt": "2026-11-27T19:17:58.308Z",
+      "loggedAt": "2026-11-27T19:21:49.200Z",
       "actualStat": 9
     },
     {
@@ -187,7 +327,7 @@
       "method": "sum",
       "combinedBoost": 5.2,
       "appliedBoost": 5.2,
-      "loggedAt": "2026-11-27T19:17:58.308Z",
+      "loggedAt": "2026-11-27T19:21:49.200Z",
       "actualStat": 34
     },
     {
@@ -207,48 +347,8 @@
       "method": "sum",
       "combinedBoost": 1.9,
       "appliedBoost": 1.9,
-      "loggedAt": "2026-11-27T19:17:58.308Z",
+      "loggedAt": "2026-11-27T19:21:49.200Z",
       "actualStat": 17
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "4397002",
-      "playerName": "Ayo Dosunmu",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "4594268",
-          "playerName": "Anthony Edwards",
-          "stat": "pts",
-          "n": 15,
-          "individualEffect": 3.4
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 3.4,
-      "appliedBoost": 3.4,
-      "loggedAt": "2026-11-27T19:17:58.308Z",
-      "actualStat": 23
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "4592492",
-      "playerName": "Bones Hyland",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "4594268",
-          "playerName": "Anthony Edwards",
-          "stat": "pts",
-          "n": 15,
-          "individualEffect": 2.7
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 2.7,
-      "appliedBoost": 2.7,
-      "loggedAt": "2026-11-27T19:17:58.308Z",
-      "actualStat": 14
     },
     {
       "slateDate": "2026-11-28",
@@ -267,7 +367,7 @@
       "method": "sum",
       "combinedBoost": 1,
       "appliedBoost": 1,
-      "loggedAt": "2026-11-27T19:17:58.308Z",
+      "loggedAt": "2026-11-27T19:21:49.200Z",
       "actualStat": 15
     },
     {
@@ -309,8 +409,35 @@
       "jointN": 3,
       "combinedBoost": 1.1,
       "appliedBoost": 1.1,
-      "loggedAt": "2026-11-27T19:17:58.614Z",
+      "loggedAt": "2026-11-27T19:21:49.484Z",
       "actualStat": 16
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4600663",
+      "playerName": "Zach Edey",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "4431785",
+          "playerName": "Scotty Pippen Jr.",
+          "stat": "pts",
+          "n": 11,
+          "individualEffect": 1.2
+        },
+        {
+          "playerId": "5105550",
+          "playerName": "GG Jackson",
+          "stat": "pts",
+          "n": 6,
+          "individualEffect": 2.6
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 3.8,
+      "appliedBoost": 2.6,
+      "loggedAt": "2026-11-27T19:21:49.484Z",
+      "actualStat": 8
     },
     {
       "slateDate": "2026-11-28",
@@ -344,7 +471,7 @@
       "jointN": 3,
       "combinedBoost": 0.8,
       "appliedBoost": 0.8,
-      "loggedAt": "2026-11-27T19:17:58.614Z",
+      "loggedAt": "2026-11-27T19:21:49.484Z",
       "actualStat": 9
     },
     {
@@ -386,7 +513,7 @@
       "jointN": 3,
       "combinedBoost": 1.5,
       "appliedBoost": 1.5,
-      "loggedAt": "2026-11-27T19:17:58.615Z",
+      "loggedAt": "2026-11-27T19:21:49.484Z",
       "actualStat": 24
     },
     {
@@ -406,7 +533,7 @@
       "method": "sum",
       "combinedBoost": 1.4,
       "appliedBoost": 1.4,
-      "loggedAt": "2026-11-27T19:17:58.615Z",
+      "loggedAt": "2026-11-27T19:21:49.484Z",
       "actualStat": 5
     },
     {
@@ -427,34 +554,7 @@
       "jointN": 3,
       "combinedBoost": 0.6,
       "appliedBoost": 0.6,
-      "loggedAt": "2026-11-27T19:17:58.615Z",
-      "actualStat": 8
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "4600663",
-      "playerName": "Zach Edey",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "4431785",
-          "playerName": "Scotty Pippen Jr.",
-          "stat": "pts",
-          "n": 11,
-          "individualEffect": 1.2
-        },
-        {
-          "playerId": "5105550",
-          "playerName": "GG Jackson",
-          "stat": "pts",
-          "n": 6,
-          "individualEffect": 2.6
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 3.8,
-      "appliedBoost": 2.6,
-      "loggedAt": "2026-11-27T19:17:58.615Z",
+      "loggedAt": "2026-11-27T19:21:49.484Z",
       "actualStat": 8
     },
     {
@@ -475,7 +575,7 @@
       "jointN": 11,
       "combinedBoost": 1.3,
       "appliedBoost": 1.3,
-      "loggedAt": "2026-11-27T19:18:00.389Z",
+      "loggedAt": "2026-11-27T19:21:51.309Z",
       "actualStat": 16
     },
     {
@@ -496,7 +596,7 @@
       "jointN": 11,
       "combinedBoost": 0.6,
       "appliedBoost": 0.6,
-      "loggedAt": "2026-11-27T19:18:00.389Z",
+      "loggedAt": "2026-11-27T19:21:51.309Z",
       "actualStat": 0
     },
     {
@@ -524,7 +624,7 @@
       "jointN": 11,
       "combinedBoost": 3.3,
       "appliedBoost": 3,
-      "loggedAt": "2026-11-27T19:18:00.389Z",
+      "loggedAt": "2026-11-27T19:21:51.309Z",
       "actualStat": 39
     },
     {
@@ -552,7 +652,7 @@
       "jointN": 11,
       "combinedBoost": 3.7,
       "appliedBoost": 3.7,
-      "loggedAt": "2026-11-27T19:18:00.389Z",
+      "loggedAt": "2026-11-27T19:21:51.309Z",
       "actualStat": 6
     },
     {
@@ -573,7 +673,7 @@
       "jointN": 11,
       "combinedBoost": 1.1,
       "appliedBoost": 1.1,
-      "loggedAt": "2026-11-27T19:18:00.389Z",
+      "loggedAt": "2026-11-27T19:21:51.309Z",
       "actualStat": 3
     },
     {
@@ -601,7 +701,7 @@
       "jointN": 11,
       "combinedBoost": 1.5,
       "appliedBoost": 1.5,
-      "loggedAt": "2026-11-27T19:18:00.389Z",
+      "loggedAt": "2026-11-27T19:21:51.309Z",
       "actualStat": 10
     },
     {
@@ -622,7 +722,7 @@
       "jointN": 8,
       "combinedBoost": 1.1,
       "appliedBoost": 1.1,
-      "loggedAt": "2026-11-27T19:18:00.389Z",
+      "loggedAt": "2026-11-27T19:21:51.309Z",
       "actualStat": 8
     },
     {
@@ -642,7 +742,7 @@
       "method": "sum",
       "combinedBoost": 1.2,
       "appliedBoost": 1.2,
-      "loggedAt": "2026-11-27T19:18:01.829Z",
+      "loggedAt": "2026-11-27T19:21:52.800Z",
       "actualStat": 5
     },
     {
@@ -662,7 +762,7 @@
       "method": "sum",
       "combinedBoost": 0.7,
       "appliedBoost": 0.7,
-      "loggedAt": "2026-11-27T19:18:01.829Z",
+      "loggedAt": "2026-11-27T19:21:52.800Z",
       "actualStat": 5
     },
     {
@@ -682,7 +782,7 @@
       "method": "sum",
       "combinedBoost": 0.9,
       "appliedBoost": 0.9,
-      "loggedAt": "2026-11-27T19:18:01.829Z",
+      "loggedAt": "2026-11-27T19:21:52.800Z",
       "actualStat": 15
     },
     {
@@ -702,7 +802,7 @@
       "method": "sum",
       "combinedBoost": 1.5,
       "appliedBoost": 1.5,
-      "loggedAt": "2026-11-27T19:18:01.829Z",
+      "loggedAt": "2026-11-27T19:21:52.800Z",
       "actualStat": 18
     },
     {
@@ -729,7 +829,7 @@
       "method": "sum",
       "combinedBoost": 1.9,
       "appliedBoost": 1.9,
-      "loggedAt": "2026-11-27T19:18:01.829Z",
+      "loggedAt": "2026-11-27T19:21:52.800Z",
       "actualStat": 17
     },
     {
@@ -749,7 +849,7 @@
       "method": "sum",
       "combinedBoost": 0.9,
       "appliedBoost": 0.9,
-      "loggedAt": "2026-11-27T19:18:01.829Z",
+      "loggedAt": "2026-11-27T19:21:52.800Z",
       "actualStat": 18
     },
     {
@@ -776,7 +876,7 @@
       "method": "sum",
       "combinedBoost": 4.1,
       "appliedBoost": 4.1,
-      "loggedAt": "2026-11-27T19:18:01.829Z",
+      "loggedAt": "2026-11-27T19:21:52.800Z",
       "actualStat": 31
     },
     {
@@ -796,29 +896,129 @@
       "method": "sum",
       "combinedBoost": 1,
       "appliedBoost": 1,
-      "loggedAt": "2026-11-27T19:18:01.829Z",
+      "loggedAt": "2026-11-27T19:21:52.800Z",
       "actualStat": 3
     },
     {
       "slateDate": "2026-11-29",
-      "playerId": "4871145",
-      "playerName": "Josh Giddey",
-      "stat": "ast",
+      "playerId": "4712896",
+      "playerName": "Noah Clowney",
+      "stat": "pts",
       "outSplits": [
         {
-          "playerId": "2595516",
-          "playerName": "Norman Powell",
-          "stat": "ast",
-          "n": 5,
-          "individualEffect": 1.5
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 2.3
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 2.3,
+      "appliedBoost": 2.3,
+      "loggedAt": "2026-11-27T19:21:55.971Z",
+      "actualStat": 13
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "3064514",
+      "playerName": "Julius Randle",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 1
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1,
+      "appliedBoost": 1,
+      "loggedAt": "2026-11-27T19:21:55.971Z",
+      "actualStat": 29
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "5175643",
+      "playerName": "Egor Demin",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 2.2
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 2.2,
+      "appliedBoost": 2.2,
+      "loggedAt": "2026-11-27T19:21:55.971Z",
+      "actualStat": 10
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "4432194",
+      "playerName": "Day'Ron Sharpe",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 0.6
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 0.6,
+      "appliedBoost": 0.6,
+      "loggedAt": "2026-11-27T19:21:55.971Z",
+      "actualStat": 6
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "4702177",
+      "playerName": "Keon Ellis",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 1
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1,
+      "appliedBoost": 1,
+      "loggedAt": "2026-11-27T19:21:55.971Z",
+      "actualStat": 6
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "4711294",
+      "playerName": "Matas Buzelis",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5095151",
+          "playerName": "Caleb Wilson",
+          "stat": "pts",
+          "n": 8,
+          "individualEffect": 1.6
         }
       ],
       "method": "joint",
       "jointN": 3,
-      "combinedBoost": 1.2,
-      "appliedBoost": 1.2,
-      "loggedAt": "2026-11-27T19:18:05.699Z",
-      "actualStat": 22
+      "combinedBoost": 0.7,
+      "appliedBoost": 0.7,
+      "loggedAt": "2026-11-27T19:21:56.744Z",
+      "actualStat": 21
     },
     {
       "slateDate": "2026-11-29",
@@ -838,8 +1038,29 @@
       "jointN": 3,
       "combinedBoost": 1.2,
       "appliedBoost": 1.2,
-      "loggedAt": "2026-11-27T19:18:05.699Z",
+      "loggedAt": "2026-11-27T19:21:56.744Z",
       "actualStat": 4
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "4871145",
+      "playerName": "Josh Giddey",
+      "stat": "ast",
+      "outSplits": [
+        {
+          "playerId": "2595516",
+          "playerName": "Norman Powell",
+          "stat": "ast",
+          "n": 5,
+          "individualEffect": 1.5
+        }
+      ],
+      "method": "joint",
+      "jointN": 3,
+      "combinedBoost": 1.2,
+      "appliedBoost": 1.2,
+      "loggedAt": "2026-11-27T19:21:56.744Z",
+      "actualStat": 22
     },
     {
       "slateDate": "2026-11-29",
@@ -866,8 +1087,29 @@
       "jointN": 3,
       "combinedBoost": 1.2,
       "appliedBoost": 1.2,
-      "loggedAt": "2026-11-27T19:18:05.699Z",
+      "loggedAt": "2026-11-27T19:21:56.744Z",
       "actualStat": 33
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "4431687",
+      "playerName": "Patrick Williams",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5095151",
+          "playerName": "Caleb Wilson",
+          "stat": "pts",
+          "n": 8,
+          "individualEffect": 1
+        }
+      ],
+      "method": "joint",
+      "jointN": 3,
+      "combinedBoost": 0.5,
+      "appliedBoost": 0.5,
+      "loggedAt": "2026-11-27T19:21:56.744Z",
+      "actualStat": 2
     },
     {
       "slateDate": "2026-11-29",
@@ -894,29 +1136,8 @@
       "jointN": 2,
       "combinedBoost": 0.7,
       "appliedBoost": 0.7,
-      "loggedAt": "2026-11-27T19:18:05.699Z",
+      "loggedAt": "2026-11-27T19:21:56.744Z",
       "actualStat": 26
-    },
-    {
-      "slateDate": "2026-11-29",
-      "playerId": "4431687",
-      "playerName": "Patrick Williams",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "5095151",
-          "playerName": "Caleb Wilson",
-          "stat": "pts",
-          "n": 8,
-          "individualEffect": 1
-        }
-      ],
-      "method": "joint",
-      "jointN": 3,
-      "combinedBoost": 0.5,
-      "appliedBoost": 0.5,
-      "loggedAt": "2026-11-27T19:18:05.699Z",
-      "actualStat": 2
     },
     {
       "slateDate": "2026-11-29",
@@ -943,29 +1164,8 @@
       "jointN": 3,
       "combinedBoost": 1.9,
       "appliedBoost": 1.9,
-      "loggedAt": "2026-11-27T19:18:05.699Z",
+      "loggedAt": "2026-11-27T19:21:56.744Z",
       "actualStat": 6
-    },
-    {
-      "slateDate": "2026-11-29",
-      "playerId": "4711294",
-      "playerName": "Matas Buzelis",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "5095151",
-          "playerName": "Caleb Wilson",
-          "stat": "pts",
-          "n": 8,
-          "individualEffect": 1.6
-        }
-      ],
-      "method": "joint",
-      "jointN": 3,
-      "combinedBoost": 0.7,
-      "appliedBoost": 0.7,
-      "loggedAt": "2026-11-27T19:18:05.699Z",
-      "actualStat": 21
     },
     {
       "slateDate": "2026-11-29",
@@ -984,7 +1184,7 @@
       "method": "sum",
       "combinedBoost": 2.6,
       "appliedBoost": 2.6,
-      "loggedAt": "2026-11-27T19:18:05.892Z",
+      "loggedAt": "2026-11-27T19:21:56.941Z",
       "actualStat": 20
     },
     {
@@ -1004,7 +1204,7 @@
       "method": "sum",
       "combinedBoost": 1.5,
       "appliedBoost": 1.5,
-      "loggedAt": "2026-11-27T19:18:05.893Z",
+      "loggedAt": "2026-11-27T19:21:56.941Z",
       "actualStat": 17
     },
     {
@@ -1024,7 +1224,7 @@
       "method": "sum",
       "combinedBoost": 2.7,
       "appliedBoost": 2.7,
-      "loggedAt": "2026-11-27T19:18:05.893Z",
+      "loggedAt": "2026-11-27T19:21:56.941Z",
       "actualStat": 38
     },
     {
@@ -1052,7 +1252,7 @@
       "jointN": 3,
       "combinedBoost": 2.3,
       "appliedBoost": 2.3,
-      "loggedAt": "2026-11-27T19:18:05.893Z",
+      "loggedAt": "2026-11-27T19:21:56.942Z",
       "actualStat": 12
     },
     {
@@ -1080,7 +1280,7 @@
       "jointN": 2,
       "combinedBoost": 0.7,
       "appliedBoost": 0.7,
-      "loggedAt": "2026-11-27T19:18:05.893Z",
+      "loggedAt": "2026-11-27T19:21:56.942Z",
       "actualStat": 13
     }
   ]

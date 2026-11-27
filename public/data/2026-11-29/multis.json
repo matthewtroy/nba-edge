@@ -41,7 +41,7 @@
     {
       "type": "boostSgm",
       "label": "Best SGM",
-      "reason": "No same-game SGM @ ≥$2 + edge curve (eligible 298, best pool =0, games 0)"
+      "reason": "No same-game SGM @ ≥$2 + edge curve (eligible 301, best pool =0, games 0)"
     },
     {
       "type": "longshot",
