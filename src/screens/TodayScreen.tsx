@@ -35,6 +35,7 @@ interface Props {
   onSlateDateChange: (d: string) => void;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (t: string) => void;
+  onShareError: (message: string) => void;
   showQ1: boolean;
   showLongshots: boolean;
   myBookie?: string;
@@ -54,6 +55,7 @@ export function TodayScreen({
   onSlateDateChange,
   onLegTap,
   onCopy,
+  onShareError,
   showQ1,
   showLongshots,
   myBookie,
@@ -167,6 +169,7 @@ export function TodayScreen({
             liveCatalog={data.picks}
             onLegTap={onLegTap}
             onCopy={onCopy}
+            onShareError={onShareError}
             legViews={liveTracking.legViews}
             liveBetView={liveTracking.betViews.get(liveMultiKey(m))}
             liveSnapshot={liveTracking.snapshot}

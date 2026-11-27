@@ -5,6 +5,7 @@ import {
   prefetchLegHeadshots,
   SHARE_CAPTURE_DPR,
   SHARE_CAPTURE_PAGE_BG,
+  SHARE_CAPTURE_IMAGE_PLACEHOLDER,
   SHARE_CAPTURE_PADDING_PX,
   SHARE_CAPTURE_WIDTH_PX,
   shareCaptureFooterText,
@@ -145,6 +146,7 @@ export async function captureMultiCardSharePng(
       pixelRatio: SHARE_CAPTURE_DPR,
       cacheBust: true,
       backgroundColor: SHARE_CAPTURE_PAGE_BG,
+      imagePlaceholder: SHARE_CAPTURE_IMAGE_PLACEHOLDER,
     });
     const res = await fetch(dataUrl);
     return res.blob();

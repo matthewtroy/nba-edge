@@ -7,6 +7,10 @@ export const SHARE_CAPTURE_DPR = 3;
 /** Dark page behind card — not card green (html-to-image fallback). */
 export const SHARE_CAPTURE_PAGE_BG = "#0a0a0a";
 
+/** Transparent 1×1 PNG — html-to-image placeholder for broken / cross-origin images. */
+export const SHARE_CAPTURE_IMAGE_PLACEHOLDER =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==";
+
 export function shareCaptureFooterText(slateDate?: string): string {
   const date =
     slateDate?.trim() ||

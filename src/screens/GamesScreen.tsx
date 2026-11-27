@@ -41,6 +41,7 @@ interface Props {
   myBookie?: string;
   onLegTap: (leg: PickLeg) => void;
   onCopy: (text: string) => void;
+  onShareError: (message: string) => void;
   liveTracking: LiveTrackingState;
 }
 
@@ -56,6 +57,7 @@ export function GamesScreen({
   onSlateDateChange,
   onLegTap,
   onCopy,
+  onShareError,
   myBookie,
   liveTracking,
 }: Props) {
@@ -195,7 +197,7 @@ export function GamesScreen({
 
         {built.map(({ game, card }) => {
           if (!card) return null;
-          const multi = gameSgmAsMulti(card, game);
+          const multi = gameSgmAsMulti(card, game, data.picks);
           const gameLiveBetView = liveBetView(
             legStatesForMulti(multi, liveTracking.legViews)
           );
@@ -248,6 +250,7 @@ export function GamesScreen({
                 compact
                 onLegTap={onLegTap}
                 onCopy={onCopy}
+                onShareError={onShareError}
                 legViews={liveTracking.legViews}
                 liveBetView={gameLiveBetView}
                 reasonsAtTip={data.meta.reasonsAtTip}

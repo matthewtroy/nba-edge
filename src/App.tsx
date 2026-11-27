@@ -87,6 +87,11 @@ export default function App() {
     setTimeout(() => setToast(null), 1500);
   };
 
+  const shareError = (message: string) => {
+    setToast(message);
+    setTimeout(() => setToast(null), 2800);
+  };
+
   if (!index && data.loading) {
     return <LoadingSkeleton />;
   }
@@ -139,6 +144,7 @@ export default function App() {
             onSlateDateChange={setSlateDate}
             onLegTap={setLeg}
             onCopy={copy}
+            onShareError={shareError}
             showQ1
             showLongshots
             myBookie={myBookie}
@@ -179,6 +185,7 @@ export default function App() {
             myBookie={myBookie}
             onLegTap={setLeg}
             onCopy={copy}
+            onShareError={shareError}
             liveTracking={liveTracking}
           />
         </ErrorBoundary>
