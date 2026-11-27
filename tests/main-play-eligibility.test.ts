@@ -33,6 +33,7 @@ function synth(overrides: Partial<PickLeg> & Pick<PickLeg, "id">): PickLeg {
       { type: "form", text: "7/10 at this line" },
       { type: "matchup", text: "Heat rank #4 in allowing pts to guards (avg. 18.0)" },
     ],
+    starter: true,
     starterEligible: true,
     recentTenVsLine: [
       "hit",

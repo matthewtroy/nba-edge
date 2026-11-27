@@ -88,6 +88,8 @@ export function runModel(input: ModelRunInput): {
   }
 
   const picks: PickLeg[] = [];
+  let slatePlayerCount = 0;
+  let starterFlagCount = 0;
   const allQ1Exclusions: string[] = [];
   const matchupLog: { name: string; market: string; line: number; deltaPp: number }[] = [];
   const sanityInputs: { playerName: string; gameLogs: PlayerGameLog[]; projected: import("../lib/baseline.js").ProjectedStats }[] = [];
@@ -227,6 +229,9 @@ export function runModel(input: ModelRunInput): {
         p.gameLogs.reduce((s, g) => s + g.minutes, 0) / Math.max(1, p.gameLogs.length);
       const injuryAngle = playerReasons.some((r) => /\+\d|benefit|redistrib/i.test(r));
       const trackingRow = trackingCache?.players[p.id];
+      const starter = qualifiesStarter(p.gameLogs, ctxAdj.minutes);
+      slatePlayerCount += 1;
+      if (starter) starterFlagCount += 1;
       const newLegs = buildLegsForPlayer({
           gameId: p.gameId,
           team: p.teamName,
@@ -255,7 +260,8 @@ export function runModel(input: ModelRunInput): {
             blowoutRisk: ctxAdj.blowoutRisk,
             ageB2B: ctxAdj.ageB2B,
             projectedMinutes: ctxAdj.minutes,
-            starterEligible: qualifiesStarter(p.gameLogs, ctxAdj.minutes),
+            starter,
+            starterEligible: starter,
           },
           bestOdds: input.oddsMap,
           allOdds: input.allOddsMap,
@@ -273,6 +279,8 @@ export function runModel(input: ModelRunInput): {
       });
     }
   }
+
+  console.log(`starters: ${starterFlagCount} of ${slatePlayerCount} players flagged`);
 
   const modelSanity = checkModelSanity(sanityInputs);
   logModelSanity(modelSanity);
