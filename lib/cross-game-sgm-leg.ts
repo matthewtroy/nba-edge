@@ -1,7 +1,6 @@
 import type { PickLeg } from "./types.js";
 import { passesFormGuard } from "./form-guard.js";
 import { legHasSupportiveReason } from "./picks-supportive-filter.js";
-import { isSgmMainLine } from "./main-play-eligibility.js";
 import { MAIN_PLAY_HIGH_PROB_P } from "./pricing-config.js";
 import { asBookieLeg } from "./bookie-edge-pool.js";
 
@@ -16,10 +15,8 @@ export function qualifiesCrossGameSgmLeg(
   catalog: PickLeg[]
 ): boolean {
   if (!passesFormGuard(leg)) return false;
-  if (!leg.starterEligible) return false;
   if (leg.tags.includes("Check news")) return false;
   if (!legHasSupportiveReason(leg)) return false;
-  if (!isSgmMainLine(leg.market, leg.line)) return false;
   if (!crossGameLegIsHighProb(leg)) return false;
 
   const priced = asBookieLeg(leg, bookie, catalog);

@@ -1100,10 +1100,7 @@ function buildCrossGameSgm(
   slateGames: SlateGame[]
 ): { bet: MultiBet | null; reason: string } {
   const structural = picks.filter(
-    (l) =>
-      l.starterEligible === true &&
-      !l.market.startsWith("q1") &&
-      passesFormGuard(l)
+    (l) => !l.market.startsWith("q1") && passesFormGuard(l)
   );
 
   const poolLegs: PickLeg[] = [];
