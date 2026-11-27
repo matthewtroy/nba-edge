@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T08:53:47.963Z",
+  "lastUpdated": "2026-11-27T11:41:04.454Z",
   "oddsLastPulled": "2026-11-27T07:00:36.694Z",
   "sources": {
     "espn": "ok",
@@ -9,13 +9,11 @@
   "slateSize": 11,
   "smallSlate": false,
   "injuryImpactLog": [
-    "Duncan Robinson (Detroit Pistons): NBA Official Out; estimated +2.6 pts → Daniss Jenkins (no leg reason yet)",
-    "Duncan Robinson (Detroit Pistons): no redistribution reasons on slate legs",
     "Jock Landale (Atlanta Hawks): no redistribution reasons on slate legs"
   ],
   "modelSanityChecked": 217,
-  "modelSanityFailures": 24,
-  "formGuardExcludedCount": 382,
+  "modelSanityFailures": 16,
+  "formGuardExcludedCount": 771,
   "gameOddsPriceAge": {
     "401909326": "Prices from 6:00 pm",
     "401909327": "Prices from 6:00 pm",
@@ -31,42 +29,45 @@
   },
   "slateTipDate": "2026-11-28",
   "whatChanged": [
-    "Duncan Robinson out → Daniss Jenkins +2.6 pts",
-    "Bennedict Mathurin out → Jordan Poole +4.3 pts",
-    "Cade Cunningham out → Daniss Jenkins +4.2 pts"
+    "Duncan Robinson out → Paul Reed +4.7 pts",
+    "Cameron Boozer out → Cedric Coward +4.8 pts",
+    "Jerami Grant out → Cedric Coward +4.8 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_03_45AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_06_30AM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 424,
-      "priced": 340
+      "total": 1566,
+      "priced": 1491
     },
     "reb": {
-      "total": 479,
-      "priced": 318
+      "total": 906,
+      "priced": 751
     },
     "ast": {
-      "total": 301,
-      "priced": 216
+      "total": 608,
+      "priced": 525
     },
     "3pm": {
-      "total": 581,
-      "priced": 440
+      "total": 609,
+      "priced": 467
     },
     "q1reb": {
-      "total": 88,
+      "total": 74,
       "priced": 0
     }
   },
   "gateViolations": [
-    "Longshot: Victor Wembanyama has Check news"
+    "Booster: Onyeka Okongwu has Check news",
+    "Booster: Cam Spencer more than +1 rung above Main",
+    "Longshot: Victor Wembanyama has Check news",
+    "Longshot: take-at 28.58 not 30–150"
   ],
   "officialCard": {
-    "lockedAt": "2026-11-27T08:52:49.922Z",
+    "lockedAt": "2026-11-27T11:35:48.236Z",
     "publishedAt": "2026-11-27T07:00:36.694Z",
-    "republishedAt": "2026-11-27T08:52:49.922Z",
+    "republishedAt": "2026-11-27T11:35:48.236Z",
     "slateDate": "2026-11-28",
-    "bookie": "Sportsbet"
+    "bookie": "PointsBet"
   },
   "slatePublicationStatus": "official",
   "slateStatusLabel": "Official · published 6:00pm",

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T08:52:49.922Z",
+  "updatedAt": "2026-11-27T11:35:48.236Z",
   "todayDate": "2026-11-27",
   "tomorrowDate": "2026-11-28",
   "defaultDate": "2026-11-28",
@@ -19,13 +19,13 @@
       "status": "official",
       "statusLabel": "Official · published 6:00pm",
       "gameCount": 11,
-      "legCount": 1873,
+      "legCount": 3763,
       "multiCount": 5,
-      "lastUpdated": "2026-11-27T08:53:47.963Z",
+      "lastUpdated": "2026-11-27T11:41:04.454Z",
       "firstTipIso": "2026-11-28T00:00:00.000Z"
     }
   ],
-  "nextPublishAt": "2026-11-27T08:52:49.922Z",
+  "nextPublishAt": "2026-11-27T11:35:48.236Z",
   "nextSlateDate": "2026-11-28",
   "firstTipAt": "2026-11-28T00:00:00.000Z",
   "games": [
