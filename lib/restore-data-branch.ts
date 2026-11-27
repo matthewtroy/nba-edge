@@ -169,6 +169,20 @@ export function restorePersistedDataFromBranch(
       `restore: slate folders on data branch (${retainedFolders.join(", ")})`
     );
   }
+  try {
+    const headshotList = execFileSync(
+      "git",
+      ["ls-tree", "-r", "--name-only", dataRef, "public/data/headshots"],
+      { cwd: rootDir, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }
+    );
+    for (const rel of headshotList.split("\n").map((l) => l.trim()).filter(Boolean)) {
+      const out = path.join(rootDir, rel);
+      if (restoreOne(rootDir, dataRef, rel, out)) restored.push(rel);
+    }
+  } catch {
+    /* optional headshots folder */
+  }
+
   for (const ymd of retainedFolders) {
     for (const name of DATA_BRANCH_SLATE_DIR_FILES) {
       const rel = `public/data/${ymd}/${name}`;

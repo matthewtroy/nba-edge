@@ -30,6 +30,7 @@ export function LegRow({ leg, slate, myBookie = "bet365", onTap }: Props) {
     >
       <PlayerAvatar
         name={leg.playerName}
+        playerId={leg.playerId}
         headshotUrl={leg.headshotUrl}
         className="w-10 h-10 rounded-full bg-card object-cover shrink-0"
       />

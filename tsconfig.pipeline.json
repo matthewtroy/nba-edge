@@ -7,6 +7,8 @@
   "include": [
     "scripts/pipeline.ts",
     "scripts/run-live.ts",
+    "scripts/headshots-step.ts",
+    "scripts/persist-merge-headshots.ts",
     "scripts/slate-bundle.ts",
     "scripts/model-engine.ts",
     "scripts/pdf-parse.d.ts",

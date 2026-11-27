@@ -257,6 +257,36 @@ describe("share multi capture", () => {
     expect(shareLegs.length).toBe(multi!.legs.length);
   });
 
+  it("headshot prefetch skips cross-origin ESPN urls", async () => {
+    const legs: PickLeg[] = [
+      {
+        id: "l",
+        gameId: "g",
+        team: "T",
+        opponent: "O",
+        playerId: "p0",
+        playerName: "Test",
+        headshotUrl: "https://a.espncdn.com/i/headshots/nba/players/full/1.png",
+        market: "pts",
+        line: 1,
+        probability: 0.5,
+        fairPrice: 2,
+        takeAt: 2,
+        tags: [],
+        reasons: [],
+        starterEligible: true,
+      },
+    ];
+    const fetchFn = vi.fn();
+    Object.defineProperty(globalThis, "location", {
+      value: { origin: "http://localhost" },
+      configurable: true,
+    });
+    const overrides = await prefetchLegHeadshots(legs, fetchFn as typeof fetch);
+    expect(fetchFn).not.toHaveBeenCalled();
+    expect(overrides).toEqual({});
+  });
+
   it("headshot prefetch falls back to initials when fetch fails", async () => {
     const multi = stubMulti(1);
     const legs: PickLeg[] = multi.legs.map((id) => ({

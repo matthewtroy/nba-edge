@@ -51,6 +51,7 @@ else
 fi
 
 mkdir -p "$WT/public/data"
+npx tsx "$ROOT/scripts/persist-merge-headshots.ts" "$STAGING" || true
 cp -a "$STAGING/." "$WT/public/data/" || {
   PERSIST_WARN "copy into worktree failed"
   exit 0

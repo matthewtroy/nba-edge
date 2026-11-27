@@ -9,6 +9,7 @@ import {
   SHARE_CAPTURE_WIDTH_PX,
   shareCaptureFooterText,
 } from "@lib/share-multi-capture";
+import { headshotPublicUrl } from "@lib/headshot-display";
 import type { InjuryEntry, MultiBet, PickLeg, SlateGame } from "@lib/types";
 import type { LiveLegView } from "@lib/live-leg";
 import type { LiveBetView } from "@lib/live-bet";
@@ -44,12 +45,17 @@ export type CaptureMultiCardShareInput = {
 export async function captureMultiCardSharePng(
   input: CaptureMultiCardShareInput
 ): Promise<Blob> {
+  const base = import.meta.env.BASE_URL;
+  const shareLegsResolved = input.shareLegs.map((leg) => ({
+    ...leg,
+    headshotUrl: headshotPublicUrl(leg.playerId, leg.headshotUrl, base),
+  }));
   const headshotOverrides = await prefetchLegHeadshots(
-    input.shareLegs,
+    shareLegsResolved,
     globalThis.fetch.bind(globalThis)
   );
   const picksById = new Map(input.picksById);
-  for (const leg of input.shareLegs) {
+  for (const leg of shareLegsResolved) {
     const row = picksById.get(leg.id);
     if (!row) continue;
     const url = headshotOverrides[leg.playerId];

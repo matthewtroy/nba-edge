@@ -25,6 +25,11 @@ import {
 } from "./espn-parse.js";
 import { mapPool } from "./lib/concurrency.js";
 import { espnHeadshotUrl } from "../lib/player-headshot.js";
+import {
+  applyHeadshotUrlsToSlatePicks,
+  collectPlayerIdsFromPublishedSlates,
+  downloadHeadshotsForPlayers,
+} from "../lib/headshot-pipeline.js";
 import { loadOddsApiKey } from "./lib/env.js";
 import { runModel, oddsMapFromRecord, oddsMapToRecord, type ModelPlayer } from "./model-engine.js";
 import { loadHistory } from "./run-model.js";
@@ -1098,6 +1103,31 @@ export async function runLivePipeline(
   }
 
   await safeFinalizePipelineSupabaseSync(rootDir, syncBundles);
+
+  const headshotSlateDates = [
+    ...new Set(
+      slatesToPublish
+        .map((s) => slateTipDateFromGames(s))
+        .filter((d): d is string => Boolean(d))
+    ),
+  ];
+  if (headshotSlateDates.length) {
+    try {
+      const headshotPlayerIds = collectPlayerIdsFromPublishedSlates(
+        outDir,
+        headshotSlateDates
+      );
+      const headshotStats = await downloadHeadshotsForPlayers(outDir, headshotPlayerIds, {
+        now,
+      });
+      const picksPatched = applyHeadshotUrlsToSlatePicks(outDir, headshotSlateDates);
+      console.log(
+        `headshots: ${headshotStats.downloaded} downloaded, ${headshotStats.skipped} skipped, ${headshotStats.failed} failed · ${Math.round(headshotStats.totalBytes / 1024)} KiB · picks url patch ${picksPatched}`
+      );
+    } catch (e) {
+      console.warn("headshots:", e instanceof Error ? e.message : e);
+    }
+  }
 
   console.log(
     `Pipeline OK: ${slatesToPublish.length} slate(s) · ${indexEntries.map((e) => `${e.date} ${e.multiCount}m`).join(", ")} (${fromLive ? "from-live" : "live"})`

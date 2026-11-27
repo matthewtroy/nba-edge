@@ -1,4 +1,5 @@
 import type { Market, MultiBet, PickLeg } from "./types.js";
+import { selfHostedHeadshotRelPath } from "./headshot-store.js";
 import type { OfficialLegSnapshot } from "./official-card-time.js";
 import { legPriceAtBookieWithCatalog } from "./single-bookie.js";
 import { gateLegReasons } from "./reason-gate.js";
@@ -57,7 +58,23 @@ export function officialCardPrimaryBookie(multis: MultiBet[]): string {
   return main?.bestBookie ?? multis.find((m) => m.bestBookie)?.bestBookie ?? "";
 }
 
-export function pickLegFromSnapshot(snap: OfficialLegSnapshot): PickLeg {
+/** Display-time headshot for frozen snapshots (JSON keeps original URL). */
+export function snapshotHeadshotUrlForDisplay(
+  snap: OfficialLegSnapshot,
+  selfHostedIds?: Set<string>
+): string {
+  if (selfHostedIds?.has(snap.playerId)) {
+    return selfHostedHeadshotRelPath(snap.playerId);
+  }
+  const stored = snap.headshotUrl?.trim() ?? "";
+  if (stored.startsWith("headshots/")) return stored;
+  return selfHostedHeadshotRelPath(snap.playerId);
+}
+
+function pickLegFromSnapshotInner(
+  snap: OfficialLegSnapshot,
+  selfHostedIds?: Set<string>
+): PickLeg {
   const bookie = snap.publishedBookie;
   const price = snap.publishedPrice;
   const bookiePrices = snap.bookiePrices
@@ -69,7 +86,7 @@ export function pickLegFromSnapshot(snap: OfficialLegSnapshot): PickLeg {
     id: snap.id,
     playerId: snap.playerId,
     playerName: snap.playerName,
-    headshotUrl: snap.headshotUrl ?? "",
+    headshotUrl: snapshotHeadshotUrlForDisplay(snap, selfHostedIds),
     gameId: snap.gameId,
     team: snap.team,
     opponent: snap.opponent ?? "",
@@ -93,6 +110,10 @@ export function pickLegFromSnapshot(snap: OfficialLegSnapshot): PickLeg {
   };
 }
 
+export function pickLegFromSnapshot(snap: OfficialLegSnapshot): PickLeg {
+  return pickLegFromSnapshotInner(snap);
+}
+
 export function picksByIdFromOfficialSnapshots(
   snapshots: Record<string, OfficialLegSnapshot> | undefined,
   livePicks: PickLeg[]
@@ -105,7 +126,7 @@ export function picksByIdFromOfficialSnapshots(
     const reasonSource =
       live?.reasons?.length && live.reasons.length > 0 ? live.reasons : snap.reasons;
     const reasons = gateLegReasons(reasonSource, snap.market, 3, snap.line);
-    const leg = pickLegFromSnapshot(snap);
+    const leg = pickLegFromSnapshotInner(snap);
     leg.reasons = reasons;
     leg.reasonLine = topReasonLines(reasons, 3);
     if (

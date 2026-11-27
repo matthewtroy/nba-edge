@@ -1,4 +1,5 @@
 import type { PickLeg } from "./types.js";
+import { isSameOriginHeadshotUrl } from "./headshot-display.js";
 
 export const SHARE_CAPTURE_WIDTH_PX = 430;
 export const SHARE_CAPTURE_PADDING_PX = 16;
@@ -40,8 +41,14 @@ export async function prefetchLegHeadshots(
         .filter((u): u is string => Boolean(u))
     ),
   ];
+  const origin =
+    typeof globalThis.location !== "undefined" && globalThis.location.origin
+      ? globalThis.location.origin
+      : "http://localhost";
+
   await Promise.all(
     urls.map(async (url) => {
+      if (!isSameOriginHeadshotUrl(url, origin)) return;
       try {
         const res = await fetchFn(url);
         if (!res.ok) return;
