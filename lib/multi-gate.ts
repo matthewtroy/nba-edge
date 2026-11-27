@@ -1,6 +1,6 @@
 import type { MultiBet, MultiType, PickLeg } from "./types.js";
 import { crossGameMultiHasClash, multiHasClash } from "./clash.js";
-import { bestFeedMultiQuote } from "./card-bookie.js";
+import { bestEdgeMultiQuote } from "./best-multi-bookie.js";
 import { combinedPriceForBookieWithCatalog } from "./single-bookie.js";
 import {
   gateLineViolation,
@@ -150,7 +150,12 @@ function checkTypeRules(
   if (type === "mainPlay") {
     if (legs.length < 3 || legs.length > 5) issues.push(`Main Play: ${legs.length} legs (need 3–5)`);
     const bookTotal =
-      multi.bestBookieTotal ?? bestFeedMultiQuote(legs)?.total ?? null;
+      multi.bestBookieTotal ??
+        bestEdgeMultiQuote(legs, {
+          buildBookie: multi.bestBookie,
+          catalog: catalog ?? legs,
+        })?.total ??
+        null;
     if (
       bookTotal == null ||
       bookTotal < MAIN_PLAY_COMBINED_MIN ||
@@ -169,7 +174,12 @@ function checkTypeRules(
       issues.push(`Best Double Up: ${legs.length} legs (need 2–3)`);
     }
     const bookTotal =
-      multi.bestBookieTotal ?? bestFeedMultiQuote(legs)?.total ?? null;
+      multi.bestBookieTotal ??
+        bestEdgeMultiQuote(legs, {
+          buildBookie: multi.bestBookie,
+          catalog: catalog ?? legs,
+        })?.total ??
+        null;
     if (
       bookTotal == null ||
       bookTotal < DOUBLE_UP_MIN ||
@@ -198,7 +208,12 @@ function checkTypeRules(
       issues.push(`Best SGM: ${legs.length} legs (need 2–5)`);
     }
     const bookTotal =
-      multi.bestBookieTotal ?? bestFeedMultiQuote(legs)?.total ?? null;
+      multi.bestBookieTotal ??
+        bestEdgeMultiQuote(legs, {
+          buildBookie: multi.bestBookie,
+          catalog: catalog ?? legs,
+        })?.total ??
+        null;
     if (bookTotal == null || bookTotal < 2) {
       issues.push(
         `Best SGM: bookie total ${bookTotal != null ? bookTotal.toFixed(2) : "?"} below $2`
@@ -326,7 +341,10 @@ export function gateMulti(
       const catalog = picksById ? [...picksById.values()] : legs;
       const total = combinedPriceForBookieWithCatalog(legs, multi.bestBookie, catalog);
       if (total == null || Math.abs(total - multi.bestBookieTotal) > 0.02) {
-        const feed = bestFeedMultiQuote(legs, catalog);
+        const feed = bestEdgeMultiQuote(legs, {
+          buildBookie: multi.bestBookie,
+          catalog,
+        });
         if (
           !feed ||
           feed.bookie !== multi.bestBookie ||

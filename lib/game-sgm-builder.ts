@@ -20,6 +20,7 @@ import {
   type GamesTabSgmLegRules,
 } from "./games-tab-sgm.js";
 import { qualifiesCrossBoostLeg } from "./main-play-eligibility.js";
+import { bestEdgeMultiQuote } from "./best-multi-bookie.js";
 
 export const MIN_GAME_SGM_LEG_PRICE = GAMES_TAB_MIN_LEG_PRICE;
 export const MIN_GAME_SGM_LEGS = GAMES_TAB_MIN_LEGS;
@@ -179,10 +180,17 @@ export function pickGameSgmLegsWithReason(
     };
   }
 
+  const resolved = bestEdgeMultiQuote(bestAcross.legs, {
+    buildBookie: bestAcross.bookie,
+    catalog: pool,
+    legQualifies: (leg, bookie) =>
+      qualifiesGamesTabSgmLeg(leg, bookie, minEdgeFraction, pool, rules),
+  });
+
   return {
     legs: bestAcross.legs,
-    bookie: bestAcross.bookie,
-    total: bestAcross.total,
+    bookie: resolved?.bookie ?? bestAcross.bookie,
+    total: resolved?.total ?? bestAcross.total,
   };
 }
 

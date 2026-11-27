@@ -1335,7 +1335,13 @@ function buildCrossGameSgm(
       combinedProbability: p,
       combinedFairPrice: fair,
       combinedTakeAt: takeAt,
-      ...overlayForBookie(bestAcross.legs, bestAcross.bookie, catalog, index),
+      ...overlayForBookie(
+        bestAcross.legs,
+        bestAcross.bookie,
+        catalog,
+        index,
+        (leg, bookie) => qualifiesCrossGameSgmLeg(leg, bookie, catalog, index)
+      ),
       crossGameGroups: bestAcross.groups,
       summary: `${bestAcross.gamesIncluded} games @ ${bestAcross.bookie}${oneLegNote}`,
     },
