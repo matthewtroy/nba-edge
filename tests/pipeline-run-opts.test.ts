@@ -12,6 +12,17 @@ describe("pipeline run opts", () => {
     ).toBe(false);
   });
 
+  it("never skips publish on publish_now", () => {
+    expect(
+      skipOfficialPublishOnRun({
+        forceOdds: true,
+        republishCard: false,
+        fromLive: false,
+        publishNow: true,
+      })
+    ).toBe(false);
+  });
+
   it("skips auto publish on force_odds without republish", () => {
     expect(
       skipOfficialPublishOnRun({

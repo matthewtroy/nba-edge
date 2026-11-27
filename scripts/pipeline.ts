@@ -22,6 +22,9 @@ const forceOdds =
 const republishCard =
   process.argv.includes("--republish-card") ||
   process.env.PIPELINE_REPUBLISH_CARD === "1";
+const publishNow =
+  process.argv.includes("--publish-now") ||
+  process.env.PIPELINE_PUBLISH_NOW === "1";
 const fromLive = process.argv.includes("--from-live");
 
 function runFixturePipeline(): void {
@@ -100,10 +103,12 @@ async function main() {
     forceOdds: forceOdds || useFromLive,
     fromLive: useFromLive,
     republishCard,
+    publishNow,
     skipOfficialPublish: skipOfficialPublishOnRun({
       forceOdds,
       republishCard,
       fromLive: useFromLive,
+      publishNow,
     }),
   });
   if (process.env.SETTLE_AFTER_PIPELINE !== "0") {

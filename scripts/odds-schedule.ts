@@ -30,8 +30,8 @@ export interface ShouldPullOddsOpts {
   skipScheduled9pm?: boolean;
   /** Sydney tip date (YYYY-MM-DD) for the next slate odds target. */
   nextSlateTipDate?: string;
-  /** Today's slate official card already locked. */
-  officialPublishedToday?: boolean;
+  /** Next slate official card already published (first publish, not republish run). */
+  nextSlateOfficialPublished?: boolean;
 }
 
 export function detectOddsPullTrigger(
@@ -55,14 +55,12 @@ export function detectOddsPullTrigger(
 
   const eveningSlot = h >= 21 && h < 22;
   if (!opts.skipScheduled9pm && eveningSlot) {
+    if (opts.nextSlateOfficialPublished) return null;
     if (pulled.has("scheduled_9pm")) return null;
     if (
       opts.nextSlateTipDate &&
       cache.lastScheduled9pmSlate === opts.nextSlateTipDate
     ) {
-      return null;
-    }
-    if (opts.officialPublishedToday && pulled.has("scheduled_9pm")) {
       return null;
     }
     // The 9pm pull prices the card that publishes tonight, i.e. a slate tipping Sydney tomorrow.

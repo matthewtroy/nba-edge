@@ -48,4 +48,14 @@ describe("shouldPullOddsNow", () => {
       detectOddsPullTrigger(now, tipSoon, emptyCache, { pretipPull: true })
     ).toBe("pretip");
   });
+
+  it("skips scheduled_9pm when next slate official card already published", () => {
+    const now = new Date("2026-01-15T10:15:00.000Z");
+    expect(
+      detectOddsPullTrigger(now, slate, emptyCache, {
+        nextSlateOfficialPublished: true,
+        nextSlateTipDate: "2026-01-16",
+      })
+    ).toBeNull();
+  });
 });

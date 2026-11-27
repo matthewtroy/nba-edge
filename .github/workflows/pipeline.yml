@@ -35,6 +35,10 @@ on:
         description: Grade pending official legs only; no full pipeline / no odds
         type: boolean
         default: false
+      publish_now:
+        description: Pull odds and publish the next slate's official card now
+        type: boolean
+        default: false
 
 concurrency:
   group: nba-edge-pipeline
@@ -64,21 +68,32 @@ jobs:
             echo "force_odds=0" >> "$GITHUB_OUTPUT"
             echo "skip_odds=1" >> "$GITHUB_OUTPUT"
             echo "republish_card=0" >> "$GITHUB_OUTPUT"
+            echo "publish_now=0" >> "$GITHUB_OUTPUT"
+            echo "settle_first=0" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.publish_now }}" = "true" ]; then
+            echo "publish_now=1" >> "$GITHUB_OUTPUT"
+            echo "settle_only=0" >> "$GITHUB_OUTPUT"
+            echo "force_odds=0" >> "$GITHUB_OUTPUT"
+            echo "skip_odds=0" >> "$GITHUB_OUTPUT"
+            echo "republish_card=0" >> "$GITHUB_OUTPUT"
             echo "settle_first=0" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event_name }}" = "schedule" ] && { [ "${{ github.event.schedule }}" = "0 7 * * *" ] || [ "${{ github.event.schedule }}" = "0 9 * * *" ] || { [ "$(date -u +%H)" = "07" ] || [ "$(date -u +%H)" = "09" ]; } && [ "$(date -u +%M)" = "00" ]; }; then
             echo "settle_only=1" >> "$GITHUB_OUTPUT"
             echo "force_odds=0" >> "$GITHUB_OUTPUT"
             echo "skip_odds=1" >> "$GITHUB_OUTPUT"
             echo "republish_card=0" >> "$GITHUB_OUTPUT"
+            echo "publish_now=0" >> "$GITHUB_OUTPUT"
             echo "settle_first=0" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event_name }}" = "schedule" ] && [ "${{ github.event.schedule }}" = "0 10 * * *" ]; then
             echo "settle_only=0" >> "$GITHUB_OUTPUT"
             echo "force_odds=0" >> "$GITHUB_OUTPUT"
             echo "skip_odds=1" >> "$GITHUB_OUTPUT"
             echo "republish_card=0" >> "$GITHUB_OUTPUT"
+            echo "publish_now=0" >> "$GITHUB_OUTPUT"
             echo "settle_first=1" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.republish_card }}" = "true" ]; then
             echo "republish_card=1" >> "$GITHUB_OUTPUT"
+            echo "publish_now=0" >> "$GITHUB_OUTPUT"
             if [ "${{ inputs.force_odds }}" = "true" ]; then
               echo "force_odds=1" >> "$GITHUB_OUTPUT"
               echo "skip_odds=0" >> "$GITHUB_OUTPUT"
@@ -90,14 +105,17 @@ jobs:
             echo "force_odds=1" >> "$GITHUB_OUTPUT"
             echo "skip_odds=0" >> "$GITHUB_OUTPUT"
             echo "republish_card=0" >> "$GITHUB_OUTPUT"
+            echo "publish_now=0" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event_name }}" = "schedule" ] && { [ "${{ github.event.schedule }}" = "0 10 * * *" ] || [ "${{ github.event.schedule }}" = "10 10 * * *" ] || [ "${{ github.event.schedule }}" = "20 10 * * *" ] || [ "${{ github.event.schedule }}" = "35 10 * * *" ] || [ "${{ github.event.schedule }}" = "0 11 * * *" ]; }; then
             echo "force_odds=0" >> "$GITHUB_OUTPUT"
             echo "skip_odds=0" >> "$GITHUB_OUTPUT"
             echo "republish_card=0" >> "$GITHUB_OUTPUT"
+            echo "publish_now=0" >> "$GITHUB_OUTPUT"
           else
             echo "force_odds=0" >> "$GITHUB_OUTPUT"
             echo "skip_odds=1" >> "$GITHUB_OUTPUT"
             echo "republish_card=0" >> "$GITHUB_OUTPUT"
+            echo "publish_now=0" >> "$GITHUB_OUTPUT"
             echo "settle_only=0" >> "$GITHUB_OUTPUT"
             echo "settle_first=0" >> "$GITHUB_OUTPUT"
           fi
@@ -136,8 +154,9 @@ jobs:
           ODDS_RESERVE_CREDITS: "20"
           SETTLE_ONLY: ${{ steps.mode.outputs.settle_only }}
           SETTLE_FIRST: ${{ steps.mode.outputs.settle_first }}
+          PIPELINE_PUBLISH_NOW: ${{ steps.mode.outputs.publish_now }}
         run: |
-          echo "Workflow pipeline (dual-slate) force_odds=${{ steps.mode.outputs.force_odds }} skip_odds=${{ steps.mode.outputs.skip_odds }} republish_card=${{ steps.mode.outputs.republish_card }} odds_games=${PIPELINE_ODDS_GAMES}"
+          echo "Workflow pipeline (dual-slate) force_odds=${{ steps.mode.outputs.force_odds }} skip_odds=${{ steps.mode.outputs.skip_odds }} republish_card=${{ steps.mode.outputs.republish_card }} publish_now=${{ steps.mode.outputs.publish_now }} odds_games=${PIPELINE_ODDS_GAMES}"
           npm run pipeline
 
       - run: npm run build

@@ -56,6 +56,7 @@ export interface SlateBundleInput {
   nbaOfficialLastTriedUrl?: string;
   unpulledGameIds?: Set<string>;
   skipOfficialPublish?: boolean;
+  publishNow?: boolean;
   blockOfficialRepublish?: boolean;
   defense?: DefenseRatingsBundle;
   matchupSignalsEnabled?: boolean;
@@ -229,7 +230,9 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     !input.skipOfficialPublish &&
     !blockOfficialRepublish &&
     !input.blockOfficialRepublish &&
-    shouldPublishOfficialCard(input.now, picks, existingOfficial, tipDate)
+    shouldPublishOfficialCard(input.now, picks, existingOfficial, tipDate, {
+      publishNow: input.publishNow,
+    })
   ) {
     const official = writeOfficialCard(outDir, {
       now: input.now,
@@ -265,8 +268,10 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     }
     if (existingOfficial?.slateDate === tipDate) reasons.push("already locked");
     if (
+      !input.publishNow &&
       !isEveningSydney(input.now) &&
-      process.env.OFFICIAL_CARD_LOCK !== "1"
+      process.env.OFFICIAL_CARD_LOCK !== "1" &&
+      process.env.PIPELINE_PUBLISH_NOW !== "1"
     ) {
       reasons.push("outside evening window");
     }

@@ -24,6 +24,14 @@ export function shouldShowSlateBuildingScreen(opts: {
   } = opts;
   if (!index) return false;
 
+  if (
+    officialCard?.publishedAt &&
+    officialCard.slateDate === slateDate &&
+    (officialInUse || Boolean(officialCard.legSnapshots && Object.keys(officialCard.legSnapshots).length))
+  ) {
+    return false;
+  }
+
   if (noGamesToday && slateDate === todayDate && officialInUse) {
     return false;
   }

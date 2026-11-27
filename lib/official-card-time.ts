@@ -95,14 +95,16 @@ export function shouldPublishOfficialCard(
   now: Date,
   picks: PickLeg[],
   existing: OfficialCardFile | null,
-  slateDate: string
+  slateDate: string,
+  opts?: { publishNow?: boolean }
 ): boolean {
   if (process.env.OFFICIAL_CARD_LOCK === "1") {
     if (existing?.slateDate === slateDate) return false;
     return true;
   }
   if (existing?.slateDate === slateDate) return false;
-  if (!isEveningSydney(now)) return false;
+  const publishNow = opts?.publishNow === true || process.env.PIPELINE_PUBLISH_NOW === "1";
+  if (!publishNow && !isEveningSydney(now)) return false;
   return hasAuPropPrices(picks);
 }
 

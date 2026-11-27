@@ -170,6 +170,11 @@ import {
   fetchPublishedBundle,
   oddsMapsFromPublished,
 } from "./fetch-published-data.js";
+import {
+  publishNowProbeSkipMessage,
+  publishNowReady,
+} from "../lib/publish-now-probe.js";
+import { runPublishNowProbe } from "./publish-now-probe.js";
 
 export async function runLivePipeline(
   rootDir: string,
@@ -179,10 +184,12 @@ export async function runLivePipeline(
     fromLive?: boolean;
     skipOfficialPublish?: boolean;
     republishCard?: boolean;
+    publishNow?: boolean;
   } = {}
 ): Promise<void> {
   const forceOdds = opts.forceOdds === true;
   const fromLive = opts.fromLive === true;
+  const publishNow = opts.publishNow === true || process.env.PIPELINE_PUBLISH_NOW === "1";
   const reserveCredits = oddsReserveCredits();
   const fixedOddsGames = (() => {
     const raw = process.env.PIPELINE_ODDS_GAMES;
@@ -557,17 +564,39 @@ export async function runLivePipeline(
     slatesToPublish[0]?.length
       ? slateTipDateFromGames(slatesToPublish[0]) ?? sydneyDateString(now)
       : sydneyDateString(now);
-  const existingTodayOfficial = loadOfficialCard(
-    path.join(outDir, todayTip)
+  const nextSlateGamesEarly = filterSlateToNextSydney(unionSlate);
+  const nextSlateTipEarly = slateTipDateFromGames(nextSlateGamesEarly) ?? undefined;
+  const existingNextOfficial = nextSlateTipEarly
+    ? loadOfficialCard(path.join(outDir, nextSlateTipEarly))
+    : null;
+  const nextSlateOfficialPublished = Boolean(
+    existingNextOfficial?.publishedAt &&
+      existingNextOfficial.slateDate === nextSlateTipEarly &&
+      !republishCard
   );
-  const officialPublishedToday =
-    existingTodayOfficial?.slateDate === todayTip;
 
   let oddsMap = cachedMapFromFile(cache);
   let allOddsMap = new Map<string, Record<string, number>>();
   let oddsPayloads: unknown[] = [];
   let oddsPulledAt = cache.lastPulled;
   const apiKey = loadOddsApiKey(rootDir);
+
+  let publishNowProbeOnly = false;
+  if (publishNow && nextSlateGamesEarly.length && apiKey) {
+    const probe = await runPublishNowProbe(apiKey, nextSlateGamesEarly);
+    if (probe.remaining != null) {
+      cache.creditsRemaining = probe.remaining;
+      cache.creditsRemainingAt = now.toISOString();
+    }
+    console.log(oddsCreditsLogLine(cache));
+    if (!publishNowReady(probe.listed)) {
+      console.log(publishNowProbeSkipMessage(probe.listed, probe.total));
+      publishNowProbeOnly = true;
+    }
+  } else if (publishNow && !apiKey) {
+    console.log("publish_now skipped: no ODDS_API_KEY");
+    publishNowProbeOnly = true;
+  }
   const unpulledBySlateDate = new Map<string, Set<string>>();
   const rankingBySlateDate = new Map<string, import("../lib/game-injury-ranking.js").GameInjuryRank[]>();
   let lastPullTrigger: OddsPullTrigger | undefined;
@@ -597,14 +626,19 @@ export async function runLivePipeline(
   const nextSlateGames = filterSlateToNextSydney(unionSlate);
   const nextSlateTip = slateTipDateFromGames(nextSlateGames) ?? undefined;
 
-  const skipOddsEnv = injuryRefreshSkipsOdds() && !forceOdds;
+  const skipOddsEnv =
+    publishNowProbeOnly ||
+    (injuryRefreshSkipsOdds() && !forceOdds && !publishNow);
   let pullTrigger = detectOddsPullTrigger(now, unionSlate, cache, {
-    officialPublishedToday,
+    nextSlateOfficialPublished,
     pretipPull: budgetFromDb?.pretipPull ?? false,
     forceOdds,
     skipScheduled9pm: skipOddsEnv,
     nextSlateTipDate: nextSlateTip,
   });
+  if (publishNow && !publishNowProbeOnly && !fromLive) {
+    pullTrigger = "scheduled_9pm";
+  }
   if (skipOddsEnv && pullTrigger === "scheduled_9pm") {
     pullTrigger = detectOddsPullTrigger(now, unionSlate, cache, {
       pretipPull: budgetFromDb?.pretipPull ?? false,
@@ -614,10 +648,14 @@ export async function runLivePipeline(
   if (skipOddsEnv && pullTrigger !== "pretip") pullTrigger = null;
 
   const eveningSydney = sydneyHour(now) >= 21 && sydneyHour(now) < 22;
-  if (eveningSydney && !forceOdds && !fromLive) {
+  if (eveningSydney && !forceOdds && !fromLive && !publishNow) {
     const pulled = new Set(cache.pullSlotsToday ?? []);
     if (pullTrigger === "scheduled_9pm") {
       console.log("scheduled: acted");
+    } else if (nextSlateOfficialPublished && existingNextOfficial?.publishedAt) {
+      console.log(
+        `already published at ${existingNextOfficial.publishedAt}, skipping pull`
+      );
     } else if (nextSlateTip && nextSlateTip !== sydneyTomorrowYmd(now)) {
       console.log(`scheduled: skipped — next slate ${nextSlateTip} is priced on its eve, not tonight`);
     } else if (pulled.has("scheduled_9pm")) {
@@ -848,7 +886,8 @@ export async function runLivePipeline(
       nbaOfficialUrl,
       nbaOfficialLastTriedUrl,
       unpulledGameIds: tip ? unpulledBySlateDate.get(tip) : undefined,
-      skipOfficialPublish,
+      skipOfficialPublish: skipOfficialPublish || publishNowProbeOnly,
+      publishNow: publishNow && !publishNowProbeOnly && tip === nextSlateTip,
       defense: defenseBundle,
       matchupSignalsEnabled,
       positionRanks,

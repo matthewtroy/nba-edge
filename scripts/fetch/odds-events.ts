@@ -50,6 +50,20 @@ export async function fetchOddsForEvent(
   };
 }
 
+/** One AU region × player_points — cheapest prop probe (1 credit). */
+export async function fetchProbePlayerPoints(
+  apiKey: string,
+  eventId: string
+): Promise<{ data: unknown; remaining?: number }> {
+  const url = `https://api.the-odds-api.com/v4/sports/basketball_nba/events/${eventId}/odds?apiKey=${apiKey}&regions=au&oddsFormat=decimal&markets=player_points`;
+  const res = await fetch(url, { cache: "no-store" });
+  const remaining = res.headers.get("x-requests-remaining");
+  return {
+    data: res.ok ? await res.json() : null,
+    remaining: remaining ? Number(remaining) : undefined,
+  };
+}
+
 export function extractBestOddsFlexible(events: unknown[]): Map<string, { price: number; bookie: string }> {
   return extractOddsBundles(events).best;
 }
