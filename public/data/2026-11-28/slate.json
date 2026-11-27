@@ -53,7 +53,7 @@
     "awayB2B": false,
     "status": "scheduled",
     "spread": -7.5,
-    "total": 220.5
+    "total": 219.5
   },
   {
     "id": "401909330",
@@ -150,7 +150,7 @@
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled",
-    "spread": -8.5,
+    "spread": -9.5,
     "total": 220.5
   }
 ]
