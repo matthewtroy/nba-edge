@@ -48,6 +48,10 @@ import { isInjuryRedistributionReason } from "./injury-reason.js";
 import { legHasSupportiveReason } from "./picks-supportive-filter.js";
 import { logMultiBuildSummary } from "./multi-filter-log.js";
 import {
+  countQ1MultiFilters,
+  formatQ1MultiFilterCounts,
+} from "./q1-multi-filter-counts.js";
+import {
   combinedFairAndTakeAt,
   DEFAULT_MIN_EDGE,
 } from "./multi-combined.js";
@@ -1033,6 +1037,9 @@ function buildQ1Multi(
   bets: MultiBet[];
   coreNotBuiltReason: string;
 } {
+  console.log(
+    `multis filter [q1Multi]: ${formatQ1MultiFilterCounts(countQ1MultiFilters(picks, MIN_LEG_FAIR))}`
+  );
   const exSuffix = q1ExclusionSuffix(q1ExclusionNotes);
   const coreRanked = bestQ1LegPerTeam(picks, MIN_LEG_FAIR, logsByPlayer);
   const thinPool = `Only ${coreRanked.length} teams with Q1 fair ≥${MIN_LEG_FAIR.toFixed(2)} (24+ min, −20pp, need 3–6)`;
