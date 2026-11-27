@@ -1,0 +1,62 @@
+[
+  {
+    "id": "401910046",
+    "startTime": "2026-11-28T22:00Z",
+    "startTimeSydney": "9:00 am",
+    "homeTeam": "Washington Wizards",
+    "awayTeam": "Orlando Magic",
+    "homeTeamId": "27",
+    "awayTeamId": "19",
+    "homeB2B": false,
+    "awayB2B": false,
+    "status": "scheduled"
+  },
+  {
+    "id": "401910047",
+    "startTime": "2026-11-28T23:00Z",
+    "startTimeSydney": "10:00 am",
+    "homeTeam": "Charlotte Hornets",
+    "awayTeam": "Brooklyn Nets",
+    "homeTeamId": "30",
+    "awayTeamId": "17",
+    "homeB2B": false,
+    "awayB2B": true,
+    "status": "scheduled"
+  },
+  {
+    "id": "401910048",
+    "startTime": "2026-11-29T01:00Z",
+    "startTimeSydney": "12:00 pm",
+    "homeTeam": "Chicago Bulls",
+    "awayTeam": "Indiana Pacers",
+    "homeTeamId": "4",
+    "awayTeamId": "11",
+    "homeB2B": false,
+    "awayB2B": true,
+    "status": "scheduled"
+  },
+  {
+    "id": "401910049",
+    "startTime": "2026-11-29T01:00Z",
+    "startTimeSydney": "12:00 pm",
+    "homeTeam": "Milwaukee Bucks",
+    "awayTeam": "Oklahoma City Thunder",
+    "homeTeamId": "15",
+    "awayTeamId": "25",
+    "homeB2B": true,
+    "awayB2B": false,
+    "status": "scheduled"
+  },
+  {
+    "id": "401910050",
+    "startTime": "2026-11-29T01:30Z",
+    "startTimeSydney": "12:30 pm",
+    "homeTeam": "Houston Rockets",
+    "awayTeam": "Philadelphia 76ers",
+    "homeTeamId": "10",
+    "awayTeamId": "20",
+    "homeB2B": false,
+    "awayB2B": true,
+    "status": "scheduled"
+  }
+]

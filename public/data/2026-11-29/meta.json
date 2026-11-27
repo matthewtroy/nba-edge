@@ -1,0 +1,55 @@
+{
+  "lastUpdated": "2026-11-27T17:24:31.071Z",
+  "sources": {
+    "espn": "ok",
+    "nbaOfficial": "ok",
+    "odds": "paused (credit limit)"
+  },
+  "slateSize": 5,
+  "smallSlate": false,
+  "injuryImpactLog": [
+    "Moritz Wagner (Brooklyn Nets): no redistribution reasons on slate legs"
+  ],
+  "modelSanityChecked": 105,
+  "modelSanityFailures": 7,
+  "formGuardExcludedCount": 205,
+  "gameOddsPriceAge": {
+    "401910046": "Prices from 6:00 pm",
+    "401910047": "Prices from 6:00 pm",
+    "401910048": "Prices from 6:00 pm",
+    "401910049": "Prices from 6:00 pm",
+    "401910050": "Prices from 6:00 pm"
+  },
+  "slateTipDate": "2026-11-29",
+  "whatChanged": [
+    "Grayson Allen out → Brandon Miller +4.8 pts",
+    "Norman Powell out → Matas Buzelis +3.8 pts",
+    "Caleb Wilson out → Matas Buzelis +3.8 pts"
+  ],
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_12_15PM.pdf",
+  "pricedLegCounts": {
+    "pts": {
+      "total": 184,
+      "priced": 0
+    },
+    "3pm": {
+      "total": 286,
+      "priced": 0
+    },
+    "reb": {
+      "total": 242,
+      "priced": 0
+    },
+    "ast": {
+      "total": 157,
+      "priced": 0
+    },
+    "q1reb": {
+      "total": 37,
+      "priced": 0
+    }
+  },
+  "slatePublicationStatus": "draft",
+  "slateStatusLabel": "Draft · updates until 9pm",
+  "injuriesAtTip": []
+}

@@ -28,17 +28,17 @@
       "type": "doubleUp",
       "label": "Best Double Up",
       "legs": [
-        "3133628-reb-5",
-        "4432241-ast-5"
+        "4432241-ast-5",
+        "4431680-reb-7"
       ],
-      "combinedProbability": 0.576834,
-      "combinedFairPrice": 1.73,
-      "combinedTakeAt": 1.87,
-      "bestBookie": "Neds",
-      "bestBookieTotal": 1.99,
+      "combinedProbability": 0.56769,
+      "combinedFairPrice": 1.76,
+      "combinedTakeAt": 1.9,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 2.01,
       "bookieTotals": {
-        "Ladbrokes": 1.99,
-        "Neds": 1.99
+        "Ladbrokes": 2.01,
+        "Neds": 2.01
       },
       "summary": "2 legs · aim ~$2 @ one bookie"
     },
@@ -46,8 +46,8 @@
       "type": "crossGameSgm",
       "label": "Cross-Game SGM Multi",
       "legs": [
+        "3914044-pts-10",
         "4278053-3pm-1",
-        "3136195-pts-15",
         "3134907-pts-10",
         "5082206-pts-10",
         "5124612-pts-10",
@@ -69,22 +69,22 @@
         "4683021-3pm-1",
         "3995-pts-10"
       ],
-      "combinedProbability": 0.04133333088005538,
-      "combinedFairPrice": 24.19,
-      "combinedTakeAt": 26.13,
+      "combinedProbability": 0.03820028920950268,
+      "combinedFairPrice": 26.18,
+      "combinedTakeAt": 28.27,
       "bestBookie": "Neds",
-      "bestBookieTotal": 99.76,
+      "bestBookieTotal": 112.78,
       "bookieTotals": {
-        "Ladbrokes": 99.76,
-        "Neds": 99.76
+        "Ladbrokes": 112.78,
+        "Neds": 112.78
       },
       "crossGameGroups": [
         {
           "gameId": "401909326",
           "status": "included",
           "legs": [
-            "4278053-3pm-1",
-            "3136195-pts-15"
+            "3914044-pts-10",
+            "4278053-3pm-1"
           ]
         },
         {
@@ -180,7 +180,7 @@
       "combinedProbability": 0.472772,
       "combinedFairPrice": 2.12,
       "combinedTakeAt": 2.29,
-      "bestBookie": "Neds",
+      "bestBookie": "Ladbrokes",
       "bestBookieTotal": 2.56,
       "bookieTotals": {
         "Sportsbet": 2.44,

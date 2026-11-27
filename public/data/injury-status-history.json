@@ -1085,6 +1085,181 @@
       "toStatus": "Questionable",
       "observedAt": "2026-11-27T02:00:00.000Z",
       "source": "NBA Official"
+    },
+    {
+      "playerId": "3136195",
+      "playerName": "Karl-Anthony Towns",
+      "teamId": "18",
+      "gameId": "401909326",
+      "slateDate": "2026-11-28",
+      "fromStatus": "Available",
+      "toStatus": "Questionable",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "6585",
+      "playerName": "Andre Drummond",
+      "teamId": "18",
+      "gameId": "401909326",
+      "slateDate": "2026-11-28",
+      "fromStatus": "Questionable",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "4277919",
+      "playerName": "Mo Bamba",
+      "teamId": "26",
+      "gameId": "401909334",
+      "slateDate": "2026-11-28",
+      "fromStatus": "Available",
+      "toStatus": "Questionable",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "3059319",
+      "playerName": "Andrew Wiggins",
+      "teamId": "14",
+      "gameId": "401909326",
+      "slateDate": "2026-11-28",
+      "fromStatus": "Probable",
+      "toStatus": "Questionable",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "3150844",
+      "playerName": "Moritz Wagner",
+      "teamId": "17",
+      "gameId": "401910047",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "5279130",
+      "playerName": "Nolan Traore",
+      "teamId": "17",
+      "gameId": "401910047",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerName": "Kelly Oubre Jr.",
+      "teamId": "11",
+      "gameId": "401910048",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Questionable",
+      "observedAt": "2026-11-27T00:42:00.000Z",
+      "source": "ESPN"
+    },
+    {
+      "playerId": "4396993",
+      "playerName": "Tyrese Haliburton",
+      "teamId": "11",
+      "gameId": "401910048",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "t.j. mcconnell",
+      "playerName": "T.J. McConnell",
+      "teamId": "11",
+      "gameId": "401910048",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Questionable",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "4433076",
+      "playerName": "Ben Sheppard",
+      "teamId": "11",
+      "gameId": "401910048",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "3059318",
+      "playerName": "Joel Embiid",
+      "teamId": "20",
+      "gameId": "401910050",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Questionable",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "4871141",
+      "playerName": "Ariel Hukporti",
+      "teamId": "20",
+      "gameId": "401910050",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "4870564",
+      "playerName": "Joshua Jefferson",
+      "teamId": "17",
+      "gameId": "401910047",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "5037873",
+      "playerName": "Drake Powell",
+      "teamId": "17",
+      "gameId": "401910047",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "5214989",
+      "playerName": "Bogoljub Markovic",
+      "teamId": "15",
+      "gameId": "401910049",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "4397114",
+      "playerName": "Cormac Ryan",
+      "teamId": "15",
+      "gameId": "401910049",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
     }
   ]
 }

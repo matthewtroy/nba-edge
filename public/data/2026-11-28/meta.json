@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T12:50:38.907Z",
+  "lastUpdated": "2026-11-27T17:24:28.639Z",
   "oddsLastPulled": "2026-11-27T07:00:36.694Z",
   "sources": {
     "espn": "ok",
@@ -11,9 +11,9 @@
   "injuryImpactLog": [
     "Jock Landale (Atlanta Hawks): no redistribution reasons on slate legs"
   ],
-  "modelSanityChecked": 217,
-  "modelSanityFailures": 24,
-  "formGuardExcludedCount": 375,
+  "modelSanityChecked": 216,
+  "modelSanityFailures": 21,
+  "formGuardExcludedCount": 371,
   "gameOddsPriceAge": {
     "401909326": "Prices from 6:00 pm",
     "401909327": "Prices from 6:00 pm",
@@ -33,33 +33,32 @@
     "Lauri Markkanen out → Darryn Peterson +7.4 pts",
     "Jaylen Clark out → Jaden McDaniels +5.2 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_07_45AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_12_15PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 407,
-      "priced": 328
+      "total": 418,
+      "priced": 340
     },
     "reb": {
-      "total": 485,
-      "priced": 327
+      "total": 480,
+      "priced": 323
     },
     "ast": {
-      "total": 307,
-      "priced": 221
+      "total": 316,
+      "priced": 225
     },
     "3pm": {
-      "total": 583,
-      "priced": 442
+      "total": 565,
+      "priced": 433
     },
     "q1reb": {
-      "total": 93,
+      "total": 92,
       "priced": 0
     }
   },
   "officialCard": {
     "lockedAt": "2026-11-27T12:49:26.329Z",
     "publishedAt": "2026-11-27T07:00:36.694Z",
-    "republishedAt": "2026-11-27T12:49:26.329Z",
     "slateDate": "2026-11-28",
     "bookie": "Picklebet"
   },

@@ -1,0 +1,52 @@
+{
+  "bets": [
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "legs": [
+        "4432194-q1reb-2",
+        "4222252-q1reb-2",
+        "6583-q1reb-3",
+        "1966-q1reb-2",
+        "3149673-q1reb-3"
+      ],
+      "combinedProbability": 0.04031649426672,
+      "combinedFairPrice": 24.8,
+      "combinedTakeAt": 26.78,
+      "bookieTotals": {},
+      "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
+    }
+  ],
+  "notBuilt": [
+    {
+      "type": "mainPlay",
+      "label": "Main Play",
+      "reason": "Only 0 legs meet fair 1.40–2.50, p≥0.60 (need 3–5)"
+    },
+    {
+      "type": "doubleUp",
+      "label": "Best Double Up",
+      "reason": "No bookie with 2+ Double Up legs at edge (best =0)"
+    },
+    {
+      "type": "booster",
+      "label": "Booster",
+      "reason": "Needs a Main Play first"
+    },
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "reason": "No cross-game SGM (no bookie covers all 5 games; pool =0; missing @ Sportsbet: ORL @ WAS, BKN @ CHA, IND @ CHI, OKC @ MIL, PHI @ HOU)"
+    },
+    {
+      "type": "boostSgm",
+      "label": "Best SGM",
+      "reason": "No same-game SGM @ ≥$2 + edge curve (eligible 301, best pool =0, games 0)"
+    },
+    {
+      "type": "longshot",
+      "label": "Longshot",
+      "reason": "No angle longshot @ one bookie ($30–150, 2–4 legs, edge or narrative)"
+    }
+  ]
+}

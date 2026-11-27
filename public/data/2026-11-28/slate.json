@@ -7,8 +7,8 @@
     "awayTeam": "Miami Heat",
     "homeTeamId": "18",
     "awayTeamId": "14",
-    "spread": -4.5,
-    "total": 222.5,
+    "spread": -2.5,
+    "total": 221.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled"
@@ -24,8 +24,8 @@
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled",
-    "spread": -8.5,
-    "total": 218.5
+    "spread": -10.5,
+    "total": 219.5
   },
   {
     "id": "401909328",
@@ -36,7 +36,7 @@
     "homeTeamId": "11",
     "awayTeamId": "20",
     "spread": 3.5,
-    "total": 230.5,
+    "total": 229.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled"
@@ -52,7 +52,7 @@
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled",
-    "spread": -7.5,
+    "spread": -9.5,
     "total": 220.5
   },
   {
@@ -64,7 +64,7 @@
     "homeTeamId": "2",
     "awayTeamId": "1",
     "spread": -8.5,
-    "total": 221.5,
+    "total": 222.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled"
@@ -80,8 +80,8 @@
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled",
-    "spread": -3.5,
-    "total": 220.5
+    "spread": -4.5,
+    "total": 222.5
   },
   {
     "id": "401909332",
@@ -105,8 +105,8 @@
     "awayTeam": "Los Angeles Lakers",
     "homeTeamId": "24",
     "awayTeamId": "13",
-    "spread": -5.5,
-    "total": 225.5,
+    "spread": -6.5,
+    "total": 226.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled"
@@ -136,8 +136,8 @@
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled",
-    "spread": -3.5,
-    "total": 231.5
+    "spread": -2.5,
+    "total": 230.5
   },
   {
     "id": "401909336",
@@ -151,6 +151,6 @@
     "awayB2B": false,
     "status": "scheduled",
     "spread": -9.5,
-    "total": 221.5
+    "total": 219.5
   }
 ]
