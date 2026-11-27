@@ -7,8 +7,8 @@
     "gameId": "401910047",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z",
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z",
     "teammateEffects": [
       {
         "playerId": "3064514",
@@ -23,14 +23,14 @@
         "delta": 1.1
       },
       {
-        "playerId": "5175643",
-        "playerName": "Egor Demin",
+        "playerId": "5101761",
+        "playerName": "Mikel Brown Jr.",
         "stat": "pts",
         "delta": 0.8
       },
       {
-        "playerId": "5101761",
-        "playerName": "Mikel Brown Jr.",
+        "playerId": "5175643",
+        "playerName": "Egor Demin",
         "stat": "pts",
         "delta": 0.8
       },
@@ -68,38 +68,56 @@
     "gameId": "401910047",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z",
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z",
     "teammateEffects": [
       {
-        "playerId": "4712896",
-        "playerName": "Noah Clowney",
+        "playerId": "3064514",
+        "playerName": "Julius Randle",
         "stat": "pts",
-        "delta": 2.3
+        "delta": 2.8
+      },
+      {
+        "playerId": "4278104",
+        "playerName": "Michael Porter Jr.",
+        "stat": "pts",
+        "delta": 1.9
+      },
+      {
+        "playerId": "5101761",
+        "playerName": "Mikel Brown Jr.",
+        "stat": "pts",
+        "delta": 1.5
       },
       {
         "playerId": "5175643",
         "playerName": "Egor Demin",
         "stat": "pts",
-        "delta": 1.8
+        "delta": 1.5
+      },
+      {
+        "playerId": "4432194",
+        "playerName": "Day'Ron Sharpe",
+        "stat": "pts",
+        "delta": 1.1
+      },
+      {
+        "playerId": "5107173",
+        "playerName": "Danny Wolf",
+        "stat": "pts",
+        "delta": 1.1
+      },
+      {
+        "playerId": "4712896",
+        "playerName": "Noah Clowney",
+        "stat": "pts",
+        "delta": 1
       },
       {
         "playerId": "3150844",
         "playerName": "Moritz Wagner",
         "stat": "pts",
-        "delta": 1.8
-      },
-      {
-        "playerId": "4702177",
-        "playerName": "Keon Ellis",
-        "stat": "pts",
-        "delta": 1.1
-      },
-      {
-        "playerId": "3064514",
-        "playerName": "Julius Randle",
-        "stat": "pts",
-        "delta": 0.9
+        "delta": 0.8
       }
     ]
   },
@@ -140,6 +158,17 @@
     "updatedAt": "2026-11-08T22:31Z"
   },
   {
+    "playerId": "5242496",
+    "playerName": "Noa Essengue",
+    "teamId": "4",
+    "teamName": "Chicago Bulls",
+    "gameId": "401910048",
+    "status": "Probable",
+    "source": "NBA Official",
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
+  },
+  {
     "playerId": "4397189",
     "playerName": "Jalen Smith",
     "teamId": "4",
@@ -147,8 +176,8 @@
     "gameId": "401910048",
     "status": "Probable",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
   },
   {
     "playerId": "2595516",
@@ -158,8 +187,8 @@
     "gameId": "401910048",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z",
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z",
     "teammateEffects": [
       {
         "playerId": "4683750",
@@ -213,8 +242,8 @@
     "gameId": "401910048",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z",
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z",
     "teammateEffects": [
       {
         "playerId": "2990984",
@@ -295,8 +324,46 @@
     "gameId": "401910048",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z",
+    "teammateEffects": [
+      {
+        "playerId": "3133603",
+        "playerName": "Kelly Oubre Jr.",
+        "stat": "pts",
+        "delta": 3.8
+      },
+      {
+        "playerId": "4592829",
+        "playerName": "Quenton Jackson",
+        "stat": "pts",
+        "delta": 2.1
+      },
+      {
+        "playerId": "4395712",
+        "playerName": "Andrew Nembhard",
+        "stat": "ast",
+        "delta": 1.5
+      },
+      {
+        "playerId": "4398207",
+        "playerName": "Jalen Slawson",
+        "stat": "pts",
+        "delta": 0.9
+      },
+      {
+        "playerId": "5106060",
+        "playerName": "Jarace Walker",
+        "stat": "pts",
+        "delta": 0.9
+      },
+      {
+        "playerId": "4017837",
+        "playerName": "Ivica Zubac",
+        "stat": "pts",
+        "delta": 0.7
+      }
+    ]
   },
   {
     "playerName": "Kelly Oubre Jr.",
@@ -315,8 +382,8 @@
     "gameId": "401910048",
     "status": "Questionable",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
   },
   {
     "playerId": "4433076",
@@ -326,8 +393,8 @@
     "gameId": "401910048",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
   },
   {
     "playerName": "Kasparas Jakucionis",
@@ -454,8 +521,8 @@
     "gameId": "401910050",
     "status": "Questionable",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
   },
   {
     "playerName": "Jaylen Brown",
@@ -474,8 +541,8 @@
     "gameId": "401910050",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
   },
   {
     "playerName": "Tristan Vukcevic",
@@ -521,8 +588,8 @@
     "gameId": "401910047",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
   },
   {
     "playerId": "5037873",
@@ -532,8 +599,8 @@
     "gameId": "401910047",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
   },
   {
     "playerId": "4697268",
@@ -543,8 +610,8 @@
     "gameId": "401910049",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
   },
   {
     "playerId": "5214989",
@@ -554,8 +621,8 @@
     "gameId": "401910049",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
   },
   {
     "playerId": "4397114",
@@ -565,8 +632,8 @@
     "gameId": "401910049",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
   },
   {
     "playerId": "3912848",
@@ -576,19 +643,8 @@
     "gameId": "401910050",
     "status": "Questionable",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
-  },
-  {
-    "playerId": "5242496",
-    "playerName": "Noa Essengue",
-    "teamId": "4",
-    "teamName": "Chicago Bulls",
-    "gameId": "401910048",
-    "status": "Probable",
-    "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
   },
   {
     "playerId": "4898010",
@@ -598,8 +654,8 @@
     "gameId": "401910048",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
   },
   {
     "playerId": "4848625",
@@ -609,7 +665,7 @@
     "gameId": "401910048",
     "status": "Out",
     "source": "NBA Official",
-    "updatedAt": "2026-11-27T18:30:00.000Z",
-    "reportTime": "2026-11-27T18:30:00.000Z"
+    "updatedAt": "2026-11-27T19:15:00.000Z",
+    "reportTime": "2026-11-27T19:15:00.000Z"
   }
 ]

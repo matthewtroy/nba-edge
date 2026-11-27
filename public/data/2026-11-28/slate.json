@@ -36,7 +36,7 @@
     "homeTeamId": "11",
     "awayTeamId": "20",
     "spread": 3.5,
-    "total": 229.5,
+    "total": 230.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled"
@@ -53,7 +53,7 @@
     "awayB2B": false,
     "status": "scheduled",
     "spread": -9.5,
-    "total": 219.5
+    "total": 220.5
   },
   {
     "id": "401909330",
@@ -81,7 +81,7 @@
     "awayB2B": false,
     "status": "scheduled",
     "spread": -3.5,
-    "total": 222.5
+    "total": 219.5
   },
   {
     "id": "401909332",
@@ -94,7 +94,7 @@
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled",
-    "spread": -1.5,
+    "spread": -3.5,
     "total": 226.5
   },
   {
@@ -120,7 +120,7 @@
     "homeTeamId": "26",
     "awayTeamId": "7",
     "spread": 9.5,
-    "total": 230.5,
+    "total": 232.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled"
@@ -151,6 +151,6 @@
     "awayB2B": false,
     "status": "scheduled",
     "spread": -7.5,
-    "total": 216.5
+    "total": 218.5
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T18:41:05.030Z",
+  "lastUpdated": "2026-11-27T19:18:04.132Z",
   "oddsLastPulled": "2026-11-27T07:00:36.694Z",
   "sources": {
     "espn": "ok",
@@ -11,9 +11,9 @@
   "injuryImpactLog": [
     "Jock Landale (Atlanta Hawks): no redistribution reasons on slate legs"
   ],
-  "modelSanityChecked": 212,
-  "modelSanityFailures": 15,
-  "formGuardExcludedCount": 351,
+  "modelSanityChecked": 211,
+  "modelSanityFailures": 22,
+  "formGuardExcludedCount": 379,
   "gameOddsPriceAge": {
     "401909326": "Prices from 6:00 pm",
     "401909327": "Prices from 6:00 pm",
@@ -29,30 +29,30 @@
   },
   "slateTipDate": "2026-11-28",
   "whatChanged": [
-    "Duncan Robinson out → Paul Reed +2.1 pts",
-    "Cameron Boozer out → Cedric Coward +4.8 pts",
-    "Jerami Grant out → Cedric Coward +4.8 pts"
+    "Duncan Robinson out → John Collins +1.4 pts",
+    "Lauri Markkanen out → Darryn Peterson +7.4 pts",
+    "Jaylen Clark out → Jaden McDaniels +5.2 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_01_30PM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_02_15PM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 398,
-      "priced": 328
+      "total": 409,
+      "priced": 331
     },
     "reb": {
-      "total": 473,
-      "priced": 321
+      "total": 480,
+      "priced": 324
     },
     "ast": {
-      "total": 309,
-      "priced": 225
+      "total": 308,
+      "priced": 221
     },
     "3pm": {
-      "total": 557,
-      "priced": 430
+      "total": 556,
+      "priced": 429
     },
     "q1reb": {
-      "total": 72,
+      "total": 96,
       "priced": 0
     }
   },
