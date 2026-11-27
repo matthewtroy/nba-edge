@@ -9,6 +9,7 @@ import {
   resolveDataGitRef,
   restorePersistedDataFromBranch,
 } from "../lib/restore-data-branch";
+import { retentionMinYmd } from "../lib/slate-retention";
 
 function git(cwd: string, ...args: string[]) {
   execFileSync("git", args, { cwd, encoding: "utf8", stdio: "pipe" });
@@ -138,7 +139,7 @@ describe("restorePersistedDataFromBranch", () => {
     const repo = path.join(tmp, "repo");
     try {
       git(tmp, "init", repo);
-      const ymd = "2026-11-26";
+      const ymd = retentionMinYmd(new Date());
       const slateDir = path.join(repo, "public/data", ymd);
       fs.mkdirSync(slateDir, { recursive: true });
       fs.writeFileSync(path.join(slateDir, "slate.json"), "[]");
@@ -181,7 +182,7 @@ describe("restorePersistedDataFromBranch", () => {
     const repo = path.join(tmp, "repo");
     try {
       git(tmp, "init", repo);
-      const ymd = "2026-11-26";
+      const ymd = retentionMinYmd(new Date());
       const slateDir = path.join(repo, "public/data", ymd);
       fs.mkdirSync(slateDir, { recursive: true });
       for (const name of [
