@@ -46,110 +46,6 @@
       "summary": "2 legs · aim ~$2 @ one bookie"
     },
     {
-      "type": "crossGameSgm",
-      "label": "Cross-Game SGM Multi",
-      "legs": [
-        "3032977-reb-10",
-        "4278053-ast-7",
-        "4684742-pts-10",
-        "5082206-3pm-1",
-        "4433134-ast-5",
-        "5175643-pts-10",
-        "4278039-pts-20",
-        "4592479-pts-10",
-        "5104157-3pm-2"
-      ],
-      "combinedProbability": 0.06125868242550343,
-      "combinedFairPrice": 16.32,
-      "combinedTakeAt": 17.63,
-      "bestBookie": "TABtouch",
-      "bestBookieTotal": 40.98,
-      "bookieTotals": {
-        "TABtouch": 40.98,
-        "Ladbrokes": 32.77,
-        "Neds": 32.77,
-        "Unibet": 37.1
-      },
-      "crossGameGroups": [
-        {
-          "gameId": "401909326",
-          "status": "included",
-          "legs": [
-            "3032977-reb-10",
-            "4278053-ast-7"
-          ]
-        },
-        {
-          "gameId": "401909327",
-          "status": "included",
-          "legs": [
-            "4684742-pts-10",
-            "5082206-3pm-1"
-          ]
-        },
-        {
-          "gameId": "401909328",
-          "status": "excluded",
-          "legs": [],
-          "excludedReason": "PHI @ IND: need 2+ legs @ TABtouch (found 0)."
-        },
-        {
-          "gameId": "401909329",
-          "status": "included",
-          "legs": [
-            "4433134-ast-5",
-            "5175643-pts-10"
-          ]
-        },
-        {
-          "gameId": "401909330",
-          "status": "included",
-          "legs": [
-            "4278039-pts-20"
-          ]
-        },
-        {
-          "gameId": "401909331",
-          "status": "excluded",
-          "legs": [],
-          "excludedReason": "MEM @ MIN: need 2+ legs @ TABtouch (found 0)."
-        },
-        {
-          "gameId": "401909332",
-          "status": "excluded",
-          "legs": [],
-          "excludedReason": "DAL @ PHX: need 2+ legs @ TABtouch (found 0)."
-        },
-        {
-          "gameId": "401909333",
-          "status": "included",
-          "legs": [
-            "4592479-pts-10",
-            "5104157-3pm-2"
-          ]
-        },
-        {
-          "gameId": "401909334",
-          "status": "excluded",
-          "legs": [],
-          "excludedReason": "DEN @ UTA: need 2+ legs @ TABtouch (found 0)."
-        },
-        {
-          "gameId": "401909335",
-          "status": "excluded",
-          "legs": [],
-          "excludedReason": "NOP @ LAC: need 2+ legs @ TABtouch (found 0)."
-        },
-        {
-          "gameId": "401909336",
-          "status": "excluded",
-          "legs": [],
-          "excludedReason": "GSW @ POR: need 2+ legs @ TABtouch (found 0)."
-        }
-      ],
-      "summary": "2–5 games, 1–2 legs/game, $15–50 @ one bookie (toggle games on card)"
-    },
-    {
       "type": "boostSgm",
       "label": "Best SGM",
       "legs": [
@@ -175,26 +71,43 @@
       "summary": "Best 2–5 leg same-game multi · min $2 · edge curve"
     },
     {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "legs": [
+        "5104157-q1reb-3",
+        "4432194-q1reb-2",
+        "4065648-q1reb-3",
+        "3059318-q1reb-2",
+        "4066383-q1reb-2",
+        "3032977-q1reb-3"
+      ],
+      "combinedProbability": 0.12676414869444463,
+      "combinedFairPrice": 7.89,
+      "combinedTakeAt": 8.52,
+      "bookieTotals": {},
+      "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
+    },
+    {
       "type": "longshot",
       "label": "Longshot",
       "legs": [
-        "3059318-pts-35",
+        "3059318-pts-30",
+        "4683021-pts-30",
         "5104157-pts-40"
       ],
-      "combinedProbability": 0.031855,
-      "combinedFairPrice": 31.39,
-      "combinedTakeAt": 33.9,
-      "bestBookie": "Betr",
-      "bestBookieTotal": 50,
+      "combinedProbability": 0.027231870000000002,
+      "combinedFairPrice": 36.72,
+      "combinedTakeAt": 39.66,
+      "bestBookie": "Picklebet",
+      "bestBookieTotal": 81.9,
       "bookieTotals": {
-        "Sportsbet": 38.75,
-        "TAB": 23.63,
-        "PointsBet": 40.38,
-        "Betr": 50,
-        "Picklebet": 50,
-        "Bet Right": 50
+        "Sportsbet": 79.2,
+        "PointsBet": 66.69,
+        "Betr": 77.9,
+        "Picklebet": 81.9,
+        "Bet Right": 81.9
       },
-      "summary": "2 legs angle-ranked @ Betr"
+      "summary": "3 legs angle-ranked @ Picklebet"
     }
   ],
   "notBuilt": [
@@ -204,9 +117,31 @@
       "reason": "Booster: Cam Spencer 7+ ast: no Sportsbet line"
     },
     {
-      "type": "q1Multi",
-      "label": "Q1 Multi",
-      "reason": "No Q1 Multi (blend p rank, 1/team, 3–6 legs)"
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "reason": "Gate: Cross-Game SGM Multi: Bam Adebayo: forbidden 3+ ast (need 5+); Cross-Game SGM Multi: Aaron Nesmith: forbidden 3+ reb (need 5+); Cross-Game SGM Multi: Immanuel Quickley: forbidden 3+ reb (need 5+) (legs: Giannis Antetokounmpo Over 9.5 reb, Bam Adebayo Over 2.5 ast, Myles Turner Over 4.5 reb, Brayden Burries Over 0.5 3PM, Tyrese Maxey Over 4.5 ast, Aaron Nesmith Over 2.5 reb, Immanuel Quickley Over 2.5 reb, Scottie Barnes Over 4.5 ast, Onyeka Okongwu Over 6.5 reb, Cedric Coward Over 14.5 pts, Ty Jerome Over 2.5 reb, Jalen Green Over 2.5 reb, Victor Wembanyama Over 1.5 3PM, Julian Champagnie Over 9.5 pts, Cameron Johnson Over 9.5 pts, Josh Green Over 4.5 pts, Derik Queen Over 4.5 reb, Yves Missi Over 6.5 reb, Deni Avdija Over 4.5 ast, Jrue Holiday Over 1.5 3PM)",
+      "players": [
+        "Giannis Antetokounmpo",
+        "Bam Adebayo",
+        "Myles Turner",
+        "Brayden Burries",
+        "Tyrese Maxey",
+        "Aaron Nesmith",
+        "Immanuel Quickley",
+        "Scottie Barnes",
+        "Onyeka Okongwu",
+        "Cedric Coward",
+        "Ty Jerome",
+        "Jalen Green",
+        "Victor Wembanyama",
+        "Julian Champagnie",
+        "Cameron Johnson",
+        "Josh Green",
+        "Derik Queen",
+        "Yves Missi",
+        "Deni Avdija",
+        "Jrue Holiday"
+      ]
     }
   ]
 }

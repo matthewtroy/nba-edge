@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-11-27T07:01:53.658Z",
+  "lastUpdated": "2026-11-27T07:57:21.094Z",
   "oddsLastPulled": "2026-11-27T07:00:36.694Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
-    "odds": "ok"
+    "odds": "paused (credit limit)"
   },
   "slateSize": 11,
   "smallSlate": false,
@@ -15,7 +15,7 @@
   ],
   "modelSanityChecked": 217,
   "modelSanityFailures": 11,
-  "formGuardExcludedCount": 364,
+  "formGuardExcludedCount": 365,
   "gameOddsPriceAge": {
     "401909326": "Prices from 6:00 pm",
     "401909327": "Prices from 6:00 pm",
@@ -35,32 +35,43 @@
     "RJ Barrett out → Scottie Barnes +5.2 pts",
     "Jaylen Brown out → Tyrese Maxey +4.3 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_02_00AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_02_45AM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 381,
-      "priced": 305
+      "total": 398,
+      "priced": 322
     },
     "reb": {
-      "total": 459,
-      "priced": 305
+      "total": 472,
+      "priced": 318
     },
     "ast": {
-      "total": 279,
-      "priced": 192
+      "total": 307,
+      "priced": 220
     },
     "3pm": {
-      "total": 544,
-      "priced": 403
+      "total": 581,
+      "priced": 440
     },
     "q1reb": {
-      "total": 82,
+      "total": 79,
       "priced": 0
     }
   },
+  "gateViolations": [
+    "Cross-Game SGM Multi: Bam Adebayo: forbidden 3+ ast (need 5+)",
+    "Cross-Game SGM Multi: Aaron Nesmith: forbidden 3+ reb (need 5+)",
+    "Cross-Game SGM Multi: Immanuel Quickley: forbidden 3+ reb (need 5+)",
+    "Cross-Game SGM Multi: Ty Jerome: forbidden 3+ reb (need 5+)",
+    "Cross-Game SGM Multi: Jalen Green: forbidden 3+ reb (need 5+)",
+    "Cross-Game SGM Multi: Josh Green: not a starter (24+ min, 4/5 ESPN starts)",
+    "Cross-Game SGM Multi: Derik Queen: not a starter (24+ min, 4/5 ESPN starts)",
+    "Cross-Game SGM Multi: Yves Missi: not a starter (24+ min, 4/5 ESPN starts)"
+  ],
   "officialCard": {
-    "lockedAt": "2026-11-27T07:00:36.694Z",
+    "lockedAt": "2026-11-27T07:55:55.439Z",
     "publishedAt": "2026-11-27T07:00:36.694Z",
+    "republishedAt": "2026-11-27T07:55:55.439Z",
     "slateDate": "2026-11-28",
     "bookie": "Sportsbet"
   },
