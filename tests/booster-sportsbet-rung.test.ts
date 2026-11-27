@@ -26,7 +26,7 @@ function lineLeg(
 }
 
 describe("Booster Sportsbet next rung", () => {
-  it("main ast 5 with SB 7/8/10 uses 7 not 10", () => {
+  it("main ast 5 with SB 6+8 (no 7) uses 6 with model fair", () => {
     const picks: PickLeg[] = [
       lineLeg({
         id: "spencer-ast-5",
@@ -39,15 +39,15 @@ describe("Booster Sportsbet next rung", () => {
         bookiePrices: { Sportsbet: 1.96 },
       }),
       lineLeg({
-        id: "spencer-ast-7",
+        id: "spencer-ast-6",
         gameId: "g1",
         playerId: "spencer",
         playerName: "Cam Spencer",
         market: "ast",
-        line: 7,
+        line: 6,
         fairPrice: 1.55,
         probability: 0.55,
-        bookiePrices: { Sportsbet: 2.4 },
+        bookiePrices: { Sportsbet: 2.79 },
       }),
       lineLeg({
         id: "spencer-ast-8",
@@ -122,7 +122,8 @@ describe("Booster Sportsbet next rung", () => {
     const spencerBoost = booster!.legs
       .map((id) => byId.get(id)!)
       .find((l) => l.playerId === "spencer");
-    expect(spencerBoost?.line).toBe(7);
-    expect(legPriceAtBookie(spencerBoost!, "Sportsbet")).toBe(2.4);
+    expect(spencerBoost?.line).toBe(6);
+    expect(spencerBoost?.fairPrice).toBe(1.55);
+    expect(legPriceAtBookie(spencerBoost!, "Sportsbet")).toBe(2.79);
   });
 });

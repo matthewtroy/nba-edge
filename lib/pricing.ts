@@ -1,6 +1,6 @@
 import type { PickLeg, Market } from "./types.js";
-import { normalizePlayerName } from "./player-names.js";
-import { legOddsLookupKey } from "./odds.js";
+import { normalizePlayerName, namesMatch } from "./player-names.js";
+import { legOddsLookupKey, normalizeLegMarket } from "./odds.js";
 import {
   probMarketOver,
   probDoubleDouble,
@@ -332,6 +332,37 @@ export function buildLegsForPlayer(
   const pTd = probTripleDouble(comboMeans);
   if (pDd >= 0.03) addLeg("dd", 1, pDd);
   if (pTd >= 0.03) addLeg("td", 1, pTd);
+
+  const builtLineKeys = new Set(legs.map((l) => `${l.market}|${l.line}`));
+  if (ctx.allOdds?.size) {
+    const playerNorm = normalizePlayerName(ctx.playerName);
+    for (const [key] of ctx.allOdds) {
+      const parts = key.split("|");
+      if (parts.length < 3) continue;
+      const [namePart, rawMkt, lineStr] = parts;
+      if (
+        normalizePlayerName(namePart) !== playerNorm &&
+        !namesMatch(namePart, ctx.playerName)
+      ) {
+        continue;
+      }
+      const market = normalizeLegMarket(rawMkt) as Market;
+      if (market !== "pts" && market !== "reb" && market !== "ast" && market !== "3pm") {
+        continue;
+      }
+      const line = Number(lineStr);
+      if (!Number.isFinite(line) || line <= 0) continue;
+      const rungKey = market === "3pm" ? "3pm" : market;
+      if (RUNGS[rungKey]?.includes(line)) continue;
+      const sig = `${market}|${line}`;
+      if (builtLineKeys.has(sig)) continue;
+      builtLineKeys.add(sig);
+      const mean =
+        market === "3pm" ? means.threes : means[market as "pts" | "reb" | "ast"];
+      const p = probMarketOver(market, mean, line);
+      addLeg(market, line, p);
+    }
+  }
 
   return legs.filter(
     (l) => (l.reasons?.length ?? 0) > 0 || Boolean(l.reasonLine?.trim())
