@@ -305,7 +305,7 @@ export function ResultsScreen({ data }: Props) {
     others.push({
       ...total,
       key: "gamesSgm",
-      label: "Games tab SGMs",
+      label: "SGMs",
       children: summarizeGamesSgms(gamesSgmBets)
         .filter((f) => f.bets.length)
         .map((f) => ({ ...f, key: `gamesSgm-${f.filter}`, label: `$${f.filter}` })),

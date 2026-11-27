@@ -112,7 +112,7 @@ export function renderGamesText(input: {
     oddsMax
   );
   const lines: string[] = [
-    "Games",
+    "SGMs",
     `${input.slate.length} on slate · bookie total ${formatOddsBand(oddsMin, oddsMax)}`,
     "",
   ];

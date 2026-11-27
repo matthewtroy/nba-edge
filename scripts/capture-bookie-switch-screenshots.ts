@@ -82,7 +82,7 @@ async function main(): Promise<void> {
     for (const bookie of sequence) {
       const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
       await ready(page, baseUrl);
-      await page.getByRole("button", { name: "Games" }).click();
+      await page.getByRole("button", { name: "SGMs" }).click();
       await page.waitForTimeout(800);
       const sel = page.locator("section select").first();
       if (await sel.isVisible().catch(() => false)) {

@@ -80,6 +80,30 @@ describe("prod fix pass 3 — UI wiring", () => {
     expect(src).toMatch(/results/);
   });
 
+  it("TabBar shows SGMs (not Games) on games tab", () => {
+    const src = fs.readFileSync(path.join(process.cwd(), "src/components/TabBar.tsx"), "utf8");
+    expect(src).toMatch(/id:\s*"games",\s*label:\s*"SGMs"/);
+    expect(src).not.toMatch(/label:\s*"Games"/);
+  });
+
+  it("no user-facing string contains Games tab in src", () => {
+    const walk = (dir: string): string[] => {
+      const out: string[] = [];
+      for (const name of fs.readdirSync(dir)) {
+        const full = path.join(dir, name);
+        const st = fs.statSync(full);
+        if (st.isDirectory()) out.push(...walk(full));
+        else if (/\.(tsx|ts)$/.test(name)) out.push(full);
+      }
+      return out;
+    };
+    const srcRoot = path.join(process.cwd(), "src");
+    for (const file of walk(srcRoot)) {
+      const text = fs.readFileSync(file, "utf8");
+      expect(text, file).not.toMatch(/Games tab/);
+    }
+  });
+
   it("BetProgress supports compact thin bar", () => {
     const src = fs.readFileSync(path.join(process.cwd(), "src/components/BetProgress.tsx"), "utf8");
     expect(src).toMatch(/compact/);

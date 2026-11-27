@@ -65,7 +65,7 @@ async function openLegSheet(
     { timeout: 20000 }
   ).catch(() => undefined);
   if (tab === "games") {
-    await page.getByRole("button", { name: "Games" }).click();
+    await page.getByRole("button", { name: "SGMs" }).click();
     await page.waitForTimeout(800);
   }
   const firstLeg = page.getByTestId("leg-row").first();

@@ -65,7 +65,7 @@ describe("games SGM", () => {
       picks,
       multis: [multi],
     });
-    expect(text).toContain("Games");
+    expect(text).toContain("SGMs");
     expect(text).toMatch(
       /SGM @|not enough starter legs|nothing fits|No game SGM/i
     );

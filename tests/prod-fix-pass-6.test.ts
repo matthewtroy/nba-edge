@@ -221,7 +221,8 @@ describe("item 2: Games tab SGMs backfilled from pre-tip, settled, in Other bets
     expect(host.querySelector("[data-results='games-sgms']")).toBeNull();
     const other = host.querySelector("[data-results='other-bets']")!;
     const row = other.querySelector("[data-results-row='gamesSgm'] > button") as HTMLButtonElement;
-    expect(row.textContent).toMatch(/Games tab SGMs/);
+    expect(row.textContent).toContain("SGMs");
+    expect(row.textContent).not.toMatch(/Games tab/);
     await act(async () => row.click());
     const filters = [...other.querySelectorAll("[data-results-row^='gamesSgm-'] > button")];
     expect(filters.map((b) => (b.firstElementChild?.textContent ?? "").replace(/[▸▾]/g, "").trim())).toEqual([

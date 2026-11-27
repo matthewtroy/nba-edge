@@ -144,7 +144,7 @@ export function GamesScreen({
         onIndexRefreshed={onIndexRefreshed}
       />
       <header className="mb-4">
-        <h1 className="text-xl font-bold text-white theme-adaptive-title">Games</h1>
+        <h1 className="text-xl font-bold text-white theme-adaptive-title">SGMs</h1>
       </header>
       {awaitingPrices ? (
         <PricesPendingGames
