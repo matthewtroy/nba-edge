@@ -137496,6 +137496,150 @@
       "gameId": "401909336",
       "market": "reb",
       "line": 9
+    },
+    {
+      "id": "3133603-pts-25",
+      "date": "2026-11-28",
+      "probability": 0.096,
+      "playerId": "3133603",
+      "gameId": "401909328",
+      "market": "pts",
+      "line": 25
+    },
+    {
+      "id": "5106060-pts-10",
+      "date": "2026-11-28",
+      "probability": 0.05,
+      "playerId": "5106060",
+      "gameId": "401909328",
+      "market": "pts",
+      "line": 10
+    },
+    {
+      "id": "4395712-ast-10",
+      "date": "2026-11-28",
+      "probability": 0.341,
+      "playerId": "4395712",
+      "gameId": "401909328",
+      "market": "ast",
+      "line": 10
+    },
+    {
+      "id": "4395712-ast-13",
+      "date": "2026-11-28",
+      "probability": 0.114,
+      "playerId": "4395712",
+      "gameId": "401909328",
+      "market": "ast",
+      "line": 13
+    },
+    {
+      "id": "1966-reb-3",
+      "date": "2026-11-28",
+      "probability": 0.937,
+      "playerId": "1966",
+      "gameId": "401909328",
+      "market": "reb",
+      "line": 3
+    },
+    {
+      "id": "3059318-ast-5",
+      "date": "2026-11-28",
+      "probability": 0.51,
+      "playerId": "3059318",
+      "gameId": "401909328",
+      "market": "ast",
+      "line": 5
+    },
+    {
+      "id": "3059318-ast-10",
+      "date": "2026-11-28",
+      "probability": 0.053,
+      "playerId": "3059318",
+      "gameId": "401909328",
+      "market": "ast",
+      "line": 10
+    },
+    {
+      "id": "4431893-pts-5",
+      "date": "2026-11-28",
+      "probability": 0.93,
+      "playerId": "4431893",
+      "gameId": "401909329",
+      "market": "pts",
+      "line": 5
+    },
+    {
+      "id": "5093267-reb-3",
+      "date": "2026-11-28",
+      "probability": 0.92,
+      "playerId": "5093267",
+      "gameId": "401909329",
+      "market": "reb",
+      "line": 3
+    },
+    {
+      "id": "4592492-pts-20",
+      "date": "2026-11-28",
+      "probability": 0.059,
+      "playerId": "4592492",
+      "gameId": "401909331",
+      "market": "pts",
+      "line": 20
+    },
+    {
+      "id": "4433083-ast-13",
+      "date": "2026-11-28",
+      "probability": 0.062,
+      "playerId": "4433083",
+      "gameId": "401909331",
+      "market": "ast",
+      "line": 13
+    },
+    {
+      "id": "4397077-reb-3",
+      "date": "2026-11-28",
+      "probability": 0.942,
+      "playerId": "4397077",
+      "gameId": "401909334",
+      "market": "reb",
+      "line": 3
+    },
+    {
+      "id": "4397136-q1reb-2",
+      "date": "2026-11-28",
+      "probability": 0.496,
+      "playerId": "4397136",
+      "gameId": "401909335",
+      "market": "q1reb",
+      "line": 2
+    },
+    {
+      "id": "4397136-q1reb-3",
+      "date": "2026-11-28",
+      "probability": 0.307,
+      "playerId": "4397136",
+      "gameId": "401909335",
+      "market": "q1reb",
+      "line": 3
+    },
+    {
+      "id": "4277956-pts-35",
+      "date": "2026-11-28",
+      "probability": 0.115,
+      "playerId": "4277956",
+      "gameId": "401909335",
+      "market": "pts",
+      "line": 35
+    },
+    {
+      "id": "4395628-q1reb-5",
+      "date": "2026-11-28",
+      "probability": 0.129,
+      "playerId": "4395628",
+      "gameId": "401909335",
+      "market": "q1reb",
+      "line": 5
     }
   ],
   "multis": [
@@ -139862,6 +140006,85 @@
         "4397688-q1reb-2",
         "4066383-q1reb-2",
         "3059318-q1reb-2"
+      ]
+    },
+    {
+      "id": "mainPlay-2026-11-28",
+      "type": "mainPlay",
+      "date": "2026-11-28",
+      "legIds": [
+        "4903027-pts-15",
+        "4278053-pts-15",
+        "4397688-reb-5"
+      ]
+    },
+    {
+      "id": "doubleUp-2026-11-28",
+      "type": "doubleUp",
+      "date": "2026-11-28",
+      "legIds": [
+        "3133628-reb-5",
+        "4432241-ast-5"
+      ]
+    },
+    {
+      "id": "crossGameSgm-2026-11-28",
+      "type": "crossGameSgm",
+      "date": "2026-11-28",
+      "legIds": [
+        "4278053-3pm-1",
+        "3136195-pts-15",
+        "3134907-pts-10",
+        "5082206-pts-10",
+        "5124612-pts-10",
+        "3149673-3pm-1",
+        "3134908-reb-5",
+        "3064514-pts-15",
+        "4431680-reb-5",
+        "4065648-pts-20",
+        "4065733-pts-15",
+        "5112087-3pm-1",
+        "4066383-reb-5",
+        "4278078-pts-10",
+        "3945274-ast-5",
+        "5104157-pts-25",
+        "4433627-ast-5",
+        "4431767-pts-10",
+        "4395628-pts-15",
+        "4277956-3pm-1",
+        "4683021-3pm-1",
+        "3995-pts-10"
+      ]
+    },
+    {
+      "id": "boostSgm-2026-11-28",
+      "type": "boostSgm",
+      "date": "2026-11-28",
+      "legIds": [
+        "5104157-3pm-2",
+        "4845367-3pm-2"
+      ]
+    },
+    {
+      "id": "q1Multi-2026-11-28",
+      "type": "q1Multi",
+      "date": "2026-11-28",
+      "legIds": [
+        "5104157-q1reb-3",
+        "4432194-q1reb-2",
+        "4065648-q1reb-3",
+        "4066383-q1reb-2",
+        "5061589-q1reb-2",
+        "3112335-q1reb-3"
+      ]
+    },
+    {
+      "id": "longshot-2026-11-28",
+      "type": "longshot",
+      "date": "2026-11-28",
+      "legIds": [
+        "4431671-pts-30",
+        "5104157-pts-50"
       ]
     }
   ],

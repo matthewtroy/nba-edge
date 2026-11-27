@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T11:41:04.454Z",
+  "lastUpdated": "2026-11-27T12:50:38.907Z",
   "oddsLastPulled": "2026-11-27T07:00:36.694Z",
   "sources": {
     "espn": "ok",
@@ -12,8 +12,8 @@
     "Jock Landale (Atlanta Hawks): no redistribution reasons on slate legs"
   ],
   "modelSanityChecked": 217,
-  "modelSanityFailures": 16,
-  "formGuardExcludedCount": 771,
+  "modelSanityFailures": 24,
+  "formGuardExcludedCount": 375,
   "gameOddsPriceAge": {
     "401909326": "Prices from 6:00 pm",
     "401909327": "Prices from 6:00 pm",
@@ -29,45 +29,39 @@
   },
   "slateTipDate": "2026-11-28",
   "whatChanged": [
-    "Duncan Robinson out → Paul Reed +4.7 pts",
-    "Cameron Boozer out → Cedric Coward +4.8 pts",
-    "Jerami Grant out → Cedric Coward +4.8 pts"
+    "Duncan Robinson out → John Collins +1.4 pts",
+    "Lauri Markkanen out → Darryn Peterson +7.4 pts",
+    "Jaylen Clark out → Jaden McDaniels +5.2 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_06_30AM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_07_45AM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 1566,
-      "priced": 1491
+      "total": 407,
+      "priced": 328
     },
     "reb": {
-      "total": 906,
-      "priced": 751
+      "total": 485,
+      "priced": 327
     },
     "ast": {
-      "total": 608,
-      "priced": 525
+      "total": 307,
+      "priced": 221
     },
     "3pm": {
-      "total": 609,
-      "priced": 467
+      "total": 583,
+      "priced": 442
     },
     "q1reb": {
-      "total": 74,
+      "total": 93,
       "priced": 0
     }
   },
-  "gateViolations": [
-    "Booster: Onyeka Okongwu has Check news",
-    "Booster: Cam Spencer more than +1 rung above Main",
-    "Longshot: Victor Wembanyama has Check news",
-    "Longshot: take-at 28.58 not 30–150"
-  ],
   "officialCard": {
-    "lockedAt": "2026-11-27T11:35:48.236Z",
+    "lockedAt": "2026-11-27T12:49:26.329Z",
     "publishedAt": "2026-11-27T07:00:36.694Z",
-    "republishedAt": "2026-11-27T11:35:48.236Z",
+    "republishedAt": "2026-11-27T12:49:26.329Z",
     "slateDate": "2026-11-28",
-    "bookie": "PointsBet"
+    "bookie": "Picklebet"
   },
   "slatePublicationStatus": "official",
   "slateStatusLabel": "Official · published 6:00pm",
