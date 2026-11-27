@@ -4,7 +4,11 @@ import type { GameInjuryRank } from "../lib/game-injury-ranking.js";
 import {
   computeAllowance,
   formatBudgetLog,
+  isFullSlateOfficialPull,
   maxGamesAboveReserve,
+  officialPublishAffordable,
+  officialPublishCreditsPerGame,
+  officialPublishInsufficientLog,
   selectGamesForAllowance,
   shouldPauseForReserve,
   type OddsBudgetConfig,
@@ -49,6 +53,7 @@ export async function pullBudgetedOddsForSlate(opts: {
   targetSlateDate?: string;
   /** When > 0, pull exactly this many top games (capped by reserve). */
   fixedGameCount?: number;
+  publishNow?: boolean;
 }): Promise<BudgetedOddsResult | null> {
   const ranking = rankGamesByInjuryAngle(
     opts.targetSlate,
@@ -57,10 +62,16 @@ export async function pullBudgetedOddsForSlate(opts: {
   );
   logGameInjuryRanks(ranking);
 
-  const creditsPerGame = opts.budget.creditsPerGame ?? 10;
   const marketsPerEvent = oddsMarketsForEventPull().length;
+  const creditsPerGame = officialPublishCreditsPerGame(
+    opts.budget.creditsPerGame && opts.budget.creditsPerGame <= marketsPerEvent
+      ? opts.budget.creditsPerGame
+      : marketsPerEvent
+  );
+  const fullSlate = isFullSlateOfficialPull(opts.trigger, opts.publishNow === true);
   console.log(
-    `odds pull: ${marketsPerEvent} API markets/event · ${creditsPerGame} credits/game`
+    `odds pull: ${marketsPerEvent} API markets/event · ${creditsPerGame} credits/game` +
+      (fullSlate ? " · full-slate official publish" : "")
   );
   const priorBest = oddsMapFromRecord(opts.cache.oddsMap ?? {});
   let creditsRemaining = opts.budget.creditsRemaining ?? opts.cache.creditsRemaining;
@@ -72,33 +83,71 @@ export async function pullBudgetedOddsForSlate(opts: {
     return null;
   }
 
-  const allowance = computeAllowance(opts.now, {
-    ...opts.budget,
-    creditsRemaining,
-    creditsPerGame,
-    reserveCredits: reserve,
-  });
-  console.log(formatBudgetLog(allowance, creditsRemaining ?? 0));
+  if (creditsRemaining != null) {
+    console.log(`odds pull: credits before ${creditsRemaining}`);
+  }
 
-  const capGames =
-    creditsRemaining != null
-      ? maxGamesAboveReserve(creditsRemaining, creditsPerGame, 1, reserve)
-      : 0;
-
+  const slateGameCount = opts.targetSlate.length;
   let selected: typeof ranking;
-  if (opts.fixedGameCount != null && opts.fixedGameCount > 0) {
-    const n = Math.min(opts.fixedGameCount, capGames, ranking.length);
-    selected = ranking.slice(0, n);
+
+  if (fullSlate) {
+    const afford = officialPublishAffordable(
+      creditsRemaining ?? 0,
+      slateGameCount,
+      creditsPerGame,
+      reserve,
+      1
+    );
+    if (!afford.ok) {
+      const label = opts.publishNow ? "publish_now" : "scheduled_9pm";
+      console.log(
+        officialPublishInsufficientLog(label, slateGameCount, afford.need, afford.have)
+      );
+      return {
+        oddsMap: priorBest,
+        allOddsMap: new Map(),
+        payloads: [],
+        pulledGameIds: new Set(),
+        unpulledGameIds: new Set(opts.targetSlate.map((g) => g.id)),
+        ranking,
+        creditsUsed: 0,
+        creditsRemaining,
+        creditsPerGame,
+        gameNames: [],
+      };
+    }
+    selected = ranking.slice(0, slateGameCount);
     console.log(
-      `odds pull: fixed game count ${opts.fixedGameCount} → pulling ${n} (cap ${capGames} above reserve)`
+      `odds pull: full slate ${slateGameCount} games · need ${afford.need} spendable credits`
     );
   } else {
-    selected = selectGamesForAllowance(
-      ranking,
-      allowance.allowance,
-      1,
-      creditsPerGame
-    );
+    const allowance = computeAllowance(opts.now, {
+      ...opts.budget,
+      creditsRemaining,
+      creditsPerGame,
+      reserveCredits: reserve,
+    });
+    console.log(formatBudgetLog(allowance, creditsRemaining ?? 0));
+
+    const capGames =
+      creditsRemaining != null
+        ? maxGamesAboveReserve(creditsRemaining, creditsPerGame, 1, reserve)
+        : 0;
+
+    if (opts.fixedGameCount != null && opts.fixedGameCount > 0) {
+      const n = Math.min(opts.fixedGameCount, capGames, ranking.length);
+      selected = ranking.slice(0, n);
+      console.log(
+        `odds pull: fixed game count ${opts.fixedGameCount} → pulling ${n} (cap ${capGames} above reserve)`
+      );
+    } else {
+      selected = selectGamesForAllowance(
+        ranking,
+        allowance.allowance,
+        1,
+        creditsPerGame
+      );
+    }
   }
   if (!selected.length) {
     console.log("odds pull: no allowance for games this run");
@@ -183,6 +232,9 @@ export async function pullBudgetedOddsForSlate(opts: {
   console.log(
     `odds pull: games [${gameNames.join(", ")}], ${priceCount} prices, credits used ${creditsUsed}, credits left ${creditsRemaining ?? "?"}`
   );
+  if (creditsRemaining != null) {
+    console.log(`odds pull: credits after ${creditsRemaining}`);
+  }
 
   return {
     oddsMap,

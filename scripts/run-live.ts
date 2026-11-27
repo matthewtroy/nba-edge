@@ -582,6 +582,7 @@ export async function runLivePipeline(
   const apiKey = loadOddsApiKey(rootDir);
 
   let publishNowProbeOnly = false;
+  let fullSlateOddsIncomplete = false;
   if (publishNow && nextSlateGamesEarly.length && apiKey) {
     const probe = await runPublishNowProbe(apiKey, nextSlateGamesEarly);
     if (probe.remaining != null) {
@@ -739,6 +740,7 @@ export async function runLivePipeline(
         trigger: pullTrigger,
         targetSlateDate: slateTipDateFromGames(targetSlate) ?? undefined,
         fixedGameCount: forceOdds && fixedOddsGames > 0 ? fixedOddsGames : undefined,
+        publishNow,
       });
       if (pull) {
         oddsMap = pull.oddsMap;
@@ -764,6 +766,25 @@ export async function runLivePipeline(
         lastPullTrigger = pullTrigger;
         lastCreditsUsed = pull.creditsUsed;
         lastCreditsPerGame = pull.creditsPerGame;
+        const officialFullPull =
+          publishNow || pullTrigger === "scheduled_9pm";
+        if (
+          officialFullPull &&
+          pull.unpulledGameIds.size > 0 &&
+          targetSlate.length > 0
+        ) {
+          fullSlateOddsIncomplete = true;
+          console.log(
+            `official publish: partial odds ${pull.pulledGameIds.size}/${targetSlate.length} games — skip card`
+          );
+        }
+        if (
+          officialFullPull &&
+          pull.creditsUsed === 0 &&
+          pull.pulledGameIds.size === 0
+        ) {
+          fullSlateOddsIncomplete = true;
+        }
         if (supabaseClient && pull.creditsUsed > 0) {
           await saveOddsBudgetAfterPull(supabaseClient, monthKey, {
             monthlyLimit: budgetFromDb?.monthlyLimit ?? 500,
@@ -886,7 +907,10 @@ export async function runLivePipeline(
       nbaOfficialUrl,
       nbaOfficialLastTriedUrl,
       unpulledGameIds: tip ? unpulledBySlateDate.get(tip) : undefined,
-      skipOfficialPublish: skipOfficialPublish || publishNowProbeOnly,
+      skipOfficialPublish:
+        skipOfficialPublish ||
+        publishNowProbeOnly ||
+        (fullSlateOddsIncomplete && tip === nextSlateTip),
       publishNow: publishNow && !publishNowProbeOnly && tip === nextSlateTip,
       defense: defenseBundle,
       matchupSignalsEnabled,

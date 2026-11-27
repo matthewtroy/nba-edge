@@ -24,6 +24,16 @@ const player = (id: string): ModelPlayer => ({
 });
 
 describe("official card gate", () => {
+  it("does not block when model sanity fails >5%", () => {
+    const gate = evaluateOfficialPublishGate({
+      slateGameCount: 11,
+      pickCount: 100,
+      players: Array.from({ length: 20 }, (_, i) => player(`p${i}`)),
+      sanity: { checked: 50, failed: 10, examples: ["x"], blockRepublish: true },
+    });
+    expect(gate.block).toBe(false);
+  });
+
   it("blocks when games on slate but zero legs", () => {
     const gate = evaluateOfficialPublishGate({
       slateGameCount: 9,

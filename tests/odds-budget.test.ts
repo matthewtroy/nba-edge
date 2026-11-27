@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
   computeAllowance,
+  fullSlatePullCreditNeed,
+  isFullSlateOfficialPull,
   maxGamesAboveReserve,
+  officialPublishAffordable,
+  officialPublishCreditsPerGame,
   pullsLeftBeforeReset,
   selectGamesForAllowance,
   shouldPauseForReserve,
@@ -52,6 +56,17 @@ describe("odds budget", () => {
   it("selects ranked games within allowance", () => {
     const ranked = [{ gameId: "a" }, { gameId: "b" }, { gameId: "c" }];
     expect(selectGamesForAllowance(ranked, 3, 1, 1)).toHaveLength(2);
+  });
+
+  it("full official publish: 8 markets × 1 AU region per game", () => {
+    expect(officialPublishCreditsPerGame(8)).toBe(8);
+    expect(fullSlatePullCreditNeed(11, 8, 1)).toBe(89);
+    expect(isFullSlateOfficialPull("scheduled_9pm", false)).toBe(true);
+    expect(isFullSlateOfficialPull("pretip", false)).toBe(false);
+    const ok = officialPublishAffordable(123, 11, 8, 20);
+    expect(ok).toEqual({ ok: true, need: 89, have: 103 });
+    const short = officialPublishAffordable(107, 11, 8, 20);
+    expect(short).toEqual({ ok: false, need: 89, have: 87 });
   });
 
   it("154 remaining, flat reserve, ~10 credits per game", () => {

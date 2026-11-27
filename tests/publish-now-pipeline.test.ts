@@ -160,6 +160,17 @@ describe("publish_now pipeline guards", () => {
   });
 });
 
+describe("publish_now card gate wiring", () => {
+  it("slate bundle blocks only hard publish gate, not model sanity", () => {
+    const src = fs.readFileSync(
+      path.join(process.cwd(), "scripts/slate-bundle.ts"),
+      "utf8"
+    );
+    expect(src).toContain("const blockOfficialRepublish = publishGate.block;");
+    expect(src).not.toMatch(/modelSanity\.blockRepublish \|\| publishGate\.block/);
+  });
+});
+
 describe("publish_now workflow input", () => {
   it("pipeline workflow exposes publish_now dispatch checkbox", () => {
     const yml = fs.readFileSync(

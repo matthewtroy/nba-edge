@@ -132,3 +132,45 @@ export function maxGamesAboveReserve(
   const spendable = Math.max(0, creditsRemaining - reserve - listEventCost);
   return Math.floor(spendable / Math.max(1, creditsPerGame));
 }
+
+/** 8 markets × 1 AU region on the event-odds endpoint (see odds-coverage). */
+export function officialPublishCreditsPerGame(marketsPerEvent: number): number {
+  return marketsPerEvent;
+}
+
+export function isFullSlateOfficialPull(
+  trigger: string | undefined,
+  publishNow: boolean
+): boolean {
+  return publishNow || trigger === "scheduled_9pm";
+}
+
+export function fullSlatePullCreditNeed(
+  gameCount: number,
+  creditsPerGame: number,
+  listEventCost = 1
+): number {
+  return listEventCost + gameCount * creditsPerGame;
+}
+
+export function officialPublishAffordable(
+  creditsRemaining: number,
+  gameCount: number,
+  creditsPerGame: number,
+  reserveCredits?: number,
+  listEventCost = 1
+): { ok: boolean; need: number; have: number } {
+  const reserve = reserveCredits ?? oddsReserveCredits();
+  const have = Math.max(0, creditsRemaining - reserve);
+  const need = fullSlatePullCreditNeed(gameCount, creditsPerGame, listEventCost);
+  return { ok: have >= need, need, have };
+}
+
+export function officialPublishInsufficientLog(
+  label: "publish_now" | "scheduled_9pm",
+  gameCount: number,
+  need: number,
+  have: number
+): string {
+  return `${label}: not enough credits for ${gameCount} games (need ${need}, have ${have})`;
+}

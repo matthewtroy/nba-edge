@@ -38,9 +38,7 @@ export function evaluateOfficialPublishGate(input: {
   if (input.slateGameCount > 0 && input.sanity.checked === 0) {
     reasons.push("model sanity checked 0 players");
   }
-  if (input.sanity.blockRepublish) {
-    reasons.push("model sanity failed >5%");
-  }
+  // Model sanity and multi gate violations drop individual bets; they never block the card.
   if (input.players.length >= 8 && starterRate < 0.5) {
     reasons.push(`starter projected ${(starterRate * 100).toFixed(0)}% (<50%)`);
   }

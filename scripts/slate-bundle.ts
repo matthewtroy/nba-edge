@@ -154,8 +154,7 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     players,
     sanity: modelRun.modelSanity,
   });
-  const blockOfficialRepublish =
-    modelRun.modelSanity.blockRepublish || publishGate.block;
+  const blockOfficialRepublish = publishGate.block;
 
   const picksPath = path.join(outDir, "picks.json");
   let previousLegCount = 0;
@@ -264,7 +263,9 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
     if (input.skipOfficialPublish) reasons.push("skip official publish flag");
     if (blockOfficialRepublish || publishGate.block) {
       reasons.push(...publishGate.reasons);
-      if (modelRun.modelSanity.blockRepublish) reasons.push("model sanity failed");
+    }
+    if (modelRun.modelSanity.blockRepublish) {
+      reasons.push("model sanity degraded (card not blocked)");
     }
     if (existingOfficial?.slateDate === tipDate) reasons.push("already locked");
     if (
