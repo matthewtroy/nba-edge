@@ -11,6 +11,7 @@ import {
 } from "../lib/restore-data-branch.js";
 import { computeCalibration } from "../lib/grading.js";
 import { runFreezeTippedReasons } from "./freeze-tipped-reasons.js";
+import { refreshInjuryStatusHistoryFile } from "../lib/injury-status-history.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -97,6 +98,17 @@ async function main() {
       process.exit(1);
     }
     throw e;
+  }
+  try {
+    const backfill = refreshInjuryStatusHistoryFile(rootDir, new Date());
+    console.log(
+      `injury-status-history: ${backfill.changes.length} change(s) on disk after backfill`
+    );
+  } catch (e) {
+    console.warn(
+      "injury-status-history backfill:",
+      e instanceof Error ? e.message : e
+    );
   }
   console.log(`pipeline: dual-slate${useFromLive ? " from-live" : ""}`);
   await runLivePipeline(rootDir, outDir, {

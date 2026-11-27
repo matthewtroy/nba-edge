@@ -24,6 +24,8 @@ import {
 } from "../lib/index-guard.js";
 import type { ResultsSlice } from "../lib/results-types.js";
 import { resultsPersistShrinkReason } from "../lib/results-persist-guard.js";
+import { injuryStatusHistoryEntryCount } from "../lib/injury-status-history.js";
+import type { InjuryStatusHistoryFile } from "../lib/injury-status-history-ui.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const staging = process.argv[2];
@@ -162,6 +164,9 @@ function countPersistedFile(relPath: string, stagingPath: string): number {
   if (relPath.endsWith("history.json")) {
     return historyEntryCount(next as HistoryJson);
   }
+  if (relPath.endsWith("injury-status-history.json")) {
+    return injuryStatusHistoryEntryCount(next as InjuryStatusHistoryFile);
+  }
   return recordKeyCount(next as Record<string, unknown>);
   } catch {
     return 0;
@@ -172,6 +177,7 @@ const jsonShrinkChecks: { rel: string; label: string }[] = [
   { rel: "public/data/game-log-cache.json", label: "game-log-cache.json" },
   { rel: "public/data/h2h-season-cache.json", label: "h2h-season-cache.json" },
   { rel: "public/data/history.json", label: "history.json" },
+  { rel: "public/data/injury-status-history.json", label: "injury-status-history.json" },
 ];
 
 for (const { rel, label } of jsonShrinkChecks) {
@@ -180,6 +186,8 @@ for (const { rel, label } of jsonShrinkChecks) {
   if (priorRaw != null) {
     if (rel.endsWith("history.json")) {
       priorCount = historyEntryCount(priorRaw as HistoryJson);
+    } else if (rel.endsWith("injury-status-history.json")) {
+      priorCount = injuryStatusHistoryEntryCount(priorRaw as InjuryStatusHistoryFile);
     } else {
       priorCount = recordKeyCount(priorRaw as Record<string, unknown>);
     }

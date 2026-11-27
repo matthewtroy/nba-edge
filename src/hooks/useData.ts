@@ -16,6 +16,8 @@ import type { OfficialCardFile } from "@lib/official-card-time";
 import type { DataIndexFile } from "@lib/data-index";
 import { isForwardPreviewSlate, slateGamesFromIndexPreviews } from "@lib/slate-preview";
 import { DataLoadError, type DataLoadKind } from "@lib/data-load-error";
+import type { InjuryStatusHistoryFile } from "@lib/injury-status-history-ui";
+import { INJURY_STATUS_HISTORY_FILE } from "@lib/injury-status-history-ui";
 
 export interface DataBundle {
   index: DataIndexFile | null;
@@ -28,6 +30,7 @@ export interface DataBundle {
   officialCard: OfficialCardFile | null;
   meta: MetaJson & { whatChanged?: string[] };
   history: HistoryJson;
+  injuryStatusHistory: InjuryStatusHistoryFile | null;
   results: ResultsJson | null;
   loading: boolean;
   error?: string;
@@ -78,6 +81,7 @@ export function useData(selectedDate: string): DataBundle {
     officialCard: null,
     meta: { lastUpdated: "", sources: {}, slateSize: 0 },
     history: { legs: [], multis: [], calibration: [] },
+    injuryStatusHistory: null,
     results: null,
     loading: true,
   });
@@ -102,12 +106,16 @@ export function useData(selectedDate: string): DataBundle {
           dateKey || "bootstrap"
         );
         const v = meta.lastUpdated || "0";
-        const [slate, injuries, picks, multisRaw, history] = await Promise.all([
+        const [slate, injuries, picks, multisRaw, history, injuryStatusHistory] =
+          await Promise.all([
           fetchDataJson<SlateGame[]>(`${prefix}slate.json`, v),
           fetchDataJson<InjuryEntry[]>(`${prefix}injuries.json`, v),
           fetchDataJson<PickLeg[]>(`${prefix}picks.json`, v),
           fetchDataJson<unknown>(`${prefix}multis.json`, v),
           fetchDataJson<HistoryJson>("history.json", v),
+          fetchDataJson<InjuryStatusHistoryFile>(INJURY_STATUS_HISTORY_FILE, v).catch(
+            () => null
+          ),
         ]);
         let results: ResultsJson | null = null;
         try {
@@ -181,6 +189,7 @@ export function useData(selectedDate: string): DataBundle {
             officialCard,
             meta,
             history,
+            injuryStatusHistory,
             results,
             loading: false,
           });
@@ -215,6 +224,7 @@ export function useData(selectedDate: string): DataBundle {
                 slateSize: previewGames.length,
               },
               history: { legs: [], multis: [], calibration: [] },
+              injuryStatusHistory: null,
               results: null,
               loading: false,
               previewSlate: true,

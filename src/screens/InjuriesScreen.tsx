@@ -8,7 +8,7 @@ import {
   clearQuestionableAsOutStorage,
   standaloneInjuryBlocks,
 } from "@lib/injuries-standalone";
-import { InjuryStatusBadge } from "../components/InjuryStatusBadge";
+import { InjuryStatusTransition } from "../components/InjuryStatusTransition";
 
 interface Props {
   data: DataBundle;
@@ -107,7 +107,12 @@ export function InjuriesScreen({
                   <li key={`${inj.playerId ?? inj.playerName}:${inj.status}`} className="py-2 first:pt-0 last:pb-0">
                     <div className="flex items-center justify-between gap-2">
                       <span className="text-sm font-medium truncate">{inj.playerName}</span>
-                      <InjuryStatusBadge status={inj.status} />
+                      <InjuryStatusTransition
+                        playerId={inj.playerId}
+                        status={inj.status}
+                        history={data.injuryStatusHistory}
+                        now={now}
+                      />
                     </div>
                     <p className="text-[11px] text-white/45 mt-0.5">
                       {inj.source} · {sydneyTimeFromIso(inj.updatedAt)}

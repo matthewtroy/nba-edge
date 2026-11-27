@@ -10,6 +10,7 @@ export const DATA_BRANCH_ROOT_FILES = [
   "odds-cache.json",
   "index.json",
   "game-log-cache.json",
+  "injury-status-history.json",
 ] as const;
 
 /** Required before pipeline reads (results.json is optional on older data commits). */

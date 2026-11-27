@@ -37,6 +37,12 @@ import { freezeInjuriesAtTip, mergeInjuriesReportTime } from "../lib/injury-tip-
 import { refreshInjuriesAtTip } from "../lib/injuries-at-tip.js";
 import { freezeTippedSlate, gitPreTipLoader } from "../lib/reasons-at-tip-restore.js";
 import { attachTeammateEffectsToInjuries } from "../lib/injury-teammate-effects.js";
+import {
+  INJURY_STATUS_HISTORY_FILE,
+  loadInjuryStatusHistoryFile,
+  recordInjuryStatusChanges,
+  writeInjuryStatusHistoryFile,
+} from "../lib/injury-status-history.js";
 
 export interface SlateBundleInput {
   rootDir: string;
@@ -358,7 +364,20 @@ export function writeSlateBundle(input: SlateBundleInput): DataIndexDateEntry | 
   if (restored.reasonsFrozenFrom) metaOut.reasonsFrozenFrom = restored.reasonsFrozenFrom;
 
   fs.writeFileSync(path.join(outDir, "slate.json"), JSON.stringify(slateOut, null, 2));
-  fs.writeFileSync(path.join(outDir, "injuries.json"), JSON.stringify(injuries, null, 2));
+  const priorInjuriesPath = path.join(outDir, "injuries.json");
+  const priorInjuries = fs.existsSync(priorInjuriesPath)
+    ? (JSON.parse(fs.readFileSync(priorInjuriesPath, "utf8")) as InjuryEntry[])
+    : [];
+  const historyPath = path.join(input.rootOutDir, INJURY_STATUS_HISTORY_FILE);
+  let statusHistory = loadInjuryStatusHistoryFile(historyPath);
+  statusHistory = recordInjuryStatusChanges(statusHistory, {
+    slateDate: tipDate,
+    previous: priorInjuries,
+    next: injuries,
+    observedAt: input.now.toISOString(),
+  });
+  writeInjuryStatusHistoryFile(historyPath, statusHistory);
+  fs.writeFileSync(priorInjuriesPath, JSON.stringify(injuries, null, 2));
   fs.writeFileSync(path.join(outDir, "picks.json"), JSON.stringify(picksOut, null, 2));
   fs.writeFileSync(
     path.join(outDir, "multis.json"),
