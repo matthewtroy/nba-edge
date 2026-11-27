@@ -13,7 +13,10 @@ import {
   sortLegReasons,
   reasonsForMarket,
 } from "./leg-reason-types.js";
-import { isInjuryRedistributionReason, formatInjuryReasonLine } from "./injury-reason.js";
+import {
+  isInjuryRedistributionReason,
+  combineTeammateInjuryReasonForMarket,
+} from "./injury-reason.js";
 import type { PlayerTrackingDay } from "./player-tracking-cache.js";
 import {
   potentialAstReason,
@@ -216,24 +219,18 @@ export function buildLegReasons(input: {
     byType.set(type, { type, text: t });
   };
 
+  const injurySeeds = (input.seedReasons ?? []).filter(
+    (r) => r.type === "injury" || isInjuryRedistributionReason(r.text)
+  );
+  const combinedInjury = combineTeammateInjuryReasonForMarket(
+    injurySeeds,
+    input.leg.market
+  );
+  if (combinedInjury) put("injury", combinedInjury);
+
   for (const raw of input.seedReasons ?? []) {
-    if (raw.type === "injury" || isInjuryRedistributionReason(raw.text)) {
-      const inj = formatInjuryReasonLine(raw.text);
-      if (inj && /\+[\d.]+\s*(pts|reb|ast)\b/i.test(inj)) {
-        const stat = input.leg.market.replace(/^q1/, "");
-        if (
-          (stat === "ast" && /\+[\d.]+\s*ast\b/i.test(inj)) ||
-          (stat === "reb" && /\+[\d.]+\s*reb|only big|without/i.test(inj)) ||
-          (stat === "pts" && /\+[\d.]+\s*pts\b/i.test(inj))
-        ) {
-          put("injury", inj);
-        }
-      } else if (inj && /only big|without/i.test(inj)) {
-        put("injury", inj);
-      }
-    } else {
-      put(raw.type, raw.text);
-    }
+    if (raw.type === "injury" || isInjuryRedistributionReason(raw.text)) continue;
+    put(raw.type, raw.text);
   }
 
   const m = input.leg.market;

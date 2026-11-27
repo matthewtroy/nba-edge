@@ -32,6 +32,65 @@ function reasonStatMatchesMarket(reason: string, market: Market): boolean {
   return false;
 }
 
+function injuryMarketStat(market: Market): "pts" | "reb" | "ast" | null {
+  if (market === "q1pts" || market === "pts") return "pts";
+  if (market === "q1reb" || market === "reb") return "reb";
+  if (market === "q1ast" || market === "ast") return "ast";
+  return null;
+}
+
+export function isOpponentBigInjuryLine(text: string): boolean {
+  return /without .+ \(/i.test(text) || /only big left/i.test(text);
+}
+
+type InjuryBoostPart = { name: string; stat: "pts" | "reb" | "ast"; val: number };
+
+function parseTeammateOutBoost(text: string): InjuryBoostPart | null {
+  const m =
+    text.match(/^(.+?)\s+out:\s*\+\s*([\d.]+)\s*(pts|reb|ast)\b/i) ??
+    text.match(
+      /^(.+?)\s+out\s*→\s*(?:reb share\s*)?\+\s*([\d.]+)\s*(pts|reb|ast)\b/i
+    );
+  if (!m || isOpponentBigInjuryLine(text)) return null;
+  const stat = m[3]!.toLowerCase() as InjuryBoostPart["stat"];
+  const val = Number(m[2]);
+  if (!Number.isFinite(val)) return null;
+  return { name: playerLastName(m[1]!.trim()), stat, val };
+}
+
+/** Teammate-out boosts for one stat → one line (opponent-big stays separate). */
+export function combineTeammateInjuryReasonForMarket(
+  reasons: LegReason[] | string[],
+  market: Market
+): string | undefined {
+  const stat = injuryMarketStat(market);
+  if (!stat) return undefined;
+  const texts = asTexts(reasons)
+    .filter(isInjuryRedistributionReason)
+    .filter((r) => !/boards shared|voids if out/i.test(r));
+
+  const opponent = texts
+    .filter(isOpponentBigInjuryLine)
+    .find((r) => reasonStatMatchesMarket(r, market));
+
+  const teammateBoosts = texts
+    .filter((r) => !isOpponentBigInjuryLine(r))
+    .map(parseTeammateOutBoost)
+    .filter((p): p is InjuryBoostPart => p != null && p.stat === stat);
+
+  if (teammateBoosts.length) {
+    teammateBoosts.sort((a, b) => b.val - a.val);
+    const total = teammateBoosts.reduce((s, p) => s + p.val, 0);
+    const names = teammateBoosts
+      .slice(0, 3)
+      .map((p) => p.name)
+      .join(", ");
+    return `${names} out → +${total.toFixed(1)} ${stat}`;
+  }
+  if (opponent) return formatInjuryReasonLine(opponent);
+  return undefined;
+}
+
 /** Display copy: `Holmgren out → +7.2 reb` */
 export function formatInjuryReasonLine(reason: string): string {
   let r = reason.replace(/boards shared/gi, "").trim();
@@ -55,11 +114,7 @@ export function injuryReasonForMarket(
   reasons: LegReason[] | string[],
   market: Market
 ): string | undefined {
-  const raw = asTexts(reasons)
-    .filter(isInjuryRedistributionReason)
-    .filter((r) => !/boards shared|voids if out/i.test(r))
-    .find((r) => reasonStatMatchesMarket(r, market));
-  return raw ? formatInjuryReasonLine(raw) : undefined;
+  return combineTeammateInjuryReasonForMarket(reasons, market);
 }
 
 /** Teammate injury redistribution that does not apply directly to this leg's stat. */
