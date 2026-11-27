@@ -7,12 +7,12 @@
         "4432194-q1reb-2",
         "4222252-q1reb-2",
         "6583-q1reb-3",
-        "1966-q1reb-2",
-        "3149673-q1reb-3"
+        "4397189-q1reb-2",
+        "1966-q1reb-2"
       ],
-      "combinedProbability": 0.04031649426672,
-      "combinedFairPrice": 24.8,
-      "combinedTakeAt": 26.78,
+      "combinedProbability": 0.115873967153952,
+      "combinedFairPrice": 8.63,
+      "combinedTakeAt": 9.32,
       "bookieTotals": {},
       "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
     }
@@ -41,7 +41,7 @@
     {
       "type": "boostSgm",
       "label": "Best SGM",
-      "reason": "No same-game SGM @ ≥$2 + edge curve (eligible 301, best pool =0, games 0)"
+      "reason": "No same-game SGM @ ≥$2 + edge curve (eligible 302, best pool =0, games 0)"
     },
     {
       "type": "longshot",

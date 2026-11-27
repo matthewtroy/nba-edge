@@ -702,6 +702,16 @@
       "source": "ESPN"
     },
     {
+      "playerName": "Kelly Oubre Jr.",
+      "teamId": "11",
+      "gameId": "401910048",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Questionable",
+      "observedAt": "2026-11-27T00:42:00.000Z",
+      "source": "ESPN"
+    },
+    {
       "playerId": "5106040",
       "playerName": "Tobi Lawal",
       "teamId": "6",
@@ -1153,16 +1163,6 @@
       "source": "NBA Official"
     },
     {
-      "playerName": "Kelly Oubre Jr.",
-      "teamId": "11",
-      "gameId": "401910048",
-      "slateDate": "2026-11-29",
-      "fromStatus": "Available",
-      "toStatus": "Questionable",
-      "observedAt": "2026-11-27T00:42:00.000Z",
-      "source": "ESPN"
-    },
-    {
       "playerId": "4396993",
       "playerName": "Tyrese Haliburton",
       "teamId": "11",
@@ -1259,6 +1259,170 @@
       "fromStatus": "Available",
       "toStatus": "Out",
       "observedAt": "2026-11-27T17:15:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "4351852",
+      "playerName": "Mitchell Robinson",
+      "teamId": "2",
+      "gameId": "401909330",
+      "slateDate": "2026-11-28",
+      "fromStatus": "Questionable",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T18:30:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerName": "OG Anunoby",
+      "teamId": "18",
+      "gameId": "401909326",
+      "slateDate": "2026-11-28",
+      "fromStatus": "Questionable",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T18:20:00.000Z",
+      "source": "ESPN"
+    },
+    {
+      "playerId": "4431823",
+      "playerName": "Miles McBride",
+      "teamId": "18",
+      "gameId": "401909326",
+      "slateDate": "2026-11-28",
+      "fromStatus": "Questionable",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T18:30:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "2528426",
+      "playerName": "Jordan Clarkson",
+      "teamId": "18",
+      "gameId": "401909326",
+      "slateDate": "2026-11-28",
+      "fromStatus": "Questionable",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T18:30:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "4697268",
+      "playerName": "Kam Jones",
+      "teamId": "15",
+      "gameId": "401910049",
+      "slateDate": "2026-11-28",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T18:30:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "3912848",
+      "playerName": "Dean Wade",
+      "teamId": "20",
+      "gameId": "401910050",
+      "slateDate": "2026-11-28",
+      "fromStatus": "Available",
+      "toStatus": "Questionable",
+      "observedAt": "2026-11-27T18:30:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "6606",
+      "playerName": "Damian Lillard",
+      "teamId": "22",
+      "gameId": "401909336",
+      "slateDate": "2026-11-28",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T18:30:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "4397189",
+      "playerName": "Jalen Smith",
+      "teamId": "4",
+      "gameId": "401910048",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Probable",
+      "observedAt": "2026-11-27T18:30:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "2595516",
+      "playerName": "Norman Powell",
+      "teamId": "4",
+      "gameId": "401910048",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T18:30:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "5095151",
+      "playerName": "Caleb Wilson",
+      "teamId": "4",
+      "gameId": "401910048",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T18:30:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "4697268",
+      "playerName": "Kam Jones",
+      "teamId": "15",
+      "gameId": "401910049",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T18:30:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "3912848",
+      "playerName": "Dean Wade",
+      "teamId": "20",
+      "gameId": "401910050",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Questionable",
+      "observedAt": "2026-11-27T18:30:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "5242496",
+      "playerName": "Noa Essengue",
+      "teamId": "4",
+      "gameId": "401910048",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Probable",
+      "observedAt": "2026-11-27T18:30:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "4898010",
+      "playerName": "Jaylin Sellers",
+      "teamId": "4",
+      "gameId": "401910048",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T18:30:00.000Z",
+      "source": "NBA Official"
+    },
+    {
+      "playerId": "4848625",
+      "playerName": "Dailyn Swain",
+      "teamId": "4",
+      "gameId": "401910048",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Available",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T18:30:00.000Z",
       "source": "NBA Official"
     }
   ]

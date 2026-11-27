@@ -8,7 +8,7 @@
     "homeTeamId": "18",
     "awayTeamId": "14",
     "spread": -2.5,
-    "total": 221.5,
+    "total": 222.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled"
@@ -24,7 +24,7 @@
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled",
-    "spread": -10.5,
+    "spread": -9.5,
     "total": 219.5
   },
   {
@@ -53,7 +53,7 @@
     "awayB2B": false,
     "status": "scheduled",
     "spread": -9.5,
-    "total": 220.5
+    "total": 219.5
   },
   {
     "id": "401909330",
@@ -64,7 +64,7 @@
     "homeTeamId": "2",
     "awayTeamId": "1",
     "spread": -8.5,
-    "total": 222.5,
+    "total": 223.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled"
@@ -80,7 +80,7 @@
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled",
-    "spread": -4.5,
+    "spread": -3.5,
     "total": 222.5
   },
   {
@@ -119,8 +119,8 @@
     "awayTeam": "Denver Nuggets",
     "homeTeamId": "26",
     "awayTeamId": "7",
-    "spread": 10.5,
-    "total": 229.5,
+    "spread": 9.5,
+    "total": 230.5,
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled"
@@ -150,7 +150,7 @@
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled",
-    "spread": -9.5,
-    "total": 219.5
+    "spread": -7.5,
+    "total": 216.5
   }
 ]
