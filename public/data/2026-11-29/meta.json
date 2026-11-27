@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T19:31:14.916Z",
+  "lastUpdated": "2026-11-27T19:37:01.634Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
@@ -32,16 +32,16 @@
       "total": 192,
       "priced": 0
     },
-    "3pm": {
-      "total": 285,
-      "priced": 0
-    },
     "reb": {
       "total": 242,
       "priced": 0
     },
     "ast": {
       "total": 156,
+      "priced": 0
+    },
+    "3pm": {
+      "total": 285,
       "priced": 0
     },
     "q1reb": {

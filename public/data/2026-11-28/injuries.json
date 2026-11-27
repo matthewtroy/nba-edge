@@ -117,14 +117,14 @@
         "delta": 1.1
       },
       {
-        "playerId": "5175643",
-        "playerName": "Egor Demin",
+        "playerId": "5101761",
+        "playerName": "Mikel Brown Jr.",
         "stat": "pts",
         "delta": 0.8
       },
       {
-        "playerId": "5101761",
-        "playerName": "Mikel Brown Jr.",
+        "playerId": "5175643",
+        "playerName": "Egor Demin",
         "stat": "pts",
         "delta": 0.8
       },
@@ -135,6 +135,12 @@
         "delta": 0.8
       },
       {
+        "playerId": "4712896",
+        "playerName": "Noah Clowney",
+        "stat": "pts",
+        "delta": 0.6
+      },
+      {
         "playerId": "4432194",
         "playerName": "Day'Ron Sharpe",
         "stat": "pts",
@@ -143,12 +149,6 @@
       {
         "playerId": "5107173",
         "playerName": "Danny Wolf",
-        "stat": "pts",
-        "delta": 0.6
-      },
-      {
-        "playerId": "4712896",
-        "playerName": "Noah Clowney",
         "stat": "pts",
         "delta": 0.6
       }
@@ -572,14 +572,14 @@
         "delta": 1.8
       },
       {
-        "playerId": "4433083",
-        "playerName": "Cam Spencer",
+        "playerId": "5105550",
+        "playerName": "GG Jackson",
         "stat": "pts",
         "delta": 1.2
       },
       {
-        "playerId": "5105550",
-        "playerName": "GG Jackson",
+        "playerId": "4433083",
+        "playerName": "Cam Spencer",
         "stat": "pts",
         "delta": 1.2
       },
@@ -786,16 +786,10 @@
     "reportTime": "2026-11-27T19:30:00.000Z",
     "teammateEffects": [
       {
-        "playerId": "4277956",
-        "playerName": "Jordan Poole",
-        "stat": "pts",
-        "delta": 4.5
-      },
-      {
         "playerId": "4395628",
         "playerName": "Zion Williamson",
         "stat": "pts",
-        "delta": 1.4
+        "delta": 0.6
       }
     ]
   },
@@ -868,7 +862,7 @@
         "playerId": "3934672",
         "playerName": "Jalen Brunson",
         "stat": "pts",
-        "delta": 1.5
+        "delta": 1.4
       },
       {
         "playerId": "3136195",
@@ -942,13 +936,13 @@
         "playerId": "3136195",
         "playerName": "Karl-Anthony Towns",
         "stat": "reb",
-        "delta": 2.7
+        "delta": 2.6
       },
       {
         "playerId": "3062679",
         "playerName": "Josh Hart",
         "stat": "reb",
-        "delta": 1.3
+        "delta": 1.4
       },
       {
         "playerId": "3934672",

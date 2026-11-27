@@ -23,14 +23,14 @@
         "delta": 1.1
       },
       {
-        "playerId": "5175643",
-        "playerName": "Egor Demin",
+        "playerId": "5101761",
+        "playerName": "Mikel Brown Jr.",
         "stat": "pts",
         "delta": 0.8
       },
       {
-        "playerId": "5101761",
-        "playerName": "Mikel Brown Jr.",
+        "playerId": "5175643",
+        "playerName": "Egor Demin",
         "stat": "pts",
         "delta": 0.8
       },
@@ -41,6 +41,12 @@
         "delta": 0.8
       },
       {
+        "playerId": "4712896",
+        "playerName": "Noah Clowney",
+        "stat": "pts",
+        "delta": 0.6
+      },
+      {
         "playerId": "4432194",
         "playerName": "Day'Ron Sharpe",
         "stat": "pts",
@@ -49,12 +55,6 @@
       {
         "playerId": "5107173",
         "playerName": "Danny Wolf",
-        "stat": "pts",
-        "delta": 0.6
-      },
-      {
-        "playerId": "4712896",
-        "playerName": "Noah Clowney",
         "stat": "pts",
         "delta": 0.6
       }
