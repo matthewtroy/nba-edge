@@ -1,4 +1,5 @@
 import type { InjuryEntry, InjuryTeammateEffect } from "./types.js";
+import { playerLastName } from "./player-last-name.js";
 
 const STAT_LABEL: Record<InjuryTeammateEffect["stat"], string> = {
   pts: "pts",
@@ -23,7 +24,7 @@ export function formatTeammateInjuryEffectLine(inj: InjuryEntry): string | null 
   if (!top.length) return null;
   return top
     .map((e) => {
-      const last = e.playerName.split(/\s+/).pop() ?? e.playerName;
+      const last = playerLastName(e.playerName);
       const sign = e.delta >= 0 ? "+" : "−";
       return `${last} ${sign}${Math.abs(e.delta).toFixed(1)} ${STAT_LABEL[e.stat]}`;
     })

@@ -1,5 +1,6 @@
 import type { PlayerProfile, InjuryEntry, PlayerGameLog } from "./types.js";
 import { shortTeamName } from "./ordinal.js";
+import { playerLastName } from "./player-last-name.js";
 import type { PerMinuteRates, ProjectedStats } from "./baseline.js";
 import { perMinuteRates, projectedMinutes } from "./baseline.js";
 import { isMeaningfulRotation } from "./rotation.js";
@@ -73,7 +74,8 @@ function applyExplicitReboundRedistribution(
     );
     if (!bigs.length) continue;
 
-    const lastName = inj.playerName?.split(" ").pop() ?? injured.name.split(" ").pop() ?? "Big";
+    const lastName =
+      playerLastName(inj.playerName ?? injured.name) || "Big";
 
     if (bigs.length === 1) {
       const only = bigs[0];
@@ -156,7 +158,7 @@ function applyExplicitReboundRedistribution(
         cur.reb += bumpEach;
         adjusted.set(b.id, cur);
         const named = outBigs[0];
-        const last = named.name.split(/\s+/).pop() ?? named.name;
+        const last = playerLastName(named.name);
         const pos = positionTag(named.position);
         addReason(
           reasons,
@@ -468,6 +470,6 @@ export function questionableBeneficiaries(
   );
   return [...adjusted.keys()].slice(0, 3).map((id) => {
     const p = team.players.find((x) => x.id === id);
-    return p?.name.split(" ").pop() ?? id;
+    return p ? playerLastName(p.name) : id;
   });
 }

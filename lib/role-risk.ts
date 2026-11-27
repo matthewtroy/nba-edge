@@ -5,6 +5,7 @@ import type { TeamContext } from "./injury-redistribution.js";
 import type { PickLeg } from "./types.js";
 import { reasonTexts, normalizeLegReasons } from "./leg-reason-types.js";
 import { isInjuryRedistributionReason } from "./injury-reason.js";
+import { playerLastName } from "./player-last-name.js";
 
 /** Teammate return probability (plays normal minutes) for Q/D/P. */
 export function teammateReturnProbability(status: InjuryStatus): number | null {
@@ -112,10 +113,7 @@ export function applyTeammateReturnRoleRisk(
     if (Math.abs(evWeight) < 0.01) continue;
 
     const injuredGameIds = new Set(injLogs.map((g) => g.gameId));
-    const last =
-      inj.playerName?.split(/\s+/).pop() ??
-      injured.name.split(/\s+/).pop() ??
-      "Teammate";
+    const last = playerLastName(inj.playerName ?? injured.name) || "Teammate";
 
     for (const tm of team.players) {
       if (tm.id === injured.id) continue;

@@ -1,5 +1,6 @@
 import type { LegReason, Market } from "./types.js";
 import { normalizeLegReasons, reasonTexts } from "./leg-reason-types.js";
+import { playerLastName } from "./player-last-name.js";
 
 function asTexts(reasons: LegReason[] | string[]): string[] {
   if (!reasons.length) return [];
@@ -37,7 +38,7 @@ export function formatInjuryReasonLine(reason: string): string {
   r = r.replace(
     /^(.+?)\s+out:\s*\+\s*([\d.]+)\s*(pts|reb|ast)\b/i,
     (_, name, val, stat) => {
-      const last = String(name).trim().split(/\s+/).pop();
+      const last = playerLastName(String(name));
       return `${last} out → +${val} ${stat}`;
     }
   );
