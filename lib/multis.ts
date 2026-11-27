@@ -261,11 +261,15 @@ export function buildMultis(
 ): MultiBuildResult {
   multiMinEdge = minEdgeFraction;
   resetMultiBuildTraces();
-  const pool = picks.filter(
-    (p) => meetsFloor(p) && (p.market.startsWith("q1") || legHasSupportiveReason(p))
+  const supportivePicks = picks.filter(
+    (p) => p.market.startsWith("q1") || legHasSupportiveReason(p)
   );
-  const catalog = pool;
+  const pool = supportivePicks.filter((p) => meetsFloor(p));
+  const catalog = supportivePicks;
   const byP = [...pool].sort(sortLegs);
+  const crossPool = supportivePicks.filter(
+    (p) => !p.market.startsWith("q1") && passesFormGuard(p)
+  );
   const notBuilt: MultiNotBuilt[] = [];
   const multis: MultiBet[] = [];
 
@@ -291,7 +295,7 @@ export function buildMultis(
   const q1Attempt = buildQ1Multi(byP, q1ExclusionNotes, logsByPlayer);
   multis.push(...q1Attempt.bets);
 
-  const cross = buildCrossGameSgm(byP, minEdgeFraction, catalog, slateGames);
+  const cross = buildCrossGameSgm(crossPool, minEdgeFraction, catalog, slateGames);
   if (cross.bet) multis.push(cross.bet);
   else notBuilt.push({ type: "crossGameSgm", label: LABELS.crossGameSgm, reason: cross.reason });
 
@@ -303,7 +307,7 @@ export function buildMultis(
   if (longshot.bets.length) multis.push(...longshot.bets);
   else notBuilt.push({ type: "longshot", label: LABELS.longshot, reason: longshot.reason });
 
-  const picksById = new Map(pool.map((p) => [p.id, p]));
+  const picksById = new Map(picks.map((p) => [p.id, p]));
   const clashDropped: { multi: MultiBet; reason: string }[] = [];
   let filtered: MultiBet[] = [];
   for (const m of multis) {

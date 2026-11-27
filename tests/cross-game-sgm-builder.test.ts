@@ -192,6 +192,67 @@ describe("pickCrossGameLegsForGame", () => {
 describe("2026-11-28 cross gate (public data)", () => {
   const DATA = path.join(process.cwd(), "public/data/2026-11-28");
 
+  it("Hayes reb5 and Braun pts10 qualify at Ladbrokes", () => {
+    if (!fs.existsSync(path.join(DATA, "picks.json"))) return;
+    const picks = JSON.parse(
+      fs.readFileSync(path.join(DATA, "picks.json"), "utf8")
+    ) as PickLeg[];
+    const hayes = picks.find(
+      (p) =>
+        p.playerName === "Jaxson Hayes" &&
+        p.gameId === "401909334" &&
+        p.market === "reb" &&
+        p.line === 5
+    );
+    const braun = picks.find(
+      (p) =>
+        p.playerName === "Christian Braun" &&
+        p.gameId === "401909334" &&
+        p.market === "pts" &&
+        p.line === 10
+    );
+  const bridges = picks.find(
+      (p) =>
+        p.gameId === "401909332" &&
+        p.playerName.endsWith("Bridges") &&
+        p.market === "reb" &&
+        p.line === 5
+    );
+    expect(hayes).toBeDefined();
+    expect(braun).toBeDefined();
+    expect(bridges).toBeDefined();
+    expect(qualifiesCrossGameSgmLeg(hayes!, "Ladbrokes", picks)).toBe(true);
+    expect(qualifiesCrossGameSgmLeg(braun!, "Ladbrokes", picks)).toBe(true);
+    expect(qualifiesCrossGameSgmLeg(bridges!, "Ladbrokes", picks)).toBe(true);
+  });
+
+  it("buildMultis cross includes DAL@PHX and DEN@UTA", () => {
+    if (!fs.existsSync(path.join(DATA, "picks.json"))) return;
+    const picks = JSON.parse(
+      fs.readFileSync(path.join(DATA, "picks.json"), "utf8")
+    ) as PickLeg[];
+    const games = JSON.parse(
+      fs.readFileSync(path.join(DATA, "slate.json"), "utf8")
+    ) as SlateGame[];
+    const { bets } = buildMultis(
+      picks,
+      games.length,
+      300,
+      DEFAULT_MIN_EDGE,
+      [],
+      undefined,
+      games
+    );
+    const cross = bets.find((b) => b.type === "crossGameSgm");
+    expect(cross).toBeDefined();
+    const pmap = new Map(picks.map((p) => [p.id, p]));
+    const gids = new Set(
+      cross!.legs.map((id) => pmap.get(id)!.gameId)
+    );
+    expect(gids.has("401909332")).toBe(true);
+    expect(gids.has("401909334")).toBe(true);
+  });
+
   it("built cross passes gate with no sub-ladder legs", () => {
     if (!fs.existsSync(path.join(DATA, "picks.json"))) return;
     const picks = JSON.parse(

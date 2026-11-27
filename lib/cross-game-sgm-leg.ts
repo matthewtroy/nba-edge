@@ -25,6 +25,10 @@ export function qualifiesCrossGameSgmLeg(
   const priced = asBookieLeg(leg, bookie, catalog);
   if (!priced) return false;
   const price = priced.bestPrice ?? 0;
-  if (price < edgeFairPrice(leg) - 1e-9) return false;
+  const fairRef =
+    priced.id !== leg.id
+      ? catalog.find((p) => p.id === priced.id) ?? priced
+      : leg;
+  if (price < edgeFairPrice(fairRef) - 1e-9) return false;
   return true;
 }
