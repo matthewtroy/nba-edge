@@ -17,3 +17,4 @@
 - Keep the UI simple. A number appears on a main screen only if it helps a betting decision.
 - If you find something wrong that contradicts the build prompt or `docs/SYSTEM.md`, fix it only when the task allows code changes; otherwise report in summary. Report improvements and refactors instead of doing them.
 - Do not commit or push unless explicitly authorized.
+- **Never commit generated `public/data` to `main`** except `public/data/.gitkeep`. Pipeline JSON lives on the **`data` branch only** (`scripts/persist-data-branch.sh`). Run `npm run check:tracked-data` before pushing `main`.
