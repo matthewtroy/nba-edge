@@ -10,7 +10,7 @@ export interface Q1MultiFilterCounts {
   supportive: number;
   hitGap: number;
   fairMin: number;
-  onePerTeam: number;
+  onePerGame: number;
 }
 
 export function countQ1MultiFilters(
@@ -30,10 +30,10 @@ export function countQ1MultiFilters(
     supportive: supportive.length,
     hitGap: hitGap.length,
     fairMin: fairMin.length,
-    onePerTeam: new Set(fairMin.map((l) => `${l.gameId}|${l.team}`)).size,
+    onePerGame: new Set(fairMin.map((l) => l.gameId)).size,
   };
 }
 
 export function formatQ1MultiFilterCounts(c: Q1MultiFilterCounts): string {
-  return `q1 q1=${c.q1Market} starter=${c.starter} min24=${c.min24} supportive=${c.supportive} hitGap=${c.hitGap} fair≥${MIN_LEG_FAIR}=${c.fairMin} teams=${c.onePerTeam}`;
+  return `q1 q1=${c.q1Market} starter=${c.starter} min24=${c.min24} supportive=${c.supportive} hitGap=${c.hitGap} fair≥${MIN_LEG_FAIR}=${c.fairMin} games=${c.onePerGame}`;
 }

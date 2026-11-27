@@ -75,7 +75,7 @@ Same Main Play bookie/players; +1 rung when Main leg bookie price ≤ 4.00, else
 
 ### Q1 Multi
 
-Blend 0.3 model + 0.4 L10 Q1 + 0.3 L5 Q1; 24+ min; fair ≥ 1.30; 1/team; 3–6 teams. No AU Q1 feed → take fair×1.08.
+Blend 0.3 model + 0.4 L10 Q1 + 0.3 L5 Q1; 24+ min; fair ≥ 1.30; 1/game; 3–6 games. No AU Q1 feed → take fair×1.08.
 
 ### Cross-Game SGM (`crossGameSgm`)
 

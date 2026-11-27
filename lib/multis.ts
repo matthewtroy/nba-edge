@@ -314,14 +314,16 @@ export function buildMultis(
       });
       continue;
     }
-    const clashes =
-      m.type === "crossGameSgm" ? crossGameMultiHasClash(legs) : multiHasClash(legs);
-    if (clashes) {
-      clashDropped.push({
-        multi: m,
-        reason: `Clash rule: ${multiClashSummary(legs)}`,
-      });
-      continue;
+    if (m.type !== "q1Multi") {
+      const clashes =
+        m.type === "crossGameSgm" ? crossGameMultiHasClash(legs) : multiHasClash(legs);
+      if (clashes) {
+        clashDropped.push({
+          multi: m,
+          reason: `Clash rule: ${multiClashSummary(legs)}`,
+        });
+        continue;
+      }
     }
     filtered.push(m);
   }
@@ -991,7 +993,7 @@ function q1ExclusionSuffix(notes: string[]): string {
   return ` · ${notes.length} Q1 leg(s) dropped (last-10 hit rate ≥20pp below model)`;
 }
 
-function bestQ1LegPerTeam(
+function bestQ1LegPerGame(
   picks: PickLeg[],
   minFair: number,
   logsByPlayer?: Map<string, PlayerGameLog[]>
@@ -1010,23 +1012,21 @@ function bestQ1LegPerTeam(
     const logs = logsByPlayer?.get(l.playerId) ?? [];
     rows.push({ leg: l, score: q1MultiBlendP(l, logs) });
   }
-  const byTeam = new Map<string, { leg: PickLeg; score: number }>();
+  const byGame = new Map<string, { leg: PickLeg; score: number }>();
   for (const row of rows) {
-    const key = `${row.leg.gameId}|${row.leg.team}`;
-    const cur = byTeam.get(key);
-    if (!cur || row.score > cur.score) byTeam.set(key, row);
+    const key = row.leg.gameId;
+    const cur = byGame.get(key);
+    if (!cur || row.score > cur.score) byGame.set(key, row);
   }
-  return [...byTeam.values()].sort((a, b) => b.score - a.score);
+  return [...byGame.values()].sort((a, b) => b.score - a.score);
 }
 
 function selectQ1MultiLegs(
-  rankedTeams: { leg: PickLeg; score: number }[]
+  rankedGames: { leg: PickLeg; score: number }[]
 ): PickLeg[] | null {
-  if (rankedTeams.length < 3) return null;
-  const take = Math.min(6, rankedTeams.length);
-  const chosen = rankedTeams.slice(0, take).map((r) => r.leg);
-  if (multiHasClash(chosen)) return null;
-  return chosen;
+  if (rankedGames.length < 3) return null;
+  const take = Math.min(6, rankedGames.length);
+  return rankedGames.slice(0, take).map((r) => r.leg);
 }
 
 function buildQ1Multi(
@@ -1041,8 +1041,8 @@ function buildQ1Multi(
     `multis filter [q1Multi]: ${formatQ1MultiFilterCounts(countQ1MultiFilters(picks, MIN_LEG_FAIR))}`
   );
   const exSuffix = q1ExclusionSuffix(q1ExclusionNotes);
-  const coreRanked = bestQ1LegPerTeam(picks, MIN_LEG_FAIR, logsByPlayer);
-  const thinPool = `Only ${coreRanked.length} teams with Q1 fair ≥${MIN_LEG_FAIR.toFixed(2)} (24+ min, −20pp, need 3–6)`;
+  const coreRanked = bestQ1LegPerGame(picks, MIN_LEG_FAIR, logsByPlayer);
+  const thinPool = `Only ${coreRanked.length} games with Q1 fair ≥${MIN_LEG_FAIR.toFixed(2)} (24+ min, −20pp, need 3–6)`;
   if (coreRanked.length < 3) {
     return {
       bets: [],
@@ -1051,7 +1051,7 @@ function buildQ1Multi(
   }
 
   const bets: MultiBet[] = [];
-  let coreNotBuiltReason = `No Q1 Multi (blend p rank, 1/team, 3–6 legs)${exSuffix}`;
+  let coreNotBuiltReason = `No Q1 Multi (blend p rank, 1/game, 3–6 legs)${exSuffix}`;
 
   const core = selectQ1MultiLegs(coreRanked);
   if (core) {

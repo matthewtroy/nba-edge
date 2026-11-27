@@ -44,6 +44,16 @@ describe("Q1 multi filter counts", () => {
     expect(c.supportive).toBe(3);
     expect(c.hitGap).toBe(2);
     expect(c.fairMin).toBe(1);
-    expect(c.onePerTeam).toBe(1);
+    expect(c.onePerGame).toBe(1);
+  });
+
+  it("counts one slot per game when both teams qualify", () => {
+    const legs = [
+      q1Leg({ id: "home", gameId: "g1", team: "Home", fairPrice: 1.35 }),
+      q1Leg({ id: "away", gameId: "g1", team: "Away", fairPrice: 1.35 }),
+    ];
+    const c = countQ1MultiFilters(legs, 1.3);
+    expect(c.fairMin).toBe(2);
+    expect(c.onePerGame).toBe(1);
   });
 });

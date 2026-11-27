@@ -37,7 +37,7 @@ function q1Leg(
 }
 
 describe("Q1 multi backtracking", () => {
-  it("builds clash-free Q1 multi across teams", () => {
+  it("builds Q1 multi with one leg per game", () => {
     const picks: PickLeg[] = [
       q1Leg("a1", "g1", "AAA", "pts", 2),
       q1Leg("b1", "g2", "BBB", "pts", 2),

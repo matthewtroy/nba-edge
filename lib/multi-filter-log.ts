@@ -21,7 +21,7 @@ export function countEligibleByType(picks: PickLeg[]): Record<string, number> {
     mainPlay: picks.filter((l) => qualifiesMainPlayLeg(l)).length,
     crossBoost: crossBoost.length,
     q1Legs: q1Counts.fairMin,
-    q1Teams: q1Counts.onePerTeam,
+    q1Games: q1Counts.onePerGame,
     q1Supportive: q1Counts.supportive,
     q1HitGap: q1Counts.hitGap,
     priced: picks.length,

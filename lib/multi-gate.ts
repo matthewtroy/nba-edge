@@ -214,11 +214,13 @@ export function gateMulti(
     return { ok: false, violations };
   }
 
-  const clashes =
-    multi.type === "crossGameSgm"
-      ? crossGameMultiHasClash(legs)
-      : multiHasClash(legs);
-  if (clashes) violations.push(`${label}: leg clash`);
+  if (multi.type !== "q1Multi") {
+    const clashes =
+      multi.type === "crossGameSgm"
+        ? crossGameMultiHasClash(legs)
+        : multiHasClash(legs);
+    if (clashes) violations.push(`${label}: leg clash`);
+  }
 
   for (const leg of legs) {
     if (leg.fairPrice < MIN_LEG_FAIR) {
