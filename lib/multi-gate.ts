@@ -17,6 +17,7 @@ import {
 } from "./pricing-config.js";
 import { isMainPlayStatLine } from "./starter-eligibility.js";
 import { combinedFairAndTakeAt, DEFAULT_MIN_EDGE } from "./multi-combined.js";
+import { legPriceAtBookie } from "./single-bookie.js";
 
 const MIN_LEG_FAIR = 1.3;
 
@@ -51,12 +52,16 @@ function checkLegEligibility(type: MultiType, leg: PickLeg, multiLabel: string):
   return issues;
 }
 
-function rungIndex(leg: PickLeg, picksById: Map<string, PickLeg>): number {
+function marketRungs(leg: PickLeg, picksById: Map<string, PickLeg>): PickLeg[] {
   const same = [...picksById.values()].filter(
     (p) => p.playerId === leg.playerId && p.market === leg.market
   );
   same.sort((a, b) => a.line - b.line);
-  return same.findIndex((p) => p.line === leg.line);
+  return same;
+}
+
+function rungIndex(leg: PickLeg, picksById: Map<string, PickLeg>): number {
+  return marketRungs(leg, picksById).findIndex((p) => p.line === leg.line);
 }
 
 function checkBoosterSteps(
@@ -81,13 +86,22 @@ function checkBoosterSteps(
       issues.push(`Booster: missing leg for ${mainLeg.playerName} ${mainLeg.market}`);
       continue;
     }
-    const mainIdx = rungIndex(mainLeg, picksById);
-    const boostIdx = rungIndex(boostLeg, picksById);
+    const rungs = marketRungs(mainLeg, picksById);
+    const mainIdx = rungs.findIndex((p) => p.line === mainLeg.line);
+    const boostIdx = rungs.findIndex((p) => p.line === boostLeg.line);
     if (boostIdx < mainIdx) {
       issues.push(`Booster: ${mainLeg.playerName} below Main rung`);
     }
     if (boostIdx > mainIdx + 1) {
-      issues.push(`Booster: ${mainLeg.playerName} more than +1 rung above Main`);
+      const bookie = main.bestBookie;
+      const gaps = rungs.slice(mainIdx + 1, boostIdx);
+      const skipUnpricedOnly =
+        bookie != null &&
+        gaps.length > 0 &&
+        gaps.every((r) => legPriceAtBookie(r, bookie) == null);
+      if (!skipUnpricedOnly) {
+        issues.push(`Booster: ${mainLeg.playerName} more than +1 rung above Main`);
+      }
     }
   }
   return issues;
