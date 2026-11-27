@@ -6,11 +6,12 @@ import {
   visibleLegTags,
 } from "./leg-display.js";
 import { passesFormGuard } from "./form-guard.js";
+import { edgeFairTakeAt } from "./leg-edge-fair.js";
 
 export function hasValueAtBookie(leg: PickLeg, bookie: string): boolean {
   if (!passesFormGuard(leg)) return false;
   const p = legPriceAtBookie(leg, bookie);
-  return p != null && p >= leg.takeAt;
+  return p != null && p >= edgeFairTakeAt(leg);
 }
 
 /** Value chip only when the card's bookie meets take-at (not another book's best). */

@@ -2,15 +2,18 @@ import { describe, expect, it } from "vitest";
 import { displayTagsForBookie, hasValueAtBookie } from "../lib/value-at-bookie";
 import type { PickLeg } from "../lib/types";
 
-const leg = (bookiePrices: Record<string, number>, takeAt = 1.9): PickLeg =>
+const leg = (bookiePrices: Record<string, number>, takeAt = 1.9, fair = 1.75): PickLeg =>
   ({
     id: "l1",
     takeAt,
+    fairPrice: fair,
     tags: ["Value", "High probability"],
     bookiePrices,
     market: "pts",
     line: 20,
     playerName: "X",
+    reasons: [{ type: "form", text: "8/10 at this line" }],
+    recentTenVsLine: Array(10).fill("hit"),
   }) as PickLeg;
 
 describe("value at card bookie", () => {

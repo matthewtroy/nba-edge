@@ -12,6 +12,7 @@ import {
   MAIN_PLAY_LEG_FAIR_MAX,
 } from "./pricing-config.js";
 import { legHasNegativeRoleRisk } from "./role-risk.js";
+import { edgeFairPrice } from "./leg-edge-fair.js";
 
 export function isMainPlayCoreMarket(market: string): boolean {
   return market === "pts" || market === "reb" || market === "ast" || market === "3pm";
@@ -114,12 +115,13 @@ export function mainPlayL10Within10pp(leg: PickLeg): boolean {
 export function mainPlayHasValueOrHighProb(leg: PickLeg, bookie?: string): boolean {
   if (bookie && hasValueAtBookie(leg, bookie)) return true;
   const price = bookie != null ? legPriceAtBookie(leg, bookie) : leg.bestPrice;
+  const edgeFair = edgeFairPrice(leg);
   const high =
     leg.probability >= MAIN_PLAY_HIGH_PROB_P || leg.tags.includes("High probability");
-  if (high && price != null && price >= leg.fairPrice - 1e-9) return true;
+  if (high && price != null && price >= edgeFair - 1e-9) return true;
   if (!bookie) {
     if (leg.tags.includes("Value")) return true;
-    if (high && leg.bestPrice != null && leg.bestPrice >= leg.fairPrice - 1e-9) return true;
+    if (high && leg.bestPrice != null && leg.bestPrice >= edgeFair - 1e-9) return true;
   }
   return false;
 }

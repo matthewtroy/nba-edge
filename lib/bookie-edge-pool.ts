@@ -7,6 +7,7 @@ import {
   bookieHighProbMeetsFair,
   bookiePriceMeetsMinEdge,
 } from "./pricing-config.js";
+import { edgeFairPrice } from "./leg-edge-fair.js";
 
 export function legMeetsBookieEdge(
   leg: PickLeg,
@@ -15,8 +16,9 @@ export function legMeetsBookieEdge(
 ): boolean {
   const price = legPriceAtBookie(leg, bookie);
   if (price == null || price <= 1) return false;
-  if (bookiePriceMeetsMinEdge(price, leg.fairPrice)) return true;
-  return bookieHighProbMeetsFair(price, leg.fairPrice, leg.probability);
+  const fair = edgeFairPrice(leg);
+  if (bookiePriceMeetsMinEdge(price, fair)) return true;
+  return bookieHighProbMeetsFair(price, fair, leg.probability);
 }
 
 export function bookiesByCoverage(

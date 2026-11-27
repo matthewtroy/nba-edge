@@ -4,6 +4,7 @@ import { legHasSupportiveReason } from "./picks-supportive-filter.js";
 import { MAIN_PLAY_HIGH_PROB_P } from "./pricing-config.js";
 import { asBookieLeg } from "./bookie-edge-pool.js";
 import { isSgmMainLine } from "./main-play-eligibility.js";
+import { edgeFairPrice } from "./leg-edge-fair.js";
 
 export function crossGameLegIsHighProb(leg: PickLeg): boolean {
   return leg.probability >= MAIN_PLAY_HIGH_PROB_P || leg.tags.includes("High probability");
@@ -24,6 +25,6 @@ export function qualifiesCrossGameSgmLeg(
   const priced = asBookieLeg(leg, bookie, catalog);
   if (!priced) return false;
   const price = priced.bestPrice ?? 0;
-  if (price < leg.fairPrice - 1e-9) return false;
+  if (price < edgeFairPrice(leg) - 1e-9) return false;
   return true;
 }
