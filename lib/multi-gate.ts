@@ -236,7 +236,7 @@ export function gateMulti(
   }
 
   for (const leg of legs) {
-    if (leg.fairPrice < MIN_LEG_FAIR) {
+    if (multi.type !== "crossGameSgm" && leg.fairPrice < MIN_LEG_FAIR) {
       violations.push(`${label}: ${leg.playerName} fair ${leg.fairPrice.toFixed(2)} < ${MIN_LEG_FAIR}`);
     }
     if (leg.tags.includes("Check news") && multi.type !== "boostSgm") {

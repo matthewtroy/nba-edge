@@ -35,6 +35,54 @@ function multi(partial: Partial<MultiBet>): MultiBet {
 }
 
 describe("multi gate", () => {
+  it("allows cross-game legs with fair below MIN_LEG_FAIR 1.30", () => {
+    const lowFair: PickLeg = {
+      ...leg,
+      id: "low",
+      fairPrice: 1.17,
+      probability: 0.85,
+      takeAt: 1.26,
+      tags: ["High probability"],
+      reasons: [{ type: "form", text: "8/10 at this line" }],
+      bookiePrices: { Ladbrokes: 1.25 },
+      bestPrice: 1.25,
+    };
+    const gateLegs = [lowFair, { ...leg, id: "b2", playerId: "p2", gameId: "g2" }];
+    const r = gateMulti(
+      multi({
+        type: "crossGameSgm",
+        label: "Cross-Game SGM Multi",
+        legs: gateLegs.map((l) => l.id),
+        combinedTakeAt: 3,
+        bestBookie: "Ladbrokes",
+        bestBookieTotal: 2.5,
+      }),
+      gateLegs
+    );
+    expect(r.violations.some((v) => /fair 1\.17 < 1\.3/i.test(v))).toBe(false);
+  });
+
+  it("Main Play still blocks fair below 1.30", () => {
+    const lowFair: PickLeg = {
+      ...leg,
+      id: "low",
+      fairPrice: 1.17,
+      takeAt: 1.26,
+      bookiePrices: { Ladbrokes: 1.25 },
+      bestPrice: 1.25,
+    };
+    const r = gateMulti(
+      multi({
+        legs: ["low", "b2", "b3"],
+        combinedTakeAt: 3,
+        bestBookie: "Ladbrokes",
+        bestBookieTotal: 5.5,
+      }),
+      [lowFair, { ...leg, id: "b2", playerId: "p2" }, { ...leg, id: "b3", playerId: "p3" }]
+    );
+    expect(r.violations.some((v) => /fair 1\.17 < 1\.3/i.test(v))).toBe(true);
+  });
+
   it("allows 3pm 1+ on cross-game (no micro-3PM floor)", () => {
     const leg1pm: PickLeg = {
       ...leg,

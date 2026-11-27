@@ -1161,12 +1161,14 @@ function buildCrossGameSgm(
     const assembled: PickLeg[] = [];
     let gamesIncluded = 0;
 
+    let coversAllGames = true;
     for (const game of slate) {
       const gid = game.id;
       const pool = (byGame.get(gid) ?? []).sort(sortLegs);
       const label = gameCrossLabel(game);
       const subset = pickCrossGameLegsForGame(pool.slice(0, 24));
       if (!subset?.length) {
+        coversAllGames = false;
         groups.push({
           gameId: gid,
           status: "excluded",
@@ -1184,6 +1186,7 @@ function buildCrossGameSgm(
       assembled.push(...subset);
     }
 
+    if (!coversAllGames || gamesIncluded < slate.length) continue;
     if (gamesIncluded < CROSS_SGM_MIN_GAMES) continue;
     const total = comboProduct(assembled, bookie);
     const p = combinedProb(assembled);
@@ -1200,7 +1203,7 @@ function buildCrossGameSgm(
   }
 
   if (!bestAcross) {
-    const reason = `No cross-game SGM (${CROSS_SGM_MIN_GAMES}+ games, high prob ≥ fair; pool ${maxPoolBookie}=${maxPool})`;
+    const reason = `No cross-game SGM (no bookie covers all ${slate.length} games; pool ${maxPoolBookie}=${maxPool})`;
     pushMultiBuildTrace({
       type: "crossGameSgm",
       eligible: eligibleUnique.length,

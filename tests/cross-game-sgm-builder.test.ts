@@ -102,6 +102,21 @@ describe("crossGameSgm leg gate", () => {
     expect(qualifiesCrossGameSgmLeg(l, "Sportsbet", [l])).toBe(false);
   });
 
+  it("allows fair below 1.30 when high prob and priced ≥ fair at Ladbrokes", () => {
+    const l = leg({
+      id: "lowfair",
+      gameId: "401909332",
+      playerId: "pd",
+      fairPrice: 1.17,
+      probability: 0.82,
+      reasons: [{ type: "form", text: "9/10 at this line" }],
+      recentTenVsLine: Array(10).fill("hit") as PickLeg["recentTenVsLine"],
+      bookiePrices: { Ladbrokes: 1.2 },
+      bestPrice: 1.2,
+    });
+    expect(qualifiesCrossGameSgmLeg(l, "Ladbrokes", [l])).toBe(true);
+  });
+
   it("allows Value when also high prob and ≥ fair", () => {
     const l = leg({
       id: "d",
@@ -218,7 +233,9 @@ describe("crossGameSgm builder", () => {
     expect(bets.find((m) => m.type === "crossGameSgm")).toBeUndefined();
     expect(
       notBuilt.some(
-        (n) => n.type === "crossGameSgm" && n.reason.includes(`${CROSS_SGM_MIN_GAMES}`)
+        (n) =>
+          n.type === "crossGameSgm" &&
+          (/covers all|fewer|games/i.test(n.reason) || n.reason.includes(`${CROSS_SGM_MIN_GAMES}`))
       )
     ).toBe(true);
   });
