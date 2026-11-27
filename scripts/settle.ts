@@ -24,6 +24,11 @@ import { valueSinglesForSlate, valueSinglesSourceLabel } from "../lib/value-sing
 import { loadPicksAtCommit } from "../lib/reasons-at-tip-restore.js";
 import type { MetaJson } from "../lib/types.js";
 import { slateResultsFrozen } from "../lib/settle-slate-freeze.js";
+import {
+  listRegradeSlateDates,
+  listSettleSlateDates,
+} from "../lib/settle-slate-list.js";
+import { retentionMinYmd } from "../lib/slate-retention.js";
 import { syncSettleToSupabase } from "./supabase-sync.js";
 
 const ET = "America/New_York";
@@ -86,18 +91,21 @@ function loadFixtureBoxes(): Map<string, Map<string, BoxLine>> {
   return out;
 }
 
-function listSlateDates(): string[] {
-  const dates = new Set<string>();
-  if (!fs.existsSync(outDir)) return [];
-  for (const name of fs.readdirSync(outDir)) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(name)) continue;
-  if (fs.existsSync(path.join(outDir, name, "picks.json"))) dates.add(name);
+function appendFrozenSlice(
+  frozen: ResultsSlice,
+  allOfficialLegs: ReturnType<typeof settleOfficialCard>["legs"],
+  allOfficialBets: ReturnType<typeof settleOfficialBets>,
+  allGraded: ReturnType<typeof gradePickCatalog>,
+  allValue: ReturnType<typeof valueLegRowsFromSingles>,
+  allGamesSgmBets: GamesSgmBetRow[]
+): void {
+  allGraded.push(...frozen.gradedLegs);
+  allOfficialLegs.push(...frozen.official.legs);
+  allOfficialBets.push(...frozen.official.bets);
+  allValue.push(...frozen.valueLegs.legs);
+  if (frozen.gamesSgm?.bets?.length) {
+    allGamesSgmBets.push(...frozen.gamesSgm.bets);
   }
-  for (const name of fs.readdirSync(outDir)) {
-    const cardPath = path.join(outDir, name, "official-card.json");
-    if (fs.existsSync(cardPath)) dates.add(name);
-  }
-  return [...dates].sort();
 }
 
 function loadPicks(slateDate: string): PickLeg[] {
@@ -138,13 +146,16 @@ function loadPrevSlateSlice(slateDate: string): ResultsSlice | null {
 async function main() {
   if (process.env.SETTLE_DATA_RESTORED !== "1") restorePersistedDataFromBranch(rootDir);
   const now = new Date();
-  const slateDates = listSlateDates();
+  const minRetention = retentionMinYmd(now);
+  const slateDates = listSettleSlateDates(rootDir, outDir, now);
 
-  const regradeDates: string[] = [];
+  const frozenByDate = new Map<string, ResultsSlice>();
   for (const slateDate of slateDates) {
     const prev = loadPrevSlateSlice(slateDate);
-    if (!prev || !slateResultsFrozen(prev)) regradeDates.push(slateDate);
+    if (prev && slateResultsFrozen(prev)) frozenByDate.set(slateDate, prev);
   }
+
+  const regradeDates = listRegradeSlateDates(slateDates, now, (d) => frozenByDate.has(d));
 
   const boxes = fixtureMode
     ? loadFixtureBoxes()
@@ -159,7 +170,36 @@ async function main() {
   const extraBets = loadExtraOfficialBets(rootDir);
   for (const slateDate of slateDates) {
     const prevSlate = loadPrevSlateSlice(slateDate);
-    const frozen = prevSlate && slateResultsFrozen(prevSlate) ? prevSlate : null;
+    const frozen = frozenByDate.get(slateDate) ?? null;
+    const inRetention = slateDate >= minRetention;
+
+    if (!inRetention) {
+      if (frozen) {
+        appendFrozenSlice(
+          frozen,
+          allOfficialLegs,
+          allOfficialBets,
+          allGraded,
+          allValue,
+          allGamesSgmBets
+        );
+      } else {
+        console.warn(`settle: skip ${slateDate} — outside retention, no frozen results.json`);
+      }
+      continue;
+    }
+
+    if (frozen) {
+      appendFrozenSlice(
+        frozen,
+        allOfficialLegs,
+        allOfficialBets,
+        allGraded,
+        allValue,
+        allGamesSgmBets
+      );
+      continue;
+    }
 
     const picks = loadPicks(slateDate);
     const graded = frozen ? frozen.gradedLegs : gradePickCatalog(picks, slateDate, boxes);

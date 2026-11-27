@@ -31,6 +31,13 @@ export const DATA_BRANCH_SLATE_DIR_FILES = [
   "official-card.json",
 ] as const;
 
+/** Restored for every dated folder on the data branch (cumulative results / settle). */
+export const DATA_BRANCH_CUMULATIVE_SLATE_FILES = [
+  "results.json",
+  "official-card.json",
+  "meta.json",
+] as const;
+
 /** @deprecated use DATA_BRANCH_SLATE_DIR_FILES */
 export const DATA_BRANCH_SLATE_FILES = ["official-card.json"] as const;
 
@@ -87,13 +94,8 @@ function restoreOne(
 
 export class DataBranchRestoreError extends Error {}
 
-/** Slate folder dates on the data branch within the Sydney retention window (not index.json). */
-export function listSlateFoldersOnDataRef(
-  rootDir: string,
-  dataRef: string,
-  now: Date
-): string[] {
-  const min = retentionMinYmd(now);
+/** Every `YYYY-MM-DD` folder on the data branch under `public/data` (not index.json). */
+export function listAllSlateFoldersOnDataRef(rootDir: string, dataRef: string): string[] {
   try {
     const raw = execFileSync(
       "git",
@@ -104,11 +106,21 @@ export function listSlateFoldersOnDataRef(
       .split("\n")
       .map((line) => line.trim())
       .filter((line) => line.length > 0)
-      .filter((name) => SLATE_FOLDER_PATTERN.test(name) && name >= min)
+      .filter((name) => SLATE_FOLDER_PATTERN.test(name))
       .sort();
   } catch {
     return [];
   }
+}
+
+/** Slate folder dates on the data branch within the Sydney retention window (not index.json). */
+export function listSlateFoldersOnDataRef(
+  rootDir: string,
+  dataRef: string,
+  now: Date
+): string[] {
+  const min = retentionMinYmd(now);
+  return listAllSlateFoldersOnDataRef(rootDir, dataRef).filter((name) => name >= min);
 }
 
 function dataBranchExists(rootDir: string): boolean {
@@ -163,11 +175,15 @@ export function restorePersistedDataFromBranch(
   }
 
   const restoreNow = new Date();
+  const allSlateFolders = listAllSlateFoldersOnDataRef(rootDir, dataRef);
   const retainedFolders = listSlateFoldersOnDataRef(rootDir, dataRef, restoreNow);
-  if (retainedFolders.length) {
+  if (allSlateFolders.length) {
     console.log(
-      `restore: slate folders on data branch (${retainedFolders.join(", ")})`
+      `restore: all slate folders on data branch (${allSlateFolders.join(", ")})`
     );
+  }
+  if (retainedFolders.length) {
+    console.log(`restore: retained for display (${retainedFolders.join(", ")})`);
   }
   try {
     const headshotList = execFileSync(
@@ -181,6 +197,14 @@ export function restorePersistedDataFromBranch(
     }
   } catch {
     /* optional headshots folder */
+  }
+
+  for (const ymd of allSlateFolders) {
+    for (const name of DATA_BRANCH_CUMULATIVE_SLATE_FILES) {
+      const rel = `public/data/${ymd}/${name}`;
+      const out = path.join(dataRoot, ymd, name);
+      if (restoreOne(rootDir, dataRef, rel, out)) restored.push(rel);
+    }
   }
 
   for (const ymd of retainedFolders) {

@@ -22,6 +22,8 @@ import {
   indexRetentionDropReason,
   listDataBranchRetainedFolders,
 } from "../lib/index-guard.js";
+import type { ResultsSlice } from "../lib/results-types.js";
+import { resultsPersistShrinkReason } from "../lib/results-persist-guard.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const staging = process.argv[2];
@@ -132,6 +134,24 @@ function readJsonFromDataBranch(relPath: string): unknown | null {
     return JSON.parse(raw) as unknown;
   } catch {
     return null;
+  }
+}
+
+{
+  const priorResults = readJsonFromDataBranch("public/data/results.json") as ResultsSlice | null;
+  const resultsStagingPath = path.join(staging, "results.json");
+  let nextResults: ResultsSlice | null = null;
+  if (fs.existsSync(resultsStagingPath)) {
+    try {
+      nextResults = JSON.parse(fs.readFileSync(resultsStagingPath, "utf8")) as ResultsSlice;
+    } catch {
+      nextResults = null;
+    }
+  }
+  const resultsShrink = resultsPersistShrinkReason(priorResults, nextResults);
+  if (resultsShrink) {
+    console.error(`persist data branch guard: blocked — ${resultsShrink}`);
+    process.exit(1);
   }
 }
 
