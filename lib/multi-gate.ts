@@ -18,6 +18,7 @@ import {
 import { isMainPlayStatLine } from "./starter-eligibility.js";
 import { combinedFairAndTakeAt, DEFAULT_MIN_EDGE } from "./multi-combined.js";
 import { legPriceAtBookie } from "./single-bookie.js";
+import { legMeetsBookieEdge } from "./bookie-edge-pool.js";
 
 const MIN_LEG_FAIR = 1.3;
 
@@ -249,12 +250,26 @@ export function gateMulti(
     if (clashes) violations.push(`${label}: leg clash`);
   }
 
+  const bookieForLegs = multi.bestBookie ?? "";
   for (const leg of legs) {
     if (multi.type !== "crossGameSgm" && leg.fairPrice < MIN_LEG_FAIR) {
       violations.push(`${label}: ${leg.playerName} fair ${leg.fairPrice.toFixed(2)} < ${MIN_LEG_FAIR}`);
     }
     if (leg.tags.includes("Check news") && multi.type !== "boostSgm") {
       violations.push(`${label}: ${leg.playerName} has Check news`);
+    }
+    if (
+      bookieForLegs &&
+      multi.type !== "q1Multi" &&
+      (multi.type === "mainPlay" ||
+        multi.type === "doubleUp" ||
+        multi.type === "booster" ||
+        multi.type === "boostSgm" ||
+        multi.type === "longshot")
+    ) {
+      if (!legMeetsBookieEdge(leg, bookieForLegs)) {
+        violations.push(`${label}: ${leg.playerName} edge miss at ${bookieForLegs}`);
+      }
     }
   }
 

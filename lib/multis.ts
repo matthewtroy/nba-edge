@@ -438,7 +438,8 @@ function qualifiesDoubleUpStructural(leg: PickLeg): boolean {
     !leg.market.startsWith("q1") &&
     passesFormGuard(leg) &&
     !leg.tags.includes("Check news") &&
-    !legHasNegativeRoleRisk(leg)
+    !legHasNegativeRoleRisk(leg) &&
+    leg.fairPrice >= MIN_LEG_FAIR
   );
 }
 
@@ -798,7 +799,7 @@ function treblePrice(three: PickLeg[]): number {
   return combinedBetPrice(three);
 }
 
-/** Main-leg bookie only: ordered boosted rungs priced at that bookie. */
+/** Lowest priced rung at bookie strictly above the Main Play line, then further rungs. */
 function rankedBoostCandidatesForLeg(
   mainLeg: PickLeg,
   picks: PickLeg[],
@@ -806,26 +807,25 @@ function rankedBoostCandidatesForLeg(
   catalog: PickLeg[]
 ): PickLeg[] {
   if (!meetsFloor(mainLeg)) return [];
+  const pool = catalog.length ? catalog : picks;
+  const pricedAbove = pool
+    .filter(
+      (p) =>
+        p.playerId === mainLeg.playerId &&
+        p.market === mainLeg.market &&
+        p.line > mainLeg.line &&
+        meetsFloor(p) &&
+        legPriceAtBookie(p, bookie) != null
+    )
+    .sort((a, b) => a.line - b.line);
   const out: PickLeg[] = [];
   const seen = new Set<string>();
-  const mainAtBookie =
-    nearestPricedRung(mainLeg, bookie, catalog)?.price ?? legPriceAtBookie(mainLeg, bookie);
-  let seed = mainLeg;
-  const shouldStep = mainAtBookie == null || mainAtBookie <= 4;
-  if (shouldStep) {
-    const up = nextRung(mainLeg, picks);
-    if (up && meetsFloor(up)) seed = up;
-  }
-  let cur: PickLeg | undefined = seed;
-  while (cur) {
-    const priced = asBookieLeg(cur, bookie, catalog);
+  for (const row of pricedAbove) {
+    const priced = asBookieLeg(row, bookie, pool);
     if (priced && !seen.has(priced.id)) {
       seen.add(priced.id);
       out.push(priced);
     }
-    const up = nextRung(cur, picks);
-    if (!up || !meetsFloor(up)) break;
-    cur = up;
   }
   return out;
 }
@@ -1251,7 +1251,24 @@ function buildCrossGameSgm(
   }
 
   if (!bestAcross) {
-    const reason = `No cross-game SGM (no bookie covers all ${slate.length} games; pool ${maxPoolBookie}=${maxPool})`;
+    let missDetail = "";
+    const tryBookie = maxPoolBookie || bookiesByCoverage(structural)[0] || "";
+    if (tryBookie) {
+      const missing: string[] = [];
+      for (const game of slate) {
+        const pool = structural.filter((l) => l.gameId === game.id);
+        const ok = pool.some(
+          (l) =>
+            qualifiesCrossGameSgmLeg(l, tryBookie, catalog) &&
+            asBookieLeg(l, tryBookie, catalog)
+        );
+        if (!ok) missing.push(gameCrossLabel(game));
+      }
+      if (missing.length) {
+        missDetail = `; missing @ ${tryBookie}: ${missing.join(", ")}`;
+      }
+    }
+    const reason = `No cross-game SGM (no bookie covers all ${slate.length} games; pool ${maxPoolBookie}=${maxPool}${missDetail})`;
     pushMultiBuildTrace({
       type: "crossGameSgm",
       eligible: eligibleUnique.length,

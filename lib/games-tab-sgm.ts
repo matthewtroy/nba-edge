@@ -9,6 +9,7 @@ import {
 } from "./main-play-eligibility.js";
 import { passesFormGuard } from "./form-guard.js";
 import { hasValueAtBookie } from "./value-at-bookie.js";
+import { edgeFairPrice } from "./leg-edge-fair.js";
 import { legEdgeDecimal } from "./same-game-sgm-search.js";
 import {
   ROUGHIE_LEG_MAX,
@@ -21,6 +22,7 @@ import {
   bookieHighProbMeetsFair,
 } from "./pricing-config.js";
 import { legHasSupportiveReason } from "./picks-supportive-filter.js";
+import { isSupportiveReason } from "./leg-reason-supportive.js";
 
 export const GAMES_TAB_MIN_LEG_PRICE = 1.3;
 export const GAMES_TAB_MIN_LEGS = 2;
@@ -62,7 +64,10 @@ function totalInBand(total: number, min: number, max: number): boolean {
 }
 
 function legHasRealReasons(leg: PickLeg): boolean {
-  return leg.market.startsWith("q1") || legHasSupportiveReason(leg);
+  if (leg.market.startsWith("q1")) return true;
+  const explicit = (leg.reasons ?? []).some((r) => isSupportiveReason(r, leg));
+  if (explicit) return true;
+  return (leg.reasons ?? []).length > 0 ? false : legHasSupportiveReason(leg);
 }
 
 function legBookiePrice(
@@ -148,7 +153,7 @@ export function qualifiesGamesTabSgmLeg(
   if (price < rules.minLegPrice) return false;
   if (rules.maxLegPrice != null && price > rules.maxLegPrice) return false;
   if (legMeetsBookieEdge(leg, bookie, minEdgeFraction)) return true;
-  return bookieHighProbMeetsFair(price, leg.fairPrice, leg.probability);
+  return bookieHighProbMeetsFair(price, edgeFairPrice(leg), leg.probability);
 }
 
 export function pickBestGamesTabSgmCombo(
