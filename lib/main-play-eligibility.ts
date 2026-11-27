@@ -11,6 +11,7 @@ import {
   MAIN_PLAY_LEG_FAIR_MIN,
   MAIN_PLAY_LEG_FAIR_MAX,
 } from "./pricing-config.js";
+import { legHasNegativeRoleRisk } from "./role-risk.js";
 
 export function isMainPlayCoreMarket(market: string): boolean {
   return market === "pts" || market === "reb" || market === "ast" || market === "3pm";
@@ -82,7 +83,8 @@ export function mainPlayStructuralOk(leg: PickLeg): boolean {
     isMainPlayCoreMarket(leg.market) &&
     leg.probability >= 0.6 &&
     !leg.ageB2B &&
-    !hasCheckNews(leg)
+    !hasCheckNews(leg) &&
+    !legHasNegativeRoleRisk(leg)
   );
 }
 
