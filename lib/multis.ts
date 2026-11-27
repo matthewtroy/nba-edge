@@ -280,7 +280,7 @@ export function buildMultis(
   else notBuilt.push({ type: "doubleUp", label: LABELS.doubleUp, reason: doubleUp.reason });
 
   if (main.bet) {
-    const booster = buildBooster(main.bet, pool, catalog);
+    const booster = buildBooster(main.bet, pool, catalog, minEdgeFraction);
     if (booster.bet) multis.push(booster.bet);
     else notBuilt.push({ type: "booster", label: LABELS.booster, reason: booster.reason });
   } else {
@@ -814,7 +814,8 @@ function boostMainLegs(
     const mainAtBookie =
       nearestPricedRung(leg, bookie, catalog)?.price ?? legPriceAtBookie(leg, bookie);
     let useLeg = leg;
-    if (mainAtBookie != null && mainAtBookie <= 4) {
+    const shouldStep = mainAtBookie == null || mainAtBookie <= 4;
+    if (shouldStep) {
       const up = nextRung(leg, picks);
       if (up && meetsFloor(up)) useLeg = up;
     }
@@ -833,13 +834,29 @@ function boostMainLegs(
   return { legs: boosted };
 }
 
+function boosterOrderedBookies(main: MultiBet, mainLegs: PickLeg[]): string[] {
+  const ranked = bookiesByCoverage(mainLegs);
+  const primary = main.bestBookie;
+  if (!primary) return ranked;
+  const rest = ranked.filter((b) => b !== primary);
+  return [primary, ...rest];
+}
+
+function boosterLegsMeetEdge(
+  boosted: PickLeg[],
+  bookie: string,
+  minEdgeFraction: number
+): boolean {
+  return boosted.every((l) => legMeetsBookieEdge(l, bookie, minEdgeFraction));
+}
+
 function buildBooster(
   main: MultiBet,
   picks: PickLeg[],
-  catalog: PickLeg[]
+  catalog: PickLeg[],
+  minEdgeFraction = DEFAULT_MIN_EDGE
 ): { bet: MultiBet | null; reason: string } {
-  const bookie = main.bestBookie;
-  if (!bookie) {
+  if (!main.bestBookie) {
     return { bet: null, reason: "Booster: Main Play missing bookie" };
   }
   const picksById = new Map(picks.map((p) => [p.id, p]));
@@ -850,63 +867,76 @@ function buildBooster(
     return { bet: null, reason: "Booster leg missing" };
   }
 
-  const boost = boostMainLegs(main, picks, bookie, catalog);
-  const boosted = boost.legs;
-  if (!boosted?.length) {
-    const detail = boost.fail ?? "rung/clash/edge at main bookie";
+  const tryBookies = boosterOrderedBookies(main, mainLegs);
+  let candidatesTried = 0;
+  let lastFail = "";
+
+  for (const bookie of tryBookies) {
+    candidatesTried += 1;
+    const boost = boostMainLegs(main, picks, bookie, catalog);
+    if (!boost.legs?.length) {
+      lastFail = boost.fail ?? `no ${bookie} line`;
+      continue;
+    }
+    if (!boosterLegsMeetEdge(boost.legs, bookie, minEdgeFraction)) {
+      lastFail = `edge miss @ ${bookie}`;
+      continue;
+    }
+    const boosted = boost.legs;
+    const { p, fair, takeAt } = combinedPrice(boosted);
+    const book = overlayForBookie(boosted, bookie, catalog);
+    const triCandidates: PickLeg[][] = [];
+    for (let i = 0; i < boosted.length - 2; i++) {
+      for (let j = i + 1; j < boosted.length - 1; j++) {
+        for (let k = j + 1; k < boosted.length; k++) {
+          triCandidates.push([boosted[i], boosted[j], boosted[k]]);
+        }
+      }
+    }
+    const bestTreble = triCandidates.reduce(
+      (mx, t) => Math.max(mx, comboProduct(t, bookie)),
+      0
+    );
+    const trixieNote = bestTreble >= 60 ? " · Trixie if treble ≥60" : "";
+
     pushMultiBuildTrace({
       type: "booster",
       eligible: mainLegs.length,
-      bestEdgePool: 0,
+      bestEdgePool: boosted.length,
       bestBookie: bookie,
       clashCandidates: 0,
-      rangeCandidates: 0,
-      built: false,
-      detail,
+      rangeCandidates: candidatesTried,
+      built: true,
+      detail: `${boosted.length} legs @ ${bookie} $${book.bestBookieTotal.toFixed(2)}`,
     });
-    return { bet: null, reason: `Booster: ${detail}` };
+
+    return {
+      bet: {
+        type: "booster",
+        label: "Booster",
+        legs: boosted.map((l) => l.id),
+        combinedProbability: p,
+        combinedFairPrice: fair,
+        combinedTakeAt: takeAt,
+        ...book,
+        summary: `Main Play +1 rung when Main leg ≤$4 at bookie, else same rung${trixieNote}`,
+      },
+      reason: "",
+    };
   }
 
-  const { p, fair, takeAt } = combinedPrice(boosted);
-  const book = overlayForBookie(boosted, bookie, catalog);
-  const triCandidates: PickLeg[][] = [];
-  for (let i = 0; i < boosted.length - 2; i++) {
-    for (let j = i + 1; j < boosted.length - 1; j++) {
-      for (let k = j + 1; k < boosted.length; k++) {
-        triCandidates.push([boosted[i], boosted[j], boosted[k]]);
-      }
-    }
-  }
-  const bestTreble = triCandidates.reduce(
-    (mx, t) => Math.max(mx, comboProduct(t, bookie)),
-    0
-  );
-  const trixieNote = bestTreble >= 60 ? " · Trixie if treble ≥60" : "";
-
+  const detail = `no line/edge (${candidatesTried} bookie${candidatesTried === 1 ? "" : "s"} tried; ${lastFail})`;
   pushMultiBuildTrace({
     type: "booster",
     eligible: mainLegs.length,
-    bestEdgePool: boosted.length,
-    bestBookie: bookie,
+    bestEdgePool: 0,
+    bestBookie: main.bestBookie,
     clashCandidates: 0,
-    rangeCandidates: 1,
-    built: true,
-    detail: `${boosted.length} legs @ ${bookie} $${book.bestBookieTotal.toFixed(2)}`,
+    rangeCandidates: candidatesTried,
+    built: false,
+    detail,
   });
-
-  return {
-    bet: {
-      type: "booster",
-      label: "Booster",
-      legs: boosted.map((l) => l.id),
-      combinedProbability: p,
-      combinedFairPrice: fair,
-      combinedTakeAt: takeAt,
-      ...book,
-      summary: `Main Play +1 rung when Main leg ≤$4 at bookie, else same rung${trixieNote}`,
-    },
-    reason: "",
-  };
+  return { bet: null, reason: `Booster: ${detail}` };
 }
 
 function findQ1Subset(
