@@ -5,863 +5,1127 @@
     "1966": {
       "playerId": "1966",
       "playerName": "LeBron James",
-      "fgaPerMinL10": 0.4024390243902439,
+      "fgaPerMinL10": 0.44936708860759494,
+      "fgaLast5PerGame": 14.2,
+      "fgaSeasonPerGame": 12.909090909090908,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3202": {
       "playerId": "3202",
       "playerName": "Kevin Durant",
       "fgaPerMinL10": 0.4382716049382716,
+      "fgaLast5PerGame": 14.2,
+      "fgaSeasonPerGame": 13.666666666666666,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "6478": {
       "playerId": "6478",
       "playerName": "Nikola Vucevic",
       "fgaPerMinL10": 0.27710843373493976,
+      "fgaLast5PerGame": 4.6,
+      "fgaSeasonPerGame": 3.7777777777777777,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "6583": {
       "playerId": "6583",
       "playerName": "Anthony Davis",
       "fgaPerMinL10": 0.5260115606936416,
+      "fgaLast5PerGame": 18.2,
+      "fgaSeasonPerGame": 18.181818181818183,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "6609": {
       "playerId": "6609",
       "playerName": "Khris Middleton",
       "fgaPerMinL10": 0.22115384615384615,
+      "fgaLast5PerGame": 4.6,
+      "fgaSeasonPerGame": 4.5,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "2530530": {
       "playerId": "2530530",
       "playerName": "T.J. McConnell",
       "fgaPerMinL10": 0.4936708860759494,
+      "fgaLast5PerGame": 7.8,
+      "fgaSeasonPerGame": 6.571428571428571,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "2580365": {
       "playerId": "2580365",
       "playerName": "Larry Nance Jr.",
-      "fgaPerMinL10": 0.30952380952380953,
+      "fgaPerMinL10": 0.32558139534883723,
+      "fgaLast5PerGame": 2.8,
+      "fgaSeasonPerGame": 3.1666666666666665,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "2581018": {
       "playerId": "2581018",
       "playerName": "Kentavious Caldwell-Pope",
-      "fgaPerMinL10": 0.17482517482517482,
+      "fgaPerMinL10": 0.18796992481203006,
+      "fgaLast5PerGame": 5,
+      "fgaSeasonPerGame": 3.923076923076923,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "2583632": {
       "playerId": "2583632",
       "playerName": "Royce O'Neale",
       "fgaPerMinL10": 0.17272727272727273,
+      "fgaLast5PerGame": 3.8,
+      "fgaSeasonPerGame": 4.3,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "2595516": {
       "playerId": "2595516",
       "playerName": "Norman Powell",
       "fgaPerMinL10": 0.5882352941176471,
+      "fgaLast5PerGame": 18,
+      "fgaSeasonPerGame": 16.428571428571427,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "2990984": {
       "playerId": "2990984",
       "playerName": "Buddy Hield",
       "fgaPerMinL10": 0.4338235294117647,
+      "fgaLast5PerGame": 11.8,
+      "fgaSeasonPerGame": 9.7,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "2990992": {
       "playerId": "2990992",
       "playerName": "Marcus Smart",
       "fgaPerMinL10": 0.24752475247524752,
+      "fgaLast5PerGame": 5,
+      "fgaSeasonPerGame": 5.777777777777778,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "2991230": {
       "playerId": "2991230",
       "playerName": "Fred VanVleet",
       "fgaPerMinL10": 0.4105960264900662,
+      "fgaLast5PerGame": 12.4,
+      "fgaSeasonPerGame": 11.272727272727273,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "2991235": {
       "playerId": "2991235",
       "playerName": "Steven Adams",
       "fgaPerMinL10": 0.2638888888888889,
+      "fgaLast5PerGame": 3.8,
+      "fgaSeasonPerGame": 3.8,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "2991350": {
       "playerId": "2991350",
       "playerName": "Alex Caruso",
       "fgaPerMinL10": 0.3211009174311927,
+      "fgaLast5PerGame": 7,
+      "fgaSeasonPerGame": 5.333333333333333,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3059318": {
       "playerId": "3059318",
       "playerName": "Joel Embiid",
-      "fgaPerMinL10": 0.515527950310559,
+      "fgaPerMinL10": 0.5569620253164557,
+      "fgaLast5PerGame": 17.6,
+      "fgaSeasonPerGame": 15.4,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3064514": {
       "playerId": "3064514",
       "playerName": "Julius Randle",
-      "fgaPerMinL10": 0.47126436781609193,
+      "fgaPerMinL10": 0.4678362573099415,
+      "fgaLast5PerGame": 16,
+      "fgaSeasonPerGame": 15.384615384615385,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3102529": {
       "playerId": "3102529",
       "playerName": "Clint Capela",
       "fgaPerMinL10": 0.18181818181818182,
+      "fgaLast5PerGame": 2.8,
+      "fgaSeasonPerGame": 2.3333333333333335,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3133603": {
       "playerId": "3133603",
       "playerName": "Kelly Oubre Jr.",
-      "fgaPerMinL10": 0.4153846153846154,
+      "fgaPerMinL10": 0.4152542372881356,
+      "fgaLast5PerGame": 9.8,
+      "fgaSeasonPerGame": 10,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3133626": {
       "playerId": "3133626",
       "playerName": "Kenrich Williams",
       "fgaPerMinL10": 0.3515625,
+      "fgaLast5PerGame": 9,
+      "fgaSeasonPerGame": 7.769230769230769,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3133628": {
       "playerId": "3133628",
       "playerName": "Myles Turner",
-      "fgaPerMinL10": 0.2661290322580645,
+      "fgaPerMinL10": 0.24615384615384617,
+      "fgaLast5PerGame": 6.4,
+      "fgaSeasonPerGame": 7.083333333333333,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3133635": {
       "playerId": "3133635",
       "playerName": "Jevon Carter",
       "fgaPerMinL10": 0.28169014084507044,
+      "fgaLast5PerGame": 4,
+      "fgaSeasonPerGame": 4.7272727272727275,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3134907": {
       "playerId": "3134907",
       "playerName": "Kyle Kuzma",
-      "fgaPerMinL10": 0.46621621621621623,
+      "fgaPerMinL10": 0.4551282051282051,
+      "fgaLast5PerGame": 14.2,
+      "fgaSeasonPerGame": 10.76923076923077,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.555Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3135045": {
       "playerId": "3135045",
       "playerName": "Grayson Allen",
       "fgaPerMinL10": 0.3591549295774648,
+      "fgaLast5PerGame": 10.2,
+      "fgaSeasonPerGame": 9.666666666666666,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3149673": {
       "playerId": "3149673",
       "playerName": "Pascal Siakam",
-      "fgaPerMinL10": 0.5636363636363636,
+      "fgaPerMinL10": 0.5641025641025641,
+      "fgaLast5PerGame": 17.6,
+      "fgaSeasonPerGame": 16.5,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3150844": {
       "playerId": "3150844",
       "playerName": "Moritz Wagner",
       "fgaPerMinL10": 0.22857142857142856,
+      "fgaLast5PerGame": 3.2,
+      "fgaSeasonPerGame": 4.75,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3907823": {
       "playerId": "3907823",
       "playerName": "Terance Mann",
-      "fgaPerMinL10": 0.21621621621621623,
+      "fgaPerMinL10": 0.19230769230769232,
+      "fgaLast5PerGame": 1,
+      "fgaSeasonPerGame": 1.8,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3912848": {
       "playerId": "3912848",
       "playerName": "Dean Wade",
       "fgaPerMinL10": 0.1870967741935484,
+      "fgaLast5PerGame": 5.8,
+      "fgaSeasonPerGame": 4.6,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "3917376": {
       "playerId": "3917376",
       "playerName": "Jaylen Brown",
       "fgaPerMinL10": 0.5034013605442177,
+      "fgaLast5PerGame": 14.8,
+      "fgaSeasonPerGame": 15.8,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4017837": {
       "playerId": "4017837",
       "playerName": "Ivica Zubac",
-      "fgaPerMinL10": 0.34615384615384615,
+      "fgaPerMinL10": 0.3484848484848485,
+      "fgaLast5PerGame": 9.2,
+      "fgaSeasonPerGame": 8.727272727272727,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4065731": {
       "playerId": "4065731",
       "playerName": "Jay Huff",
-      "fgaPerMinL10": 0.4418604651162791,
+      "fgaPerMinL10": 0.45614035087719296,
+      "fgaLast5PerGame": 5.2,
+      "fgaSeasonPerGame": 5.181818181818182,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4066218": {
       "playerId": "4066218",
       "playerName": "Grant Williams",
       "fgaPerMinL10": 0.37037037037037035,
+      "fgaLast5PerGame": 7.5,
+      "fgaSeasonPerGame": 7.5,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4066320": {
       "playerId": "4066320",
       "playerName": "Desmond Bane",
       "fgaPerMinL10": 0.37714285714285717,
+      "fgaLast5PerGame": 13.2,
+      "fgaSeasonPerGame": 14.181818181818182,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4066650": {
       "playerId": "4066650",
       "playerName": "Zach Collins",
       "fgaPerMinL10": 0.3333333333333333,
+      "fgaLast5PerGame": 6,
+      "fgaSeasonPerGame": 4.75,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4222252": {
       "playerId": "4222252",
       "playerName": "Isaiah Hartenstein",
       "fgaPerMinL10": 0.2302158273381295,
+      "fgaLast5PerGame": 6.4,
+      "fgaSeasonPerGame": 6.3076923076923075,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4277843": {
       "playerId": "4277843",
       "playerName": "Gary Trent Jr.",
       "fgaPerMinL10": 0.3918918918918919,
+      "fgaLast5PerGame": 5.8,
+      "fgaSeasonPerGame": 5,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.555Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4277847": {
       "playerId": "4277847",
       "playerName": "Wendell Carter Jr.",
       "fgaPerMinL10": 0.2578616352201258,
+      "fgaLast5PerGame": 8.2,
+      "fgaSeasonPerGame": 8.083333333333334,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4277905": {
       "playerId": "4277905",
       "playerName": "Trae Young",
       "fgaPerMinL10": 0.3128834355828221,
+      "fgaLast5PerGame": 10.2,
+      "fgaSeasonPerGame": 11.692307692307692,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4277922": {
       "playerId": "4277922",
       "playerName": "Jericho Sims",
       "fgaPerMinL10": 0.13846153846153847,
+      "fgaLast5PerGame": 1.8,
+      "fgaSeasonPerGame": 1.3333333333333333,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.555Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4278067": {
       "playerId": "4278067",
       "playerName": "Nic Claxton",
       "fgaPerMinL10": 0.2916666666666667,
+      "fgaLast5PerGame": 7,
+      "fgaSeasonPerGame": 5.875,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4278073": {
       "playerId": "4278073",
       "playerName": "Shai Gilgeous-Alexander",
       "fgaPerMinL10": 0.7247191011235955,
+      "fgaLast5PerGame": 25.8,
+      "fgaSeasonPerGame": 25,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4278104": {
       "playerId": "4278104",
       "playerName": "Michael Porter Jr.",
-      "fgaPerMinL10": 0.3433734939759036,
+      "fgaPerMinL10": 0.33121019108280253,
+      "fgaLast5PerGame": 10.4,
+      "fgaSeasonPerGame": 13.25,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4278355": {
       "playerId": "4278355",
       "playerName": "Obi Toppin",
-      "fgaPerMinL10": 0.4368932038834951,
+      "fgaPerMinL10": 0.40384615384615385,
+      "fgaLast5PerGame": 8.4,
+      "fgaSeasonPerGame": 7.909090909090909,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4278572": {
       "playerId": "4278572",
       "playerName": "Jamal Cain",
       "fgaPerMinL10": 0.12121212121212122,
+      "fgaLast5PerGame": 0.8,
+      "fgaSeasonPerGame": 4.2,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4348700": {
       "playerId": "4348700",
       "playerName": "Goga Bitadze",
       "fgaPerMinL10": 0.1927710843373494,
+      "fgaLast5PerGame": 3.2,
+      "fgaSeasonPerGame": 2.727272727272727,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4351851": {
       "playerId": "4351851",
       "playerName": "Anfernee Simons",
-      "fgaPerMinL10": 0.34146341463414637,
+      "fgaPerMinL10": 0.39344262295081966,
+      "fgaLast5PerGame": 9.6,
+      "fgaSeasonPerGame": 8.23076923076923,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4395626": {
       "playerId": "4395626",
       "playerName": "Tre Jones",
       "fgaPerMinL10": 0.44,
+      "fgaLast5PerGame": 8.8,
+      "fgaSeasonPerGame": 8.5,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4395651": {
       "playerId": "4395651",
       "playerName": "Coby White",
       "fgaPerMinL10": 0.584,
+      "fgaLast5PerGame": 14.6,
+      "fgaSeasonPerGame": 12.7,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4395712": {
       "playerId": "4395712",
       "playerName": "Andrew Nembhard",
-      "fgaPerMinL10": 0.38414634146341464,
+      "fgaPerMinL10": 0.3974358974358974,
+      "fgaLast5PerGame": 12.4,
+      "fgaSeasonPerGame": 12.6,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4395725": {
       "playerId": "4395725",
       "playerName": "Tyler Herro",
-      "fgaPerMinL10": 0.4911242603550296,
+      "fgaPerMinL10": 0.48333333333333334,
+      "fgaLast5PerGame": 17.4,
+      "fgaSeasonPerGame": 15.923076923076923,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4396909": {
       "playerId": "4396909",
       "playerName": "Aaron Nesmith",
-      "fgaPerMinL10": 0.2578616352201258,
+      "fgaPerMinL10": 0.26,
+      "fgaLast5PerGame": 7.8,
+      "fgaSeasonPerGame": 9.454545454545455,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4396971": {
       "playerId": "4396971",
       "playerName": "Naz Reid",
       "fgaPerMinL10": 0.5414364640883977,
+      "fgaLast5PerGame": 19.6,
+      "fgaSeasonPerGame": 18.8,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4396993": {
       "playerId": "4396993",
       "playerName": "Tyrese Haliburton",
       "fgaPerMinL10": 0.4696969696969697,
+      "fgaLast5PerGame": 15.5,
+      "fgaSeasonPerGame": 15.5,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4397189": {
       "playerId": "4397189",
       "playerName": "Jalen Smith",
       "fgaPerMinL10": 0.4,
+      "fgaLast5PerGame": 11.2,
+      "fgaSeasonPerGame": 9.88888888888889,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4397475": {
       "playerId": "4397475",
       "playerName": "AJ Green",
-      "fgaPerMinL10": 0.3333333333333333,
+      "fgaPerMinL10": 0.35714285714285715,
+      "fgaLast5PerGame": 3,
+      "fgaSeasonPerGame": 3.8333333333333335,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.555Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4398207": {
       "playerId": "4398207",
       "playerName": "Jalen Slawson",
-      "fgaPerMinL10": 0.32432432432432434,
+      "fgaPerMinL10": 0.2962962962962963,
+      "fgaLast5PerGame": 4.8,
+      "fgaSeasonPerGame": 4,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4431678": {
       "playerId": "4431678",
       "playerName": "Tyrese Maxey",
-      "fgaPerMinL10": 0.441340782122905,
+      "fgaPerMinL10": 0.42441860465116277,
+      "fgaLast5PerGame": 14.6,
+      "fgaSeasonPerGame": 14.916666666666666,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4431687": {
       "playerId": "4431687",
       "playerName": "Patrick Williams",
       "fgaPerMinL10": 0.3023255813953488,
+      "fgaLast5PerGame": 5.2,
+      "fgaSeasonPerGame": 5.545454545454546,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4431752": {
       "playerId": "4431752",
       "playerName": "Kobe Brown",
       "fgaPerMinL10": 0.2631578947368421,
+      "fgaLast5PerGame": 3,
+      "fgaSeasonPerGame": 2.6666666666666665,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4432165": {
       "playerId": "4432165",
       "playerName": "Jalen Suggs",
       "fgaPerMinL10": 0.3333333333333333,
+      "fgaLast5PerGame": 9.4,
+      "fgaSeasonPerGame": 9.166666666666666,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4432185": {
       "playerId": "4432185",
       "playerName": "Micah Peavy",
       "fgaPerMinL10": 0.22549019607843138,
+      "fgaLast5PerGame": 4.6,
+      "fgaSeasonPerGame": 4.818181818181818,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4432194": {
       "playerId": "4432194",
       "playerName": "Day'Ron Sharpe",
-      "fgaPerMinL10": 0.26153846153846155,
+      "fgaPerMinL10": 0.248,
+      "fgaLast5PerGame": 6.2,
+      "fgaSeasonPerGame": 6.538461538461538,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4432446": {
       "playerId": "4432446",
       "playerName": "Jabari Walker",
-      "fgaPerMinL10": 0.32558139534883723,
+      "fgaPerMinL10": 0.25806451612903225,
+      "fgaLast5PerGame": 4.8,
+      "fgaSeasonPerGame": 5.25,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4432639": {
       "playerId": "4432639",
       "playerName": "Jabari Smith Jr.",
       "fgaPerMinL10": 0.3333333333333333,
+      "fgaLast5PerGame": 10,
+      "fgaSeasonPerGame": 10.583333333333334,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4432822": {
       "playerId": "4432822",
       "playerName": "Isaac Okoro",
       "fgaPerMinL10": 0.22727272727272727,
+      "fgaLast5PerGame": 7,
+      "fgaSeasonPerGame": 7.083333333333333,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4432823": {
       "playerId": "4432823",
       "playerName": "Jaylin Williams",
       "fgaPerMinL10": 0.28888888888888886,
+      "fgaLast5PerGame": 4.333333333333333,
+      "fgaSeasonPerGame": 4.333333333333333,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4432848": {
       "playerId": "4432848",
       "playerName": "Jaime Jaquez Jr.",
-      "fgaPerMinL10": 0.36153846153846153,
+      "fgaPerMinL10": 0.3732394366197183,
+      "fgaLast5PerGame": 10.6,
+      "fgaSeasonPerGame": 11.214285714285714,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4432907": {
       "playerId": "4432907",
       "playerName": "Justin Champagnie",
       "fgaPerMinL10": 0.2702702702702703,
+      "fgaLast5PerGame": 5,
+      "fgaSeasonPerGame": 5,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4433192": {
       "playerId": "4433192",
       "playerName": "Tari Eason",
       "fgaPerMinL10": 0.3125,
+      "fgaLast5PerGame": 7,
+      "fgaSeasonPerGame": 9.166666666666666,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4433249": {
       "playerId": "4433249",
       "playerName": "Moussa Diabate",
       "fgaPerMinL10": 0.2155688622754491,
+      "fgaLast5PerGame": 7.2,
+      "fgaSeasonPerGame": 6.625,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4433255": {
       "playerId": "4433255",
       "playerName": "Chet Holmgren",
       "fgaPerMinL10": 0.3,
+      "fgaLast5PerGame": 9,
+      "fgaSeasonPerGame": 9,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4433287": {
       "playerId": "4433287",
       "playerName": "Brandon Miller",
       "fgaPerMinL10": 0.5759493670886076,
+      "fgaLast5PerGame": 18.2,
+      "fgaSeasonPerGame": 16.75,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4566434": {
       "playerId": "4566434",
       "playerName": "Franz Wagner",
       "fgaPerMinL10": 0.5888888888888889,
+      "fgaLast5PerGame": 21.2,
+      "fgaSeasonPerGame": 20.583333333333332,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4576060": {
       "playerId": "4576060",
       "playerName": "Ryan Kalkbrenner",
       "fgaPerMinL10": 0.12162162162162163,
+      "fgaLast5PerGame": 1.8,
+      "fgaSeasonPerGame": 2.3333333333333335,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4591725": {
       "playerId": "4591725",
       "playerName": "Ryan Rollins",
-      "fgaPerMinL10": 0.36134453781512604,
+      "fgaPerMinL10": 0.4,
+      "fgaLast5PerGame": 9.6,
+      "fgaSeasonPerGame": 8.583333333333334,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4592829": {
       "playerId": "4592829",
       "playerName": "Quenton Jackson",
-      "fgaPerMinL10": 0.34579439252336447,
+      "fgaPerMinL10": 0.33,
+      "fgaLast5PerGame": 6.6,
+      "fgaSeasonPerGame": 7.384615384615385,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4593034": {
       "playerId": "4593034",
       "playerName": "Alex Morales",
       "fgaPerMinL10": 0.19117647058823528,
+      "fgaLast5PerGame": 2.6,
+      "fgaSeasonPerGame": 2.142857142857143,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4593803": {
       "playerId": "4593803",
       "playerName": "Jalen Williams",
       "fgaPerMinL10": 0.4105263157894737,
+      "fgaLast5PerGame": 13,
+      "fgaSeasonPerGame": 13,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4602025": {
       "playerId": "4602025",
       "playerName": "Sion James",
       "fgaPerMinL10": 0.19205298013245034,
+      "fgaLast5PerGame": 5.8,
+      "fgaSeasonPerGame": 6.4,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4683692": {
       "playerId": "4683692",
       "playerName": "Cason Wallace",
       "fgaPerMinL10": 0.40816326530612246,
+      "fgaLast5PerGame": 6.666666666666667,
+      "fgaSeasonPerGame": 6.666666666666667,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4683750": {
       "playerId": "4683750",
       "playerName": "Jordan Hawkins",
       "fgaPerMinL10": 0.41975308641975306,
+      "fgaLast5PerGame": 6.8,
+      "fgaSeasonPerGame": 5.75,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4683778": {
       "playerId": "4683778",
       "playerName": "Jared McCain",
       "fgaPerMinL10": 0.4551282051282051,
+      "fgaLast5PerGame": 14.2,
+      "fgaSeasonPerGame": 13.23076923076923,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4684740": {
       "playerId": "4684740",
       "playerName": "Amen Thompson",
       "fgaPerMinL10": 0.4,
+      "fgaLast5PerGame": 12,
+      "fgaSeasonPerGame": 10.909090909090908,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4702177": {
       "playerId": "4702177",
       "playerName": "Keon Ellis",
-      "fgaPerMinL10": 0.1917808219178082,
+      "fgaPerMinL10": 0.18571428571428572,
+      "fgaLast5PerGame": 2.6,
+      "fgaSeasonPerGame": 3.1666666666666665,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4702382": {
       "playerId": "4702382",
       "playerName": "Tristan da Silva",
       "fgaPerMinL10": 0.29577464788732394,
+      "fgaLast5PerGame": 8.4,
+      "fgaSeasonPerGame": 11.7,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4702384": {
       "playerId": "4702384",
       "playerName": "Nique Clifford",
       "fgaPerMinL10": 0.3611111111111111,
+      "fgaLast5PerGame": 5.2,
+      "fgaSeasonPerGame": 3.5833333333333335,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
+    },
+    "4702670": {
+      "playerId": "4702670",
+      "playerName": "Grant Nelson",
+      "fgaPerMinL10": 0.07142857142857142,
+      "fgaLast5PerGame": 1,
+      "fgaSeasonPerGame": 1,
+      "source": "espn",
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4711272": {
       "playerId": "4711272",
       "playerName": "Reed Sheppard",
       "fgaPerMinL10": 0.37777777777777777,
+      "fgaLast5PerGame": 6.8,
+      "fgaSeasonPerGame": 7.833333333333333,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4711294": {
       "playerId": "4711294",
       "playerName": "Matas Buzelis",
       "fgaPerMinL10": 0.44155844155844154,
+      "fgaLast5PerGame": 13.6,
+      "fgaSeasonPerGame": 11.416666666666666,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4712849": {
       "playerId": "4712849",
       "playerName": "Anthony Black",
       "fgaPerMinL10": 0.35294117647058826,
+      "fgaLast5PerGame": 12,
+      "fgaSeasonPerGame": 12.636363636363637,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4712896": {
       "playerId": "4712896",
       "playerName": "Noah Clowney",
-      "fgaPerMinL10": 0.3135593220338983,
+      "fgaPerMinL10": 0.30434782608695654,
+      "fgaLast5PerGame": 7,
+      "fgaSeasonPerGame": 6.615384615384615,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4845374": {
       "playerId": "4845374",
       "playerName": "Bub Carrington",
       "fgaPerMinL10": 0.2682926829268293,
+      "fgaLast5PerGame": 2.2,
+      "fgaSeasonPerGame": 3,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4870562": {
       "playerId": "4870562",
       "playerName": "Dominick Barlow",
-      "fgaPerMinL10": 0.46511627906976744,
+      "fgaPerMinL10": 0.4426229508196721,
+      "fgaLast5PerGame": 6.75,
+      "fgaSeasonPerGame": 6.75,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4871144": {
       "playerId": "4871144",
       "playerName": "Alperen Sengun",
       "fgaPerMinL10": 0.45454545454545453,
+      "fgaLast5PerGame": 13,
+      "fgaSeasonPerGame": 14.5,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4871145": {
       "playerId": "4871145",
       "playerName": "Josh Giddey",
       "fgaPerMinL10": 0.38513513513513514,
+      "fgaLast5PerGame": 11.4,
+      "fgaSeasonPerGame": 10.416666666666666,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4900671": {
       "playerId": "4900671",
       "playerName": "Ajay Mitchell",
       "fgaPerMinL10": 0.477124183006536,
+      "fgaLast5PerGame": 14.6,
+      "fgaSeasonPerGame": 14.909090909090908,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "4997526": {
       "playerId": "4997526",
       "playerName": "Ousmane Dieng",
       "fgaPerMinL10": 0.296875,
+      "fgaLast5PerGame": 3.8,
+      "fgaSeasonPerGame": 3.8,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5044385": {
       "playerId": "5044385",
       "playerName": "Leonard Miller",
       "fgaPerMinL10": 0.1956521739130435,
+      "fgaLast5PerGame": 1.8,
+      "fgaSeasonPerGame": 1.8333333333333333,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5060701": {
       "playerId": "5060701",
       "playerName": "Christian Anderson",
       "fgaPerMinL10": 0.3867924528301887,
+      "fgaLast5PerGame": 8.2,
+      "fgaSeasonPerGame": 7.777777777777778,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5082206": {
       "playerId": "5082206",
       "playerName": "Brayden Burries",
-      "fgaPerMinL10": 0.4230769230769231,
+      "fgaPerMinL10": 0.47368421052631576,
+      "fgaLast5PerGame": 12.6,
+      "fgaSeasonPerGame": 10.357142857142858,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.555Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5095151": {
       "playerId": "5095151",
       "playerName": "Caleb Wilson",
       "fgaPerMinL10": 0.5242718446601942,
+      "fgaLast5PerGame": 13.5,
+      "fgaSeasonPerGame": 13.5,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5101761": {
       "playerId": "5101761",
       "playerName": "Mikel Brown Jr.",
-      "fgaPerMinL10": 0.4297520661157025,
+      "fgaPerMinL10": 0.4296875,
+      "fgaLast5PerGame": 11,
+      "fgaSeasonPerGame": 10.4,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5104155": {
       "playerId": "5104155",
       "playerName": "Bilal Coulibaly",
       "fgaPerMinL10": 0.23893805309734514,
+      "fgaLast5PerGame": 5.4,
+      "fgaSeasonPerGame": 5.583333333333333,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5105623": {
       "playerId": "5105623",
       "playerName": "Kel'el Ware",
-      "fgaPerMinL10": 0.33636363636363636,
+      "fgaPerMinL10": 0.3274336283185841,
+      "fgaLast5PerGame": 7.4,
+      "fgaSeasonPerGame": 6.571428571428571,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
+    },
+    "5105637": {
+      "playerId": "5105637",
+      "playerName": "Adem Bona",
+      "fgaPerMinL10": 0.26229508196721313,
+      "fgaLast5PerGame": 3.2,
+      "fgaSeasonPerGame": 3.2,
+      "source": "espn",
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5105800": {
       "playerId": "5105800",
       "playerName": "Josh Dix",
       "fgaPerMinL10": 0.2376237623762376,
+      "fgaLast5PerGame": 4.8,
+      "fgaSeasonPerGame": 4,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5105854": {
       "playerId": "5105854",
       "playerName": "Braden Smith",
-      "fgaPerMinL10": 0.24691358024691357,
+      "fgaPerMinL10": 0.2826086956521739,
+      "fgaLast5PerGame": 5.2,
+      "fgaSeasonPerGame": 5.2,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5106060": {
       "playerId": "5106060",
       "playerName": "Jarace Walker",
-      "fgaPerMinL10": 0.3157894736842105,
+      "fgaPerMinL10": 0.3103448275862069,
+      "fgaLast5PerGame": 3.6,
+      "fgaSeasonPerGame": 5.083333333333333,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5107173": {
       "playerId": "5107173",
       "playerName": "Danny Wolf",
-      "fgaPerMinL10": 0.3076923076923077,
+      "fgaPerMinL10": 0.28695652173913044,
+      "fgaLast5PerGame": 6.6,
+      "fgaSeasonPerGame": 7.363636363636363,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5124612": {
       "playerId": "5124612",
       "playerName": "VJ Edgecombe",
-      "fgaPerMinL10": 0.32972972972972975,
+      "fgaPerMinL10": 0.30978260869565216,
+      "fgaLast5PerGame": 11.4,
+      "fgaSeasonPerGame": 11.307692307692308,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5142718": {
       "playerId": "5142718",
       "playerName": "AJ Dybantsa",
       "fgaPerMinL10": 0.43646408839779005,
+      "fgaLast5PerGame": 15.8,
+      "fgaSeasonPerGame": 15.076923076923077,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5160992": {
       "playerId": "5160992",
       "playerName": "Alex Sarr",
       "fgaPerMinL10": 0.23577235772357724,
+      "fgaLast5PerGame": 5.8,
+      "fgaSeasonPerGame": 8.333333333333334,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5164559": {
       "playerId": "5164559",
       "playerName": "Nate Ament",
-      "fgaPerMinL10": 0.25892857142857145,
+      "fgaPerMinL10": 0.24074074074074073,
+      "fgaLast5PerGame": 5.2,
+      "fgaSeasonPerGame": 5.642857142857143,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5174563": {
       "playerId": "5174563",
       "playerName": "Kyshawn George",
       "fgaPerMinL10": 0.42780748663101603,
+      "fgaLast5PerGame": 16,
+      "fgaSeasonPerGame": 15.076923076923077,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5174655": {
       "playerId": "5174655",
       "playerName": "Chaney Johnson",
-      "fgaPerMinL10": 0.1836734693877551,
+      "fgaPerMinL10": 0.2391304347826087,
+      "fgaLast5PerGame": 2.2,
+      "fgaSeasonPerGame": 2.6,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5174983": {
       "playerId": "5174983",
       "playerName": "Aday Mara",
       "fgaPerMinL10": 0.34074074074074073,
+      "fgaLast5PerGame": 9.2,
+      "fgaSeasonPerGame": 8.4,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5175643": {
       "playerId": "5175643",
       "playerName": "Egor Demin",
-      "fgaPerMinL10": 0.484375,
+      "fgaPerMinL10": 0.5042016806722689,
+      "fgaLast5PerGame": 12,
+      "fgaSeasonPerGame": 10.75,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5211176": {
       "playerId": "5211176",
       "playerName": "Tidjane Salaun",
       "fgaPerMinL10": 0.22916666666666666,
+      "fgaLast5PerGame": 2.2,
+      "fgaSeasonPerGame": 4,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5214640": {
       "playerId": "5214640",
       "playerName": "Kasparas Jakucionis",
       "fgaPerMinL10": 0.4155844155844156,
+      "fgaLast5PerGame": 6.4,
+      "fgaSeasonPerGame": 6.166666666666667,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5238230": {
       "playerId": "5238230",
       "playerName": "Tre Johnson",
       "fgaPerMinL10": 0.35714285714285715,
+      "fgaLast5PerGame": 4,
+      "fgaSeasonPerGame": 8,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5239561": {
       "playerId": "5239561",
       "playerName": "Jase Richardson",
       "fgaPerMinL10": 0.3888888888888889,
+      "fgaLast5PerGame": 5.6,
+      "fgaSeasonPerGame": 6.625,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5239590": {
       "playerId": "5239590",
       "playerName": "Liam McNeeley",
       "fgaPerMinL10": 0.3235294117647059,
+      "fgaLast5PerGame": 2.2,
+      "fgaSeasonPerGame": 4.333333333333333,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5241364": {
       "playerId": "5241364",
       "playerName": "Bennett Stirtz",
       "fgaPerMinL10": 0.3247863247863248,
+      "fgaLast5PerGame": 7.6,
+      "fgaSeasonPerGame": 7.076923076923077,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5279130": {
       "playerId": "5279130",
       "playerName": "Nolan Traore",
       "fgaPerMinL10": 0.49107142857142855,
+      "fgaLast5PerGame": 11,
+      "fgaSeasonPerGame": 10.88888888888889,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     },
     "5281370": {
       "playerId": "5281370",
       "playerName": "Hannes Steinbach",
       "fgaPerMinL10": 0.21311475409836064,
+      "fgaLast5PerGame": 2.6,
+      "fgaSeasonPerGame": 2.6,
       "source": "espn",
-      "cachedAt": "2026-11-28T01:54:17.556Z"
+      "cachedAt": "2026-11-28T10:09:19.842Z"
     }
   }
 }

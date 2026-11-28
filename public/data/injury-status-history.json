@@ -1437,6 +1437,16 @@
       "source": "NBA Official"
     },
     {
+      "playerName": "Jaylen Brown",
+      "teamId": "20",
+      "gameId": "401910050",
+      "slateDate": "2026-11-29",
+      "fromStatus": "Questionable",
+      "toStatus": "Out",
+      "observedAt": "2026-11-27T23:15:00.000Z",
+      "source": "ESPN"
+    },
+    {
       "playerId": "6442",
       "playerName": "Kyrie Irving",
       "teamId": "6",
@@ -1600,16 +1610,6 @@
       "toStatus": "Out",
       "observedAt": "2026-11-28T01:45:00.000Z",
       "source": "NBA Official"
-    },
-    {
-      "playerName": "Jaylen Brown",
-      "teamId": "20",
-      "gameId": "401910050",
-      "slateDate": "2026-11-29",
-      "fromStatus": "Questionable",
-      "toStatus": "Out",
-      "observedAt": "2026-11-27T23:15:00.000Z",
-      "source": "ESPN"
     },
     {
       "playerId": "t.j. mcconnell",

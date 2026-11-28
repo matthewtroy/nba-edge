@@ -11,7 +11,7 @@
     "awayB2B": false,
     "status": "scheduled",
     "spread": 3.5,
-    "total": 218.5
+    "total": 220.5
   },
   {
     "id": "401910047",
@@ -39,7 +39,7 @@
     "awayB2B": true,
     "status": "scheduled",
     "spread": -2.5,
-    "total": 236.5
+    "total": 234.5
   },
   {
     "id": "401910049",
@@ -52,7 +52,7 @@
     "homeB2B": true,
     "awayB2B": false,
     "status": "scheduled",
-    "spread": 12.5,
+    "spread": 11.5,
     "total": 228.5
   },
   {
@@ -65,6 +65,8 @@
     "awayTeamId": "20",
     "homeB2B": false,
     "awayB2B": true,
-    "status": "scheduled"
+    "status": "scheduled",
+    "spread": -12.5,
+    "total": 220.5
   }
 ]

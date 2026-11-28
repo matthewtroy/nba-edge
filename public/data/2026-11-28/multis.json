@@ -4,6 +4,219 @@
       "type": "mainPlay",
       "label": "Main Play",
       "legs": [
+        "4017837-reb-10",
+        "4601025-pts-10",
+        "4278078-pts-10"
+      ],
+      "combinedProbability": 0.36894686400000004,
+      "combinedFairPrice": 2.71,
+      "combinedTakeAt": 2.93,
+      "bestBookie": "Ladbrokes",
+      "bestBookieTotal": 6.05,
+      "bookieTotals": {
+        "Sportsbet": 5.33,
+        "TAB": 4.41,
+        "Ladbrokes": 6.05,
+        "Neds": 6.05,
+        "PointsBet": 5.54
+      },
+      "summary": "3 starter main lines"
+    },
+    {
+      "type": "doubleUp",
+      "label": "Best Double Up",
+      "legs": [
+        "3936299-pts-20",
+        "4278078-pts-10"
+      ],
+      "combinedProbability": 0.583671,
+      "combinedFairPrice": 1.71,
+      "combinedTakeAt": 1.85,
+      "bestBookie": "TAB",
+      "bestBookieTotal": 2.14,
+      "bookieTotals": {
+        "Sportsbet": 1.83,
+        "TAB": 2.14,
+        "Ladbrokes": 2.11,
+        "Neds": 2.11,
+        "PointsBet": 1.98
+      },
+      "summary": "2 legs · aim ~$2 @ one bookie"
+    },
+    {
+      "type": "crossGameSgm",
+      "label": "Cross-Game SGM Multi",
+      "legs": [
+        "4278053-3pm-1",
+        "3032977-pts-20",
+        "3134907-3pm-1",
+        "3133628-reb-5",
+        "3133603-pts-10",
+        "4431678-ast-5",
+        "3064514-pts-15",
+        "4433134-pts-20",
+        "4278039-pts-15",
+        "4431680-reb-5",
+        "4431671-pts-15",
+        "4065733-pts-15",
+        "4066383-reb-5",
+        "4278078-pts-10",
+        "3945274-pts-25",
+        "4845367-ast-5",
+        "3112335-ast-7",
+        "4431767-pts-10",
+        "4395628-pts-15",
+        "5061589-reb-5",
+        "4683021-3pm-1",
+        "4709138-pts-10"
+      ],
+      "combinedProbability": 0.032426363371472165,
+      "combinedFairPrice": 30.84,
+      "combinedTakeAt": 33.31,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 107.26,
+      "bookieTotals": {
+        "Ladbrokes": 107.26,
+        "Neds": 107.26
+      },
+      "crossGameGroups": [
+        {
+          "gameId": "401909326",
+          "status": "included",
+          "legs": [
+            "4278053-3pm-1",
+            "3032977-pts-20"
+          ]
+        },
+        {
+          "gameId": "401909327",
+          "status": "included",
+          "legs": [
+            "3134907-3pm-1",
+            "3133628-reb-5"
+          ]
+        },
+        {
+          "gameId": "401909328",
+          "status": "included",
+          "legs": [
+            "3133603-pts-10",
+            "4431678-ast-5"
+          ]
+        },
+        {
+          "gameId": "401909329",
+          "status": "included",
+          "legs": [
+            "3064514-pts-15",
+            "4433134-pts-20"
+          ]
+        },
+        {
+          "gameId": "401909330",
+          "status": "included",
+          "legs": [
+            "4278039-pts-15",
+            "4431680-reb-5"
+          ]
+        },
+        {
+          "gameId": "401909331",
+          "status": "included",
+          "legs": [
+            "4431671-pts-15",
+            "4065733-pts-15"
+          ]
+        },
+        {
+          "gameId": "401909332",
+          "status": "included",
+          "legs": [
+            "4066383-reb-5",
+            "4278078-pts-10"
+          ]
+        },
+        {
+          "gameId": "401909333",
+          "status": "included",
+          "legs": [
+            "3945274-pts-25",
+            "4845367-ast-5"
+          ]
+        },
+        {
+          "gameId": "401909334",
+          "status": "included",
+          "legs": [
+            "3112335-ast-7",
+            "4431767-pts-10"
+          ]
+        },
+        {
+          "gameId": "401909335",
+          "status": "included",
+          "legs": [
+            "4395628-pts-15",
+            "5061589-reb-5"
+          ]
+        },
+        {
+          "gameId": "401909336",
+          "status": "included",
+          "legs": [
+            "4683021-3pm-1",
+            "4709138-pts-10"
+          ]
+        }
+      ],
+      "summary": "11 games @ Neds"
+    },
+    {
+      "type": "boostSgm",
+      "label": "Best SGM",
+      "legs": [
+        "5104157-3pm-2",
+        "4845367-ast-7"
+      ],
+      "combinedProbability": 0.5117839999999999,
+      "combinedFairPrice": 1.95,
+      "combinedTakeAt": 2.11,
+      "bestBookie": "Neds",
+      "bestBookieTotal": 2.68,
+      "bookieTotals": {
+        "Sportsbet": 2.56,
+        "TABtouch": 2.59,
+        "Ladbrokes": 2.68,
+        "Neds": 2.68,
+        "PointsBet": 2.58,
+        "Unibet": 2.52,
+        "Betr": 2.49,
+        "Picklebet": 2.47,
+        "Bet Right": 2.47
+      },
+      "summary": "Best 2–5 leg same-game multi · min $2 · edge curve"
+    },
+    {
+      "type": "q1Multi",
+      "label": "Q1 Multi",
+      "legs": [
+        "5104157-q1reb-3",
+        "4065648-q1reb-3",
+        "4066648-q1reb-2",
+        "4432194-q1reb-2",
+        "4066383-q1reb-2",
+        "4683021-q1reb-2"
+      ],
+      "combinedProbability": 0.09815983463985717,
+      "combinedFairPrice": 10.19,
+      "combinedTakeAt": 11.01,
+      "bookieTotals": {},
+      "summary": "Q1 Multi: 0.3 model + 0.4 L10 + 0.3 L5 Q1; Take fair×1.08"
+    },
+    {
+      "type": "mainPlay",
+      "label": "Main Play",
+      "legs": [
         "4683021-3pm-2",
         "4278053-pts-15",
         "4433083-ast-5"
@@ -383,12 +596,16 @@
     {
       "type": "booster",
       "label": "Booster",
-      "reason": "Booster: no line/edge (0 legs tried at Sportsbet)"
+      "reason": "Booster: no line/edge (0 legs tried at Ladbrokes)"
     },
     {
       "type": "longshot",
       "label": "Longshot",
-      "reason": "No angle longshot @ one bookie ($30–150, 2–4 legs, edge or narrative)"
+      "reason": "Gate: Longshot: take-at 25.19 not 30–150 (legs: Jaden McDaniels Over 29.5 pts, Victor Wembanyama Over 39.5 pts)",
+      "players": [
+        "Jaden McDaniels",
+        "Victor Wembanyama"
+      ]
     }
   ]
 }

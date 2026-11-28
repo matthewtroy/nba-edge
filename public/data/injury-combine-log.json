@@ -3,43 +3,57 @@
   "entries": [
     {
       "slateDate": "2026-11-28",
+      "playerId": "4277869",
+      "playerName": "Jose Alvarado",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "4431823",
+          "playerName": "Miles McBride",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 1.7
+        },
+        {
+          "playerId": "3934719",
+          "playerName": "OG Anunoby",
+          "stat": "pts",
+          "n": 4,
+          "individualEffect": 1.7
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 3.4,
+      "appliedBoost": 1.7,
+      "loggedAt": "2026-11-28T10:09:34.615Z",
+      "actualStat": 21
+    },
+    {
+      "slateDate": "2026-11-28",
       "playerId": "3147657",
       "playerName": "Mikal Bridges",
       "stat": "pts",
       "outSplits": [
         {
-          "playerId": "3934719",
-          "playerName": "OG Anunoby",
+          "playerId": "4431823",
+          "playerName": "Miles McBride",
           "stat": "pts",
           "n": 3,
           "individualEffect": 0.8
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 0.8,
-      "appliedBoost": 0.8,
-      "loggedAt": "2026-11-28T01:54:05.540Z",
-      "actualStat": 8
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "4433225",
-      "playerName": "Tyler Kolek",
-      "stat": "pts",
-      "outSplits": [
+        },
         {
           "playerId": "3934719",
           "playerName": "OG Anunoby",
           "stat": "pts",
-          "n": 3,
-          "individualEffect": 0.9
+          "n": 4,
+          "individualEffect": 1.1
         }
       ],
       "method": "sum",
-      "combinedBoost": 0.9,
-      "appliedBoost": 0.9,
-      "loggedAt": "2026-11-28T01:54:05.541Z",
-      "actualStat": 8
+      "combinedBoost": 1.9,
+      "appliedBoost": 1.9,
+      "loggedAt": "2026-11-28T10:09:34.615Z",
+      "actualStat": 19
     },
     {
       "slateDate": "2026-11-28",
@@ -48,18 +62,18 @@
       "stat": "pts",
       "outSplits": [
         {
-          "playerId": "3934719",
-          "playerName": "OG Anunoby",
+          "playerId": "4431823",
+          "playerName": "Miles McBride",
           "stat": "pts",
           "n": 3,
-          "individualEffect": 0.5
+          "individualEffect": 1.7
         }
       ],
       "method": "sum",
-      "combinedBoost": 0.5,
-      "appliedBoost": 0.5,
-      "loggedAt": "2026-11-28T01:54:05.541Z",
-      "actualStat": 10
+      "combinedBoost": 1.7,
+      "appliedBoost": 1.7,
+      "loggedAt": "2026-11-28T10:09:34.615Z",
+      "actualStat": 15
     },
     {
       "slateDate": "2026-11-28",
@@ -68,18 +82,25 @@
       "stat": "ast",
       "outSplits": [
         {
+          "playerId": "4431823",
+          "playerName": "Miles McBride",
+          "stat": "ast",
+          "n": 3,
+          "individualEffect": 1.6
+        },
+        {
           "playerId": "3934719",
           "playerName": "OG Anunoby",
           "stat": "ast",
-          "n": 3,
-          "individualEffect": 1.5
+          "n": 4,
+          "individualEffect": 1.6
         }
       ],
       "method": "sum",
-      "combinedBoost": 1.5,
-      "appliedBoost": 1.5,
-      "loggedAt": "2026-11-28T01:54:05.541Z",
-      "actualStat": 10
+      "combinedBoost": 3.2,
+      "appliedBoost": 1.6,
+      "loggedAt": "2026-11-28T10:09:34.615Z",
+      "actualStat": 11
     },
     {
       "slateDate": "2026-11-28",
@@ -91,36 +112,16 @@
           "playerId": "3157465",
           "playerName": "Duncan Robinson",
           "stat": "pts",
-          "n": 2,
+          "n": 3,
           "individualEffect": 1.2
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 1.2,
-      "appliedBoost": 1.2,
-      "loggedAt": "2026-11-28T01:54:06.387Z",
-      "actualStat": 2
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "4278562",
-      "playerName": "Paul Reed",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "3157465",
-          "playerName": "Duncan Robinson",
-          "stat": "pts",
-          "n": 5,
-          "individualEffect": 2.1
         }
       ],
       "method": "joint",
       "jointN": 2,
-      "combinedBoost": 1.8,
-      "appliedBoost": 1.8,
-      "loggedAt": "2026-11-28T01:54:06.387Z",
-      "actualStat": 16
+      "combinedBoost": 1.3,
+      "appliedBoost": 1.3,
+      "loggedAt": "2026-11-28T10:09:35.150Z",
+      "actualStat": 13
     },
     {
       "slateDate": "2026-11-28",
@@ -132,121 +133,37 @@
           "playerId": "3157465",
           "playerName": "Duncan Robinson",
           "stat": "pts",
-          "n": 5,
-          "individualEffect": 0.9
-        }
-      ],
-      "method": "joint",
-      "jointN": 2,
-      "combinedBoost": 0.7,
-      "appliedBoost": 0.7,
-      "loggedAt": "2026-11-28T01:54:06.387Z",
-      "actualStat": 18
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "4396909",
-      "playerName": "Aaron Nesmith",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "2530530",
-          "playerName": "T.J. McConnell",
-          "stat": "pts",
-          "n": 3,
-          "individualEffect": 1.1
-        }
-      ],
-      "method": "joint",
-      "jointN": 3,
-      "combinedBoost": 1.1,
-      "appliedBoost": 1.1,
-      "loggedAt": "2026-11-28T01:54:07.315Z",
-      "actualStat": 9
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "3133603",
-      "playerName": "Kelly Oubre Jr.",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "2530530",
-          "playerName": "T.J. McConnell",
-          "stat": "pts",
-          "n": 3,
-          "individualEffect": 0.7
-        }
-      ],
-      "method": "joint",
-      "jointN": 3,
-      "combinedBoost": 0.7,
-      "appliedBoost": 0.7,
-      "loggedAt": "2026-11-28T01:54:07.315Z",
-      "actualStat": 15
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "4398207",
-      "playerName": "Jalen Slawson",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "2530530",
-          "playerName": "T.J. McConnell",
-          "stat": "pts",
-          "n": 5,
-          "individualEffect": 0.6
-        }
-      ],
-      "method": "joint",
-      "jointN": 5,
-      "combinedBoost": 0.6,
-      "appliedBoost": 0.6,
-      "loggedAt": "2026-11-28T01:54:07.315Z",
-      "actualStat": 7
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "4278355",
-      "playerName": "Obi Toppin",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "2530530",
-          "playerName": "T.J. McConnell",
-          "stat": "pts",
-          "n": 3,
-          "individualEffect": 0.6
-        }
-      ],
-      "method": "joint",
-      "jointN": 3,
-      "combinedBoost": 0.6,
-      "appliedBoost": 0.6,
-      "loggedAt": "2026-11-28T01:54:07.315Z",
-      "actualStat": 9
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "4017837",
-      "playerName": "Ivica Zubac",
-      "stat": "reb",
-      "outSplits": [
-        {
-          "playerId": "2530530",
-          "playerName": "T.J. McConnell",
-          "stat": "reb",
-          "n": 3,
+          "n": 6,
           "individualEffect": 1
         }
       ],
       "method": "joint",
       "jointN": 3,
-      "combinedBoost": 1,
-      "appliedBoost": 1,
-      "loggedAt": "2026-11-28T01:54:07.315Z",
-      "actualStat": 14
+      "combinedBoost": 0.8,
+      "appliedBoost": 0.8,
+      "loggedAt": "2026-11-28T10:09:35.150Z",
+      "actualStat": 12
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4278562",
+      "playerName": "Paul Reed",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "3157465",
+          "playerName": "Duncan Robinson",
+          "stat": "pts",
+          "n": 6,
+          "individualEffect": 2.4
+        }
+      ],
+      "method": "joint",
+      "jointN": 3,
+      "combinedBoost": 2.2,
+      "appliedBoost": 2.2,
+      "loggedAt": "2026-11-28T10:09:35.150Z",
+      "actualStat": 9
     },
     {
       "slateDate": "2026-11-28",
@@ -258,37 +175,16 @@
           "playerId": "2530530",
           "playerName": "T.J. McConnell",
           "stat": "pts",
-          "n": 5,
+          "n": 6,
           "individualEffect": 1.1
         }
       ],
       "method": "joint",
-      "jointN": 5,
+      "jointN": 6,
       "combinedBoost": 1.1,
       "appliedBoost": 1.1,
-      "loggedAt": "2026-11-28T01:54:07.315Z",
-      "actualStat": 2
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "5105854",
-      "playerName": "Braden Smith",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "2530530",
-          "playerName": "T.J. McConnell",
-          "stat": "pts",
-          "n": 5,
-          "individualEffect": 1.2
-        }
-      ],
-      "method": "joint",
-      "jointN": 5,
-      "combinedBoost": 1.2,
-      "appliedBoost": 1.2,
-      "loggedAt": "2026-11-28T01:54:07.315Z",
-      "actualStat": 6
+      "loggedAt": "2026-11-28T10:09:35.694Z",
+      "actualStat": 9
     },
     {
       "slateDate": "2026-11-28",
@@ -300,16 +196,319 @@
           "playerId": "2530530",
           "playerName": "T.J. McConnell",
           "stat": "pts",
+          "n": 5,
+          "individualEffect": 2.3
+        }
+      ],
+      "method": "joint",
+      "jointN": 5,
+      "combinedBoost": 2.3,
+      "appliedBoost": 2.3,
+      "loggedAt": "2026-11-28T10:09:35.694Z",
+      "actualStat": 15
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4396909",
+      "playerName": "Aaron Nesmith",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "2530530",
+          "playerName": "T.J. McConnell",
+          "stat": "pts",
           "n": 4,
-          "individualEffect": 2.1
+          "individualEffect": 0.9
         }
       ],
       "method": "joint",
       "jointN": 4,
+      "combinedBoost": 0.9,
+      "appliedBoost": 0.9,
+      "loggedAt": "2026-11-28T10:09:35.694Z",
+      "actualStat": 6
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "5105854",
+      "playerName": "Braden Smith",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "2530530",
+          "playerName": "T.J. McConnell",
+          "stat": "pts",
+          "n": 6,
+          "individualEffect": 0.8
+        }
+      ],
+      "method": "joint",
+      "jointN": 6,
+      "combinedBoost": 0.8,
+      "appliedBoost": 0.8,
+      "loggedAt": "2026-11-28T10:09:35.694Z",
+      "actualStat": 6
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4017837",
+      "playerName": "Ivica Zubac",
+      "stat": "reb",
+      "outSplits": [
+        {
+          "playerId": "2530530",
+          "playerName": "T.J. McConnell",
+          "stat": "reb",
+          "n": 4,
+          "individualEffect": 1.9
+        }
+      ],
+      "method": "joint",
+      "jointN": 4,
+      "combinedBoost": 1.9,
+      "appliedBoost": 1.9,
+      "loggedAt": "2026-11-28T10:09:35.694Z",
+      "actualStat": 15
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4433134",
+      "playerName": "Scottie Barnes",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "4395625",
+          "playerName": "RJ Barrett",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 2.4
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 2.4,
+      "appliedBoost": 2.4,
+      "loggedAt": "2026-11-28T10:09:36.178Z",
+      "actualStat": 31
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "5149115",
+      "playerName": "Allen Graves",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "4395625",
+          "playerName": "RJ Barrett",
+          "stat": "pts",
+          "n": 4,
+          "individualEffect": 1
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1,
+      "appliedBoost": 1,
+      "loggedAt": "2026-11-28T10:09:36.178Z",
+      "actualStat": 7
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "5093267",
+      "playerName": "Collin Murray-Boyles",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "4395625",
+          "playerName": "RJ Barrett",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 1
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1,
+      "appliedBoost": 1,
+      "loggedAt": "2026-11-28T10:09:36.178Z",
+      "actualStat": 6
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "5093267",
+      "playerName": "Collin Murray-Boyles",
+      "stat": "reb",
+      "outSplits": [
+        {
+          "playerId": "4395625",
+          "playerName": "RJ Barrett",
+          "stat": "reb",
+          "n": 3,
+          "individualEffect": 1.3
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1.3,
+      "appliedBoost": 1.3,
+      "loggedAt": "2026-11-28T10:09:36.178Z",
+      "actualStat": 10
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4395724",
+      "playerName": "Immanuel Quickley",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "4395625",
+          "playerName": "RJ Barrett",
+          "stat": "pts",
+          "n": 4,
+          "individualEffect": 0.9
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 0.9,
+      "appliedBoost": 0.9,
+      "loggedAt": "2026-11-28T10:09:36.178Z",
+      "actualStat": 13
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4395724",
+      "playerName": "Immanuel Quickley",
+      "stat": "ast",
+      "outSplits": [
+        {
+          "playerId": "4395625",
+          "playerName": "RJ Barrett",
+          "stat": "ast",
+          "n": 4,
+          "individualEffect": 1.3
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1.3,
+      "appliedBoost": 1.3,
+      "loggedAt": "2026-11-28T10:09:36.178Z",
+      "actualStat": 6
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4702177",
+      "playerName": "Keon Ellis",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 4,
+          "individualEffect": 0.9
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 0.9,
+      "appliedBoost": 0.9,
+      "loggedAt": "2026-11-28T10:09:36.372Z",
+      "actualStat": 6
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4712896",
+      "playerName": "Noah Clowney",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 4,
+          "individualEffect": 2.1
+        }
+      ],
+      "method": "sum",
       "combinedBoost": 2.1,
       "appliedBoost": 2.1,
-      "loggedAt": "2026-11-28T01:54:07.315Z",
-      "actualStat": 16
+      "loggedAt": "2026-11-28T10:09:36.372Z",
+      "actualStat": 13
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "5175643",
+      "playerName": "Egor Demin",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 4,
+          "individualEffect": 1.6
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1.6,
+      "appliedBoost": 1.6,
+      "loggedAt": "2026-11-28T10:09:36.372Z",
+      "actualStat": 10
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "3064514",
+      "playerName": "Julius Randle",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 4,
+          "individualEffect": 0.9
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 0.9,
+      "appliedBoost": 0.9,
+      "loggedAt": "2026-11-28T10:09:36.372Z",
+      "actualStat": 29
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "5174655",
+      "playerName": "Chaney Johnson",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 2,
+          "individualEffect": 0.7
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 0.7,
+      "appliedBoost": 0.7,
+      "loggedAt": "2026-11-28T10:09:36.372Z",
+      "actualStat": 7
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4433247",
+      "playerName": "Jonathan Kuminga",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "4432247",
+          "playerName": "Jaylen Clark",
+          "stat": "pts",
+          "n": 6,
+          "individualEffect": 1.6
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1.6,
+      "appliedBoost": 1.6,
+      "loggedAt": "2026-11-28T10:09:37.113Z",
+      "actualStat": 15
     },
     {
       "slateDate": "2026-11-28",
@@ -321,14 +520,14 @@
           "playerId": "4432247",
           "playerName": "Jaylen Clark",
           "stat": "pts",
-          "n": 6,
-          "individualEffect": 0.8
+          "n": 7,
+          "individualEffect": 0.5
         }
       ],
       "method": "sum",
-      "combinedBoost": 0.8,
-      "appliedBoost": 0.8,
-      "loggedAt": "2026-11-28T01:54:09.942Z",
+      "combinedBoost": 0.5,
+      "appliedBoost": 0.5,
+      "loggedAt": "2026-11-28T10:09:37.113Z",
       "actualStat": 9
     },
     {
@@ -341,14 +540,14 @@
           "playerId": "4432247",
           "playerName": "Jaylen Clark",
           "stat": "pts",
-          "n": 6,
-          "individualEffect": 3.4
+          "n": 7,
+          "individualEffect": 3
         }
       ],
       "method": "sum",
-      "combinedBoost": 3.4,
-      "appliedBoost": 3.4,
-      "loggedAt": "2026-11-28T01:54:09.942Z",
+      "combinedBoost": 3,
+      "appliedBoost": 3,
+      "loggedAt": "2026-11-28T10:09:37.113Z",
       "actualStat": 34
     },
     {
@@ -361,35 +560,42 @@
           "playerId": "4432247",
           "playerName": "Jaylen Clark",
           "stat": "pts",
-          "n": 6,
-          "individualEffect": 3
+          "n": 7,
+          "individualEffect": 2.8
         }
       ],
       "method": "sum",
-      "combinedBoost": 3,
-      "appliedBoost": 3,
-      "loggedAt": "2026-11-28T01:54:09.942Z",
+      "combinedBoost": 2.8,
+      "appliedBoost": 2.8,
+      "loggedAt": "2026-11-28T10:09:37.113Z",
       "actualStat": 17
     },
     {
       "slateDate": "2026-11-28",
-      "playerId": "4433247",
-      "playerName": "Jonathan Kuminga",
+      "playerId": "4600663",
+      "playerName": "Zach Edey",
       "stat": "pts",
       "outSplits": [
         {
-          "playerId": "4432247",
-          "playerName": "Jaylen Clark",
+          "playerId": "4432810",
+          "playerName": "Isaiah Stewart",
           "stat": "pts",
           "n": 5,
-          "individualEffect": 1.3
+          "individualEffect": 2.4
+        },
+        {
+          "playerId": "5105550",
+          "playerName": "GG Jackson",
+          "stat": "pts",
+          "n": 7,
+          "individualEffect": 2.4
         }
       ],
       "method": "sum",
-      "combinedBoost": 1.3,
-      "appliedBoost": 1.3,
-      "loggedAt": "2026-11-28T01:54:09.942Z",
-      "actualStat": 15
+      "combinedBoost": 4.8,
+      "appliedBoost": 2.4,
+      "loggedAt": "2026-11-28T10:09:37.308Z",
+      "actualStat": 8
     },
     {
       "slateDate": "2026-11-28",
@@ -401,49 +607,15 @@
           "playerId": "4432810",
           "playerName": "Isaiah Stewart",
           "stat": "pts",
-          "n": 4,
-          "individualEffect": 2.6
+          "n": 5,
+          "individualEffect": 2.1
         }
       ],
       "method": "sum",
-      "combinedBoost": 2.6,
-      "appliedBoost": 2.6,
-      "loggedAt": "2026-11-28T01:54:10.296Z",
+      "combinedBoost": 2.1,
+      "appliedBoost": 2.1,
+      "loggedAt": "2026-11-28T10:09:37.308Z",
       "actualStat": 3
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "4594326",
-      "playerName": "Kris Murray",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "5041935",
-          "playerName": "Cameron Boozer",
-          "stat": "pts",
-          "n": 3,
-          "individualEffect": 0.7
-        },
-        {
-          "playerId": "2991070",
-          "playerName": "Jerami Grant",
-          "stat": "pts",
-          "n": 4,
-          "individualEffect": 0.6
-        },
-        {
-          "playerId": "5105550",
-          "playerName": "GG Jackson",
-          "stat": "pts",
-          "n": 7,
-          "individualEffect": 0.9
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 2.2,
-      "appliedBoost": 0.9,
-      "loggedAt": "2026-11-28T01:54:10.296Z",
-      "actualStat": 9
     },
     {
       "slateDate": "2026-11-28",
@@ -455,6 +627,74 @@
           "playerId": "5041935",
           "playerName": "Cameron Boozer",
           "stat": "pts",
+          "n": 4,
+          "individualEffect": 1.5
+        },
+        {
+          "playerId": "2991070",
+          "playerName": "Jerami Grant",
+          "stat": "pts",
+          "n": 5,
+          "individualEffect": 2.2
+        },
+        {
+          "playerId": "5105550",
+          "playerName": "GG Jackson",
+          "stat": "pts",
+          "n": 8,
+          "individualEffect": 2.7
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 6.4,
+      "appliedBoost": 4.3,
+      "loggedAt": "2026-11-28T10:09:37.308Z",
+      "actualStat": 16
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4594326",
+      "playerName": "Kris Murray",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5041935",
+          "playerName": "Cameron Boozer",
+          "stat": "pts",
+          "n": 4,
+          "individualEffect": 1.2
+        },
+        {
+          "playerId": "2991070",
+          "playerName": "Jerami Grant",
+          "stat": "pts",
+          "n": 5,
+          "individualEffect": 1
+        },
+        {
+          "playerId": "5105550",
+          "playerName": "GG Jackson",
+          "stat": "pts",
+          "n": 8,
+          "individualEffect": 1.6
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 3.8,
+      "appliedBoost": 1.6,
+      "loggedAt": "2026-11-28T10:09:37.308Z",
+      "actualStat": 9
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "4781746",
+      "playerName": "Javon Small",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5041935",
+          "playerName": "Cameron Boozer",
+          "stat": "pts",
           "n": 3,
           "individualEffect": 0.9
         },
@@ -463,21 +703,14 @@
           "playerName": "Jerami Grant",
           "stat": "pts",
           "n": 4,
-          "individualEffect": 1.6
-        },
-        {
-          "playerId": "5105550",
-          "playerName": "GG Jackson",
-          "stat": "pts",
-          "n": 7,
-          "individualEffect": 2.3
+          "individualEffect": 1.7
         }
       ],
       "method": "sum",
-      "combinedBoost": 4.8,
-      "appliedBoost": 4.3,
-      "loggedAt": "2026-11-28T01:54:10.296Z",
-      "actualStat": 16
+      "combinedBoost": 2.6,
+      "appliedBoost": 2.3,
+      "loggedAt": "2026-11-28T10:09:37.308Z",
+      "actualStat": 3
     },
     {
       "slateDate": "2026-11-28",
@@ -489,28 +722,28 @@
           "playerId": "5041935",
           "playerName": "Cameron Boozer",
           "stat": "pts",
-          "n": 3,
+          "n": 4,
           "individualEffect": 1.3
         },
         {
           "playerId": "2991070",
           "playerName": "Jerami Grant",
           "stat": "pts",
-          "n": 4,
+          "n": 5,
           "individualEffect": 1
         },
         {
           "playerId": "5105550",
           "playerName": "GG Jackson",
           "stat": "pts",
-          "n": 7,
+          "n": 8,
           "individualEffect": 0.6
         }
       ],
       "method": "sum",
       "combinedBoost": 2.9,
       "appliedBoost": 2.9,
-      "loggedAt": "2026-11-28T01:54:10.296Z",
+      "loggedAt": "2026-11-28T10:09:37.308Z",
       "actualStat": 24
     },
     {
@@ -523,62 +756,15 @@
           "playerId": "5041935",
           "playerName": "Cameron Boozer",
           "stat": "pts",
-          "n": 3,
-          "individualEffect": 0.7
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 0.7,
-      "appliedBoost": 0.7,
-      "loggedAt": "2026-11-28T01:54:10.296Z",
-      "actualStat": 8
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "4600663",
-      "playerName": "Zach Edey",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "4432810",
-          "playerName": "Isaiah Stewart",
-          "stat": "pts",
           "n": 4,
-          "individualEffect": 2.6
-        },
-        {
-          "playerId": "5105550",
-          "playerName": "GG Jackson",
-          "stat": "pts",
-          "n": 6,
-          "individualEffect": 2.6
+          "individualEffect": 0.6
         }
       ],
       "method": "sum",
-      "combinedBoost": 5.2,
-      "appliedBoost": 2.6,
-      "loggedAt": "2026-11-28T01:54:10.296Z",
+      "combinedBoost": 0.6,
+      "appliedBoost": 0.6,
+      "loggedAt": "2026-11-28T10:09:37.308Z",
       "actualStat": 8
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "4432811",
-      "playerName": "Josh Green",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "4066336",
-          "playerName": "Lauri Markkanen",
-          "stat": "pts",
-          "n": 10,
-          "individualEffect": 0.8
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 0.8,
-      "appliedBoost": 0.8,
-      "loggedAt": "2026-11-28T01:54:12.466Z",
-      "actualStat": 0
     },
     {
       "slateDate": "2026-11-28",
@@ -590,95 +776,15 @@
           "playerId": "4066336",
           "playerName": "Lauri Markkanen",
           "stat": "pts",
-          "n": 10,
-          "individualEffect": 1.9
+          "n": 11,
+          "individualEffect": 1.8
         }
       ],
       "method": "sum",
-      "combinedBoost": 1.9,
-      "appliedBoost": 1.9,
-      "loggedAt": "2026-11-28T01:54:12.466Z",
-      "actualStat": 16
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "3133602",
-      "playerName": "Svi Mykhailiuk",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "4066336",
-          "playerName": "Lauri Markkanen",
-          "stat": "pts",
-          "n": 10,
-          "individualEffect": 3
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 3,
-      "appliedBoost": 3,
-      "loggedAt": "2026-11-28T01:54:12.466Z",
-      "actualStat": 39
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "5041955",
-      "playerName": "Darryn Peterson",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "4066336",
-          "playerName": "Lauri Markkanen",
-          "stat": "pts",
-          "n": 10,
-          "individualEffect": 2.9
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 2.9,
-      "appliedBoost": 2.9,
-      "loggedAt": "2026-11-28T01:54:12.466Z",
-      "actualStat": 6
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "5041955",
-      "playerName": "Darryn Peterson",
-      "stat": "reb",
-      "outSplits": [
-        {
-          "playerId": "4066336",
-          "playerName": "Lauri Markkanen",
-          "stat": "reb",
-          "n": 10,
-          "individualEffect": 1.2
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 1.2,
-      "appliedBoost": 1.2,
-      "loggedAt": "2026-11-28T01:54:12.467Z",
-      "actualStat": 3
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "5105839",
-      "playerName": "Brice Sensabaugh",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "4066336",
-          "playerName": "Lauri Markkanen",
-          "stat": "pts",
-          "n": 10,
-          "individualEffect": 2.7
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 2.7,
-      "appliedBoost": 2.7,
-      "loggedAt": "2026-11-28T01:54:12.467Z",
-      "actualStat": 10
+      "combinedBoost": 1.8,
+      "appliedBoost": 1.8,
+      "loggedAt": "2026-11-28T10:09:38.507Z",
+      "actualStat": 18
     },
     {
       "slateDate": "2026-11-28",
@@ -690,15 +796,95 @@
           "playerId": "4066336",
           "playerName": "Lauri Markkanen",
           "stat": "pts",
-          "n": 7,
-          "individualEffect": 2.7
+          "n": 8,
+          "individualEffect": 2.6
         }
       ],
       "method": "sum",
-      "combinedBoost": 2.7,
-      "appliedBoost": 2.7,
-      "loggedAt": "2026-11-28T01:54:12.467Z",
-      "actualStat": 8
+      "combinedBoost": 2.6,
+      "appliedBoost": 2.6,
+      "loggedAt": "2026-11-28T10:09:38.507Z",
+      "actualStat": 12
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "3133602",
+      "playerName": "Svi Mykhailiuk",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "4066336",
+          "playerName": "Lauri Markkanen",
+          "stat": "pts",
+          "n": 11,
+          "individualEffect": 3
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 3,
+      "appliedBoost": 3,
+      "loggedAt": "2026-11-28T10:09:38.507Z",
+      "actualStat": 4
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "5041955",
+      "playerName": "Darryn Peterson",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "4066336",
+          "playerName": "Lauri Markkanen",
+          "stat": "pts",
+          "n": 11,
+          "individualEffect": 2.9
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 2.9,
+      "appliedBoost": 2.9,
+      "loggedAt": "2026-11-28T10:09:38.507Z",
+      "actualStat": 13
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "5041955",
+      "playerName": "Darryn Peterson",
+      "stat": "reb",
+      "outSplits": [
+        {
+          "playerId": "4066336",
+          "playerName": "Lauri Markkanen",
+          "stat": "reb",
+          "n": 11,
+          "individualEffect": 1.2
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1.2,
+      "appliedBoost": 1.2,
+      "loggedAt": "2026-11-28T10:09:38.507Z",
+      "actualStat": 6
+    },
+    {
+      "slateDate": "2026-11-28",
+      "playerId": "5105839",
+      "playerName": "Brice Sensabaugh",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "4066336",
+          "playerName": "Lauri Markkanen",
+          "stat": "pts",
+          "n": 11,
+          "individualEffect": 2.6
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 2.6,
+      "appliedBoost": 2.6,
+      "loggedAt": "2026-11-28T10:09:38.507Z",
+      "actualStat": 6
     },
     {
       "slateDate": "2026-11-28",
@@ -710,35 +896,15 @@
           "playerId": "4706557",
           "playerName": "Chris Youngblood",
           "stat": "pts",
-          "n": 8,
-          "individualEffect": 1.6
+          "n": 9,
+          "individualEffect": 2.1
         }
       ],
       "method": "sum",
-      "combinedBoost": 1.6,
-      "appliedBoost": 1.6,
-      "loggedAt": "2026-11-28T01:54:14.274Z",
+      "combinedBoost": 2.1,
+      "appliedBoost": 2.1,
+      "loggedAt": "2026-11-28T10:09:39.545Z",
       "actualStat": 17
-    },
-    {
-      "slateDate": "2026-11-28",
-      "playerId": "3995",
-      "playerName": "Jrue Holiday",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "4706557",
-          "playerName": "Chris Youngblood",
-          "stat": "pts",
-          "n": 8,
-          "individualEffect": 0.6
-        }
-      ],
-      "method": "sum",
-      "combinedBoost": 0.6,
-      "appliedBoost": 0.6,
-      "loggedAt": "2026-11-28T01:54:14.274Z",
-      "actualStat": 18
     },
     {
       "slateDate": "2026-11-28",
@@ -750,119 +916,74 @@
           "playerId": "4706557",
           "playerName": "Chris Youngblood",
           "stat": "pts",
-          "n": 6,
-          "individualEffect": 3.7
+          "n": 7,
+          "individualEffect": 3.6
         }
       ],
       "method": "sum",
-      "combinedBoost": 3.7,
-      "appliedBoost": 3.7,
-      "loggedAt": "2026-11-28T01:54:14.274Z",
+      "combinedBoost": 3.6,
+      "appliedBoost": 3.6,
+      "loggedAt": "2026-11-28T10:09:39.545Z",
       "actualStat": 31
     },
     {
-      "slateDate": "2026-11-29",
-      "playerId": "4396909",
-      "playerName": "Aaron Nesmith",
+      "slateDate": "2026-11-28",
+      "playerId": "6589",
+      "playerName": "Draymond Green",
       "stat": "pts",
       "outSplits": [
         {
-          "playerId": "2530530",
-          "playerName": "T.J. McConnell",
+          "playerId": "3975",
+          "playerName": "Stephen Curry",
           "stat": "pts",
-          "n": 3,
-          "individualEffect": 1.1
-        }
-      ],
-      "method": "joint",
-      "jointN": 3,
-      "combinedBoost": 1.1,
-      "appliedBoost": 1.1,
-      "loggedAt": "2026-11-28T01:54:17.825Z",
-      "actualStat": 9
-    },
-    {
-      "slateDate": "2026-11-29",
-      "playerId": "3133603",
-      "playerName": "Kelly Oubre Jr.",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "2530530",
-          "playerName": "T.J. McConnell",
-          "stat": "pts",
-          "n": 3,
+          "n": 6,
           "individualEffect": 0.7
         }
       ],
-      "method": "joint",
-      "jointN": 3,
+      "method": "sum",
       "combinedBoost": 0.7,
       "appliedBoost": 0.7,
-      "loggedAt": "2026-11-28T01:54:17.825Z",
-      "actualStat": 15
+      "loggedAt": "2026-11-28T10:09:39.740Z",
+      "actualStat": 6
     },
     {
-      "slateDate": "2026-11-29",
-      "playerId": "4398207",
-      "playerName": "Jalen Slawson",
+      "slateDate": "2026-11-28",
+      "playerId": "4066436",
+      "playerName": "De'Anthony Melton",
       "stat": "pts",
       "outSplits": [
         {
-          "playerId": "2530530",
-          "playerName": "T.J. McConnell",
+          "playerId": "3975",
+          "playerName": "Stephen Curry",
           "stat": "pts",
-          "n": 5,
-          "individualEffect": 0.6
+          "n": 8,
+          "individualEffect": 2
         }
       ],
-      "method": "joint",
-      "jointN": 5,
-      "combinedBoost": 0.6,
-      "appliedBoost": 0.6,
-      "loggedAt": "2026-11-28T01:54:17.825Z",
-      "actualStat": 7
+      "method": "sum",
+      "combinedBoost": 2,
+      "appliedBoost": 2,
+      "loggedAt": "2026-11-28T10:09:39.740Z",
+      "actualStat": 24
     },
     {
-      "slateDate": "2026-11-29",
-      "playerId": "4278355",
-      "playerName": "Obi Toppin",
+      "slateDate": "2026-11-28",
+      "playerId": "4397040",
+      "playerName": "Brandon Williams",
       "stat": "pts",
       "outSplits": [
         {
-          "playerId": "2530530",
-          "playerName": "T.J. McConnell",
+          "playerId": "3975",
+          "playerName": "Stephen Curry",
           "stat": "pts",
           "n": 3,
-          "individualEffect": 0.6
+          "individualEffect": 0.8
         }
       ],
-      "method": "joint",
-      "jointN": 3,
-      "combinedBoost": 0.6,
-      "appliedBoost": 0.6,
-      "loggedAt": "2026-11-28T01:54:17.825Z",
-      "actualStat": 9
-    },
-    {
-      "slateDate": "2026-11-29",
-      "playerId": "4017837",
-      "playerName": "Ivica Zubac",
-      "stat": "reb",
-      "outSplits": [
-        {
-          "playerId": "2530530",
-          "playerName": "T.J. McConnell",
-          "stat": "reb",
-          "n": 3,
-          "individualEffect": 1
-        }
-      ],
-      "method": "joint",
-      "jointN": 3,
-      "combinedBoost": 1,
-      "appliedBoost": 1,
-      "loggedAt": "2026-11-28T01:54:17.825Z",
+      "method": "sum",
+      "combinedBoost": 0.8,
+      "appliedBoost": 0.8,
+      "loggedAt": "2026-11-28T10:09:39.740Z",
       "actualStat": 14
     },
     {
@@ -875,37 +996,16 @@
           "playerId": "2530530",
           "playerName": "T.J. McConnell",
           "stat": "pts",
-          "n": 5,
+          "n": 6,
           "individualEffect": 1.1
         }
       ],
       "method": "joint",
-      "jointN": 5,
+      "jointN": 6,
       "combinedBoost": 1.1,
       "appliedBoost": 1.1,
-      "loggedAt": "2026-11-28T01:54:17.825Z",
-      "actualStat": 2
-    },
-    {
-      "slateDate": "2026-11-29",
-      "playerId": "5105854",
-      "playerName": "Braden Smith",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "2530530",
-          "playerName": "T.J. McConnell",
-          "stat": "pts",
-          "n": 5,
-          "individualEffect": 1.2
-        }
-      ],
-      "method": "joint",
-      "jointN": 5,
-      "combinedBoost": 1.2,
-      "appliedBoost": 1.2,
-      "loggedAt": "2026-11-28T01:54:17.826Z",
-      "actualStat": 6
+      "loggedAt": "2026-11-28T10:09:46.820Z",
+      "actualStat": 9
     },
     {
       "slateDate": "2026-11-29",
@@ -917,125 +1017,179 @@
           "playerId": "2530530",
           "playerName": "T.J. McConnell",
           "stat": "pts",
+          "n": 5,
+          "individualEffect": 2.3
+        }
+      ],
+      "method": "joint",
+      "jointN": 5,
+      "combinedBoost": 2.3,
+      "appliedBoost": 2.3,
+      "loggedAt": "2026-11-28T10:09:46.820Z",
+      "actualStat": 15
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "4396909",
+      "playerName": "Aaron Nesmith",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "2530530",
+          "playerName": "T.J. McConnell",
+          "stat": "pts",
           "n": 4,
-          "individualEffect": 2.1
+          "individualEffect": 0.9
         }
       ],
       "method": "joint",
       "jointN": 4,
-      "combinedBoost": 2.1,
-      "appliedBoost": 2.1,
-      "loggedAt": "2026-11-28T01:54:17.826Z",
-      "actualStat": 16
-    },
-    {
-      "slateDate": "2026-11-29",
-      "playerId": "4683750",
-      "playerName": "Jordan Hawkins",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "2595516",
-          "playerName": "Norman Powell",
-          "stat": "pts",
-          "n": 5,
-          "individualEffect": 2
-        },
-        {
-          "playerId": "5095151",
-          "playerName": "Caleb Wilson",
-          "stat": "pts",
-          "n": 4,
-          "individualEffect": 1.6
-        }
-      ],
-      "method": "joint",
-      "jointN": 3,
-      "combinedBoost": 1.8,
-      "appliedBoost": 1.8,
-      "loggedAt": "2026-11-28T01:54:19.268Z",
+      "combinedBoost": 0.9,
+      "appliedBoost": 0.9,
+      "loggedAt": "2026-11-28T10:09:46.820Z",
       "actualStat": 6
     },
     {
       "slateDate": "2026-11-29",
-      "playerId": "4395626",
-      "playerName": "Tre Jones",
-      "stat": "ast",
-      "outSplits": [
-        {
-          "playerId": "5095151",
-          "playerName": "Caleb Wilson",
-          "stat": "ast",
-          "n": 8,
-          "individualEffect": 1.4
-        }
-      ],
-      "method": "joint",
-      "jointN": 3,
-      "combinedBoost": 1.1,
-      "appliedBoost": 1.1,
-      "loggedAt": "2026-11-28T01:54:19.268Z",
-      "actualStat": 4
-    },
-    {
-      "slateDate": "2026-11-29",
-      "playerId": "4432822",
-      "playerName": "Isaac Okoro",
+      "playerId": "5105854",
+      "playerName": "Braden Smith",
       "stat": "pts",
       "outSplits": [
         {
-          "playerId": "5095151",
-          "playerName": "Caleb Wilson",
+          "playerId": "2530530",
+          "playerName": "T.J. McConnell",
           "stat": "pts",
-          "n": 8,
+          "n": 6,
+          "individualEffect": 0.8
+        }
+      ],
+      "method": "joint",
+      "jointN": 6,
+      "combinedBoost": 0.8,
+      "appliedBoost": 0.8,
+      "loggedAt": "2026-11-28T10:09:46.820Z",
+      "actualStat": 6
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "4017837",
+      "playerName": "Ivica Zubac",
+      "stat": "reb",
+      "outSplits": [
+        {
+          "playerId": "2530530",
+          "playerName": "T.J. McConnell",
+          "stat": "reb",
+          "n": 4,
+          "individualEffect": 1.9
+        }
+      ],
+      "method": "joint",
+      "jointN": 4,
+      "combinedBoost": 1.9,
+      "appliedBoost": 1.9,
+      "loggedAt": "2026-11-28T10:09:46.820Z",
+      "actualStat": 15
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "4702177",
+      "playerName": "Keon Ellis",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 4,
+          "individualEffect": 0.9
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 0.9,
+      "appliedBoost": 0.9,
+      "loggedAt": "2026-11-28T10:09:47.058Z",
+      "actualStat": 6
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "4712896",
+      "playerName": "Noah Clowney",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 4,
+          "individualEffect": 2.1
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 2.1,
+      "appliedBoost": 2.1,
+      "loggedAt": "2026-11-28T10:09:47.058Z",
+      "actualStat": 13
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "5175643",
+      "playerName": "Egor Demin",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 4,
           "individualEffect": 1.6
         }
       ],
       "method": "sum",
       "combinedBoost": 1.6,
       "appliedBoost": 1.6,
-      "loggedAt": "2026-11-28T01:54:19.268Z",
-      "actualStat": 11
+      "loggedAt": "2026-11-28T10:09:47.058Z",
+      "actualStat": 10
     },
     {
       "slateDate": "2026-11-29",
-      "playerId": "4431687",
-      "playerName": "Patrick Williams",
+      "playerId": "3064514",
+      "playerName": "Julius Randle",
       "stat": "pts",
       "outSplits": [
         {
-          "playerId": "5095151",
-          "playerName": "Caleb Wilson",
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
           "stat": "pts",
-          "n": 8,
-          "individualEffect": 1
-        }
-      ],
-      "method": "joint",
-      "jointN": 3,
-      "combinedBoost": 0.5,
-      "appliedBoost": 0.5,
-      "loggedAt": "2026-11-28T01:54:19.268Z",
-      "actualStat": 2
-    },
-    {
-      "slateDate": "2026-11-29",
-      "playerId": "5044385",
-      "playerName": "Leonard Miller",
-      "stat": "pts",
-      "outSplits": [
-        {
-          "playerId": "5095151",
-          "playerName": "Caleb Wilson",
-          "stat": "pts",
-          "n": 3,
-          "individualEffect": 0.6
+          "n": 4,
+          "individualEffect": 0.9
         }
       ],
       "method": "sum",
-      "combinedBoost": 0.6,
-      "appliedBoost": 0.6,
-      "loggedAt": "2026-11-28T01:54:19.268Z"
+      "combinedBoost": 0.9,
+      "appliedBoost": 0.9,
+      "loggedAt": "2026-11-28T10:09:47.058Z",
+      "actualStat": 29
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "5174655",
+      "playerName": "Chaney Johnson",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5279130",
+          "playerName": "Nolan Traore",
+          "stat": "pts",
+          "n": 2,
+          "individualEffect": 0.7
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 0.7,
+      "appliedBoost": 0.7,
+      "loggedAt": "2026-11-28T10:09:47.058Z",
+      "actualStat": 7
     },
     {
       "slateDate": "2026-11-29",
@@ -1062,8 +1216,8 @@
       "jointN": 3,
       "combinedBoost": 0.9,
       "appliedBoost": 0.9,
-      "loggedAt": "2026-11-28T01:54:19.268Z",
-      "actualStat": 21
+      "loggedAt": "2026-11-28T10:09:47.613Z",
+      "actualStat": 15
     },
     {
       "slateDate": "2026-11-29",
@@ -1083,8 +1237,117 @@
       "jointN": 3,
       "combinedBoost": 1.1,
       "appliedBoost": 1.1,
-      "loggedAt": "2026-11-28T01:54:19.268Z",
-      "actualStat": 22
+      "loggedAt": "2026-11-28T10:09:47.613Z",
+      "actualStat": 11
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "4395626",
+      "playerName": "Tre Jones",
+      "stat": "ast",
+      "outSplits": [
+        {
+          "playerId": "5095151",
+          "playerName": "Caleb Wilson",
+          "stat": "ast",
+          "n": 8,
+          "individualEffect": 1.4
+        }
+      ],
+      "method": "joint",
+      "jointN": 3,
+      "combinedBoost": 1.1,
+      "appliedBoost": 1.1,
+      "loggedAt": "2026-11-28T10:09:47.613Z",
+      "actualStat": 9
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "4432822",
+      "playerName": "Isaac Okoro",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5095151",
+          "playerName": "Caleb Wilson",
+          "stat": "pts",
+          "n": 8,
+          "individualEffect": 1.6
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 1.6,
+      "appliedBoost": 1.6,
+      "loggedAt": "2026-11-28T10:09:47.613Z",
+      "actualStat": 12
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "4683750",
+      "playerName": "Jordan Hawkins",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "2595516",
+          "playerName": "Norman Powell",
+          "stat": "pts",
+          "n": 5,
+          "individualEffect": 2
+        },
+        {
+          "playerId": "5095151",
+          "playerName": "Caleb Wilson",
+          "stat": "pts",
+          "n": 4,
+          "individualEffect": 1.6
+        }
+      ],
+      "method": "joint",
+      "jointN": 3,
+      "combinedBoost": 1.8,
+      "appliedBoost": 1.8,
+      "loggedAt": "2026-11-28T10:09:47.613Z",
+      "actualStat": 19
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "4431687",
+      "playerName": "Patrick Williams",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5095151",
+          "playerName": "Caleb Wilson",
+          "stat": "pts",
+          "n": 8,
+          "individualEffect": 1
+        }
+      ],
+      "method": "joint",
+      "jointN": 3,
+      "combinedBoost": 0.5,
+      "appliedBoost": 0.5,
+      "loggedAt": "2026-11-28T10:09:47.613Z",
+      "actualStat": 7
+    },
+    {
+      "slateDate": "2026-11-29",
+      "playerId": "5044385",
+      "playerName": "Leonard Miller",
+      "stat": "pts",
+      "outSplits": [
+        {
+          "playerId": "5095151",
+          "playerName": "Caleb Wilson",
+          "stat": "pts",
+          "n": 3,
+          "individualEffect": 0.6
+        }
+      ],
+      "method": "sum",
+      "combinedBoost": 0.6,
+      "appliedBoost": 0.6,
+      "loggedAt": "2026-11-28T10:09:47.613Z"
     },
     {
       "slateDate": "2026-11-29",
@@ -1103,8 +1366,8 @@
       "method": "sum",
       "combinedBoost": 1.2,
       "appliedBoost": 1.2,
-      "loggedAt": "2026-11-28T01:54:19.510Z",
-      "actualStat": 20
+      "loggedAt": "2026-11-28T10:09:47.748Z",
+      "actualStat": 13
     },
     {
       "slateDate": "2026-11-29",
@@ -1131,8 +1394,8 @@
       "jointN": 3,
       "combinedBoost": 2.4,
       "appliedBoost": 2.4,
-      "loggedAt": "2026-11-28T01:54:19.510Z",
-      "actualStat": 12
+      "loggedAt": "2026-11-28T10:09:47.748Z",
+      "actualStat": 20
     },
     {
       "slateDate": "2026-11-29",
@@ -1152,8 +1415,8 @@
       "jointN": 2,
       "combinedBoost": 0.8,
       "appliedBoost": 0.8,
-      "loggedAt": "2026-11-28T01:54:19.510Z",
-      "actualStat": 13
+      "loggedAt": "2026-11-28T10:09:47.748Z",
+      "actualStat": 0
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-28T01:54:20.081Z",
+  "lastUpdated": "2026-11-28T10:09:48.067Z",
   "sources": {
     "espn": "ok",
     "nbaOfficial": "ok",
@@ -10,9 +10,9 @@
   "injuryImpactLog": [
     "Moritz Wagner (Brooklyn Nets): no redistribution reasons on slate legs"
   ],
-  "modelSanityChecked": 103,
-  "modelSanityFailures": 1,
-  "formGuardExcludedCount": 174,
+  "modelSanityChecked": 102,
+  "modelSanityFailures": 2,
+  "formGuardExcludedCount": 180,
   "gameOddsPriceAge": {
     "401910046": "Prices from 6:00 pm",
     "401910047": "Prices from 6:00 pm",
@@ -26,26 +26,26 @@
     "Caleb Wilson out → Matas Buzelis +3.8 pts",
     "Aday Mara out → Kenrich Williams +3.7 pts"
   ],
-  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-27_08_45PM.pdf",
+  "nbaOfficialUrl": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-28_05_00AM.pdf",
   "pricedLegCounts": {
     "pts": {
-      "total": 182,
+      "total": 183,
       "priced": 0
     },
     "3pm": {
-      "total": 281,
+      "total": 278,
       "priced": 0
     },
     "reb": {
-      "total": 230,
+      "total": 238,
       "priced": 0
     },
     "ast": {
-      "total": 151,
+      "total": 135,
       "priced": 0
     },
     "q1reb": {
-      "total": 35,
+      "total": 38,
       "priced": 0
     }
   },
