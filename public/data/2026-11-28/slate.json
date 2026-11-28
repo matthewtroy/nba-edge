@@ -7,11 +7,9 @@
     "awayTeam": "Miami Heat",
     "homeTeamId": "18",
     "awayTeamId": "14",
-    "spread": -2.5,
-    "total": 222.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "scheduled"
+    "status": "live"
   },
   {
     "id": "401909327",
@@ -23,9 +21,7 @@
     "awayTeamId": "15",
     "homeB2B": false,
     "awayB2B": false,
-    "status": "scheduled",
-    "spread": -9.5,
-    "total": 219.5
+    "status": "live"
   },
   {
     "id": "401909328",
@@ -35,11 +31,9 @@
     "awayTeam": "Philadelphia 76ers",
     "homeTeamId": "11",
     "awayTeamId": "20",
-    "spread": 3.5,
-    "total": 229.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "scheduled"
+    "status": "live"
   },
   {
     "id": "401909329",
@@ -51,9 +45,7 @@
     "awayTeamId": "17",
     "homeB2B": false,
     "awayB2B": false,
-    "status": "scheduled",
-    "spread": -9.5,
-    "total": 219.5
+    "status": "live"
   },
   {
     "id": "401909330",
@@ -63,11 +55,9 @@
     "awayTeam": "Atlanta Hawks",
     "homeTeamId": "2",
     "awayTeamId": "1",
-    "spread": -9.5,
-    "total": 223.5,
     "homeB2B": false,
     "awayB2B": false,
-    "status": "scheduled"
+    "status": "live"
   },
   {
     "id": "401909331",
@@ -79,9 +69,7 @@
     "awayTeamId": "29",
     "homeB2B": false,
     "awayB2B": false,
-    "status": "scheduled",
-    "spread": -3.5,
-    "total": 219.5
+    "status": "live"
   },
   {
     "id": "401909332",
@@ -94,8 +82,8 @@
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled",
-    "spread": -3.5,
-    "total": 225.5
+    "spread": -4.5,
+    "total": 224.5
   },
   {
     "id": "401909333",
@@ -105,7 +93,7 @@
     "awayTeam": "Los Angeles Lakers",
     "homeTeamId": "24",
     "awayTeamId": "13",
-    "spread": -5.5,
+    "spread": -6.5,
     "total": 226.5,
     "homeB2B": false,
     "awayB2B": false,
@@ -150,7 +138,7 @@
     "homeB2B": false,
     "awayB2B": false,
     "status": "scheduled",
-    "spread": -7.5,
-    "total": 217.5
+    "spread": -8.5,
+    "total": 216.5
   }
 ]
